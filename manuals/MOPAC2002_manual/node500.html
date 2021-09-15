@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Definition of some C.I. Keywords</TITLE>
+<META NAME="description" CONTENT="8.4.7 Definition of some C.I. Keywords">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node501.html"><LINK REL="previous" HREF="node496.html"><LINK REL="up" HREF="node486.html"><LINK REL="next" HREF="node501.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node501.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node486.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node499.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node501.html">Degenerate States</A> <B>Up:</B> <A HREF="node486.html">Multi-Electron Configuration Interaction</A> <B>Previous:</B> <A HREF="node499.html">Franck-Condon considerations</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION001247000000000000000">&nbsp;<A NAME="chadef"></A>&nbsp;</A> <BR>
+Definition of some C.I. Keywords </H2>
+<P>It has been my policy, ever since the first release of MOPAC in 1983, to resist changing the definition of keywords. This policy has allowed users to confidently use a new MOPAC in the belief that old keywords will have their old, familiar, meaning. However, an ambiguity was found in certain keywords, an ambiguity which has, at times, resulted in severe frustration. </P>
+<P>Consider the word <A HREF="node333.html">TRIPLET</A>. In MOPAC 6, this meant (but no longer means) "Do an SCF calculation in which the M.O. populations are [...,2,2,2,1,1,0,0,...], then do a C.I. on the two half-occupied M.O.s, and select the triplet state." This definition meant that twisted ethylene would have the correct symmetry, as would triplet oxygen. However, if a user wanted to examine triplet formaldehyde, and compare it with the ground state, problems arose. The keywords <TT>C.I.=2 ROOT=2</TT> would generate the correct energy, but a user might expect that <TT>TRIPLET</TT> should achieve the same result. Because of the definition of <TT>TRIPLET</TT>, the SCF starting configuration was different, and as a result, the <!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f</sub> was also different. Under earlier MOPACs, there was no way to set up a calculation using the keyword <TT>TRIPLET</TT> and go SCF on a closed-shell configuration as the precursor to a C.I. calculation. </P>
+<P>Because of the limitations of the earlier definitions of spin-states (<TT>TRIPLET</TT>, <A HREF="node278.html">QUARTET</A>,
+<a href="node279.html">QUINTET</a>, <A HREF="node303.html">SEXTET</A>, etc.), these words were all redefined in 1993, in MOPAC&nbsp;93. In order to reproduce the earlier keywords, pairs of keywords, such as <TT>TRIPLET</TT> <TT>
+<a href="node251.html">OPEN(2,2)</a></TT> or <TT>SEXTET</TT> <TT>OPEN(5,5)</TT> must now be used. Spin-states which result from SCF calculations on ground-state configurations can now be specified by the following pairs of keywords: <TT>TRIPLET 
+<a href="node134.html">C.I.=2</a></TT>; <TT>QUARTET C.I.=3</TT>; <TT>QUINTET C.I.=4</TT>; <TT>SEXTET C.I.=5</TT>. </P>
+<P>Using these new definitions, spin-states of a system can now be more easily related. Consider the various states of formaldehyde (<a href="#cich2o1">Table</a>), in which all calculations use the ground-state geometry and <TT>1SCF</TT>. <BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM13956">&nbsp;</A> </P>
+<STRONG><P><a name="cich2o1"></a>Table :</STRONG> Examples of Use of C.I. Keywords</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> Keywords Used</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><!-- MATH: $\Delta H_f$ --><IMG SRC="img988.gif" WIDTH=32 HEIGHT=29 ALT="$Delta H_f$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>(No keywords)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-32.9040</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=1</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-32.9040</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=2</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-33.0166</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=3</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-39.7234</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=4</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-39.9665</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=5</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-40.1743</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=2 TRIPLET</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">29.6348</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=3 ROOT=2</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">28.2840</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=3 TRIPLET</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">28.2840</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>C.I.=3 TRIPLET MS=0</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">28.2840</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>OPEN(2,2) TRIPLET</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">27.9318</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P>Now we see that <TT>C.I.=3</TT> <TT>ROOT=2</TT> and <TT>C.I.=3</TT> <TT>TRIPLET</TT> do, in fact, give the same result. The "old" MOPAC (pre-1993) result of using <TT>TRIPLET</TT> can still be generated by <TT>OPEN(2,2)</TT> <TT>TRIPLET</TT>. Note that <TT>C.I.=1</TT> generates the normal <!-- MATH: $\Delta H_f$ --> <!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f </sub>of CH<SUB>2</SUB>O, and that increasing the C.I. lowers the energy steadily. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8314"><A HREF="node501.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8310"></A><A HREF="node486.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8304"></A><A HREF="node499.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8312"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8313"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8315"><A HREF="node501.html">Degenerate States</A></A> <B>Up:</B> <A NAME="tex2html8311"><A HREF="node486.html">Multi-Electron Configuration Interaction</A></A> <B>Previous:</B> <A NAME="tex2html8305"><A HREF="node499.html">Franck-Condon considerations</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

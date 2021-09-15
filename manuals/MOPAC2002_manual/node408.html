@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Definition of the area of the graph plot</TITLE>
+<META NAME="description" CONTENT="6.3.6 Definition of the area of the graph plot">
+
+
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+<LINK REL="previous" HREF="node407.html">
+<LINK REL="up" HREF="node384.html">
+<LINK REL="next" HREF="node409.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6909"
+ HREF="node409.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6905"
+ HREF="node384.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6901"
+ HREF="node407.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6907"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6908"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6910"
+ HREF="node409.html"> Details of Graph</A>
+<B> Up:</B> <A NAME="tex2html6906"
+ HREF="node384.html"> Data</A>
+<B> Previous:</B> <A NAME="tex2html6902"
+ HREF="node407.html"> Calculation of Excited</A>
+<BR>
+
+<H2>Definition of the area of the graph plot
+</H2>
+The graph plot is a square, which represents a slice or cut through the volume
+of a molecule. To define a square, seven numbers are needed. In order, these
+are:
+<UL>
+<LI>Three numbers to define the position of the center of the square.
+<LI>Three numbers to define an axis perpendicular to the surface of the square.
+<LI>One number to define the length of the edge of the square.
+</UL>  
+To specify the center of the square, the key-word <TT>CENTER</TT> is  provided.
+<TT>CENTER</TT> can be either an atom number, e.g. <TT>CENTER=4</TT>, or an
+absolute Cartesian  coordinate, e.g. <TT>CENTER=(0.6,0.5,2.4)</TT>. If an atom
+is used, the absolute Cartesian coordinates of that atom are used to define the
+center of the square. In either case, the center of the square, i.e. the
+intersection of the two diagonals of the square, is defined by the resulting
+absolute Cartesian coordinate. 
+
+<P>
+Examples:
+<UL>
+<LI>Methane, center of plot to be on one of the hydrogen atoms, these 
+being atoms 1, 3, 4, and 5. Use <TT>CENTER=1</TT> or <TT>CENTER=3</TT> etc.; as an 
+alternative, assuming the first atom is at the origin, 
+<TT>CENTER=(0.0,0.0,0.0)</TT> could be used.
+<LI>Benzene, given Cartesian coordinates as follows:
+<PRE>             X         Y         Z
+  C1       0.0000    0.0000    0.0000
+  C2       1.4066    0.0000    0.0000
+  C3       2.1099    1.2182    0.0000
+  C4       1.4066    2.4363    0.0000
+  C5       0.0000    2.4363    0.0000
+  C6      -0.7033    1.2182    0.0000
+  H1      -0.5451   -0.9442    0.0000
+  H2      -0.5451    3.3805    0.0000
+  H3       1.9517   -0.9442    0.0000
+  H4      -1.7935    1.2182    0.0000
+  H5       3.2002    1.2182    0.0000
+  H6       1.9517    3.3805    0.0000
+</PRE>Then, if a plot of benzene with the center of the molecule at the middle
+of the picture, <TT>CENTER=(0.7,1.2,0.0)</TT> could be used.
+<LI>Benzene, <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img350.gif"
+ ALT="$\pi$">-system. Using the above Cartesian coordinates for the
+benzene ring, the center of the plot must be above the plane of the
+ring in order to avoid the nodes in the <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img351.gif"
+ ALT="$\pi$">-system. In this case
+<TT>CENTER=(0.7,1.2,0.5)</TT> would be appropriate.
+</UL>  
+ Once the center of the plot is defined, the orientation of the plane
+of the plot needs to be specified. Thus if a plot of methane was wanted,
+and the center of the plot was on the carbon atom, the following 
+cross-sections could be drawn:
+<UL>
+<LI>Four-fold symmetry: Plot is oriented in the reflection plane of the
+S<SUB>4</SUB> symmetry operation. To specify this, absolute Cartesian
+coordinates would need to be used.
+<LI>Three-fold symmetry: Axis of plot is from carbon to any hydrogen.
+To specify this, <TT>LINE=4</TT> could be used.
+<LI>Showing two C-H bonds: Given that the first three atoms are H, C, and
+H, then the axis (0.0,0.0,1.0) would be perpendicular to the plane
+of  these three atoms (assuming that all three atoms had the same z component).
+</UL>  
+ It might be helpful in visualizing the axis of the plot by imagining the plot
+without the line specified. The center of the plot is already defined, but
+the square is still free to rotate in all three dimensions, so only one
+point in the square is defined. The plane of the plot is then 
+defined by <TT>LINE</TT>.
+
+<P>
+The final unknown is the size of the plot. This is 
+specified by <TT>EDGE=<I>n</I>.<I>nn</I></TT>.
+The length <I>n</I>.<I>nn</I> defines the length, in &#197;ngstroms, of the side of the plot.
+Note that most molecules are bigger than their simple atomic coordinates
+would suggest. As an example, to get a benzene ring to fit inside a plot,
+<TT>EDGE=6.0</TT> would be needed, even though the H-H distance across the ring is
+only 4.8-5.0 &#197;ngstroms.
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6909"
+ HREF="node409.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6905"
+ HREF="node384.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6901"
+ HREF="node407.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6907"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6908"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6910"
+ HREF="node409.html"> Details of Graph</A>
+<B> Up:</B> <A NAME="tex2html6906"
+ HREF="node384.html"> Data</A>
+<B> Previous:</B> <A NAME="tex2html6902"
+ HREF="node407.html"> Calculation of Excited</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

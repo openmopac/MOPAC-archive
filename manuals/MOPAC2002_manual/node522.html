@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Construction of Starting Localized Molecular Orbitals</TITLE>
+<META NAME="description" CONTENT="8.6.4 Construction of Starting Localized Molecular Orbitals">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node531.html">
+<LINK REL="previous" HREF="node519.html">
+<LINK REL="up" HREF="node511.html">
+<LINK REL="next" HREF="node523.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8612"
+ HREF="node523.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8608"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8602"
+ HREF="node521.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8610"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8611"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8613"
+ HREF="node523.html"> Construction of Hybrids</A>
+<B> Up:</B> <A NAME="tex2html8609"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8603"
+ HREF="node521.html"> Detailed Description of</A>
+<H2>Construction of Starting Localized Molecular Orbitals
+</H2>
+In conventional semiempirical methods, molecular orbitals are created by the
+diagonalization of an atomic orbital secular determinant.  Because of the size
+of the matrices involved in proteins, this operation is impractical; therefore
+the starting orthogonal localized molecular orbitals must be constructed in a
+different way.
+<P>
+Monatomic and diatomic LMOs are constructed using all the atomic orbitals in
+the system.  Care must be taken to ensure that a realistic set of starting LMOs
+are generated.  If the set is not realistic, then, although an SCF could be
+calculated, more work would be involved.  The most obvious set of LMOs is that
+set corresponding to the classical line-drawing of a molecule: a sigma
+framework, lone pairs,
+<font face="Symbol"><i>p</i></font>-bonds, and charges, localized on specific atoms. 
+Without loss of rigor, delocalized
+<font face="Symbol"><i>p</i></font>
+systems can be represented  as
+localized
+<font face="Symbol"><i>p</i></font>
+bonds.  The purpose in constructing the mono and di-atomic LMOs
+is to have a starting set of LMOs, which can then be used as the basis for a
+self-consistent set of LMOs.
+<P>
+The steps involved in constructing the LMOs are as follows:
+<DL COMPACT>
+<DT>1.
+<DD>Hybrid atomic orbitals are constructed for each heavy atom.
+<DT>2.
+<DD>All sigma bonds are identified.
+<DT>3.
+<DD>Diatomic <font face="Symbol">s</font>
+LMOs are constructed.
+<DT>4.
+<DD>All lone pairs are identified, and monatomic LMOs constructed.
+<DT>5.
+<DD>All non-cyclic <font face="Symbol">p</font>
+systems are identified, and diatomic
+<font face="Symbol"><i>p</i></font>
+LMOs
+bonds constructed.
+<DT>6.
+<DD>All cyclic <font face="Symbol">p</font>
+systems are identified, and diatomic
+<font face="Symbol"><i>p</i></font>
+LMOs
+constructed.
+<DT>7.
+<DD>Any unused atomic orbitals are identified as cationic or anionic centers,
+and monatomic LMOs constructed.
+</DL>
+<P>
+Inspection of this sequence shows that the resulting set of LMOs will, in fact,
+correspond to the classical line-sketch of the molecular structure.
+<P>
+There are one or two less than obvious details involved in this sequence, which
+will now be described.
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html8614"
+ HREF="node523.html"> Construction of Hybrids</A>
+<LI><A NAME="tex2html8615"
+ HREF="node524.html"> Construction of Starting Localized Molecular Orbitals</A>
+<LI><A NAME="tex2html8616"
+ HREF="node525.html"> Construction of Sigma Framework</A>
+<LI><A NAME="tex2html8617"
+ HREF="node526.html"> Identification of Lone Pairs</A>
+<LI><A NAME="tex2html8618"
+ HREF="node527.html"> Construction of Non-Cyclic <i> <font face="Symbol">p</font></i> Bonds</A>
+<LI><A NAME="tex2html8619"
+ HREF="node528.html"> Construction of Cyclic <i> <font face="Symbol">p</font></i> Bonds</A>
+<LI><A NAME="tex2html8620"
+ HREF="node529.html"> Identification of Ions</A>
+<LI><A NAME="tex2html8621"
+ HREF="node530.html"> Properties of Starting LMOs</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8612"
+ HREF="node523.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8608"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8602"
+ HREF="node521.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8610"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8611"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8613"
+ HREF="node523.html"> Construction of Hybrids</A>
+<B> Up:</B> <A NAME="tex2html8609"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8603"
+ HREF="node521.html"> Detailed Description of</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

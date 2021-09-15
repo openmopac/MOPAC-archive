@@ -1,0 +1,129 @@
+\section{Gradients}\label{derivs}
+\index{Gradients|ff}\index{Derivatives|(}
+By ``gradients'' we generally mean ``the derivative of the energy with respect
+to coordinates''.  The two most commonly used gradients are with respect to
+Cartesian coordinates, in which case the units are kcal/mol/\AA ngstrom, or
+with respect to internal coordinates, in which case the units are either 
+kcal/mol/\AA ngstrom or kcal/mol/radian, depending on whether the coordinate is
+a distance (in which case it would be kcal/mol/\AA ngstrom) or an angle or
+dihedral (in which case it would be kcal/mol/radian). The particular gradient
+actually being used at any given point should be clear from the context. In all
+cases, the gradient can be regarded as the following derivative
+$$
+g_i = \frac{d(\Delta H_f)}{dx_i}
+$$
+In discussion ``gradient'' will be reserved for the derivative with respect to
+coordinates flagged for optimization (internal or Cartesian), and
+``derivative'' will be used for both gradients and terms which are used to
+calculate gradients, such as Cartesian derivatives which are used to calculate
+internal coordinate gradients.
+
+There are four very different ways to calculate gradients, although all four
+result in the same type of derivative.  The four ways are:
+\begin{description}
+\item[Frozen density matrix finite difference derivatives]~\\
+\index{Wavefunctions!variational}
+In these procedures, once an SCF has been achieved, the derivatives can be 
+calculated using the density matrix from the SCF calculation.  These methods 
+can only be used with variationally optimized wavefunctions. 
+
+By default, the derivatives are worked out by calculating the energy of each
+pair of atoms, then re-calculating the energy after a small displacement has
+been made, and then calculating the derivative from the differences in the
+energies and the step.  This is the default, and is the fastest.  If this
+method is {\em not} wanted, specify \comp{ANALYT}.
+
+\item[Analytical derivatives, using frozen density matrix approximation]~\\
+Not as fast as the first method, but more accurate.  Useful when finite
+difference derivatives are suspected to be of insufficient accuracy.  When
+analytical derivatives are wanted, specify \comp{ANALYT}.  Analytical
+derivatives cannot be used with non-variational finite difference derivatives.
+
+\item[Non-variational finite difference derivatives]~\\ 
+For non-variational \index{Wavefunctions!non-variational}wavefunctions (systems
+for which the electronic energy is modified after the SCF calculation is done,
+e.g.\ C.I.\ calculations), a  sophisticated derivative routine in \comp{DERNVO}
+calculates the effect on the  derivative of the post-SCF energy terms.  This
+method is used automatically in RHF C.I.\ calculations.  If this method is {\em
+not} wanted, specify \comp{NOANCI}.
+
+\item[Brute force gradients]~\\
+These should be avoided whenever possible.  To calculate the gradient, a small
+change is made in the desired coordinate, then a full SCF is done, and the
+gradient calculated from
+$$ 
+g_i = \frac{\Delta H_f-\Delta H_f'}{x-x^{'}}.
+$$ 
+These gradients are very slow, and are of poor accuracy, but sometimes they
+are the only way to obtain  gradients.  These derivatives cannot be used
+with variationally optimized wavefunctions, but can be used with 
+non-variational wavefunctions by specifying \comp{NOANCI}.  
+\end{description}
+
+Note that \comp{ANALYT} and \comp{NOANCI} apply to two very different things:
+\comp{ANALYT} applies to the derivatives using a frozen density matrix
+approximation, and uses true analytical methods.  \comp{NOANCI} prevents
+Liotard's C.I.\ derivative method being used.  Of course \comp{NOANCI} has no
+meaning for variationally optimized wavefunctions.
+
+\subsection{Frozen density matrix finite difference derivatives}
+
+The first step in calculating the gradients is to calculate the derivatives
+with respect to Cartesian coordinates.  This is done in subroutine DCART.
+\index{DCART}
+
+DCART calculates the energy of each pair of atoms, then moves one atom a small
+distance ($10^{-4}$\AA ) in each of the three Cartesian directions.  The
+density matrix for the atom-pair is not changed during this calculation, but is
+set equal to the SCF density matrix. The derivative for each atom is then
+calculated  from:
+$$\left (\frac{dE}{dx}\right )_A = \sum_{B\neq A}\frac{E_{AB}-E_{AB}^{'}}{\delta_x}, $$
+$$\left (\frac{dE}{dy}\right )_A = \sum_{B\neq A}\frac{E_{AB}-E_{AB}^{'}}{\delta_y}, $$
+$$\left (\frac{dE}{dz}\right )_A = \sum_{B\neq A}\frac{E_{AB}-E_{AB}^{'}}{\delta_z}. $$
+where $E_{AB}^{'}$ is the energy of the pair of atoms after displacement in the
+appropriate direction.  For a stationary point, these derivatives are zero.
+
+To convert from Cartesian coordinate (c.c.) derivatives into gradients (i.c.),
+the sum
+$$
+g_i = \sum_j\frac{dE}{d({\rm c.c.}_j)}\frac{d({\rm c.c.}_i)}{d({\rm i.c.}_j)} 
+$$
+must be evaluated.  Evaluation of  
+$\frac{d({\rm c.c.}_i)}{d({\rm i.c.}_j)}$  
+is quite simple, and in done in routine JCARIN.
+
+\subsection{Hessian matrix in \comp{FORCE} calculations}\index{Hessian|(}\label{ssd}
+\index{Single-sided derivatives}
+The Hessian matrix is the matrix of second derivatives of the energy with
+respect to geometry. The most important Hessian is that used in the
+\comp{FORCE} calculation.  Normal modes are expressed as Cartesian
+displacements, consequently the Hessian is based on Cartesian rather than
+internal coordinates.
+
+\index{Derivatives!``single-sided''} 
+Although first derivatives are relatively easy to calculate, second derivatives
+are not.  The simplest, although not an elegant, way to calculate~\cite{pulayf}
+second derivatives is to calculate first derivatives for a given geometry, then
+perturb the geometry, do an SCF calculation on the new geometry, and
+re-calculate the derivatives. The second derivatives can then be calculated
+from the difference of the two first derivatives divided by the step size. 
+This method, which is used in the EigenFollowing routine, is called
+`single-sided' derivatives.
+
+The Hessian is quite sensitive to geometry, and should only be evaluated at
+stationary points.  Because of this sensitivity, ``double-sided'' derivatives
+\index{Derivatives!``double-sided''} are used:
+$$
+H_{i,j} = \frac{g_i^{+\delta_j}-g_i^{-\delta_j}}{2\delta}.
+$$
+Note the asymmetry in the treatment of the Cartesian coordinates $i$ and $j$.
+It can be shown that 
+$$
+\frac{g_j^{+\delta_i}-g_j^{-\delta_i}}{2\delta} = \frac{g_i^{+\delta_j}-g_i^{-\delta_j}}{2\delta}.
+$$
+To help improve precision, the Hessian is calculated from
+$$
+H_{i,j} = \frac{1}{2}\left ( \frac{g_j^{+\delta_i}-g_j^{-\delta_i}}{2\delta} + \frac{g_i^{+\delta_j}-g_i^{-\delta_j}}{2\delta} \right ).
+$$
+\index{Hessian|)}
+\index{Derivatives|)}

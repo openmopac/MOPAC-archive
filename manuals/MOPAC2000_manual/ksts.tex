@@ -1,0 +1,256 @@
+\subsection*{\comp{IKST(100)}}
+Because MOPAC can calculate many quantities, such as the number of atoms, heat
+of formation, etc., a method has to exist to allow these quantities to be
+transmitted throughout the program. This is accomplished by two arrays, \comp{IKST}
+and \comp{RKST}.  Each element of these
+arrays is reserved for use as a storage site for a scalar.  \comp{IKST} holds
+integer scalars and \comp{RKST} holds real scalars.  Table~\ref{cuim}
+summarizes these quantities.   At the start of a calculation, every element of
+\comp{IKST} is set to -99999, and every element of \comp{RKST} is set to
+-99999.99. As a result of this, if an element of these arrays is examined, it
+is immediately obvious whether or not it has been set.  Thus, until the number
+of atoms is known, IKST(2) (NUMAT), is -99999.
+
+\begin{table}
+\caption{\label{cuim} Constants used in MOPAC}
+\begin{center}
+\begin{tabular}{lllllllll} \hline
+\comp{RKST} & \comp{IKST} & No. & \comp{RKST} & \comp{IKST} & No. & \comp{RKST} & \comp{IKST} & No.\\
+\hline
+\comp{ESCF} & \comp{NATOMS} & 1 & \comp{EOUTER} & \comp{ICOMPF} & 34 & & & 67\\
+\comp{ENUCLR} & \comp{NUMAT} &  2 & \comp{THRESH} & \comp{ISAFE} & 35 & & & 68\\
+\comp{EE} & \comp{NELECS} &  3 & \comp{RSOLV} & \comp{LIMSCF} & 36 & & & 69\\
+\comp{ATHEAT} & \comp{NALPHA} &  4 & & \comp{NA1} & 37 & & & 70\\
+\comp{FRACT} & \comp{NBETA} &  5 & \comp{CORHYB} & \comp{IGROUP} & 38 & & & 71\\
+\comp{EMIN} & \comp{NCLOSE} &  6 & \comp{ESCFL} & \comp{NCLASS} & 39 & & & 72\\
+\comp{COSINE} & \comp{NOPEN} &  7 & \comp{VOLUME} & \comp{NIRRED} & 40 & & & 73\\
+\comp{GNORM} & \comp{NORBS} &  8 & \comp{FEPSI} & \comp{NSPA} & 41 & & & 74\\
+\comp{TIME0} & \comp{ISCF} &  9 & \comp{RDS} & \comp{NPS} & 42 & & & 75\\
+\comp{EZQ} & \comp{NSCF} & 10 & \comp{DISEX2} & \comp{NPS2} & 43 & & & 76\\
+\comp{EEQ} & \comp{ID} & 11 & \comp{CUTOF1} & \comp{IOLDCV} & 44 & & & 77\\
+\comp{AREA} & \comp{NVAR} & 12 & \comp{CUTOF2} & \comp{NSTATE} & 45 & & & 78\\
+\comp{EDIEL} & \comp{MOLNUM} & 13 & \comp{CUTOFS} & \comp{NUMPTS} & 46 & & & 79\\
+\comp{GVW} & \comp{LATOM} & 14 & \comp{CUTOFP} & & 47 & & & 80\\
+\comp{GVWS} & \comp{LPARAM} & 15 & \comp{FNSQ} & \comp{LENABC} & 48 & & & 81\\
+\comp{ELC1} & \comp{ITRY} & 16 & \comp{CLOWER} & \comp{MESP} & 49 & & & 82\\
+\comp{TLEFT} & \comp{ITYPE} & 17 & \comp{CUPPER} & \comp{NUMRED} & 50 & & & 83\\
+\comp{TDUMP} & \comp{MFLAG} & 18 & \comp{DLM} & \comp{NORRED} & 51 & & & 84\\
+\comp{ELECT} & \comp{ITERQ} & 19 & \comp{XNORM} & \comp{NELRED} & 52 & & & 85\\
+\comp{STEP} & \comp{IFLEPO} & 20 & \comp{DIFE} & \comp{NRES} & 53 & & & 86\\
+\comp{TVEC(1,1)} & \comp{MPACK} & 21 & \comp{PRESSURE} & \comp{NUMCAL} & 54 & & & 87\\
+\comp{TVEC(2,1)} & \comp{N2ELEC} & 22 & & \comp{NIP} & 55 & & & 88\\
+\comp{TVEC(3,1)} & \comp{NMOS} & 23 & & \comp{IDIAGG} & 56 & & & 89\\
+\comp{TVEC(1,2)} & \comp{LAB} & 24 & & \comp{MDRCRS} & 57 & & & 90\\
+\comp{TVEC(2,2)} & \comp{NELEC} & 25 & & & 58 & & & 91\\
+\comp{TVEC(3,2)} & & 26 & & & 59 & & & 92\\
+\comp{TVEC(1,3)} & & 27 & & \comp{IPAD2} & 60 & & & 93\\
+\comp{TVEC(2,3)} & & 28 & & \comp{IPAD4} & 61 & & & 94\\
+\comp{TVEC(3,3)} & \comp{MAXTXT} & 29 & & \comp{NL1} & 62 & & & 95\\
+\comp{RJKAB1} & \comp{LAST} & 30 & & \comp{NL2} & 63 & & \comp{ICROS} & 96\\
+\comp{WTMOL} & \comp{NDEP} & 31 & & \comp{NL3} & 64 & & \comp{MORB} & 97\\
+\comp{VERSON} & \comp{LABSIZ} & 32 & & & 65 & & \comp{MOP/MOZ} & 98\\
+\comp{TOTIME} & \comp{LM61} & 33 & & & 66 & & & 99\\
+ & & & & & & & \comp{DERIV} & 100\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{enumerate}
+\item \comp{NATOMS} The number of atoms supplied by the data set,
+including dummy atoms and translational vectors.  \comp{NATOMS} is set in the
+subroutine that
+reads in the geometry (\comp{GETGEO}, \comp{GETGEG}, or \comp{GETPDB}).
+
+With one exception, once \comp{NATOMS} is determined, it is not changed.
+In \comp{FORCE}, only real atoms are used, therefore, for convenience,
+the geometry is re-defined so that any dummy atoms are deleted.
+\item \comp{NUMAT} The number of real atoms.  Here, ``real'' atoms are
+the sparkles (100\% ionized atoms) and normal atoms.  The difference
+between \comp{NATOMS} and \comp{NUMAT} is the number of dummy atoms plus
+any translational vectors.
+\item\comp{NELECS} The total number of valence electrons in the system.  This
+is calculated by adding up the number of valence electrons on each atom, and
+subtracting the net charge on the system.
+\item\comp{NALPHA} In a \comp{UHF} calculation, \comp{NALPHA} is the number
+of $\alpha$ electrons in the system.  By default, the number of $\alpha$
+electrons is the same as the number of $\beta$ electrons (for closed-shell
+systems), or one more than the number of $\beta$ electrons (for odd-electron
+systems). If a spin is defined (\comp{TRIPLET}, \comp{QUARTET}, etc.), then the
+number of $\alpha$ electrons is two to four more than the number of $\beta$
+electrons. For example, if \comp{QUINTET} is specified, then \comp{NALPHA}
+would be four more than \comp{NBETA}. The value of \comp{NALPHA} is set in
+\comp{STATE}.
+
+In an RHF calculation, \comp{NALPHA}=0.
+\item\comp{NBETA} In a \comp{UHF} calculation, \comp{NBETA} is the number
+of $\beta$ electrons in the system. In an RHF calculation, \comp{NBETA}=0.
+The value of \comp{NBETA} is set in
+\comp{STATE}.
+
+
+\item\comp{NCLOSE} In an RHF calculation, \comp{NCLOSE} is the number of
+doubly-occupied M.O.s. In a UHF calculation, \comp{NCLOSE}=0.
+The value of \comp{NCLOSE} is set in  \comp{STATE}.
+
+\item\comp{NOPEN} In an RHF calculation, \comp{NOPEN} is the number of
+the highest M.O. that would be fractionally occupied in the SCF calculation.
+The ``fraction'' can range from 0.0 to 2.0.  For an isolated carbon atom, the
+fractional occupancy (two $p$ electrons in three atomic orbitals) would be
+0.6667, and \comp{NCLOSE} would be 1, and \comp{NOPEN} would be 4.  By default,
+the fractional occupancy of the SOMO in odd-electron
+systems is 1.0. In a UHF calculation, \comp{NOPEN}=0.
+The value of \comp{NCLOSE} is set in  \comp{STATE}.
+\item\comp{NORBS} The number of atomic orbitals in a system.  Each hydrogen atom
+contributes one atomic orbital, every other atom contributes four, except atoms
+with $d$-orbitals, which contribute nine, and sparkles, which do not
+contribute any.  \comp{NORBS} is set in \comp{STATE}.
+\item\comp{ISCF} At the end of a calculation, \comp{ISCF=1} if an SCF exists,
+otherwise \comp{ISCF=2}.  Set in \comp{ISITSC}.
+\item \comp{NSCF} The number of SCF calculations done.  Each time an SCF
+calculation is done, \comp{NSCF} is incremented by one.
+\item \comp{ID} The number of dimensions for polymeric systems.  For molecules,
+\comp{ID=0}; for polymers, \comp{ID=1}; for layer systems, \comp{ID=2}; and for
+solids, \comp{ID=3}.  Set in \comp{GMETRY}.
+\item \comp{NVAR} The number of geometric variables.  Normally, this is the
+number of coordinates flagged by a ``1'' in the input data set.  In a \comp{FORCE}
+calculation, or one that implies a \comp{FORCE} calculation, such as an IRC,
+then \comp{NVAR=3*NUMAT}.
+\item \comp{MOLNUM}  The number of the system.  Each new molecule run is given
+a new number, with the first molecule having \comp{MOLNUM=1}.  If several
+geometric operations are done on one system, they all share the
+same \comp{MOLNUM}, however, if \comp{OLDGEO} is used, then the system
+is considered to be ``new''. The only exception is when an IRC is run, in which
+case the value of \comp{MOLNUM} is increased between the \comp{FORCE}
+and the \comp{IRC} calculations.  This is needed, because the system is
+re-oriented before the \comp{IRC} is run.
+\item \comp{LATOM} In a reaction coordinate, \comp{LATOM} is the atom number
+of the atom that moves.  This coordinate is indicated in the input data set
+by the ``-1'' flag.  The atom can be real or dummy. Set in \comp{READMO}.
+See also \comp{LPARAM}.
+\item \comp{LPARAM} In a reaction coordinate, \comp{LPARAM} is the coordinate
+(first, second, or third) of the atom that moves.  Set in \comp{READMO}. See
+also \comp{LATOM}.
+\item \comp{ITRY}  The number of iterations allowed in attempting to generate
+an SCF.  By default, \comp{ITRY=200}, but this can be changed by use of
+\comp{ITRY=n}.
+\item \comp{ITYPE} The type of calculation  to be run.
+If an MNDO calculation, \comp{ITYPE=4}; AM1, \comp{ITYPE=2}; PM3,
+\comp{ITYPE=3}, MINDO/3, \comp{ITYPE=4}; MNDO-$d$, \comp{ITYPE=5}.
+\item \comp{MFLAG} Used by the Tomasi method.
+\item \comp{ITERQ} Used by the Tomasi method
+\item \comp{IFLEPO} A flag to indicate how the geometry optimization
+terminated.  Initialized in \comp{RMOPAC} and normally set in
+\comp{EF}, \comp{FLEPO}, \comp{NLLSQ}, and \comp{POWSQ}.  Set in \comp{ITER}
+when the SCF fails.  The various meanings of IFLEPO are defined in \comp{DATA}
+statements in \comp{WRITMN}.
+\item \comp{MPACK} The number of array elements in the density, one-electron,
+and Fock matrices.  In conventional work, this is  \comp{(NORBS*(NORBS+1))/2}
+and is set in \comp{STATE},
+in MOZYME work, \comp{MPACK} is determined from the number of atoms that
+interact with each other.  For large systems, \comp{MPACK} is normally
+much smaller than the value in conventional work.
+\item \comp{N2ELEC} The number of two-electron integrals.  The number
+of integrals (0,1,16, or 81) contributed by an atom depends on the
+number of orbitals (0, 1, 4, or 9) on that atom.  The NDDO
+approximation indicates that for atom pairs, the number of integrals is
+$(n(n+1))*(m(m+1))/4)$, where $n$ and $m$ are the number of orbitals on
+each atom.  In MOZYME, \htmlref{the number is reduced when two atoms
+are far apart}{m2el}.
+\begin{latexonly}
+See p.~\pageref{m2el} for details.
+\end{latexonly}
+\item \comp{NMOS} The number of M.O.s involved in the active space in a C.I.
+calculation.  Set in \comp{STATE} only.
+\item \comp{LAB} The number of microstates or configurations included in the
+C.I.\ calculation.  Set in \comp{MECI} only.
+\item \comp{NELEC} The number of electrons involved in the C.I. calculation.
+Set in \comp{MECI} only.
+\addtocounter{enumi}{3}
+\item \comp{MAXTXT} Maximum number of characters in the description of an
+atom.  (An atom label can include a short description of up to 13 letters,
+for example ``\verb:N(  634 ASN  46):)''
+\item \comp{LAST} \comp{LAST=0} if the current SCF is {\em not} the last SCF. \
+Only on the last SCF, when \comp{LAST=1}, are the symmetries of the M.O.s
+determined.  If the system is RHF open shell, then in \comp{WRITMN}, \comp{LAST}
+is set to 3, and \comp{MECI} is called.  This prints the symmetries of the
+states.
+\item \comp{NDEP} The number of symmetry-dependent coordinates.  Set in
+\comp{GETGEG}, \comp{GETSYM}, and \comp{MAKSYM}.
+\item \comp{LABSIZ} The number of states to be calculated in a C.I. (usually
+less than \comp{LAB}, until the last C.I., when all states are calculated.)
+\item\comp{LM61} The number of matrix elements in the one-center part of the
+density, one-electron, or Fock matrices.  Each hydrogen contributes 1 element,
+each $s-p$ atom contributes 10 ($(4*(4+1))/2$), and each $s-p-d$ atom
+contributes 45 elements ($(9*(9+1))/2$).
+\item\comp{ICOMPF} Used by the Tomasi method.
+\item\comp{ISAFE} A flag to indicate whether some large arrays can be
+ignored.  If \comp{ISAFE=1} then these arrays are used.  If \comp{ISAFE=0}, then
+the amount of memory used is reduced, but some functionalities, such as
+the Camp-King converger, will not work.  Normally, this is not important.
+\comp{ISAFE} is set at compile time, and can be re-set at run time by
+\comp{SAFE} or \comp{UNSAFE}.
+\item\comp{LIMSCF} In the SCF, if \comp{LIMSCF=1}, then the SCF can be stopped
+before the usual criteria are satisfied, if the energy is obviously lower
+or obviously higher.  This saves time, in that the geometry is still not
+near to the stationary point.  \comp{LIMSCF=0} if the usual SCF criteria must
+be met. This is necessary in \comp{FORCE} and transition state calculations.
+\item \comp{NA1}  A flag to indicate the nature of the coordinates.
+If \comp{NA1=1} then all coordinates are Cartesian.  Default: \comp{NA1=0}.
+\item\comp{IGROUP} The number of the point-group of the system.
+\item \comp{NCLASS} The number of classes necessary to define the point-group.
+For $I_h$, for example, four operations (four classes) are necessary: $E$,
+$C_5$, $C_3$, and the inversion operation.
+\item \comp{NIRRED} The number of irreducible representations in the point-group.
+\item \comp{NSPA} Used by the COSMO method.
+\item \comp{NPS} Used by the COSMO method.
+\item \comp{NPS2} Used by the COSMO method.
+\addtocounter{enumi}{1}
+\item \comp{NSTATE} The number of states used in describing the electronic
+state of a system.  Normally 1, the number can increase when degenerate
+states are involved.  Thus in CH$_4^+$, without Jahn-Teller distortion,
+the value of \comp{NSTATE} would be 3 (representing the $^2T_u$ state).
+Note: For degenerate open shell systems, \comp{OPEN(n,m)} will normally be
+needed.
+\item \comp{NUMPTS} Used by the COSMO method.
+\addtocounter{enumi}{1}
+\item \comp{LENABC} Estimated maximum number of surface points in the
+COSMO method.
+\item \comp{MESP} Size of the ESP array in the electrostatic potential
+calculation, set in  ``sizes.h''.
+\item \comp{NUMRED} The number of atoms involved in the SCF when the \comp{RAPID}
+option is used.  The number of atoms that move plus the number of atoms attached
+to them.
+\item \comp{NORRED} The number of LMOs involved in the SCF when the \comp{RAPID}
+option is used.
+\item \comp{NELRED} The number of electrons involved in the SCF when the
+\comp{RAPID} option is used.
+\item \comp{NRES} The number of residues identified in a protein when
+\comp{RESIDUES} or \comp{RESEQ} is specified.
+\item \comp{NUMCAL} For a given calculation (input geometry), the number
+of the type of calculation.  For example, an initial SCF (\comp{NUMCAL=1}),
+followed by a \comp{FORCE} calculation (\comp{NUMCAL=2}).
+\addtocounter{enumi}{1}
+\item \comp{IDIAGG} Used in the annihilation operation in MOZYME, \comp{IDIAGG}
+increments every time \comp{DIAGG} is called.
+\item \comp{MDRCRS} Controls whether the restart file in a DRC or IRC run should
+be formatted or unformatted.  Set in \comp{MOPAC} from \comp{sizes.h}.
+If \comp{MDRCRS=1}, then a formatted restart file is used.  This can be read
+easily, but uses more space and is less precise than unformatted (\comp{MDRCRS=0}.
+\addtocounter{enumi}{2}
+\item \comp{IPAD2} The estimated maximum average number of atoms in a LMO.
+The default value is usually sufficient, but it can be reset by \comp{NLMO=nnn}.
+\item \comp{IPAD4} The estimated maximum average number of atomic orbitals
+in a LMO.  Set as a function of \comp{IPAD2}.
+\addtocounter{enumi}{34}
+\item \comp{ICROS} The type of calculation: 1 if an intersystem crossing,
+0 otherwise.
+\item \comp{MORB} The maximum number of orbitals on any atom: 1, 4, or 9.
+\item \comp{unnamed} The type of method used in solving the SCF equations.
+0 indicates conventional (MOPAC type), 1 indicates LMO (MOZYME type).
+\addtocounter{enumi}{1}
+\item \comp{unnamed} The type of derivative calculation: 1 = MOZYME -1 =
+remove contributions to derivative arising from moving atoms; 2 = MOZYME 0 =
+calculate MOZYME derivatives {\em de novo}; 3 = MOZYME +1 = add in contributions
+to derivatives arising from moving atoms; 4 = MOPAC RHF; 5 = MOPAC UHF.
+\end{enumerate}

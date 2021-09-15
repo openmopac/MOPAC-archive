@@ -1,0 +1,195 @@
+% Titlepage/ foreword/ etc of MOPAC manual --- set with Roman numbering
+%\documentstyle[headerfooter]{book}
+\documentstyle{book}
+% Set up page parameters---basically A4
+\topmargin 0pt
+\headheight 12pt % Height of page header
+\headsep 25pt    % Distance between header and text start
+\footskip 30pt   % Distance between text bottom and footer bottom
+\footheight 12pt % Height of page footer
+\oddsidemargin  0.25in  % extra left margin for odd pages
+\evensidemargin 0.125in % extra left margin for even pages
+\textwidth 5.875in
+\marginparwidth 0.8in % width of marginal notes
+\marginparsep   11pt % Distance between text and marginal notes
+\textheight 53\baselineskip
+\advance\textheight by \topskip
+\begin{document}
+\begin{titlepage}
+\begin{center}
+{\huge\bf MOPAC manual (Sixth Edition)}\\
+\vfill
+{\LARGE\bf James J. P. Stewart}\\
+\ \\
+{\Large\bf Frank J. Seiler Research Laboratory\\
+\ \\
+United States Air Force Academy\\
+\ \\
+CO 80840}
+
+\vfill
+
+{\Large\sf October 1990}
+\end{center}
+\end{titlepage}
+
+\pagenumbering{Roman}
+%\pageheader{}{}{}
+%\pagefooter{}{\thepage}{}
+
+\begin{center}{\Large\bf Preface to sixth edition, version 6.00}\end{center}
+
+      As indicated at the time of release of MOPAC  5.00,  there  has
+ been  a  gap of two years' duration.  It is likely that a second gap
+ of two years' duration will follow this release.
+
+      The main change from a user's point of view (who else matters?)
+ in  MOPAC  6.00 has been that MOPAC now runs faster than before.  In
+ addition, the range of PM3 and AM1 elements is increased.   Finally,
+ some  bells  and whistles have been added, such as Gaussian Z-matrix
+ input and output, polymer electronic and phonon band structures  and
+ densities  of states.  Experienced users should refer to the `update
+ release notes' for a concise description of all modifications.
+
+
+
+\begin{center}{\Large\bf Updates from version 5.00}\end{center}
+
+      Except for MOPAC 5.00, MOPAC has  been  updated  once  a  year.
+ This is the best compromise between staying current and asking users
+ to continuously change their software.  Updates may be obtained from
+ QCPE  at  the  same  cost as the original, or from sites that have a
+ current copy.  All VAX versions of MOPAC have the same QCPE number -
+ 455;   they   are  distinguished  by  version  numbers.   Users  are
+ recommended to update their programs at least once every two  years,
+ and preferably every year.
+
+\begin{center}{\Large\bf New Features of Version 6.0}\end{center}
+\begin{enumerate}
+\item PM3 has been extended to include Be, Mg, Zn, Ga, Ge, As, Se, Cd,
+ In, Sn, Sb, Te, Hg, Tl, Pb, and Bi.
+\item Changes to the IRC/DRC
+ \begin{enumerate}
+ \item The amount of output has been reduced.  The `missing' output
+      can be printed by using appropriate keywords.
+ \item Half-lives are now accurately generated.   Earlier  versions
+      had  a  small  error  due  to  calculation  start-up.   Both
+      positive and negative half-lives are now accurate.
+ \end{enumerate}
+\item The energy partition output has been rewritten so that all terms
+ having  to  do  with  each  diatomic pair are now printed on one
+ line.
+\item A LOG file will normally be generated.  This is intended  to  be
+ read  while  the  calculation  is  running.  The LOG file can be
+ suppressed by the user.
+\item Elements can be labeled with up to six alphanumeric characters.
+\item Gaussian Z-matrices can be input and printed (in the ARC file).
+\item Multiple data-sets can be run in one job.
+\item Up to three lines of keywords can be specified.
+\item The DEBUG, 1SCF, and C.I. keywords have been re-defined.
+\item An Eigenvector Following option has been added.
+\item Polymer electronic band structure and density of states added.
+\item Polymer phonon band structure and density of states added.
+\item The GRID option has been rewritten.
+\item The PATH option has been extended.
+\end{enumerate}
+
+\pagebreak
+
+\begin{center}{\Large\bf Keywords added in version 6.00}\end{center}
+
+      In going to Version 6.00, many keywords were added.  These  are
+ defined  fully  later  on.   The  complete  set  of  new or modified
+ keywords follows:
+\begin{verbatim}
+ &            +          AIDER     AIGIN      AIGOUT     
+ DIPOLE       DIPX       DIPZ      DIPZ       DMAX=n.n      
+ EF           EIGINV     ESP       ESPRST     HESS=n       
+ IUPD=n       K=(n.nn,n) MODE=n    MS=n       NOANCI      
+ NODIIS       NOLOG      NONR      NOTHIEL    NSURF   
+ OLDGEO       ORIDE      POINT     POINT1=n   POINT2=n      
+ POTWRT       RECALC=n   SCALE     SCFCRT=    SCINCR  
+ SETUP        SETUP=name SLOPE     STEP       SYMAVG      
+ STO3G        TS         WILLIAMS
+\end{verbatim}
+
+                  
+\begin{center}{\Large\bf Keywords dropped from version 5.00}\end{center}
+
+ FULSCF  Reason:   Line  searches  now  always   involve   full   SCF
+ calculations.   The  frozen  density  matrix  option  is  no  longer
+ supported.
+
+ CYCLES=n Reason:  The maximum number of cycles is now  not  defined.
+ Users should control jobs via `` t=n.nn''.
+
+
+                   
+\begin{center}{\Large\bf Errors corrected in version 5.0}\end{center}
+
+\begin{enumerate}
+\item Force constants and frequencies  calculated  using  non-variationally
+ optimized wavefunctions were faulty.
+\item A full keyword line (no extra spaces) would be corrupted if the first
+ character was not a space.
+\item PRECISE FORCE calculations on triatomics had spuriously large trivial
+ vibrations.
+\item FORCE calculations with many more hydrogen atoms  than  MAXLIT  would
+ fail to generate force constants or normal coordinates.
+\item The EXTERNAL option was limited to AM1.
+\item Vibrational transition dipoles were in error by about 30%.
+\item The reformation  of  the  density  matrix  when  a  non-variationally
+ optimized wavefunction was used was incomplete.
+\end{enumerate} 
+
+\begin{center}{\Large\bf Help with MOPAC}\end{center}
+
+  Telephone and mail support is given by the   
+  Frank J. Seiler Research Laboratory on a time
+  permitting basis.  If you need help, call    
+  the Seiler MOPAC Consultant at (719) 472--2655.
+  Similarly, mail should be addressed to:       
+                                               
+{\noindent MOPAC Consultant\\                      
+          FJSRL/NC\\                              
+          U.S. Air Force Academy, CO 80840-6528\\}
+                                               
+\newpage
+
+\begin{center}{\Large\bf Acknowledgements}\end{center}
+
+      For her unflagging patience in checking the manual for  clarity
+ of  expression, and for drawing to my attention innumerable spelling
+ and grammatical errors, I thank my wife, Anna.
+
+      Over the years a large amount of advice,  ideas  and  code  has
+ been  contributed  by various people in order to improve MOPAC.  The
+ following incomplete list recognises various contributors:
+\begin{itemize}
+\item Prof. Santiago Olivella: Critical analysis of Versions 1 to 3.
+\item Prof. Tsuneo Hirano: Rewrite of the Energy Partition.
+\item  Prof. Peter Pulay: Designing the rapid pseudodiagonalization.
+\item  Prof. Mark Gordon: Critical comments on the IRC.
+\item  Prof. Henry Kurtz: Writing the polarizability and hyperpolarizability.
+\item  Prof. Henry Rzepa: Providing the code for the BFGS optimizer.
+\item  Dr. Yoshihisa Inoue: Many suggestions for improving readability.
+\item  Major Donn Storch and Lt. Col. Skip Dieter: Critical review of versions 
+ 3-5.
+\item  Lt. Cols. Larry Davis and Larry Burggraf: Designed the form
+ of the DRC and IRC.
+\item Dr. John McKelvey: Numerous suggestions for improving output.
+\item Dr. Erich Wimmer: Suggestions for imcreasing the speed of calculation.
+\item Dr. James Friedheim: Testing of Versions 1 and 2.
+\item Dr. Eamonn Healy: Critical evaluation of Versions 1-4.
+\end{itemize}
+             
+This list does not include  the  large  number  of  people  who
+developed  methods  which  are  used  in  MOPAC.  The more important
+contributions are given in the References at the end of this Manual.
+
+        I  wish  to  thank  Prof.\ Michael J. S. Dewar  for   providing   the
+   facilities and funds during the initial development of the MOPAC program,
+   the staff of the Frank J. Seiler Research Laboratory  and  the  Chemistry
+   Department at the Air Force Academy for their support.
+\end{document}
+

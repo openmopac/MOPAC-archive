@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Memory Management: The Nature of the Problem.</TITLE>
+<META NAME="description" CONTENT="8.6.2.1 The Nature of the Problem.">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node518.html"><LINK REL="next" HREF="node518.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><a NAME="tex2html8528" href="node518.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></a> 
+<A NAME="tex2html8524"
+ HREF="node512.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A>
+<a NAME="tex2html8520" href="node515.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></a> 
+<A NAME="tex2html8526"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8527"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B>&nbsp; <A HREF="node518.html">Distance Cutoffs</A>
+<B> Up:</B> <A NAME="tex2html8525"
+ HREF="node512.html"> Why Use Localized</A>
+<B> Previous:</B> <a NAME="tex2html8521" href="node515.html">Energy Considerations.</a>
+<BR>
+<H3>Memory Management: <A NAME="SECTION001262100000000000000">The Nature of the Problem.</A> </H3>
+<P>Conventional semiempirical software is unsuitable for the calculation of large systems, due to the heavy memory demands made. For example, in MOPAC&nbsp;93, the memory requirement (in Kb) rises as <!-- MATH: $2249+17.15N+7.395N^2$ -->2249+17.15<I>N</I>+7.395<I>N</I><SUP>2</SUP>, where <I>N</I> is the number of heavy (non-hydrogen) atoms in the molecule, assuming that the number of hydrogen and non-hydrogen atoms are equal. In proteins, the number of hydrogen and non-hydrogen atoms are roughly equal, so the expression for MOPAC&nbsp;93 would be applicable to proteins. The &nbsp;<A HREF="#n2size">Table</A> illustrates how rapidly the memory requirement increases for proteins. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM15178">&nbsp;</A> </P>
+<STRONG><P><a name="n2size"></a>Table:</STRONG> MOPAC Memory Requirements for Proteins</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><I>N</I></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">No.<IMG SRC="img1029.gif" WIDTH=11 HEIGHT=19 ALT="$^{dag }$"> of</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Memory</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Residues</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Needed (Mb)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">65</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">7,414</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">131</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">29,616</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">196</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">66,609</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">262</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">118,389</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">5000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">327</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">184,961</TD>
+</TR>
+</TABLE>
+
+<P><BR>
+<IMG SRC="img1030.gif" WIDTH=12 HEIGHT=25 ALT="dag">: Number of residues is approximate only; <BR>
+the number will vary from protein to protein </DIV></DIV></P>
+<P>Clearly, calculation of systems of only a few hundred residues is impractical. By making approximations, by altering the way arrays are specified, and by use of localized molecular orbitals, the memory requirements can be reduced. As a result of these changes, the memory requirement for MOZYME is considerably less than that for MOPAC. For example, a MOPAC calculation of a system of 3,686 atoms (bacteriorhodopsin) would require over 100Gb; the same calculation using MOZYME would require only 408Mb. This represents less than 0.5% of the memory required by MOPAC. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8554"><A HREF="node518.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8550"></A><A HREF="node517.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8544"></A><a href="node515.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></a><A NAME="tex2html8552"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8553"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8555"><A HREF="node518.html">Distance Cutoffs.</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

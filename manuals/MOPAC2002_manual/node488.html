@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Microstates</TITLE>
+<META NAME="description" CONTENT="8.4.2 Microstates">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node492.html"><LINK REL="previous" HREF="node487.html"><LINK REL="up" HREF="node486.html"><LINK REL="next" HREF="node489.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node489.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node486.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node487.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node489.html">Permutations</A> <B>Up:</B> <A HREF="node486.html">Multi-Electron Configuration Interaction</A> <B>Previous:</B> <A HREF="node487.html">Starting electronic configuration</A> <BR>
+<H2>Microstates </H2>
+<P>Microstates, which are normally represented by a Slater determinant, are normally written as an antisymmetrized product of <!-- MATH: $p\  \alpha$ -->
+<i>&nbsp;p</i> <font face="Symbol">a</font>- and <i>q</i> <font face="Symbol">b</font>-electrons: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\Psi_g=[(p+q)!]^{-\frac{1}{2}}\sum_P(-1)^PP[\psi_1(1)\alpha(1)\ \psi_2(2)\alpha(2)\
+\ldots \psi_p(p)\alpha(p)\ \psi_1(p+1)\beta(p+1)\ \ldots \psi_q(p+q)\beta(p+q)],
+\end{displaymath} --><IMG SRC="img830.gif" WIDTH=571 HEIGHT=35 ALT="begin{displaymath}Psi_g=[(p+q)!]^{-frac{1}{2}}sum_P(-1)^PP[psi_1(1)alpha(1......lpha(p) psi_1(p+1)beta(p+1) ldots psi_q(p+q)beta(p+q)],end{displaymath}"></DIV>
+<P>where <!-- MATH: $[(p+q)!]^{-\frac{1}{2}}$ -->[(p+q)!]<sup>1/2</sup> is the normalization constant, <I>P</I> is an operator which permutes the electron coordinates, and (-1)<I><SUP>P</I></SUP> assumes the values -1 or +1 for odd and even permutations respectively. A more compact and useful notation for representing a general microstate is: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\Psi_j = \frac{1}{\sqrt{N!}}\sum_{P=1}^{N!}(-1)^PP(\prod_{k=1}^N\psi_k^j)
+\end{displaymath} --><IMG SRC="img832.gif" WIDTH=192 HEIGHT=51 ALT="begin{displaymath}Psi_j = frac{1}{sqrt{N!}}sum_{P=1}^{N!}(-1)^PP(prod_{k=1}^Npsi_k^j)end{displaymath}"></DIV>
+<P>where <font face="Symbol">Y</font><sub><i>j </i></sub>is any microstate consisting of <I>N</I> electrons. Given the full set of M.O.s, a subset of these is used in the microstate. This subset is defined by the M.O.s
+<font face="Symbol">Y</font><sub><i>k</sub><sup>j</sup><sub> </sub></i>, <I>k</I>=1,<I>N</I>. Each microstate will consist of a different set of M.O.s from the full set. </P>
+<P>Rather than having all the <font face="Symbol">a </font>electrons appearing first in a microstate, it is more convenient to order the one electron wavefunctions in the order in which their indices occur in the full set of M.O.s. If both <i><font face="Symbol">a </font></i>and <i><font face="Symbol">
+b </font></i>M.O.s of the same index occur, then
+<font face="Symbol"><i>a</i> </font>precedes <i> <font face="Symbol">b</font></i>, thus: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\Psi_g=[(p+q)!]^{-\frac{1}{2}}\sum_P(-1)^PP[\psi_1(1)\alpha(1)\ \psi_1(2)\beta(2)\
+\psi_2(3)\alpha(3)\ \psi_2(4)\beta(4)\ \ldots  \psi_j(p+q)\beta(p+q)]
+\end{displaymath} --><IMG SRC="img840.gif" WIDTH=573 HEIGHT=40 ALT="begin{displaymath}Psi_g=[(p+q)!]^{-frac{1}{2}}sum_P(-1)^PP[psi_1(1)alpha(1......(3)alpha(3) psi_2(4)beta(4) ldots psi_j(p+q)beta(p+q)]end{displaymath}"></DIV>
+<P>This numbering scheme follows the Aufbau principle, in that the order of filling is in order of energy. This point is critically important in deciding the sign of matrix elements. For a 5 M.O. system, then, the order of filling is: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+(1)(\bar{1})(2)(\bar{2})(3)(\bar{3})(4)(\bar{4})(5)(\bar{5})
+\end{displaymath} --><IMG SRC="img841.gif" WIDTH=195 HEIGHT=28 ALT="begin{displaymath}(1)(bar{1})(2)(bar{2})(3)(bar{3})(4)(bar{4})(5)(bar{5}) end{displaymath}"></DIV>
+<P>A triplet state arising from two microstates, each with a component of spin = 0, will thus be the positive combination: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+(\bar{1})(2)   +    (1)(\bar{2}).
+\end{displaymath} --><IMG SRC="img842.gif" WIDTH=97 HEIGHT=28 ALT="begin{displaymath}(bar{1})(2) + (1)(bar{2}). end{displaymath}"></DIV>
+<P>This standard sign convention was chosen in order to allow the signs of the microstate coefficients to conform to those resulting from the spin step-down operator. </P>
+<P>Only those M.O.s involved in the MECI are of interest, thus from the full set of M.O.s, filled and empty </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\left[
+\begin{array}{lll}
+\psi_1(1)\alpha(1)&\psi_2(3)\alpha(3)&\ldots\\
+\psi_1(2)\beta(2)&\psi_2(4)\beta(4)&\ldots\\
+\end{array}
+\right]
+\end{displaymath} --><IMG SRC="img843.gif" WIDTH=199 HEIGHT=44 ALT="begin{displaymath}left[begin{array}{lll}psi_1(1)alpha(1"></DIV>
+<P>the ground-state configuration (assumed to be closed shell for simplicity) can be represented by </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\left[
+\begin{array}{llllllllllllll}
+1&1&1&1&\ldots&1&1&1&0&0&0&\ldots&0&0\\
+1&1&1&1&\ldots&1&1&1&0&0&0&\ldots&0&0\\
+\end{array}
+\right]
+\end{displaymath} --><IMG SRC="img844.gif" WIDTH=313 HEIGHT=44 ALT="begin{displaymath}left[begin{array}{llllllllllllll}"></DIV>
+<P>where a 1 represents a spin molecular orbital occupied by one electron and 0 represents an empty M.O. </P>
+<P>The M.O.s involved in the C.I. are called the "active space". For convenience, the index of the M.O. at the lower bound of the active space will be called "B", and the index of the M.O. at the upper bound of the active space will be called "A". All M.O.s below the active space can be considered as part of the core while those above it are empty and can likewise be ignored. We can thus focus our attention on the M.O.s in the active space. Most of the time, MECI calculations will involve between 1 and 5 M.O.s, so a system such as pyridine, with 15 filled levels and 29 M.O.s, would <A NAME="BM13412">&nbsp;</A> use M.O.s 13-17 in a large C.I. </P>
+<P>For convenience, microstates will be expressed as a sum of molecular orbital occupancies, so that: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\Psi_p=\sum_{i=B}^A(O_i^{\alpha p} + O_i^{\beta  p} ).
+\end{displaymath} --><IMG SRC="img845.gif" WIDTH=142 HEIGHT=49 ALT="begin{displaymath}Psi_p=sum_{i=B}^A(O_i^{alpha p} + O_i^{beta p} ).end{displaymath}"></DIV>
+<P>For example, if the ground state configuration <IMG SRC="img846.gif" ALIGN="MIDDLE" WIDTH=23 HEIGHT=29 ALT="$Psi_g$">is closed shell, then the occupancy of the M.O.s would be </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+O^{\alpha g} = O^{\beta  g} = |1,\ldots,1,0,\ldots,0|
+\end{displaymath} --><IMG SRC="img847.gif" WIDTH=192 HEIGHT=28 ALT="begin{displaymath}O^{alpha g} = O^{beta g} = vert 1,ldots,1,0,ldots,0vertend{displaymath}"></DIV>
+<P>Microstates are particular electron configurations. Examples of microstates involving 5 electrons in 5 levels are given in the Table. </P>
+<DIV ALIGN="CENTER"> </P>
+<STRONG><P>Table:</STRONG> Microstates for 5 electrons in 5 M.O.s</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"> &nbsp;</TD>
+<TD VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Electron Configuration</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Electron Configuration</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Alpha</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Beta</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">M<I><SUB>S</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Alpha</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Beta</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">M<I><SUB>S</I></SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">M.O.</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1 2 3 4 5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1 2 3 4 5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">M.O.</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1 2 3 4 5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1 2 3 4 5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,1,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,0,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1/2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,1,1,1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0,0,0,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">5/2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,0,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,1,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1/2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,0,1,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,0,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1/2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,1,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0,0,0,1,1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1/2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">6</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,1,0,1,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1,0,1,0,0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1/2</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P></DIV>&nbsp;</P>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html8171"><A HREF="node489.html">Permutations</A></A> </LI>
+<LI><A NAME="tex2html8172"><A HREF="node490.html">Energy of microstates</A></A> </LI>
+<LI><A NAME="tex2html8173"><A HREF="node491.html">Zero of energy used in MECI</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8169"><A HREF="node489.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8165"></A><A HREF="node486.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8159"></A><A HREF="node487.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8167"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8168"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8170"><A HREF="node489.html">Permutations</A></A> <B>Up:</B> <A NAME="tex2html8166"><A HREF="node486.html">Multi-Electron Configuration Interaction</A></A> <B>Previous:</B> <A NAME="tex2html8160"><A HREF="node487.html">Starting electronic configuration</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

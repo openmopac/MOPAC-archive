@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Geometry</TITLE>
+
+<LINK REL="next" HREF="node713.html"><LINK REL="previous" HREF="node711.html"><LINK REL="up" HREF="node710.html"><LINK REL="next" HREF="node713.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node713.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node710.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node711.html"><IMG SRC="previous_motif.gif" BORDER=0 WIDTH=63 HEIGHT=24 ALT="previous"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 WIDTH=65 HEIGHT=24 ALT="contents"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 WIDTH=43 HEIGHT=24 ALT="index"></A><BR>
+<B>Next:</B> <A HREF="node713.html">Electronics</A> <B>Up:</B> <A HREF="node710.html">Bibliography</A> <B>Previous:</B> <A HREF="node711.html">Elements</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION002300200000000000000">Geometry</A> </H3>
+<P>By default, geometries are optimized using Baker's EF routine&nbsp;[<A HREF="node715.html#ef-ts">7</A>]. If this is not desired, then the Broyden&nbsp;[<A HREF="node715.html#bfgs1">19</A>]-Fletcher&nbsp;[<A HREF="node715.html#bfgs2">20</A>]-Goldfarb&nbsp;[<A HREF="node715.html#bfgs3">21</A>]-Shanno&nbsp;[<A HREF="node715.html#bfgs4">22</A>] method can be used. This replaces the older Davidon&nbsp;[<A HREF="node715.html#dfp1">124</A>]-Fletcher&nbsp;[<A HREF="node715.html#dfp2">125</A>]-Powell&nbsp;[<A HREF="node715.html#dfp3">126</A>] method. The Powell line search in both the BFGS and DFP methods has been upgraded with Thiel's FSTMIN technique&nbsp;[<A HREF="node715.html#fstmin">44</A>]. </P>
+<P>The energy minimum for intersystem crossing can be calculated using the method of Anglada and Bofill&nbsp;[<A HREF="node715.html#cross">28</A>]. </P>
+<P>Reaction paths can be followed, but sometimes (unavoidable) numerical instability causes difficulty&nbsp;[<A HREF="node715.html#boyd">127</A>]. </P>
+<P>Various methods can be used to locate transition states. In the region of a transition state, TS&nbsp;[<A HREF="node715.html#ef-ts">7</A>] is the best method to use. Other options are NLLSQ&nbsp;[<A HREF="node715.html#nllsq">8</A>] and SIGMA&nbsp;[<A HREF="node715.html#sigma1">9</A>,<A HREF="node715.html#sigma2">10</A>]. </P>
+<P>However, getting to this region can often be difficult. One effective strategy is to use the reaction path option. A more costly method is the <TT>SADDLE</TT> technique&nbsp;[<A HREF="node715.html#saddle">18</A>]. Once the transition state is located, the geometry must be refined </P>
+<P>All systems can be characterized by determining the number of imaginary vibrations using FORCE&nbsp;[<A HREF="node715.html#pulayf">73</A>]. Ground state systems should have none, and transition states should have exactly one imaginary frequency. The normal modes can then be used to calculate heat capacities and entropies and other thermodynamic quantities&nbsp;[<A HREF="node715.html#thermo">50</A>]. </P>
+<P>Molecular dynamics can be followed via DRC&nbsp;[<A HREF="node715.html#drc">29</A>]. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html11014"><A HREF="node713.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html11010"></A><A HREF="node710.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html11004"></A><A HREF="node711.html"><IMG SRC="previous_motif.gif" BORDER=0 WIDTH=63 HEIGHT=24 ALT="previous"></A><A NAME="tex2html11012"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 WIDTH=65 HEIGHT=24 ALT="contents"></A><A NAME="tex2html11013"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 WIDTH=43 HEIGHT=24 ALT="index"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html11015"><A HREF="node713.html">Electronics</A></A> <B>Up:</B> <A NAME="tex2html11011"><A HREF="node710.html">Bibliography</A></A> <B>Previous:</B> <A NAME="tex2html11005"><A HREF="node711.html">Elements</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

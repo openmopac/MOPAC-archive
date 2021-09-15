@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Format for Microstates</TITLE>
+<META NAME="description" CONTENT="Format for Microstates">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node216.html"><LINK REL="up" HREF="node216.html"><LINK REL="next" HREF="node218.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node218.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node216.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node216.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node218.html">MINDO/3 </A><B>Up:</B> <A HREF="node216.html">MICROS=n </A><B>Previous:</B> <A HREF="node216.html">MICROS=n </A><BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION0073107100000000000000">Format for Microstates</A> </H3>
+<P>After the geometry data and any symmetry data are read in, data defining each microstate is read in, using format 20I1, at one microstate per line. The microstate data is preceded by the word "MICROS" on a line by itself. Examples of microstates for two electrons in two M.O.s are given in the&nbsp;<A HREF="#rs">Table</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER">
+<STRONG><a name="rs"></a>Table:</STRONG> States Arising from Various Microstates<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"> Microstate</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No. of alpha</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">beta electrons</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">M<I><SUB>S</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P>State</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1100</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P>Triplet</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1010</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P>Singlet</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1001</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P>Mixed</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0110</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P>Mixed</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0101</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P>Singlet</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0011</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P>Triplet</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P></DIV><BR>
+For a system with <I>n</I> M.O.s in the C.I. (use <TT>OPEN=(<I>m</I>,<I>n</I>)</TT> or <TT>C.I.=<I>n</I></TT> to do this), the populations of the <I>n</I> alpha M.O.s are defined, followed by the <I>n</I> beta M.O.s. Allowed occupancies are zero and one. For <I>n</I>=6 the closed-shell ground state would be defined as 111000111000, meaning one electron in each of the first three alpha M.O.s, and one electron in each of the first three beta M.O.s. </P>
+<P>Users are warned that they are responsible for completing any spin manifolds. Thus, while the state 111100110000 is a triplet state with component of spin = 1, the state 111000110100, while having a component of spin M<I><SUB>S</I></SUB> = 0, is neither a singlet nor a triplet. In order to complete the spin manifold the microstate 110100111000 must also be included. </P>
+<P><A NAME="BM2529">&nbsp;</A> If a manifold of spin states is not complete, then the eigenstates of the spin operator will not be quantized. </P>
+<P>There are two other limitations on possible microstates. First, the number of electrons in every microstate should be the same. If they differ, a warning message will be printed, and the calculation continued, but the results will almost certainly be nonsense. Second, the component of spin for every microstate must be the same, except for teaching purposes. Two microstates of different components of spin will have a zero matrix element connecting them. No warning will be given as this is a reasonable operation in a teaching situation. For example, if all states arising from two electrons in two levels are to be calculated, say for teaching Russell-Saunders coupling, then the microstates given in the&nbsp;<A HREF="#rs">Table</A> would be used. </P>
+<P>Constraints on the space manifold are just as rigorous, but much <A NAME="BM2532">&nbsp;</A> easier to satisfy. If the energy levels are degenerate, then all components of a manifold of degenerate M.O.s should be either included or excluded. If only some, but not all, components are used, the required degeneracy of the states will be missing. </P>
+<P>As an example, for the tetrahedral methane cation, if the user <A NAME="BM2533">&nbsp;</A> supplies the microstates corresponding to a component of spin M<I><SUB>S</I></SUB> = 3/2, <A NAME="BM2534">&nbsp;</A> neglecting Jahn-Teller distortion, the minimum number of states that can be supplied is <!-- MATH: $90 = (6!/(1!5!))(6!/(4!2!))$ -->90 = (6!/(1!5!))(6!/(4!2!)). This corresponds to the configuration <!-- MATH: $(t_2)^3(\overline{t_2})^1(t_2^*)^1(\overline{t_2^*})^0$ --><IMG SRC="img126.gif" ALIGN="MIDDLE" WIDTH=121 HEIGHT=35 ALT="$(t_2)^3(overline{t_2})^1(t_2^*)^1(overline{t_2^*})^0$">. </P>
+<P>The format is defined as 20I1 so that spaces can be used for empty M.O.s. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html4510"><A HREF="node218.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html4506"></A><A HREF="node216.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html4502"></A><A HREF="node216.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html4508"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html4509"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html4511"><A HREF="node218.html">MINDO/3 </A></A><B>Up:</B> <A NAME="tex2html4507"><A HREF="node216.html">MICROS=n </A></A><B>Previous:</B> <A NAME="tex2html4503"><A HREF="node216.html">MICROS=n </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,478 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Data Requirements for MST Model</TITLE>
+<META NAME="description" CONTENT=" Data Requirements for MST Model">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node647.html"><LINK REL="up" HREF="node646.html"><LINK REL="next" HREF="node650.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node650.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node646.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node648.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node650.html">Accuracy of Methods</A> <B>Up:</B> <A HREF="node646.html">Miertus-Scrocco-Tomasi Solvation Model</A> <B>Previous:</B> <A HREF="node648.html">Warnings</A>
+<!--End of Navigation Panel-->
+<H2>Data Requirements for MST Model </H2>
+<P>&nbsp;For the three solvent for which parameters have been published, special keywords exist. These are <A HREF="node192.html">H2O</A>, <A HREF="chcl3.html">CHCL3</A>, and <A HREF="ccl4.html">CCL4</A>. If other solvents are to be modeled, extra data must be provided at the end of the data set. This extra data is described by example, using water as the solvent. (This extra data could be avoided by using <A HREF="node192.html">H2O</A>.) </P>
+<P>For water, the data needed is shown in the&nbsp;<A HREF="node649.html#tomdata">Figure</A>. <BR>
+<DIV ALIGN="CENTER"><A NAME="tomdata">&nbsp;<A NAME="BM24074"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Data set for Calculation of Water using the Miertus-Scrocco-Tomasi Model</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<PRE>Line
+  *   PM3 TOM 
+  *
+  *   O   .0000000 0     .000000 0     .000000 0    0 0 0
+  *   H   .9512971 0     .000000 0     .000000 0    1 0 0
+  *   H   .9512971 0  107.457468 0     .000000 0    1 2 0
+  *
+  1   78.5  1.0  1  1  0  3
+  2   298.15  18.07  2.77  0.00026  71.690  0.657  1.277
+  3   40.0  1.5  0.2  0.7  0.02  5  3  1
+  4   1  1.75000  8
+  5   2  1.00000  99
+  6   3  1.00000  99
+  7   1.00</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV></P>
+<P>The extra data are indicated by the lines numbered 1 to 7 in the Figure. These data are described as follows: </P>
+<STRONG>
+Line 1. Parameters indicating the level of computation</STRONG> 
+
+(see Miertus, Scrocco, Tomasi, Chem. Phys., 55 (1981) 117 and Miertus, Tomasi, Chem. Phys., 65 (1982) 239 for further details)<br>
+&nbsp;Layout of data: A B C D E F 
+
+
+<div align="center">
+  <center> 
+
+
+<TABLE BORDER CELLSPACING=0 CELLPADDING=3 style="border-collapse: collapse" bordercolor="#111111">
+<TR><TD VALIGN="MIDDLE">
+<P>Datum</TD>
+<TD VALIGN="MIDDLE">
+<P>Value</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Description</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>A</TD>
+<TD VALIGN="MIDDLE">
+<P>78.5</TD>
+<TD VALIGN="MIDDLE">
+<P>EPS</TD>
+<TD VALIGN="MIDDLE">
+<P>Solvent dielectric constant</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>B</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>DMP</TD>
+<TD VALIGN="MIDDLE">
+<P>Self-polarization acceleration factor</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>MC</TD>
+<TD VALIGN="MIDDLE">
+<P>Self-polarization cycles</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>D</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>ICOMP</TD>
+<TD VALIGN="MIDDLE">
+<P>Charge compensation</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>E</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>IFIELD</TD>
+<TD VALIGN="MIDDLE">
+<P>Reaction field calculation on nuclei</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>F</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>ICAV</TD>
+<TD VALIGN="MIDDLE">
+<P>Cavitation energy computation</TD>
+</TR>
+</TABLE>
+
+  </center>
+</div>
+
+  </center>
+<STRONG><DT>Line 2. Parameters related to the cavitation energy</STRONG> 
+(This line is needed only if <TT>ICAV <IMG SRC="img1749.gif" ALIGN="MIDDLE" WIDTH=17 HEIGHT=30 ALT="$ne$">0</TT>)<br>
+&nbsp;Layout of data: A B C D E F G 
+<div align="center">
+  <center> 
+<TABLE BORDER CELLSPACING=0 CELLPADDING=3 style="border-collapse: collapse" bordercolor="#111111">
+<TR><TD VALIGN="MIDDLE">
+<P>Datum</TD>
+<TD VALIGN="MIDDLE">
+<P>Value</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Description</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>A</TD>
+<TD VALIGN="MIDDLE">
+<P>298.15</TD>
+<TD VALIGN="MIDDLE">
+<P>TABS</TD>
+<TD VALIGN="MIDDLE">
+<P>Absolute temperature (in kelvin)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>B</TD>
+<TD VALIGN="MIDDLE">
+<P>18.07</TD>
+<TD VALIGN="MIDDLE">
+<P>VMOL</TD>
+<TD VALIGN="MIDDLE">
+<P>Solvent molar volume (&aring;ngstroms<SUP>3</SUP>)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C</TD>
+<TD VALIGN="MIDDLE">
+<P>2.77</TD>
+<TD VALIGN="MIDDLE">
+<P>DMOL</TD>
+<TD VALIGN="MIDDLE">
+<P>Solvent molar diameter (&aring;ngstroms)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>D</TD>
+<TD VALIGN="MIDDLE">
+<P>0.00026</TD>
+<TD VALIGN="MIDDLE">
+<P>TCE</TD>
+<TD VALIGN="MIDDLE">
+<P>Thermal expansion coefficient (kelvin<SUP>-1</SUP>)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>E</TD>
+<TD VALIGN="MIDDLE">
+<P>71.69</TD>
+<TD VALIGN="MIDDLE">
+<P>STEN</TD>
+<TD VALIGN="MIDDLE">
+<P>Surface tension (dyne<IMG SRC="img1750.gif" WIDTH=17 HEIGHT=29 ALT="$times$">cm<SUP>-1</SUP>)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>F</TD>
+<TD VALIGN="MIDDLE">
+<P>0.657</TD>
+<TD VALIGN="MIDDLE">
+<P>DSTEN</TD>
+<TD VALIGN="MIDDLE">
+<P>Surface tension derivative</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>G</TD>
+<TD VALIGN="MIDDLE">
+<P>1.227</TD>
+<TD VALIGN="MIDDLE">
+<P>CMF</TD>
+<TD VALIGN="MIDDLE">
+<P>Cavity microscopic coefficient</TD>
+</TR>
+</TABLE>
+
+  </center>
+</div>
+
+If <TT>ICAV=1</TT> parameters A-D are needed, and Pierotti's cavitation energy is computed. <BR>
+If <TT>ICAV=2</TT> parameters E-G are needed, and Sinanoglu's cavitation energy is computed. <BR>
+If <TT>ICAV=3</TT> parameters A-G are needed, and Pierotti's and Sinanoglu's cavitation energies are computed. <BR>
+<STRONG>
+  Line 3. Parameters related to the cavity surface</STRONG> 
+</div>
+<BR>
+(see Pacual-Ahuir, Silla, Tomasi, Bonaccorsi, J. Comput. Chem. 77 (1982) 3654 for further details)<br>
+&nbsp;Layout of data: A B C D E F G H 
+<div align="center">
+  <center> 
+<TABLE BORDER CELLSPACING=0 CELLPADDING=3 style="border-collapse: collapse" bordercolor="#111111">
+<TR><TD VALIGN="MIDDLE">
+<P>Datum</TD>
+<TD VALIGN="MIDDLE">
+<P>Value</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Description</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>A</TD>
+<TD VALIGN="MIDDLE">
+<P>40.0</TD>
+<TD VALIGN="MIDDLE">
+<P>OMEGA</TD>
+<TD VALIGN="MIDDLE">
+<P>Sphere overlapping parameter</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>B</TD>
+<TD VALIGN="MIDDLE">
+<P>1.5</TD>
+<TD VALIGN="MIDDLE">
+<P>RD</TD>
+<TD VALIGN="MIDDLE">
+<P>Solvent molecular radius</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C</TD>
+<TD VALIGN="MIDDLE">
+<P>0.2</TD>
+<TD VALIGN="MIDDLE">
+<P>RET</TD>
+<TD VALIGN="MIDDLE">
+<P>Minimal radius to define new spheres</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>D</TD>
+<TD VALIGN="MIDDLE">
+<P>0.7</TD>
+<TD VALIGN="MIDDLE">
+<P>FRO</TD>
+<TD VALIGN="MIDDLE">
+<P>Numerical factor to define new spheres</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>E</TD>
+<TD VALIGN="MIDDLE">
+<P>0.02</TD>
+<TD VALIGN="MIDDLE">
+<P>DR</TD>
+<TD VALIGN="MIDDLE">
+<P>Step to compute electric field on cavity surface</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>F</TD>
+<TD VALIGN="MIDDLE">
+<P>5</TD>
+<TD VALIGN="MIDDLE">
+<P>NDIV</TD>
+<TD VALIGN="MIDDLE">
+<P>Parameter of cavity surface partition</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>G</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>NESF</TD>
+<TD VALIGN="MIDDLE">
+<P>Number of spheres</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>ICENT</TD>
+<TD VALIGN="MIDDLE">
+<P>Definition of spheres</TD>
+</TR>
+</TABLE>
+
+  </center>
+</div>
+
+<STRONG>Lines 4-6. Coordinates and radii of spheres used to build up cavity surface</STRONG> 
+<BR>
+&nbsp;<TT>ICLASS</TT> specifies the type of atom. This information is used in the calculation 
+of the van der Walls' energy, determines as the sum of products between the surface of each atom 
+and a parameter which is characteristic for each atom. 
+<TT>ICLASS</TT> is, in fact, the atomic number of each atom, with the only exception of hydrogen, for which we distinguish between hydrogen atoms bound to a heteroatom (<TT>ICLASS=99</TT>) and those bound to a carbon (<TT>ICLASS=1</TT>).
+<br>
+</DD>
+If <TT>ICENT=0</TT>, then five parameters are needed for each sphere. 
+<br>
+Layout of data: A B C D E 
+
+<div align="center">
+  <center> 
+
+<TABLE BORDER CELLSPACING=0 CELLPADDING=3 style="border-collapse: collapse" bordercolor="#111111">
+<TR><TD VALIGN="MIDDLE">
+<P>Datum</TD>
+<TD VALIGN="MIDDLE">
+<P>Value</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Description</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>A</TD>
+<TD VALIGN="MIDDLE">
+<P>n/a</TD>
+<TD VALIGN="MIDDLE">
+<P>XE</TD>
+<TD VALIGN="MIDDLE">
+<P>X-coordinate</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>B</TD>
+<TD VALIGN="MIDDLE">
+<P>n/a</TD>
+<TD VALIGN="MIDDLE">
+<P>YE</TD>
+<TD VALIGN="MIDDLE">
+<P>X-coordinate</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C</TD>
+<TD VALIGN="MIDDLE">
+<P>n/a</TD>
+<TD VALIGN="MIDDLE">
+<P>ZE</TD>
+<TD VALIGN="MIDDLE">
+<P>X-coordinate</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>D</TD>
+<TD VALIGN="MIDDLE">
+<P>n/a</TD>
+<TD VALIGN="MIDDLE">
+<P>RE</TD>
+<TD VALIGN="MIDDLE">
+<P>Radius of sphere</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>E</TD>
+<TD VALIGN="MIDDLE">
+<P>n/a</TD>
+<TD VALIGN="MIDDLE">
+<P>ICLASS</TD>
+<TD VALIGN="MIDDLE">
+<P>Type of atom</TD>
+</TR>
+</TABLE>
+
+  </center>
+</div>
+
+If <TT>ICENT<IMG SRC="img1751.gif" ALIGN="MIDDLE" WIDTH=17 HEIGHT=30 ALT="$ne$">0</TT>, 
+then three parameters are needed for each sphere.<br>
+&nbsp;The spheres are defined as being centered on each atom.<br>
+&nbsp;Layout of data: A B C 
+<div align="center">
+  <center> 
+<TABLE BORDER CELLSPACING=0 CELLPADDING=3 style="border-collapse: collapse" bordercolor="#111111">
+<TR><TD VALIGN="MIDDLE">
+<P>Datum</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Values</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Description</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>A</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P>NC1</TD>
+<TD VALIGN="MIDDLE">
+<P>Atom Number</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>B</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1.75</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>RE</TD>
+<TD VALIGN="MIDDLE">
+<P>Radius of sphere</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">8</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">99</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">99</TD>
+<TD VALIGN="MIDDLE">
+<P>ICLASS</TD>
+<TD VALIGN="MIDDLE">
+<P>Type of atom</TD>
+</TR>
+</TABLE>
+
+  </center>
+</div>
+
+<STRONG>Line 7. Factor used to scale the MEP in the deorthogonal procedure</STRONG> 
+&nbsp; <BR>
+Layout of data: A 
+<div align="center">
+  <center> 
+<TABLE BORDER CELLSPACING=0 CELLPADDING=3 style="border-collapse: collapse" bordercolor="#111111">
+<TR><TD VALIGN="MIDDLE">
+<P>Datum</TD>
+<TD VALIGN="MIDDLE">
+<P>Value</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Description</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>A</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>FACTOR</TD>
+<TD VALIGN="MIDDLE">
+<P>Factor used to scale the MEP</TD>
+</TR>
+</TABLE>
+
+
+  </center>
+</div>
+
+
+<P><HR></P>
+<P align="left"><!--Navigation Panel--><A NAME="tex2html10208"><A HREF="node650.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10204"></A><A HREF="node646.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10200"></A><A HREF="node648.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10206"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10207"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10209"><A HREF="node650.html">Accuracy of Methods</A></A> <B>Up:</B> <A NAME="tex2html10205"><A HREF="node646.html">Miertus-Scrocco-Tomasi Solvation Model</A></A> <B>Previous:</B> <A NAME="tex2html10201"><A HREF="node648.html">Warnings</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS>
+</BODY>
+</HTML>

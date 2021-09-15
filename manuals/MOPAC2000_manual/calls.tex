@@ -1,0 +1,54 @@
+\chapter{Subroutine calls in MOPAC}
+\index{Subroutines!calls in MOPAC|(}
+Because of the large size of the program, it is easy to get confused as to the
+flow of logic.  To help with navigating through the program, the two tables in
+this appendix were written.
+
+The first Table  lists all calls to subroutines and functions within each
+subroutine and function.  Thus, for example subroutine \comp{ANALYT} calls
+subroutines \comp{DELMOL}, \comp{DELRI}, and \comp{DERS}, while function
+\comp{AABA} is self-contained, and does not call anything. In the second Table,
+every subroutine or function which calls a given subroutine or function is
+listed.  Except for \comp{MOPAC} and \comp{BLOCK}, every subroutine and
+function must be called at least once.  Because of the nature of FORTRAN, every
+subroutine and function can ultimately be found to depend on the main segment,
+here MOPAC.  Thus, for example, \comp{AINTGS} can be called via the following
+sequence: \comp{AINTGS} - \comp{SET} - \comp{DIAT2} - \comp{DIAT} -
+\comp{H1ELEC} - \comp{DHCORE} - \comp{DERN1} - \comp{DERI1} -  \comp{DERNVV} -
+\comp{DERNVO} - \comp{DERIN} - \comp{DERIV} - \comp{COMMOP} - \comp{COMPFG} -
+\comp{LINMIN} - \comp{FLEPN} -  \comp{FLEPO} - \comp{PATHS} - \comp{RMOPAC} -
+\comp{MOPAC}.  This  particular sequence would be used in an RHF open-shell
+calculation of a reaction path.
+
+%
+%      The FORTRAN code for generating these tables is `calls.F'.
+%      To make the tables, proceed as follows:
+%
+%   1.  Copy all the source code into one file, e.g., cat ../mopac/*.F > all
+%
+%   2.  Split this into separate files, e.g., fsplit all
+%
+%   3.  Remove all, e.g., rm all
+%
+%   4.  Copy all th source code (again) into one file, e.g., cat *.F > all
+%
+%   5.  Edit `all' so that functions become calls, e.g.
+%                   ed all < calls.edit
+%       If calls.edit is faulty, add `p' to the end of each line (no space!!)
+%
+%   6.  Rename `bb' to `all', e.g., mv bb all
+%
+%   7.  Run `calls', e.g. f77 calls.F; a.out < all > tables
+%
+%   8.  Check `tables', remove MOPAC and ESP from `calls to'.
+%       If any faults are found, correct `all' and rerun.
+%       Watch out for DOTT!
+%
+
+\addtocounter{table}{1}
+\addcontentsline{lot}{table}{\protect\numberline{\thetable}{\ignorespaces 
+Subroutines used in MOPAC, 1: Calls from }}
+ 
+\begin{center}Table C.1 Subroutines used in MOPAC, 1: Calls from \end{center}
+\input{tables}
+\index{Subroutines!calls in MOPAC|)}

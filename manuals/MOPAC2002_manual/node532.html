@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Re-Orthogonalization of LMOs</TITLE>
+<META NAME="description" CONTENT="8.6.5.1 Re-Orthogonalization of LMOs">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node533.html">
+<LINK REL="previous" HREF="node531.html">
+<LINK REL="up" HREF="node531.html">
+<LINK REL="next" HREF="node533.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8740"
+ HREF="node533.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8736"
+ HREF="node531.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8730"
+ HREF="node531.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8738"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8739"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8741"
+ HREF="node533.html"> Localized Molecular Orbitals:</A>
+<B> Up:</B> <A NAME="tex2html8737"
+ HREF="node531.html"> Other Considerations</A>
+<B> Previous:</B> <A NAME="tex2html8731"
+ HREF="node531.html"> Other Considerations</A>
+<!--End of Navigation Panel-->
+<H3>Re-Orthogonalization of LMOs
+</H3>
+During the course of a long calculation, the LMOs will become increasingly
+non-orthogonal.  Subroutine <TT>CHECK</TT> ensures that the LMOs remain
+normalized; this is a very rapid calculation.  Ensuring that the LMOs are all
+orthogonal is not so simple.  Re-orthogonalizing the LMOs is a lengthy
+calculation, and is not routinely performed.  However, the option exists to
+re-orthogonalize the LMOs, and this can be done either during a <TT>1SCF</TT>
+calculation (the preferred way), or periodically during a geometry
+optimization.
+<P>
+Re-orthogonalizing consists of taking pairs of LMOs, <i><font face="Symbol">y</font><sub>i</sub>
+</i>and <i><font face="Symbol">y</font></i><sub><i>j</i></sub>,
+and
+forming linear combinations such that the overlap (<!-- MATH: $<\!\psi_i|\psi_j\!>$ -->&lt;<i><font face="Symbol">y</font><sub>i</sub></i>|<i><font face="Symbol">y</font><sub>j</sub>&gt;</i>)
+is
+zero.  The LMOs involved form the full set, that is, both occupied  plus
+virtual sets are used.
+<P>
+The two LMOs can be regarded as unit vectors that are almost at 90<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1176.gif"
+ ALT="$^{\circ}$">
+to
+each other.  Let the difference from  90<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1177.gif"
+ ALT="$^{\circ}$">
+be <font face="Symbol">a</font>.
+If the vectors
+are each rotated by -<!-- MATH: $\frac{1}{2}\alpha$ -->1/2<font face="Symbol">a</font>,
+then they will become perfectly
+orthogonal. This operation is most conveniently performed using perturbation
+theory. Let:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<\!\psi_i|\psi_i\!> \simeq 1 \simeq <\!\psi_j|\psi_j\!>
+\end{displaymath} -->
+<IMG
+ WIDTH="162" HEIGHT="31"
+ SRC="img1180.gif"
+ ALT="\begin{displaymath}<\!\psi_i\vert\psi_i\!> \simeq 1 \simeq <\!\psi_j\vert\psi_j\!>
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and 
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+|<\!\psi_i|\psi_j\!>| = S_{ij} \ll 1,
+\end{displaymath} -->
+<IMG
+ WIDTH="145" HEIGHT="31"
+ SRC="img1181.gif"
+ ALT="\begin{displaymath}\vert<\!\psi_i\vert\psi_j\!>\vert = S_{ij} \ll 1,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+then
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_i' = \psi_i - \frac{1}{2}S_{ij}\psi_j
+\end{displaymath} -->
+<IMG
+ WIDTH="107" HEIGHT="38"
+ SRC="img1182.gif"
+ ALT="\begin{displaymath}\psi_i' = \psi_i - \frac{1}{2}S_{ij}\psi_j
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and 
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_j' = \psi_j - \frac{1}{2}S_{ij}\psi_i.
+\end{displaymath} -->
+<IMG
+ WIDTH="112" HEIGHT="38"
+ SRC="img1183.gif"
+ ALT="\begin{displaymath}\psi_j' = \psi_j - \frac{1}{2}S_{ij}\psi_i.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+That the new LMOs are orthogonal can readily be demonstrated:
+<BR>
+<DIV ALIGN="CENTER">
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="69" HEIGHT="34" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1184.gif"
+ ALT="$\displaystyle <\!\psi_i'\vert\psi_j'\!>$"></TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="212" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1185.gif"
+ ALT="$\displaystyle <(\psi_i - \frac{1}{2}S_{ij}\psi_j)\vert
+(\psi_j - \frac{1}{2}S_{ij}\psi_i)\!>$"></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="400" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1186.gif"
+ ALT="$\displaystyle <\psi_i\vert\psi_j>-\frac{1}{2}S_{ij}<\!\psi_i\vert\psi_i>-
+\frac{1}{2}S_{ij}<\!\psi_j\vert\psi_j\!>+\frac{1}{4}S_{ij}^2<\!\psi_j\vert\psi_i\!>$"></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="153" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1187.gif"
+ ALT="$\displaystyle S_{ij}-\frac{1}{2}S_{ij}-\frac{1}{2}S_{ij} +\frac{1}{4}S_{ij}^3$"></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP>0</TD>
+</TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<P>
+The calculation of the overlaps, <I>S</I><SUB><I>ij</I></SUB>, is most conveniently done for one
+LMO, <i><font face="Symbol">f</font><sub>i</sub></i>,
+with all other LMOs.  Because of this, <i><font face="Symbol">f</font><sub>i</sub></i>
+should not be
+modified while the re-orthogonalization is done.  In order to avoid modifying <i>
+<font face="Symbol">f</font><sub>i</sub></i>,
+the rotation is changed so that <i><font face="Symbol">f</font><sub>i</sub></i>
+remains stationary and all
+the rotation is incurred by <i><font face="Symbol">f</font></i><sub><i>j</i></sub>,
+thus:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_i' = \psi_i
+\end{displaymath} -->
+<IMG
+ WIDTH="47" HEIGHT="29"
+ SRC="img1193.gif"
+ ALT="\begin{displaymath}\psi_i' = \psi_i
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_j' = \psi_j - S_{ij}\psi_i.
+\end{displaymath} -->
+<IMG
+ WIDTH="101" HEIGHT="31"
+ SRC="img1194.gif"
+ ALT="\begin{displaymath}\psi_j' = \psi_j - S_{ij}\psi_i.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+Before the re-orthogonalization, the LMOs are almost orthogonal, and the use of
+perturbation theory here is fully justified.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8740"
+ HREF="node533.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8736"
+ HREF="node531.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8730"
+ HREF="node531.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8738"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8739"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8741"
+ HREF="node533.html"> Localized Molecular Orbitals:</A>
+<B> Up:</B> <A NAME="tex2html8737"
+ HREF="node531.html"> Other Considerations</A>
+<B> Previous:</B> <A NAME="tex2html8731"
+ HREF="node531.html"> Other Considerations</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

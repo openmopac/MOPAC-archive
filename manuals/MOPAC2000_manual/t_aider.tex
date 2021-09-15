@@ -1,0 +1,86 @@
+\subsection{Using  {\em ab initio} derivatives}
+\index{ab initio@{{\em ab initio}}!derivatives}
+\index{Derivatives!{\em ab initio}}
+\comp{AIDER} will allow gradients to be defined for a system.  MOPAC  will
+calculate  gradients, as usual, and will then use the supplied gradients to
+form an error function.  This error function is  (supplied gradients $-$ 
+initial  calculated  gradients),  which is then added to the computed
+gradients, so that for the initial  SCF,  the  apparent  gradients  will equal
+the supplied gradients.
+
+A typical data-set using \comp{AIDER} is shown in Figure~\ref{aider}.
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\index{Cyclohexane}
+\index{ab initio@{{\em ab initio}}!geometry}
+\index{Data!for cyclohexane}
+\compresstable
+\begin{verbatim}
+ PM3 AIDER AIGOUT GNORM=0.01
+ Cyclohexane
+
+   X
+   X   1 1.0
+   C   1 CX     2 CXX
+   C   1 CX     2 CXX     3 120.000000
+   C   1 CX     2 CXX     3 120.000000
+   X   1 1.0    2 90.0    3   0.000000
+   X   1 1.0    6 90.0    2 180.000000
+   C   1 CX     7 CXX     3 180.000000
+   C   1 CX     7 CXX     3  60.000000
+   C   1 CX     7 CXX     3 -60.000000
+   H   3 H1C    1 H1CX    2   0.000000
+   H   4 H1C    1 H1CX    2   0.000000
+   H   5 H1C    1 H1CX    2   0.000000
+   H   8 H1C    1 H1CX    2 180.000000
+   H   9 H1C    1 H1CX    2 180.000000
+   H  10 H1C    1 H1CX    2 180.000000
+   H   3 H2C    1 H2CX    2 180.000000
+   H   4 H2C    1 H2CX    2 180.000000
+   H   5 H2C    1 H2CX    2 180.000000
+   H   8 H2C    1 H2CX    2   0.000000
+   H   9 H2C    1 H2CX    2   0.000000
+   H  10 H2C    1 H2CX    2   0.000000
+
+   CX     1.46613
+   H1C    1.10826
+   H2C    1.10684
+   CXX   80.83255
+   H1CX 103.17316
+   H2CX 150.96100
+
+   AIDER
+     0.0000
+    13.7589 -1.7383
+    13.7589 -1.7383  0.0000
+    13.7589 -1.7383  0.0000
+     0.0000  0.0000  0.0000
+     0.0000  0.0000  0.0000
+    13.7589 -1.7383  0.0000
+    13.7589 -1.7383  0.0000
+    13.7589 -1.7383  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000
+\end{verbatim}
+\caption{\label{aider} Example of the use of \comp{AIDER}}
+\end{figure}
+ 
+Each  supplied  gradient  goes  with  the  corresponding   internal
+coordinate.   In  the  example  given,  the  gradients came from a 3-21G
+calculation on the geometry shown.  Symmetry will be taken into  account
+automatically. Gaussian  prints  out  gradients in atomic units; these need to
+be converted into kcal/mol/\AA ngstrom or kcal/mol/radian for MOPAC to use. 
+The resulting geometry from the MOPAC run will be nearer to the optimized 3-21G
+geometry than  if  the  normal  geometry  optimizers  in Gaussian had been
+used.\index{Coordinates!Gaussian!example}

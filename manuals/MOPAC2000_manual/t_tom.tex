@@ -1,0 +1,245 @@
+\section{Miertus-Scrocco-Tomasi Solvation Model}
+\index{MST Solvation Model}\label{mst}
+\index{Orozco@{\bf Orozco, Modesto}}
+\index{Luque@{\bf Luque, F. J.}}
+\index{Solvation Model!MST}
+\begin{center}Based on materials provided by\end{center}
+
+{\bf Modesto Orozco}, Dep.\ Bioqu\'{\i}mica, Facultat de Qu\'{\i}mica,
+Universitat de Barcelona, C/ Mart\'{\i} i Franqu\'{e}s 1, Barcelona 08028. 
+SPAIN. E-mail: modesto@far1.far.ub.es.
+
+and
+
+{\bf F. J. Luque}, Dep.\ Farmacia, Unitat Fisicoqu\'{\i}mica, Facultat de
+Farmacia,  Universitat de Barcelona, Avgda Diagonal sn,  Barcelona 08028,
+SPAIN. E-mail: javier@far1.far.ub.es.
+
+\subsection{Outline of the MST Method}
+\index{MST solvation model}
+\index{Solvation model!MST model}
+Solvation is computed using a modified version of Miertus, Scrocco and 
+Tomasi~\cite{mst,mt} self-consistent reaction field method (MST/SCRF), which 
+has been modified~\cite{lno,glo,nol,lbo,obl} to allow semiempirical
+Hamiltonians  to be used. Following this strategy the  solute is placed in a
+molecular-shaped cavity, which is built using GEPOL  routines~\cite{pastb}
+which use optimized van der Waals' radii~\cite{ojl,blo,rap}.  The solvent is 
+represented as a continuum which reacts against the solute charge distribution 
+{\em via} a perturbation operator. The perturbation operator is obtained by 
+solving the Laplace equation at the solute/solvent interface (the solute
+cavity).  The solute electrostatic potential, which is necessary to solve the
+Laplace equation, is rigorously computed as the expectation value of the 
+$r^{-1}$ operator~\cite{mst,mt,lno,glo,nol,lbo,obl}.
+
+The free energy of hydration is computed as the addition of three
+contributions: 
+
+\begin{enumerate}
+\item The electrostatic term, which is computed from the linear free energy
+response  theory~\cite{mst,mt,lno,glo,nol,lbo,obl}.
+
+\item The cavitation contribution, which is computed from Pierotti's  scaled
+particle theory~\cite{ojl,blo}.\index{Pierotti's scaled particle theory}
+
+\item The van der Waals terms, which is computed using a linear relation with 
+the solute accessible surface, and optimized ``hardness''
+parameters~\cite{rap}. \index{Van der Waals!in MST theory}
+\end{enumerate}
+
+In addition to the free energy of hydration a ``solvent-adapted'' wavefunction 
+is obtained. Such a wavefunction can be used to determine changes in  solute
+properties due to the solvent~\cite{lobg,lo,lo2,lobg2}.
+
+\index{Electrostatic potential!Orozco-Luque model}
+\index{MEP}
+\index{Self Consistent Reaction Field method}
+\index{SCRF Method}
+
+The program allows the use of two different strategies to compute the 
+semiempirical Molecular Electrostatic Potential (MEP). The first 
+one~\cite{lio,alo,lo3} computes the MEP via the deorthogonalization of the
+semiempirical  wavefunction (no keyword), while the second one~\cite{frr,alo2}
+maintains the  orthogonality of the wavefunction in the calculation of the MEP
+(keyword \comp{ORT}). \label{ort}
+
+The strategy has been tested in different systems. Optimized versions for 
+MNDO, AM1 and PM3 are available. The comparison of experimental and 
+theoretical free energies of hydration for 23 small neutral molecules yields
+to  RMS deviations in the range of 1  kcal/mol. The best results  (RMS 1.0
+kcal/mol, r=0.94) are obtained with the AM1 Hamiltonian with  orthogonal MEP's.
+The solvent-induced dipoles matches Monte Carlo/QM and {\em ab initio} SCRF
+values.
+
+Semiempirical/SCRF methods have been successfully applied to several problems. 
+Examples: i) tautomerization of nitroimidazole, and pyridones, ii) solvent 
+effects in the isomerization of amides, and iii) H-bond dimerization.
+
+\subsubsection*{Warnings}
+\begin{itemize}
+\item The solute geometry cannot be properly optimized in solution.
+Optimization flags  at the different coordinates should be set to 0
+
+\item The program has been carefully parametrized to work with neutral
+molecules.  A reduction of the cavity for charged solutes may be
+necessary~\cite{ol}.
+
+\item We cannot recommend the use of the program for solvents other than 
+water, chloroform, or carbon tetrachloride at the present moment. A simple 
+change in the dielectric constant cannot  be enough to reproduce the
+characteristics of other solvents.
+\end{itemize}
+
+\subsection{Data Requirements for MST Model}\label{mstdata}
+\index{TOM@{\bf TOM}}
+For the three solvent for which parameters have been published, special
+keywords exist.  These are \comp{H2O}, \comp{CHCL3}, and \comp{CCL4}. If other
+solvents are to be modeled, extra data must be provided at  the end of the data
+set.  This extra data is described by example, using water as the solvent.
+(This extra data could be avoided by using \comp{H2O}.)
+
+For water, the data needed is shown in Figure~\ref{tomdata}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{verbatim}
+Line
+  *   PM3 TOM 
+  *
+  *   O   .0000000 0     .000000 0     .000000 0    0 0 0
+  *   H   .9512971 0     .000000 0     .000000 0    1 0 0
+  *   H   .9512971 0  107.457468 0     .000000 0    1 2 0
+  *
+  1   78.5  1.0  1  1  0  3
+  2   298.15  18.07  2.77  0.00026  71.690  0.657  1.277
+  3   40.0  1.5  0.2  0.7  0.02  5  3  1
+  4   1  1.75000  8
+  5   2  1.00000  99
+  6   3  1.00000  99
+  7   1.00
+\end{verbatim}
+\caption{\label{tomdata}Data set for Calculation of Water using the Miertus-Scrocco-Tomasi Model}
+\end{figure}
+
+The extra data are indicated by the lines numbered 1 to 7 in the Figure.  These
+data are described as follows:
+\begin{description}
+\item[Line 1. Parameters indicating the level of computation]~\\
+(see Miertus, Scrocco, Tomasi, Chem.\ Phys., 55 (1981) 117 and Miertus, Tomasi,
+Chem.\ Phys., 65 (1982) 239 for further details)
+
+Layout of data:  A B C D E F
+
+\begin{center}
+\begin{tabular}{llll}  \hline
+ Datum & Value & Name   &  Description  \\ \hline
+    A  & 78.5  & EPS    & Solvent dielectric constant          \\
+    B  & 1.0   & DMP    & Self-polarization acceleration factor\\
+    C  & 1     & MC     & Self-polarization cycles             \\
+    D  & 1     & ICOMP  & Charge compensation                  \\
+    E  & 0     & IFIELD & Reaction field calculation on nuclei \\
+    F  & 3     & ICAV   & Cavitation energy computation        \\  \hline 
+\end{tabular}
+\end{center}
+
+\item[Line 2. Parameters related to the cavitation energy]~\\
+(This line is needed only if \comp{ICAV $\ne$ 0})
+
+Layout of data: A B C D E F G                                                      
+
+\begin{center}
+\begin{tabular}{llll}  \hline
+ Datum & Value & Name &  Description  \\  \hline
+  A   & 298.15 & TABS &  Absolute temperature (in kelvin) \\
+  B   &  18.07 & VMOL &  Solvent molar volume (\aa ngstroms$^3$) \\  
+  C   &   2.77 & DMOL &  Solvent molar diameter (\aa ngstroms) \\
+  D   & 0.00026 & TCE &  Thermal expansion coefficient (kelvin$^{-1}$) \\ 
+  E   & 71.69  & STEN &  Surface tension (dyne$\times$cm$^{-1}$) \\
+  F   & 0.657  & DSTEN &  Surface tension derivative \\
+  G   & 1.227  & CMF  &  Cavity microscopic coefficient \\ \hline
+\end{tabular}
+\end{center}
+
+If \comp{ICAV=1} parameters A-D are needed, and Pierotti's cavitation energy
+is  computed. 
+
+If \comp{ICAV=2} parameters E-G are needed, and Sinanoglu's cavitation energy
+is  computed.  
+
+If \comp{ICAV=3} parameters A-G are needed, and Pierotti's and Sinanoglu's
+cavitation energies are computed.
+
+\item[Line 3. Parameters related to the cavity surface]~\\
+(see Pacual-Ahuir, Silla, Tomasi, Bonaccorsi, J.\ Comput.\ Chem.\ 77 (1982)
+3654 for further details)   
+
+Layout of data: A B C D E F G H
+
+\begin{center}
+\begin{tabular}{llll} 
+\hline
+ Datum & Value & Name   &  Description  \\ \hline
+A & 40.0 & OMEGA  &  Sphere overlapping parameter \\
+B & 1.5  & RD     &  Solvent molecular radius \\
+C & 0.2  & RET    &  Minimal radius to define new spheres \\
+D & 0.7  & FRO    &  Numerical factor to define new spheres \\
+E & 0.02 & DR     &  Step to compute electric field on cavity surface \\
+F &  5   & NDIV   &  Parameter of cavity surface partition \\
+G &  3   & NESF   &  Number of spheres \\
+H &  1   & ICENT  &  Definition of spheres \\
+\hline
+\end{tabular}
+\end{center}
+
+\item[Lines 4--6. Coordinates and radii of spheres used to build up cavity surface]~\\
+\comp{ICLASS} specifies the type of atom.  This information is used  in the
+calculation of the van der Walls' energy, determines as the sum of products
+between the surface of each atom and a parameter which is  characteristic for
+each atom.
+
+\comp{ICLASS} is, in fact, the atomic number of each atom, with the only
+exception of hydrogen, for which we distinguish between  hydrogen atoms bound
+to a heteroatom (\comp{ICLASS=99}) and those bound to a carbon
+(\comp{ICLASS=1}).
+
+If \comp{ICENT=0}, then five parameters are needed for each sphere.
+
+Layout of data: A B C D E                                                            
+
+\begin{center}
+\begin{tabular}{llll}
+\hline
+ Datum & Value & Name   &  Description \\ \hline
+    A  & n/a   & XE     &  X-coordinate \\
+    B  & n/a   & YE     &  X-coordinate \\
+    C  & n/a   & ZE     &  X-coordinate \\
+    D  & n/a   & RE     &  Radius of sphere \\
+    E  & n/a   & ICLASS &  Type of atom \\ \hline
+\end{tabular}
+\end{center}
+
+If \comp{ICENT$\ne$0}, then three parameters are needed for each sphere.  The
+spheres are defined as being centered on each atom.
+
+Layout of data: A B C
+ 
+\begin{center}
+\begin{tabular}{lcccll} 
+\hline 
+ Datum & \multicolumn{3}{c}{Values} & Name   &  Description \\ \hline
+   A  & 1 & 2 & 3            & NC1    &  Atom Number \\
+   B  & 1.75 & 1.0 & 1.0     & RE     &  Radius of sphere \\
+   C  & 8 & 99 & 99          &ICLASS  &  Type of atom \\ \hline
+\end{tabular}
+\end{center}
+                                                                      
+\item[Line 7. Factor used to scale the MEP in the deorthogonal procedure]~\\
+Layout of data:    A 
+
+\begin{center}
+\begin{tabular}{llll}  
+\hline 
+ Datum & Value & Name   &  Description  \\ \hline
+    A  & 1.0 & FACTOR  &  Factor used to scale the MEP \\ \hline
+\end{tabular} 
+\end{center}
+\end{description}

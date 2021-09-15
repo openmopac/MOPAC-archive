@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Internal Coordinate Definition</TITLE>
+<META NAME="description" CONTENT="3.4.3 Internal Coordinate Definition">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node352.html"><LINK REL="previous" HREF="node348.html"><LINK REL="up" HREF="node346.html"><LINK REL="next" HREF="node350.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node350.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node346.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node348.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node350.html">Constraints</A> <B>Up:</B> <A HREF="node346.html">Geometry Specification</A> <B>Previous:</B> <A HREF="node348.html">Optimization flags</A>
+<!--End of Navigation Panel-->
+<H2>Internal Coordinate Definition </H2>
+<P>For any one atom, <I>i</I>, this consists of an interatomic distance in &Aring; ngstroms from an already-defined atom, <I>j</I>, an interatomic angle in degrees between atoms <I>i</I> and <I>j</I> and an already defined <I>k</I>, (<I>k</I> and <I>j</I>must be different atoms), and, finally, a torsional angle in degrees between atoms <I>i</I>, <I>j</I>, <I>k</I>, and an already defined atom <I>l</I> (<I>l</I> cannot be the same as <I>k</I> or <I>j</I>). See also <A HREF="node580.html#coherency">Torsion or Dihedral Angle Coherency</A>.<A NAME="BM6269">&nbsp;</A> Exceptions: </P>
+<OL>
+
+<DL>
+<DT><LI>Atom 1 has no internal coordinates at all. The coordinates of atom 1 are, by definition, Cartesian. Normally, the coordinates of atom 1 are (0,0,0), but can be set to any value desired. </LI></DT>
+<DD>&nbsp;</DD>
+<DT><LI>Atom 2 must be connected to atom 1 by an interatomic distance only. If atom 1 is not at the origin, then the care must be taken in defining atom 2: if internal coordinates are used, then the connectivity must be given. If the connectivity is not specified, then the coordinate of atom 2 is, by definition, Cartesian. </LI></DT>
+<DD>&nbsp;</DD>
+<DT><LI>Atom 3 can be connected to atom 1 or 2, and must make an angle with atom 2 or 1 (thus 3-2-1 or 3-1-2); no dihedral is possible for atom 3. Again, if the connectivity is not given, the coordinate is defined as Cartesian. </LI></DT>
+</DL></OL>
+
+<P><HR></P>
+
+<UL>
+<LI><A NAME="tex2html6108"><A HREF="node350.html">Constraints</A></A> </LI>
+<LI><A NAME="tex2html6109"><A HREF="node351.html">Conversion to Cartesian Coordinates</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6106"><A HREF="node350.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6102"></A><A HREF="node346.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6096"></A><A HREF="node348.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6104"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6105"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6107"><A HREF="node350.html">Constraints</A></A> <B>Up:</B> <A NAME="tex2html6103"><A HREF="node346.html">Geometry Specification</A></A> <B>Previous:</B> <A NAME="tex2html6097"><A HREF="node348.html">Optimization flags</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

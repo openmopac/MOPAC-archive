@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>GNORM=n.nn </TITLE>
+<META NAME="description" CONTENT="GNORM=n.nn ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node187.html"><LINK REL="previous" HREF="node185.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node187.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html4139"><A HREF="node187.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A NAME="tex2html4135"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 ALT="up" width="26" height="24"></A><A NAME="tex2html4129"></A><A HREF="node185.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html4137"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html4138"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html4140"><A HREF="node187.html">GRADIENTS </A></A><B>Up:</B> <A NAME="tex2html4136"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html4130"><A HREF="node185.html">GNMIN </A></A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>GNORM=<I>n</I>.<I>nn</I></TT> </H2>
+<P>The geometry optimization termination criteria (see <A HREF="node677.html#criteria">Criteria</A>) in both gradient minimization and energy minimization can be over-ridden by specifying a gradient norm requirement. For example, <TT>GNORM=20</TT> would allow the geometry optimization to exit as soon as the gradient norm dropped below 20.0, the default being 1.0. </P>
+<P>For high-precision work, <TT>GNORM=0.0</TT> is recommended. Unless <TT>
+<a href="node207.html">LET</a></TT> is also used, the <TT>GNORM</TT> will be set to the larger of 0.01 and the specified <TT>GNORM</TT>. Results from <TT>GNORM=0.01</TT> are easily good enough for all high-precision work. </P>
+<P>N.b.: Do not confuse <TT>GNORM</TT>, the keyword, with GNORM, the value of the scalar of the calculated gradient. </P>
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,138 @@
+\subsection{Convergence in SCF Calculation}
+\index{SCF!convergence techniques}
+A  brief  description  of  the  convergence  techniques   used   in subroutine
+ITER follows.
+
+ITER, the  SCF  calculation,  employs  six  methods  to  achieve  a
+self-consistent field.  In order of usage, these are:
+
+\begin{enumerate}
+\index{Fock matrix}
+\item Intrinsic convergence by virtue of the way the  calculation  is carried 
+out.   Thus  a trial Fock gives rise to a trial density matrix, which in turn
+is used to generate a better Fock matrix.
+
+This is normally convergent, but many exceptions  are  known.   The main
+situations when the intrinsic convergence does not work are:
+\begin{enumerate}
+\item A bad starting density  matrix.   This  normally  occurs when the default
+starting density matrix is used.  This is a very crude approximation, and is
+only  used  to  get  the  calculation started.   A  large  charge  is generated
+on an atom in the first iteration,  the  second   iteration  
+overcompensates,   and   an oscillation is generated.
+
+\item The equations are only very slowly convergent.  This can be  due  to  a 
+long-lived  oscillation  or to a slow transfer of charge.
+\end{enumerate}
+
+\index{Oscillations!damping|ff}
+\item Oscillation damping.  If, on any two consecutive iterations,  a density 
+matrix  element  changes  by  more  than 0.05, then the density matrix element
+is set equal to the old element shifted by  0.05  in  the direction  of  the
+calculated element.  Thus, if on iterations 3 and 4 a certain density matrix
+element was 0.55 and 0.78, respectively, then the element  would  be set to
+0.60 (= 0.55 + 0.05) on iteration 4.  The density matrix from iteration 4 would
+then be used in the  construction  of  the next  Fock  matrix.   The arrays
+which hold the old density matrices are not filled until after iteration 2. 
+For this reason they are  not  used in the damping before iteration 3.
+
+\item Three-point interpolation of the  density  matrix.   Subroutine CNVG
+monitors the number of iterations, and if this is exactly divisible by three,
+and certain other conditions relating to the density  matrices are  satisfied, 
+a  three-point interpolation is performed.  This is the default converger, 
+and  is  very  effective  with  normally  convergent calculations.    It 
+fails  in  certain  systems,  usually  those  where significant charge build-up
+is present.
+
+\item Energy-level shift technique (the \comp{SHIFT} technique).  The  virtual
+M.O.\  energy  levels are  normally  shifted  to more positive energy.  This
+has the effect of damping oscillations, and intrinsically divergent equations
+can often be changed   to  intrinsically  convergent  form.   With 
+slowly-convergent systems the virtual M.O.\  energy levels can be moved to a
+more  negative value.
+
+The precise value of the shift used depends on the behavior of  the iteration
+energy.  If it is dropping, then the HOMO-LUMO gap is reduced; if the iteration
+energy rises, the gap is increased rapidly.
+
+\index{DIIS}\index{Pulay's DIIS}
+\item Pulay's method.  If  requested,  when  the  largest  change  in density 
+matrix elements on two consecutive iterations has dropped below \index{CNVG|ff}
+0.1, then routine CNVG is abandoned in  favor  of  a  multi-Fock  matrix
+interpolation.   This  relies  on  the fact that the eigenvectors of the
+density and Fock matrices are identical at self-consistency, so  [P.F] =  (P.F
+$-$ F.P) = 0 at  SCF.  The extent to which this condition does not occur is a
+measure of  the  deviance  from  self-consistency.   Pulay's  Direct Inversion
+of the Iterative Subspace (DIIS) method  uses  this relationship to calculate
+that linear combination of Fock matrices which minimize  [P.F].   This  new 
+Fock  matrix  is  then  used  in  the  SCF calculation.
+
+Under certain circumstances, Pulay's method  can  cause  very  slow
+convergence,   but   sometimes   it   is  the  only  way  to  achieve  a
+self-consistent field.  At other times the procedure  gives  a  ten-fold
+increase  in  speed,  so care must be exercised in its use.  (started by the
+keyword \comp{PULAY})
+
+\item The Camp-King converger.  If  all  else  fails,  the  Camp-King
+\index{Camp-King converger} converger  is  just about guaranteed to work every
+time.  However, it is time-consuming, and therefore should only be started as a
+last resort.
+
+It  evaluates  that  linear  combination   of   old   and   current
+eigenvectors  which  minimize the total energy.  One of its strengths is that
+systems which  otherwise  oscillate  due  to  charge  surges,  e.g.\ CHO--H, 
+the C--H distance being very large, will converge using this very sophisticated
+converger.
+\end{enumerate}
+
+\subsubsection{Causes of failure to achieve an SCF}
+\index{SCF!failure to achieve}
+In a system where a biradical can form, such as ethane  decomposing into  
+two   CH$_3$  units,  the  normal  RHF  procedure  can  fail  to  go
+\index{Biradicaloid character}\index{BIRADICAL}\index{UHF}\index{TRIPLET}
+self-consistent.  If the system has marked biradicaloid character,  then
+\comp{BIRADICAL}  or \comp{UHF} and \comp{TRIPLET} can often  prove
+successful.  These options rely on the assumption that two unpaired  electrons 
+can  represent  the open shell part of the wave-function.
+
+\subsection{Use of C.I.\ in Reaction Path Calculations}
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}
+\includegraphics{hof}
+\end{center}
+\caption{\label{cich2o} Effect of C.I.\ on $\Delta H_f$ in a bond-breaking
+reaction (for the reaction CH$_2$O $\rightarrow$ CHO + H)}
+\end{figure}
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}
+\includegraphics{charges}
+\end{center}
+\caption{\label{cich2o2} Effect of C.I.\ on the charge  in a bond-breaking
+reaction (for the reaction CH$_2$O $\rightarrow$ CHO + H)}
+\end{figure}
+
+Although closed-shell methods are suitable for normal systems, when a reaction
+occurs such that a bond makes or breaks, then configuration interaction
+can help in the description of the system.
+
+Consider CH$_2$O,  with  the  interatomic  distance  between carbon and  one of
+the hydrogen atoms being   steadily increased.    At   first  the  covalent 
+bond  will  be  strong,  and  a self-consistent field is readily  obtained.  
+Gradually  the  bond  will become  more  ionic,  and  if configuration
+interaction is not used, a highly strained system will result.  This exotic
+system will still have a large C--H bond order, despite the fact that the C--H
+distance is very large.
+
+To a degree,  configuration interaction can correct this picture. When
+\comp{C.I.=2} is used, Figure~\ref{cich2o} and \ref{cich2o2}, a more realistic
+description of the dissociation is obtained.  Now the  leaving hydrogen atom
+becomes neutral as the distance increases, and the energy becomes constant at
+large distances.   A C--H bond in formaldehyde is being stretched.  The effect
+of C.I.\ is to make the dissociated state more realistic.  Without C.I., the
+energy rises continuously, and the charge on the departing hydrogen atom
+becomes unrealistic.

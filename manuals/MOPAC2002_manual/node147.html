@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>CVB(text) </TITLE>
+<META NAME="description" CONTENT="CVB(text) ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node148.html">
+<LINK REL="previous" HREF="node146.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node148.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html3671"
+ HREF="node148.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html3667"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html3661"
+ HREF="node146.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html3669"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html3670"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3672"
+ HREF="node148.html">CYCLES=n </A>
+<B> Up:</B> <A NAME="tex2html3668"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html3662"
+ HREF="node146.html">CUTOFS=n.nn </A>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION007338000000000000000">
+<TT>CVB(<I>text</I>) </TT> </A>
+</H2>
+Some molecules cannot be represented by simple Lewis structures.  An example is
+HNO<SUB>3</SUB>. If artificial bonds are added, then a Lewis structure can be drawn,
+even if it is not very realistic.  Thus, for nitric acid, the structure:
+<PRE>                        H1          O4
+                         \        / |
+                          \      /  |
+                           O2--N3   |
+                                 \  |
+                                  \ |
+                                    O5
+</PRE>satisfies valency requirements.  An unrealistic bond, such as the O<SUB>4</SUB>-O<SUB>5 </SUB>bond here, would be represented by <TT>CVB(4:5)</TT>.  If several unrealistic
+bonds are needed, separate them in the keyword by commas.  Thus if unrealistic
+bonds were needed between atoms 4 and 5, and between atoms 665 and 670, then
+<TT>CVB(4:5,665:670)</TT> would be used.
+<P>
+Note that <TT>CVB</TT> is used <EM>only</EM> in the generation of a starting Lewis
+structure. The presence of unrealistic bonds in this structure will not
+normally give rise to an incorrect SCF. 
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

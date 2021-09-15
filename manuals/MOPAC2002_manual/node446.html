@@ -1,0 +1,240 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>One-center two-electron integrals</TITLE>
+<META NAME="description" CONTENT="8.2.1.4 One-center two-electron integrals">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node447.html"><LINK REL="previous" HREF="node445.html"><LINK REL="up" HREF="node442.html"><LINK REL="next" HREF="node447.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node447.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node442.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node445.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node447.html">NDDO two-electron two-center</A> <B>Up:</B> <A HREF="node442.html">Approximations used in</A> <B>Previous:</B> <A HREF="node445.html">Neglect of three</A> <BR>
+<H3><A NAME="SECTION001221400000000000000">One-center two-electron integrals</A> </H3>
+The MNDO, AM1, and MNDO-<I>d</I> one-center two-electron integrals are derived from
+experimental data on isolated atoms. Most were taken from
+Oleari's&nbsp;[<A
+ HREF="node715.html#oleari">54</A>] work, but a few were obtained by optimization to
+fit molecular properties. The values of PM3 one-center two-electron integrals
+were optimized to reproduce experimental molecular properties.
+<P>
+For each atom there are a maximum of five one-center two-electron integrals.
+These are 
+<!-- MATH: $<\!ss|ss\!>$ -->
+&lt;<i>ss</i>|<i>ss</i>&gt;,
+<!-- MATH: $<\!ss|pp\!>$ -->
+&lt;<i>ss</i>|<i>pp</i>&gt;,
+<!-- MATH: $<\!sp|sp\!>$ -->
+&lt;<i>sp</i>|<i>sp</i>&gt;,
+<!-- MATH: $<\!pp|pp\!>$ -->
+&lt;<i>pp</i>|<i>pp</i>&gt;,
+and
+<!-- MATH: $<\!pp|p'p'\!>$ -->
+&lt;<i>pp</i>|<i>p'p'</i>&gt;,
+where <I>p</I> and <I>p</I>' are two different <I>p</I>-type atomic orbitals.
+In the original formulation&nbsp;[<A
+ HREF="node715.html#dt4689">55</A>] there was a sixth integral,
+<!-- MATH: $<\!pp'|pp'\!>$ -->
+&lt;<i>pp'</i>|<i>pp'</i>&gt;,
+but it can be shown that this integral is related to two of
+the other integrals by:
+<P align="center">
+&lt;<i>pp</i>|<i>p'p'</i>&gt; = 1/2(<!-- MATH: $<\!pp|pp\!>$ -->&lt;<i>pp</i>|<i>pp</i>&gt; 
+- &lt;<i>pp</i>|<i>p'p'</i>&gt;)<br>
+<BR CLEAR="ALL">
+<P></P>
+Proof:
+If the molecular frame is rotated by 45<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img417.gif"
+ ALT="$^\circ$">
+about
+the z axis the atomic bases mix thus:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{eqnarray}
+R(45^\circ)p_x = \frac{1}{\sqrt{2}}(p_x + p_y) \\\nonumber
+R(45^\circ)p_y = \frac{1}{\sqrt{2}}(p_y - p_x) \nonumber
+\end{eqnarray} -->
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="163" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img418.gif"
+ ALT="$\displaystyle R(45^\circ)p_x = \frac{1}{\sqrt{2}}(p_x + p_y)$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="163" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img419.gif"
+ ALT="$\displaystyle R(45^\circ)p_y = \frac{1}{\sqrt{2}}(p_y - p_x) \nonumber$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{eqnarray}
+R(45^\circ)<p_xp_y|p_xp_y>& =& \frac{1}{4}<(p_x+p_y)(p_y-p_x)|(p_x+p_y)(p_y-p_x)> \nonumber \\
+& =& \frac{1}{4}(<p_xp_x|p_xp_x> + <p_yp_y|p_yp_y> - <p_xp_x|p_yp_y> - <p_yp_y|p_xp_x>)\nonumber
+\end{eqnarray} -->
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="145" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img420.gif"
+ ALT="$\displaystyle R(45^\circ)<p_xp_y\vert p_xp_y>$"></TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="285" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img421.gif"
+ ALT="$\displaystyle \frac{1}{4}<(p_x+p_y)(p_y-p_x)\vert(p_x+p_y)(p_y-p_x)>$"></TD>
+<TD  ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="456" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img422.gif"
+ ALT="$\displaystyle \frac{1}{4}(<p_xp_x\vert p_xp_x> + <p_yp_y\vert p_yp_y> - <p_xp_x\vert p_yp_y> - <p_yp_y\vert p_xp_x>)$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+or
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+R(45^\circ)<p_xp_y|p_xp_y> =\frac{1}{2}(<p_xp_x|p_xp_x> - <p_xp_x|p_yp_y>)
+\end{displaymath} -->
+<IMG
+ WIDTH="384" HEIGHT="38"
+ SRC="img423.gif"
+ ALT="\begin{displaymath}R(45^\circ)<p_xp_y\vert p_xp_y> =\frac{1}{2}(<p_xp_x\vert p_xp_x> - <p_xp_x\vert p_yp_y>)
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P><A NAME="9714">&#160;</A>
+<A NAME="9715">&#160;</A>
+<A NAME="9716">&#160;</A>
+<A NAME="9717">&#160;</A>
+<A NAME="9718">&#160;</A>
+ For convenience these five integrals are given the following names:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{eqnarray}
+<ss|ss> &=& G_{ss} \nonumber  \\
+<pp|pp>&=&  G_{pp} \nonumber  \\
+    <sp|sp>&=&  H_{sp} \nonumber  \\
+    <pp|pp>&=&  G_{pp} \nonumber  \\
+    <pp|p'p'>&=&  G_{p2}\nonumber
+\end{eqnarray} -->
+<TABLE ALIGN="CENTER" CELLPADDING="0">
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>ss</I>|<I>ss</I>&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><I>G</I><SUB><I>ss</I></SUB></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>pp</I>|<I>pp</I>&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><I>G</I><SUB><I>pp</I></SUB></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>sp</I>|<I>sp</I>&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><I>H</I><SUB><I>sp</I></SUB></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>pp</I>|<I>pp</I>&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><I>G</I><SUB><I>pp</I></SUB></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>pp</I>|<I>p</I>'<I>p</I>'&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><I>G</I><SUB><I>p</I>2</SUB></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Using these definitions, the two-electron one-center
+contributions to the Fock matrix become:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{eqnarray}
+F_{ss}^{\alpha}&:&P_{ss}^{\beta}G_{ss}+(P_{p_x}^{\alpha+\beta}+P_{p_y}^{\alpha+\beta}+P_{p_z}^{\alpha+\beta})G_{sp}
+-(P_{p_x}^{\alpha}+P_{p_y}^{\alpha}+P_{p_z}^{\alpha})H_{sp}\nonumber  \\
+F_{sp}^{\alpha}&:&2P_{sp}^{\alpha+\beta}H_{sp}-P_{sp}^{\alpha}(H_{sp}+G_{sp})\nonumber  \\
+F_{pp}^{\alpha}&:&P_{ss}^{\alpha+\beta}G_{sp}-P_{ss}^{\alpha}H_{sp}+
+P_{pp}^{\beta}G_{pp} +(P_{p'p'}^{\alpha+\beta}+P_{p"p"}^{\alpha+\beta})G_{p2}
+-\frac{1}{2}(P_{p'p'}^{\alpha}+P_{p"p"}^{\alpha})(G_{pp}-G_{p2})\nonumber  \\
+F_{pp'}^{\alpha}&:&P_{pp'}^{\alpha+\beta}(G_{pp}-G_{p2})
+-\frac{1}{2}P_{pp'}^{\alpha}(G_{pp}+G_{p2}) \nonumber  
+\end{eqnarray} -->
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img424.gif"
+ ALT="$\displaystyle F_{ss}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="374" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img425.gif"
+ ALT="$\displaystyle P_{ss}^{\beta}G_{ss}+(P_{p_x}^{\alpha+\beta}+P_{p_y}^{\alpha+\bet...
+...alpha+\beta})G_{sp}
+-(P_{p_x}^{\alpha}+P_{p_y}^{\alpha}+P_{p_z}^{\alpha})H_{sp}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img426.gif"
+ ALT="$\displaystyle F_{sp}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="180" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img427.gif"
+ ALT="$\displaystyle 2P_{sp}^{\alpha+\beta}H_{sp}-P_{sp}^{\alpha}(H_{sp}+G_{sp})$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img428.gif"
+ ALT="$\displaystyle F_{pp}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="511" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img429.gif"
+ ALT="$\displaystyle P_{ss}^{\alpha+\beta}G_{sp}-P_{ss}^{\alpha}H_{sp}+
+P_{pp}^{\beta}...
+...beta})G_{p2}
+-\frac{1}{2}(P_{p'p'}^{\alpha}+P_{p"p"}^{\alpha})(G_{pp}-G_{p2})$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="30" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img430.gif"
+ ALT="$\displaystyle F_{pp'}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="247" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img431.gif"
+ ALT="$\displaystyle P_{pp'}^{\alpha+\beta}(G_{pp}-G_{p2})
+-\frac{1}{2}P_{pp'}^{\alpha}(G_{pp}+G_{p2})$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+These expressions are common to all methods. 
+<P>
+<HR>
+<P><!--Navigation Panel--><A NAME="tex2html7630"><A HREF="node447.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html7626"></A><A HREF="node442.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html7620"></A><A HREF="node445.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html7628"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html7629"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html7631"><A HREF="node447.html">NDDO two-electron two-center</A></A> <B>Up:</B> <A NAME="tex2html7627"><A HREF="node442.html">Approximations used in</A></A> <B>Previous:</B> <A NAME="tex2html7621"><A HREF="node445.html">Neglect of three</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

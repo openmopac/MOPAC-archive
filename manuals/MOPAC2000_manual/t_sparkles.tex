@@ -1,0 +1,81 @@
+\subsection{Sparkles}\label{sparkles}
+\index{Sparkles!description}
+Four extra ``elements'' have been put into  MOPAC.   These  represent pure 
+ionic  charges,  roughly  equivalent  to  the  following  chemical entities:
+
+\index{+!sparkle}\index{++}\index{$-$}\index{$--$}
+\begin{center}
+\begin{tabular}{cl}
+    Chemical Symbol &        Equivalent to  \\
+\hline
++    & Tetramethyl ammonium radical \\
+     &  Potassium atom or Cesium atom.  \\ 
+++   & Barium atom.  \\
+$-$  & Borohydride radical, Halogen, or  Nitrate radical  \\
+$-\! -$ & Sulfate, oxalate.
+\end{tabular} 
+\end{center}
+
+For  the  purposes  of  discussion  these   entities   are   called
+`sparkles':  the name arises from consideration of their behavior.
+
+\subsection*{Behavior of sparkles in MOPAC}
+Sparkles have the following properties:
+\begin{enumerate}
+\item Their nuclear charge is integer, and is $+1$, $+2$, $-1$,  or  $-2$;
+there  are  an  equivalent  number  of  electrons  to  maintain
+electroneutrality, $+1$, $+2$, $-1$, and $-2$ respectively.  For example, a 
+`+'  sparkle  consists  of  a  unipositive  nucleus  and  an electron.  The
+electron is donated  to  the  quantum  mechanics calculation.
+
+\item  They all have an  ionic  radius  of  $0.7$~\AA.   Any  two sparkles  of 
+opposite  sign  will  form  an  ion-pair  with  a interatomic separation of
+$1.4$~\AA.
+
+\item They have a zero heat  of  atomization,  no  orbitals,  and  no
+ionization potential.
+
+\item The associated one-center two-electron integral, G$_{ss}$ is 27.21 for
+all sparkles.  Because of this, the monopole-monopole interaction, $AM$, is set
+to 1.0.  This is different to that in earlier (before MOPAC 6) MOPACs where
+the  value of $AM$ was set to 0.5D0.
+\end{enumerate}
+
+They can be regarded as unpolarizable ions of diameter $1.4$\AA.   They do 
+not  contribute  to  the  orbital count, and cannot accept or donate electrons.
+
+Since they appear as uncharged species  which  immediately  ionize, attention 
+should  be  given  to  the  charge  on the whole system.  For example, if the
+alkaline metal salt of formic acid was run, the  formula would be: HCOO+ where
+`+' is the unipositive sparkle.   The charge on the system would then be zero.
+
+A water molecule polarized by a positive  sparkle  would  have  the formula
+H$_2$O$^+$, and the charge on the system would be +1.
+
+At first sight, a sparkle would appear to be  too  ionic  to  be  a point
+charge and would combine with the first charge of opposite sign it encountered.
+
+This representation is faulty, and a better description would be of an  ion, 
+of diameter $1.4$\AA, and the charge delocalized over its surface.
+Computationally, a sparkle is an integer  charge  at  the  center  of  a
+repulsion  sphere  having the exponential form $\exp(-\alpha r)$.   The
+hardness of the sphere is such that other atoms or sparkles can approach within
+about $2$\AA\ quite easily, but only with great difficulty come closer than
+$1.4$\AA.
+
+\subsection*{Uses of Sparkles}
+\begin{enumerate}
+\item They can be used as counterions, e.g.\  for acid anions  or  for
+cations.   Thus,  if  the ionic form of an acid is wanted, then the moieties
+H$\cdot$X, H$\cdot -$, and $+\cdot$X could be examined.
+
+\item Two sparkles of equal and opposite sign can form a  dipole  for
+\index{Dipole!made from sparkles} mimicking solvation effects.  Thus water
+could be surrounded by six dipoles to simulate the solvent cage.  A dipole of
+value  D can  be made by using the two sparkles + and $-$, or using ++ and {\bf
+$ --$}.  If + and $-$ are used, the inter-sparkle separation would be
+$D/4.803$\AA.  If {\bf $ ++$} and {\bf $ --$} are used, the separation would be
+$D/9.606$\AA.  If the inter-sparkle separation is  less than $1.0$\AA\  (a
+situation that cannot occur naturally) then the energy due to the dipole on its
+own is subtracted from the total energy.
+\end{enumerate}

@@ -1,0 +1,249 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Diamond</TITLE>
+<META NAME="description" CONTENT="Diamond">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><A NAME="tex2html8956"><A HREF="node550_examples.html"><!-- Put here the PREVIOUS link in the MOPAC manual -->
+<IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8954"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8955"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+</P>
+<H1>Diamond </H1>
+<P>The unit cell of diamond consists of two carbon atoms. If symmetry operations were allowed, only one atom would be needed, but only translation operations are allowed, so two atoms must be used.</P>
+<P>Each carbon atom forms four single bonds with other carbon atoms. This can be used in defining the translation vectors: the effect of a translation vector acting on atom 1 would be to move it to one of the atoms attached to atom 2. Using this fact, the data set can easily be made:</P>
+<P>First attempt at a data set for MAKPOL. </P>
+<FONT COLOR="#ff0000"><P>MERS=(4,4,4) <BR>
+Diamond<BR>
+<BR>
+C<BR>
+C 1.545 1 0 0 0 0 1<BR>
+Tv 2.523 1 35.26439 1 0 0 1 2 <BR>
+Tv 2.523 1 35.26439 1 120 1 1 2 3<BR>
+Tv 2.523 1 35.26439 1 240 1 1 2 3<BR>
+<BR>
+</FONT>In this description, the number of unit cells to be used is too small: 4 by 4 by 4. Ideally, at least a 6 by 6 by 6 system should be use. The smaller number is used here purely for the purposes of illustration.</P>
+<P>This data set is, however, not ideal, for the following reasons:</P>
+
+<UL>
+<LI>The angle between the translation vectors is 60 degrees. This means that the unit cell must be very large in order for the distance between opposite faces to be at least 10 &Aring;ngstroms. Diamond is a Body-Centered-Cubic lattice. This means that every odd cell (e.g. 001,111,012, etc.) is missing. By specifying BCC, the angle between the translation vectors can be increased to 90 degrees. This is the ideal angle to maximize the distance between faces. </LI>
+<LI>The system has a lot of symmetry. By adding "SYMMETRY" two objectives can be met:<BR>
+First, symmetry can be used in defining the Tv. This is not very important in this unit cell, but does make it easier to change the bond-length of atom 2, in that any change in this distance is automatically made in the Tv.<BR>
+Second, if SYMMETRY is present, MAKPOL will automatically add symmetry to the data set. </LI></UL>
+
+<P>Data set for MAKPOL. File name: Make_diamond.dat</P>
+<FONT COLOR="#ff0000"><P>SYMMETRY MERS=(4,4,4) BCC <BR>
+Diamond, 64 atoms<BR>
+C<BR>
+C 1.545 1 0 0 0 0 1<BR>
+Tv 1.784 0 54.73561 0 0 0 1 2 <BR>
+Tv 1.784 0 54.73561 0 120 0 1 2 3<BR>
+Tv 1.784 0 54.73561 0 240 0 1 2 3<BR>
+<BR>
+2 19 1.1547005 3 4 5</P>
+</FONT><P>When this data set is run using MAKPOL, the following data set is generated:</P>
+<FONT COLOR="#ff0000"><P><TT>SYMMETRY MERS=(4,4,4) BCC<BR>
+Diamond, 64 atoms<BR>
+<BR>
+C 0.000000 0 0.000000 0 0.000000 0 <BR>
+C 1.545000 1 0.000000 0 0.000000 0 1 <BR>
+C 3.568025 1 54.735610 1 0.000000 0 1 2 <BR>
+C 1.545000 0 125.264390 1 0.000000 1 3 1 2 <BR>
+C 2.522974 1 35.264390 1 60.000000 1 1 2 3 <BR>
+C 1.545000 0 144.735610 1 0.000000 0 5 1 2 <BR>
+C 2.522974 0 135.000000 1 45.000000 1 3 1 2 <BR>
+C 1.545000 0 144.735610 0 -90.000000 1 7 3 1 <BR>
+C 2.522974 0 90.000000 1 90.000000 0 5 1 2 <BR>
+C 1.545000 0 90.000000 0 -144.735610 1 9 5 1 <BR>
+C 2.522974 0 180.000000 1 0.000000 0 5 1 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 11 5 2 <BR>
+C 2.522974 0 90.000000 0 180.000000 1 9 5 1 <BR>
+C 1.545000 0 144.735610 0 90.000000 0 13 9 5 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 11 5 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 15 11 6 <BR>
+C 2.522974 0 35.264390 0 -60.000000 0 1 2 3 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 17 1 2 <BR>
+C 2.522974 0 135.000000 0 -45.000000 0 3 1 2 <BR>
+C 1.545000 0 144.735610 0 90.000000 0 19 3 1 <BR>
+C 2.522974 0 60.000000 1 -54.735610 1 9 5 1 <BR>
+C 1.545000 0 90.000000 0 -90.000000 0 21 9 5 <BR>
+C 2.522974 0 120.000000 1 -35.264390 1 5 1 2 <BR>
+C 1.545000 0 144.735610 0 144.735610 0 23 5 1 <BR>
+C 2.522974 0 60.000000 0 -125.264390 1 9 5 1 <BR>
+C 1.545000 0 144.735610 0 -144.735610 0 25 9 5 <BR>
+C 2.522974 0 120.000000 0 -35.264390 0 11 5 2 <BR>
+C 1.545000 0 144.735610 0 144.735610 0 27 11 5 <BR>
+C 2.522974 0 120.000000 0 -125.264390 0 9 5 1 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 29 9 5 <BR>
+C 2.522974 0 120.000000 0 -109.471221 1 25 9 5 <BR>
+C 1.545000 0 144.735610 0 -144.735610 0 31 25 9 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 21 9 5 <BR>
+C 1.545000 0 90.000000 0 0.000000 0 33 21 22 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 17 1 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 35 17 2 <BR>
+C 2.522974 0 120.000000 0 -70.528779 1 21 9 5 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 37 21 9 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 23 5 1 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 39 23 6 <BR>
+C 2.522974 0 90.000000 0 54.735610 0 29 9 5 <BR>
+C 1.545000 0 90.000000 0 -144.735610 0 41 29 9 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 25 9 5 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 43 25 10 <BR>
+C 2.522974 0 120.000000 0 0.000000 0 29 9 5 <BR>
+C 1.545000 0 144.735610 0 -144.735610 0 45 29 9 <BR>
+C 2.522974 0 120.000000 0 180.000000 0 31 25 9 <BR>
+C 1.545000 0 144.735610 0 144.735610 0 47 31 25 <BR>
+C 2.522974 0 120.000000 0 19.471221 1 33 21 22 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 49 33 21 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 35 17 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 51 35 18 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 41 29 9 <BR>
+C 1.545000 0 90.000000 0 0.000000 0 53 41 42 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 37 21 9 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 55 37 22 <BR>
+C 2.522974 0 120.000000 0 -125.264390 0 41 29 9 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 57 41 29 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 43 25 10 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 59 43 26 <BR>
+C 2.522974 0 60.000000 0 -70.528779 0 57 41 29 <BR>
+C 1.545000 0 90.000000 0 160.528779 1 61 57 41 <BR>
+C 2.522974 0 60.000000 0 -35.264390 0 59 43 26 <BR>
+C 1.545000 0 90.000000 0 160.528779 0 63 59 43 <BR>
+XX 2.522974 0 90.000000 0 180.000000 0 7 3 1 <BR>
+XX 2.522974 0 90.000000 0 -125.264390 0 29 9 5 <BR>
+XX 2.522974 0 180.000000 0 0.000000 0 53 41 42 <BR>
+Tv 7.136049 1 0.000000 0 0.000000 0 1 65 2 <BR>
+Tv 7.136049 0 0.000000 0 0.000000 0 1 66 2 <BR>
+Tv 7.136049 0 0.000000 0 0.000000 0 1 67 2 <BR>
+<BR>
+2 1 4 6 8 10 12 14 16 18 20 22<BR>
+2 1 24 26 28 30 32 34 36 38 40 42<BR>
+2 1 44 46 48 50 52 54 56 58 60 62<BR>
+2 1 64<BR>
+4 3 6 11 12 15 16 18 33 34 35 36<BR>
+4 3 39 40 43 44 45 51 52 53 54 55<BR>
+4 3 56 59 60 67<BR>
+5 1 7 9 11 13 15 17 19 21 23 25<BR>
+5 1 27 29 31 33 35 37 39 41 43 45<BR>
+5 1 47 49 51 53 55 57 59 61 63 65<BR>
+5 1 66 67<BR>
+5 2 17<BR>
+5 14 17<BR>
+6 2 8 12 14 16 18 20 24 26 28 30<BR>
+6 2 32 36 38 40 44 46 48 50 52 56<BR>
+6 2 58 60<BR>
+7 2 19<BR>
+7 14 19<BR>
+8 3 22<BR>
+8 14 9 14 20<BR>
+9 2 10 13 22 34 41 42 54 62 64 65<BR>
+9 2 66<BR>
+10 3 26 32 42 46<BR>
+10 14 24 28 48<BR>
+11 2 15 33 35 39 43 51 53 55 59 67<BR>
+13 3 47 65<BR>
+21 2 25 61 63<BR>
+21 14 41<BR>
+23 2 27 29 31 37 45 47 49 57<BR>
+23 3 27 30 38 50 58 63<BR>
+25 3 29 57 66<BR>
+37 3 61<BR>
+62 3 64<BR>
+68 1 69 70</P></TT>
+</FONT><P>Before running this data set, more symmetry can be added "by hand." Every angle is symmetry defined, and does not need to be optimized, therefore every angle and dihedral optimization flag can be set to zero. Every angle and dihedral symmetry relation defined at the end of the data set can also be deleted. These are the lines that start with a number followed by a 2, a 3, or a 14.</P>
+<P>Every distance can be related to the bond-length of atom 2. The position of atoms 3 and 5, and the length of the translation vector Tv can be defined by distances that are exactly Sqrt(16/3). Sqrt(8/3) and Sqrt(64/3) times the C<SUB>2</SUB>-C<SUB>1</SUB> distance, respectively. These symmetry relations can be defined using MOPAC symmetry function 19. This has the form:</P>
+<P>Defining-atom 19 multiplier dependent atom(s)</P>
+<P>When these changes are made to the data set, the final data set is produced. This is:</P>
+<FONT COLOR="#ff0000"><P>SYMMETRY MERS=(4,4,4) BCC<BR>
+Diamond, 64 atoms<BR>
+<BR>
+C 0.000000 0 0.000000 0 0.000000 0 <BR>
+C 1.545000 1 0.000000 0 0.000000 0 1 <BR>
+C 3.568025 0 54.735610 0 0.000000 0 1 2 <BR>
+C 1.545000 0 125.264390 0 0.000000 0 3 1 2 <BR>
+C 2.522974 0 35.264390 0 60.000000 0 1 2 3 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 5 1 2 <BR>
+C 2.522974 0 135.000000 0 45.000000 0 3 1 2 <BR>
+C 1.545000 0 144.735610 0 -90.000000 0 7 3 1 <BR>
+C 2.522974 0 90.000000 0 90.000000 0 5 1 2 <BR>
+C 1.545000 0 90.000000 0 -144.735610 0 9 5 1 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 5 1 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 11 5 2 <BR>
+C 2.522974 0 90.000000 0 180.000000 0 9 5 1 <BR>
+C 1.545000 0 144.735610 0 90.000000 0 13 9 5 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 11 5 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 15 11 6 <BR>
+C 2.522974 0 35.264390 0 -60.000000 0 1 2 3 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 17 1 2 <BR>
+C 2.522974 0 135.000000 0 -45.000000 0 3 1 2 <BR>
+C 1.545000 0 144.735610 0 90.000000 0 19 3 1 <BR>
+C 2.522974 0 60.000000 0 -54.735610 0 9 5 1 <BR>
+C 1.545000 0 90.000000 0 -90.000000 0 21 9 5 <BR>
+C 2.522974 0 120.000000 0 -35.264390 0 5 1 2 <BR>
+C 1.545000 0 144.735610 0 144.735610 0 23 5 1 <BR>
+C 2.522974 0 60.000000 0 -125.264390 0 9 5 1 <BR>
+C 1.545000 0 144.735610 0 -144.735610 0 25 9 5 <BR>
+C 2.522974 0 120.000000 0 -35.264390 0 11 5 2 <BR>
+C 1.545000 0 144.735610 0 144.735610 0 27 11 5 <BR>
+C 2.522974 0 120.000000 0 -125.264390 0 9 5 1 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 29 9 5 <BR>
+C 2.522974 0 120.000000 0 -109.471221 0 25 9 5 <BR>
+C 1.545000 0 144.735610 0 -144.735610 0 31 25 9 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 21 9 5 <BR>
+C 1.545000 0 90.000000 0 0.000000 0 33 21 22 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 17 1 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 35 17 2 <BR>
+C 2.522974 0 120.000000 0 -70.528779 0 21 9 5 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 37 21 9 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 23 5 1 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 39 23 6 <BR>
+C 2.522974 0 90.000000 0 54.735610 0 29 9 5 <BR>
+C 1.545000 0 90.000000 0 -144.735610 0 41 29 9 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 25 9 5 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 43 25 10 <BR>
+C 2.522974 0 120.000000 0 0.000000 0 29 9 5 <BR>
+C 1.545000 0 144.735610 0 -144.735610 0 45 29 9 <BR>
+C 2.522974 0 120.000000 0 180.000000 0 31 25 9 <BR>
+C 1.545000 0 144.735610 0 144.735610 0 47 31 25 <BR>
+C 2.522974 0 120.000000 0 19.471221 0 33 21 22 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 49 33 21 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 35 17 2 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 51 35 18 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 41 29 9 <BR>
+C 1.545000 0 90.000000 0 0.000000 0 53 41 42 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 37 21 9 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 55 37 22 <BR>
+C 2.522974 0 120.000000 0 -125.264390 0 41 29 9 <BR>
+C 1.545000 0 144.735610 0 -35.264390 0 57 41 29 <BR>
+C 2.522974 0 180.000000 0 0.000000 0 43 25 10 <BR>
+C 1.545000 0 144.735610 0 0.000000 0 59 43 26 <BR>
+C 2.522974 0 60.000000 0 -70.528779 0 57 41 29 <BR>
+C 1.545000 0 90.000000 0 160.528779 0 61 57 41 <BR>
+C 2.522974 0 60.000000 0 -35.264390 0 59 43 26 <BR>
+C 1.545000 0 90.000000 0 160.528779 0 63 59 43 <BR>
+XX 2.522974 0 90.000000 0 180.000000 0 7 3 1 <BR>
+XX 2.522974 0 90.000000 0 -125.264390 0 29 9 5 <BR>
+XX 2.522974 0 180.000000 0 0.000000 0 53 41 42 <BR>
+Tv 7.136049 0 0.000000 0 0.000000 0 1 65 2 <BR>
+Tv 7.136049 0 0.000000 0 0.000000 0 1 66 2 <BR>
+Tv 7.136049 0 0.000000 0 0.000000 0 1 67 2 <BR>
+<BR>
+2 19 2.3094 3<BR>
+2 19 1.6330 5<BR>
+2 19 4.6188 68<BR>
+2 1 4 6 8 10 12 14 16 18 20 22<BR>
+2 1 24 26 28 30 32 34 36 38 40 42<BR>
+2 1 44 46 48 50 52 54 56 58 60 62<BR>
+2 1 64<BR>
+5 1 7 9 11 13 15 17 19 21 23 25<BR>
+5 1 27 29 31 33 35 37 39 41 43 45<BR>
+5 1 47 49 51 53 55 57 59 61 63 65<BR>
+5 1 66 67<BR>
+68 1 69 70</P>
+</FONT><P>Is the use of symmetry worth all this effort? Most definitely! If symmetry is NOT used, then for this small system of 64 atoms, 195 parameters would need to be optimized. That is, 3*64-6 for the 64 atoms plus 9 parameters for the three translation vectors. Optimization of a system with 195 unknowns would take much longer than for a system with precisely one unknown. For a more realistic system, involving 6 by 6 by 6 primitive unit cells, symmetry would lower the complexity of the calculation from 651 unknowns to precisely 1.<FONT COLOR="#ff0000"><BR>
+<BR>
+</P>
+</FONT><FONT SIZE=1><P></FONT></A></P></BODY>
+</HTML>

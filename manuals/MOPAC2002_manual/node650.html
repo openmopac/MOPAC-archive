@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Accuracy of Methods in MOPAC</TITLE>
+<META NAME="description" CONTENT="9. Accuracy of Methods in MOPAC">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node661.html"><LINK REL="previous" HREF="node439.html"><LINK REL="up" HREF="index.html"><LINK REL="next" HREF="node651.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node651.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="index.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node649.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node651.html">Protocols used in Determining Accuracy</A> <B>Up:</B> <A HREF="index.html">MOPAC 2002 Manual</A> <B>Previous:</B> <A HREF="node649.html">Data Requirements for</A>
+<!--End of Navigation Panel-->
+<H1>Accuracy of Methods in MOPAC </H1>
+<P>The following tables illustrate the relative accuracy of three semiempirical methods: MNDO, AM1, pm3, and PM5. PM3 and PM5 are re-parameterizations of the MNDO method, in which the AM1 form of the core-core interaction is used. In cases where two sets of MNDO parameters have been published, the more recent set will be used. </P>
+<P><HR></P>
+<P>&nbsp;</P>
+
+<UL>
+<LI><A HREF="node651.html">Protocols used in Determining Accuracy</A></A> </LI>
+<LI><A HREF="node652.html">Structure of the Tables</A></A> </LI>
+<LI><A HREF="node653.html">Limitations of MNDO</A></A> </LI>
+<LI><A HREF="node654.html">Accuracy of AM1</A></A> </LI>
+<LI><A HREF="node655.html">Accuracy of PM3</A></A> </LI>
+<LI><A HREF="node656.html">Known Faults and Errors in PM3</A></A> </LI>
+<LI><A HREF="errors_in_pm5.html">Known Faults and Errors in PM5</A> </LI></UL>
+
+<P>A very concise measure of the accuracy of the various methods is given in the following Table:</P>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0 CELLPADDING=7 WIDTH=539>
+<TR><TD VALIGN="TOP" COLSPAN=5 width="468">
+<P ALIGN="CENTER">Average Errors in Various Quantities for the NDDO Methods</TD>
+</TR>
+<TR><TD WIDTH="262" VALIGN="TOP">
+<P>Quantity</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>MNDO </TD>
+<TD WIDTH="57" VALIGN="TOP">
+<P>AM1 </TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>PM3 </TD>
+<TD WIDTH="52" VALIGN="TOP">
+<P>PM5 </TD>
+</TR>
+<TR><TD WIDTH="262" VALIGN="TOP">
+<P>Heat of Formation (kcal/mol)</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>17.76</TD>
+<TD WIDTH="57" VALIGN="TOP">
+<P>11.93</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>9.94</TD>
+<TD WIDTH="52" VALIGN="TOP">
+<P>6.34</TD>
+</TR>
+<TR><TD WIDTH="262" VALIGN="TOP">
+<P>Bond Length ( &Aring;)</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>0.126</TD>
+<TD WIDTH="57" VALIGN="TOP">
+<P>0.121</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>0.088</TD>
+<TD WIDTH="52" VALIGN="TOP">
+<P>0.061</TD>
+</TR>
+<TR><TD WIDTH="262" VALIGN="TOP">
+<P>Angles (Degrees)</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>6.43</TD>
+<TD WIDTH="57" VALIGN="TOP">
+<P>5.58</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>6.27</TD>
+<TD WIDTH="52" VALIGN="TOP">
+<P>5.71</TD>
+</TR>
+<TR><TD WIDTH="262" VALIGN="TOP">
+<P>Dipole Moments (D)</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>0.73</TD>
+<TD WIDTH="57" VALIGN="TOP">
+<P>0.50</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>0.57</TD>
+<TD WIDTH="52" VALIGN="TOP">
+<P>0.68</TD>
+</TR>
+<TR><TD WIDTH="262" VALIGN="TOP">
+<P>Ionization Potentials (eV)</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>0.93</TD>
+<TD WIDTH="57" VALIGN="TOP">
+<P>0.71</TD>
+<TD WIDTH="49" VALIGN="TOP">
+<P>0.74</TD>
+<TD WIDTH="52" VALIGN="TOP">
+<P>0.56</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER">&nbsp;</P>
+<P>The above Table can be expanded into slightly larger Tables, giving average errors, per element, for various quantities calculated using MNDO, AM1, PM3, and PM5</P>
+
+<UL>
+<LI><A HREF="Stats_for_heats.html">Heats of Formation</A> </LI>
+<LI><A HREF="Stats_for_bond_lengths.html">Bond-lengths</A> </LI>
+<LI><A HREF="Stats_for_angles.html">Angles</A> </LI>
+<LI><A HREF="Stats_for_dips.html">Dipole Moments</A> </LI>
+<LI><A HREF="Stats_for_ips.html">Ionization Potentials</A> </LI></UL>
+
+<P>In turn, these Tables were constructed using raw data from MOPAC calculations on specific systems. This raw data is presented in the following files. These files are slow to load; a measure of their size in 8.5 by 11" paper sheets is given after the file name. At the end of each file are the original references to the reference data. Except for geometries, each molecule name is a hyperlink to the data-set used in the calculation, these data-sets can be used to verify individual results.</P>
+<P><A HREF="table_of_heats.html">Heats of Formation (76)</A> (<A HREF="Notes_on_heats_of_formation.HTML">Notes on heats of formation</A>)</P>
+<P><A HREF="table_of_geos.html">Geometries (79)</A> (<A HREF="notes_on_geometries.html">Notes on geometries</A>)</P>
+<P><A HREF="table_of_dips.html">Dipole Moments (15)</A></P>
+<P><A HREF="table_of_ips.html">Ionization Potentials (22)</A></P>
+<P>&nbsp;</P>
+<P>In the event that MOPAC is modified, running one example of each element for each method can validate the integrity of the parameter sets. <A HREF="Reference_heats_of_formation.html">Reference heats of formation</A> are provided for this purpose.</P>
+<P><HR></P>
+<P><!--Navigation Panel--><A HREF="node651.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="index.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node649.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node651.html">Protocols used in Determining Accuracy</A> <B>Up:</B> <A HREF="index.html">MOPAC 2002 Manual</A> <B>Previous:</B> <A HREF="node649.html">Data Requirements for</A> <BR>
+<!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd.2001 </ADDRESS></BODY>
+</HTML>

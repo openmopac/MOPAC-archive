@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Derivatives</TITLE>
+<META NAME="description" CONTENT="8.9.3 Derivatives">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node554.html">
+<LINK REL="previous" HREF="node552.html">
+<LINK REL="up" HREF="node550.html">
+<LINK REL="next" HREF="node554.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html9001"
+ HREF="node554.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8997"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A>
+<a NAME="tex2html8991" href="piezo.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></a> 
+<A NAME="tex2html8999"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9000"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9002"
+ HREF="node554.html"> Charge Balanced Unit</A>
+<B> Up:</B> <A NAME="tex2html8998"
+ HREF="node550.html"> Solid state capability</A>
+<B> Previous:</B> <a href="piezo.html" name="tex2html8992">Piezoelectric Effect</a>
+<BR>
+<H2><A NAME="SECTION001293000000000000000">
+ Derivatives</A>
+</H2>
+Solid-state derivatives with respect to geometry are handled differently from
+molecule derivatives.  If the Cartesian coordinate derivatives are printed,
+using <TT><a href="node152.html">DEBUG</a></TT> and <TT><a href="node149.html">DCART</a></TT>, then for a molecule with an  optimized
+geometry all the derivatives will be zero.  This is  not the case for an
+infinite system.
+<P>
+An infinite system is represented by cell supplied by the user, called the
+Central Unit Cell, or the CUC, and the cells surrounding this CUC. When
+<TT>DCART</TT>, <TT>LARGE</TT>, and <TT>DEBUG</TT> are used in an infinite system
+calculation for which  the geometry has been optimized, the Cartesian
+derivatives for all unit cells are output. Many of these will be quite large,
+up to about 60 kcal/mol/&#197;.  This is not an error, rather it is a peculiarity
+of the way solid-state derivatives are stored.
+<P>
+The Cartesian derivatives of the CUC represent the sum of all forces acting on
+the atoms of the CUC due to all the atoms in the CUC.  Thus, if the atoms in
+the CUC are the set (<I>a</I>,<I>b</I>,<I>c</I>,<I>d</I>,<I>e</I>,<I>f</I>), then the Cartesian  derivatives
+for atom <I>a</I> represent the forces on <I>a</I> due to the set 
+(<I>b</I>,<I>c</I>,<I>d</I>,<I>e</I>,<I>f</I>).  The Cartesian derivatives of atom <I>a</I> do <EM>NOT</EM>
+include terms from  the surrounding unit cells.  Because of this, those atoms
+in the CUC  which are at the cell boundaries are likely to have large
+derivatives.
+<P>
+The Cartesian derivatives of the surrounding unit cells represent the  forces
+acting on the atoms in those cells arising from the atoms of the CUC.  Again,
+this is an unbalanced set of forces, and those atoms near to the cell
+boundaries are likely to have large resultant forces.
+<P>
+It is possible to evaluate the total, balanced, forces acting on the atoms of
+the CUC.  This is done by simply adding the forces acting on the atoms of the
+three unit cells.  When the keywords given above are used, the last part of the
+derivative output consists of the forces acting on the CUC itself.
+<P>
+Only by representing the forces in this unusual manner can the information
+necessary for calculating the derivative of the translation vector be
+generated.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html9001"
+ HREF="node554.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8997"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A>
+<a NAME="tex2html8991" href="piezo.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></a> 
+<A NAME="tex2html8999"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9000"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9002"
+ HREF="node554.html"> Charge Balanced Unit</A>
+<B> Up:</B> <A NAME="tex2html8998"
+ HREF="node550.html"> Solid state capability</A>
+<B> Previous:</B> <a href="piezo.html" name="tex2html8992">Piezoelectric Effect</a>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

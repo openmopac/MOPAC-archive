@@ -1,0 +1,1461 @@
+\section{Localized Molecular Orbital Theory}\label{lmot}
+\index{MOZYME!theory}\index{Localized MOs!theory of}
+\subsection{Why Use Localized Molecular Orbitals?}
+Using conventional SCF methods, the time required for a SCF calculation rises
+as the third or higher power of the size of the system (number of atoms,
+orbitals, or electrons).  For semiempirical methods, this places a practical
+limit on the number of atoms in a molecule:   about 500--1,000, using a
+supercomputer.  
+
+\index{Conventional SCF!N$^3$ dependence} The origin of the $N^3$ dependence
+lies in the way conventional molecular orbitals are generated and used.  They
+are generated from a Fock matrix  either  by a diagonalization, or, if
+approximate M.O.s exist, by a  pseudo-diagonalization.  Both processes are of
+type $N^3$.  Once generated, they are used in the construction of a density
+matrix.   Because every M.O. extends over every atom, this process is also of
+order $N^3$.   Most of the time in a semiempirical calculation is spent in
+these two operations, therefore the overall time dependency of conventional
+semiempirical calculations rises as $N^3$.
+
+To understand how limiting this dependency is, consider how the time
+requirement rises with increasing numbers of atoms.  For the sake of
+discussion, assume that the time required for an SCF calculation of an amino
+acid is one second.  Table~\ref{t-amino} shows the time required for larger
+systems.
+
+\begin{table}
+\begin{center}
+\caption[Times for One SCF Calculation]{\label{t-amino}Predicted Times Required 
+for One SCF Calculation Using Conventional SCF Methods*}
+\begin{tabular}{rrl}\\ \hline
+No.\ of Residues  &   \multicolumn{2}{c}{Time} \\ \hline
+2        &   8.0 & seconds \\
+5        &   2.1 & minutes \\
+10       &  16.7 & minutes \\
+20       &   2.2 & hours   \\
+50       &  1.4 & days   \\
+100      & 11.6 & days  \\
+200      & 3.1 & months \\
+500      & 4.0 & years  \\
+1,000    & 31.7 & years \\
+2,000    & 253.6 & years \\
+\hline
+\end{tabular} \\
+$*$: Using Conventional SCF Methods, \\ and assuming that one
+amino acid \\ runs in one second.
+\end{center}
+\end{table}
+
+Many enzymes containing thousands of residues are known.  It is obvious that
+these systems cannot be studied using conventional SCF methods.  By using
+localized molecular orbitals, the time dependency can be changed from $N^3$ to
+$N^1$.  LMO methods require much more arithmetic manipulation, in that every
+array which holds atomic orbital information has one or more associated integer
+arrays which specify the atoms involved and their location. For this reason,
+LMO methods are much slower than conventional methods for small systems.  
+%LMO and conventional methods run at about the same speed for
+%systems of about 100 atoms, and for larger systems LMO methods are faster.
+%If the $N^3$ to $N^1$ ratio is followed exactly, then a system of 1,000 atoms 
+%should run about 100 times faster using LMO methods, and a system of 
+%10,000 atoms should run 10,000 times faster.
+
+\subsubsection{What is a Localized Molecular Orbital?}
+Unlike a conventional molecular orbital, which extends over all atoms, a
+localized molecular orbital is   localized in a small region of the molecule. 
+Almost all of a localized M.O.\ can be found on one, two, or, at most, three
+atoms. The nature and behavior of the LMO is dictated by these few atoms. Small
+amounts of the LMO can be found on the surrounding atoms.  Although the effect
+on these small contributions on the nature of the LMO is very small, their
+existence is responsible for almost all of the time spend on mathematical
+manipulation of the LMOs.
+
+\subsubsection{Energy Considerations.}\index{Energy considerations}
+The electronic energy of a system is given by 
+\begin{equation}
+E_{elect} = \frac{1}{2}\sum_{\lambda}\sum_{\sigma},
+P_{\lambda\sigma}(H_{\lambda\sigma}+F_{\lambda\sigma})
+\end{equation}
+where $P_{\lambda\sigma}$ is the density matrix element connecting atomic
+orbitals $\phi_{\lambda}$ and $\phi_{\sigma}$.
+
+In practice, the density matrix elements rapidly become small as the
+interatomic distance increases.  Only for atoms which are chemically bonded
+together will $P_{\lambda\sigma}$ be large.  As an example, in propanolamine,
+the smallest bond order between two chemically bonded atoms is 0.98. Between
+any two neighboring but non-chemically bound atoms (that is, atoms  separated
+by one atom), the largest bond order is 0.015, and for all other  interactions,
+the bond-orders are very small.
+
+Because the electronic energy is determined by the density matrix, the
+contribution to the electronic energy arising from density matrix elements
+between atoms which  are not near to each other is small, and becomes very
+small with increasing  distance.  The contributions from atoms separated by
+more than about 10~\AA ngstroms is quite negligible, and can safely be
+ignored.  From this it follows that the only density matrix terms which need to
+be considered are those arising from atoms separated by less that 10~\AA
+ngstroms.  Since the density matrix is constructed from the M.O.s only, then,
+in LMO theory, the LMOs need only extend over a distance of about 10~\AA
+ngstroms from the center of the LMO.  
+
+\subsubsection{Limitations on Systems.}
+The use of localized molecular orbitals to help solve the self-consistent
+field equations is limited to what we will call `normal' compounds.  In
+order for a system   to be classified as `normal', it must be possible to
+sketch the molecular structure using only the following drawing elements:
+\index{Compounds!`normal'!definition}
+
+\begin{enumerate}
+\item Chemical symbols to represent the atoms.
+\item A maximum valency of 4 for any non-hydrogen atom.
+\item Lines to represent $\sigma$ bonds.
+\item Pairs of parallel lines to represent double bonds, and three
+parallel lines to represent triple bonds.
+\item Pairs of dots to represent lone-pairs.
+\item `+' and `--' signs, to represent charges.
+\end{enumerate}
+
+\index{Aromatic rings}\index{Delocalized $\pi$ systems}
+\index{pi@$\pi$ systems!delocalized}
+This definition allows aromatic rings and delocalized $\pi$ systems to be
+present, as these structures can be represented as localized $\pi$ bonds.
+
+\index{Hypervalent systems!allowed}
+What is {\em not} allowed are radicals, open-shell systems, electronic
+excited states, etc.  Hypervalent systems are allowed, as they can always be
+written as non-hypervalent Lewis structures, for example, SF$_6$ can be submitted
+as a system of point group $O_h$, in which case the Lewis structure generated
+would be represented by SF$_4^{++}$ plus 2F$^-$.
+
+\subsection{Memory Management}\index{Memory!management}
+\subsubsection{The Nature of the Problem.}
+Conventional semiempirical software is unsuitable for the calculation of large
+systems, due to the heavy memory demands made.  For example, in MOPAC~93, the
+memory requirement (in Kb) rises as $2249+17.15N+7.395N^2$,  where $N$ is the
+number of heavy (non-hydrogen) atoms in the molecule, assuming that the number
+of hydrogen and non-hydrogen atoms are equal.  In proteins, the number of
+hydrogen and non-hydrogen atoms are roughly equal, so the expression for
+MOPAC~93 would be applicable to proteins.  Table~\ref{n2size} illustrates how
+rapidly the memory requirement increases for proteins.
+
+\begin{table}
+\caption{\label{n2size} MOPAC Memory Requirements for Proteins}
+\begin{center}
+\begin{tabular}{rrr}
+\hline 
+$N$   &  No.$^{\dag}$ of &   Memory   \\
+      & Residues & Needed (Mb)  \\ \hline
+1000  &  65  &  7,414 \\
+2000  & 131  & 29,616 \\
+3000  & 196  & 66,609 \\
+4000  & 262  &118,389 \\
+5000  & 327  &184,961 \\
+\hline
+\end{tabular} \\
+\dag : Number of residues is approximate only;\\ the number will vary
+from protein to protein
+\end{center}
+\end{table}
+
+Clearly, calculation of systems of only a few hundred residues is
+impractical.   By making approximations, by altering the way arrays are
+specified, and by use of localized molecular orbitals, the memory
+requirements can be reduced. As a result of these changes, the memory
+requirement for MOZYME is considerably less than that for MOPAC.  For
+example, a MOPAC calculation of a system of 3,686 atoms
+(bacteriorhodopsin)  would require over 100Gb; the same calculation
+using MOZYME would require only 408Mb.  This represents less than
+0.5\%\ of the memory required by MOPAC.  A more detailed
+\htmlref{description of array specification}{newmat} appears
+\begin{htmlonly}
+elsewhere.
+\end{htmlonly}
+\begin{latexonly}
+on p.~\pageref{newmat}.
+\end{latexonly}
+
+
+\subsubsection{Distance Cutoffs.}\label{cutoff}\index{Cutoff|ff}\label{m2el}
+In conventional SCF calculations, all interactions regardless of distance are
+calculated.  This is both impractical and unnecessary in LMO work. Impractical,
+because the storage required would rapidly become very large: the storage
+necessary for merely the two-electron two-center integrals of  a system of $M$
+non-hydrogen and $N$ hydrogen atoms  would be $50M(M-1)+10M\times
+N+\frac{1}{2}N(N-1)$ array elements. Unnecessary, because many of the integrals
+would never be used in the LMO calculation, anyway.  Consider the electronic
+energy terms.  These all depend on the  density matrix elements.  If a density
+matrix element, $P_{\lambda\sigma}$  is zero, then the associated  energy term
+is independent of $H_{\lambda\sigma}$ and $F_{\lambda\sigma}$. Similarly, the
+Fock element $F_{\lambda\sigma}$ depends on $P_{\lambda\sigma}$; therefore, if
+$P_{\lambda\sigma}$ is zero, then  $F_{\lambda\sigma}$ is independent of the
+value of the exchange integral 
+$<\!\lambda\sigma|\frac{e^2}{r}|\lambda\sigma\!>$.
+
+\begin{table}
+\caption{\label{bo}Bond-Orders in GLY-GLY-GLY-GLY}
+\begin{center}
+\begin{tabular}{lrlrrr}
+\hline
+Bond to  &  Order & Bond to & Order\\
+\hline
+C$_2$& 1.017090  &C$_8$ & 0.000009   \\
+C$_3$& 0.015249  &C$_9$ & 0.000001 \\
+N$_4$& 0.004989  &N$_{10}$ & 0.000000  \\
+C$_5$& 0.001219  &C$_{11}$ & 0.000000  \\
+C$_6$& 0.000086  &C$_{12}$ & 0.000000 \\
+N$_7$& 0.000031  \\
+\hline
+\end{tabular}
+
+Bonds are between the terminal nitrogen and the backbone atoms.
+
+GLY-GLY-GLY-GLY has the structure:
+$\chem H_2N\!-\!CH_2\!-\!CO\!-\!NH\!-\!CH_2\!-\!CO\!-\!NH\!-\!CH_2\!-\!CO\!-\!NH\!-\!CH_2\!-\!COOH  $.
+\end{center}
+\end{table}
+
+The bond-order is a measure of the electron density between two atoms.  
+Table~\ref{bo} shows the bond-orders between the terminal nitrogen and the
+backbone atoms in the tetrapeptide GLY-GLY-GLY-GLY. \label{cutofs}  For atoms
+separated by more than 3 - 4 bonds, that is, by more than  5 - 7 \AA ngstroms,
+the bond-orders rapidly become very small.  Also, at such distances the overlap
+of two atomic orbitals becomes extremely   small.  Since  the one-electron
+interactions depend on the overlap 
+\begin{equation}
+H_{\lambda\sigma} = S_{\lambda\sigma}(\beta_{\lambda}+\beta_{\sigma}),
+\end{equation}
+where $S_{\lambda\sigma}$ is the atomic orbital overlap, and $\beta_{\lambda}$
+and $\beta_{\sigma}$ are atomic orbital parameters, it follows that the
+one-electron interactions at distances greater than about 6--7 \AA ngstroms will
+also be vanishingly small.
+
+By calculating and storing only the one-electron integrals representing
+interactions of less than a given distance, a considerable saving in storage
+requirements can be achieved.
+
+Unlike the one-electron integrals, the value of some two-electron two-center 
+integrals does not fall off rapidly with increasing distance.  The 100
+two-electron  integrals involving two atoms can be divided into five groups, as
+shown in Table~\ref{multipoles}.  Some of these integrals, such as the
+$<\!pp|pp\!>$ integrals, can be expressed in terms of two multipoles, here a
+monopole and a quadrupole; however, for the purpose of this discussion the
+effect of the lower multipole---the monopole in this case---dominates.  
+
+\begin{table}
+\caption{\label{multipoles} Multipolar Representation of the Two Electron Two Center Integrals}
+\begin{center}
+\begin{tabular}{lcrcc} \hline
+Multipole    & Example & No. & \multicolumn{2}{c}{Distance Dependence} \\
+             &         &     & Energy & Gradient \\ \hline
+Monopole     & $<\!ss|ss\!>$& 16  & $r^{-1}$& $r^{-2}$\\
+Dipole       & $<\!ss|sx\!>$ & 24  & $r^{-2}$& $r^{-3}$\\
+Quadrupole   & $<\!ss|xy\!>$ & 33  & $r^{-3}$& $r^{-4}$\\
+Octapole     & $<\!sx|xy\!>$ & 18  & $r^{-4}$& $r^{-5}$\\
+Hexadecapole & $<\!xy|xy\!>$ &  9  & $r^{-5}$& $r^{-6}$\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+At distances greater than about 5 or 6 \AA ngstroms, the behavior of these
+integrals becomes very simple.  Of the 100 integrals, 60 represent quadrupoles 
+or higher multipoles and have a negligible value.  The 16 monopole terms --
+representing simple electrostatic repulsion -- are all composed of the same
+monopole term and various quadrupolar components, and can be set equal. The 24
+dipole terms can be expressed as a dipole interacting with either a simple
+monopole (an $<\! ss|sx\!>$, for example), or a monopole plus quadrupole,
+e.g.,   $<\! xx|sx\!>$. Since the quadrupolar terms can be ignored, the 24
+dipolar terms can be represented by 6 simpler terms, of generic form  $<\!
+sp|ss\!>$  and  $<\! ss|sp\!>$.  Thus, out of the 100 integrals needed at small
+distances, only 7 are needed at larger distances. At still larger distances, 30
+\AA ngstroms or more, even the dipolar terms become negligible.  Therefore, at
+such large distances only the single monopole term, representing simple
+electrostatic repulsion, need be used.
+
+Two-electron two-center integrals must therefore be represented in a different
+way from the one-electron two-center integrals.  As with the one-electron
+integrals, a cutoff distance can be specified.  For convenience, the
+one-electron and two-electron cutoff distances are set equal. As a result, all
+one- and two-electron  integrals which represent interactions between atoms
+that are separated by less than the cutoff distance would then be treated using
+standard NDDO approximations. The simplest electrostatic repulsion 
+($<\!ss|ss\!>$) between electrons on atoms  that are separated by more than the
+cutoff distance is approximated by the conventional NDDO term 
+\begin{equation}
+<\!\phi_{\lambda}\phi_{\lambda}|e^2/r_{AB}|\phi_{\sigma}\phi_{\sigma}\!> =
+\frac{1}{\left (R_{AB}^2+\frac{1}{2}(
+\frac{1}
+{<\!\phi_{s}\phi_{s}|e^2/r_{AA}|\phi_{s}\phi_{s}\!>} +
+\frac{1}{<\!\phi_{s}\phi_{s}|e^2/r_{BB}|\phi_{s}\phi_{s}\!>})
+\right )^{\frac{1}{2}}}.
+\end{equation}
+
+This was chosen in order to minimize the discontinuity at  the cutoff
+distance.  Similar NDDO approximations were used for the other dipolar terms.
+
+In recognition of this fact, SCF calculations can be simplified considerably 
+by including only those NDDO terms which apply to atoms separated by less than
+a preset limit, and including only the electrostatic term for interactions
+between atoms separated by more than that limit.
+
+\label{cutof1} 
+\label{cutof2} 
+The various cutoffs used have specific names and defaults.  These are summarized
+in Table~\ref{cutoffs}.
+\begin{table}
+\caption{\label{cutoffs} Distance Cutoffs for Various Types of Interaction}
+\begin{center}
+\begin{tabular}{|l|l|l|l|r|cc}  \hline
+Type &Less than Cutoff & Greater than Cutoff & Cutoff Name & Default \\ \hline
+Two electron & All multipoles & Dipole plus Monopole & \comp{CUTOF2} & 12\AA \\
+Two electron & Dipole plus Monopole & Monopole & \comp{CUTOF2} & 30\AA \\
+One electron & Overlap calculated & Overlap not calculated & \comp{CUTOF2} & 7\AA \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+By default, the cutoff distances are set sufficiently large that any  $\Delta
+H_f$ calculated using these values will agree with that obtained by using
+conventional methods  within 0.1 kcal/mol. \comp{CUTOF2} can be reduced, under
+user control, to save computational time and to reduce the memory demand.  To
+avoid serious errors, \comp{CUTOF2} should not be set below about 5~\AA
+ngstroms.
+
+Once \comp{CUTOF2} is set, all one-electron integrals involving atoms separated
+by less than \comp{CUTOF2} can be evaluated.  To save space, only those
+integrals which are evaluated are stored an an array. For the one-electron
+integral,  this array is called $H$.  All integrals relating to any pair of
+atoms are stored contiguously.  Given the starting address of an atom-pair, the
+sequence in which the integrals occur is determined only by the number of
+atomic orbitals on each atom. However, the order in which atom pairs are stored
+is not so simple.  The only way to find the starting address of any atom pair
+is to have that address stored in a new array.  This array is called
+\comp{IJBO}, and has the following structure:
+
+\comp{IJBO} is a square array, of size $N$ by $N$, where $N$ is the
+number of atoms. The starting address of integral string for atoms 
+$A$ and $B$ is stored in array element IJBO(A,B).  If $A \ne B$, then the
+starting address is also stored in IJBO(B,A).  All pairs of atoms
+separated by more than \comp{CUTOF2} do not have associated integral
+strings.  To recognize this, the relevant array elements in \comp{IJBO}
+are set to `$-1$', and if the interatomic distance is greater than
+\comp{CUTOF1} then the array element is set to `$-2$'. Zero cannot be
+used, because of \hyperref[pageref]{the way starting addresses are
+defined}{ (see Page~}{)}{starting-addresses}.
+
+To reiterate: All integrals involving atoms, $A$ and $B$,  separated by  less
+than \comp{CUTOF2} are stored, and the starting address of the integrals  is
+given by IJBO(A,B) and IJBO(B,A).  With the exception of some electrostatic
+terms, no integrals involving atoms separated by more than \comp{CUTOF2} are
+calculated or stored.  The relevant array element in \comp{IJBO} is set to
+`$-1$' or `$-2$'. 
+
+
+To summarize:
+
+There are three regions around each atom.  The sizes of these regions are
+determined by \comp{CUTOF2=$m.mm$} (default: $m.mm$=12) and
+\comp{CUTOF1=$n.nn$} (default $n.nn$=30). In the first region, 0.0 to $m.mm$
+\AA ngstroms, all  NDDO interactions are used.  Between $m.mm$ and $n.nn$ \AA
+ngstroms, only monopolar and dipolar electrostatic terms are used, and beyond
+$n.nn$ \AA ngstroms, the only term considered is the monopolar electrostatic
+interaction.
+
+\input{l_lewis}
+
+\subsection{Construction of Starting Localized Molecular Orbitals}
+\index{LMOs! construction of starting}
+\index{Construction of starting LMOs}
+In conventional semiempirical methods, molecular orbitals are created by the
+diagonalization of an atomic orbital secular determinant.  Because of the size
+of the matrices involved in proteins, this operation is impractical; therefore
+the starting orthogonal localized molecular orbitals must be constructed in a
+different way.
+
+Monatomic and diatomic LMOs are constructed using all the atomic orbitals in
+the system.  Care must be taken to ensure that a realistic set of starting LMOs
+are generated.  If the set is not realistic, then, although an SCF could be
+calculated, more work would be involved.  The most obvious set of LMOs is that
+set corresponding to the classical line-drawing of a molecule: a sigma
+framework, lone pairs, $\pi$-bonds, and charges, localized on specific atoms. 
+Without loss of rigor, delocalized $\pi$ systems can be represented  as
+localized $\pi$ bonds.  The purpose in constructing the mono and di-atomic LMOs
+is to have a starting set of LMOs, which can then be used as the basis for a
+self-consistent set of LMOs.
+
+The steps involved in constructing the LMOs are as follows:
+\begin{enumerate}
+\item Hybrid atomic orbitals are constructed for each heavy atom.
+\item All sigma bonds are identified.
+\item Diatomic $\sigma$ LMOs are constructed.
+\item All lone pairs are identified, and monatomic LMOs constructed.
+\item All non-cyclic $\pi$ systems are identified, and diatomic $\pi$ LMOs
+ bonds constructed.
+\item All cyclic $\pi$ systems are identified, and diatomic $\pi$ LMOs
+constructed.
+\item Any unused atomic orbitals are identified as cationic or anionic centers,
+and monatomic LMOs constructed.
+\end{enumerate}
+
+Inspection of this sequence shows that the resulting set of LMOs will, in fact,
+correspond to the classical line-sketch of the molecular structure.
+
+There are one or two less than obvious details involved in this sequence, which
+will now be described.
+
+\subsubsection{Construction of Hybrids}\label{make_hybrid}
+\index{Hybrid orbitals!construction of}
+\index{Construction of hybrid orbitals}
+
+With the exception of hydrogen, all atoms have an $s-p$ basis set, which must
+be mixed to form four hybrid atomic orbitals.  Ideally, the main lobes of the
+hybrid orbitals involved in $\sigma$ bonding would point towards the other
+atoms involved in those $\sigma$ bonds.  To achieve this, information regarding
+the immediate environment of the atom must be used.  As only the 
+direction of the neighboring atoms is important, the energy terms relating
+to the one-electron integrals between the atom and the $s$ orbital of the
+neighboring atoms can be used.
+
+The process of using these energy terms to generate hybrid orbitals involves
+two steps.  First, a set of M.O.s which involve the atomic orbitals of an
+atom and the $s$ orbitals of its immediate neighbors is constructed by
+diagonalizing the interaction matrix.  Consider a carbon atom in 
+ethane.  Using the numbering scheme and orientation shown in 
+Figure~\ref{c2h6pic}, the complete MNDO one-electron matrix for ethane is 
+shown in Table~\ref{c2h6f}.
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+% \begin{picture}(120,130)
+% \setlength{\unitlength}{0.07cm}
+% \put(40 ,-20){\includegraphics{c2h6}}
+% \put(120,45){
+% \begin{picture}(10,10)
+% \put(40,-20){\vector(0,1){20}}
+% % \put(40,-20){\line(0,1){20}}
+% \put(38,2){Y}
+% \put(40,-20){\vector(1,0){20}}
+% \put(61,-22){X}
+% \end{picture}
+% }
+% \end{picture}
+\includegraphics{c2h6}
+\caption{\label{c2h6pic} Ethane, Showing Orientation and Numbering System}
+\end{figure}
+
+The one-electron matrix is used in the construction of the interaction matrix.
+This matrix is of size 4+$n$, where $n$ is the number of neighbors, i.e, $n$ =
+1, 2, 3, or 4.  The first four functions are the $s$ and $p$ atomic orbitals
+of the atom; the remaining functions are the $s$ orbitals of the neighbors.
+The only non-zero terms are those representing the interaction of the 
+atom with its neighbors.  Therefore, for the first carbon in ethane, the
+interaction matrix would be that shown in Table~\ref{c2h6c1}.
+
+\begin{table}
+\caption{\label{c2h6f}One-Electron Integral Matrix for Ethane}
+\begin{center}
+\begin{tabular}{l|rrrrrrr} \hline
+A.O.&C$(1)_s$&C$(1)_{p_x}$&C$(1)_{p_y}$&C$(1)_{p_z}$&C$(2)_s$&C$(2)_{p_x}$&C$(2)_{p_y}$\\
+\hline
+C$(1)_s$&-126.7891\\
+C$(1)_{p_x}$ &  -6.5701 &-114.2822\\
+C$(1)_{p_y}$ &   0.0000&  0.0000&-111.8502\\
+C$(1)_{p_z}$ &   0.0000&  0.0000&  0.0000&-111.8502\\
+C$(2)_s$     &  -5.3977& -4.2826&  0.0000&  0.0000&-126.7891\\
+C$(2)_{p_x}$ &   4.2826&  2.4743&  0.0000&  0.0000&  6.5701&-114.2822\\
+C$(2)_{p_y}$ &   0.0000&  0.0000& -1.1990&  0.0000&  0.0000&  0.0000 &-111.8502\\C$(2)_{p_z}$ &   0.0000&  0.0000&  0.0000& -1.1990&  0.0000&  0.0000 &  0.0000 \\H$(1)$       &  -1.0116& -0.6430& -0.3460&  0.0000& -5.7834& -1.2013 & -3.0984\\
+H$(1)$       &  -1.0116& -0.6430&  0.1730& -0.2996& -5.7834& -1.2013 &  1.5492\\
+H$(1)$       &  -1.0116& -0.6430&  0.1730&  0.2996& -5.7834& -1.2013 &  1.5492\\
+H$(1)$       &  -5.7834&  1.2013& -1.5492&  2.6833& -1.0116&  0.6430 & -0.1730\\
+H$(1)$       &  -5.7834&  1.2013&  3.0984&  0.0000& -1.0116&  0.6430 &  0.3460 \\H$(1)$       &  -5.7834 &  1.2013& -1.5492& -2.6833& -1.0116&  0.6430 & -0.1730\\\rule[-0.0cm]{0cm}{0.6cm}\\
+\hline
+A.O.&C$(2)_{p_z}$&H$(1)$&H$(2)$&H$(3)$&H$(4)$&H$(5)$&H$(6)$\\
+\hline
+C$(2)_{p_z}$&-111.8502\\
+H$(1)$ &0.0000    & -99.6727\\
+H$(1)$ &2.6833    &  -0.9455& -99.6727\\
+H$(1)$ &2.6833    &  -0.9455&  -0.9455& -99.6727\\
+H$(1)$ &0.2996    &  -0.2444&  -0.0814&  -0.2444& -99.6727\\
+H$(1)$ &0.0000    &  -0.0814&  -0.2444&  -0.2444&  -0.9455& -99.6727\\
+H$(1)$ &0.2996    &  -0.2444&  -0.2444&  -0.0814&  -0.9455&  -0.9455& -99.6727\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{\label{c2h6c1}Interaction Matrix used in Constructing Hybrid Orbitals for C$_1$ in Ethane}
+\begin{center}
+\begin{tabular}{l|rrrrrrrr} 
+\hline
+A.O. &   C$(1)_s$ &C$(1)_{p_x}$ & C$(1)_{p_y}$ &  C$(1)_{p_z}$ &  C$(2)_s$ &H$(1)$ &H$(2)$ & H$^3$ \\
+\hline
+C$(1)_s$ & 0.0000  &  \\
+C$_{p_x}$& 0.0000  & 0.0000  &  \\
+C$_{p_y}$& 0.0000  & 0.0000  & 0.0000 &      \\
+C$_{p_z}$& 0.0000  & 0.0000  & 0.0000 &  0.0000 &   \\
+C$(2)_s$ &-5.3977  &-4.2826  & 0.0000 &  0.0000 &  0.0000  \\
+H$(1)$   &-5.7834  & 1.2013  &-1.5492 &  2.6833 &  0.0000 &  0.0000  \\
+H$(1)$   &-5.7834  & 1.2013  & 3.0984 &  0.0000 &  0.0000 &  0.0000 &  0.0000  \\
+H$(1)$   &-5.7834  & 1.2013  &-1.5492 & -2.6833 &  0.0000 &  0.0000 &  0.0000 &  0.0000  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{\label{low4}Eigenvectors of Lowest Energy from Interaction Matrix}
+\begin{center}
+\begin{tabular}{r|rrrrrrrr}  \hline
+$\Psi$ &   C$(1)_s$ &C$(1)_{p_x}$ & C$(1)_{p_y}$ &  C$(1)_{p_z}$ &  
+C$(2)_s$ &H$(1)$ &H$(2)$ & H$(3)$ \\
+\hline
+1&  0.7069& 0.0150& 0.0000& 0.0000& 0.3409& 0.3577& 0.3577& 0.3577 \\
+2& -0.0150& 0.7069& 0.0000& 0.0000& 0.6195&-0.1968&-0.1968&-0.1968 \\
+3&  0.0000& 0.0000& 0.6112& 0.3556& 0.0000&-0.0019&-0.4990& 0.5009 \\
+4&  0.0000& 0.0000&-0.3556& 0.6112& 0.0000&-0.5773& 0.2903& 0.2870 \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{\label{low4l}Localized Diatomic Molecular Orbitals for C$_1$ in Ethane}
+\begin{center} 
+\begin{tabular}{r|rrrrrrrr} \hline
+$\Psi$ &   C$(1)_s$ &C$(1)_{p_x}$ & C$(1)_{p_y}$ &  C$(1)_{p_z}$ &  
+C$(2)_s$ &H$(1)$ &H$(2)$ & H$(3)$ \\
+\hline
+1&   0.3277& 0.6266& 0.0000& 0.0000& 0.7071& 0.0000& 0.0000& 0.0000  \\
+2&  -0.3617& 0.1892&-0.2887& 0.5000& 0.0000&-0.7071& 0.0000& 0.0000  \\
+3&   0.3618&-0.1892& 0.2887& 0.5000& 0.0000& 0.0000& 0.0000& 0.7071  \\
+4&   0.3618&-0.1892&-0.5774& 0.0000& 0.0000& 0.0000& 0.7071& 0.0000  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{\label{c1hyb}Hybrid Atomic Orbitals for C$_1$ in Ethane}
+\begin{center}  
+\begin{tabular}{c|rrrrrrrr}\hline
+Hybrid &   C$(1)_s$ &C$(1)_{p_x}$ & C$(1)_{p_y}$ &  C$(1)_{p_z}$  \\
+1 & 0.46345 &   0.88612 &   0.00002 &  -0.00004  \\
+2 &-0.51159 &   0.26761 &  -0.40825 &   0.70711  \\
+3 & 0.51161 &  -0.26756 &   0.40825 &   0.70711  \\
+4 & 0.51161 &  -0.26756 &  -0.81650 &   0.00000  \\
+\hline
+\end{tabular}
+\end{center} 
+\end{table}
+
+The four eigenvectors of lowest energy (Table~\ref{low4}) are used to form the
+hybrid orbitals.  A simple unitary transformation converts these eigenvectors
+into localized di-atomic bonds (Table~\ref{low4l}).  This transformation is 
+the localization procedure, which is very rapid. Finally, before the hybrid
+functions can be used, they must be normalized to unity.  For C$_1$ in ethane,
+the final hybrid atomic orbitals are presented in Table~\ref{c1hyb}.
+
+\index{sp$^3$ hybrid atomic orbitals} This simple procedure works not just for
+atoms of $sp^3$ hybridization. Consider an $sp^2$ system.  Now, with only three
+ligands, the interaction  matrix for the atom will be of order seven.  The
+hybrid orbitals are constructed from the lowest four eigenvectors resulting
+from diagonalization  of this matrix. As with the $sp^3$ system, the hybrid
+orbitals are first localized, then re-normalized.  This gives four hybrid
+orbitals, three of which are the $sp^2$ hybrids, with the fourth being a pure
+$p$ orbital.
+
+This  procedure is quite general, as can be illustrated by oxygen, first in a
+hydroxy and then in a double-bonded oxygen environment.  In a hydroxy
+environment an oxygen will have two ligands: so the interaction  matrix will be
+of order six.  Two $sp$ hybrids  and two $p$ orbitals will be  created.  Later
+on, we will see that the two $p$ orbitals become lone-pairs.
+
+In the case of the double-bonded oxygen, the interaction matrix is of  order
+five.  The lowest eigenvector of this matrix corresponds to the oxygen-ligand
+$\sigma$-bond, and consists of a mixture of oxygen $s$ and $p$ orbitals.  To
+satisfy orthogonality requirements, two other $s-p$ hybrids are also made, so
+the overall hybridization is three $sp^2$ orbitals plus one  pure $p$ orbital.
+As with the hydroxy oxygen, two of these orbitals will eventually be used to 
+create lone pairs. 
+
+When there is only one or two atoms bonded to an atom, the non-bonding hybrid
+orbitals generated are ill-defined by a unitary transform.  This ill-definition
+is unimportant in that at self-consistency the density matrix is independent of
+the starting LMOs.  It is important, however, in that the starting LMOs are
+very sensitive to minute numerical differences, of the type encountered on
+porting the program to different platforms.
+
+To prevent this, the ill-definition is removed by adding an extra constraint,
+subroutine \comp{MINLOC}. If the atom has only one ligand, oxygen in carbonyl,
+for example, then the three non-bonding degenerate hybrid orbitals are mixed so
+that the $p_x$ and $p_y$ orbitals on one hybrid have zero coefficients, and the
+$p_x$ orbital on another hybrid also has a zero coefficient.
+
+If the atom has two ligands, then the two non-bonding degenerate hybrids are
+mixed so that $p_x$ orbital on one of the hybrids has a zero coefficient.
+
+Hybrid atomic orbitals form an orthonormal set.  This is a natural consequence
+of the fact that the hybrids are obtained by a unitary transform of the
+starting orthonormal atomic orbitals.  
+
+\subsubsection{Construction of Starting Localized Molecular Orbitals}
+In order to illustrate the procedure for generating starting LMOs, we will use
+benzaldehyde as the test example.  The line-sketch of benzaldehyde is shown in
+Figure~\ref{c6h5cho}.  Before starting the procedure, let us spend a little
+time examining the sketch.  From the empiric formula of  benzaldehyde,
+C$_7$H$_6$O, we see that there are ($7\times4+6\times1+1\times6$) = 40 valence 
+electrons, and ($7\times4+6\times1+1\times4$) = 38 valence orbitals.  Since
+each  diatomic bond involves two electrons and two orbitals, and each lone-pair
+involves two electrons and one orbital, we see that there must be 18 diatomic
+bonds and two lone pairs. The diatomic bonds can be divided into three sets: 14
+$\sigma$ bonds, one  localized $\pi$ bond and three $\pi$ bonds in the aromatic
+ring. Every atom contributes both atomic orbitals and electrons to the system. 
+These contributions are shown in Table~\ref{contrib}.
+
+\begin{table}
+\caption{\label{contrib} Atomic Orbital and Electron Contributions in
+Benzaldehyde}
+\begin{center}
+\begin{tabular}{lcccccccccccccc} \hline
+Quantity & C$_1$ & C$_2$ & C$_3$ & C$_4$ & C$_5$ & C$_6$ & H$_2$ & H$_3$ & 
+H$_4$ & H$_5$ & H$_6$ & C$_7$ & O$_1$ & H$_7$  \\ \hline
+Orbitals  & 4 &  4 & 4 & 4 & 4 & 4 & 1 & 1 &  1 &  1 &  1 &  4 & 4 & 1  \\
+Electrons & 4 &  4 & 4 & 4 & 4 & 4 & 1 & 1 &  1 &  1 &  1 &  4 & 6 & 1  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+% \input{l_c6h5cho}
+\begin{center}
+\includegraphics{l_c6h5cho}
+\end{center}
+\caption{\label{c6h5cho} Electronic Structure of Benzaldehyde}
+\end{figure}
+
+\subsubsection{Construction of Sigma Framework}
+\index{Construction of sigma orbitals}
+\index{Sigma Orbitals!construction of}
+Because it is the simplest set of bonds to identify,  the $\sigma$ framework 
+is constructed first.  $\sigma$ bonds are defined as existing between every
+pair of atoms which are chemically bonded together.  In our example, there are
+14 $\sigma$ bonds.  Each di-atomic $\sigma$ bond is constructed by identifying
+which pair of unused hybrid orbitals on the atoms involved has the largest
+interaction energy.  When one of the atoms is a hydrogen, only  the hybrid
+orbitals on the other atom need to be examined at this point.
+
+Once the appropriate orbitals have been identified, bonding and antibonding
+diatomic LMOs are constructed.   This is accomplished by diagonalizing the
+associated two by two secular matrix.  The elements of this matrix are shown in
+Figure~\ref{2by2}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\caption{\label{2by2}Secular Equation used in Constructing Starting LMOs}
+\[
+C \begin{array}{cc}
+<\mathit{Hybrid}_1|H|\mathit{Hybrid}_1>-E_{1,1} & \mathit{Hybrid}_1|H|\mathit{Hybrid}_2> \\
+<\mathit{Hybrid}_2|H|\mathit{Hybrid}_1> & \mathit{Hybrid}_2|H|\mathit{Hybrid}_2> -E_{2,2}
+\end{array} C^{t} =0
+\]
+\end{figure}
+
+For every $\sigma$ bond formed, two electrons are used, one from each of the
+atoms involved in forming the bond, and two atomic orbitals are used - again,
+one from each atom.  After all 14 $\sigma$ bonds are formed, the number of
+still unused atomic orbitals and electrons is much reduced.  The remaining
+unused atomic orbitals and electrons are shown in Table~\ref{after-sig}. The
+oxygen forms only one $\sigma$ bond, so  there are still three unused hybrid
+orbitals and five valence electrons left.
+
+\begin{table}
+\caption{\label{after-sig} Unused Electrons and Orbitals after Construction of
+$\sigma$ Framework}
+\begin{tabular}{lcccccccccccccc}\\ \hline
+Quantity & C$_1$ & C$_2$ & C$_3$ & C$_4$ & C$_5$ & C$_6$ & H$_2$ & H$_3$ &
+H$_4$ & H$_5$ & H$_6$ & C$_7$ & O$_1$ & H$_7$  \\ \hline
+Orbitals  & 1 &  1 & 1 & 1 & 1 & 1 & 0 & 0 &  0 &  0 &  0 &  1 & 3 & 0  \\
+Electrons & 1 &  1 & 1 & 1 & 1 & 1 & 0 & 0 &  0 &  0 &  0 &  1 & 5 & 0  \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Identification of Lone Pairs}
+\index{Lone pairs!construction of}
+\index{Construction of lone pairs}
+After the $\sigma$ framework has been constructed, all lone pairs are
+identified.  They could not be identified earlier, because sometimes a lone
+pair may be used up in making the $\sigma$ framwork.  An example of this would
+be the lone pair on an -\"{N}H$_2$ group, which is used up in forming a bond
+when a proton is added to form a -NH$_3^+$ ion.
+
+The maximum number of lone pairs on each atom is given by the difference 
+between the number of electrons and the number of orbitals on an atom.   Since
+a lone pair consists of two electrons in one atomic orbital, the remaining
+atomic orbitals are used up, one at a time, until either all the atomic
+orbitals on the atom are accounted for or all the potential lone pairs have
+been formed.
+
+In benzaldehyde, only the oxygen atom has the potential to form lone pairs:
+five electrons and three atomic orbitals imply a maximum of two lone pairs. The
+fact that there are three available atomic orbitals means that both lone pairs
+can in fact be constructed.  This uses up two atomic orbitals and four
+electrons, to leave the remaining orbital and electron as shown in
+Table~\ref{after-lp}.
+
+\begin{table}
+\caption{\label{after-lp} Unused Electrons and Orbitals after Construction of
+Lone Pairs}
+\begin{center}
+\begin{tabular}{lcccccccccccccc} \hline
+Quantity & C$_1$ & C$_2$ & C$_3$ & C$_4$ & C$_5$ & C$_6$ & H$_2$ & H$_3$ &
+H$_4$ & H$_5$ & H$_6$ & C$_7$ & O$_1$ & H$_7$  \\ \hline
+Orbitals  & 1 &  1 & 1 & 1 & 1 & 1 & 0 & 0 &  0 &  0 &  0 &  1 & 1 & 0  \\
+Electrons & 1 &  1 & 1 & 1 & 1 & 1 & 0 & 0 &  0 &  0 &  0 &  1 & 1 & 0  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+When a lone pair is constructed, an occupied LMO is formed, but, unlike the
+$\sigma$ bonds, no unoccupied LMO is formed at the same time.
+
+\subsubsection{Construction of Non-Cyclic $\pi$ Bonds}
+\index{Construction of acyclic $\pi$ bonds}
+\index{pi@$\pi$ bonds, acyclic!construction of}
+A potential complication exists when the $\pi$ bonds are constructed, in that
+it is possible to start constructing $\pi$ bonds in such a way that a
+di-radical is formed.  For example, in butadiene, if a $\pi$ bond is
+constructed between carbon atoms 2 and 3, then radical sites would be formed at
+atoms 1 and 4.  To avoid this, the first set of $\pi$ bonds constructed is that
+set in which the way the $\pi$ bond is drawn is unambiguous.  The rule for
+assigning  $\pi$ bonds is simple: a $\pi$ bond is constructed if an atom can
+make  a $\pi$ bond with exactly one other atom.  
+
+In benzaldehyde, this situation exists only for the carbon and the oxygen of
+the -CHO group.  The $\pi$ bonds in the ring cannot be assigned using this
+rule, because {\em every} atom in the ring can potentially make a $\pi$ bond
+with {\em two} other atoms.  In more complicated systems, repeated application 
+of the rule automatically results in the correct assignment of $\pi$ bonds  in
+all non-cycle conjugated systems.
+
+As with the $\sigma$ bonds, when a $\pi$ bond is made, two electrons and two
+atomic orbitals are used up, and an occupied and an unoccupied LMO are formed. 
+After the non-cyclic $\pi$ bonds are formed, the number of available orbitals
+and electrons is as shown in Table~\ref{after-pi}.
+
+\begin{table}
+\caption{\label{after-pi} Unused Electrons and Orbitals after Construction of 
+Non-Cyclic $\pi$ Bonds}
+\begin{center}
+\begin{tabular}{lcccccccccccccc} \hline
+Quantity & C$_1$ & C$_2$ & C$_3$ & C$_4$ & C$_5$ & C$_6$ & H$_2$ & H$_3$ & 
+H$_4$ & H$_5$ & H$_6$ & C$_7$ & O$_1$ & H$_6$  \\ \hline 
+Orbitals  & 1 &  1 & 1 & 1 & 1 & 1 & 0 & 0 &  0 &  0 &  0 &  0 & 0 & 0  \\ 
+Electrons & 1 &  1 & 1 & 1 & 1 & 1 & 0 & 0 &  0 &  0 &  0 &  0 & 0 & 0  \\ 
+\hline 
+\end{tabular} 
+\end{center}
+\end{table} 
+
+\subsubsection{Construction of Cyclic $\pi$ Bonds}
+\index{Construction of cyclic $\pi$ bonds}
+\index{pi@$\pi$ bonds, cyclic!construction of}
+At this point, the only remaining bonds are those in cyclic $\pi$ systems. The
+sequence in which these are assigned is similar to that for the non-cyclic
+$\pi$ bonds.  One of the remaining $\pi$ bonds is assigned arbitrarily, then
+the rule for assigning non-cyclic $\pi$ bonds is used until no more $\pi$ bonds
+can be made.  This two-step sequence is repeated until all cyclic $\pi$ systems
+have been accounted for.
+
+In the case of benzaldehyde, this completes the construction of the occupied
+and virtual starting LMOs.  Two more structures are possible in enzymes,
+however.  These will be considered next.
+
+\subsubsection{Identification of Ions} 
+\index{Ions!identification of}
+\index{Identification of ions}
+
+For un-ionized systems, all the atomic orbitals on all atoms are  accounted for
+at this point.  For ionized systems, however, one or more atomic orbitals will
+still be unused.  At most, there would be one unused atomic orbital on any
+given atom.  The only problem left is to decide whether to assign  these unused
+orbitals as belonging to the  occupied or unoccupied sets of LMOs.
+
+In proteins, charged sites occur in only a limited number of environments.
+Table~\ref{ions} lists the more common species.
+\begin{table}
+\index{Charged sites in proteins}
+\index{Proteins!charged sites in}
+\caption{\label{ions} Charged Sites in Proteins}
+\begin{center}
+\begin{tabular}{ccc} \hline
+Neutral  &   Ion      &   Charge \\ \hline
+-COOH    &  -COO      &$-$ \\
+-NH$_2$  &  -NH$_3$   &$+$ \\
+=NH      &  =NH$_2$   &$+$ \\
+-SH      &  -S        &$-$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+The following general rules can be derived from this Table:
+\begin{enumerate}
+\item If the immediate environment has an oxygen or a sulfur atom, the
+unused atomic orbital is assigned to the occupied set.
+\item If the immediate environment has a nitrogen atom,  the
+unused atomic orbital is assigned to the unoccupied set. 
+\end{enumerate}
+In other words, all ions associated with oxygen or sulfur are anions, and
+all ions associated with nitrogen are cations.  
+
+As with the lone pairs, LMOs representing ionized sites involve only one
+orbital, an occupied LMO in the case of an anion, and an unoccupied LMO for a
+cation.
+
+If the calculated number of cationic and anionic sites is different, then the
+entire system will have a net charge.  The numerical value of that  charge is
+given by subtracting the number of anionic sites from the number of cationic
+sites.
+
+\subsubsection{Properties of Starting LMOs}
+\index{LMOs!properties of starting}
+The starting LMOs have two properties which are essential for the SCF
+calculation.  First, since they are constructed from atomic or hybrid atomic
+orbitals, either directly or as a linear combination of two hybrids, they form
+an orthogonal set.  Because of the way bonding and antibonding  LMOs are
+constructed, all occupied LMOs are orthogonal to all unoccupied LMOs. The
+second essential property is that every LMO is normalized to unity.
+
+Both properties are essential for the SCF calculation, in that their existence
+means that any unitary transform involving any two LMOs (usually one occupied
+and one unoccupied LMO) will preserve the orthonormality of the entire set of
+occupied plus virtual LMOs.
+
+\subsection{Other Considerations}
+
+The first time a large system is run, there is a high probability that  errors
+will exist in the data-set which would make the full calculation useless.  To
+save time, a check is run on the system to determine the number of each type of
+LMO.    If an atom bonds to more than four neighbors, then the $\sigma$
+framework cannot be made, and the run is stopped with a warning message.  
+
+If the calculated net charge is different from the charge specified on the
+keyword line, then the assigned number of occupied LMOs will not match the
+calculated number of occupied LMOs, i.e., the number of  $\sigma$ and $\pi$
+LMOS plus the lone pairs plus the anions. If that happens,  then the job is
+stopped, and a warning message printed out.
+
+\input{reorth}
+
+\subsubsection{Localized Molecular Orbitals:  Storage Considerations}
+\index{LMOs!storage considerations}
+When they are first made, the LMOs are highly compact functions.  Each LMO
+consists of one or two atom labels and a set of four to eighteen atomic orbital
+coefficients.  However, as soon as the LMOs start to interact,  mixing of the
+LMOs will occur, and the size of the LMOs will increase rapidly.  This
+expansion must be allowed for.  Later on, further mixing of the LMOs may result
+in the contribution to an atom to a certain LMO becoming negligible, in which
+case the atom can be deleted from the LMO.    This results in the LMO becoming
+smaller.  A mechanism must be constructed to allow the size of the LMOs  to be
+changed.  Because the occupied and unoccupied LMO sets are treated in a similar
+manner, only the storage of the occupied set will be described. Therefore, for
+the rest of this section, all reference to LMOs should be understood as
+applying to the occupied  set only.
+
+\label{starting-addresses}
+
+Before going further, we need to spend a little time to understand how LMOs are
+stored.   The atomic orbital coefficients of all LMOs are stored in  a single
+REAL array, \comp{COCC}.  A second array, \comp{NCOCC}, holds the starting 
+location in \comp{COCC} of each LMO.   For convenience, all starting locations
+are defined as the location immediately {\em before} the  location of the first
+element of an array.  The atom numbers (not the atomic numbers)  used in all
+LMOs are stored in an INTEGER array, \comp{ICOCC}, and a second INTEGER  array,
+\comp{NNCF}, holds the starting location in \comp{ICOCC} of  each LMO.  
+Finally, the  number of atoms in each LMO are stored in an array \comp{NCF}.  
+Figure~\ref{store-slmo} illustrates these arrays for methane.
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}
+\setlength{\unitlength}{0.1in}
+\begin{picture}(50,30)(0,-24)
+ \put(00, 02){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}
+\makebox(2.7,2){4}\makebox(2.7,2){5}\makebox(2.7,2){6}\makebox(2.7,2){7}
+\makebox(2.7,2){8}\makebox(2.7,2){9}\makebox(2.7,2){10}\makebox(2.7,2){11}
+\makebox(2.7,2){12}\makebox(2.7,2){13}\makebox(2.7,2){14}\makebox(2.7,2){15}
+\makebox(2.7,2){16}\makebox(2.7,2){17}\makebox(2.7,2){18}\makebox(2.7,2){19}
+\makebox(2.7,2){20}}
+ \put(00, 00){\framebox(14,2){$H_1,C_s,C_{px},C_{py},C_{pz}$}}
+ \put(14, 00){\framebox(14,2){$C_s,C_{px},C_{py},C_{pz},H_2$}}
+ \put(28, 00){\framebox(14,2){$C_s,C_{px},C_{py},C_{pz},H_3$}}
+ \put(42, 00){\framebox(14,2){$C_s,C_{px},C_{py},C_{pz},H_4$}}
+\put(-6,00){\makebox(4,2){COCC:}}
+%
+ \put(00,-04){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}}
+\put(-6,-6){\makebox(4,2){NCOCC:}}
+\put(00,-6){\framebox(2.7,2){0}\framebox(2.7,2){5}\framebox(2.7,2){10}\framebox(2.7,2){15} }
+%
+ \put(00,-10){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}
+\makebox(2.7,2){4}\makebox(2.7,2){5}\makebox(2.7,2){6}\makebox(2.7,2){7}
+\makebox(2.7,2){8}}
+\put(-6,-12){\makebox(4,2){ICOCC:}}
+\put(00,-12){\framebox(2.7,2){1}\framebox(2.7,2){2}\framebox(2.7,2){2}\framebox(2.7,2){3}\framebox(2.7,2){2}\framebox(2.7,2){4}\framebox(2.7,2){2}\framebox(2.7,2){5}}
+%
+ \put(00,-16){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}
+\makebox(2.7,2){4}}
+\put(-6,-18){\makebox(4,2){NNCF:}}
+\put(00,-18){\framebox(2.7,2){0}\framebox(2.7,2){2}\framebox(2.7,2){4}\framebox(2.7,2){6} }
+%
+ \put(00, 02){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}
+\makebox(2.7,2){4}}
+\put(-6,-24){\makebox(4,2){NCF:}}
+\put(00,-24){\framebox(2.7,2){2}\framebox(2.7,2){2}\framebox(2.7,2){2}\framebox(2.7,2){2} }
+   \end{picture}
+\end{center}
+\caption{\label{store-slmo}Storage of Starting LMOs in Methane}
+\end{figure}
+
+During the SCF calculation, the number of atoms in each LMO will increase.   To
+allow for this, some space must be left between the end of one  LMO and the
+start of the next LMO. The amount of space is determined by dividing all the
+unused space by the number of LMOs.  If the size of the vector \comp{COCC} is
+40, and  the size of \comp{ICOCC} is 25, then the storage of the LMO vectors,
+after adjusting to allow for expansion, is as shown in
+Figure~\ref{store-slmoe}.
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}
+\setlength{\unitlength}{0.1in}
+\begin{picture}(50,30)(0,-24)
+\put(00, 02){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}
+\makebox(2.7,2){4}\makebox(2.7,2){5}\makebox(2.7,2){6}\makebox(2.7,2){7}
+\makebox(2.7,2){8}\makebox(2.7,2){9}\makebox(2.7,2){10}\makebox(2.7,2){11}
+\makebox(2.7,2){12}\makebox(2.7,2){13}\makebox(2.7,2){14}\makebox(2.7,2){15}
+\makebox(2.7,2){16}\makebox(2.7,2){17}\makebox(2.7,2){18}\makebox(2.7,2){19}
+\makebox(2.7,2){20}}
+\put(00, 00){\framebox(28,2){$H_1,\ C_s,C_{px},C_{py},C_{pz}$}}
+\put(28, 00){\framebox(28,2){$C_s,C_{px},C_{py},C_{pz},\ H_2$}}
+\put(56, 00){\makebox ( 4,2){\ldots.}}
+\put(-6,00){\makebox(4,2){COCC:}}
+%
+\put(00,-04){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}}
+\put(-6,-6){\makebox(4,2){NCOCC:}}
+\put(00,-6){\framebox(2.7,2){0}\framebox(2.7,2){10}\framebox(2.7,2){20}\framebox(2.7,2){30} }
+%
+\put(00,-10){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}\makebox(2.7,2){5}\makebox(2.7,2){6}\makebox(2.7,2){7}\makebox(2.7,2){8}\makebox(2.7,2){9}\makebox(2.7,2){10}\makebox(2.7,2){11}\makebox(2.7,2){12}\makebox(2.7,2){13}\makebox(2.7,2){14}\makebox(2.7,2){15}\makebox(2.7,2){16}\makebox(2.7,2){17}\makebox(2.7,2){18}\makebox(2.7,2){19}\makebox(2.7,2){20}\makebox(2.7,2){21}\makebox(2.7,2){22}}
+\put(-6,-12){\makebox(4,2){ICOCC:}}
+\put(00,-12){\framebox(2.7,2){1}\framebox(2.7,2){2}\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){2}\framebox(2.7,2){3}\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){2}\framebox(2.7,2){4}\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){ }\framebox(2.7,2){2}\framebox(2.7,2){5}\framebox(2.7,2){ }\framebox(2.7,2){ }\makebox(2.7,2){\ldots}}
+%
+\put(00,-16){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}}
+\put(-6,-18){\makebox(4,2){NNCF:}}
+\put(00,-18){\framebox(2.7,2){0}\framebox(2.7,2){6}\framebox(2.7,2){12}\framebox(2.7,2){18}}
+%
+\put(00,-22){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}}
+\put(-6,-24){\makebox(4,2){NCF:}}
+\put(00,-24){\framebox(2.7,2){2}\framebox(2.7,2){2}\framebox(2.7,2){2}\framebox(2.7,2){2} }
+\end{picture}
+\end{center}
+\caption{\label{store-slmoe}Storage of Starting LMOs in Methane, Showing Space Available for Expansion}
+\end{figure}
+
+After a few iterations, the number of atoms in each LMO will have increased. In
+general, this number will be less than the number of atoms in the system, but
+in the example we are using, every LMO will contain all the atoms.  This is
+shown in Figure~\ref{store-slmoes}.  For large systems, the number of atoms in
+any one LMO will vary.  Very large LMOs may have 300 or more atoms, while small
+LMOs may have only 25 atoms.  On average, LMOs will have about 150--200 atoms.
+
+For every array used in describing the occupied LMOs, there exists an 
+equivalent  array for the virtual LMOs.  Table~\ref{arrays} gives the names  of
+the  arrays for the virtual LMOs.
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\setlength{\unitlength}{0.1in}
+\begin{center}
+\begin{picture}(50,30)(0,-24)
+ \put(00, 02){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}
+\makebox(2.7,2){4}\makebox(2.7,2){5}\makebox(2.7,2){6}\makebox(2.7,2){7}
+\makebox(2.7,2){8}\makebox(2.7,2){9}\makebox(2.7,2){10}\makebox(2.7,2){11}
+\makebox(2.7,2){12}\makebox(2.7,2){13}\makebox(2.7,2){14}\makebox(2.7,2){15}
+\makebox(2.7,2){16}\makebox(2.7,2){17}\makebox(2.7,2){18}\makebox(2.7,2){19}
+\makebox(2.7,2){20}}
+ \put(00, 00){\framebox(28,2){$H_1,\ C_s,C_{px},C_{py},C_{pz},\ H_2,\ H_3,\ H_4$}}
+ \put(28, 00){\framebox(28,2){$C_s,C_{px},C_{py},C_{pz},\ H_2,\ H_1,\ H_3,\ H_4$}}
+ \put(56, 00){\makebox ( 4,2){\ldots.}}
+\put(-6,00){\makebox(4,2){COCC:}}
+%
+ \put(00,-04){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}}
+\put(-6,-6){\makebox(4,2){NCOCC:}}
+\put(00,-6){\framebox(2.7,2){0}\framebox(2.7,2){10}\framebox(2.7,2){20}\framebox(2.7,2){30} }
+%
+ \put(00,-10){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}\makebox(2.7,2){5}\makebox(2.7,2){6}\makebox(2.7,2){7}\makebox(2.7,2){8}\makebox(2.7,2){9}\makebox(2.7,2){10}\makebox(2.7,2){11}\makebox(2.7,2){12}\makebox(2.7,2){13}\makebox(2.7,2){14}\makebox(2.7,2){15}\makebox(2.7,2){16}\makebox(2.7,2){17}\makebox(2.7,2){18}\makebox(2.7,2){19}\makebox(2.7,2){20}\makebox(2.7,2){21}\makebox(2.7,2){22}}
+\put(-6,-12){\makebox(4,2){ICOCC:}}
+\put(00,-12){\framebox(2.7,2){1}\framebox(2.7,2){2}\framebox(2.7,2){3}\framebox(2.7,2){4}\framebox(2.7,2){5}\framebox(2.7,2){ }\framebox(2.7,2){2}\framebox(2.7,2){3}\framebox(2.7,2){1}\framebox(2.7,2){4}\framebox(2.7,2){5}\framebox(2.7,2){ }\framebox(2.7,2){2}\framebox(2.7,2){4}\framebox(2.7,2){1}\framebox(2.7,2){3}\framebox(2.7,2){5}\framebox(2.7,2){ }\framebox(2.7,2){2}\framebox(2.7,2){5}\framebox(2.7,2){1}\framebox(2.7,2){3}\makebox(2.7,2){\ldots}}
+%
+ \put(00,-16){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}}
+\put(-6,-18){\makebox(4,2){NNCF:}}
+\put(00,-18){\framebox(2.7,2){0}\framebox(2.7,2){6}\framebox(2.7,2){12}\framebox(2.7,2){18}}
+%
+ \put(00,-22){\makebox(2.7,2){1}\makebox(2.7,2){2}\makebox(2.7,2){3}\makebox(2.7,2){4}}
+\put(-6,-24){\makebox(4,2){NCF:}}
+\put(00,-24){\framebox(2.7,2){5}\framebox(2.7,2){5}\framebox(2.7,2){5}\framebox(2.7,2){5} }
+\end{picture}
+\end{center}
+\caption{\label{store-slmoes}Storage of Iterating LMOs in Methane}
+\end{figure}
+
+\begin{table}
+\caption{\label{arrays} Names of Arrays Used to Represent LMOs}
+\begin{center}
+\begin{tabular}{lll} 
+\hline
+Occupied      &  Unoccupied      &  Contents \\ \hline
+NCF           &  NCE             &  Number of Atoms in LMO \\
+NNCF          &  NNCE            &  Starting Address of Atoms\\
+ICOCC         &  ICVIR           &  Atom Numbers\\
+NCOCC         &  NCVIR           &  Starting Address of LMO \\
+COCC          &  CVIR            &  LMO Atomic Orbital Coefficients \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Diagonalization}
+\index{Diagonalization}
+At self-consistency, all matrix elements connecting every occupied LMO with
+every unoccupied LMO is zero.  Annihilation of these matrix elements is
+performed by the subroutine DIAGG.  The only matrix elements which need to be
+considered are those which involve an occupied LMO with an  unoccupied LMO
+which shares one or more common atoms.  With increasing size of system, the
+number of interactions of this type compared with the product of the number of
+occupied times unoccupied LMOs  becomes increasingly small.
+
+Although DIAGG looks quite formidable, the working of this subroutine can be
+easily understood in terms of the principles involved in matrix element
+annihilation.  Therefore, before going into the details of the LMO matrix
+annihilation, the conventional procedure used in MOPAC will be reviewed.
+
+\subsubsection{Conventional Matrix Annihilation}
+The raw material DIAGG is supplied with consists of the occupied LMOs and the
+Fock matrix over atomic orbitals.  The first step, therefore, is to calculate
+the occupied and virtual energy levels, and the potentially non-zero matrix
+elements connecting the occupied and virtual sets.
+
+In a system of $N$ atoms, let a molecular orbital, $\psi_i$, be represented by
+\begin{equation}
+\psi_i = \sum_{A=1}^N\sum_{\lambda\epsilon A}c_{\lambda i}.
+\end{equation}
+Then the energy of a M.O.\ can be evaluated from
+\begin{equation}
+\varepsilon_{ii}=\sum_A^N\sum_B^N\sum_{\lambda\epsilon A}\sum_{\sigma\epsilon B}c_{\lambda i}F_{\lambda\sigma}c_{\sigma i}
+\end{equation}
+and the matrix element representing the energy term between occupied M.O.\
+$\psi_i$ and virtual M.O.\ $\psi_j$ would be 
+\begin{equation}
+\varepsilon_{i j}=\sum_A^N\sum_B^N\sum_{\lambda\epsilon A}\sum_{\sigma\epsilon B}c_{\lambda  i}F_{\lambda \sigma}c_{\sigma  j}.
+\end{equation}
+
+Annihilation of a matrix element  is achieved by performing a unitary 
+transform on the M.O.s involved 
+\begin{equation}
+\begin{array}{llrr}
+\psi_i^{'}  & = & \alpha\psi_i & + \beta\psi_j \\
+\psi_j^{'}  & = &-\beta\psi_i  & +\alpha\psi_j 
+\end{array}
+\end{equation}
+where the rotation angles $\alpha$ and $\beta$ are calculated from the molecular
+orbital energy matrix elements
+\begin{equation}
+\begin{array}{lll}
+\alpha &=& \sqrt{\frac{1}{2}(1+D/\sqrt{4\varepsilon_{i j}^2+D^2}} \\
+\beta  &=& \phi\sqrt{1-\alpha^2} 
+\end{array}
+\end{equation}
+where $D= \varepsilon_{j j}-\varepsilon_{i i}$ and $\phi$ = 1 if 
+$\varepsilon_{i j}$ is negative, $\phi =-1$, otherwise.
+
+By evaluating partial sums, the calculation of  $\varepsilon_{i j}$ can 
+be made more efficient. If $\varepsilon_{i j}$ is re-written as
+\begin{equation}
+\varepsilon_{i j} = \sum_A^N\sum_B^N\sum_{\lambda\epsilon A}c_{\lambda  i}\sum_{\sigma\epsilon B}F_{\lambda \sigma}c_{\sigma  j};
+\end{equation}
+then the partial sum
+\begin{equation}
+F_{\lambda}^{'}(j) = \sum_{\sigma\epsilon B}F_{\lambda \sigma}c_{\sigma  j}
+\end{equation}
+can be used to simplify $\varepsilon_{i j}$:
+\begin{equation}
+\varepsilon_{i j} = 
+\sum_A^N\sum_{\lambda\epsilon A}c_{\lambda  i}F_{\lambda}^{'}(j).
+\end{equation}
+
+Because the vector $F^{'}(j)$ is evaluated once, and then used for all $i$, the
+calculation of the $\varepsilon_{i j}$ is changed from an $n^3$ process to a
+$n^2$ process.  The use of the partial sum $F^{'}(j)$ also speeds up the
+evaluation of the virtual M.O.\ energies.  Unfortunately, it does not speed up 
+the calculation of the occupied M.O.\ energies.
+
+
+\subsubsection{Localized Molecular Orbital Matrix Element Evaluation}
+It is important in LMO work that only those matrix elements which are
+potentially non-zero be evaluated; therefore, modifications need to be made to
+the equations just described. For the purpose of the following discussion, the
+system being studied should be assumed to be very large, i.e., to contain
+thousands of atoms.
+
+To assist in understanding how the modifications are made, it is convenient at
+this time to write the occupied LMO as:
+\begin{equation}
+\psi_i = \sum_{j=1}^{NCF(i)}\sum_{\lambda\epsilon ICOCC(j+NNCF(i))}COCC(\lambda+NCOCC(i))
+\end{equation}
+and the virtual LMO as:
+\begin{equation}
+\psi_j = \sum_{l=1}^{NCE(j)}\sum_{\sigma \epsilon ICVIR(l+NNCE(j))}CVIR(\sigma 
++NCVIR(j)).\end{equation}
+These expressions also illustrate the relationships of the five arrays which
+are used to represent the LMOs.
+
+Then the partial sum, $F^{'}(j)$, can be represented as:
+\begin{equation}
+F_{\lambda}^{'}(j) = 
+\sum_{l=1}^{NCE(j)}\sum_{\sigma \epsilon ICVIR(l+NNCE(j))}CVIR(\sigma +
+NCVIR(j))F_{\lambda \sigma}.
+\end{equation}
+
+The number of terms in this sum is already much smaller than in conventional
+matrix annihilation in that the number of atoms represented in each LMO, 
+$NCE(j)$, is much less than the total number of atoms.
+
+Because all Fock matrix elements connecting atoms which are separated by  more
+than \comp{CUTOF2} are automatically zero, only those terms which refer to
+atoms separated by less that \comp{CUTOF2} need be evaluated.
+
+All LMOs consist of a central part consisting of one to three atoms, which 
+accounts for almost all of the wavefunction.  In the regions of an LMO far away
+from the center, the contribution of any atom to the wavefunction becomes very
+small.  If the Fock matrix elements connecting this distant atom to any other
+atom is also very small, then quantities which depend of both of these terms
+becomes quite negligible.    To test whether this condition exists, two scalar
+quantities need to be calculated.  The first is the contribution of each atom
+to the LMO:
+\begin{equation}
+\rho_A(j) =\sum_{\lambda\epsilon A}\psi_{\lambda j}^2
+\end{equation}
+and second is the magnitude  of the Fock matrix vector connecting each pair of
+atoms:
+\begin{equation}
+F_{A B} = \sum_{\lambda\epsilon A \sigma\epsilon B}F_{\lambda \sigma}^2.
+\end{equation}
+
+During the evaluation of  $F_{\lambda}^{'}(j)$, the quantity $\rho_AF_{A B}$ is
+computed. Only if it is above a preset limit are the terms involving atoms $A$
+and $B$ used.  
+
+As soon as $F_{\lambda}^{'}(j)$ is calculated, the magnitude of each atom's
+contribution to $F_{\lambda}^{'}(j)$ is determined, and stored:
+\begin{equation}
+F_A(j)=\sum_A\sum_{\lambda\epsilon A}F_{\lambda}^{'}(j)^2.
+\end{equation}
+
+Together, these three modifications result in a large reduction in the time
+necessary to compute the partial sum $F_{\lambda}^{'}(j)$.
+
+The virtual energy levels are calculated using $F_{\lambda}^{'}(j)$:
+\begin{equation}
+\varepsilon_{jj}= \sum_{l=1}^{NCE(j)}\sum_{\sigma \epsilon ICVIR(l+NNCE(j))}
+CVIR(\sigma +NCVIR(j))F_{\sigma}^{'}(j).
+\end{equation}
+In the same manner as $\rho_AF_{A B}$ was used in deciding whether the terms
+involving atoms $A$ and $B$ should be evaluated in the calculation of 
+$F_{\lambda}^{'}(j)$,  the quantity $F_A(j)\rho_A$ is evaluated and used to
+decide which terms in the current summation should be used.
+
+Now the calculation of the occupied-virtual matrix elements can be performed. 
+The quantity to be calculated is
+\begin{equation}
+\varepsilon_{i j} =
+\sum_{k=1}^{NCF(i)}\sum_{\lambda\epsilon ICOCC(k)+NNCF(i)}COCC(\lambda+NCOCC(i))
+F_{\lambda}^{'}(j).
+\end{equation}
+
+Because this is a single sum over atoms, not much time is saved by testing to
+see if any terms can be omitted.  However, the test is a simple one, and  it
+does result in a small increase in speed by evaluating the quantity
+$F_A(j)\rho_A(i)$, and comparing it to a preset limit.  Since both $F_A(j)$ and
+$\rho_A(i)$ have already been calculated, this test is very rapid.
+
+Calculation of the occupied-virtual matrix elements presents a new problem.
+There are a large number of these elements, many of which involve only atoms
+which are far from the LMO centers.  To see why this is so, consider two LMOs
+which have exactly one atom in common.  For this to happen, the atom in
+question must be very far from the centers of both LMOs.  The energy terms
+arising from such an atom must, of necessity, be very small. In the interest of
+efficiency, all calculations involving such atoms should be ignored. 
+Unfortunately, it is not possible to {\it a priori} determine which terms to
+include and which to leave out.  Therefore, at the start of the SCF
+calculation, all terms must be evaluated.  As soon as  large changes in the
+LMOs have stopped, a list can be constructed of those occupied-virtual matrix
+elements which need to be considered for annihilation.
+
+
+\subsubsection{Localized Molecular Orbital Matrix Element Annihilation}
+Once the matrix elements have been calculated, annihilation is
+relatively straightforward.  As with conventional SCF matrix annihilation,
+the operation to be performed is:
+\begin{equation}
+\begin{array}{llrr}
+\psi_i^{'}  & = & \alpha\psi_i & + \beta\psi_j \\
+\psi_j^{'}  & = &-\beta\psi_i  & +\alpha\psi_j
+\end{array}
+\end{equation}
+where $\alpha$ and $\beta$ are calculated using the matrix elements just
+derived.
+
+Because of the way LMOs are represented (the five arrays for each set, occupied
+and virtual), care must be taken to ensure that the two by two rotation is done
+correctly.  For the rotation to be performed, each atomic orbital in $\psi_i$
+must be matched with the same atomic orbital in $\psi_j$.  Three distinct
+situations occur: the same atom might be present in both $\psi_i$ and $\psi_j$;
+$\psi_i$ might have an atom which $\psi_j$ does not have; and $\psi_j$ might
+have an atom which $\psi_i$ does not have. The procedure for dealing with these
+situations is as follows:
+\begin{itemize}
+\item Both LMOs have the same atom.
+
+$\ \ $Simple rotation of the coefficients is performed:
+\begin{equation}
+\begin{array}{llrr}
+\sum_{\lambda\epsilon A} \psi_i^{'}(\lambda)  & = 
+& \alpha\psi_i(\lambda) & + \beta\psi_j(\lambda) \\
+\sum_{\lambda\epsilon A}\psi_j^{'}(\lambda)  & = 
+&-\beta\psi_i(\lambda)  & +\alpha\psi_j(\lambda)
+\end{array}
+\end{equation}
+
+\item Occupied LMO $\psi_i$ has atom $A$, virtual LMO $\psi_j$ does not 
+have atom $A$.
+
+$\ \ $If the product $\beta\rho_A(i)$ is above a threshold, then the rotation
+\begin{equation}
+\begin{array}{llrr}
+\sum_{\lambda\epsilon A} \psi_i^{'}(\lambda)  & =
+& \alpha\psi_i(\lambda)  \\
+\sum_{\lambda\epsilon A}\psi_j^{'}(\lambda)  & =
+&-\beta\psi_i(\lambda)  
+\end{array}
+\end{equation}
+is performed. If it is less than the threshold, no rotation is done.
+The most important effect of this rotation is to place an atom in the virtual
+LMO $\psi_j$, an atom which was not in $\psi_j$ before the two by two rotation
+was started.  That is, the number of atoms in $\psi_j$ is increased by one.
+
+\item Virtual  LMO $\psi_j$ has atom $A$, occupied LMO $\psi_i$ does not 
+have atom $A$.
+
+$\ \ $Again, if the product $\beta\rho_A(i)$ is above a threshold, then the rotation
+\begin{equation}
+\begin{array}{llrr} 
+\sum_{\lambda\epsilon A} \psi_i^{'}(\lambda)  & =
+&  \beta\psi_j(\lambda) \\
+\sum_{\lambda\epsilon A}\psi_j^{'}(\lambda)  & =
+&\alpha\psi_j(\lambda)
+\end{array}
+\end{equation}
+is performed.  The number of atoms in the occupied LMO is increased by one.
+\end{itemize}
+
+At the start of the first SCF calculation, each LMO contains at most two atoms,
+so the most dramatic effect of matrix element annihilation is to cause the
+LMOs to expand so that they involve more atoms.  In the first few iterations,
+the number of atoms in each LMO increases rapidly.  After about 10-30 iterations,
+the rate of increase becomes very small, as the size of the LMOs becomes stable.
+
+During the first SCF calculation, the number of atoms in certain LMOs may 
+increase so rapidly that the gap between LMOs might vanish.  Any further
+expansion would then cause vector overwriting to occur.  To avoid this
+happening, the annihilation step is modified as follows:
+The situation where vector overwriting is about to occur is detected.  The
+degree of mixing of the two LMOs is then halved, and the annihilation is attempted
+again.  If this procedure does not work, then the degree of mixing 
+is halved again.  This
+is done repeatedly until the danger of vector overwriting has been removed.
+This technique is only used near the end of the SCF calculation; at other
+times the degree of mixing is simply set to zero.
+
+\subsection{Reducing the Size of Localized Molecular Orbitals}
+If, as a result of matrix element annihilation,  the LMOs are allowed  to
+expand so that they include more and more atoms without limit, then  eventually
+the efficiency of the calculation would be severely impaired. To prevent this
+occurring, a procedure is needed which will allow the size  of LMOs to be
+reduced.  
+
+Atoms can be added at an LMO as a result of matrix element annihilation. What
+is not so obvious is that  annihilation can also make the contribution of an
+atom to the LMO so small that the atom can subsequently be deleted from that
+LMO without harm. Of course, if an atom is deleted from an LMO, changes should
+be made to the  five arrays representing the LMOs.  The operation of removing
+atoms from LMOs and adjusting the  appropriate arrays is done in subroutine
+\comp{TIDY}.
+
+This compression is carried out by copying all the information on each atom in
+the LMOs.  During the copy operation, any atom whose contribution to an LMO is
+insignificant is  not copied.  In addition, unused space at the end of each LMO
+is also not copied.  The result of the copy is to produce a set of LMOs in
+which only atoms which contribute significantly are present, and with no unused
+space between the LMOs. 
+
+Before the LMOs can be used once more, they must be redistributed in their
+arrays so that each LMO has some unused space at the end to allow for expansion
+during the next matrix annihilation operation.
+
+\input{size_of_lmos}
+
+\subsection{Density Matrix Construction}
+The general expression for constructing the density matrix from the occupied
+set of molecular orbitals is:
+\begin{equation}
+P_{\lambda \sigma} = 2\sum_{i=1}^{occ}c_{\lambda i}c_{\sigma i}.
+\end{equation}
+
+This same basic equation is used in the construction of the density matrix in
+LMO theory.  The main difference is that not all density matrix elements are,
+or need to be, evaluated.  
+
+The only elements of the density matrix which need to be evaluated are
+those relating to atoms which are \hyperref[pageref]{separated by less than
+\comp{CUTOF2}}{ (see Page~}{)}{cutoff}.  To understand why, consider how
+the density matrix is used in the SCF calculation. The Fock matrix is
+constructed from products involving the density matrix, the
+one-electron matrix, and the two-electron integrals. All terms which
+involve  density matrix elements connecting any two atoms only, involve
+one electron integrals and two electron exchange integrals for  the
+same two atoms. All one-electron integrals and two-electron exchange
+integrals for atoms separated by more than \comp{CUTOF2} are zero.
+Therefore, the value of density matrix elements for atoms separated by
+more than \comp{CUTOF2} is unimportant.  To save time and to reduce
+array size, therefore, these density matrix elements are not
+calculated.
+
+Having stated that the construction of the density matrix is the same in
+principle as that used in conventional M.O.\ theory, the way in which LMOs are
+stored does introduce a technical difference.  The sequence in which the atoms
+are represented in LMOs changes from LMO to LMO.  While it is possible for two
+LMOs to have the same sequence   (a $\sigma$ and $\pi$ LMO involving the same
+two atoms is an example),  in general the LMOs should be considered as
+consisting of a random set of atoms, and should be treated as such.
+
+This unpredictable nature of the composition of the LMOs means that the order
+in which density matrix elements are calculated is determined by the  LMOs, and
+not by the sequence of atoms in the molecule.  
+
+\subsection{Energy Effects of \comp{CUTOF2}}
+Energy terms arise from pairs of atoms which are separated by distances greater
+than the cutoff distance.  These terms are purely electrostatic in origin:
+their magnitude is simply proportional to the net charge, $Q_A$, on the atoms
+involved.  Net charge is defined as 
+\begin{equation}
+Q_A = Z_A-Ne_A
+\end{equation}
+where $Ne_A$ is the total electron population on atom $A$ 
+\begin{equation}
+Ne_A=\sum_{\lambda\varepsilon A}P_{\lambda \lambda}.
+\end{equation}
+From simple electrostatics, the overall effect of these net charges is to
+contribute a long-range energy term, $E_{lre}$ to the energy of the system
+thusly 
+\begin{equation}
+ E_{lre} = \frac{1}{2}\sum_A\sum_B\phi_{AB}Q_AQ_B\gamma_{AB},
+\end{equation}
+where $\phi_{AB}$ \ is 1 \ if $R_{AB}$ \ is greater \ than the
+\ cutoff distance but
+0 otherwise, and $\gamma_{AB}$ is the $<ss|1/R_{AB}|ss>$ integral.
+This simple description must be modified because of the effect of net
+charges on the electron density.  Each distant net positive charge will induce
+a small, but in general not negligible, stabilizing effect on the electron
+distribution, while a distant net negative charge will have the opposite
+effect.  This can be expressed formally in terms of the Fock matrix 
+\begin{equation}
+F_{\lambda\varepsilon A \lambda\varepsilon A} =
+F_{\lambda\varepsilon A \lambda\varepsilon A}^{'}-\sum_B\phi_{AB}Q_B\gamma_{AB}.
+\end{equation}
+The effect on the nuclear term is similar, but opposite in sign:
+\begin{equation}
+E_{A(nuc)}=E_{A(nuc)}^{'}+\sum_B\phi_{AB}Q_BZ_A\gamma_{AB}.
+\end{equation}
+The total energy is given by the sum of the electronic plus nuclear energies.
+Given that the electronic energy is 
+\begin{equation}
+E_{ee}=\frac{1}{2}\sum_{\lambda}\sum_{\sigma}P_{\lambda \sigma}
+(H_{\lambda \sigma}+F_{\lambda \sigma}),
+\end{equation}
+the electronic term due to distant nuclei is
+\begin{equation}
+E_{lre(ee)}=\frac{-1}{2}\sum_A\sum_{\lambda\varepsilon A}P_{\lambda \lambda}\sum_B\phi_{AB}Q_B\gamma_{AB}
+\end{equation}
+or
+\begin{equation}
+E_{lre(ee)}=\frac{-1}{2}\sum_ANe_A\sum_B\phi_{AB}Q_B\gamma_{AB}.
+\end{equation}
+Likewise, given that the nuclear energy is 
+\begin{equation}
+E_{ne}=\sum_A\sum_{B<A} Z_AZ_B\gamma_{AB},
+\end{equation}
+the nuclear energy term due to distant nuclei is
+\begin{equation}
+E_{lre(ne)}=\sum_A\sum_{B<A}\phi_{AB} Q_AZ_B\gamma_{AB}.
+\end{equation}
+This can be re-written in a more symmetric form as
+\begin{equation}
+E_{lre(ne)}=\frac{1}{4}\sum_A\sum_{B}\phi_{AB}(Q_AZ_B +Q_BZ_A)\gamma_{AB}.
+\end{equation}
+Together, the total contribution due to the electronic and nuclear terms
+arising from distant atoms is 
+\begin{equation}
+E_{lre(ee)}+E_{lre(ne)}= \frac{1}{4}\sum_A\sum_{B}\phi_{AB}(Q_A(Z_B-Ne_B)+Q_B(Z_A-Ne_A))\gamma_{AB}.
+\end{equation}
+Rearranging gives 
+\begin{equation}
+E_{lre(ee)}+E_{lre(ne)}= \frac{1}{4}\sum_A\sum_{B}\phi_{AB}(Q_AQ_B +Q_BQ_A)\gamma_{AB}
+\end{equation}
+or
+\begin{equation}
+E_{lre(ee)}+E_{lre(ne)}= \frac{1}{2}\sum_A\sum_{B}\phi_{AB}Q_AQ_B\gamma_{AB},
+\end{equation}
+which is identical to the simple equation this discussion began with.
+
+In the 1996 version of MOZYME, this sum was calculated explicitly.  However, 
+evaluation of the sum can be avoided by adding into the one-electron matrix
+the  electrostatic stabilization terms arising from atoms beyond
+\comp{CUTOF2}.  This concisely and effectively takes into account the
+quantities just discussed.
+
+Although the point-charge electrostatic effects are important, they are not the
+only long-range effect.  The effect of a point-charge on a lone pair of
+electrons is also significant.  Consider a lone pair on an atom pointing in the
+direction of a positive charge.  Clearly this will lead to a stabilizing
+effect. A lone pair pointing in the opposite direction will be destabilized.
+Similarly, a lone pair pointing at 90$^{\circ}$ to a charge will be subjected
+to a torque.  In order to include these effects in the Hamiltonian some extra
+terms are needed.
+
+The size of a lone pair on an atom is represented in the density matrix by the
+value of the associated  $s-p$ terms.  For each atom, there are three such
+terms: $P_{sp_x}$, $P_{sp_y}$, and $P_{sp_z}$. The effect of  distant charges
+on $F_{sp_x}$ is given by 
+\begin{equation}
+F_{sp_x}' = F_{sp_x}-\sum_{B}Q_B\! <\!ss|sx\!>\!P_{sp_x}
+\end{equation}
+Similar terms exists for $F_{sp_y}$  and $F_{sp_z}$.
+
+%\section{Timing Considerations}
+
+

@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+
+
+<!-- Copy the JavaScript code including the opening and closing script tags, and paste 
+it into the head section of the destination document. If the destination document already 
+contains a script section, do not include the script tags when copying. -->
+
+<!-------------------- BEGIN COPYING THE JAVASCRIPT SECTION HERE -------------------->
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!-- hide this script from non-javascript-enabled browsers
+
+var multi = false;
+
+function PerformSearch( qform )
+{
+    // load active collection
+    if( multi )  {
+      LoadCollection( qform );
+    }
+    
+    if( navigator.appName.indexOf( "Netscape" ) != -1 &&
+        navigator.appVersion >= "4" )
+    {
+      document.questagent.setUseCallbacks( false );
+    }
+
+    //document.questagent.setMaxHits( 20 );
+
+    // start search...
+    var res = document.questagent.startSearch( qform.query.value );
+    if( res >= -1 )  {
+      ShowSearchResults( res );
+    }
+}
+
+function ShowSearchResults( res )
+{ // Don't change function name
+
+    parent.customwin.document.open();
+    
+    // check result
+    if( res < 0 )  {
+        parent.customwin.document.write( "<h3>Error.</h3>" );
+        parent.customwin.document.write( document.questagent.getMessage() );
+    }
+    else if( res == 0 )  {
+        parent.customwin.document.write( "<h3>Nothing found.</h3>" );
+    }
+    else  {
+    
+        parent.customwin.document.write( "<h3>Search results:</h3>" );
+        parent.customwin.document.write( "<ul>" );
+        
+        // print results
+        for( i = 0; i < res; i++ )  {
+        
+            // create link to file
+            parent.customwin.document.write( 
+                "<a href=\"",
+                document.questagent.getHitLocation( i ),
+                "\">",
+                document.questagent.getHitTitle( i ),
+                "</a><br>" );
+                
+            // print description if available
+            var desc = document.questagent.getHitField( i, "description" );
+            if( desc != null )  {
+                var jsdesc = "" + desc;
+                if( jsdesc.length > 0 )
+                    parent.customwin.document.write( "<ul>", jsdesc, "<br></ul>" );
+            }
+        }
+
+        parent.customwin.document.write( "</ul>" );
+    }
+
+    // print footer
+    // Please, don't remove the notice.
+    parent.customwin.document.write( "<font size=-1>" );
+    parent.customwin.document.write( "Search Technology by JObjects." );
+    parent.customwin.document.write( "</font>" );
+    
+    parent.customwin.document.close();
+}
+
+function LoadCollection( qform )
+{
+    var i = qform.coll.selectedIndex + 1;
+    document.questagent.loadCollection( i );
+}
+
+// stop hiding -->
+</SCRIPT>
+
+
+<!------------------------- STOP COPYING THE JAVASCRIPT HERE ------------------------>
+
+
+
+<meta name="Microsoft Theme" content="axis 111, default">
+<meta name="Microsoft Border" content="tlb, default">
+</HEAD>
+<BODY background="../_themes/axis/axibkgnd.gif" bgcolor="#FFFFFF" text="#000000" link="#00CC00" vlink="#996666" alink="#FF9933"><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="trebuchet ms, Arial, Helvetica">
+
+<center>
+<h1><!--mstheme--><font color="#666633">
+
+<!--mstheme--></font></h1>
+<!--msthemeseparator--><p align="center"><img src="../_themes/axis/aaxirule.gif" width="600" height="10"></p></center>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table><!--msnavigation--><table dir="ltr" border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td valign="top" width="1%"><!--mstheme--><font face="trebuchet ms, Arial, Helvetica">
+
+
+
+<!--mstheme--></font></td><td valign="top" width="24"></td><!--msnavigation--><td valign="top"><!--mstheme--><font face="trebuchet ms, Arial, Helvetica">
+
+
+<!---------------------- BEGIN COPYING HTML CODE HERE --------------------------->
+
+
+<!--mstheme--></font><table border="0" width="100%">
+  <tr>
+    <td valign=top><!--mstheme--><font face="trebuchet ms, Arial, Helvetica">
+      <font size="-1">
+      You can use this space for menus, titles, logos, images or 
+      whatever you like. Search results will be shown in the
+      frame below.
+      </font>
+    <!--mstheme--></font></td>
+    <td valign=top><!--mstheme--><font face="trebuchet ms, Arial, Helvetica">
+      <div align="RIGHT">
+        <FORM name="simpleform" onSubmit="PerformSearch( this ); return false;">
+
+          <INPUT TYPE="TEXT" NAME="query" SIZE="15">
+          <INPUT TYPE="BUTTON" 
+            onClick="PerformSearch( this.form )" VALUE="Find">
+          <br><font size="-1">
+          <a href="tips.htm" target="customwin">Search Tips</a>
+          </font>
+        </FORM>
+      </div>
+    <!--mstheme--></font></td>
+  </tr>
+</table><!--mstheme--><font face="trebuchet ms, Arial, Helvetica">
+
+<APPLET
+  CODE     = "com.jobjects.quest.SearchApplet.class"
+  ARCHIVE  = "qagent.zip"
+  NAME     = "questagent"
+  ID       = "questagent"
+  WIDTH    = 0
+  HEIGHT   = 0
+  MAYSCRIPT
+>
+<PARAM NAME="CABBASE" VALUE="qagent.cab">
+
+<PARAM NAME="ParamFile" VALUE="qagent.prm">
+
+</APPLET>
+
+<!--------------------------- STOP COPYING HTML CODE HERE --------------------------->
+
+<!--mstheme--></font><!--msnavigation--></td></tr><!--msnavigation--></table><!--msnavigation--><table border="0" cellpadding="0" cellspacing="0" width="100%"><tr><td><!--mstheme--><font face="trebuchet ms, Arial, Helvetica">
+
+<center><!--msthemeseparator--><p align="center"><img src="../_themes/axis/aaxirule.gif" width="600" height="10"></p><small>
+
+<br>
+<br>
+&nbsp;Copyright or other proprietary statement goes here.<br>
+For problems or questions regarding this web contact
+<a href="mailto:[ProjectEmail]">[ProjectEmail]</a>.<br>
+Last updated: 06/10/01.
+</small></center>
+
+<!--mstheme--></font></td></tr><!--msnavigation--></table></BODY>
+</HTML>

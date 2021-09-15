@@ -1,0 +1,267 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Files Used by MOPAC</TITLE>
+<META NAME="description" CONTENT="IFILES(30)">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node676.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="index.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node664.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node676.html">Error messages produced by MOPAC</A> <B>Up:</B> <A HREF="index.html">MOPAC 2002 Manual</A> <B>Previous:</B> <A HREF="node664.html">Control within MOPAC</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<B><FONT FACE="Arial" SIZE=4><P>Files and Channels Used by MOPAC</P>
+</B></FONT><P>All input-output channels in MOPAC are assigned labels. The numerical value of these channels is set in <TT>GETDAT</TT> and can only be changed by editing this subroutine. The following Table lists all the channels used by MOPAC, along with their common names.</P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER">
+<STRONG><P ALIGN="CENTER">Table:</STRONG> Channels Used in MOPAC</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Input/output</TD>
+<TD VALIGN="MIDDLE">
+<P>Symbol</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Type</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Formatted?</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Channel No.</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&lt;filename&gt;.dat</TD>
+<TD VALIGN="MIDDLE">
+<P>Input</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>ISCR</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Scratch</TD>
+<TD VALIGN="MIDDLE">
+<P>Internal working</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>ISETUP</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>SETUP</TD>
+<TD VALIGN="MIDDLE">
+<P>Setup</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">25</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IR</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Scratch</TD>
+<TD VALIGN="MIDDLE">
+<P>Input (during run)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">26</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IW</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.out</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Output</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">9</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IRES</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.res</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Restart</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">10</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IDEN</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.den</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Density</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">11</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>ILOG</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.log</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Log</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">12</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IARC</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.arc</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Archive</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">13</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IGPT</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.gpt</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Graphics</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">14</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IEXT</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>User defined</TD>
+<TD VALIGN="MIDDLE">
+<P>New parameters</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">15</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IESR</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.esr</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>ESP Restart</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">16</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>ISYB</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.syb</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>SYBYL</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">17</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>ISOL</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.sol</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>SOL map in MEP</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">18</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IBRZ</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.brz</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Brillouin Zone</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">17</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IPDB</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.pdb</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>PDB file</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">20</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IESR</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.ump</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Grid map</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">21</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IESP</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.esp</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Electrostatic map</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">22</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>IS</TT></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.mep</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Tomasi MEP map</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Yes</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></DIV></DIV></P>
+<P><HR></P>
+<ADDRESS><A HREF="node676.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="index.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node664.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+  <span style="font-style: normal">
+<B>Next:</B> <A HREF="node676.html">Error messages produced by MOPAC</A> <B>Up:</B> <A HREF="index.html">MOPAC 2002 Manual</A> <B>Previous:</B> <A HREF="node664.html">Control within MOPAC</A>
+  </span> <BR>
+J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Limitations</TITLE>
+<META NAME="description" CONTENT="3.3.2.1 Limitations">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node228.html">
+<LINK REL="previous" HREF="node226.html">
+<LINK REL="up" HREF="node226.html">
+<LINK REL="next" HREF="node228.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html4632"
+ HREF="node228.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4628"
+ HREF="node226.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html4622"
+ HREF="node226.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4630"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4631"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4633"
+ HREF="node228.html"> Recommended use of</A>
+<B> Up:</B> <A NAME="tex2html4629"
+ HREF="node226.html">MOZYME </A>
+<B> Previous:</B> <A NAME="tex2html4623"
+ HREF="node226.html">MOZYME </A>
+<!--End of Navigation Panel-->
+<H3>Limitations of MOZYME
+</H3>
+<UL>
+<LI>Only closed shell RHF calculations are allowed.  This means that
+<TT>MOZYME</TT> calculations are limited to species in their
+ground state.  Radicals and electronic excited states cannot be run.
+<LI>The results are not so precise, so for 
+runs that need high precision (such as <TT>FORCE</TT> calculations), <TT>MOZYME</TT>
+should not be used.
+<LI>For large systems, the recommended geometry optimizer is <TT>
+<a href="lbfgs.html">LBFGS</a></TT>.  This is
+a modified BFGS optimizer designed to minimize memory usage.
+
+If <TT>LBFGS</TT> is not wanted for any reason, 
+then use <TT><a href="node129.html">BFGS</a></TT>, although it uses a lot more memory.
+
+The default optimizer, <TT>EF</TT>, uses a large
+amount of memory, and should therefore not be used in optimizing the geometry
+of large systems.  In addition, because it uses a matrix inversion, it becomes
+very time consuming for large systems.
+
+<A NAME="BM2587">&#160;</A>
+<LI>When the geometry of a <EM>large</EM> system is optimized, the run should 
+be broken into a series of short calculations, of 4-200 cycles.  This is 
+necessary because the geometry might change considerably during the optimization,
+ and atoms that were not interacting at the start of the calculation might interact
+strongly at the end of the run.  By stopping and restarting the optimization,
+any new interactions are taken into account.  Failure to break up an optimization
+in this way can lead to a ruined calculation.
+(This is really a bug -- hopefully, it will be corrected in a future release)
+</UL><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4632"
+ HREF="node228.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4628"
+ HREF="node226.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html4622"
+ HREF="node226.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4630"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4631"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4633"
+ HREF="node228.html"> Recommended use of</A>
+<B> Up:</B> <A NAME="tex2html4629"
+ HREF="node226.html">MOZYME </A>
+<B> Previous:</B> <A NAME="tex2html4623"
+ HREF="node226.html">MOZYME </A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Why Use Localized Molecular Orbitals?</TITLE>
+<META NAME="description" CONTENT="8.6.1 Why Use Localized Molecular Orbitals?">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node517.html"><LINK REL="previous" HREF="node511.html"><LINK REL="up" HREF="node511.html"><LINK REL="next" HREF="node513.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node513.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node511.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node511.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node513.html">What is a</A> <B>Up:</B> <A HREF="node511.html">Localized Molecular Orbital</A> <B>Previous:</B> <A HREF="node511.html">Localized Molecular Orbital</A>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION001261000000000000000">Why Use Localized Molecular Orbitals?</A> </H2>
+<P>Using conventional SCF methods, the time required for a SCF calculation rises as the third or higher power of the size of the system (number of atoms, orbitals, or electrons). For semiempirical methods, this places a practical limit on the number of atoms in a molecule: about 500-1,000, using a supercomputer. </P>
+<P>The origin of the <I>N</I><SUP>3</SUP> dependence lies in the way conventional molecular orbitals are generated and used. They are generated from a Fock matrix either by a diagonalization, or, if approximate M.O.s exist, by a pseudo-diagonalization. Both processes are of type <I>N</I><SUP>3</SUP>. Once generated, they are used in the construction of a density matrix. Because every M.O. extends over every atom, this process is also of order <I>N</I><SUP>3</SUP>. Most of the time in a semiempirical calculation is spent in these two operations, therefore the overall time dependency of conventional semiempirical calculations rises as <I>N</I><SUP>3</SUP>. </P>
+<P>To understand how limiting this dependency is, consider how the time requirement rises with increasing numbers of atoms. For the sake of discussion, assume that the time required for an SCF calculation of an amino acid is one second. The&nbsp;<A HREF="#t-amino">Table</A> shows the time required for larger systems. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="BM15177">&nbsp;</A> </P>
+<STRONG><P><a name="t-amino"></a>Table:</STRONG> Predicted Times Required for One SCF Calculation Using Conventional SCF Methods*</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"> No. of Residues</TD>
+<TD VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Time</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">8.0</TD>
+<TD VALIGN="MIDDLE">
+<P>seconds</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2.1</TD>
+<TD VALIGN="MIDDLE">
+<P>minutes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">10</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">16.7</TD>
+<TD VALIGN="MIDDLE">
+<P>minutes</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">20</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2.2</TD>
+<TD VALIGN="MIDDLE">
+<P>hours</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">50</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.4</TD>
+<TD VALIGN="MIDDLE">
+<P>days</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">100</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">11.6</TD>
+<TD VALIGN="MIDDLE">
+<P>days</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">200</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3.1</TD>
+<TD VALIGN="MIDDLE">
+<P>months</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">500</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4.0</TD>
+<TD VALIGN="MIDDLE">
+<P>years</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1,000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">31.7</TD>
+<TD VALIGN="MIDDLE">
+<P>years</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2,000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">253.6</TD>
+<TD VALIGN="MIDDLE">
+<P>years</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P><BR>
+*: Using Conventional SCF Methods, <BR>
+and assuming that one amino acid <BR>
+runs in one second. </DIV></P>
+<P>Many enzymes containing thousands of residues are known. It is obvious that these systems cannot be studied using conventional SCF methods. By using localized molecular orbitals, the time dependency can be changed from <I>N</I><SUP>3</SUP> to <I>N</I><SUP>1</SUP>. LMO methods require much more arithmetic manipulation, in that every array which holds atomic orbital information has one or more associated integer arrays which specify the atoms involved and their location. For this reason, LMO methods are much slower than conventional methods for small systems. </P>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html8493"><A HREF="node513.html">What is a Localized Molecular Orbital?</A></A> </LI>
+<LI><A NAME="tex2html8494"><A HREF="node514.html">Energy Considerations.</A></A> </LI>
+<LI><A NAME="tex2html8495"><A HREF="node515.html">Limitations on Systems.</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8491"><A HREF="node513.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8487"></A><A HREF="node511.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8481"></A><A HREF="node511.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8489"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8490"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8492"><A HREF="node513.html">What is a</A></A> <B>Up:</B> <A NAME="tex2html8488"><A HREF="node511.html">Localized Molecular Orbital</A></A> <B>Previous:</B> <A NAME="tex2html8482"><A HREF="node511.html">Localized Molecular Orbital</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

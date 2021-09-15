@@ -1,0 +1,165 @@
+\subsubsection{Diamond}\index{Diamond}\index{Data!Diamond!construction of}\index{Solid state!data sets}
+
+The unit cell of diamond consists of two carbon atoms. If symmetry operations were allowed,
+ only one atom would be needed, but only translation operations are allowed, so two atoms
+ must be used.
+
+Each carbon atom forms four single bonds with other carbon atoms. 
+This can be used in defining the translation vectors: the effect 
+of a translation vector acting on atom 1 would be to move it to 
+one of the atoms attached to atom 2. 
+ Using this fact, the data set can easily be made:
+
+First attempt at a data set for MAKPOL. \begin{verbatim}
+MERS=(4,4,4)  Diamond
+C
+C  1.545 1 0 0 0 0 1
+Tv 2.523 1 35.26439 10 0 1 2
+Tv 2.523 1 35.26439 1 120 1 1 2 3
+Tv 2.523 1 35.26439 1 240 1 1 2 3
+\end{verbatim}
+
+In this description, the number of unit cells to be used is too
+small: 4 by 4 by 4.  Ideally, at least a 6 by 6 by 6 system
+ should be use. The smaller number is used here purely for the
+ purposes of illustration.
+
+
+
+This data set is, however, not ideal, for the following reasons:
+
+The angle between the translation vectors is 60 degrees. This 
+means that the unit cell must be very large in order for the 
+distance between opposite faces to be at least 10 \AA ngstroms. 
+Diamond is a Body-Centered-Cubic lattice. This means that every 
+odd cell (e.g. 001,111,012, etc.) is missing. By specifying BCC, 
+the angle between the translation vectors can be increased to 90 
+degrees. This is the ideal angle to maximize the distance between 
+faces. The system has a lot of symmetry. By adding ``SYMMETRY" two 
+objectives can be met: First, symmetry can be used in defining the 
+Tv. This is not very important in this unit cell, but does make it 
+easier to change the bond-length of atom 2, in that any change in 
+this distance is automatically made in the Tv. Second, if SYMMETRY 
+is present, MAKPOL will automatically add symmetry to the data 
+set.
+
+\begin{verbatim}
+Data set for MAKPOL. File name: Make_diamond.dat
+ SYMMETRY MERS=(4,4,4) BCC
+ Diamond, 64 atoms 
+C 
+C 1.545 1 0 0 0 0 1 
+Tv 1.784 0 54.73561 0 0 0 1 2 
+Tv 1.784 0 54.73561 0 120 0 1 2 3 
+Tv 1.784 0 54.73561 0 240 0 1 2 3 
+
+2 19 1.1547005 3 4 5 
+\end{verbatim}
+
+When this data set is run using MAKPOL, the following data set is 
+generated: 
+\begin{verbatim}
+SYMMETRY MERS=(4,4,4) BCC 
+Diamond, 64 atoms 
+
+C  0.000000 0   0.000000 0    0.000000 0 
+C  1.545000 1   0.000000 0    0.000000 0 1 
+C  3.568025 1  54.735610 1    0.000000 0 1 2 
+C  1.545000 0 125.264390 1    0.000000 1 3 1 2 
+C  2.522974 1  35.264390 1   60.000000 1 1 2 3 
+C  1.545000 0 144.735610 1    0.000000 0 5 1 2 
+C  2.522974 0 135.000000 1   45.000000 1 3 1 2 
+C  1.545000 0 144.735610 0  -90.000000 1 7 3 1 
+C  2.522974 0  90.000000 1   90.000000 0 5 1 2 
+C  1.545000 0  90.000000 0 -144.735610 1 9 5 1  
+
+(many lines deleted) 
+
+C  1.545000 0  90.000000 0  160.528779 1 61 57 41 
+C  2.522974 0  60.000000 0  -35.264390 0 59 43 26
+C  1.545000 0  90.000000 0  160.528779 0 63 59 43 
+XX 2.522974 0  90.000000 0  180.000000 0 7   3 1 
+XX 2.522974 0  90.000000 0 -125.264390 0 29  9 5 
+XX 2.522974 0 180.000000 0    0.000000 0 53 41 42 
+Tv 7.136049 1   0.000000 0    0.000000 0 1  65 2 
+Tv 7.136049 0   0.000000 0    0.000000 0 1  66 2 
+Tv 7.136049 0   0.000000 0    0.000000 0 1  67 2 
+
+2 1 4 6 8 10 12 14 16 18 20 22
+2 1 24 26 28 30 32 34 36 38 40 42
+2 1 44 46 48 50 52 54 56 58 60 62
+2 1 64
+4 3 6 11 12 15 16 18 33 34 35 36
+4 3 39 40 43 44 45 51 52 53 54 55
+4 3 56 59 60 67
+5 1 7 9 11 13 15 17 19 21 23 25
+5 1 27 29 31 33 35 37 39 41 43 45
+5 1 47 49 51 53 55 57 59 61 63 65
+5 1 66 67
+5 2 17
+5 14 17
+
+(many lines deleted) 
+
+\end{verbatim}
+Before running this data set, more symmetry can be added 
+``by hand." Every angle is symmetry defined, and does not need to 
+be optimized, therefore every angle and dihedral optimization flag 
+can be set to zero. Every angle and dihedral symmetry relation 
+defined at the end of the data set can also be deleted. These are 
+the lines that start with a number followed by a 2, a 3, or a 14. 
+Every distance can be related to the bond-length of atom 2. The 
+position of atoms 3 and 5, and the length of the translation 
+vector Tv can be defined by distances that are exactly Sqrt(16/3). 
+Sqrt(8/3) and Sqrt(64/3) times the C$_2$-C$_1$ 
+distance, respectively. These symmetry relations can be defined 
+using MOPAC symmetry function 19. This has the form: Defining-atom 
+19 multiplier dependent atom(s) When these changes are made to the 
+data set, the final data set is produced. This is: 
+\begin{verbatim}
+ SYMMETRY MERS=(4,4,4) BCC 
+ Diamond, 64 atoms
+
+  C    0.000000  0   0.000000  0    0.000000  0
+  C    1.545000  1   0.000000  0    0.000000  0     1
+  C    3.568025  0  54.735610  0    0.000000  0     1     2
+  C    1.545000  0 125.264390  0    0.000000  0     3     1     2
+  C    2.522974  0  35.264390  0   60.000000  0     1     2     3
+  C    1.545000  0 144.735610  0    0.000000  0     5     1     2
+  C    2.522974  0 135.000000  0   45.000000  0     3     1     2
+  
+  (many lines deleted) 
+ 
+  C    1.545000  0  90.000000  0  160.528779  0    61    57    41
+  C    2.522974  0  60.000000  0  -35.264390  0    59    43    26
+  C    1.545000  0  90.000000  0  160.528779  0    63    59    43
+ XX    2.522974  0  90.000000  0  180.000000  0     7     3     1
+ XX    2.522974  0  90.000000  0 -125.264390  0    29     9     5
+ XX    2.522974  0 180.000000  0    0.000000  0    53    41    42
+ Tv    7.136049  0   0.000000  0    0.000000  0     1    65     2
+ Tv    7.136049  0   0.000000  0    0.000000  0     1    66     2
+ Tv    7.136049  0   0.000000  0    0.000000  0     1    67     2
+
+   2 19 2.3094  3
+   2 19 1.6330  5
+   2 19 4.6188 68
+   2  1    4    6    8   10   12   14   16   18   20   22
+   2  1   24   26   28   30   32   34   36   38   40   42
+   2  1   44   46   48   50   52   54   56   58   60   62
+   2  1   64
+   5  1    7    9   11   13   15   17   19   21   23   25
+   5  1   27   29   31   33   35   37   39   41   43   45
+   5  1   47   49   51   53   55   57   59   61   63   65
+   5  1   66   67
+  68  1   69   70
+\end{verbatim} 
+
+Is the use of symmetry worth all this effort? Most 
+definitely! If symmetry is NOT used, then for this small system of 
+64 atoms, 195 parameters would need to be optimized. That is, 
+3*64-6 for the 64 atoms plus 9 parameters for the three 
+translation vectors. Optimization of a system with 195 unknowns 
+would take much longer than for a system with precisely one 
+unknown. For a more realistic system, involving 6 by 6 by 6 
+primitive unit cells, symmetry would lower the complexity of the 
+calculation from 651 unknowns to precisely 1. 

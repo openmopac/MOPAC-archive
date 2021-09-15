@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>XYZ </TITLE>
+<META NAME="description" CONTENT="XYZ ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node345.html"><LINK REL="previous" HREF="node343.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node345.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html6033"><A HREF="node345.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6029"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6023"></A><A HREF="node343.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6031"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6032"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6034"><A HREF="node345.html">Keywords that go together</A></A>  <B>Up:</B> <A NAME="tex2html6030"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html6024"><A HREF="node343.html">XENO</A><!--End of Navigation Panel--><H2>
+<TT>XYZ</TT> </H2>
+<P>Regardless of the coordinate system used in defining the geometry, if <TT>XYZ</TT> is present, then all atoms will be converted to Cartesian coordinates, and the calculation will be run entirely in Cartesian coordinates. </P>
+<P>When a system involving several rings, or big rings, is optimized using 
+internal coordinates, the geometry optimizers often have difficulty.&nbsp; This 
+is because the effect of a small change in an angle can be a large change in the 
+interatomic distance of two bonded atoms.&nbsp; This is particularly important 
+in enzymes and other large molecules.&nbsp; This problem is completely solved if 
+Cartesian coordinates are used.&nbsp; Therefore, if problems are encountered 
+with geometry optimizations, particularly if internal coordinates are used, 
+keyword <TT>XYZ</TT> should be used.</P>
+<P>Notes</P>
+<ul>
+  <li>If&nbsp; <TT>XYZ</TT> is used, the optimization flags are not changed. 
+  Therefore, before running a system with&nbsp; <TT>XYZ</TT> all the 
+  optimization flags should be set to &quot;1&quot;, this includes the optimization flags 
+  for atoms 1, 2, and 3.</li>
+  <li>Any dummy atoms are automatically deleted if&nbsp; <TT>XYZ</TT> is 
+  present.&nbsp; Dummy atoms are only meaningful if internal coordinates are 
+  used.&nbsp; </li>
+</ul>
+<P>See also <a href="node197.html"><TT>INT</TT></a><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

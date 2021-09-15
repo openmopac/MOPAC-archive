@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Memory Considerations</TITLE>
+<META NAME="description" CONTENT="3.5 Memory Considerations">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node346.html"><LINK REL="up" HREF="node104.html"><LINK REL="next" HREF="node363.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node363.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node104.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node361.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node363.html">Program MAKPOL</A> <B>Up:</B> <A HREF="node104.html">Data files</A> <B>Previous:</B> <A HREF="node361.html">Formic acid</A>
+<!--End of Navigation Panel-->
+<H1>Memory Considerations </H1>
+<P>Of their nature, large systems use a large amount of memory. This will sometimes prevent a calculation from being run. There are, however, several ways to reduce the amount of memory needed by a specific calculation. These can be summarized as follows: </P>
+
+<UL>
+<LI>Run using the <A HREF="node226.html">MOZYME</A> function. </LI></UL>
+<DIR>
+<DIR>
+
+<P>For large systems, the MOZYME function uses much less memory than the default MOPAC. The MOZYME function only works for closed shell RHF ground state systems. Also, it cannot be used when high precision is needed, such as in <A HREF="node182.html">FORCE</A>, hyperpolarizability, or <A HREF="node198.html">IRC</A> calculations. </P></DIR>
+</DIR>
+
+
+<UL>
+<LI>Run the job with <A HREF="node307.html">SIZES</A>. </LI></UL>
+<DIR>
+<DIR>
+
+<P>Run the job that fails using <TT>SIZES</TT>. This will print out the sizes of all arrays created dynamically. By inspection of these arrays, ways can usually be found to reduce the memory demand. For example, the default geometry optimizer using the <TT>MOZYME</TT> function, <TT>EF</TT>, uses a large amount of memory. Switching to the reduced-memory BFGS optimizer (<A HREF="lbfgs.html">LBFGS</A>) will save a lot of memory. </P></DIR>
+</DIR>
+
+
+<UL>
+<LI>Run in <A HREF="node336.html">UNSAFE</A> mode. </LI></UL>
+<DIR>
+<DIR>
+
+<P>Normally, by default, MOPAC runs in <A HREF="node296.html">SAFE</A> mode. This means that when things start to go wrong in the SCF, special procedures can be used in an attempt to generate a SCF. These procedures use a large amount of memory, and are normally not used. Most likely, if memory is limited, the job can be run in <TT>UNSAFE</TT> mode. This will save a lot of memory, but at the same time, if things start to go wrong, the job has an increased chance of failing. If the job fails, the results will usually indicate the failure in an obvious way. </P></DIR>
+</DIR>
+
+
+<UL>
+<LI>Reduce the cutoffs. </LI></UL>
+<DIR>
+<DIR>
+
+<P>In a <TT>MOZYME</TT> calculation, useful results can often be obtained even when the values of <A HREF="node143.html">CUTOF1</A> and <A HREF="node144.html">CUTOF2</A> are reduced. When these are reduced, the amount of memory needed drops quite rapidly. </P>
+<P>If the objective of the calculation is to optimize the geometry, then reducing the cutoffs will both increase the speed and reduce the memory demand without significant loss of accuracy. </P></DIR>
+</DIR>
+
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6256"><A HREF="node363.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6252"></A><A HREF="node104.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6248"></A><A HREF="node361.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6254"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6255"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6257"><A HREF="node363.html">Program MAKPOL</A></A> <B>Up:</B> <A NAME="tex2html6253"><A HREF="node104.html">Data files</A></A> <B>Previous:</B> <A NAME="tex2html6249"><A HREF="node361.html">Formic acid</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

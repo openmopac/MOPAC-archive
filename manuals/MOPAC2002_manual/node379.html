@@ -1,0 +1,185 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Calculation of Electron Density</TITLE>
+<META NAME="description" CONTENT="Calculation of Electron Density">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node380.html">
+<LINK REL="previous" HREF="node378.html">
+<LINK REL="up" HREF="node376.html">
+<LINK REL="next" HREF="node380.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6527"
+ HREF="node380.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6523"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6517"
+ HREF="node378.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6525"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6526"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6528"
+ HREF="node380.html">Electron density</A>
+<B> Up:</B> <A NAME="tex2html6524"
+ HREF="node376.html"> Theory</A>
+<B> Previous:</B> <A NAME="tex2html6518"
+ HREF="node378.html">Starting M.O.s</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<H4><A NAME="SECTION001010030000000000000">
+Calculation of Electron Density</A>
+</H4>
+In order to calculate electron density for any given point, the value of 
+each atomic orbital must be calculated.  Atomic orbitals, as Slaters, are
+of form
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\varphi = Nf_rf_{\theta\phi},
+\end{displaymath} -->
+<IMG
+ WIDTH="78" HEIGHT="32"
+ SRC="img304.gif"
+ ALT="\begin{displaymath}\varphi = Nf_rf_{\theta\phi},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+in which 
+<!-- MATH: $N=c\frac{(2\xi)^{n+1/2}}{(2n)!2\sqrt{\pi}}$ -->
+<IMG
+ WIDTH="92" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img305.gif"
+ ALT="$N=c\frac{(2\xi)^{n+1/2}}{(2n)!2\sqrt{\pi}}$">,
+where <IMG
+ WIDTH="14" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img306.gif"
+ ALT="$\xi$">
+is the orbital
+exponent, <I>n</I> is the principal quantum number, and <I>c</I>=1 for <I>s</I> orbitals,
+<IMG
+ WIDTH="25" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img307.gif"
+ ALT="$\sqrt{3}$">
+for <I>p</I> orbitals, and <IMG
+ WIDTH="33" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img308.gif"
+ ALT="$\sqrt{15}$">
+for <I>d</I> orbitals.
+At any given point, the value of <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img309.gif"
+ ALT="$\varphi$">
+is given as the product of the
+normalization constant, the radial term, and the angular component.  The
+radial term is simply 
+<!-- MATH: $f_r=r^{n-1}e^{-\xi r}$ -->
+<IMG
+ WIDTH="92" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img310.gif"
+ ALT="$f_r=r^{n-1}e^{-\xi r}$">,
+where <I>r</I> is the distance 
+from the point under study to the atomic center. 
+The angular terms are more complicated.  For a <I>s</I>-<I>p</I>-<I>d</I> basis set, the
+value of <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img311.gif"
+ ALT="$\varphi$">
+is
+<BR>
+<TABLE ALIGN="CENTER" CELLPADDING="0"  >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"  ><i>
+  <font face="Symbol">f</font><sub>s</sub></i></TD>
+<TD ALIGN="CENTER" NOWRAP >&nbsp; =</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>px</sub></i></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB><I>x</I></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>p</sub></i><sub><i>y</i></sub></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB><I>y</I></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>p</sub></i><sub><i>z</i></sub></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB><I>z</I></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>d</sub></i><sub>(<i>x2-y2</i>)</sub></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB>(1/2)(<i>x</i><sup>2</sup>-<i>y</i><sup>2</sup>)</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>d</sub></i><sub>(<i>xz</i>)</sub></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB><I>xz</I></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>d</sub></i><sub>(<i>z2</i>)</sub></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB>(1/12)<sup>1/2</sup>(2<i>z</i><sup>2</sup>-<i>x</i><sup>2</sup>-<i>y</i><sup>2</sup>)</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>d</sub></i><sub>(<i>yz</i>)</sub></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB><I>yz</I></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" ><i>
+  <font face="Symbol">f</font><sub>d</sub></i><sub>(<i>xy</i>)</sub></TD>
+<TD ALIGN="CENTER" NOWRAP >=</TD>
+<TD ALIGN="LEFT" NOWRAP ><I>&nbsp; Nf</I><SUB><I>r</I></SUB><I>xy</I></TD>
+</TR>
+</TABLE>
+<BR CLEAR="ALL"><P></P>
+where <I>x</I>, <I>y</I>, and <I>z</I> are the normalized direction components.
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6527"
+ HREF="node380.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6523"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6517"
+ HREF="node378.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6525"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6526"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6528"
+ HREF="node380.html">Electron density</A>
+<B> Up:</B> <A NAME="tex2html6524"
+ HREF="node376.html"> Theory</A>
+<B> Previous:</B> <A NAME="tex2html6518"
+ HREF="node378.html">Starting M.O.s</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

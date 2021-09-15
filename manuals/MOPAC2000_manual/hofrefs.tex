@@ -1,0 +1,66 @@
+\chapter{Reference Heats of formation}
+\section*{Test MNDO, PM3 and AM1 compounds}
+In order to verify that MOPAC is working correctly, a large  number of  tests
+need to be done.   It  is  obviously impractical  to ask users to test all the
+options in MOPAC.   However, users must be able to verify the basic working of
+MOPAC, and to do this  the  following  tests for the elements have been
+provided.
+
+Each element can be tested by making up a data-file using estimated geometries
+and running that file using MOPAC.  The optimized geometries should give rise
+to heats of formation as shown in Table~\ref{hofr}.   Any difference greater
+than 0.1 kcal/mole indicates a serious error  in the program.\index{Heat of
+Formation!molecular standards} \index{$\Delta H_f$!molecular standards}
+
+\subsection*{Caveats}
+\begin{enumerate}
+\item Geometry definitions must be correct.
+\item Heats of formation  may  be  too  high  for  certain compounds.   This is
+due to a poor starting geometry trapping the system in an excited  state.
+(Affects ICl at times)
+\end{enumerate}
+
+\begin{table}
+\caption{\label{hofr} Reference Heats of Formation}
+\begin{center}
+\begin{tabular}{llrrrrr}
+\hline
+Element & Test Compound & \multicolumn{5}{c}{Heat of Formation} \\
+\cline{3-7} & & \multicolumn{1}{c}{MINDO/3} & \multicolumn{1}{c}{MNDO} &
+\multicolumn{1}{c}{AM1} & \multicolumn{1}{c}{PM3} & \multicolumn{1}{c}{MNDO-$d$} \\
+\hline
+Hydrogen   & CH$_4$    &      -6.3  & -12.0&  -8.8 &-13.0  \\
+Lithium    & LiH       &            & +23.2&      &  \\
+Beryllium  & BeO       &            & +38.6&       &+53.0   \\
+Boron      & BF$_3$    &    -270.2  &-261.0&-272.1*&  \\
+Carbon     & CH$_4$    &      -6.3  & -12.0&  -8.8 &-13.0  \\
+Nitrogen   & NH$_3$    &      -9.1  &  -6.4&  -7.3 & -3.1  \\
+Oxygen     & CO$_2$    &     -95.7  & -75.1& -79.9 &-85.1  \\
+Fluorine   & CF$_4$    &    -223.9  &-214.2&-225.8 &225.1  \\
+Magnesium  & MgF$_2$   &            &      &       &160.7  \\
+Aluminium  & AlF       &            & -83.6& -77.9 &-50.1 &-65.7 \\
+Silicon    & SiH       &     +82.9  & +90.2& +84.5 &+94.6 & +89.3 \\
+Phosphorus & PH$_3$    &      +2.5  &  +3.9& +10.2 & +0.2& +5.0 \\
+Sulfur     & H$_2$S    &      -2.6  &  +3.8&  +1.2 & -0.9& +0.01  \\
+Chlorine   & HCl       &     -21.1  & -15.3& -24.6 &-20.5  \\
+Zinc       & ZnMe$_2$  &            & +19.9& +19.8 &  8.2  \\
+Gallium    & GaCl$_3$  &            &      &       &-79.7  \\
+Germanium  & GeF       &            & -16.4& -19.7 & -3.3  \\
+Arsenic    & AsH$_3$   &            &      & +3.0  &+12.7  \\
+Selenium   & SeCl$_2$  &            &      & -42.2 &-38.0  \\
+Bromine    & HBr       &            &  +3.6& -10.5 & +5.3  & +2.8 \\
+Cadmium    & CdCl$_2$  &            &      &       &-48.6  \\
+Indium     & InCl$_3$  &            &      &       &-72.8  \\
+Tin        & SnF       &            & -20.4&       &-17.5  \\
+Antimony   & SbCl$_3$  &            &      & -74.8 &-72.5  \\
+Tellurium  & TeH$_2$   &            &      & +12.6 &+23.8  \\
+Iodine     & ICl       &            &  -6.7& -4.6  &+10.8 & +0.5 \\
+Mercury    & HgCl$_2$  &            & -36.9&-44.8  &-32.7  \\
+Thallium   & TlCl      &            &      &       &-13.4  \\
+Lead       & PbF       &            & -22.6&       &-21.0  \\
+Bismuth    & BiCl$_3$  &            &      &       &-42.6  \\
+\hline
+\end{tabular} \\
+* Not an exhaustive test of AM1 boron.
+\end{center}
+\end{table}

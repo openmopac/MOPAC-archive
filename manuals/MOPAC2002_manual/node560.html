@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Point Group Theory</TITLE>
+<META NAME="description" CONTENT="8.10 Point Group Theory">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node573.html"><LINK REL="previous" HREF="node550.html"><LINK REL="up" HREF="node439.html"><LINK REL="next" HREF="node561.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node561.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node559.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node561.html">Limitations</A> <B>Up:</B> <A HREF="node439.html">Theory</A> <B>Previous:</B> <A HREF="node559.html">Space-group operations</A>
+<!--End of Navigation Panel-->
+<H1>Point Group Theory </H1>
+<P>This Section is based on the original work of Peter Bischof in the UMNDO program, and made available to me by Dr David Danovich. </P>
+<P>Some point-group theory has been added to MOPAC. The main functionalities added are:&nbsp;</A> </P>
+
+<UL>
+<LI>'Normal' symmetry relationships are now automatically recognized if <TT>
+<a href="node126.html">AUTOSYM</a></TT> is specified. </LI>
+<LI>The symmetry of the system is printed both at the start of the run and at the end. If the point-group changes, the change will be shown in the different point-group symbols. </LI>
+<LI>Molecular orbitals will be characterized by Irreducible Representation (I.R.). </LI>
+<LI>Normal coordinates generated in the vibrational calculation will be characterized by I.R. </LI>
+<LI>State functions will be characterized by I.R. </LI>
+<LI>All rotation groups up to order 8, except D<SUB>8<I>d</I></SUB>, are available. </LI>
+<LI>The cubic groups T, T<I><SUB>h</I></SUB>, T<I><SUB>d</I></SUB>, O, O<I><SUB>h</I></SUB>, I, and I<I><SUB>h</I></SUB> are available. </LI>
+<LI>The infinite groups C <!-- MATH: $_{\infty v}$ --><IMG SRC="img1377.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$_{infty v}$">, D <!-- MATH: $_{\infty h}$ --><IMG SRC="img1378.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$_{infty h}$">and R<SUB>3</SUB> are available. </LI>
+<LI>In <TT><a href="node182.html">FORCE</a></TT> or vibrational frequency calculations, symmetry will be used to accelerate the calculation, thus a calculation of benzene would involve two atoms, a C and a H atom, to be calculated, rather than the normal 12 atoms. </LI>
+<LI>In vibrational frequency calculations, the Hessian or force matrix will be symmetrized. <A NAME="sym_force">&nbsp;</A> </LI></UL>
+<DIR>
+<DIR>
+
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+F_{ij}=\frac{1}{h}\sum_hR(h)^TF_{ij}'R(h)
+\end{displaymath} --><IMG SRC="img1379.gif" WIDTH=149 HEIGHT=46 ALT="begin{displaymath}F_{ij}=frac{1}{h}sum_hR(h)^TF_{ij}'R(h)end{displaymath}"></DIV>
+<P align="left">This eliminates the normal small deviations from exact symmetry (<A HREF="node606.html#fc">a qualification appears elsewhere</A>) . </P></DIR>
+</DIR>
+
+<P><HR></P>
+<P><!--Table of Child-Links--><A NAME="CHILD_LINKS">&nbsp;</A> </P>
+
+<UL>
+<LI><A NAME="tex2html9084"><A HREF="node561.html">Limitations</A></A> </LI>
+<LI><A NAME="tex2html9085"><A HREF="node562.html">Representation of Point Groups</A></A> </LI>
+<LI><A NAME="tex2html9086"><A HREF="node563.html">Identification of Point-Groups</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html9087"><A HREF="node564.html">Infinite Groups</A></A> </LI>
+<LI><A NAME="tex2html9088"><A HREF="node565.html">Cubic Groups</A></A> </LI>
+<LI><A NAME="tex2html9089"><A HREF="node566.html">Other Degenerate Groups</A></A> </LI>
+<LI><A NAME="tex2html9090"><A HREF="node567.html">Abelian Groups</A></A> </LI>
+<LI><A NAME="tex2html9091"><A HREF="node568.html">Tolerance</A></A> </LI></UL>
+
+<LI><A NAME="tex2html9092"><A HREF="node569.html">Orientation of the Abelian groups C<SUB>2<I>v</I></SUB> and D<SUB>2<I>h</I></SUB></A></A> </LI>
+<LI><A NAME="tex2html9093"><A HREF="node570.html">Molecular Orbitals</A></A> </LI>
+<LI><A NAME="tex2html9094"><A HREF="node571.html">Normal Coordinates</A></A> </LI>
+<LI><A NAME="tex2html9095"><A HREF="node572.html">States</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html9082"><A HREF="node561.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9078"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9072"></A><A HREF="node559.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9080"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9081"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9083"><A HREF="node561.html">Limitations</A></A> <B>Up:</B> <A NAME="tex2html9079"><A HREF="node439.html">Theory</A></A> <B>Previous:</B> <A NAME="tex2html9073"><A HREF="node559.html">Space-group operations</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

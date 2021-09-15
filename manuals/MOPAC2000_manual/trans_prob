@@ -1,0 +1,139 @@
+\section{Atom Transition Moments}
+The probability, $B_{0\rightarrow *}$, that a photon will be absorbed by a system that has a
+ground state $\Psi_0$ and an excited state $\Psi_*$ separated by an energy $\epsilon$ when
+irradiated by an energy density $\rho_{\epsilon}$
+is given by
+$$
+B_{0\rightarrow *} = \frac{2\pi}{3\hbar^2}|R_{0*}|^2\rho_{0*},
+$$
+in which
+$$
+|R_{0*}|^2 = |X_{0*}|^2 + |Y_{0*}|^2 + |Z_{0*}|^2.
+$$
+
+$X_{0*}$ is the matrix element for the $x$ component of the dipole moment:
+$$
+X_{0*} = \int \Psi_0|e\sum_j \vec{x_j} |\Psi_* d\tau
+$$
+
+Evaluation of this integral requires evaluating the effect of the operators  $\vec{x_j}$,
+$\vec{y_j}$, and $\vec{z_j}$.
+acting on an atomic orbital.  Tables \cite{transx}, \cite{transy}, and \cite{tranz} show
+the integrals of the type $<\! \phi_{\lambda}
+ |\vec{r_j}|\phi_{\sigma}\!>$, where $\phi_{\lambda}$ and $\phi_{\sigma}$ are
+ pairs of atomic orbitals.
+
+
+\begin{table}
+\caption{\label{transx} ``$x$" Transition Integrals}
+\begin{center}
+\begin{tabular}{l|ccccccccc} \hline
+& $s$  &  $p_x$  &  $p_y$  &  $p_z$  &  $d_{x^2-y^2}$  & $d_{xz}$  &
+$d_{z^2}$  &  $d_{yz}$  &  $d_{xy}$ \\ \hline
+$s$ & X$_A$\\
+$p_x$ & sp & X$_A$\\
+$p_y$  & 0 & 0 & X$_A$ \\
+$p_z$  & 0 & 0 & 0 & X$_A$\\
+$d_{x^2-y^2}$ & 0 & pd & 0 & 0 & X$_A$\\
+$d_{xz}$      & 0 & 0 & 0 & pd & 0 & X$_A$\\
+$d_{z^2}$     & 0 & -$\frac{1}{\sqrt{3}}$pd & 0 & 0 & 0 & 0 & X$_A$\\
+$d_{yz}$      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & X$_A$\\
+$d_{xy}$      & 0 & 0 & pd & 0 & 0 & 0 & 0 & 0 & X$_A$\\  \hline
+
+
+\end{tabular}\\
+Note: X$_A$ = $<\! \phi_{\lambda}|\vec{r}|\phi_{\lambda}\! >$; sp = $<\! ns|\vec{r}|np\! >$; pd = $<\! np|\vec{r}|nd\! >$.
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{\label{transy} ``$y$" Transition Integrals}
+\begin{center}
+\begin{tabular}{l|ccccccccc} \hline
+& $s$  &  $p_x$  &  $p_y$  &  $p_z$  &  $d_{x^2-y^2}$  & $d_{xz}$  &
+$d_{z^2}$  &  $d_{yz}$  &  $d_{xy}$ \\ \hline
+$s$ & Y$_A$\\
+$p_x$ & 0 & Y$_A$\\
+$p_y$  & sp & 0 & Y$_A$ \\
+$p_z$  & 0 & 0 & 0 & Y$_A$\\
+$d_{x^2-y^2}$ & 0 & 0 & -pd & 0 & Y$_A$\\
+$d_{xz}$      & 0 & 0 & 0 & 0 & 0 & Y$_A$\\
+$d_{z^2}$     & 0 & 0 & -$\frac{1}{\sqrt{3}}$pd & 0 & 0 & 0 & Y$_A$\\
+$d_{yz}$      & 0 & 0 & 0 & pd & 0 & 0 & 0 & Y$_A$\\
+$d_{xy}$      & 0 & pd & 0 & 0 & 0 & 0 & 0 & 0 & Y$_A$\\  \hline
+
+
+\end{tabular}\\
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{\label{transz} ``$z$" Transition Integrals}
+\begin{center}
+
+\begin{tabular}{l|ccccccccc} \hline
+& $s$  &  $p_x$  &  $p_y$  &  $p_z$  &  $d_{x^2-y^2}$  & $d_{xz}$  &
+$d_{z^2}$  &  $d_{yz}$  &  $d_{xy}$ \\ \hline
+$s$ & Z$_A$\\
+$p_x$ & 0 & Z$_A$\\
+$p_y$  & 0 & 0 & Z$_A$ \\
+$p_z$  & 0 & 0 & sp & Z$_A$\\
+$d_{x^2-y^2}$ & 0 & 0 & 0 & 0 & Z$_A$\\
+$d_{xz}$      & 0 & pd & 0 & 0 & 0 & Z$_A$\\
+$d_{z^2}$     & 0 & 0 & 0 & $\frac{2}{\sqrt{3}}$pd & 0 & 0 & Z$_A$\\
+$d_{yz}$      & 0 & 0 & pd & 0 & 0 & 0 & 0 & Z$_A$\\
+$d_{xy}$      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Z$_A$\\  \hline
+\end{tabular}\\
+\end{center}
+\end{table}
+
+The integral
+ $<\! \phi_{\lambda}|\vec{r}|\phi_{\lambda}\! >$ is simply the appropriate Cartesian coordinate,
+that is, the $x$, $y$, or $z$ coordinate of the atom that $\phi_{\lambda}$ is on. $<\! ns|\vec{r}|np\! >$
+ and  $<\! np|\vec{r}|nd\! >$
+ can be evaluated using the following expressions:
+
+$$
+<\! ns|\vec{r}|np\! > = a_0\frac{(2n+1).2^{2n+1}.(\xi_s\xi_p)^{n+1/2}}{\sqrt{3}(\xi_s+\xi_p)^{2n+2}}
+$$
+
+$$
+<np|\vec{r}|nd>=a_0\frac{(n_p+n_d+1)!.2^{n_p+n_d+1}.\xi_p^{n_p+1/2}.\xi_d^{n_d+1/2}}
+{\sqrt{5}(\xi_p+\xi_d)^{n_p+n_d+2}.\sqrt{(2n_p)!(2n_d)!}},
+$$
+where $ns$, $np$, and $nd$ are $s$, $p$, and $d$ quantum numbers, respectively.
+For the $sp$ transition, $n=ns=np$.
+The Slater orbital exponents, $\xi_s$, $\xi_s$, and $\xi_s$ are usually
+given in atomic units, that is, in
+inverse Bohr, therefore they must converted to \AA ngstroms before use, hence the
+presence of the $a_0=0.529$ in these expressions.
+
+All integrals of the type used here are in \AA ngstroms, therefore the units of the integral
+of the dipole operator on a M.O. is also in \AA ngstroms:
+$$
+<\! \psi_i|\vec{r}|psi_j\! > =\sum_{\lambda}\sum_{\sigma}c_{\lambda i}c_{\sigma j}
+<\! \phi_{\lambda}\vec{r}\phi_{\sigma} \!>,
+$$
+as is the integral over microstates.  Evaluation of the integrals over microstates is straightforward,
+in that all integrals are zero, unless the number of differences between the microstates is exactly two,
+in which case the integral is equal to that of the two M.O.s involved, times a phase factor.  That is,
+for each pair of microstates that are identical, except for $\psi_i$
+in $\Psi_a$ and  $\psi_j$ in $\Psi_b$, the integral is:.
+
+$$
+<\! \Psi_a|\vec{r}|\Psi_b\! > =<\! \psi_i|\vec{r}|\psi_j\! >*(-1)^n,
+$$
+where $n$ is the number of permutations necessary to move $\psi_i$ in microstate $\Psi_a$ to the position
+occupied by $\psi_j$ in microstate $\Psi_b$.
+
+Finally, the state transition dipole can be calculated from:
+$$
+<\! \Psi_A|\vec{r}|\Psi_B\! > =\sum_a\sum_bc_{A a}c_{B b}<\! \Psi_a\vec{r}\Psi_b \!>,
+$$
+
+Although the transition dipole is normally regarded as involving the ground and an excited state, it is
+possible to calculate the transition between two excited states.  The initial state is, by default, the
+ground state, however if \comp{ROOT=n} $n\neq 1$, or any other keyword that specifies
+a state other than the ground state, then the initial state will be an excited state.
+
+For degenerate states, the transition dipole is the sum over all states involved.

@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Lines in k-space</TITLE>
+<META NAME="description" CONTENT="5.1.4 Lines in k-space">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node373.html"><LINK REL="previous" HREF="node370.html"><LINK REL="up" HREF="node366.html"><LINK REL="next" HREF="node373.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node373.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node366.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node371.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node373.html">Surfaces in k-space</A> <B>Up:</B> <A HREF="node366.html">Program BZ</A> <B>Previous:</B> <A HREF="node371.html">Little Groups</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION00914000000000000000">Lines in <I>k</I>-space</A> </H2>
+<P>A line in <I>k</I>-space is specified by two numbers for a polymer, four numbers for a layer system, and six numbers for a solid. The number of points calculated for each line is proportional to the length of the line in <I>k</I>-space. For a line of length 1.0, for example
+<font face="Symbol">G </font>&nbsp;to <font face="Symbol">G</font>, 300 points would be calculated. <A NAME="BM7161">&nbsp;<A NAME="BM7215"></A>&nbsp;</A> The data needed to specify a band-structure 'walk' from
+<font face="Symbol">G </font>to X to W to L to <font face="Symbol">G</font>is given in the&nbsp;<A HREF="#walk">Table</A>, and for diamond, the band-structure for this 'walk' is given in the&nbsp;<A HREF="node372.html#walk-pic">Figure</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="BM7216">&nbsp;</A> </P>
+<STRONG><P>Table:</STRONG> A "Walk" in <I>k</I>-Space (<font face="Symbol">G</font> to X to W to L to
+  <font face="Symbol">G</font>)</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"> Start</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Stop</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Start</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Stop</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><font face="Symbol">G</font></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">-</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">X</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.500</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">X</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">-</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">W</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.500</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.500</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">W</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">-</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">L</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.500</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">L</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">-</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><font face="Symbol">G</font></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.000</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P></DIV><BR>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="walk_pic">&nbsp;<A NAME="pbt"></A>&nbsp;<A NAME="BM7217"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Band structure for Diamond</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{diamondbs}$ --><IMG SRC="img289.gif" WIDTH=569 HEIGHT=398 ALT="includegraphics{diamondbs}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV><BR>
+<A NAME="BM7188">&nbsp;</A> <A NAME="BM7189">&nbsp;</A> 
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6388"><A HREF="node373.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6384"></A><A HREF="node366.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6378"></A><A HREF="node371.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6386"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6387"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6389"><A HREF="node373.html">Surfaces in k-space</A></A> <B>Up:</B> <A NAME="tex2html6385"><A HREF="node366.html">Program BZ</A></A> <B>Previous:</B> <A NAME="tex2html6379"><A HREF="node371.html">Little Groups</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

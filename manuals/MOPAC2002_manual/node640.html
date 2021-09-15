@@ -1,0 +1,230 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Solvent Accessible Surface</TITLE>
+<META NAME="description" CONTENT=" Solvent Accessible Surface">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node639.html"><LINK REL="up" HREF="node632.html"><LINK REL="next" HREF="node641.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node641.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node632.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node639.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node641.html">Some hints on</A> <B>Up:</B> <A HREF="node632.html">COSMO (Conductor-like Screening</A> <B>Previous:</B> <A HREF="node639.html">COSMO Keywords</A>
+<!--End of Navigation Panel-->
+<H2>Solvent Accessible Surface </H2>
+<P>The solvent accessible surface is a continuous surface of the molecule which can be reached by the center of charge of a solvent molecule. The calculation of the SAS is carried out as follows: </P>
+
+<UL>
+<LI>Each atom is assigned a van der Waals' radius. VdW radii used in COSMO are given in the&nbsp;<A HREF="#vdw">Table</A>. <BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM23857">&nbsp;</A> </LI></UL>
+
+<STRONG><P ALIGN="CENTER">Table:</STRONG> Van der Waals radii (Angstroms) used in COSMO</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> I</TD>
+<TD VALIGN="MIDDLE">
+<P>R</TD>
+<TD VALIGN="MIDDLE">
+<P>II</TD>
+<TD VALIGN="MIDDLE">
+<P>R</TD>
+<TD VALIGN="MIDDLE">
+<P>III</TD>
+<TD VALIGN="MIDDLE">
+<P>R</TD>
+<TD VALIGN="MIDDLE">
+<P>IV</TD>
+<TD VALIGN="MIDDLE">
+<P>R</TD>
+<TD VALIGN="MIDDLE">
+<P>V</TD>
+<TD VALIGN="MIDDLE">
+<P>R</TD>
+<TD VALIGN="MIDDLE">
+<P>VI</TD>
+<TD VALIGN="MIDDLE">
+<P>R</TD>
+<TD VALIGN="MIDDLE">
+<P>VII</TD>
+<TD VALIGN="MIDDLE">
+<P>R</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H</TD>
+<TD VALIGN="MIDDLE">
+<P>1.08</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Li</TD>
+<TD VALIGN="MIDDLE">
+<P>1.80</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>C</TD>
+<TD VALIGN="MIDDLE">
+<P>1.53</TD>
+<TD VALIGN="MIDDLE">
+<P>N</TD>
+<TD VALIGN="MIDDLE">
+<P>1.48</TD>
+<TD VALIGN="MIDDLE">
+<P>O</TD>
+<TD VALIGN="MIDDLE">
+<P>1.36</TD>
+<TD VALIGN="MIDDLE">
+<P>F</TD>
+<TD VALIGN="MIDDLE">
+<P>1.30</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Na</TD>
+<TD VALIGN="MIDDLE">
+<P>2.30</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Al</TD>
+<TD VALIGN="MIDDLE">
+<P>2.05</TD>
+<TD VALIGN="MIDDLE">
+<P>Si</TD>
+<TD VALIGN="MIDDLE">
+<P>2.10</TD>
+<TD VALIGN="MIDDLE">
+<P>P</TD>
+<TD VALIGN="MIDDLE">
+<P>1.75</TD>
+<TD VALIGN="MIDDLE">
+<P>S</TD>
+<TD VALIGN="MIDDLE">
+<P>1.70</TD>
+<TD VALIGN="MIDDLE">
+<P>Cl</TD>
+<TD VALIGN="MIDDLE">
+<P>1.65</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>K</TD>
+<TD VALIGN="MIDDLE">
+<P>2.80</TD>
+<TD VALIGN="MIDDLE">
+<P>Ca</TD>
+<TD VALIGN="MIDDLE">
+<P>2.75</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Br</TD>
+<TD VALIGN="MIDDLE">
+<P>1.80</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>I</TD>
+<TD VALIGN="MIDDLE">
+<P>2.05</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+<DIR>
+<DIR>
+
+<P></DIV></DIV></P></DIR>
+</DIR>
+
+
+<UL>
+<LI>To each radius is added a distance equal to the radius of the solvent. By default, this is 1.0&Aring;, but may be changed by the user using <TT>RSOLV=<I>n</I>.<I>nn</I></TT>. This gives the distance from the nucleus to the center of a solvent molecule. </LI>
+<LI>A set of points is generated on this surface. These points produce a basic grid. </LI>
+<LI>All points which are inside the surface of any other atom are excluded. </LI>
+<LI>The remaining points are moved towards the center of the atom. The distance moved is equal to the distance of the center of charge of the solvent molecule from the center of the solvent molecule. By default, this distance is set to <TT>RSOLV</TT>, but may be set explicitly by keyword <TT>RSOLV=<I>n</I>.<I>nn</I></TT>. </LI>
+<LI>Each of the remaining points represents a small area of the solvent accessible surface. The total SAS is calculated from the number of points. </LI></UL>
+
+<P>From this definition of the SAS we see that the SAS of each atom is a surface of radius equal to the van der Waals' radius plus the radius of the solvent molecule minus the distance of the center of charge of the solvent molecule to the center of the solvent molecule. In other words, the radius is the VdW radius plus the distance from the surface of the solvent molecule to the center of charge of the solvent molecule. By default, this extra distance is zero. Only that part of the atom surface which can be touched by the solvent molecule is used. This means that only those atoms on the surface of the molecule can contribute to the SAS. Of those atoms that are on the surface of the molecule there will be parts of the surface which cannot be reached by the solvent because the solvent molecule is too bulky. </P>
+<P><HR></P>
+<P><!--Table of Child-Links--><A NAME="CHILD_LINKS">&nbsp;</A> </P>
+
+<UL>
+<LI><A NAME="tex2html10105"><A HREF="node641.html">Some hints on the use of COSMO</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html10103"><A HREF="node641.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10099"></A><A HREF="node632.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10095"></A><A HREF="node639.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10101"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10102"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10104"><A HREF="node641.html">Some hints on</A></A> <B>Up:</B> <A NAME="tex2html10100"><A HREF="node632.html">COSMO (Conductor-like Screening</A></A> <B>Previous:</B> <A NAME="tex2html10096"><A HREF="node639.html">COSMO Keywords</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

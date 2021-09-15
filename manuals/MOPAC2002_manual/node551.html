@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> The Cluster</TITLE>
+<META NAME="description" CONTENT="8.9.1 The Cluster">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node552.html">
+<LINK REL="previous" HREF="node550.html">
+<LINK REL="up" HREF="node550.html">
+<LINK REL="next" HREF="node552.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8977"
+ HREF="node552.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8973"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8967"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8975"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8976"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8978"
+ HREF="node552.html"> The Madelung Problem</A>
+<B> Up:</B> <A NAME="tex2html8974"
+ HREF="node550.html"> Solid state capability</A>
+<B> Previous:</B> <A NAME="tex2html8968"
+ HREF="node550.html"> Solid state capability</A>
+<BR>
+<H2><A NAME="SECTION001291000000000000000">
+ The Cluster</A>
+</H2>
+Unlike more conventional methods, MOPAC does not normally use a fundamental
+unit cell.  Neither does it sample the Brillouin Zone in order to model the
+electronic structure.  Instead, it uses a large unit cell, called a 'cluster', and applies the Born-von K&#225;rm&#225;n
+&nbsp;[<A
+ HREF="node715.html#bornvon1">68</A>,<A
+ HREF="node715.html#bornvon2">69</A>] periodic  boundary conditions.  In this discussion,
+the term 'solid' is intended to include polymers, layer systems, and true
+solids, unless otherwise indicated by the context.
+<P>
+If a unit cell of a solid is large enough,  then  a  single  point  in <I>k</I>-space,  the <font face="Symbol">G</font>
+point,
+is sufficient to specify the entire Brillouin zone.  The secular determinant
+for this  point  can  be  constructed  by adding together the Fock matrix for
+the central unit cell plus those for the adjacent unit cells.  The periodic
+boundary conditions are satisfied, and diagonalization yields the correct
+density matrix for the <font face="Symbol">G</font>
+point.
+<P>
+At this point  in  the  calculation,  conventionally,  the  density matrix 
+for  each  unit  cell  is constructed.  Instead, the <font face="Symbol">G</font>-point density 
+and  one-electron  density  matrices  are   combined   with "<font face="Symbol">G</font>-point-like" Coulomb  and  exchange integral strings to
+produce a new Fock matrix.  The  calculation  can  be  visualized  as  being 
+done entirely in reciprocal space, at the <font face="Symbol">G</font>
+point.
+<P>
+Most  solid-state  calculations  take  a  very  long  time.   These
+calculations,   called "Cluster" calculations   after  the  original
+publication, require between 1.3 and 2 times  the  equivalent  molecular
+calculation.<A NAME="BM18245">&#160;</A>
+<P>
+A minor 'fudge'  is  necessary  to  make  this  method  work.   The
+contribution  to  the  Fock  matrix  element  arising  from the exchange
+integral between an atomic orbital and all atomic orbitals which are more than
+half a unit cell away must be ignored.  
+<P>
+The unit cell must be large enough that an atomic  orbital  in  the center  of  the  unit  cell has an
+insignificant overlap with the atomic orbitals at the ends of the  unit 
+cell.   In  practice,  a  translation vector  of more that about 7 or 8&#197; is
+sufficient.  For one rare group of compounds a larger translation vector is
+needed.  Solids with delocalized <i> <font face="Symbol">p</font></i>-systems,  and  solids  with  very
+small band-gaps will require a larger translation  vector,  in  order  to 
+accurately  sample <i>k</i>-space.   For these systems, a translation vector in the
+order of  15-20 &#197;ngstroms is needed.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8977"
+ HREF="node552.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8973"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8967"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8975"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8976"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8978"
+ HREF="node552.html"> The Madelung Problem</A>
+<B> Up:</B> <A NAME="tex2html8974"
+ HREF="node550.html"> Solid state capability</A>
+<B> Previous:</B> <A NAME="tex2html8968"
+ HREF="node550.html"> Solid state capability</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

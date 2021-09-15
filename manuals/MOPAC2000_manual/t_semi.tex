@@ -1,0 +1,739 @@
+\section{Semiempirical Theory}\label{semit}
+There are five distinct methods available within MOPAC: MINDO/3, MNDO, AM1,
+PM3, and MNDO-$d$. All are semiempirical, and have roughly the same structure.
+A complete knowledge of these methods is not necessary in order to use MOPAC;
+however, a superficial understanding of these methods and their relationship to
+{\em ab~initio} methods is important for using MOPAC and particularly for
+interpreting the results.
+
+The five methods within MOPAC have many features in common. They are all
+self-consistent field (SCF) methods, they take into account electrostatic
+repulsion and exchange stabilization, and, in them, all calculated integrals
+are evaluated by approximate means. Further, they all use a restricted basis
+set of one $s$ orbital and three $p$ orbitals ($p_x$, $p_y$, and $p_z$) per
+atom (except MNDO-$d$, which has five $d$ orbitals in addition to the $s-p$
+basis set) and ignore overlap  integrals in the secular equation. Thus, instead
+of solving
+$$
+|H-ES| = 0,
+$$
+the expression
+$$
+|H-E| = 0,
+$$
+in which $H$ is the secular determinant, $S$ is the overlap matrix, and $E$ is
+the set of eigenvalues, is solved. These approximations considerably simplify
+quantum mechanical calculations on systems of chemical interest. As a result,
+larger systems can be studied. Computational methods are only models, and there
+is no advantage in rigorously solving Schr\"{o}dinger's equation for a large
+system if that system has had to be abbreviated in order to make the
+calculations tractable. Semiempirical methods are thus seen to be well
+balanced: they are accurate enough to have useful predictive powers, yet fast
+enough to allow large systems to be studied.
+
+All five semiempirical methods contain sets of parameters. For MINDO/3 atomic
+and diatomic parameters exist, while MNDO, AM1, PM3, and MNDO-$d$ use only
+single-atom parameters. Not all parameters are optimized for all methods; for
+example, in MINDO/3, MNDO and AM1 the two electron one center integrals are
+normally taken from atomic spectra. In the list given in Table~\ref{pars},
+parameters optimized for a given method are indicated by `$*$'. A `+' indicates
+that the value of the parameter was obtained from experiment (not optimized).
+Where neither symbol is given, the associated parameter is not used in that
+method.
+
+\begin{table}
+\caption{\label{pars} Parameters used in Semiempirical Methods}
+\begin{center}
+\begin{tabular}{|l|l|cccc|}  \hline
+Parameter & Description & MINDO/3 &MNDO & AM1 & PM3 \\ \hline
+U$_{ss}$ and U$_{pp}$ &  $s$ and $p$ atomic orbital &  +& *& *& * \\
+& one-electron one-center integrals&&&&\\
+$\beta_s$ and $\beta_p$ &  $s$ and $p$ atomic orbital one-electron && *& * &*\\
+& two-center resonance integral terms&&&&\\
+ I$_s$ &  $s$ atomic orbital ionization potential& +&&&\\
+& for two center resonance integral term&&&& \\
+ I$_p$ & $p$  atomic orbital ionization potential& +&&&\\
+& for two center resonance integral term&&&&\\
+$\beta_{A,B}$ &  Diatomic two center one-electron & *&&&\\
+& resonance integral multiplier&&&&\\
+$\xi_s$& $s$-type Slater atomic orbital exponent& *& *& *& *  \\
+$\xi_p$ & $p$-type Slater atomic orbital exponent& *& *& *& *  \\
+$\alpha_A$ & Atom $A$ core-core repulsion term &&  *& *& *  \\
+$\alpha_{AB}$&  Atoms $A$ and $B$ core-core repulsion term &* &&& \\
+$ Gss$ & $s-s$ atomic orbital one center  & + & + & + & *  \\
+ & two electron repulsion integral&&&&  \\
+$ Gsp$ & $s-p$ atomic orbital one center  & +  &+ & + & *  \\
+ & two electron repulsion integral  &&&&\\
+$ Gpp$ & $p-p$ atomic orbital one center  & + & + & + & *  \\
+ & two electron repulsion integral &&&& \\
+$ Gp2$ & $p-p'$ atomic orbital one center  & + & + & + & *  \\
+ & two electron repulsion integral &&&& \\
+$ Hsp$ & $s-p$ atomic orbital one-center  & + & + & + & *  \\
+& two-electron exchange integral &&&& \\
+K$_{n_A}$ or a$_{n_A}$ & A Gaussian multiplier for $n$th &  &&  *  &*  \\
+&  Gaussian of atom A &&&& \\
+L$_{n_A}$ or b$_{n_A}$ & A Gaussian exponent multiplier&   &&  * & *  \\
+&  for $n$th Gaussian of atom A &&&& \\
+M$_{n_A}$ or c$_{n_A}$ & A Radius of center of $n$th  && &   * & *  \\
+&  Gaussian of atom A. &&&& \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+All five semiempirical methods also use two experimentally determined constants
+per atom: the atomic mass of the most abundant isotope and the heat of
+atomization.
+
+\subsection{Approximations used in MNDO, MINDO/3, AM1, PM3, and MNDO-$d$}
+All five methods are similar enough to describe simultaneously. In the
+following discussion, applications specific to each method will be indicated in
+the text. This will allow easy comparison among the methods, a comparison which
+is not obvious from their names. MINDO/3 stands for Modified Intermediate
+Neglect of Differential Overlap, version 3. MNDO stands for Modified Neglect of
+Diatomic Overlap, and AM1 is Austin Model 1: these are the first two of  the
+MNDO-type methods. PM3 is the Modified Neglect of Diatomic Overlap, Parametric
+Method Number 3, and MNDO-$d$, is really just MNDO with $d$ orbitals.
+
+Earlier methods, such as CNDO \index{CNDO} (Complete Neglect of Differential Overlap) ignored all
+terms involving two different atomic orbitals on one atom. Because of this, CNDO
+was an example of a ZDO \index{ZDO} (Zero Differential Overlap) method. (For a good
+introduction to CNDO, see ``Approximate Molecular Orbital Theory", J. A. Pople,
+D. L. Beveridge, McGraw-Hill, New York, 1970. CNDO was first described in: \index{Pople}
+J. A. Pople, D. P. Santry, and G. A. Segal, ``Approximate Self-Consistent
+Molecular Orbital Theory I. Invariant Procedures", J. Chem. Phys., 1965, 43,
+S129-S135 (1965); J. A. Pople and G. A. Segal, ``Approximate Self-Consistent
+Molecular Orbital Theory II. Calculations with Complete Neglect of Differential
+ Overlap", J. Chem. Phys., 1965, 43, S136-S149 (1965); and J. A. Pople and
+ G. A. Segal, ``Approximate Self-Consistent Molecular Orbital Theory. III CNDO
+ Results for AB2 and AB3 Systems", J. Chem. Phys., 1966, 44, 3289-3296 (1966).),
+
+MNDO, AM1, PM3, and MNDO-d belong to the family of NDDO (Neglect of Diatomic
+Differential Overlap) methods.  In these
+methods all terms arising from the overlap of two atomic orbitals which are on
+different centers or atoms are set to zero. As this is not the forum for
+developing the ideas of Hartree-Fock theory, the derivation of the
+Roothaan-Hall equations will be assumed, and our description of the methods
+will start with the final Roothaan~\cite{roothaan}-Hall~\cite{hall} equations.
+
+\subsubsection{Basic Roothaan-Hall Equations}
+Secular Equation
+$$
+c_i|F-\epsilon_iS|c_i =0
+$$
+$c_i$: eigenvector; $F$: Fock matrix; $\epsilon_i$: eigenvalue; $S$: overlap matrix.
+The total electronic  energy of the system is given by:
+$$
+E = 1/2P(H+F),
+$$
+in which $P$: density matrix; $H$: one-electron matrix.
+The general Fock Matrix element is
+$$
+F_{\mu\nu}^{\alpha} = H_{\mu\nu}+\sum_{\lambda}\sum_{\sigma}
+[P_{\lambda\sigma}^{\alpha+\beta}<\mu\nu|\lambda\sigma> - P_{\lambda\sigma}^{\alpha}
+<\mu\lambda|\nu\sigma>].
+$$
+Or, spin-free
+$$
+F_{\mu\nu} = H_{\mu\nu}+\sum_{\lambda}\sum_{\sigma}
+[P_{\lambda\sigma}<\mu\nu|\lambda\sigma> - \frac{1}{2}P_{\lambda\sigma}
+<\mu\lambda|\nu\sigma>].
+$$
+
+The methods all use a minimum basis set consisting of a maximum of one atomic
+orbital for each angular quantum number. The normal basis set for any atom
+consists of one $s$ and three $p$ orbitals ($p_x$, $p_y$ and $p_z$).
+
+\subsubsection{Neglect of diatomic overlap integral}
+All overlap integrals arising from the overlap of two \index{Neglect of
+overlap}\index{Overlap! neglect of} different atomic orbitals are neglected.
+This reduces the overlap matrix to a unit matrix. The secular equation thus
+reduces to:
+$$
+c_i|F-\epsilon_i|c_i =0.
+$$
+In semiempirical theory the Coulson \label{ndoi} density matrix is used, e.g.:
+$$
+P_{\lambda\sigma}^{\alpha} = \sum_i^{occ}c_{\lambda i}^{\alpha}c_{\sigma  i}^{\alpha},
+$$
+where the sum is over all occupied spin molecular orbitals.
+In RHF calculations, only the total density matrix is calculated:
+$$
+     P_{\lambda\sigma} = 2\sum_i^{occ}c_{\lambda i}c_{\sigma  i},
+$$
+where the sum is over all occupied  molecular orbitals.
+
+When a system has more than half the available M.O.s, $N$,  filled, it
+is computationally\index{Positron equivalent|ff}
+faster to calculate the positron electron equivalent:
+$$
+     P_{\mu\nu}^{\alpha} = 1-\! \sum_{i=occ+1}^Nc_{\lambda i}^{\alpha}c_{\sigma  i}^{\alpha}
+$$
+and
+$$
+     P_{\mu\nu} = 2-\! 2\sum_{i=occ+1}^Nc_{\lambda i}c_{\sigma  i}.
+$$
+
+An important exception to this rule is the calculation of the one-electron
+two-center integral $H_{\mu\nu}$, which is approximated by:
+$$
+H_{\mu\nu}= S_{\mu\nu}\frac{1}{2}(U_{\mu\mu}+U_{\nu\nu}),
+$$
+where $S_{\mu\nu}$ is the overlap integral between atomic orbital $\varphi_{\mu}$
+on an atom, and  $\varphi_{\nu}$ on another atom, and the $U$ values are
+atomic orbital constants, supplied as data.
+
+\subsubsection{Neglect of three and four center integrals}\label{34}
+\index{Rotational invariance|ff}
+Continuing with the neglect of differential overlap, all two-electron integrals
+involving charge clouds arising from the overlap of two atomic orbitals on
+different centers are ignored. Since no rotation can convert a two center
+two-electron integral into a set of integrals involving three and four center
+terms, rotational invariance is not compromised by this approximation.
+Rotational invariance is present if the calculated observables [$\Delta H_f$,
+Dipole, I.P., etc] are not dependent on the orientation of the system. The
+effects of this approximation on the \mi{Roothaan} equations are as follows:
+
+In the Fock matrix, if $\varphi_{\mu}$ and $\varphi_{\nu}$ are on different
+centers the NDDO matrix element $F_{\mu\nu}^{\alpha}$ reduces to
+$$
+ F_{\mu\nu}^{\alpha} = H_{\mu\nu}- \sum_{\lambda}^A\sum_{\sigma}^B
+P_{\lambda\sigma}^{\alpha} <\mu\lambda|\nu\sigma>,
+$$
+while the MINDO/3 matrix element becomes:
+$$
+ F_{\mu\nu}^{\alpha} = H_{\mu\nu}- P_{\mu\nu}^{\alpha} <\mu\nu|\mu\nu>.
+$$
+Equivalent expressions exist for  $F_{\mu\nu}^{\beta}$ and
+$P_{\mu\nu}^{\beta}$. Thus no Coulombic terms are present in the two-center
+Fock matrix elements.
+
+If $\varphi_{\mu}$ and $\varphi_{\nu}$  are different but on the same center,
+then, since a minimal basis set is being used, all integrals of the type
+$<\!\mu\nu|\lambda\sigma\!>$ are zero by the orthogonality of the atomic
+orbitals unless $\mu=\nu$ and $\lambda=\sigma$, or $\mu=\lambda$ and
+$\nu=\sigma$.  The off-diagonal one-center NDDO Fock matrix elements become:
+$$
+ F_{\mu\nu}^{\alpha} = H_{\mu\nu}+ 2P_{\mu\nu}^{\alpha+\beta} <\mu\nu|\mu\nu>
+- P_{\mu\nu}^{\alpha}( <\mu\nu|\mu\nu> +<\mu\mu|\nu\nu>),
+$$
+while the MINDO/3 element becomes:
+$$
+F_{\mu\nu}^{\alpha} - P_{\mu\nu}^{\alpha} <\mu\nu|\mu\nu>.
+$$
+ If  $\varphi_{\mu}$ is the same as $\varphi_{\nu}$,  then, because of the
+symmetry of the two-electron integrals, the diagonal NDDO
+Fock matrix elements reduce to:
+$$
+F_{\mu\mu}^{\alpha} = H_{\mu\mu}+ \sum_{\nu}^A(P_{\nu\nu}^{\alpha+\beta}
+<\mu\mu|\nu\nu> - P_{\nu\nu}^{\alpha}<\mu\nu|\mu\nu>)
++\sum_B\sum_{\lambda}^B\sum_{\sigma}^BP_{\lambda\sigma}^{\alpha+\beta}<\mu\mu|\lambda\sigma>,
+$$
+and the corresponding MINDO/3 element becomes:
+$$
+F_{\mu\mu}^{\alpha} = H_{\mu\mu}+ \sum_{\nu}^A(P_{\nu\nu}^{\alpha+\beta}
+<\mu\mu|\nu\nu> - P_{\nu\nu}^{\alpha}<\mu\nu|\mu\nu>)
++\sum_B<AA|BB>\sum_{\lambda}^B P_{\lambda\lambda}^{\alpha+\beta}.
+$$
+
+\subsubsection{One-center two-electron integrals}
+The MNDO, AM1, and MNDO-$d$ one-center two-electron integrals are derived from
+experimental data on isolated atoms. Most were taken from
+\mi{Oleari}'s~\cite{oleari} work, but a few were obtained by optimization to
+fit molecular properties. The values of PM3 one-center two-electron integrals
+were optimized to reproduce experimental molecular properties.
+
+For each atom there are a maximum of five one-center two-electron integrals.
+These are $<\!ss|ss\!>$, $<\!ss|pp\!>$,  $<\!sp|sp\!>$, $<\!pp|pp\!>$, and
+$<\!pp|p'p'\!>$, where $p$ and $p'$ are two different $p$-type atomic orbitals.
+In the original formulation~\cite{dt4689} there was a sixth integral,
+$<\!pp'|pp'\!>$, but it can be shown that this integral is related to two of
+the other integrals by:
+$$
+  <pp'|pp'> = \frac{1}{2}(<pp|pp> - <pp|p'p'>).
+$$
+Proof:
+If the molecular frame is rotated by 45$^\circ$ about
+the z axis the atomic bases mix thus:
+\begin{eqnarray}
+   R(45^\circ)p_x = \frac{1}{\sqrt{2}}(p_x + p_y) \\ \nonumber
+   R(45^\circ)p_y = \frac{1}{\sqrt{2}}(p_y - p_x) \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+ R(45^\circ)<p_xp_y|p_xp_y>& =& \frac{1}{4}<(p_x+p_y)(p_y-p_x)|(p_x+p_y)(p_y-p_x)> \nonumber \\
+& =& \frac{1}{4}(<p_xp_x|p_xp_x> + <p_yp_y|p_yp_y> - <p_xp_x|p_yp_y> - <p_yp_y|p_xp_x>)\nonumber
+\end{eqnarray}
+or
+$$
+ R(45^\circ)<p_xp_y|p_xp_y> =\frac{1}{2}(<p_xp_x|p_xp_x> - <p_xp_x|p_yp_y>)
+$$
+\index{gss@{$G_{ss}$}}
+\index{gsp@{$G_{sp}$}}
+\index{gpp@{$G_{pp}$}}
+\index{gp2@{$G_{p2}$}}
+\index{hsp@{$H_{sp}$}}
+ For convenience these five integrals are given the following names:
+\begin{eqnarray}
+    <ss|ss> &=& G_{ss} \nonumber  \\
+    <pp|pp>&=&  G_{pp} \nonumber  \\
+    <sp|sp>&=&  H_{sp} \nonumber  \\
+    <pp|pp>&=&  G_{pp} \nonumber  \\
+    <pp|p'p'>&=&  G_{p2}\nonumber
+\end{eqnarray}
+ Using these definitions, the two-electron one-center
+contributions to the Fock matrix become:
+\begin{eqnarray}
+F_{ss}^{\alpha}&:&P_{ss}^{\beta}G_{ss}+(P_{p_x}^{\alpha+\beta}+P_{p_y}^{\alpha+\beta}+P_{p_z}^{\alpha+\beta})G_{sp}
+-(P_{p_x}^{\alpha}+P_{p_y}^{\alpha}+P_{p_z}^{\alpha})H_{sp}\nonumber  \\
+F_{sp}^{\alpha}&:&2P_{sp}^{\alpha+\beta}H_{sp}-P_{sp}^{\alpha}(H_{sp}+G_{sp})\nonumber  \\
+F_{pp}^{\alpha}&:&P_{ss}^{\alpha+\beta}G_{sp}-P_{ss}^{\alpha}H_{sp}+
+P_{pp}^{\beta}G_{pp} +(P_{p'p'}^{\alpha+\beta}+P_{p''p''}^{\alpha+\beta})G_{p2}
+-\frac{1}{2}(P_{p'p'}^{\alpha}+P_{p''p''}^{\alpha})(G_{pp}-G_{p2})\nonumber  \\
+F_{pp'}^{\alpha}&:&P_{pp'}^{\alpha+\beta}(G_{pp}-G_{p2})
+-\frac{1}{2}P_{pp'}^{\alpha}(G_{pp}+G_{p2}) \nonumber
+\end{eqnarray}
+These expressions are common to all methods.
+
+\subsubsection{NDDO two-electron two-center integrals}
+
+\index{Two electron!integrals} In a local diatomic frame there are 22 unique
+two-electron two-center integrals for each pair of heavy
+(non-hydrogen) atoms. These are shown in Table~\ref{2e2c}.
+
+\begin{table}
+\caption{\label{2e2c} Two-Electron Two-Center Integrals (Local Frame)}
+\begin{center}
+\begin{tabular}{rlcl}
+1&$<ss|ss>$&                                   12&$ <sp_{\sigma} |p_{\pi} p_{\pi} >  $\\
+2&$<ss|p_{\pi}p_{\pi} >$&                      13&$ <sp_{\sigma} |p_{\sigma} p_{\sigma}>  $\\
+3&$<ss|p_{\sigma} p_{\sigma} >$&               14&$ <ss|sp_{\sigma} >  $\\
+4&$<p_{\pi} p_{\pi} |ss>$&                     15&$ <p_{\pi} p_{\pi} |sp_{\sigma} >  $\\
+5&$<p_{\sigma} p_{\sigma} |ss>$&               16&$ <p_{\sigma} p_{\sigma} |sp_{\sigma} >  $\\
+6&$<p_{\pi} p_{\pi} |p_{\pi} p_{\pi} >$&       17&$ <sp_{\pi} |sp_{\pi} >  $\\
+7&$<p_{\pi} p_{\pi} |p_{\pi} 'p_{\pi} '>$&     18&$ <sp_{\sigma} |sp_{\sigma} >  $\\
+8&$<p_{\pi} p_{\pi} |p_{\sigma} p_{\sigma} >$& 19&$ <sp_{\pi} |p_{\pi} p_{\sigma} >  $\\
+9&$<p_{\sigma} p_{\sigma} |p_{\pi} p_{\pi} >$& 20&$ <p_{\pi} p_{\sigma} |sp_{\pi} >  $\\
+10&$<p_{\sigma} p_{\sigma} |p_{\sigma} p_{\sigma} >$& 21&$ <p_{\pi} p_{\sigma} |p_{\pi} p_{\sigma} >  $\\
+11&$<sp_{\sigma} |ss>$ &                        22&$ <p_{\pi} p_{\pi} '|p_{\pi} p_{\pi} '>  $
+\end{tabular}
+\end{center}
+\end{table}
+ Each integral represents the energy of an electron
+density distribution (electron 1) arising from the product
+of the first two atomic orbitals interacting with the
+electron density distribution (electron 2), which in turn arises
+from the product of the second two atomic orbitals. Only if
+the first two atomic orbitals are the same and the second two
+are the same will the interaction energy have to be
+positive, in which case the integral represents an
+electron-electron repulsion term. In all other cases the
+sign of the integral value may be positive or negative.
+
+ With the exception of integral 22, all the integrals can
+be calculated using different techniques without loss of
+rotational invariance. That is, no integral depends on the
+value of another integral, except for number 22. As with
+the $H_{pp}$ monocentric integral, it is easy to show that:
+$$
+ <p_{\pi} p_{\pi} '|p_{\pi} p_{\pi} '> = \frac{1}{2}(<p_{\pi} p_{\pi} |p_{\pi} p_{\pi} >
+- <p_{\pi} p_{\pi} |p_{\pi} 'p_{\pi} '>).
+$$
+ The electron density distributions are approximated by a
+series of point charges. There are four possible types of
+distribution. These are given in Table~\ref{mp}.
+
+\begin{table}
+\caption{\label{mp}Types of Electron Density Distribution}
+\index{Multipoles}\index{Monopole}\index{Dipole}\index{Quadrupole}
+\index{Atomic!electron density dist.}
+\begin{center}
+\begin{tabular}{ll}\hline
+ Monopole & Unit negative charge centered on the  \\
+ (1 charge)&  nucleus  \\
+\\
+ Dipole & +1/2 charge located at position (x,y,z),  \\
+ (2 charges) & -1/2 charge located at position (-x,-y,-z)  \\
+\\
+ Linear Quadrupole& +1/2 charge located at the nucleus, -1/4 charge  \\
+ (3 charges) & at positions (x,y,z) and at (-x,-y,-z)  \\
+\\
+ Square Quadrupole& Four charges of magnitude +1/4, -1/4, +1/4  \\
+ (4 charges) & and -1/4 forming a square centered on the  nucleus.  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+These are used to represent the four types of atomic orbital
+products (Table~\ref{prod}).
+
+\begin{table}
+\caption{\label{prod}Density Distributions Arising from Pairs of Atomic Orbitals}
+\begin{center}
+\begin{tabular}{clc}\hline
+Atomic Orbitals &  Multipole Distribution & Number of Charges \rule[-0.2cm]{0cm}{0.6cm} \\ \hline
+$ <ss| $  &  Monopole                      &  1  \\
+$ <sp| $  &  Dipole                        &  2  \\
+$ <pp| $  &  Monopole plus Linear Quadrupole &4  \\
+$ <pp'|$  &  Square Quadrupole             &  4  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Each two electron interaction integral is the sum of all the interactions
+arising from the charge distribution representing one pair of atomic orbitals
+with the charge distribution representing the second pair of atomic orbitals.
+Thus, in the simplest case, the $<ss|ss>$ interaction is represented by the
+repulsion of two monopoles, while a $ <p_{\pi} p_{\pi} |p_{\pi} 'p_{\pi} '>$, a
+much more complicated interaction, is represented by 16 separate terms, arising
+from the four charges representing the monopole and linear quadrupole on one
+center interacting with the equivalent set on the second center.
+
+ While the repulsion of two like charges is proportional
+to the inverse distance separating the charges, boundary
+conditions preclude using this simple expression to
+represent the interelectronic interactions. Instead, the
+interaction energy is approximated by:
+$$
+<ss|ss> =\frac{27.21}{\sqrt{(R+c_A+c_B)^2+\frac{1}{4}
+(\frac{1}{G_A}+\frac{1}{G_B})^2}}.
+$$
+
+All that remains is to specify functional forms for the
+terms $c$ and $A$. $c$, the distance of a multipole charge from
+its nucleus, is a simple function of the atomic orbitals; in
+the case of a $s-p$ product, this is a vector of length $D_1$
+Bohr pointing along the $p$ axis, where
+$$
+D_1 = \frac{(2n+1)(4\xi_s\xi_p)^{(n+1/2)}}{\sqrt{3}(\xi_s+\xi_p)^{(2n+2)}}.
+$$
+The principal quantum number is always the
+same in these methods for $s$ and $p$ orbitals on any given
+atom.
+
+The corresponding distances of the charges from the
+nucleus for the linear and square quadrupoles are $2D_2$ and
+$\sqrt{2}D_2$ Bohr, respectively, where
+$$
+D_2=\left(\frac{4n^2+6n+2}{20}\right)^{1/2}\frac{1}{\xi_p}.
+$$
+ Now that the distances of the charges from the nucleus
+have been defined, the upper boundary condition can be set.
+In the limit, when $R=0.0$, the value of the two-electron
+integral should equal that of the corresponding monocentric
+integral. Three cases can be identified:
+\begin{enumerate}
+\item  A monopole-monopole interaction, in which case the
+integral must converge on $G_{ss}$.
+\item A dipole-dipole interaction, where the integral must
+converge on $H_{sp}$.
+\item The quadrupole-quadrupole interaction where the
+integral must converge on $H_{pp}$.
+\end{enumerate}
+ For convenience, the $G_A$ terms are given special names.
+These are given in Table~\ref{aa}.
+\index{AM}\index{AD}\index{AQ}
+\begin{table}
+\caption{\label{aa} Additive Terms for Two-Electron Integrals}
+\begin{center}
+\begin{tabular}{lll} \hline
+ Multipole & Monocentric Equivalent & Name  \\ \hline
+ Monopole  & $G_{ss}$ &  AM  \\
+ Dipole &  $H_{sp}$ &  AD  \\
+ Quadrupole &  $H_{pp} =1/2(G_{pp}-G_{p2})$ & AQ \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+ In practice, $\frac{1}{2}(G_{pp}-G_{p2})$ is used instead of $H_{pp}$.
+This eliminates any
+possibility of loss of rotational invariance due to an incorrect value
+of  $H_{pp}$.
+
+ While $AM$ is given simply by $G_{ss}/27.21$, $AD$ and $AQ$ are
+complicated functions of one-center terms and the orbital
+exponents---recall that, in the limit, the associated
+charges are not all coincident. $AD$ and $AQ$ are solved
+iteratively. Given an initial estimate of $AD$ of
+$$
+AD = \left[\frac{H_{sp}}{27.21D^2_1}\right]^{1/3},
+$$
+then, by iterating, an exact value of $AD$ can be found. On
+iteration $n$ the value of $AD$ is given by
+$$
+AD_n = AD_{n-2}+(AD_{n-1}-AD_{n-2})\frac{(\frac{H_{sp}}{27.21}-a_{n-2})}{a_{n-1}-a_{n-2}},
+$$
+where
+$$
+a_n=2AD_n-2(4D^2_1+AD^{-2}_n)^{-1/2}.
+$$
+
+About 5 iterations are needed in order to get AD specified
+with acceptable accuracy.
+
+ Similarly, for $AQ$ an initial estimate of
+$[\frac{H_{pp}}{27.21(3D^4_2)}]^{1/5}$
+is made and, again, by iterating using
+$$
+AQ_n = AQ_{n-2}+(AQ_{n-1}-AQ_{n-2})\frac{(\frac{H_{pp}}{27.21}-a_{n-2})}{a_{n-1}-a_{n-2}},
+$$
+where, now,
+$$
+a_n=4AQ_n-8(4D^2_2+AQ^{-2}_n)^{-1/2}+4(8D^2_2+AQ_n^{-2})^{-1/2},
+$$
+ an exact value of $AQ$ can be obtained. About 5 iterations
+are necessary.
+
+Note that these equations are intrinsically unstable on
+finite-precision computers. The denominator $(a_{n-1} -a_{n-2} )$
+rapidly becomes vanishingly small; this is, however, necessary in
+order to accurately define $AD$ and $AQ$.
+
+\subsubsection{Final Assembly of Two-Electron Two-Center Integrals}
+ With all the component parts defined, the two-electron
+two-center integrals are assembled from the sum of all the
+interactions of the charges on one center with those on the
+other center. The distance between the two charges must be
+determined---this is the vector addition of $R$, the
+interatomic distance in Bohr, and the two $c$ terms defining
+the location of the charges from the nucleus---as well as
+the appropriate additive terms, $AM$, $AD$ or $AQ$ selected. Two
+examples will illustrate this assembly:
+
+$ <ss|ss>$: This is represented by a single term. For
+monopoles, $c=0$ and $G_A=AM_A$, $G_B=AM_B$ giving:
+$$
+<ss|ss> = \frac{14.399}
+{(R^2_{AB}+1/4[\frac{1}{AM_A} + \frac{1}{AM_B}]^20.529177^2)^{1/2}}.
+$$
+
+$<ss|p_{\pi}p_{\pi}>$: $p_{\pi}p_{\pi}$ is expressed as the sum of a monopole
+and a linear quadrupole. This gives rise to a total of four
+charges, hence four terms. However, since the interaction
+of the monopole with each of the two negative charges of the
+dipole are the same, only three terms need to be evaluated.
+In  general, symmetry considerations lower the total number of
+terms that need to be evaluated, so the maximum number in
+any integral is 8. The full integral is then represented as:
+\begin{eqnarray}
+<ss|p_{\pi}p_{\pi}>& =&
+\frac{14.399}
+{(R^2_{AB}+1/4[\frac{1}{AM_A} + \frac{1}{AM_B}]^20.529177^2)^{1/2}} \nonumber \\
+&&+\frac{1}{2}\frac{14.399}
+{([R^2_{AB}+(2D_2^B)^2]+1/4[\frac{1}{AM_A} + \frac{1}{AQ_B}]^20.529177^2)^{1/2}} \nonumber \\
+&&-\frac{1}{2}\frac{14.399}
+{(R^2_{AB}+1/4[\frac{1}{AM_A} + \frac{1}{AQ_B}]^20.529177^2)^{1/2}}.  \nonumber
+\end{eqnarray}
+\subsubsection{MINDO/3 Two electron two center integrals}
+\index{MINDO/3!Coulomb integrals}
+\index{MINDO/3!exchange integrals}
+ In marked contrast to the other methods, MINDO/3 Coulomb
+and exchange integrals are given by the simple Dewar-Sabelli~\cite{rab,rab2} -
+Klopman~\cite{rab3} approximation. The integral is a
+function of the atom types and the interatomic distance
+only, and is of form
+$$
+<AA|BB>=\frac{14.399}{(R_{AB}^2+\frac{1}{4}[\frac{14.399}{G_A}+
+\frac{14.399}{G_B}]^2)^{1/2}},
+$$
+
+where $G_A$ and $G_B$, sometimes called the Gamma-values,
+are the averages of the appropriate
+one-center two-electron integrals. All finite integrals
+over atomic orbitals on two centers are set equal. Thus,
+$<s_As_A|s_Bs_B> =$  $<s_As_A|p_Bp_B> =<p_Ap_A|p_Bp_B> =<AA|BB> $.
+\subsubsection{The one-center one-electron integral $H_{\mu\mu}$}\label{1e1c}
+\index{One-electron integrals|ff}
+ This represents the energy an electron in atomic orbital
+$\varphi_{\mu}$ would have if all electrons were removed from the system.
+This is approximated by adding on to the one-electron energy
+of the atomic orbital in the fully ionized atom the
+potential due to all the other nuclei in the system. The
+one-electron energy is obtained parametrically, and is given
+the symbol $U_{\mu\mu}$. $H_{\mu\mu}$ is derived from the fundamental
+equation
+$$
+H_{\mu\mu}=U_{\mu\mu}-\sum_{B\neq A}Z_B<\mu\mu|BB>
+$$
+by equating the core-electron integral $<\mu\mu|BB>$ to the
+corresponding two-electron integral, thus:
+(a) NDDO:
+$$
+<\mu\mu|BB>= Z_B<\mu\mu|ss>
+$$
+(b) MINDO/3:
+$$
+<\mu\mu|BB>= Z_B<AA|ss>
+$$
+\subsubsection{The two-center one-electron integral $H_{\mu\nu}$ }
+\index{Resonance integrals}
+
+ Sometimes called the resonance integral, $H_{\mu\nu}$ is
+approximated using the overlap integral, $S_{\mu\nu}$. Note that
+this violates the NDO approximation, but since resonance
+integrals are large, this integral is retained. This is the
+origin of Modified in the name of the method.
+With Slater atomic orbitals of type
+$$
+\varphi_\mu = Nr^{n-1}e^{-\xi r},
+$$
+the overlap integral is given by:
+$$
+S_{\mu\nu} = <\varphi_{\mu}\varphi_{\nu}>.
+$$
+Within NDDO, $H_{\mu\nu}$ is approximated by:
+$$
+H_{\mu\nu} = S_{\mu\nu}\frac{1}{2}(\beta_{\mu}+\beta_{\nu}),
+$$
+while MINDO/3 has a very different form:
+$$
+H_{\mu\nu} = S_{\mu\nu}\beta_{AB}(I_{\mu}+I_{\nu}).
+$$
+ This use of a diatomic parameter is the most distinctive
+difference between the NDDO philosophy and that of
+MINDO/3. Because of the difficulty in parameterizing an
+element at the MINDO/3 level---the number of $\beta$-parameters
+rises as the square of the number of elements
+parameterized---it is unlikely that any further development
+of MINDO/3 will be made.
+\subsubsection{Core-core repulsion integrals}
+\index{Core-core repulsion}
+ From simple electrostatics the core-core repulsion
+integral in eV is:
+$$
+E_N(A,B)=\frac{14.399Z_AZ_B}{R_{AB}}.
+$$
+However, the electron-electron and electron-core integrals
+do not collapse to the form $c/R_{AB}$ ($R$ in \AA ) for distances
+beyond the van der Waal's radii. If the simple term given
+above is used, there would be a net repulsion between two
+neutral atoms or molecules. To correct for this the
+core-core repulsion is approximated by:
+$$
+E_N(A,B)=Z_AZ_B<AA|BB>.
+$$
+\subsubsection{MINDO/3 modification to the core-core term}
+ In addition to this term, account must be taken of the
+decreasing screening of the nucleus by the electrons as the
+interatomic distance becomes very small. At very small
+distances the core-core term should approach the classical
+form. To account for this, an additional term is added to
+the basic core-core repulsion to give:
+$$
+E_N(A,B)=Z_AZ_B(<AA|BB>+\;(\frac{14.399}{R_{AB}}-<AA|BB>)e^{-\alpha_{AB}R_{AB}}.
+$$
+ Here, $\alpha_{AB}$ is a diatomic parameter. In the case of N-H
+\index{N-H! core-core terms}
+\index{O-H! core-core terms}
+and O-H interactions only, this expression is replaced by:
+$$
+E_N(A,B)=Z_AZ_B(<AA|BB>+\;(\frac{14.399}{R_{AB}}-<AA|BB>)\alpha_{AB}e^{-R_{AB} }.
+$$
+\subsubsection{MNDO modification to the core-core term}
+ The MNDO approximation to the screening effect is
+similar to that of MINDO/3 in practice, but has a different
+functional form:
+$$
+E_N(A,B)=Z_AZ_B(<s_As_A|s_Bs_B>(1+e^{-\alpha_AR_{AB}} +e^{-\alpha_BR_{AB}}).
+$$
+ Again, O-H and N-H interactions are treated differently.
+For these interactions, use
+$$
+E_N(A,B)=Z_AZ_B(<s_As_A|s_Bs_B>(1+e^{-\alpha_BR_{AB}}R_{AB}  +e^{-\alpha_HR_{AB}}).
+$$
+\subsubsection{AM1 and PM3 modifications to the core-core term}
+\index{AM1! core-core terms}
+\index{AM1! difference from MNDO}
+\index{PM3! difference from MNDO}
+ These modifications are the same as that for MNDO with
+the addition of an extra term to reduce the excessive
+core-core repulsions just outside bonding distances. The
+additional term may be considered as a van der Waal's
+attraction term. The AM1 and PM3 core-core terms are:
+$$
+E_N(A,B)=E_N^{MNDO}(A,B)+\frac{Z_AZ_B}{R_{AB}}
+(\sum_ka_{kA}e^{-b_{kA}(R_{AB}-c_{kA})^2}+\sum_ka_{kB}e^{-b_{kB}(R_{AB}-c_{kB})^2}).
+$$
+The extra terms define spherical Gaussian functions, the $a$,
+$b$, and $c$ are adjustable parameters. PM3 has two Gaussians
+per atom, while AM1 has between two and four.
+
+\begin{quote}
+When I originally developed the theory and software for AM1, my purpose
+for having the Gaussian modification was to correct for the excessive
+repulsions in the region outside the normal bonding distance and less than the
+van der Waals distance.  My reasoning was  as follows:  The excessive repulsion
+depends on distance only.  This must be due to a fault in the approximations.
+It is not necessary to identify either the faulty approximation, or to modify
+it so as to correct the fault.  All that is necessary is to add a new term,
+using the well-known method of operator equivalents. In this, I decided to treat the
+symptom of the fault, and not the cause.  As subsequent events have shown, this
+has proved to be an effective approach.  However, it is still intellectually
+unsatisfactory, in that the final justification is that ``the end justifies
+the means.''  Hopefully, a better approximation than the {\em ad hoc} one
+I chose will eventually be developed.
+\end{quote}
+
+\subsection{Self-Consistent Field Calculation}\index{SCF|ff}
+Once all the integrals needed are calculated, the SCF calculation can be
+started.  A trial density matrix is constructed; this is a diagonal matrix
+with the diagonal terms chosen so that every atom starts off electrically
+neutral (except for ions, when each atom is given an equal charge).
+
+Using this trial density matrix, the one-electron matrix, and the
+two-electron integrals,  a trial Fock matrix is constructed.
+
+Diagonalization produces a set of eigenvectors, from which a better
+density matrix can be made.
+
+This sequence (constructing the density matrix---constructing the Fock
+matrix---diagonalizing the Fock to get new eigenvectors) is repeated until the
+density matrix has become self-consistent to within a pre-set limit
+(\comp{SELCON}).
+
+\subsection{Calculation of $\Delta H_f$}
+
+\index{Heat of Formation! definition}
+\index{$\Delta H_f$! definition}
+The SCF calculation produces a density, $P$, and Fock
+matrix, $F$. These, together with the one-electron matrix, $H$,
+allow the total electronic energy to be calculated via
+\index{Electronic energy}
+$$
+ E_{elect} = \frac{1}{2}\sum_{\mu}\sum_{\nu}P_{\mu\nu}(H_{\mu\nu}+F_{\mu\nu}).
+$$
+
+The total core-core repulsion energy is given by:
+\index{Nuclear energy}
+$$
+   E_{nuc} = \sum_A\sum_{B<A}E_N(A,B).
+$$
+ The addition of these two terms represents the energy
+released when the ionized atoms and valence electrons
+combine to form a molecule.
+
+ A more useful quantity is the
+heat of formation of the compound from its elements in their
+standard state. This is obtained when the energy required
+\index{Electronic energy!of atoms}
+to ionize the valence electrons of the atoms involved
+(calculated using semiempirical parameters), $E_{isol}(A)$, and
+\index{Heat of atomization}
+heat of atomization, $E_{atom}(A)$, are added to the electronic
+plus nuclear energy. This yields:
+$$
+\Delta H_f = E_{elect} + E_{nuc} + \sum_AE_{isol}(A) +\sum_AE_{atom}(A).
+$$
+
+This is the quantity which MOPAC calls the ``Heat of Formation''.
+An alternative but equivalent definition of $\Delta H_f$, more
+suited for comparison with experimental $\Delta H_f$s, is:
+
+``$\Delta H_f$ is the calculated gas-phase heat of formation at 298K
+ of one mole of a compound from its elements in their standard state.''
+
+Things to note about this definition:  unlike {\em ab initio} methods, which
+yield the energy at $0K$, semiempirical methods give $\Delta H_f $
+at $298K$.  This follows from the way in which semiempirical methods
+are parameterized: the reference $\Delta H_f $ are conventionally given at
+$298K$.  This means that  semiempirical methods will reproduce $\Delta H_f$
+for $298K$.  Secondly, note that $\Delta H_f $ are for gas-phase systems.
+To calculate $\Delta H_f $ in the liquid or solid phases, additional terms are
+necessary.

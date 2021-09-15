@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Iterating Fock matrix</TITLE>
+<META NAME="description" CONTENT="8.5.6 Iterating Fock matrix">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node510.html">
+<LINK REL="previous" HREF="node508.html">
+<LINK REL="up" HREF="node503.html">
+<LINK REL="next" HREF="node510.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8427"
+ HREF="node510.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8423"
+ HREF="node503.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8417"
+ HREF="node508.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8425"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8426"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8428"
+ HREF="node510.html"> Calculation of heat</A>
+<B> Up:</B> <A NAME="tex2html8424"
+ HREF="node503.html"> An SCF Calculation</A>
+<B> Previous:</B> <A NAME="tex2html8418"
+ HREF="node508.html"> Iterating density matrix</A>
+<BR>
+<H2>Iterating Fock matrix
+</H2>
+The second Fock matrix can then be constructed using this density matrix. The
+on-diagonal terms are identical to those in the first Fock matrix, since the
+atomic orbital electron densities are unchanged, but the off-diagonal terms are
+now changed. The off-diagonal terms are modified to allow for exchange
+interactions. (Note that not all exchange terms are stabilizing.)
+<P>
+Let us evaluate the matrix element F(1,2):
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+F(1,2) = -3.2457 - \frac{1}{2}(0.6667)(9.6583){\rm eV}.
+\end{displaymath} -->
+<IMG
+ WIDTH="276" HEIGHT="38"
+ SRC="img1008.gif"
+ ALT="\begin{displaymath}F(1,2) = -3.2457 - \frac{1}{2}(0.6667)(9.6583){\rm eV}.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The second Fock matrix is thus:
+<DIV ALIGN="CENTER">
+Second Fock Matrix (eV) <BR>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">Atom</TD>
+<TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">3</TD>
+<TD ALIGN="RIGHT">4</TD>
+<TD ALIGN="RIGHT">5</TD>
+<TD ALIGN="RIGHT">6</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="RIGHT">-5.4823</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">-6.4652</TD>
+<TD ALIGN="RIGHT">-5.4823</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">3</TD>
+<TD ALIGN="RIGHT">-1.0970</TD>
+<TD ALIGN="RIGHT">-6.4652</TD>
+<TD ALIGN="RIGHT">-5.4823</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">4</TD>
+<TD ALIGN="RIGHT">+0.3611</TD>
+<TD ALIGN="RIGHT">-1.0970</TD>
+<TD ALIGN="RIGHT">-6.4652</TD>
+<TD ALIGN="RIGHT">-5.4823</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">5</TD>
+<TD ALIGN="RIGHT">-1.0970</TD>
+<TD ALIGN="RIGHT">+0.3611</TD>
+<TD ALIGN="RIGHT">-1.0970</TD>
+<TD ALIGN="RIGHT">-6.4652</TD>
+<TD ALIGN="RIGHT">-5.4823</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">6</TD>
+<TD ALIGN="RIGHT">-6.4652</TD>
+<TD ALIGN="RIGHT">-1.0970</TD>
+<TD ALIGN="RIGHT">+0.3611</TD>
+<TD ALIGN="RIGHT">-1.0970</TD>
+<TD ALIGN="RIGHT">-6.4652</TD>
+<TD ALIGN="RIGHT">-5.4823</TD>
+</TR>
+</TABLE></DIV>
+Diagonalization of this matrix yields the same set of eigenvectors as we had
+initially. In general, several iterations are necessary in order to obtain an
+SCF; however, a few systems exist for which symmetry restrictions on the form
+of the eigenvectors allow them to achieve an SCF in one iteration. Hexagonal
+H<SUB>6</SUB> is one such system. Although the eigenvectors are the same, the
+eigenvalues obviously have to be different.
+<P>
+Exercise: Verify that the SCF energy levels of H<SUB>6</SUB> are -20.2457, -11.2116,
+-11.2116, 2.4411, 2.4411, and 4.8929 eV.
+<P>
+Once an SCF is achieved we need to calculate the heat of formation.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8427"
+ HREF="node510.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8423"
+ HREF="node503.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8417"
+ HREF="node508.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8425"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8426"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8428"
+ HREF="node510.html"> Calculation of heat</A>
+<B> Up:</B> <A NAME="tex2html8424"
+ HREF="node503.html"> An SCF Calculation</A>
+<B> Previous:</B> <A NAME="tex2html8418"
+ HREF="node508.html"> Iterating density matrix</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>CHARST</TITLE>
+<META NAME="description" CONTENT="CHARGE=n ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node138.html"><LINK REL="previous" HREF="node136.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node138.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html3551"><A HREF="node138.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html3547"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html3541"></A><a href="node137.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></a><A NAME="tex2html3549"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html3550"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html3552"><A HREF="node138.html">CIS </A></A><B>Up:</B> <A NAME="tex2html3548"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html3542">
+<a href="node137.html">CHARGE</a><!--End of Navigation Panel--><H2>
+<TT>CHARST</TT> </H2>
+<p>
+Print details of the working of CHARST.&nbsp; CHARST calculates the symmetry 
+characters of the state functions, that is:</p>
+<p align="center">
+<font face="Symbol">c</font> = &lt;<font face="Symbol">F</font>|Operator|<font face="Symbol">F</font>&gt;</p>
+<p align="left">
+where <font face="Symbol">F </font>is a state function, that is, a linear 
+combination of microstates, <font face="Symbol">Y</font>.&nbsp; Each microstate is an antisymmetrized product 
+of molecular orbitals, and each M.O. is a linear combination of atomic orbitals, 
+which, in turn, are represented by Slater orbitals.&nbsp; Only information on 
+the first state is printed; the quantities printed are:</p>
+<p align="left">
+Symmetry operation in CHARST: the 3x3 Euler rotation matrix representing the 
+operation.&nbsp; This is a rotation, mirror plane, or a product of the two.</p>
+<p align="left">
+Transform of M.O.s: The result of the operation on the M.O.s&nbsp; The effect of 
+the operation is to convert each M.O. of the active space into a linear 
+combination of the M.O.s of the active space.</p>
+<p align="left">
+State Transform for State <i>i</i> under Operation <i>j</i>:&nbsp; As the name 
+suggests, this is the result of operating on state |<font face="Symbol">F</font><sub>i</sub>&gt; 
+with operator |Operator<sub><i>j</i></sub>, i.e.: </p>
+<p align="center">
+|Operator<sub><i>j</i></sub>|<font face="Symbol">F</font><i><sub>i</sub></i>&gt;</p>
+<p align="left">
+The state is then converted into a linear combination of states.</p>
+<p align="left">
+For <TT>CHARST</TT> to work <TT><a href="node152.html">DEBUG</a></TT> must also 
+be present.&nbsp; Adding <TT><a href="symoir.html">SYMOIR</a></TT> will give the 
+characters of the operations for all states.</p>
+<p align="left">
+See <a href="node572.html">States</a> for more information</p>
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,236 @@
+
+                        NOTES ON DATAFILES
+
+(1) Scope of test-data.
+
+(a) The test-data in TESTDATA.DAT are intended to demonstrate some of the
+    capabilities of MOPAC. 
+(b) The test-data files are not designed for checking MOPAC for
+    errors.
+(c) Only the main paths through MOPAC are demonstrated. The large C.I.,
+    MECI is used, but not all its features are demonstrated. Similarly,
+    the DRC and polymer capabilities are not shown.  These were added
+    too late for this set of tests.
+
+(2) The test data are intended to be run as follows:
+
+(a) Run first the single test-data file MNRSD1.DAT, the one described in
+    the Manual. Check that the results are acceptable. Small differences
+    in calculated quantities are to be expected due to different definitions
+    of double precision numbers, and to minor changes made to MOPAC as a
+    result of suggestions made by early users of MOPAC.
+(b) The first file in TESTDATA.DAT is described in detail in the Manual,
+    and can be used to demonstrate a full FORCE calculation.
+    If desired, the calculation of this system can be delayed until
+    after the next few tests.
+(b) Run, in turn, the next four files in TESTDATA.DAT, these show the
+    four main electronic pathways: the RHF closed-shell, the UHF open-shell,
+    the RHF triplet open shell (does not use C.I.), and the RHF biradical
+    (which does use C.I.). If any of these fail to run successfully, no
+    associated geometric path will work. 
+(c) The next four data files in TESTDATA demonstrate the geometric pathways.
+    These are, in order, the FORCE calculation, which calculates force
+    constants, vibrational frequencies, and thermodynamic quantities;
+    the FORCE calculation being used with an ill-defined geometry (FORCE
+    should only be used with systems at their stationary points, if it
+    is not at a stationary point, Bartell's method will be used to optimise
+    the geometry to the stationary point; this is normally less efficient 
+    than using the D.F.P. method or SIGMA method); the SIGMA method for
+    locating a stationary point (here the MINDO/3 geometry for formaldehyde
+    is used to start a MNDO optimisation); and a Bartell's method
+    optimisation.
+      Bartell's and the SIGMA method are mainly used to locate transition
+    states. Bartell's method will always work, but can be extremely slow
+    at the end, and can locate a point of inflection if the initial geometry
+    was very poor. SIGMA is slow to start, since it constructs a full Hessian,
+    and will normally fail if the geometry is not near to a stationary point,
+    but when it does work is very fast and accurate. Sometimes the results
+    of a SIGMA optimization that failed are sufficiently good to act as
+    data for a second SIGMA optimization that will work.
+(d) The next two data files demonstrate the reaction options. The first
+    is the "reaction" of one methyl group rotating relative to the other
+    fixed methyl group in ethane. The other is the location of the transition
+    state in classical ethyl cation hydrogen migrating from one carbon atom
+    to the other.
+(e) Finally, there is a demonstration of the location of a transition state,
+    and its characterisation as a transition state via force constants.
+
+(3) Initially, it is suggested that the testdata are used as "templates"
+    for generating data. Users are recommended to experiment with 
+    various combinations of key-words to their test understanding of MOPAC.
+    To save time, small compounds, such as H2O and CO2 etc. are suggested
+    as model systems.
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+OT=2 THERMO(298,298,) PRECISE FORCE     ISOTOPE SYMMETRY                                                   
+DEMONSTRATION OF MOPAC - FORCE AND THERMODYNAMICS CALCULATION                  
+FORMALDEHYDE, MNDO ENERGY = -32.8819                                           
+ O    0.000000  0    0.000000  0    0.000000  0    0    0    0      -0.2902
+ C    1.216487  1    0.000000  0    0.000000  0    1    0    0       0.2921
+ H    1.106108  1  123.513379  1    0.000000  0    2    1    0      -0.0010
+ H    1.106109  1  123.513366  1  179.997716  1    2    1    3      -0.0010
+ 0    0.000000  0    0.000000  0    0.000000  0    0    0    0
+
+
+
+
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+  GRADIENTS   1SCF PRECISE     MINDO3                                  
+TEST OF MINDO/3 AT RHF LEVEL, TEST IS SUCCESSFUL IF CALCULATED                 
+HEAT OF FORMATION = -25.5614 AND GRADIENTS LESS THAN 1.0                       
+ O    0.000000  0    0.000000  0    0.000000  0    0    0    0      -0.4250
+ C    1.181394  1    0.000000  0    0.000000  0    1    0    0       0.6433
+ H    1.123040  1  126.591139  1    0.000000  0    2    1    0      -0.1091
+ H    1.123041  1  126.590990  1  179.997318  1    2    1    3      -0.1091
+ 0    0.000000  0    0.000000  0    0.000000  0    0    0    0
+
+
+
+
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+  1SCF GRADIENTS   TRIPLET     PRECISE  UHF                            
+ TEST OF UHF.  TEST IS SUCCESSFUL IF HEAT OF FORMATION = 41.6682               
+AND GRADIENT NORM IS LESS THAN 1.D0                                            
+ C    0.000000  0    0.000000  0    0.000000  0    0    0    0      -0.1000
+ C    1.436554  1    0.000000  0    0.000000  0    1    0    0      -0.1000
+ H    1.083509  1  121.240333  1    0.000000  0    2    1    0       0.0500
+ H    1.083509  1  121.240345  1  179.999266  1    2    1    3       0.0500
+ H    1.083509  1  121.240383  1   90.000240  1    1    2    3       0.0500
+ H    1.083509  1  121.240325  1  -89.999311  1    1    2    3       0.0500
+ 0    0.000000  0    0.000000  0    0.000000  0    0    0    0
+
+
+
+
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+PRECISE 1SCF GRADIENTS  TRIPLET MINDO3                           
+TEST OF RHF TRIPLET. TEST IS SUCCESSFUL IF HEAT OF FORMATION = 64.1226         
+AND GRADIENT NORM IS LESS THAN 2.0                                             
+ C    0.000000  0    0.000000  0    0.000000  0    0    0    0      -0.0385
+ C    1.416164  1    0.000000  0    0.000000  0    1    0    0      -0.0385
+ H    1.096483  1  120.690881  1    0.000000  0    2    1    0       0.0228
+ H    1.097455  1  121.468734  1 -153.916545  1    2    1    3       0.0157
+ H    1.097484  1  121.474821  1   86.717563  1    1    2    3       0.0157
+ H    1.096536  1  120.677544  1 -119.371066  1    1    2    3       0.0228
+ 0    0.000000  0    0.000000  0    0.000000  0    0    0    0
+
+
+
+
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+    PRECISE GRADIENTS   BIRADICAL MINDO3 1SCF
+TEST OF BIRADICAL RHF. TEST IS SUCCESSFUL IF THE HEAT OF FORMATION = 64.4866
+AND GRADIENT NORM IS LESS THAN 2.0
+  C    0.000000  0    0.000000  0    0.000000  0   0  0  0
+  C    1.409472  1    0.000000  0    0.000000  0   1  0  0
+  H    1.093594  1  122.758282  1    0.000000  0   2  1  0
+  H    1.093594  0  122.758282  0  180.000000  0   2  1  3
+  H    1.093594  0  122.758282  0   90.000000  0   1  2  3
+  H    1.093594  0  122.758282  0  270.000000  0   1  2  3
+  0    0.000000  0    0.000000  0    0.000000  0   0  0  0
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+MINDO3 ROT=2 THERMO   FORCE
+TEST OF MINDO/3 AT RHF LEVEL, FIRST VIBRATION SHOULD BE 1045-1047 CM**(-1)
+ENTHALPY(200K) =1593 CALORIES
+  O    0.000000  0    0.000000  0    0.000000  0   0  0  0
+  C    1.181383  1    0.000000  0    0.000000  0   1  0  0
+  H    1.123066  1  126.588842  1    0.000000  0   2  1  0
+  H    1.123061  1  126.588456  1  180.000000  1   2  1  3
+  0    0.000000  0    0.000000  0    0.000000  0   0  0  0
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+MINDO3 FORCE
+TEST OF MINDO/3 AT RHF LEVEL, CORRECTION OF FAULTY DATA
+IRST VIBRATION SHOULD BE 1045-1047 CM**(-1)
+  O    0.000000  0    0.000000  0    0.000000  0   0  0  0
+  C    1.        1    0.000000  0    0.000000  0   1  0  0
+  H    1.        1  126.588842  1    0.000000  0   2  1  0
+  H    1.        1  126.588456  1  180.000000  1   2  1  3
+  0    0.000000  0    0.000000  0    0.000000  0   0  0  0
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+gnorm=0.01 GRADIENTS     SIGMA
+TEST OF SIGMA. HEAT OF FORMATION =-32.8819, GRADIENT NORM LESS THAN 1.0
+
+  O    0.000000  0    0.000000  0    0.000000  0   0  0  0
+  C    1.181383  1    0.000000  0    0.000000  0   1  0  0
+  H    1.123066  1  126.588842  1    0.000000  0   2  1  0
+  H    1.123061  1  126.588456  1  180.000000  1   2  1  3
+  0    0.000000  0    0.000000  0    0.000000  0   0  0  0
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+gnorm=0.01 GRADIENTS     NLLSQ
+TEST OF SIGMA. HEAT OF FORMATION =-32.8819, GRADIENT NORM LESS THAN 1.0
+
+  O    0.000000  0    0.000000  0    0.000000  0   0  0  0
+  C    1.181383  1    0.000000  0    0.000000  0   1  0  0
+  H    1.123066  1  126.588842  1    0.000000  0   2  1  0
+  H    1.123061  1  126.588456  1  180.000000  1   2  1  3
+  0    0.000000  0    0.000000  0    0.000000  0   0  0  0
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+  SYMMETRY
+
+
+  C    0.000000 0    0.000000 0    0.000000  0   0  0  0
+  C    1.544846 1    0.000000 0    0.000000  0   1  0  0
+  H    1.116935 1  110.665270 1    0.000000  0   2  1  0
+  H    1.116935 0  110.665213 0  120.000000  0   2  1  3
+  H    1.116935 0  110.665213 0  240.000000  0   2  1  3
+  H    1.116935 0  110.665213 0   60.000000 -1   1  2  3
+  H    1.116935 0  110.665213 0  180.000000  0   1  2  3
+  H    1.116935 0  110.665213 0  300.000000  0   1  2  3
+  0    0.000000 0    0.000000 0    0.000000  0   0  0  0
+   3,    1,    4,
+   3,    1,    5,
+   3,    1,    6,
+   3,    1,    7,
+   3,    1,    8,
+   3,    2,    4,
+   3,    2,    5,
+   3,    2,    6,
+   3,    2,    7,
+   3,    2,    8,
+   6,    7,    7,
+   6,   11,    8,
+
+50 40 30 20 10 0 -10 -20 -30 -40 -50 -60
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+ SADDLE UHF
+    ETHYL RADICAL, HYDROGEN MIGRATION FROM C1 TO C2
+
+  6    0.000000 0    0.000000 0    0.000000 0   0  0  0
+  6    1.477139 1    0.000000 0    0.000000 0   1  0  0
+  1    1.082649 1  121.548305 1    0.000000 0   2  1  0
+  1    1.083216 1  120.899040 1  178.259153 1   2  1  3
+  1    2.148533 1   28.773756 1  229.130514 1   2  1  3
+  1    1.109818 1  111.971877 1    9.883760 1   1  2  3
+  1    1.112682 1  110.320360 1  250.170920 1   1  2  3
+  0    0.000000 0    0.000000 0    0.000000 0   0  0  0
+  6    0.000000 0    0.000000 0    0.000000 0   0  0  0
+  6    1.475620 1    0.000000 0    0.000000 0   1  0  0
+  1    1.110522 1  111.486757 1    0.000000 0   2  1  0
+  1    1.109711 1  111.884755 1  120.829959 1   2  1  3
+  1    1.112806 1  110.441152 1  240.645640 1   2  1  3
+  1    1.082678 1  121.172100 1   38.115205 1   1  2  3
+  1    1.082381 1  121.691755 1  217.320781 1   1  2  3
+  0    0.000000 0    0.000000 0    0.000000 0   0  0  0
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+  SIGMA UHF                                                                    
+     ETHYL RADICAL, HYDROGEN MIGRATION FROM C1 TO C2                            
+                                                                                
+  C    0.000000  0    0.000000  0    0.000000  0   0  0  0      -0.1440
+  C    1.457394  1    0.000000  0    0.000000  0   1  0  0      -0.1436
+  H    1.088001  1  120.800862  1    0.000000  0   2  1  0       0.0405
+  H    1.091080  1  119.511521  1  149.457585  1   2  1  3       0.0332
+  H    1.364112  1   58.074644  1  247.076542  1   2  1  3       0.1356
+  H    1.089431  1  120.298384  1   15.882232  1   1  2  3       0.0369
+  H    1.087629  1  121.165929  1  218.802747  1   1  2  3       0.0414
+  0    0.000000  0    0.000000  0    0.000000  0   0  0  0
+*****************   SEPARATE FILES ALONG THIS LINE   **************************
+       FORCE  UHF                                                                    
+      ETHYL RADICAL, HYDROGEN MIGRATION FROM C1 TO C2                           
+                                                                                
+  C    0.000000  0    0.000000  0    0.000000  0   0  0  0      -0.1474
+  C    1.460064  1    0.000000  0    0.000000  0   1  0  0      -0.1473
+  H    1.088168  1  120.687597  1    0.000000  0   2  1  0       0.0401
+  H    1.088148  1  120.688436  1  157.326197  1   2  1  3       0.0402
+  H    1.354391  1   57.393818  1 -101.253058  1   2  1  3       0.1343
+  H    1.088141  1  120.710342  1   -0.061328  1   1  2  3       0.0401
+  H    1.088158  1  120.676893  1 -157.364486  1   1  2  3       0.0401
+  0    0.000000  0    0.000000  0    0.000000  0   0  0  0

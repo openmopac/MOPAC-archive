@@ -1,0 +1,42 @@
+##############################################################
+#
+# Builds MOPAC2012 for CPU on a Linux platform 32 and 64 bit versions
+#
+##############################################################
+ifeq ($(BITS), 32)
+MATH_LINK 	= -Wl,--start-group  $(MKLROOT)/lib/ia32/libmkl_intel.a $(MKLROOT)/lib/ia32/libmkl_intel_thread.a $(MKLROOT)/lib/ia32/libmkl_core.a -Wl,--end-group -openmp -lpthread -lm
+else
+MATH_LINK 	= -Wl,--start-group  $(MKLROOT)/lib/intel64/libmkl_intel_lp64.a $(MKLROOT)/lib/intel64/libmkl_intel_thread.a $(MKLROOT)/lib/intel64/libmkl_core.a -Wl,--end-group -openmp -lpthread -lm
+endif
+#
+#                             Path definitions
+#
+#   Location of the source files (currently in the Windows folders)
+# 
+MOPAC_SRC = /media/sf_Software/Software/MOPAC_source_code
+#
+#   Location of the intermediate files 
+#
+INTERMEDIATE_DIR = /media/sf_Software/Software
+#
+#
+#                                End of site-sensitive data
+#
+#
+OBJ             =   objects_$(BITS)
+O               =   o 
+#
+# Compiler directives
+#
+FORTRAN_LINKER	= ifort
+FORTRAN_COMPILER= ifort -o $@ -c -lpthread -lstdc++ -O3 -I$(INTERMEDIATE_DIR)/$(OBJ) -module $(OBJ)   
+#
+#  Executable
+#
+EXE              =   /opt/mopac/MOPAC2012.exe 
+##############################################################################
+#
+#      From this line on, the Linux, Unix, and Windows versions are identical
+#
+##############################################################################
+include MOPAC_Makefile_files.txt

@@ -1,0 +1,67 @@
+
+
+                                     POLAR (C)
+     
+          The polarizability and first and second hyperpolarizabilities are to
+     be  calculated.   At present this calculation does not work for polymers,
+     but should work for all other systems.  Two different options are
+     implemented: the older finite field method and a new time-dependent
+     Hartree-Fock method.
+     
+     Time-Dependent Hartree-Fock:
+
+          This procedure is based on the detailed description given by
+     M. Dupuis and S. Karna (J. Comp. Chem. 12, 487 (1991)).  The
+     program is capable of calculating:
+ 
+        Frequency Dependent Polarizability         alpha(-w;w)
+        Second Harmonic Generation                 beta(-2w;w,w)
+        Electrooptic Pockels Effect                beta(-w;0,w)
+        Optical Rectification                      beta(0;-w,w)
+        Third Harmonic Generation                  gamma(-3w;w,w,w)
+        DC-EFISH                                   gamma(-2w;0,w,w)
+        Optical Kerr Effect                        gamma(-w;0,0,w)
+        Intensity Dependent Index of Refraction    gamma(-w;w,-w,w)
+
+          The input is given at the end of the MOPAC deck and 
+     consists of two lines of free-field input followed by a list
+     energies.  
+          The variables on the first line are:
+             Nfreq  =  How many energies will be used to calculate 
+                       the desired quantities.
+             Iwflb  =  Type of beta calculation to be performed.
+                       This valiable is only important if iterative
+                       beta calculations are chosen.
+                        0 - static
+                        1 - SHG
+                        2 - EOPE
+                        3 - OR 
+             Ibet   =  Type of beta calculation:
+                        0 - beta(0;0)  static
+                        1 - iterative calculation with type of
+                            beta chosen by Iwflb.
+                       -1 - Noniterative calculation of SHG
+                       -2 - Noniterative calculation of EOPE
+                       -3 - Noniterative calculation of OR
+             Igam   =  Type of gamma calculation:
+                        0 - No gamma calculation
+                        1 - THG
+                        2 - DC-EFISH
+                        3 - IDRI
+                        4 - OKE
+
+          The vaiables on the second line are:
+             Atol   =  Cutoff tolerance for alpha calculations
+                       (1.0e-4 seems reasonable)
+             Maxitu =  Maximum number of iteractions for beta
+                       calculations
+             Maxita =  Maximum number of iterations for alpha
+                       calculations
+             Btol   =  Cutoff tolerance for beta calculations
+
+          Nfreq lines follow, each with an energy value in eV's at
+     which the hyperpolarizabilites are to be calculated.
+
+
+
+

@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>sizes.h</TITLE>
+<META NAME="description" CONTENT="14.2 sizes.h">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node697.html"><LINK REL="previous" HREF="node695.html"><LINK REL="up" HREF="node694.html"><LINK REL="next" HREF="node697.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan* with significant contributions from:  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node697.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node694.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node695.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node697.html">meci.h</A><B> Up:</B> <A HREF="node694.html">Installing MOPAC</A><B> Previous:</B> <A HREF="node695.html">Overview</A><BR>
+</P>
+<H1>
+<TT>sizes.h</H1>
+</TT><P>The file <TT>sizes.h </TT>determines how big a system MOPAC can run. The current maximum size of MOPAC, in terms of atoms, can be found in the output file near the start, at the end of the fourth line of stars. The end of that line would look something like this:</P>
+<PRE><font size="3">******************020000</font></PRE>
+<P>This means that the program was configured to run systems of up to 20,000 atoms. Whenever you modify <TT>sizes.h</TT>, re-run <TT>make</TT>.</P>
+<P>When <TT>make </TT>is run, it compiles all the FORTRAN files, using the array sizes given in <TT>sizes.h</TT> : these should be modified before <TT>make </TT>is run. If, for whatever reason, <TT>sizes.h </TT>needs to be changed, then <TT>make </TT>should be re-run, as modules compiled with different<TT> sizes.h </TT>will be incompatible.</P>
+<FONT SIZE=1>
+<P><A NAME="BM36804">&nbsp;<A NAME="BM36805"></A>&nbsp;</A> </FONT>The parameters within <TT>sizes.h </TT>that the user can modify are <TT>NUMATM</TT>, <TT>MAXTIM </TT>and <TT>MAXDMP</TT>.&nbsp; <TT>NUMATM </TT>is assigned a value equal to the largest number of atoms that a MOPAC job is expected to run. Note, however, that because MOPAC now uses 
+dynamic memory allocation, the size of the program depends mainly on the size of the system being run, and only to a very small degree on the value of<TT> NUMATM</TT>. Because of this, the value of <TT>NUMATM </TT>can be quite large, for example, 100-20,000.</P>
+<TT><P>MAXTIM </TT>is the default maximum time in seconds a job is allowed to run before either completion or a restart file being written. <TT>MAXDMP </TT>is the default time in seconds for the automatic writing of the restart files. If your computer is very reliable, and disk space is at a premium, you might want to set <TT>MAXDMP </TT>as <TT>MAXDMP=999999</TT>.</P>
+<P>If you want, <TT>MESP </TT>can be varied. </P>
+<P>The quantity <TT>ISAFE </TT>is used to decide whether memory or reliability is the more important. If <TT>ISAFE </TT>is set to 1, then a larger amount of memory will be needed, but the reliability of MOPAC is increased. If the special SCF convergers are needed, and <TT>ISAFE=1</TT>, then they will be used. If <TT>ISAFE=0</TT>, then MOPAC will not allocate memory for these special SCF convergers. Whichever choice is made, the other choice can be selected at run-time by use of keywords. Thus if <TT>ISAFE=0 </TT>is selected, then the run-time default is to minimize memory usage. If keyword <TT>SAFE </TT>is used, then the other option will be used for that job. See also keywords <TT>
+<a href="node296.html">SAFE</a> </TT>and <TT><a href="node336.html">UNSAFE</a></P>
+</TT><P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html10821"><A HREF="node697.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10817"></A><A HREF="node694.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10811"></A><A HREF="node695.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10819"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10820"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><FONT SIZE=1><BR>
+</FONT>
+<B>Next:</B> <A HREF="node697.html">meci.h</A></A> <B>Up:</B> <A HREF="node694.html">Installing MOPAC</A></A> <B>Previous:</B> <A HREF="node695.html">Overview</A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart<BR>
+Fujitsu Ltd. 2001</ADDRESS></BODY>
+</HTML>

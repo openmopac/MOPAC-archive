@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Renormalization of Molecular Orbitals</TITLE>
+<META NAME="description" CONTENT="6.4.4 Renormalization of Molecular Orbitals">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node412.html">
+<LINK REL="up" HREF="node409.html">
+<LINK REL="next" HREF="node414.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6971"
+ HREF="node414.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6967"
+ HREF="node409.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6963"
+ HREF="node412.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6969"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6970"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6972"
+ HREF="node414.html"> Programming Considerations</A>
+<B> Up:</B> <A NAME="tex2html6968"
+ HREF="node409.html"> Details of Graph</A>
+<B> Previous:</B> <A NAME="tex2html6964"
+ HREF="node412.html"> Difference Maps</A>
+<BR>
+<H2><A NAME="SECTION001044000000000000000">
+ Renormalization of Molecular Orbitals</A>
+</H2>
+  All maps are calculated from data originally derived from the supplied
+molecular orbitals. These M.O.s are presumed to be un-renormalized: that
+is, the sum of the squares of the coefficients of the M.O.s add to unity.
+The first step, therefore, is to re-normalize the M.O.s. This is done
+by matrix multiplying the starting eigenvector matrix by the 
+inverse-square-root of the overlap matrix. This requires the presence of
+the inverse-square-root of the overlap matrix, which must be supplied by
+the MOPAC file. If re-normalization is not done, the total 
+electron density would be too large, and the difference maps would be
+quite incorrect.
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

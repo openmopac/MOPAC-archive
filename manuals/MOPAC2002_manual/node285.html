@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>REORTH </TITLE>
+<META NAME="description" CONTENT="REORTH ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node286.html">
+<LINK REL="previous" HREF="node284.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node286.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html5325"
+ HREF="node286.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5321"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5315"
+ HREF="node284.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5323"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5324"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5326"
+ HREF="node286.html">RESIDUES </A>
+<B> Up:</B> <A NAME="tex2html5322"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5316"
+ HREF="node284.html">RELTHR </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>REORTH</TT> 
+</H2>
+During a <TT><a href="node226.html">MOZYME</a></TT>run, the steady accumulation of small errors (for example,
+roundoff, and more important, the elimination of atoms from LMOs) will
+result in the LMOs becoming non-orthogonal.  These errors can be eliminated
+almost completely by re-orthogonalizing the LMOs.  If <TT>REORTH</TT>
+is present, then the LMOs will be re-orthogonalized at the end of every
+10th SCF calculation, starting with the first SCF.
+ 
+A useful strategy would be to do geometry optimizations without using
+<TT>REORTH</TT>, and allow the LMOs to slowly become more and more non-orthogonal.
+Then, either at or near the end of the optimization, do a <TT>1SCF</TT> with
+<TT>REORTH</TT> to eliminate the accumulated errors.
+ 
+The effect of <TT>REORTH</TT> is likely to be very small.  If the value of <TT>THRESH</TT>
+is increased, however, then the LMOs will become non-orthogonal faster, and
+<TT>REORTH</TT> would then likely have a significant effect. 
+ 
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

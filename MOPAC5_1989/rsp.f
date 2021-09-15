@@ -1,0 +1,62 @@
+      SUBROUTINE RSP(A,N,MATZ,W,Z)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES'
+      DIMENSION A(*),  W(N), Z(N,N)
+*******************************************************************
+*
+*   EISPACK DIAGONALIZATION ROUTINES: TO FIND THE EIGENVALUES AND
+*           EIGENVECTORS (IF DESIRED) OF A REAL SYMMETRIC PACKED MATRIX.
+* ON INPUT-      N  IS THE ORDER OF THE MATRIX  A,
+*                A  CONTAINS THE LOWER TRIANGLE OF THE REAL SYMMETRIC
+*                   PACKED MATRIX STORED ROW-WISE,
+*             MATZ  IS AN INTEGER VARIABLE SET EQUAL TO ZERO IF ONLY
+*                   EIGENVALUES ARE DESIRED,  OTHERWISE IT IS SET TO
+*                   ANY NON-ZERO INTEGER FOR BOTH EIGENVALUES AND
+*                   EIGENVECTORS.
+* ON OUTPUT-     W  CONTAINS THE EIGENVALUES IN ASCENDING ORDER,
+*                Z  CONTAINS THE EIGENVECTORS IF MATZ IS NOT ZERO,
+*
+*******************************************************************
+* THIS SUBROUTINE WAS CHOSEN AS BEING THE MOST RELIABLE. (JJPS)
+C     QUESTIONS AND COMMENTS SHOULD BE DIRECTED TO B. S. GARBOW,
+C     APPLIED MATHEMATICS DIVISION, ARGONNE NATIONAL LABORATORY
+C
+C     ------------------------------------------------------------------
+C
+      DIMENSION FV1(MAXORB),FV2(MAXORB)
+      LOGICAL FIRST
+      DATA FIRST /.TRUE./
+      IF (FIRST) THEN
+         FIRST=.FALSE.
+         CALL EPSETA(EPS,ETA)
+         NV=(MAXORB*(MAXORB+1))/2
+      ENDIF
+      NM=N
+      IF (N .LE. NM) GO TO 10
+      IERR = 10 * N
+      GO TO 60
+   10 IF (NV .GE. (N * (N + 1)) / 2) GO TO 20
+      IERR = 20 * N
+      GO TO 60
+C
+   20 CALL  TRED3(N,NV,A,W,FV1,FV2,EPS,EPS)
+      IF (MATZ .NE. 0) GO TO 30
+C     ********** FIND EIGENVALUES ONLY **********
+      CALL  TQLRAT(N,W,FV2,IERR,EPS)
+      GO TO 60
+C     ********** FIND BOTH EIGENVALUES AND EIGENVECTORS **********
+   30 DO 50    I = 1, N
+C
+         DO 40    J = 1, N
+            Z(J,I)=0.0D0
+   40    CONTINUE
+C
+         Z(I,I)=1.0D0
+   50 CONTINUE
+C
+      CALL  TQL2(NM,N,W,FV1,Z,IERR,EPS)
+      IF (IERR .NE. 0) GO TO 60
+      CALL  TRBAK3(NM,N,NV,A,N,Z,EPS)
+C     ********** LAST CARD OF RSP **********
+   60 RETURN
+      END

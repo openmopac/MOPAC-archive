@@ -1,0 +1,384 @@
+\section{Solid state capability}\label{solid-state}\index{Solid state!description}
+%{\sc Users are warned that the two and three dimensional calculations are
+%relatively new, and only limited testing has been done to verify their
+%validity.  Extreme caution should be exercised when these calculations are
+%being done.  In particular, care should be taken to ensure that the cluster
+%is sufficiently large that the translation vector conditions described
+%below are met. Many other considerations, such as the significance of using
+%only one point in $k$-space, have not been fully explored.  The solid-state
+%capability should be regarded as a research tool, and should not be used
+%except be researchers familiar with solid-state concepts.}
+
+\subsection{Constructing Data Sets}
+Setting up the data set for a solid is much more complicated than
+setting up the equivalent data set for a molecule. For example,
+the data set for iodine, I$_2$, might take say 20 seconds to type
+up. For crystalline I$_2$, the data set might take 20 minutes to
+an hour to set up. The reason for this is the presence in solids
+of the translation vectors. In MOPAC, these are represented by the
+symbol ``Tv", short for Translation Vector. Translation vectors
+must be the last entries in the Z-matrix, are defined in terms of
+the positions of atoms or dummy atoms.
+
+The recommended procedure for constructing a data set for a solid
+is as follows:
+
+Build a primitive unit cell. In this work, the action of simple
+translations on a primitive unit cell would make the solid. That
+is, other operations, such as rotation, non-primitive translation,
+or reflection should not be necessary.
+
+Use MAKPOL to build a cluster. The number of primitive unit cells
+in each direction should be sufficiently large that the shortest
+distance between two opposite faces in the cluster is at least 10
+\AA ngstroms.
+
+Using an editor (vi, Notepad, or WORD, in order of preference),
+add symmetry to the system.
+
+Run using MOPAC
+
+Worked examples of this procedure, with explanation of each step
+are shown at the end of this section, see P. \pageref{diamond}.
+
+
+\subsection{The Cluster}
+Unlike more conventional methods, MOPAC does not normally use a fundamental
+unit cell.  Neither does it sample the Brillouin Zone in order to model the
+electronic structure.  Instead, it uses a large unit cell, called a `cluster',
+\index{Born-von K\'{a}rm\'{a}n! periodic boundary conditions} \index{Periodic
+boundary conditions|ff} and applies the Born-von K\'{a}rm\'{a}n
+~\cite{bornvon1,bornvon2} periodic  boundary conditions.  In this discussion,
+the term `solid' is intended to include polymers, layer systems, and true
+solids, unless otherwise indicated by the context.
+
+If a unit cell of a solid is large enough,  then  a  single  point  in
+\index{Gamma@{$\Gamma$ point!in solid state}} $k$-space,  the $\Gamma$ point,
+is sufficient to specify the entire Brillouin zone.  The secular determinant
+for this  point  can  be  constructed  by adding together the Fock matrix for
+the central unit cell plus those for the adjacent unit cells.  The periodic
+boundary conditions are satisfied, and diagonalization yields the correct
+density matrix for the $\Gamma$ point.
+
+At this point  in  the  calculation,  conventionally,  the  density matrix
+for  each  unit  cell  is constructed.  Instead, the $\Gamma$-point density
+and  one-electron  density  matrices  are   combined   with  \index{Coulomb
+integrals} ``$\Gamma$-point-like'' Coulomb  and  exchange integral strings to
+produce a new Fock matrix.  The  calculation  can  be  visualized  as  being
+done entirely in reciprocal space, at the $\Gamma$ point.
+
+Most  solid-state  calculations  take  a  very  long  time.   These
+calculations,   called ``Cluster'' calculations   after  the  original
+publication, require between 1.3 and 2 times  the  equivalent  molecular
+calculation.\index{Cluster model}
+
+A minor `fudge'  is  necessary  to  make  this  method  work.   The
+contribution  to  the  Fock  matrix  element  arising  from the exchange
+integral between an atomic orbital and all atomic orbitals which are more than
+half a unit cell away must be ignored.
+
+The unit cell must be large enough that an atomic  orbital  in  the
+\index{Translation vector!requirements} center  of  the  unit  cell has an
+insignificant overlap with the atomic orbitals at the ends of the  unit
+cell.   In  practice,  a  translation vector  of more that about 7 or 8\AA\ is
+sufficient.  For one rare group of compounds a larger translation vector is
+needed.  Solids with delocalized  $\pi$--systems,  and  solids  with  very
+small band-gaps will require a larger translation  vector,  in  order  to
+accurately  sample k-space.   For these systems, a translation vector in the
+order of  15--20 \AA ngstroms is needed.
+
+
+\subsection{Derivatives}
+Solid-state derivatives with respect to geometry are handled differently from
+molecule derivatives.  If the Cartesian coordinate derivatives are printed,
+using \comp{DEBUG} and \comp{DCART}, then for a molecule with an  optimized
+geometry all the derivatives will be zero.  This is  not the case for an
+infinite system.
+
+An infinite system is represented by cell supplied by the user, called the
+Central Unit Cell, or the CUC, and the cells surrounding this CUC. When
+\comp{DCART}, \comp{LARGE}, and \comp{DEBUG} are used in an infinite system
+calculation for which  the geometry has been optimized, the Cartesian
+derivatives for all unit cells are output. Many of these will be quite large,
+up to about 60 kcal/mol/\AA .  This is not an error, rather it is a peculiarity
+of the way solid-state derivatives are stored.
+
+The Cartesian derivatives of the CUC represent the sum of all forces acting on
+the atoms of the CUC due to all the atoms in the CUC.  Thus, if the atoms in
+the CUC are the set ($a$,$b$,$c$,$d$,$e$,$f$), then the Cartesian  derivatives
+for atom $a$ represent the forces on $a$ due to the set
+($b$,$c$,$d$,$e$,$f$).  The Cartesian derivatives of atom $a$ do {\em NOT}
+include terms from  the surrounding unit cells.  Because of this, those atoms
+in the CUC  which are at the cell boundaries are likely to have large
+derivatives.
+
+The Cartesian derivatives of the surrounding unit cells represent the  forces
+acting on the atoms in those cells arising from the atoms of the CUC.  Again,
+this is an unbalanced set of forces, and those atoms near to the cell
+boundaries are likely to have large resultant forces.
+
+It is possible to evaluate the total, balanced, forces acting on the atoms of
+the CUC.  This is done by simply adding the forces acting on the atoms of the
+three unit cells.  When the keywords given above are used, the last part of the
+derivative output consists of the forces acting on the CUC itself.
+
+Only by representing the forces in this unusual manner can the information
+necessary for calculating the derivative of the translation vector be
+generated.
+
+
+\subsection{Geometry Specification for Band Structure Calculations}\label{polygeo}
+\index{Band structure!geometry requirements}
+Before electronic band structure calculations can be done, the sequence of
+atoms in the polymer must be supplied in a highly specific order.  For a simple
+polymer, the coordinates of all the atoms in the first fundamental unit cell
+are given.  These atoms can be in any order.  The next set of atoms defined are
+those for the next unit cell.  These atoms {\em must} be in the same order as
+the atoms in the first unit cell. For band structures at least two unit cells
+must be defined.  If more than two unit cells are defined, the atoms in the
+other  unit cells must be defined in the same order as those in the first unit
+cell.
+
+For all polymer calculations {\em except} band structures, the order of
+atoms is not important.  \htmlref{An example of such a data set}{pthf}
+is shown
+\begin{latexonly}
+on p~\pageref{pthf}
+\end{latexonly} for
+polytetrahydrofuran.  When band structures are to be calculated,
+\hyperref[pageref]{the order of atoms is important}{. For an example,
+see p.~}{}{polyc2h4}.
+
+Because of the difficulty in generating data sets for band-structure work,
+program \comp{BZ} was written.  Given a suitable data-set, BZ will generate a
+MOPAC data set which can then be used for the calculation of band structures.
+
+\subsection{Electronic Band Structure}
+\index{Band structure!electronic}
+In a normal cluster calculation, the Fock matrix is diagonalized to yield
+eigenvalues corresponding to various points  in the Brillouin zone.  For
+$m$ unit cells, the points generated  are $0, 1/m, 2/m$, \ldots  up to $1/2$.  If
+$m$ is odd, the upper bound  becomes $(m-1)/(2m)$.  No other points in the
+Brillouin zone can be generated by diagonalization.
+
+In order to represent a general point, $k$, in the Brillouin  zone, a complex
+secular determinant, $F_{k}$, of size $n$ must be  constructed.  The elements
+of this matrix are
+$$
+ F_{k}(\lambda,\sigma) = \sum_{r=-\infty}^{r=
+\infty}E(\lambda,\sigma+nr)e^{-ikr2\pi}.
+$$
+Because interactions between atomic orbitals fall off  rapidly with distance,
+the limits of $r$ can be  truncated to include all non-vanishing elements of
+$E$, for the sake of convenience. However,  these elements are precisely those
+which were used in the  construction of the Fock matrix.  Using this, and the
+fact that  periodic boundary conditions were employed in the construction of
+the Fock matrix, this summation can be simplified to
+$$
+ F_{k}(\lambda,\sigma) = \sum_{r=0}^{r=m-1}E(\lambda,\sigma+nr)exp(-ikr'2\pi),
+$$
+where $r'$, the index of the unit cell, equals $r$ while $r$ is less  than
+$m/2$, otherwise $r' = m-r$.  Band structures can then readily be constructed
+by varying  the wave-vector $k$ over the range 0--0.5.  Units of $k$ are
+$2\pi/a$,  where $a$ is the fundamental unit cell repeat distance.  The band
+structure is then constructed by simply joining the points in the
+\index{Crossing, bands in solid state} order in which they are generated.
+Within band structures, bands  of different symmetry are allowed to cross.
+Simply joining the  points does not allow for band crossing.  However, when
+the  resulting bands are represented graphically, visual inspection  readily
+reveals which bands should, in fact, cross.
+
+\subsection{Electronic Density of States}
+\index{Density of states!electronic}\index{Electronic density of states}
+The density of states, DoS, is the spectrum of the number of  energy levels per
+eV versus energy.  While the energy levels  resulting from the calculation of
+the band structure could be  used directly for the calculation of the DoS, the
+resulting DoS  would be very rough as a result of the relatively coarse mesh
+used.  A better procedure is to assume continuity of the bands, and, by using
+an interpolation procedure, numerically integrate.   A possible complication
+arises from the incorrect representation  of bands which should cross.  In
+practice, however, errors due to  such causes are so small as to not show up in
+a normal graphical  representation of the DoS.
+
+At present, the DoS is calculated in MOPAC (not in BZ), and only
+for one-dimensional systems, i.e., polymers.
+
+\subsection{Brillouin Zone: Generation of Band Structures}
+Using a modified cluster technique, band structures of  polymers can readily be
+calculated.  When a sufficiently large  repeat unit is used,  errors introduced
+due to  the methodology of the cluster procedure become vanishingly small.
+\index{Polyacetylene}\index{Delocalized $\pi$ systems} Even for delocalized
+$\pi$ systems, such as polyacetylene, accurate band structures can be
+generated  using repeat units of about 20\AA .  For less highly conjugated
+systems, a shorter cluster length should be sufficient.   \index{Oligomers} In
+contrast to earlier oligomer work, no allowance need be  made for end-effects.
+In addition, the set of points in the BZ  to be used is determined explicitly
+by the step-size.
+
+The technique outlined here is very fast compared to earlier
+methods~\cite{mosol}.
+
+Geometry optimization of clusters of the size reported  here (i.e., having
+translation vectors of about 25\AA\,) require  only a little more time than
+molecules of similar size, the extra time  being used to calculate the
+inter-unit cell interactions.  Band  structure calculations are also very
+fast.  The time required  depends on the size of the fundamental unit cell.
+For  polyacetylene, this amounted to 3\% of the time for a single self
+consistent field calculation of the cluster.
+
+Band structures calculated using the program BZ are accurate in the sense  that
+any errors are due to the Hamiltonian used.  A more accurate  \index{ab
+initio@{{\em ab initio}}!band structures} method, for example a large basis set
+ab initio calculation,  should yield highly accurate band structures.  In
+addition,  limited use of symmetry in the construction of the cluster  secular
+determinant and in the geometry optimization should  increase the speed of such
+a calculation considerably.   Electrical conductivity in semiconductors is
+caused by holes  in the valence band and electrons in the conduction band.
+Conductivity also depends on the hole and electron effective  masses, which are
+readily calculable from the second derivative  of the energy of the band with
+respect to wave-vector.  Band  structures for linear polymers, calculated using
+semiempirical  methods, should be suitable for calculation of effective
+masses,  \index{Electron!effective mass} and consequently electrical
+conductivity.  Unfortunately, NDDO  type semiempirical methods have not proven
+very accurate at  predicting conduction band levels.  As a result, in order to
+rapidly calculate electrical phenomena, it is likely that a  combination of ab
+initio methods and the cluster technique will  be necessary.
+
+As generated by MOPAC, the Fock matrix is unsuitable for band-structure work.
+First, the matrix represents the cluster, not the unit cell, and second, the
+Fock matrix will not exhibit the high symmetry of the associated space-group.
+The perturbation is small, but fortunately it can readily be eliminated.
+
+% 56 lines, including this line
+\begin{table}
+\caption{\label{spgoh7}Space-group operations for $O_h^7$ (diamond)}
+\compresstable
+\begin{center}
+\begin{tabular}{cccc} \hline
+ $\{E|000\}$
+&$\{C_2(1,1,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{I|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{\sigma_d(0,1,-1)|000\}$ \\
+ $\{C_3(1,1,1)|000\}$
+&$\{C_2(1,0,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{S_4(0,0,1)|000\}$
+&$\{S_6(1,1,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_3(1,-1,\! -1)|000\}$
+&$\{C_2(0,1,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{S_4(0,1,0)|000\}$
+&$\{S_6(1,-1,\! -1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_3(-1,1,\! -1)|000\}$
+&$\{C_2(0,1,-1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{S_4(1,0,0)|000\}$
+&$\{S_6(-1,1,\! -1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_3(-1,\! -1,1)|000\}$
+&$\{C_2(1,0,-1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{S_4^2(0,0,1)|000\}$
+&$\{S_6(-1,\! -1,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_3^2(1,1,1)|000\}$
+&$\{C_2(1,-1,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{S_4^2(0,1,0)|000\}$
+&$\{S_6^5(1,1,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_3^2(1,-1,\! -1)|000\}$
+&$\{C_4(0,0,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{S_4^2(1,0,0)|000\}$
+&$\{S_6^5(1,-1,\! -1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_3^2(-1,1,\! -1)|000\}$
+&$\{C_4(0,1,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{\sigma_d(1,1,0)|000\}$
+&$\{S_6^5(-1,1,\! -1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_3^2(-1,\! -1,1)|000\}$
+&$\{C_4(1,0,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{\sigma_d(1,0,1)|000\}$
+&$\{S_6^5(-1,\! -1,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_2(0,0,1)|000\}$
+&$\{C_4^3(0,0,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{\sigma_d(0,1,1)|000\}$
+&$\{\sigma_h(0,0,1)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_2(0,1,0)|000\}$
+&$\{C_4^3(0,1,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{\sigma_d(1,-1,0)|000\}$
+&$\{\sigma_h(0,1,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\
+ $\{C_2(1,0,0)|000\}$
+&$\{C_4^3(1,0,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$
+&$\{\sigma_d(1,0,-1)|000\}$
+&$\{\sigma_h(1,0,0)|\frac{1}{2},\frac{1}{2},\frac{1}{2}\}$ \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+The steps involved in converting the MOPAC Fock matrix into one suitable
+for band-structure work are as follows:
+\begin{description}
+\item[Generation of solid-state Fock matrix]~\\ BZ assumes that the unit cells
+used in constructing the MOPAC cluster were \index{MAKPOL|ff} supplied in the
+order defined in MAKPOL.  Based on this assumption, the first unit cell will
+have the index (0,0,0).  If there are N atomic functions in a unit cell, then
+the first N rows of the MOPAC Fock matrix will correspond to the central unit
+cell (CUC).  Of all the unit cells, this one is the only one for which the
+entire Fock matrix is not present; instead only the lower-half triangle is
+available.  However, since the CUC is symmetric, the missing data are generated
+by forming the transpose, i.e., H$_{i,j}$ = H$_{j,i}$.
+
+The Fock matrix representing the interaction of the CUC with the next
+\index{BCC} unit cell, (0,0,1), or (0,0,2) if BCC is specified, is then
+extracted, as are all the small Fock matrices.  Each Fock matrix, representing
+the CUC interacting with each unit cell, is stored in a large array, of size
+N$^2$ times the number of unit cells used.  As phrases of the type ``The Fock
+matrix  representing the interaction of the CUC with unit cell (i,j,k)'' are
+cumbersome, from here on, the term ``unit cell (i,j,k)'' should be understood
+as having the same meaning.
+
+The indices of each unit cell is also generated and stored.  However, the
+cluster theory assumes that the interaction matrix relating two unit cells
+which  are separated by more than half the distance of the translation vector
+does not represent that interaction. Rather, it represents the interaction of
+two unit cells which are separated by less that half the translation vector
+distance.  In order to conform with this definition, all unit cell indices more
+that half of the number \index{MERS} of unit cells specified by the \comp{MERS}
+keyword are changed.  For example, if \comp{MERS(4,4,4)} is used, the unit
+cells (0,1,1) and (2,2,2) would be unchanged, but unit cells(0,1,3) and (0,0,4)
+would become (0,1,-2) and (0,0,-1), respectively.
+
+As a result of this operation, most of the unit cells surrounding the CUC are
+generated.  The next step is to symmetrize the Fock matrices so that they have
+the symmetry of the space group.  Note that if symmetrization is not done, the
+band-structures generated would be almost, but not quite, identical to those
+which use symmetrized Fock matrices.
+
+\item[Symmetrization of Fock matrices]~\\
+\index{Fock matrix!symmetrization in solid state calcs.}
+From group-theory we know that if a matrix is operated on by every operation of
+a group exactly once, the resulting matrix will have the symmetry of that
+group.  In other words,
+$$
+F_{sym} = \frac{1}{M}\sum_{i=1}^M<R_i|F_{unsym}|R_i^T>.
+$$
+The index $i$ covers all operations of the group, including the identity.
+
+\end{description}
+
+\subsubsection{Space-group operations}
+\index{Space group!theory} Space-group operations differ from point-group
+operations in that in addition \index{Non-primitive translations|ff} to the
+point-group operation, a non-primitive translation may be involved. Thus far,
+we have been using as our example the diamond lattice which is suitable for
+illustrating space-group operations.  For convenience, \index{Space
+group!operations|ff} we will specify a space-group operation thus: \{R$|$T\},
+where ``R'' is a point-group operation, e.g.\ C$_2$(0,0,1) or S$_6$(1,1,-1),
+and ``T'' is a non-primitive translation, e.g.\
+($\frac{1}{2}$,$\frac{1}{2}$,$\frac{1}{2}$), or (0,0,0). The term in
+parentheses following the point group operation indicates the axis about which
+the operation is to be performed.  Finally, to complete the specification of a
+space-group operation, the point about which the operation acts must be
+defined.  As this is most conveniently done in fractional unit
+\index{Fractional!unit cell coordinates} \index{Coordinates!fractional unit
+cell} cell coordinates, or crystal coordinates, the Cartesian coordinates are
+converted at this time into fractional unit cell coordinates.
+
+\index{oh7@{$O_h^7$}}\index{Fd3m@{$Fd3m$}} Diamond belongs to the
+$Fd3m$ or $O_h^7$ space-group, and has octahedral symmetry; its
+associated point-group is O$_h$.  The space-group operations are
+given in Table~\ref{spgoh7}.
+\subsection{Examples of Solid State Data Set Construction}
+ \label{diamond}
+ \input{diamond}

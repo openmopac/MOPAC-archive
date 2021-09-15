@@ -1,0 +1,513 @@
+\subsection*{\comp{NCORE(100)}}
+Almost all of the arrays that depend on the size of the system  are assigned
+dynamically.  At the start of the calculation, two large blocks of memory are
+reserved. One block, \comp{MCORE}, will be used to hold all the integer arrays,
+and the other, \comp{CCORE},  is used to hold all the real arrays. The starting
+addresses of the arrays are given in \comp{NCORE}. Thus, for example, the
+first dynamic real array assigned is \comp{GEO}, and the corresponding starting
+address can be found in \comp{NCORE(3)}.  The order in which the arrays are
+stored in \comp{NCORE} is not important, however, each array is associated with
+a unique address in \comp{NCORE}.  A full list of the 100 addresses in 
+\comp{NCORE} is as follows:
+
+\begin{table}
+\caption{\label{asl} Array Storage Locations in MOPAC}
+\begin{center}
+\begin{tabular}{lllllllll} \hline
+MOZYME&MOPAC&No.&MOZYME&MOPAC&No.&&MOPAC&No.\\\hline
+Special &  Special &  1 & \comp{TXTATM} & \comp{TXTATM} & 34 & & \comp{NAR} & 67\\
+Special &  Special &  2 & \comp{ISORT} & \comp{TOM} & 35 & & \comp{DIRVEC} & 68\\
+\comp{GEO} &  \comp{GEO} &  3 & & & 36 & & \comp{BH} & 69\\
+\comp{NA,NB,NC} & \comp{NA,NB,NC} &  4 & & & 37 & & \comp{IATSP} & 70\\
+\comp{XPARAM} &  \comp{XPARAM} & 5 & \comp{EIGF/EIGV} & \comp{EIGS} & 38 & & \comp{NN} & 71\\ 
+\comp{LOC} & \comp{LOC} & 6 & & \comp{EIGB} & 39 & & \comp{QDEN} & 72\\
+\comp{COORD} & \comp{COORD} & 7 & \comp{IOPT} & & 40 & & \comp{CH} & 73\\
+\comp{LABELS} & \comp{LABELS} & 8 & \comp{JOPT} & \comp{JOPT} & 41 & & \comp{NSETF} & 74\\
+\comp{NAT} &  \comp{NAT} &  9 & \comp{OLDXYZ} & & 42 & & \comp{TOM} & 75\\
+\comp{NFIRST/NLAST} &  \comp{NFIRST/NLAST} & 10 & \comp{DXYZ} & \comp{DXYZ} & 43 & & & 76\\
+\comp{USPD} &  \comp{USPD} & 11 & \comp{PARTP} & PA & 44 & & & 77\\
+\comp{PSPD} &  \comp{PSPD} & 12 & \comp{PARTH} & \comp{PB} & 45 & & & 78\\
+\comp{IORBS} &  \comp{IORBS} & 13 & \comp{PARTF} & \comp{FB} & 46 & & & 79\\
+\comp{IJBO} &  \comp{VECTCI} & 14 & \comp{KOPT} & \comp{KOPT} & 47 & & & 80\\
+\comp{H} & \comp{H} & 15 & & & 48 & & \comp{AMAT} & 81\\
+\comp{W} & \comp{W} & 16 & & \comp{HESINV} & 49 & & \comp{BMAT} & 82\\
+\comp{P} & \comp{P} & 17 & & \comp{JELEM} & 50 & & \comp{CMAT} & 83\\
+\comp{F} & \comp{F} & 18 & & \comp{ATMASS} & 51 & & \comp{COSURF} & 84\\
+\comp{NCE} & \comp{CONF} & 19 & & \comp{REACT} & 52 & & \comp{ISUDE} & 85\\
+\comp{NCF} & & 20 & & \comp{C0} & 53 & & \comp{SUDE} & 86\\
+\comp{NCOCC} & \comp{WK} & 21 & & \comp{NC} & 54 & & \comp{PHINET} & 87\\
+\comp{NCVIR} & \comp{HQ} & 22 & & \comp{INTERP} & 55 & & \comp{QSCNET} & 88\\
+\comp{GRAD} & \comp{GRAD} & 23 & & \comp{ERRFN} & 56 & & \comp{QDENET} & 89\\
+\comp{NNCF} & \comp{NSET} & 24 & & \comp{AIDER} & 57 & & \comp{IPIDEN} & 90\\
+\comp{NNCE} & & 25 & & \comp{ALPARM} & 58 & & \comp{GDEN} & 91\\
+\comp{ICOCC} & \comp{XY} & 26 & & & 59 & & \comp{QSCAT} & 92\\
+\comp{ICVIR} & \comp{CIMAT} & 27 & & \comp{NAMO} & 60 & & \comp{IDENET}  & 93\\
+\comp{COCC} & \comp{C} & 28 & & \comp{JNDEX}  & 61 & & \comp{ARAT} & 94\\
+\comp{CVIR} & \comp{CB} & 29 & & \comp{IPO} & 62 & & \comp{WK} & 95\\
+\comp{NBOND} & \comp{DIJKL} & 30 & & \comp{DXYZR} & 63 & & & 96\\
+\comp{IFACT/I1FACT} & \comp{IFACT/I1FACT} & 31 & & \comp{XPAREF} & 64 & & Special & 97\\
+\comp{IBONDS} & \comp{NPERMA} & 32 & & \comp{PROFIL} & 65 & & Special& 98\\
+\comp{NFMO} & \comp{NPERMB} & 33 & & \comp{SRAD} & 66 & & Special& 99\\
+ & & & & & & & Special& 100\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{enumerate}
+\item {\bf Start of Real:}  Not an array address, but the starting address of
+the first unused element of \comp{CCORE}.  Any new permanent real array would
+be given the starting address \comp{NCORE(1)}. At the start of the calculation,
+\comp{NCORE(1)=1}.
+\item {\bf Start of Integer:}  Not an array address, but the starting address
+of the first unused element of \comp{MCORE}.  Any new permanent integer array
+would be given the starting address \comp{NCORE(2)}. At the start of the
+calculation, \comp{NCORE(2)=1}.
+\item \comp{GEO:} The internal coordinates. (3$*$NATOMS)
+\item \comp{NA,NB,NC:} The connectivity indices.  Set in \comp{COPY1}. If an
+atom position is defined in Cartesian coordinates, then the corresponding
+NA($i$), NB($i$), and NC($i$) would all be zero. (3$*$NATOMS)
+\item \comp{XPARAM:} The parameters to be optimized. (3$*$NATOMS)
+\item \comp{LOC:} An array of size 2 by 3$\times$\comp{NATOMS}, \comp{LOC} is
+the list of atom coordinates which are to be optimized.  Each pair of elements
+in \comp{LOC} represents the atom  and the coordinate (bond length, angle or
+dihedral, or $x$, $y$, or $z$). If all three coordinates of an atom are to be
+optimized, then six array elements in \comp{LOC} are used.   Set in
+\comp{COPY2}. In  \comp{XPARAM($n$)}, the associated atom would be
+\comp{LOC(1,n)}, and the associated coordinate would be \comp{LOC(2,n}).
+(6$*$NATOMS)
+\item \comp{COORD:} A two dimensional array holding the Cartesian coordinates
+of all real atoms, stored as $x$, $y$, $z$ for each atom, in turn.  The order
+of the atoms is the same as that in the supplied data set. Units: \AA ngstroms.
+Although there are only 3$*$NUMAT of these, during the conversion from
+\comp{GEO}, extra storage is  needed to hold the Cartesian coordinates of the
+dummy atoms and translation vectors. (3$*$NATOMS)
+\item \comp{LABELS:} A one-dimensional array of labels of all atoms, real  and
+dummy.  If there are no dummy atoms, this array is the same as the \comp{NAT} 
+array.  Set in \comp{COPY1}, \comp{FMAT}, \comp{FORCE}, \comp{POLAR},
+\comp{REACT1} and \comp{GEOCHK}. These are integers in the range 1 to 107.
+(3$*$NATOMS)
+\item \comp{NAT:} The labels of all real atoms. NAT($i$) holds the atomic
+number of the $i$'th real atom. Set in \comp{MOLDAT} and \comp{RESEQ}. (NUMAT)
+\item \comp{NFIRST, NLAST:} The starting and stopping atomic orbital indices
+for all real atoms.  If the first three atoms were C, H, and +, then the values
+of (\comp{NFIRST, NLAST}) would be (1,4), (5,5), and (6,5).  Note that the
+number of atomic orbitals on an atom $i$ is given by  NLAST($i$)-NFIRST($i$)+1.
+(NUMAT)
+\item \comp{USPD:} The initial values of the one-electron one-center energies
+for all atoms.  (NORBS)
+\item \comp{PSPD:} The initial atomic orbital occupancies.  (NORBS)
+\item \comp{IORBS:} The number of atomic orbitals on each atom. IORBS($i$) is
+the same as NLAST($i$)-NFIRST($i$)+1. (NUMAT)
+\item 
+\begin{description}
+\item[(MOZYME) \comp{IJBO:}] A two-dimensional array giving the starting 
+addresses of every calculated atom-pair in \comp{H}, \comp{F}, \comp{P},
+\comp{PARTH}, \comp{PARTF}, and  \comp{PARTP}. If atom-pair $i,j$ is
+calculated, the starting address is defined as  IJBO($i,j$)+1.  For the first
+atom, atom 1, the starting address is IJBO(1,1)+1 = 1. If an atom-pair is not
+calculated, the associated array element in \comp{IJBO} is set to \comp{--2} if
+electrostatic polarization terms are to be used (see \hyperref{\comp{CUTOF2} and
+\comp{CUTOF1}}{, p.~}{}{cutoff}), or to \comp{--1} is only simple
+electrostatic terms are to be considered.
+
+\comp{IJBO} is set in subroutine \comp{GETLIM} only.  Once set, \comp{IJBO} is
+never changed.
+\item[\comp{VECTCI:}] The state vectors (eigenvectors of the C.I. matrix) for
+the root requested. (5*LAB)
+\end{description}
+
+\item \comp{H:} The one-electron integrals.  \index{H Matrix!structure} The way
+in which the array elements are stored in conventional and LMO methods is
+different.  In conventional work, the density (\comp{P}), one-electron
+(\comp{H}), and Fock (\comp{F}) matrices are stored in packed, lower-half,
+triangular form, as shown in Fig~\ref{plhtm}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{verbatim}
+       
+            Conventional Method                   LMO Method
+      
+           s px py pz    s px py pz               s px py pz    s px py pz
+
+       s   1                                   s  1
+      px   2  3                               px  2  3
+      py   4  5  6                            py  4  5  6
+      pz   7  8  9 10                         pz  7  8  9 10
+
+       s  11 12 13 14   15                     s 11 12 13 14   27
+      px  16 17 18 19   20 21                 px 15 16 17 18   28 29
+      py  22 23 24 25   26 27 28              py 19 20 21 22   30 31 32
+      pz  29 30 31 32   33 34 35 36           pz 23 24 25 26   33 34 35 36
+\end{verbatim}
+\begin{center}
+Order of occurrence of array elements for two atoms, each with a $s-p^3$ basis
+set.
+\end{center}
+\caption{\label{plhtm} Order of Storage of Matrix Elements}
+\end{figure}
+
+In conventional work, the address of an array element involving atomic orbitals
+$\lambda$ and $\sigma$ can be determined from the order in which they occur in
+the basis set for the system.  If $\lambda$ is the $i$'th atomic orbital, and
+$\sigma$ is the $j$'th, with $i < j$, then the address of the array element is
+given by:
+$$
+\lambda,\sigma  = P((j(j+1))/2+i).
+$$
+
+In LMO work, the order in which the array elements in \comp{P},  \comp{H}, and
+\comp{F} are stored is the same, but is different from that used in
+conventional work. The starting address of the array elements involving atoms
+$A$ and $B$ is stored in the two-dimensional array \comp{IJBO}. If  $\lambda$
+is the $i$'th atomic orbital on atom $A$ and  $\sigma$ is the $j$'th atomic
+orbital on atom $B$, and $A$ occurs before $B$, then the address, $\lambda
+\sigma$, of the array element is:
+$$
+\lambda,\sigma = P(IJBO(A,B)+(i-1)\times N_a+j),
+$$
+in which $N_a$ is the number of atomic orbitals on atom $A$.
+
+If both $\lambda$ and $\sigma$ are on the same atom, then the address is given
+by:
+$$
+\lambda,\sigma = P(IJBO(A,B)+(i(i-1))/2+j).
+$$
+Note that the first element of any diatomic or monatomic interaction is given
+by \comp{IJBO(A,B)}+1.  As a result of this, the first entry in the 
+\comp{IJBO} array, \comp{IJBO(1,1)} is zero.
+
+The reason that elements in arrays in LMO methods are stored differently arises
+from the fact that not all diatomic interactions are considered. If two atoms
+are sufficiently far apart, then the corresponding array elements are not
+considered.  This is indicated in the \comp{IJBO} array by the presence of a
+negative number.  By ignoring such terms, a large saving can be made in the
+amount of memory needed. (MPACK)
+
+\item \comp{W:} The two-electron integrals. 
+\begin{description}
+\item[(MOPAC) \comp{W:}]  A one-dimensional array of the two-electron
+integrals. The number of these integrals (the size of \comp{W}) is $LM61^2$.
+\item[(MOZYME) \comp{W:}]\label{n16} A one-dimensional array of the
+two-electron integrals. The number of these integrals (the size of \comp{W}) is
+given as the sum of the following quantities:
+
+\begin{itemize}
+\item 2025 for each pair of atoms with $d$-orbitals calculated in \comp{H}.
+\item 450 for each $d$-orbital - heavy atom pair  calculated in \comp{H}.
+\item 45 for each $d$-orbital - light atom pair  calculated in \comp{H}.
+\item 100 for each pair of heavy atoms calculated in \comp{H}.
+\item 10 for each heavy-light pair of atoms calculated in \comp{H}.
+\item 1 for each pair of light atoms calculated in \comp{H}.
+\item 7 for each pair of heavy or $d$-orbital atoms which are {\em not} 
+calculated in \comp{H}, and which do have polarization functions.
+\item 4 for each pair of atoms, one heavy or $d$-orbital and one light,  which 
+are {\em not} calculated in \comp{H}, and which do have polarization functions.
+\item 1 for each pair of atoms which are {\em not} calculated in \comp{H}, and
+which do not have polarization functions.
+\end{itemize}
+
+%what's missing here???
+eV. Set in \comp{OUTER2} and \comp{ROTATE} only, and not modified during the
+SCF calculation. (N2ELEC)
+\end{description}
+\item \comp{P:} The density matrix. (MPACK)
+\item \comp{F:} The Fock matrix. (MPACK)
+\item 
+\begin{description}
+\item[(MOPAC) \comp{CONF:}] The state eigenvectors.  This is the
+orthonormal set of linear combination of configurations that form
+the states. They are constructed in \comp{MECI}. 
+\item[(MOZYME) \comp{NCE:}]
+The number of atoms involved in the virtual LMOs.
+(NVIR)
+\end{description}
+\item {\bf (MOZYME) \comp{NCF:}}  The number of atoms involved in the occupied
+LMOs. (NOCC)
+\item 
+\begin{description}
+\item[(MOPAC) \comp{WK:}] The two-electron two-center exchange integrals used
+in polymer and other extended solids work.  This array is not used in
+calculations on molecules.  (N2ELEC) 
+\item[(MOZYME) \comp{NCOCC:}] The starting addresses of the atomic orbital
+coefficients in the occupied LMOs.  The starting address for LMO $i$ is
+NCOCC($i$)+1. (NOCC)
+\end{description}
+\item 
+\begin{description}
+\item[(MOPAC) \comp{HQ:}] Used by the Tomasi solvation method. (MPACK)
+\item[(MOZYME) \comp{NCVIR:}] The starting addresses of the atomic orbital
+coefficients in the virtual LMOs The starting address for LMO $i$ is
+NCVIR($i$)+1. (NVIR)
+\end{description}
+\item \comp{GRAD:} The gradients of \comp{XPARAM}, that is, the derivative
+of the heat of formation, in kcal.mol$^{-1}$, with respect to the coordinate
+XPARAM($i$) in \AA ngstroms or radians. (3$*$NATOMS)
+\item 
+\begin{description}
+\item[(MOPAC) \comp{NSET:}] Used by the COSMO method, \comp{NSET} is the set
+of points on a surface associated with each atom.
+\item[(MOZYME) \comp{NNCF:}]  The starting addresses of the atom-lists in 
+\comp{ICOCC}.  For the first atom in occupied LMO $i$, the  address in
+\comp{ICOCC} is NNCF($i$)+1. (NOCC)
+\end{description}
+\item {\bf (MOZYME) \comp{NNCE:}}  The starting addresses of the atom-lists in
+\comp{ICVIR}.  For the first atom in virtual LMO $i$, the  address in
+\comp{ICVIR} is NNCE($i$)+1. (NVIR)
+\item 
+\begin{description}
+\item[(MOPAC) \comp{XY:}] The two-electron integrals over molecular orbitals.
+Used in the C.I., $XY(i,j,k,l)$ is the integral involving electron 1 in M.O.s
+$\psi_i$ and $\psi_j$ interacting with electron 2 in M.O.s $\psi_k$ and
+$\psi_l$. (NMOS$^4$)
+\item[(MOZYME) \comp{ICOCC:}] The set of atoms in each occupied M.O.  All the
+occupied LMOs are represented in \comp{ICOCC}. All the atom numbers of any
+given LMO are contiguous.  Between each LMO is an unused space which can be
+used if the LMO expands in \comp{DIAGG2}. Set in \comp{MLMO} or
+\comp{PINOUT}, and modified in \comp{TIDY} and \comp{DIAGG2}.
+
+The first atom in LMO $i$ is at address ICOCC($j$), $j$=NCF($i$)+1, and there
+are NNCF($i$) atoms in that LMO.
+\end{description}
+\item 
+\begin{description}
+\item[(MOPAC) \comp{CIMAT:}] The configuration interaction matrix used 
+in \comp{MECI}. (At least (LAB*(LAB+1))/2)
+\item[(MOZYME) \comp{ICVIR:}] The set of atoms in each virtual M.O.  All the
+virtual  LMOs are represented in \comp{ICVIR}. All the atom numbers of any
+given LMO are contiguous.  Between each LMO is an unused space which can be
+used if the LMO expands in \comp{DIAGG2}. Set in \comp{MLMO} or \comp{PINOUT},
+and modified in \comp{TIDY} and \comp{DIAGG2}.
+
+The first atom in LMO $i$ is at address ICVIR($j$), $j$=NCE($i$)+1, and there
+are NNCE($i$) atoms in that LMO.
+\end{description}
+\item 
+\begin{description}
+\item[(MOPAC) \comp{C:}] The set of eigenvectors or M.O.s.  In  UHF
+calculations, this would be the $\alpha$ set. (NORBS$^2$)
+\item[\bf (MOZYME) \comp{COCC:}] The atomic orbital coefficients for the  set
+of occupied LMOs.  All the coefficients of any given LMO are contiguous. 
+Between each LMO is an unused space which can be used if the LMO expands in
+\comp{DIAGG2}.
+
+The contents of \comp{COCC} are modified in \comp{DIAGG2}, \comp{MAKVEC},
+\comp{MLMO}, \comp{PINOUT}, and \comp{TIDY}, only.
+
+For LMO $i$, the first coefficient is in COCC($j$), $j$=NCOCC($i$)+1.  The
+number of coefficients depends on the atoms in the LMO, see \comp{ICOCC}.
+\end{description}
+\item 
+\begin{description}
+\item[(MOPAC) \comp{CB:}] In UHF work, the set of $\beta$ eigenvectors.
+(NORBS$^2$)
+\item[(MOZYME) \comp{CVIR:}] The atomic orbital coefficients for the  set of
+virtual LMOs.  All the virtual  LMOs are represented in \comp{CVIR}.  All the
+coefficients of any given LMO are contiguous.  Between each LMO is an unused
+space which can be used if the LMO expands in \comp{DIAGG2}.
+
+The contents of \comp{CVIR} are modified in \comp{DIAGG2}, \comp{MAKVEC},
+\comp{MLMO}, \comp{PINOUT}, and \comp{TIDY}, only. For LMO $i$, the first
+coefficient is in CVIR($j$), $j$=NVIR($i$)+1.  The number of coefficients
+depends on the atoms in the LMO, see \comp{ICVIR}.
+\end{description}
+\item 
+\begin{description}
+\item[(MOPAC) \comp{DIJKL:}] Derivatives of two-electron integrals 
+over M.O.s with respect to geometry.  Used by \comp{DERNVO}.
+\item[(MOZYME) \comp{NBOND:}] The number of atoms bonded to each atom. (NUMAT)
+\end{description}
+\item \comp{IFACT/I1FACT:} FACT($i$)=$(i*(i-1))/2$, I1FACT($i$)=$(i*(i+1))/2$.
+The array \comp{I1FACT} shares the same storage as \comp{IFACT}, but has a
+starting address in \comp{MCORE} one more than \comp{IFACT}.  That is, the
+starting address of \comp{IFACT} is $NCORE(31)$ and the starting address of
+\comp{I1FACT} is  $NCORE(31)+1$.
+\item 
+\begin{description}
+\item[(MOPAC) \comp{NPERMA:}] The $\alpha$ molecular orbital occupancy for the 
+microstates in a C.I.\ calculation. (At least LAB) 
+\item[(MOZYME) \comp{IBONDS:}] The atom numbers of the atoms attached to any
+given atom.  For atom $i$, the number of attached atoms is NBONDS($i$), and
+the  attached atoms are IBONDS(1:NBONDS($i$),$i$).
+\end{description}
+\item 
+\begin{description}
+\item[(MOPAC) \comp{NPERMB:}] The $\beta$ molecular orbital occupancy for the 
+microstates in a C.I.\ calculation. (At least LAB) 
+\item[(MOZYME) \comp{NFMO:}] This array is used in the annihilation routine 
+\comp{DIAGG1}, only. \comp{NFMO} holds the number of filled M.O.s that each
+virtual M.O.\ interacts with significantly. (NORBS)
+\end{description}
+\item \comp{TXTATM:} A short description of each atom.  This description can be
+made in two ways.  In the data-set, a short description can be given in
+parenthesis after each atom symbol.  For example ``H(on a COO)''.  The
+description can be up to 13 characters long.
+
+Alternatively, a useful description can be generated by use of \comp{RESIDUES}
+or \comp{RESEQ}, and consists of 13 letters: `$nnnnn$~$RES$f$mmm$', where
+`$nnnnn$' is the number of the atom, `$RES$' is the three-letter abbreviation
+for the residue, `f' is a space or an asterisk, and `$mmm$' is the residue
+number.  Explicit atom charges can also be specified in an atom label.  Thus a
+cation would be specified by the presence of a `+' symbol in an atom label, and
+an anion by the presence of a `--' symbol. Because both \comp{RESIDUES} and
+\comp{RESEQ} create new labels, these keywords should not be used when explicit
+charges are present.  Instead, the labels should be generated in one run, then
+the explicit charges assigned.  Thereafter, \comp{RESIDUES} should not be used.
+
+When printed, the description is enclosed in parentheses, for example
+`(~3674~GLY~231)'.  Set in \comp{GETGEO} and \comp{NAMES}. See also
+\hyperref[pageref]{``\comp{RESIDUES}''}{ on p.~}{}{res}. \comp{TXTATM}
+is a character string of length 16 bytes, and is  contained in
+\comp{CCORE}. (NATOMS)
+\item 
+\begin{description}
+\item[(MOPAC) \comp{TOM:}] An array used by the Tomasi method.
+\item[(MOZYME) \comp{ISORT:}] The order in which LMOs increase in energy. In
+\comp{VALUES}, the energies of the LMOs are calculated.  The LMO number of the
+lowest energy M.O.\ is then put in ISORT(1), then the number of the next higher
+M.O.\ is put in ISORT(2), etc. (NORBS)
+\end{description}
+\addtocounter{enumi}{2} 
+\item 
+\begin{description}
+\item[(MOPAC) \comp{EIGS:}] The eigenvalues of the M.O.s.  If UHF, then the
+$\alpha$ eigenvalues. (NORBS)
+\item[(MOZYME) \comp{EIGF/EIGV:}] The energy levels of the occupied and virtual
+sets of LMOs. (NORBS)
+\end{description}
+\item \comp{EIGB:} In UHF work, the eigenvalues of the $\beta$ M.O.s (NORBS)
+\item \comp{IOPT:} When \comp{RESIDUES} is specified, IOPT($i$) contains the
+residue number to which atom $i$ belongs. If atom $i$ is a backbone atom, then
+IOPT($i$) holds the {\em negative} of the residue number.  (In a residue, the
+sequence of atoms is -NH-CH(R)-CO-, the backbone atoms are -NH-CH-CO- and the
+side-chain atoms are those in the `R' group. The hydrogen atom at the -NH$_2$
+end is considered part of backbone of residue 1, and the -OH group at the -COOH
+end is considered part of the  backbone of the last residue.) Set in
+\comp{PICOPT} only. (NUMAT)
+\item \comp{JOPT:} The atoms used in a partial geometry optimization.  By
+default, JOPT($i$)=$i$.  If \comp{RAPID} is used, then only those atoms that
+move are in \comp{JOPT}.   This set is defined as the set of atoms to be
+optimized plus all the atoms attached to the atoms that are to be optimized. 
+Thus if CH$_3$-NH$_2$ were to be calculated, and the coordinate of the nitrogen
+were to be  optimized, then \comp{JOPT} would contain all the atoms except the
+hydrogens on the CH$_3$. If the atoms are in the order C, H, H, H, N, H, and H,
+the \comp{JOPT} would be: 1, 5, 6, 7. The number of atoms defined in
+\comp{JOPT} is \comp{NUMRED}. In the first SCF, all atoms are used. 
+\comp{JOPT} only affects the subsequent SCFs.  \comp{JOPT} interacts with the
+SCF in \comp{TIDY}. Set in \comp{PICOPT}.
+\item \comp{OLDXYZ:} In \comp{RAPID} calculations, \comp{OLDXYZ} holds the
+reference Cartesian coordinate gradients. The name should be read as `Old
+DXYZ', not `Old XYZ'.   These are the gradients due to all  atoms {\em except}
+those involved in the geometry optimization. ($3*$NUMAT)
+\item \comp{DXYZ:} A two-dimensional array of derivatives of the energy with
+respect to displacement in the $x$, $y$, and $z$ directions for each real
+atom.  Units: kcal/mol/\AA ngstrom. \comp{DXYZ} is set in \comp{DCART}.
+Except for systems with translational vectors, the size of \comp{DXYZ} is
+$3\times $NUMAT.
+\item 
+\begin{description}
+\item[(MOPAC) \comp{PA:}] The $\alpha$ density matrix. (MPACK)
+\item[(MOZYME) \comp{PARTP:}] The partial density matrix due to all atoms that
+do not move in a \comp{RAPID} calculation. (MPACK)
+\end{description}
+\item
+\begin{description}
+\item[(MOPAC) \comp{PB:}] In a UHF calculation, the $\beta$ density  matrix.
+(MPACK)
+\item[(MOZYME) \comp{PARTH:}] The partial one-electron matrix due to all atoms
+that do not move in a \comp{RAPID} calculation.  (MPACK)
+\end{description}
+\item
+\begin{description}
+\item[(MOPAC) \comp{FB:}] In a UHF calculation, the Fock matrix. (MPACK)
+\item[(MOZYME) \comp{PARTF:}] The partial Fock matrix due to all atoms that do
+not move in a \comp{RAPID} calculation.  (MPACK)
+\end{description}
+\item \comp{KOPT:} In a \comp{RAPID} calculation,  \comp{KOPT} is the set of
+atoms which are found in the LMOs used in an SCF. If the LMOs for all the atoms
+are used in the SCF, then \comp{KOPT} is the full set.  If only the LMOs for a
+few atoms are used (the number of atoms in \comp{JOPT} is small), then
+\comp{KOPT} is the set of atoms in that sub-set of LMOs.  Note that the set in
+\comp{KOPT} is larger than that in \comp{JOPT}, unless the set in \comp{JOPT}
+is full.   Set in \comp{SETUPK}. (NUMAT)
+\addtocounter{enumi}{1}
+\item \comp{HESINV:} The inverse Hessian matrix in the BFGS method, and the
+Hessian matrix in Baker's EigenFollowing \comp{EF} method. ((NVAR$*$(NVAR+1))/2)
+\item \comp{JELEM:} In calculating symmetry properties, $JELEM(i,j)$ holds the
+atom-number of the atom that $j$ would be moved to under operation 
+$i$. ($20*$NUMAT)
+\item \comp{ATMASS:} The atomic masses of the atoms.  Set by default, and can
+be reset by the input data. (NUMAT)
+\item \comp{REACT:} The values of the reaction coordinates in a reaction path
+calculation.
+\item \comp{C0:} An array used by the Tomasi method.
+\item \comp{NC:} An array used by the Tomasi method.
+\item \comp{INTERP:} A set of arrays used by the Camp-King SCF converger. 
+These arrays can be eliminated by use of \comp{UNSAFE}. ($5*$NORBS$^2$)
+\item \comp{ERRFN:} In RHF open-shell calculations, \comp{ERRFN} 
+holds the difference
+between the ``exact" (\comp{DERNVO}) derivatives and those calculated using 
+\comp{DCART} only.  These differences are used in the geometry optimization, by
+allowing the derivatives to be calculated using \comp{DCART}, and then applying
+a correction.
+\item \comp{AIDER:} {\em Ab initio} derivatives.  These are read in from the
+data set in an attempt to improve the geometry.
+\item \comp{ALPARM:}  In reaction path calculations, \comp{ALPARM} holds the
+last three geometries.  These are used to extrapolate to the next geometry. 
+($3*$NVAR)
+\addtocounter{enumi}{1}
+\item \comp{NAMO:} The symmetry labels of the eigenvectors (M.O.s, 
+vibrations, or states). 
+\item \comp{JNDEX:} The quantum numbers for the symmetry labels (The first
+occurrence of symmetry label $X$ would have quantum number 1, the second: 2,
+and so on.)
+\item  \comp{IPO:} In a FORCE calculation, $IPO(i,j)$  holds the number of the
+atom that atom $i$ would be moved to under operation $j$. ($120*$NUMAT)
+\item \comp{DXYZR:} In RHF open-shell gradient calculations, \comp{DXYZR} holds
+the gradient components due to the frozen core.
+\item \comp{XPAREF:} Similar to \comp{XPARAM}.  \comp{XPAREF} is used to
+temporarily store the geometric variables.
+\item \comp{PROFIL:} The values of all heats of formation in a reaction
+path calculation, in which the path coordinates are defined using
+\comp{STEP=n.nn} and \comp{POINTS=m}.
+\item \comp{SRAD:}  Used by the COSMO method. (NUMAT)
+\addtocounter{enumi}{1}
+\item \comp{DIRVEC:} Used by the COSMO method. (3246=3*1082)
+\item \comp{BH:} Used by the COSMO method.  (LENABC)
+\item \comp{IATSP:} Used by the COSMO method.  (LENABC+1)
+\item \comp{NN:} Used by the COSMO method. ($3\times $NUMAT)
+\item \comp{QDEN:} Used by the COSMO method. (LN61)
+\item \comp{CH:} In electrostatic calculations, \comp{CH} hold atomic
+charges. (NUMAT)
+\item \comp{VECTCI:} In C.I. calculations, \comp{VECTCI} hold the state
+vectors that would be used in calculating derivatives. (5 State Vectors)
+\item \comp{TOM:} Used in the Tomasi method.
+\addtocounter{enumi}{5}
+\item \comp{AMAT:} Used by the COSMO method. (LENABC$^2$/2)
+\item \comp{BMAT:} Used by the COSMO method. (LENABC$\times$ LM61)
+\item \comp{CMAT:} Used by the COSMO method. ((LM61$\times$ (LM61+1))/2)
+\item \comp{COSURF:} Used by the COSMO method. (LENABC+1)
+\addtocounter{enumi}{12}
+\item {\bf Reserved:} The starting address of a new temporary array is
+placed in $NCORE(97)$.  This address must be used immediately, otherwise
+it might be overwritten when a new temporary array is created.
+\item {\bf Start of Integer:} The highest address in \comp{MCORE} available
+for use in making temporary integer arrays. Any new temporary integer arrays
+would be placed at the end of \comp{MCORE}.  At the start of the calculation,
+$NCORE(98)$ is equal to the size of \comp{MCORE}; as temporary arrays are
+created, $NCORE(98)$ decreases.
+\item {\bf Start of Real:} The highest address in \comp{CCORE} available
+for use in making temporary real arrays. Any new temporary real arrays
+would be placed at the end of \comp{CCORE}.  At the start of the calculation,
+$NCORE(99)$ is equal to the size of \comp{CCORE}; as temporary arrays are
+created, $NCORE(99)$ decreases.
+\item {\bf Not used}
+\end{enumerate}
+
+\subsection*{NASIZE(100)}
+An array of size 100, \htmlref{\comp{NASIZE}}{nasize} holds the sizes of all the permanent arrays
+that depend on the system being calculated. 
+\begin{latexonly}
+See p.~\pageref{nasize} for more detail.
+\end{latexonly}

@@ -1,0 +1,388 @@
+\section{A Note on Thermochemistry}\index{Thermochemistry|(}
+\label{tsuneo}
+\begin{center}
+by
+\ \\
+Tsuneo Hirano\index{Hirano@{\bf Hirano, Tsuneo}}\\
+Department of Chemistry  \\
+Faculty of Science  \\
+Ochanomizu University  \\
+2-1-1 Otsuka  \\
+Bunkyo-ku  \\
+Tokyo 112  \\
+Japan
+\end{center}
+
+\subsection{Basic Physical Constants}
+All basic physical constants should be taken from: ``Quantities, Units and
+Symbols in Physical Chemistry,'' Blackwell Scientific Publications Ltd, Oxford
+OX2 0EL, UK, 1987 (IUPAC, based on CODATA of ICSU, 1986~\cite{codata}).  pp.\
+81--82. A summary of these constants can be found in
+Table~\ref{codata}
+\begin{latexonly}
+(p.~\pageref{codata})
+\end{latexonly}.
+
+Some derived quantities, which will be used in this section only are:
+
+Moment of inertia: $I$ 1 amu \AA ngstrom$^2$ =
+$1.660 540 \times 10^{-40}$ g cm$^2$.
+
+Rotational constants: $A$, $B$, and $C$ (e.g.\ $A = h/(8\pi^2I)$)\\
+With $I$ in amu \AA ngstroms$^2$ then:
+$A$ (in MHz)  = $5.053 791 \times 10^5 / I$ \\
+$A$ (in cm$^{-1}$) = $5.053 791 \times 10^5/ cI = 16.857 63 / I$
+
+
+\subsection{Thermochemistry from {\em ab initio} MO methods}
+Ab initio MO methods provide total energies, $E_{\rm eq}$,  as  the  sum  of
+electronic   and   nuclear-nuclear  repulsion  energies  for  molecules,
+isolated in vacuum, without vibration at 0  K. \index{ab initio@{{\em ab
+initio}}!total energies}
+\begin{equation}
+E_{\rm eq} = E_{\rm el} + E_{\rm nuclear-nuclear} \nonumber
+\end{equation}
+From the 0 K potential surface and using  the  harmonic  oscillator
+\index{Harmonic oscillator} approximation,  we can calculate the vibrational
+frequencies, $\nu_i$, of the normal modes of vibration.  Using these, we can
+calculate  vibrational, rotational   and   translational   contributions  to
+the  thermodynamic quantities such as the partition function and heat capacity
+which  arise \index{Partition function|ff}\index{Heat capacity|ff}\index{C$_p$}
+from heating the system from 0 to T K.
+
+$Q$: partition function, $E$: energy, $S$: entropy,
+\index{Energy}\index{Entropy|(}
+and $C$: Heat capacity at constant pressure = C$_p$. In {\em ab initio}
+calculations,\index{Ab initio!C$_v$} the heat capacity calculated is C$_v$.
+The relationship between C$_p$ and C$_v$ (in cal.degree$^{-1}$.mol$^{-1}$) is:
+$$
+C_p=C_v+R=C_v+1.987.
+$$
+
+\subsubsection{Vibrational terms}
+\begin{equation}
+Q_{\rm vib} = \prod_i{\frac{1}{[1 - \exp(-h\nu_i/kT)]}} \label{eq2}
+\end{equation}
+$E_{\rm vib}$, for a molecule at the temperature $T$ as:
+\begin{equation}
+E_{\rm vib} = \sum_i\left\{\frac{h\nu_i}{2} +
+\frac{h\nu_i\exp(-h\nu_i/kT)}{[1 - \exp(-h\nu_i/kT)]}\right\}  \label{eq3} \nonumber
+\end{equation}
+where $h$ is Planck's constant, $\nu_i$ the $i$--th normal  vibration
+frequency, and $k$  the Boltzmann constant.  For 1 mole of molecules, $E_{\rm
+vib}$  should be multiplied by the Avogadro number $N_a = R/k$.  Thus:
+\begin{equation}
+E_{\rm vib} = N_a  \sum_i\left\{ \frac{h\nu_i}{2}
+ + \frac{h\nu_i\exp(-h\nu_i/kT)}{[1-\exp(-h\nu_i/kT)]}\right\}  \label{eq4}
+\end{equation}
+
+Note that the first term  in equation~(\ref{eq4})  is   the  zero-point
+vibration energy.   Hence,  the second term  in eq.~(\ref{eq4}) is the
+additional vibrational contribution due to the temperature increase from 0 K to
+T K.  Namely,
+\begin{eqnarray}
+E_{\rm vib}                & = & E_{\rm zero} + E_{\rm vib}(T)
+\label{eq5}\nonumber\\
+E_{\rm zero}               & = & N_a \sum_i {\frac{h\nu_i}{2}} \nonumber\label{eq6}\\
+E_{\rm vib}( T) & = & N_a  \sum_i
+{\frac{h\nu_i\exp(-h\nu_i/kT)}{[1 - \exp(-h\nu_i/kT)]}} \label{eq7}
+\end{eqnarray}
+The value of $E_{\rm vib}$ from GAUSSIAN 82 and 86 includes
+$E_{\rm zero}$ as defined by Eqs.~(\ref{eq4},\ref{eq7}).
+\begin{eqnarray}
+S_{\rm vib} & = & R \sum_i\left\{
+\frac{(h\nu_i/kT)\exp(-h\nu_i/kT)}{[1 - \exp(-h\nu_ii/kT)]}
+- \ln[1 - \exp(-h\nu_i/kT)]\right\} \nonumber\label{eq8}\\
+C_{\rm vib} & = & R \sum_i\left\{
+\frac{(h\nu_i/kT)^2 \exp(-h\nu_i/kT)}{[1 - \exp(-h\nu_i/kT)]^2}\right\}
+\nonumber\label{eq9}
+\end{eqnarray}
+
+At temperature $T>0$ K, a molecule rotates about  the  x,  y,  and z-axes  and
+translates  in  x,  y,  and  z-directions.  By assuming the
+\index{Equipartition of energy} equipartition of energy, energies for rotation
+and translation,  $E_{\rm rot}$ and $E_{\rm tr}$, are calculated.
+
+\subsubsection{Rotational terms}
+\index{Moments of inertia}
+$\sigma$ is symmetry number (Examples of symmetry numbers are shown
+in Table~\ref{rot}). $I$ is moment of inertia.
+$I_A$, $I_B$, and $I_C$ are moments of inertia about A, B, and C axes.
+\begin{table}
+\caption{\label{rot} Table of Symmetry Numbers }
+\begin{center}
+\begin{tabular}{lllcrclllcrclrr}
+\hline
+C$_1$&C$_I $    &C$_S $:&&   1&&D$_2$&D$_{2d}$&D$_{2h}$:&&4 &&  C$_{\infty v}$:& 1  \\
+C$_2$&C$_{2v}$&C$_{2h}$:&&  2 &&D$_3$&D$_{3d}$&D$_{3h}$:&&6 &&  D$_{\infty h}$:&
+2  \\
+C$_3$&C$_{3v}$&C$_{3h}$:&&  3 &&D$_4$&D$_{4d}$&D$_{4h}$:&&8 && T, T$_h$ T$_d$: &12  \\
+C$_4$&C$_{4v}$&C$_{4h}$:&&  4 &&D$_5$&D$_{5d}$&D$_{5h}$:&&10  &&  O, O$_h $:   &24  \\
+C$_5$&C$_{5v}$&C$_{5h}$:&&  5 &&D$_6$&D$_{6d}$&D$_{6h}$:&&12  &&  I, I$_h$:  &24
+\\
+C$_6$&C$_{6v}$&C$_{6h}$:&&  6 &&D$_7$&D$_{7d}$&D$_{7h}$:&&14  && S$_4$:&2
+\\
+C$_7$&C$_{7v}$&C$_{7h}$:&&  7 &&D$_8$&D$_{8d}$&D$_{8h}$:&&16  && S$_6$: &3 \\
+C$_8$&C$_{8v}$&C$_{8h}$:&&  8 &&      &       &         && &   &  S$_8$: &4 \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\paragraph*{Linear molecule}
+\begin{eqnarray}
+Q_{\rm rot} & = & \frac{8\pi^2 IkT}{\sigma h^2} \nonumber\label{eq10} \\
+E_{\rm rot} & = & (2/2)RT  \nonumber\label{eq11} \\
+S_{\rm rot} & = &  R \ln \left[ \frac{8\pi^2 IkT}{\sigma h^2} \right] + R
+\nonumber\label{eq12} \\
+            & = & R \ln I + R \ln T - R \ln\sigma - 4.349 203  \nonumber
+\end{eqnarray}
+where $ -4.349 203 = R \ln[8\times 10^{-16} \pi^2 k/(N_a h^2)] + R$.
+\begin{equation}
+C_{\rm rot} = (2/2)R    \nonumber\label{eq14}
+\end{equation}
+
+\paragraph*{Non-linear molecule}
+\index{Non-linear molecules}
+\begin{eqnarray}
+ Q_{\rm rot} & = & \left( \frac{\sqrt{\pi}}{\sigma}\right)
+ \left[ \frac{8\pi^2kT}{h^2}\right]^{3/2} \sqrt{I_AI_BI_C} \nonumber\\
+& = & \left( \frac{\sqrt{\pi}}{\sigma}\right)
+\left[ \left( \frac{8\pi^2cI_A}{h} \right)
+       \left( \frac{8\pi^2cI_B}{h} \right)
+       \left( \frac{8\pi^2cI_C}{h} \right) \right]^{1/2}
+\left(\frac{kT}{hc}\right)^{3/2} \nonumber\label{eq15} \\
+ E_{\rm rot} & = & (3/2)RT \nonumber\label{eq16} \\
+ S_{\rm rot} & = & \frac{R}{2} \ln\left\{
+ \left(\frac{\pi}{\sqrt{\sigma}}\right) \left(\frac{8\pi^2cI_A}{h}\right)
+ \left(\frac{8\pi^2cI_B}{h}\right)      \left(\frac{8\pi^2cI_C}{h}\right)
+ \left(\frac{kT}{hc}\right)^3\right\} + (3/2)R  \nonumber\label{eq17} \\
+& = & (R/2) \ln{(I_A I_B I_C)} + (3/2) R\ln{T}  - R \ln{\sigma} - 5.3863921
+\nonumber
+\end{eqnarray}
+
+Here, $-5.386 3921$ is calculated as:
+$$ R \ln\left\{\frac{1}{h^3} \left(\frac{10^{-16}}{N_a}\right)^{3/2}
+\sqrt{(3\times 2^9 \times \pi^7 \times k)}\right\} + (3/2)R.
+$$
+
+\begin{equation}
+C_{\rm rot} = (3/2)R \nonumber\label{eq18}
+\end{equation}
+
+\subsubsection{Translational terms}
+$M$ is Molecular weight.
+\begin{eqnarray}
+Q_{\rm tra} & = & \left( \frac{\sqrt{2\pi MkT/N_a}}{h}\right)^3
+\nonumber\label{eq19} \\
+E_{\rm tra} & = & (3/2)RT                            \nonumber\label{eq20} \\
+S_{\rm tra} & = & R\left\{ \frac{5}{2} +
+\frac{3}{2}\ln\left(\frac{2\pi k}{h^2}\right) + \ln k +
+\frac{3}{2}\ln\left(\frac{M}{N_a}\right) + \frac{5}{2}\ln T - \ln p \right\}
+\nonumber\label{eq21} \\
+            & = & (5/2)R\ln T + (3/2)R\ln M - R\ln p - 2.31482 \nonumber\label{eq22}\\
+C_{\rm tra} & = & (5/2)R                              \nonumber\label{eq23}
+\end{eqnarray}
+or  $H_{\rm tra} = (5/2)RT$  due to the $pV$ term (cf.  $H = U + pV$).
+The internal energy $U$ at $T$ is:
+\begin{equation}
+U = E_{\rm eq} + [E_{\rm vib} + E_{\rm rot} + E_{\rm tra}] \nonumber\label{eq24}
+\end{equation}
+or
+\begin{equation}
+U = E_{\rm eq} + [(E_{\rm zero} + E_{\rm vib}(T))
+  + E_{\rm rot} + E_{\rm tra}]  \label{eq25}
+\end{equation}
+Enthalpy $H$ for one mole of gas is defined as
+\begin{equation}
+H = U + pV     \label{eq26}
+\end{equation}
+Assumption of an ideal gas (i.e.,  $pV = RT$) leads to
+\begin{equation}
+H = U + pV = U + RT  \label{eq27}
+\end{equation}
+Thus, \mi{Gibbs free energy} $G$ can be calculated as:
+\begin{equation}
+           G = H - T S(T) \label{eq28}
+\end{equation}
+
+\subsection{Thermochemistry in MOPAC}
+\index{$\Delta H_f$|ff} \index{Heat of Formation|ff}
+It should be noted that M.O. parameters for MINDO/3,  MNDO,  AM1, PM3, and
+MNDO-$d$  are optimized so as to reproduce the experimental  heat of formation
+(i.e., standard enthalpy of formation or the enthalpy change to  form  a mole
+of  compound  at  25$^\circ$C from its elements in their standard state) as
+well as observed geometries (mostly at 25$^\circ$C), and  not to reproduce the
+$E_{\rm eq}$ and equilibrium geometry at 0 K.
+
+In  this  sense, $E_{SCF}$  (defined  as  Heat  of  formation, $\Delta H_f$),
+force constants,  normal  vibration  frequencies, etc.\  are  all related to
+the values at 25$^\circ$C, not to 0 K.  Therefore, the $E_{\rm zero}$
+calculated in FORCE is not the true $E_{\rm zero}$. Its use as $E_{\rm zero}$
+should be made at your own risk, bearing in mind the situation discussed above.
+
+Since $E_{SCF}$ is standard enthalpy of formation (at 25$^\circ$C):
+\begin{equation}
+E_{SCF} = E_{\rm eq} + E_{\rm zero} +
+E_{\rm vib}(298.15) + E_{\rm rot} + E_{\rm tra} + pV
+ + \sum\left[ - E_{\rm elec}({\rm atom}) + \Delta H_f({\rm atom})\right].
+\label{eq29}
+\end{equation}
+To avoid the complication arising from the definition of $E_{SCF}$, within
+\index{Standard  Enthalpy  of Formation}
+the  thermodynamics  calculation  the  Standard  Enthalpy  of Formation,
+$\Delta H$, is calculated by
+\begin{equation}
+\Delta H = E_{SCF} + (H_T - H_{298}). \label{eq30}
+\end{equation}
+
+Here, $E_{SCF}$ is the heat of formation (at 25$^\circ$C)  given in the output
+list, and $H_T$ and $H_{298}$ are the enthalpy contributions for the increase
+of the temperature from 0 K to $T$ and 298.15, respectively.  In other words,
+the enthalpy of formation is corrected for the difference in temperature from
+298.15~K to $T$.
+
+There is a problem in that $H_T$ is the heat of formation at $T$ relative to
+the heat of formation of the elements in their standard state at 298K. This
+involves mixing standard and not standard terms. There is no easy way to get
+ the correct value for $H_T$, but for rough work $H_T$ is useful. For more correct
+ work, calculate $\Delta H$ for the elements in their standard state at $T$, and use
+ these $\Delta H$'s to get the $\Delta H$ for the compound you're working with (or use
+ tables from the literature).
+
+ The method of calculation for $T$ and $H_{298}$ will  be
+given below.
+
+In MOPAC, the variables defined below are used:
+\begin{equation}
+C_1 = \frac{hc}{kT}.   \nonumber\label{eq31}
+\end{equation}
+The wavenumber, $\omega_i$, in cm$^{-1}$:
+\begin{equation}
+\nu_i = \omega_i c    \nonumber\label{eq32}
+\end{equation}
+\begin{equation}
+E_{\rm \omega_i} = \exp( -h\nu_i/kT) = \exp(-\omega_i hc/kT) = \exp(-\omega_i C_1) \nonumber\label{eq33}
+\end{equation}
+The rotational constants $A$, $B$, and $C$ in cm$^{-1}$:
+\begin{equation}
+A = \frac{h}{(8\pi^2 cI_A)}   \nonumber\label{eq34}
+\end{equation}
+
+\index{S} Energy and Enthalpy in cal/mol, and Entropy in cal/mol/K. Thus, eqs.\
+(\ref{eq2}--\ref{eq28}) can be written as follows:
+
+\subsubsection{Vibration}
+\begin{eqnarray}
+Q_{\rm vib} & = & \prod_i \frac{1 }{ (1 - E_{\rm \omega_i})}  \nonumber\label{eq35}\\
+E_0         & = & \frac{0.5 N_a hc}{4.184 \times 10^7}\sum_i {\omega_i}
+\nonumber\label{eq36}\\
+            & = & 1.429 572 \sum_i {\omega_i}    \nonumber\label{eq37}\\
+E_{\rm vib}(T) & = &
+N_a h c\sum_i{\frac{\omega_i E_{\rm \omega_i}}{1 - E_{\rm \omega_i}}}
+= (R/k) h c\sum_i{\frac{W_ iE_{\rm \omega_i}}{1 - E_{\rm \omega_i}}}     \nonumber\label{eq38}\\
+S_{\rm vib} & = & R (hc/kT)
+\sum_i\left\{\frac{\omega_i E_{\rm \omega_i}}{(1 - E_{\rm \omega_i})}\right\}
+                - R\sum_i {\ln (1 - E_{\rm \omega_i})} \nonumber \\
+& = & R C_1\sum_i\left\{\frac{\omega_i E_{\rm \omega_i}}{(1 - E_{\rm \omega_i})}\right\}
+- R\sum_i {\ln(1 - E_{\rm \omega_i})}            \nonumber\label{eq39}\\
+C_{\rm vib} & = & R (hc/kT)^2
+\sum_i\left\{\frac{\omega_i^2 E_{\rm \omega_i}}{(1- E_{\rm \omega_i})^2} \right\} \nonumber \\
+& = & R C_1^2
+\sum_i\left\{\frac{\omega_i^2 E_{\rm \omega_i}}{(1- E_{\rm \omega_i})^2}\right\}
+\nonumber\label{eq40}
+\end{eqnarray}
+
+\subsubsection{Rotation}
+
+\paragraph*{Linear molecule}
+\begin{eqnarray}
+Q_{\rm rot} & = & (1/\sigma) (1/{\rm \AA}) (kT/hc) = \frac{1}{\sigma A C_1}
+\nonumber\label{eq41}\\
+E_{\rm rot} & = & (2/2)RT   \nonumber\label{eq42} \\
+S_{\rm rot} & = & R\ln\left(\frac{kT}{\sigma hc{\rm \AA}}\right) + R
+= R\ln \left(\frac{1}{\sigma {\rm \AA} C_1}\right) + R
+= R\ln\left(\frac{kT}{\sigma hc{\rm \AA}}\right) + R \nonumber\label{eq43}\\
+C_{\rm rot} & = & (2/2)R       \nonumber\label{eq44}
+\end{eqnarray}
+
+\paragraph*{Non-linear molecule}
+\begin{eqnarray}
+Q_{\rm rot} & = & \frac{1}{\sigma}
+\left[\frac{\pi}{(A B C C_1^3)}\right]^{1/2} \nonumber\label{eq45}\\
+E_{\rm rot} & = & (3/2)RT        \nonumber\label{eq46} \\
+S_{\rm rot} & = & \frac{R}{2}\ln\left\{\frac{\pi}{\sigma^2ABC}
+\left(\frac{kT}{hc}\right)^3 \right\} + (3/2)R \nonumber \\
+& = & 0.5R { 3\ln(kT/hc) - 2\ln\sigma +\ln\left(\frac{\pi}{A B C}\right) + 3}
+\nonumber\label{eq47} \\
+& = & 0.5R { -3\ln C_1 - 2\ln\sigma + \ln\left(\frac{\pi}{A B C}\right) + 3}
+\nonumber \\
+C_{\rm rot} & = & (3/2)R     \nonumber\label{eq48}
+\end{eqnarray}
+
+\subsubsection{Translation}
+\begin{eqnarray}
+Q_{\rm tra} & = &
+   \left( \frac{\sqrt{2\pi MkT/N_a}}{h} \right)^3
+=  \left( \frac{\sqrt{1.660540\times^{-24}\times 2\pi MkT}}{h} \right)^3
+\nonumber\label{eq49} \\
+E_{\rm tra} & = &  (3/2)RT                    \nonumber\label{eq50} \\
+H_{\rm tra} & = &  (3/2)RT + pV = (5/2)RT \; {\rm cf.}
+\;pV = RT  \nonumber\label{eq51}\\
+S_{\rm tra} & = & (R/2) [ 5\ln T + 3\ln M ] - 2.31482
+\;{\rm cf.}\; p = 1 {\rm atm} \nonumber \\
+& = & 0.993608 [ 5\ln T + 3\ln M] - 2.31482    \nonumber\label{eq52}
+\end{eqnarray}
+
+In MOPAC:
+\begin{equation}
+H _{\rm vib} = E_{\rm vib}(T)     \nonumber\label{eq53}
+\end{equation}
+
+(Note: $E_{\rm zero}$ is {\em not\/} included in $H_{\rm vib}$;
+$\omega_i$ is not derived from force-constants at 0 K)
+and for $T$:
+\begin{equation}
+H_T   = [H_{\rm vib} + H_{\rm rot} + H_{\rm tra}]   \nonumber\label{eq54}
+\end{equation}
+while for $T=298.15$~K:
+\begin{equation}
+H_{298} = [H_{\rm vib} + H_{\rm rot} + H_{\rm tra}]  \nonumber\label{eq55}
+\end{equation}
+
+Note that $H_T$ (and $H_{298}$) is equivalent to:
+\begin{equation}
+(E_{\rm vib} - E_{\rm zero}) + E_{\rm rot} + (E_{\rm tra} + pV) \nonumber\label{eq56}
+\end{equation}
+except that  the  normal  frequencies  are  those  obtained  from  force
+constants at 25$^\circ$C, or at least not at 0 K.
+
+Thus, Standard Enthalpy of Formation, $\Delta H$,  can  be  calculated
+according to Eqs.~(\ref{eq25},\ref{eq26}) and (\ref{eq29}),
+as shown in Eq.~(\ref{eq30});
+\begin{equation}
+\Delta H = E_{SCF} + (H_T - H_{298})   \nonumber\label{eq57}
+\end{equation}
+Note that $E_{\rm zero}$ is already counted in $E_{SCF}$,
+see Eq.~(\ref{eq29}).
+
+\index{Standard Internal Energy of Formation}
+By using Eq.~(\ref{eq27}), Standard Internal Energy of Formation, $\Delta U$,
+can be calculated as:
+\begin{equation}
+\Delta U = \Delta H - R(T - 298.15) \nonumber\label{eq58}
+\end{equation}
+
+
+Standard Gibbs Free-Energy of Formation, $\Delta G$, can be calculated
+\index{Standard Gibbs Free-Energy of Formation}
+by  taking  the difference from that for the isomer or that at different
+temperature:
+\begin{equation}
+\Delta G = [\Delta H - TS] \;(\mbox{for the state under consideration})
+- [\Delta H - TS]\; (\mbox{for reference state})  \nonumber\label{eq59}
+\end{equation}
+
+Taking the difference is necessary  to  cancel  the  unknown  values  of
+standard entropy of formation for the constituent elements.
+
+\index{Entropy|)}\index{Thermochemistry|)}

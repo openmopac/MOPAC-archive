@@ -1,0 +1,38 @@
+      SUBROUTINE  AM1
+      END
+      SUBROUTINE  BONDS
+      END
+      SUBROUTINE  DENROT
+      END
+      SUBROUTINE  ENPART
+      END
+      SUBROUTINE  FORCE
+      END
+      SUBROUTINE  GRID
+      END
+      SUBROUTINE  INTERP
+      END
+      SUBROUTINE  DRC
+      END
+      SUBROUTINE  LOCAL
+      END
+      SUBROUTINE  MECI
+      END
+      SUBROUTINE  MULLIK
+      END
+      SUBROUTINE  NLLSQ
+      END
+      SUBROUTINE  PATHS
+      END
+      SUBROUTINE  POLAR
+      END
+      SUBROUTINE  POWSQ
+      END
+      SUBROUTINE  PULAY
+      END
+      SUBROUTINE  REACT1
+      END
+      SUBROUTINE  SWAP
+      END
+      SUBROUTINE  XYZINT
+      END

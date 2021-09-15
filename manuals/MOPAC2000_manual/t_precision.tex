@@ -1,0 +1,272 @@
+\section{Level of Precision within MOPAC}
+\index{Precision} \index{Criteria}
+Several users have criticized the  tolerances  within  MOPAC.   The point 
+made  is  that significantly different results have been obtained when
+different starting conditions have been used, even  when  the  same conformer 
+should  have  resulted.  Of course, different results must be expected---there
+will always be small differences---nonetheless  any differences   should   be 
+small,  for example,  heats  of  formation   ($\Delta H_f$) \index{$\Delta
+H_f$!precision} \index{Heat of Formation!precision} differences should be less
+than about 0.1  kcal/mol.   MOPAC  has  the flexibility  to  allow  users  to 
+specify a much higher precision than the default when circumstances warrant it.
+
+\subsection{Fundamental Physical Constants}
+\index{Fundamental Physical Constants}
+The fundamental physical constants used in MOPAC were updated in 1993 to
+conform with the 1986 CODATA recommendations~\cite{codata}.  The constants used
+in MOPAC are given in Table~\ref{codata}.  As a result of this update, all
+calculated quantities in MOPAC, except molecular weight, will change slightly
+when compared to earlier MOPACs (MOPAC 6 and earlier).  Most of the time,
+changes in $\Delta H_f$ are less than 0.1 kcal/mol.  It is not anticipated that
+the physical constants will change again.  If they do, however, the effect on
+calculated properties should be very small.
+
+The derived quantities, AM, AD, AQ, EISOL, DD, and QQ are functions of the
+fundamental constants.  Rather than change all of these, starting with MOPAC
+93, they are evaluated  at the start of each calculation.  This is a quick
+operation, taking only about 0.1s, and prevents any mistakes being introduced
+due to human error. 
+
+\begin{table}
+\index{Boltzmann constant}
+\index{Constants!physical}
+\index{Definitions!Boltzmann constant}
+\index{Definitions!velocity of light}
+\index{Gas constant, R}
+\caption{\label{codata} Fundamental Physical Constants}
+\begin{center}
+\begin{tabular}{|ccll|}\hline
+Physical Constant & Symbol &Value &Units \\ \hline 
+Speed of Light    &     c  &  299 792 458 &m sec$^{-1}$ (Definition)\\
+Planck constant   &   $h$  & 6.626 075 5(40)  $\times$ 10$^{-34}$ &J sec \\
+&&  6.626 075 5(40) $\times$ 10$^{-27}$ & erg s\\
+Avogadro constant & $N$    & 6.022 136 7(36)  $\times$  10$^{23}$&mol$^{-1}$ \\
+Molar gas constant & $R$   & 1.987 215 6  & cal/mol/degree\\
+            & & 8.314 510(70) & J/mol/K \\
+Volume of 1 mol of gas& $V_0$ & 22.414 10(19) & l/mol (at 1 atm, 25 C) \\
+Electron volt     & eV     & 1.602 177 33(49) $\times$ 10$^{-19}$&J \\
+Electron charge   & e      & 1.602 177 33(49) $\times$ 10$^{-19}$&C \\
+Hartree           & $E_h$  & 27.211 396 1(81) & eV \\
+Electrostatic energy & $E_ha_{\circ}$ & 14.399 651 782 565 &eV \\
+Bohr radius       & $a_{\circ}$ & 0.529 177 249(24) $\times$  10$^{-10}$ & m \\
+Boltzmann constant& $k$ = $R/N$ & 1.380 658(12) $\times 10^{-23}$& J/K \\
+                  &              & 1.380 658(12) $\times 10^{-16}$& erg/K\\
+pi & $\pi$ & 3.141 592 653 589 79 & \\
+Joule             & J/cal  & 4.184        & J/cal (Definition)\\
+ cm$^{-1}$ &  $h$c/eV   & 1.239 842 4  $\times$  10$^{-4}$ & eV\\
+ cm$^{-1}$ & $h$c$N$/(1000J/cal)& 2.859 144  $\times$  10$^{-3}$ & kcal/mol\\
+ cm$^{-1}$&$h$c$N$/(J/cal)& 2.859 144 &cal/mol \\
+cm$^{-1}$   & & 1.196 266 $\times$  10$^{8}$ & erg = dyne \AA $^{-1}$\\
+Atomic unit (a.u.)     &        & 8.657 10 $\times$  10$^{-33}$ &e.s.u. \\
+a.u.      &  &  2.541 747 8 $\times$  10$^{-40}$ & Debye \\
+a.u.        & & 51.422 082     & V m$^{-1}$\\
+kcal/mol    & & 6.947 700 $\times$  10$^{-3}$ & erg\\
+1 J &&1.$ \times 10^7$ & erg\\
+1 eV &&23.060 542 301 389  &kcal/mol\\
+&& 627.509 6& kcal/mol\\
+1 atm && 1.013 25 $\times 10^5$ &Pa \\
+&& 1.013 25 $\times 10^6$ &dyn/cm$^2$ (Definition)\\ \hline
+\end{tabular}~\\
+Note: The precision of derived constants should {\em not} be used as an
+indication of their accuracy. The uncertainty in the fundamental constants is
+given in parenthesis after the value. 
+\end{center}
+\end{table}
+
+
+\subsection{Various precision levels}
+In normal (non-publication quality) work the default  precision  of MOPAC  is
+recommended.  This will allow reasonably precise results to be obtained  in  a 
+reasonable  time.    Unless   this   precision   proves unsatisfactory, use
+this default for all routine work.
+
+The  best  way  of  controlling  the  precision  of  the   geometry
+optimization  and gradient minimization is by specifying a gradient norm
+\index{GNORM|ff} which must be satisfied.  The gradient norm is the scalar of
+the vector of derivatives of the energy with respect to the geometric variables
+flagged for optimization. I.e.,
+$$
+{\rm  GNORM}=\sqrt{\sum_i\left(\frac{d(\Delta H_f)}{dx_i}\right)^2}
+$$
+where $x_i$ refers to coordinates flagged for optimization.  Note that the
+calculated GNORM may be very small and at the same time the geometry might not
+be at a stationary point.  This can easily happen when (a) less than 3$N$-6
+coordinates are flagged for optimization, (b) \comp{SYMMETRY} has been used
+incorrectly, or (c) (less common) only 3$N$-6 coordinates are flagged for
+optimization and dummy atoms are used.  If any one of these three conditions
+occurs, then the warning message,  ``WARNING -- GEOMETRY IS NOT AT A STATIONARY
+POINT''  \index{Error message!WARNING -- GEOM\ldots } will be printed.
+
+A less common, but not unknown, situation arises when internal
+coordinates are used.  In this strange situation, the internal derivatives might
+all be zero, but the Cartesian derivatives are large.  An example of such a
+system is shown in Figure~\ref{xch2o}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{verbatim}
+Line 1:  GRADIENTS 1SCF DEBUG DCART
+Line 2:  EXAMPLE OF INTERNAL COORDINATE DERIVATIVES ZERO
+Line 3:  AND CARTESIAN DERIVATIVES LARGE
+Line 4: O
+Line 5: C   1.2075664 1
+Line 6: H   1.2114325 1   103.347931 1    0 0   2 1
+Line 7: H   1.0904182 1   180.000000 1   90 1   2 1 3
+\end{verbatim}
+\caption{\label{xch2o} Example of Spurious Stationary Point}
+\end{figure}
+
+In this strange system, the bond-angle of the second hydrogen is 180$^\circ$,
+and the dihedral is 0$^\circ$.  Obviously, the derivative of the dihedral will
+be zero. The derivative of the angle is not so obvious.  If the angle changes,
+then the fourth atom will move out of the plane of the other three atoms. The
+energy will change in the same way regardless of whether the angle increases or
+decreases; therefore, the derivative of the angle must be zero.
+
+Because of the unusual nature of this type of system, users may be unaware of
+the danger.  If such a system is detected, a warning will be given and the job
+stopped.  For all other cases, the ``WARNING -- GEOMETRY IS NOT AT A 
+STATIONARY POINT'' message will be printed on completion of the calculation. 
+In the unlikely event that the calculation should not be stopped when the
+strange system is detected, calculation can be continued by specifying
+\comp{GEO-OK}.
+
+Modification of  GNORM is done via the keyword \comp{GNORM=$n.nn$}.  Altering
+the   GNORM  automatically disables the other termination tests resulting in
+the gradient norm dominating the calculation.  This works both  ways:
+\comp{GNORM=20}  will give a very crude optimization while \comp{GNORM=0.01} 
+will give a very precise optimization.  The default is \comp{GNORM=1.0}.
+
+When the highest precision is needed, such as in exacting  geometry work,  or 
+when  you want results whose precision cannot be improved, then use the
+combination keywords \comp{GNORM=0.0} and either \comp{RELSCF=0.01} or
+\comp{SCFCRT=1.D-NN};  \index{SCFCRT} (\comp{NN} should  be  in  the range 
+5--15).   By default, EigenFollowing is used in geometry optimization.  One
+reason is that EigenFollowing is nearer to a gradient minimizer than it is to
+an  energy minimizer.  Because of this, if there is any difference between the
+gradient minimum and the energy minimum, it  will give better reproducibility
+of the optimized geometry than the alternative \comp{BFGS} method.
+
+In practice, optimized geometries for ``well behaved'' systems can be obtained
+with \comp{GNORM}s of less than 0.0001.
+
+Increasing the SCF criterion (the default is \comp{SCFCRT=1.D-4}) improves the
+precision of the gradients; however, it can lead to excessive run times, so
+take care.  Also, there is an increased chance of  not  achieving  an SCF when
+the SCF criterion is excessively increased.
+
+Superficially, requesting \comp{GNORM=0}   might  seem  excessively stringent, 
+but  as soon as the run starts, it will be cut back to 0.01. Even that might
+seem too  stringent.   The  geometry  optimization  will continue to lower the
+energy, and hopefully the GNORM, but frequently it will not prove possible to
+lower  the   GNORM to  0.01.   If,  after  10 cycles,  the energy does not drop
+then the job will be stopped.  At this point you have the best geometry that
+MOPAC, in its  current  form,  can give.
+
+If a slightly less than highest precision is needed,  such  as  for normal
+publication quality work, set the \comp{GNORM} to the limit wanted.  For
+example, for a flexible system, a \comp{GNORM} of 0.1 to 0.5 will  normally  be
+good enough for all but the most demanding work.
+
+If higher than the default, but still not very  high  precision  is wanted, 
+then  use  the  keyword  \comp{PRECISE}.  This will tighten up various criteria
+so that higher-than-routine precision will be given.
+
+If high precision is used, so that the printed  GNORM is 0.000,  and the  
+resulting   geometry   resubmitted   for  one  SCF  and  gradients calculation,
+then normally a  GNORM higher than 0.000 will result.   This is  {\em not}  an
+error in MOPAC:  the geometry printed is only precise to eight figures after
+the decimal point.  Geometries may need  to  be  specified  to more than eight
+decimals in order to drive the  GNORM to less than 0.000.
+
+If you want to test MOPAC, or use it  for  teaching  purposes,  the
+\comp{GNORM}  lower limit of 0.01 can be overridden by specifying \comp{LET},
+in which case you can specify any limit for \comp{GNORM}.  However, if it is
+too low the job  may  finish  due to an irreducible minimum in the heat of
+formation being encountered.  If this happens, the ``STATIONARY POINT'' message
+will be printed.
+
+Examples of highly optimized geometries can be found in the \comp{port.dat}
+file.  When this job is run, most gradients will be less than 0.001
+kcal/mol/\AA .  A few will be larger. These exceptions fall into two classes:
+diatomics, for which a simple line-search is sufficient to locate the optimum
+geometry, in which case the  GNORM criterion is {\em not} used; and
+non-variationally optimized systems, where the analytical C.I.\ derivatives 
+are used.  These derivatives are of lower precision than the variational
+derivatives, but are still much better than finite difference derivatives using
+full SCFs. \index{Analytical derivatives}\index{Derivatives!analytical|ff}
+Finally there is  a  full  analytical  derivative  function~\cite{analyt}
+within \index{STO-6G}\index{Gaussian!wavefunctions} MOPAC.  These use STO-6G
+Gaussian wavefunctions because the derivatives of the overlap integral are
+easier to calculate  in  Gaussians  than  in STOs.  Consequently, there will be
+a small difference in the calculated $\Delta H_f$ when analytical derivatives
+are used.  If  there  is  any  doubt \index{Analytical derivatives} about  the 
+accuracy of the finite derivatives, try using the analytical derivatives.  They
+are a bit slower than finite derivatives but are more precise  (a  rough 
+estimate is 12 figures for finite difference, 14 for analytical).
+
+Some calculations, mainly open shell RHF or closed shell  RHF  with C.I., have
+untracked errors which prevent very high precision.  For these systems
+\comp{GNORM} should be in the range 1.0 to 0.1.
+
+\subsection{Reasons for low precision}
+There are several reasons for obtaining low quality  results,   the most 
+obvious  of which is that for general work the default criteria will result in 
+a  difference  in  $\Delta H_f$   of  less  than  0.1 kcal/mol.    This   is  
+only  true  for  fairly  rigid  systems,  e.g.\ formaldehyde and benzene.  For
+systems with low barriers to rotation  or \index{Flat potential surfaces}
+\index{Aniline, dimer}\index{Water, dimer} flat  potential  surfaces,  such
+as   aniline  or  water dimer, quite large $\Delta H_f$  errors can result.
+
+\subsection{How large can a gradient be and still be acceptable?}
+A common source of confusion is the limit to which the \comp{GNORM} should be 
+reduced  in  order  to  obtain acceptable results.  There is no easy answer.
+However, a few guidelines can be given.
+
+\index{LET}\index{ANALYT} First of all, setting  the \comp{GNORM} to an
+arbitrarily  small  number  is not  sensible.   If \comp{GNORM=0.000001} and
+\comp{LET} are used, a geometry can be obtained which is precise to about 
+0.000001 \AA. \ If \comp{ANALYT} is also used, the results obtained will be
+slightly different. Chemically, this change is meaningless, and no 
+significance  should  be attached  to  such  numbers.   In  addition,  any 
+minor  change  to the algorithm, such as porting it to a new machine, will give
+rise to  small changes  in  the optimized geometry.  Even the small changes
+involved in going from one version of MOPAC to another causes  small  changes 
+in  the optimized geometry of test molecules.
+
+As a guide, a \comp{GNORM} of 0.1 is sufficient for all  heat-of-formation
+work,  and  a  \comp{GNORM}  of  0.01 for most geometry work.  If the system is
+large, you may need to settle for a \comp{GNORM} of 1.0--0.5.
+
+This whole topic was raised by Dr.\ Donald B. Boyd while he was at Lilly
+Research  Laboratories,  who provided unequivocal evidence for a failure of
+MOPAC and convinced me of the importance of increasing  precision  in certain
+circumstances.\index{boyd@{\bf Boyd, Donald B.}}
+
+\subsection{Convergence tests in subroutine ITER}
+\index{Convergence tests!SCF}
+\subsubsection{Self-consistency test}
+\index{SCF!test}
+The SCF iterations are stopped when two tests are satisfied.  These are (1)
+when the difference in electronic energy, in eV, between any two consecutive
+iterations drops below the adjustable parameter, \comp{SELCON}, and the 
+difference between any three consecutive iterations drops below ten times
+\comp{SELCON}, and (2) the difference in density matrix elements  on  two
+successive iterations falls below a preset limit, which is a multiple of
+\comp{SELCON}. \index{SELCON}
+
+\comp{SELCON} is set initially to 0.0001 kcal/mol; this can be  made  100
+times  smaller by specifying \comp{PRECISE} or \comp{FORCE}.   It can be
+over-ridden by explicitly defining the SCF criterion {\em via}
+\comp{SCFCRT=1.D-12}, or by use of \comp{RELSCF=0.1}.
+
+\comp{SELCON} is further modified by the value of the  gradient  norm,  if
+known.   If  \comp{GNORM} is large, then a more lax SCF criterion is
+acceptable, and \comp{SCFCRT} can be relaxed up to 50 times its  default  value
+(using \comp{RELSCF=50}).   As  the gradient norm drops, the SCF criterion
+returns to its default value.
+
+The SCF test is performed using the energy calculated from the Fock matrix 
+which  arises  from  a  density matrix, and not from the density matrix which
+arises from a Fock.  In the limit, the two  energies  would be  identical, 
+but  the first converges faster than the second, without loss of precision.

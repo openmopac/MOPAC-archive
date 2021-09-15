@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>How to escape from a hilltop</TITLE>
+<META NAME="description" CONTENT=" How to escape from a hilltop">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node628.html"><LINK REL="previous" HREF="node626.html"><LINK REL="up" HREF="node626.html"><LINK REL="next" HREF="node628.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node628.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node626.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node626.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node628.html">Keyword Sequences to be</A> <B>Up:</B> <A HREF="node626.html">Use of SADDLE</A> <B>Previous:</B> <A HREF="node626.html">Use of SADDLE</A>
+<!--End of Navigation Panel-->
+<H2>How to escape from a hilltop </H2>
+<P>A particularly irritating phenomenon sometimes occurs when a transition state is being refined. A rough estimate of the geometry of the transition state has been obtained by either a <TT>
+<a href="node295.html">SADDLE</a></TT> or reaction path or by good guesswork. This geometry is then refined by <TT>
+<a href="node334.html">TS</a></TT>, <TT><a href="node305.html">SIGMA</a></TT> or by <TT>
+<a href="node232.html">NLLSQ</a></TT>, and the system characterized by a force calculation. Remember that <TT>NLLSQ</TT> is preferred over <TT>SIGMA</TT> when the GNORM is large, so <TT>NLLSQ</TT> is probably the method of choice, if for any reason <TT>TS</TT> does not work. It is at this point that things often go wrong. Instead of only one negative force constant, two or more are found. In the past, the recommendation has been to abandon the work and to go on to something less masochistic. It is possible, however, to systematically progress from a multiple maximum to the desired transition state. The technique used will now be described. </P>
+<P>If a multiple maximum is identified, most likely one negative force constant corresponds to the reaction coordinate, in which case the objective is to render the other force constants positive. The associated normal mode eigenvalues are complex, but in the output are printed as negative frequencies, and for the sake of simplicity will be described as negative vibrations. Use a graphical user interface program to display the negative vibrations, and identify which mode corresponds to the reaction coordinate. This is the one we need to retain. </P>
+<P>Hitherto, simple motion in the direction of the other modes has <A NAME="BM23242">&nbsp;</A> proved difficult. However the 
+<a href="node165.html"><TT>DRC</TT></a> provides a convenient mechanism for automatically following a normal coordinate. Pick the largest of the negative modes to be annihilated, and run the DRC along that mode until a minimum is reached. At that point, refine the geometry once more using <TT>TS</TT> and repeat the procedure until only one negative mode exists. </P>
+<P>To be on the safe side, after each <TT>DRC</TT>+<TT>TS</TT> sequence do the <TT>DRC</TT>+<TT>TS</TT> operation again, but use the negative of the initial normal coordinate to start the trajectory. After both stationary points are reached, choose the lower point as the starting point for the next elimination. The lower point is chosen because the transition state wanted is the highest point on the lowest energy path connecting reactants to products. Sometimes the two points will have equal energy: this is normally a consequence of both trajectories leading to the same point or symmetry equivalent points. </P>
+<P>After all spurious negative modes have been eliminated, the remaining normal mode corresponds to the reaction coordinate, and the transition state has been located. </P>
+<P>This technique is relatively rapid, and relies on starting from a stationary point to begin each trajectory. If any other point is used, the trajectory will not be even roughly simple harmonic. If, by mistake, the reaction coordinate is selected, then the potential energy will drop to that of either the reactants or products, which, incidentally, forms a handy criterion for selecting the spurious modes: if the potential energy only drops by a small amount, and the time evolution is roughly simple harmonic, then the mode is one of the spurious modes. If there is any doubt as to whether a minimum is in the vicinity of a stationary point, allow the trajectory to continue until one complete cycle is executed. At that point the geometry should be near to the initial geometry. </P>
+<P>Superficially, a line-search might appear more attractive than the relatively expensive DRC. However, a line-search in Cartesian space will normally not locate the minimum in a mode. An obvious example is the mode corresponding to a methyl rotation. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html9943"><A HREF="node628.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9939"></A><A HREF="node626.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9933"></A><A HREF="node626.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9941"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9942"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9944"><A HREF="node628.html">Keyword Sequences to be</A></A> <B>Up:</B> <A NAME="tex2html9940"><A HREF="node626.html">Use of SADDLE</A></A> <B>Previous:</B> <A NAME="tex2html9934"><A HREF="node626.html">Use of SADDLE</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

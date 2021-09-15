@@ -1,0 +1,531 @@
+\section{Point Group Theory}
+\index{Groups|(} \index{Point-group!theory} \index{Symmetry!in group theory}
+This Section is based on the original work of Peter Bischof in the UMNDO
+program, and made available to me by Dr David Danovich.
+
+Some point-group theory has been added to MOPAC.  The main functionalities
+added are: \index{AUTOSYM}\index{Bischof@{\bf Bischof, Peter}}
+\index{UMNDO}\index{Danovich@{\bf Danovich, David}}
+
+\begin{itemize}
+\item `Normal' symmetry relationships are now automatically recognized if
+\comp{AUTOSYM} is specified.
+
+\item The symmetry of the system is printed both at the start of the run and at
+the end.  If the point-group changes, the change will be shown in the different
+point-group symbols.
+
+\item Molecular orbitals will be characterized by Irreducible Representation 
+(I.R.). 
+
+\item Normal coordinates generated in the vibrational calculation will be
+characterized by I.R.
+
+\item State functions will be characterized by I.R.
+
+\item All rotation groups up to order 8, except D$_{8d}$, are available.
+
+\item The cubic groups T, T$_h$, T$_d$, O, O$_h$, I, and I$_h$ are available.
+
+\item The infinite groups C$_{\infty v}$, D$_{\infty h}$ and R$_3$ are
+available.
+
+\item In \comp{FORCE} or vibrational frequency calculations, symmetry will be
+used to accelerate the calculation, thus a calculation of benzene would involve
+two atoms, a C and a H atom, to be calculated, rather than the normal 12 atoms.
+
+\item In vibrational frequency calculations, the Hessian or force matrix
+will be symmetrized.  \index{sym\_force} \label{sym_force}
+$$
+F_{ij}=\frac{1}{h}\sum_hR(h)^TF_{ij}'R(h)
+$$
+
+This eliminates the normal small deviations from exact symmetry
+\begin{htmlonly}
+(\htmlref{a qualification appears
+elsewhere}{fc})
+\end{htmlonly}
+\begin{latexonly}
+(see also p.~\pageref{fc}
+for a qualification)
+\end{latexonly}.
+
+\end{itemize}
+
+
+\subsection*{Limitations}
+\begin{itemize}
+\index{Point Group D$_{8d}$ missing}\index{D$_{8d}$ missing}
+\item Group D$_{8d}$ is missing.  This group is characterized by the presence
+of a 16-fold S$_n$ axis.  Only S$_n$ operations up to S$_{12}$  are  checked
+for.  As a  result, D$_{8d}$ would not be recognized.  However, this is a rare
+point-group, and its loss should not be important.
+
+\item Some systems which are insufficiently near to a given point group will be
+assigned to the nearest sub-group.  For example, if SF$_6$ is distorted so that
+two opposite F atoms are at a different distance to the other four, the system
+might be classified as O$_h$ or D$_{4h}$, depending on the degree of
+distortion.  This shows up mainly in methyl groups, e.g.\ neopentane, in which
+optimization normally stops before the angles of the hydrogens are fully
+optimized.
+\end{itemize}
+
+
+\subsection{Representation of Point Groups}
+The 57 groups recognized in MOPAC are given in Table~\ref{pgs}.
+\begin{table}
+\caption{\label{pgs} Point Groups available within Symmetry Code}
+\begin{center}
+\begin{tabular}{lllllllll} \hline
+ C$_1$&C$_{s} $ & C$_{i }$   &       &      &      &     &  O             \\
+ C$_2$&C$_{2v}$ & C$_{2h}$   & D$_2$ & D$_{2d}$  & D$_{2h}$  &     &  T   \\
+ C$_3$&C$_{3v}$ & C$_{3h}$   & D$_3$ & D$_{3d}$  & D$_{3h}$  &     &  T$_d$   \\
+ C$_4$&C$_{4v}$ & C$_{4h}$   & D$_4$ & D$_{4d}$  & D$_{4h}$  & S$_4$  &  T$_h$   \\
+ C$_5$&C$_{5v}$ & C$_{5h}$   & D$_5$ & D$_{5d}$  & D$_{5h}$  &     &  O$_h$   \\
+ C$_6$&C$_{6v}$ & C$_{6h}$   & D$_6$ & D$_{6d}$  & D$_{6h}$  & S$_6$  &  I & I$_h$   \\
+ C$_7$&C$_{7v}$ & C$_{7h}$   & D$_7$ & D$_{7d}$  & D$_{7h}$  &  &   C$_{\infty v}$  
+& D$_{\infty h}$ \\
+ C$_8$&C$_{8v}$ & C$_{8h}$   & D$_8$ &      & D$_{8h}$ & S$_8$  &   R$_3$   \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Each point group is represented by a subset of the associated point-group
+table. For example, the group D$_{2h}$ is represented by the subset shown in
+Table~\ref{d2h}. The operations selected for the subgroup are the identity, E,
+and that minimum set of operations which is sufficient to allow all the
+operations to be generated as products of these operations.  Thus, for the
+highest finite point group, I$_h$, the generating operations are: E, I, C$_3$,
+and C$_5$.  Although it is not obvious, all 120 operations of the group can be
+generated as products of these four operations.
+
+\begin{table} 
+\caption{\label{d2h}Subset of Group D$_{2h}$}
+\begin{center}
+\begin{tabular}{lrrrr} \\ \hline
+  $\Gamma$ &  E  &  C$_{2y}$ & C$_{2z}$& I \\ \hline
+A$_g$   \\
+B$_{1g}$ &1 &  1  &-1  &  1  \\
+B$_{2g}$ &1 & -1  & 1  &  1  \\
+B$_{3g}$ &1 & -1  &-1  &  1  \\
+A$_{u} $ &1 &  1  & 1  & -1  \\
+B$_{1u}$ &1 &  1  &-1  & -1  \\
+B$_{2u}$ &1 & -1  & 1  & -1  \\
+B$_{3u}$ &1 & -1  &-1  & -1  \\ \hline
+\end{tabular}\end{center}
+\end{table}
+
+Each point-group is assumed to contain the totally symmetric representation,
+here \index{Euler matrices} A$_{1g}$.  Operations are represented as $3\times3$
+Euler matrices, thus C$_{2x}$, C$_{2y}$  and C$_{2z}$  would be represented as
+in Figure~\ref{c2op} \ All operations not given can be generated as products of
+operations already known, thus C$_{2x}$ = C$_{2y}$ $\times$ C$_{2z}$.
+
+% 9 lines, including this line
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}\hfil
+C$_{2x}$: \begin{tabular}{|rrr|}1&0&0\\0&-1&0\\0&0&-1\end{tabular}\hfil
+C$_{2y}$: \begin{tabular}{|rrr|}-1&0&0\\0&1&0\\0&0&-1\end{tabular}\hfil
+C$_{2z}$: \begin{tabular}{|rrr|}-1&0&0\\0&-1&0\\0&0&1\end{tabular}\hfil
+\end{center}
+\caption{\label{c2op} Representation of Symmetry Operations}
+\end{figure}
+
+In order to minimize storage, the characters in  character tables are stored
+separately from the point groups.  This allows, e.g., C$_{2v}$, C$_{2h}$, and
+D$_{2}$ to use the same character table. 
+
+\subsection{Identification of Point-Groups}
+\index{Infinite groups}
+\subsubsection*{Infinite Groups}
+In order to identify the molecular point-group the system must be oriented in a
+specific way.  Four families of point-groups are checked for: (1) the infinite
+groups, (2) the cubic groups, (3)  groups with one high-symmetry axis, and (4)
+the Abelian groups. Each family is treated differently.  First, the moments of
+inertia are calculated.  If all are zero, the system is a single atom, and the
+associated group is R$_3$.  If two moments are zero, the system is  either
+C$_{\infty v}$ or D$_{\infty h}$; the presence of a horizontal plane of
+symmetry distinguishes between them.
+
+\index{Cubic Groups}
+\subsubsection*{Cubic Groups}
+Having eliminated the infinite groups, the three moments of inertia are checked
+to see if they are all the same.  If they are, then the system is cubic.  Cubic
+systems are oriented by identifying atoms of the set nearest to the center of
+symmetry.  If there are 4, 6, 8, 12, or 20 of these, and the number of
+equidistant nearest neighbors  is 3, 4, 3, 5, or 3, respectively, then the
+atoms are 
+%probably 
+at the vertices of one of the Platonic solids (tetrahedron, octahedron, cube,
+icosahedron, dodecahedron),
+%Platonic solids (tetrahedron, octahedron, cube, icosahedron, dodecahedron).
+%There are a few cases in which these two conditions are true, but the
+%solid is nevertheless not platonic.
+%To exclude thses rare case, use is made of the ratio of the edge distance 
+%to the (vertex to center) distance.  This ratio is unique for each of the 
+%platonic solids, if the
+%computed value is correct the solid is unambiguously platonic,
+and therefore all atoms of the set lie on high-symmetry axes.  The first  atom
+is selected and used to define the $z$ axis.
+
+\index{Platonic solids} \index{Buckminsterfullerene} If the number of atoms in
+the set does not correspond to any of the Platonic solids, then the set is
+checked for the existence of a equilateral triangle, a square, or a regular
+pentagon.  When one of these is found, the center of the polygon is used to
+define the $z$ axis.  An example of this type of system is C$_{60}$,
+Buckminsterfullerene, which has a five-fold axis going through the center of a
+pentagonal face.
+
+Once the $z$ axis is identified, the system is checked for C$_n$ axes, $n$=3 to
+$n$=8.  To complete the orientation, the system is rotated about the $z$ axis
+so that two atoms, having equal $z$ coordinates, have equal $y$ coordinates.
+The existence of rotation axes which are not coincidental with the $z$ axis and
+the presence or absence of a center of inversion are then used to identify
+which cubic group the system belongs to.
+
+\index{Degenerate groups}
+\subsubsection*{Other Degenerate Groups}
+If the system has still not been identified, then the two equal moments of
+inertia indicate a degenerate point group.  As with the cubic groups, the $y$ and
+$z$ axes (and, by implication, the $x$ axis) are identified. The system is
+oriented, and the C$_n$ and S$_n$ axes identified.
+
+The degenerate groups, C$_n$, C$_{nv}$, C$_{nh}$, D$_n$, D$_{nd}$, D$_{nh}$, 
+S$_n$, are distinguished by the existence or absence of C$_2$ axes
+perpendicular to the $z$ axis, and by planes of symmetry.
+
+\index{Abelian groups}\index{Orientation!for symmetry}
+\index{Symmetry!orientation of molecules}
+
+\subsubsection*{Abelian Groups}
+All that remains are the Abelian groups, C$_1$, C$_2$, C$_i$, C$_s$,  C$_{2v}$,
+C$_{2h}$, D$_2$,  and D$_{2h}$.  After orienting the molecule, the axes are
+swapped around so that the normal convention for orienting Abelian systems is
+obeyed.  For groups C$_1$, C$_2$, C$_i$, and C$_s$, there is no possibility for
+ambiguity.  For C$_{2v}$ and D$_2$, however, the orientation of the system
+affects the labels of the irreducible representations.  To prevent ambiguity,
+the convention for orienting Abelian molecules is:
+\begin{itemize}
+\item The axis with the largest number of atoms is the $z$  axis.
+\item The plane with the largest number of atoms that includes the $z$ axis is 
+the $yz$  plane.
+\end{itemize}
+Thus for ethylene, the $\pi$ orbitals point along the $x$  axis.
+
+\subsubsection*{Tolerance}
+Normally, molecular geometries do not exactly correspond to the idealized
+point-group.  Thus benzene might have slightly different bond-lengths and
+angles.  Of course, symmetry could be used to prevent this, but in the
+discussion here we assume that the symmetry of the system is unknown.  To allow
+for these slight distortions, a small tolerance is built in to the tests for
+symmetry elements. This starts off at 0.1\AA\ , but may be tightened
+automatically if ambiguities are detected.  An example of such an ambiguity is
+found in tropylium, C$_7$H$_7^+$ ion, where the C-C distance is 1.4 \AA .
+Rotating the ring by 45 degrees (a C$_8$ operation) would place the atoms at a
+distance of only 0.18\AA\  from equivalent positions.  C$_7$ and C$_8$ would
+thus  give almost identical results.  To resolve such ambiguities, when they
+arise, the tolerance is reduced, and the test re-run.
+
+Even with this feature, some systems still resist classification.   A distorted
+geometry might have some, but not all, elements of a high point group.  Perhaps
+a distorted benzene has a C$_2$(z) and a C$_3$(z), but  not a C$_6$(z), 
+impossible in a real system.  As such it would appear to be different from all
+real point groups.  To accommodate such defects a descent in symmetry is
+carried out.  This consists of checking each point-group in turn, in order of
+decreasing symmetry.  Once all of the elements of a point group are satisfied,
+the system is assigned to that point group, even if the system contains more
+symmetry than the point group.
+
+By these two devices, a variable tolerance and the descent in symmetry, most
+systems should be identified correctly, or at least as a sub-group of the full
+point group.
+
+\subsection{Orientation of the Abelian groups C$_{2v}$ and D$_{2h}$}
+Unlike all other groups, two of the Abelian groups, C$_{2v}$ and  D$_{2h}$,
+present novel problems in assigning the irreducible representations.  For most
+groups, the symmetry axis is obvious, or of there are several axes, the
+principal axis is obvious.  For C$_{2v}$ and D$_{2h}$ an ambiguity exists. 
+Consider, for example, ethylene, a system of point-group D$_{2h}$.  Should the
+$z$ axis be perpendicular to the plane of the molecule---that is the unique
+direction, or should it go through the two carbon atoms---that is also a unique
+direction, but for a different reason, or should it be the third orthogonal
+direction---which is also unique.  The choice of $z$ axis is important in order
+to correctly assign the B$_{1g}$ and B$_{1u}$ of point-group D$_{2h}$.  For
+both C$_{2v}$ and D$_{2h}$ the $x$ and $y$ axes must also be unambiguously
+defined in order to distinguish  between B$_{2g}$ and B$_{3g}$ and between
+B$_{2u}$ and B$_{3u}$ of  D$_{2h}$, and between B$_{1}$ and B$_{2}$ of
+C$_{2v}$. Clearly a convention has to be decided upon, otherwise one persons
+B$_{1g}$ might be a second persons B$_{2g}$ and a third persons B$_{3g}$.
+
+The convention used in MOPAC is the following:
+
+If there are three C$_2$ axes, the one with the largest number of atoms unmoved
+by a C$_2$ operation is $z$.  If there is only one C$_2$ axis, that is $z$.
+
+Once $z$ is defined, the $y$ axis is defined as the axis of the remaining two
+axes which has the larger number of atoms unmoved by  the $\sigma$ symmetry
+operations.  
+
+The $x$ axis is the remaining axis.
+
+To see how this works, consider ethylene, with the C--C axis being along the
+$x$ direction, and the plane of the system being $xy$. Under the eight
+operations of D$_{2h}$, E, C$_{2z}$, C$_{2y}$, C$_{2x}$, $\sigma_{xy}$,
+$\sigma_{xz}$, $\sigma _{yz}$, and $i$, the number of atoms unmoved are 6, 0,
+0, 2, 6, 2, 0, and 0 respectively.
+
+From this it follows that the old $x$ axis is now re-defined as the $z$ axis. 
+The new $y$ axis has to be chosen based on the number of atoms unmoved under
+the $\sigma_{xy}$ and $\sigma_{xz}$ operations (6 and 2). The new $y$ axis is
+defined as being the old $y$ axis.  The remaining new axis $x$ therefore is the
+old $z$ axis.
+
+The overall result is that the symmetry axes in ethylene are defined as: $z$ -
+along the C--C bond; $y$ - in the molecular plane, perpendicular to the C--C
+bond, and $x$ - out-of-plane.
+
+In MOPAC the orientation of the molecule is defined by the user, therefore the
+assignment of the symmetry axes might be confusing.  If the irreducible
+representations of ethylene are assigned, and the atoms are defined  using
+internal coordinates in the order C, C, H, H, H, H, then the $p$ orbitals will
+reflect the orientation used in the previous discussion, but the
+representations will be correct according to the conventions just defined.
+
+\subsection{Molecular Orbitals}
+Each M.O.\ is subjected to the operation
+$$
+\psi' = |R|\psi>
+$$
+from which the expectation value
+$$
+\chi=<\psi'|\psi>
+$$
+can readily be calculated.
+
+\index{Degenerate M.O.s}
+All $\chi$'s within a given degenerate manifold are summed:
+$$
+\chi_i = \sum_j\chi_j^{(i)}
+$$
+where $j$ runs over all components of the degenerate manifold $i$.
+
+This results in a set of characters which can be compared to those stored in
+the character tables.  
+
+Since molecular orbitals involve single electrons, the irreducible
+representations \index{Irreducible representations} are rendered into lower
+case before printing. 
+
+\subsection{Normal Coordinates}
+\index{States!vibration} \index{Normal coordinates}\index{Coordinates!normal}
+Analysis of normal coordinates is a little simpler than that of molecular
+orbitals in that every atom contributes precisely three components to each
+normal coordinate, an $x$, $y$, and $z$ component.  These transform in the same
+way as the p$_x$, p$_y$, and p$_z$ atomic orbitals.
+
+Because normal coordinates are states, the first letter of the irreducible
+representation is capitalized.
+
+\subsection{States}
+\index{States!electronic}\index{States!symmetry of}
+Calculating the characters for electronic states is much more complicated than
+that for M.O.s or normal coordinates.  
+
+Consider the effect of an operation, $R$, on a state, $\Phi_a$.  The 
+character of the operation is given by
+$$
+\chi_{R,a} = <\Phi_a|R|\Phi_a>.
+$$
+A state function can be expressed as a linear combination of microstates:
+$$
+\Phi_a = \sum_jC_{ja}\Psi_j,
+$$
+so the character of the operation on the state function can be written in 
+terms of microstates as
+$$
+\chi_{R,a} =\sum_i\sum_jC_{ia}C_{ja}<\Psi_i|R|\Psi_j>.
+$$
+Each microstate, $\Psi_j$, can be represented by a \mi{Slater determinant}
+of $N$ molecular orbitals
+:
+$$
+\Psi_j = \frac{1}{\sqrt{N!}}\sum_{P=1}^{N!}(-1)^PP(\prod_{k=1}^N\psi_k^j)
+$$
+\index{Microstates} where the molecular orbitals in the microstate consist of a
+selection of the M.O.s in the  active space\index{Active space!in C.I.}. 
+Before we continue, let us examine this idea:
+
+Consider a full set of M.O.s:
+$$
+\psi_1\psi_2\psi_3\psi_4 \psi_5 \psi_6 \psi_7 \psi_8 \psi_9 
+\psi_{10}\psi_{11}\psi_{12}\psi_{13}\psi_{14}\psi_{15}\psi_{16}.
+$$
+Let the active space be the M.O.s  from 8 to 11.  Then microstates containing
+two electrons would be:
+\begin{center}
+\hfil
+$\psi_8\psi_9$
+\hfil
+$\psi_8\psi_{10}$
+\hfil
+$\psi_8\psi_{11}$
+\hfil
+$\psi_9\psi_{10}$
+\hfil
+$\psi_9\psi_{11}$
+\hfil
+$\psi_{10}\psi_{11}$.
+\hfil
+\end{center}
+These microstates could be represented by M.O.\ orbital occupancies.
+\begin{center}
+\hfil
+1100
+\hfil
+1010
+\hfil
+1001
+\hfil
+0110
+\hfil
+0101
+\hfil
+0011.
+\hfil
+\end{center}
+Remember that the M.O.s here can be of either $\alpha$ or $\beta$ spin.
+
+To continue, we need to evaluate $<\Psi_i|R|\Psi_j>$.  This can be expressed
+in terms of M.O.s as:
+$$
+<\Psi_i|R|\Psi_j> = \frac{1}{N!}\sum_{P=1}^{N!}(-1)^PP(<\prod_{k=1}^N\psi_k^i)|
+R|
+\sum_{Q=1}^{N!}(-1)^QQ(\prod_{l=1}^N\psi_l^j)>.
+$$
+
+For convenience, we will represent the integral $<\psi_k^i|R|\psi_l^j>$ by 
+$\chi_{kl}^{ij}$.  This integral can be described as ``The integral over M.O.\
+$\psi_k$ in microstate $\Psi_i$ with the result of operator $R$ acting
+on M.O.\ $\psi_l$ in microstate $\Psi_j$.''
+
+Using this abbreviation, $<\Psi_i|R|\Psi_j>$ can be written as:
+$$
+<\Psi_i|R|\Psi_j> =\frac{1}{N!}\sum_{P=1}^{N!} \sum_{Q=1}^{N!}(-1)^P(-1)^Q
+P\prod_{k=1}^{N!}Q\prod_{l=1}^{N!}\chi_{kl}^{ij}.
+$$
+Although it is not immediately obvious, the right-hand term is a determinant,
+of order $N$:
+$$
+<\Psi_i|R|\Psi_j> =\left|
+\begin{array}{cccc}
+\chi_{11}^{ij} & \chi_{21}^{ij} & \chi_{31}^{ij} & \ldots \\
+\chi_{12}^{ij} & \chi_{22}^{ij} & \chi_{32}^{ij} & \ldots \\
+\chi_{13}^{ij} & \chi_{23}^{ij} & \chi_{33}^{ij} & \ldots \\
+ \ldots           &  \ldots           &   \ldots          & \ldots 
+\end{array}
+\right|.
+$$
+
+For our purposes, solution of the determinant is best done explicitly. To see
+why, note that the number of M.O.s involved in the C.I.\ (the active space) is
+very small.  Because of this, the number of electrons, $N$, in the Slater
+determinants is also small; $N$ has a maximum value of  20.  Next, use can be
+made of the fact that no point-group operation can mix $\alpha$ and $\beta$
+electrons.  This allows the integral to be split into two parts, each of which
+has a maximum value  of $N$=10. Finally, remember that $N$ is the number of
+electrons, not M.O.s, used in the active space.  A system of $N$ electrons has
+the same symmetry as a system in which all the M.O.s which were occupied were
+replaced with all the M.O.s which were not occupied (the positron
+equivalent)\index{Positron equivalent}. (This assumes that if every M.O.\ were
+occupied, then the state of the system would be totally symmetric.)   Using
+this fact, we can replace the $N$ occupied M.O.s with $N'$ unoccupied M.O.s, if
+$N' < N$.
+
+When these three points are considered, we see that $N$ has a maximum value  of
+5 (for a system of 10 M.O.s).  Each case can be considered separately.
+\begin{description}
+\item{For $N$ = 1:}
+$$
+<\Psi_i|R|\Psi_i> = \frac{1}{1}\sum_{P=1}^{1} \sum_{Q=1}^{1}(-1)^P(-1)^Q
+P\prod_{k=1}^{1}Q\prod_{l=1}^{1}\chi_{kl}^{ii}
+$$
+or
+$$
+<\Psi_i|R|\Psi_i> = <\psi_1^i|R|\psi_1^i> = \chi_{11}^{ii}.
+$$
+\item{For $N$=2:}
+$$
+<\Psi_i|R|\Psi_j> = \frac{1}{2!}\sum_{P=1}^{2!} \sum_{Q=1}^{2!}(-1)^P(-1)^Q
+P\prod_{k=1}^{2}Q\prod_{l=1}^{2}\chi_{kl}^{ij}
+$$
+or 
+$$
+<\Psi_i|R|\Psi_j> = <\psi_1^i|R|\psi_1^j>-<\psi_2^i|R|\psi_2^j>
+<\psi_1^i|R|\psi_2^j><\psi_1^i|R|\psi_2^j>
+$$
+or
+$$
+<\Psi_a|R|\Psi_a> = \chi_{11}^{ij}\chi_{22}^{ij}-\chi_{12}^{ij}\chi_{21}^{ij}.
+$$        
+\item{For $N$=3:}
+$$
+<\Psi_i|R|\Psi_j> = \frac{1}{3!}\sum_{P=1}^{3!} \sum_{Q=1}^{3!}(-1)^P(-1)^Q
+$$
+\begin{eqnarray}
+<\Psi_i|R|\Psi_j>& = &\ <\psi_1^i|R|\psi_1^j><\psi_2^i|R|\psi_2^j><\psi_3^i|R|\psi_3^j> \nonumber   \\
+&&-<\psi_1^i|R|\psi_1^j><\psi_2^i|R|\psi_3^j><\psi_3^i|R|\psi_2^j> \nonumber  \\
+&&-<\psi_1^i|R|\psi_2^j><\psi_2^i|R|\psi_1^j><\psi_3^i|R|\psi_3^j> \nonumber  \\
+&&+<\psi_1^i|R|\psi_2^j><\psi_2^i|R|\psi_3^j><\psi_3^i|R|\psi_1^j> \nonumber  \\
+&&+<\psi_1^i|R|\psi_3^j><\psi_2^i|R|\psi_1^j><\psi_3^i|R|\psi_2^j> \nonumber  \\
+&&-<\psi_1^i|R|\psi_3^j><\psi_2^i|R|\psi_2^j><\psi_3^i|R|\psi_1^j>  \nonumber
+\end{eqnarray}
+or
+\begin{eqnarray}
+<\Psi_i|R|\Psi_j>&=&\chi_{11}^{ij}\chi_{22}^{ij}\chi_{33}^{ij}+
+                            \chi_{12}^{ij}\chi_{23}^{ij}\chi_{31}^{ij}+
+                            \chi_{13}^{ij}\chi_{21}^{ij}\chi_{32}^{ij} \nonumber \\
+&&-\chi_{11}^{ij}\chi_{23}^{ij}\chi_{32}^{ij}
+-\chi_{12}^{ij}\chi_{21}^{ij}\chi_{33}^{ij}
+-\chi_{13}^{ij}\chi_{22}^{ij}\chi_{31}^{ij}). \nonumber
+\end{eqnarray}
+\end{description}
+
+For higher numbers of electrons, the associated determinant is solved using
+standard methods. 
+
+The total character, $<\Psi_a|R|\Psi_a>$, is obtained by multiplying the
+characters for the $\alpha$ and $\beta$ parts together:
+$$
+<\Psi_a|R|\Psi_a> = <\Psi_a^{\alpha}|R|\Psi_a^{\alpha}>
+<\Psi_a^{\beta}|R|\Psi_a^{\beta}>.
+$$
+If the positron equivalent is taken for only one set of electrons, e.g.\ either
+the $\alpha$ or the $\beta$ set, but not both, then the  character has  to be
+multiplied by the determinant of the M.O.\ transform.
+
+These expressions can then be used in 
+$$
+\chi_{R,a} =\sum_i\sum_jC_{ia}C_{ja}<\Psi_i|R|\Psi_j>.
+$$
+to give the expectation value for the state. Finally, if the state is
+degenerate, the character is given by summing the components of the state.
+
+For the atom, the \mi{Russell-Saunders} coupling scheme can be reproduced. 
+States allowed are $S$, $P$, $D$, $F$, $G$, $H$, $I$, $K$, $L$, and $M$. This
+set is more than sufficient to allow all possible Russell-Saunders states
+spanned by a basis set of $s$, $p$, and $d$ orbitals to be represented. The
+highest angular momentum achievable with such a basis set is 8, i.e. $L$. For
+simpler atoms (ones with only a $s-p$ basis set) the allowed states are
+$p^0,p^6$: $^1S_g$,  $p^1,p^5$: $^2P_u$, $p^2,p^4$: $^1S_g + ^3\!\!P_g +
+^1\!\!D_g$,  $p^3$: $^4\!S_u +^2\!\!P_u + ^2\!\!D_u$.
+
+For the axial infinite groups, allowed states are: $\Sigma$, $\Pi$, $\Delta$,
+$\Phi$, and $\Gamma$.  Even quite simple systems can achieve quite high angular
+momentum, \index{Angular momentum} thus acetylene, with a \comp{C.I.=4}  (the
+HOMO $\pi$ and LUMO $\pi^*$) will contain a $^1\Gamma_g$ state,  i.e., the
+angular momentum will be 4.
+
+At present J-J coupling is not supported.
+\index{Groups|)}

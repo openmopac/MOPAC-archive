@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Hessian matrix in FORCE calculations</TITLE>
+<META NAME="description" CONTENT=" Hessian matrix in FORCE calculations">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node582.html"><LINK REL="up" HREF="node581.html"><LINK REL="next" HREF="node584.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node584.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node581.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node582.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node584.html">Normal Coordinate Calculation</A> <B>Up:</B> <A HREF="node581.html">Gradients</A> <B>Previous:</B> <A HREF="node582.html">Frozen density matrix</A>
+<!--End of Navigation Panel-->
+<H2>Hessian matrix in <TT><a href="node182.html">FORCE</a></TT> calculations </H2>
+<P>The Hessian matrix is the matrix of second derivatives of the energy with respect to geometry. The most important Hessian is that used in the <TT>FORCE</TT> calculation. Normal modes are expressed as Cartesian displacements, consequently the Hessian is based on Cartesian rather than internal coordinates. </P>
+<P>Although first derivatives are relatively easy to calculate, second derivatives are not. The simplest, although not an elegant, way to calculate&nbsp;[<A HREF="node715.html#pulayf">73</A>] second derivatives is to calculate first derivatives for a given geometry, then perturb the geometry, do an SCF calculation on the new geometry, and re-calculate the derivatives. The second derivatives can then be calculated from the difference of the two first derivatives divided by the step size. This method, which is used in the EigenFollowing routine, is called `single-sided' derivatives. </P>
+<P>The Hessian is quite sensitive to geometry, and should only be evaluated at stationary points. Because of this sensitivity, "double-sided" derivatives <A NAME="BM20773">&nbsp;</A> are used: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+H_{i,j} = \frac{g_i^{+\delta_j}-g_i^{-\delta_j}}{2\delta}.
+\end{displaymath} --><IMG SRC="img1499.gif" WIDTH=120 HEIGHT=48 ALT="begin{displaymath}H_{i,j} = frac{g_i^{+delta_j}-g_i^{-delta_j}}{2delta}.end{displaymath}"></DIV>
+<P>Note the asymmetry in the treatment of the Cartesian coordinates <I>i</I> and <I>j</I>. It can be shown that </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\frac{g_j^{+\delta_i}-g_j^{-\delta_i}}{2\delta} = \frac{g_i^{+\delta_j}-g_i^{-\delta_j}}{2\delta}.
+\end{displaymath} --><IMG SRC="img1500.gif" WIDTH=168 HEIGHT=49 ALT="begin{displaymath}frac{g_j^{+delta_i}-g_j^{-delta_i}}{2delta} = frac{g_i^{+delta_j}-g_i^{-delta_j}}{2delta}.end{displaymath}"></DIV>
+<P>To help improve precision, the Hessian is calculated from </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+H_{i,j} = \frac{1}{2}\left ( \frac{g_j^{+\delta_i}-g_j^{-\delta_i}}{2\delta} + \frac{g_i^{+\delta_j}-g_i^{-\delta_j}}{2\delta} \right ).
+\end{displaymath} --><IMG SRC="img1501.gif" WIDTH=249 HEIGHT=63 ALT="begin{displaymath}H_{i,j} = frac{1}{2}left ( frac{g_j^{+delta_i}-g_j^{-del......a} + frac{g_i^{+delta_j}-g_i^{-delta_j}}{2delta} right ).end{displaymath}"></DIV>
+<P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html9374"><A HREF="node584.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9370"></A><A HREF="node581.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9366"></A><A HREF="node582.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9372"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9373"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9375"><A HREF="node584.html">Normal Coordinate Calculation</A></A> <B>Up:</B> <A NAME="tex2html9371"><A HREF="node581.html">Gradients</A></A> <B>Previous:</B> <A NAME="tex2html9367"><A HREF="node582.html">Frozen density matrix</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

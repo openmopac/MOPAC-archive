@@ -1,0 +1,218 @@
+\subsection{Atom Transition Moments}\index{Transition!dipole moments}\index{Polarizability!atomic transition}
+\index{Dipole!transition}\index{Exponents!transition dipole}
+\index{Polarizability}\label{oscil}
+\index{Oscillator}
+A system can go from the ground state to an excited  state as the result of the
+absorption of a photon.  The probability of this happening, $\kappa$, is
+given\footnote{\samepage Wilson Decius and Cross,  ``Molecular Vibrations'', p
+163, McGraw-Hill (1955)} in terms of the  oscillator integral:
+\begin{eqnarray}
+<\!\Psi_{0}|\stackrel{\rightharpoonup}{r}|\Psi_{*}\!> \label{os1},
+\end{eqnarray}
+by
+$$
+\kappa = \frac{8\pi^3}{3ch}\nu_{n'n''}(N_{n'}-N_{n''})
+<\!\Psi_{0}|\stackrel{\rightharpoonup}{r}|\Psi_{*}\!>^2 .
+$$
+For electronic photoexcitations, $\Psi_A$ are state functions:
+$$
+\Psi_A = \sum_ic_i\Psi_i,
+$$
+and the $\Psi_i$ are microstates; see p.~\pageref{sd} for a
+definition of microstates.
+\subsubsection*{Some Mathematical tools}
+In order to evaluate \ref{os1}, a property of integrals of the type:
+$$
+<\!\psi_{i}|\stackrel{\rightharpoonup}{r}|\psi_{j}\!>
+$$
+will be used several times.  This property is:
+$$
+<\!\psi_{i}|\stackrel{\rightharpoonup}{r}|\psi_{i}\!> = 0.
+$$
+From this, it follows that, if
+$$
+<\!\psi_{j}|\stackrel{\rightharpoonup}{r}|\psi_{i}\!> \neq 0,
+$$
+then
+$$
+<\!\psi_{i}|\stackrel{\rightharpoonup}{r}|\psi_{j}\!> =
+-<\!\psi_{j}|\stackrel{\rightharpoonup}{r}|\psi_{i}\!> .
+$$
+To prove this relationship, consider the integral
+$$
+<\!(\psi_i+\psi_j)|\stackrel{\rightharpoonup}{r}|(\psi_i+\psi_j)\!>.
+$$
+Obviously, this integral has a value of zero, therefore
+$$
+<\!\psi_i|\stackrel{\rightharpoonup}{r}|\psi_i\!>  +
+<\!\psi_j|\stackrel{\rightharpoonup}{r}|\psi_i\!>  +
+<\!\psi_i|\stackrel{\rightharpoonup}{r}|\psi_j\!>  +
+<\!\psi_j|\stackrel{\rightharpoonup}{r}|\psi_j\!>  =0.
+$$
+In this expression, the first and fourth terms are obviously zero, therefore
+$$
+<\!\psi_j|\stackrel{\rightharpoonup}{r}|\psi_i\!>  =
+-<\!\psi_i|\stackrel{\rightharpoonup}{r}|\psi_j\!> .
+$$
+
+\subsubsection{Evaluation of Transition Dipole}
+
+\begin{table}
+\caption{\label{transx} ``$x$" Transition Integrals}
+\begin{center}
+\begin{tabular}{l|ccccccccc} \hline
+& $s$  &  $p_x$  &  $p_y$  &  $p_z$  &  $d_{x^2-y^2}$  & $d_{xz}$  &
+$d_{z^2}$  &  $d_{yz}$  &  $d_{xy}$ \\ \hline
+$s$ & X$_A$\\
+$p_x$ & sp & X$_A$\\
+$p_y$  & 0 & 0 & X$_A$ \\
+$p_z$  & 0 & 0 & 0 & X$_A$\\
+$d_{x^2-y^2}$ & 0 & pd & 0 & 0 & X$_A$\\
+$d_{xz}$      & 0 & 0 & 0 & pd & 0 & X$_A$\\
+$d_{z^2}$     & 0 & -$\frac{1}{\sqrt{3}}$pd & 0 & 0 & 0 & 0 & X$_A$\\
+$d_{yz}$      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & X$_A$\\
+$d_{xy}$      & 0 & 0 & pd & 0 & 0 & 0 & 0 & 0 & X$_A$\\  \hline
+
+
+\end{tabular}\\
+\hspace{-0.3in}Note: X$_A$ = $<\! \phi_{\lambda}|\stackrel{\rightharpoonup}{x}|\phi_{\lambda}\! >$;
+sp = $<\! ns|\stackrel{\rightharpoonup}{r}|np\! >$; pd = $<\! np|\stackrel{\rightharpoonup}{r}|nd\! >$ (see below).
+\end{center}
+\end{table}
+
+The probability, $B_{0\rightarrow *}$, that a photon will be absorbed by a system that has a
+ground state $\Psi_0$ and an excited state $\Psi_*$ separated by an energy $\epsilon$ when
+irradiated by an energy density $\rho_{\epsilon}$
+is given by
+$$
+B_{0\rightarrow *} = \frac{2\pi}{3\hbar^2}|R_{0*}|^2\rho_{\epsilon},
+$$
+in which
+$$
+|R_{0*}|^2 = |X_{0*}|^2 + |Y_{0*}|^2 + |Z_{0*}|^2.
+$$
+
+$X_{0*}$ is the matrix element for the $x$ component of the dipole moment:
+$$
+X_{0*} = \int \Psi_0|e\sum_j \stackrel{\rightharpoonup}{x_j} |\Psi_* d\tau.
+$$
+
+Evaluation of this integral requires evaluating the effect of the operators  $\stackrel{\rightharpoonup}{x_j}$,
+$\stackrel{\rightharpoonup}{y_j}$, and $\stackrel{\rightharpoonup}{z_j}$
+acting on an atomic orbital.  Tables \ref{transx}, \ref{transy}, and \ref{transz} show
+the integrals of the type $<\! \phi_{\lambda}
+ |\stackrel{\rightharpoonup}{r_j}|\phi_{\sigma}\!>$, where $\phi_{\lambda}$ and $\phi_{\sigma}$ are
+ pairs of atomic orbitals.
+
+
+The integral
+ $<\! \phi_{\lambda}|\stackrel{\rightharpoonup}{r}|\phi_{\lambda}\! >$ is simply the appropriate Cartesian coordinate,
+that is, the $x$, $y$, or $z$ coordinate of the atom that $\phi_{\lambda}$ is on.
+
+\begin{table}
+\caption{\label{transy} ``$y$" Transition Integrals}
+\begin{center}
+\begin{tabular}{l|ccccccccc} \hline
+& $s$  &  $p_x$  &  $p_y$  &  $p_z$  &  $d_{x^2-y^2}$  & $d_{xz}$  &
+$d_{z^2}$  &  $d_{yz}$  &  $d_{xy}$ \\ \hline
+$s$ & Y$_A$\\
+$p_x$ & 0 & Y$_A$\\
+$p_y$  & sp & 0 & Y$_A$ \\
+$p_z$  & 0 & 0 & 0 & Y$_A$\\
+$d_{x^2-y^2}$ & 0 & 0 & -pd & 0 & Y$_A$\\
+$d_{xz}$      & 0 & 0 & 0 & 0 & 0 & Y$_A$\\
+$d_{z^2}$     & 0 & 0 & -$\frac{1}{\sqrt{3}}$pd & 0 & 0 & 0 & Y$_A$\\
+$d_{yz}$      & 0 & 0 & 0 & pd & 0 & 0 & 0 & Y$_A$\\
+$d_{xy}$      & 0 & pd & 0 & 0 & 0 & 0 & 0 & 0 & Y$_A$\\  \hline
+
+
+\end{tabular}\\
+\end{center}
+\end{table}
+
+
+ $<\! ns|\stackrel{\rightharpoonup}{r}|np\! >$
+ and  $<\! np|\stackrel{\rightharpoonup}{r}|nd\! >$
+ can be evaluated using the following expressions:
+
+$$
+<\! ns|\stackrel{\rightharpoonup}{r}|np\! > = a_0\frac{(2n+1).2^{2n+1}.(\xi_s\xi_p)^{n+1/2}}{\sqrt{3}(\xi_s+\xi_p)^{2n+2}}
+$$
+
+$$
+<np|\stackrel{\rightharpoonup}{r}|nd>=a_0\frac{(n_p+n_d+1)!.2^{n_p+n_d+1}.\xi_p^{n_p+1/2}.\xi_d^{n_d+1/2}}
+{\sqrt{5}(\xi_p+\xi_d)^{n_p+n_d+2}.\sqrt{(2n_p)!(2n_d)!}},
+$$
+where $ns$, $np$, and $nd$ are $s$, $p$, and $d$ quantum numbers, respectively.
+For the $sp$ transition, $n=ns=np$.
+The Slater orbital exponents, $\xi_s$, $\xi_p$, and $\xi_d$, are usually
+given in atomic units, that is, in
+inverse Bohr, therefore they must converted to \AA ngstroms before use, hence the
+presence of the $a_0=0.529$ in these expressions.
+
+All integrals of the type used here are in \AA ngstroms, therefore the units of the integral
+of the dipole operator on a M.O. is also in \AA ngstroms:
+$$
+<\! \psi_i|\stackrel{\rightharpoonup}{r}|\psi_j\! > =\sum_{\lambda}\sum_{\sigma}c_{\lambda i}c_{\sigma j}
+<\! \phi_{\lambda}\stackrel{\rightharpoonup}{r}\phi_{\sigma} \!>,
+$$
+ Once the value of the integral is known,
+the phase to be used must be determined. The simplest way to achieve this
+is to reverse the sign of the oscillator whenever the second M.O.\ has a
+higher index than the first.
+
+\begin{table}
+\caption{\label{transz} ``$z$" Transition Integrals}
+\begin{center}
+
+\begin{tabular}{l|ccccccccc} \hline
+& $s$  &  $p_x$  &  $p_y$  &  $p_z$  &  $d_{x^2-y^2}$  & $d_{xz}$  &
+$d_{z^2}$  &  $d_{yz}$  &  $d_{xy}$ \\ \hline
+$s$ & Z$_A$\\
+$p_x$ & 0 & Z$_A$\\
+$p_y$  & 0 & 0 & Z$_A$ \\
+$p_z$  & sp & 0 & 0 & Z$_A$\\
+$d_{x^2-y^2}$ & 0 & 0 & 0 & 0 & Z$_A$\\
+$d_{xz}$      & 0 & pd & 0 & 0 & 0 & Z$_A$\\
+$d_{z^2}$     & 0 & 0 & 0 & $\frac{2}{\sqrt{3}}$pd & 0 & 0 & Z$_A$\\
+$d_{yz}$      & 0 & 0 & pd & 0 & 0 & 0 & 0 & Z$_A$\\
+$d_{xy}$      & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & Z$_A$\\  \hline
+\end{tabular}\\
+\end{center}
+\end{table}
+
+
+  Evaluation of the integrals over microstates is straightforward,
+in that all integrals are zero, unless the number of differences between the microstates is exactly two,
+in which case the integral is equal to that of the two M.O.s involved, times a phase factor.  That is,
+for each pair of microstates that are identical, except for $\psi_i$
+in $\Psi_a$ and  $\psi_j$ in $\Psi_b$, the integral is:.
+
+$$
+<\! \Psi_a|\stackrel{\rightharpoonup}{r}|\Psi_b\! > =<\! \psi_i|\stackrel{\rightharpoonup}{r}|\psi_j\! >*(-1)^n,
+$$
+where $n$ is the number of permutations necessary to move $\psi_i$ in microstate $\Psi_a$ to the position
+occupied by $\psi_j$ in microstate $\Psi_b$. This is
+similar to the `b' option on page~\pageref{b}.  As with
+the molecular orbitals, the oscillators for microstates change sign
+when the order of the microstates is reversed.  The simplest way to
+achieve this is to use the same device that was used with the M.O.s;
+that is, to reverse the sign of the oscillator whenever the second
+microstate has a higher index than the first.
+
+
+For completeness, the sign of $R_{0*}$ should be reversed if $k>l$, but
+since only the modulus is used, this operation does not need to be done.
+
+
+Finally, the state transition dipole can be calculated from:
+$$
+<\! \Psi_A|\stackrel{\rightharpoonup}{r}|\Psi_B\! > =\sum_a\sum_bc_{A a}c_{B b}<\! \Psi_a\stackrel{\rightharpoonup}{r}\Psi_b \!>,
+$$
+
+Although the transition dipole is normally regarded as involving the ground and an excited state, it is
+possible to calculate the transition between two excited states.  The initial state is, by default, the
+ground state, however if \comp{ROOT=n} $n\neq 1$, or any other keyword that specifies
+a state other than the ground state, then the initial state will be an excited state.
+
+For degenerate states, the transition dipole is the sum over all states involved.

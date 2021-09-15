@@ -1,0 +1,45 @@
+\section{Memory Considerations}\index{Memory!how to minimize}
+Of their nature, large systems use a large amount of memory.  This will
+sometimes prevent a calculation from being run.  There are, however, several
+ways to reduce the amount of memory needed by a specific calculation.  These
+can be summarized as follows:
+\begin{itemize}
+\item Run using the MOZYME function.
+
+For large systems, the MOZYME function uses much less memory than 
+the default MOPAC.  The MOZYME function only works for closed shell RHF 
+ground state systems.  Also, it cannot be used when high precision is
+needed, such as in \comp{FORCE}, hyperpolarizability, or \comp{IRC}
+calculations.
+
+\item Run the job with \comp{SIZES}.
+
+Run the job that fails using \comp{SIZES}.  This will print out the sizes of
+all arrays created dynamically.  By inspection of these arrays, ways can
+usually be found to reduce the memory demand.  For example, the default 
+geometry optimizer using the \comp{MOZYME} function, \comp{EF}, uses a large 
+amount of memory.  Switching to the BFGS optimizer (\comp{BFGS}) will save a
+lot of memory.
+
+\item Run in \comp{UNSAFE} mode.  
+
+Normally, by default, MOPAC runs in \comp{SAFE} mode.  This means that when
+things start to go wrong in the SCF, special procedures can be used in an
+attempt to generate a SCF.  These procedures use a large amount of memory, and
+are normally not used.  Most likely, if memory is limited, the job can be run
+in \comp{UNSAFE} mode.  This will save a lot of memory, but at the same time,
+if things start to go wrong, the job has an increased chance of failing. If the
+job fails, the results will usually indicate the failure in an obvious way.  
+
+\item Reduce the cutoffs.
+
+In a \comp{MOZYME} calculation, useful results can often be obtained even when
+the values of \comp{CUTOF1} and \comp{CUTOF2} are reduced. When these are
+reduced, the amount of memory needed drops quite rapidly.
+
+If the objective of the calculation is to optimize the geometry, then reducing
+the cutoffs will both increase the speed and reduce the memory demand without
+significant loss of accuracy.
+\end{itemize}
+
+

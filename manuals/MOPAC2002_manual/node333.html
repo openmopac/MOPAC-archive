@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>TRIPLET </TITLE>
+<META NAME="description" CONTENT="TRIPLET ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node334.html"><LINK REL="previous" HREF="node332.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node334.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node334.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node332.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node334.html">TS </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node332.html">TRANS=n </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>TRIPLET</TT> </H2>
+<P>The triplet state is defined. In order to define this type of calculation other keywords <EM>must</EM> also be used. For a 'simple' triplet calculation, use <TT>C.I.=2</TT>. Results from such calculations can be compared with ground state calculations. If the triplet state consists of two half-filled degenerate M.O.s, such as molecular oxygen, then <TT>OPEN(2,2)</TT> should be used. </P>
+<P>From experience, <TT><A HREF="node251.html">OPEN(2,2)</A></TT> and <TT>TRIPLET</TT> run faster than <TT><A HREF="node134.html">C.I.=2</A></TT> and <TT>TRIPLET</TT>. </P>
+<P>If the system has an odd number of electrons, an error message will be printed. </P>
+<P>See also <TT><A HREF="node306.html">SINGLET</A>, <A HREF="node164.html">DOUBLET</A>,
+<a href="node278.html">QUARTET</a>, <a href="node279.html">QUINTET</a>, <A HREF="node303.html">SEXTET</A>, <A HREF="node300.html">SEPTET</A>, <A HREF="node246.html">OCTET</A>,</TT> and <TT><A HREF="node238.html">NONET</A></TT>. </P>
+<P>UHF interpretation: </P>
+<P>The number of alpha electrons exceeds that of the beta electrons by 2. If <TT>TRIPLET</TT> is not specified, then the numbers of alpha and beta electrons are set equal. This does not necessarily correspond to a singlet. </P>
+<P>RHF interpretation: </P>
+<TT><P>TRIPLET</TT> cannot be used unless other keywords are present. If <TT>C.I.=2</TT> is used, then a single state corresponding to: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\frac{1}{\sqrt{2}}(\psi_{homo}^{\alpha}.\psi_{lumo}^{\beta}+\psi_{homo}^{\beta}.\psi_{lumo}^{\alpha})
+\end{displaymath} --><IMG SRC="img184.gif" WIDTH=202 HEIGHT=42 ALT="begin{displaymath}frac{1}{sqrt{2}}(psi_{homo}^{alpha}.psi_{lumo}^{beta}+psi_{homo}^{beta}.psi_{lumo}^{alpha})end{displaymath}"></DIV>
+<P>is calculated. See keywords <TT>C.I.=<I>n</I></TT> and <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT>. <A NAME="BM3457">&nbsp;</A> </P>
+<P>When the configuration interaction calculation is done, all microstates having a component of spin, M<I><SUB>S</I></SUB>, equal to 1 are selected. These microstates are then used in the construction of states. Because of the way in which the microstates were chosen, only states of spin equal to or greater than 1 can be constructed. From this set, only a triplet state can be selected, all other states will be ignored. If <TT>ROOT=<I>n</I></TT> is present, then the <I>n</I>'th triplet state will be selected, otherwise the first triplet state will be chosen. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html5901"><A HREF="node334.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html5897"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html5891"></A><A HREF="node332.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html5899"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html5900"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html5902"><A HREF="node334.html">TS </A></A><B>Up:</B> <A NAME="tex2html5898"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html5892"><A HREF="node332.html">TRANS=n </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

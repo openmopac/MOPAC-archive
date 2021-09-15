@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>RAPID </TITLE>
+<META NAME="description" CONTENT="RAPID ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node281.html">
+<LINK REL="previous" HREF="node279.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node281.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html5265"
+ HREF="node281.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5261"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5255"
+ HREF="node279.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5263"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5264"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5266"
+ HREF="node281.html">RE-LOCAL </A>
+<B> Up:</B> <A NAME="tex2html5262"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5256"
+ HREF="node279.html">QUINTET</A><!--End of Navigation Panel--><H2>
+<TT>RAPID</TT> 
+</H2>
+When only part of a geometry is being modified, the speed of the calculation can
+be increased by the use of <TT>RAPID</TT>.  Thus, if a side-chain on a protein
+is being optimized, all atoms on the side-chain would be flagged with " 1 "s,
+and all other atoms would be flagged with " 0 "s.  An atom is considered as
+being modified if any one of the three flags is " 1 ".
+ 
+ In order for <TT>RAPID</TT> to work,
+all atoms that move must be flagged for optimization.  Thus, if a single backbone
+atom, near the middle of a protein chain, is flagged for optimization, and no other
+atoms are flagged for optimization, <TT>RAPID</TT> should not be used, because
+many atoms that are not marked for optimization will move as a result of the
+flagged atom moving.
+ 
+One way to ensure that all atoms that move are flagged is to put all the
+flagged atoms at the end of the data-set.  This is not essential, but it does
+prevent unflagged atoms from moving.  To do this in Cartesian coordinates
+is simple.  In internal coordinates, flag the desired atoms, convert
+to Cartesian coordinates, move the flagged atoms to the end of the data set,
+then convert back to internal coordinates.
+ 
+The effort to set up a system with <TT>RAPID</TT> is well worth while, particularly
+if only a few (up to 10-20%) of the atoms are flagged. 
+ 
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5265"
+ HREF="node281.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5261"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5255"
+ HREF="node279.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5263"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5264"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5266"
+ HREF="node281.html">RE-LOCAL </A>
+<B> Up:</B> <A NAME="tex2html5262"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5256"
+ HREF="node279.html">QUINTET </A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+\subsubsection{Size of LMOs}\label{size_of_lmo}
+When a SCF is achieved, the LMOs extend over more atoms than might be
+expected.  Each LMO is about 90--99\% on one or two atoms, and if the
+surrounding few atoms are included, almost 100\% of the LMO can be accounted
+for.   From this, it would appear that the intensity of the LMO would continue
+to decrease rapidly with distance from the center.  This is normally not the
+case. Instead, LMOs usually have intensity on a large number of atoms,
+sometimes several  hundred atoms.  As a result, the calculations take a much
+longer time than would otherwise be expected.
+
+Some effort has been expended in trying to find ways of reducing the size of
+LMOs. These attempts have not been successful.  The definitive failure was
+provided as follows:
+
+Using MOPAC, the LMOs for a large system were generated using \comp{PRECISE}.
+The resulting LMOs were as expected, over 90\%\ on two atoms, with most of the
+rest of the wavefunction on the nearby atoms.  However, the intensity did not
+drop rapidly to zero with increasing distance.  Instead, it held  more or less
+constant at about 10$^{-5}$ to 10$^{-8}$ for a large number of atoms before
+finally dropping to a negligible value.
+
+This behavior did not change on increasing the precision of the localization.
+
+Because of this result, it was obvious that further localization of the MOZYME 
+LMOs would not be useful.

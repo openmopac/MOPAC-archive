@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Using ab initio derivatives</TITLE>
+<META NAME="description" CONTENT="8.3.8 Using ab initio derivatives">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node474.html"><LINK REL="previous" HREF="node472.html"><LINK REL="up" HREF="node458.html"><LINK REL="next" HREF="node474.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node474.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node458.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node472.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node474.html">Correction to the</A> <B>Up:</B> <A HREF="node458.html">Miscellaneous Topics in</A> <B>Previous:</B> <A HREF="node472.html">Outer Valence Green's</A> <BR>
+<H2><A NAME="SECTION001238000000000000000">Using <EM>ab initio</EM> derivatives</A> </H2>
+<P> <TT><a href="node117.html">AIDER</a></TT> will allow gradients to be defined for a system. MOPAC will calculate gradients, as usual, and will then use the supplied gradients to form an error function. This error function is (supplied gradients - initial calculated gradients), which is then added to the computed gradients, so that for the initial SCF, the apparent gradients will equal the supplied gradients. </P>
+<P>A typical data-set using <TT>AIDER</TT> is shown in the&nbsp;<A HREF="node473.html#aider">Figure</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="aider">&nbsp;<A NAME="BM11193"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Example of the use of <TT>AIDER</P></TT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <A NAME="BM11180">&nbsp;</A> <A NAME="BM11195">&nbsp;</A> <A NAME="BM11182">&nbsp;</A> </P>
+<PRE> PM3 AIDER AIGOUT GNORM=0.01
+ Cyclohexane
+   X
+   X   1 1.0
+   C   1 CX     2 CXX
+   C   1 CX     2 CXX     3 120.000000
+   C   1 CX     2 CXX     3 120.000000
+   X   1 1.0    2 90.0    3   0.000000
+   X   1 1.0    6 90.0    2 180.000000
+   C   1 CX     7 CXX     3 180.000000
+   C   1 CX     7 CXX     3  60.000000
+   C   1 CX     7 CXX     3 -60.000000
+   H   3 H1C    1 H1CX    2   0.000000
+   H   4 H1C    1 H1CX    2   0.000000
+   H   5 H1C    1 H1CX    2   0.000000
+   H   8 H1C    1 H1CX    2 180.000000
+   H   9 H1C    1 H1CX    2 180.000000
+   H  10 H1C    1 H1CX    2 180.000000
+   H   3 H2C    1 H2CX    2 180.000000
+   H   4 H2C    1 H2CX    2 180.000000
+   H   5 H2C    1 H2CX    2 180.000000
+   H   8 H2C    1 H2CX    2   0.000000
+   H   9 H2C    1 H2CX    2   0.000000
+   H  10 H2C    1 H2CX    2   0.000000
+   CX     1.46613
+   H1C    1.10826
+   H2C    1.10684
+   CXX   80.83255
+   H1CX 103.17316
+   H2CX 150.96100
+   AIDER
+     0.0000
+    13.7589 -1.7383
+    13.7589 -1.7383  0.0000
+    13.7589 -1.7383  0.0000
+     0.0000  0.0000  0.0000
+     0.0000  0.0000  0.0000
+    13.7589 -1.7383  0.0000
+    13.7589 -1.7383  0.0000
+    13.7589 -1.7383  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.8599 -2.1083  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000
+   -17.5612 -0.6001  0.0000</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV><BR>
+Each supplied gradient goes with the corresponding internal coordinate. In the example given, the gradients came from a 3-21G calculation on the geometry shown. Symmetry will be taken into account automatically. Gaussian prints out gradients in atomic units; these need to be converted into kcal/mol/&Aring;ngstrom or kcal/mol/radian for MOPAC to use. The resulting geometry from the MOPAC run will be nearer to the optimized 3-21G geometry than if the normal geometry optimizers in Gaussian had been used.<A NAME="BM11188">&nbsp;</A> </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html7978"><A HREF="node474.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html7974"></A><A HREF="node458.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html7968"></A><A HREF="node472.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html7976"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html7977"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html7979"><A HREF="node474.html">Correction to the</A></A> <B>Up:</B> <A NAME="tex2html7975"><A HREF="node458.html">Miscellaneous Topics in</A></A> <B>Previous:</B> <A NAME="tex2html7969"><A HREF="node472.html">Outer Valence Green's</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

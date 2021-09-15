@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Simple geometry optimization</TITLE>
+<META NAME="description" CONTENT="7.3 Simple geometry optimization">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node436.html"><LINK REL="previous" HREF="node429.html"><LINK REL="up" HREF="node427.html"><LINK REL="next" HREF="node436.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html7261"><A HREF="node436.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html7257"></A><A HREF="node427.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html7251"></A><A HREF="node434.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html7259"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html7260"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html7262"><A HREF="node436.html">Highly excited methane</A></A> <B>Up:</B> <A NAME="tex2html7258"><A HREF="node427.html">Examples</A></A> <B>Previous:</B> <A NAME="tex2html7252"><A HREF="node434.html">Methane Cation</A></A>
+<BR>
+<H1><A NAME="SECTION001130000000000000000">Simple geometry optimization</A> </H1>
+<P>The data-set for a simple system is shown in <A HREF="node435.html#ch2o1">Figure 1</A>. The old MOPAC format is used here, so keyword <TT>
+<a href="node225.html">MOPAC</a></TT> must be used, otherwise the first hydrogen atom would be positioned at Cartesian coordinate (1.1,120.0,0). </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="ch2o1">&nbsp;<A NAME="BM8917"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 1:</STRONG> Example of a Simple Geometry Optimization</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> </P>
+<PRE><A HREF="mopac_examples/examples_in_manual/formaldehyde.mop">Line  1:  MOPAC SYMMETRY
+<PRE>Line  2:  Formaldehyde, for Demonstration Purposes
+Line  3:
+Line  4:   O
+Line  5:   C 1.2 1
+Line  6:   H 1.1 1 120 1
+Line  7:   H 1.1 0 120 0 180 0 2 1 3 
+Line  8:
+Line  9:   3 1 4
+Line 10:   3 2 4
+Line 11:</PRE></A></PRE>
+<P><DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{picch2o}$ -->
+  <IMG SRC="img365.gif" ALT="includegraphics{picch2o}" width="286" height="282"></DIV><A NAME="BM8841">&nbsp;</A></TD>
+</TR>
+</TABLE>
+
+<P></DIV></P>
+<P>These data could be more neatly written as shown in <A HREF="node435.html#ch2o2">Figure 2</A>. Now the new coordinate convention is used--the position of the first hydrogen is defined in terms of atoms 1 and 2. <BR>
+<DIV ALIGN="CENTER"><A NAME="ch2o2">&nbsp;<A NAME="BM8918"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 2:</STRONG> Example of a Simple Geometry Optimization (2)</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> </P>
+<PRE><A HREF="mopac_examples/examples_in_manual/formaldehyde.mop">Line  1:  SYMMETRY
+<PRE>Line  2:  Formaldehyde, for Demonstration Purposes
+Line  3:
+Line  4:   O
+Line  5:   C   1.20 1     0.00 0     0.00 0  1
+Line  6:   H   1.10 1   120.00 1     0.00 0  2 1
+Line  7:   H   1.10 0   120.00 0   180.00 0  2 1 3
+Line  8:
+Line  9:   3,  1,  4,
+Line 10:   3,  2,  4,
+Line 11:</PRE></A></PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV><BR>
+These two data-files will produce identical results files. <BR>
+<HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

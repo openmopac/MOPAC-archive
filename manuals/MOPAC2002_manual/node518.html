@@ -1,0 +1,352 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Distance Cutoffs.</TITLE>
+<META NAME="description" CONTENT="8.6.2.2 Distance Cutoffs.">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node517.html"><LINK REL="next" HREF="node519.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node519.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><a href="node517.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></a><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node519.html">Lewis Structures.</A> <B>Up:</B>
+<a href="node517.html">Memory Management</a> <B>Previous:</B> <A HREF="node517.html">The Nature of</A>
+<!--End of Navigation Panel-->
+<H3>Distance Cutoffs. </H3>
+In conventional SCF calculations, all interactions regardless of distance are
+calculated.  This is both impractical and unnecessary in LMO work. Impractical,
+because the storage required would rapidly become very large: the storage
+necessary for merely the two-electron two-center integrals of  a system of <I>M </I>non-hydrogen and <I>N</I> hydrogen atoms  would be 
+50<i>M</i>(<i>M-1</i>)<i> + </i>10<i>M*N + </i>1/2<i>N</i>(<i>N</i>-1) 
+<!-- MATH: $50M(M-1)+10M\times
+N+\frac{1}{2}N(N-1)$ -->
+&nbsp;array elements. Unnecessary, because many of the integrals
+would never be used in the LMO calculation, anyway.  Consider the electronic
+energy terms.  These all depend on the  density matrix elements.  If a density
+matrix element, 
+<!-- MATH: $P_{\lambda\sigma}$ -->
+<i>P<sub><font face="Symbol">ls</font></sub></i>
+is zero, then the associated  energy term
+is independent of 
+<!-- MATH: $H_{\lambda\sigma}$ -->
+<i>H<font face="Symbol"><sub>ls</font></sub></i>
+and 
+<!-- MATH: $F_{\lambda\sigma}$ -->
+<i>F<font face="Symbol"><sub>ls</font></sub></i>.
+Similarly, the
+Fock element 
+<!-- MATH: $F_{\lambda\sigma}$ -->
+<i>F<font face="Symbol"><sub>ls</font></sub></i>
+depends on 
+<!-- MATH: $P_{\lambda\sigma}$ -->
+<i>P<sub><font face="Symbol">ls</font></sub></i>;
+therefore, if
+<!-- MATH: $P_{\lambda\sigma}$ -->
+<i>P<sub><font face="Symbol">ls</font></sub></i>
+is zero, then  
+<!-- MATH: $F_{\lambda\sigma}$ -->
+<i>F<font face="Symbol"><sub>ls</font></sub></i>
+is independent of the
+value of the exchange integral &lt;<i><font face="Symbol">ls</font></i>|e<sup>2</sup>/r|<i><font face="Symbol">ls</font></i>&gt;.
+<p>&nbsp;</p><CENTER>
+<CAPTION><STRONG>Table 1:</STRONG>
+Bond-Orders in GLY-GLY-GLY-GLY</CAPTION>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Bond to</TD>
+<TD ALIGN="RIGHT">Order</TD>
+<TD ALIGN="LEFT">Bond to</TD>
+<TD ALIGN="RIGHT">Order</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">C<SUB>2</SUB></TD>
+<TD ALIGN="RIGHT">1.017090</TD>
+<TD ALIGN="LEFT">C<SUB>8</SUB></TD>
+<TD ALIGN="RIGHT">0.000009</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">C<SUB>3</SUB></TD>
+<TD ALIGN="RIGHT">0.015249</TD>
+<TD ALIGN="LEFT">C<SUB>9</SUB></TD>
+<TD ALIGN="RIGHT">0.000001</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">N<SUB>4</SUB></TD>
+<TD ALIGN="RIGHT">0.004989</TD>
+<TD ALIGN="LEFT">N<SUB>10</SUB></TD>
+<TD ALIGN="RIGHT">0.000000</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">C<SUB>5</SUB></TD>
+<TD ALIGN="RIGHT">0.001219</TD>
+<TD ALIGN="LEFT">C<SUB>11</SUB></TD>
+<TD ALIGN="RIGHT">0.000000</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">C<SUB>6</SUB></TD>
+<TD ALIGN="RIGHT">0.000086</TD>
+<TD ALIGN="LEFT">C<SUB>12</SUB></TD>
+<TD ALIGN="RIGHT">0.000000</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">N<SUB>7</SUB></TD>
+<TD ALIGN="RIGHT">0.000031</TD>
+<TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+</TABLE>
+<P>
+Bonds are between the terminal nitrogen and the backbone atoms.
+<P>
+GLY-GLY-GLY-GLY has the structure: H<sub>2</sub>N-CH<sub>2</sub>-CO-NH-CH<sub>2</sub>-CO-NH-CH<sub>2</sub>-CO-NH-CH<sub>2</sub>-COOH<!-- MATH: $\chem H_2N\!-\!CH_2\!-\!CO\!-\!NH\!-\!CH_2\!-\!CO\!-\!NH\!-\!CH_2\!-\!CO\!-\!NH\!-\!CH_2\!-\!COOH$ -->.
+<BR></CENTER>
+<P>
+The bond-order is a measure of the electron density between two atoms.  
+&nbsp;<A HREF="#bo">Table 1</A> shows the bond-orders between the terminal nitrogen and the
+backbone atoms in the tetrapeptide GLY-GLY-GLY-GLY. <A NAME="cutofs">&#160;</A>  For atoms
+separated by more than 3 - 4 bonds, that is, by more than  5 - 7 &#197;ngstroms,
+the bond-orders rapidly become very small.  Also, at such distances the overlap
+of two atomic orbitals becomes extremely   small.  Since  the one-electron
+interactions depend on the overlap
+<P align="center">
+<i>H<sub><font face="Symbol">ls</font></sub></i>&nbsp; = <i>S<font face="Symbol"><sub>ls</font></sub></i> 
+(<font face="Symbol">b<sub>l</sub> </font>+ <font face="Symbol">b<sub>s</sub></font>)<p>where 
+<!-- MATH: $S_{\lambda\sigma}$ -->
+<i>S<sub><font face="Symbol">ls</font></sub></i>&nbsp;
+is the atomic orbital overlap, and 
+<!-- MATH: $\beta_{\lambda}$ -->
+<font face="Symbol">b<sub>l</sub></font>and 
+<!-- MATH: $\beta_{\sigma}$ -->
+<font face="Symbol">b<sub>s</sub></font>
+are atomic orbital parameters, it follows that the
+one-electron interactions at distances greater than about 6-7 &#197;ngstroms will
+also be vanishingly small. </p>
+<P>
+By calculating and storing only the one-electron integrals representing
+interactions of less than a given distance, a considerable saving in storage
+requirements can be achieved.
+<P>
+Unlike the one-electron integrals, the value of some two-electron two-center 
+integrals does not fall off rapidly with increasing distance.  The 100
+two-electron  integrals involving two atoms can be divided into five groups, as
+shown in &nbsp;<A HREF="#multipoles">Table 2</A>.  Some of these integrals, such as the 
+&lt;<i>pp</i>|<i>pp</i>&gt;&nbsp;
+integrals, can be expressed in terms of two multipoles, here a
+monopole and a quadrupole; however, for the purpose of this discussion the
+effect of the lower multipole--the monopole in this case--dominates.  
+<P>
+<BR>
+<DIV ALIGN="CENTER">
+<DIV ALIGN="CENTER">
+<A NAME="BM15180">&#160;</A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG>Table 2:</STRONG>
+ Multipolar Representation of the Two Electron Two Center Integrals</CAPTION>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Multipole</TD>
+<TD ALIGN="CENTER">Example</TD>
+<TD ALIGN="RIGHT">No.</TD>
+<TD ALIGN="CENTER" COLSPAN=2>Distance Dependence</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER">Energy</TD>
+<TD ALIGN="CENTER">Gradient</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Monopole</TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $<\!ss|ss\!>$ -->
+&lt;<i>ss</i>|<i>ss</i>&gt;</TD>
+<TD ALIGN="RIGHT">16</TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-1</SUP></TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-2</SUP></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Dipole</TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $<\!ss|sx\!>$ -->
+&lt;<i>ss</i>|<i>sx</i>&gt;</TD>
+<TD ALIGN="RIGHT">24</TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-2</SUP></TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-3</SUP></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Quadrupole</TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $<\!ss|xy\!>$ -->
+&lt;<i>ss</i>|<i>xy</i>&gt;</TD>
+<TD ALIGN="RIGHT">33</TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-3</SUP></TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-4</SUP></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Octapole</TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $<\!sx|xy\!>$ -->
+&lt;<i>sx</i>|<i>xy</i>&gt;</TD>
+<TD ALIGN="RIGHT">18</TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-4</SUP></TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-5</SUP></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Hexadecapole</TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $<\!xy|xy\!>$ -->
+&lt;<i>xy</i>|<i>xy</i>&gt;</TD>
+<TD ALIGN="RIGHT">9</TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-5</SUP></TD>
+<TD ALIGN="CENTER"><I>r</I><SUP>-6</SUP></TD>
+</TR>
+</TABLE></DIV>
+</DIV>
+<BR>
+<P>
+At distances greater than about 5 or 6 &#197;ngstroms, the behavior of these
+integrals becomes very simple.  Of the 100 integrals, 60 represent quadrupoles 
+or higher multipoles and have a negligible value.  The 16 monopole terms -
+representing simple electrostatic repulsion - are all composed of the same
+monopole term and various quadrupolar components, and can be set equal. The 24
+dipole terms can be expressed as a dipole interacting with either a simple
+monopole (an 
+<!-- MATH: $<\! ss|sx\!>$ -->
+&lt;<i>ss</i>|<i>sx</i>&gt;,
+for example), or a monopole plus quadrupole,
+e.g.,   
+<!-- MATH: $<\! xx|sx\!>$ -->
+&lt;<i>xx</i>|<i>sx</i>&gt;.
+Since the quadrupolar terms can be ignored, the 24
+dipolar terms can be represented by 6 simpler terms, of generic form  
+<!-- MATH: $<\!
+sp|ss\!>$ -->
+&lt;<i>sp</i>|<i>ss</i>&gt;
+and  
+<!-- MATH: $<\! ss|sp\!>$ -->
+&lt;<i>ss</i>|<i>sp</i>&gt;.
+Thus, out of the 100 integrals needed at small
+distances, only 7 are needed at larger distances. At still larger distances, 30
+&#197;ngstroms or more, even the dipolar terms become negligible.  Therefore, at
+such large distances only the single monopole term, representing simple
+electrostatic repulsion, need be used.
+<P>
+Two-electron two-center integrals must therefore be represented in a different
+way from the one-electron two-center integrals.  As with the one-electron
+integrals, a cutoff distance can be specified.  For convenience, the
+one-electron and two-electron cutoff distances are set equal. As a result, all
+one- and two-electron  integrals which represent interactions between atoms
+that are separated by less than the cutoff distance would then be treated using
+standard NDDO approximations. The simplest electrostatic repulsion 
+(
+<!-- MATH: $<\!ss|ss\!>$ -->
+&lt;<i>ss</i>|<i>ss</i>&gt;)
+between electrons on atoms  that are separated by more than the
+cutoff distance is approximated by the conventional NDDO term
+<P align="center">
+<IMG
+
+ WIDTH="463" HEIGHT="60"
+ SRC="img1056.gif"
+ ALT="\begin{displaymath}<\!\phi_{\lambda}\phi_{\lambda}\vert e^2/r_{AB}\vert\phi_{\si...
+... e^2/r_{BB}\vert\phi_{s}\phi_{s}\!>})
+\right )^{\frac{1}{2}}}.
+\end{displaymath}"><p>
+<BR CLEAR="ALL"></p>
+<P></P>
+<P>
+This was chosen in order to minimize the discontinuity at  the cutoff
+distance.  Similar NDDO approximations were used for the other dipolar terms.
+<P>
+In recognition of this fact, SCF calculations can be simplified considerably 
+by including only those NDDO terms which apply to atoms separated by less than
+a preset limit, and including only the electrostatic term for interactions
+between atoms separated by more than that limit.
+<P>
+The various cutoffs used have specific names and defaults.  These are summarized
+in &nbsp;<a href="#cutoff">Table 3</a>.
+<BR>
+<DIV ALIGN="CENTER">
+<DIV ALIGN="CENTER">
+<A NAME="BM15184">&#160;</A>
+<TABLE CELLPADDING=3 BORDER="1">
+<CAPTION><STRONG><a name="cutoff"></a>Table 3:</STRONG>
+ Distance Cutoffs for Various Types of Interaction</CAPTION>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Type</TD>
+<TD ALIGN="LEFT">Less than Cutoff</TD>
+<TD ALIGN="LEFT">Greater than Cutoff</TD>
+<TD ALIGN="LEFT">Cutoff Name</TD>
+<TD ALIGN="RIGHT">Default</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Two electron</TD>
+<TD ALIGN="LEFT">All multipoles</TD>
+<TD ALIGN="LEFT">Dipole plus Monopole</TD>
+<TD ALIGN="LEFT"><TT>CUTOF2</TT></TD>
+<TD ALIGN="RIGHT">12&#197;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">Two electron</TD>
+<TD ALIGN="LEFT">Dipole plus Monopole</TD>
+<TD ALIGN="LEFT">Monopole</TD>
+<TD ALIGN="LEFT"><TT>CUTOF1</TT></TD>
+<TD ALIGN="RIGHT">30&#197;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="LEFT">One electron</TD>
+<TD ALIGN="LEFT">Overlap calculated</TD>
+<TD ALIGN="LEFT">Overlap not calculated</TD>
+<TD ALIGN="LEFT"><TT>CUTOFS</TT></TD>
+<TD ALIGN="RIGHT">7&#197;</TD>
+</TR>
+</TABLE></DIV>
+</DIV>
+<BR>
+
+<P>
+By default, the cutoff distances are set sufficiently large that any  
+<!-- MATH: $\Delta
+H_f$ -->
+<font face="Symbol">D</font>H<sub>f </sub>calculated using these values will agree with that obtained by using
+conventional methods  within 0.1 kcal/mol. <TT>CUTOF2</TT> can be reduced, under
+user control, to save computational time and to reduce the memory demand.  To
+avoid serious errors, <TT>CUTOF2</TT> should not be set below about 5&nbsp;&#197;ngstroms.
+<P>
+Once <TT>CUTOF2</TT> is set, all one-electron integrals involving atoms separated
+by less than <TT>CUTOF2</TT> can be evaluated.  To save space, only those
+integrals which are evaluated are stored an an array. For the one-electron
+integral,  this array is called <I>H</I>.  All integrals relating to any pair of
+atoms are stored contiguously.  Given the starting address of an atom-pair, the
+sequence in which the integrals occur is determined only by the number of
+atomic orbitals on each atom. However, the order in which atom pairs are stored
+is not so simple.  The only way to find the starting address of any atom pair
+is to have that address stored in a new array.  This array is called
+<TT>IJBO</TT>, and has the following structure:
+<P>
+<TT>IJBO</TT> is a square array, of size <I>N</I> by <I>N</I>, where <I>N</I> is the
+number of atoms. The starting address of integral string for atoms 
+<I>A</I> and <I>B</I> is stored in array element IJBO(A,B).  If <IMG
+
+ WIDTH="42" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1058.gif"
+ ALT="$A \ne B$">,
+then the
+starting address is also stored in IJBO(B,A).  All pairs of atoms
+separated by more than <TT>CUTOF2</TT> do not have associated integral
+strings.  To recognize this, the relevant array elements in <TT>IJBO</TT>
+are set to '-1', and if the interatomic distance is greater than
+<TT>CUTOF1</TT> then the array element is set to '-2'. Zero cannot be
+used, because of <A HREF="node533.html#starting-addresses">the way starting addresses are
+defined</A>.
+<P>
+To reiterate: All integrals involving atoms, <I>A</I> and <I>B</I>,  separated by  less
+than <TT>CUTOF2</TT> are stored, and the starting address of the integrals  is
+given by IJBO(A,B) and IJBO(B,A).  With the exception of some electrostatic
+terms, no integrals involving atoms separated by more than <TT>CUTOF2</TT> are
+calculated or stored.  The relevant array element in <TT>IJBO</TT> is set to
+`-1' or '-2'. 
+<P>
+To summarize:
+<P>
+There are three regions around each atom.  The sizes of these regions are
+determined by <TT>CUTOF2=<I>m</I>.<I>mm</I></TT> (default: <I>m</I>.<I>mm</I>=12) and
+<TT>CUTOF1=<I>n</I>.<I>nn</I></TT> (default <I>n</I>.<I>nn</I>=30). In the first region, 0.0 to <I>m</I>.<I>mm</I>&#197;ngstroms, all  NDDO interactions are used.  Between <I>m</I>.<I>mm</I> and <I>n</I>.<I>nn</I> &#197;
+ngstroms, only monopolar and dipolar electrostatic terms are used, and beyond
+<I>n</I>.<I>nn</I> &#197;ngstroms, the only term considered is the monopolar electrostatic
+interaction.
+<P>
+<HR>
+<P><!--Navigation Panel--><A HREF="node519.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><a href="node517.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></a><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node519.html">Lewis Structures.</A> <B>Up:</B>
+<a href="node517.html">Memory Management</a> <B>Previous:</B> <A HREF="node517.html">The Nature of</A> <BR>
+</P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

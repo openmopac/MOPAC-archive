@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Description</TITLE>
+<META NAME="description" CONTENT="5.1.1 Description">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node368.html"><LINK REL="previous" HREF="node366.html"><LINK REL="up" HREF="node366.html"><LINK REL="next" HREF="node368.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node368.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node366.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node366.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node368.html">Data input for BZ</A> <B>Up:</B> <A HREF="node366.html">Program BZ</A> <B>Previous:</B> <A HREF="node366.html">Program BZ</A> <BR>
+<H2>Description </H2>
+<P>Unlike molecules, whose eigenvalue spectrum consists of infinitely sharp lines (Kronecker-<font face="Symbol">d</font> type), the eigenvalues of solids form bands. These bands are conventionally represented by Brillouin Zones (BZ). For a polymer, the BZ consists of a line, for a layer structure, a surface, and for a solid, a three-dimensional shape. The dimensions of the BZ are inverse distance: if two polymers have unit cells of 10 and 8 &Aring;, then the ratio of their unit cell translation vectors is 1.25:1, and the ratio of their BZ's is 1:1.25. </P>
+<P>Although MOPAC can generate all the information necessary to generate band-structures, for ease of use this job is given to a special program called BZ. MOPAC is designed to run in batch mode, but drawing band-structures is an interactive operation. </P>
+<P>Before BZ can be run, a MOPAC calculation must first be run in order to generate the data needed by BZ. Most of this data is invisible to the user, but the user must supply to MOPAC one or two data which BZ will use. These data are: </P>
+<B><TT><DL>
+<DT>MERS=(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>,<I>n</I><SUB>3</SUB>)</B></TT> </DT>
+<DD>&nbsp; <BR>
+(See <A HREF="node363.html">Program MAKPOL</A> and <A HREF="node215.html#mopac:mers">MERS</A>) BZ needs to know how the Fock matrix is organized, and <TT>MERS</TT> gives the number of unit cells in each direction. MOPAC uses the keyword <TT>MERS</TT> as the prompt to write out a file for use by BZ. Within MOPAC, <TT>MERS</TT> has no other use. <A NAME="BM7026">&nbsp;</A> </DD>
+<B><TT><DT>BCC</B></TT><STRONG> &lt;&gt;(optional)</></STRONG> </DT>
+<DD>&nbsp; <BR>
+Like <TT>MERS</TT>, <TT>BCC</TT> is not used by MOPAC. <TT>BCC</TT> (see <A HREF="node364.html">Keywords used by MAKPOL</A>) indicates that the system is Body-Centered-Cubic; in other words, that every odd unit cell is missing. If the keyword <TT>BCC</TT> is present, MOPAC informs BZ that the system is Body-Centered-Cubic. </DD>
+</DL>
+<P>BZ is an interactive utility program. It can perform three types of calculation: </P>
+
+<UL>
+<LI>Points in <I>k</I>-space are to be studied. </LI>
+<LI>Lines in <I>k</I>-space are to be drawn. </LI>
+<LI>Surfaces in <I>k</I>-space are to be drawn. </LI></UL>
+
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6330"><A HREF="node368.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6326"></A><A HREF="node366.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6320"></A><A HREF="node366.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6328"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6329"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6331"><A HREF="node368.html">Data input for BZ</A></A> <B>Up:</B> <A NAME="tex2html6327"><A HREF="node366.html">Program BZ</A></A> <B>Previous:</B> <A NAME="tex2html6321"><A HREF="node366.html">Program BZ</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

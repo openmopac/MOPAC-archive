@@ -1,0 +1,36 @@
+\subsection*{Files used in MOPAC}
+All input-output channels in MOPAC are assigned numbers.  To allow the values
+of these numbers to be easily changed, the module \comp{common\_systm} contains
+symbolics for the various channels used.  These symbolics are set in \comp{GETDAT}
+and can only be changed by editing this subroutine.
+
+\begin{table}
+\caption{\label{inout} Channels Used in MOPAC}
+\begin{center}
+\begin{tabular}{cclllc} \hline
+    Input/output & Symbol  & Name & Type & Formatted? \\
+                Channel No.  \\
+\hline
+     2   &        & $<$filename$>$.dat  & Input            &  Yes \\
+     3   & \comp{ISCR}   & Scratch                    & Internal working  &  No  \\
+     4   & \comp{ISETUP} &     SETUP                  & Setup             &  Yes \\
+    25   & \comp{IR}     &    Scratch                 & Input (during run)& Yes \\
+    26   & \comp{IW}     & \comp{$<$filename$>$.out}  & Output            & Yes \\
+     9   & \comp{IRES}   & \comp{$<$filename$>$.res}  & Restart           & No  \\
+    10   & \comp{IDEN}   & \comp{$<$filename$>$.den}  & Density           & No  \\
+    11   & \comp{ILOG}   & \comp{$<$filename$>$.log}  & Log               & Yes \\
+    12   & \comp{IARC}   & \comp{$<$filename$>$.arc}  & Archive           & Yes \\
+    13   & \comp{IGPT}   & \comp{$<$filename$>$.gpt}  & Graphics          & No  \\
+    14   & \comp{IEXT}   & User defined               & New parameters    & Yes  \\
+    15   & \comp{IESR}   & \comp{$<$filename$>$.esr}  & ESP Restart       & No  \\
+    16   & \comp{ISYB}   & \comp{$<$filename$>$.syb}  & SYBYL             & Yes \\
+    17   & \comp{ISOL}   & \comp{$<$filename$>$.sol}  & SOL map in MEP    & No  \\
+    18   & \comp{IBRZ}   & \comp{$<$filename$>$.brz}  & Brillouin Zone    & No  \\
+    17   & \comp{IPDB}   & \comp{$<$filename$>$.pdb}  & PDB file          & No  \\
+    20   & \comp{IESR}   & \comp{$<$filename$>$.ump}  & Grid map          & Yes \\
+    21   & \comp{IESP}   & \comp{$<$filename$>$.esp}  & Electrostatic map & Yes \\
+    22   & \comp{IS}     & \comp{$<$filename$>$.mep}  & Tomasi MEP map    & Yes \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

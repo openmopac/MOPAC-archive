@@ -1,0 +1,1466 @@
+\chapter{Description of Subroutines}
+\index{Subroutines!description of|(}
+\begin{description}
+\item[\comp{AABABC}] Calculates the configuration interaction matrix element
+between two configurations differing by exactly one alpha M.O.   Called by
+\comp{MECIH} only.
+
+\item[\comp{AABACD}] Calculates the configuration interaction matrix element
+between two configurations differing by exactly two alpha M.O.s. Called by
+\comp{MECIH} only.
+
+\item[\comp{AABBCD}] Calculates the configuration interaction matrix element
+between two configurations differing by exactly two M.O.s; one configuration
+has alpha M.O.\ ``A'' and beta M.O.\ ``C'' while the other configuration has
+alpha M.O.\ ``B'' and beta M.O.\ ``D''.  Called by \comp{MECIH} only.
+
+\item[\comp{ADDFCK/ADDFCN}] Part of COSMO.
+
+\item[\comp{ADDHB}] Hydrogen bonds and other weak bonds that  are not generated
+automatically during the first few iterations of the first SCF are explicitly
+constructed by \comp{ADDHB}.  A weak bond is presumed to exist if the scalar of
+the Fock matrix elements connecting two atoms is greater than a preset limit
+(1.0eV on iteration 3, 0.1 on iteration 6, 0.001 on iteration 9, and 0.0001 on
+iteration 12).  If the scalar of the density matrix elements connecting the two
+atoms is zero, then \comp{ADDHB} will create a weak bond between the two atoms.
+
+\item[\comp{ADDHCR}] Part of COSMO, \comp{ADDHCR} adds in the effect of the
+solvent  to the one-electron or core matrix, \comp{H}.
+
+\item[\comp{ADDNUC}] Part of COSMO, \comp{ADDNUC} adds in the effect of the
+solvent  to the core-core, or nuclear, energy, \comp{ENUCLR}.
+
+\item[\comp{ADJVEC}] Two almost orthogonal LMOs \htmlref{are made
+orthogonal}{reorth} by mixing them together.  
+\begin{latexonly}
+See p.~\pageref{reorth} for details.
+\end{latexonly}
+
+\item[\comp{AIJM}] Part of MNDO-$d$, \comp{AIJM} calculates the A$_{ij}$ values
+used in the evaluation of two-center two-electron integrals.
+
+\item[\comp{AINTGS}] Within the overlap integrals, \htmlref{calculates
+the A-integrals}{ab}.  Dedicated to function \comp{SS} within
+\comp{DIAT}
+\begin{latexonly}
+, see \pageref{ab} for more
+details
+\end{latexonly}.
+
+\item[\comp{ALPHAF}] Part of \comp{POLAR}, \comp{ALPHAF} calculates the
+frequency dependent response matrices $U_A$ and densities $D_A$.  It also is
+used in computing the frequency-dependent polarizability and in solving the
+second-order problem.
+
+\item[\comp{ANALYT}] Calculates the analytical derivatives of the energy with
+respect to Cartesian coordinates for all atoms. Use only if the mantissa is
+short (less than 52 bits) or out of interest.  Should not be used for routine
+work.
+
+\item[\comp{ANAVIB}] Gives a brief interpretation of the modes of vibration of
+the molecule. The principal pairs of atoms  involved in each vibration are
+identified, and the mode of motion (tangential or radial) is output.
+
+\item[\comp{ANSUDE}] Part of COSMO.  Calculates the area of two intersecting 
+spheres.
+
+\item[\comp{AROM}] \comp{AROM} determines if the $\pi$ bond between two atoms
+is part of an aromatic ring.  It does this by checking to see if two other
+$\pi$ bonds already exist in the ring.  If they do, then the two atoms form the
+third and final $\pi$ bond. Used in generating Lewis structures for aromatic
+and graphitic structures.
+
+\item[\comp{AROM2}] Determines if a $\pi$ bond between two atoms is part of an
+aromatic ring.  If a $\pi$ bond already exists in a ring, then a check is done
+to see if a third $\pi$ bond could be made later on.  If it can, then the two
+atoms are part of an aromatic ring. Used in generating Lewis structures for
+aromatic and graphitic structures.
+
+\item[\comp{ASUM}] Part of the Greens Function code.
+
+\item[\comp{ATOMRS}] All atoms in a given residue, residue $N$, in a protein
+are identified.  In the array \comp{LUSED}, backbone atoms are set to -$N$, and
+side-chain atoms are set to $N$.
+
+\item[\comp{AVAMEM}] If a run requires more memory than is available, then the
+job cannot continue.  \comp{AVAMEM} will print out the maximum amount of memory
+that the computer can provide.
+
+\item[\comp{AXIS}] Works out the three principal moments of inertia of a
+molecule. If the system is linear, one moment of inertia is zero. Prints
+moments in units of cm$^{-1}$ and $10^{-40}$ g cm$^2$.
+
+\item[\comp{BABBBC}] Calculates the configuration interaction matrix element
+between two configurations differing by exactly one beta M.O.  Called by
+\comp{MECI} only.
+
+\item[\comp{BABBCD}] Calculates the configuration interaction matrix element
+between two configurations differing by exactly two beta M.O.s. Called by
+\comp{MECI} only.
+
+\item[\comp{BANGLE}] Given a set of coordinates, \comp{BANGLE} will calculate
+the angle between any three atoms.
+
+\item[\comp{BDENIN}] Part of \comp{POLAR}. 
+
+\item[\comp{BDENUP}] Part of \comp{POLAR}. 
+
+\item[\comp{BEOPOR}] Part of \comp{POLAR}, it iteratively evaluates the 
+$\beta$ value used in the electrooptic Pockel's effect and optical
+rectification.
+
+\item[\comp{BETAF}] Part of \comp{POLAR}, it iteratively evaluates  the $\beta$
+value used in second harmonic generation.
+
+\item[\comp{BETAL1}]  Part of \comp{POLAR}. 
+
+\item[\comp{BETALL}] Part of \comp{POLAR}. 
+
+\item[\comp{BETCOM}] Part of \comp{POLAR}.
+
+\item[\comp{BFN}] Calculates the $B$-functions in the Slater overlap.
+
+\item[\comp{BINTGS}] \htmlref{Calculates the $B$-integrals}{ab} in the Slater overlap
+\begin{latexonly}
+, see
+p.~\pageref{ab} for details
+\end{latexonly}.
+
+\item[\comp{BLDSYM}] Part of the point-group symmetry package.  \comp{BLDSYM}  
+constructs the point-group symmetry operations as 3 by 3 matrices.
+\item[\comp{BMAKUF}] Part of \comp{POLAR}.
+
+\item[\comp{BONDN/BONDS}] Evaluates and prints the valencies of atoms and 
+bond-orders between atoms. Main argument: density matrix. No results are passed
+to the calculation, and no data  are changed. Called by \comp{WRITMN} only.
+
+\item[\comp{BONDN/BONDSZ}] Evaluates and prints the valencies of atoms and 
+bond-orders between atoms calculated by \comp{MOZYME}. \ Main  argument:
+density matrix.  No results are passed to the calculation, and no data  are
+changed. Called by \comp{WRITMN} only.
+
+\item[\comp{BPRINT}] Part of the Tomasi Solvation method.
+
+\item[\comp{BRLZON/BRLZNN}] \comp{BRLZON} generates a band structure,  or
+phonon structure, for high polymers.  Called by \comp{WRITMO} and
+\comp{FREQCY}.
+
+\item[\comp{BUILDF/BUILDN}] Constructs a new Fock matrix from the one-electron
+matrix, the density matrix, and the two-electron integrals.
+
+\item[\comp{CADIMA}] Part of the Tomasi Solvation method.
+
+\item[\comp{CALPAR}] When external parameters are read in via \comp{EXTERNAL=},
+the derived parameters are worked out using \comp{CALPAR}.  Note that all
+derived parameters are calculated for all parameterized elements at the same
+time.
+
+\item[\comp{CANON}] In a MOZYME calculation, if \comp{EIGEN} is {\em not} 
+present, then \comp{CANON} converts the way LMOs are stored into the way M.O.s
+are stored in MOPAC: that is, it forms a square array of orthonormal vectors.
+It also creates a MOPAC-type lower half triangle of the one-electron integrals.
+
+\item[\comp{CAPCOR}] Capping atoms, of type Cb, should not contribute to  the
+energy of a system.  \comp{CAPCOR} calculates the energy  contribution due to
+the Cb and subtracts it from the  electronic energy.
+
+\item[\comp{CARTAB}] Constructs the point-group character tables. Called by
+\comp{MOLSYM} only.
+
+\item[\comp{CCPROD}] Part of Greens Function.
+
+\item[\comp{CCREP}] Calculates the core-core repulsion in MNDO-$d$.
+
+\item[\comp{CDIAG}] Complex diagonalization.  Used in generating eigenvalues of
+complex Hermitian secular determinant for band structures. Called by
+\comp{BRLZON} only.
+
+\item[\comp{CHARMO}] Calculates the character of an operation acting on a
+molecular orbital, i.e., $<\psi|R_i|\psi>$.  Called by \comp{SYMOIR} only.
+
+\item[\comp{CHARST}] Calculates the character of an operation acting on a state
+function, i.e., $<\Psi|R_i|\Psi>$.  Called by \comp{SYMOIR} only.
+
+\item[\comp{CHARVI}] Calculates the character of an operation acting on a
+normal coordinate, i.e.\ an eigenvector of a vibration. 
+
+\item[\comp{CHECK}] Re-normalized the LMOs after \comp{DIAGG2} has annihilated
+energy matrix terms.
+
+\item[\comp{CHI}] Determines the existence of specific point-group operators.
+CHI returns a `1' in IELEM($IOPER$) if the operation $IOER$ is present,
+otherwise IELEM($IOPER$)=0.
+
+\item[\comp{CHKION}] Identifies all remaining ionized atoms in a system.
+Examples: metal ions, halide ions, carbanions and carbocations.
+
+\item[\comp{CHKLEW}] Identifies most of the elements of the Lewis structure,
+such as $\sigma$ bonds, lone pairs, $\pi$ bonds, and some ions, such as
+-NH$_3^+$.
+
+\item[\comp{CHRGE/CHRGN}] Calculates the total number of valence electrons on
+each atom. Main arguments: density matrix, array of atom charges (empty on
+input). Called by \comp{ITER} only.
+
+\item[\comp{CHRGE/CHRGEZ}] Calculates the total number of valence electrons on
+each atom. Main arguments: density matrix, array of atom charges (empty on
+input). Called by \comp{ITER} only.
+
+\item[\comp{CIINT}] Part of COSMO.
+
+\item[\comp{CIOSCI}] Calculates the electronic transition oscillator strength
+in  \comp{MECI}.
+
+\item[\comp{CNVG/CNVGZ}] Used in SCF cycle. \comp{CNVG} does a three-point
+interpolation of the last three density matrices.  Arguments: Last three
+density matrices, Number of iterations, measure of self-consistency (empty on
+input). Called by \comp{ITER} only.
+
+\item[\comp{COE}] Within the general overlap routine \comp{COE} calculates  the
+angular coefficients for the $s$, $p$ and $d$ real atomic orbitals given the
+axis and returns the rotation matrix.
+
+\item[\comp{COLLID}] Part of the ESP package.
+
+\item[\comp{COLLIS}] Part of the PMEP package.
+
+\item[\comp{COLLIT}] Part of the MST solvation package.
+
+\item[\comp{COMMOP}] The conventional matrix algebra SCF and gradient
+calculation.
+
+\item[\comp{COMMOZ}] The localized molecular orbital SCF and gradient
+calculation.
+
+\item[\comp{COMPCT}]] (COMPACT) removes unused space from between LMOs. During
+the selection of LMOs to be used in the SCF, the `active' LMOs are put at the
+start of the appropriate arrays.  If there is insufficient storage to hold all
+the LMOs selected, then extra storage is created by compacting together the
+other LMOs, thus removing the gaps caused when the active LMOs were moved.
+
+\item[\comp{COMPFG}] Evaluates the total heat of formation of the supplied
+geometry and, if requested,  the derivatives. This is the nodal point
+connecting the electronic and geometric parts of the program. Main arguments:
+on input: geometry, on output: heat of formation, gradients.
+
+\item[\comp{COPY1}] At the start of a calculation, \comp{COPY1} copies  INTEGER
+data from the COMMON arrays to \comp{MCORE}.
+
+\item[\comp{COPY2}] At the start of a calculation, \comp{COPY1}  copies REAL
+data from the COMMON arrays to \comp{CCORE}.
+
+\item[\comp{COPYM}] Part of \comp{POLAR}.
+
+\item[\comp{COSCAV/COSCAN}] Part of \comp{COSMO}.
+
+\item[\comp{COSCL1/COSCL2}] Part of \comp{COSMO}.
+
+\item[\comp{COSINI}] Part of \comp{COSMO}.
+
+\item[\comp{COUL}] Part of the Tomasi Solvation method.
+
+\item[\comp{CSUM}] Part of Greens Function.
+
+\item[\comp{DANG}] Called by \comp{XYZINT}, \comp{DANG} computes the  angle
+between a point, the origin, and a second point.
+
+\item[\comp{DAREA1}] Part of \comp{POLAR}.
+
+\item[\comp{DAREAD}] Part of \comp{POLAR}.
+
+\item[\comp{DASUM}] A BLAS routine.
+
+\item[\comp{DATIN}] Reads in external parameters for use within MOPAC. 
+Originally used for the testing of new parameters, \comp{DATIN} is now a
+general purpose reader for parameters. Invoked by the keyword \comp{EXTERNAL}.
+
+\item[\comp{DAWRIT}] Part of \comp{POLAR}.
+
+\item[\comp{DAWRT1}] Part of \comp{POLAR}.
+
+\item[\comp{DAXPY}] A BLAS routine.
+
+\item[\comp{DCART/DCARN}] Called by \comp{DERIV}, \comp{DCART} sets up a  list
+of Cartesian derivatives of the energy with respect to coordinates which 
+\comp{DERIV} can then use to construct the internal coordinate derivatives.
+
+\item[\comp{DCART/DCARNZ}] Called by \comp{DERIV}, \comp{DCART}  sets up a list
+of Cartesian derivatives of the energy with respect to coordinates  which
+\comp{DERIV} can then use to construct the internal coordinate derivatives.
+
+\item[\comp{DCOPY}] A BLAS routine. 
+
+\item[\comp{DDOT}] A BLAS routine.
+
+\item[\comp{DDPO}] Part of MNDO-$d$.
+
+\item[\comp{DELMOL}] Part of analytical derivatives. Two-electron.
+
+\item[\comp{DELNEW}] Part of intersystem crossing method.
+
+\item[\comp{DELRI}] Part of analytical derivatives. Two-electron.
+
+\item[\comp{DELSTA}] Calculates the derivative of the energy with respect to
+coordinates, for a pair of atoms that have electrostatic interactions only.
+
+\item[\comp{DENROT/DENROZ}] Converts the ordinary density matrix into  a
+condensed density matrix over basis functions $s-\sigma$,  $p-\sigma$ and
+$p-\pi$, i.e., three basis functions. Useful  in hybridization studies. Has
+capability to handling $d$  functions, if present.
+
+\item[\comp{DENSF}] Part of \comp{POLAR}.
+
+\item[\comp{DENSIT}] Constructs the Coulson electron density matrix from the
+eigenvectors. Main arguments: Eigenvectors, number of singly and doubly
+occupied levels, density matrix (empty on input) Called by \comp{ITER}.
+
+\item[\comp{DENSIZ}] Constructs the Coulson electron density matrix from the
+LMOs. Main arguments: LMOs, number of doubly occupied levels,  density matrix
+(Partially filled or empty on input) Called by \comp{ITENZ}.
+
+\item[\comp{DERI0}] Part of the analytical C.I.\ derivative package. 
+Calculates the diagonal dominant part of the super-matrix.
+
+\item[\comp{DERI1/DERN1}] Part of the analytical C.I.\ derivative package. 
+Calculates the frozen density contribution to the derivative of  the energy
+with respect to Cartesian coordinates, and the derivatives of  the frozen Fock
+matrix in M.O.\ basis. Its partner is \comp{DERI2}.
+
+\item[\comp{DERI2/DERN2}] Part of the analytical C.I.\ derivative package. 
+Calculates the relaxing density contribution to the derivative of the energy
+with respect to Cartesian coordinates. Uses the results of \comp{DERI1}.
+
+\item[\comp{DERI21}] Part of the analytical C.I.\ derivative package.  Called
+by \comp{DERI2} only.
+
+\item[\comp{DERI22}] Part of the analytical C.I.\ derivative package.  Called
+by \comp{DERI2} only.
+
+\item[\comp{DERI23}] Part of the analytical C.I.\ derivative package.  Called
+by \comp{DERI2} only.
+
+\item[\comp{DERITR}] Calculates derivatives of the energy with respect to
+internal coordinates using full SCFs.  Used as a foolproof way of calculating
+derivatives.  Not recommended for normal use.
+
+\item[\comp{DERIV/DERIN}] Calculates the derivatives of the energy with respect
+to the geometric variables.  This is done either by  using initially Cartesian
+derivatives (normal mode), by  analytical C.I.\ RHF derivatives, or by full SCF
+calculations  (\comp{NOANCI} in half-electron and C.I.\ mode). Arguments: on 
+input: geometry, on output: derivatives. Called by \comp{COMMOP/COMMOZ}.
+
+\item[\comp{DERNVO/DERNVN}] Analytical C.I.\ Derivative main subroutine. 
+Calculates the derivative of the energy with respect to geometry for a
+non-variationally optimized wavefunction (a SCF-CI wavefunction).
+
+\item[\comp{DERP}] Analytical derivative of diatomic energy with respect to
+distance in a polymer or other infinite system, in the point-charge region.
+
+\item[\comp{DERS}] Called by \comp{ANALYT}, \comp{DERS} calculates the
+analytical derivatives of the overlap matrix within the molecular frame.
+
+\item[\comp{DEX2}] A function called by \comp{ESP}.
+
+\item[\comp{DFIELD/DFIENZ/DFIELZ}] Calculates the derivative  of the energy
+with respect to an applied external electric field.
+
+\item[\comp{DFOCK2}] Part of the analytical C.I.\ derivative package. Called by
+\comp{DERI1}, \comp{DFOCK2} calculates the frozen density contribution to  the
+derivative of the energy with respect to Cartesian coordinates.
+
+\item[\comp{DFPSAV/DFPSAN}] Saves and restores data used by the  BFGS geometry
+optimization. Main arguments: parameters being optimized, gradients of
+parameters, last heat  of formation, integer and real control data. Called by
+\comp{FLEPO}.
+
+\item[\comp{DGEDI}] Part of EF.
+
+\item[\comp{DGEFA}] Part of EF.
+
+\item[\comp{DGEMM}] Part of COSMO.
+
+\item[\comp{DGER}] Part of COSMO.
+
+\item[\comp{DGESV}] Part of COSMO.
+
+\item[\comp{DGETF2}] Part of COSMO.
+
+\item[\comp{DGETRF}] Part of COSMO.
+
+\item[\comp{DGETRS}] Part of COSMO.
+
+\item[\comp{DHC}] Called by \comp{DCART} and calculates the energy of a pair of
+atoms using the SCF density matrix.  Used in the finite difference derivative
+calculation.
+
+\item[\comp{DHCORE}] Part of the analytical C.I.\ derivative package. Called by
+\comp{DERI1}, \comp{DHCORE} calculates the derivatives of the 1 and 2  electron
+integrals with respect to Cartesian coordinates.
+
+\item[\comp{DIAG}] Rapid pseudo-diagonalization. Given a set of vectors which
+almost block-diagonalize a secular determinant, \comp{DIAG} modifies the
+vectors so that the block-dia\-gon\-al\-iz\-at\-ion is more exact. Main
+arguments: Old vectors, Secular Determinant,  New vectors (on output).  Called
+by \comp{ITEN}.
+
+\item[\comp{DIAGG}] The occupied - virtual LMO energy matrix diagonalizer. By
+doing a 2 $\times$ 2 rotation of the LMOs, the associated energy term is
+annihilated.
+
+\item[\comp{DIAGG1}] Constructs the occupied - virtual LMO energy term.
+
+\item[\comp{DIAGG2}] Annihilates the  occupied - virtual LMO energy term.
+
+\item[\comp{DIAGI}] Calculates the electronic energy arising from a given
+configuration. Called by MECI.
+
+\item[\comp{DIAT}] Calculates overlap integrals between two atoms in  general
+Cartesian space. Principal quantum numbers up to 6, and angular quantum numbers
+up to 2 are allowed. Main arguments: Atomic numbers and Cartesian coordinates
+in \AA ngstroms of the  two atoms, Diatomic overlaps (on exit). Called by
+H1ELEC.
+
+\item[\comp{DIAT2}] Calculates reduced overlap integrals between atoms  of
+principal quantum numbers 1, 2, and 3, for $s$ and $p$ orbitals. Faster than
+the SS in DIAT. This is a dedicated subroutine, and is unable to stand alone
+without considerable backup. Called by DIAT.
+
+\item[\comp{DIEGRD}] Part of COSMO.
+
+\item[\comp{DIGIT}] Part of READA.  DIGIT assembles numbers given a  character
+string.
+
+\item[\comp{DIHED}] Calculates the dihedral angle between four atoms. Used in
+converting from Cartesian to internal coordinates.
+
+\item[\comp{DIJKL1}] Part of the analytical C.I.\ derivative package. Called by
+DERI1, DIJKL1 calculates the two-electron integrals over M.O.\ bases, e.g.\
+$<$i,j(1/r)k,l$>$.
+
+\item[\comp{DIJKL2}] Part of the analytical C.I.\ derivative package. Called by
+DERI2, DIJKL2 calculates the derivatives of the two-electron  integrals over
+M.O.\ bases, e.g.\ $<$i,j(1/r)k,l$>$, wrt Cartesian coordinates.
+
+\item[\comp{DIMENS}] Calculates and prints the size of the molecule. ``Size''
+is defined as follows: The first dimension is the greatest distance across the
+system, the second dimension is the greatest distance across the molecule in
+the plane perpendicular to the first dimension. The third dimension is the
+greatest distance in the line perpendicular to the plane of the first two
+dimensions.
+
+\item[\comp{DIPIND}] Similar to DIPOLE, but used by the POLAR calculation 
+only.
+
+\item[\comp{DIPOLE/DIPOLN/DIPOLZ}] Evaluates and, if requested, prints  dipole
+components and dipole for the molecule or ion. Arguments: Density matrix, 
+Charges on every atom, coordinates, dipoles (on exit). 
+
+The dipole is calculated in two steps:
+\begin{enumerate}
+\item Using the charge on each atom and the geometry, the dipole arising from
+point  charges is evaluated.
+
+\item The contribution to the dipole arising from lone pairs is then added in. 
+This is  given by the $s-p$ contributions to the density matrix.  All other
+terms are ignored. Thus, the $s-d$ terms do not contribute to the dipole, and
+very few, if any,  compounds have non-zero $p-d$ terms in the density matrix.
+Called by WRITMO and FMAT.
+\end{enumerate}
+
+\item[\comp{DLASWP}] Part of COSMO.
+
+\item[\comp{DMECIP}] Used in analytical C.I.\ derivatives, \comp{DMECIP}
+calculates the change in density matrix due to MECI.
+
+\item[\comp{DNRM2}] A BLAS routine.
+
+\item[\comp{DOCK}] Rotates and translates one of the geometries in a 
+\comp{SADDLE} calculation so that the root mean square difference between  the
+two geometries is a minimum.
+
+\item[\comp{DOFS}] Calculates the density of states within a  Brillouin zone. 
+Used in polymer work only.
+
+\item[\comp{DOPEN}] Modifies the density matrix in BONDS to account for ROHF
+open shell populations.
+
+\item[\comp{DOPRO}] Part of intersystem crossing method.
+
+\item[\comp{DOT}] Given two vectors, X and Y, of length N, function DOT returns
+with the dot product X.Y. I.e., if X=Y, then DOT = X$^2$ Called by FLEPO.
+
+\item[\comp{DPRO}] Part of intersystem crossing method.
+
+\item[\comp{DRC/DRN}] The dynamic and intrinsic reaction coordinates  are
+calculated by following the mass-weighted trajectories.
+
+\item[\comp{DRCOUT}] Sets up DRC and IRC data in quadratic form  preparatory to
+being printed.
+
+\item[\comp{DREPP2}] Part of the PMEP.
+
+\item[\comp{DROTAT}] Part of the PMEP.
+
+\item[\comp{DSCAL}] A BLAS routine.
+
+\item[\comp{DSUM}] Part of Greens Function.
+
+\item[\comp{DSWAP}] Part of Greens Function.
+
+\item[\comp{DTRANS/DTRAN2}] Performs a point-group operation on a $d$-shell.
+  Called by CDIAG.
+
+\item[\comp{DTRSM}] Part of COSMO.
+
+\item[\comp{DUMMY}] Does nothing.  Called at the start of a run, \comp{DUMMY}
+is used in a \comp{FTCHECK} of the program, to reduce the number of apparent
+errors.  Specifically, when several arrays in COMMON blocks are used in the
+program as a single array, \comp{FTCHECK} will flag that as an error.
+\comp{DUMMY} will deceive \comp{FTCHECK} into not flagging the error.
+
+\item[\comp{DVFILL}] Part of COSMO.
+
+\item[\comp{EA08C}] Part of CDIAG
+
+\item[\comp{EA09C}] Part of CDIAG
+
+\item[\comp{EC08C}] Part of CDIAG
+
+\item[\comp{EF/EN}] EF is the Eigenvector Following routine.   EF implements
+the keywords EF and TS.
+
+\item[\comp{EFSAV}] Saves and restores data used by the Eigenvector Following
+subroutine.  Called by EF only.
+
+\item[\comp{EFSTR}] Within EF, EFSTR reads in all data needed by EF.
+
+\item[\comp{EIGEN/EIGENN}] Calculates the canonical M.O.s or eigenvectors.  It 
+does this by diagonalizing the SCF Fock matrix.
+
+\item[\comp{EIMP}] Calculates the scalar of the Fock matrix terms between
+atoms. The result is put into the $s$-$s$ elements of \comp{P}.
+
+\item[\comp{EINVIT}] Part of the diagonalizer.
+
+\item[\comp{EISCOR}] Part of MNDO-$d$.
+
+\item[\comp{ELAU}] Part of the diagonalizer.
+
+\item[\comp{ELENUC}] Part of MNDO-$d$.
+
+\item[\comp{ELESP/ELESN}] Within the ESP, ELESP calculates the electronic 
+contribution to the electrostatic potential.
+
+\item[\comp{EMPIRI}] Calculates and prints the chemical empirical formula.
+
+\item[\comp{ENPART}] Partitions the energy of a molecule into its monatomic and
+diatomic components. Called by WRITMO when the keyword  ENPART is specified. No
+data are changed by this call.
+
+\item[\comp{EPSAB}] Part of POLAR.
+
+\item[\comp{EPSETA}] Calculates the machine precision and dynamic range for use
+by the two diagonalizers.
+
+\item[\comp{EPSLON}] Part of diagonalizer.
+
+\item[\comp{EQLRAT}] Part of diagonalizer.
+
+\item[\comp{ERRION}] If there are a large number of ions in the system -
+probably as a result of errors in the data set - then \comp{ERRION} will print
+out the ionized atoms.   Data sets with a large number of ions should be
+regarded with suspicion!
+
+\item[\comp{ERROR}] Part of the Tomasi Solvation method.
+
+\item[\comp{ESP/ESN/}] ESP calculates the atomic charges which would reproduce
+the electrostatic potential of the nuclei and electronic wavefunction.
+
+\item[\comp{ESPFIT}] Part of the ESP.  ESP fits the quantum mechanical
+potential to a classical point charge model
+
+\item[\comp{ETRBK3}] Part of diagonalizer.
+
+\item[\comp{ETRED3}] Part of diagonalizer.
+
+\item[\comp{EVVRSP}] Part of diagonalizer.
+
+\item[\comp{EXCHNG}] Dedicated procedure for storing 3 parameters and one array
+in a store. Used by SEARCH.
+
+\item[\comp{FBX}] Part of MNDO-$d$.
+
+\item[\comp{FCNPP}] Part of Greens Function.
+
+\item[\comp{FFHPOL}] Part of the POLAR calculation.  Evaluates the  effect of
+an electric field on a molecule.
+
+\item[\comp{FFREQ1}] Part of POLAR.
+
+\item[\comp{FFREQ2}] Part of POLAR.
+
+\item[\comp{FHPATN}] Part of POLAR.
+
+\item[\comp{FILLC}] Part of the Tomasi Solvation method.
+
+\item[\comp{FILLIJ/FILLIN}] Works out the various cutoffs, and fills the 
+MOZYME matrix \comp{IJBO}.  Works out the sizes of the \comp{H} and \comp{W}
+matrices.
+
+\item[\comp{FILMAT}] Part of the Tomasi model.
+
+\item[\comp{FINDN1}] In a protein, \comp{FINDN1} finds the atom number of the
+first NH$_2$.    
+
+\item[\comp{FINISH}] Causes a safe and orderly shutdowm of MOPAC. \ Deletes 
+temporary or scratch files.
+
+\item[\comp{FLEPO/FLEPN}] Optimizes a geometry by minimizing the energy. Makes
+use of the first and estimated second derivatives to achieve this end. 
+Arguments: Parameters to be optimized,  (overwritten on exit with the optimized
+parameters), Number of  parameters, final optimized heat of formation. Called
+by RMOPAC,  REACT1, and FORCE.
+
+\item[\comp{FLUSHM}] Flushes the buffers.  By default, the output of a
+calculation is not immediately available while the job is running. 
+\comp{FLUSHM} will temporarily close and re-open the output file, so that the
+results can be seen while the job is running.
+
+\item[\comp{FMAT}] Calculates the exact Hessian matrix for a system This is
+done by either using differences of first derivatives  (normal mode) or by four
+full SCF calculations (half electron  or C.I.\ mode). Called by FORCE.
+
+\item[\comp{FOCD2Z}] Adds on to Fock matrix the two-center two electron terms
+arising from MNDO-$d$. Called by \comp{FOCK2Z} only.
+
+\item[\comp{FOCK1}] Adds on to Fock matrix the one-center two electron  terms.
+Called by \comp{ITEN} only.
+
+\item[\comp{FOCK1Z}] Adds on to Fock matrix the one-center two electron  terms.
+Called by ITENZ only.
+
+\item[\comp{FOCK2/FOCK2N/FOCK2Z}] Adds on to Fock matrix the two-center  two
+electron  terms. Called by \comp{ITEN} or \comp{ITENZ} and \comp{DERIV}.  In
+\comp{ITEN} and \comp{ITENZ} the  entire Fock matrix is filled; in
+\comp{DERIV}, only diatomic Fock matrices are  constructed.
+
+\item[\comp{FOCKD2}] Adds on to Fock matrix the two-center two electron terms
+arising from MNDO-$d$. Called by \comp{FOCK2} only.
+
+\item[\comp{FORCE/FORCN}] Performs a force-constant and vibrational  frequency
+calculation on a given system. If the starting  gradients are large, the
+geometry is optimized to reduce the  gradient norm, unless \comp{LET} is
+specified in the keywords.  Isotopic substitution is allowed. Thermochemical
+quantities  are calculated. Called by \comp{RMOPAC}.
+
+\item[\comp{FORDD}] Part of MNDO-$d$
+
+\item[\comp{FORMD}] Called by \comp{EF}. \ \comp{FORMD} constructs the next
+step in the geometry optimization or transition state location.
+
+\item[\comp{FORMXY}] Part of \comp{DIJKL1}. \comp{FORMXY} constructs part of 
+the two-electron integral over M.O.s.
+
+\item[\comp{FORSAV}] Saves and restores data used in \comp{FMAT} in
+\comp{FORCE}  calculation. Called by \comp{FMAT}.
+
+\item[\comp{FRAME}] Applies a very rigid constraint on the translations and
+rotations of the system. Used to separate the trivial vibrations in a
+\comp{FORCE} calculation.
+
+\item[\comp{FREDA}] Part of diagonalizer.
+
+\item[\comp{FREQCY}] Final stage of a \comp{FORCE} calculation. Evaluates and
+prints the vibrational frequencies and modes.
+
+\item[\comp{FSUB}] Part of \comp{ESP}.
+
+\item[\comp{GATHER\_*}] Subroutines used in multiprocessor calculations.
+
+\item[\comp{GENUN}] Part of \comp{ESP}. Generates unit vectors over a sphere.
+called by \comp{SURFAC} only.
+
+\item[\comp{GEOUT}] Prints out the current geometry. Can be called at  any
+time. Does not change any data.
+
+\item[\comp{GENVEC}] Creates the Connolly surface unit vectors on a sphere,
+part of \comp{PMEP}.
+
+\item[\comp{GEOCHK/GEOCHN}] Checks the supplied geometry to see of it conforms
+to the rules for the type of system which can be run.
+
+\item[\comp{GEOUT/GEOUN}] Prints out the current geometry. \comp{GEOUT} can be
+called at any time. Does not change any data.
+
+\item[\comp{GEOUTG/GEOUTN}] Prints out the current geometry in Gaussian
+Z-matrix format.
+
+\item[\comp{GET2C}] Part of the Tomasi Solvation method.
+
+\item[\comp{GET3C}] Part of the Tomasi Solvation method.
+
+\item[\comp{GETA1}] Part of the Tomasi Solvation method.
+
+\item[\comp{GETCC1}] Part of the Tomasi Solvation method.
+
+\item[\comp{GETDAT}] Reads in all the data, and puts it in a scratch file on
+channel 5.
+
+\item[\comp{GETGEG}] Reads in Gaussian Z-matrix geometry. Equivalent to
+\comp{GETGEO} and \comp{GETSYM} combined.
+
+\item[\comp{GETGEO}] Reads in geometry in character mode from specified
+channel, and stores parameters in arrays. Some error-checking  is done. Called
+by \comp{READMO} and \comp{REACT1}.
+
+\item[\comp{GETHES}] Constructs the Hessian matrix in \comp{EF}.
+
+\item[\comp{GETPDB}] Reads in the Z-matrix using Protein Data Base format.
+
+\item[\comp{GETSYM}] Reads in symmetry data. Used by \comp{READMO}.
+
+\item[\comp{GETTXT}] Reads in \comp{KEYWRD}, \comp{KOMENT} and \comp{TITLE}.
+
+\item[\comp{GETVAL}] Called by \comp{GETGEG}, \comp{GETVAL} either gets an
+internal coordinate or a logical name for that coordinate.
+
+\item[\comp{GMETRY/GMETRN}] Fills the Cartesian coordinates array. Data are 
+supplied from the array \comp{GEO}, \comp{GEO} can be (a) in internal 
+coordinates, or (b) in Cartesian coordinates. If \comp{STEP} is  non-zero, then
+the coordinates are modified in light of the  other geometry and \comp{STEP}.
+Called by \comp{HCORE},  \comp{DERIV}, \comp{READMO}, \comp{WRITMO}, 
+\comp{MOLDAT}, etc.
+
+\item[\comp{GOVER}] Calculates the overlap of two Slater orbitals which have
+been expanded into six gaussians.  Calculates the STP-6G overlap integrals.
+
+\item[\comp{GREEK}] Creates the greek subscripts for atoms, e.g., C$_{\alpha}$,
+for use in PDB format.
+
+\item[\comp{GREENF}] Corrects ionization potentials using Greens' Function
+method.
+
+\item[\comp{GRID}] Calculates a grid of points for a 2-D search in coordinate
+space.  Useful when more information is needed about a reaction surface.
+
+\item[\comp{GRIDS}] Constructs the Williams surface in \comp{PMEP}.
+
+\item[\comp{GSTORE}] Part of Greens Function.
+
+\item[\comp{H1ELEC/H1ELEZ}] Given any two atoms in Cartesian space,
+\comp{H1ELEC}  calculates the one-electron energies of the off-diagonal 
+elements of the atomic orbital matrix.  $$ H_{\lambda\sigma} =
+-S_{\lambda\sigma}(\beta_{\lambda}+\beta_{\sigma})/2 $$ Called by \comp{HCORE}
+or \comp{HCORZ} and \comp{DERIV}.
+
+\item[\comp{HADDON}] The symmetry operation subroutine, \comp{HADDON} relates
+two geometric variables by making one a dependent function of the  other.
+Called by \comp{SYMTRY} only.
+
+\item[\comp{HBONDS}] Identifies the hydrogen bonds (long-range weak covalent
+interactions) which have not been created during the first few iterations of
+the first SCF.
+
+\item[\comp{HCORE/HCORN/HCORZ}] Sets up the energy terms used in calculating
+the SCF heat of formation. Calculates the one and two electron matrices, and
+the nuclear energy. Called by \comp{COMMOP/COMMOZ}.
+
+\item[\comp{HELECT/HELECZ}] Given the density matrix, and the one electron and
+Fock matrices, calculates the electronic energy. No data are  changed by a call
+of \comp{HELECT}. Called by \comp{ITEN} or  \comp{ITENZ} and \comp{DERIV}.
+
+\item[\comp{HESINI}] Part of intersystem crossing method, calculates the
+inverse Hessian matrix.
+
+\item[\comp{HESINI}] Part of intersystem crossing method.
+
+\item[\comp{HMUF}] Part of \comp{POLAR}.
+
+\item[\comp{HPLUSF}] Part of \comp{POLAR}.
+
+\item[\comp{HXVEC}] Part of intersystem crossing method.
+
+\item[\comp{HYBRID}] Constructs the starting localized monatomic hybrid atomic
+orbitals.
+
+\item[\comp{IJKL}] Fills the large two-electron array over a M.O.\ basis set.
+Called by \comp{MECI}.
+
+\item[\comp{INID}] Part of MNDO-$d$, it initializes various arrays used by the
+integral package.
+
+\item[\comp{INIGHD}] Part of MNDO-$d$, it evaluates the one-center 
+two-electron integrals.
+
+\item[\comp{INSYMC}] Part of Greens Function.
+
+\item[\comp{INTERP/INTERN}] Runs the Camp-King converger. q.v.
+
+\item[\comp{INTFC}] In a \comp{FORCE} calculation, \comp{INTFC} calculates the
+force constants for the supplied coordinate system.  If these are internal,
+then internal force constants will be calculated.  The force constants will be
+printed.
+
+\item[\comp{IONOUT}] Prints all ions found by \comp{GEOCHK}.
+
+\item[\comp{ISITSC}] (IS IT Self Consistent) Determines if the system has
+satisfied the self-consistency criteria.
+
+\item[\comp{ITER/ITEN/ITERZ/ITENZ}] Given the one and two electron matrices,
+ITER calculates the Fock and density matrices, and the electronic energy.
+Called by \comp{COMMOP/COMMOZ}.
+
+\item[\comp{JAB}] Calculates the coulomb contribution to the Fock matrix in
+NDDO formalism. Called by \comp{FOCK2}.
+
+\item[\comp{JCARIN}] Calculates the difference vector in Cartesian coordinates
+corresponding to a small change in internal coordinates.
+
+\item[\comp{KAB}] Calculates the exchange contribution to the Fock matrix in
+NDDO formalism. Called by FOCK2.
+
+\item[\comp{LDIMA/LDIMN}] Part of the Tomasi Solvation method.
+
+\item[\comp{LEWIS}] Works out the connectivity, that is, which atoms are bonded
+together.  It does this using the interatomic distance and the van der Waals
+radii.
+
+\item[\comp{LIGAND}] Makes labels for atoms which are not part of the protein
+itself; mainly small molecules or ions such as phosphate.
+
+\item[\comp{LINMIN}] Called by the BFGS geometry optimized \comp{FLEPO},
+\comp{LINMIN} takes a step in the search-direction and if the energy drops,
+returns.  Otherwise it takes more steps until if finds one which causes the
+energy to drop.
+
+\item[\comp{LOCAL}] Given a set of occupied eigenvectors, produces a  canonical
+set of localized bonding orbitals, by a series of  $2\times 2$ rotations which
+maximize $\langle \psi^4 \rangle$.  Called by \comp{WRITMN}.
+
+\item[\comp{LOCAL2}] Converts hybridized, but non-localized atomic orbitals
+into localized hybrid atomic orbitals, by maximizing  $\langle \psi^4 \rangle$.
+
+\item[\comp{LOCALZ/LOCANZ}] Re-localizes LMOs.  The MOZYME LMOs are usually not
+fully localized.  \comp{LOCALZ} completes the localization, so that the results
+can be compared with standard MOPAC localized M.O.s.
+
+\item[\comp{LOCMIN}] In a gradient minimization, \comp{LOCMIN} does a 
+line-search to find the gradient norm minimum. Main arguments: current
+geometry, search direction, step, current gradient  norm; on exit: optimized
+geometry, gradient norm.
+
+\item[\comp{LYSE}] Breaks all covalent bonds between different parts of a
+protein.  The set of bonds that are broken is the set X-Y, where X$\neq$C and
+Y$\neq$(C, N, or O), e.g.\ S-O, S-N, and S-S.  Used by \comp{NAMES} and
+\comp{RESEQ} to work out the residues in a protein.
+
+\item[\comp{MAKEUF}] Part of \comp{POLAR}.
+
+\item[\comp{MAKOPR}] Part of the point-group package, \comp{MAKOPR} builds the 
+ operations based on the point group of the system.  A check is made to verify
+ that the operations are valid. Called by \comp{SYMTRZ} only.
+
+\item[\comp{MAKSYM}] The code to make \comp{AUTOSYM} work.
+
+\item[\comp{MACVEC/MAKVEN}] Constructs the starting localized mono- and
+di-atomic molecular orbitals.
+
+\item[\comp{MAMULT}] Matrix multiplication. Two matrices, stored as lower half
+triangular packed arrays, are multiplied together, and the result stored in a
+third array as the lower half triangular array. Called from \comp{PULAY}.
+
+\item[\comp{MAT33}] Part of the point-group package,  \comp{MULT33} performs a 
+eulerian rotation on a symmetry operation.
+
+\item[\comp{MATOU1/MATON1}] Similar to \comp{MATOUT}, but also prints the
+symmetry labels.
+
+\item[\comp{MATOUT/MATOUN}] Matrix printer. Prints a square matrix, and a 
+row-vector, usually eigenvectors and eigenvalues. The indices  printed depend
+on the size of the matrix: they can be either  over orbitals, atoms, or simply
+numbers, thus M.O.s are over  orbitals, vibrational modes are over numbers.
+
+\item[\comp{MBONDS}] Using the localized hybrid atomic orbitals, \comp{MBONDS}
+constructs di-atomic bonds and antibonds.
+
+\item[\comp{ME08A, ME08B}] Utilities: Part of the complex diagonalizer, and
+called by  \comp{CDIAG}.
+
+\item[\comp{MECI/MECN}] Main function for Configuration Interaction,
+\comp{MECI} constructs the appropriate C.I.\ matrix, and evaluates the roots,
+which correspond to the electronic energy of the states of the system. The
+appropriate root is then returned. Called by \comp{ITEN}  only.
+
+\item[\comp{MECID}] Constructs the differential C.I.\ secular determinant.
+
+\item[\comp{MECIH}] Constructs the normal C.I.\ secular determinant.
+
+\item[\comp{MECIP}] Reforms the density matrix after a MECI calculation.
+
+\item[\comp{MEPCHG}] Part of the PMEP.
+
+\item[\comp{MEPMAP}] Part of the PMEP.
+
+\item[\comp{MEPROT}] Part of the PMEP.
+
+\item[\comp{MFINEL}] Part of intersystem crossing method.
+
+\item[\comp{MINGEO}] Very simple routine to print the input geometry.
+
+\item[\comp{MINLOC}] If a heavy atom has less than 3 atoms attached to it, then
+when the hybrid orbitals are generated, two or three of them are ill-defined.
+This ill-definition can be resolved by additional constraints, specifically by
+requiring certain coefficients to be zero.
+
+\item[\comp{MINV}] Matrix inverter.  This is inefficient, and should be coded
+out.
+
+\item[\comp{MKBMAT}] In COSMO, fills the ``B'' matrix.
+
+\item[\comp{MLIG}] Part of MNDO-$d$.
+
+\item[\comp{MLMO}] The starting localized M.O.s are put into their appropriate
+arrays by \comp{MLMO}.
+
+\item[\comp{MO}] Part of Greens Function.
+
+\item[\comp{MODCHG}] Prints the charge due to (a) backbone residue atoms, and
+(b) all side-chain atoms in each residue, and (c) the net charge ($a$ plus $b$)
+on each residue, in a protein.
+
+\item[\comp{MODGRA}] Calculates and prints the gradient norms for all residues
+(side-chains and backbones).
+
+\item[\comp{MOIETY}] In protein systems, \comp{MOIETY} identifies atoms in
+small molecules that are associated with the protein.
+
+\item[\comp{MOINT}] Part of Greens Function.
+
+\item[\comp{MOLDAT/MOLDAN}] Sets up all the invariant parameters used during
+the calculation, e.g.\ number of electrons, initial atomic  orbital
+populations, number of open shells, etc. 
+
+\item[\comp{MOLSYM}] Part of the point-group package, \comp{MOLSYM} calculates
+the molecular symmetry as a point-group symbol.
+
+\item[\comp{MOLVAL}] Calculates the contribution from each M.O.\ to the total
+valency in the molecule.  Empty M.O.s normally have a negative molecular
+valency.
+
+\item[\comp{MOPAC}] MAIN program. \comp{MOPAC} first reads in data using 
+\comp{READMO}, then calls \comp{RMOPAC} to do the actual calculation. Starts
+the timer.
+
+\item[\comp{MOPEND}] Closes all open files and stops the job.  The last
+subroutine to be called.
+
+\item[\comp{ MPCBDS, MPCPOP, MPCSYB}] Used in generating data for the TRIPOS
+package SYBYL.
+
+\item[\comp{MTXM}] Part of the matrix package. Multiplies together two
+rectangular packed arrays, i.e., C = A.B.
+
+\item[\comp{MTXMC}] Part of the matrix package.  Similar to \comp{MTXM}.
+
+\item[\comp{MULLIK/MULLIN/MULLIZ}] Constructs and prints the Mulliken
+Population  Analysis. Available only for RHF calculations. Called by
+\comp{WRITMN}.
+
+\item[\comp{MULT}] Used by \comp{MULLIK} only, \comp{MULT} multiplies two
+square  matrices together. 
+
+\item[\comp{MULT33}] Part of the point-group package,  \comp{MULT33} performs
+ a  eulerian rotation on a symmetry operation.
+
+\item[\comp{MXM}] Part of the matrix package. Similar to \comp{MTXM}.
+
+\item[\comp{MXMT}] Part of the matrix package. Similar to \comp{MTXM}.
+
+\item[\comp{MYWORD}] Called in \comp{WRTKEY}, \comp{MYWORD} checks for  the
+existence of a specific string. If it is found, \comp{MYWORD} is set true, and
+the all occurrences of string are deleted. Any words not recognized will be
+flagged and the job stopped.
+
+\item[\comp{NAICAP/NAICAN}] Called by \comp{ESP}.
+
+\item[\comp{NAICAS}] Called by \comp{ESP}.
+
+\item[\comp{NAMES}] Determines the names of all residues in a protein.
+
+\item[\comp{NEWDEL}] Part of intersystem crossing method.
+
+\item[\comp{NEWFLG}] Used when \comp{NEWGEO} is requested, all the coordinates
+are converted to internal coordinates, then \comp{NEWFLG} converts the backbone
+atoms of a protein into Cartesian coordinates.
+
+\item[\comp{NEWHES}] Part of intersystem crossing method.
+
+\item[\comp{NEWMAT}] Creates temporary and permanent integer and real arrays,
+and destroys temporary arrays.
+
+\item[\comp{NGAMTG}] Part of \comp{POLAR}.
+
+\item[\comp{NGEFIS}] Part of \comp{POLAR}.
+
+\item[\comp{NGIDRI}] Part of \comp{POLAR}.
+
+\item[\comp{NGOKE}] Part of \comp{POLAR}.
+
+\item[\comp{NLLSQ/NLLSN}] Used in the gradient norm minimization.
+
+\item[\comp{NONBET}] Part of \comp{POLAR}.
+
+\item[\comp{NONOPE}] Part of \comp{POLAR}.
+
+\item[\comp{NONOR}] Part of \comp{POLAR}.
+
+\item[\comp{NOTLFT}] A check in the static polarizability calculation, to find
+out if there is enough time left for another step.
+
+\item[\comp{NUCHAR}] Takes a character string and reads all the numbers in it
+and stores these in an array.
+
+\item[\comp{NXTMER}] Identifies the backbone atoms of the next residue (mer) in
+a protein.
+
+\item[\comp{OPENDA}] Part of \comp{POLAR}.
+
+\item[\comp{OPTBR}] Sets geometry optimization flags in a protein.  Either
+backbone atoms or side chain atoms or both can be set.
+
+\item[\comp{ORIENT}] Part of the point-group package, \comp{ORIENT} orients
+cubic systems.
+
+\item[\comp{OSINV}] Inverts a square matrix. Called by \comp{PULAY} only.
+
+\item[\comp{OUTER1}] Calculates the point charge electrostatic energy term 
+arising from the charge on atoms which are further away than \comp{CUTOF1}.
+
+\item[\comp{OUTER2}] Calculates the point charge and dipole electrostatic
+ energy terms arising from the charge on atoms which are further away than
+ \comp{CUTOF2}.
+
+\item[\comp{OVERLP}] Part of \comp{EF}. \comp{OVERLP} decides which normal mode
+to  follow.
+
+\item[\comp{OVLP}] Called by \comp{ESP} only.  \comp{OVLP} calculates the
+overlap over Gaussian STOs.
+
+\item[\comp{PACKP}] Part of \comp{PMEP}, \comp{PACKP} copies the monatomic
+density matrix terms from a normal lower half triangular matrix into a packed
+matrix. 
+
+\item[\comp{PARSAV/PARSAV}] Stores and restores data used in the gradient-norm
+minimization calculation.
+
+\item[\comp{PARTXY}] Called by \comp{IJKL} only, \comp{PARTXY} calculates the
+partial product $<$i,j(1/r) in $<$i,j(1/r)k,l$>$.
+
+\item[\comp{PATHK}] Calculates a reaction coordinate which uses a constant
+step-size.  Invoked by keywords \comp{STEP} and \comp{POINTS}. 
+
+\item[\comp{PATHS}] Given a reaction coordinate as a row-vector,  \comp{PATHS}
+performs a \comp{EF} or \comp{FLEPO} geometry optimization for each point, the
+later geometries being initially guessed from a knowledge of the already
+optimized geometries, and the current step. Called by \comp{RMOPAC} only.
+
+\item[\comp{PDBOUN}] Prints the geometry in PDB format. (``N'' is used, because
+this is part of \comp{GEOUN}.)
+
+\item[\comp{PDGRID}] Part of \comp{ESP}. Calculates the Williams surface.
+
+\item[\comp{PEDRA}] Part of the Tomasi Solvation method.
+
+\item[\comp{PERM}] Permutes $n1$ electrons of alpha or beta spin among $n2$
+   M.O.s. 
+
+\item[\comp{PICOPT}] Determines which atoms are to be included in the SCF
+calculation.
+
+\item[\comp{PINOUT/PINOUN}] Writes out the localized molecular orbitals to a 
+`.den' file, and reads them in when \comp{OLDENS} is specified.
+
+\item[\comp{PLATO}] Part of the point-group package, \comp{PLATO} orients a
+ cubic system.
+
+\item[\comp{PMEP/PMEP1/PMEPCO}] Generates the Parametric Molecular
+Electrostatic Potential.
+
+\item[\comp{POLAR/POLAN}] Calculates the static and frequency dependent
+polarizability volumes using the ``Sum over States'' (SOS) method.
+
+\item[\comp{POLARZ/POLANZ}] Calculates the static polarizability volumes  for a
+molecule or ion, using 19 SCF calculations.
+
+\item[\comp{POTCAL}] Part of \comp{ESP}.
+
+\item[\comp{POWSAV/POWSAN}] Calculation store and restart for \comp{SIGMA} 
+calculation. Called by \comp{POWSQ}.
+
+\item[\comp{POWSQ/POWSN}] The McIver - Komornicki gradient  minimization
+routine. Constructs a full Hessian matrix  and proceeds by line-searches Called
+from \comp{RMOPAC} when  \comp{SIGMA} is specified.
+
+\item[\comp{PRINTP}] Part of MNDO-$d$, \comp{PRINTP} prints the value of a
+single parameter used in a MNDO-$d$ calculation. 
+
+\item[\comp{PRJFC}] Part of \comp{EF}.
+
+\item[\comp{PROJE}] Part of intersystem crossing method.
+
+\item[\comp{PRTDRC}] Prints \comp{DRC} and \comp{IRC} results  according to
+instructions. Output can be (a) every point calculated (default), (b) in
+constant steps in time, space or energy.
+
+\item[\comp{PRTGRA}] Prints all the gradients in internal coordinates. If
+\comp{XYZ} is used, the gradients will be in Cartesian coordinates.
+
+\item[\comp{PRTHCO}] Part of MNDO-$d$, \comp{PRTHCO} prints the \comp{H}
+matrix.
+
+\item[\comp{PRTHES}] Prints the Hessian in \comp{EF}.
+
+\item[\comp{PRTLMO/PRTLMN}] Prints the localized molecular orbitals.
+
+\item[\comp{PRTPAR}] Part of MNDO-$d$, \comp{PRTPAR} prints the values of all
+parameters used in a MNDO-$d$ calculation.  Very useful in debugging.
+
+\item[\comp{PRTTIM}] Prints the time with an elegant layout.
+
+\item[\comp{PULAY}] A new converger. Uses a powerful  mathematical
+non-iterative method for obtaining the SCF Fock  matrix. Principle is that at
+SCF the eigenvectors of the Fock  and density matrices are identical, so
+[\comp{F.P}] is a measure of the non-self consistency. While very powerful,
+\comp{PULAY} is not  universally applicable. Used by \comp{ITEN}.
+
+\item[\comp{PURDF1}] Part of the Tomasi Solvation method.
+
+\item[\comp{QNALG/QNALN}] Part of intersystem crossing method.
+
+\item[\comp{QNSAVE}] Part of intersystem crossing method.
+
+\item[\comp{QNSTEP}] Part of intersystem crossing method.
+
+\item[\comp{QUADR}] Used in printing the \comp{IRC} - \comp{DRC} results.  Sets
+up a quadratic in time of calculated quantities so that \comp{PRTDRC}  can
+select specific reaction times for printing.
+
+\item[\comp{REACT1/REACT2}] Uses reactants and products to find the  transition
+state. A hypersphere of $N$ dimensions is centered on  each moiety, and the
+radius steadily reduced. The entity of  lower energy is moved, and when the
+radius vanishes, the  transition state is reached. Called by \comp{RMOPAC}
+only.
+
+\item[\comp{READA}] General purpose character number reader. Used to enter
+numerical data in the control line as $<$variable$>$=$n.nnn$ where
+$<$variable$>$ is a mnemonic such as \comp{SCFCRT} or \comp{CHARGE}.  Called by
+\comp{READ}, \comp{FLEPO}, \comp{ITER}, \comp{FORCE}, and  many other
+subroutines.
+
+\item[\comp{READMO}] Almost all the data are read in through \comp{READMO}.  \
+There is a lot of data-checking in \comp{READMO}, but very little  calculation.
+Called by \comp{MOPAC}.
+
+\item[\comp{REFER}] Prints the original references for atomic data. If an atom
+does not have a reference, i.e., it has not been parameterized, then a warning
+message will be printed and the calculation stopped.
+
+\item[\comp{REORTH}] Re-orthogonalizes the LMOs.  During a calculation, the
+LMOs become increasingly non-orthogonal.  Although the total error is usually
+very small, whatever error there is due to non-orthogonality, that error is
+removed by \comp{REORTH}.
+
+\item[\comp{REPP}] Calculates the 22 two-electron reduced repulsion  integrals,
+and the 8 electron-nuclear attraction integrals. These are in a local
+coordinate system. Arguments: atomic numbers of the two atoms, interatomic
+distance, and arrays to  hold the calculated integrals. Called by \comp{ROTATE}
+and \comp{OUTER2} only.
+
+\item[\comp{REPPD}] More-or-less like \comp{REPP}, this routine should be
+deleted.
+
+\item[\comp{REPPD2}] More-or-less like \comp{REPP}, but extended to include 
+``$d$'' orbitals.
+
+\item[\comp{RESEQ}] A unique routine, \comp{RESEQ} will re-sequence the atoms
+so that the atoms are in the order of the residues; i.e., the atoms of residue
+1 first, then those of residue 2, etc.  This routine will automatically stop
+the job.
+
+\item[\comp{RESET/RESEN}] In \comp{RESEN}, geometric information is  copied
+from the dynamic memory back into the static COMMON arrays at the end of a
+calculation. This is necessary so that it can be available to the next
+calculation.
+
+\item[\comp{RESOLV}] If two or more LMOs have the same atomic contributions,
+then any linear combination of these LMOs is an acceptable solution. This is
+undesirable, in that the energies of these LMOs is therefore not defined. 
+\comp{RESOLV} will identify such sets of LMOs, and resolve them so that they
+have a zero energy interaction, that is, the integral $<\!$psi(1)|F|psi(2)$\!>$
+is zero.
+
+\item[\comp{RFIELD/RFIELN}] Part of the Tomasi Solvation method.
+
+\item[\comp{RING5}] Detects the presence of a five membered conjugated ring of
+the type found in the fullerenes.
+
+\item[\comp{RMOPAC}] The main subroutine in MOPAC, \comp{RMOPAC} calls all the
+geometric functions \comp{EF}, \comp{FLEPO}, \comp{DRC},  \comp{FORCE}, etc. 
+These subroutines are not called from \comp{MOPAC} because they do not have
+access to the elements of \comp{CCORE} or \comp{MCORE}.
+
+\item[\comp{ROTAT}] Rotates analytical two-electron derivatives from atomic to
+molecular frame.
+
+\item[\comp{ROTATD}] Rotates analytical two-electron derivatives from atomic to
+molecular frame in MNDO-$d$.
+
+\item[\comp{ROTATE}] All the two-electron repulsion integrals, the electron-
+nuclear attraction integrals, and the nuclear-nuclear repulsion term between
+two atoms are calculated here. Typically 100 two- electron integrals are
+evaluated.
+
+\item[\comp{ROTLMO/ROTLMN}] In \comp{POLAR} calculations, the molecule is
+rotated so that it is orientated along the Principle Moments of Inertia.  A
+consequence of this rotation is that the LMOs no longer block diagonalize the
+Fock matrix. \comp{ROTLMN} then rotates the LMOs so that they are now correct
+for the new orientation of the molecule.
+
+\item[\comp{ROTMAT}] Calculates the unitary matrices for rotation of atomic
+orbitals from a diatomic into a molecular frame in MNDO-$d$.
+
+\item[\comp{ROTMOL}] Part of the point-group package, \comp{ROTMOL} rotates the
+Cartesian coordinates of a molecule. \item[\comp{RPOL1}] Part of the Tomasi
+Solvation method.
+
+\item[\comp{RSP}] Rapid diagonalization routine. Accepts a secular determinant,
+and produces a set of eigenvectors and  eigenvalues. The secular determinant is
+destroyed. 
+
+\item[\comp{SCFCRI}] Determines the SCF criteria.
+
+\item[\comp{SCHMIB}] Part of Camp-King converger.
+
+\item[\comp{SCHMIT}] Part of Camp-King converger.
+
+\item[\comp{SCPRM}] Calculates the Slater-Condon parameters in MNDO-$d$.
+
+\item[\comp{SEARCH}] Part of the \comp{SIGMA} and \comp{NLLSQ}  gradient
+minimizations.  The line-search subroutine, \comp{SEARCH} locates the gradient 
+minimum and calculates the second derivative of the energy  in the search
+direction. Called by \comp{POWSQ} and \comp{NLLSQ}.
+
+\item[\comp{SECOND}] Contains machine specific code. Function \comp{SECOND}
+returns the number of CPU seconds elapsed since an arbitrary  starting time. If
+the \comp{shut} command has been issued,  the CPU time is in error by exactly
+10,000,000 seconds, and  the job usually terminates with the message ``time
+exceeded''.
+
+\item[\comp{SELMOS}] Selects the LMOs to be used in the SCF.  If only a part of
+the system is of interest, for example the active site, then the SCF can be
+limited to a subset of the system.  The LMOs involving the active atoms are
+identified, and moved to the start of the LMO set.  Then, when \comp{DIAGG} is
+called, only the active LMOs will be used.  This runs much faster than when the
+entire system is involved.
+
+\item[\comp{SET}] Called by \comp{DIAT2}, evaluates some terms used in overlap
+calculation.
+
+\item[\comp{SETUP3}] Sets up the Gaussian expansion of Slater orbitals using a
+STO-3G basis set. Used in \comp{ESP} only.
+
+\item[\comp{SETUPG}] Sets up the Gaussian expansion of Slater orbitals using a
+STO-6G basis set.
+
+\item[\comp{SETUPI}] At the start of a calculation, \comp{SETUPI} works out the
+sizes of all permanent INTEGER arrays.  A second call to \comp{SETUPI} creates
+these arrays.
+
+\item[\comp{SETUPK}] Determines the set of atoms to be used in re-constructing
+the Fock matrix.  The set of atoms is the set of all LMOs used in \comp{DIAGG}.
+
+\item[\comp{SETUPR}] At the start of a calculation, \comp{SETUPR} works out the
+sizes of all permanent REAL arrays.  A second call to \comp{SETUPR}  creates
+these arrays. 
+
+\item[\comp{SNAPTH}] ``Tidies up'' input angles, for example, converts 109.471
+into the exact, 16 figure, tetrahedral angle.
+
+\item[\comp{SOLBOX/SOLBON}] Part of the Tomasi Solvation method.
+
+
+\item[\comp{SOLROT}] For Cluster systems, adds all the two-electron integrals
+of the same type, between different unit cells, and stores them in a single
+array. Has no effect on molecules.
+
+\item[\comp{SORT}] Part of \comp{CDIAG}, the complex diagonalizer.
+
+\item[\comp{SPCORE}] In MNDO-$d$, \comp{SPCORE} calculates the 10 $s-p$ - core
+integrals.
+
+\item[\comp{SPLINE}] Part of Camp-King converger.
+
+\item[\comp{SS}] An almost general Slater orbital overlap calculation. Called
+by DIAT.
+
+\item[\comp{STATE}] At the start of a calculation \comp{STATE} determines the
+state of the system (number of electrons, orbitals, and the number of $\alpha$
+and $\beta$ electrons (if UHF), or number of filled and partly filled levels,
+etc. (if RHF).
+
+\item[\comp{SUMA2}] Part of Greens Function.
+
+\item[\comp{SUPDOT}] Matrix multiplication A=B.C
+
+\item[\comp{SUPERD}] Calculates and prints the superdelocalizabilities.
+
+\item[\comp{SURCLO}] In COSMO, calculates the Solvent Accessible Surface (SAS)
+in the waist or neck between two atoms.
+
+\item[\comp{SURFA}] Part of the PMEP.
+
+\item[\comp{SURFAC}] Part of the ESP.
+
+\item[\comp{SURFAT}] Part of the Tomasi Solvation method.
+
+\item[\comp{SWAP}] Used with \comp{FILL=n}, SWAP ensures that a specified 
+M.O.\ is filled. Called by ITER only.
+
+\item[\comp{SWITCH}] At the start of a calculation, \comp{SWITCH} copies
+parameters appropriate to the method into reference arrays.
+
+\item[\comp{SYMDEC}] DECend in SYMmetry)  For a given point group,
+\comp{SYMDEC} checks to see of the point group operations present in the
+molecule match the operations of the group.  If they do, then \comp{SYMDEC} is
+set to ``true''.
+
+\item[\comp{SYMH/SYMN}] Rotates a dipole moment vector.  Used in the 
+\comp{FORCE} calculation.
+
+\item[\comp{SYMOIR}] Part of the point-group package, \comp{SYMOIR} calculates
+ the  Irreducible Representation of an eigenvector, given the character table
+ and the characters of the representation.
+
+\item[\comp{SYMOPR}] Part of the point-group package,  \comp{SYMOPR} performs a
+ symmetry operation on the Cartesian coordinates.
+
+\item[\comp{SYMP}] Part of the point-group package,  \comp{SYMP} generates all
+ the operations of a group, starting with the operations stored in
+ \comp{CARTAB}.
+
+\item[\comp{SYMPOP}] Rotates the dipole moment vector. Used in the \comp{FORCE}
+ calculation.
+
+\item[\comp{SYMR}] Used in the rapid construction of the \comp{FORCE} Hessian
+matrix, \comp{ SYMH} will add information about an atom to the Hessian matrix,
+using point-group information.
+
+\item[\comp{SYMT}] In a \comp{FORCE} calculation, \comp{SYMT} will symmetrize
+ the Hessian matrix so that the resulting eigenvectors will transform properly.
+
+\item[\comp{SYMTRY/SYMTNN}] Calculates values for geometric parameters from
+known geometric parameters and symmetry data. Called whenever \comp{GMETRY} is
+called.
+
+\item[\comp{SYMTRZ/SYMTRN}] The point-group package.  Identifies molecular
+point-groups, and characterizes M.O.s, normal coordinates (vibrations), and
+state functions.
+
+\item[\comp{TF}] Part of \comp{POLAR}.
+
+\item[\comp{THERMO}] After the vibrational frequencies have been  calculated,
+\comp{THERMO} calculates thermodynamic quantities such as internal energy, heat
+capacity, entropy, etc, for translational, vibrational, and rotational, degrees
+of freedom.
+
+\item[\comp{TIDY/TIDN}]\label{tidy}  Tidies up all the LMOs.   Atoms with
+negligible intensity in any LMO are deleted.  The resulting unused storage is
+eliminated, and all the gaps between LMOs are made equal.
+
+\item[\comp{TIMER}] Prints times of various steps.
+
+\item[\comp{TIMOUT}] Prints total CPU time in elegant format.
+
+\item[\comp{TMPI}] Determines the amount of temporary INTEGER storage needed by
+the calculation.
+
+\item[\comp{TMPMR}] Determines the amount of temporary REAL storage needed by
+the calculation, when conventional SCFs are done.. 
+
+\item[\comp{TMPZR}] Determines the amount of temporary REAL storage needed by
+the calculation, when the SCF is solved using localized M.O.s. 
+
+\item[\comp{TRANSF}] Part of POLAR.
+
+\item[\comp{TX}] Part of MNDO-$d$, involved in generating two-electron
+two-center integrals in a molecular frame.
+
+\item[\comp{TXTYPE}] Constructs the PDB label for each atom in a residue.
+
+\item[\comp{UPCASE}] Puts a character string into upper case.
+
+\item[\comp{UPDATE}] Given a set of new parameters, stores these  in their
+appropriate arrays.  Invoked by \comp{EXTERNAL}.
+
+\item[\comp{UPDHES}] Called by \comp{EF}, \comp{UPDHES} updates the Hessian
+matrix.
+
+\item[\comp{UPDHIN}] Updates the inverse Hessian matrix, using the BFGS recipe.
+
+\item[\comp{VALUES/VALUEN}] Calculates the energy levels of the LMOs, and sorts
+the LMOs into increasing energy order.  Used whenever the LMOs are to be
+printed or output for graphical use.
+
+\item[\comp{VECPRT/VECPRN/VECPRZ/VECPZZ}] Prints out a packed, lower-half
+triangular matrix.  The labeling of the sides of the matrix depend on the
+matrix's size: if it is equal to the number of orbitals, atoms, or other.
+Arguments: The matrix to be printed, size of matrix. No data are changed by a
+call of \comp{VECPRT}.
+
+\item[\comp{VOLUME}] Calculates the volume of a unit cell.
+
+\item[\comp{W2MAN}] In MNDO-$d$, copies the two-electron integrals, \comp{WW},
+into the appropriate part of the two-electron integral array \comp{W}.
+
+\item[\comp{WALLC}] Prints the wall-clock time (as opposed to CPU time).
+
+\item[\comp{WORDER}] Part of Greens Function.
+
+\item[\comp{WRDKEY}] Within a compound word, such as \comp{POLAR(E=(0.5))},
+\comp{WRDKEY} will read the `simple' keywords, \comp{E=(0.5)}.
+
+\item[\comp{WRITMO/WRITMN}] Most of the results are printed here. All  relevant
+arrays are assumed to be filled. A call of \comp{WRITMO} only  changes the
+number of SCF calls made, this is reset to zero.  No other data are changed. 
+
+\item[\comp{WRTKEY}] Prints all keywords and checks for compatibility and to
+see if any are not recognized.   \comp{WRTKEY}] can stop the job if any errors
+are found.
+
+\item[\comp{WRTMOZ}] In \comp{WRTKEY}, \comp{WRTMOZ} prints the keywords that
+are specific to the \comp{MOZYME} function.
+
+\item[\comp{WRTTXT}] Writes out \comp{KEYWRD}, \comp{KOMENT} and 
+\comp{TITLE}.  The inverse of \comp{GETTXT}.
+
+\item[\comp{WSTORN}] Adds the one-center two-electron integrals to \comp{W} and
+symmetrizes the matrix.
+
+\item[\comp{WWSTEP}] Part of Greens Function.
+
+\item[\comp{XERBLA}] Part of COSMO.
+
+\item[\comp{XXX}] Forms a unique logical name for a Gaussian Z-matrix logical. 
+Called  by \comp{GEOUTG} only.
+
+\item[\comp{XYZCRY}] Prints the derivatives of the energy with respect to
+fractional crystal coordinates.
+
+\item[\comp{XYZGEO}] Converts from Cartesian coordinates into internal, given a
+connectivity table.
+
+\item[\comp{XYZINT}] Converts from Cartesian coordinates into internal.
+\comp{XYZINT} sets up its own numbering system, so no connectivity is needed. 
+However, a connectivity can be supplied, if desired.
+\end{description}
+\index{Subroutines!description of|)}

@@ -1,0 +1,162 @@
+      FUNCTION OPCI(EE,XKKKK,XLLLL,XKLLK)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES/NOLIST'
+*****************************************************************************
+*
+*     OPCI PERFORMS A 3X3 CI BASED ON THE SCFMOS OF THE GROUND STATE, 
+*          THE ENERGY OF THE STATE IS RETURNED IN OPCI
+*     REFERENCES:
+*         M. JUNGEN, THEOR. CHIM. ACTA, V.11, P.193 (1968) (IN GERMAN)
+*         J.C. SLATER, QUANTUM THEORY OF MOLECULES AND SOLIDS, V.1,
+*         PP. 285 FF.
+*
+*****************************************************************************
+      COMMON /MOLKST/ NUMAT,NAT(NUMATM),NFIRST(NUMATM),NMIDLE(NUMATM),
+     1                NLAST(NUMATM), NORBS, NELECS,NALPHA,NBETA,
+     +                NCLOSE,NOPEN
+      COMMON /VECTOR/ C(MORB2),EIGS(MAXORB),CBETA(MORB2),EIGB(MAXORB)
+      COMMON /WMATRX/ W(N2ELEC)
+      COMMON /CIMATS/ ENGYCI(3),VECTCI(9),ECI(6)
+      COMMON /NUMCAL/ NUMCAL
+      COMMON /KEYWRD/ KEYWRD
+      DIMENSION E(6)
+      CHARACTER*80 KEYWRD
+      LOGICAL DEBUG
+      DATA ICALCN /0/
+      IF(ICALCN.NE.NUMCAL) THEN
+          DEBUG = (INDEX(KEYWRD,'OPCI') .NE. 0)
+          LROOT=1
+          IF(INDEX(KEYWRD,'EXCIT') .NE. 0) LROOT=2
+          I=INDEX(KEYWRD,'ROOT')
+          IF(I.NE.0) LROOT=READA(KEYWRD,I)
+          IF (NCLOSE.EQ.NOPEN) THEN
+C
+C    SET UP INDICES FOR A CLOSED SHELL SYSTEM
+C
+              NUMCON=3
+              K=NCLOSE
+              KORB=(K-1)*NORBS+1
+              M=NCLOSE+1
+              MORB=(M-1)*NORBS+1
+              N=NCLOSE+2
+              NORB=(N-1)*NORBS+1
+              MODECI=1
+          IF(DEBUG) THEN
+          WRITE(6,'('' C.I. ON CLOSED SHELL'')')
+          WRITE(6,'('' INDICES OF M.O.S IN C.I.'',4I4)')K,M,N
+          ENDIF
+          ELSE
+              IF(NCLOSE+2.EQ.NOPEN) THEN
+C
+C    SET UP INDICES FOR A BIRADICAL SYSTEM
+C
+                  NUMCON=3
+                  K=NCLOSE+1
+                  KORB=(K-1)*NORBS+1
+                  L=NCLOSE+2
+                  LORB=(L-1)*NORBS+1
+                  MODECI=2
+          IF(DEBUG) THEN
+          WRITE(6,'('' C.I. ON BIRADICAL'')')
+          WRITE(6,'('' INDICES OF M.O.S IN C.I.'',4I4)')K,L
+          ENDIF
+              ELSE
+C
+C      AN ILLEGAL OPTION HAS BEEN USED. THIS SHOULD BE PROGRAMMED OUT!
+C
+        WRITE(6,'('' C.I. IS NOT AVAILABLE FOR DOUBLETS YET!'')')
+                  STOP
+              ENDIF
+          ENDIF
+          ICALCN=NUMCAL
+      ENDIF
+      GOTO (100,200)MODECI
+  100 CONTINUE
+C
+C   CALCULATE C.I. MATRIX TERMS FOR CLOSED-SHELL STATE
+C
+      XMMMM=SPCG(C(MORB),C(MORB),C(MORB),C(MORB),W)
+      XKKMM=SPCG(C(KORB),C(KORB),C(MORB),C(MORB),W)
+      XKMMK=SPCG(C(KORB),C(MORB),C(MORB),C(KORB),W)
+      XNNNN=SPCG(C(NORB),C(NORB),C(NORB),C(NORB),W)
+      XKKNN=SPCG(C(KORB),C(KORB),C(NORB),C(NORB),W)
+      XKNNK=SPCG(C(KORB),C(NORB),C(NORB),C(KORB),W)
+      XKKKK=SPCG(C(KORB),C(KORB),C(KORB),C(KORB),W)
+C
+C          THE CONFIGURATIONS ARE BUILT FROM THE SCFMOS OF THE GROUND
+C     STATE (STATE 1) AND INCLUDE A DOUBLE EXCITATION FROM K TO M
+C     (STATE 2) AND A DOUBLE EXCITATION FROM K TO N (STATE 3).
+C     K IS THE H.O.M.O. AND M IS THE L.U.M.O.; N = M+1.
+C
+*
+*  FIRST, CALCULATE ENERGY OF DI-POSITIVE ION, THIS IS EQUIVALENT TO THE
+*         VACUUM STATE.
+      EIGK=EIGS(K)-XKKKK
+      EIGM=EIGS(M)-2.D0*XKKMM+XKMMK
+      EIGN=EIGS(N)-2.D0*XKKNN+XKNNK
+      EE=EE-(2.D0*EIGK+XKKKK)
+*
+*   EE IS THE ELECTRONIC ENERGY OF THE SYSTEM WITHOUT THE TWO ELECTRONS.
+*   NOW TO CONSTRUCT THE SECULAR DETERMINANT.
+      E(1)=EE+2.D0*EIGK+XKKKK
+      E(2)=XKMMK
+      E(3)=EE+2.D0*EIGM+XMMMM
+      E(4)=XKNNK
+      E(5)=SPCG(C(MORB),C(NORB),C(NORB),C(MORB),W)
+      E(6)=EE+2.D0*EIGN+XNNNN
+      GO TO 170
+  200 CONTINUE
+C
+C   CALCULATE C.I. MATRIX ELEMENTS FOR BIRADICAL STATE
+C
+C         THE CONFIGURATIONS ARE BUILT FROM THE SCFMOS OF THE H-E
+C         SINGLET (STATE 1), IN WHICH K AND L ARE SINGLY OCC. MOS.
+C         THE TWO DEFAULT CONFIGURATIONS ARE THE CLOSED SHELLS
+C         RESULTING FROM DEEXCITATION FROM L TO K (STATE 2) AND
+C         EXCITATION FROM K TO L (STATE 3).
+C
+****************************************************************************
+*                    MICROSTATES IN BIRADICAL C.I.
+*
+*      STATE 1            STATE 2             STATE 3      STATE 1 CONSISTS
+*   (K)      (L)         (K)    (L)         (K)    (L)     OF TWO MICROSTATES
+*    |->      |           |->    |           |      |<-    COMBINED AS SHOWN.
+*    |        |<-         |<-    |           |      |->    THE "+" SIGN IS
+*         +                                                CORRECT HERE, AS 
+*    |        |->           ENERGY INCREASES ->            ALL ALPHA ELECTRONS
+*    |<-      |             -> = ALPHA ELECTRON            ARE FIRST IN THE
+*                           <- = BETA ELECTRON             SLATER DETERMINANT.
+****************************************************************************
+      XKKLL=SPCG(C(KORB),C(KORB),C(LORB),C(LORB),W)
+      XKKKL=SPCG(C(KORB),C(KORB),C(KORB),C(LORB),W)
+      XLLLK=SPCG(C(LORB),C(LORB),C(LORB),C(KORB),W)
+      H12 = .70710678118655D00 * (XKKKL-XLLLK)
+*
+*  FIRST, CALCULATE ENERGY OF DI-POSITIVE ION, THIS IS EQUIVALENT TO THE
+*         VACUUM STATE.
+      EE=EE-(EIGS(K)+EIGS(L)+XKKLL+XKLLK)
+*
+*   EE IS THE ELECTRONIC ENERGY OF THE SYSTEM WITHOUT THE TWO ELECTRONS.
+*   NOW TO CONSTRUCT THE SECULAR DETERMINANT.
+      E(1)=EE+EIGS(K)+EIGS(L)+XKKLL+XKLLK
+      E(2)=1.4142136D0*XKKKL
+      E(3)=EE+2.D0*EIGS(K)+XKKKK
+      E(4)=1.4142136D0*XLLLK
+      E(5)=XKLLK
+      E(6)=EE+2.D0*EIGS(L)+XLLLL
+  170 CONTINUE
+      IF (DEBUG) THEN
+      WRITE(6,'('' C.I. MATRIX'')')
+      WRITE(6,'(F12.6,/,2F12.6,/,3F12.6)')(E(I),I=1,6)
+      WRITE(6,'(/10X,''ROOT ='',I3)')LROOT
+      ENDIF
+      DO 171 I=1,6
+  171 ECI(I)=E(I)
+      CALL HQRII(E,NUMCON,NUMCON,ENGYCI,VECTCI)
+      IF( DEBUG) THEN
+      WRITE(6,'('' ROOTS'',3F12.6)')(ENGYCI(I),I=1,3)
+      ENDIF
+      OPCI=ENGYCI(LROOT)
+      RETURN
+C
+      END

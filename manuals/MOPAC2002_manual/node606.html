@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Force Constants</TITLE>
+<META NAME="description" CONTENT="8.16 Force Constants">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node607.html"><LINK REL="previous" HREF="node592.html"><LINK REL="up" HREF="node439.html"><LINK REL="next" HREF="node607.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node607.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node605.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node607.html">Reaction paths</A> <B>Up:</B> <A HREF="node439.html">Theory</A> <B>Previous:</B> <A HREF="node605.html">Translation</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H1><A NAME="SECTION0012160000000000000000">&nbsp;<A NAME="BM22346"></A>&nbsp;<A NAME="BM22347"></A>&nbsp;<A NAME="fc"></A>&nbsp;</A> <BR>
+Force Constants </H1>
+<P>Internal coordinate force constants, <I>f<SUB>ic</I></SUB>, can be derived from the Cartesian coordinates and the Cartesian force constant matrix by use of: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+f_{ic}(l) = \sum_j\sum_k
+\frac{d({\rm c.c.}_j)}{d({\rm i.c.}_l)}
+\frac{d^2E}{d({\rm c.c.}_j)d({\rm c.c.}_k)}
+\frac{d({\rm c.c.}_k)}{d({\rm i.c.}_l)}.
+\end{displaymath} --><IMG SRC="img1670.gif" WIDTH=294 HEIGHT=51 ALT="begin{displaymath}f_{ic}(l) = sum_jsum_kfrac{d({rm c.c.}_j)}{d({rm i.c.}_.......}_j)d({rm c.c.}_k)}frac{d({rm c.c.}_k)}{d({rm i.c.}_l)}.end{displaymath}"></DIV>
+<P>As with the gradients, the calculation of <!-- MATH: $\frac{d({\rm c.c.}_j)}{d({\rm
+i.c.}_l)}$ --><IMG SRC="img1671.gif" ALIGN="MIDDLE" WIDTH=45 HEIGHT=46 ALT="$frac{d({rm c.c.}_j)}{d({rmi.c.}_l)}$">is quite simple, and in done in routine JCARIN. 
+<P>During the testing of this function, a minor fault in the conventional force calculation was revealed. To reduce any error introduced by finite arithmetic, the Hessian matrix is symmetrized before the vibrational frequencies and normal coordinates are calculated. This is done by <A HREF="node560.html#sym_force">operating on the Hessian matrix</A>. </P>
+<P>In addition to the requirement that the symmetry of the Hessian should be the same as that of the nuclear coordinates, a second requirement is that the diagonal elements of the Hessian should be equal to the negative of the sum of the off-diagonal elements, that is, that: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+F_{ii} = -\sum_{j\ne i}F_{ij}.
+\end{displaymath} --><IMG SRC="img1672.gif" WIDTH=87 HEIGHT=45 ALT="begin{displaymath}F_{ii} = -sum_{jne i}F_{ij}.end{displaymath}"></DIV>
+<P>During the testing of the internal force constants, very small variations in the force constants were found where no variation was expected. This was traced back to a failure of the above expression. To correct this, the diagonal terms of the force constant matrix were modified. This resulted in a perfect equivalence of equivalent force constants. An incidental benefit would be that the associated error in the calculated frequencies would be eliminated. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html9671"><A HREF="node607.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9667"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9661"></A><A HREF="node605.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9669"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9670"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9672"><A HREF="node607.html">Reaction paths</A></A> <B>Up:</B> <A NAME="tex2html9668"><A HREF="node439.html">Theory</A></A> <B>Previous:</B> <A NAME="tex2html9662"><A HREF="node605.html">Translation</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

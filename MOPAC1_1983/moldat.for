@@ -1,0 +1,219 @@
+      SUBROUTINE MOLDAT
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES/NOLIST'
+      COMMON /GEOKST/ NATOMS,LABELS(NUMATM),
+     +                NA(NUMATM),NB(NUMATM),NC(NUMATM)
+     +       /MOLKST/ NUMAT,NAT(NUMATM),NFIRST(NUMATM),NMIDLE(NUMATM),
+     1                NLAST(NUMATM), NORBS, NELECS,NALPHA,NBETA,
+     +                NCLOSE,NOPEN
+     2       /KEYWRD/ KEYWRD
+     3       /NATORB/ NATORB(54)
+     4       /CORE  / CORE(54)
+     5       /BETAS / BETAS(54),BETAP(54),BETAD(54)
+     6       /MOLORB/ USPD(MAXORB),PSPD(MAXORB)
+     7       /VSIPS / VS(54),VP(54),VD(54)
+     8       /ONELEC/ USS(54),UPP(54),UDD(54)
+     9       /ATHEAT/ ATHEAT
+      COMMON /GMETRY/ GEO(3,NUMATM)
+      PARAMETER (MDUMY=MAXORB*MAXORB+(NUMATM*(NUMATM+1))/2-MPACK)
+      COMMON /SCRACH/ RXYZ(MPACK), XDUMY(MDUMY)
+*
+*  COMMON BLOCKS FOR MINDO/3
+*
+      COMMON /ONELE3 /  USS3(18),UPP3(18)
+     1       /ATOMI3 /  EISOL3(18),EHEAT3(18)
+     4       /EXPON3 /  ZS3(18),ZP3(18)
+*
+*  END OF MINDO/3 COMMON BLOCKS
+*
+      COMMON /EXPONT/ ZS(54),ZP(54),ZD(54)
+      COMMON /ATOMIC/ EISOL(54),EHEAT(54)
+      DIMENSION COORD(3,NUMATM)
+      CHARACTER*80 KEYWRD
+      LOGICAL DEBUG, UHF,EXCI, TRIP, MINDO3, BIRAD,PARAM
+      DEBUG = (INDEX(KEYWRD,'MOLDAT').NE.0)
+      MINDO3= (INDEX(KEYWRD,'MINDO3').NE.0)
+      UHF=(INDEX(KEYWRD,'UHF') .NE. 0)
+      KHARGE=0
+      I=INDEX(KEYWRD,'CHARGE')
+      IF(I.NE.0) KHARGE=READA(KEYWRD,I)
+      NELECS=-KHARGE
+      NDORBS=0
+      ATHEAT=0.D0
+      EAT=0.D0
+      NUMAT=0
+      IF( MINDO3 ) THEN
+          DO 10 I=1,18
+          USS(I)=USS3(I)
+          UPP(I)=UPP3(I)
+          EISOL(I)=EISOL3(I)
+          EHEAT(I)=EHEAT3(I)
+          ZS(I)=ZS3(I)
+  10      ZP(I)=ZP3(I)
+      ENDIF
+      IA=1
+      IB=0
+      NHEAVY=0
+      DO 190 II=1,NATOMS
+         IF(LABELS(II).EQ.99) GOTO 190
+         NUMAT=NUMAT+1
+         NAT(NUMAT)=LABELS(II)
+         NFIRST(NUMAT)=IA
+         NI=NAT(NUMAT)
+         ATHEAT=ATHEAT+EHEAT(NI)
+         EAT   =EAT   +EISOL(NI)
+         NELECS=NELECS+NINT(CORE(NI))
+         IB=IA+NATORB(NI)-1
+         NMIDLE(NUMAT)=IB
+         IF(NATORB(NI).EQ.9)NDORBS=NDORBS+5
+         IF(NATORB(NI).EQ.9)NMIDLE(NUMAT)=IA+3
+         NLAST(NUMAT)=IB
+         USPD(IA)=USS(NI)
+         IF(IA.EQ.IB) GOTO 183
+         K=IA+1
+         K1=IA+3
+         DO 181 J=K,K1
+         USPD(J)=UPP(NI)
+  181    CONTINUE
+         NHEAVY=NHEAVY+1
+  182    IF(K1.EQ.IB)GOTO 183
+         K=K1+1
+         DO 184 J=K,IB
+  184    USPD(J)=UDD(NI)
+  183    CONTINUE
+
+  190 IA=IB+1
+      ATHEAT=ATHEAT-EAT*23.061D0
+      NORBS=NLAST(NUMAT)
+      IF(NORBS.GT.MAXORB)THEN
+      WRITE(6,'(//10X,''**** MAX. NUMBER OF ORBITALS:'',I4,/
+     +            10X,''NUMBER OF ORBITALS IN SYSTEM:'',I4)')
+     +MAXORB,NORBS
+      STOP
+      ENDIF
+      NLIGHT=NUMAT-NHEAVY
+      N2EL=50*NHEAVY*(NHEAVY-1)+10*NHEAVY*NLIGHT+(NLIGHT*(NLIGHT-1))/2
+      IF(N2EL.GT.N2ELEC)THEN
+      WRITE(6,'(//10X,''**** MAX. NUMBER OF TWO-ELECTRON INTEGRALS:'',
+     +I8,/
+     +            10X,''NUMBER OF TWO ELECTRON INTEGRALS IN SYSTEM:'',
+     +I8)')
+     +N2EL,N2ELEC
+      STOP
+      ENDIF
+      TRIP=(INDEX(KEYWRD,'TRIPLET').NE.0)
+      EXCI=(INDEX(KEYWRD,'EXCITED').NE.0)
+      BIRAD=(EXCI.OR.INDEX(KEYWRD,'BIRAD').NE.0)
+      PARAM=(INDEX(KEYWRD,'PARAM').NE.0)
+      IF(INDEX(KEYWRD,'C.I.') .NE. 0) THEN
+          IF(TRIP) THEN
+              WRITE(6,'(//10X,''C.I. NOT ALLOWED WITH TRIPLET '')')
+              STOP
+          ENDIF
+          IF(UHF) THEN
+              WRITE(6,'(//10X,''C.I. NOT ALLOWED WITH UHF '')')
+              STOP
+          ENDIF
+      ENDIF
+C
+C NOW TO WORK OUT HOW MANY ELECTRONS ARE IN EACH TYPE OF SHELL
+C
+      NALPHA=0
+      NBETA=0
+      NCLOSE=0
+      NOPEN=0
+      IF( UHF ) THEN
+          NBETA=NELECS/2
+          IF( TRIP ) THEN
+              IF(NBETA*2 .NE. NELECS) THEN
+                  WRITE(6,'(//10X,''TRIPLET SPECIFIED WITH ODD NUMBER'',
+     +            '' OF ELECTRONS, CORRECT FAULT '')')
+                  STOP
+                  ELSE
+                  WRITE(6,'(//'' TRIPLET STATE CALCULATION'')')
+                  NBETA=NBETA-1
+              ENDIF
+          ENDIF
+          NALPHA=NELECS-NBETA
+      WRITE(6,'(//10X,''UHF CALCULATION, NO. OF ALPHA ELECTRONS ='',I3,
+     +/27X,''NO. OF BETA  ELECTRONS ='',I3)')NALPHA,NBETA
+      ELSE
+C
+C   NOW TO DETERMINE OPEN AND CLOSED SHELLS
+C
+           NCLOSE=NELECS/2
+           NOPEN = NELECS-NCLOSE*2
+          IF( TRIP .OR. EXCI .OR. BIRAD ) THEN
+              IF(NCLOSE*2 .NE. NELECS) THEN
+                  WRITE(6,'(//10X,''SYSTEM SPECIFIED WITH ODD NUMBER'',
+     +            '' OF ELECTRONS, CORRECT FAULT '')')
+                  STOP
+                  ELSE
+      WRITE(6,'(//'' SYSTEM IS A BIRADICAL'')')
+      IF(TRIP)WRITE(6,'(//'' TRIPLET STATE CALCULATION'')')
+      IF(EXCI)WRITE(6,'(//'' EXCITED STATE CALCULATION'')')
+      IF(.NOT. (TRIP .OR. EXCI ).AND. .NOT. PARAM)
+     +WRITE(6,'(//'' GROUND STATE CALCULATION'')')
+                  NCLOSE=NCLOSE-1
+                  NOPEN=2
+              ENDIF
+          ENDIF
+      IF( .NOT. PARAM)WRITE(6,'(//10X,''RHF CALCULATION, NO. OF '',
+     +''DOUBLY OCCUPIED LEVELS ='',I3)')NCLOSE
+      IF(NOPEN.NE.0)
+     +WRITE(6,'(/27X,''NO. OF SINGLY OCCUPIED LEVELS ='',I3)')NOPEN
+      NOPEN=NOPEN+NCLOSE
+      ENDIF
+      YY=FLOAT(KHARGE)/FLOAT(NORBS)
+      L=0
+      DO 191 I=1,NUMAT
+      NI=NAT(I)
+      XX=1.D0
+      IF(NI.GT.2) XX=0.25D0
+      W=CORE(NI)*XX-YY
+      IA=NFIRST(I)
+      IB=NLAST(I)
+      DO 360 J=IA,IB
+      L=L+1
+  360 PSPD(L)=W
+  191 CONTINUE
+C
+C   WRITE OUT THE INTERATOMIC DISTANCES
+C
+      CALL GMETRY(GEO,COORD)
+      RMIN=100.D0
+      L=0
+      DO 17 I=1,NUMAT
+      DO 17 J=1,I
+      L=L+1
+      RXYZ(L)=SQRT((COORD(1,I)-COORD(1,J))**2+
+     +             (COORD(2,I)-COORD(2,J))**2+
+     1             (COORD(3,I)-COORD(3,J))**2)
+      IF(RMIN.GT.RXYZ(L) .AND. I .NE. J) THEN
+          IMINR=I
+          JMINR=J
+          RMIN=RXYZ(L)
+      ENDIF
+  17  CONTINUE
+      IF (INDEX(KEYWRD,'PARAM')+INDEX(KEYWRD,'NOINTER') .EQ. 0) THEN
+      WRITE(6,'(//10X,''  INTERATOMIC DISTANCES'')')
+      CALL VECPRT(RXYZ,NUMAT)
+      ENDIF
+      IF(RMIN.LT.0.8D0.AND.INDEX(KEYWRD,'GEO-OK') .EQ.0) THEN
+      WRITE(6,332)IMINR,JMINR,RMIN
+  332 FORMAT(//,'   ATOMS',I3,' AND',I3,' ARE SEPARATED BY',F8.4,
+     +' ANGSTROMS.',/'   TO CONTINUE CALCULATION SPECIFY "GEO-OK"')
+      STOP
+      ENDIF
+      IF(.NOT. DEBUG) RETURN
+      WRITE(6,1)NUMAT,NORBS,NDORBS,NATOMS
+   1  FORMAT('   NUMBER OF REAL ATOMS:',I4,/
+     +      ,'   NUMBER OF ORBITALS:  ',I4,/
+     1      ,'   NUMBER OF D ORBITALS:',I4,/
+     2      ,'   TOTAL NO. OF ATOMS:  ',I4)
+      WRITE(6,3)(USPD(I),I=1,NORBS)
+   3  FORMAT('   ONE-ELECTRON DIAGONAL TERMS',/,10(/,10F8.3))
+      WRITE(6,5)(PSPD(I),I=1,NORBS)
+   5  FORMAT('   INITIAL P FOR ALL ATOMIC ORBITALS',/,10(/,10F8.3))
+      RETURN
+      END

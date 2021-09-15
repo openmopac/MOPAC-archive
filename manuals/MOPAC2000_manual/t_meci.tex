@@ -1,0 +1,913 @@
+\section{Multi-Electron Configuration Interaction}\label{meci}
+\index{MECI|(}\index{Configuration interaction|(}
+\index{C.I.!description} For some systems a single determinant is insufficient
+to describe the electronic wave function. For example, square
+\index{Cyclobutadiene!need for C.I.}\index{Ethylene, twisted!need for C.I.}
+cyclobutadiene and twisted ethylene require at least two configurations to
+describe their ground states. More than one configuration is also needed if an
+excited state is required---the RHF SCF converges on a ground state or, if
+\index{Half-electron} half-electron methods are used, on a mixture of states,
+while the excited state involves a different configuration. \index{Radicals|ff}
+Radicals also present a difficulty at the RHF level in that the SCF
+wavefunction corresponds to an equal mixture of the two doublets, with a
+corresponding error in the total energy. In order to correct for this error,
+MOPAC contains   a    very   large   Multi-Electron   Configuration
+Interaction  calculation,  MECI~\cite{meci} (pronounced ``me-sigh'')   which,
+in addition to automatically correcting ``half-electron'' energies, allows
+almost any configuration interaction calculation to be performed.  Because of
+its complexity, two distinct  levels  of  input are supported; the default
+values will be of use to the novice while an expert has available  an
+exhaustive  set  of keywords from which a specific C.I.\ can be tailored.
+
+MECI is a completely general C.I. The resulting states \index{Space
+quantization}\index{Spin!quantization} are space and spin-quantized, there is
+no restriction on total spin, the starting wavefunction can be closed or open
+shell, and both even and odd electron systems are allowed, although for
+simplicity in describing the method,  the starting configuration is assumed to
+be closed-shell.
+
+\subsection{Starting electronic configuration}
+As MECI requires the space parts of the $\alpha$ and $\beta$ molecular orbitals
+to be identical, only RHF wavefunctions are used. However, this is not a severe
+restriction in  that  any  starting configuration will be supported.  Examples
+of starting configurations are shown in Table~\ref{conf_meci}.
+
+\begin{table}
+\caption{\label{conf_meci}Examples of SCF configurations used in MECI}
+\index{SCF! configurations}
+\begin{center}
+\begin{tabular}{lcc} \hline
+    System    &          KeyWords used  &    Starting Configuration\\ \hline
+   Methane            &     none      &        2.00 2.00 2.00 2.00  \\
+   Methyl Radical     &     none      &       2.00 2.00 2.00 1.00  \\
+   Twisted Ethylene   &   \comp{OPEN(2,2)}   &       2.00 2.00 1.00 1.00  \\
+Twisted Ethylene Cation& \comp{OPEN(1,2)}    &     2.00 2.00 0.50 0.50  \\
+   Methane Cation     &    \comp{CHARGE=1 OPEN(5,3)}&2.00 1.67 1.67 1.67  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\index{TRIPLET}\index{OPEN} Choice of starting configuration is  important.
+For  example,  if twisted  ethylene,  a ground-state triplet, is not defined
+using  \comp{OPEN(2,2)}, then  the  closed-shell  ground-state  structure
+will  be calculated.   Obviously,  this configuration is a legitimate
+microstate, but from the symmetry of the system a better choice would be  to
+define \index{Degenerate M.O.s|ff} one electron in each of the two formally
+degenerate $\pi$-type M.O.s.
+
+Each configuration which can be generated in a molecule may be represented by
+a single Slater determinant; this is called a microstate. The final states will
+be linear combinations of these microstates. In general, microstates will not
+be eigenfunctions of the total spin operator, but will be mixtures of different
+spin states.
+
+The initial configuration used to generate the SCF is arbitrary; for
+half-electron systems it will not even correspond to a microstate, each M.O.\
+having a fractional \index{Fractional!M.O.\ occupancy} electron occupancy. Even
+if the starting wavefunction is a closed shell it would still correspond to
+only one of a large number of microstates to be used in the MECI.\ As a result,
+before the MECI is started all electronic terms arising from the electrons in
+the initial configuration, which will be used by MECI, are removed. The
+starting wavefunction will thus consist of a low-lying doubly occupied set of
+M.O.s and a high-lying empty set of M.O.s, neither of which will be involved in
+the MECI, and in between a small set of M.O.s from which the electrons have
+been removed. This set of M.O.s will be involved in the MECI.
+
+\subsection{Microstates} \index{Slater determinant|( }\index{Microstates|ff}\label{sd}
+Microstates, which are normally represented by a Slater determinant, are
+normally written as an antisymmetrized product of $p\  \alpha$- and $q\
+\beta$-electrons:
+$$
+\hspace*{-0.5in} \Psi_g=[(p+q)!]^{-\frac{1}{2}}\sum_P(-1)^PP[\psi_1(1)\alpha(1)\ \psi_2(2)\alpha(2)\
+\ldots \psi_p(p)\alpha(p)\ \psi_1(p+1)\beta(p+1)\ \ldots \psi_q(p+q)\beta(p+q)],
+$$
+where $[(p+q)!]^{-\frac{1}{2}}$ is the normalization constant, $P$ is an
+operator which permutes the electron coordinates, and $(-1)^P$ assumes the
+values --1 or +1 for odd and even permutations respectively.  A more compact
+and useful notation for representing a  general microstate is:
+$$
+\Psi_j = \frac{1}{\sqrt{N!}}\sum_{P=1}^{N!}(-1)^PP(\prod_{k=1}^N\psi_k^j)
+$$
+where $\Psi_j$ is any microstate consisting of $N$ electrons.  Given the full
+set of M.O.s, a subset of these is used in the microstate.  This subset is
+defined by the M.O.s $\psi_k^j$, $k$=1,$N$.  Each microstate will consist of a
+different set of M.O.s from the full set.
+
+Rather than having all the $\alpha$ electrons appearing first in a microstate,
+it is more convenient to order the one electron wavefunctions in the order in
+which their indices occur in the full set of M.O.s.  If both $\alpha$ and
+$\beta$ M.O.s of the same index occur, then $\alpha$ precedes $\beta$, thus:
+$$
+\hspace*{-0.2in}\Psi_g=[(p+q)!]^{-\frac{1}{2}}\sum_P(-1)^PP[\psi_1(1)\alpha(1)\ \psi_1(2)\beta(2)\
+\psi_2(3)\alpha(3)\ \psi_2(4)\beta(4)\ \ldots  \psi_j(p+q)\beta(p+q)]
+$$
+
+This numbering scheme follows  the  Aufbau  principle, in that the  order  of
+\index{Aufbau principle} filling is in order of energy.  This point is
+critically  important  in deciding  the  sign of matrix elements.  For a 5
+M.O.\  system, then, the order of filling is:
+$$      (1)(\bar{1})(2)(\bar{2})(3)(\bar{3})(4)(\bar{4})(5)(\bar{5}) $$
+A triplet state arising from two microstates, each with a component
+of spin = 0, will thus be the positive combination:
+$$        (\bar{1})(2)   +    (1)(\bar{2}). $$
+ This standard sign convention was chosen in order to allow the signs of the
+microstate coefficients  to  conform  to those resulting from the spin
+step-down operator.
+
+Only those M.O.s involved in the MECI are of interest,
+thus from the full set of M.O.s, filled and empty
+$$
+\left[
+\begin{array}{lll}
+\psi_1(1)\alpha(1)&\psi_2(3)\alpha(3)&\ldots\\
+\psi_1(2)\beta(2)&\psi_2(4)\beta(4)&\ldots\\
+\end{array}
+\right]
+$$
+the ground-state configuration (assumed to be closed shell for simplicity) can
+be represented by
+$$
+\left[
+\begin{array}{llllllllllllll}
+1&1&1&1&\ldots&1&1&1&0&0&0&\ldots&0&0\\
+1&1&1&1&\ldots&1&1&1&0&0&0&\ldots&0&0\\
+\end{array}
+\right]
+$$
+where a 1 represents a spin molecular orbital occupied by one electron and 0
+represents an empty M.O.
+
+\index{Active space!in C.I.|ff} The M.O.s involved in the C.I.\ are called the
+``active space''. For convenience, the index of the M.O.\ at the lower bound of
+the active space will be called ``B'', and the index of the M.O.\ at the upper
+bound of the active space will be called ``A''. All M.O.s below the active
+space can be considered as part of the core while those above it are empty and
+can likewise be ignored. We can thus focus our attention on the M.O.s in the
+active space. Most of the time, MECI calculations will  involve  between  1
+and  5 M.O.s,  so  a system such as pyridine, with 15 filled levels and 29
+M.O.s, would \index{Pyridine} use M.O.s 13--17 in a large C.I.
+
+For convenience, microstates will be expressed as a sum of molecular orbital
+occupancies, so that:
+$$
+\Psi_p=\sum_{i=B}^A(O_i^{\alpha p} + O_i^{\beta  p} ).
+$$
+For example, if the ground state configuration $\Psi_g$ is closed shell, then
+the occupancy of the M.O.s would be
+$$
+O^{\alpha g} = O^{\beta  g} = |1,\ldots,1,0,\ldots,0|
+$$
+
+Microstates are particular electron configurations.  Examples of
+microstates involving  5  electrons  in  5  levels are given in Table~\ref{m55}.
+
+\begin{table}
+\begin{center}
+\caption{\label{m55}  Microstates for 5 electrons in 5 M.O.s}
+\begin{tabular}{cccrcccc}\\ \hline
+& \multicolumn{2}{c}{Electron Configuration}& & &  \multicolumn{2}{c}{Electron Configuration}& \\
+\cline{2-3} \cline{6-7}
+  &     Alpha   &   Beta    & M$_S$  &    &   Alpha    &  Beta  & M$_S$    \\
+M.O.  &   1 2 3 4 5 &1 2 3 4 5  &       & M.O. &  1 2 3 4 5 &1 2 3 4 5\\ \hline
+
+1 &   1,1,1,0,0 &1,1,0,0,0  & 1/2   &  4 &  1,1,1,1,1 &0,0,0,0,0 &   5/2\\
+2 &   1,1,0,0,0 &1,1,1,0,0  &-1/2   &  5 &  1,1,0,1,0 &1,1,0,0,0 &   1/2\\
+3 &   1,1,1,0,0 &0,0,0,1,1  & 1/2   &  6 &  1,1,0,1,0 &1,0,1,0,0 &   1/2 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\index{Slater determinant|)}
+
+\subsubsection{Permutations}
+For  5  electrons  in  5   M.O.s   there   are   252   microstates
+($10!/(5!5!)$),  but as states of different spin do not mix, we can use a
+smaller  number.   If  doublet  states  are  needed, then   100   states
+($5!/(2!3!)(5!/3!2!$)  are  needed.   If  only  quartet  states  are of
+\index{Quartet states} interest, then 25 states ($5!/(1!4!)(5!/4!1!$) are
+needed  and  if  the \index{Sextet states} sextet state is required, then only
+one state is calculated.
+
+In  the  microstates  listed,   state   1   is   the   ground-state
+configuration.   This can be written as (2,2,1,0,0), meaning that M.O.s 1 and 2
+are doubly occupied, M.O.\  3 is  singly  occupied  by  an  alpha electron, and
+M.O.s 4 and 5 are empty.  Microstate 1 has a component of \index{Kramer's
+degeneracy} spin of 1/2, and is a pure doublet.  By Kramer's
+degeneracy---sometimes called time-inversion symmetry---microstate 2 is also a
+doublet, and has a spin of 1/2 and a component of spin of $-1/2$.
+
+Microstate 3, while it has a component of spin of  1/2,  is  not  a doublet,
+but  is  in  fact  a  component  of a doublet, a quartet and a sextet.  The
+coefficients of these states can  be  calculated  from  Wigner's symbol, also
+called the \index{Clebsch-Gordon 3-J symbol}\index{Wigner's symbol}\index{3-J
+symbol} Clebsch-Gordon  3-J  symbol\footnote{\samepage The symbol is of form
+\begin{eqnarray}
+\hspace*{-0.5in}<j_1j_2m_1m_2|j_1j_2jm>&=&
+\left \{\frac{(j+m)!(j-m)!(j_1-m_1)!(j_2-m_2)!(j_1+j_2-j)!(2j+1)}
+{(j_1+m_1)!(j_2+m_2)!(j_1-j_2+j)!(j_2-j_1+j)!(j_1+j_2+j+1)!}\right \}^{\frac{1}{2}}
+\nonumber \\
+&&\delta(m,m_1+m_2)\sum_r(-1)^{j_1+r-m_1}\frac{(j_1+m_1+r)!(j_2+j-r-m_1)!}
+{r!(j-m-r)!(j_1-m_1-r)!(j_2-j+m_1+r)!} \nonumber
+\end{eqnarray}
+where the summation is over all values of r such that all factorials occurring
+are of non-negative integers (0!=1). See~\cite{griffith}. To use the symbol,
+the coefficient of momentum $(j,m)$ due to two momenta $(j_1,m_1)$ and
+$(j_2,m_2)$ is
+$<j_1j_2m_1m_2|j_1j_2jm>$
+}.
+Thus, the coefficient in the doublet is $\sqrt{1/2}$ ($j_1=3/2,\; m_1=3/2,
+\;j_2=1, \;m_2=-1, \;j=1/2$), in the quartet is $\sqrt{4/10}$ ($j_1=3/2,\;
+m_1=3/2, \;j_2=1, \;m_2=-1, \;j=3/2$), and in the sextet,  $\sqrt{1/10}$
+($j_1=3/2,\; m_1=3/2, \;j_2=1, \;m_2=-1, \;j=5/2$).
+
+Microstate 4 is a pure sextet.  If all 100 microstates of component of  spin
+=  1/2  were used in a C.I., one of the resulting states would have the same
+energy as the state resulting from microstate 4.
+
+Microstate 5 is an excited doublet, and microstate 6 is an  excited state of
+the system, but not a pure spin-state.
+
+By default, if $n$ M.O.s are included in the MECI, then all possible
+microstates which give rise to a component of spin = 0 for even electron
+systems, or 1/2 for odd electron systems, will be used.
+
+\index{Microstates!number used in C.I.}\label{nmeci}
+\begin{table}
+\caption{\label{setmic}Sets of Microstates for Various MECI Calculations}
+\begin{center}
+\begin{tabular}{|rccr|ccr|}
+\hline
+&\multicolumn{2}{c}{Odd Electron Systems} &  & \multicolumn{2}{c}{Even Electron Systems}&\\ \hline
+        &    Alpha   Beta &&No. of   &    Alpha   Beta &&No. of\\
+        &                 &&Configs. &                 &&Configs.\\\hline
+ C.I.=1&(1,1) $\times$ (0,1) &=&  1    &     (1,1) $\times$ (1,1)&=&   1  \\
+      2&(1,2) $\times$ (0,2) &=&  2    &     (1,2) $\times$ (1,2)&=&   4  \\
+      3&(2,3) $\times$ (1,3) &=&  9    &     (2,3) $\times$ (2,3)&=&   9  \\
+      4&(2,4) $\times$ (1,4) &=& 24    &     (2,4) $\times$ (2,4)&=&  36  \\
+      5&(3,5) $\times$ (2,5) &=&100    &     (3,5) $\times$ (3,5)&=& 100  \\\hline
+\end{tabular}\\
+($n$,$m$) means $n$ electrons in $m$ M.O.s.
+\end{center}
+\end{table}
+
+\index{MECI!Increasing number of states} MOPAC is configured to  allow a
+maximum of \comp{MAXCI} states, where \comp{MAXCI} is defined in the file
+\comp{meci.h}.  If more states are needed (see Table~\ref{setmic}), then
+\comp{MAXCI} in  \comp{meci.h} should be modified. Of course, if \comp{MAXCI}
+is changed, MOPAC should be recompiled.
+
+If \comp{CIS}, \comp{CISD}, or \comp{CISDT} are specified, then the number of
+microstates is defined by \comp{C.I.=$k$} and the keyword.   The number of
+microstates is a function of $k$.  Let $n$ and $m$ be integers, such that:
+$$
+n=\frac{k}{2}
+$$
+$$
+m=\frac{k+1}{2}
+$$
+If $k$ is odd, then round down to the next lower integer.  Then the number
+of microstates $n_{CIS}$, $n_{CISD}$, and $n_{CISDT}$, for even-electron
+systems is:
+$$
+\begin{array}{lcll}
+n_{CIS}&=& &2nm \nonumber \\
+n_{CISD}&=& 1 + &2nm + (nm)^2 + \frac{n!m!}{2(n-2)!(m-2)!}\nonumber  \\
+n_{CISDT} &=& 1 + &2nm + (nm)^2 + \frac{n!m!}{2(n-2)!(m-2)!} +
+\frac{n!m!}{18(n-3)(m-3)}+\frac{nm\times n!m!}{2(n-2)!(m-2)!}\nonumber
+\end{array}
+$$
+
+Note that when \comp{CIS} is used, the ground state is {\em not} included in
+the list of microstates. Values for the more important $k$ are given in
+Table~\ref{micsdt}.
+\begin{table}
+\caption{\label{micsdt}Number of Microstates for CIS, CISD, and CISDT}
+\begin{center}
+\begin{tabular}{|crcrcrc|}
+\hline
+C.I.=$k$ & CIS &  & CISD &  & CISDT & \\ \hline
+   1     &  0  &    &  1   &    &   1   &    \\
+   2     &  2  &    &  4   &    &   4   &    \\
+   3     &  4  &    &  9   &    &   9   &    \\
+   4     &  8  &    &  27  &    &  35   &    \\
+   5     & 12  &    &  55  &    &  91   &    \\
+   6     & 18  &    &  118 &    & 282   &    \\
+   7     & 24  &    &  205 &    & 635   &    \\
+   8     & 32  &    &  361 &    & 1545  &    \\
+\hline
+\end{tabular}\\
+(for even electron systems only)
+\end{center}
+\end{table}
+\subsubsection{Energy of microstates}
+The electronic energy, $E_r$, of any microstate $\Psi_r$ is the sum
+\index{Electronic energy!of microstates}
+on the one and two-electron energies:
+$$
+E_r = \sum_i^pH_{ii}+\sum_i^qH_{ii}+\frac{1}{2}\sum_{ij}^p(J_{ij}-K_{ij})
++\frac{1}{2}\sum_{ij}^q(J_{ij}-K_{ij}) +\sum_i^p\sum_j^qJ_{ij}
+$$
+where $H_{ii}$ is the one-electron energy of M.O.\ $\psi_i$,
+$J_{ii}$ is the two-electron Coulomb integral\\
+$<\psi_i\psi_i|\psi_j\psi_j>$,
+and $K_{ii}$ is the two-electron exchange integral  $<\psi_i\psi_j|\psi_i\psi_j>$.
+
+In this section it is more convenient to express it in terms
+of molecular orbital occupancies:
+$$
+E_r = \sum_{i=B}^AH_{ii}(O_i^{\alpha r}+ O_i^{\beta r})
++\sum_{ij=B}^A(\frac{1}{2}(J_{ij}-K_{ij})
+(O_i^{\alpha r}O_j^{\alpha r}+ O_i^{\beta r}O_j^{\beta r})
++J_{ij}O_i^{\alpha r}O_j^{\beta r})
+$$
+Similarly, the orbital energies can be written
+\index{Orbital!energies in C.I.}
+$$
+\epsilon_{ii}^{\alpha r} = H_{ii}+\sum_j^p(J_{ij}-K_{ij})+\sum_j^qJ_{ij}
+$$
+or, in terms of orbital occupancies
+$$
+\epsilon_{ii}^{\alpha r} = H_{ii}+\sum_{j=B}^A(J_{ij}-K_{ij})O_j^{\alpha r}
++\sum_{j=B}^AJ_{ij}O_j^{\beta r}.
+$$
+\subsubsection{Zero of energy used in MECI}
+The energy of the system after all the electronic terms arising from the
+electrons of the M.O.s involved in the starting configuration are removed
+is a useful quantity. Removal of these terms lowers the orbital
+energies thus:
+$$
+\epsilon_{ii}^+ = \epsilon_{ii} -\sum_{j=B}^A(J_{ij}-K_{ij})O_j^g.
+$$
+The arbitrary zero of energy in a MECI calculation is the  starting ground
+state, without any correction for errors introduced by the use of fractional
+occupancies.  In order to calculate the energy of the various configurations,
+the  energy  of  the  vacuum  state  (i.e.,  the  state resulting from removal
+of the electrons used in the C.I.)  needs  to  be evaluated.  This energy is
+given by:
+$$
+GSE=E_g^+ = - \sum_{i=B}^A2\epsilon_{ii}^+O_i^g+J_{ii}(O_i^g)^2+
+\sum_{i=B}^A\sum_{j=B}^{i-1}2(2J_{ij}-K_{ij})O_i^gO_j^g
+$$
+\index{GSE@{$GSE$, used in MECI}}
+(Within the MECI routine, $GSE$ refers to $E_g^+$.)
+
+By redefining the system so that those filled M.O.s which are not used in the
+MECI are considered part of an \index{Unpolarizable core!used in C.I.}
+unpolarizable core, the new energy levels $\epsilon_i^+$ can be identified with
+the one-electron energies $H_{ii}$ and the total electronic energy $E_r$ of any
+microstate is set equal to the sum of the energy of the electrons considered in
+the microstate plus $E_g^+$.
+
+\subsection{Construction of secular determinant}
+\index{Secular determinant!in MECI}
+Microstates can be generated by permuting available electrons among the
+available levels. Elements of the C.I.\ matrix are then defined by
+$$
+<\Psi_a|H|\Psi_b>
+$$
+Evaluation of these matrix elements is difficult. Each microstate is a Slater
+determinant, and the Hamiltonian operator involves all electrons in the system.
+Fortunately, most matrix elements are zero because of the orthogonality of the
+M.O.s. Only the non-zero elements need be evaluated; three types of interaction
+are possible:
+\begin{enumerate}
+\item $\Psi_a=\Psi_b$. Since the two wavefunctions are the same,
+this corresponds to the energy of a microstate. As the
+electronic energy of the closed shell is common to all
+configurations considered in the C.I., it is sufficient to
+add on to $E_g^+$ the energy terms which are specific to the
+microstate, thus
+\begin{eqnarray}
+<\Psi_a|H|\Psi_b>& =& E_g^+ +\sum_{i=B}^A\left(\epsilon_{ii}+\sum_{j=B}^A(J_{ij}-K_{ij})
+O_j^{\alpha p} \right )O_i^{\alpha p} \nonumber  \\&&
++\sum_{i=B}^A\left(\epsilon_{ii}+\sum_{j=B}^A(J_{ij}-K_{ij}) O_j^{\beta p}
+\right )O_i^{\beta p} + \sum_{i=B}^A\sum_{j=B}^AJ_{ij}O_i^{\alpha p}
+O_j^{\beta p}. \nonumber
+\end{eqnarray}
+\item \label{b} Except for $\psi_i$ in $\Psi_a$ and  $\psi_j$ in $\Psi_b$;
+$\Psi_a = \Psi_b$. Assuming $\psi_i$  and $\psi_j$  to be $\alpha$-spin the
+interaction energy is
+$$
+<\Psi_a|H|\Psi_b> = (-1)^W(\epsilon_{ij}^++\sum_{k=B}^A(<ij|kk>-<ik|jk>)O_k^{\alpha a}
++<ij|kk>O_k^{\beta a}).
+$$
+This presents a problem. Unlike $\epsilon_{ii}^+$, which has already been
+defined, there is no easy way to calculate $\epsilon_{ij}^+$. Rather than
+undertake this calculation, use can be made of the fact that, for the starting
+configuration:
+$$
+\epsilon_{ij} = <\psi_i|H|\psi_j> = H_{ij} +
+\sum_{k=B}^A(<ij|kk>-<ik|jk>)O_k^{\alpha g}
++<ij|kk>O_k^{\beta g}
+$$
+or
+$$
+\epsilon_{ij} = \epsilon_{ij}^+ + \sum_{k=B}^A(<ij|kk>-<ik|jk>)O_k^{\alpha g}
++<ij|kk>O_k^{\beta g} .
+$$
+$\epsilon_{ij}$ corresponds to an off-diagonal term in the Fock matrix,
+which at self-consistency is, by definition, zero.
+Therefore:
+$$
+\epsilon_{ij}^+ = - \sum_{k=B}^A(<ij|kk>-<ik|jk>)O_k^{\alpha g}
++<ij|kk>O_k^{\beta g}  ,
+$$
+which can be substituted directly into the expression for
+$<\Psi_a|H|\Psi_b>$ to give
+$$
+<\Psi_a|H|\Psi_b> = (-1)^W\sum_{k=B}^A(<ij|kk>-<ik|jk>)(O_k^{\alpha a}-O_k^{\alpha g})
++<ij|kk>(O_k^{\beta a} -O_k^{\beta g} ).
+$$
+All that remains is to determine the phase factor. One
+of the microstates is permuted until the two unmatched M.O.s
+occupy the same position. The number of permutations needed
+to do this when the two M.O.s are of $\alpha$ spin is
+$$
+W=\sum_{k=i+1}^{j-1}(O_k^{\alpha p}-O_k^{\beta p}),
+$$
+assuming $j > i$; otherwise:
+$$
+W=O_j^{\alpha p} +\sum_{k=i+1}^{j-1}(O_k^{\alpha p}-O_k^{\beta p}).
+$$
+
+\item Except for $\psi_i$ and $\psi_j$ in $\Psi_a$ and $\psi_k$ and
+$\psi_l$ in $\Psi_b$; $\Psi_a = \Psi_b$.
+ Two situations exist: (a) when all four M.O.s are of
+the same spin; and (b) when two are of each spin. Thus,
+\begin{enumerate}
+\item All four M.O.s are of the same spin. The
+interaction energy is
+$$
+<\Psi_a|H|\Psi_b> = (-1)^W[<ik|jl>-<il|jk>],
+$$
+in which the phase factor is:
+$$
+W=\sum_{m=i+1}^{j-1}(O_m^{\alpha a}-O_m^{\beta a})
++ \sum_{m=k+1}^{l-1}(O_m^{\alpha a}-O_m^{\beta a})+O_i^{\beta a} + O_k^{\beta a},
+$$
+if the four M.O.s are of $\alpha$ spin; otherwise,
+$$
+W=\sum_{m=i+1}^{j-1}(O_m^{\alpha a}-O_m^{\beta a})
++ \sum_{m=k+1}^{l-1}(O_m^{\alpha a}-O_m^{\beta a})+O_j^{\beta a} + O_l^{\beta a}.
+$$
+\item Two M.O.s are of each spin. In this case there is
+no exchange integral, therefore the interaction energy is
+$$
+<\Psi_a|H|\Psi_b> = (-1)^W<ik|jl>
+$$
+and the phase factor is:
+$$
+W=\sum_{m=k}^{i}(O_m^{\alpha a}-O_m^{\beta a})
++ \sum_{m=j}^{l}(O_m^{\alpha a}-O_m^{\beta a}).
+$$
+If $i>k$, then $W=W+O_k^{\alpha a}+O_i^{\beta a}$,
+if $j>l$, then $W=W+O_k^{\alpha b}+O_i^{\beta b}$,
+finally, if $i>k$ and $j>l$ or  $i<k$ and $j<l$, then $W=W+1$.
+
+All other matrix elements are zero. The completed secular determinant is then
+diagonalized. This yields the \index{State!vectors}\index{State!energies} state
+vectors and state energies, relative to the starting configuration. In turn,
+the state vectors can be used to generate  spin density (at the RHF level) for
+pure spin states. If the density matrix for the state is of interest, such as
+in the calculation of transition dipoles for vibrational modes of excited or
+open shell systems, or for other use, the perturbed density matrix is automatically  reconstructed.
+\index{Density matrix!reconstruction in MECI}
+\end{enumerate}
+\end{enumerate}
+\input{t_oscillator}
+\subsection{States arising from various calculations}
+Each MECI calculation invoked by use of the keyword C.I.=$n$ normally
+\index{Spin!quantization|ff} gives  rise to states of quantized spins.  When
+C.I.\ is used without any other modifying keywords, the states shown in
+Table~\ref{sq} will be obtained. These numbers of spin states will be obtained
+irrespective  of  the chemical nature of the system.
+
+\begin{table}
+\caption{\label{sq} States arising from \comp{C.I.=$n$}}
+\begin{center}
+\begin{tabular}{crrrrrr} \hline
+No.\ of M.O.s & \multicolumn{3}{c}{States Arising from} &
+\multicolumn{3}{c}{States Arising from}\\ in MECI &\multicolumn{3}{c}{Odd
+Electron Systems}& \multicolumn{3}{c}{Even Electron Systems}\\ \hline
+\index{States!arising from C.I.}
+ & Doublets &Quartets&Sextets &Singlets& Triplets&Quintets
+\\ \hline
+1 & 1 &   & &1\\
+2& 2 &   &   &3& 1\\
+3& 8 & 1 & &6& 3 \\
+4&20 & 4 & & 20&15 &1\\
+5&75 &24 & 1& 50&  45&  5 \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsection{Spin angular momentum}
+State functions are eigenvalues of the $S_z$ and $S^2$ operators. The
+derivation of the expectation value of the $S^2$ operator is given in this
+section.
+
+The fundamental spin operators have the following \index{Spin!operators}
+effects:
+$$
+\begin{array}{ll}
+S_x\alpha = \frac{1}{2}\beta & S_x\beta =\ \  \frac{1}{2}\alpha \\
+S_y\alpha = \frac{i}{2}\beta & S_y\beta = -\frac{i}{2}\alpha \\
+S_z\alpha = \frac{1}{2}\alpha & S_z\beta = -\frac{1}{2}\beta \\
+\end{array}
+$$
+Using these expressions, various useful identities can be
+established:
+\index{Shift operators}
+$$
+\begin{array}{ll}
+S^2 = S_x^2+S_y^2+S_z^2 \\
+I^+ = (S_x+iS_y);& I^+\beta = \alpha \\
+I^- = (S_x-iS_y);& I^-\alpha = \beta
+\end{array}
+$$
+\begin{eqnarray}
+S_x^2+S_y^2&=&(I^+I^-)+i(S_xS_y-S_yS_x)\nonumber \\
+           &=&(I^-I^+)+i(S_yS_x-S_xS_y)\nonumber \\
+           &=&\frac{1}{2}(I^+I^- + I^-I^+)\nonumber
+\end{eqnarray}
+and finally $i(S_yS_x - S_x S_y ) = S_z$.
+
+For any microstate $\Psi$, the expectation value of the $S^2$ operator is
+given by
+$$
+<S^2>=<\Psi|S_z^2+S_y^2+S_x^2|\Psi>.
+$$
+The first part of this expression is obvious, {\em vis}:
+$$
+<\Psi|S_z^2|\Psi> = \frac{1}{4}(N^{\alpha}+N^{\beta}).
+$$
+However, the effect of $S_y^2+S_x^2$ is not so simple. By making use of the
+fact that the operators involve two electrons, a large number of integrals
+resulting from the expansion of the Slater determinants can be readily
+eliminated. The only integrals which are not zero due to the orthogonality of
+the eigenvectors, i.e., those which may be finite due to the spin operators,
+are
+$$
+<\Psi|S_y^2+S_x^2|\Psi>  = 2\sum_{i<j}[<\psi_i\psi_i|S_y^2+S_x^2|\psi_j\psi_j>-
+<\psi_i\psi_j|S_y^2+S_x^2|\psi_i\psi_j>].
+$$
+Using the relationships already defined, this expression
+simplifies~\cite{delaat} as follows:
+$$
+S_1S_2=S_{1z}S_{2z}+\frac{1}{2}(I_1^+I_2^-+I_1^-I_2^+)
+$$
+$$
+<\Psi|S^2|\Psi> = 2\sum_{i<j}[\frac{1}{4}(2\delta(m_{s_i}m_{s_j}
+-1-\frac{1}{2}(1-\delta(m_{s_i}m_{s_j}))<\psi_i\psi_j>^2]
+$$
+ or,
+$$
+<\Psi|S^2|\Psi> =\frac{3(p+q)}{4}+\frac{p(p-1)}{2}+\frac{q(q-1)}{2}
+-\frac{(p+q)(p+q-1)}{4}-\sum_{ij}^{pq}<\psi_i\psi_j>^2.
+$$
+Recall that $p$ is the number of $\alpha$ electrons, and $q$, the number of
+$\beta$ electrons.  This expression simplifies to yield
+$$
+<\Psi|S^2|\Psi> =\frac{1}{2}(p+q)+\frac{1}{4}(p-q)^2-
+\sum_i^p\sum_j^q<\psi_i\psi_j>^2.
+$$
+For the general case, in which the state function $\Phi$, is a
+\index{State!function|ff}
+linear combination of microstates, the expectation value of
+S is more complicated:
+$$
+<\Phi_k|S^2|\Phi_k> = \sum_i\sum_jC_{ik}C_{jk}<\Psi_i|S^2|\Psi_j> .
+$$
+As with the construction of the C.I.\ matrix, the elements of this expression
+can be divided into a small number of different types:
+\begin{enumerate}
+\item $\Psi_a=\Psi_b$: Since the two wavefunctions are the same, this
+corresponds to the expectation value of a microstate, and has already been
+derived.
+
+\item Except for $\psi_i$ in $\Psi_a$ and $\psi_j$ in $\Psi_b$; $\Psi_a
+=\Psi_b$:  Assuming $\psi_i$ and $\psi_j$ to have alpha-spin the expectation
+value is
+$$
+<\Psi_a|S_y^2+S_x^2|\Psi_b>=
+ (-1)^W\sum_{k=B}^A(<ij|kk>-<ik|jk>)O_k^{\alpha a}
++<ij|kk>O_k^{\beta a}.
+$$
+The effect of the spin operator is to change the spin of the electrons but
+leave the space part unchanged. All integrals vanish identically due to one or
+more of the following identities:
+$$
+\begin{array}{rclrcl}
+<\psi_i\psi_j>&=&0;&<m_im_j>&=&\delta(i,j)\\
+<\psi_i\psi_k>&=&\delta(i,k);&<\psi_j\psi_k>&=&\delta(j,k).
+\end{array}
+$$
+Therefore, $<\Psi_a|S^2|\Psi_b>=0$.
+
+\item Except for $\psi_i$ and $\psi_j$ in $\Psi_a$ and $\psi_k$  and $\psi_l$
+in $\Psi_b$; $\Psi_a = \Psi_b$. Two situations exist: (a) when all four M.O.s
+are of the same spin; and (b) when two are of each spin.
+
+When all four M.O.s have the same spin, the effect of the spin operator is to
+reverse the spin of two M.O.s in the ket half of the integral. By spin
+orthogonality this results in an integral value of zero.
+
+In the case where two M.O.s are of $\alpha$ spin and two are of $\beta$ spin,
+the matrix elements, after elimination of those terms which are zero due to
+space orthogonality, are
+$$
+<\Psi_a|S^2|\Psi_b> = (-1)^W(<\psi_i\psi_k|S^2|\psi_j\psi_l>-
+<\psi_i\psi_l|S^2|\psi_j\psi_k>)
+$$
+The effect of $S^2$ on $\psi_k$ and $\psi_l$ is to reverse the spin of these
+functions; this gives
+$$
+<\Psi_a|S^2|\Psi_b> = (-1)^W(<\psi_i\psi_k'><\psi_j\psi_l'>-
+<\psi_i\psi_l'><\psi_j\psi_k'>) ,
+$$
+where $\psi'$ has the opposite spin to that of $\psi$.
+
+Thus, only if $\psi_i$ and $\psi_j$ are spatially identical with $\psi_k$ and
+$\psi_l$ will $<\Psi_a|S^2|\Psi_b >$ be non-zero. The phase-factor W is such
+that if $i=k$ and $j=l$ then W=--1, and if $i=l$ and $j=k$ then W=1; for all
+other cases the matrix element is zero, so the phase of W is irrelevant. For
+these two cases, the matrix element is $ <\Psi_a|S^2|\Psi_b>=1$ if
+$(I^++I^-)(\psi_i+\psi_j)=(\psi_k+\psi_l)$, otherwise $<\Psi_a|S^2|\Psi_b> =
+0$.
+
+\item If more than two differences exist, $<\Psi_a|S^2|\Psi_b> = 0$.
+\end{enumerate}
+
+\subsubsection{Calculation of spin-states}
+In order to calculate the spin-state, the expectation value  of  $S^2$ is
+calculated.
+\begin{eqnarray*}
+<\Phi_k|S^2|\Phi_k> & = & S(S+1) = S_z^2 + 2 I^+I^-   \\
+   & = & \frac{1}{2}(p+q) - \\
+   &&\sum_i
+\left\{C_{ik}C_{ik}
+\left((1/4)(N^{\alpha}_i-N^{\beta}_i)^2
++ \sum_l O^{\alpha}_{li} O^{\beta}_{li}\right)
++ \sum_j2
+\left[C_{ik}C_{jk} [\delta(\Psi_i,(I^+I^-)\Psi_j) ]\right]
+\right\}
+\end{eqnarray*}
+where  $C_{ik}$  is the coefficient of microstate $\Psi_i$ in State $\Phi_k$,
+$N^{\alpha}_i$ is the number of alpha electrons in microstate $\Psi_i$,
+$N^{\beta}_i $ is the number of beta electrons in microstate $\Psi_i$,
+$O^{\alpha}_{lk}$ is the occupancy of alpha M.O.\ $l$ in microstate $\Psi_k$,
+$O^{\beta}_{lk}$ is the occupancy of beta M.O.\ $l$ in microstate $\Psi_k$,
+$I^+$ is the spin shift up or step up operator,  and  $I^- $ is the spin shift
+down or step down operator.
+
+The spin state is calculated from:
+$$
+S = (1/2) [\sqrt{(1+4 S^2)} - 1 ]
+$$
+In practice, $S$  is  calculated  to  be  exactly  integer,  or  half
+integer.   That  is,  there is insignificant error due to approximations used.
+This does not mean, however, that the method  is  accurate.   The spin
+calculation  is  completely precise, in the group theoretic sense, but the
+accuracy of the calculation is limited by the Hamiltonian  used, a
+space-dependent function.
+
+\subsection{Choice of State to be Optimized}\label{cos}
+MECI can calculate a large number of states of various total  spin. Two
+schemes are provided to allow a given state to be selected.  First,
+\comp{ROOT=$n$} will, when used on its own, select the $n$'th  state,
+irrespective of  its  total  spin.  By default, $n$=1.  If \comp{ROOT=$n$} is
+used in conjunction with a keyword from the set \comp{SINGLET}, \comp{
+DOUBLET}, \comp{ TRIPLET},  \comp{ QUARTET}, \comp{ QUINTET}, \comp{SEXTET},
+\comp{SEPTET},  \comp{OCTET}, or \comp{NONET}, then  the  $n$'th  root of that
+spin-state  will be used.  For example, \comp{ROOT=4} and \comp{SINGLET} will
+select the 4th singlet state.  If there are  two  triplet  states  below the
+fourth singlet state then this will mean that the sixth state will be selected.
+
+Sometimes the energy required to form an excited state is wanted.  By this
+we mean the energy of the excited state relative to the energy of the ground
+state, and not the heat of formation of the excited state.  To calculate this
+quantity, the keywords \comp{PRECISE, GNORM=0.01, MECI} and
+\comp{C.I.=2} should be used.  For
+formaldehyde, these keywords would produce the output shown in Figure~\ref{figch2o}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\caption{\label{figch2o} Energies of Excited States}
+\begin{center}
+\begin{tabular}{cccccc}         \hline
+  State &  \multicolumn{2}{c}{Energy (eV)}     &  Q.N.&  Spin &  Symmetry  \\
+        & Absolute  &  Relative  \\  \hline
+    1 & -0.0049   &  0.0000    &  1 & Singlet  &  A1  \\
+    2 &  \ 2.7109   &  2.7158    &  1 & Triplet  &  A2  \\
+    3 &  \ 3.1029   &  3.1078    &  2 & Singlet  &  A2  \\
+    4 &  \ 7.8630   &  7.8679    &  2 & Singlet  &  A1  \\
+\hline
+\end{tabular}
+\end{center}
+\end{figure}
+This output can be read as follows:  The first state (the one at -0.004891eV)
+is the new ground state.  C.I.\ will lower the energy of the ground state,
+relative to the SCF ground state, and for formaldehyde this extra stabilization
+amounts to 0.0049 eV.  The ground state is a singlet, and has A$_1$ symmetry.
+The second state is a triplet, with energy 2.7109eV above the SCF energy, or
+2.7158eV above the ground state, and has A$_2$ symmetry.  The third and fourth
+states are both singlets.
+
+Using the two keywords given, the system would optimize on the ground singlet
+state, and the bond orders and density matrix would reflect this.   If the
+first excited singlet state were wanted, then the extra keywords \comp{ROOT=2}
+and \comp{SINGLET} would also be used.  Alternatively, the single extra keyword
+\comp{ROOT=3} could be used.  If the first triplet state were wanted, then
+\comp{TRIPLET} or \comp{ROOT=2} (but not both!) could be used.
+
+\subsubsection{Quantum Numbers}\index{Q.N.}\index{Quantum numbers!of states}
+When \comp{MECI} is used, the output contains information on the symmetry of
+each state.  States of different symmetries are automatically orthogonal, but
+states of the same symmetry do not need to be orthogonal. Of course they are
+orthogonal, and, to emphasize this fact, an extra symmetry label is added. This
+label is, in fact, a quantum number, and is given under the heading ``Q.N.'' in
+the output. The first occurrence of a given irreducible representation is given
+the Q.N.\ ``1'', the second, ``2'', etc.  By using the Q.N.\ and the symmetry
+label, each state can be assigned a unique label.
+
+\subsubsection{Polarizability}\index{Polarizability}
+The expectation value of the polarization operator is given under
+``POLARIZABILITY.'' This is an approximation to the transition moment
+for the absorption or emission of a photon.  One of the two states
+involved is the state defined by the keywords.  By default, this is the
+ground state, but might be an excited state, for example
+\hyperref[pageref]{if \comp{ROOT=2} is used.}{ For a description of
+this calculation, see  p.~}{}{oscil}.
+
+\subsubsection{Franck-Condon considerations}\index{Franck-Condon}\label{FC}
+This section was written based on discussions with
+\begin{center} Victor I. Danilov\\
+Department of Quantum Biophysics\\ Academy of Sciences of the Ukraine\\
+Kiev 143\\Ukraine\end{center}
+The Frank-Condon principle states that electronic transitions take place in
+times that are very short compared to the time required for the nuclei to move
+significantly.  Because of this, care must be taken to ensure that the
+calculations actually do reflect what is wanted.
+
+Examples of various phenomena which can be studied are:
+\begin{description}
+\item[Photoexcitation]\index{Photoexcitation energy}
+If the purpose of a calculation is to predict the energy of photoexcitation,
+then the ground-state should first be optimized.  Once this is done, then a
+C.I.\ calculation can be carried out using \comp{1SCF}.  With the appropriate
+keywords (\comp{MECI C.I.=$n$ } etc.), the energy of photoexcitation to the
+various states can be predicted.
+
+A more expensive, but more rigorous, calculation would be to optimize the
+geometry using all the C.I.\ keywords.  This is unlikely to change the results
+significantly, however.
+
+\item[Fluorescence]\index{Fluorescence}\index{Red-shift}\index{Photoemission}
+If the excited state has a sufficiently long lifetime, so that the geometry
+can relax, then if the system returns to the ground state by emission of
+a photon, the energy of the emitted photon will be less (it will be red-shifted) than
+that of the exciting photon.  To do such a calculation, proceed as follows:
+\begin{itemize}
+\item Optimize the ground-state geometry using all the keywords for the
+later steps, but specify the ground state, e.g.\ \comp{C.I.=3  GNORM=0.01 MECI}.
+\item Optimize the excited state, e.g.\ \comp{C.I.=3 ROOT=2  GNORM=0.01 MECI}.
+\item Calculate the Franck-Condon excitation energy, using the results of the
+ground-state calculation only.
+\item Calculate the Franck-Condon emission energy, using the results of the
+excited state calculation only.
+\item If indirect emission energies are wanted, these can be obtained from
+the $\Delta H_f$ of the optimized excited and optimized ground-state calculations.
+\end{itemize}
+In order for fluorescence to occur, the photoemission probability must be quite
+large, so only transitions of the same spin are allowed.  For example, if the
+ground state is S$_0$, then the fluorescing state would be S$_1$.
+\item[Phosphorescence]\index{Phosphorescence}
+If the photoemission probability is very low, then the lifetime of the excited
+state can be very long (sometimes minutes).  Such states can become populated
+by S$_1 \rightarrow $ T$_1$ intersystem crossing.  Of course, the geometry of
+the system will relax before the photoemission occurs.
+\item[Indirect emission]
+If the system relaxes from the excited electronic, ground vibrational state to
+the ground electronic, ground vibrational state, then a more complicated
+calculation is called for.  The steps of such a calculation are:
+\begin{itemize}
+\item Optimize the geometry of the excited state.
+\item Using the same keywords, except that the ground state is specified,
+optimize the geometry of the ground state.
+\item Take the difference in $\Delta H_f$ of the optimized excited and optimized
+ground-state calculations.
+\item Convert this difference into the appropriate units.
+\end{itemize}
+\item[Excimers]\index{Excimers}
+An excimer is a pair of molecules, one of which is in an electronic excited
+state.  Such systems are usually stabilized relative to the isolated systems.
+Optimization of the geometries of such systems is difficult.  Suggestions on
+how to improve this type of calculation would be appreciated.
+\end{description}
+
+\subsection{Definition of some C.I.\ Keywords}\label{chadef}
+It has been my policy, ever since the first release of MOPAC in 1983, to resist
+changing the definition of keywords.  This policy has allowed users to
+confidently use a new MOPAC in the belief that old keywords will have their
+old, familiar, meaning.  However, an ambiguity was found in certain keywords,
+an ambiguity which has, at times, resulted in severe frustration.
+
+Consider the word \comp{TRIPLET}.  This meant (but no longer means) ``Do an SCF
+calculation in which the M.O.\ populations are [\ldots,2,2,2,1,1,0,0,\ldots],
+then do a C.I.\ on the two half-occupied M.O.s, and select the triplet state.''
+This definition meant that twisted ethylene would have the correct symmetry, as
+would triplet oxygen.  However, if a user wanted to examine triplet
+formaldehyde, and compare it with the ground state, problems arose.  The
+keywords \comp{C.I.=2 ROOT=2} would generate the correct energy, but a user
+might expect that \comp{TRIPLET} should achieve the same result.  Because of
+the definition of \comp{TRIPLET}, the SCF starting configuration was different,
+and as a result, the $\Delta H_f$ was also different. Under earlier MOPACs,
+there was no way to set up a calculation using the keyword \comp{TRIPLET} and
+go SCF on a closed-shell configuration as the precursor to a C.I.\
+calculation.
+
+
+Because of the limitations of the earlier definitions of spin-states
+(\comp{TRIPLET}, \comp{QUARTET}, \comp{QUINTET}, \comp{SEXTET}, etc.), these
+words were all redefined in 1993,  in MOPAC~93.  In order to reproduce the
+earlier keywords, pairs of keywords, such as \comp{TRIPLET} \comp{OPEN(2,2)} or
+\comp{SEXTET} \comp{OPEN(5,5)} must now be used.  Spin-states which result from
+SCF calculations on ground-state configurations can now be specified by the
+following pairs of keywords: \comp{TRIPLET C.I.=2}; \comp{QUARTET C.I.=3};
+\comp{QUINTET C.I.=4}; \comp{SEXTET C.I.=5}.
+
+Using these new definitions, spin-states of a system can now be more easily
+related.  Consider the various states of formaldehyde (Table~\ref{cich2o1}),
+in which all calculations use the ground-state geometry and \comp{1SCF}.
+\begin{table}
+\caption{\label{cich2o1}Examples of Use of C.I.\ Keywords}
+\begin{center}
+\begin{tabular}{lr}
+\hline
+Keywords Used   &  \multicolumn{1}{c}{$\Delta H_f$}   \\ \hline
+(No keywords)          & -32.9040 \\
+\comp{C.I.=1} & -32.9040 \\
+\comp{C.I.=2} & -33.0166\\
+\comp{C.I.=3} & -39.7234\\
+\comp{C.I.=4} & -39.9665\\
+\comp{C.I.=5} & -40.1743\\
+\comp{C.I.=2 TRIPLET} &  29.6348\\
+\comp{C.I.=3 ROOT=2} &  28.2840\\
+\comp{C.I.=3 TRIPLET} &  28.2840\\
+\comp{C.I.=3 TRIPLET MS=0} &  28.2840\\
+\comp{OPEN(2,2) TRIPLET} &  27.9318\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Now we see that \comp{C.I.=3} \comp{ROOT=2} and \comp{C.I.=3} \comp{TRIPLET}
+do, in fact, give the same result.  The ``old'' MOPAC (pre-1993) result of
+using  \comp{TRIPLET} can still be generated by \comp{OPEN(2,2)}
+\comp{TRIPLET}.  Note that \comp{C.I.=1} generates the normal $\Delta H_f$ of
+CH$_2$O, and that increasing the C.I.\ lowers the energy steadily.
+
+\subsection{Degenerate States}\label{dest}
+\index{Jahn-Teller!theorem}
+\index{Point-group!dynamic Jahn-Teller}
+By the Jahn-Teller theorem, systems with orbital degeneracy will distort so as
+to remove the degeneracy.  However, many dynamic Jahn-Teller systems are known
+in which the time-average geometry is of the higher point-group.  These systems
+are the kind that will be addressed here. \index{Liotard@{\bf Liotard, Daniel}}
+
+The analytical RHF configuration interaction first derivative calculation
+developed by Liotard~\cite{analci} has been modified to allow systems with
+degenerate states to be run.
+
+Each of the degenerate states is a linear combination of microstates. Each
+microstate can be described by a Slater
+determinant~\cite{slater_det1,slater_det2}, which represents a specific pattern
+of occupancy of molecular orbitals. Each M.O.\ is a linear combination of
+Slater atomic orbitals.
+
+\index{States!mixtures of} The whole state is best described by an equal
+mixture of the degenerate states of which it is composed.  Note that this is
+NOT a combination of states, rather it is a mixture.  An example of a
+combination of  states is a state function, composed of a linear combination of
+microstates.  In such a combination the phase-factor between microstates is
+significant, thus state(1)= $1/\sqrt{2}$(Microstate(a) + Microstate(b)) is
+different from state(2) $1/\sqrt{2}$(Microstate(a) - Microstate(b)).  An
+example of a mixture of states is the $^2$T$_{2g}$ state of TiF$_6^{3-}$, a
+$d^1$ system, in which the best description of the state is an equal mixture of
+the three degenerate space components of T$_{2g}$, and an equal mixture of the
+two spin components of the Kramer's doublet.  The overall state is thus
+1/6($\alpha$(T$_{2g}$(x)+T$_{2g}$(y)+T$_{2g}$(z))+
+$\beta$(T$_{2g}$(x)+T$_{2g}$(y)+T$_{2g}$(z)).
+
+If equimixtures are not used, then the Jahn-Teller theorem applies, and the
+system would immediately distort so as to remove the degeneracy.  In the case
+of TiF$_6^{3-}$, this would result in distortion from O$_h$ to D$_{4h}$
+symmetry.
+
+
+\subsection{Calculation of  Spin Density}
+\index{Unpaired spin density|ff}\index{Spin!density, unpaired|ff}
+Starting  with  the  state  functions  as  linear  combinations  of
+configurations,  the    spin density, corresponding to the alpha spin density
+minus the beta spin density, will  be  calculated  for  the first  few
+states.   This  calculation  is straightforward for diagonal terms, and only
+those terms are used. \index{MECI|)}\index{Configuration interaction|)}

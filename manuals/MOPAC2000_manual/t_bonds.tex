@@ -1,0 +1,84 @@
+%
+%  THIS FILE IS COMMON
+%
+\subsection{Bond Orders}\label{bonds}
+\index{Valency|ff}\index{Lone pairs|(}\index{Bond order}\index{Wiberg indices}
+Three quantities can be derived~\cite{bonds} from the density matrix for use in
+discussing bonding.  These are: atomic bond index, anisotropy, and  bond
+order. 
+
+The density matrix, $P$, can be decomposed into sub-matrices representing atoms
+or interactions between atoms.  The three  quantities just mentioned can then
+be defined in terms of these sub-matrices.
+
+\subsubsection{Atomic bond index}
+A measure of the valency of an atom.
+\begin{equation}
+V_A=\sum_{\lambda\in A}2P_{\lambda\lambda}-\sum_{\lambda\in A}\sum_{\sigma\in A}P_{\lambda\sigma}^2.
+\end{equation}
+Typical valencies are: 1.0 for hydrogen, 2.0--2.4 for oxygen to 3.8--4.0 for
+carbon. The maximum valency of an atom is equal to the number of atomic
+orbitals, e.g.\  1 or 4 (for a $sp^3$ system), or 9 (in MNDO-$d$). This maximum
+is only achieved when the orbital population is 1.00, and all off-diagonal
+terms on the atom are zero.
+
+\subsubsection{Anisotropy}
+A measure of the number of lone-pairs on an atom.
+\begin{equation}
+L_A=\sum_{\lambda\in A}\sum_{\sigma\in A}P_{\lambda\sigma}^2 - \sum_{l=0}^{k}
+\frac{1}{2l+1}(\sum_{\lambda=l^2+1}^{(l+1)^2}P_{\lambda\lambda})^2.
+\end{equation}
+Typical numbers of lone-pairs are: 0 in, for example, hydrogen and carbon, 1 for
+ nitrogen in amines, and 2 in oxygen.
+
+To see how this expression is derived, consider an atom having valence orbitals
+defined by angular quantum numbers $l=0,1,\ldots,k$.  For H, $k=0$, for all
+other elements, $k=1$. In order to have spherical symmetry, all orbitals in any
+shell must be equally occupied. In addition, since the product of any two
+different atomic orbitals is non-spherical, all off-diagonal density matrix
+terms on any one atom must be zero.
+
+\index{Lone pairs|)}
+For a spherical atom having the atomic populations $s^pp^qd^r$, the valency
+would be:
+\begin{equation}
+V_A=p^2+\frac{q^2}{3}+\frac{r^2}{5},
+\end{equation}
+or, in general:
+\begin{equation}
+V_A = \sum_{l=0}^{k} \label{eq:V_A}
+\frac{1}{2l+1}(\sum_{\lambda=l^2+1}^{(l+1)^2}P_{\lambda\lambda})^2.
+\end{equation}
+Since, in general, atoms are non-spherical, then:
+\begin{equation} 
+V_A=\sum_{\lambda\in A}\sum_{\sigma\in A}P_{\lambda\sigma}^2 \label{eq:V_A2}.
+\end{equation}
+The difference between equations \ref{eq:V_A} and \ref{eq:V_A2} is a measure of how
+unspherical the atom is.
+
+\subsubsection{Bond order}
+A measure of the number of bonds between atoms in a compound.
+\begin{equation}
+B_{AB}=\sum_{\lambda\in A}\sum_{\sigma\in B}P_{\lambda\sigma}^2
+\end{equation}
+Typical bond-orders are: 1.0, e.g.,  C-C in ethane; 2.0, e.g.,  C=C  in
+ethylene; 3.0, e.g.,  C$\equiv$C in acetylene.  Bond orders of less than about
+0.1--0.2 are indicative of ``no bond''.
+
+The ideas here are an extension of Wiberg's indices~\cite{wiberg}.
+
+Given the normal semiempirical density matrix, it is easy to show that
+\begin{equation}
+P^2=2P,
+\end{equation}
+from which it follows that
+\begin{equation}
+P_{\lambda\lambda}=1/2\sum_{\sigma}P_{\lambda\sigma}^2.
+\end{equation}
+This is the starting point for the derivation of
+\begin{equation}
+V_A=\sum_{B\neq A}B_{AB},
+\end{equation}
+from which the above definitions follow.
+
+

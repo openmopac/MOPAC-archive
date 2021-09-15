@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Reduced masses</TITLE>
+<META NAME="description" CONTENT=" Reduced masses">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node590.html">
+<LINK REL="previous" HREF="node588.html">
+<LINK REL="up" HREF="node584.html">
+<LINK REL="next" HREF="node590.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html9452"
+ HREF="node590.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html9448"
+ HREF="node584.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html9442"
+ HREF="node588.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html9450"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9451"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9453"
+ HREF="node590.html"> Effective masses</A>
+<B> Up:</B> <A NAME="tex2html9449"
+ HREF="node584.html">Normal Coordinate Calculation</A>
+<B> Previous:</B> <A NAME="tex2html9443"
+ HREF="node588.html"> Vibrational Analysis</A><!--End of Navigation Panel--><H2>Reduced masses
+</H2>
+A molecular vibration normally involves all the atoms moving simultaneously.  
+This is clearly very different from the  simple harmonic motion of a mass
+attached to a spring that is attached to an immovable object.  Nevertheless, it
+is convenient to visualize a molecular vibration as consisting of a single
+mass, <I>M</I>, on the end of a spring of force constant <I>k</I>. For such a  system,
+the period of vibration, <I>T</I>, is given by:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+T=2\pi\sqrt{\frac{M}{k}}.
+\end{displaymath} -->
+<IMG
+ WIDTH="81" HEIGHT="45"
+ SRC="img1517.gif"
+ ALT="\begin{displaymath}T=2\pi\sqrt{\frac{M}{k}}.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+How, then, do we relate the complicated motion of a molecular vibration to the
+mass and spring model?
+<P>
+During a molecular vibration, each atom follows a simple harmonic motion. So
+the problem is, to what extent does each atom contribute to the mass, and to
+what extent does each atom contribute to the spring?
+<P>
+In order to answer this, first consider some simple systems.  In the system
+H-X, where X has a very large mass, compared to that of the H,  the effective
+mass is obviously that of H.  In H<SUB>2</SUB>, the effective mass is half that of a
+single H.   Why is this so?  In H-X, particle X is stationary, and particle H 
+contributes 100% of the energy to the vibration.  In H<SUB>2</SUB>, each particle
+obviously contributes 50%, but now the center of mass is half way between the
+two particles.  If the force constants are the same in H-X and in H-H, then
+the period of vibration of H-X will be 2<sup>1/2</sup>
+times that of H-H.  This is
+the same period as for a system of two particles, each of which having a mass
+twice that of a H particle.  For a system of two particles, <I>A</I> and <I>B</I>, having
+masses <I>M</I><SUB><I>A</I></SUB> and <I>M</I><SUB><I>B</I></SUB>,  the vibrational wavefunction, <IMG
+ WIDTH="21" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1519.gif"
+ ALT="$\psi_v$">,
+is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_v=\sqrt{\frac{M_B}{M_A+M_B}}\psi_A-\sqrt{\frac{M_A}{M_A+M_B}}\psi_B.
+\end{displaymath} -->
+<IMG
+ WIDTH="241" HEIGHT="54"
+ SRC="img1520.gif"
+ ALT="\begin{displaymath}\psi_v=\sqrt{\frac{M_B}{M_A+M_B}}\psi_A-\sqrt{\frac{M_A}{M_A+M_B}}\psi_B.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+This can be interpreted as particle <I>A</I> moves 
+<!-- MATH: $(\sqrt{\frac{M_B}{M_A+M_B}})^2$ -->
+<IMG
+ WIDTH="82" HEIGHT="45" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1521.gif"
+ ALT="$(\sqrt{\frac{M_B}{M_A+M_B}})^2$">in the time particle <I>B</I> moves 
+<!-- MATH: $(\sqrt{\frac{M_A}{M_A+M_B}})^2$ -->
+<IMG
+ WIDTH="82" HEIGHT="46" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1522.gif"
+ ALT="$(\sqrt{\frac{M_A}{M_A+M_B}})^2$">.
+The center of
+mass, <IMG
+ WIDTH="14" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1523.gif"
+ ALT="$\rho$">,
+stays constant:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\rho=\sum_iM_i\delta x_i = M_A\frac{M_A}{M_A+M_B}- M_B\frac{M_A}{M_A+M_B} = 0.
+\end{displaymath} -->
+<IMG
+ WIDTH="307" HEIGHT="45"
+ SRC="img1524.gif"
+ ALT="\begin{displaymath}\rho=\sum_iM_i\delta x_i = M_A\frac{M_A}{M_A+M_B}- M_B\frac{M_A}{M_A+M_B} = 0.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The square of the coefficients of the wavefunction represent the contribution
+to the motion.  The effective mass, <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1525.gif"
+ ALT="$\mu$">,
+for this system is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\mu = \frac{M_A\times M_B}{M_A+M_B}.
+\end{displaymath} -->
+<IMG
+ WIDTH="92" HEIGHT="43"
+ SRC="img1526.gif"
+ ALT="\begin{displaymath}\mu = \frac{M_A\times M_B}{M_A+M_B}.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+What fraction is due to <I>A</I> and what fraction is due to <I>B</I>?  From the
+wavefunction, the intensity of <I>A</I> is 
+<!-- MATH: $\frac{M_B}{M_A+M_B}$ -->
+<IMG
+ WIDTH="48" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1527.gif"
+ ALT="$\frac{M_B}{M_A+M_B}$">,
+and the relative
+rate of motion is also 
+<!-- MATH: $\frac{M_B}{M_A+M_B}$ -->
+<IMG
+ WIDTH="48" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1528.gif"
+ ALT="$\frac{M_B}{M_A+M_B}$">,
+so the contribution to the
+effective mass due to <I>A</I> is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+(\frac{M_B}{M_A+M_B})M_A;
+\end{displaymath} -->
+<IMG
+ WIDTH="95" HEIGHT="43"
+ SRC="img1529.gif"
+ ALT="\begin{displaymath}(\frac{M_B}{M_A+M_B})M_A;
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+likewise, for <I>B</I>:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+(\frac{M_A}{M_A+M_B})M_B.
+\end{displaymath} -->
+<IMG
+ WIDTH="94" HEIGHT="43"
+ SRC="img1530.gif"
+ ALT="\begin{displaymath}(\frac{M_A}{M_A+M_B})M_B.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Consider two particles, <I>A</I> and <I>B</I>, of mass 1 and 4, respectively.   The
+wavefunction for the vibration is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_v = \sqrt{\frac{4}{5}}\psi_A-\sqrt{\frac{1}{5}}\psi_B,
+\end{displaymath} -->
+<IMG
+ WIDTH="143" HEIGHT="45"
+ SRC="img1531.gif"
+ ALT="\begin{displaymath}\psi_v = \sqrt{\frac{4}{5}}\psi_A-\sqrt{\frac{1}{5}}\psi_B,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <I>A</I> contributes
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\frac{16}{25}\times 1 = 0.64
+\end{displaymath} -->
+<IMG
+ WIDTH="87" HEIGHT="39"
+ SRC="img1532.gif"
+ ALT="\begin{displaymath}\frac{16}{25}\times 1 = 0.64
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and <I>B</I> contributes
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\frac{1}{25}\times 4 = 0.16
+\end{displaymath} -->
+<IMG
+ WIDTH="87" HEIGHT="39"
+ SRC="img1533.gif"
+ ALT="\begin{displaymath}\frac{1}{25}\times 4 = 0.16
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+to the effective mass of 
+<!-- MATH: $\frac{4}{5}$ -->
+<IMG
+ WIDTH="14" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1534.gif"
+ ALT="$\frac{4}{5}$">.
+<P>
+In other words, the contribution to the effective mass is equal to the
+intensity of the wavefunction on each atom, times the mass of the atom, times
+the intensity of the wavefunction.  This is intuitively correct:  the total
+vibration is composed of contributions from each particle, and the amount each
+particle contributes is proportional to its intensity in the wavefunction.  The
+mass of each particle is also proportional to its intensity in the
+wavefunction.
+<P>
+Extension to polyatomic molecules is now trivial.  The effective mass is given
+by:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\mu = \sum_A <\!\psi_AM_A\psi_A\!>\times <\!\psi_A|\psi_A\!>.
+\end{displaymath} -->
+<IMG
+ WIDTH="227" HEIGHT="42"
+ SRC="img1535.gif"
+ ALT="\begin{displaymath}\mu = \sum_A <\!\psi_AM_A\psi_A\!>\times <\!\psi_A\vert\psi_A\!>.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+When written in this way, the quantum nature of the expression is obvious. 
+However, for computational convenience, the effective mass is rewritten as:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\mu = \sum_A(\psi_A^2)^2\times M_A
+\end{displaymath} -->
+<IMG
+ WIDTH="117" HEIGHT="42"
+ SRC="img1536.gif"
+ ALT="\begin{displaymath}\mu = \sum_A(\psi_A^2)^2\times M_A
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+or
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\mu = \sum_A(\sum_{i=1}^3c_{A_i}^2)^2M_A.
+\end{displaymath} -->
+<IMG
+ WIDTH="124" HEIGHT="50"
+ SRC="img1537.gif"
+ ALT="\begin{displaymath}\mu = \sum_A(\sum_{i=1}^3c_{A_i}^2)^2M_A.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+This expression is suitable for most systems.  However, it is not a
+well-defined quantity.  Under certain circumstances involving degenerate
+vibrations, the quantity <font face="Symbol"><i>m</i></font>
+can become ill-defined.  This phenomenon can be
+attributed to the  fact that the reduced mass is not an observable.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html9452"
+ HREF="node590.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html9448"
+ HREF="node584.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html9442"
+ HREF="node588.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html9450"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9451"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9453"
+ HREF="node590.html"> Effective masses</A>
+<B> Up:</B> <A NAME="tex2html9449"
+ HREF="node584.html">Normal Coordinate Calculation</A>
+<B> Previous:</B> <A NAME="tex2html9443"
+ HREF="node588.html"> Vibrational Analysis</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

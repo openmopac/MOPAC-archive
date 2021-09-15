@@ -1,0 +1,131 @@
+\section{Polarizability and Hyperpolarizability Calculation}\label{t_polar}
+\index{Polarizability|ff} \index{Non-Linear Optics}
+\index{Hyperpolarizability}
+\index{Dipole!induced}
+\index{Applied electric fields}\index{Electric fields!applied}
+\index{Kurtz@{\bf Kurtz, Henry, A.}}
+%
+%Finite Field Procedure:
+%
+%By default, an electric field gradient of 0.001 is used. This can
+%be modified by specifying POLAR=n.nnnnn, where n.nnnnn is the new field.
+%
+%POLAR calculates the polarizabilities from the heat of formation and
+%from the dipole. The degree to which they agree is a measure of the
+%precision (not the accuracy) of the calculation. The results from the
+%heat of formation calculation are more trustworthy than those from the
+%dipole.
+%
+%Users should note that the hyperpolarizabilities obtained have to be
+%divided by 2.0 for beta and 6.0 for gamma to conform with experimental
+%convention.
+%
+%Two sets of results are printed: a set (labeled E4) derived from
+%the effect of the applied electric field on the heat of formation, and a
+%set (labeled DIP) derived from the value of the dipole in various
+%electric fields.
+%
+This section was written based on material provided by:
+\begin{center} Henry Kurtz and Prakashan Korambath\\
+Department of Chemistry\\Memphis State University\\
+Memphis TN 38152.
+\end{center}
+
+\subsection{Time-Dependent Hartree-Fock}
+This procedure is based on the detailed description given by
+M.\ Dupuis and S.\ Karna (J.\ Comp.\ Chem.\ 12, 487 (1991)). The
+program is capable of calculating the quantities shown in Table~\ref{nlo}.
+\begin{table}
+\index{Pockels effect}\index{Electro-optic Pockels effect}
+\index{Optical!rectification}
+\index{Third Harmonic Generation}
+\index{Harmonic, third, generation}
+\index{DC-EFISH}
+\index{Kerr effect}
+\index{Optical!rectification}
+\index{Refractive index}
+\index{Frequency-dependent NLO}
+\caption{\label{nlo} Quantities Calculable using \comp{POLAR}}
+\begin{center}
+\begin{tabular}{ll}\hline
+\multicolumn{1}{c}{Type of Phenomenon} & \multicolumn{1}{c}{Symbol} \\ \hline
+Frequency Dependent Polarizability   &   $\alpha(-\omega;\omega)$ \\
+Second Harmonic Generation           &   $\beta(-2\omega;\omega,\omega)$ \\
+Electrooptic Pockels Effect          &   $\beta(-\omega;0,\omega)$ \\
+Optical Rectification                &   $\beta(0;-\omega,\omega)$ \\
+Third Harmonic Generation            &   $\gamma(-3\omega;\omega,\omega,\omega)$  \\
+DC-EFISH                             &   $\gamma(-2\omega;0,\omega,\omega)$  \\
+Optical Kerr Effect                  &  $\gamma(-\omega;0,0,\omega)$  \\
+Intensity Dependent Index of Refraction & $\gamma(-\omega;\omega,-\omega,\omega)$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Keywords for the \comp{POLAR} calculation are given inside the \comp{POLAR}
+keyword.  Quantities under user-control are:
+\begin{description}
+\item[\comp{IWFLB=$n$}] The type of $\beta$ calculation to be performed.  
+This variable is only important if iterative beta calculations are chosen.
+\begin{description}
+\item[\comp{IWFLB=0}] static (This is the default)
+\item[\comp{IWFLB=1}] second harmonic generation
+\item[\comp{IWFLB=2}] electrooptic Pockels effect
+\item[\comp{IWFLB=3}] optical rectification
+\end{description}
+\item[\comp{E=($n_1, n_2, n_3, \ldots$)}] The energies, in eV, of 
+the radiation to be used. Up to 10 energies can be specified.
+If this option is not used, the default energies of 0.0, 0.25, and 0.50 eV will
+be used.
+
+\item[\comp{BETA=$n$}] Type of beta calculation.
+\begin{description}   
+\item[\comp{BETA=0}] $\beta$(0;0) static (This is the default)
+\item[\comp{BETA=1}] iterative calculation with type of $\beta$ chosen by \comp{IWFLB}
+\item[\comp{BETA=-1}] Noniterative calculation of second harmonic generation
+\item[\comp{BETA=-2}] Noniterative calculation of electrooptic Pockels effect
+\item[\comp{BETA=-3}] Noniterative calculation of optical rectification
+\end{description}
+\item[\comp{GAMMA=$n$}] Type of gamma calculation:
+\begin{description}
+\item[\comp{GAMMA=0}] No gamma calculation
+\item[\comp{GAMMA=1}] third harmonic generation (This is the default)
+\item[\comp{GAMMA=2}] DC-EFISH
+\item[\comp{GAMMA=3}] intensity dependent index of refraction
+\item[\comp{GAMMA=4}] optical Kerr effect
+\end{description}
+\item[\comp{TOL=$n.nn$}] Cutoff tolerance for $\alpha$ calculations, 
+default=0.001.
+\item[\comp{MAXITU=$nnn$}] Maximum number of interactions for beta, default:
+500.
+\item[\comp{MAXITA=$nnn$}] Maximum number of iterations for $\alpha$
+calculations, default: 150.
+\item[\comp{BTOL=$n.nn$}]  Cutoff tolerance for $\beta$ calculations
+The default is 0.001.
+\end{description}
+
+\subsubsection*{Examples of \comp{POLAR} keyword}
+
+To calculate the NLO quantities $\alpha, \beta,$ and $\gamma$ at 1.0eV:\\
+  \comp{POLAR(E=(1.0)) }\\
+This same calculation can be set up by setting all the variables to their
+default value:
+\begin{verbatim}
+POLAR(IWFLB=0,E=(1.),BETA=0,GAMMA=1,TOL=1.D-3,MAXITU=500,MAXITA=150,BTOL=1.D-3)
+\end{verbatim}
+
+This takes up the entire keyword line.  If more than one line is needed to hold
+the keyword, use the \comp{+} option, as in:
+\begin{verbatim}
++ symmetry 1scf uhf POLAR(IWFLB=0,E=(1.),BETA=0,GAMMA=1,TOL=1.D-3,MAXITU=501,
+ MAXITA=151,BTOL=1.D-3)
+\end{verbatim}
+
+Note: This is not a recommended way of writing a keyword.  In order for a
+keyword to be recognized, the `join' of the two lines must be perfect.  In
+other words, the last character of the first line must be in column 80, unless
+character 1 was not blank, in which case the last character must be in column
+79. Anyhow, it is unlikely that such long keywords would be used very often.
+
+
+

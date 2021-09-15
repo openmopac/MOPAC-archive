@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>STATIC </TITLE>
+<META NAME="description" CONTENT="STATIC ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node313.html">
+<LINK REL="previous" HREF="node311.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node313.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html5649"
+ HREF="node313.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5645"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5639"
+ HREF="node311.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5647"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5648"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5650"
+ HREF="node313.html">STEP </A>
+<B> Up:</B> <A NAME="tex2html5646"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5640"
+ HREF="node311.html">SPIN </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>STATIC</TT> 
+</H2>
+The static polarizability is calculated.  An electric field gradient is
+applied to the system, and the response is calculated.  The dipole and
+polarizability are calculated two different ways, from the change in 
+<!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f</sub> and from the change in dipole.  A measure of the imprecision of the calculation
+can be obtained by comparing the two quantities.  Greater precision can be
+obtained by increasing the precision of the SCF (<TT>RELSCF=0.1</TT> or 
+<TT>RELSCF=0.01</TT>).  For large systems, the <TT>MOZYME</TT> function should be used,
+but the polarizability calculated using the <TT>MOZYME</TT> function is not
+as precise as that calculated using conventional methods.  If the results are
+not precise enough, increase the SCF precision (preferably by using 
+<TT>RELSCF=<I>n</I>.<I>nn</I></TT>).
+<P>
+In <TT>STATIC</TT>, 37 or 38 SCF calculations are involved.  The polarizability
+involves 36 calculations, one for each electric field.  The fields are +X, -X,
++2X, -2X, +Y, -Y, +2Y, -2Y, +X+Y, -X+Y, -X-Y, +X-Y, +2X+2Y, -2X+2Y, -2X-2Y,
++2X-2Y, +Z, -Z, +2Z, -2Z, +X+Z, -X+Z, -X-Z, +X-Z, +2X+2Z, -2X+2Z, -2X-2Z,
++2X-2Z, +Y+Z, -Y+Z, -Y-Z, +Y-Z, +2Y+2Z, -2Y+2Z, -2Y-2Z, and +2Y-2Z.
+These are used in the construction of a three by three secular matrix, which
+is then diagonalized, giving the orthogonal polarizabilities.
+<P>
+By default, the system is first re-oriented, to align the principal moments of 
+inertia with the Cartesian axes.&nbsp; If this is NOT wanted, then add&nbsp; <TT>
+<a href="node207.html">LET</a></TT>.<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5649"
+ HREF="node313.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5645"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5639"
+ HREF="node311.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5647"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5648"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5650"
+ HREF="node313.html">STEP </A>
+<B> Up:</B> <A NAME="tex2html5646"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5640"
+ HREF="node311.html">SPIN </A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

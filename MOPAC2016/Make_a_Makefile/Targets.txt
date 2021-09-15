@@ -1,0 +1,23 @@
+#
+# Define targets
+#
+
+all: $(OBJ)  $(MOPAC_OBJECTS) $(OBJ)/mopac.$(O)
+	$(FORTRAN_LINKER)  -o $(EXE)  $(MOPAC_OBJECTS) $(OBJ)/mopac.$(O) $(MATH_LINK)
+
+PARAM: $(OBJ) $(MOPAC_OBJECTS) $(PARAM_OBJECTS)
+	$(FORTRAN_LINKER)  -o PARAM2012.exe  $(MOPAC_OBJECTS) $(PARAM_OBJECTS) $(MATH_LINK)
+
+clean: 
+	@echo  All object and mod files will be deleted
+	@rm -f $(OBJ)/*.$(O) $(OBJ)/*.mod *.mod *.$(O)
+	@echo  All object and mod files have been deleted
+#
+#
+#
+#
+#
+#
+#
+# Dependencies of MOPAC Fortran source files
+#

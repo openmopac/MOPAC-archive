@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Approximations used in MNDO, MINDO/3, AM1, PM3, and MNDO-d</TITLE>
+<META NAME="description" CONTENT="8.2.1 Approximations used in MNDO, MINDO/3, AM1, PM3, and MNDO-d">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node456.html"><LINK REL="previous" HREF="node441.html"><LINK REL="up" HREF="node441.html"><LINK REL="next" HREF="node443.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node443.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node441.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node441.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node443.html">Basic Roothaan-Hall Equations</A> <B>Up:</B> <A HREF="node441.html">Semiempirical Theory</A> <B>Previous:</B> <A HREF="node441.html">Semiempirical Theory</A> <BR>
+<H2><A NAME="SECTION001221000000000000000">Approximations used in MNDO, MINDO/3, AM1, PM3, PM5, and MNDO-<I>d</A></I> </H2>
+<P>All the methods are similar enough to describe simultaneously. In the following discussion, applications specific to each method will be indicated in the text. This will allow easy comparison among the methods, a comparison that is not obvious from their names. MINDO/3 stands for Modified Intermediate Neglect of Differential Overlap, version 3. MNDO stands for Modified Neglect of Diatomic Overlap, and AM1 is Austin Model 1: these are the first two of the MNDO-type methods. PM3 is the Modified Neglect of Diatomic Overlap, Parametric Method Number 3, and MNDO-<I>d</I>, is really just MNDO with <I>d</I> orbitals. Earlier methods, such as CNDO (Complete Neglect of Differential Overlap) ignored all terms involving two different atomic orbitals on one atom. Because of this, CNDO was an example of a ZDO (Zero Differential Overlap) method. (For a good introduction to CNDO, see "Approximate Molecular Orbital Theory", J. A. Pople, D. L. Beveridge, McGraw-Hill, New York, 1970. CNDO was first described in: J. A. Pople, D. P. Santry, and G. A. Segal, "Approximate Self-Consistent Molecular Orbital Theory I. Invariant Procedures", <I>J. Chem. Phys., </I>1965, <B>43</B>, S129-S135 (1965); J. A. Pople and G. A. Segal, "Approximate Self-Consistent Molecular Orbital Theory II. Calculations with Complete Neglect of Differential Overlap", <I>J. Chem. Phys., </I>1965, <B>43</B>, S136-S149 (1965); and J. A. Pople and G. A. Segal, "Approximate Self-Consistent Molecular Orbital Theory. III CNDO Results for AB2 and AB3 Systems", <I>J. Chem. Phys., </I>1966, <B>44</B>, 3289-3296 (1966).), MNDO, AM1, etc belong to the family of NDDO (Neglect of Diatomic Differential Overlap) methods. In these methods all terms arising from the overlap of two atomic orbitals which are on different centers or atoms are set to zero. As this is not the forum for developing the ideas of Hartree-Fock theory, the derivation of the Roothaan-Hall equations will be assumed, and our description of the methods will start with the final Roothaan&nbsp;[<A HREF="node715.html#roothaan">52</A>]-Hall&nbsp;[<A HREF="node715.html#hall">53</A>] equations. </P>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html7571"><A HREF="node443.html">Basic Roothaan-Hall Equations</A></A> </LI>
+<LI><A NAME="tex2html7572"><A HREF="node444.html">Neglect of diatomic overlap integral</A></A> </LI>
+<LI><A NAME="tex2html7573"><A HREF="node445.html">Neglect of three and four center integrals</A></A> </LI>
+<LI><A NAME="tex2html7574"><A HREF="node446.html">One-center two-electron integrals</A></A> </LI>
+<LI><A NAME="tex2html7575"><A HREF="node447.html">NDDO two-electron two-center integrals</A></A> </LI>
+<LI><A NAME="tex2html7576"><A HREF="node448.html">Final Assembly of Two-Electron Two-Center Integrals</A></A> </LI>
+<LI><A NAME="tex2html7577"><A HREF="node449.html">MINDO/3 Two electron two center integrals</A></A> </LI>
+<LI><A NAME="tex2html7578"><A HREF="node450.html">The one-center one-electron integral
+<i>H<sub><font face="Symbol">mm</font></sub> </i></A></LI>
+<LI><A NAME="tex2html7579"><A HREF="node451.html">The two-center one-electron integral </A><A HREF="node450.html">
+<i>H<sub><font face="Symbol">mn</font></sub> </i></A></A></LI>
+<LI><A NAME="tex2html7580"><A HREF="node452.html">Core-core repulsion integrals</A></A> </LI>
+<LI><A NAME="tex2html7581"><A HREF="node453.html">MINDO/3 modification to the core-core term</A></A> </LI>
+<LI><A NAME="tex2html7582"><A HREF="node454.html">MNDO modification to the core-core term</A></A> </LI>
+<LI><A NAME="tex2html7583"><A HREF="node455.html">AM1 and PM3 modifications to the core-core term</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html7569"><A HREF="node443.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html7565"></A><A HREF="node441.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html7559"></A><A HREF="node441.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html7567"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html7568"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html7570"><A HREF="node443.html">Basic Roothaan-Hall Equations</A></A> <B>Up:</B> <A NAME="tex2html7566"><A HREF="node441.html">Semiempirical Theory</A></A> <B>Previous:</B> <A NAME="tex2html7560"><A HREF="node441.html">Semiempirical Theory</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Choice of State to be Optimized</TITLE>
+<META NAME="description" CONTENT="8.4.6 Choice of State to be Optimized">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node500.html"><LINK REL="previous" HREF="node494.html"><LINK REL="up" HREF="node486.html"><LINK REL="next" HREF="node497.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node497.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A HREF="node486.html"><IMG SRC="up_motif.gif" BORDER=0 ALT="up" width="26" height="24"></A><A HREF="node495.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node497.html">Quantum Numbers</A> <B>Up:</B> <A HREF="node486.html">Multi-Electron Configuration Interaction</A> <B>Previous:</B> <A HREF="node495.html">Calculation of spin-states</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION001246000000000000000">&nbsp;<A NAME="cos"></A>&nbsp;</A> <BR>
+Choice of State to be Optimized </H2>
+<P>MECI can calculate a large number of states of various total spin. Two schemes are provided to allow a given state to be selected. First, <TT>
+<a href="node292.html">ROOT=<I>n</I></a></TT> will, when used on its own, select the <I>n</I>'th state, irrespective of its total spin. By default, <I>n</I>=1. If <TT>ROOT=<I>n</I></TT> is used in conjunction with a keyword from the set
+<TT><A HREF="node306.html">SINGLET</A>, <A HREF="node164.html">DOUBLET</A>, <A HREF="node333.html">TRIPLET</A>, <A HREF="node278.html">QUARTET</A>,
+<a href="node279.html">QUINTET</a>, <A HREF="node303.html">SEXTET</A>, <A HREF="node300.html">SEPTET</A>, <A HREF="node246.html">OCTET</A></TT>, 
+or <TT> <A HREF="node238.html">NONET</A></TT>. , then the <I>n</I>'th root of that spin-state will be used. For example, <TT>ROOT=4</TT> and <TT>SINGLET</TT> will select the 4th singlet state. If there are two triplet states below the fourth singlet state then this will mean that the sixth state will be selected. </P>
+<P>Sometimes the energy required to form an excited state is wanted. By this we mean the energy of the excited state relative to the energy of the ground state, and not the heat of formation of the excited state. To calculate this quantity, the keywords <TT>
+<a href="node274.html">PRECISE</a>, <a href="node186.html">GNORM=0.01</a>, 
+<a href="node212.html">MECI</a></TT> and <TT><a href="node134.html">C.I.=2</a></TT> should be used. For formaldehyde, these keywords would produce the output shown in the&nbsp;<A HREF="node496.html#figch2o">Figure</A>.
+<br>
+<BR>
+<DIV ALIGN="CENTER"> <DIV ALIGN="CENTER">&nbsp;<STRONG>Figure:</STRONG> Energies of Excited States<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"> State</TD>
+<TD VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Energy (eV)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Q.N.</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Spin</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Symmetry</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Absolute</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Relative</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">-0.0049</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Singlet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.7109</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.7158</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Triplet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3.1029</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3.1078</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Singlet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">7.8630</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">7.8679</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Singlet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A1</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV><BR>
+This output can be read as follows: The first state (the one at -0.004891eV) is the new ground state. C.I. will lower the energy of the ground state, relative to the SCF ground state, and for formaldehyde this extra stabilization amounts to 0.0049 eV. The ground state is a singlet, and has A<SUB>1</SUB> symmetry. The second state is a triplet, with energy 2.7109eV above the SCF energy, or 2.7158eV above the ground state, and has A<SUB>2</SUB> symmetry. The third and fourth states are both singlets. </P>
+<P>Using the two keywords given, the system would optimize on the ground singlet state, and the bond orders and density matrix would reflect this. If the first excited singlet state were wanted, then the extra keywords <TT>ROOT=2</TT> and <TT>SINGLET</TT> would also be used. Alternatively, the single extra keyword <TT>ROOT=3</TT> could be used. If the first triplet state were wanted, then <TT>TRIPLET</TT> or <TT>ROOT=2</TT> (but not both!) could be used. </P>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html8267"><A HREF="node497.html">Quantum Numbers</A></A> </LI>
+<LI><A NAME="tex2html8268"><A HREF="node498.html">Polarizability</A></A> </LI>
+<LI><A NAME="tex2html8269"><A HREF="node499.html">Franck-Condon considerations</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8265"><A HREF="node497.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A NAME="tex2html8261"></A><A HREF="node486.html"><IMG SRC="up_motif.gif" BORDER=0 ALT="up" width="26" height="24"></A><A NAME="tex2html8255"></A><A HREF="node495.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8263"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8264"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8266"><A HREF="node497.html">Quantum Numbers</A></A> <B>Up:</B> <A NAME="tex2html8262"><A HREF="node486.html">Multi-Electron Configuration Interaction</A></A> <B>Previous:</B> <A NAME="tex2html8256"><A HREF="node495.html">Calculation of spin-states</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

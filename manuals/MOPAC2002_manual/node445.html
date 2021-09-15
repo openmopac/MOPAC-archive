@@ -1,0 +1,224 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Neglect of three and four center integrals</TITLE>
+<META NAME="description" CONTENT="8.2.1.3 Neglect of three and four center integrals">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node446.html">
+<LINK REL="previous" HREF="node444.html">
+<LINK REL="up" HREF="node442.html">
+<LINK REL="next" HREF="node446.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html7618"
+ HREF="node446.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7614"
+ HREF="node442.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7608"
+ HREF="node444.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7616"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7617"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7619"
+ HREF="node446.html"> One-center two-electron integrals</A>
+<B> Up:</B> <A NAME="tex2html7615"
+ HREF="node442.html"> Approximations used in</A>
+<B> Previous:</B> <A NAME="tex2html7609"
+ HREF="node444.html"> Neglect of diatomic</A>
+<!--End of Navigation Panel-->
+<H3>Neglect of three and four center integrals
+</H3>
+Continuing with the neglect of differential overlap, all two-electron integrals
+involving charge clouds arising from the overlap of two atomic orbitals on
+different centers are ignored. Since no rotation can convert a two center
+two-electron integral into a set of integrals involving three and four center
+terms, rotational invariance is not compromised by this approximation.
+Rotational invariance is present if the calculated observables [
+<font face="Symbol">
+<!-- MATH: $\Delta H_f$ -->
+D</font>H<sub>f</sub>,
+Dipole, I.P., etc] are not dependent on the orientation of the system. The
+effects of this approximation on the Roothaan equations are as follows:
+<P>
+In the Fock matrix, if 
+<!-- MATH: $\varphi_{\mu}$ -->
+<i><font face="Symbol">f<sub>m</sub></font></i> and 
+<!-- MATH: $\varphi_{\nu}$ -->
+<i><font face="Symbol">f</font></i><sub><i><font face="Symbol">n</font></i></sub>
+are on different
+centers the NDDO matrix element <i>F<font face="Symbol"><sub>mn</sub><sup>a</sup></font></i>
+reduces to
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+F_{\mu\nu}^{\alpha} = H_{\mu\nu}- \sum_{\lambda}^A\sum_{\sigma}^B
+P_{\lambda\sigma}^{\alpha} <\mu\lambda|\nu\sigma>,
+\end{displaymath} -->
+<IMG
+ WIDTH="227" HEIGHT="51"
+ SRC="img393.gif"
+ ALT="\begin{displaymath}F_{\mu\nu}^{\alpha} = H_{\mu\nu}- \sum_{\lambda}^A\sum_{\sigma}^B
+P_{\lambda\sigma}^{\alpha} <\mu\lambda\vert\nu\sigma>,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+while the MINDO/3 matrix element becomes:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+F_{\mu\nu}^{\alpha} = H_{\mu\nu}- P_{\mu\nu}^{\alpha} <\mu\nu|\mu\nu>.
+\end{displaymath} -->
+<IMG
+ WIDTH="193" HEIGHT="31"
+ SRC="img394.gif"
+ ALT="\begin{displaymath}F_{\mu\nu}^{\alpha} = H_{\mu\nu}- P_{\mu\nu}^{\alpha} <\mu\nu\vert\mu\nu>.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Equivalent expressions exist for  
+<!-- MATH: $F_{\mu\nu}^{\beta}$ -->
+<i>F<font face="Symbol"><sub>mn</sub></font></i><sup><i><font face="Symbol">b</font></i></sup>
+and
+<!-- MATH: $P_{\mu\nu}^{\beta}$ -->
+<i>P<font face="Symbol"><sub>mn</sub></font></i><sup><i><font face="Symbol">b</font></i></sup>.
+Thus no Coulombic terms are present in the two-center
+Fock matrix elements.     
+<P>
+If <i><font face="Symbol">&nbsp;f<sub>m</sub></font></i> and 
+<!-- MATH: $\varphi_{\nu}$ -->
+<i><font face="Symbol">f</font></i><sub><i><font face="Symbol">n</font></i></sub>
+are different but on the same center,
+then, since a minimal basis set is being used, all integrals of the type
+<!-- MATH: $<\!\mu\nu|\lambda\sigma\!>$ -->
+&lt;<font face="Symbol"><i>mn</i></font>|<i><font face="Symbol">ls</font></i>&gt;
+are zero by the orthogonality of the atomic
+orbitals unless <i><font face="Symbol">m</font></i> = <i><font face="Symbol">n</font></i>
+and 
+<!-- MATH: $\lambda=\sigma$ -->
+<i><font face="Symbol">l = s</font></i>,
+or 
+<!-- MATH: $\mu=\lambda$ -->
+<i><font face="Symbol">m</font></i> = <i><font face="Symbol">l</font></i>
+and
+<!-- MATH: $\nu=\sigma$ -->
+<i><font face="Symbol">m</font></i> = <i><font face="Symbol">s</font></i>.
+The off-diagonal one-center NDDO Fock matrix elements become:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+F_{\mu\nu}^{\alpha} = H_{\mu\nu}+ 2P_{\mu\nu}^{\alpha+\beta} <\mu\nu|\mu\nu>
+- P_{\mu\nu}^{\alpha}( <\mu\nu|\mu\nu> +<\mu\mu|\nu\nu>),
+\end{displaymath} -->
+<IMG
+ WIDTH="429" HEIGHT="32"
+ SRC="img404.gif"
+ ALT="\begin{displaymath}F_{\mu\nu}^{\alpha} = H_{\mu\nu}+ 2P_{\mu\nu}^{\alpha+\beta} ...
+..._{\mu\nu}^{\alpha}( <\mu\nu\vert\mu\nu> +<\mu\mu\vert\nu\nu>),
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+while the MINDO/3 element becomes:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+F_{\mu\nu}^{\alpha} - P_{\mu\nu}^{\alpha} <\mu\nu|\mu\nu>.
+\end{displaymath} -->
+<IMG
+ WIDTH="148" HEIGHT="31"
+ SRC="img405.gif"
+ ALT="\begin{displaymath}F_{\mu\nu}^{\alpha} - P_{\mu\nu}^{\alpha} <\mu\nu\vert\mu\nu>.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+If  
+<!-- MATH: $\varphi_{\mu}$ -->
+<i><font face="Symbol">f<sub>m</sub></font></i>&nbsp;
+is the same as 
+<!-- MATH: $\varphi_{\nu}$ -->
+<i><font face="Symbol">f</font></i><sub><i><font face="Symbol">n</font></i></sub>,
+then, because of the 
+symmetry of the two-electron integrals, the diagonal NDDO
+Fock matrix elements reduce to:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+F_{\mu\mu}^{\alpha} = H_{\mu\mu}+ \sum_{\nu}^A(P_{\nu\nu}^{\alpha+\beta}
+<\mu\mu|\nu\nu> - P_{\nu\nu}^{\alpha}<\mu\nu|\mu\nu>)
++\sum_B\sum_{\lambda}^B\sum_{\sigma}^BP_{\lambda\sigma}^{\alpha+\beta}<\mu\mu|\lambda\sigma>,
+\end{displaymath} -->
+<IMG
+ WIDTH="519" HEIGHT="51"
+ SRC="img408.gif"
+ ALT="\begin{displaymath}F_{\mu\mu}^{\alpha} = H_{\mu\mu}+ \sum_{\nu}^A(P_{\nu\nu}^{\a...
+...}^BP_{\lambda\sigma}^{\alpha+\beta}<\mu\mu\vert\lambda\sigma>,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and the corresponding MINDO/3 element becomes:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+F_{\mu\mu}^{\alpha} = H_{\mu\mu}+ \sum_{\nu}^A(P_{\nu\nu}^{\alpha+\beta}
+<\mu\mu|\nu\nu> - P_{\nu\nu}^{\alpha}<\mu\nu|\mu\nu>)
++\sum_B<AA|BB>\sum_{\lambda}^B P_{\lambda\lambda}^{\alpha+\beta}.
+\end{displaymath} -->
+<IMG
+ WIDTH="497" HEIGHT="51"
+ SRC="img409.gif"
+ ALT="\begin{displaymath}F_{\mu\mu}^{\alpha} = H_{\mu\mu}+ \sum_{\nu}^A(P_{\nu\nu}^{\a...
+...AA\vert BB>\sum_{\lambda}^B P_{\lambda\lambda}^{\alpha+\beta}.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7618"
+ HREF="node446.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7614"
+ HREF="node442.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7608"
+ HREF="node444.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7616"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7617"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7619"
+ HREF="node446.html"> One-center two-electron integrals</A>
+<B> Up:</B> <A NAME="tex2html7615"
+ HREF="node442.html"> Approximations used in</A>
+<B> Previous:</B> <A NAME="tex2html7609"
+ HREF="node444.html"> Neglect of diatomic</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

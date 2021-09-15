@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Neglect of diatomic overlap integral</TITLE>
+<META NAME="description" CONTENT="8.2.1.2 Neglect of diatomic overlap integral">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node445.html"><LINK REL="previous" HREF="node443.html"><LINK REL="up" HREF="node442.html"><LINK REL="next" HREF="node445.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node445.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node442.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node443.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node445.html">Neglect of three and four center integrals</A> <B>Up:</B> <A HREF="node442.html">Approximations used in the various Methods</A> <B>Previous:</B> <A HREF="node443.html">Basic Roothaan-Hall Equations</A> <BR>
+<H3><A NAME="SECTION001221200000000000000">Neglect of diatomic overlap integral</A> </H3>
+<P>All overlap integrals arising from the overlap of two different atomic orbitals are neglected. This reduces the overlap matrix to a unit matrix. The secular equation thus reduces to: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+c_i|F-\epsilon_i|c_i =0.
+\end{displaymath} --><IMG SRC="img379.gif" WIDTH=97 HEIGHT=29 ALT="begin{displaymath}c_ivert F-epsilon_ivert c_i =0.end{displaymath}"></DIV>
+<P>In semiempirical theory the Coulson density matrix is used, e.g.: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+P_{\lambda\sigma}^{\alpha} = \sum_i^{occ}c_{\lambda i}^{\alpha}c_{\sigma  i}^{\alpha},
+\end{displaymath} --><IMG SRC="img380.gif" WIDTH=101 HEIGHT=47 ALT="begin{displaymath}P_{lambdasigma}^{alpha} = sum_i^{occ}c_{lambda i}^{alpha}c_{sigma i}^{alpha},end{displaymath}"></DIV>
+<P>where the sum is over all occupied spin molecular orbitals. In RHF calculations, only the total density matrix is calculated: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+P_{\lambda\sigma} = 2\sum_i^{occ}c_{\lambda i}c_{\sigma  i},
+\end{displaymath} --><IMG SRC="img381.gif" WIDTH=111 HEIGHT=47 ALT="begin{displaymath}P_{lambdasigma} = 2sum_i^{occ}c_{lambda i}c_{sigma i},end{displaymath}"></DIV>
+<P>where the sum is over all occupied molecular orbitals. </P>
+<P>When a system has more than half the available M.O.s, <I>N</I>, filled, it is computationally<A NAME="BM9151">&nbsp;</A> faster to calculate the positron electron equivalent: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+P_{\mu\nu}^{\alpha} = 1-\! \sum_{i=occ+1}^Nc_{\lambda i}^{\alpha}c_{\sigma  i}^{\alpha}
+\end{displaymath} --><IMG SRC="img382.gif" WIDTH=145 HEIGHT=51 ALT="begin{displaymath}P_{munu}^{alpha} = 1-! sum_{i=occ+1}^Nc_{lambda i}^{alpha}c_{sigma i}^{alpha}end{displaymath}"></DIV>
+<P>and </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+P_{\mu\nu} = 2-\! 2\sum_{i=occ+1}^Nc_{\lambda i}c_{\sigma  i}.
+\end{displaymath} --><IMG SRC="img383.gif" WIDTH=159 HEIGHT=51 ALT="begin{displaymath}P_{munu} = 2-! 2sum_{i=occ+1}^Nc_{lambda i}c_{sigma i}.end{displaymath}"></DIV>
+<P>An important exception to this rule is the calculation of the one-electron two-center integral <i>
+H<font face="Symbol"><sub>mn</font></sub></i>, which is approximated by: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+H_{\mu\nu}= S_{\mu\nu}\frac{1}{2}(U_{\mu\mu}+U_{\nu\nu}),
+\end{displaymath} --><IMG SRC="img385.gif" WIDTH=162 HEIGHT=38 ALT="begin{displaymath}H_{munu}= S_{munu}frac{1}{2}(U_{mumu}+U_{nunu}),end{displaymath}"></DIV>
+<P>where <!-- MATH: $S_{\mu\nu}$ --><i>S<sub><font face="Symbol">mn</font></sub></i> is the overlap integral between atomic orbital <!-- MATH: $\varphi_{\mu}$ -->
+<i><font face="Symbol">f<sub>m</sub></font></i> on an atom, and <!-- MATH: $\varphi_{\nu}$ -->
+<i><font face="Symbol">f<sub>n </sub></font></i>on another atom, and the <I>U</I> values are atomic orbital constants, supplied as data. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html7606"><A HREF="node445.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html7602"></A><A HREF="node442.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html7596"></A><A HREF="node443.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html7604"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html7605"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html7607"><A HREF="node445.html">Neglect of three and four center Integrals</A></A> <B>Up:</B> <A NAME="tex2html7603"><A HREF="node442.html">Approximations used in</A></A> <B>Previous:</B> <A NAME="tex2html7597"><A HREF="node443.html">Basic Roothaan-Hall Equations</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

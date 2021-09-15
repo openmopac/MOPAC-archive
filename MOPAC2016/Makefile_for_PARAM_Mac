@@ -1,0 +1,4727 @@
+#
+#   Compile and build program PARAM.
+#
+#   All subroutines need to be in the folder with this file
+#
+#  Define compiler
+#
+#   -DUNUSED is a place-holder.  When needed, replace it with the appropriate
+#   pre-processor string, e.g. -DGPU  
+#
+FORTRAN_COMPILER = ifort -c  -O3 -DUNUSED
+FORTRAN_LINKER   = ifort -lpthread -lstdc++ -O3
+MATH_LINK        =   $(MKLROOT)/lib/libmkl_intel.a \
+                     $(MKLROOT)/lib/libmkl_intel_thread.a \
+                     $(MKLROOT)/lib/libmkl_core.a  \
+                     /opt/intel/composer_xe_2013/lib/libiomp5.a \
+                     -lpthread \
+                     -lm
+OBJ		= ./objects
+build: \
+aababc.o                   aababc_I.o                 aabacd.o                    \
+aabacd_I.o                 aabbcd.o                   aabbcd_I.o                  \
+add_more_interactions.o    addfck_I.o                 addhb.o                     \
+addhcr_I.o                 addnuc_I.o                 adjvec.o                    \
+aijm_I.o                   aintgs_I.o                 alpb_and_xfac_am1.o         \
+alpb_and_xfac_mndo.o       alpb_and_xfac_mndod.o      alpb_and_xfac_pm3.o         \
+alphaf_I.o                 analyt.o                   analyt_C.o                  \
+anavib.o                   asum_I.o                   atomrs.o                    \
+aval_I.o                   axis.o                     axis_I.o                    \
+babbbc.o                   babbbc_I.o                 babbcd.o                    \
+babbcd_I.o                 bangle.o                   bangle_I.o                  \
+bdenin_I.o                 bdenup_I.o                 beopor_I.o                  \
+betaf_I.o                  betal1_I.o                 betall_I.o                  \
+betcom_I.o                 bfn.o                      bfn_I.o                     \
+bintgs_I.o                 bits.o                     big_swap.o                  \
+bldsym.o                   bldsym_I.o                 bmakuf_I.o                  \
+bonds.o                    bonds_for_MOZYME.o         linear_cosmo.o              \
+H_bond_correction.o        geo_ref.o                                              \
+dftd3.o                    copyc6.o                   dftd3_bits.o                \
+buildf.o                   calpar.o                   calpar_I.o                  \
+capcor.o                   capcor_I.o                                             \
+cartab_I.o                 ccprod_I.o                                             \
+cdiag_I.o                  chanel_C.o                 charg_I.o                   \
+charmo.o                   charmo_I.o                 charst.o                    \
+charst_I.o                 charvi.o                   charvi_I.o                  \
+check.o                    chi_I.o                    chkion.o                    \
+chklew.o                   chrge.o                    chrge_for_MOZYME.o          \
+chrge_I.o                  ciint_I.o                  ciosci.o                    \
+ciosci_I.o                 cnvg.o                     cnvg_I.o                    \
+cnvgz.o                    coe.o                      coe_I.o                     \
+collid_I.o                 collis_I.o                 Common_arrays_C.o           \
+compct.o                   compfg.o                   compfg_I.o                  \
+compfn_I.o                 conref_C.o                 consts_I.o                  \
+convert_storage.o          copym_I.o                  cosmo.o                     \
+cosmo_C.o                  cqden_I.o                  csum_I.o                    \
+dang.o                     dang_I.o                   darea1_I.o                  \
+daread_I.o                 dasum_I.o                  datin.o                     \
+datin_I.o                  dawrit_I.o                 dawrt1_I.o                  \
+daxpy_I.o                  dcart.o                    dcart_for_MOZYME.o          \
+dcart_I.o                  ddot_I.o                                               \
+ddpo_I.o                   delmol_I.o                 delri_I.o                   \
+delsta.o                   delta_I.o                  denrot.o                    \
+denrot_for_MOZYME.o        denrot_I.o                 densf_I.o                   \
+densit.o                   density_for_MOZYME.o                                   \
+deri0.o                    deri0_I.o                  deri1.o                     \
+deri1_I.o                  deri2.o                    deri21.o                    \
+deri21_I.o                 deri22.o                   deri22_I.o                  \
+deri23.o                   deri23_I.o                 deri2_I.o                   \
+deritr.o                   deritr_I.o                 deriv.o                     \
+deriv_I.o                  dernvo.o                   dernvo_I.o                  \
+ders_I.o                   dex2_I.o                   dfield.o                    \
+dfield_I.o                 dfock2.o                   dfock2_I.o                  \
+dfpsav.o                   dfpsav_I.o                 dgefa_I.o                   \
+dgetri_I.o                 dhc.o                                                  \
+dhc_I.o                    dhcore.o                   dhcore_I.o                  \
+diag.o                     diag_I.o                   diagg.o                     \
+diagg1.o                   diagg2.o                   diagi.o                     \
+diagi_I.o                  diat.o                     diat2_I.o                   \
+diat_I.o                   diegrd_I.o                 dielen_I.o                  \
+digit.o                    digit_I.o                  dihed.o                     \
+dihed_I.o                  dijkl1.o                   dijkl1_I.o                  \
+dijkl2.o                   dijkl2_I.o                 dijkld_I.o                  \
+dimens.o                   dimens_I.o                 dipole.o                    \
+dipole_for_MOZYME.o        dipole_I.o                 dist2.o                     \
+dist2_I.o                  dmecip_I.o                 dnrm2_I.o                   \
+dofs.o                     dofs_I.o                   dopen_I.o                   \
+dot.o                      dot_I.o                    drc.o                       \
+drc_I.o                    drcout.o                   drcout_I.o                  \
+drepp2_I.o                 drotat_I.o                 dsum_I.o                    \
+dtran2.o                   dtran2_I.o                 dtrans.o                    \
+dtrmm_I.o                  dtrmv_I.o                                              \
+dtrti2_I.o                 dvfill_I.o                                             \
+ef.o                       ef_C.o                     ef_I.o                      \
+eigen.o                    eimp.o                     einvit_I.o                  \
+eiscor_I.o                 elau_I.o                   elemts_C.o                  \
+elenuc_I.o                 elesn_I.o                  en_I.o                      \
+enpart.o                   enpart_I.o                 epsab_I.o                   \
+epseta.o                   epseta_I.o                 epslon_I.o                  \
+eqlrat_I.o                 esn_I.o                                                \
+esp.o                      esp1_I.o                   esp_C.o                     \
+esp_utilities.o            espfit_I.o                 estpi1_I.o                  \
+euler_C.o                  evvrsp_I.o                 exchng.o                    \
+exchng_I.o                 fbx_I.o                    fcnpp_I.o                   \
+ffreq1_I.o                 ffreq2_I.o                 fhpatn_I.o                  \
+fillij.o                   findn1.o                   finish.o                    \
+flepo.o                    flepo_I.o                  fmat.o                      \
+fock1.o                    fock1_for_MOZYME.o                                     \
+fock1_I.o                  fock2.o                    fock2_I.o                   \
+fock2z.o                   fockd2_I.o                 force.o                     \
+force_I.o                  fordd_I.o                  formxy.o                    \
+formxy_I.o                 forsav.o                   frame.o                     \
+frame_I.o                  freda_I.o                  freqcy.o                    \
+fsub_I.o                   funcon_C.o                 geochk.o                    \
+geout.o                    geout_I.o                  geoutg.o                    \
+geoutg_I.o                 getdat.o                   GetDateStamp.o              \
+afmm_mod.o                 genun.o                                                \
+getgeg.o                   getgeg_I.o                 getgeo.o                    \
+getgeo_I.o                 getpdb.o                   getsym.o                    \
+getsym_I.o                 gettxt.o                   gettxt_I.o                  \
+getval.o                   getval_I.o                 gmetry.o                    \
+gmetry_I.o                 gover_I.o                  greek.o                     \
+grid.o                     grid_I.o                   grids_I.o                   \
+gstore_I.o                 h1elec.o                   h1elec_I.o                  \
+haddon_I.o                 hbonds.o                   hcore.o                     \
+hcore_for_MOZYME.o         hcore_I.o                  hcored_I.o                  \
+helect.o                   helect_I.o                 helecz.o                    \
+hmuf_I.o                   hplusf_I.o                 hybrid.o                    \
+ijbo.o                     ijkl.o                     inid_I.o                    \
+inighd_I.o                 init_filenames.o           initsn_I.o                  \
+initsv_I.o                 insymc_I.o                 interp.o                    \
+interp_I.o                 intfc.o                    intfc_I.o                   \
+ionout.o                   ird_I.o                    isitsc.o                    \
+iten_I.o                   iter.o                     iter_C.o                    \
+iter_for_MOZYME.o          iter_I.o                   jab.o                       \
+jab_for_MOZYME.o           jab_I.o                    jcarin.o                    \
+jcarin_I.o                 jdate.o                    journal_references_C.o      \
+kab.o                      kab_for_MOZYME.o           kab_I.o                     \
+lbfgs.o                    lewis.o                    ligand.o                    \
+linmin.o                   linmin_I.o                 local.o                     \
+local2.o                                                                          \
+locmin.o                   locmin_I.o                 lsame_I.o                   \
+lyse.o                     makeuf_I.o                 makopr_I.o                  \
+maksym.o                   maksym_I.o                 makvec.o                    \
+mamult.o                   mamult_I.o                 maps_C.o                    \
+mat33.o                    mat33_I.o                  matou1.o                    \
+matou1_I.o                 matout.o                   matout_I.o                  \
+mbonds.o                   me08a_I.o                  meci.o                      \
+meci_C.o                   meci_I.o                   mecid.o                     \
+mecid_I.o                  mecih.o                    mecih_I.o                   \
+mecip.o                    mecip_I.o                  mepchg_I.o                  \
+mepmap_I.o                 meprot_I.o                 minv.o                      \
+minv_I.o                   mlmo.o                     mndod.o                     \
+mndod_C.o                  mod_atomradii.o            modchg.o                    \
+modgra.o                   moldat.o                   molkst_C.o                  \
+molmec_C.o                 molsym_I.o                 molsymy.o                   \
+molval.o                   molval_I.o                 param.o                     \
+mopend.o                   mopend_I.o                 MOZYME_C.o                  \
+mpcbds_I.o                 mpcpop_I.o                 mpcsyb.o                    \
+mtxm.o                     mtxm_I.o                   mtxmc.o                     \
+mtxmc_I.o                  mullik.o                                               \
+mullik_I.o                 mult.o                     mult33.o                    \
+mult33_I.o                 mult_I.o                                               \
+mod_vars_cuda.o            density_cuda_i.o                                       \
+myword.o                   myword_I.o                 naican_I.o                  \
+naicas_I.o                 names.o                    new_esp.o                   \
+newflg.o                   ngamtg_I.o                 ngefis_I.o                  \
+ngidri_I.o                 ngoke_I.o                  nllsn_I.o                   \
+nllsq.o                    nllsq_I.o                  nonbet_I.o                  \
+nonope_I.o                 nonor_I.o                  nuchar.o                    \
+nuchar_I.o                 nxtmer.o                   openda_I.o                  \
+orient_I.o                 osinv.o                    osinv_I.o                   \
+outer1.o                   outer2.o                   overlaps_C.o                \
+ovlp_I.o                   packp_I.o                  parameters_C.o              \
+parameters_for_AM1_C.o     parameters_for_mndo_C.o    parameters_for_mndod_C.o    \
+parameters_for_pm3_C.o     parameters_for_PM6_C.o     parameters_for_RM1_C.o      \
+parameters_for_PM7_C.o     parameters_for_PM7_TS_C.o                              \
+parameters_for_RM1_Sparkles_C.o \
+parameters_for_PM6_Sparkles_C.o \
+parameters_for_PM7_Sparkles_C.o \
+parameters_for_PM3_Sparkles_C.o \
+parameters_for_AM1_Sparkles_C.o \
+parsav.o                   parsav_I.o                 partxy.o                    \
+partxy_I.o                 Password.o                 pathk.o                     \
+pathk_I.o                  paths.o                    paths_I.o                   \
+pdbout.o                   pdgrid_I.o                 perm.o                      \
+perm_I.o                   picopt.o                   pinout.o                    \
+plato_I.o                  pmep.o                     pmep1_I.o                   \
+pmep_I.o                   pmepco_I.o                 poij_I.o                    \
+pol_vol_I.o                polar.o                    polar_C.o                   \
+polar_I.o                  potcal_I.o                 powsav_I.o                  \
+powsq.o                    powsq_I.o                  printp_I.o                  \
+prtdrc.o                   prtdrc_I.o                 prtgra.o                    \
+prthco_I.o                 prthes_I.o                 prtlmo.o                    \
+prtpar_I.o                 prtpka.o                   prttim.o                    \
+prttim_I.o                 pulay.o                    pulay_I.o                   \
+quadr.o                    quadr_I.o                  react1.o                    \
+react1_I.o                 reada.o                    reada_I.o                   \
+readmo.o                   readmo_I.o                 redatm_I.o                  \
+refer.o                    refer_I.o                  refkey_C.o                  \
+reorth.o                                                                          \
+reppd2_I.o                 reppd_I.o                  reseq.o                     \
+resolv.o                   resolv_I.o                 rijkl_I.o                   \
+rotat_I.o                  rotatd_I.o                 rotate.o                    \
+rotate_C.o                 rotate_I.o                 rotlmo.o                    \
+rotmat_I.o                 rotmol.o                   rotmol_I.o                  \
+rsc_I.o                    rsp.o                                                  \
+run_mopac.o                scfcri.o                                               \
+schmib.o                   schmib_I.o                 schmit.o                    \
+schmit_I.o                 scprm_I.o                  search_I.o                  \
+second.o                   second_I.o                 selmos.o                    \
+set.o                      set_I.o                    set_up_dentate.o            \
+set_up_MOZYME_arrays.o     set_up_RAPID.o             setup3_I.o                  \
+setup_mopac_arrays.o       setupg.o                   setupk.o                    \
+solrot.o                   solrot_I.o                 sort.o                      \
+sort_I.o                   sp_two_electron.o          spcore_I.o                  \
+spline_I.o                 ss_I.o                     static_polarizability.o     \
+suma2_I.o                  supdot.o                   supdot_I.o                  \
+superd.o                   superd_I.o                 surfa_I.o                   \
+surfac_I.o                 swap.o                     swap_I.o                    \
+switch.o                   symdec_I.o                 symh.o                      \
+symh_I.o                   symmetry_C.o               symoir.o                    \
+symoir_I.o                 symopr.o                   symopr_I.o                  \
+symp_I.o                   sympop.o                   sympop_I.o                  \
+symr.o                     symr_I.o                   symt.o                      \
+symt_I.o                   symtry.o                   symtry_I.o                  \
+symtrz.o                   symtrz_I.o                 tf_I.o                      \
+thermo.o                   thermo_I.o                 tidy.o                      \
+time_I.o                   timer.o                    timer_I.o                   \
+timout.o                   to_screen.o                                            \
+to_screen_C.o              transf_I.o                                             \
+trsub_I.o                  trudgu_I.o                 trugdu_I.o                  \
+trugud_I.o                 tx_I.o                     txtype.o                    \
+upcase.o                   upcase_I.o                 update.o                    \
+update_I.o                 values.o                   vastkind.o                  \
+vecprt.o                   vecprt_for_MOZYME.o        vecprt_I.o                  \
+volume.o                   volume_I.o                 w2mat_I.o                   \
+worder_I.o                 wrdkey_I.o                 write_trajectory.o          \
+write_trajectory_I.o       writmo.o                   writmo_I.o                  \
+wrtkey.o                   wrtkey_I.o                 wrttxt.o                    \
+wrttxt_I.o                 wstore_I.o                 wwstep_I.o                  \
+xerbla_I.o                 xxx.o                      xxx_I.o                     \
+xyzcry.o                   xyzcry_I.o                 xyzint.o                    \
+param_global_C.o           datinp.o                   pparsav.o                   \
+chkpar.o                   direct.o                   extract_parameter.o         \
+savgeo.o                   parkey.o                   partab.o                    \
+rapid0.o                   parfg.o                    resetp.o                    \
+depfn.o                    optgeo.o                   getmol.o                    \
+getpar.o                   pardip.o                   pargeo.o                    \
+mxm.o                      wrt_diffs.o                density_for_gpu.o           \
+empire.o                   parips.o                   mod_calls_cublas.o          \
+eigenvectors_lapack.o      filusp.o                   psort.o                     \
+add_hydrogen_atoms.o       diag_for_gpu.o             rapid1.o                    \
+rapid2.o                   rapid3.o                   blas_I.o                    \
+linpack.o                  mxmt.o                     xyzint_I.o                  \
+zerom_I.o                  local_for_mozyme.o         mxm_I.o  mxmt_I.o
+#
+#   Link everything together
+#
+	$(FORTRAN_LINKER)   -o ~/bin/PARAM.exe *.o $(MATH_LINK)
+#
+#  Dependencies
+#
+aababc.o: \
+  meci_C.o  \
+  vastkind.o  \
+  aababc.F90
+	 	 $(FORTRAN_COMPILER)   aababc.F90
+  
+aababc_I.o: \
+  vastkind.o  \
+  aababc_I.F90
+	 	 $(FORTRAN_COMPILER)   aababc_I.F90
+  
+aabacd.o: \
+  vastkind.o  \
+  aabacd.F90
+	 	 $(FORTRAN_COMPILER)   aabacd.F90
+  
+aabacd_I.o: \
+  vastkind.o  \
+  aabacd_I.F90
+	 	 $(FORTRAN_COMPILER)   aabacd_I.F90
+  
+aabbcd.o: \
+  meci_C.o  \
+  vastkind.o  \
+  aabbcd.F90
+	 	 $(FORTRAN_COMPILER)   aabbcd.F90
+  
+aabbcd_I.o: \
+  vastkind.o  \
+  aabbcd_I.F90
+	 	 $(FORTRAN_COMPILER)   aabbcd_I.F90
+  
+add_more_interactions.o: \
+  Common_arrays_C.o  \
+  iter_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  add_more_interactions.F90
+	 	 $(FORTRAN_COMPILER)   add_more_interactions.F90
+  
+addfck_I.o: \
+  vastkind.o  \
+  addfck_I.F90
+	 	 $(FORTRAN_COMPILER)   addfck_I.F90
+  
+addhb.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  addhb.F90
+	 	 $(FORTRAN_COMPILER)   addhb.F90
+  
+addhcr_I.o: \
+  addhcr_I.F90
+	 	 $(FORTRAN_COMPILER)   addhcr_I.F90
+  
+addnuc_I.o: \
+  addnuc_I.F90
+	 	 $(FORTRAN_COMPILER)   addnuc_I.F90
+  
+adjvec.o: \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  adjvec.F90
+	 	 $(FORTRAN_COMPILER)   adjvec.F90
+  
+aijm_I.o: \
+  aijm_I.F90
+	 	 $(FORTRAN_COMPILER)   aijm_I.F90
+  
+aintgs_I.o: \
+  vastkind.o  \
+  aintgs_I.F90
+	 	 $(FORTRAN_COMPILER)   aintgs_I.F90
+  
+alpb_and_xfac_am1.o: \
+  parameters_C.o  \
+  alpb_and_xfac_am1.F90
+	 	 $(FORTRAN_COMPILER)   alpb_and_xfac_am1.F90
+  
+alpb_and_xfac_mndo.o: \
+  parameters_C.o  \
+  alpb_and_xfac_mndo.F90
+	 	 $(FORTRAN_COMPILER)   alpb_and_xfac_mndo.F90
+  
+alpb_and_xfac_mndod.o: \
+  parameters_C.o  \
+  alpb_and_xfac_mndod.F90
+	 	 $(FORTRAN_COMPILER)   alpb_and_xfac_mndod.F90
+  
+alpb_and_xfac_pm3.o: \
+  parameters_C.o  \
+  alpb_and_xfac_pm3.F90
+	 	 $(FORTRAN_COMPILER)   alpb_and_xfac_pm3.F90
+  
+alphaf_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  alphaf_I.F90
+	 	 $(FORTRAN_COMPILER)   alphaf_I.F90
+  
+analyt.o: \
+  analyt_C.o  \
+  chanel_C.o  \
+  delri_I.o  \
+  ders_I.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  overlaps_C.o  \
+  parameters_C.o  \
+  rotat_I.o  \
+  vastkind.o  \
+  analyt.F90
+	 	 $(FORTRAN_COMPILER)   analyt.F90
+  
+analyt_C.o: \
+  vastkind.o  \
+  analyt_C.F90
+	 	 $(FORTRAN_COMPILER)   analyt_C.F90
+  
+anavib.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  to_screen_C.o  \
+  vastkind.o  \
+  anavib.F90
+	 	 $(FORTRAN_COMPILER)   anavib.F90
+  
+asum_I.o: \
+  vastkind.o  \
+  asum_I.F90
+	 	 $(FORTRAN_COMPILER)   asum_I.F90
+  
+atomrs.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  atomrs.F90
+	 	 $(FORTRAN_COMPILER)   atomrs.F90
+  
+aval_I.o: \
+  vastkind.o  \
+  aval_I.F90
+	 	 $(FORTRAN_COMPILER)   aval_I.F90
+  
+axis.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  to_screen_C.o  \
+  vastkind.o  \
+  axis.F90
+	 	 $(FORTRAN_COMPILER)   axis.F90
+  
+axis_I.o: \
+  vastkind.o  \
+  axis_I.F90
+	 	 $(FORTRAN_COMPILER)   axis_I.F90
+  
+babbbc.o: \
+  meci_C.o  \
+  vastkind.o  \
+  babbbc.F90
+	 	 $(FORTRAN_COMPILER)   babbbc.F90
+  
+babbbc_I.o: \
+  vastkind.o  \
+  babbbc_I.F90
+	 	 $(FORTRAN_COMPILER)   babbbc_I.F90
+  
+babbcd.o: \
+  vastkind.o  \
+  babbcd.F90
+	 	 $(FORTRAN_COMPILER)   babbcd.F90
+  
+babbcd_I.o: \
+  vastkind.o  \
+  babbcd_I.F90
+	 	 $(FORTRAN_COMPILER)   babbcd_I.F90
+  
+bangle.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  bangle.F90
+	 	 $(FORTRAN_COMPILER)   bangle.F90
+  
+bangle_I.o: \
+  vastkind.o  \
+  bangle_I.F90
+	 	 $(FORTRAN_COMPILER)   bangle_I.F90
+  
+bdenin_I.o: \
+  vastkind.o  \
+  bdenin_I.F90
+	 	 $(FORTRAN_COMPILER)   bdenin_I.F90
+  
+bdenup_I.o: \
+  vastkind.o  \
+  bdenup_I.F90
+	 	 $(FORTRAN_COMPILER)   bdenup_I.F90
+  
+beopor_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  beopor_I.F90
+	 	 $(FORTRAN_COMPILER)   beopor_I.F90
+  
+betaf_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  betaf_I.F90
+	 	 $(FORTRAN_COMPILER)   betaf_I.F90
+  
+betal1_I.o: \
+  vastkind.o  \
+  betal1_I.F90
+	 	 $(FORTRAN_COMPILER)   betal1_I.F90
+  
+betall_I.o: \
+  vastkind.o  \
+  betall_I.F90
+	 	 $(FORTRAN_COMPILER)   betall_I.F90
+  
+betcom_I.o: \
+  vastkind.o  \
+  betcom_I.F90
+	 	 $(FORTRAN_COMPILER)   betcom_I.F90
+  
+bfn.o: \
+  overlaps_C.o  \
+  vastkind.o  \
+  bfn.F90
+	 	 $(FORTRAN_COMPILER)   bfn.F90
+  
+bfn_I.o: \
+  vastkind.o  \
+  bfn_I.F90
+	 	 $(FORTRAN_COMPILER)   bfn_I.F90
+  
+bintgs_I.o: \
+  vastkind.o  \
+  bintgs_I.F90
+	 	 $(FORTRAN_COMPILER)   bintgs_I.F90
+  
+bldsym.o: \
+  mult33_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  bldsym.F90
+	 	 $(FORTRAN_COMPILER)   bldsym.F90
+  
+bldsym_I.o: \
+  bldsym_I.F90
+	 	 $(FORTRAN_COMPILER)   bldsym_I.F90
+  
+bmakuf_I.o: \
+  vastkind.o  \
+  bmakuf_I.F90
+	 	 $(FORTRAN_COMPILER)   bmakuf_I.F90
+  
+bonds.o: \
+  vastkind.o  \
+  vecprt_I.o  dopen_I.o bonds.F90
+	 	 $(FORTRAN_COMPILER)   bonds.F90
+  
+bonds_for_MOZYME.o: \
+  vastkind.o  \
+  bonds_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   bonds_for_MOZYME.F90
+  
+buildf.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  buildf.F90
+	 	 $(FORTRAN_COMPILER)   buildf.F90
+  
+calpar.o: \
+  chanel_C.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  calpar.F90
+	 	 $(FORTRAN_COMPILER)   calpar.F90
+  
+calpar_I.o: \
+  calpar_I.F90
+	 	 $(FORTRAN_COMPILER)   calpar_I.F90
+  
+canon.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  canon.F90
+	 	 $(FORTRAN_COMPILER)   canon.F90
+
+dftd3.o: \
+  molkst_C.o  \
+  reada_I.o \
+  vastkind.o  \
+  dftd3.F90
+	 	$(FORTRAN_COMPILER)   dftd3.F90
+  
+H_bond_correction.o: \
+  molkst_C.o  \
+  reada_I.o \
+  vastkind.o  \
+  H_bond_correction.F90
+	 	$(FORTRAN_COMPILER)   H_bond_correction.F90
+  
+dftd3_bits.o: \
+  molkst_C.o  \
+  reada_I.o \
+  vastkind.o  \
+  dftd3_bits.F90
+	 	$(FORTRAN_COMPILER)   dftd3_bits.F90
+  
+copyc6.o: \
+  molkst_C.o  \
+  reada_I.o \
+  vastkind.o  \
+  copyc6.F90
+	 	$(FORTRAN_COMPILER)   copyc6.F90
+
+capcor.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  capcor.F90
+	 	 $(FORTRAN_COMPILER)   capcor.F90
+  
+capcor_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  capcor_I.F90
+	 	 $(FORTRAN_COMPILER)   capcor_I.F90
+  
+cartab_I.o: \
+  cartab_I.F90
+	 	 $(FORTRAN_COMPILER)   cartab_I.F90
+  
+ccprod_I.o: \
+  vastkind.o  \
+  ccprod_I.F90
+	 	 $(FORTRAN_COMPILER)   ccprod_I.F90
+  
+cdiag_I.o: \
+  cdiag_I.F90
+	 	 $(FORTRAN_COMPILER)   cdiag_I.F90
+  
+chanel_C.o: \
+  vastkind.o  \
+  chanel_C.F90
+	 	 $(FORTRAN_COMPILER)   chanel_C.F90
+  
+charg_I.o: \
+  vastkind.o  \
+  charg_I.F90
+	 	 $(FORTRAN_COMPILER)   charg_I.F90
+  
+charmo.o: \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  charmo.F90
+	 	 $(FORTRAN_COMPILER)   charmo.F90
+  
+charmo_I.o: \
+  vastkind.o  \
+  charmo_I.F90
+	 	 $(FORTRAN_COMPILER)   charmo_I.F90
+  
+charst.o: \
+  chanel_C.o  \
+  matout_I.o  \
+  meci_C.o  \
+  minv_I.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  charst.F90
+	 	 $(FORTRAN_COMPILER)   charst.F90
+  
+charst_I.o: \
+  meci_C.o  \
+  vastkind.o  \
+  charst_I.F90
+	 	 $(FORTRAN_COMPILER)   charst_I.F90
+  
+charvi.o: \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  charvi.F90
+	 	 $(FORTRAN_COMPILER)   charvi.F90
+  
+charvi_I.o: \
+  vastkind.o  \
+  charvi_I.F90
+	 	 $(FORTRAN_COMPILER)   charvi_I.F90
+  
+check.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  check.F90
+	 	 $(FORTRAN_COMPILER)   check.F90
+  
+chi_I.o: \
+  vastkind.o  \
+  chi_I.F90
+	 	 $(FORTRAN_COMPILER)   chi_I.F90
+  
+chkion.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  chkion.F90
+	 	 $(FORTRAN_COMPILER)   chkion.F90
+  
+chklew.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  chklew.F90
+	 	 $(FORTRAN_COMPILER)   chklew.F90
+  
+chrge.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  chrge.F90
+	 	 $(FORTRAN_COMPILER)   chrge.F90
+  
+chrge_for_MOZYME.o: \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  chrge_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   chrge_for_MOZYME.F90
+  
+chrge_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  chrge_I.F90
+	 	 $(FORTRAN_COMPILER)   chrge_I.F90
+  
+ciint_I.o: \
+  vastkind.o  \
+  ciint_I.F90
+	 	 $(FORTRAN_COMPILER)   ciint_I.F90
+  
+ciosci.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  matout_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  ciosci.F90
+	 	 $(FORTRAN_COMPILER)   ciosci.F90
+  
+ciosci_I.o: \
+  vastkind.o  \
+  ciosci_I.F90
+	 	 $(FORTRAN_COMPILER)   ciosci_I.F90
+  
+cnvg.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  cnvg.F90
+	 	 $(FORTRAN_COMPILER)   cnvg.F90
+  
+cnvg_I.o: \
+  vastkind.o  \
+  cnvg_I.F90
+	 	 $(FORTRAN_COMPILER)   cnvg_I.F90
+  
+cnvgz.o: \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  cnvgz.F90
+	 	 $(FORTRAN_COMPILER)   cnvgz.F90
+  
+coe.o: \
+  vastkind.o  \
+  coe.F90
+	 	 $(FORTRAN_COMPILER)   coe.F90
+  
+coe_I.o: \
+  vastkind.o  \
+  coe_I.F90
+	 	 $(FORTRAN_COMPILER)   coe_I.F90
+  
+collid_I.o: \
+  vastkind.o  \
+  collid_I.F90
+	 	 $(FORTRAN_COMPILER)   collid_I.F90
+  
+collis_I.o: \
+  vastkind.o  \
+  collis_I.F90
+	 	 $(FORTRAN_COMPILER)   collis_I.F90
+  
+Common_arrays_C.o: \
+  vastkind.o  \
+  Common_arrays_C.F90
+	 	 $(FORTRAN_COMPILER)   Common_arrays_C.F90
+  
+compct.o: \
+  compct.F90
+	 	 $(FORTRAN_COMPILER)   compct.F90
+  
+compfg.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  deriv_I.o  \
+  dihed_I.o  \
+  dot_I.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  hcore_I.o  \
+  iter_I.o  \
+  mecip_I.o  \
+  molkst_C.o  \
+  molmec_C.o  \
+  prtpar_I.o  \
+  symtry_I.o  \
+  timer_I.o  \
+  vastkind.o  \
+  volume_I.o  \
+  compfg.F90
+	 	 $(FORTRAN_COMPILER)   compfg.F90
+  
+compfg_I.o: \
+  vastkind.o  \
+  compfg_I.F90
+	 	 $(FORTRAN_COMPILER)   compfg_I.F90
+  
+compfn_I.o: \
+  vastkind.o  \
+  compfn_I.F90
+	 	 $(FORTRAN_COMPILER)   compfn_I.F90
+  
+conref_C.o: \
+  vastkind.o  \
+  conref_C.F90
+	 	 $(FORTRAN_COMPILER)   conref_C.F90
+  
+consts_I.o: \
+  consts_I.F90
+	 	 $(FORTRAN_COMPILER)   consts_I.F90
+  
+convert_storage.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  convert_storage.F90
+	 	 $(FORTRAN_COMPILER)   convert_storage.F90
+  
+linear_cosmo.o: \
+ afmm_mod.o cosmo_C.o \
+  linear_cosmo.F90
+	 	 $(FORTRAN_COMPILER)   linear_cosmo.F90
+  
+copym_I.o: \
+  vastkind.o  \
+  copym_I.F90
+	 	 $(FORTRAN_COMPILER)   copym_I.F90
+  
+cosmo.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  funcon_C.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  cosmo.F90
+	 	 $(FORTRAN_COMPILER)   cosmo.F90
+  
+cosmo_C.o: \
+  vastkind.o  \
+  cosmo_C.F90
+	 	 $(FORTRAN_COMPILER)   cosmo_C.F90
+  
+cqden_I.o: \
+  cqden_I.F90
+	 	 $(FORTRAN_COMPILER)   cqden_I.F90
+  
+csum_I.o: \
+  vastkind.o  \
+  csum_I.F90
+	 	 $(FORTRAN_COMPILER)   csum_I.F90
+  
+dang.o: \
+  vastkind.o  \
+  dang.F90
+	 	 $(FORTRAN_COMPILER)   dang.F90
+  
+dang_I.o: \
+  vastkind.o  \
+  dang_I.F90
+	 	 $(FORTRAN_COMPILER)   dang_I.F90
+  
+darea1_I.o: \
+  vastkind.o  \
+  darea1_I.F90
+	 	 $(FORTRAN_COMPILER)   darea1_I.F90
+  
+daread_I.o: \
+  vastkind.o  \
+  daread_I.F90
+	 	 $(FORTRAN_COMPILER)   daread_I.F90
+  
+dasum_I.o: \
+  vastkind.o  \
+  dasum_I.F90
+	 	 $(FORTRAN_COMPILER)   dasum_I.F90
+  
+datin.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  upcase_I.o  \
+  update_I.o  \
+  vastkind.o  \
+  datin.F90
+	 	 $(FORTRAN_COMPILER)   datin.F90
+  
+datin_I.o: \
+  datin_I.F90
+	 	 $(FORTRAN_COMPILER)   datin_I.F90
+  
+dawrit_I.o: \
+  vastkind.o  \
+  dawrit_I.F90
+	 	 $(FORTRAN_COMPILER)   dawrit_I.F90
+  
+dawrt1_I.o: \
+  vastkind.o  \
+  dawrt1_I.F90
+	 	 $(FORTRAN_COMPILER)   dawrt1_I.F90
+  
+daxpy_I.o: \
+  vastkind.o  \
+  daxpy_I.F90
+	 	 $(FORTRAN_COMPILER)   daxpy_I.F90
+  
+dcart.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  dhc_I.o  \
+  dihed_I.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  molmec_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  dcart.F90
+	 	 $(FORTRAN_COMPILER)   dcart.F90
+  
+dcart_for_MOZYME.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  dcart_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   dcart_for_MOZYME.F90
+  
+dcart_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  dcart_I.F90
+	 	 $(FORTRAN_COMPILER)   dcart_I.F90
+  
+ddot_I.o: \
+  vastkind.o  \
+  ddot_I.F90
+	 	 $(FORTRAN_COMPILER)   ddot_I.F90
+  
+ddpo_I.o: \
+  ddpo_I.F90
+	 	 $(FORTRAN_COMPILER)   ddpo_I.F90
+  
+delmol_I.o: \
+  vastkind.o  \
+  delmol_I.F90
+	 	 $(FORTRAN_COMPILER)   delmol_I.F90
+  
+delri_I.o: \
+  vastkind.o  \
+  delri_I.F90
+	 	 $(FORTRAN_COMPILER)   delri_I.F90
+  
+delsta.o: \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  delsta.F90
+	 	 $(FORTRAN_COMPILER)   delsta.F90
+  
+delta_I.o: \
+  delta_I.F90
+	 	 $(FORTRAN_COMPILER)   delta_I.F90
+  
+denrot.o: \
+  chanel_C.o  \
+  coe_I.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  gmetry_I.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  denrot.F90
+	 	 $(FORTRAN_COMPILER)   denrot.F90
+  
+denrot_for_MOZYME.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  denrot_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   denrot_for_MOZYME.F90
+  
+denrot_I.o: \
+  denrot_I.F90
+	 	 $(FORTRAN_COMPILER)   denrot_I.F90
+  
+densf_I.o: \
+  vastkind.o  \
+  densf_I.F90
+	 	 $(FORTRAN_COMPILER)   densf_I.F90
+  
+densit.o: \
+  vastkind.o  \
+  densit.F90
+	 	 $(FORTRAN_COMPILER)   densit.F90
+  
+density_for_MOZYME.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  density_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   density_for_MOZYME.F90
+  
+deri0.o: \
+  vastkind.o  \
+  deri0.F90
+	 	 $(FORTRAN_COMPILER)   deri0.F90
+  
+deri0_I.o: \
+  vastkind.o  \
+  deri0_I.F90
+	 	 $(FORTRAN_COMPILER)   deri0_I.F90
+  
+deri1.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  ef_C.o  \
+  dfock2_I.o  \
+  dhcore_I.o  \
+  dijkl1_I.o  \
+  dot_I.o  \
+  funcon_C.o  \
+  helect_I.o  \
+  meci_C.o  \
+  mecid_I.o  \
+  mecih_I.o  \
+  molkst_C.o  \
+  mtxm_I.o  \
+  mxm_I.o  \
+  supdot_I.o  \
+  timer_I.o  \
+  vastkind.o  \
+  deri1.F90
+	 	 $(FORTRAN_COMPILER)   deri1.F90
+  
+deri1_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  deri1_I.F90
+	 	 $(FORTRAN_COMPILER)   deri1_I.F90
+  
+deri2.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  deri22_I.o  \
+  deri23_I.o  \
+  ef_C.o  \
+  dot_I.o  \
+  funcon_C.o  \
+  meci_C.o  \
+  mecid_I.o  \
+  mecih_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  mtxm_I.o  \
+  mxmt_I.o  \
+  osinv_I.o  \
+  second_I.o  \
+  supdot_I.o  \
+  vastkind.o  \
+  deri2.F90
+	 	 $(FORTRAN_COMPILER)   deri2.F90
+  
+deri21.o: \
+  mtxmc_I.o  \
+  vastkind.o  \
+  deri21.F90
+	 	 $(FORTRAN_COMPILER)   deri21.F90
+  
+deri21_I.o: \
+  vastkind.o  \
+  deri21_I.F90
+	 	 $(FORTRAN_COMPILER)   deri21_I.F90
+  
+deri22.o: \
+  Common_arrays_C.o  \
+  ddot_I.o  \
+  dot_I.o  \
+  fock2_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  mtxm_I.o  \
+  supdot_I.o  \
+  vastkind.o  \
+  deri22.F90
+	 	 $(FORTRAN_COMPILER)   deri22.F90
+  
+deri22_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  deri22_I.F90
+	 	 $(FORTRAN_COMPILER)   deri22_I.F90
+  
+deri23.o: \
+  meci_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  deri23.F90
+	 	 $(FORTRAN_COMPILER)   deri23.F90
+  
+deri23_I.o: \
+  vastkind.o  \
+  deri23_I.F90
+	 	 $(FORTRAN_COMPILER)   deri23_I.F90
+  
+deri2_I.o: \
+  meci_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  deri2_I.F90
+	 	 $(FORTRAN_COMPILER)   deri2_I.F90
+  
+deritr.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  hcore_I.o  \
+  iter_I.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  symtry_I.o  \
+  vastkind.o  \
+  deritr.F90
+	 	 $(FORTRAN_COMPILER)   deritr.F90
+  
+deritr_I.o: \
+  deritr_I.F90
+	 	 $(FORTRAN_COMPILER)   deritr_I.F90
+  
+deriv.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  dcart_I.o  \
+  ef_C.o  \
+  dernvo_I.o  \
+  dfield_I.o  \
+  dot_I.o  \
+  funcon_C.o  \
+  geout_I.o  \
+  gmetry_I.o  \
+  jcarin_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  symmetry_C.o  \
+  symtry_I.o  \
+  upcase_I.o  \
+  vastkind.o  \
+  volume_I.o  \
+  deriv.F90
+	 	 $(FORTRAN_COMPILER)   deriv.F90
+  
+deriv_I.o: \
+  vastkind.o  \
+  deriv_I.F90
+	 	 $(FORTRAN_COMPILER)   deriv_I.F90
+  
+dernvo.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  deri0_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  dernvo.F90
+	 	 $(FORTRAN_COMPILER)   dernvo.F90
+  
+dernvo_I.o: \
+  dernvo_I.F90
+	 	 $(FORTRAN_COMPILER)   dernvo_I.F90
+  
+ders_I.o: \
+  vastkind.o  \
+  ders_I.F90
+	 	 $(FORTRAN_COMPILER)   ders_I.F90
+  
+dex2_I.o: \
+  dex2_I.F90
+	 	 $(FORTRAN_COMPILER)   dex2_I.F90
+  
+dfield.o: \
+  chrge_I.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  dfield.F90
+	 	 $(FORTRAN_COMPILER)   dfield.F90
+  
+dfield_I.o: \
+  dfield_I.F90
+	 	 $(FORTRAN_COMPILER)   dfield_I.F90
+  
+dfock2.o: \
+  Common_arrays_C.o  \
+  jab_I.o  \
+  kab_I.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  dfock2.F90
+	 	 $(FORTRAN_COMPILER)   dfock2.F90
+  
+dfock2_I.o: \
+  vastkind.o  \
+  dfock2_I.F90
+	 	 $(FORTRAN_COMPILER)   dfock2_I.F90
+  
+dfpsav.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  ef_C.o  \
+  geout_I.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  vastkind.o  \
+  dfpsav.F90
+	 	 $(FORTRAN_COMPILER)   dfpsav.F90
+  
+dfpsav_I.o: \
+  vastkind.o  \
+  dfpsav_I.F90
+	 	 $(FORTRAN_COMPILER)   dfpsav_I.F90
+  
+dgefa_I.o: \
+  vastkind.o  \
+  dgefa_I.F90
+	 	 $(FORTRAN_COMPILER)   dgefa_I.F90
+  
+dgetri_I.o: \
+  vastkind.o  \
+  dgetri_I.F90
+	 	 $(FORTRAN_COMPILER)   dgetri_I.F90
+  
+dhc.o: \
+  helect_I.o  \
+  molkst_C.o  \
+  dhc.F90
+	 	 $(FORTRAN_COMPILER)   dhc.F90
+  
+dhc_I.o: \
+  vastkind.o  \
+  dhc_I.F90
+	 	 $(FORTRAN_COMPILER)   dhc_I.F90
+  
+dhcore.o: \
+  Common_arrays_C.o  \
+  h1elec_I.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  dhcore.F90
+	 	 $(FORTRAN_COMPILER)   dhcore.F90
+  
+dhcore_I.o: \
+  vastkind.o  \
+  dhcore_I.F90
+	 	 $(FORTRAN_COMPILER)   dhcore_I.F90
+  
+diag.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  diag.F90
+	 	 $(FORTRAN_COMPILER)   diag.F90
+  
+diag_I.o: \
+  vastkind.o  \
+  diag_I.F90
+	 	 $(FORTRAN_COMPILER)   diag_I.F90
+  
+diagg.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  diagg.F90
+	 	 $(FORTRAN_COMPILER)   diagg.F90
+  
+diagg1.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  diagg1.F90
+	 	 $(FORTRAN_COMPILER)   diagg1.F90
+  
+diagg2.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  reada_I.o  \
+  diagg2.F90
+	 	 $(FORTRAN_COMPILER)   diagg2.F90
+  
+diagi.o: \
+  vastkind.o  \
+  diagi.F90
+	 	 $(FORTRAN_COMPILER)   diagi.F90
+  
+diagi_I.o: \
+  meci_C.o  \
+  vastkind.o  \
+  diagi_I.F90
+	 	 $(FORTRAN_COMPILER)   diagi_I.F90
+  
+diat.o: \
+  bfn_I.o  \
+  coe_I.o  \
+  diat2_I.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  overlaps_C.o  \
+  parameters_C.o  \
+  set_I.o  \
+  ss_I.o  \
+  vastkind.o  \
+  diat.F90
+	 	 $(FORTRAN_COMPILER)   diat.F90
+  
+diat2_I.o: \
+  vastkind.o  \
+  diat2_I.F90
+	 	 $(FORTRAN_COMPILER)   diat2_I.F90
+  
+diat_I.o: \
+  vastkind.o  \
+  diat_I.F90
+	 	 $(FORTRAN_COMPILER)   diat_I.F90
+  
+diegrd_I.o: \
+  molkst_C.o  \
+  diegrd_I.F90
+	 	 $(FORTRAN_COMPILER)   diegrd_I.F90
+  
+dielen_I.o: \
+  vastkind.o  \
+  dielen_I.F90
+	 	 $(FORTRAN_COMPILER)   dielen_I.F90
+  
+digit.o: \
+  vastkind.o  \
+  digit.F90
+	 	 $(FORTRAN_COMPILER)   digit.F90
+  
+digit_I.o: \
+  digit_I.F90
+	 	 $(FORTRAN_COMPILER)   digit_I.F90
+  
+dihed.o: \
+  dang_I.o  \
+  funcon_C.o  \
+  vastkind.o  \
+  dihed.F90
+	 	 $(FORTRAN_COMPILER)   dihed.F90
+  
+dihed_I.o: \
+  vastkind.o  \
+  dihed_I.F90
+	 	 $(FORTRAN_COMPILER)   dihed_I.F90
+  
+dijkl1.o: \
+  Common_arrays_C.o  \
+  formxy_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  dijkl1.F90
+	 	 $(FORTRAN_COMPILER)   dijkl1.F90
+  
+dijkl1_I.o: \
+  meci_C.o  \
+  vastkind.o  \
+  dijkl1_I.F90
+	 	 $(FORTRAN_COMPILER)   dijkl1_I.F90
+  
+dijkl2.o: \
+  dot_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  dijkl2.F90
+	 	 $(FORTRAN_COMPILER)   dijkl2.F90
+  
+dijkl2_I.o: \
+  meci_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  dijkl2_I.F90
+	 	 $(FORTRAN_COMPILER)   dijkl2_I.F90
+  
+dijkld_I.o: \
+  vastkind.o  \
+  dijkld_I.F90
+	 	 $(FORTRAN_COMPILER)   dijkld_I.F90
+  
+dimens.o: \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  symopr_I.o  \
+  vastkind.o  \
+  dimens.F90
+	 	 $(FORTRAN_COMPILER)   dimens.F90
+  
+dimens_I.o: \
+  vastkind.o  \
+  dimens_I.F90
+	 	 $(FORTRAN_COMPILER)   dimens_I.F90
+  
+dipole.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  to_screen_C.o  \
+  vastkind.o  \
+  dipole.F90
+	 	 $(FORTRAN_COMPILER)   dipole.F90
+  
+dipole_for_MOZYME.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  dipole_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   dipole_for_MOZYME.F90
+  
+dipole_I.o: \
+  vastkind.o  \
+  dipole_I.F90
+	 	 $(FORTRAN_COMPILER)   dipole_I.F90
+  
+dist2.o: \
+  vastkind.o  \
+  dist2.F90
+	 	 $(FORTRAN_COMPILER)   dist2.F90
+  
+dist2_I.o: \
+  vastkind.o  \
+  dist2_I.F90
+	 	 $(FORTRAN_COMPILER)   dist2_I.F90
+  
+dmecip_I.o: \
+  meci_C.o  \
+  molkst_C.o  \
+  dmecip_I.F90
+	 	 $(FORTRAN_COMPILER)   dmecip_I.F90
+  
+dnrm2_I.o: \
+  vastkind.o  \
+  dnrm2_I.F90
+	 	 $(FORTRAN_COMPILER)   dnrm2_I.F90
+  
+dofs.o: \
+  chanel_C.o  \
+  vastkind.o  \
+  dofs.F90
+	 	 $(FORTRAN_COMPILER)   dofs.F90
+  
+dofs_I.o: \
+  vastkind.o  \
+  dofs_I.F90
+	 	 $(FORTRAN_COMPILER)   dofs_I.F90
+  
+dopen_I.o: \
+  vastkind.o  \
+  dopen_I.F90
+	 	 $(FORTRAN_COMPILER)   dopen_I.F90
+  
+dot.o: \
+  vastkind.o  \
+  dot.F90
+	 	 $(FORTRAN_COMPILER)   dot.F90
+  
+dot_I.o: \
+  vastkind.o  \
+  dot_I.F90
+	 	 $(FORTRAN_COMPILER)   dot_I.F90
+  
+drc.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  dot_I.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  prtdrc_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  drc.F90
+	 	 $(FORTRAN_COMPILER)   drc.F90
+  
+drc_I.o: \
+  vastkind.o  \
+  drc_I.F90
+	 	 $(FORTRAN_COMPILER)   drc_I.F90
+  
+drcout.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  vastkind.o  \
+  write_trajectory_I.o  \
+  drcout.F90
+	 	 $(FORTRAN_COMPILER)   drcout.F90
+  
+drcout_I.o: \
+  vastkind.o  \
+  drcout_I.F90
+	 	 $(FORTRAN_COMPILER)   drcout_I.F90
+  
+drepp2_I.o: \
+  vastkind.o  \
+  drepp2_I.F90
+	 	 $(FORTRAN_COMPILER)   drepp2_I.F90
+  
+drotat_I.o: \
+  vastkind.o  \
+  drotat_I.F90
+	 	 $(FORTRAN_COMPILER)   drotat_I.F90
+  
+dsum_I.o: \
+  vastkind.o  \
+  dsum_I.F90
+	 	 $(FORTRAN_COMPILER)   dsum_I.F90
+  
+dtran2.o: \
+  funcon_C.o  \
+  vastkind.o  \
+  dtran2.F90
+	 	 $(FORTRAN_COMPILER)   dtran2.F90
+  
+dtran2_I.o: \
+  vastkind.o  \
+  dtran2_I.F90
+	 	 $(FORTRAN_COMPILER)   dtran2_I.F90
+  
+dtrans.o: \
+  dtran2_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  dtrans.F90
+	 	 $(FORTRAN_COMPILER)   dtrans.F90
+  
+dtrmm_I.o: \
+  vastkind.o  \
+  dtrmm_I.F90
+	 	 $(FORTRAN_COMPILER)   dtrmm_I.F90
+  
+dtrmv_I.o: \
+  vastkind.o  \
+  dtrmv_I.F90
+	 	 $(FORTRAN_COMPILER)   dtrmv_I.F90
+  
+dtrti2_I.o: \
+  vastkind.o  \
+  dtrti2_I.F90
+	 	 $(FORTRAN_COMPILER)   dtrti2_I.F90
+  
+dtrtri_I.o: \
+  vastkind.o  \
+  dtrtri_I.F90
+	 	 $(FORTRAN_COMPILER)   dtrtri_I.F90
+  
+dvfill_I.o: \
+  vastkind.o  \
+  dvfill_I.F90
+	 	 $(FORTRAN_COMPILER)   dvfill_I.F90
+  
+ef.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  dot_I.o  \
+  ef_C.o  \
+  geout_I.o  \
+  mod_vars_cuda.o \
+  maps_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  ef.F90
+	 	 $(FORTRAN_COMPILER)   ef.F90
+  
+ef_C.o: \
+  vastkind.o  \
+  ef_C.F90
+	 	 $(FORTRAN_COMPILER)   ef_C.F90
+  
+ef_I.o: \
+  vastkind.o  \
+  ef_I.F90
+	 	 $(FORTRAN_COMPILER)   ef_I.F90
+  
+eigen.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  reada_I.o  \
+  eigen.F90
+	 	 $(FORTRAN_COMPILER)   eigen.F90
+  
+eimp.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  eimp.F90
+	 	 $(FORTRAN_COMPILER)   eimp.F90
+  
+einvit_I.o: \
+  vastkind.o  \
+  einvit_I.F90
+	 	 $(FORTRAN_COMPILER)   einvit_I.F90
+  
+eiscor_I.o: \
+  vastkind.o  \
+  eiscor_I.F90
+	 	 $(FORTRAN_COMPILER)   eiscor_I.F90
+  
+elau_I.o: \
+  vastkind.o  \
+  elau_I.F90
+	 	 $(FORTRAN_COMPILER)   elau_I.F90
+  
+elemts_C.o: \
+  vastkind.o  \
+  elemts_C.F90
+	 	 $(FORTRAN_COMPILER)   elemts_C.F90
+  
+elenuc_I.o: \
+  vastkind.o  \
+  elenuc_I.F90
+	 	 $(FORTRAN_COMPILER)   elenuc_I.F90
+  
+elesn_I.o: \
+  elesn_I.F90
+	 	 $(FORTRAN_COMPILER)   elesn_I.F90
+  
+en_I.o: \
+  vastkind.o  \
+  en_I.F90
+	 	 $(FORTRAN_COMPILER)   en_I.F90
+  
+enpart.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  rotate_I.o  \
+  vastkind.o  \
+  enpart.F90
+	 	 $(FORTRAN_COMPILER)   enpart.F90
+  
+enpart_I.o: \
+  enpart_I.F90
+	 	 $(FORTRAN_COMPILER)   enpart_I.F90
+  
+epsab_I.o: \
+  vastkind.o  \
+  epsab_I.F90
+	 	 $(FORTRAN_COMPILER)   epsab_I.F90
+  
+epseta.o: \
+  epseta.F90
+	 	 $(FORTRAN_COMPILER)   epseta.F90
+  
+epseta_I.o: \
+  vastkind.o  \
+  epseta_I.F90
+	 	 $(FORTRAN_COMPILER)   epseta_I.F90
+  
+epslon_I.o: \
+  vastkind.o  \
+  epslon_I.F90
+	 	 $(FORTRAN_COMPILER)   epslon_I.F90
+  
+eqlrat_I.o: \
+  vastkind.o  \
+  eqlrat_I.F90
+	 	 $(FORTRAN_COMPILER)   eqlrat_I.F90
+  
+errion.o: \
+  chanel_C.o  \
+  errion.F90
+	 	 $(FORTRAN_COMPILER)   errion.F90
+  
+esn_I.o: \
+  vastkind.o  \
+  esn_I.F90
+	 	 $(FORTRAN_COMPILER)   esn_I.F90
+  
+esp.o: \
+  chanel_C.o  \
+  collid_I.o  \
+  Common_arrays_C.o  \
+  dex2_I.o  \
+  dist2_I.o  \
+  elemts_C.o  \
+  esp_C.o  \
+  espfit_I.o  \
+  fsub_I.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  mult_I.o  \
+  naicas_I.o  \
+  overlaps_C.o  \
+  ovlp_I.o  \
+  parameters_C.o  \
+  pdgrid_I.o  \
+  potcal_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  setup3_I.o  \
+  surfac_I.o  \
+  vastkind.o  \
+  density_cuda_i.o  \
+  genun_I.o \
+  esp.F90
+	 	 $(FORTRAN_COMPILER)   esp.F90
+  
+esp1_I.o: \
+  esp1_I.F90
+	 	 $(FORTRAN_COMPILER)   esp1_I.F90
+  
+genun_I.o: \
+  genun_I.F90
+	 	 $(FORTRAN_COMPILER)   genun_I.F90
+  
+esp_C.o: \
+  vastkind.o  \
+  esp_C.F90
+	 	 $(FORTRAN_COMPILER)   esp_C.F90
+  
+esp_utilities.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  esp_utilities.F90
+	 	 $(FORTRAN_COMPILER)   esp_utilities.F90
+  
+espfit_I.o: \
+  espfit_I.F90
+	 	 $(FORTRAN_COMPILER)   espfit_I.F90
+  
+estpi1_I.o: \
+  vastkind.o  \
+  estpi1_I.F90
+	 	 $(FORTRAN_COMPILER)   estpi1_I.F90
+  
+etred3_I.o: \
+  vastkind.o  \
+  etred3_I.F90
+	 	 $(FORTRAN_COMPILER)   etred3_I.F90
+  
+euler_C.o: \
+  vastkind.o  \
+  euler_C.F90
+	 	 $(FORTRAN_COMPILER)   euler_C.F90
+  
+evvrsp_I.o: \
+  vastkind.o  \
+  evvrsp_I.F90
+	 	 $(FORTRAN_COMPILER)   evvrsp_I.F90
+  
+exchng.o: \
+  vastkind.o  \
+  exchng.F90
+	 	 $(FORTRAN_COMPILER)   exchng.F90
+  
+exchng_I.o: \
+  vastkind.o  \
+  exchng_I.F90
+	 	 $(FORTRAN_COMPILER)   exchng_I.F90
+  
+fbx_I.o: \
+  fbx_I.F90
+	 	 $(FORTRAN_COMPILER)   fbx_I.F90
+  
+fcnpp_I.o: \
+  vastkind.o  \
+  fcnpp_I.F90
+	 	 $(FORTRAN_COMPILER)   fcnpp_I.F90
+  
+ffreq1_I.o: \
+  vastkind.o  \
+  ffreq1_I.F90
+	 	 $(FORTRAN_COMPILER)   ffreq1_I.F90
+  
+ffreq2_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  ffreq2_I.F90
+	 	 $(FORTRAN_COMPILER)   ffreq2_I.F90
+  
+fhpatn_I.o: \
+  vastkind.o  \
+  fhpatn_I.F90
+	 	 $(FORTRAN_COMPILER)   fhpatn_I.F90
+  
+fillij.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  overlaps_C.o  \
+  reada_I.o  \
+  fillij.F90
+	 	 $(FORTRAN_COMPILER)   fillij.F90
+  
+findn1.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  findn1.F90
+	 	 $(FORTRAN_COMPILER)   findn1.F90
+  
+finish.o: \
+  finish.F90
+	 	 $(FORTRAN_COMPILER)   finish.F90
+  
+flepo.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  dfpsav_I.o  \
+  dot_I.o  \
+  geout_I.o  \
+  linmin_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  prttim_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  supdot_I.o  \
+  vastkind.o  \
+  flepo.F90
+	 	 $(FORTRAN_COMPILER)   flepo.F90
+  
+flepo_I.o: \
+  vastkind.o  \
+  flepo_I.F90
+	 	 $(FORTRAN_COMPILER)   flepo_I.F90
+  
+fmat.o: \
+  chanel_C.o  \
+  chrge_I.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  dipole_I.o  \
+  dot_I.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  second_I.o  \
+  sympop_I.o  \
+  symr_I.o  \
+  vastkind.o  \
+  fmat.F90
+	 	 $(FORTRAN_COMPILER)   fmat.F90
+  
+fock1.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  fock1.F90
+	 	 $(FORTRAN_COMPILER)   fock1.F90
+  
+fock1_for_MOZYME.o: \
+  fock1_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   fock1_for_MOZYME.F90
+  
+fock1_I.o: \
+  vastkind.o  \
+  fock1_I.F90
+	 	 $(FORTRAN_COMPILER)   fock1_I.F90
+  
+fock2.o: \
+  cosmo_C.o  \
+  jab_I.o  \
+  kab_I.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  fock2.F90
+	 	 $(FORTRAN_COMPILER)   fock2.F90
+  
+fock2_I.o: \
+  vastkind.o  \
+  fock2_I.F90
+	 	 $(FORTRAN_COMPILER)   fock2_I.F90
+  
+fock2z.o: \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  fock2z.F90
+	 	 $(FORTRAN_COMPILER)   fock2z.F90
+  
+fockd2_I.o: \
+  vastkind.o  \
+  fockd2_I.F90
+	 	 $(FORTRAN_COMPILER)   fockd2_I.F90
+  
+force.o: \
+  axis_I.o  \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  dot_I.o  \
+  drc_I.o  \
+  elemts_C.o  \
+  frame_I.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  intfc_I.o  \
+  matou1_I.o  \
+  matout_I.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  second_I.o  \
+  symmetry_C.o  \
+  symtrz_I.o  \
+  thermo_I.o  \
+  to_screen_C.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  write_trajectory_I.o  \
+  xyzint_I.o  \
+  force.F90
+	 	 $(FORTRAN_COMPILER)   force.F90
+  
+force_I.o: \
+  force_I.F90
+	 	 $(FORTRAN_COMPILER)   force_I.F90
+  
+fordd_I.o: \
+  fordd_I.F90
+	 	 $(FORTRAN_COMPILER)   fordd_I.F90
+  
+formxy.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  formxy.F90
+	 	 $(FORTRAN_COMPILER)   formxy.F90
+  
+formxy_I.o: \
+  vastkind.o  \
+  formxy_I.F90
+	 	 $(FORTRAN_COMPILER)   formxy_I.F90
+  
+forsav.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  vastkind.o  \
+  forsav.F90
+	 	 $(FORTRAN_COMPILER)   forsav.F90
+  
+frame.o: \
+  axis_I.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  frame.F90
+	 	 $(FORTRAN_COMPILER)   frame.F90
+  
+frame_I.o: \
+  vastkind.o  \
+  frame_I.F90
+	 	 $(FORTRAN_COMPILER)   frame_I.F90
+  
+freda_I.o: \
+  vastkind.o  \
+  freda_I.F90
+	 	 $(FORTRAN_COMPILER)   freda_I.F90
+  
+freqcy.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  frame_I.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  symt_I.o  \
+  symtrz_I.o  \
+  to_screen_C.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  freqcy.F90
+	 	 $(FORTRAN_COMPILER)   freqcy.F90
+  
+fsub_I.o: \
+  vastkind.o  \
+  fsub_I.F90
+	 	 $(FORTRAN_COMPILER)   fsub_I.F90
+  
+funcon_C.o: \
+  vastkind.o  \
+  funcon_C.F90
+	 	 $(FORTRAN_COMPILER)   funcon_C.F90
+  
+geochk.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  mod_atomradii.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  wrdkey_I.o  \
+  geochk.F90
+	 	 $(FORTRAN_COMPILER)   geochk.F90
+  
+geout.o: \
+  chanel_C.o  \
+  chrge_I.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  wrttxt_I.o  \
+  geout.F90
+	 	 $(FORTRAN_COMPILER)   geout.F90
+  
+geout_I.o: \
+  geout_I.F90
+	 	 $(FORTRAN_COMPILER)   geout_I.F90
+  
+geoutg.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  xxx_I.o  \
+  xyzint_I.o  \
+  geoutg.F90
+	 	 $(FORTRAN_COMPILER)   geoutg.F90
+  
+geoutg_I.o: \
+  geoutg_I.F90
+	 	 $(FORTRAN_COMPILER)   geoutg_I.F90
+  
+getdat.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  getdat.F90
+	 	 $(FORTRAN_COMPILER)   getdat.F90
+  
+GetDateStamp.o: \
+  GetDateStamp.F90
+	 	 $(FORTRAN_COMPILER)   GetDateStamp.F90
+  
+afmm_mod.o: \
+  afmm_mod.F90
+	 	 $(FORTRAN_COMPILER)   afmm_mod.F90
+  
+getgeg.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  getval_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  getgeg.F90
+	 	 $(FORTRAN_COMPILER)   getgeg.F90
+  
+getgeg_I.o: \
+  vastkind.o  \
+  getgeg_I.F90
+	 	 $(FORTRAN_COMPILER)   getgeg_I.F90
+  
+genun.o: \
+  vastkind.o  \
+  genun.F90
+	 	 $(FORTRAN_COMPILER)   genun.F90
+  
+getgeo.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  geout_I.o  \
+  gmetry_I.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  nuchar_I.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  upcase_I.o  \
+  vastkind.o  \
+  xyzint_I.o  \
+  getgeo.F90
+	 	 $(FORTRAN_COMPILER)   getgeo.F90
+  
+getgeo_I.o: \
+  vastkind.o  \
+  getgeo_I.F90
+	 	 $(FORTRAN_COMPILER)   getgeo_I.F90
+  
+getpdb.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  getpdb.F90
+	 	 $(FORTRAN_COMPILER)   getpdb.F90
+  
+getsym.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  getsym.F90
+	 	 $(FORTRAN_COMPILER)   getsym.F90
+  
+getsym_I.o: \
+  molkst_C.o  \
+  getsym_I.F90
+	 	 $(FORTRAN_COMPILER)   getsym_I.F90
+  
+gettxt.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  upcase_I.o  \
+  gettxt.F90
+	 	 $(FORTRAN_COMPILER)   gettxt.F90
+  
+gettxt_I.o: \
+  gettxt_I.F90
+	 	 $(FORTRAN_COMPILER)   gettxt_I.F90
+  
+getval.o: \
+  reada_I.o  \
+  vastkind.o  \
+  getval.F90
+	 	 $(FORTRAN_COMPILER)   getval.F90
+  
+getval_I.o: \
+  vastkind.o  \
+  getval_I.F90
+	 	 $(FORTRAN_COMPILER)   getval_I.F90
+  
+gmetry.o: \
+  bangle_I.o  \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  geout_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  vastkind.o  \
+  gmetry.F90
+	 	 $(FORTRAN_COMPILER)   gmetry.F90
+  
+gmetry_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  gmetry_I.F90
+	 	 $(FORTRAN_COMPILER)   gmetry_I.F90
+  
+gover_I.o: \
+  vastkind.o  \
+  gover_I.F90
+	 	 $(FORTRAN_COMPILER)   gover_I.F90
+  
+greek.o: \
+  Common_arrays_C.o  \
+  MOZYME_C.o  \
+  greek.F90
+	 	 $(FORTRAN_COMPILER)   greek.F90
+  
+grid.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  dfpsav_I.o  \
+  ef_I.o  \
+  flepo_I.o  \
+  geout_I.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  grid.F90
+	 	 $(FORTRAN_COMPILER)   grid.F90
+  
+grid_I.o: \
+  grid_I.F90
+	 	 $(FORTRAN_COMPILER)   grid_I.F90
+  
+grids_I.o: \
+  vastkind.o  \
+  grids_I.F90
+	 	 $(FORTRAN_COMPILER)   grids_I.F90
+  
+gstore_I.o: \
+  vastkind.o  \
+  gstore_I.F90
+	 	 $(FORTRAN_COMPILER)   gstore_I.F90
+  
+h1elec.o: \
+  diat_I.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  h1elec.F90
+	 	 $(FORTRAN_COMPILER)   h1elec.F90
+  
+h1elec_I.o: \
+  vastkind.o  \
+  h1elec_I.F90
+	 	 $(FORTRAN_COMPILER)   h1elec_I.F90
+  
+haddon_I.o: \
+  vastkind.o  \
+  haddon_I.F90
+	 	 $(FORTRAN_COMPILER)   haddon_I.F90
+  
+hbonds.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  hbonds.F90
+	 	 $(FORTRAN_COMPILER)   hbonds.F90
+  
+hcore.o: \
+  addhcr_I.o  \
+  addnuc_I.o  \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  funcon_C.o  \
+  h1elec_I.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  overlaps_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  rotate_I.o  \
+  solrot_I.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  hcore.F90
+	 	 $(FORTRAN_COMPILER)   hcore.F90
+  
+hcore_for_MOZYME.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  overlaps_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  hcore_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   hcore_for_MOZYME.F90
+  
+hcore_I.o: \
+  hcore_I.F90
+	 	 $(FORTRAN_COMPILER)   hcore_I.F90
+  
+hcored_I.o: \
+  hcored_I.F90
+	 	 $(FORTRAN_COMPILER)   hcored_I.F90
+  
+helect.o: \
+  vastkind.o  \
+  helect.F90
+	 	 $(FORTRAN_COMPILER)   helect.F90
+  
+helect_I.o: \
+  vastkind.o  \
+  helect_I.F90
+	 	 $(FORTRAN_COMPILER)   helect_I.F90
+  
+helecz.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  helecz.F90
+	 	 $(FORTRAN_COMPILER)   helecz.F90
+  
+hmuf_I.o: \
+  vastkind.o  \
+  hmuf_I.F90
+	 	 $(FORTRAN_COMPILER)   hmuf_I.F90
+  
+hplusf_I.o: \
+  vastkind.o  \
+  hplusf_I.F90
+	 	 $(FORTRAN_COMPILER)   hplusf_I.F90
+  
+hybrid.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  hybrid.F90
+	 	 $(FORTRAN_COMPILER)   hybrid.F90
+  
+ijbo.o: \
+  Common_arrays_C.o  \
+  MOZYME_C.o  \
+  overlaps_C.o  \
+  ijbo.F90
+	 	 $(FORTRAN_COMPILER)   ijbo.F90
+  
+ijkl.o: \
+  ciint_I.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  molkst_C.o  \
+  partxy_I.o  \
+  vastkind.o  \
+  ijkl.F90
+	 	 $(FORTRAN_COMPILER)   ijkl.F90
+  
+inid_I.o: \
+  inid_I.F90
+	 	 $(FORTRAN_COMPILER)   inid_I.F90
+  
+inighd_I.o: \
+  inighd_I.F90
+	 	 $(FORTRAN_COMPILER)   inighd_I.F90
+  
+init_filenames.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  init_filenames.F90
+	 	 $(FORTRAN_COMPILER)   init_filenames.F90
+  
+initsn_I.o: \
+  cosmo_C.o  \
+  vastkind.o  \
+  initsn_I.F90
+	 	 $(FORTRAN_COMPILER)   initsn_I.F90
+  
+initsv_I.o: \
+  initsv_I.F90
+	 	 $(FORTRAN_COMPILER)   initsv_I.F90
+  
+insymc_I.o: \
+  insymc_I.F90
+	 	 $(FORTRAN_COMPILER)   insymc_I.F90
+  
+interp.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  schmib_I.o  \
+  schmit_I.o  \
+  spline_I.o  \
+  vastkind.o  \
+  interp.F90
+	 	 $(FORTRAN_COMPILER)   interp.F90
+  
+interp_I.o: \
+  molkst_C.o  \
+  interp_I.F90
+	 	 $(FORTRAN_COMPILER)   interp_I.F90
+  
+intfc.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  jcarin_I.o  \
+  molkst_C.o  \
+  to_screen_C.o  \
+  vastkind.o  \
+  intfc.F90
+	 	 $(FORTRAN_COMPILER)   intfc.F90
+  
+intfc_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  intfc_I.F90
+	 	 $(FORTRAN_COMPILER)   intfc_I.F90
+  
+ionout.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  ionout.F90
+	 	 $(FORTRAN_COMPILER)   ionout.F90
+  
+ird_I.o: \
+  ird_I.F90
+	 	 $(FORTRAN_COMPILER)   ird_I.F90
+  
+isitsc.o: \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  isitsc.F90
+	 	 $(FORTRAN_COMPILER)   isitsc.F90
+  
+iten_I.o: \
+  vastkind.o  \
+  iten_I.F90
+	 	 $(FORTRAN_COMPILER)   iten_I.F90
+  
+iter.o: \
+  capcor_I.o  \
+  chanel_C.o  \
+  chrge_I.o  \
+  cnvg_I.o  \
+  Common_arrays_C.o  \
+  diag_I.o  \
+  fock2_I.o  \
+  funcon_C.o  \
+  helect_I.o  \
+  interp_I.o  \
+  iter_C.o  \
+  maps_C.o  \
+  matout_I.o  \
+  meci_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  parameters_C.o  \
+  pulay_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  swap_I.o  \
+  timer_I.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  writmo_I.o  \
+  iter.F90
+	 	 $(FORTRAN_COMPILER)   iter.F90
+  
+iter_C.o: \
+  vastkind.o  \
+  iter_C.F90
+	 	 $(FORTRAN_COMPILER)   iter_C.F90
+  
+iter_for_MOZYME.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  funcon_C.o  \
+  iter_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  reada_I.o  \
+  iter_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   iter_for_MOZYME.F90
+  
+iter_I.o: \
+  vastkind.o  \
+  iter_I.F90
+	 	 $(FORTRAN_COMPILER)   iter_I.F90
+  
+jab.o: \
+  vastkind.o  \
+  jab.F90
+	 	 $(FORTRAN_COMPILER)   jab.F90
+  
+jab_for_MOZYME.o: \
+  jab_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   jab_for_MOZYME.F90
+  
+jab_I.o: \
+  vastkind.o  \
+  jab_I.F90
+	 	 $(FORTRAN_COMPILER)   jab_I.F90
+  
+jcarin.o: \
+  Common_arrays_C.o  \
+  gmetry_I.o  \
+  molkst_C.o  \
+  symtry_I.o  \
+  vastkind.o  \
+  jcarin.F90
+	 	 $(FORTRAN_COMPILER)   jcarin.F90
+  
+jcarin_I.o: \
+  vastkind.o  \
+  jcarin_I.F90
+	 	 $(FORTRAN_COMPILER)   jcarin_I.F90
+  
+jdate.o: \
+  jdate.F90
+	 	 $(FORTRAN_COMPILER)   jdate.F90
+  
+journal_references_C.o: \
+  vastkind.o  \
+  journal_references_C.F90
+	 	 $(FORTRAN_COMPILER)   journal_references_C.F90
+  
+kab.o: \
+  vastkind.o  \
+  kab.F90
+	 	 $(FORTRAN_COMPILER)   kab.F90
+  
+kab_for_MOZYME.o: \
+  kab_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   kab_for_MOZYME.F90
+  
+kab_I.o: \
+  vastkind.o  \
+  kab_I.F90
+	 	 $(FORTRAN_COMPILER)   kab_I.F90
+  
+lbfgs.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  ddot_I.o  \
+  dot_I.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  second_I.o  \
+  lbfgs.F90
+	 	 $(FORTRAN_COMPILER)   lbfgs.F90
+  
+lewis.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  lewis.F90
+	 	 $(FORTRAN_COMPILER)   lewis.F90
+  
+ligand.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  ligand.F90
+	 	 $(FORTRAN_COMPILER)   ligand.F90
+  
+linmin.o: \
+  chanel_C.o  \
+  compfg_I.o  \
+  exchng_I.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  linmin.F90
+	 	 $(FORTRAN_COMPILER)   linmin.F90
+  
+linmin_I.o: \
+  vastkind.o  \
+  linmin_I.F90
+	 	 $(FORTRAN_COMPILER)   linmin_I.F90
+  
+local.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  matout_I.o  \
+  molkst_C.o  \
+  resolv_I.o  \
+  vastkind.o  \
+  local.F90
+	 	 $(FORTRAN_COMPILER)   local.F90
+  
+local2.o: \
+  local2.F90
+	 	 $(FORTRAN_COMPILER)   local2.F90
+  
+locmin.o: \
+  chanel_C.o  \
+  compfg_I.o  \
+  dot_I.o  \
+  exchng_I.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  locmin.F90
+	 	 $(FORTRAN_COMPILER)   locmin.F90
+  
+locmin_I.o: \
+  vastkind.o  \
+  locmin_I.F90
+	 	 $(FORTRAN_COMPILER)   locmin_I.F90
+  
+lsame_I.o: \
+  lsame_I.F90
+	 	 $(FORTRAN_COMPILER)   lsame_I.F90
+  
+lyse.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  lyse.F90
+	 	 $(FORTRAN_COMPILER)   lyse.F90
+  
+makeuf_I.o: \
+  vastkind.o  \
+  makeuf_I.F90
+	 	 $(FORTRAN_COMPILER)   makeuf_I.F90
+  
+makopr_I.o: \
+  vastkind.o  \
+  makopr_I.F90
+	 	 $(FORTRAN_COMPILER)   makopr_I.F90
+  
+maksym.o: \
+  funcon_C.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  maksym.F90
+	 	 $(FORTRAN_COMPILER)   maksym.F90
+  
+maksym_I.o: \
+  molkst_C.o  \
+  maksym_I.F90
+	 	 $(FORTRAN_COMPILER)   maksym_I.F90
+  
+makvec.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  makvec.F90
+	 	 $(FORTRAN_COMPILER)   makvec.F90
+  
+mamult.o: \
+  vastkind.o  \
+  mamult.F90
+	 	 $(FORTRAN_COMPILER)   mamult.F90
+  
+mamult_I.o: \
+  vastkind.o  \
+  mamult_I.F90
+	 	 $(FORTRAN_COMPILER)   mamult_I.F90
+  
+maps_C.o: \
+  vastkind.o  \
+  maps_C.F90
+	 	 $(FORTRAN_COMPILER)   maps_C.F90
+  
+mat33.o: \
+  vastkind.o  \
+  mat33.F90
+	 	 $(FORTRAN_COMPILER)   mat33.F90
+  
+mat33_I.o: \
+  vastkind.o  \
+  mat33_I.F90
+	 	 $(FORTRAN_COMPILER)   mat33_I.F90
+  
+matou1.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  to_screen_C.o  \
+  vastkind.o  \
+  matou1.F90
+	 	 $(FORTRAN_COMPILER)   matou1.F90
+  
+matou1_I.o: \
+  vastkind.o  \
+  matou1_I.F90
+	 	 $(FORTRAN_COMPILER)   matou1_I.F90
+  
+matout.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  matout.F90
+	 	 $(FORTRAN_COMPILER)   matout.F90
+  
+matout_I.o: \
+  vastkind.o  \
+  matout_I.F90
+	 	 $(FORTRAN_COMPILER)   matout_I.F90
+  
+mbonds.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  mbonds.F90
+	 	 $(FORTRAN_COMPILER)   mbonds.F90
+  
+me08a_I.o: \
+  me08a_I.F90
+	 	 $(FORTRAN_COMPILER)   me08a_I.F90
+  
+meci.o: \
+  chanel_C.o  \
+  ciosci_I.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  diagi_I.o  \
+  dmecip_I.o  \
+  matou1_I.o  \
+  matout_I.o  \
+  meci_C.o  \
+  mecih_I.o  \
+  mndod_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  perm_I.o  \
+  reada_I.o  \
+  symmetry_C.o  \
+  symtrz_I.o  \
+  upcase_I.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  meci.F90
+	 	 $(FORTRAN_COMPILER)   meci.F90
+  
+meci_C.o: \
+  vastkind.o  \
+  meci_C.F90
+	 	 $(FORTRAN_COMPILER)   meci_C.F90
+  
+meci_I.o: \
+  meci_I.F90
+	 	 $(FORTRAN_COMPILER)   meci_I.F90
+  
+mecid.o: \
+  diagi_I.o  \
+  meci_C.o  \
+  vastkind.o  \
+  mecid.F90
+	 	 $(FORTRAN_COMPILER)   mecid.F90
+  
+mecid_I.o: \
+  meci_C.o  \
+  vastkind.o  \
+  mecid_I.F90
+	 	 $(FORTRAN_COMPILER)   mecid_I.F90
+  
+mecih.o: \
+  aababc_I.o  \
+  aabacd_I.o  \
+  aabbcd_I.o  \
+  babbbc_I.o  \
+  babbcd_I.o  \
+  meci_C.o  \
+  vastkind.o  \
+  mecih.F90
+	 	 $(FORTRAN_COMPILER)   mecih.F90
+  
+mecih_I.o: \
+  vastkind.o  \
+  mecih_I.F90
+	 	 $(FORTRAN_COMPILER)   mecih_I.F90
+  
+mecip.o: \
+  Common_arrays_C.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  mecip.F90
+	 	 $(FORTRAN_COMPILER)   mecip.F90
+  
+mecip_I.o: \
+  mecip_I.F90
+	 	 $(FORTRAN_COMPILER)   mecip_I.F90
+  
+mepchg_I.o: \
+  vastkind.o  \
+  mepchg_I.F90
+	 	 $(FORTRAN_COMPILER)   mepchg_I.F90
+  
+mepmap_I.o: \
+  vastkind.o  \
+  mepmap_I.F90
+	 	 $(FORTRAN_COMPILER)   mepmap_I.F90
+  
+meprot_I.o: \
+  vastkind.o  \
+  meprot_I.F90
+	 	 $(FORTRAN_COMPILER)   meprot_I.F90
+  
+minv.o: \
+  vastkind.o  \
+  minv.F90
+	 	 $(FORTRAN_COMPILER)   minv.F90
+  
+minv_I.o: \
+  vastkind.o  \
+  minv_I.F90
+	 	 $(FORTRAN_COMPILER)   minv_I.F90
+  
+mlmo.o: \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  mlmo.F90
+	 	 $(FORTRAN_COMPILER)   mlmo.F90
+  
+mndod.o: \
+  aijm_I.o  \
+  chanel_C.o  \
+  charg_I.o  \
+  Common_arrays_C.o  \
+  ddpo_I.o  \
+  eiscor_I.o  \
+  funcon_C.o  \
+  inighd_I.o  \
+  mndod_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  poij_I.o  \
+  printp_I.o  \
+  reppd2_I.o  \
+  reppd_I.o  \
+  rijkl_I.o  \
+  rotmat_I.o  \
+  rsc_I.o  \
+  scprm_I.o  \
+  spcore_I.o  \
+  tx_I.o  \
+  vastkind.o  \
+  w2mat_I.o  \
+  mndod.F90
+	 	 $(FORTRAN_COMPILER)   mndod.F90
+  
+mndod_C.o: \
+  vastkind.o  \
+  mndod_C.F90
+	 	 $(FORTRAN_COMPILER)   mndod_C.F90
+  
+mod_atomradii.o: \
+  mod_atomradii.F90
+	 	 $(FORTRAN_COMPILER)   mod_atomradii.F90
+  
+modchg.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  modchg.F90
+	 	 $(FORTRAN_COMPILER)   modchg.F90
+  
+modgra.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  modgra.F90
+	 	 $(FORTRAN_COMPILER)   modgra.F90
+  
+moldat.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  dot_I.o  \
+  ef_C.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  molmec_C.o  \
+  mopend_I.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  refer_I.o  \
+  symmetry_C.o  \
+  symtrz_I.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  volume_I.o  \
+  moldat.F90
+	 	 $(FORTRAN_COMPILER)   moldat.F90
+  
+molkst_C.o: \
+  vastkind.o  \
+  molkst_C.F90
+	 	 $(FORTRAN_COMPILER)   molkst_C.F90
+  
+molmec_C.o: \
+  vastkind.o  \
+  molmec_C.F90
+	 	 $(FORTRAN_COMPILER)   molmec_C.F90
+  
+molsym_I.o: \
+  vastkind.o  \
+  molsym_I.F90
+	 	 $(FORTRAN_COMPILER)   molsym_I.F90
+  
+molsymy.o: \
+  bangle_I.o  \
+  bldsym_I.o  \
+  cartab_I.o  \
+  chanel_C.o  \
+  chi_I.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  mult33_I.o  \
+  orient_I.o  \
+  plato_I.o  \
+  rotmol_I.o  \
+  symdec_I.o  \
+  symmetry_C.o  \
+  symopr_I.o  \
+  vastkind.o  \
+  molsymy.F90
+	 	 $(FORTRAN_COMPILER)   molsymy.F90
+  
+molval.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  molval.F90
+	 	 $(FORTRAN_COMPILER)   molval.F90
+  
+molval_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  molval_I.F90
+	 	 $(FORTRAN_COMPILER)   molval_I.F90
+  
+param.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  param_global_C.o  \
+  param.F90
+	 	 $(FORTRAN_COMPILER)   param.F90
+  
+mopend.o: \
+  molkst_C.o  \
+  mopend.F90
+	 	 $(FORTRAN_COMPILER)   mopend.F90
+  
+mopend_I.o: \
+  mopend_I.F90
+	 	 $(FORTRAN_COMPILER)   mopend_I.F90
+  
+MOZYME_C.o: \
+  MOZYME_C.F90
+	 	 $(FORTRAN_COMPILER)   MOZYME_C.F90
+  
+mpcbds_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  mpcbds_I.F90
+	 	 $(FORTRAN_COMPILER)   mpcbds_I.F90
+  
+mpcpop_I.o: \
+  mpcpop_I.F90
+	 	 $(FORTRAN_COMPILER)   mpcpop_I.F90
+  
+mpcsyb.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  mpcsyb.F90
+	 	 $(FORTRAN_COMPILER)   mpcsyb.F90
+  
+mtxm.o: \
+  vastkind.o  \
+  mtxm.F90
+	 	 $(FORTRAN_COMPILER)   mtxm.F90
+  
+mtxm_I.o: \
+  vastkind.o  \
+  mtxm_I.F90
+	 	 $(FORTRAN_COMPILER)   mtxm_I.F90
+  
+mtxmc.o: \
+  vastkind.o  \
+  mtxmc.F90
+	 	 $(FORTRAN_COMPILER)   mtxmc.F90
+  
+mtxmc_I.o: \
+  vastkind.o  \
+  mtxmc_I.F90
+	 	 $(FORTRAN_COMPILER)   mtxmc_I.F90
+  
+mullik.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  gmetry_I.o  \
+  molkst_C.o  \
+  mult_I.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  mullik.F90
+	 	 $(FORTRAN_COMPILER)   mullik.F90
+  
+mullik_I.o: \
+  mullik_I.F90
+	 	 $(FORTRAN_COMPILER)   mullik_I.F90
+  
+mult.o: \
+  vastkind.o  \
+  mult.F90
+	 	 $(FORTRAN_COMPILER)   mult.F90
+  
+mult33.o: \
+  symmetry_C.o  \
+  vastkind.o  \
+  mult33.F90
+	 	 $(FORTRAN_COMPILER)   mult33.F90
+  
+mult33_I.o: \
+  vastkind.o  \
+  mult33_I.F90
+	 	 $(FORTRAN_COMPILER)   mult33_I.F90
+  
+mult_I.o: \
+  vastkind.o  \
+  mult_I.F90
+	 	 $(FORTRAN_COMPILER)   mult_I.F90
+  
+myword.o: \
+  myword.F90
+	 	 $(FORTRAN_COMPILER)   myword.F90
+  
+myword_I.o: \
+  myword_I.F90
+	 	 $(FORTRAN_COMPILER)   myword_I.F90
+  
+naican_I.o: \
+  naican_I.F90
+	 	 $(FORTRAN_COMPILER)   naican_I.F90
+  
+naicas_I.o: \
+  naicas_I.F90
+	 	 $(FORTRAN_COMPILER)   naicas_I.F90
+  
+names.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  reada_I.o  \
+  names.F90
+	 	 $(FORTRAN_COMPILER)   names.F90
+  
+new_esp.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  esp_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  overlaps_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  new_esp.F90
+	 	 $(FORTRAN_COMPILER)   new_esp.F90
+  
+newflg.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  newflg.F90
+	 	 $(FORTRAN_COMPILER)   newflg.F90
+  
+ngamtg_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  ngamtg_I.F90
+	 	 $(FORTRAN_COMPILER)   ngamtg_I.F90
+  
+ngefis_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  ngefis_I.F90
+	 	 $(FORTRAN_COMPILER)   ngefis_I.F90
+  
+ngidri_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  ngidri_I.F90
+	 	 $(FORTRAN_COMPILER)   ngidri_I.F90
+  
+ngoke_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  ngoke_I.F90
+	 	 $(FORTRAN_COMPILER)   ngoke_I.F90
+  
+nllsn_I.o: \
+  vastkind.o  \
+  nllsn_I.F90
+	 	 $(FORTRAN_COMPILER)   nllsn_I.F90
+  
+nllsq.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  dot_I.o  \
+  geout_I.o  \
+  locmin_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  parsav_I.o  \
+  prttim_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  nllsq.F90
+	 	 $(FORTRAN_COMPILER)   nllsq.F90
+  
+nllsq_I.o: \
+  nllsq_I.F90
+	 	 $(FORTRAN_COMPILER)   nllsq_I.F90
+  
+nonbet_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  nonbet_I.F90
+	 	 $(FORTRAN_COMPILER)   nonbet_I.F90
+  
+nonope_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  nonope_I.F90
+	 	 $(FORTRAN_COMPILER)   nonope_I.F90
+  
+nonor_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  nonor_I.F90
+	 	 $(FORTRAN_COMPILER)   nonor_I.F90
+  
+nuchar.o: \
+  reada_I.o  \
+  vastkind.o  \
+  nuchar.F90
+	 	 $(FORTRAN_COMPILER)   nuchar.F90
+  
+nuchar_I.o: \
+  vastkind.o  \
+  nuchar_I.F90
+	 	 $(FORTRAN_COMPILER)   nuchar_I.F90
+  
+nxtmer.o: \
+  Common_arrays_C.o  \
+  nxtmer.F90
+	 	 $(FORTRAN_COMPILER)   nxtmer.F90
+  
+openda_I.o: \
+  openda_I.F90
+	 	 $(FORTRAN_COMPILER)   openda_I.F90
+  
+orient_I.o: \
+  vastkind.o  \
+  orient_I.F90
+	 	 $(FORTRAN_COMPILER)   orient_I.F90
+  
+osinv.o: \
+  vastkind.o  \
+  osinv.F90
+	 	 $(FORTRAN_COMPILER)   osinv.F90
+  
+osinv_I.o: \
+  vastkind.o  \
+  osinv_I.F90
+	 	 $(FORTRAN_COMPILER)   osinv_I.F90
+  
+outer1.o: \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  outer1.F90
+	 	 $(FORTRAN_COMPILER)   outer1.F90
+  
+outer2.o: \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  outer2.F90
+	 	 $(FORTRAN_COMPILER)   outer2.F90
+  
+overlaps_C.o: \
+  vastkind.o  \
+  overlaps_C.F90
+	 	 $(FORTRAN_COMPILER)   overlaps_C.F90
+  
+ovlp_I.o: \
+  ovlp_I.F90
+	 	 $(FORTRAN_COMPILER)   ovlp_I.F90
+  
+packp_I.o: \
+  vastkind.o  \
+  packp_I.F90
+	 	 $(FORTRAN_COMPILER)   packp_I.F90
+  
+parameters_C.o: \
+  vastkind.o  \
+  parameters_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_C.F90
+  
+parameters_for_AM1_C.o: \
+  vastkind.o  \
+  parameters_for_AM1_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_AM1_C.F90
+  
+parameters_for_mndo_C.o: \
+  vastkind.o  \
+  parameters_for_mndo_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_mndo_C.F90
+  
+parameters_for_mndod_C.o: \
+  vastkind.o  \
+  parameters_for_mndod_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_mndod_C.F90
+  
+parameters_for_pm3_C.o: \
+  vastkind.o  \
+  parameters_for_pm3_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_pm3_C.F90
+  
+parameters_for_PM6_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_PM6_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_PM6_C.F90
+  
+parameters_for_PM7_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_PM7_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_PM7_C.F90
+  
+parameters_for_PM7_TS_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_PM7_TS_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_PM7_TS_C.F90
+  
+parameters_for_RM1_Sparkles_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_RM1_Sparkles_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_RM1_Sparkles_C.F90
+  
+parameters_for_AM1_Sparkles_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_AM1_Sparkles_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_AM1_Sparkles_C.F90
+  
+parameters_for_PM7_Sparkles_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_PM7_Sparkles_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_PM7_Sparkles_C.F90
+  
+parameters_for_PM3_Sparkles_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_PM3_Sparkles_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_PM3_Sparkles_C.F90
+  
+parameters_for_PM6_Sparkles_C.o: \
+  parameters_C.o  \
+  vastkind.o  \
+  parameters_for_PM6_Sparkles_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_PM6_Sparkles_C.F90
+  
+parameters_for_RM1_C.o: \
+  vastkind.o  \
+  parameters_for_RM1_C.F90
+	 	 $(FORTRAN_COMPILER)   parameters_for_RM1_C.F90
+  
+parsav.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  geout_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  vastkind.o  \
+  parsav.F90
+	 	 $(FORTRAN_COMPILER)   parsav.F90
+  
+parsav_I.o: \
+  vastkind.o  \
+  parsav_I.F90
+	 	 $(FORTRAN_COMPILER)   parsav_I.F90
+  
+partxy.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  partxy.F90
+	 	 $(FORTRAN_COMPILER)   partxy.F90
+  
+partxy_I.o: \
+  vastkind.o  \
+  partxy_I.F90
+	 	 $(FORTRAN_COMPILER)   partxy_I.F90
+  
+Password.o: \
+  molkst_C.o  \
+  reada_I.o  \
+  Password.F90
+	 	 $(FORTRAN_COMPILER)   Password.F90
+  
+pathk.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  dfpsav_I.o  \
+  ef_I.o  \
+  flepo_I.o  \
+  geout_I.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  wrttxt_I.o  \
+  pathk.F90
+	 	 $(FORTRAN_COMPILER)   pathk.F90
+  
+pathk_I.o: \
+  pathk_I.F90
+	 	 $(FORTRAN_COMPILER)   pathk_I.F90
+  
+paths.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  dfpsav_I.o  \
+  ef_C.o  \
+  ef_I.o  \
+  flepo_I.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  writmo_I.o  \
+  paths.F90
+	 	 $(FORTRAN_COMPILER)   paths.F90
+  
+paths_I.o: \
+  paths_I.F90
+	 	 $(FORTRAN_COMPILER)   paths_I.F90
+  
+pdbout.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  pdbout.F90
+	 	 $(FORTRAN_COMPILER)   pdbout.F90
+  
+pdgrid_I.o: \
+  pdgrid_I.F90
+	 	 $(FORTRAN_COMPILER)   pdgrid_I.F90
+  
+perm.o: \
+  meci_C.o  \
+  perm.F90
+	 	 $(FORTRAN_COMPILER)   perm.F90
+  
+perm_I.o: \
+  meci_C.o  \
+  perm_I.F90
+	 	 $(FORTRAN_COMPILER)   perm_I.F90
+  
+picopt.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  symmetry_C.o  \
+  picopt.F90
+	 	 $(FORTRAN_COMPILER)   picopt.F90
+  
+pinout.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  pinout.F90
+	 	 $(FORTRAN_COMPILER)   pinout.F90
+  
+plato_I.o: \
+  vastkind.o  \
+  plato_I.F90
+	 	 $(FORTRAN_COMPILER)   plato_I.F90
+  
+pmep.o: \
+  chanel_C.o  \
+  collis_I.o  \
+  Common_arrays_C.o  \
+  drepp2_I.o  \
+  drotat_I.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  grids_I.o  \
+  mepchg_I.o  \
+  mepmap_I.o  \
+  meprot_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  osinv_I.o  \
+  packp_I.o  \
+  parameters_C.o  \
+  pmepco_I.o  \
+  reada_I.o  \
+  rotate_C.o  \
+  second_I.o  \
+  surfa_I.o  \
+  vastkind.o  \
+  genvec_I.o \
+  pmep.F90
+	 	 $(FORTRAN_COMPILER)   pmep.F90
+  
+genvec_I.o: \
+  genvec_I.F90
+	 	 $(FORTRAN_COMPILER)   genvec_I.F90
+  
+pmep1_I.o: \
+  pmep1_I.F90
+	 	 $(FORTRAN_COMPILER)   pmep1_I.F90
+  
+pmep_I.o: \
+  pmep_I.F90
+	 	 $(FORTRAN_COMPILER)   pmep_I.F90
+  
+pmepco_I.o: \
+  vastkind.o  \
+  pmepco_I.F90
+	 	 $(FORTRAN_COMPILER)   pmepco_I.F90
+  
+poij_I.o: \
+  vastkind.o  \
+  poij_I.F90
+	 	 $(FORTRAN_COMPILER)   poij_I.F90
+  
+pol_vol_I.o: \
+  pol_vol_I.F90
+	 	 $(FORTRAN_COMPILER)   pol_vol_I.F90
+  
+polar.o: \
+  alphaf_I.o  \
+  aval_I.o  \
+  axis_I.o  \
+  bdenin_I.o  \
+  bdenup_I.o  \
+  beopor_I.o  \
+  betaf_I.o  \
+  betal1_I.o  \
+  betall_I.o  \
+  betcom_I.o  \
+  bmakuf_I.o  \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  copym_I.o  \
+  darea1_I.o  \
+  daread_I.o  \
+  dawrit_I.o  \
+  dawrt1_I.o  \
+  densf_I.o  \
+  elemts_C.o  \
+  epsab_I.o  \
+  ffreq1_I.o  \
+  ffreq2_I.o  \
+  fhpatn_I.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  hmuf_I.o  \
+  hplusf_I.o  \
+  makeuf_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  ngamtg_I.o  \
+  ngefis_I.o  \
+  ngidri_I.o  \
+  ngoke_I.o  \
+  nonbet_I.o  \
+  nonope_I.o  \
+  nonor_I.o  \
+  openda_I.o  \
+  parameters_C.o  \
+  pol_vol_I.o  \
+  polar_C.o  \
+  reada_I.o  \
+  second_I.o  \
+  tf_I.o  \
+  transf_I.o  \
+  trsub_I.o  \
+  trudgu_I.o  \
+  trugdu_I.o  \
+  trugud_I.o  \
+  vastkind.o  \
+  wrdkey_I.o  \
+  zerom_I.o  \
+  polar.F90
+	 	 $(FORTRAN_COMPILER)   polar.F90
+  
+polar_C.o: \
+  vastkind.o  \
+  polar_C.F90
+	 	 $(FORTRAN_COMPILER)   polar_C.F90
+  
+polar_I.o: \
+  polar_I.F90
+	 	 $(FORTRAN_COMPILER)   polar_I.F90
+  
+potcal_I.o: \
+  potcal_I.F90
+	 	 $(FORTRAN_COMPILER)   potcal_I.F90
+  
+powsav_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  powsav_I.F90
+	 	 $(FORTRAN_COMPILER)   powsav_I.F90
+  
+powsq.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  dot_I.o  \
+  ef_C.o  \
+  funcon_C.o  \
+  geout_I.o  \
+  maps_C.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  prttim_I.o  \
+  reada_I.o  \
+  search_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  powsq.F90
+	 	 $(FORTRAN_COMPILER)   powsq.F90
+  
+powsq_I.o: \
+  powsq_I.F90
+	 	 $(FORTRAN_COMPILER)   powsq_I.F90
+  
+printp_I.o: \
+  vastkind.o  \
+  printp_I.F90
+	 	 $(FORTRAN_COMPILER)   printp_I.F90
+  
+prtdrc.o: \
+  chanel_C.o  \
+  chrge_I.o  \
+  Common_arrays_C.o  \
+  dot_I.o  \
+  ef_C.o  \
+  drcout_I.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  quadr_I.o  \
+  reada_I.o  \
+  vastkind.o  \
+  xyzint_I.o  \
+  prtdrc.F90
+	 	 $(FORTRAN_COMPILER)   prtdrc.F90
+  
+prtdrc_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  prtdrc_I.F90
+	 	 $(FORTRAN_COMPILER)   prtdrc_I.F90
+  
+prtgra.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  prtgra.F90
+	 	 $(FORTRAN_COMPILER)   prtgra.F90
+  
+prthco_I.o: \
+  prthco_I.F90
+	 	 $(FORTRAN_COMPILER)   prthco_I.F90
+  
+prthes_I.o: \
+  vastkind.o  \
+  prthes_I.F90
+	 	 $(FORTRAN_COMPILER)   prthes_I.F90
+  
+prtlmo.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  prtlmo.F90
+	 	 $(FORTRAN_COMPILER)   prtlmo.F90
+  
+prtpar_I.o: \
+  prtpar_I.F90
+	 	 $(FORTRAN_COMPILER)   prtpar_I.F90
+  
+prtpka.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  prtpka.F90
+	 	 $(FORTRAN_COMPILER)   prtpka.F90
+  
+prttim.o: \
+  vastkind.o  \
+  prttim.F90
+	 	 $(FORTRAN_COMPILER)   prttim.F90
+  
+prttim_I.o: \
+  vastkind.o  \
+  prttim_I.F90
+	 	 $(FORTRAN_COMPILER)   prttim_I.F90
+  
+pulay.o: \
+  chanel_C.o  \
+  dot_I.o  \
+  mamult_I.o  \
+  molkst_C.o  \
+  osinv_I.o  \
+  vastkind.o  \
+  pulay.F90
+	 	 $(FORTRAN_COMPILER)   pulay.F90
+  
+pulay_I.o: \
+  vastkind.o  \
+  pulay_I.F90
+	 	 $(FORTRAN_COMPILER)   pulay_I.F90
+  
+quadr.o: \
+  vastkind.o  \
+  quadr.F90
+	 	 $(FORTRAN_COMPILER)   quadr.F90
+  
+quadr_I.o: \
+  vastkind.o  \
+  quadr_I.F90
+	 	 $(FORTRAN_COMPILER)   quadr_I.F90
+  
+react1.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  dot_I.o  \
+  elemts_C.o  \
+  geout_I.o  \
+  getgeo_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  reada_I.o  \
+  second_I.o  \
+  vastkind.o  \
+  writmo_I.o  \
+  react1.F90
+	 	 $(FORTRAN_COMPILER)   react1.F90
+  
+react1_I.o: \
+  react1_I.F90
+	 	 $(FORTRAN_COMPILER)   react1_I.F90
+  
+reada.o: \
+  digit_I.o  \
+  reada.F90
+	 	 $(FORTRAN_COMPILER)   reada.F90
+  
+reada_I.o: \
+  reada_I.F90
+	 	 $(FORTRAN_COMPILER)   reada_I.F90
+  
+readmo.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  geout_I.o  \
+  getgeg_I.o  \
+  getgeo_I.o  \
+  getsym_I.o  \
+  gettxt_I.o  \
+  gmetry_I.o  \
+  maksym_I.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  nuchar_I.o  \
+  parameters_C.o  \
+  symmetry_C.o  \
+  symtry_I.o  \
+  vastkind.o  \
+  wrtkey_I.o  \
+  wrttxt_I.o  \
+  readmo.F90
+	 	 $(FORTRAN_COMPILER) -DBITS64  readmo.F90
+  
+readmo_I.o: \
+  readmo_I.F90
+	 	 $(FORTRAN_COMPILER)   readmo_I.F90
+  
+redatm_I.o: \
+  redatm_I.F90
+	 	 $(FORTRAN_COMPILER)   redatm_I.F90
+  
+refer.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  journal_references_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  refer.F90
+	 	 $(FORTRAN_COMPILER)   refer.F90
+  
+refer_I.o: \
+  refer_I.F90
+	 	 $(FORTRAN_COMPILER)   refer_I.F90
+  
+refkey_C.o: \
+  refkey_C.F90
+	 	 $(FORTRAN_COMPILER)   refkey_C.F90
+  
+reorth.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  reorth.F90
+	 	 $(FORTRAN_COMPILER)   reorth.F90
+reppd2_I.o: \
+  vastkind.o  \
+  reppd2_I.F90
+	 	 $(FORTRAN_COMPILER)   reppd2_I.F90
+  
+reppd_I.o: \
+  vastkind.o  \
+  reppd_I.F90
+	 	 $(FORTRAN_COMPILER)   reppd_I.F90
+  
+reseq.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  reseq.F90
+	 	 $(FORTRAN_COMPILER)   reseq.F90
+  
+resolv.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  resolv.F90
+	 	 $(FORTRAN_COMPILER)   resolv.F90
+  
+resolv_I.o: \
+  vastkind.o  \
+  resolv_I.F90
+	 	 $(FORTRAN_COMPILER)   resolv_I.F90
+  
+rijkl_I.o: \
+  vastkind.o  \
+  rijkl_I.F90
+	 	 $(FORTRAN_COMPILER)   rijkl_I.F90
+  
+rotat_I.o: \
+  vastkind.o  \
+  rotat_I.F90
+	 	 $(FORTRAN_COMPILER)   rotat_I.F90
+  
+rotatd_I.o: \
+  vastkind.o  \
+  rotatd_I.F90
+	 	 $(FORTRAN_COMPILER)   rotatd_I.F90
+  
+rotate.o: \
+  molkst_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  rotate.F90
+	 	 $(FORTRAN_COMPILER)   rotate.F90
+  
+rotate_C.o: \
+  vastkind.o  \
+  rotate_C.F90
+	 	 $(FORTRAN_COMPILER)   rotate_C.F90
+  
+rotate_I.o: \
+  vastkind.o  \
+  rotate_I.F90
+	 	 $(FORTRAN_COMPILER)   rotate_I.F90
+  
+rotlmo.o: \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  rotlmo.F90
+	 	 $(FORTRAN_COMPILER)   rotlmo.F90
+  
+rotmat_I.o: \
+  vastkind.o  \
+  rotmat_I.F90
+	 	 $(FORTRAN_COMPILER)   rotmat_I.F90
+  
+rotmol.o: \
+  symopr_I.o  \
+  vastkind.o  \
+  rotmol.F90
+	 	 $(FORTRAN_COMPILER)   rotmol.F90
+  
+rotmol_I.o: \
+  vastkind.o  \
+  rotmol_I.F90
+	 	 $(FORTRAN_COMPILER)   rotmol_I.F90
+  
+rsc_I.o: \
+  vastkind.o  \
+  rsc_I.F90
+	 	 $(FORTRAN_COMPILER)   rsc_I.F90
+  
+rsp.o: \
+  dasum_I.o  \
+  daxpy_I.o  \
+  ddot_I.o  \
+  dnrm2_I.o  \
+  einvit_I.o  \
+  elau_I.o  \
+  epslon_I.o  \
+  eqlrat_I.o  \
+  estpi1_I.o  \
+  evvrsp_I.o  \
+  freda_I.o  \
+  etred3_I.o etrbk3_I.o  vastkind.o  \
+  rsp.F90
+	 	 $(FORTRAN_COMPILER)   rsp.F90
+  
+etrbk3_I.o: \
+  vastkind.o  \
+  etrbk3_I.F90
+	 	 $(FORTRAN_COMPILER)   etrbk3_I.F90
+  
+run_mopac.o: \
+  calpar_I.o  \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  cosmo_C.o  \
+  datin_I.o  \
+  drc_I.o  \
+  ef_I.o  \
+  fbx_I.o  \
+  flepo_I.o  \
+  force_I.o  \
+  fordd_I.o  \
+  funcon_C.o  \
+  geout_I.o  \
+  geoutg_I.o  \
+  grid_I.o  \
+  maps_C.o  \
+  molkst_C.o  \
+  nllsq_I.o  \
+  parameters_C.o  \
+  pathk_I.o  \
+  paths_I.o  \
+  pmep_I.o  \
+  polar_I.o  \
+  powsq_I.o  \
+  react1_I.o  \
+  second_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  writmo_I.o  \
+  wrttxt_I.o  \
+  run_mopac.F90
+	 	 $(FORTRAN_COMPILER)   run_mopac.F90
+  
+scfcri.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  scfcri.F90
+	 	 $(FORTRAN_COMPILER)   scfcri.F90
+  
+schmib.o: \
+  vastkind.o  \
+  schmib.F90
+	 	 $(FORTRAN_COMPILER)   schmib.F90
+  
+schmib_I.o: \
+  vastkind.o  \
+  schmib_I.F90
+	 	 $(FORTRAN_COMPILER)   schmib_I.F90
+  
+schmit.o: \
+  vastkind.o  \
+  schmit.F90
+	 	 $(FORTRAN_COMPILER)   schmit.F90
+  
+schmit_I.o: \
+  vastkind.o  \
+  schmit_I.F90
+	 	 $(FORTRAN_COMPILER)   schmit_I.F90
+  
+scprm_I.o: \
+  vastkind.o  \
+  scprm_I.F90
+	 	 $(FORTRAN_COMPILER)   scprm_I.F90
+  
+search_I.o: \
+  vastkind.o  \
+  search_I.F90
+	 	 $(FORTRAN_COMPILER)   search_I.F90
+  
+second.o: \
+  chanel_C.o  \
+  geout_I.o  \
+  vastkind.o  \
+  second.F90
+	 	 $(FORTRAN_COMPILER)   second.F90
+  
+second_I.o: \
+  second_I.F90
+	 	 $(FORTRAN_COMPILER)   second_I.F90
+  
+selmos.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  selmos.F90
+	 	 $(FORTRAN_COMPILER)   selmos.F90
+  
+set.o: \
+  aintgs_I.o  \
+  bintgs_I.o  \
+  overlaps_C.o  \
+  vastkind.o  \
+  set.F90
+	 	 $(FORTRAN_COMPILER)   set.F90
+  
+set_I.o: \
+  vastkind.o  \
+  set_I.F90
+	 	 $(FORTRAN_COMPILER)   set_I.F90
+  
+set_up_dentate.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  set_up_dentate.F90
+	 	 $(FORTRAN_COMPILER)   set_up_dentate.F90
+  
+set_up_MOZYME_arrays.o: \
+  Common_arrays_C.o  \
+  iter_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  set_up_MOZYME_arrays.F90
+	 	 $(FORTRAN_COMPILER)   set_up_MOZYME_arrays.F90
+  
+set_up_RAPID.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  set_up_RAPID.F90
+	 	 $(FORTRAN_COMPILER)   set_up_RAPID.F90
+  
+setup3_I.o: \
+  setup3_I.F90
+	 	 $(FORTRAN_COMPILER)   setup3_I.F90
+  
+setup_mopac_arrays.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  ef_C.o  \
+  ef_C.o  \
+  esp_C.o  \
+  iter_C.o  \
+  maps_C.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  to_screen_C.o  \
+  setup_mopac_arrays.F90
+	 	 $(FORTRAN_COMPILER)   setup_mopac_arrays.F90
+  
+setupg.o: \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  overlaps_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  setupg.F90
+	 	 $(FORTRAN_COMPILER)   setupg.F90
+  
+setupk.o: \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  setupk.F90
+	 	 $(FORTRAN_COMPILER)   setupk.F90
+  
+solrot.o: \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  rotate_I.o  \
+  vastkind.o  \
+  solrot.F90
+	 	 $(FORTRAN_COMPILER)   solrot.F90
+  
+solrot_I.o: \
+  vastkind.o  \
+  solrot_I.F90
+	 	 $(FORTRAN_COMPILER)   solrot_I.F90
+  
+sort.o: \
+  sort.F90
+	 	 $(FORTRAN_COMPILER)   sort.F90
+  
+sort_I.o: \
+  sort_I.F90
+	 	 $(FORTRAN_COMPILER)   sort_I.F90
+  
+sp_two_electron.o: \
+  mndod_C.o  \
+  parameters_C.o  \
+  rsc_I.o  \
+  vastkind.o  \
+  sp_two_electron.F90
+	 	 $(FORTRAN_COMPILER)   sp_two_electron.F90
+  
+spcore_I.o: \
+  vastkind.o  \
+  spcore_I.F90
+	 	 $(FORTRAN_COMPILER)   spcore_I.F90
+  
+spline_I.o: \
+  vastkind.o  \
+  spline_I.F90
+	 	 $(FORTRAN_COMPILER)   spline_I.F90
+  
+ss_I.o: \
+  vastkind.o  \
+  ss_I.F90
+	 	 $(FORTRAN_COMPILER)   ss_I.F90
+  
+static_polarizability.o: \
+  axis_I.o  \
+  chanel_C.o  \
+  chrge_I.o  \
+  Common_arrays_C.o  \
+  compfg_I.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  gmetry_I.o  \
+  matout_I.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  pol_vol_I.o  \
+  vastkind.o  \
+  vecprt_I.o  \
+  static_polarizability.F90
+	 	 $(FORTRAN_COMPILER)   static_polarizability.F90
+  
+suma2_I.o: \
+  vastkind.o  \
+  suma2_I.F90
+	 	 $(FORTRAN_COMPILER)   suma2_I.F90
+  
+supdot.o: \
+  vastkind.o  \
+  supdot.F90
+	 	 $(FORTRAN_COMPILER)   supdot.F90
+  
+supdot_I.o: \
+  vastkind.o  \
+  supdot_I.F90
+	 	 $(FORTRAN_COMPILER)   supdot_I.F90
+  
+superd.o: \
+  chanel_C.o  \
+  elemts_C.o  \
+  vastkind.o  \
+  superd.F90
+	 	 $(FORTRAN_COMPILER)   superd.F90
+  
+superd_I.o: \
+  vastkind.o  \
+  superd_I.F90
+	 	 $(FORTRAN_COMPILER)   superd_I.F90
+  
+surfa_I.o: \
+  vastkind.o  \
+  surfa_I.F90
+	 	 $(FORTRAN_COMPILER)   surfa_I.F90
+  
+surfac_I.o: \
+  surfac_I.F90
+	 	 $(FORTRAN_COMPILER)   surfac_I.F90
+  
+swap.o: \
+  chanel_C.o  \
+  iter_C.o  \
+  vastkind.o  \
+  swap.F90
+	 	 $(FORTRAN_COMPILER)   swap.F90
+  
+swap_I.o: \
+  vastkind.o  \
+  swap_I.F90
+	 	 $(FORTRAN_COMPILER)   swap_I.F90
+  
+switch.o: \
+  chanel_C.o  \
+  conref_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  parameters_C.o  \
+  parameters_for_AM1_C.o  \
+  parameters_for_mndo_C.o  \
+  parameters_for_mndod_C.o  \
+  parameters_for_pm3_C.o  \
+  parameters_for_PM6_C.o  \
+  parameters_for_PM6_Sparkles_C.o  \
+  parameters_for_RM1_C.o  \
+  switch.F90
+	 	 $(FORTRAN_COMPILER)   switch.F90
+  
+symdec_I.o: \
+  symdec_I.F90
+	 	 $(FORTRAN_COMPILER)   symdec_I.F90
+  
+symh.o: \
+  mat33_I.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  symh.F90
+	 	 $(FORTRAN_COMPILER)   symh.F90
+  
+symh_I.o: \
+  molkst_C.o  \
+  vastkind.o  \
+  symh_I.F90
+	 	 $(FORTRAN_COMPILER)   symh_I.F90
+  
+symmetry_C.o: \
+  vastkind.o  \
+  symmetry_C.F90
+	 	 $(FORTRAN_COMPILER)   symmetry_C.F90
+  
+symoir.o: \
+  chanel_C.o  \
+  charmo_I.o  \
+  charst_I.o  \
+  charvi_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  symoir.F90
+	 	 $(FORTRAN_COMPILER)   symoir.F90
+  
+symoir_I.o: \
+  vastkind.o  \
+  symoir_I.F90
+	 	 $(FORTRAN_COMPILER)   symoir_I.F90
+  
+symopr.o: \
+  vastkind.o  \
+  symopr.F90
+	 	 $(FORTRAN_COMPILER)   symopr.F90
+  
+symopr_I.o: \
+  vastkind.o  \
+  symopr_I.F90
+	 	 $(FORTRAN_COMPILER)   symopr_I.F90
+  
+symp_I.o: \
+  symp_I.F90
+	 	 $(FORTRAN_COMPILER)   symp_I.F90
+  
+sympop.o: \
+  symh_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  sympop.F90
+	 	 $(FORTRAN_COMPILER)   sympop.F90
+  
+sympop_I.o: \
+  vastkind.o  \
+  sympop_I.F90
+	 	 $(FORTRAN_COMPILER)   sympop_I.F90
+  
+symr.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  symmetry_C.o  \
+  symp_I.o  \
+  vastkind.o  \
+  symr.F90
+	 	 $(FORTRAN_COMPILER)   symr.F90
+  
+symr_I.o: \
+  symr_I.F90
+	 	 $(FORTRAN_COMPILER)   symr_I.F90
+  
+symt.o: \
+  mat33_I.o  \
+  molkst_C.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  symt.F90
+	 	 $(FORTRAN_COMPILER)   symt.F90
+  
+symt_I.o: \
+  vastkind.o  \
+  symt_I.F90
+	 	 $(FORTRAN_COMPILER)   symt_I.F90
+  
+symtry.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  funcon_C.o  \
+  haddon_I.o  \
+  molkst_C.o  \
+  mopend_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  symtry.F90
+	 	 $(FORTRAN_COMPILER)   symtry.F90
+  
+symtry_I.o: \
+  symtry_I.F90
+	 	 $(FORTRAN_COMPILER)   symtry_I.F90
+  
+symtrz.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  makopr_I.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  molsym_I.o  \
+  mult33_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  symtrz.F90
+	 	 $(FORTRAN_COMPILER)   symtrz.F90
+  
+symtrz_I.o: \
+  vastkind.o  \
+  symtrz_I.F90
+	 	 $(FORTRAN_COMPILER)   symtrz_I.F90
+  
+tf_I.o: \
+  vastkind.o  \
+  tf_I.F90
+	 	 $(FORTRAN_COMPILER)   tf_I.F90
+  
+thermo.o: \
+  chanel_C.o  \
+  funcon_C.o  \
+  molkst_C.o  \
+  reada_I.o  \
+  vastkind.o  \
+  thermo.F90
+	 	 $(FORTRAN_COMPILER)   thermo.F90
+  
+thermo_I.o: \
+  vastkind.o  \
+  thermo_I.F90
+	 	 $(FORTRAN_COMPILER)   thermo_I.F90
+  
+tidy.o: \
+  chanel_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  tidy.F90
+	 	 $(FORTRAN_COMPILER)   tidy.F90
+  
+time_I.o: \
+  time_I.F90
+	 	 $(FORTRAN_COMPILER)   time_I.F90
+  
+timer.o: \
+  chanel_C.o  \
+  second_I.o  \
+  vastkind.o  \
+  timer.F90
+	 	 $(FORTRAN_COMPILER)   timer.F90
+  
+timer_I.o: \
+  timer_I.F90
+	 	 $(FORTRAN_COMPILER)   timer_I.F90
+  
+timout.o: \
+  vastkind.o  \
+  timout.F90
+	 	 $(FORTRAN_COMPILER)   timout.F90
+  
+to_screen.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  cosmo_C.o  \
+  elemts_C.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  parameters_C.o  \
+  second_I.o  \
+  symmetry_C.o  \
+  to_screen_C.o  \
+  to_screen.F90
+	 	 $(FORTRAN_COMPILER)   to_screen.F90
+  
+to_screen_C.o: \
+  vastkind.o  \
+  to_screen_C.F90
+	 	 $(FORTRAN_COMPILER)   to_screen_C.F90
+  
+transf_I.o: \
+  vastkind.o  \
+  transf_I.F90
+	 	 $(FORTRAN_COMPILER)   transf_I.F90
+  
+trsub_I.o: \
+  vastkind.o  \
+  trsub_I.F90
+	 	 $(FORTRAN_COMPILER)   trsub_I.F90
+  
+trudgu_I.o: \
+  vastkind.o  \
+  trudgu_I.F90
+	 	 $(FORTRAN_COMPILER)   trudgu_I.F90
+  
+trugdu_I.o: \
+  vastkind.o  \
+  trugdu_I.F90
+	 	 $(FORTRAN_COMPILER)   trugdu_I.F90
+  
+trugud_I.o: \
+  vastkind.o  \
+  trugud_I.F90
+	 	 $(FORTRAN_COMPILER)   trugud_I.F90
+  
+tx_I.o: \
+  vastkind.o  \
+  tx_I.F90
+	 	 $(FORTRAN_COMPILER)   tx_I.F90
+  
+txtype.o: \
+  Common_arrays_C.o  \
+  txtype.F90
+	 	 $(FORTRAN_COMPILER)   txtype.F90
+  
+upcase.o: \
+  upcase.F90
+	 	 $(FORTRAN_COMPILER)   upcase.F90
+  
+upcase_I.o: \
+  upcase_I.F90
+	 	 $(FORTRAN_COMPILER)   upcase_I.F90
+  
+update.o: \
+  chanel_C.o  \
+  parameters_C.o  \
+  vastkind.o  \
+  update.F90
+	 	 $(FORTRAN_COMPILER)   update.F90
+  
+update_I.o: \
+  vastkind.o  \
+  update_I.F90
+	 	 $(FORTRAN_COMPILER)   update_I.F90
+  
+values.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  values.F90
+	 	 $(FORTRAN_COMPILER)   values.F90
+  
+vastkind.o: \
+  vastkind.F90
+	 	 $(FORTRAN_COMPILER)   vastkind.F90
+  
+vecprt.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  vecprt.F90
+	 	 $(FORTRAN_COMPILER)   vecprt.F90
+  
+vecprt_for_MOZYME.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  vecprt_for_MOZYME.F90
+	 	 $(FORTRAN_COMPILER)   vecprt_for_MOZYME.F90
+  
+vecprt_I.o: \
+  vastkind.o  \
+  vecprt_I.F90
+	 	 $(FORTRAN_COMPILER)   vecprt_I.F90
+  
+volume.o: \
+  vastkind.o  \
+  volume.F90
+	 	 $(FORTRAN_COMPILER)   volume.F90
+  
+volume_I.o: \
+  vastkind.o  \
+  volume_I.F90
+	 	 $(FORTRAN_COMPILER)   volume_I.F90
+  
+w2mat_I.o: \
+  vastkind.o  \
+  w2mat_I.F90
+	 	 $(FORTRAN_COMPILER)   w2mat_I.F90
+  
+worder_I.o: \
+  vastkind.o  \
+  worder_I.F90
+	 	 $(FORTRAN_COMPILER)   worder_I.F90
+  
+wrdkey_I.o: \
+  vastkind.o  \
+  wrdkey_I.F90
+	 	 $(FORTRAN_COMPILER)   wrdkey_I.F90
+  
+write_trajectory.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  elemts_C.o  \
+  molkst_C.o  \
+  vastkind.o  \
+  write_trajectory.F90
+	 	 $(FORTRAN_COMPILER)   write_trajectory.F90
+  
+write_trajectory_I.o: \
+  molkst_C.o  \
+  write_trajectory_I.F90
+	 	 $(FORTRAN_COMPILER)   write_trajectory_I.F90
+  
+writmo.o: \
+  chanel_C.o  \
+  Common_arrays_C.o  \
+  conref_C.o  \
+  cosmo_C.o  \
+  dipole_I.o  \
+  elemts_C.o  \
+  funcon_C.o  \
+  geoutg_I.o  \
+  maps_C.o  \
+  meci_C.o  \
+  meci_I.o  \
+  molkst_C.o  \
+  MOZYME_C.o  \
+  parameters_C.o  \
+  reada_I.o  \
+  second_I.o  \
+  symmetry_C.o  \
+  vastkind.o  \
+  volume_I.o  \
+  writmo.F90
+	 	 $(FORTRAN_COMPILER)   writmo.F90
+  
+writmo_I.o: \
+  writmo_I.F90
+	 	 $(FORTRAN_COMPILER)   writmo_I.F90
+  
+wrtkey.o: \
+  chanel_C.o  \
+  conref_C.o  \
+  cosmo_C.o  \
+  meci_C.o  \
+  molkst_C.o  \
+  myword_I.o  \
+  reada_I.o  \
+  wrtkey.F90
+	 	 $(FORTRAN_COMPILER)   wrtkey.F90
+  
+wrtkey_I.o: \
+  wrtkey_I.F90
+	 	 $(FORTRAN_COMPILER)   wrtkey_I.F90
+  
+wrttxt.o: \
+  molkst_C.o  \
+  wrttxt.F90
+	 	 $(FORTRAN_COMPILER)   wrttxt.F90
+  
+wrttxt_I.o: \
+  wrttxt_I.F90
+	 	 $(FORTRAN_COMPILER)   wrttxt_I.F90
+  
+wstore_I.o: \
+  wstore_I.F90
+	 	 $(FORTRAN_COMPILER)   wstore_I.F90
+  
+wwstep_I.o: \
+  vastkind.o  \
+  wwstep_I.F90
+	 	 $(FORTRAN_COMPILER)   wwstep_I.F90
+  
+xerbla_I.o: \
+  xerbla_I.F90
+	 	 $(FORTRAN_COMPILER)   xerbla_I.F90
+  
+xxx.o: \
+  xxx.F90
+	 	 $(FORTRAN_COMPILER)   xxx.F90
+  
+xxx_I.o: \
+  xxx_I.F90
+	 	 $(FORTRAN_COMPILER)   xxx_I.F90
+  
+xyzcry.o: \
+  vastkind.o  \
+  xyzcry.F90
+	 	 $(FORTRAN_COMPILER)   xyzcry.F90
+  
+xyzcry_I.o: \
+  vastkind.o  \
+  xyzcry_I.F90
+	 	 $(FORTRAN_COMPILER)   xyzcry_I.F90
+  
+xyzint.o: \
+  bangle_I.o  \
+  dihed_I.o  \
+  funcon_C.o  \
+  vastkind.o  \
+  xyzint.F90
+	 	 $(FORTRAN_COMPILER)   xyzint.F90
+  
+xyzint_I.o: \
+  vastkind.o  \
+  xyzint_I.F90
+	 	 $(FORTRAN_COMPILER)   xyzint_I.F90
+  
+zerom_I.o: \
+  vastkind.o  \
+  zerom_I.F90
+	 	 $(FORTRAN_COMPILER)   zerom_I.F90
+
+param_global_C.o: \
+  param_global_C.F90
+		 $(FORTRAN_COMPILER)   param_global_C.F90
+
+datinp.o: Param_global_C.o datinp.F90
+	 $(FORTRAN_COMPILER)   datinp.F90
+
+pparsav.o: pparsav.F90
+	 $(FORTRAN_COMPILER)   pparsav.F90
+
+chkpar.o: chkpar.F90
+	 $(FORTRAN_COMPILER)   chkpar.F90
+
+direct.o: direct.F90
+	 $(FORTRAN_COMPILER)   direct.F90
+
+extract_parameter.o: extract_parameter.F90
+	 $(FORTRAN_COMPILER)   extract_parameter.F90
+
+savgeo.o:   savgeo.F90
+	 $(FORTRAN_COMPILER)   savgeo.F90
+
+parkey.o:   parkey.F90
+	 $(FORTRAN_COMPILER)   parkey.F90
+
+partab.o:   partab.F90
+	 $(FORTRAN_COMPILER)   partab.F90
+
+rapid0.o:   rapid0.F90
+	 $(FORTRAN_COMPILER)   rapid0.F90
+
+parfg.o:   parfg.F90
+	 $(FORTRAN_COMPILER)   parfg.F90
+
+resetp.o:   resetp.F90
+	 $(FORTRAN_COMPILER)   resetp.F90
+
+depfn.o:   depfn.F90
+	 $(FORTRAN_COMPILER)   depfn.F90
+
+optgeo.o:   optgeo.F90
+	 $(FORTRAN_COMPILER)   optgeo.F90
+
+getmol.o:   getmol.F90
+	 $(FORTRAN_COMPILER)   getmol.F90
+
+getpar.o:   getpar.F90
+	 $(FORTRAN_COMPILER)   getpar.F90
+
+pardip.o:   pardip.F90
+	 $(FORTRAN_COMPILER)   pardip.F90
+
+pargeo.o:   pargeo.F90
+	 $(FORTRAN_COMPILER)   pargeo.F90
+
+empire.o:   empire.F90
+	 $(FORTRAN_COMPILER)   empire.F90
+
+parips.o:   parips.F90
+	 $(FORTRAN_COMPILER)   parips.F90
+
+filusp.o:   filusp.F90
+	 $(FORTRAN_COMPILER)   filusp.F90
+
+psort.o:   psort.F90
+	 $(FORTRAN_COMPILER)   psort.F90
+
+rapid1.o:  rapid1.F90
+	 $(FORTRAN_COMPILER)   rapid1.F90
+
+mod_vars_cuda.o:   mod_vars_cuda.F90
+	 $(FORTRAN_COMPILER)   mod_vars_cuda.F90
+
+density_cuda_i.o:   density_cuda_i.F90
+	 $(FORTRAN_COMPILER)   density_cuda_i.F90
+
+rapid2.o: rapid2.F90
+	 $(FORTRAN_COMPILER)   rapid2.F90
+
+rapid3.o: rapid3.F90
+	 $(FORTRAN_COMPILER)   rapid3.F90
+
+add_hydrogen_atoms.o: add_hydrogen_atoms.F90
+	 $(FORTRAN_COMPILER)   add_hydrogen_atoms.F90
+
+local_for_mozyme.o: local_for_mozyme.F90
+	 $(FORTRAN_COMPILER)   local_for_mozyme.F90
+
+blas_I.o: blas_I.F90
+	 $(FORTRAN_COMPILER)   blas_I.F90
+
+density_for_gpu.o: mod_calls_cublas.o density_for_gpu.F90
+	 $(FORTRAN_COMPILER)   density_for_gpu.F90
+
+eigenvectors_lapack.o: eigenvectors_lapack.F90
+	 $(FORTRAN_COMPILER)   eigenvectors_lapack.F90
+
+wrt_diffs.o: wrt_diffs.F90
+	 $(FORTRAN_COMPILER)   wrt_diffs.F90
+
+diag_for_gpu.o: diag_for_gpu.F90
+	 $(FORTRAN_COMPILER)   diag_for_gpu.F90
+
+linpack.o: linpack.F90
+	 $(FORTRAN_COMPILER)   linpack.F90
+
+mod_calls_cublas.o: mod_calls_cublas.F90
+	 $(FORTRAN_COMPILER)   mod_calls_cublas.F90
+
+mxmt.o: mod_calls_cublas.o mxmt.F90
+	 $(FORTRAN_COMPILER)   mxmt.F90
+
+mxmt_I.o: mxmt_I.F90
+	 $(FORTRAN_COMPILER)   mxmt_I.F90
+
+mxm_I.o: mxm_I.F90
+	 $(FORTRAN_COMPILER)   mxm_I.F90
+
+geo_ref.o: geo_ref.F90
+	 $(FORTRAN_COMPILER)   geo_ref.F90
+
+big_swap.o: big_swap.F90
+	 $(FORTRAN_COMPILER)   big_swap.F90
+
+bits.o: bits.F90
+	 $(FORTRAN_COMPILER)   bits.F90
+
+mxm.o: mxm.F90
+	 $(FORTRAN_COMPILER)   mxm.F90

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SCFCRT</TITLE>
+<META NAME="description" CONTENT="SCFCRT">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node680.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html10600"
+ HREF="node680.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A>
+<a NAME="tex2html10596" href="node679.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></a> 
+<A NAME="tex2html10592"
+ HREF="node679.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html10598"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html10599"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html10601"
+ HREF="node680.html"> Geometric optimization criteria</A>
+<B> Up:</B> <a NAME="tex2html10597" href="node679.html">SCF criterion</a>
+<B> Previous:</B> <A NAME="tex2html10593"
+ HREF="node679.html"> SCF criterion</A>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001610100000000000000">
+SCFCRT</A>
+</H3>
+<DL>
+<DT><STRONG>Defined in:</STRONG>
+<DD><TT>ITER</TT>
+<DT><STRONG>Default value:</STRONG>
+<DD>0.0001 kcal/mol
+<DT><STRONG>Basic test:</STRONG>
+<DD>Change in energy in kcal/mol on successive iterations is 
+less than <TT>SCFCRT</TT>.
+<DT><STRONG>Exceptions:</STRONG>
+<DD>&nbsp;
+<UL>
+<LI>If <TT><a href="node274.html">PRECISE</a></TT> is specified, <TT>SCFCRT</TT>=0.000001
+<LI>If a polarization calculation, <TT>SCFCRT</TT>=1.D-11
+<LI>If a <TT><a href="node182.html">FORCE</a></TT> calculation, <TT>SCFCRT</TT>=0.0000001
+<LI>If <TT><a href="node298.html">SCFCRT=<I>n</I>.<I>nnn</I></a></TT> is specified <TT>SCFCRT</TT>=<I>n</I>.<I>nnn</I>
+<LI>If a <a href="node129.html">BFGS</a> optimization, <TT>SCFCRT</TT> becomes a function of the 
+difference between the current energy and the lowest energy of previous SCFs.
+</UL><DT><STRONG>Secondary tests:</STRONG>
+<DD>&nbsp;
+<DL COMPACT>
+<DT>1.
+<DD>Change in density matrix elements on two successive iterations must be 
+less than 0.001
+<DT>2.
+<DD>Change in energy in eV on three successive iterations must be less than 
+10 <IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1961.gif"
+ ALT="$\times$">
+<TT>SCFCRT</TT>.
+</DL></DL>
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

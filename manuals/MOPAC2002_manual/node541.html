@@ -1,0 +1,227 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Energy Effects of CUTOF2</TITLE>
+<META NAME="description" CONTENT="8.6.9 Energy Effects of CUTOF2">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node540.html">
+<LINK REL="up" HREF="node511.html">
+<LINK REL="next" HREF="node542.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8844"
+ HREF="node542.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8840"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8836"
+ HREF="node540.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8842"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8843"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8845"
+ HREF="node542.html"> Geometry optimization</A>
+<B> Up:</B> <A NAME="tex2html8841"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8837"
+ HREF="node540.html"> Density Matrix Construction</A>
+<BR>
+<H2><A NAME="SECTION001269000000000000000">
+ Energy Effects of <TT>CUTOF2</TT></A>
+</H2>
+Energy terms arise from pairs of atoms which are separated by distances greater
+than the cutoff distance.  These terms are purely electrostatic in origin:
+their magnitude is simply proportional to the net charge, <I>Q</I><SUB><I>A</I></SUB>, on the atoms
+involved.  Net charge is defined as
+<p align="center">
+<I>Q</I><SUB><I>A</I></SUB> = <I>Z</I><SUB><I>A</I></SUB>-<I>Ne</I><SUB><I>A</I></SUB>
+<BR CLEAR="ALL"></p>
+<P></P>
+where <I>Ne</I><SUB><I>A</I></SUB> is the total electron population on atom <I>A</I>
+<p align="center"><IMG
+ WIDTH="94" HEIGHT="43"
+ SRC="img1268.gif"
+ ALT="\begin{displaymath}Ne_A=\sum_{\lambda\varepsilon A}P_{\lambda \lambda}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+From simple electrostatics, the overall effect of these net charges is to
+contribute a long-range energy term, <I>E</I><SUB><I>lre</I></SUB> to the energy of the system
+thusly
+<p align="center"><IMG
+ WIDTH="175" HEIGHT="45"
+ SRC="img1269.gif"
+ ALT="\begin{displaymath}E_{lre} = \frac{1}{2}\sum_A\sum_B\phi_{AB}Q_AQ_B\gamma_{AB},
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+where <i><font face="Symbol">f</font><sub>AB</sub></i>
+is 1  if <I>R</I><SUB><I>AB</I></SUB>  is greater  than the
+ cutoff distance but
+0 otherwise, and 
+<!-- MATH: $\gamma_{AB}$ -->
+<i><font face="Symbol">g</font></i><sub><i>AB</i></sub>
+is the 
+<!-- MATH: $<ss|1/R_{AB}|ss>$ -->
+&lt;<I>ss</I>|1/<I>R</I><SUB><I>AB</I></SUB>|<I>ss</I>&gt; integral.
+This simple description must be modified because of the effect of net
+charges on the electron density.  Each distant net positive charge will induce
+a small, but in general not negligible, stabilizing effect on the electron
+distribution, while a distant net negative charge will have the opposite
+effect.  This can be expressed formally in terms of the Fock matrix
+<p align="center"><IMG
+ WIDTH="219" HEIGHT="42"
+ SRC="img1272.gif"
+ ALT="\begin{displaymath}F_{\lambda\varepsilon A \lambda\varepsilon A} =
+F_{\lambda\va...
+...lon A \lambda\varepsilon A}^{'}-\sum_B\phi_{AB}Q_B\gamma_{AB}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+The effect on the nuclear term is similar, but opposite in sign:
+<p align="center"><IMG
+ WIDTH="221" HEIGHT="42"
+ SRC="img1273.gif"
+ ALT="\begin{displaymath}E_{A(nuc)}=E_{A(nuc)}^{'}+\sum_B\phi_{AB}Q_BZ_A\gamma_{AB}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+The total energy is given by the sum of the electronic plus nuclear energies.
+Given that the electronic energy is
+<p align="center"><IMG
+ WIDTH="194" HEIGHT="46"
+ SRC="img1274.gif"
+ ALT="\begin{displaymath}E_{ee}=\frac{1}{2}\sum_{\lambda}\sum_{\sigma}P_{\lambda \sigma}
+(H_{\lambda \sigma}+F_{\lambda \sigma}),
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+the electronic term due to distant nuclei is
+<p align="center"><IMG
+ WIDTH="231" HEIGHT="46"
+ SRC="img1275.gif"
+ ALT="\begin{displaymath}E_{lre(ee)}=\frac{-1}{2}\sum_A\sum_{\lambda\varepsilon A}P_{\lambda \lambda}\sum_B\phi_{AB}Q_B\gamma_{AB}
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+or
+<p align="center"><IMG
+ WIDTH="215" HEIGHT="45"
+ SRC="img1276.gif"
+ ALT="\begin{displaymath}E_{lre(ee)}=\frac{-1}{2}\sum_ANe_A\sum_B\phi_{AB}Q_B\gamma_{AB}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+Likewise, given that the nuclear energy is
+<p align="center"><IMG
+ WIDTH="139" HEIGHT="42"
+ SRC="img1277.gif"
+ ALT="\begin{displaymath}E_{ne}=\sum_A\sum_{B<A} Z_AZ_B\gamma_{AB},
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+the nuclear energy term due to distant nuclei is
+<p align="center"><IMG
+ WIDTH="187" HEIGHT="42"
+ SRC="img1278.gif"
+ ALT="\begin{displaymath}E_{lre(ne)}=\sum_A\sum_{B<A}\phi_{AB} Q_AZ_B\gamma_{AB}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+This can be re-written in a more symmetric form as
+<p align="center"><IMG
+ WIDTH="255" HEIGHT="45"
+ SRC="img1279.gif"
+ ALT="\begin{displaymath}E_{lre(ne)}=\frac{1}{4}\sum_A\sum_{B}\phi_{AB}(Q_AZ_B +Q_BZ_A)\gamma_{AB}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+Together, the total contribution due to the electronic and nuclear terms
+arising from distant atoms is
+<p align="center"><IMG
+ WIDTH="423" HEIGHT="45"
+ SRC="img1280.gif"
+ ALT="\begin{displaymath}E_{lre(ee)}+E_{lre(ne)}= \frac{1}{4}\sum_A\sum_{B}\phi_{AB}(Q_A(Z_B-Ne_B)+Q_B(Z_A-Ne_A))\gamma_{AB}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+Rearranging gives
+<p align="center"><IMG
+ WIDTH="315" HEIGHT="45"
+ SRC="img1281.gif"
+ ALT="\begin{displaymath}E_{lre(ee)}+E_{lre(ne)}= \frac{1}{4}\sum_A\sum_{B}\phi_{AB}(Q_AQ_B +Q_BQ_A)\gamma_{AB}
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+or
+<p align="center"><IMG
+ WIDTH="254" HEIGHT="45"
+ SRC="img1282.gif"
+ ALT="\begin{displaymath}E_{lre(ee)}+E_{lre(ne)}= \frac{1}{2}\sum_A\sum_{B}\phi_{AB}Q_AQ_B\gamma_{AB},
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+which is identical to the simple equation this discussion began with.
+<P>
+In the 1996 version of MOZYME, this sum was calculated explicitly.  However, 
+evaluation of the sum can be avoided by adding into the one-electron matrix
+the  electrostatic stabilization terms arising from atoms beyond
+<TT>CUTOF2</TT>.  This concisely and effectively takes into account the
+quantities just discussed.
+<P>
+Although the point-charge electrostatic effects are important, they are not the
+only long-range effect.  The effect of a point-charge on a lone pair of
+electrons is also significant.  Consider a lone pair on an atom pointing in the
+direction of a positive charge.  Clearly this will lead to a stabilizing
+effect. A lone pair pointing in the opposite direction will be destabilized.
+Similarly, a lone pair pointing at 90<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1283.gif"
+ ALT="$^{\circ}$">
+to a charge will be subjected
+to a torque.  In order to include these effects in the Hamiltonian some extra
+terms are needed.
+<P>
+The size of a lone pair on an atom is represented in the density matrix by the
+value of the associated  <I>s</I>-<I>p</I> terms.  For each atom, there are three such
+terms: <I>P</I><SUB><I>sp</I><SUB><I>x</I></SUB></SUB>, <I>P</I><SUB><I>sp</I><SUB><I>y</I></SUB></SUB>, and <I>P</I><SUB><I>sp</I><SUB><I>z</I></SUB></SUB>. The effect of  distant charges
+on <I>F</I><SUB><I>sp</I><SUB><I>x</I></SUB></SUB> is given by
+<P align="center">
+<IMG
+ WIDTH="204" HEIGHT="42"
+ SRC="img1284.gif"
+ ALT="\begin{displaymath}F_{sp_x}' = F_{sp_x}-\sum_{B}Q_B\! <\!ss\vert sx\!>\!P_{sp_x}
+\end{displaymath}"><BR CLEAR="ALL"><P></P>
+Similar terms exists for <I>F</I><SUB><I>sp</I><SUB><I>y</I></SUB></SUB> and <I>F</I><SUB><I>sp</I><SUB><I>z</I></SUB></SUB>.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8844"
+ HREF="node542.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8840"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8836"
+ HREF="node540.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8842"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8843"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8845"
+ HREF="node542.html"> Geometry optimization</A>
+<B> Up:</B> <A NAME="tex2html8841"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8837"
+ HREF="node540.html"> Density Matrix Construction</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

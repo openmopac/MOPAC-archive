@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Control within MOPAC</TITLE></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node675.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A HREF="node661.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node663.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next</B><A HREF="node675.html"><B>:</B> <A HREF="node675.html">Files used by MOPAC</A></A> <B>Up:</B> <A HREF="node661.html">Program</A> <B>Previous:</B> <A HREF="node663.html">Main electronic flow</A>
+<!--End of Navigation Panel-->
+<H1>Control within MOPAC </H1>
+<P>Almost all the control information is passed <EM>via</EM> the single datum "KEYWRD", a string of 80 to 240 characters, which is read in at the start of the job. </P>
+<P>Each subroutine is made independent, as far as possible, even at the expense of extra code or calculation. Thus, for example, the SCF criterion is set in subroutine ITER, and nowhere else. Similarly, subroutine DERIV has exclusive control of the step size in the finite-difference calculation of the energy derivatives. If the default values are to be reset, then the new value is supplied in KEYWRD, and extracted <EM>via</EM> INDEX and READA. The flow of control is decided by the presence of various keywords in KEYWRD. </P>
+<P>When a subroutine is called, it assumes that all data required for its operation are available in either common blocks or arguments. Normally no check is made as to the validity of the data received. All data are "owned" by one, and only one, subroutine. Ownership means the <A NAME="BM32624">&nbsp;</A> implied permission and ability to change the data. Thus STATE "owns" the number of atomic orbitals, in that it calculates this number, and stores it in the variable NORBS. Many subroutines use NORBS, but none of them is allowed to change it. For obvious reasons no exceptions should be made to this rule. To illustrate the usefulness of this convention, consider the eigenvectors, <TT>C</TT> and <TT>CBETA</TT>. These are owned by ITER. Before ITER is called, <TT>C</TT> and <TT>CBETA</TT> are not calculated, after ITER has been called <TT>C</TT> and <TT>CBETA</TT> are known, so any subroutine which needs to use the eigenvectors can do so in the certain knowledge that they exist. </P>
+<P>Any variables which are only used within a subroutine are not passed outside the subroutine unless an overriding reason exists. This</A> is found in PULAY and CNVG, among others where arrays used to hold spin-dependent data are used, and these cannot conveniently be defined within the subroutines. In these examples, the relevant arrays are "owned" by ITER. </P>
+<P>A general subroutine, of which ITER is a good example, handles three kinds of data: First, data which the subroutine is going to work on, for example the one and two electron matrices; second, data necessary to manipulate the first set of data, such as the number of atomic orbitals; third, the calculated quantities, here the electronic energy, and the density and Fock matrices. </P>
+<P>Reference data are entered into a subroutine by way of the common <A NAME="BM32634">&nbsp;</A> blocks. This is to emphasize their peripheral role. Thus the number of orbitals, while essential to ITER, is not central to the task it has to perform, and is passed through a common block. </P>
+<P>Data the subroutine is going to work on are passed via the argument list. Thus the one and two electron matrices, which are the main reason for ITER's existence, are entered as two of the four arguments. As ITER does not own these matrices it can use them but may not change their contents. The other argument is EE, the electronic energy. EE is owned by ITER even though it first appears before ITER is called. </P>
+<P><HR></P>
+<P><A HREF="node675.html"><IMG SRC="next_motif.gif" BORDER=0 width="37" height="24"></A><A HREF="node661.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node663.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node675.html">Files used by MOPAC</A> <B>Up:</B> <A HREF="node661.html">Program</A> <B>Previous:</B> <A HREF="node663.html">Main electronic flow</A> <BR>
+<BR>
+<!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

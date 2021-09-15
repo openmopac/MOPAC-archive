@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>FORCE </TITLE>
+<META NAME="description" CONTENT="FORCE ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node183.html"><LINK REL="previous" HREF="node181.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node183.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node183.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><a href="freqcy.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></a><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node183.html">GEO-OK </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B>
+<a href="freqcy.html">FREQCY</a><!--End of Navigation Panel--><H2>
+<TT>FORCE</TT> </H2>
+<P>A force-calculation is to be run. The Hessian, that is the matrix in millidynes per &Aring;ngstrom) of second derivatives of the energy with respect to displacements of all pairs of atoms in <I>x</I>, <I>y</I>, and <I>z</I> directions, is calculated. On diagonalization this gives the force constants for the molecule. The force matrix, weighted for isotopic masses, is then used for calculating the vibrational frequencies. The system can be characterized as a ground state or a transition state by the presence of five (for a linear system) or six eigenvalues which are very small (less than about 30 reciprocal centimeters). A transition state is further characterized by one, and exactly one, negative force constant. </P>
+<P>Before a <TT>FORCE</TT> calculation is run, the gradients are calculated to see if the geometry is at a stationary point. If it is not, then the calculation will be stopped, to allow the user to take corrective action. </P>
+<P>Sometimes, the gradient norm at the start of a <TT>FORCE</TT> calculation will be larger than at the end of the geometry optimization which was used to generate the geometry for the force calculation. This is due to the <TT>FORCE</TT> calculation using a different method, double-sided derivatives, to calculate the gradients. In order to have the same GNORM at the end of a geometry optimization as at the start of a <TT>FORCE</TT> calculation, use <TT>
+<a href="node274.html">PRECISE</a></TT> in the geometry optimization. Gradients calculated with <TT>PRECISE</TT> and with <TT>FORCE</TT> both use double-sided derivatives. </P>
+<P>A <TT>FORCE</TT> calculation is a prerequisite for a <TT>
+<a href="node323.html">THERMO</a></TT> calculation. </P>
+<P>At the end of a <TT>FORCE</TT> calculation, the force constants for the coordinates supplied will be printed. If other force constants are needed, then use <TT>
+<a href="node200.html">ISOTOPE</a></TT> to save the Hessian. The connectivity can then be changed, and the job restarted using <TT>
+<a href="node288.html">RESTART</a></TT>. Of course care must be taken to ensure that the atoms are in exactly the same positions in both calculations. </P>
+<P>Before a <TT>FORCE</TT> calculation is started, a check is made to ensure that a stationary point is being used. This check involves calculating the gradient norm (GNORM) and if it is significant, the calculation will be stopped. See also <TT>
+<a href="node207.html">LET</a> and <a href="node331.html">TRANS</a></TT>. In a <TT>FORCE</TT> calculation, <TT>PRECISE</TT> will eliminate quartic contamination <A NAME="BM2115">&nbsp;</A> part of the anharmonicity). This is normally not important, therefore <TT>PRECISE</TT> should not routinely be used. In a <TT>FORCE</TT> calculation, the SCF criterion is automatically made more stringent; this is the main cause of the SCF failing in a <TT>FORCE</TT> calculation. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html4091"><A HREF="node183.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html4087"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html4081"></A><A HREF="node181.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html4089"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html4090"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html4092"><A HREF="node183.html">GEO-OK </A></A><B>Up:</B> <A NAME="tex2html4088"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html4082"><A HREF="node181.html">FMAT </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

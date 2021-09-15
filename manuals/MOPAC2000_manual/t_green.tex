@@ -1,0 +1,68 @@
+\subsection{Outer Valence Green's Function}\label{gf}
+This section is based on materials supplied by
+\begin{center}Dr David Danovich\\The Fritz Haber Research Center for 
+Molecular Dynamics\\ The Hebrew University of Jerusalem\\ 91904 Jerusalem\\
+Israel \end{center}
+
+The OVGF technique was used with the self-energy part extended to include
+third order perturbation corrections,~\cite{gf1}.  The higher order contributions
+were estimated by the renormalization procedure.  The actual expression used to
+calculate the self-energy part, $\sum_{pp}(w)$, chosen in the diagonal form,
+is given in equation~(\ref{gfeq1}), where $\sum_{pp}^{(2)}(w)$ and $\sum_{pp}^{(3)}(w)$ are
+the second- and third-order corrections, and $A$ is the screening factor accounting
+for all the contributions of higher orders.
+\begin{equation}\label{gfeq1}
+\sum_{pp}(w) = \sum_{pp}^{(2)}(w)+(1-A)^{-1}\sum_{pp}^{(3)}(w).
+\end{equation}
+The particular expression which was used for the second-order corrections is given in
+equation~(\ref{gfeq2}).
+\begin{equation}\label{gfeq2}
+\sum_{pp}^{(2)}(w) = \sum_a\sum_{i,j}\frac{(2V_{paij}-V_{paji})V_{paij}}{w+e_a-e_i-e_j}
++\sum_{a,b}\sum_i\frac{(2V_{piab}-V_{piba})V_{piab}}{w+e_i-e_a-e_b},
+\end{equation}
+where
+$$
+V_{pqrs} = \int\int\psi_p^*(1)\psi_q^*(2)(1/r_{12})\psi_r^*(1)\psi_s^*(2){\rm d}\tau_1{\rm d}\tau_2.
+$$
+
+In equation~(\ref{gfeq2}), $i$ and $j$ denote occupied orbitals, $a$ and $b$
+denote virtual orbitals, $p$ denotes orbitals of unspecified occupancy, and
+$e$  denotes an orbital energy. The equations are solved by an iterative
+procedure, represented in  equation~(\ref{gfeq3}).
+\begin{equation}\label{gfeq3}
+w_p^{i+1}=e_p+\sum_{pp}(w^i).
+\end{equation}
+
+The SCF energies and the corresponding integrals, which were calculated by one
+of the semiempirical methods (MNDO, AM1, or PM3), were taken as the zero'th
+approximation and all M.O.s may be included in the active space for the OVGF
+calculations.
+
+The expressions used for $\sum_{pp}^{(3)}$ and $A$ are given in \cite{gf2}.
+
+The OVGF method itself, is described in detail in \cite{gf1}.
+
+%\subsubsection{Example of OVGF calculation}
+%  The data-set {\bf test\_greenf.dat} will calculate the first 8 I.P.s
+%for dimethoxy-$s$-tetrazine.  This calculation is discussed in detail in \cite{gf6}.
+%The experimental and calculated I.P.s are shown in Table~\ref{gftab}.
+%\begin{table}
+%\caption{\label{gftab}OVGF Calculation, Comparison with Experiment}
+%\begin{center}
+%\begin{tabular}{lccccc}\\
+%M.O.    &  Expt*  &   PM3   & Error   &  OVGF(PM3)  &  Error \\
+%$n_1$    &  9.05   &   10.15 &  1.10   &   9.46      &   0.41 \\
+%$\pi_1$  &  9.6    &   10.01 &  0.41   &   9.65      &   0.05 \\
+%$n_2$    &  11.2   &   11.96 &  0.76   &  11.13      &  -0.07 \\
+%$\pi_2$  &  11.8   &   12.27 &  0.47   &  11.43      &  -0.37 \\
+%\end{tabular}
+%
+%*: R. Gleiter,  V. Schehlmann, J. Spanget-Larsen, H. Fischer and F. A. Neugebauer,
+%{\em J. Org. Chem.}, {\bf 53}, 5756 (1988).
+%\end{center}
+%\end{table}
+%
+%
+%From this, we see that for PM3 the average error is 0.69eV, but after OVGF 
+%correction, the error drops to 0.22eV.  This is typical of nitrogen heterocycle 
+%%calculations.

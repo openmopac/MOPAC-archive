@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Tolerance</TITLE>
+<META NAME="description" CONTENT="Tolerance">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node567.html">
+<LINK REL="up" HREF="node563.html">
+<LINK REL="next" HREF="node569.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html9193"
+ HREF="node569.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html9189"
+ HREF="node563.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html9185"
+ HREF="node567.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html9191"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9192"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9194"
+ HREF="node569.html"> Orientation of the C<SUB>2v</SUB> and D<SUB>2h</SUB></A>
+<B> Up:</B> <A NAME="tex2html9190"
+ HREF="node563.html"> Identification of Point-Groups</A>
+<B> Previous:</B> <A NAME="tex2html9186"
+ HREF="node567.html">Abelian Groups</A>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION0012103500000000000000">
+Tolerance</A>
+</H3>
+Normally, molecular geometries do not exactly correspond to the idealized
+point-group.  Thus benzene might have slightly different bond-lengths and
+angles.  Of course, symmetry could be used to prevent this, but in the
+discussion here we assume that the symmetry of the system is unknown.  To allow
+for these slight distortions, a small tolerance is built in to the tests for
+symmetry elements. This starts off at 0.1&#197; , but may be tightened
+automatically if ambiguities are detected.  An example of such an ambiguity is
+found in <a href="ref_data/cyc7h7_cat.mop">tropylium</a>, C<SUB>7</SUB>H<SUB>7</SUB><SUP>+</SUP> ion, where the C-C distance is 1.4 &#197;.
+Rotating the ring by 45 degrees (a C<SUB>8</SUB> operation) would place the atoms at a
+distance of only 0.18&#197;  from equivalent positions.  C<SUB>7</SUB> and C<SUB>8</SUB> would
+thus  give almost identical results.  To resolve such ambiguities, when they
+arise, the tolerance is reduced, and the test re-run.
+<P>
+Even with this feature, some systems still resist classification.   A distorted
+geometry might have some, but not all, elements of a high point group.  Perhaps
+a distorted benzene has a C<SUB>2</SUB>(z) and a C<SUB>3</SUB>(z), but  not a C<SUB>6</SUB>(z), 
+impossible in a real system.  As such it would appear to be different from all
+real point groups.  To accommodate such defects a descent in symmetry is
+carried out.  This consists of checking each point-group in turn, in order of
+decreasing symmetry.  Once all of the elements of a point group are satisfied,
+the system is assigned to that point group, even if the system contains more
+symmetry than the point group.
+<P>
+By these two devices, a variable tolerance and the descent in symmetry, most
+systems should be identified correctly, or at least as a sub-group of the full
+point group.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html9193"
+ HREF="node569.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html9189"
+ HREF="node563.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html9185"
+ HREF="node567.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html9191"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9192"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9194"
+ HREF="node569.html"> Orientation of the C<SUB>2v</SUB> and D<SUB>2h</SUB></A>
+<B> Up:</B> <A NAME="tex2html9190"
+ HREF="node563.html"> Identification of Point-Groups</A>
+<B> Previous:</B> <A NAME="tex2html9186"
+ HREF="node567.html">Abelian Groups</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

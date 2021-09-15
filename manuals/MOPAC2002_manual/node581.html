@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Gradients</TITLE>
+<META NAME="description" CONTENT="8.13 Gradients">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node584.html"><LINK REL="previous" HREF="node580.html"><LINK REL="up" HREF="node439.html"><LINK REL="next" HREF="node582.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node582.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node580.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node582.html">Frozen density matrix</A> <B>Up:</B> <A HREF="node439.html">Theory</A> <B>Previous:</B> <A HREF="node580.html">Torsion or Dihedral</A>
+<!--End of Navigation Panel-->
+<H1>Gradients </H1>
+<P>By "gradients" we generally mean "the derivative of the energy with respect to coordinates". The two most commonly used gradients are with respect to Cartesian coordinates, in which case the units are kcal/mol/&Aring;ngstrom, or with respect to internal coordinates, in which case the units are either kcal/mol/&Aring;ngstrom or kcal/mol/radian, depending on whether the coordinate is a distance (in which case it would be kcal/mol/&Aring;ngstrom) or an angle or dihedral (in which case it would be kcal/mol/radian). The particular gradient actually being used at any given point should be clear from the context. In all cases, the gradient can be regarded as the following derivative </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+g_i = \frac{d(\Delta H_f)}{dx_i}
+\end{displaymath} --><IMG SRC="img1492.gif" WIDTH=81 HEIGHT=47 ALT="begin{displaymath}g_i = frac{d(Delta H_f)}{dx_i}end{displaymath}"></DIV>
+<P>In discussion "gradient" will be reserved for the derivative with respect to coordinates flagged for optimization (internal or Cartesian), and "derivative" will be used for both gradients and terms which are used to calculate gradients, such as Cartesian derivatives which are used to calculate internal coordinate gradients. </P>
+<P>There are four very different ways to calculate gradients, although all four result in the same type of derivative. The four ways are: </P>
+<STRONG><DL>
+<DT>Frozen density matrix finite difference derivatives</STRONG> </DT>
+<DD>&nbsp; <BR>
+In these procedures, once an SCF has been achieved, the derivatives can be calculated using the density matrix from the SCF calculation. These methods can only be used with variationally optimized wavefunctions. </DD>
+<DD>By default, the derivatives are worked out by calculating the energy of each pair of atoms, then re-calculating the energy after a small displacement has been made, and then calculating the derivative from the differences in the energies and the step. This is the default, and is the fastest. If this method is <EM>not</EM> wanted, specify <TT>
+<a href="node125.html">ANALYT</a></TT>. </DD>
+<dt>
+<STRONG></dt><BR>
+<DT>Analytical derivatives, using frozen density matrix approximation</STRONG> </DT>
+<DD>&nbsp; <BR>
+Not as fast as the first method, but more accurate. Useful when finite difference derivatives are suspected to be of insufficient accuracy. When analytical derivatives are wanted, specify <TT>ANALYT</TT>. Analytical derivatives cannot be used with non-variational finite difference derivatives. </DD>
+<dt>
+<STRONG></dt><BR>
+<DT>Non-variational finite difference derivatives</STRONG> </DT>
+<DD>&nbsp; <BR>
+For non-variational <A NAME="BM20721">&nbsp;</A>wavefunctions (systems for which the electronic energy is modified after the SCF calculation is done, e.g. C.I. calculations), a sophisticated derivative routine in <TT>DERNVO</TT> calculates the effect on the derivative of the post-SCF energy terms. This method is used automatically in RHF C.I. calculations. If this method is <EM>not</EM> wanted, specify <TT>
+<a href="node234.html">NOANCI</a></TT>. </DD>
+<dt>
+<STRONG></dt><BR>
+<DT>Brute force gradients</STRONG> </DT>
+<DD>&nbsp; <BR>
+These should be avoided whenever possible. To calculate the gradient, a small change is made in the desired coordinate, then a full SCF is done, and the gradient calculated from </DD>
+<DD><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}</DD></DD>
+g_i = \frac{\Delta H_f-\Delta H_f'}{x-x^{'}}.
+\end{displaymath} --><IMG SRC="img1493.gif" WIDTH=108 HEIGHT=45 ALT="begin{displaymath}g_i = frac{Delta H_f-Delta H_f'}{x-x^{'}}.end{displaymath}"></DIV>
+<DD>These gradients are very slow, and are of poor accuracy, but sometimes they are the only way to obtain gradients. These derivatives cannot be used with variationally optimized wavefunctions, but can be used with non-variational wavefunctions by specifying <TT>NOANCI</TT>. </DD>
+</DL>
+<P>Note that <TT>ANALYT</TT> and <TT>NOANCI</TT> apply to two very different things: <TT>ANALYT</TT> applies to the derivatives using a frozen density matrix approximation, and uses true analytical methods. <TT>NOANCI</TT> prevents Liotard's C.I. derivative method being used. Of course <TT>NOANCI</TT> has no meaning for variationally optimized wavefunctions. </P>
+<P><HR></P>
+<P><!--Table of Child-Links--><A NAME="CHILD_LINKS">&nbsp;</A> </P>
+
+<UL>
+<LI><A NAME="tex2html9352"><A HREF="node582.html">Frozen density matrix finite difference derivatives</A></A> </LI>
+<LI><A NAME="tex2html9353"><A HREF="node583.html">Hessian matrix in <U><FONT COLOR="#0000ff"><TT>FORCE</U></FONT></TT> calculations</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html9350"><A HREF="node582.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9346"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9340"></A><A HREF="node580.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9348"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9349"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9351"><A HREF="node582.html">Frozen density matrix</A></A> <B>Up:</B> <A NAME="tex2html9347"><A HREF="node439.html">Theory</A></A> <B>Previous:</B> <A NAME="tex2html9341"><A HREF="node580.html">Torsion or Dihedral</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,60 @@
+*
+*   The following few tests are highly artificial - MOPAC does not have
+*   parameters for MNDO-d Titanium.  The purpose of the tests is to
+*   demonstrate that when parameters are available, the C.I. will work.
+*
+  1scf      vectors  meci  charge=-3  open(1,5) MNDOD external=ti.par
+Titanium in octahedral environment (Charge is -3 in order to have 1 `d' electron)
+
+  Ti   0.0000000  0      0.000000  0      0.000000  0    0    0    0     
+  F    3.0000000  0      0.000000  0      0.000000  0    1    0    0    
+  F    3.0000000  0     90.000000  0      0.000000  0    1    2    0   
+  F    3.0000000  0     90.000000  0    180.000000  0    1    3    2  
+  F    3.0000000  0     90.000000  0    180.000000  0    1    4    3 
+  F    3.0000000  0     90.000000  0     90.000000  0    1    2    3
+  F    3.0000000  0     90.000000  0    -90.000000  0    1    2    3 
+
+oldgeo vectors meci charge=-4 open(2,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment (Charge is -4 in order to have 2 `d' electrons)
+
+oldgeo vectors meci charge=-5 open(3,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment (Charge is -5 in order to have 3 `d' electrons)
+
+oldgeo vectors meci charge=-6 open(4,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment (Charge is -6 in order to have 4 `d' electrons)
+
+oldgeo vectors meci charge=-7 open(5,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment (Charge is -7 in order to have 5 `d' electrons)
+
+oldgeo vectors meci charge=-8 open(6,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment (Charge is -8 in order to have 6 `d' electrons)
+
+oldgeo vectors meci charge=-9 open(7,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment 
+
+oldgeo vectors meci charge=-10 open(8,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment 
+
+oldgeo vectors meci charge=-11 open(9,5)  1scf  MNDOD external=ti.par
+Titanium in octahedral environment 
+
+        vectors   charge=4    1scf  MNDOD external=ti.par
+Titanium, isolated d(0) system.
+
+  Ti   0.0000000  0      0.000000  0      0.000000  0    0    0    0     
+
+vectors meci charge=3 open(1,5) oldgeo  1scf MNDOD external=ti.par
+ Titanium, d1
+ States= 2D
+vectors meci charge=2 open(2,5) oldgeo  1scf MNDOD external=ti.par
+ Titanium, d2
+ States = 1S 3P 1D 3F 1G
+vectors meci charge=1 open(3,5) oldgeo  1scf MNDOD external=ti.par
+ Titanium, d3
+            
+vectors meci open(4,5) oldgeo  1scf MNDOD external=ti.par
+ Titanium, d4
+            
+vectors meci charge=-1 open(5,5) oldgeo  1scf  MNDOD external=ti.par
+ Titanium, d5
+

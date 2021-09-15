@@ -1,0 +1,447 @@
+      SUBROUTINE SPLINE
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES'
+      LOGICAL SKIP1,SKIP2
+C
+C     FIT F(X) BY A CUBIC SPLINE GIVEN VALUES OF THE FUNCTION
+C     AND ITS FIRST DERIVATIVE AT N PNTS.
+C     SUBROUTINE RETURNS VALUES OF XMIN,FMIN, AND DFMIN
+C     AND MAY REORDER THE DATA.
+C     CALLING PROGRAM SUPPLIES ALL OTHER VALUES IN THE
+C     COMMON BLOCK.
+C     XLOW AND XHIGH SET LIMITS ON THE INTERVAL WITHIN WHICH
+C     TO SEARCH.  SUBROUTINE MAY FURTHER REDUCE THIS INTERVAL.
+C
+      COMMON/FIT/N,IDUM2,XLOW,XHIGH,XMIN,FMIN,DFMIN,X(12),F(12),DF(12)
+      DATA CLOSE,BIG,HUGE,USTEP,DSTEP/1.0E-10,500.0,1.0E+10,1.0,2.0/
+C
+C     SUBROUTINE ASSUMES THAT THE FIRST N-1 DATA PNTS HAVE BEEN
+C     PREVIOUSLY ORDERED,  X(I).LT.X(I+1) FOR I=1,2,...,N-2
+C     NOW MOVE NTH POINT TO ITS PROPER PLACE.
+C
+      XMIN=X(N)
+      FMIN=F(N)
+      DFMIN=DF(N)
+      N1=N-1
+      K=N1
+   10 IF(X(K).LT.XMIN) GO TO 20
+      X(K+1)=X(K)
+      F(K+1)=F(K)
+      DF(K+1)=DF(K)
+      K=K-1
+      IF(K.GT.0) GO TO 10
+   20 X(K+1)=XMIN
+      F(K+1)=FMIN
+      DF(K+1)=DFMIN
+C
+C     DEFINE THE INTERVAL WITHIN WHICH WE TRUST THE SPLINE FIT.
+C     USTEP =  UP HILL STEP SIZE FACTOR
+C     DSTEP = DOWN HILL STEP SIZE FACTOR
+C
+      IF(DF(1).GT.0.0) STEP=DSTEP
+      IF(DF(1).LE.0.0) STEP=USTEP
+      XSTART=X(1)-STEP*(X(2)-X(1))
+      XSTART=DMAX1(XSTART,XLOW)
+      IF(DF(N).GT.0.0) STEP=USTEP
+      IF(DF(N).LE.0.0) STEP=DSTEP
+      XSTOP=X(N)+STEP*(X(N)-X(N1))
+      XSTOP=DMIN1(XSTOP,XHIGH)
+C
+C     SEARCH FOR MINIMUM
+C
+      DO 110 K=1,N1
+         SKIP1=K.NE.1
+         SKIP2=K.NE.N1
+         IF(F(K).GE.FMIN) GO TO 30
+         XMIN=X(K)
+         FMIN=F(K)
+         DFMIN=DF(K)
+   30    DX=X(K+1)-X(K)
+C
+C     SKIP INTERVAL IF PNTS ARE TOO CLOSE TOGETHER
+C
+         IF(DX.LE.CLOSE) GO TO 110
+         X1=0.0
+         IF(K.EQ.1) X1=XSTART-X(1)
+         X2=DX
+         IF(K.EQ.N1) X2=XSTOP-X(N1)
+C
+C     (A,B,C)=COEF OF (CUBIC,QUADRATIC,LINEAR) TERMS
+C
+         DUM=(F(K+1)-F(K))/DX
+         A=(DF(K)+DF(K+1)-DUM-DUM)/(DX*DX)
+         B=(DUM+DUM+DUM-DF(K)-DF(K)-DF(K+1))/DX
+         C=DF(K)
+C
+C     XK = X-X(K) AT THE MINIMUM WITHIN THE KTH SUBINTERVAL
+C     TEST FOR PATHOLOGICAL CASES.
+C
+         BB=B*B
+         AC3=(A+A+A)*C
+         IF(BB.LT.AC3) GO TO 90
+         IF( B.GT.0.0) GO TO 40
+         IF(ABS(B).GT.HUGE*ABS(A)) GO TO 90
+         GO TO 50
+   40    IF(BB.GT.BIG*ABS(AC3)) GO TO 60
+C
+C     WELL BEHAVED CUBIC
+C
+   50    XK=(-B+SQRT(BB-AC3))/(A+A+A)
+         GO TO 70
+C
+C     CUBIC IS DOMINATED BY QUADRATIC TERM
+C
+   60    R=AC3/BB
+         XK=-(((0.039063*R+0.0625)*R+0.125)*R+0.5)*C/B
+   70    IF(XK.LT.X1.OR.XK.GT.X2) GO TO 90
+   80    FM=((A*XK+B)*XK+C)*XK+F(K)
+         IF(FM.GT.FMIN) GO TO 90
+         XMIN=XK+X(K)
+         FMIN=FM
+         DFMIN=((A+A+A)*XK+B+B)*XK+C
+C
+C     EXTRAPOLATE TO END OF INTERVAL IF K=1 AND/OR K=N1
+C
+   90    IF(SKIP1) GO TO 100
+         SKIP1=.TRUE.
+         XK=X1
+         GO TO 80
+  100    IF(SKIP2) GO TO 110
+         SKIP2=.TRUE.
+         XK=X2
+         GO TO 80
+  110 CONTINUE
+      RETURN
+      END
+      SUBROUTINE SCHMIT(U,N,NDIM)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES'
+      DIMENSION U(MAXORB,MAXORB)
+      DATA ZERO,SMALL,ONE/0.0,0.01,1.0/
+      II=0
+      DO 110 K=1,N
+         K1=K-1
+C
+C     NORMALIZE KTH COLUMN VECTOR
+C
+         DOT = ZERO
+         DO 10 I=1,N
+   10    DOT=DOT+U(I,K)*U(I,K)
+         IF(DOT.EQ.ZERO) GO TO 100
+         SCALE=ONE/SQRT(DOT)
+         DO 20 I=1,N
+   20    U(I,K)=SCALE*U(I,K)
+   30    IF(K1.EQ.0) GO TO 110
+         NPASS=0
+C
+C     PROJECT OUT K-1 PREVIOUS ORTHONORMAL VECTORS FROM KTH VECTOR
+C
+   40    NPASS=NPASS+1
+         DO 70 J=1,K1
+            DOT=ZERO
+            DO 50 I=1,N
+   50       DOT=DOT+U(I,J)*U(I,K)
+            DO 60 I=1,N
+   60       U(I,K)=U(I,K)-DOT*U(I,J)
+   70    CONTINUE
+C
+C     SECOND NORMALIZATION (AFTER PROJECTION)
+C     IF KTH VECTOR IS SMALL BUT NOT ZERO THEN NORMALIZE
+C     AND PROJECT AGAIN TO CONTROL ROUND-OFF ERRORS.
+C
+         DOT=ZERO
+         DO 80 I=1,N
+   80    DOT=DOT+U(I,K)*U(I,K)
+         IF(DOT.EQ.ZERO) GO TO 100
+         IF(DOT.LT.SMALL.AND.NPASS.GT.2) GO TO 100
+         SCALE=ONE/SQRT(DOT)
+         DO 90 I=1,N
+   90    U(I,K)=SCALE*U(I,K)
+         IF(DOT.LT.SMALL) GO TO 40
+         GO TO 110
+C
+C     REPLACE LINEARLY DEPENDENT KTH VECTOR BY A UNIT VECTOR.
+C
+  100    II=II+1
+C     IF(II.GT.N) STOP
+         U(II,K)=ONE
+         GO TO 30
+  110 CONTINUE
+      RETURN
+      END
+      SUBROUTINE SCHMIB(U,N,NDIM)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES'
+C
+C     SAME AS SCHMIDT BUT WORKS FROM RIGHT TO LEFT.
+C
+      DIMENSION U(MAXORB,MAXORB)
+      DATA ZERO,SMALL,ONE/0.0,0.01,1.0/
+      N1=N+1
+      II=0
+      DO 110 K=1,N
+         K1=K-1
+C
+C     NORMALIZE KTH COLUMN VECTOR
+C
+         DOT = ZERO
+         DO 10 I=1,N
+   10    DOT=DOT+U(I,N1-K)*U(I,N1-K)
+         IF(DOT.EQ.ZERO) GO TO 100
+         SCALE=ONE/SQRT(DOT)
+         DO 20 I=1,N
+   20    U(I,N1-K)=SCALE*U(I,N1-K)
+   30    IF(K1.EQ.0) GO TO 110
+         NPASS=0
+C
+C     PROJECT OUT K-1 PREVIOUS ORTHONORMAL VECTORS FROM KTH VECTOR
+C
+   40    NPASS=NPASS+1
+         DO 70 J=1,K1
+            DOT=ZERO
+            DO 50 I=1,N
+   50       DOT=DOT+U(I,N1-J)*U(I,N1-K)
+            DO 60 I=1,N
+   60       U(I,N1-K)=U(I,N1-K)-DOT*U(I,N1-J)
+   70    CONTINUE
+C
+C     SECOND NORMALIZATION (AFTER PROJECTION)
+C     IF KTH VECTOR IS SMALL BUT NOT ZERO THEN NORMALIZE
+C     AND PROJECT AGAIN TO CONTROL ROUND-OFF ERRORS.
+C
+         DOT=ZERO
+         DO 80 I=1,N
+   80    DOT=DOT+U(I,N1-K)*U(I,N1-K)
+         IF(DOT.EQ.ZERO) GO TO 100
+         IF(DOT.LT.SMALL.AND.NPASS.GT.2) GO TO 100
+         SCALE=ONE/SQRT(DOT)
+         DO 90 I=1,N
+   90    U(I,N1-K)=SCALE*U(I,N1-K)
+         IF(DOT.LT.SMALL) GO TO 40
+         GO TO 110
+C
+C     REPLACE LINEARLY DEPENDENT KTH VECTOR BY A UNIT VECTOR.
+C
+  100    II=II+1
+C     IF(II.GT.N) STOP
+         U(II,N1-K)=ONE
+         GO TO 30
+  110 CONTINUE
+      RETURN
+      END
+      SUBROUTINE LIGEN(A,VEC,EIG,N,NDIM)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES'
+C     IMPLICIT REAL*8 (A-H,O-Z)
+C
+C       *****  A GIVENS HOUSHOLDER MATRIX DIAGONALIZATION   *****
+C     A = MATRIX TO BE DIAGONALIZED IN TRIANGULAR FORM
+C     VEC = EIGENVECTORS N BY N DIMENSIONED (NDIM,NDIM)
+C     EIGENVALUES ORDERED SMALL FIRST BIG LAST
+C
+      DIMENSION W(100),GAMMA(100),BETA(100),BETASQ(100)
+      DIMENSION P(100),Q(100),IPOSV(100),IVPOS(100),IORD(100)
+      DIMENSION A(36),EIG(NDIM),VEC(NDIM,NDIM), IA(MAXORB)
+      EQUIVALENCE (IPOSV(1),GAMMA(1)),(IVPOS(1),BETA(1)),
+     1 (IORD(1),BETASQ(1)),(P(1),BETA(1)),(Q(1),BETA(1))
+      DATA RHOSQ,ZERO,PT5,ONE,TWO/1.0E-24,0.0E+00,0.5E+00
+     1,1.0E+00,2.0E+00/
+      DO 10 I=1,MAXORB
+   10 IA(I)=(I*I-I)/2
+      IF(N.EQ.0) GO TO 420
+      N1=N-1
+      N2=N-2
+      GAMMA(1)=A(1)
+      IF(N2) 150,140,20
+   20 DO 130 NR=1,N2
+         IK=IA(NR+1)+NR
+         B=A(IK)
+         S=ZERO
+         DO 30 I=NR,N2
+            IJ=IA(I+2)+NR
+   30    S=S+A(IJ)**2
+C       *****  PREPARE FOR POSSIBLE BYPASS OF TRANSFORMATION ****
+         A(IK)=ZERO
+         IF(S.LE.ZERO) GO TO 120
+         S=S+B*B
+         SGN=+ONE
+         IF(B.GE.ZERO) GO TO 40
+         SGN=-ONE
+   40    SQRTS= SQRT(S)
+         D=SGN/(SQRTS+SQRTS)
+         TEMP= SQRT(PT5+B*D)
+         W(NR)=TEMP
+         A(IK)=TEMP
+         D=D/TEMP
+         B=-SGN*SQRTS
+C       *****  -D- IS FACTOR OF PROPORTIONALITY. NOW       *****
+C       *****  COMPUTE AND SAVE -W- VECTOR. EXTRA SINGLY   *****
+C       *****  SUBSCRIPTED -W- VECTOR FOR SPEED.           *****
+         DO 50 I=NR,N2
+            IJ=IA(I+2)+NR
+            TEMP=D*A(IJ)
+            W(I+1)=TEMP
+   50    A(IJ)=TEMP
+C       *****  PREMULTIPLY VECTOR -W- BY MATRIX -A- TO     *****
+C       *****  OBTAIN -P- VECTOR. SIMULTANEOUSLY ACCUMULATE ****
+C       *****  DOT PRODUCT -WP- -- SCALR -K-.              *****
+         WTAW=ZERO
+         DO 90 I=NR,N1
+            SUM=ZERO
+            II=IA(I+1)
+            DO 60 J=NR,I
+               IJ=II+J+1
+   60       SUM=SUM+A(IJ)*W(J)
+            I1=I+1
+            IF(N1.LT.I1) GO TO 80
+            DO 70 J=I1,N1
+               IJ=IA(J+1)+I+1
+   70       SUM=SUM+A(IJ)*W(J)
+   80       P(I)=SUM
+   90    WTAW=WTAW+SUM*W(I)
+         DO 100 I=NR,N1
+  100    Q(I)=P(I)-WTAW*W(I)
+C       *****  NOW FORM -PAP- MATRIX, REQUIRED PART        *****
+         DO 110 J=NR,N1
+            QJ=Q(J)
+            WJ=W(J)
+            JJ=J+1
+            DO 110 I=J,N1
+               IJ=IA(I+1)+JJ
+  110    A(IJ)=A(IJ)-TWO*(W(I)*QJ+WJ*Q(I))
+  120    BETA(NR)=B
+         BETASQ(NR)=B*B
+         IL=IK+1
+  130 GAMMA(NR+1)=A(IL)
+  140 IJ=IA(N)+N-1
+      B=A(IJ)
+      BETA(N-1)=B
+      BETASQ(N-1)=B*B
+      IJ=IJ+1
+      GAMMA(N)=A(IJ)
+  150 BETASQ(N)=ZERO
+C       *****  ADJOIN AN IDENTITY MATRIX TO BE POST-       *****
+C       *****  MULTIPLIED BY ROTATIONS                     *****
+      DO 170 I=1,N
+         DO 160 J=1,N
+  160    VEC(I,J)=ZERO
+  170 VEC(I,I)=ONE
+      M=N
+      SUM=ZERO
+      NPAS=1
+      GO TO 270
+  180 SUM=SUM+SHIFT
+      COSA=ONE
+      G=GAMMA(1)-SHIFT
+      PP=G
+      PPBS=PP*PP+BETASQ(1)
+      PPBR= SQRT(PPBS)
+      DO 240 J=1,M
+         COSAP=COSA
+         IF(PPBS.NE.ZERO) GO TO 190
+         SINA=ZERO
+         SINA2=ZERO
+         COSA=ONE
+         GO TO 220
+  190    SINA=BETA(J)/PPBR
+         SINA2=BETASQ(J)/PPBS
+         COSA=PP/PPBR
+C       *****  POSTMULTIPLY IDENTITY BY -P- TRANSPOSE .    *****
+         NT=J+NPAS
+         IF(NT.LT.N) GO TO 200
+         NT=N
+  200    CONTINUE
+         DO 210 I=1,NT
+            TEMP=COSA*VEC(I,J)+SINA*VEC(I,J+1)
+            VEC(I,J+1)=-SINA*VEC(I,J)+COSA*VEC(I,J+1)
+  210    VEC(I,J)=TEMP
+  220    DIA=GAMMA(J+1)-SHIFT
+         U=SINA2*(G+DIA)
+         GAMMA(J)=G+U
+         G=DIA-U
+         PP=DIA*COSA-SINA*COSAP*BETA(J)
+         IF(J.NE.M) GO TO 230
+         BETA(J)=SINA*PP
+         BETASQ(J)=SINA2*PP*PP
+         GO TO 250
+  230    PPBS=PP*PP+BETASQ(J+1)
+         PPBR= SQRT(PPBS)
+         BETA(J)=SINA*PPBR
+  240 BETASQ(J)=SINA2*PPBS
+  250 GAMMA(M+1)=G
+C       *****  TEST FOR CONVERGENCE OF LAST DIAGONAL ELEMENT ****
+      NPAS=NPAS+1
+      IF(BETASQ(M).GT.RHOSQ) GO TO 280
+  260 EIG(M+1)=GAMMA(M+1)+SUM
+  270 BETA(M)=ZERO
+      BETASQ(M)=ZERO
+      M=M-1
+      IF(M.EQ.0) GO TO 300
+      IF(BETASQ(M).LE.RHOSQ) GO TO 260
+C       *****  TAKE ROOT OF CORNER 2 BY 2 NEAREST TO       *****
+C       *****  LOWER DIAGONAL IN VALUE AS ESTIMATE OF      *****
+C       *****  EIGENVALUE TO USE FOR SHIFT                 *****
+  280 A2=GAMMA(M+1)
+      R2=PT5*A2
+      R1=PT5*GAMMA(M)
+      R12=R1+R2
+      DIF=R1-R2
+      TEMP= SQRT(DIF*DIF+BETASQ(M))
+      R1=R12+TEMP
+      R2=R12-TEMP
+      DIF= ABS(A2-R1)- ABS(A2-R2)
+      IF(DIF.LT.ZERO) GO TO 290
+      SHIFT=R2
+      GO TO 180
+  290 SHIFT=R1
+      GO TO 180
+  300 EIG(1)=GAMMA(1)+SUM
+      DO 310 J=1,N
+         IPOSV(J)=J
+         IVPOS(J)=J
+  310 IORD(J)=J
+      M=N
+      GO TO 340
+  320 DO 330 J=1,M
+         IF(EIG(J).LE.EIG(J+1)) GO TO 330
+         TEMP=EIG(J)
+         EIG(J)=EIG(J+1)
+         EIG(J+1)=TEMP
+         ITEMP=IORD(J)
+         IORD(J)=IORD(J+1)
+         IORD(J+1)=ITEMP
+  330 CONTINUE
+  340 M=M-1
+      IF(M.NE.0) GO TO 320
+      IF(N1.EQ.0) GO TO 370
+      DO 360 L=1,N1
+         NV=IORD(L)
+         PN=IPOSV(NV)
+         IF(PN.EQ.L) GO TO 360
+         LV=IVPOS(L)
+         IVPOS(PN)=LV
+         IPOSV(LV)=PN
+         DO 350 I=1,N
+            TEMP=VEC(I,L)
+            VEC(I,L)=VEC(I,PN)
+  350    VEC(I,PN)=TEMP
+  360 CONTINUE
+C       *****  BACK TRANSFORM THE VECTORS OF THE TRIPLE    *****
+C       *****  DIAGONAL MATRIX.                            *****
+  370 DO 410 NRR=1,N
+         K=N1
+  380    K=K-1
+         IF(K.LE.0) GO TO 410
+         SUM=ZERO
+         DO 390 I=K,N1
+            IJ=IA(I+1)+K
+  390    SUM=SUM+VEC(I+1,NRR)*A(IJ)
+         SUM=SUM+SUM
+         DO 400 I=K,N1
+            IJ=IA(I+1)+K
+  400    VEC(I+1,NRR)=VEC(I+1,NRR)-SUM*A(IJ)
+         GO TO 380
+  410 CONTINUE
+  420 CONTINUE
+      RETURN
+      END

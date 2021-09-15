@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>XENO </TITLE>
+<META NAME="description" CONTENT="XENO ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node344.html"><LINK REL="previous" HREF="node342.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node344.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node344.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node342.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node344.html">XYZ </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node342.html">X-PRIORITY=n.nn</A><!--End of Navigation Panel--><H2>
+<TT>XENO</TT> </H2>
+<P>By default, MOZYME only recognizes the standard twenty amino-acid residues, but some proteins contain residues which have extra molecular fragments attached. In order to allow these unusual species to be recognized, the keyword <TT>XENO</TT> is provided. </P>
+<TT><P>XENO</TT>, from the Greek <i><font face="Symbol"> <!-- MATH: $\xi\acute{\epsilon}\nu o\varsigma$ -->
+xenos</font></i>, xenos, for 'stranger', defines the unusual species in terms of the extra atoms which are added to the normal residue. The format of <TT>XENO</TT> is: </P>
+<TT><P>XENO=(<I>n<SUB>C</I></SUB>,<I>n<SUB>N</I></SUB>,<I>n<SUB>O</I></SUB>,<I>n<SUB>S</I></SUB>,<I>name</I>[;<I>n<SUB>C</I></SUB>,<I>n<SUB>N</I></SUB>,<I>n<SUB>O</I></SUB>,<I>n<SUB>S</I></SUB>,<I>name</I>][;<I>n<SUB>C</I></SUB>,<I>n<SUB>N</I></SUB>,<I>n<SUB>O</I></SUB>,<I>n<SUB>S</I></SUB>,<I>name</I>]...)</TT> </P>
+<P>Up to four fragments can be defined. To specify a fragment, the number of extra carbon, nitrogen, oxygen, and sulfur atoms in the fragment is used. A <I>name</I> should be selected which describes the fragment. </P>
+<P>As an example, consider the extra fragment in bacteriorhodopsin, on Lys216: </P>
+<P align="center">-COCHRNH-; R = CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>N=CHCH=CMeCH=CHCH=CMeCH=CHC<sub>2</sub>H<sub>15</sub><!-- MATH: $\chem  -COCHRNH- ;  R = \chem{CH_2CH_2CH_2CH_2N\!\!=\!\!CHCH\!\!=\!\!CMeCH\!\!=\!\!CHCH\!\!=\!\!CMeCH\!\!=\!\!CHC_9H_{15}}$ --></P>
+<P>Not counting hydrogens, the empirical formula for a lysine fragment is <!-- MATH: $\chem C_6N_2O$ -->
+C<sub>6</sub>H<sub>2</sub>O(&nbsp;<A HREF="node286.html#aacids">Table of Residues</A> ). For residue 216, the empirical formula is <!-- MATH: $\chem C_{26}N_2O$ -->
+C<sub>26</sub>N<sub>2</sub>O, so the extra fragment, the Schiff base, accounts for <!-- MATH: $\chem C_{20}$ -->
+C<sub>20</sub>. Therefore, the number of extra atoms is, in the order C, N, O, S, '20,0,0,0'. To specify the retinal fragment, the keyword would be <TT>XENO=(20,0,0,0,RETINAL)</TT>. </P>
+<P>Only the number of extra atoms for the elements C, N, O, and S need be specified, because these are the elements used in identifying the residues. Thus, a phosphorylated serine, of formula: 
+-COCHRNH-; R = CH<sub>2</sub>-(H<sub>2</sub>PO<sub>4</sub>) <!-- MATH: $\chem{-COCHRNH- ; R = CH_2\! -\! (H_2PO_4)}$ -->would be specified by the keyword <TT>XENO(0,0,3,0,PO4)</TT>. </P>
+<P>In the output, all the atoms of the residue are labeled with the three letter abbreviation of the amino-acid. Ideally, the atoms of the extra fragment would be labeled differently, but it is not easy to algorithmically 'recognize' the fragment. Instead, the unusual residue is indicated in the residue sequence by an asterisk (*), and a one-line description given immediately before the sequence is printed. </P>
+<P>If <TT>XENO</TT> is <EM>not</EM> used, the calculation will still work, but the label for the modified fragment will be <TT>UNK</TT>, instead of the more descriptive label which would result from using <TT>XENO</TT>. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6021"><A HREF="node344.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6017"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6011"></A><A HREF="node342.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6019"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6020"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6022"><A HREF="node344.html">XYZ </A></A><B>Up:</B> <A NAME="tex2html6018"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html6012"><A HREF="node342.html">X-PRIORITY=n.nn </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

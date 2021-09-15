@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Starting M.O.s</TITLE>
+<META NAME="description" CONTENT="Starting M.O.s">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node379.html">
+<LINK REL="previous" HREF="node377.html">
+<LINK REL="up" HREF="node376.html">
+<LINK REL="next" HREF="node379.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6515"
+ HREF="node379.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6511"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6505"
+ HREF="node377.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6513"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6514"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6516"
+ HREF="node379.html">Calculation of Electron Density</A>
+<B> Up:</B> <A NAME="tex2html6512"
+ HREF="node376.html"> Theory</A>
+<B> Previous:</B> <A NAME="tex2html6506"
+ HREF="node377.html">Failure of NDDO Approximation</A>
+<BR>
+<H4><A NAME="SECTION001010020000000000000">
+Starting M.O.s</A>
+</H4>
+<P>
+Because of the failure of the NDDO approximation, the M.O.s must be re-normalized
+before the density is calculated.  This is most easily done by performing the
+operation
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi = S^{-1/2}\psi'S^{-1/2},
+\end{displaymath} -->
+<IMG
+ WIDTH="118" HEIGHT="28"
+ SRC="img300.gif"
+ ALT="\begin{displaymath}\psi = S^{-1/2}\psi'S^{-1/2},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <IMG
+ WIDTH="20" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img301.gif"
+ ALT="$\psi'$">
+is the original NDDO molecular orbital, and <I>S</I> is the overlap matrix over atomic orbitals.
+In practice, it is easier to matrix-multiply 
+<!-- MATH: $\Psi =  S^{-1/2}\Psi'S^{-1/2}$ -->
+<IMG
+ WIDTH="122" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img302.gif"
+ ALT="$\Psi = S^{-1/2}\Psi'S^{-1/2}
+$">,
+as this generates all the M.O.s in one operation.
+From these re-normalized M.O.s, a re-normalized density matrix can 
+be calculated in the normal way:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+P'_{\lambda\sigma}=2\sum_i^{occ}c_{\lambda i} c_{\sigma i}.
+\end{displaymath} -->
+<IMG
+ WIDTH="111" HEIGHT="47"
+ SRC="img303.gif"
+ ALT="\begin{displaymath}P'_{\lambda\sigma}=2\sum_i^{occ}c_{\lambda i} c_{\sigma i}.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

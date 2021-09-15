@@ -1,0 +1,649 @@
+1 ALLKEYS
+ 1ELECTRON- FINAL ONE-ELECTRON MATRIX TO BE PRINTED
+ 1SCF     - DO 1 SCF AND THEN STOP 
+ BAR=n.n  - REDUCE BAR LENGTH BY A MAX. OF n.n
+ BIRADICAL- SYSTEM HAS TWO UNPAIRED ELECTRONS                          
+ BONDS    - FINAL BOND-ORDER MATRIX TO BE PRINTED
+ C.I.     - A SINGLET C.I. SPECIFIED        
+ CHARGE=n - CHARGE ON SYSTEM = n (e.g. NH4 => CHARGE=1)
+ COMPFG   - PRINT HEAT OF FORMATION CALCULATED IN COMPFG
+ DCART    - PRINT DETAILS OF WORKING IN DCART
+ DEBUG    - DEBUG OPTION TURNED ON
+ DENOUT   - DENSITY MATRIX OUTPUT ON CHANNEL 10
+ DENSITY  - FINAL DENSITY MATRIX TO BE PRINTED
+ DERIV    - PRINT PART OF WORKING IN SUB. DERIV
+ ENPART   - ENERGY TO BE PARTITIONED INTO COMPONENTS
+ EXCITED  - FIRST EXCITED STATE IS TO BE OPTIMISED                          
+ FILL=nn  - IN RHF CLOSED SHELL, FORCE M.O. nn TO BE FILLED
+ FLEPO    - PRINT DETAILS OF GEOMETRY OPTIMISATION
+ FMAT     - PRINT DETAILS OF WORKING IN FMAT
+ FOCK     - LAST FOCK MATRIX TO BE PRINTED
+ FORCE    - FORCE CALCULATION SPECIFIED
+ FULSCF   - IN SEARCHES, FULL SCF CALCN''S TO BE DONE
+ GEO-OK   - OVERRIDE INTERATOMIC DISTANCE CHECK
+ GNORM=n.n- FLEPO EXIT WHEN GRADIENT NORM BELOW n.n
+ GRADIENTS- ALL GRADIENTS TO BE PRINTED
+ HCORE    - PRINT DETAILS OF WORKING IN HCORE
+ ISOTOPE  - FORCE MATRIX WRITTEN TO DISK (CHAN. 9 )
+ ITER     - PRINT DETAILS OF WORKING IN ITER
+ LET      - DO NOT REDUCE GRADIENTS IN FORCE
+ LINMIN   - PRINT DETAILS OF WORKING IN LINMIN
+ LOCALISE - LOCALISED ORBITALS TO BE PRINTED
+ LOCMIN   - PRINT DETAILS OF WORKING IN LOCMIN
+ MINDO3   - THE MINDO/3 HAMILTONIAN TO BE USED
+ NLLSQ    - GRADIENTS TO BE MINIMISED USING NLLSQ.
+ NOINTER  - INTERATOMIC DISTANCES NOT TO BE PRINTED
+ NOXYZ    - CARTESIAN COORDINATES NOT TO BE PRINTED
+ OLDENS   - INITIAL DENSITY MATRIX READ OF DISK
+ PRECISE  - CRITERIA TO BE INCREASED BY 100 TIMES
+ PULAY    - PULAY'S METHOD TO BE USED IN SCF
+ REACTION - TRANSITION STATE TO BE OPTIMISED
+ RESTART  - CALCULATION RESTARTED
+ ROOT=n   - IN A C.I. CALCULATION, ROOT n TO BE OPTIMISED.
+ SADDLE   - TRANSITION STATE TO BE OPTIMISED
+ SCFCRT   - DEFAULT SCF CRITERION REPLACED BY THE VALUE SUPPLIED
+ SHIFT=n.n- A DAMPING FACTOR OF n.nn DEFINED
+ SIGMA    - GEOMETRY TO BE OPTIMISED USING SIGMA.
+ SINGLET  - STATE REQUIRED MUST BE A SINGLET
+ SPIN     - FINAL UHF SPIN MATRIX TO BE PRINTED
+ SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED        
+  T=nnn   - A TIME OF nnn SECONDS REQUESTED  (NOTE SPACE!)
+ TIMES    - TIMES OF VARIOUS STAGES TO BE PRINTED
+ TRIPLET  - TRIPLET                                  
+ UHF      - UNRESTRICTED HARTREE-FOCK CALCULATION    
+ VECTORS  - FINAL EIGENVECTORS TO BE PRINTED
+
+1 CONTROL
+ Control of the MOPAC program is provided through two mechanisms.
+	1) RUNNING: We have different QUEUES which execute at
+	separate priorities.  Additionally, jobs on each queue
+	may be entered with different priorities.  See RUNNING
+	for more info.
+
+	2) KEYWORDS: Calculations are controlled through
+	KEYWORDS (or MAGIC words).  Full explanation of the
+	three classes of KEYWORDS words is contained under:
+	    KEYWORDS, CONTROL, OUTPUT and TUNING.
+2   1SCF
+Do one SCF calculation, and stop. As the gradient calculation can
+be costly, derivitives are not calculated. If these are wanted,
+also specify  GRADIENTS
+2   BIRADICAL
+A ground state biradical calculation to be run. This can be
+contrasted with EXCITED. In a BIRADICAL calculation one
+electron is "excited" from the HOMO into the LUMO.  C.I. is
+performed automatically with ROOT=1.  If any doubt exists as
+to the root chosen, specify ROOT=n
+2   CI
+ Configuration Interaction can be applied to molecules and biradicals.
+For molecules the contributing states are 
+(1) the ground state resulting from the SCF calculation, 
+(2) the first doubly excited state, from the HOMO to the LUMO, and 
+(3) the second doubly excited state resulting from excitation 
+         from the HOMO to the LUMO+1.
+
+For biradicals the contributing states are 
+(1) the biradical state,
+(2) the LUMO electron being de-excited into the HOMO, and
+(3) the HOMO electron being excited into the LUMO.
+
+ To specify states other than the lowest energy state use "ROOT=n", 
+where n=2 or 3.
+	WARNING !!!   C.I. must not be attempted with
+ (a) UHF     - the time-reversal symmetry is lost.
+ (b) TRIPLET - Only one triplet state is allowed, so C.I. is meaningless.
+ (c) Odd-electron systems - C.I. has simply not been written for this!
+2   CHARGE=
+ A charge can be specified for the system by the word CHARGE=n.
+ The charge n can be positive, e.g. CHARGE=1 for NH4, or negative, e.g.
+ CHARGE=-1 for CH3COO
+2   EXCITED
+The second singlet state is calculated using RHF methods with
+C.I. (configuration interaction).  When BIRADICAL is also used,
+a biradical ground state is formed first and the second singlet
+state is calculated.  C.I. is used automatically in both
+situations wth ROOT=2, if any doubt exists as to the root
+chosen, specify ROOT=n
+2   FILL
+To ensure that a given M.O. is filled, specify FILL=nn. At the end of the
+first SCF calculation, M.O. nn is filled, and if it would not normally be
+filled, the HOMO is emptied. As the calculation proceeds the M.O. most like
+the nnth M.O. of the first SCF is filled. This is done by storing the M.O.
+from the first SCF and comparing it with the calculated M.O.s.
+2   FORCE
+  Use of the word FORCE will cause a force constant
+calculation to be performed.  The SCF field and gradients
+are calculated first, and if the gradient norm (= square
+root of the sum of squares of gradients is less than 5.0 then a
+force calculation will be run.  If it is greater, then the
+geometry will first be optimised using the Bartel's routines,
+NLLSQ and LOCMIN. At the end of the optimisation a standard
+set of results will be produced, and a force calculation
+will then be done.  In force, and any optimisation, the SCF
+criteria are made 100 times more stringent.
+HOWEVER, if LET is specified, when the force calculation will be 
+run regardless of the initial gradients. As Bartels' method reduces
+gradients, no special care need be taken with transition states.
+2   GEO-OK
+Override the normal geometry safety checks. Use with care.
+2   GRADIENTS
+In situations when the gradients are not normally calculated, calculate
+them and print their value if the gradient norm is not very small.
+2   ISOTOPE
+During a FORCE calculation, the keyword ISOTOPE will cause MOPAC to
+write a copy of the final force constant matrix to disk. The
+program will then finish the current calculation of frequencies and
+thermodynamic values.  If the program is re-run with the magic
+words FORCE ISOTOPE RESTART the frequency calculations are
+repeated with new ISOTOPIC_MASSES from the geometry description.
+2   LET
+In a FORCE calculation, do not attempt to reduce the
+gradient norm even when it is large.
+2   MINDO3
+ The MINDO/3 Hamiltonian to be used, the default being
+the MNDO hamiltonian. All other key-words can be used with MINDO3.
+2   OLDENS
+The initial approximation to the SCF density matrix 
+is to be read in, rather than the default being assumed.
+A suitable density matrix can be obtained from MOPAC by using DENOUT
+2   PRECISE
+The calculation criteria are set 100 times more stringent.
+2   PULAY
+Involk the PULAY procedure for rapid convergance. This normally results
+in a large increase in speed. However, cases are known when PULAY slows
+down the rate of convergance. These are quite rare, and PULAY is
+generally recommended.
+2  REACTION
+A saddle point is to be located. More data are needed, see EXAMPLE
+    In the course of a chemical reaction, three points can be
+identified: the geometry of the reactant(s), product(s), and
+the saddle point.  If the geometries of both the reactant and
+product are known, then you can use the word "REACTION" to
+generate the saddle point.   Data required are: On key-word
+line, the word "REACTION". After the geometry of the reactant(s)
+put the geometry of the product(s).  The data input layout for
+the products is identical to that of the reactants.
+A constraint is that the connectivity of the product must be
+the same as that of the reactants. If SYMMETRY is used it
+should follow the first geometry. 
+3 EXAMPLE
+  An example of the data for the REACTION calculation is:
+  REACTION UHF
+     ETHYL RADICAL, HYDROGEN MIGRATION FROM C1 TO C2
+
+   6    0.000000 0    0.000000 0    0.000000 0   0  0  0
+   6    1.477139 1    0.000000 0    0.000000 0   1  0  0
+   1    1.082649 1  121.548305 1    0.000000 0   2  1  0
+   1    1.083216 1  120.899040 1  178.259153 1   2  1  3
+   1    2.148533 1   28.773756 1  229.130514 1   2  1  3
+   1    1.109818 1  111.971877 1    9.883760 1   1  2  3
+   1    1.112682 1  110.320360 1  250.170920 1   1  2  3
+   0    0.000000 0    0.000000 0    0.000000 0   0  0  0
+   6    0.000000 0    0.000000 0    0.000000 0   0  0  0
+   6    1.475620 1    0.000000 0    0.000000 0   1  0  0
+   1    1.110522 1  111.486757 1    0.000000 0   2  1  0
+   1    1.109711 1  111.884755 1  120.829959 1   2  1  3
+   1    1.112806 1  110.441152 1  240.645640 1   2  1  3
+   1    1.082678 1  121.172100 1   38.115205 1   1  2  3
+   1    1.082381 1  121.691755 1  217.320781 1   1  2  3
+   0    0.000000 0    0.000000 0    0.000000 0   0  0  0
+3 CAUTIONS
+(1) The starting geometry and final geometry must be related by
+    continuous deformation.  The bond lengths and angles are
+    unambiguous, but the dihedral angles are ill-defined by
+    360 degrees.  Dihedrals must be chosen so that rotation through
+    360 degrees is excluded. If a dihedral changes from 300 to 60
+    degrees, specify 300 as -60 degrees. Faults appear in the
+    results as a  very large barrier, as impossible contortions
+    are taking place in the molecule.
+
+(2) Accidental straight lines.  If, in the course of a reaction, any
+    three atoms which are used in the definition of a fourth atom 
+    fall on a straight line, then the position of the fourth atom
+    becomes ill-defined.  To overcome this, use dummy atoms. 
+    If this situation occurs, then the calculation is terminated with
+a warning message.
+2   RESTART
+This is a restart, the "dump" files are assumed to exist. The
+dump files refer to <filename>.RES and <filename>.DEN .
+2   ROOT
+This selects a specific ROOT of the CI matrix to be optimised.
+2   SADDLE
+This is a synonym for REACTION.  Either may be used to specify location
+of a transition state (REACTION is preferred.)
+2   SCFCRT=nn
+The default SCF criterion is to be replaced by nnnnn.
+2   SHIFT=nnn
+For use with oscillations in the SCF, try 50 or 100 for nnn.
+Shift modifies the Fock matrix so that the virtual orbitals are
+raised in energy through nnn electron volts. This tends to damp
+oscillations.
+2 SIGMA
+The geometry is to be optimised by the SIGMA procedure. This should only
+be used when the geometry is known to be very nearly correct.
+SIGMA is faster than Bartels' method, but will not work for anything far
+from the gradient minimum.
+  The SIGMA gradient optimisation only works near to the gradient
+norm minimum. For small systems a quite large gradient is acceptable,
+typically up to about 5.0 units, but as the number of geometric 
+variables in the system increases, the requirement that the gradient 
+norm be initially very small becomes more stringent. 
+2 SYMMETRY
+ Symmetry is used (a) to speed up the calculation, and (b) to apply
+constraints to control the path of the calculation.
+The reference atom parameter should be marked for optimisation, or 
+should be the reaction coordinate.
+The dependent atom(s) parameters should not be marked for optimisation.
+Given a reference atom, N, and dependent atoms M1, M2,...Mj, then the
+form of the symmetry data is:
+N, <function>, M1, M2, M3, ..... Mj,
+The comma's are obligatory. the <function> is one of eighteen
+pre-programmed functions.  These are:
+       1 = bond lengths are identical.
+       2 = bond angles are identical.
+       3 = dihedral angles are identical.
+       4 = dihedral angle varies as 90 degrees + reference dihedral.
+       5 = dihedral angle varies as 90 degrees - reference dihedral.
+       6 = dihedral angle varies as 120 degrees + reference dihedral.
+       7 = dihedral angle varies as 120 degrees - reference dihedral.
+       8 = dihedral angle varies as 180 degrees + reference dihedral.
+       9 = dihedral angle varies as 180 degrees - reference dihedral.
+      10 = dihedral angle varies as 240 degrees + reference dihedral.
+      11 = dihedral angle varies as 240 degrees - reference dihedral.
+      12 = dihedral angle varies as 270 degrees + reference dihedral.
+      13 = dihedral angle varies as 270 degrees - reference dihedral.
+      14 = dihedral angle varies as - reference dihedral.
+      15 = bond length varies as half the reference bond length.
+      16 = bond angle varies as half the reference bond angle.
+      17 = bond angle varies as 90 degrees - reference bond angle.
+      18 = user written symmetry operation.
+Symmetry data should be followed by a blank line.
+2    T=nnn
+A time of nnn seconds specified. The time specification must have a 
+space before the letter "T".
+2   TRIPLET
+The system is defined as being a triplet. Triplets can be specified for
+either UHF (when the number of alpha electrons is two more than the number
+of beta electrons), or RHF, where a half-electron correction is applied.
+C.I. and TRIPLET cannot be specified for the same calculation.
+2   UHF
+   Performs an unrestricted Hartree-Fock calculation 
+   requested. UHF cannot be used in conjunction with C.I. 
+   Heats of formation from UHF calculations are often too negative.
+   This results from higher spin state contamination.
+2   FULSCF
+In a geometry optimisation line-search, calculate the heat of formation
+using full SCF calculations rather than constant density
+matrix calculations where constant density matrix
+calculations are an option.
+In a force calculation do not use first derivitives in the construction
+of the Hessian matrix, when this would be possible, instead perform full
+SCF calculations to calculate the Hessian elements. This is very slow,
+and is NOT recommended.
+1 HELP
+ This HELP file contains a full description of the program
+as implemented on our VAX computer.  Use this HELP file to 
+learn about how to run the program, and to learn how it is 
+written.
+1 INPUT
+  Input to MOPAC consists of at least one file.  The file
+contains the geoemetry of the chemical species along with
+KEYWORDS and identifying comments.
+2 COMMENTS
+The SECOND and THIRD lines of the input file are for comments.
+None of the information will be used to control the
+calculation; however, the lines will be printed on the output
+files and this will help you document the output.
+2 DUMMY_ATOMS
+For some difficult geometries, dummy atoms may be introduced
+into the GEOMETRY description.  DUMMY ATOMS are represented
+by the "chemical symbol" XX.
+2 FILE(S)
+  The GEOMETRY input file is REQUIRED, its name is usually
+<filename>.DAT.  However, for some KEYWORDS the program
+will read more input files.
+
+	KEYWORD         Program will read...
+	=======		======================================
+	RESTART		<filename>.RES and <filename>.DEN
+	OLDENS		<filename>.DEN
+
+Where <filename> is the same file name as the INPUT file.
+2 GEOMETRY
+The chemical species which you desire to calculate is
+described via INTERNAL_COORDINATES.  The GEOMETRY description
+begins on the FOURTH line of the INPUT file. (Note that the
+first three lines may all be blank.  But you must have three
+lines set aside at the start of the input file.)  The GEOMETRY
+description continues for as many lines as there are atoms in
+the chemical species.  The GEOMETRY ends with a blank line.
+Here is a simple example:
+
+  METHANE -- NOTE THAT DEFAULT OPTIONS WERE USED SO LINES 1 TO 3 ARE BLANK.
+
+   H     0.0000  0     0.000  0     0.000  0    0   0   0
+   C     1.1041  1     0.000  0     0.000  0    1   0   0
+   H     1.1041  1   109.471  1     0.000  1    2   1   0
+   H     1.1041  1   109.471  1   240.000  1    2   1   3
+   H     1.1041  1   109.471  1   120.000  1    2   1   3
+
+This is a description of METHANE and does not use any options.
+Note that the blank line after the geometry is required.
+2 INTERNAL_COORDINATES
+  Each atom (or DUMMY_ATOM) in the chemical species is
+described on a separate line of the INPUT file.  For
+each atom you must describe the DISTANCE (in Angstroms)
+to another atom, the ANGLE (in degrees) to two other atoms,
+and the DIHEDRAL ANGLE (again in degrees) to three other atoms.
+A typical input line would be:
+
+ symbol  distance       angle      dihedral     reference atoms
+ ------  --------      -------     --------     ---------------
+   H     1.1041   1    109.471  1   240.000   1    2   1   3
+
+The above line describes a hydrogen atom which is 1.1041
+Angstroms from the second atom in the file (see the 2
+under reference atoms.)  This hydrogen also describes
+an angle of 109.471 degrees with atoms 2 and 1 (see
+reference atoms) with atom 2 as the vertex and
+a dihedral angle of 240.000 degrees with the
+progression of atoms 3:1:2.
+2 ISOTOPIC_MASSES
+  Your INPUT file may also specify the ISOTOPIC_MASSES
+of each atom.  The mass number, of course, will have no
+effect on the electronic properties.  However, during a
+FORCE constant calculation, the ISOTOPIC_MASSES will be
+used to calculate the appropriate frequencies of vibration.
+  The ISOTOPIC_MASSES are specified as part of the ATOMIC SYMBOL as:
+
+   H2.00  1.1041   1   109.471   1   240.000   1    2  1  3
+   C14    1.56     1   120.      1   145       1    5  3  6
+
+Here a duterium nuclide has been used in place of a hydrogen.
+2 KEYWORDS
+The FIRST line of the input file contains any 
+KEYWORDS (MAGIC words) that you wish to use during
+the course of the calculation.  Since all of the KEYWORDS have
+default values, the first line may be blank.  The KEYWORDS
+can be grouped into three categories: CONTROL, DIAGNOSTICS,
+and OUTPUT.  They are explained under those topics.
+2 OPTIMISATION_FLAG
+On each GEOMETRY input line, each INTERNAL_COORDINATE may
+contain an OPTIMISATION_FLAG.  If the flag is 1, the
+coordinate may be optimised, 0 means do not optimise, and
+-1 identifies a REACTION_PATH coordinate.
+
+	EXAMPLE
+
+   H  1.2   1   109.53   0     126.89   -1   4  3  2
+
+The above line allows the distance (1.2 Angstrom) to be
+optimised but the angle (109.53 degrees) is held
+constant.  Note that the dihedral angle (126.89 degrees)
+is the coordinate of reaction.
+2 REACTION_PATH
+    Calculations along a REACTION_PATH are identified by
+a -1 for the OPTIMISATION_FLAG in the GEOMETRY file.
+
+  T=500
+    EXAMPLE OF REACTION PATH CALCULATION FOR DISSOCIATION
+      OF WATER INTO H AND OH
+   H
+   O   1.4   1    0     0     0    0    1  0  0
+   H   1.4  -1    109.5  1    0    0    2  1  0
+
+   1.5 1.6 1.8 2.0 2.5 3.0 4.0
+
+The above data would perform a REACTION_PATH calculation
+using hydrogen (atom 3) to oxygen (atom 2) distances
+of 1.4, 1.5, 1.6, 1.8, 2.0, 2.5, 3.0, and 4.0 Angstroms.
+All other INTERNAL_COORDINATES are allowed to optimise.
+2 SYMMETRY
+ Symmetry is used (a) to speed up the calculation, and 
+(b) to apply constraints to control the path of the calculation.
+The reference atom parameter should be marked for optimisation, or 
+should be the reaction coordinate.
+The dependent atom(s) parameters should not be marked for optimisation.
+Given a reference atom, N, and dependent atoms M1, M2,...Mj, then the
+form of the symmetry data is:
+N, <function>, M1, M2, M3, ..... Mj,
+The comma's are obligatory. the <function> is one of eighteen
+pre-programmed functions.  The main ones used are:
+       1 = bond lengths are identical,
+       2 = bond angles are identical,
+       3 = dihedral angles are identical.
+Symmetry data should be followed by a blank line.
+2 TRANSITION_STATE
+A saddle point is to be located. More data are needed, see EXAMPLE
+3 EXAMPLE
+  An example of the data for the REACTION calculation is:
+  REACTION UHF
+     ETHYL RADICAL, HYDROGEN MIGRATION FROM C1 TO C2
+
+   6    0.000000 0    0.000000 0    0.000000 0   0  0  0
+   6    1.477139 1    0.000000 0    0.000000 0   1  0  0
+   1    1.082649 1  121.548305 1    0.000000 0   2  1  0
+   1    1.083216 1  120.899040 1  178.259153 1   2  1  3
+   1    2.148533 1   28.773756 1  229.130514 1   2  1  3
+   1    1.109818 1  111.971877 1    9.883760 1   1  2  3
+   1    1.112682 1  110.320360 1  250.170920 1   1  2  3
+   0    0.000000 0    0.000000 0    0.000000 0   0  0  0
+   6    0.000000 0    0.000000 0    0.000000 0   0  0  0
+   6    1.475620 1    0.000000 0    0.000000 0   1  0  0
+   1    1.110522 1  111.486757 1    0.000000 0   2  1  0
+   1    1.109711 1  111.884755 1  120.829959 1   2  1  3
+   1    1.112806 1  110.441152 1  240.645640 1   2  1  3
+   1    1.082678 1  121.172100 1   38.115205 1   1  2  3
+   1    1.082381 1  121.691755 1  217.320781 1   1  2  3
+   0    0.000000 0    0.000000 0    0.000000 0   0  0  0
+3 CAUTIONS
+(1) The starting geometry and final geometry must be related by
+    continuous deformation.  The bond lengths and angles are
+    unambiguous, but the dihedral angles are ill-defined by
+    360 degrees.  Dihedrals must be chosen so that rotation through
+    360 degrees is excluded. If a dihedral changes from 300 to 60
+    degrees, specify 300 as -60 degrees. The bug appears in the
+    results as a  very large barrier, as impossible contortions
+    are taking place in the molecule.
+
+(2) Accidental straight lines.  If, in the course of a reaction, any
+    three atoms which are used in the definition of a fourth atom 
+    fall on a straight line, then the position of the fourth atom
+    becomes ill-defined.  To overcome this, use dummy atoms. The bug
+    appears as sudden instability of the system, and one angle
+    oscillates about 180 degrees.
+1  KEYWORDS
+   There are three main types of 'Magic' words: 
+	CONTROL		those that control the course
+			of the calculation
+	OUTPUT		those that control the information printed
+	DEFAULTS	those that modify standard defaults
+	DIAGNOSTICS	those for use by programmers while debugging. 
+The FIRST line of the input file contains any KEYWORDS
+(MAGIC words) that you wish to use during the course of
+the calculation.  Since all of the KEYWORDS have default
+values, the first line may be blank.
+1 MAGIC
+See KEYWORDS.
+1 OUTPUT
+Output from the calculation consists of one or more files.
+They are named:
+
+	NAME		CONTENT
+	=============   ====================================
+	<filename>.OUT	Printed results of calculation.
+			This file is ALWAYS created even when
+			the calculation is not completed.
+	<filename>.ARC	Archive file is produced at end of calculation.
+	<filename>.DEN	Density file is produced if keyword
+			DENOUT is used or when the calculation
+			runs out of time and must be restarted.
+	<filename>.RES	This is the RESTART file to continue a calculation.
+
+Additionally, the contents of the .OUT file may be selected
+or deleted with keywords.
+2 1ELECTRON
+Print the final one-electron matrix.
+2   BONDS
+The bonds matrix is to be printed at end of calculation.
+2   DENOUT
+Produces a binary file <filename>.DEN which contains the final density
+matrix.  This file can be read in during other calculations using OLDENS.
+2   DENSITY
+The density matrix is to be printed at end of calculation.
+2   ENPART
+The terms which give rise to the total energy of the system are split
+into one and two centre contributions. They are further differentiated
+into one-electron, two-electron, and nuclear components.
+This is very useful in a detailed study of molecular energetics, e.g. in
+barriers to rotation and energies of association.
+2   FOCK
+Print final Fock matrix.
+2   LOCALISE
+Print localised orbitals. This only works for RHF closed-shell systems.
+2   NOINTER
+Suppress printing of starting and final interatomic distances.
+2   NOXYZ
+Suppress printing of starting and final cartesian coordinates.
+2   SPIN
+The spin matrix is to be printed at end of calculation.
+2   VECTORS
+The eigenvectors are to be printed at end of calculation.
+1 PROGRAM
+  MOPAC is the main program for generating electronic structures of
+ground and transition-state molecules and ions.  
+2  SUBROUTINES
+   The main calling sequence in the Program is
+      MAIN   calls   FLEPO, NLLSQ, FORCE  or  POWSQ.
+      FLEPO  calls   COMPFG and LINMIN.
+      FORCE  calls   COMPFG and FMAT and FREQCY and sometimes NLLSQ.
+      POWSQ  calls   COMPFG and SEARCH.
+      LINMIN calls   COMPFG.
+      FMAT   calls   COMPFG.
+      SEARCH calls   COMPFG.
+Thus COMPFG forms the main nodal point within the program.
+COMPFG has the job of calculating the heat of formation and
+the gradients of the energy with respect to the coordinates.
+    The main calling sequence for COMPFG is
+      COMPFG calls HCORE  and ITER   and DERIV.
+      HCORE  calls H1ELEC and ROTATE.
+      ITER   calls FOCK1, FOCK2, RSP, DENSTY and CNVG 
+             and sometimes OPCI and SPCG.
+      DERIV  calls either HCORE and ITER or DCART.
+      DCART  calls DHC, which calls H1ELEC, ROTATE, FOCK1, and FOCK2.
+2 GFLOW
+			MAIN GEOMETRIC SEQUENCE
+  All routines are        .______.
+called as subroutines.    | MAIN |
+                          |______|
+        ._____________________|___________________________________.
+        |         .___|___.           .____|_____.      |     .___|___.
+        |   ._____| FORCE |           | REACTION |      |     | PATHS |
+        |   |     |_______|           |__________|      |     |_______|
+        |   |      |    |__.               |____________|_________|
+      ._|___|_.  ._|____.  |                        .___|___.
+      | SIGMA |  | FMAT |  |                        | FLEPO |
+      |_______|  |______|  |                        |_______|
+  .____|___. |       |     |                    .____|___. |
+  | SEARCH | |       |     |                    | LINMIN | |
+  |________| |       |     |                    |________| | 
+      |______|_______|_____|________________________|______|
+                         .____|___.
+                         | COMPFG |  (See ELECTRONIC SEQUENCE)
+                         |________|
+
+2 EFLOW
+		  MAIN ELECTRONIC FLOW
+                       .________.
+  All routines are     | COMPFG |  (See GEOMETRIC SEQUENCE)
+called as subroutines. |________|
+           ._______________|____________________.
+       .___|___.       .___|___.    .___|____.  |
+       | HCORE |_______| DERIV |____| GMETRY |  |
+       |_______|       |_______|    | SYMTRY |  |
+           |       .____|__.  |     |________|  |
+           |       | DCART |  |                 |
+           |       |_______|  |______.  ._______|
+           |        .__|__.        ._|__|_.    ._________.
+           |        | DHC |   .____| ITER |____| EISPACK |
+           |        |_____|   |    |______|    |_________|
+           |___    __|   |    |     |  | |      .________.
+            ._|____|_.  .|____|_.   |  | |______| DENSTY |      
+            | ROTATE |  | FOCK1 |   |  |        |  CNVG  |
+            | H1ELEC |  | FOCK2 |   |  |        |________|
+            |________|  |_______|   | .|_____.
+            .___|__.                | | OPCI |
+            | DIAT |                | |______|
+            |______|               .|____|. 
+             .__|_.                | SPCG |
+             | SS |                |______|
+             |____|
+1 RUNNING
+   How to use the new program, MOPAC
+(Combined MNDO MINDO/3 SIGMA and FORCE)
+
+The COM file to run the new program can be accessed 
+using the command "MOPAC" followed by zero, one or 
+two arguments.  Use the prompts to gain experience.
+Restarts should be user transparent.  
+If MOPAC does make any restart files, do not change them 
+(It would be hard to do anyhow, as they're in machine code),
+as they will be used when you run a RESTART job.
+The main files you should receive are:
+                   <filename>.OUT    Results
+                   <filename>.ARC    Summary
+                   <filename>.RES    Restart
+                   <filename>.DEN    Density matrix (in binary)
+1  MOPAC
+   MOPAC is the command to queue a calculation using the
+program. The format is:
+
+   MOPAC [<filename>[.DAT]] [queue] [priority]
+
+Where:	<filename> is the name of the INPUT file. The
+		   default extension ".DAT".
+	queue      is the name of the desired queue (based on CPU time.)
+			FLASH	limit 10 minutes
+			FAST	limit 1 hour
+			BATCH	limit 8 hours
+	priority   is the queuing priority and must be an
+		   integer less than or equal to 5.
+
+The MOPAC command will prompt for the arguments except
+priority.  If the INPUT file cannot be located, an error
+message will be printed.
+1 SHUTDOWN
+  The SHUTDOWN DCL command will cause the program to perform
+restart logic as if the time allotment had been exceeded.
+This command can be used to stop a calculation to examine
+intermediate results. The calculation may be continued
+with the keyword RESTART.
+  If the job number 7452 is to be stopped, then issue the command
+
+   SHUTDOWN   7452
+
+   If no reply is given, then the command was successful, and at the 
+first oppertunity the job will be stopped.
+1 TUNING
+ One of the classes of KEYWORDS (or MAGIC words) is provided for debugging the
+calculations.  Typicallly they provide output of intermediate values that
+are calculated by the various subroutines.  The word of caution to potential
+users is that some of them produce  a lot of output.
+	COMPFG		Output information calculated in subroutine COMPFG.
+	DERIV		Output information calculated in subroutine DERIV.
+	DCART		Output information calculated in subroutine DCART.
+	FLEPO		Output information calculated in subroutine FLEPO.
+	HCORE		Output information calculated in subroutine HCORE.
+	LINMIN		Output information calculated in subroutine LINMIN.
+	POWSQ		Output information calculated in subroutine POWSQ.
+	SEARCH		Output information calculated in subroutine SEARCH.
+	MOLDAT		Output information calculated in subroutine MOLDAT.
+	ITER		Output information calculated in subroutine ITER.
+	EIGS		Print all eigenvalues in ITER.
+	PL		Print the value(s) of PL on every iteration.
+	TIME		Print times of various stages.
+
+	DEBUG		Allows the following words to have special meaning.
+	1ELEC		Output the one-electron matrix on entrance to ITER.
+	DENSITY		Print every density matrix.
+	FOCK		Print every Fock matrix.

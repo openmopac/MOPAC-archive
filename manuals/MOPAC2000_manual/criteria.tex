@@ -1,0 +1,133 @@
+\chapter{Criteria}\label{criteria}
+\index{MOPAC!criteria}
+MOPAC uses various criteria which  control  the  precision  of  its stages.  
+These criteria are chosen as the best compromise between speed and acceptable
+errors in the results.  The user can override the default settings  by  use 
+of  keywords;  however,  care  should be exercised as increasing a criterion
+can introduce the potential for  infinite  loops, and decreasing a criterion
+can result in unacceptably imprecise results. These are usually characterized
+by `noise' in a reaction path, or  large values for the trivial vibrations in a
+force calculation.
+
+\section{SCF criterion}\index{SCF!criterion|ff}\index{Criteria!SCF}
+\index{SCFCRT}
+\subsubsection*{SCFCRT}
+\begin{description}
+\item[Defined in:] \comp{ITER}
+\item[Default value:] 0.0001 kcal/mol
+\item[Basic test:] Change in energy in kcal/mol on successive iterations is 
+less than \comp{SCFCRT}.
+\item[Exceptions:]~
+\begin{itemize}
+\item If \comp{PRECISE} is specified, \comp{SCFCRT}=0.000001
+\item If a polarization calculation, \comp{SCFCRT}=1.D-11
+\item If a \comp{FORCE} calculation, \comp{SCFCRT}=0.0000001
+\item If \comp{SCFCRT=$n.nnn$} is specified \comp{SCFCRT}=$n.nnn$
+\item If a BFGS optimization, \comp{SCFCRT} becomes a function of the 
+difference between the current energy and the lowest energy of previous SCFs.
+\end{itemize}
+\item[Secondary tests:]~
+\begin{enumerate}
+\item Change in density matrix elements on two successive iterations must be 
+less than 0.001
+\item Change in energy in eV on three successive iterations must be less than 
+10 $\times$ \comp{SCFCRT}.
+\end{enumerate}
+\end{description}
+
+\section{Geometric optimization criteria}
+\index{TOLERX}
+\index{DELHOF}
+\index{TOLERG}
+\index{TOLERX}
+\index{TOL2}
+\index{TOLS1}
+\index{EF!criterion}
+\subsubsection*{GNORM ``RMS GRADIENT =  $n.nn$  IS LESS THAN CUTOFF =  $m.mm$''}
+\begin{description}
+\item[Defined in:] \comp{EF}
+\item[Default value:] 1.0
+\item[Basic test:] The calculated GNORM is less than that defined by \comp{GNORM}.    \\
+\end{description}
+
+\subsubsection*{TOLERX ``Test on X Satisfied''}
+\index{Heat of Formation!criteria}
+\index{$\Delta H_f$!criteria}
+\begin{description}
+\item[Defined in:] \comp{FLEPO}
+\item[Default value:] 0.0001 \AA ngstroms
+\item[Basic test:] The projected change in geometry is less than \comp{TOLERX} \AA ngstroms.
+\item[Exception:] If \comp{GNORM} is specified, the TOLERX test is not used.
+\end{description}
+
+\subsubsection*{DELHOF ``Herbert's Test Satisfied''}
+\begin{description}
+\item[Defined in:] \comp{FLEPO}
+\item[Default value:] 0.001
+\item[Basic test:] The projected change in geometry is less than \comp{DELHOF} kcals/mol.
+\item[Exception:] If \comp{GNORM} is specified, the DELHOF test is not used.
+\end{description}
+
+\subsubsection*{TOLERG ``Test on Gradient Satisfied''}
+\begin{description}
+\item[Defined in:] \comp{FLEPO}
+\item[Default value:] 1.0
+\item[Basic test:] The gradient norm in kcals/mol/\AA ngstrom is less than
+TOLERG multiplied by the square root of the number of coordinates to be
+optimized.
+\item[Exceptions:]~
+\begin{itemize}
+\item If \comp{GNORM=$n.nnn$} is specified, TOLERG=$n.nnn$ divided by the square
+root of the number of coordinates to be optimized, and the secondary tests are
+not done.  If \comp{LET} is not specified, $n.nnn$ is reset to 0.01, if it was
+smaller than 0.01.
+\item If \comp{PRECISE} is specified, TOLERG=0.2 \index{PRECISE}
+\item If a \comp{SADDLE} calculation, TOLERG is made a function of the last
+gradient  norm.
+\end{itemize}
+\end{description}
+
+\subsubsection*{TOLERF ``Heat of Formation Test Satisfied''}
+\begin{description}
+\item[Defined in:] \comp{FLEPO}
+\item[Default value:] 0.002 kcal/mol
+\item[Basic test:] The calculated heats of formation on two successive cycles 
+differ by less than TOLERF.
+\item[Exception:] If \comp{GNORM} is specified, the TOLERF test is not used.
+\item[Secondary tests:] For the TOLERG, TOLERF, and TOLERX tests, a second 
+test in which no individual component of the gradient should be larger than 
+TOLERG must be satisfied.
+\item[Other tests:] If, after the TOLERG, TOLERF, or TOLERX test has been
+satisfied three consecutive times the heat of formation has dropped by less
+than 0.3kcal/mol, then the optimization is stopped.
+\end{description}
+
+\subsubsection*{TOL2}
+\begin{description}
+\item[Defined in:] \comp{POWSQ}
+\item[Default value:] 0.4
+\item[Basic test:] The absolute value of the largest component of the gradient 
+is less than \comp{TOL2}
+\item[Exceptions:]~
+\begin{itemize}
+\item If {bf PRECISE} is specified, \comp{TOL2}=0.01 \index{PRECISE}
+\item If \comp{GNORM=$n.nn$} is specified, \comp{TOL2}=$n.nn$
+\item If \comp{LET} is not specified, \comp{TOL2} is reset to 0.01, if $n.nn$ 
+was smaller than 0.01.
+\end{itemize}
+\end{description}
+
+\subsubsection*{TOLS1}
+\begin{description}
+\item[Defined in:] \comp{NLLSQ}
+\item[Default value:] 0.000 000 000 001
+\item[Basic test:] The square of the ratio of the projected change in the
+geometry to the actual geometry is less than \comp{TOLS1}.
+\end{description}
+
+\begin{description}
+\item[Name: ] $<$none$>$
+\item[Defined in:] \comp{NLLSQ}
+\item[Default value:] 0.2
+\item[Basic test:] Every component of the gradient is less than 0.2.
+\end{description}

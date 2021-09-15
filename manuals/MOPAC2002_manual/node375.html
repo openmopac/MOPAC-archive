@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Calculation of Electron Density</TITLE>
+<META NAME="description" CONTENT="6. Calculation of Electron Density">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node427.html"><LINK REL="previous" HREF="node365.html"><LINK REL="up" HREF="index.html"><LINK REL="next" HREF="node376.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html6422"><A HREF="node376.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6418"></A><A HREF="index.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6412"></A><A HREF="node374.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6420"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6421"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6423"><A HREF="node376.html">Theory</A></A> <B>Up:</B> <A NAME="tex2html6419"><A HREF="index.html">MOPAC 2002 Manual</A></A> <B>Previous:</B> <A NAME="tex2html6413"><A HREF="node374.html">Files used by</A></A>
+<!--End of Navigation Panel-->
+<H1>Calculation of Electron Density </H1>
+<p>The program DENSITY is designed for researchers who are interested in 
+electron density distributions, molecular orbitals, wavefunctions, etc.&nbsp; 
+Although it is not easy to use, DENSITY is useful for detailed analyses of 
+electronic structure.</p>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html6424"><A HREF="node376.html">Theory</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html6425"><A HREF="node377.html">Failure of NDDO Approximation</A></A> </LI>
+<LI><A NAME="tex2html6426"><A HREF="node378.html">Starting M.O.s</A></A> </LI>
+<LI><A NAME="tex2html6427"><A HREF="node379.html">Calculation of Electron Density</A></A> </LI>
+<LI><A NAME="tex2html6428"><A HREF="node380.html">Electron density</A></A> </LI>
+<LI><A NAME="tex2html6429"><A HREF="node381.html">Molecular Orbitals</A></A> </LI>
+<LI><A NAME="tex2html6430"><A HREF="node382.html">Bonds</A></A> </LI></UL>
+
+<LI><A NAME="tex2html6431"><A HREF="node383.html">Program DENSITY</A></A> </LI>
+<LI><A NAME="tex2html6432"><A HREF="node384.html">Data</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html6433"><A HREF="node385.html">Example of Data: Ethylene</A></A> </LI>
+<LI><A NAME="tex2html6434"><A HREF="node386.html">Keywords</A></A> </LI>
+<LI><A NAME="tex2html6435"><A HREF="node387.html">Definitions of First set of Key-Words</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html6436"><A HREF="node388.html"><U><FONT COLOR="#0000ff"><TT>DEBUG</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6437"><A HREF="node389.html"><U><FONT COLOR="#0000ff"><TT>DMAT</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6438"><A HREF="node390.html"><U><FONT COLOR="#0000ff"><TT>MANUAL</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6439"><A HREF="node391.html"><U><FONT COLOR="#0000ff"><TT>M.O.</U></FONT></TT></A></A> </LI></UL>
+
+<LI><A NAME="tex2html6440"><A HREF="node392.html">Definitions of Second set of Key-Words</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html6441"><A HREF="node393.html"><U><FONT COLOR="#0000ff"><TT>ADD</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6442"><A HREF="node394.html"><U><FONT COLOR="#0000ff"><TT>AXIS=<I>n</I>.<I>nn</I></U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6443"><A HREF="node395.html"><U><FONT COLOR="#0000ff"><TT>BONDS</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6444"><A HREF="node396.html"><U><FONT COLOR="#0000ff"><TT>CENTER</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6445"><A HREF="node397.html"><U><FONT COLOR="#0000ff"><TT>FINE</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6446"><A HREF="node398.html"><U><FONT COLOR="#0000ff"><TT>EDGE=<I>n</I>.<I>nn</I></U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6447"><A HREF="node399.html"><U><FONT COLOR="#0000ff"><TT>GRID</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6448"><A HREF="node400.html"><U><FONT COLOR="#0000ff"><TT>HOMO</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6449"><A HREF="node401.html"><U><FONT COLOR="#0000ff"><TT>LINE</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6450"><A HREF="node402.html"><U><FONT COLOR="#0000ff"><TT>LUMO</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6451"><A HREF="node403.html"><U><FONT COLOR="#0000ff"><TT>MULT=<I>n</I>.<I>nn</I></U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6452"><A HREF="node404.html"><U><FONT COLOR="#0000ff"><TT>OCCUPANCY</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6453"><A HREF="node405.html"><U><FONT COLOR="#0000ff"><TT>PHASE</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html6454"><A HREF="node406.html"><U><FONT COLOR="#0000ff"><TT>PSI=<I>n</I></U></FONT></TT></A></A> </LI></UL>
+
+<LI><A NAME="tex2html6455"><A HREF="node407.html">Calculation of Excited State Density</A></A> </LI>
+<LI><A NAME="tex2html6456"><A HREF="node408.html">Definition of the area of the graph plot</A></A> </LI></UL>
+
+<LI><A NAME="tex2html6457"><A HREF="node409.html">Details of Graph Plots</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html6458"><A HREF="node410.html">Contours</A></A> </LI>
+<LI><A NAME="tex2html6459"><A HREF="node411.html">Density Around Atoms</A></A> </LI>
+<LI><A NAME="tex2html6460"><A HREF="node412.html">Difference Maps</A></A> </LI>
+<LI><A NAME="tex2html6461"><A HREF="node413.html">Renormalization of Molecular Orbitals</A></A> </LI></UL>
+
+<LI><A NAME="tex2html6462"><A HREF="node414.html">Programming Considerations</A></A> </LI>
+<LI><A NAME="tex2html6463"><A HREF="node415.html">Description of Program</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html6464"><A HREF="node416.html">Fortran Files</A></A> </LI>
+<LI><A NAME="tex2html6465"><A HREF="node417.html">Description of FORTRAN Files</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html6466"><A HREF="node418.html">CNTOUR</A></A> </LI>
+<LI><A NAME="tex2html6467"><A HREF="node419.html">DRAW</A></A> </LI>
+<LI><A NAME="tex2html6468"><A HREF="node420.html">EULER</A></A> </LI>
+<LI><A NAME="tex2html6469"><A HREF="node421.html">DATIN</A></A> </LI>
+<LI><A NAME="tex2html6470"><A HREF="node422.html">MAIN</A></A> </LI>
+<LI><A NAME="tex2html6471"><A HREF="node423.html">MAXMIN</A></A> </LI>
+<LI><A NAME="tex2html6472"><A HREF="node424.html">PLOTGR</A></A> </LI></UL>
+</UL>
+
+<LI><A NAME="tex2html6473"><A HREF="node425.html">Installing Density</A></A> </LI>
+<LI><A NAME="tex2html6474"><A HREF="node426.html">Running DENSITY</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

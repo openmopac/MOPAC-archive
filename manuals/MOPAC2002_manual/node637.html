@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>MKBMAT</TITLE>
+<META NAME="description" CONTENT="MKBMAT">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node638.html"><LINK REL="previous" HREF="node636.html"><LINK REL="up" HREF="node632.html"><LINK REL="next" HREF="node638.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html10069"><A HREF="node638.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10065"></A><A HREF="node632.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10059"></A><A HREF="node636.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10067"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10068"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10070"><A HREF="node638.html">DIEGRD (DIElectric GRaDient)</A></A> <B>Up:</B> <A NAME="tex2html10066"><A HREF="node632.html">COSMO (Conductor-like Screening</A></A> <B>Previous:</B> <A NAME="tex2html10060"><A HREF="node636.html">COSCAV/COSCAN (COSmo CAVity)</A></A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<TT><H2><A NAME="SECTION0012225000000000000000">MKBMAT</A></TT> </H2>
+<P>This routine calculates the <I>B</I>-matrix, i.e., the density-surface charge interaction matrix. </P>
+
+<UL>
+<LI>First the array <TT>COSURF</TT> is filled with the explicit segment center coordinates instead of directions only. </LI>
+<LI>Then in a loop over all atoms, all segments for all density matrix elements of each atom the Coulomb interaction of the density with the segment charge is calculated. With <I>r</I> being the atom-segment distance vector, the various elements are: <DIV ALIGN="CENTER"></LI></UL>
+
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P><I>ss</I></TD>
+<TD VALIGN="MIDDLE">
+<I><P>r</I><SUP>-1</SUP></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>sp<SUB>k</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{DD(i)r_k}{r^3}$ --><IMG SRC="img1739.gif" WIDTH=46 HEIGHT=44 ALT="$frac{DD(i)r_k}{r^3}$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>p<SUB>k</SUB>p<SUB>k</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $r^{-1}+QQ(i)^2(\frac{3r_k^2}{r^5}-r^{-3})$ --><IMG SRC="img1740.gif" WIDTH=156 HEIGHT=46 ALT="$r^{-1}+QQ(i)^2(frac{3r_k^2}{r^5}-r^{-3})$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>p<SUB>k</SUB>p<SUB>l</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $6QQ(i)^2\frac{r_kr_l}{r^5}$ --><IMG SRC="img1741.gif" WIDTH=78 HEIGHT=36 ALT="$6QQ(i)^2frac{r_kr_l}{r^5}$"></TD>
+</TR>
+</TABLE>
+<DIR>
+<DIR>
+
+</DIV>
+<DIR>
+
+<DIR>
+
+Here,
+<DIR>
+<DIR>
+<I>DD</I>(<I>i</I>) and <I>QQ</I>(<I>i</I>) are the atomic dipole and quadrupole lengths, respectively, as coded in MOPAC. </DIR>
+</DIR>
+
+
+<UL>
+<LI>The <I>B</I>-matrix is stored in <TT>BMAT</TT>. </LI></UL>
+
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

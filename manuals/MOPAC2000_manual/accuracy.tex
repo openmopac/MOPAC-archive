@@ -1,0 +1,310 @@
+\chapter{Accuracy of Methods in MOPAC} 
+\index{MOPAC!accuracy}
+\index{Accuracy of methods}
+\index{MNDO!accuracy of}
+\index{MINDO/3!accuracy of}
+\index{AM1!accuracy of}
+The following tables illustrate the relative accuracy of three semiempirical
+methods: MNDO, AM1, and PM3. PM3 is a re-parameterization of the MNDO method,
+in which the AM1 form of the core-core interaction is used. In cases where two
+sets of MNDO parameters have been published, the more recent set will be used. 
+
+\section{Protocols used in Determining Accuracy}
+The selection of species to be used to demonstrate the accuracy of the various
+methods presented some difficulty.   As the designer of the AM1 method, I have
+an understandable bias to show that AM1 is better than MNDO.  As the sole
+author of PM3, I also have an understandable bias to show that PM3 is better
+than AM1.  However, in order to be credible from a reader's point of view,
+protocols need to be set up which will convince the reader that these biases 
+have not affected the discussions or conclusions in this Chapter.
+
+After some thought, I decided to adopt the following protocols:
+\begin{enumerate}
+\item All species for which reliable experimental data were available would be
+used in generating the raw data for the statistical analyses.
+\item Experimental data of low or unknown accuracy was used as reference data
+if, and only if, a calculation using that data was done.
+\item All results of all data would be reported in un-corrected and un-modified
+form.
+\item Only data for which references were available would be used.
+\item Experimental data included some high-level {\em ab initio} results. 
+Where {\em ab initio} results were used, the {\em ab initio} method (basis set
+plus post-Hartree Fock corrections, if necessary) was of much higher
+reliability than the semiempirical method.  In other words, any differences
+between {\em ab initio} and semiempirical results would be due to errors in the
+semiempirical method.
+\end{enumerate}
+
+The second of these protocols needs a word of explanation.  Consider the case
+of a compound whose $\Delta H_f$ is of highly questionable accuracy, say 
+10$\pm$30 kcal/mol.  Should this system be used in discussions of accuracy? If
+the calculated PM3 $\Delta H_f$ was 11 kcal/mol and the calculated AM1 $\Delta
+H_f$ was 40 kcal/mol, then PM3 would obviously look better than AM1.  In that
+case, my bias would be to include the compound.  Conversely, if the results
+were reversed, then my bias would suggest that clearly the reference datum was
+very inaccurate,  and therefore should not be included.  This is obviously
+faulty reasoning.  Therefore, in order to prevent bias affecting the selection
+of compounds to be used in these discussions, the decision of whether to
+include any specific species was made before the calculation was done.
+
+By adopting these protocols, and by extensive use of automatic table
+generation, and by an absolute minimum  of human intervention, I hope the
+reader will be convinced that bias has been kept to an absolute minimum.
+
+In the Tables, the accuracy of the reference data is not given.  This is a
+known fault. However, addition of the accuracy data would be a lot of work,
+and  has not yet been done.  
+
+\section{Structure of the Tables}
+Because of the size of these Tables, finding any specific system can be quite
+time-consuming.  To help locate species, the order of occurrence of species
+within a Table follows very specific rules.  These are:
+
+\begin{itemize}
+\item The order of occurrence is dictated by the empirical formula only.
+\item Elements in the empirical formula are arranged as in 
+J. O. Cox, G. Pilcher, ``Thermochemistry of Organic and Organometallic
+Compounds'', Academic Press, New York, N.Y., 1970, e.g.\
+H $<$ C $<$ O $<$ N $<$ S $<$ F $<$ Cl $<$ Br $<$ I $<$ Li $<$ Na $<$ K $<$ 
+Rb $<$ Cs $<$ Be $<$ Mg $<$ Ca $<$ Sr $<$ Ba $<$ B $<$ Al $<$ Ga $<$ In $<$ 
+Tl $<$ Si $<$ Ge $<$ Sn $<$ Pb $<$ P $<$ As $<$ Zn $<$ Cd $<$ Hg $<$ Sb $<$
+Se $<$ Te $<$ Bi.
+\end{itemize}
+ 
+\index{$\Delta H_f$!average errors in}
+\index{Heat of Formation!average errors in}
+Average $\Delta H_f$ errors for different types of compound are given  in
+Table~\ref{avehof}, and summarized by element in Table~\ref{elehof}. Because of
+the importance of $\Delta H_f$s, the raw data are presented in
+Table~\ref{hoftab}.  Users often want to know where methods do not work well,
+so the worst predicted $\Delta H_f$ are presented for each method.  These are
+shown in Tables~\ref{wemndo}, \ref{weam1} and \ref{wepm3}.
+
+Summarizing geometry errors proved difficult because of the sheer volume of
+data. Because bond-lengths are very important, and because of the relatively
+small amount of data on angles and dihedrals, only average bond-length errors
+are presented. For bond-types, average errors are given in
+Table~\ref{avegeos}.  This data is further summarized by element in
+Table~\ref{elegeos}.  All the raw data are given in Table~\ref{geotab}.
+
+Although Ionization Potential (I.P.) and dipole moment data is important,  the
+importance is much less than $\Delta H_f$ and geometric data, therefore only
+summaries are given here, see Tables~\ref{weimndo}, \ref{weiam1} and
+\ref{weipm3} for the worst predicted values of I.P.s,  and Table~\ref{eleips}
+for a summary by element.  For dipole moments, the corresponding Tables are
+\ref{wedmndo}, \ref{wedam1}, \ref{wedpm3}, and \ref{eledip}.
+
+\section{Limitations of MNDO}\index{MNDO!accuracy}
+MNDO is the oldest of the three methods surveyed here, and as a direct result,
+is the least accurate. MNDO has many advantages over earlier semiempirical
+methods, but as MNDO is such a large improvement over those methods,
+enumeration of MNDO's good points would be invidious to the other methods.
+Instead, only the limitations likely to be encountered by users will be
+mentioned. The principal drawbacks to MNDO are:
+\begin{enumerate}
+\item Sterically crowded molecules are too unstable.   Example: neopentane.
+\item Four-membered rings are too stable.   Example: cubane.
+\item The hydrogen bond is virtually non-existent.   Example: water dimer.
+\item Hypervalent compounds are too unstable.   Example: sulfuric acid.
+\item Activation barriers are generally too high.
+\item Non-classical structures are predicted to be unstable relative to the 
+classical structure.   Example: ethyl radical.
+\item   Oxygenated substituents on aromatic rings are out-of-plane.   Example: 
+nitrobenzene.
+\item The peroxide bond is systematically too short by about 0.17\AA.
+\item The C--O--C angle in ethers is too large by about 9$^\circ$. 
+\end{enumerate}
+
+\section{Accuracy of AM1}\index{AM1!accuracy}
+AM1 is a distinct improvement over MNDO, in that the overall accuracy is
+considerably improved. Specific improvements are:
+\begin{enumerate}
+\item The strength of the hydrogen bond in the water dimer is 5.5 kcal/mol, in
+accordance with experiment.
+\item Activation barriers for reaction are markedly better than those of MNDO.
+\item Hypervalent phosphorus compounds are considerably improved relative to
+MNDO.
+\item In general, errors in $\Delta H_f$ obtained using AM1 are about 40\%
+less than those given by MNDO.
+\end{enumerate}
+
+Unfortunately, with this improvement a few deficiencies were introduced. The
+most important of these are:
+\begin{enumerate}
+\item\index{Phosphorus!AM1 fault} AM1 phosphorus has a spurious and very sharp
+potential barrier at 3.0 \AA ngstroms. The effect of this is to distort
+otherwise symmetric geometries and to introduce spurious activation barriers. A
+vivid example is given by P$_4$O$_6$, in which the notionally equal P--P bonds
+are predicted by AM1 to differ by 0.4 \AA . This is by far the most severe
+limitation of AM1.
+\item Alkyl groups have a systematic error due to the heat of formation of the
+CH$_2$ fragment being too negative by about 2 kcal/mol.
+\item Nitro compounds, although considerably improved relative to MNDO, are
+still systematically too positive in energy.
+\item The lowest-energy conformer for ethanol is predicted to have a gauche 
+C--C--O--H angle.  High level {\em ab initio} calculations, and experimental 
+evidence, suggests that the correct geometry is trans.  This error was 
+reported by Andreas Jabs, at Martin-Luther-Universitaet Halle-Wittenberg,
+Halle/Saale, Germany.
+\item The peroxide bond is still systematically too short by about 0.17\AA.
+\end{enumerate}
+
+\section{Accuracy of PM3}\index{PM3!accuracy}
+PM3 is a distinct improvement over AM1. Evidence of this is:
+\begin{enumerate}
+\item Hypervalent compounds are predicted with considerably improved accuracy.
+\item Overall errors in $\Delta H_f$ are reduced by about 40\% relative to AM1.
+\end{enumerate}
+
+\section{Faults and Errors in PM3}
+Although PM3 is more accurate in predicting the $\Delta H_f$ of many systems
+than either AM1 or MNDO, it does have some limitations. The more important of
+these are:
+
+\begin{enumerate}
+\item The barrier to rotation in formamide is practically non-existent. In
+part, this can be corrected by the use of the \comp{MMOK} option, see
+Section~\ref{mmok}. Fault discovered by Prof Tim Clark.
+\item Minima are predicted for which no experimental systems are known.  By
+inference, these minima are spurious~\cite{klebe}.
+\item Proton affinities are inaccurate.  The distribution of proton affinities
+is essentially ``shotgun.''  In other words, there is a high, non-systematic
+scatter from the experimental values compared with all other popular
+methods~\cite{schmiedekamp} (including AM1).
+\item CBr$_4$ is predicted to have a D$_{2d}$ rather than T$_d$ geometry (W.\
+Thiel, private comm.).
+\item The lowest-energy conformer for ethanol is predicted to have a gauche
+C--C--O--H angle.  High level {\em ab initio} calculations, and experimental
+evidence, suggests that the correct geometry is trans.  This error was reported
+by Andreas Jabs, at Martin-Luther-Universitaet Halle-Wittenberg, Halle/Saale,
+Germany.
+\item Some polycyclic rings are predicted to have butterfly shapes rather than
+being flat.  
+\item Almost all $sp^3$ nitrogen systems are predicted to be pyramidal, in
+variance with experiment and other methods.
+\item The charge on nitrogen atoms are most likely of incorrect sign  and of
+unrealistic magnitude. This was due to faults in the parameterization.
+\item H-non-bonded H contacts are too short, at about 1.7\AA . They should be
+more than 2\AA .  One consequence is that hydrogen bonds are too short by about
+0.1\AA .
+\item The LUMO of methane is of symmetry $a_1$ instead of the correct symmetry 
+of $t_2$. 
+\end{enumerate}
+
+The tables given here have been carefully checked for accuracy. In many
+instances the calculated results differ from those of earlier publications. In
+most cases, the difference has been investigated and found to be due to errors
+in the earlier work. This does not, of course, mean that the tables are fully
+accurate, but only that care has been taken to minimize error.
+
+% \section{Comparison of Accuracy of MNDO, AM1, and PM3}
+\input{mndo_errors}
+\input{am1_errors}
+\input{pm3_errors}
+\clearpage
+\input{avehof}
+\clearpage
+\input{elehof}
+\clearpage
+\input{avegeos}
+\clearpage
+\input{elegeos}
+\clearpage
+\input{mndoi_errors}
+\clearpage
+\input{am1i_errors}
+\clearpage
+\input{pm3i_errors}
+\clearpage
+\input{eleips}
+\clearpage
+\input{mndod_errors}
+\clearpage
+\input{am1d_errors}
+\clearpage
+\input{pm3d_errors}
+\input{eledip}
+\clearpage
+
+\section{Comparison of Calc'd and Observed $\Delta H_f$ for MNDO, AM1, and PM3}
+The following Table lists experimental $\Delta H_f$, in kcal/mol, for  1200
+species.  In order to save space, only the difference between the calculated
+and observed $\Delta H_f$ is reported.  The calculated $\Delta H_f$ is,
+however, easily obtained by adding the difference to the experimental value. 
+Thus, the $\Delta H_f$ of  methane, CH$_4$,  calculated using MNDO, is
+5.95+(--17.89) = --11.96 kcal/mol.
+
+All the results reported in this and the following Table can be easily
+reproduced using MOPAC.  In some cases, care must be taken to ensure that the
+correct spin state and symmetry are specified.  For example, triplet oxygen
+must be specified using \comp{OPEN(2,2) TRIPLET}, in order for the correct
+$\Delta H_f$ to be obtained.   Most open-shell systems will not be indicated as
+open-shell.
+
+Results for the iodine atom are missing.  Although MNDO, AM1, and PM3 all give
+a zero error, the PM3 result is incorrect.  The correct PM3 result for the
+$\Delta H_f$ of iodine atom is -46.87 kcal/mol.  This can be easily checked by
+running an iodine atom using keywords \comp{PM3 OPEN(7,4)}.
+
+Many reference data are of highly questionable accuracy, for example the sulfur
+halides, and some other reference data refer to highly exotic species, e.g.\
+N$^{2+}$. Results for calculations on all these systems are reported, as
+required by the protocols for determining accuracy of methods.  If only those
+systems for which accurate data were used, and the choice of system limited to
+conventional molecules, then the average errors reported in the earlier Tables
+would decrease markedly.
+
+\subsection*{Notes on the Table}
+\begin{itemize}
+\item The $\Delta H_f$ of COI is probably incorrect.  Given that the
+experimental $\Delta H_f$s of CO and I are -26.4 and +25.5 kcal/mol,
+respectively, and  the $\Delta H_f$ of COI is 63.6 kcal/mol, then the CO-I bond
+has a `strength' of -64.5 kcal/mol.  This is unlikely.
+\item $\Delta H_f$ for the elements are included. Isolated atoms are used in
+the NDDO methods as the standard, and the defined $\Delta H_f$ should be
+exactly zero.  For PM3 several elements have negative $\Delta H_f$.  This is a
+result of  PM3 incorrectly predicting the atomic configuration.
+\end{itemize}
+
+\input{hoftab}
+
+\section{Comp. of Calc'd and Exp'l Geometries for MNDO, AM1, and PM3}
+
+The following Table lists over 1100 experimental bond lengths, angles,  and
+dihedrals or torsion angles, and the errors in the prediction of these
+quantities for each method.
+
+Reference geometry data are taken from many sources, mainly from X-ray and
+microwave structures. No differentiation is made between these various sources,
+although microwave structures are preferred to X-ray. Further, no
+differentiation is made between various definitions of bond lengths. Thus the
+bond length corresponding to the bottom of the harmonic well, $r_o$, is not
+distinguished from the equilibrium bond length, or from the bond length
+corresponding to the system in which the zero point energy is included. For
+semiempirical methods, the average error in bond lengths is large relative to
+the differences between the bond lengths obtained using the various
+definitions.
+
+\subsection*{Notes on the Table}
+\begin{itemize}
+\item The AM1 results for P$_4$O$_6$ and P$_4$O$_{10}$ are incorrect. The
+experimental geometry was used to start the calculation.  In order to generate
+the lowest energy geometry, the systems must first be distorted.
+\item For salicylaldoxim, the bonds reported are the internal hydrogen bond and
+a non-bonding O-N interaction.
+\item Several 180$^{\circ}$ angles are reported. Most of these correspond to
+symmetry-defined angles.  In some instances, e.g., MgCl$_2$, the calculated
+angle is incorrect.  The protocols for this Chapter require {\em all} such
+results to be reported.
+\item The PM3 prediction for the bond-length in HgI is in error by over 10\AA .
+HgI is predicted, by PM3, to consist of a mercury and an iodine atom.  The
+fault can be traced to the incorrect PM3 prediction for the ground state of the
+iodine atom. Removal of this one error would lower the average errors in Hg
+bond lengths from 0.586\AA\ to 0.054\AA , and the average error in I bond
+lengths from 0.371\AA\ to 0.091\AA .  These, in turn, result in the average
+bond-length error in PM3 dropping from 0.045\AA .  If that were done, then PM3
+would become the most accurate method for the prediction of bond-lengths. 
+Again, the protocols involved preclude this being done at this time.
+\end{itemize}
+
+\input{geotab}

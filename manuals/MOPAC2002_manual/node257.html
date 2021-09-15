@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>PDB(text) </TITLE>
+<META NAME="description" CONTENT="PDB(text) ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node258.html">
+<LINK REL="previous" HREF="node256.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node258.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html4990"
+ HREF="node258.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4986"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html4980"
+ HREF="node256.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4988"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4989"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4991"
+ HREF="node258.html">PDBOUT </A>
+<B> Up:</B> <A NAME="tex2html4987"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html4981"
+ HREF="node256.html">PDB</A><!--End of Navigation Panel--><H2><A NAME="SECTION0073145000000000000000">
+<TT>PDB(<I>text</I>)</TT> </A>
+</H2>
+Although MOZYME will normally recognize all the elements in a PDB file, the
+possibility exists that an element or entity will be defined in a PDB file
+in an unusual way, and as a result it will not be recognized.  To allow for this,
+the keyword <TT>PDB(<I>text</I>)</TT> is provided.  The <I>text</I> is composed of a series
+of entries of form 'Chemical-symbol:Atomic number', separated by commas.
+Thus if a PDB had some hydrogen atoms represented by the symbol <I>J</I>, and
+a bromine atom represented by <I>QW</I>, then these symbols would be correctly
+recognized by MOZYME if <TT>PDB(J:1,QW:35)</TT> were specified on the keyword line.
+ 
+Entities which do not correspond to elements can be excluded by assigning them
+the atomic number zero, e.g. <TT>PDB(LP:0)</TT> would exclude any explicitly
+defined lone-pairs. 
+ 
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

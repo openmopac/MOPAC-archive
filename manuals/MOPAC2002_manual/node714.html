@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>General</TITLE>
+<META NAME="description" CONTENT="General">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node713.html"><LINK REL="up" HREF="node710.html"><LINK REL="next" HREF="node715.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node715.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node710.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node713.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node715.html">References</A> <B>Up:</B> <A HREF="node710.html">Bibliography</A> <B>Previous:</B> <A HREF="node713.html">Electronics</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION002300400000000000000">General</A> </H3>
+<P>Fundamental constants are taken from the CODATA report&nbsp;[<A HREF="node715.html#codata">71</A>]. A good introduction to MOPAC can be found in Tim Clark's book&nbsp;[<A HREF="node715.html#tclark">131</A>]. </P>
+<STRONG><DL>
+<DT>Results</STRONG> </DT>
+<DD>&nbsp; <BR>
+The SCF M.O.s, which diagonalize the Fock matrix, can be localized&nbsp;[<A HREF="node715.html#local">38</A>] to give M.O.s which can be identified with the conventional picture of two-electron bonds and lone pairs. The localization scheme is faster at the semiempirical level than the Edmiston-Ruedenberg&nbsp;[<A HREF="node715.html#edmrue">62</A>] or Boys&nbsp;[<A HREF="node715.html#boys">61</A>] methods. Associated with each conventional M.O. is a bond-index&nbsp;[<A HREF="node715.html#m.o.valency">23</A>], which represents the contribution to the bond-order matrix due to each M.O. Bond orders and valencies can be displayed by use of <TT>BONDS</TT>&nbsp;[<A HREF="node715.html#bonds">15</A>]. Other phenomena relating to bonding can also be calculated&nbsp;[<A HREF="node715.html#nrm85">24</A>,<A HREF="node715.html#mrb86">25</A>,<A HREF="node715.html#mb89">26</A>]. An alternative to the normal Coulson density matrix is the Mulliken&nbsp;[<A HREF="node715.html#mullik1">41</A>,<A HREF="node715.html#mullik2">42</A>] matrix, invoked by <TT>MULLIK</TT>. </DD>
+<DD>Dipole moments for ions are coordinate system dependent, so by definition&nbsp;[<A HREF="node715.html#dipoles_for_ions">132</A>],<A NAME="BM43274">&nbsp;</A> the center of mass is used. Higher terms, e.g., polarizability, and first and second hyperpolarizability, can be calculated&nbsp;[<A HREF="node715.html#polar">47</A>] by <TT>POLAR</TT>. </DD>
+<DD>Ionization potentials&nbsp;[<A HREF="node715.html#koopmans">59</A>] can be corrected using Green's Functions&nbsp;[<A HREF="node715.html#gf1">34</A>,<A HREF="node715.html#gf2">35</A>,<A HREF="node715.html#gf3">36</A>,<A HREF="node715.html#gf4">33</A>,<A HREF="node715.html#gf5">37</A>,<A HREF="node715.html#gf6">32</A>] </DD>
+<STRONG><br>
+&nbsp;<DT>Solvent and Electrostatics</STRONG> </DT>
+<DD>&nbsp; <BR>
+Solvent phenomena can be studied. The COSMO technique&nbsp;[<A HREF="node715.html#cosmo">30</A>], unlike the self-consistent reaction fields&nbsp;[<A HREF="node715.html#scrf">74</A>], allows geometries to be optimized. Although the Miertus-Scrocco-Tomasi model&nbsp;[<A HREF="node715.html#mst">75</A>,<A HREF="node715.html#mt">76</A>] cannot optimize geometries, is more sophisticated in that it allows cavitation effects. This model has been modified&nbsp;[<A HREF="node715.html#lno">77</A>,<A HREF="node715.html#glo">78</A>,<A HREF="node715.html#nol">79</A>,<A HREF="node715.html#lbo">80</A>,<A HREF="node715.html#obl">81</A>] to allow NDDO methods to be used. In this, optimized VdW radii&nbsp;[<A HREF="node715.html#ojl">83</A>,<A HREF="node715.html#blo">84</A>] are used to construct&nbsp;[<A HREF="node715.html#pastb">82</A>] a cavity. </DD>
+<DD>The free energy of hydration is computed as the addition of three contributions:
+<br>
+&nbsp;</DD>
+<DD>1. The electrostatic term, which is computed from the linear free energy response theory&nbsp;[<A HREF="node715.html#mst">75</A>,<A HREF="node715.html#mt">76</A>,<A HREF="node715.html#lno">77</A>,<A HREF="node715.html#glo">78</A>,<A HREF="node715.html#nol">79</A>,<A HREF="node715.html#lbo">80</A>,<A HREF="node715.html#obl">81</A>].
+<br>
+&nbsp;</DD>
+<DD>2. The cavitation contribution, which is computed from Pierotti's scaled particle theory&nbsp;[<A HREF="node715.html#rap">85</A>].
+<br>
+&nbsp;</DD>
+<DD>3. The van der Waals terms, which is computed using a linear relation with the solute accessible surface, and optimized "hardness" parameters&nbsp;[<A HREF="node715.html#ojl">83</A>,<A HREF="node715.html#blo">84</A>]. </DD>
+</DL>
+<P>In addition to the free energy of hydration a "solvent-adapted" wavefunction is obtained. Such a wavefunction can be used to determine changes in solute properties due to the solvent&nbsp;[<A HREF="node715.html#lobg">86</A>,<A HREF="node715.html#lo">87</A>,<A HREF="node715.html#lo2">88</A>,<A HREF="node715.html#lobg2">89</A>]. </P>
+<P>Electrostatic potentials can be used with the MST method both by deorthogonalizing the wavefunction&nbsp;[<A HREF="node715.html#lio">90</A>,<A HREF="node715.html#alo">91</A>,<A HREF="node715.html#lo3">40</A>] and by keeping the wavefunction orthogonal&nbsp;[<A HREF="node715.html#frr">92</A>,<A HREF="node715.html#alo2">93</A>] </P>
+<P>Other ESP methods available are the Merz-Bessler technique&nbsp;[<A HREF="node715.html#esp">31</A>] and the Ford-Wang procedure&nbsp;[<A HREF="node715.html#pmep1">45</A>,<A HREF="node715.html#pmep2">46</A>]. The Ford-Wang is much faster and more accurate than the Merz-Bessler method, but is limited to AM1 calculations on systems containing H, C, N, O, F, and Cl, only. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html11036"><A HREF="node715.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html11032"></A><A HREF="node710.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html11028"></A><A HREF="node713.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html11034"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html11035"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html11037"><A HREF="node715.html">References</A></A> <B>Up:</B> <A NAME="tex2html11033"><A HREF="node710.html">Bibliography</A></A> <B>Previous:</B> <A NAME="tex2html11029"><A HREF="node713.html">Electronics</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Detailed Description of Lewis Structure.</TITLE>
+<META NAME="description" CONTENT="8.6.3.2 Detailed Description of Lewis Structure.">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node520.html"><LINK REL="up" HREF="node519.html"><LINK REL="next" HREF="node522.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node522.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node519.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node520.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node522.html">Construction of Starting</A> <B>Up:</B> <A HREF="node519.html">Lewis Structures.</A> <B>Previous:</B> <A HREF="node520.html">Lewis Structure Main</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001263200000000000000">Detailed Description of Lewis Structure.</A> </H3>
+<STRONG><DL>
+<DT>Calculation of Connectivity</STRONG> </DT>
+<DD>&nbsp; <BR>
+Hydrogen atoms are monovalent. Because of this, they can only bond to one other atom. Therefore, the first set of bonds formed are the X-H
+<font face="Symbol"><i>s</i> </font>bonds. The criterion used is that each hydrogen atom is connected to the atom nearest to it, except that a hydrogen atom is not allowed to be bonded to another hydrogen atom. </DD>
+<DD>The connectivity of all other atoms is determined. Atoms are considered as being connected (bonded together) if the interatomic distance is less than 110% of the sum of their Van der Waals radii. </DD>
+<DD>Any bridging hydrogen bonds are identified. These usually indicate a faulty geometry. If any are present, then the SCF calculation will not be run, unless <TT>
+<a href="node207.html">LET</a></TT> is present. </DD>
+<DD>Any user-defined chemical bonds are identified. This is useful in cases where a Lewis structure could not otherwise be created. An 
+<a href="node147.html">example</a> is the simple system HNO<SUB>3</SUB>. </DD>
+<DD>Finally, the number of atoms bonded to each atom is checked. Conventional Lewis structures do not allow more than four bonds to each atom (assuming an <I>sp</I><SUP>3</SUP> basis set), so if there are more than four atoms bonded to any atom, a conventional Lewis structure cannot be generated, and the SCF cannot be run. Before abandoning the calculation, an attempt is made to reduce the number of bonds to a hypervalent atom. First, any bonds from a hypervalent atom to a halogen are broken. If this makes the hypervalent atom normal, then the calculation can proceed. If that does not work, then bonds to elements of group VI are broken. If that still does not make the atom normal-valent, then the calculation is stopped. </DD>
+<DT><i><font face="Symbol">s</font></i><STRONG>-framework</STRONG> </DT>
+<DD>&nbsp; <BR>
+This is the simplest set of bonds to identify. A <font face="Symbol"><i>s</i> </font>bond exists for every pair of atoms that are connected. The number of <font face="Symbol">
+<i>s</i> </font>bonds is equal to the number of connections in the system. For water, this would be 3; for benzene, 12; and for ethylene, 5. </DD>
+<DD>Each time a bond is formed, the number of available atomic orbitals on the atoms involved is decremented by 1 and the number of available electrons is decremented by 1. For example, before the <font face="Symbol">
+<i>s</i>&nbsp; </font>framework of ammonia is formed, the number of available orbitals on nitrogen is 4 and the number of electrons is 5. After the <font face="Symbol">
+<i>s</i>&nbsp; </font>bonds are formed, there is 1 orbital and 2 electrons left. </DD>
+<STRONG><DT>Lone pairs</STRONG> </DT>
+<DD>&nbsp; <BR>
+The next set of Lewis elements formed are the lone pairs. The rule used here is that if there are more electrons than orbitals on an atom, the extra electrons are used in the construction of lone pairs. Each lone pair uses up two electrons and one orbital. Thus, one lone pair would be assigned to the nitrogen in ammonia, two lone pairs would be assigned to oxygen in water, and three lone pairs would be assigned to chlorine in HCl. </DD>
+<DD>The lone pairs could only assigned after the <font face="Symbol">s </font>bonds were created. If they were assigned before the
+<font face="Symbol">s </font>bonds, then some ionic systems, such as NH<SUB>4</SUB>, could not be represented. </DD>
+<STRONG><DT>Open-ended <font face="Symbol">p</font>-bonds</STRONG> </DT>
+<DD>&nbsp; <BR>
+Once the lone pairs are assigned, the number of unused atomic orbitals on an atom will be equal to the number of unused electrons on that atom. These unused orbitals are then available for forming multiple bonds between atoms. If two atoms, that are <font face="Symbol">
+<i>s</i>&nbsp; </font>bonded together, both have unused orbitals, then they can form a
+<font face="Symbol"><i>p</i> </font>bond. </DD>
+<DD>The order in which
+<font face="Symbol"><i>p</i> </font>bonds are generated is important. If in styrene, for example, a
+<font face="Symbol"><i>p</i> </font>bond is assigned to the ring-C<SUB>1</SUB> as in <A HREF="node521.html#styrene">Figure 1</A>, <I>A</I>, then when the remaining double bonds are created, there are two unused atomic orbitals on atoms that are not bonded together. In order for a Lewis structure to be generated, two electrons are put into one of these unused orbitals, creating an anionic center, and no electrons are put into the other orbital, making it a cationic center. </DD>
+<DD><BR>
+<DIV ALIGN="CENTER"><A NAME="styrene">&nbsp;<A NAME="BM15701"></A>&nbsp;</A> </DD>
+<STRONG><DD>Figure 1:</STRONG> Examples of Initial Choice of Double Bond</DD>
+</DL>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{styrene}$ --><IMG SRC="img1075.gif" WIDTH=553 HEIGHT=394 ALT="includegraphics{styrene}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<DL>
+<DD>A better choice is to identify open-ended
+<font face="Symbol"><i>p</i> </font>systems, and to assign these first, option <I>B</I> in <A HREF="node521.html#styrene">Figure 1</A>. </DD>
+<DD>The order in which the
+<font face="Symbol"><i>p</i> </font>bonds are assigned in an open-ended<font face="Symbol"><i> p</i> </font>system is important. In the case of a simple conjugated polyene, the order is simple - the carbon atom that has only one atom
+<font face="Symbol">p </font>bonding to it is identified. A <font face="Symbol">
+p </font>bond is constructed between the two atoms. This is repeated until all
+<font face="Symbol"><i>p</i> </font>bonds in the polyene are identified. </DD>
+<DD>Problems arise in more complicated systems, such as buta-1,3-diyne. If the simple rule just described is used, then a zwitterionic cumulated polyene results, <A HREF="node521.html#butdiyne">Figure 2</A> <I>A</I>, instead of a diyne, <A HREF="node521.html#butdiyne">Figure 2</A> <I>B</I>. </DD>
+<DD><BR>
+<DIV ALIGN="CENTER"><A NAME="butdiyne">&nbsp;<A NAME="BM15702"></A>&nbsp;</A> </DD>
+<STRONG><DD>Figure 2:</STRONG> Generation of Yne Bond</DD>
+</DL>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{butdiyne}$ -->
+  <IMG SRC="img1082.gif" ALT="includegraphics{butdiyne}" width="542" height="664"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<DL>
+<DD>Also, if both ends of the olefinic group are connected to aromatic rings, as in 
+<a href="ref_data/stilbene.mop">stilbene</a>, then identification of the olefin group is not obvious. </DD>
+<DD>To allow for this, the following two rules are used: </DD>
+<DT>1. Where there is the possibility of forming a triple bond, do so. </DT>
+<DT>2. When a delocalized
+<font face="Symbol"><i>p</i> </font>system is opened, the
+<font face="Symbol"><i>p</i> </font>bond formed should involve atoms that are
+<font face="Symbol"><i>p</i> </font>bonded to exactly two other atoms. </DT>
+</DL>
+<P>In the case of stilbene (<IMG SRC="img1086.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=29 ALT="$phi$">-CH=CH-<IMG SRC="img1087.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=29 ALT="$phi$">), this prevents a
+<font face="Symbol">p </font>bond forming between the ring and a carbon atom of the olefin. </P>
+<P>Whenever a delocalized
+<font face="Symbol"><i>p</i> </font>system is encountered, as soon as a
+<font face="Symbol"><i>p</i> </font>bond is formed and the delocalization destroyed, then the rest of the
+<font face="Symbol"><i>p</i> </font>system is treated as a simple conjugated polyene. This ensures that the maximum number of
+<font face="Symbol"><i>p</i> </font>bonds is formed, and prevents unconnected
+<font face="Symbol"><i>p</i> </font>bonds from being created. Thus benzene would have the three
+<font face="Symbol"><i>p</i> </font>bonds: C<SUB>1</SUB>-C<SUB>2</SUB>, C<SUB>3</SUB>-C<SUB>4</SUB>, and C<SUB>5</SUB>-C<SUB>6</SUB>, and not the quinoidal C<SUB>1</SUB>-C<SUB>2</SUB>and C<SUB>4</SUB>-C<SUB>5</SUB> bonds. </P>
+<P>To allow compounds that contain several fused delocalized
+<font face="Symbol"><i>p</i> </font>-systems, such as the higher buckyballs (specifically, C<SUB>960</SUB>) to be modeled, two extra rules are needed. These rules can be regarded as minor qualifications to the earlier rules: </P>
+<DL>
+<DT>1. If any atoms attached to an open-ended <font face="Symbol">p </font>system belong to a delocalized
+<font face="Symbol"><i>p</i> </font>system, then when delocalized<font face="Symbol"><i> p</i> </font>systems are opened, the opening is done using these atoms. </DT>
+<DT>2. If a five-membered <font face="Symbol">p</font>ring is attached to another delocalized
+<font face="Symbol"><i>p</i> </font>system, then when the
+<font face="Symbol"><i>p</i> </font>system is opened, at least one atom must be in the other delocalized system. </DT>
+</DL>
+<P>The effect of the first rule is that as soon as a graphitic network is encountered, all the
+<font face="Symbol"><i>p</i> </font>bonds in the network are assigned in one pass. Without this rule, individual parts of the network could be assigned separately, and at the junctions of the various domains, the potential for isolated
+<font face="Symbol"><i>p</i> </font>orbitals exists. This would lead to charges that would cause severe problems with the SCF calculation. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="ful_fac">&nbsp;<A NAME="BM15703"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 3:</STRONG> Kekule Structure for a Facet of Fullerene C<SUB>1500</P></SUB>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{ful_fac}$ -->
+  <IMG SRC="img1104.gif" ALT="includegraphics{ful_fac}" width="566" height="624"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P>For extended graphite-like systems, two more rules are needed. These are: </P>
+<DL>
+<DT>1. </DT>
+<DD>If a six-membered ring has two
+<font face="Symbol"><i>p</i> </font>bonds already, then add a third
+<font face="Symbol"><i>p</i> </font>bond to make it an aromatic ring. </DD>
+<DT>2. </DT>
+<DD>If a six-membered ring has one<font face="Symbol"><i> p</i> </font>bond, then add another
+<font face="Symbol"><i>p</i> </font>bond to the same ring, so that the previous rule can be used. </DD>
+</DL>
+<P>The effect of these rules is that when a graphitic lattice is encountered, all the atoms in the lattice will be assigned in such a way as to maximize the number of aromatic rings. An example of such a system is provided by the large icosahedral fullerene C<SUB>1500</SUB>. A facet of this system is shown in <A HREF="node521.html#ful_fac">Figure 3</A>. </P>
+<STRONG><DL>
+<DT>Remaining unused atomic orbitals</STRONG> </DT>
+<DD>&nbsp; <BR>
+All that remains is to identify any unused orbitals and to assign them to either the occupied or virtual sets. The action taken depends mainly on the group in the periodic table to which the atom belongs, to a lesser degree on the nature of its environment, and sometimes on the charge on the system. </DD>
+<DD>Each group has different properties. Thus: </DD>
+<STRONG><DT>Group I</STRONG> </DT>
+<DD>&nbsp; <BR>
+The alkali metals are extremely electropositive. Therefore, without exception, the unused orbital is assigned to the virtual set, and the atom is charged unipositive. </DD>
+<STRONG><DT>Group II</STRONG> </DT>
+<DD>&nbsp; <BR>
+The alkaline earth elements are very electropositive. If the atom does not form any bonds, then the charge is set to +2, and all orbitals are assigned to the virtual set. </DD>
+<DD>An atom that has formed <I>N</I> bonds will have a charge of 2-<I>N</I>. This can allow the atom to have a negative charge, in which case the data set should indicate that the atoms attached to it have a positive charge. </DD>
+<STRONG><DT>Group III</STRONG> </DT>
+<DD>&nbsp; <BR>
+These elements are electropositive. The action taken depends on the number of unused valence electrons: </DD>
+<STRONG><DT>1 unused electron</STRONG> </DT>
+<DD>The atom is unipositive. </DD>
+<STRONG><DT>2 unused electrons</STRONG> </DT>
+<DD>The atom is neutral: the two unused electrons are used in the formation of a 'lone pair'. </DD>
+<STRONG><DT>3 unused electrons</STRONG> </DT>
+<DD>The atom is unipositive. </DD>
+<STRONG><DT>Group IV</STRONG> </DT>
+<DD>&nbsp; <BR>
+This is the most complicated group, with the charge on the atom depending on many factors. If there are two unused valence electrons, then the atom will be neutral (a carbene, for example). Otherwise, if the first or second nearest neighboring atom is of Group&nbsp;6, then the atom is assigned a negative charge; if the first or second nearest neighboring atom is of Group&nbsp;5, then the atom is assigned a positive charge. If the charge is still not determined, then the assignment of charge is deferred until all other atoms have been assigned. At that point, the charge is assigned as either +1 or -1, depending on the calculated charge on the system and the charge supplied by the data set. The charges are assigned so that the calculated charge equals the supplied charge. </DD>
+<STRONG><DT>Group V</STRONG> </DT>
+<DD>&nbsp; <BR>
+If there is one unused valence electron, then the charge assigned to Group V elements is +1. If there are 2, then the atom is neutral. </DD>
+<STRONG><DT>Group VI</STRONG> </DT>
+<DD>&nbsp; <BR>
+If oxygen and there are two unused orbitals, then both are filled, and the charge is -2. If the atom has one unused orbital, the charge is -1; otherwise the atom is neutral. </DD>
+<STRONG><DT>Group VII</STRONG> </DT>
+<DD>&nbsp; <BR>
+A very electronegative group, the charge is invariably -1. </DD>
+</DL>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8600"><A HREF="node522.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8596"></A><A HREF="node519.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8592"></A><A HREF="node520.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8598"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8599"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8601"><A HREF="node522.html">Construction of Starting</A></A> <B>Up:</B> <A NAME="tex2html8597"><A HREF="node519.html">Lewis Structures.</A></A> <B>Previous:</B> <A NAME="tex2html8593"><A HREF="node520.html">Lewis Structure Main</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

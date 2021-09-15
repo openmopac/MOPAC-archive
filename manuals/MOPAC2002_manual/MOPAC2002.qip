@@ -1,0 +1,99 @@
+# Index Profile for JObjects Quest
+# QuestManager is highly recommended for profile creation and editing.
+ProfileVersion=1.0
+
+# Collection description.
+Description=Collection Title
+
+# Document root (directory you want to index)
+# Use the FileExclusionList parameter to prevent indexing of 
+# specific files or directories.
+DocumentRoot=I:\\Software_from_NT\\Research_top_copy\\MOPAC_Manual_in_HTML\\
+
+
+# Output directory for final index files.
+OutputDir=QuestTmp\\mopac2002\\out
+# Output directory for raw index files.
+WorkingDir=QuestTmp\\mopac2002\\work
+
+
+# Load stop words from a specified file.
+IgnoreWords=default
+
+
+# Database fields
+
+dbField[1].name=body
+dbField[1].type=TEXT
+
+# Content fields
+
+contentField[1].description=Html body
+contentField[1].name=body
+contentField[1].mime=text/html
+contentField[1].status=enabled
+contentField[1].index=body
+contentField[1].weight=1
+
+contentField[2].description="Keywords" meta field
+contentField[2].name=keywords
+contentField[2].mime=text/html
+contentField[2].status=enabled
+contentField[2].index=body
+contentField[2].weight=20
+contentField[2].parser=default
+
+contentField[3].description="Description" meta field
+contentField[3].name=description
+contentField[3].mime=text/html
+contentField[3].status=enabled
+contentField[3].index=body
+contentField[3].weight=10
+contentField[3].parser=default
+
+contentField[4].description=File body
+contentField[4].name=body
+contentField[4].mime=text/plain
+contentField[4].status=enabled
+contentField[4].index=body
+contentField[4].weight=1
+
+# Mime types
+
+type[1].mime=text/html
+type[1].description=HTML documents
+type[1].extensions=html, htm
+type[1].handler=HTML
+type[1].status=enabled
+
+type[2].mime=text/plain
+type[2].description=Text documents
+type[2].extensions=txt
+type[2].handler=TEXT
+type[2].status=enabled
+
+type[3].mime=application/sample-xml
+type[3].description=XML documents
+type[3].extensions=xml
+type[3].handler=XML
+type[3].status=disabled
+
+# Other options...
+
+QuestTempDir=QuestTmp
+ChunkSize=64
+DoCleanup=yes
+
+# Various GUI settings...
+
+DeploymentPath=I:\\Software_from_NT\\Research_top_copy\\MOPAC_Manual_in_HTML\\jobjects\\data\\
+IsHomePageRoot=no
+HomePagePrefix=http://
+DeployArchivesOnly=no
+DeployTemplate=Medium size applet
+LogMessages=yes
+AutoRunOptimization=yes
+AutoDeployIndexFiles=yes
+LastIndexed=1007990597562
+LastOptimized=1007990617468
+LastDeployed=0

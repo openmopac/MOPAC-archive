@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Preparing the data set</TITLE>
+<META NAME="description" CONTENT="3.4.7.1 Preparing the data set">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node357.html"><LINK REL="up" HREF="node357.html"><LINK REL="next" HREF="node359.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node359.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node357.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node357.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node359.html">Conversion Between Various</A> <B>Up:</B> <A HREF="node357.html">Protein Data Bank</A> <B>Previous:</B> <A HREF="node357.html">Protein Data Bank</A>
+<!--End of Navigation Panel-->
+<H3>Preparing the data set </H3>
+<P>Even when the hydrogens are present in the PDB file, for example in crambin, file=<A HREF="ref_data/1cbn.pdb">1CBN</A>, there are usually problems that prevent the file being run. Therefore, before attempting to calculate the electronic structure, any faults in the data set should be corrected. The following procedure has been found to be useful: </P>
+
+<UL>
+<LI>First, the atoms should be rearranged into the standard PDB sequence. This is a quick operation, and only one keyword, <TT>RESEQ</TT>, should be used. Examination of the output will indicate whether any severe problems exist. Potential problems are: </LI>
+
+<UL>
+<LI>The system consists of many short sections of protein. This usually occurs when only a fragment of the system is present, e.g., the active site. Working with such a system is difficult, because the geometry does not correspond to anything that can exist naturally. </LI>
+<LI>One or more <TT>UNK</TT> residues exist. Before continuing, identify the unknown residues. Ensure that they are not artifacts of a faulty geometry. </LI>
+<LI>One or more unknown elements exist. The author of the PDB file may have used non-standard labels for atoms. This fault can be corrected by use of <TT>PDB(...)</TT>. </LI>
+<LI>Structural or positional disorder may exist. Use <A HREF="node123.html">ALT_R=n</A> and/or <A HREF="node122.html">ALT_A=n</A> to correct this. </LI></UL>
+
+<LI>Edit the output file to create a new data set. </LI>
+<LI>If any very small interatomic distances (less than 0.8 &Aring;ngstroms) were reported, edit the data set to correct these faults. A quick way to find faulty distances is to search the data set for "<CODE>) 0.6</CODE>", then "<CODE>) 0.7</CODE>", etc. </LI>
+<LI>Run the corrected data set using keywords <A HREF="node116.html">1SCF</A>, <A HREF="node286.html">RESIDUES</A>, and <A HREF="node226.html">MOZ</A>. Almost certainly, the run will fail. Usually the charge on the system, as determined by the <TT>MOZYME</TT> function, will be incorrect. If it is in the range +2 to -2, that is, in a chemically meaningful range, then simply add <A HREF="node137.html">CHARGE=n</A> and re-submit. </LI>
+<LI>Usually the charge is quite unreasonable (outside the range +2 to -2). Examination of the charged atoms will usually suggest how to proceed. If the charge is large and negative, add hydrogens to the oxygen atoms of ionized acid residues, to neutralize them. If it is large and positive, delete hydrogen atoms from nitrogen atoms of ionized amine groups. Be careful to neutralize an even number of ions--if an odd number is neutralized, then the system will have an odd number of electrons, and the job will stop as soon as the number of electrons is determined. </LI>
+<LI>After correcting the errors, run a single SCF, followed by more complicated calculations, as needed. </LI></UL>
+
+<P>Once the geometry, e.g. crambin, is fully optimized, it must be converted from <A HREF="mopac_examples/proteins/crambin.dat">mixed coordinates</A> (if used) to <A HREF="mopac_examples/proteins/crambin.mop">internal coordinates</A>, before it can be displayed using graphics packages.</P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6213"><A HREF="node359.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6209"></A><A HREF="node357.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6205"></A><A HREF="node357.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6211"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6212"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6214"><A HREF="node359.html">Conversion Between Various</A></A> <B>Up:</B> <A NAME="tex2html6210"><A HREF="node357.html">Protein Data Bank</A></A> <B>Previous:</B> <A NAME="tex2html6206"><A HREF="node357.html">Protein Data Bank</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

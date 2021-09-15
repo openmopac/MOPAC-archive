@@ -1,0 +1,219 @@
+      SUBROUTINE LOCMIN(M,X,N,P,SSQ,ALF,EFS,ITRAP)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES'
+      COMMON /NLLSQI/ NCOUNT
+      COMMON /KEYWRD/ CONTRL
+      DIMENSION X(*), P(*), EFS(*)
+      DIMENSION CONST(MAXPAR), XSTOR(MAXPAR), GSTOR(MAXPAR), 
+     +DUMMY(MAXPAR)
+      DIMENSION PHI(3),VT(3)
+      INTEGER LEFT,RIGHT,CENTER
+      CHARACTER*80 KEYWRD, CONTRL
+      LOGICAL FIRST, DEBUG, LOWER
+      DATA CONST/MAXPAR*1.D0/, FIRST /.TRUE./
+*******************************************************************************
+*
+*    LOCMIN IS CALLED BY NLLSQ ONLY. IT IS A LINE-SEARCH PROCEDURE FOR LOCATING
+*    A MINIMUM IN THE FUNCTION SPACE OF COMPFG.  SEE NLLSQ FOR MORE DETAILS
+*
+*******************************************************************************
+      IF(FIRST) THEN
+          FIRST=.FALSE.
+          XMAXM=1.D9
+          SCALE=1.D0
+          KEYWRD=CONTRL
+C
+C THE ABOVE LINE IS TO TRY TO PREVENT OVERFLOW IN NLLSQ
+C
+          EPS=1.D-5
+          DEBUG=(INDEX(KEYWRD,'LOCMIN') .NE. 0)
+          IF( .NOT. DEBUG) DEBUG=(INDEX(KEYWRD,'NOPRINT').NE.0)
+          TEE=1.D-2
+          YMAXST=0.005D0
+          I=INDEX(KEYWRD,' STEP=')
+          IF(I.NE.0) THEN
+              YMAXST=READA(KEYWRD,I)
+              WRITE(6,'('' STEP SIZE IN LOCMIN ='',F12.8)')YMAXST
+          ENDIF
+          XCRIT=0.0001D0
+          MXCNT2=30
+          IPRINT=0
+          IF(DEBUG)IPRINT=-1
+      ENDIF
+      XMAXM=1.D-11
+      DO 67 I=1,N
+  67  XMAXM=MAX(XMAXM,ABS(P(I)))
+      XMINM=XMAXM*SCALE
+      XMAXM=YMAXST/XMAXM/SCALE
+      FIN = SSQ
+      LOWER = .FALSE.
+      T=ALF
+      PHI(1) = SSQ
+      VT(1) = 0.0D0
+      VT(2) = T/4.0D0
+      IF(VT(2).GT.XMAXM) VT(2)=XMAXM
+      T = VT(2)
+      DO 1 I=1,N
+    1 X(I) = X(I)+T*P(I)*CONST(I)*SCALE
+      CALL COMPFG(X,.TRUE.,ESCF,.TRUE.,EFS,.TRUE.)
+      PHI(2)=DOT(EFS,EFS,N)
+      CALL EXCHNG(PHI(2),SQSTOR,ENERGY,ESTOR,X,XSTOR,T,ALFS,N)
+      DO 134 I=1,M
+  134 GSTOR(I)=EFS(I)
+      IF (PHI(1) .LE. PHI(2)) THEN
+      VT(3) = -VT(2)
+      LEFT = 3
+      CENTER = 1
+      RIGHT = 2
+      ELSE
+      VT(3)=2.0D0*VT(2)
+      LEFT = 1
+      CENTER = 2
+      RIGHT = 3
+      ENDIF
+      TLAST = VT(3)
+      T = TLAST-T
+      DO 2 I=1,N
+    2 X(I) = X(I)+T*P(I)*CONST(I)*SCALE
+      FLAST=PHI(2)
+      CALL COMPFG(X,.TRUE.,ESCF,.TRUE.,EFS,.TRUE.)
+      F=DOT(EFS,EFS,N)
+      IF(F.LT.SQSTOR) CALL EXCHNG(F,SQSTOR,ENERGY,ESTOR,X,
+     1XSTOR,T,ALFS,N)
+      DO 135 I=1,M
+  135 GSTOR(I)=EFS(I)
+      IF(F.LT.FIN) LOWER = .TRUE.
+      NCOUNT = NCOUNT+2
+      PHI(3) = F
+      IF (IPRINT) 200,201,201
+  200 WRITE (6,500) VT(1),PHI(1),VT(2),PHI(2),VT(3),PHI(3)
+  201 MXCT=MXCNT2
+      DO 11 ICTR=3,MXCT
+      XMAXM=XMAXM*3.D0
+      ALPHA = VT(2) - VT(3)
+      BETA = VT(3) - VT(1)
+      GAMMA = VT(1)-VT(2)
+      IF(ALPHA.EQ.0.D0)ALPHA=1.D-20
+      IF(BETA.EQ.0.D0)BETA=1.D-20
+      IF(GAMMA.EQ.0.D0)GAMMA=1.D-20
+      ABG =-(PHI(1)*ALPHA+PHI(2)*BETA+PHI(3)*GAMMA)/ALPHA
+      ABG=ABG/BETA
+      ABG=ABG/GAMMA
+      ALPHA=ABG
+      BETA = ((PHI(1)-PHI(2))/GAMMA)-ALPHA*(VT(1)+VT(2))
+      IF (ALPHA)  3,3,4
+    3 IF (PHI(RIGHT) .GT. PHI(LEFT))  GO TO 31
+      T = 3.0D0*VT(RIGHT)-2.0D0*VT(CENTER)
+      GO TO 42
+   31 T = 3.0D0*VT(LEFT)-2.0D0*VT(CENTER)
+   42 S=T-TLAST
+      T=S+TLAST
+      GO TO 43
+    4 T = -BETA/(2.0D0*ALPHA)
+      S=T-TLAST
+      IF (S) 91,12,92
+   91 AMDIS=VT(LEFT)-TLAST-XMAXM
+      GO TO 93
+   92 AMDIS=VT(RIGHT)-TLAST+XMAXM
+   93 IF(ABS(S).GT.ABS(AMDIS)) S=AMDIS
+      T=S+TLAST
+   43 CONTINUE
+      IF(ICTR.GT.3.AND.ABS(S*XMINM).LT.XCRIT) THEN
+          IF( DEBUG )
+     +    WRITE(6,'('' EXIT DUE TO SMALL PROJECTED STEP'')')
+          GO TO 12
+      ENDIF
+      T=S+TLAST
+      DO 5 I=1,N
+    5 X(I) = X(I)+S*P(I)*CONST(I)*SCALE
+      FLAST=F
+      CALL COMPFG(X,.TRUE.,ESCF,.TRUE.,EFS,.TRUE.)
+      F=DOT(EFS,EFS,N)
+      IF(F.LT.SQSTOR) CALL EXCHNG(F,SQSTOR,ENERGY,ESTOR,X,XSTOR,
+     +T,ALFS,N)
+      DO 136 I=1,M
+  136 GSTOR(I)=EFS(I)
+      IF(F.LT.FIN) LOWER = .TRUE.
+      NCOUNT = NCOUNT+1
+      IF (IPRINT) 600,601,601
+  600 WRITE (6,501) VT(LEFT),PHI(LEFT),VT(CENTER),PHI(CENTER),
+     .  VT(RIGHT),PHI(RIGHT),T,F
+  601 CONTINUE
+C
+C    TEST FOR EXCITED STATES AND POTHOLES
+C
+      ITRAP=0
+      IF(ABS(VT(CENTER)).GT.1.D-10) GOTO 602
+      IF(ABS(T)/(ABS(VT(LEFT))+1.D-15).GT.0.3333) GOTO 602
+      IF(2.5D0*F-PHI(RIGHT)-PHI(LEFT).LT.0.5D0*PHI(CENTER)) GOTO 602
+C
+C   WE ARE STUCK ON A FALSE MINIMUM
+C
+      ITRAP=1
+      GOTO 12
+  602 CONTINUE
+*
+* NOW FOR THE MAIN STOPPING TESTS.  LOCMIN WILL STOP IF:-
+*     THE ERROR FUNCTION HAS BEEN REDUCED, AND
+*     THE RATE OF DROP OF THE ERROR FUNCTION IS LESS THAN 0.5% PER STEP
+*     AND
+*     (A) THE RATIO OF THE PROPOSED STEP TO THE TOTAL STEP IS LESS THAN
+*         EPS,   OR
+*     (B) THE LAST DROP IN ERROR FUNCTION WAS LESS THAN 5% OF THE TOTAL DROP
+*         DURING THIS CALL TO LOCMIN.
+*
+      IF(DEBUG)WRITE(6,'('' F/FLAST'',F13.6)')F/FLAST
+      IF( LOWER  .AND. F/FLAST .GT. 0.995D0) THEN
+          IF((ABS(T-TLAST).LE.EPS*ABS(T+TLAST)+TEE)) THEN
+             IF( DEBUG )
+     +       WRITE(6,'('' EXIT AS STEP IS ABSOLUTELY SMALL '')')
+             GO TO 12
+          ENDIF
+          SUM=MIN(ABS(F-PHI(1)),ABS(F-PHI(2)),ABS(F-PHI(3)))
+          SUM2=(FIN-SQSTOR)*0.05D0
+          IF(SUM .LT. SUM2) THEN
+              IF( DEBUG )
+     +        WRITE(6,'('' EXIT DUE TO HAVING REACHED BOTTOM'')')
+              GOTO 12
+          ENDIF
+      ENDIF
+      TLAST = T
+      IF ((T .GT. VT(RIGHT)) .OR. (T .GT. VT(CENTER) .AND. F .LT.
+     .  PHI(CENTER)) .OR. (T .GT. VT(LEFT) .AND. T .LT. VT(CENTER) .AND.
+     .  F .GT. PHI(CENTER)))  GO TO 7
+      VT(RIGHT) = T
+      PHI(RIGHT) = F
+      GO TO 8
+    7 VT(LEFT) = T
+      PHI(LEFT) = F
+    8 IF (VT(CENTER) .LT. VT(RIGHT))  GO TO 9
+      I = CENTER
+      CENTER = RIGHT
+      RIGHT = I
+    9 IF (VT(LEFT) .LT. VT(CENTER))  GO TO 10
+      I = LEFT
+      LEFT = CENTER
+      CENTER = I
+   10 IF (VT(CENTER) .LT. VT(RIGHT))  GO TO 11
+      I = CENTER
+      CENTER = RIGHT
+      RIGHT = I
+   11 CONTINUE
+   12 CONTINUE
+      CALL EXCHNG(SQSTOR,F,ESTOR,ENERGY,XSTOR,X,ALFS,T,N)
+      DO 137 I=1,M
+  137 EFS(I)=GSTOR(I)
+      SSQ=(F)
+      ALF=T
+      IF (T) 13,15,15
+   13 T = -T
+      DO 14 I=1,N
+   14 P(I) = -P(I)
+   15 CONTINUE
+      ALF=T
+      RETURN
+  500 FORMAT(' ---LOCMIN'/5X,'LEFT   ...',2F19.6/5X,'CENTER ...',
+     .  2F19.6/5X,'RIGHT  ...',2F19.6/' ')
+  501 FORMAT(5X,'LEFT   ...',2F19.6/5X,'CENTER ...',2F19.6/5X,
+     .  'RIGHT  ...',2F19.6/5X,'NEW    ...',2F19.6/' ')
+      END

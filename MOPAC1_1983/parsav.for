@@ -1,0 +1,50 @@
+      SUBROUTINE PARSAV(MODE,N,M)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      INCLUDE 'SIZES/NOLIST'
+**********************************************************************
+*
+*   PARSAV SAVES AND RESTORES DATA USED IN NLLSQ GRADIENT MINIMIZATION.
+*
+*    IF MODE IS 0 DATA ARE RESTORED, IF 1 THEN SAVED.
+*
+**********************************************************************
+      COMMON /DENSTY/ P(MPACK), PA(MPACK), PB(MPACK)
+      COMMON /ALPARM/ ALPARM(3,MAXPAR),ILOOP,X0, X1, X2
+      COMMON /MOLKST/ NUMAT,NAT(NUMATM),NFIRST(NUMATM),NMIDLE(NUMATM),
+     +                NLAST(NUMATM), NORBS, NELECS,
+     1                NALPHA, NBETA, NCLOSE, NOPEN
+      COMMON /NLLCOM/ IIIUM(7),DDDUM(6),EFSLST(MAXPAR),Q(MAXPAR,MAXPAR),
+     +                R(MAXPAR,MAXPAR),XLAST(MAXPAR)
+      COMMON /LOCVAR/ LOCVAR(2,MAXPAR)
+      COMMON /VALVAR/ VALVAR(MAXPAR),NUMVAR
+      IF(MODE.EQ.1) GOTO 100
+*
+*  MODE=0: RETRIEVE DATA FROM DISK.
+*
+      READ(9)IIIUM,DDDUM,EFSLST,XLAST,N,M
+      READ(9)((Q(J,I),J=1,M),I=1,M)
+      READ(9)((R(J,I),J=1,N),I=1,N)
+      READ(9)(VALVAR(I),I=1,N)
+      RETURN
+  100 CONTINUE
+      REWIND 9
+      WRITE(6,'(//10X,'' **** TIME UP ****'')')
+      WRITE(6,'(//10X,'' CURRENT VALUES OF GEOMETRIC VARIABLES'')')
+      CALL GEOUT
+      WRITE(6,'(//10X,''IF THIS IS PART OF A FORCE CALCULATION'',
+     +/10X,''RESTART WITH KEYWORDS "NLLSQ" AND "RESTART", OTHERWISE'',
+     1/10X,''RESTART WITH KEYWORD "RESTART".'')')
+      WRITE(9)IIIUM,DDDUM,EFSLST,XLAST,N,M
+      WRITE(9)((Q(J,I),J=1,M),I=1,M)
+      WRITE(9)((R(J,I),J=1,N),I=1,N)
+      WRITE(9)(VALVAR(I),I=1,N)
+C*****
+C     The density matrix is required by ITER upon restart .
+C
+      REWIND 10
+        LINEAR=(NORBS*(NORBS+1))/2
+        WRITE(10)(PA(I),I=1,LINEAR)
+        IF(NALPHA.NE.0)WRITE(10)(PB(I),I=1,LINEAR)
+C*****
+      RETURN
+      END

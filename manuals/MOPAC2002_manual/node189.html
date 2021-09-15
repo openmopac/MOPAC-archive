@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>GREENF </TITLE>
+<META NAME="description" CONTENT="GREENF ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node190.html"><LINK REL="previous" HREF="node188.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node190.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node190.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 ALT="up" width="26" height="24"></A><A HREF="node188.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node190.html">H-PRIORITY </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node188.html">GRAPH </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>GREENF</TT> </H2>
+<P>The ionization potentials are to be corrected using the outer valence Green's Function (OVGF) technique. See <A HREF="node472.html#gf">Outer Valence Green's Function</A> for more detail. The technique has been shown to be effective in improving the I.P.s of nitrogen heterocycles. See [<A HREF="node715.html#gf6">32</A>] for triazines and tetrazines, and [<A HREF="node715.html#gf4">33</A>] for pyridines. The technique uses several pre-set variables. These can be changed by the user by enclosing the names and values of the variables in brackets, thus: <TT>GREENF(VAR1=<I>n</I>.<I>nn</I>, VAR2=<I>m</I>.<I>mm</I>, ...)</TT>. Users are <EM>not</EM> recommended to change these values until they know what they are doing. The OVGF technique and variables and their definitions were designed and written by Dr David Danovich. </P>
+<P>Variables which can be modified by the user are: </P>
+<TT><DL>
+<DD>NOCC</TT> The total number of occupied orbitals to be included in the Green's Function calculation. By default, all occupied M.O.s are included, up to a maximum of 20. </DD>
+<TT><DD>NVIR</TT> The total number of virtual or unoccupied orbitals to be included in the Green's Function calculation. By default, all virtual M.O.s are included, up to a maximum of 20. </DD>
+<TT><DD>PRINT</TT> Print flag. Normally set to 0. </DD>
+<TT><DD>IGGWW</TT> Total number of occupied M.O.s involved in the OVGF calculation. Default: NOCC. </DD>
+<TT><DD>IGGV</TT> Total number of unoccupied M.O.s involved in the OVGF calculation. Default: NVIR </DD>
+<TT><DD>NIZ</TT> The number of the first occupied molecular orbital for which OVGF correction must be started. (The numbering refers to the SCF calculation). Default: HOMO-7. </DD>
+<TT><DD>IVER</TT> The number of the last occupied M.O. to which OVGF correction is to be applied. (The numbering refers to the SCF calculation). Default: HOMO. </DD>
+<TT><DD>EPS</TT> The tolerance of the iteration procedure for solution of the Dyson Equation. Default: 0.0001. </DD>
+<TT><DD>ITER2</TT> ITER2=0 if second-order contribution in the self-energy function is to be calculated, this is the default. ITER2=1 if second-order contribution in the self-energy function is <EM>not</EM> to be calculated. See [<A HREF="node715.html#gf1">34</A>,<A HREF="node715.html#gf2">35</A>,<A HREF="node715.html#gf3">36</A>,<A HREF="node715.html#gf4">33</A>,<A HREF="node715.html#gf5">37</A>,<A HREF="node715.html#gf6">32</A>]. </DD>
+<TT><DD>ITER3</TT> ITER3=0 if third-order contribution in the self-energy function is to be calculated, this is the default. ITER3=1 if third-order contribution in the self-energy function is <EM>not</EM> to be calculated. See [<A HREF="node715.html#gf1">34</A>,<A HREF="node715.html#gf2">35</A>,<A HREF="node715.html#gf3">36</A>,<A HREF="node715.html#gf4">33</A>,<A HREF="node715.html#gf5">37</A>,<A HREF="node715.html#gf6">32</A>]. </DD>
+<TT><DD>IFUL</TT> The formula used for calculating the screening factor, which takes into account the higher than third order contributions in the self-energy function, as detailed in [<A HREF="node715.html#gf2">35</A>]. Default: IFUL=0. </DD>
+
+<UL>
+
+<UL>
+<TT><DD><LI>IFUL=0</TT> Formula No. C25 from [<A HREF="node715.html#gf2">35</A>] to be used. </LI></DD>
+<TT><DD><LI>IFUL=1</TT> Formulas C27, C28 and C29 from [<A HREF="node715.html#gf2">35</A>] to be used. </LI></DD>
+<TT><DD><LI>IFUL=2</TT> Formula C30 from [<A HREF="node715.html#gf2">35</A>] to be used. </LI></DD></UL>
+</UL>
+
+<TT><DD>IPRINT</TT> IPRINT=0 if I.P.s used in the OVGF calculation are <EM>not</EM> to be printed. IPRINT=1 if I.P.s used in the OVGF calculation are to be printed. Default: IPRINT=0. </DD>
+<TT><DD>IT23</TT> IT23=0 if the third-order contribution and complete expansion of the self-energy is to be calculated. IT23=1 if the third-order contribution and complete expansion of the self-energy is <EM>not</EM> to be calculated. Default: IT23=1 </DD>
+</DL>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html4175"><A HREF="node190.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A NAME="tex2html4171"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 ALT="up" width="26" height="24"></A><A NAME="tex2html4165"></A><A HREF="node188.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html4173"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html4174"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html4176"><A HREF="node190.html">H-PRIORITY </A></A><B>Up:</B> <A NAME="tex2html4172"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html4166"><A HREF="node188.html">GRAPH </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

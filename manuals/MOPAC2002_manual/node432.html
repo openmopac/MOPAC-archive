@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Oxygen</TITLE>
+<META NAME="description" CONTENT="7.2.1.2 Oxygen">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node433.html">
+<LINK REL="previous" HREF="node431.html">
+<LINK REL="up" HREF="node430.html">
+<LINK REL="next" HREF="node433.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html7227"
+ HREF="node433.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7223"
+ HREF="node430.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7217"
+ HREF="node431.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7225"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7226"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7228"
+ HREF="node433.html"> Methane</A>
+<B> Up:</B> <A NAME="tex2html7224"
+ HREF="node430.html"> Discussion of output</A>
+<B> Previous:</B> <A NAME="tex2html7218"
+ HREF="node431.html"> The methyl radical</A>
+<BR>
+<H3><A NAME="SECTION001121200000000000000">
+ Oxygen</A>
+</H3>
+Molecular oxygen contains 12 valence electrons, with two unpaired electrons in
+a <i><font face="Symbol">p</font><sub>g</sub></i>
+M.O.  In order to preserve symmetry, 
+<!-- MATH: $\mathrm{D}_{\infty h}$ -->
+<IMG
+ WIDTH="31" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img358.gif"
+ ALT="$\mathrm{D}_{\infty h}$">,
+the SCF must be
+carried out with one electron in each of the two degenerate <i>
+<font face="Symbol">p</font><sub>g</sub></i>
+M.O.s. To
+allow for this, <TT><a href="node251.html">OPEN(2,2)</a></TT> is used.   The energy of the ground-state is
+-6.15eV relative to the SCF energy of 126.4&nbsp;kcal/mol.  This means that the
+predicted energy of 
+<!-- MATH: $^3\Sigma_g^-$ -->
+&nbsp;<sup>3</sup><font face="Symbol">S</font><sub>g</sub><span style="text-decoration: overline">&nbsp;
+</span><sub>&nbsp;</sub>
+molecular oxygen is -15.4&nbsp;kcal/mol. 
+<P>
+Because <TT><a href="node333.html">TRIPLET</a></TT> was specified, the microstate chosen has an M<SUB><I>S</I></SUB>=1; in
+other words, both electrons in the active space were of&nbsp; <i>
+<font face="Symbol">a</font></i>
+spin. As a
+result, the spin density can be calculated using <TT>ESR</TT>, and this gives
+exactly 1.0 unpaired electrons in the <i>p-<font face="Symbol">p</font></i>
+atomic orbitals.  
+<P>
+When specifying <TT>TRIPLET</TT>, information regarding the other states is not
+calculated.  These other states can be calculated by simply eliminating
+<TT>TRIPLET</TT>.  When this is done, we see that the triplet state is, indeed,
+the ground state, but now two other states, excited states, are also
+generated.  These are the <sup>1</sup><font face="Symbol">D</font><sub>g</sub> 
+<!-- MATH: $^1\Delta_g$ -->
+&nbsp;and 
+<!-- MATH: $^1\Sigma_g$ -->
+&nbsp;<sup>1</sup><font face="Symbol">S</font><sub>g</sub>
+states at 0.79eV and
+1.59eV above the ground state, respectively.
+<P>
+The choice of  M<SUB><I>S</I></SUB> can be over-ridden if <a href="node229.html"> <TT> 
+M<SUB><I>S</I></SUB></TT></a> is used.  By
+specifying  <TT>M<SUB><I>S</I></SUB>=0</TT> and <TT>TRIPLET</TT>, all the states are generated,
+although only the triplet state would be used in determining which state was to
+be selected.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7227"
+ HREF="node433.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7223"
+ HREF="node430.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7217"
+ HREF="node431.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7225"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7226"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7228"
+ HREF="node433.html"> Methane</A>
+<B> Up:</B> <A NAME="tex2html7224"
+ HREF="node430.html"> Discussion of output</A>
+<B> Previous:</B> <A NAME="tex2html7218"
+ HREF="node431.html"> The methyl radical</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

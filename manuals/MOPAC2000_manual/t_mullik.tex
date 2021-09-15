@@ -1,0 +1,128 @@
+\subsection{Mulliken populations}
+\index{Mulliken populations}
+By default, the density matrix printed is the Coulson matrix, which
+assumes that the atomic orbitals are orthogonalized.
+
+If the assumption of orthogonality is not made, then the Mulliken density
+matrix can be constructed. To construct the Mulliken density matrix (also known
+as the Mulliken population analysis), the M.O.s must first be re-normalized,
+using the overlap matrix, $S$:
+$$
+\psi_i^{'} = \psi_i\times S^{-\frac{1}{2}}. 
+$$
+From these M.O.s, a Coulson population is carried out. The off diagonal terms
+are simply the Coulson terms multiplied by the overlap:
+$$
+P_{\lambda\sigma\neq\lambda}'=S_{\lambda\sigma}2\sum_{i=1}^{occ}c_{\lambda i}
+c_{\sigma i},
+$$
+while the on-diagonal terms are given by the Coulson terms, plus half the sum
+of the off-diagonal elements:
+$$
+P_{\lambda \lambda}' =S_{\lambda\sigma}2\sum_{i=1}^{occ}c_{\lambda i}c_{\lambda i}
+ + \frac{1}{2}\sum_{\sigma\neq\lambda}P_{\lambda \sigma}'.
+$$
+A check of the correctness of the Mulliken populations is to add the diagonal
+terms: these should equal the number of electrons in the system.
+
+\subsubsection*{Theory of Mulliken Populations}
+The NDDO methods (MNDO, AM1, PM3, and MNDO-$d$) all use Slater orbitals,
+but an implication of one of the approximations made, that $\sum(F_{\mu \nu}-E_i\delta_{\mu\nu})
+C_{\nu i} =0$, is that the conventional molecular orbitals are normalized
+to unity:
+$$
+\psi_i=\sum_{\lambda}c_{\lambda i}\phi_{\lambda}
+$$
+with
+$$
+<\psi_i^2> = 1 = \sum_{\lambda}c_{\lambda i}^2
+$$
+For example, for H$_2$, the occupied M.O.\ is:
+$$
+\psi_1 = \sqrt{\frac{1}{2}}(\phi_{H_1}+\phi_{H_2}),
+$$
+and the unoccupied M.O.\ is:
+$$ 
+\psi_2 = \sqrt{\frac{1}{2}}(\phi_{H_1}-\phi_{H_2}). 
+$$ 
+The diagonal of the density matrix is then constructed using the Coulson
+formula:
+$$
+P_{1,1}=P_{2,2}=2.0\times\left(\sqrt{\frac{1}{2}}\right)^2 =1.0.
+$$
+The off-diagonal terms are constructed in the same way:
+$$
+P_{1,2}=P_{1,2}=2.0\times\left(\sqrt{\frac{1}{2}}\right)^2 =1.0.
+$$
+
+If, instead of using $\sum(F_{\mu \nu}-E_i\delta_{\mu\nu}) C_{\nu i} =0$,
+$\sum(F_{\mu \nu}-E_i) C_{\nu i} =0$ is used, then the occupied and unoccupied
+M.O.s become:
+$$ 
+\psi_1 = \sqrt{\frac{1}{2(1+S)}}(\phi_{H_1}+\phi_{H_2}),
+$$
+and the unoccupied M.O.\ is:
+$$
+\psi_1 = \sqrt{\frac{1}{2(1-S)}}(\phi_{H_1}-\phi_{H_2}).
+$$       
+where $S$ is the overlap integral: $\int\phi_{H_1}\phi_{H_2}{\rm d}v$.
+
+In this case, the Coulson population would give 
+$$
+\begin{array}{cc|cc|}
+   &   & \frac{1}{1+S} & \frac{1}{1+S} \\
+P  & = &               &               \\
+   &   & \frac{1}{1+S} & \frac{1}{1+S} \\
+\end{array}
+$$
+From this we see that the Coulson representation is unsuitable for  two
+reasons: first, the number of electrons in the system, represented by the
+diagonal terms, does not add to 2.0. Second, the off-diagonal terms, which
+should represent the  number of electrons resulting from the overlap of the two
+atomic orbitals, becomes unity as the overlap {\em decreases}.  
+
+To correct for this, it is physically meaningful to multiply the matrix 
+elements by the overlap.  This gives:
+$$
+\begin{array}{cc|cc|}
+   &   & \frac{1}{1+S} & \frac{S}{1+S} \\
+P  & = &               &               \\
+   &   & \frac{S}{1+S} & \frac{1}{1+S} \\
+\end{array}
+$$
+Now the off-diagonal terms accurately represent the number of electrons which are
+associated with the overlap electron density.  The total number of electrons
+in the system is now correct: $ \frac{1}{1+S} $ on atom 1, $ \frac{1}{1+S} $
+on atom 2, and $ \frac{2S}{1+S} $ in the overlap region, giving a total of 2.0.
+
+Although this representation is correct, it is potentially misleading, in that
+the diagonal terms do not add to the number of electrons.  Mulliken reasoned
+that the electron density resulting from the overlaps should be divided into
+two equal parts and added to the diagonal terms.  When that is done, we get:
+$$
+\begin{array}{cc|ll|}
+   &   & \frac{1}{1+S}+\frac{S}{1+S} & \frac{S}{1+S} \\ 
+P  & = &               &               \\ 
+   &   & \frac{S}{1+S} & \frac{1}{1+S} +\frac{S}{1+S}\\
+\end{array} 
+$$
+or
+$$
+\begin{array}{cc|ll|}
+   &   & 1.0  & \frac{S}{1+S} \\ 
+P  & = &               &               \\ 
+   &   &  \frac{S}{1+S} & 1.0\\ 
+\end{array} 
+$$
+This simple example can be extended to systems involving heteroatoms and to
+polyatomics, and is fully general.
+
+The Mulliken analysis can be applied to semiempirical methods.  To do this, it
+is necessary to first convert the M.O.s from solutions of  $\sum(F_{\mu
+\nu}-E_i\delta_{\mu\nu}) C_{\nu i} =0$ to solutions of $\sum(F_{\mu \nu}-E_i)
+C_{\nu i} =0$.  The simplest way to do this is to take the conventional M.O.s
+and multiply them by $S^{-\frac{1}{2}}$.  In the case of H$_2$, the resulting
+M.O.s are exactly correct; in general, a small error is introduced.  This error
+arises from the incomplete annihilation of the secular matrix elements, and is
+quite unimportant.
+

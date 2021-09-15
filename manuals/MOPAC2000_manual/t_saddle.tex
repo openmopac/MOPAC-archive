@@ -1,0 +1,227 @@
+\section{Use of \comp{SADDLE} Calculation}
+\index{SADDLE!description|(}
+The \comp{SADDLE} technique is used for locating a transition state, given two
+geometries, one on each side of the transition state. In order for the
+\comp{SADDLE} technique to work, the Z-matrix must be specified as follows:
+
+\begin{itemize}
+\item The first geometry, defining one geometry is defined as usual.   If
+symmetry data is supplied, it should follow the first geometry.  After the
+geometry, or geometry and symmetry data, there should be a blank line to
+indicate the end of the data
+\item The second geometry should then be specified. There must be a one-to-one
+correspondence of the atoms in the second geometry to those of the first
+geometry.
+\end{itemize} 
+
+From this specification, it follows that if two molecules react to form one
+molecule, then the first geometry must contain all the atoms of the two
+molecules. The easiest way of defining such a geometry is to define one
+molecule, then have an unusually long bond-length from one atom in the first
+molecule to the first atom in the second molecule.  The two molecules together
+form the first geometry.  Likewise, if a molecule decomposes, e.g.\
+C$_2$H$_5$OH $\rightarrow$ C$_2$H$_4$ + H$_2$O, every atom in the product must
+be defined in the same order as the atoms in the reactant.
+
+An example of a data-set for a \comp{SADDLE} calculation, modeling the
+\index{Ethyl radical} ethyl radical hydrogen migration from one methyl group to
+the other is given in Figure~\ref{c2h5s}. \index{Data! for ethyl radical
+(SADDLE calcn.)}
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{verbatim}
+Line  1:   UHF  SADDLE
+Line  2:   ETHYL RADICAL HYDROGEN MIGRATION
+Line  3:
+Line  4:    C   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line  5:    C   1.479146 1    0.000000 0    0.000000 0   1 0 0
+Line  6:    H   1.109475 1  111.328433 1    0.000000 0   2 1 0
+Line  7:    H   1.109470 1  111.753160 1  120.288410 1   2 1 3
+Line  8:    H   1.109843 1  110.103163 1  240.205278 1   2 1 3
+Line  9:    H   1.082055 1  121.214083 1   38.110989 1   1 2 3
+Line 10:    H   1.081797 1  121.521232 1  217.450268 1   1 2 3
+Line 11:    O   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line 12:    C   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line 13:    C   1.479146 1    0.000000 0    0.000000 0   1 0 0
+Line 14:    H   1.109475 1  111.328433 1    0.000000 0   2 1 0
+Line 15:    H   1.109470 1  111.753160 1  120.288410 1   2 1 3
+Line 16:    H   2.109843 1   30.103163 1  240.205278 1   2 1 3
+Line 17:    H   1.082055 1  121.214083 1   38.110989 1   1 2 3
+Line 18:    H   1.081797 1  121.521232 1  217.450268 1   1 2 3
+Line 19:    O   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line 20:
+\end{verbatim}
+\caption{\label{c2h5s} Example of data for \comp{SADDLE} calculation}
+\end{figure}
+
+Details of the mathematics of \comp{SADDLE} appeared  in  print  in  1984 (M.\
+J.\ S.\ Dewar,  E.\ F.\ Healy,  J.\ J.\ P.\ Stewart,  {\em J.\ Chem.\ Soc.\ 
+Faraday Trans.\ II}, 3, 227, (1984)), so only a  superficial  description 
+will  be given here.
+
+The main steps in the saddle calculation are as follows:
+\begin{enumerate}
+\item The heats of formation of both systems are calculated.
+
+\item A vector $R$ of length $3N$ defining the difference  between  the two
+geometries in Cartesian coordinates is calculated.  The scalar of the vector is
+called the \comp{BAR}, and represents the distance between the two geometries.
+
+\item  The \comp{BAR}  is  reduced  by  some fraction, normally about 5 to 15
+percent. Normally, the default step is used, but this can be changed by use of
+\comp{BAR=$n.nn$}, where $n.nn$ is the fraction.  \comp{BAR=0.15} is the
+default.
+
+\item  The geometry of lower energy is identified; call this $G$.
+
+\item Geometry $G$ is optimized, subject to  the  constraint  that  it 
+maintains  a constant distance $P$ from the other geometry.
+
+\item If the newly-optimized geometry is higher in  energy  than  the other 
+geometry,  and the last two steps involved the same geometry  moving,  make 
+the  other geometry $G$ without modifying $P$, and go to 5.
+
+\item Otherwise go back to 2.
+\end{enumerate}
+
+The mechanism of 5 involves the coordinates of the moving  geometry being 
+perturbed  by  an  amount equal to the product of the discrepancy between the
+calculated and required $P$ and the vector $R$.
+
+\comp{SADDLE} works with Cartesian coordinates, so before the calculation
+starts, the two geometries are superimposed as much as possible.  This is done
+as follows:
+\begin{enumerate}
+\item Both geometries are converted into Cartesian coordinates.
+
+\item Both geometries are centered about the origin of Cartesian space.
+
+\item One geometry is  rotated  until  the  difference  vector  is  a minimum 
+---  this  minimum  is  within  1 degree of the absolute bottom.
+
+\item The \comp{SADDLE} calculation then proceeds as described above.
+\end{enumerate}
+
+The two geometries must be related by a continuous  deformation  of the  
+coordinates. For this, internal  coordinates  are unsuitable in that while 
+bond  lengths  and  bond  angles  are \index{Dihedral angles!ambiguities in|ff}
+unambiguously  defined (being both positive), the dihedral angles can be either
+positive or  negative.   Clearly  300  degrees  could  equally  well  be
+specified  as  $-60$ degrees.  A wrong choice of dihedral would mean that
+instead  of  the  desired  reaction  vector  being  used,  a  completely
+incorrect vector was used, with disastrous results.
+
+To prevent this, a \comp{SADDLE} calculation will always convert coordinates
+into Cartesian before starting the run.  If symmetry is to be used, then the
+geometry must be supplied in Cartesian coordinates, because internal symmetry
+relations are not meaningful here.
+
+\subsection{How to escape from a hilltop}
+\index{Hilltop, escaping from}
+\index{SIGMA}\index{NLLSQ}\index{TS}
+A  particularly  irritating  phenomenon  sometimes  occurs  when  a transition 
+state is being refined.  A rough estimate of the geometry of the transition
+state has been obtained by either a  \comp{SADDLE}  or  reaction path or by
+good guesswork.  This geometry is then  refined by \comp{TS}, \comp{SIGMA} or
+by \comp{NLLSQ}, and the system characterized by a force calculation.  Remember
+that \comp{NLLSQ} is preferred over \comp{SIGMA} when the GNORM is large, so
+\comp{NLLSQ} is probably the method of choice, if for any reason \comp{TS} does
+not work.    It  is  at this  point  that  things  often go wrong.  Instead of
+only one negative force constant, two or more are found.  In the past, the 
+recommendation has been to abandon the work and to go on to something less
+masochistic. It is possible, however, to  systematically  progress  from  a 
+multiple maximum to the desired transition state.  The technique used will now
+be described.
+
+If a multiple maximum is identified, most likely one negative force constant 
+corresponds  to  the  reaction  coordinate,  in which case the objective  is 
+to  render  the  other  force  constants  positive.   The associated  normal 
+mode  eigenvalues are complex, but in the output are printed as negative
+frequencies, and for the sake of simplicity will  be
+\index{Frequencies!imaginary}\index{DRAW} described  as  negative  vibrations. 
+Use a graphical user interface program to display the negative vibrations, 
+and  identify  which  mode  corresponds  to  the   reaction coordinate.  This
+is the one we need to retain.
+
+Hitherto, simple motion in the direction of  the  other  modes  has \index{DRC}
+proved  difficult.   However the DRC provides a convenient mechanism for
+automatically following a normal coordinate.  Pick the  largest  of  the
+negative  modes to be annihilated, and run the DRC along that mode until a
+minimum is reached.  At that point,  refine  the  geometry  once  more using 
+\comp{TS}  and  repeat  the  procedure  until  only one negative mode exists.
+
+To be on the safe  side,  after  each  \comp{DRC}+\comp{TS}   sequence  do  the
+\comp{DRC}+\comp{TS}  operation  again,  but use the  negative of the initial
+normal coordinate to start the trajectory.  After both  stationary  points  are
+reached,  choose  the  lower  point  as  the starting point for the next
+elimination.  The lower point is chosen  because  the  transition  state
+wanted  is  the  highest  point  on  the  lowest  energy path connecting
+reactants to products.  Sometimes the two points will have equal energy: this 
+is normally a consequence of both trajectories leading to the same point or
+symmetry equivalent points.
+
+After  all  spurious  negative  modes  have  been  eliminated,  the remaining 
+normal  mode  corresponds to the reaction coordinate, and the transition state
+has been located.
+
+This technique is relatively rapid, and relies on starting  from  a stationary 
+point to begin each trajectory.  If any other point is used, the trajectory
+will  not  be  even  roughly  simple  harmonic.   If,  by mistake,  the
+reaction coordinate is selected, then the potential energy will  drop  to 
+that  of  either  the  reactants  or  products,   which, incidentally,  forms a
+handy criterion for selecting the spurious modes: if the potential energy only
+drops by  a  small  amount,  and  the  time evolution  is  roughly  simple 
+harmonic,  then  the  mode is one of the spurious modes.  If there is any doubt
+as to whether a minimum is in the vicinity  of  a stationary point, allow the
+trajectory to continue until one complete cycle is executed.  At that point
+the  geometry  should  be near to the initial geometry.
+
+Superficially, a line-search might appear more attractive than  the relatively 
+expensive  DRC.   However,  a line-search in Cartesian space will normally not
+locate the minimum in a mode.  An obvious  example  is the mode corresponding
+to a methyl rotation.
+
+\subsection*{Keyword Sequences to be Used}
+\begin{enumerate}
+\item To locate the starting stationary point  given  an  approximate
+transition state: \comp{TS}
+
+\item To define the normal modes: \comp{FORCE ISOTOPE}
+
+At this point, copy all the files to a second filename, for use later.
+
+\item Given vibrational frequencies of $-654$, $-123$,  234,  and  456,
+identify  {\em via} a GUI the normal coordinate mode,  say the  $-654$ mode. 
+Eliminate the second mode by:
+
+\comp{IRC=2 DRC T=30M RESTART LARGE}
+
+Use is made of the FORCE restart file.
+
+\item Identify  the  minimum  in  the  potential  energy  surface  by
+inspection or using the ``grep'' command, of form:
+
+\comp{grep '\%'  $<$Filename$>$.out }
+
+\item Edit out of the output file the data file corresponding to  the lowest
+point, and refine the geometry using: \comp{TS}
+
+\item Repeat the last three steps but for the negative of the  normal mode, 
+using  the  copied files.  The keywords for the first of the two jobs are:
+\comp{IRC=--2 DRC T=30M RESTART LARGE}
+
+
+\item Repeat the last four steps  as  often  as  there  are  spurious
+modes.
+
+\item Finally, carry out a DRC to confirm that the  transition  state does, in
+fact, connect the reactants and products.  The drop in potential energy 
+should  be  monotonic.   If  you  are  unsure whether  this  last  operation
+will work successfully, do it at any time you have a stationary point.  If it
+fails at the  very start,  then we are back where we were before---give up
+and go home!!
+\end{enumerate}
+
+\index{SADDLE!description|)}

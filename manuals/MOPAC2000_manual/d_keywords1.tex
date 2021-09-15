@@ -1,0 +1,232 @@
+\subsection{Full List of Keywords}
+\addtocounter{table}{1} \index{Keywords!full list of}
+\addcontentsline{lot}{table}{\protect\numberline{\thetable}{\ignorespaces Full list of Keywords used in MOPAC}}
+\begin{description}
+\item[\comp{\&}] Turn next line into keywords
+\item[\comp{+}] Add another line of keywords
+\item[\comp{0SCF}] Read in data, then stop
+\item[\comp{1ELECTRON}] Print final one-electron matrix
+\item[\comp{1SCF}] Do one scf and then stop
+\item[\comp{AIDER}] Read in ab-initio derivatives
+\item[\comp{AIGIN}] Geometry must be in gaussian format
+\item[\comp{AIGOUT}] In arc file, include ab-initio geometry
+\item[\comp{ALLBONDS}] Print final bond-order matrix, including bonds to hydrogen
+\item[\comp{ALLVEC}] Print all vectors (keywords vectors also needed)
+\item[\comp{ALT\_a={\em A}}] In pdb files with alternative atoms, select atoms
+{\em A}
+\item[\comp{ALT\_r={\em A}}] In pdb files with alternative residues, select residues
+{\em A}
+\item[\comp{ANALYT}] Use analytical derivatives of energy wrt geometry
+\item[\comp{AUTOSYM}] Symmetry to be imposed automatically
+\item[\comp{AM1}] Use the AM1 hamiltonian
+\item[\comp{BAR=$n.n$}] reduce bar length by a maximum of $n.n$
+\item[\comp{BCC}] Solid is body-centered cubic (used by BZ)
+\item[\comp{BFGS}] Optimize geometries using bfgs procedure
+\item[\comp{BIGSCF}] If restart, do a full scf to re-form starting density matrix
+\item[\comp{BIGCYCLES}] Do  a maximum of $n$ big steps
+\item[\comp{BIRADICAL}] System has two unpaired electrons
+\item[\comp{BONDS}] Print final bond-order matrix
+\item[\comp{C.I.}] A multi-electron configuration interaction specified
+\item[\comp{CHARGE=$n$}] Charge on system = $n$ (e.g.\ NH4 $\Rightarrow$ charge=1)
+\item[\comp{CIS}] C.I.\ uses 1 electron excitations only
+\item[\comp{CISD}] C.I.\ uses 1 and electron excitations
+\item[\comp{CISDT}] C.I.\ uses 1, 2 and 3 electron excitations
+\item[\comp{COMPFG}] Print heat of formation calculated in COMPFG
+\item[\comp{CONNOLLY}] Use Connolly surface
+\item[\comp{CROSS}] Determine intersystem crossing geometry
+\item[\comp{CUTOF1=$n.nn$}] Cutoff for polarization functions is $n.nn$ {\aa}ngstroms
+\item[\comp{CUTOF2=$n.nn$}] Cutoff for nddo approximation is $n.nn$ {\aa}ngstroms
+\item[\comp{CUTOFP=$n.nn$}] Madelung distance cutoff is $n.nn$ {\aa}ngstroms
+\item[\comp{CUTOFS=$n.nn$}] Overlap cutoff distance is $n.nn$ {\aa}ngstroms
+\item[\comp{CVB}] User defined chemical bonds (used in making Lewis structures)
+\item[\comp{CYCLES=$n$}] Do a maximum of $n$ steps
+\item[\comp{DAMP=$n.nn$}] Use damping factor $n.nn$ in SCF calculation
+\item[\comp{DCART}] Print part of working in DCART
+\item[\comp{DDMAX}] See EF code
+\item[\comp{DDMIN}] Minimum trust radius in a EF/TS calculation
+\item[\comp{DEBUG}] Debug option turned on
+\item[\comp{DENOUT}] Density matrix output (channel 10)
+\item[\comp{DENOUT=$n$}] Density matrix output every $n$ seconds
+\item[\comp{DENSITY}] Print final density matrix
+\item[\comp{DEP}] Generate Fortran code for parameters for new elements
+\item[\comp{DERIV}] Print part of working in DERIV
+\item[\comp{DFORCE}] Force calculation specified, also print force matrix.
+\item[\comp{DFP}] Use Davidson-Fletcher-Powell method to optimize geometries
+\item[\comp{DIAGG2}] Print part of working in DIAGG2
+\item[\comp{DIPOLE}] Fit the ESP to the calculated dipole
+\item[\comp{DIPX}] X component of dipole to be fitted
+\item[\comp{DIPY}] Y component of dipole to be fitted
+\item[\comp{DIPZ}] Z component of dipole to be fitted
+\item[\comp{DISEX}] Distance for interactions in fine grid in COSMO
+\item[\comp{DMAX}] Maximum stepsize in eigenvector following
+\item[\comp{DMIN}] See EF code
+\item[\comp{DOUBLET}] Doublet state required
+\item[\comp{DRC}] Dynamic reaction coordinate calculation
+\item[\comp{DUMP=$n$}] Write restart files every $n$ seconds
+\item[\comp{ECHO}] Data are echoed back before calculation starts
+\item[\comp{EF}] Use ef routine for minimum search
+\item[\comp{EIGEN}] Generate canonical eigenvectors instead of LMOs
+\item[\comp{EIGS}] Print all eigenvalues in ITER
+\item[\comp{ENPART}] Partition energy into components
+\item[\comp{EPS}] Dielectric constant in COSMO calculation
+\item[\comp{ESP}] Electrostatic potential calculation
+\item[\comp{ESPRST}] Restart of electrostatic potential
+\item[\comp{ESR}] Calculate RHF spin density
+\item[\comp{EXCITED}] Optimize first excited singlet state
+\item[\comp{EXTERNAL}] Read parameters off disk
+\item[\comp{FIELD}] An external electric field is to be used
+\item[\comp{FILL=$n$}] In RHF open and closed shell, force M.O.\ $n$  to be filled
+\item[\comp{FLEPO}] Print details of geometry optimization
+\item[\comp{FMAT}] Print details of working in FMAT
+\item[\comp{FOCK}] Print last Fock matrix
+\item[\comp{FORCE}] Force calculation specified
+\item[\comp{GEO-OK}] override interatomic distance check
+\item[\comp{GEOCHK}] Print part of working in GEOCHK
+\item[\comp{GNMIN}] Minimize gradients in EF
+\item[\comp{GNORM=$n.n$}] Exit when gradient norm drops below $n.n$
+\item[\comp{GRADIENTS}] Print all gradients
+\item[\comp{GRAPH}] Generate file for graphics
+\item[\comp{GREENF}] Correct I.P.s using Green's function technique
+\item[\comp{H2O}] Use water as the solvent in MST calculations
+\item[\comp{HCORE}] Print details of working in HCORE
+\item[\comp{HESS=$n$}] options for calculating hessian matrices in EF
+\item[\comp{H-PRIO}] Heat of formation takes priority in DRC
+\item[\comp{HYBRID}] Print details of working in HYBRID
+\item[\comp{HYPERFINE}] Hyperfine coupling constants to be calculated
+\item[\comp{IMEM=$nn$}] Integer memory increased by $nn$
+\item[\comp{INT}] Make all coordinates internal coordinates
+\item[\comp{IRC}] Intrinsic reaction coordinate calculation
+\item[\comp{ISOTOPE}] Force matrix written to disk (channel 9 )
+\item[\comp{ITER}] Print details of working in ITER
+\item[\comp{ITRY=$n$}] Set limit of number of SCF iterations to $n$
+\item[\comp{IUPD}] Mode of Hessian update in eigenvector following
+\item[\comp{K=($n$,$n$)}] Brillouin zone structure to be calculated
+\item[\comp{KINETIC}] Excess kinetic energy added to DRC calculation
+\item[\comp{LEWIS}] Print details of working in LEWIS
+\item[\comp{LINMIN}] Print details of line minimization
+\item[\comp{LARGE}] Print expanded output
+\item[\comp{LET}] Override certain safety checks
+\item[\comp{LOCALIZE}] Print localized orbitals
+\item[\comp{MAX}] In GRID, use maximum grid size (23*23)
+\item[\comp{MECI}] Print details of MECI calculation
+\item[\comp{MEP=1}] Print Orozco-Luque electrostatic potentials for cross-section
+\item[\comp{MEP=2}] Print Orozco-Luque electrostatic potentials for Connolly surface
+\item[\comp{MERS=($n$)}] Keyword for BZ
+\item[\comp{MICROS}] Use specific microstates in the C.I.
+\item[\comp{MINDO/3}] use the MINDO/3 hamiltonian
+\item[\comp{MINMEP}] Minimize MEP minima in the plane defined
+\item[\comp{MMOK}] Use molecular mechanics correction to CONH bonds
+\item[\comp{MNDO}] Use the MNDO hamiltonian
+\item[\comp{MNDO-d}] Use the MNDO-d hamiltonian
+\item[\comp{MODE=$n$}] In EF, follow Hessian mode no.\ $n$
+\item[\comp{MOLDAT}] Print details of working in MOLDAT
+\item[\comp{MS=$n$}] In MECI, magnetic component of spin
+\item[\comp{MULLIK}] Print the Mulliken population analysis
+\item[\comp{NEWGEO}] Make backbone atoms Cartesian and side-chain internal
+\item[\comp{NLLSQ}] Minimize gradients using NLLSQ
+\item[\comp{NLMO=$nnn$}] define average size of LMOs as $nnn$
+\item[\comp{NOANCI}] Do not use analytical C.I. derivatives
+\item[\comp{NOINT}] Do not print internal coordinates
+\item[\comp{NOLOG}] Suppress log file trail, where possible
+\item[\comp{NOMM}] Do not use molecular mechanics correction to CONH bonds
+\item[\comp{NONET}] NONET state required
+\item[\comp{NONR}] Do not use Newton-Raphson method in EF
+\item[\comp{NOREOR}] In symmetry work, use supplied orientation
+\item[\comp{NOSYM}] Point-group symmetry set to C1
+\item[\comp{NOTHIEL}] Do not use Thiel's FSTMIN technique
+\item[\comp{NSPA}] Sets number of geometric segments in COSMO
+\item[\comp{NSURF=$n$}] Number of surfaces in an ESP calculation
+\item[\comp{NOXYZ}] Do not print Cartesian coordinates
+\item[\comp{NSURF}] Number of layers used in electrostatic potential
+\item[\comp{OCTET}] Octet state required
+\item[\comp{OLDENS}] Read initial density matrix off disk
+\item[\comp{OLDFPC}] Use the old fundamental physical constants
+\item[\comp{OLDGEO}] Previous geometry to be used
+\item[\comp{OMIN}] In TS, minimum allowed overlap of eigenvectors
+\item[\comp{OPEN}] Open-shell RHF calculation requested
+\item[\comp{OPTBACK}] Set optimization flags for backbone atoms in a protein
+\item[\comp{OPTRES}] Set optimization flags for side-chain atoms in a protein
+\item[\comp{ORT}] Use Reynolds-Richards molecular electrostatic pot.
+\item[\comp{P=$n.nn$}] An external pressure of $n.nn$ NM$^{-2}$ or N is applied to a solid or polymer.
+\item[\comp{PARASOK}] In AM1 calculations some MNDO parameters are to be used
+\item[\comp{PDB}] Geometry is in protein data bank format
+\item[\comp{PDB($text$)}] User defined chemical symbols in protein data base
+\item[\comp{PDBOUT}] Output geometry in pdb format
+\item[\comp{PECI}] C.I. involves paired excitations only
+\item[\comp{PI}] Resolve density matrix into $\sigma$ and $\pi$ bonds
+\item[\comp{PINOUT}] Print localized M.O.s whenever PINOUT is called
+\item[\comp{PL}] Monitor convergence of density matrix in ITER
+\item[\comp{PM3}] Use the MNDO-PM3 hamiltonian
+\item[\comp{PMEP}] Complete semiempirical MEP calculation
+\item[\comp{PMEPR}] Complete semiempirical MEP in a plane to be defined
+\item[\comp{POINT=$n$}] Number of points in reaction path
+\item[\comp{POINT1=$n$}] Number of points in first direction in grid calculation
+\item[\comp{POINT2=$n$}] Number of points in second direction in grid calculation
+\item[\comp{POLAR}] Calculate first, second and third order polarizabilities
+\item[\comp{POPS}] Print the self consistent field atomic orbital populations
+\item[\comp{POTWRT}] In ESP, write out electrostatic potential to unit 21
+\item[\comp{POWSQ}] Print details of working in POWSQ
+\item[\comp{PRECISE}] Criteria to be increased by 100 times
+\item[\comp{PRTMEP}] MEP contour data output to \comp{$<$filename$>$.mep}
+\item[\comp{PULAY}] Use Pulay's converger to obtain a SCF
+\item[\comp{QPMEP}] Charges derived from Wang-Ford type AM1 MEP
+\item[\comp{QUARTET}] Quartet state required
+\item[\comp{QUINTET}] Quintet state required
+\item[\comp{RAPID}] In SCF, use atoms being optimized only
+\item[\comp{RECALC=$n$}] In EF, recalculate Hessian every $n$ steps
+\item[\comp{RE-LOCAL}] Re-localize localized molecular orbitals
+\item[\comp{RELSCF=$n$}] Default SCF criterion multiplied by $n$
+\item[\comp{RELTHR=$n$}] Default threshold for LMOs multiplied by $n$
+\item[\comp{REORTH}] Reorthogonalize LMOs
+\item[\comp{RESEQ}] Resequence the atoms in a protein
+\item[\comp{RESIDUES}] Label all atoms in a protein
+\item[\comp{RESTART}] Calculation restarted
+\item[\comp{RMAX}] In TS, maximum allowed ratio for energy change
+\item[\comp{RMEM=$nn$}] Real memory increased by $nn$
+\item[\comp{RMIN}] In TS, minimum allowed ratio for energy change
+\item[\comp{ROOT=$n$}] Root $n$ to be optimized in a C.I. calculation
+\item[\comp{RSCAL}] In EF, scale p-RFO to trust radius
+\item[\comp{RSOLV}] Effective radius of solvent in COSMO
+\item[\comp{SADDLE}] Optimize transition state
+\item[\comp{SAFE}] Allow memory intensive scf convergers
+\item[\comp{SCALE}] Scaling factor for van der Waals distance in ESP
+\item[\comp{SCFCRT=$n$}] Default SCF criterion replaced by the value supplied
+\item[\comp{SCINCR}] Increment between layers in ESP
+\item[\comp{SEPTET}] Septet state required
+\item[\comp{SETUP}] Extra keywords to be read of setup file
+\item[\comp{SEXTET}] Sextet state required
+\item[\comp{SHIFT=$n$}] a damping factor of $n$ defined to start SCF
+\item[\comp{SIGMA}] Minimize gradients using SIGMA
+\item[\comp{SINGLET}] Singlet state required
+\item[\comp{SIZES}] Print the sizes of all arrays created or destroyed
+\item[\comp{SLOG=$n.nn$}] In BFGS optimization, use fixed step of length $n.nn$
+\item[\comp{SLOPE}] Multiplier used to scale MNDO charges
+\item[\comp{SNAP}]Increase precision of symmetry angles
+\item[\comp{SPIN}] Print final UHF spin matrix
+\item[\comp{STEP}] Step size in path
+\item[\comp{STEP1=$n$}] Step size $n$ for first coordinate in grid calculation
+\item[\comp{STEP2=$n$}] Step size $n$ for second coordinate in grid calculation
+\item[\comp{STO-3G}] Deorthogonalize orbitals in STO-3G basis
+\item[\comp{SUPER}] Print superdelocalizabilities
+\item[\comp{SYMAVG}] Average symmetry equivalent ESP charges
+\item[\comp{SYMMETRY}] Impose symmetry conditions
+\item[\comp{T=$n$}] A time of $n$ seconds requested
+\item[\comp{THERMO}] Perform a thermodynamics calculation
+\item[\comp{THRESH=$n.nn$}] Set the cutoff for LMO coefficients to $n.nn$
+\item[\comp{TIDY}] Print details of working in TIDY
+\item[\comp{TIMES}] Print times of various stages
+\item[\comp{TOM}] Use the Miertus-Scrocco-Tomasi solvation model
+\item[\comp{T-PRIO}] Time takes priority in DRC
+\item[\comp{TRANS}] The system is a transition state (used in thermodynamics calculation)
+\item[\comp{TRIPLET}] Triplet state required
+\item[\comp{TS}] Using EF routine for TS search
+\item[\comp{UHF}] Unrestricted Hartree-Fock calculation
+\item[\comp{UNSAFE}] Use reduced memory (may affect SCF convergence)
+\item[\comp{VDW}] Van der Waals radius for atoms in COSMO defined by user
+\item[\comp{VECTORS}] Print final eigenvectors
+\item[\comp{VELOCITY}] Supply the initial velocity vector in a DRC calculation
+\item[\comp{WILLIAMS}] Use Williams surface
+\item[\comp{XENO}] Specify fragments which are attached to residues
+\item[\comp{X-PRIO}] Geometry changes take priority in DRC
+\item[\comp{XYZ}] Do all geometric operations in Cartesian coordinates
+\end{description}

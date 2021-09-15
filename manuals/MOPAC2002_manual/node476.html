@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Convergence in SCF Calculation</TITLE>
+<META NAME="description" CONTENT=" Convergence in SCF Calculation">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node478.html"><LINK REL="previous" HREF="node474.html"><LINK REL="up" HREF="node458.html"><LINK REL="next" HREF="node477.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node477.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node458.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node475.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node477.html">Causes of failure</A> <B>Up:</B> <A HREF="node458.html">Miscellaneous Topics in</A> <B>Previous:</B> <A HREF="node475.html">Cautions</A> <BR>
+<H2>Convergence in SCF Calculation </H2>
+<P>A brief description of the convergence techniques used in subroutine ITER follows. </P>
+<P>ITER, the SCF calculation, employs six methods to achieve a self-consistent field. In order of usage, these are: </P>
+<DL>
+<DD>&nbsp;</DD>
+<DT>1. Intrinsic convergence by virtue of the way the calculation is carried out. Thus a trial Fock gives rise to a trial density matrix, which in turn is used to generate a better Fock matrix. </DT>
+<DD>This is normally convergent, but many exceptions are known. The main situations when the intrinsic convergence does not work are: </DD>
+<DT>(a) A bad starting density matrix. This normally occurs when the default starting density matrix is used. This is a very crude approximation, and is only used to get the calculation started. A large charge is generated on an atom in the first iteration, the second iteration overcompensates, and an oscillation is generated. </DT>
+<DT>(b) The equations are only very slowly convergent. This can be due to a long-lived oscillation or to a slow transfer of charge. </DT>
+<dd>&nbsp;</dd>
+<DT>2. Oscillation damping. If, on any two consecutive iterations, a density matrix element changes by more than 0.05, then the density matrix element is set equal to the old element shifted by 0.05 in the direction of the calculated element. Thus, if on iterations 3 and 4 a certain density matrix element was 0.55 and 0.78, respectively, then the element would be set to 0.60 (= 0.55 + 0.05) on iteration 4. The density matrix from iteration 4 would then be used in the construction of the next Fock matrix. The arrays which hold the old density matrices are not filled until after iteration 2. For this reason they are not used in the damping before iteration 3. </DT>
+<dd>&nbsp;</dd>
+<DT>3. Three-point interpolation of the density matrix. Subroutine CNVG monitors the number of iterations, and if this is exactly divisible by three, and certain other conditions relating to the density matrices are satisfied, a three-point interpolation is performed. This is the default converger, and is very effective with normally convergent calculations. It fails in certain systems, usually those where significant charge build-up is present. </DT>
+<dd>&nbsp;</dd>
+<DT>4. Energy-level shift technique (the <TT>SHIFT</TT> technique). The virtual M.O. energy levels are normally shifted to more positive energy. This has the effect of damping oscillations, and intrinsically divergent equations can often be changed to intrinsically convergent form. With slowly-convergent systems the virtual M.O. energy levels can be moved to a more negative value. </DT>
+<DD>The precise value of the shift used depends on the behavior of the iteration energy. If it is dropping, then the HOMO-LUMO gap is reduced; if the iteration energy rises, the gap is increased rapidly. </DD>
+<dt>&nbsp;</dt>
+<DT>5. Pulay's method. If requested, when the largest change in density matrix elements on two consecutive iterations has dropped below 0.1, then routine CNVG is abandoned in favor of a multi-Fock matrix interpolation. This relies on the fact that the eigenvectors of the density and Fock matrices are identical at self-consistency, so [P.F] = (P.F - F.P) = 0 at SCF. The extent to which this condition does not occur is a measure of the deviance from self-consistency. Pulay's Direct Inversion of the Iterative Subspace (DIIS) method uses this relationship to calculate that linear combination of Fock matrices which minimize [P.F]. This new Fock matrix is then used in the SCF calculation. </DT>
+<DD>Under certain circumstances, Pulay's method can cause very slow convergence, but sometimes it is the only way to achieve a self-consistent field. At other times the procedure gives a ten-fold increase in speed, so care must be exercised in its use. (started by the keyword <TT>PULAY</TT>) </DD>
+<dt>&nbsp;</dt>
+<DT>6. The Camp-King converger. If all else fails, the Camp-King <A NAME="BM11267">&nbsp;</A> converger is just about guaranteed to work every time. However, it is time-consuming, and therefore should only be started as a last resort. </DT>
+<DD>It evaluates that linear combination of old and current eigenvectors which minimize the total energy. One of its strengths is that systems which otherwise oscillate due to charge surges, e.g. CHO-H, the C-H distance being very large, will converge using this very sophisticated converger. </DD>
+</DL>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html8015"><A HREF="node477.html">Causes of failure to achieve an SCF</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8013"><A HREF="node477.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8009"></A><A HREF="node458.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8003"></A><A HREF="node475.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8011"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8012"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8014"><A HREF="node477.html">Causes of failure</A></A> <B>Up:</B> <A NAME="tex2html8010"><A HREF="node458.html">Miscellaneous Topics in</A></A> <B>Previous:</B> <A NAME="tex2html8004"><A HREF="node475.html">Cautions</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

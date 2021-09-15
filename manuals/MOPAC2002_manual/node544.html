@@ -1,0 +1,240 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> The BFGS function optimizer</TITLE>
+<META NAME="description" CONTENT="8.7.2 The BFGS function optimizer">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node545.html">
+<LINK REL="previous" HREF="node543.html">
+<LINK REL="up" HREF="node542.html">
+<LINK REL="next" HREF="node545.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8886"
+ HREF="node545.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8882"
+ HREF="node542.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8876"
+ HREF="node543.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8884"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8885"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8887"
+ HREF="node545.html"> Optimization of one</A>
+<B> Up:</B> <A NAME="tex2html8883"
+ HREF="node542.html"> Geometry optimization</A>
+<B> Previous:</B> <A NAME="tex2html8877"
+ HREF="node543.html"> EigenFollowing</A>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION001272000000000000000">
+ The BFGS function optimizer</A>
+</H2>
+The alternative heat of formation minimization routine in  MOPAC is a modified 
+Broyden&nbsp;[<A
+ HREF="node715.html#bfgs1">19</A>]-Fletcher&nbsp;[<A
+ HREF="node715.html#bfgs2">20</A>]-Goldfarb&nbsp;[<A
+ HREF="node715.html#bfgs3">21</A>]-Shanno&nbsp;[<A
+ HREF="node715.html#bfgs4">22</A>]
+or BFGS method. Minor changes were made necessary by the presence of phenomena
+peculiar to chemical systems.
+<P>
+Starting with a user-supplied geometry <I>x</I><SUB><I>o</I></SUB>, MOPAC computes an estimate to the
+inverse Hessian <I>H</I><SUB><I>o</I></SUB>. The geometry optimization proceeds by
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+x_{k+1} = x_k+\alpha d_k,
+\end{displaymath} -->
+<IMG
+ WIDTH="104" HEIGHT="30"
+ SRC="img1286.gif"
+ ALT="\begin{displaymath}x_{k+1} = x_k+\alpha d_k,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+d_k=H\,g_k ,
+\end{displaymath} -->
+<IMG
+ WIDTH="63" HEIGHT="30"
+ SRC="img1287.gif"
+ ALT="\begin{displaymath}d_k=H\,g_k ,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and each element of <I>H</I> is defined by
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+H_{k+1}=H_k-\frac{H\ y_k\ p_k^t + p_ky_k^tH}{S}+\frac{Q(p_k\ p_k^t)}{S},
+\end{displaymath} -->
+<IMG
+ WIDTH="270" HEIGHT="41"
+ SRC="img1288.gif"
+ ALT="\begin{displaymath}H_{k+1}=H_k-\frac{H\ y_k\ p_k^t + p_ky_k^tH}{S}+\frac{Q(p_k\ p_k^t)}{S},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where  
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+Q=1+\frac{y_k^t\ H\ y_k}{p_k^t\ y_k},
+\end{displaymath} -->
+<IMG
+ WIDTH="105" HEIGHT="47"
+ SRC="img1289.gif"
+ ALT="\begin{displaymath}Q=1+\frac{y_k^t\ H\ y_k}{p_k^t\ y_k},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and <I>g</I><SUB><I>k</I></SUB> is the gradient vector on step <I>k</I>.
+<P>
+Although this expression for the update of
+the Hessian matrix looks very complicated, the operation can be summarized as
+follows:
+<P>
+The initial Hessian matrix used in geometry optimization is chosen as a
+diagonal matrix, with the diagonal elements determined by a simple formula
+based on the gradients at two geometries.  As the optimization proceeds, the
+gradients at each point are used to improve the Hessian.  In particular, the
+off-diagonal elements are assigned based on the old elements and the current
+gradients.
+<P>
+Two different methods are used to calculate the displacement of <I>x</I> in the
+direction <I>d</I>. During the initial stages of geometry optimization, a line
+search is used. This proceeds as follows:
+<P>
+The geometry is displaced by 
+<!-- MATH: $(\alpha/4)d$ -->
+(<font face="Symbol">a</font>/4)d and the energy evaluated via an SCF calculation. If this energy is lower than
+the original value, then a second step of the same size is made. If it is
+higher, then a step of -
+<!-- MATH: $(\alpha/4)d$ -->
+<!-- MATH: $(\alpha/4)d$ -->
+(<font face="Symbol">a</font>/4)d&nbsp;
+is made. The energy is then re-evaluated.
+Given the three energies, a prediction is made as to the value of
+<font face="Symbol">a </font>which will yield the  minimum  value  of the energy in the direction <I>d</I>. Of
+course, the size of the steps are constrained so that the system would not
+suddenly become unrealistic (e.g., break bonds, superimpose atoms, etc.).
+Similarly, the contingency in which the energy versus <font face="Symbol">a
+</font>&nbsp;function is
+inverse parabolic is considered, as are rarely-encountered curves, e.g., almost
+perfectly linear regressions. By default, Thiel's FSTMIN <A NAME="BM17999">&#160;</A> technique is used&nbsp;[<A
+ HREF="node715.html#fstmin">44</A>].  This uses gradient
+information from the starting point of the search, and the calculated 
+<!-- MATH: $\Delta
+H_f$ -->
+<font face="Symbol">D</font>H<sub>f</sub>, to decide when to end the line search.  If <TT><a href="node242.html">NOTHIEL</a></TT> is specified,
+the older line-search is used, in which case the search is stopped when the
+drop in energy on any step becomes less than 5% of the total drop or 0.5
+kcal/mol, whichever is smaller.
+<P>
+An  important modification has  been made to the BFGS routine.  For the
+line-search, Thiel's FSTMIN technique is used. This  modification make the
+algorithm run faster most of the time.  However, one unfortunate result of
+these changes is that there is no guarantee that as  the cycles increase, the
+energy will drop monotonically.  If the calculation does not converge on a
+stationary point, then re-run the job with <TT>NOTHIEL</TT>.
+<P>
+As the geometry converges on a local minimum, the prediction of the search
+direction becomes less accurate. There are many reasons for this. For example,
+the finite precision of the SCF calculation may lead to errors in the density
+matrix, or finite step sizes in the derivative calculation (if analytical
+derivatives are not used) may result in errors in the derivatives. For whatever
+reason, the gradient norm and energy minimum may not coincide. The difference
+is typically less than 0.00001 kcal/mol and less than 0.05 units of gradient
+norm. 
+<P>
+Normally, the initial guess to <I>H</I>, the inverse Hessian, is the unit matrix.
+However, in chemical systems where the second derivatives are very large, use
+of the unit matrix would result in large changes in the geometry. Thus a
+slightly elongated bond length could, in the first step, change from 1.6&#197; 
+to -6.5&#197;. To prevent this catastrophe, the initial geometry is perturbed by
+a small amount, thus 
+<P align="center">
+x<sub>1</sub> = x<sub>0</sub> + 0.01*sign(g<sub>0</sub>)<p>from which a trial inverse Hessian can be constructed:
+</p>
+<p align="center">H<sub>1</sub>(i,i) = 0.01*sign(g<sub>0</sub>(i))/y<sub>1</sub>(i).<BR CLEAR="ALL">
+</p>
+<P></P>
+A negative value for <I>H</I><SUB>1</SUB>(<I>i</I>,<I>i</I>) would lead to difficulties
+within the BFGS optimization. To avoid this, <I>H</I><SUB>1</SUB>(<I>i</I>,<I>i</I>) is set
+to 0.06/abs(g(i))&nbsp;
+whenever the sign of
+<!-- MATH: $(g_0(i))/y_1(i)$ -->
+(<I>g</I><SUB>0</SUB>(<I>i</I>))/<I>y</I><SUB>1</SUB>(<I>i</I>) is negative.
+<P>
+As the optimization proceeds, the inverse Hessian matrix becomes more accurate.
+However, as the geometry steadily changes, the inverse Hessian will contain
+information which does not reflect the current point. This can lead to the
+predicted search direction vector making an angle of more than 
+<!-- MATH: $90^{\circ}$ -->
+90<sup>o</sup> with the gradient vector. In other words, the search direction vector may point
+uphill in energy. To guard against this, the inverse Hessian is re-initialized
+whenever the cosine of the angle between the search direction and the gradient
+vector drops below 0.05.
+<P>
+Originally the Davidson-Fletcher-Powell technique was used, but in rare
+instances it failed to work satisfactorily. The BFGS formula appears to work as
+well as or better than the DFP method most of the time. In the infrequent case
+when the DFP is more efficient, the increase in efficiency of the DFP can
+usually be traced to a fortuitous choice of a search direction. Small changes
+in starting conditions can destroy this accidental increased efficiency and
+make the BFGS method appear more efficient. A keyword, <TT>
+<a href="node156.html">DFP</a></TT>, is provided
+to allow the DFP optimizer to be used.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8886"
+ HREF="node545.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8882"
+ HREF="node542.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8876"
+ HREF="node543.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8884"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8885"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8887"
+ HREF="node545.html"> Optimization of one</A>
+<B> Up:</B> <A NAME="tex2html8883"
+ HREF="node542.html"> Geometry optimization</A>
+<B> Previous:</B> <A NAME="tex2html8877"
+ HREF="node543.html"> EigenFollowing</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

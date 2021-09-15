@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>SIGMA </TITLE>
+<META NAME="description" CONTENT="SIGMA ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node306.html">
+<LINK REL="previous" HREF="node304.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node306.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html5565"
+ HREF="node306.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5561"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5555"
+ HREF="node304.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5563"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5564"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5566"
+ HREF="node306.html">SINGLET </A>
+<B> Up:</B> <A NAME="tex2html5562"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5556"
+ HREF="node304.html">SHIFT=n.nn</A><!--End of Navigation Panel--><H2>
+<TT>SIGMA</TT> 
+</H2>
+When refining transition states, and <TT><a href="node334.html">TS</a></TT> is <EM>not</EM> wanted, the McIver-Komornicki 
+gradient norm minimization&nbsp;[<A
+ HREF="node715.html#sigma1">9</A>,<A
+ HREF="node715.html#sigma2">10</A>] 
+routines, POWSQ and
+SEARCH, can  to  be used by including <TT>SIGMA</TT>.  These are 
+very rapid routines, but do not work
+for all species.  If the gradient norm is low, i.e., less  than  about  5
+units,   then   <TT>SIGMA</TT>  will  probably  work;  in  most  cases where <TT>TS</TT> 
+does not work,  <TT><a href="node232.html">NLLSQ</a></TT>  is
+recommended.  SIGMA first calculates a  Hessian  matrix,  a
+slow  step,  then works out the direction of fastest descent, and searches
+along that direction until the gradient norm is minimized.   The  Hessian
+is  then  partially  updated  in  light of the new gradients, and a fresh
+search direction found.  Clearly, if the Hessian changes  markedly  as  a
+result  of  the  line-search, the update done will be inaccurate, and the
+new search direction will be faulty.
+              
+        <TT>SIGMA</TT> should be avoided if at all  possible  when  non-variationally
+   optimized calculations are being done.
+<P>
+If the Hessian is suspected to be corrupt within SIGMA, it  will  be
+   automatically  recalculated.  This frequently speeds up the rate at which
+   the transition state is located.  If you do not want the  Hessian  to  be
+   reinitialized--it is costly in CPU time--specify <TT><a href="node207.html">LET</a></TT> on the keyword
+   line.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5565"
+ HREF="node306.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5561"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5555"
+ HREF="node304.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5563"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5564"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5566"
+ HREF="node306.html">SINGLET </A>
+<B> Up:</B> <A NAME="tex2html5562"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5556"
+ HREF="node304.html">SHIFT=n.nn </A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

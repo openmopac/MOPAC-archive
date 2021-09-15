@@ -1,0 +1,945 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Construction of Hybrids</TITLE>
+<META NAME="description" CONTENT="8.6.4.1 Construction of Hybrids">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node524.html"><LINK REL="previous" HREF="node522.html"><LINK REL="up" HREF="node522.html"><LINK REL="next" HREF="node524.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node524.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node522.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node522.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node524.html">Construction of Starting</A> <B>Up:</B> <A HREF="node522.html">Construction of Starting</A> <B>Previous:</B> <A HREF="node522.html">Construction of Starting</A><!--End of Navigation Panel--><H3>Construction of Hybrids </H3>
+<P>With the exception of hydrogen, all atoms have an <I>s</I>-<I>p</I> basis set, which must be mixed to form four hybrid atomic orbitals. Ideally, the main lobes of the hybrid orbitals involved in
+<font face="Symbol">s </font>bonding would point towards the other atoms involved in those
+<font face="Symbol">s </font>bonds. To achieve this, information regarding the immediate environment of the atom must be used. As only the direction of the neighboring atoms is important, the energy terms relating to the one-electron integrals between the atom and the <I>s</I> orbital of the neighboring atoms can be used. </P>
+<P>The process of using these energy terms to generate hybrid orbitals involves two steps. First, a set of M.O.s which involve the atomic orbitals of an atom and the <I>s</I> orbitals of its immediate neighbors is constructed by diagonalizing the interaction matrix. Consider a carbon atom in ethane. Using the numbering scheme and orientation shown in the&nbsp;<A HREF="node523.html#c2h6pic">Figure</A>, the complete MNDO one-electron matrix for ethane is shown in the&nbsp;<A HREF="#c2h6f">Table 1</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><a NAME="c2h6pic">&nbsp;</a><A NAME="BM15704"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Ethane, Showing Orientation and Numbering System</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <!-- MATH: $\includegraphics{c2h6}$ --><IMG SRC="img1119.gif" WIDTH=573 HEIGHT=286 ALT="includegraphics{c2h6}"></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P>The one-electron matrix is used in the construction of the interaction matrix. This matrix is of size 4+<I>n</I>, where <I>n</I> is the number of neighbors, i.e, <I>n</I> = 1, 2, 3, or 4. The first four functions are the <I>s</I> and <I>p</I> atomic orbitals of the atom; the remaining functions are the <I>s</I> orbitals of the neighbors. The only non-zero terms are those representing the interaction of the atom with its neighbors. Therefore, for the first carbon in ethane, the interaction matrix would be that shown in <A HREF="#c2h6c1">Table 2</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM15705">&nbsp;</A> </P>
+<STRONG><P><a name="c2h6f"></a>Table 1:</STRONG> One-Electron Integral Matrix for Ethane</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> A.O.</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(2)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(2)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(2)<I><SUB>py</I></SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(1)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-126.7891</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(1)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-6.5701</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-114.2822</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(1)<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-111.8502</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(1)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-111.8502</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(2)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.3977</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-4.2826</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-126.7891</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(2)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4.2826</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2.4743</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">6.5701</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-114.2822</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(2)<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.1990</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-111.8502</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(2)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.1990</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.0116</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.6430</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.3460</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-3.0984</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.0116</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.6430</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.1730</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2996</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.5492</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.0116</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.6430</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.1730</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.2996</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.5492</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.5492</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2.6833</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.0116</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.6430</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.1730</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3.0984</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.0116</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.6430</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3460</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.5492</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-2.6833</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.0116</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.6430</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.1730</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>A.O.</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(2)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(2)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(3)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(4)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(5)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(6)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(2)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-111.8502</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-99.6727</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2.6833</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.9455</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-99.6727</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2.6833</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.9455</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.9455</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-99.6727</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.2996</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2444</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.0814</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2444</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-99.6727</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.0814</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2444</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2444</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.9455</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-99.6727</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.2996</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2444</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2444</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.0814</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.9455</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.9455</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-99.6727</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM15706">&nbsp;</A> </P>
+<STRONG><P><a name="c2h6c1"></a>Table 2:</STRONG> Interaction Matrix used in Constructing Hybrid Orbitals for C<SUB>1</SUB> in Ethane</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> A.O.</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(2)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(2)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H<SUP>3</SUP></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(1)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C(2)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.3977</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-4.2826</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.5492</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2.6833</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3.0984</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-5.7834</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.2013</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.5492</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-2.6833</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM15707">&nbsp;</A> </P>
+<STRONG><P><a name="low4"></a>Table 3:</STRONG> Eigenvectors of Lowest Energy from Interaction Matrix</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"> <font face="Symbol">Y</font></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(2)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(2)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(3)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.7069</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0150</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3409</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3577</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3577</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3577</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.0150</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.7069</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.6195</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.1968</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.1968</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.1968</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.6112</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3556</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.0019</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.4990</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.5009</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.3556</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.6112</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.5773</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.2903</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.2870</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM15708">&nbsp;</A> </P>
+<STRONG><P><a name="low4l"></a>Table 4:</STRONG> Localized Diatomic Molecular Orbitals for C<SUB>1</SUB> in Ethane</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"> <font face="Symbol">Y</font></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(2)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(1)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(2)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">H(3)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3277</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.6266</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.7071</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.3617</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.1892</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.2887</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.5000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.7071</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3618</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.1892</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.2887</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.5000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.7071</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.3618</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.1892</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.5774</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.7071</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0000</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM15709">&nbsp;</A> </P>
+<STRONG><P><a name="c1hyb"></a>Table 5:</STRONG> Hybrid Atomic Orbitals for C<SUB>1</SUB> in Ethane</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"> Hybrid</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>s</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>px</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>py</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C(1)<I><SUB>pz</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.46345</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.88612</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.00002</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.00004</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.51159</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.26761</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.40825</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.70711</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.51161</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.26756</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.40825</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.70711</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.51161</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.26756</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-0.81650</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.00000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P>The four eigenvectors of lowest energy (<A HREF="#low4">Table 3</A>) are used to form the hybrid orbitals. A simple unitary transformation converts these eigenvectors into localized di-atomic bonds (<A HREF="#low4l">Table 4</A>). This transformation is the localization procedure, which is very rapid. Finally, before the hybrid functions can be used, they must be normalized to unity. For C<SUB>1</SUB> in ethane, the final hybrid atomic orbitals are presented in <A HREF="#c1hyb">Table 5</A>. </P>
+<P><A NAME="BM15601">&nbsp;</A> This simple procedure works not just for atoms of <I>sp</I><SUP>3</SUP> hybridization. Consider an <I>sp</I><SUP>2</SUP> system. Now, with only three ligands, the interaction matrix for the atom will be of order seven. The hybrid orbitals are constructed from the lowest four eigenvectors resulting from diagonalization of this matrix. As with the <I>sp</I><SUP>3</SUP> system, the hybrid orbitals are first localized, then re-normalized. This gives four hybrid orbitals, three of which are the <I>sp</I><SUP>2</SUP> hybrids, with the fourth being a pure <I>p</I> orbital. </P>
+<P>This procedure is quite general, as can be illustrated by oxygen, first in a hydroxy and then in a double-bonded oxygen environment. In a hydroxy environment an oxygen will have two ligands: so the interaction matrix will be of order six. Two <I>sp</I> hybrids and two <I>p</I> orbitals will be created. Later on, we will see that the two <I>p</I> orbitals become lone-pairs. </P>
+<P>In the case of the double-bonded oxygen, the interaction matrix is of order five. The lowest eigenvector of this matrix corresponds to the oxygen-ligand
+<font face="Symbol">s</font>-bond, and consists of a mixture of oxygen <I>s</I> and <I>p</I> orbitals. To satisfy orthogonality requirements, two other <I>s</I>-<I>p</I> hybrids are also made, so the overall hybridization is three <I>sp</I><SUP>2</SUP> orbitals plus one pure <I>p</I> orbital. As with the hydroxy oxygen, two of these orbitals will eventually be used to create lone pairs. </P>
+<P>When there is only one or two atoms bonded to an atom, the non-bonding hybrid orbitals generated are ill-defined by a unitary transform. This ill-definition is unimportant in that at self-consistency the density matrix is independent of the starting LMOs. It is important, however, in that the starting LMOs are very sensitive to minute numerical differences, of the type encountered on porting the program to different platforms. </P>
+<P>To prevent this, the ill-definition is removed by adding an extra constraint, subroutine <TT>MINLOC</TT>. If the atom has only one ligand, oxygen in carbonyl, for example, then the three non-bonding degenerate hybrid orbitals are mixed so that the <I>p<SUB>x</I></SUB> and <I>p<SUB>y</I></SUB> orbitals on one hybrid have zero coefficients, and the <I>p<SUB>x</I></SUB> orbital on another hybrid also has a zero coefficient. </P>
+<P>If the atom has two ligands, then the two non-bonding degenerate hybrids are mixed so that <I>p<SUB>x</I></SUB> orbital on one of the hybrids has a zero coefficient. </P>
+<P>Hybrid atomic orbitals form an orthonormal set. This is a natural consequence of the fact that the hybrids are obtained by a unitary transform of the starting orthonormal atomic orbitals. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8632"><A HREF="node524.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8628"></A><A HREF="node522.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8622"></A><A HREF="node522.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8630"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8631"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8633"><A HREF="node524.html">Construction of Starting</A></A> <B>Up:</B> <A NAME="tex2html8629"><A HREF="node522.html">Construction of Starting</A></A> <B>Previous:</B> <A NAME="tex2html8623"><A HREF="node522.html">Construction of Starting</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

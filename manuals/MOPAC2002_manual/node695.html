@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Overview</TITLE>
+<META NAME="description" CONTENT="14.1 Overview">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node696.html"><LINK REL="previous" HREF="node694.html"><LINK REL="up" HREF="node694.html"><LINK REL="next" HREF="node696.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node696.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node694.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node694.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node696.html">sizes.h</A> <B>Up:</B> <A HREF="node694.html">Installing MOPAC</A> <B>Previous:</B> <A HREF="node694.html">Installing MOPAC</A>
+<!--End of Navigation Panel-->
+<H1>Overview </H1>
+<P>MOPAC is distributed in compressed form. The top copy is designed for use with the following scalar compilers: </P>
+<DL>
+<DT>1. Pentium II/Pro running Linux with Portland Group compiler. </DT>
+<DT>2. The same, but using GNU g77 compiler. </DT>
+<DT>3. DEC Alpha workstation with UNIX 4.0 and Fortran 5.0. </DT>
+<DT>4. SGI R5000 Indy running IRIX 6.2 and Fortran 7.1. </DT>
+<DT>5. SGI R10000 PowerChallenge running IRIX 6.2 and Fortran 7.2. </DT>
+<DT>6. Sun UltraSPARC with Fortran 4.2. </DT>
+<DT>7. Generic Sun SPARC with Fortran 4.2. </DT>
+<DT>8. Older Suns with Sun 2.0.1 compiler. </DT>
+<DT>9. HAL workstations with Fujitsu compiler. </DT>
+<DT>10. IBM workstations. </DT>
+<DT>11. Fujitsu VX/VPP300/VPP700 series. </DT>
+</DL>
+<P>and parallel compilers: </P>
+<DL>
+<DT>1. Fujitsu AP3000 using Sun Fortran 77 compiler. </DT>
+<DT>2. Fujitsu AP3000 using Fujitsu Fortran 90 compiler. </DT>
+<DT>3. Fujitsu VX/VPP300/VPP700 running MPI 1.1. </DT>
+<DT>4. Multiprocessor SGI PowerChallenge running SGI's MPI. </DT>
+<DT>5. Sun Ultra Enterprise 10000 running MPICH. </DT>
+</DL>
+<P>To get MOPAC up and running, carry out the following instructions: </P>
+<DL>
+<DT>1. Obtain a copy of MOPAC 2002, by E-mail to <A NAME="tex2html235"><A HREF="mailto:mwada@se.fujitsu.co.jp"><U><FONT COLOR="#0000ff"><TT>mwada@se.fujitsu.co.jp</U></FONT></TT></A></A>. </DT>
+<DT>2. Create a directory to hold MOPAC (<TT>mkdir mopac</TT>). </DT>
+<DT>3. Move into the MOPAC directory (<TT>cd mopac</TT>). </DT>
+<DT>4. Copy the distribution file into this directory. </DT>
+<DT>5. If the file is compressed, uncompress it. Compressed files that end in ".Z" should be uncompressed with <TT>uncompress</TT>, files that end in ".gz" should be <TT>gunzip</TT>'d. </DT>
+<DT>6. The distribution file is stored as UNIX "tar" form, so read the file using <TT>tar -xvf &lt;file&gt;</TT> </DT>
+<DT>7. Go into the <TT>./src</TT> directory. </DT>
+<DT>8. Before the Makefile can be run, it needs to know what set of compiler options to use. These sets of options are stored in files in the sub-directory <TT>MAKE_INCLUDE</TT>. Select the appropriate set and note the name of the file. </DT>
+<DT>9. Make this name known to the Makefile by issuing the command: </DT>
+</DL>
+<PRE>setenv MOPAC_PLATFORM &lt;file&gt;</PRE>
+<DL>
+<DD>in which <TT>&lt;file&gt;</TT> is the name of the file, after removing the prefix "md.". For example, to select the options in the file <TT>md.Sun_SPARC</TT>, issue the command: </DD>
+</DL>
+<PRE>setenv MOPAC_PLATFORM Sun\_SPARC</PRE>
+<DL>
+<DT>10. Run the Makefile by issuing the command <TT>make</TT>. </DT>
+</DL>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html10809"><A HREF="node696.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10805"></A><A HREF="node694.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10799"></A><A HREF="node694.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10807"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10808"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10810"><A HREF="node696.html">sizes.h</A></A> <B>Up:</B> <A NAME="tex2html10806"><A HREF="node694.html">Installing MOPAC</A></A> <B>Previous:</B> <A NAME="tex2html10800"><A HREF="node694.html">Installing MOPAC</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

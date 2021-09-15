@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>INITSV (INITialize SolVation)</TITLE>
+<META NAME="description" CONTENT="INITSV (INITialize SolVation)">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node635.html"><LINK REL="previous" HREF="node633.html"><LINK REL="up" HREF="node632.html"><LINK REL="next" HREF="node635.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node635.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node632.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node633.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node635.html">DVFILL (Direction Vector FILLing)</A> <B>Up:</B> <A HREF="node632.html">COSMO (Conductor-like Screening</A> <B>Previous:</B> <A HREF="node633.html">A Walk Through</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<TT><H2><A NAME="SECTION0012222000000000000000">INITSV</TT> (INITialize SolVation)</A> </H2>
+<P>This subroutine is called by the main program, if the <TT>
+<a href="node172.html">EPS=<I>nn</I>.<I>n</I></a></TT> keyword is set. Here, all initializations for the COSMO calculation are done. </P>
+
+<UL>
+<LI>In the <TT>DATA</TT> statement, the van der Waals (VDW) radii are set. </LI>
+<LI>The dielectric constant <!-- MATH: $\varepsilon$ --><i><font face="Symbol">e</font></i>(<TT>EPSI</TT>) is read in from <TT>KEYWRD</TT>, and transformed to the dielectric factor <TT>FEPSI</TT> = (<!-- MATH: $\varepsilon$ --><i><font face="Symbol">e</font></i>-1)/(<!-- MATH: $\varepsilon$ --><i><font face="Symbol">e</font></i>+0.5). </LI>
+<LI>The number of interatomic density matrix elements <TT>NDEN</TT> is calculated from <TT>NORBS</TT> and <TT>NUMAT</TT>: </LI></UL>
+<DIR>
+<DIR>
+
+<TT><P>NDEN=3*NORBS-2*NUMAT</TT> </P></DIR>
+</DIR>
+
+
+<UL>
+<LI>The solvent radius, <TT>RSOLV</TT>, for the construction of the SAS is read in off <TT>RSOLV=<I>n</I>.<I>nn</I></TT> (default: 1.0 &Aring;ngstroms). </LI>
+<TT><LI>DISEX</TT> is set (default = 2). <TT>DISEX</TT> controls the distance within which the interaction of two segments is calculated accurately using the basic grid. </LI>
+<LI>The solvation radius <TT>SRAD</TT> is set for each atom. Be careful: the distance of the <TT>SAS</TT> will be <TT>SRAD-RDS</TT>. </LI>
+<TT><LI>NSPA</TT> (Number of Segments Per Atom) is set (default = 42). <TT>NSPA</TT> is the number of segments created on a full VDW sphere. </LI>
+<LI>To guarantee the most homogeneous initial segment distribution, it is best to create one of the "magic numbers" (see <TT>DVFILL</TT>) of segments. Therefore the next smallest "magic number" compared to <TT>NSPA</TT> is evaluated and the corresponding set of direction vectors is stored in <TT>DIRSM</TT>. </LI></UL>
+<DIR>
+<DIR>
+
+<P>For hydrogens the number of segments can safely be reduced by a factor of three or four, since the potential is rather homogeneous on hydrogen spheres. This is done and the corresponding direction vectors are stored in <TT>DIRSM</TT>. </P></DIR>
+</DIR>
+
+
+<UL>
+<LI>By the equation: </LI></UL>
+<p align="center">NSPA*<font face="Symbol">p</font>*RSEG<sup>2 </sup>= 4<font face="Symbol">p</font>R<sup>2</sup></p>
+<DIR>
+<DIR>
+
+<DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\comp{NSPA}\times \pi\times \comp{RSEG}^2 = 4\pi R^2
+\end{displaymath} --></DIV>
+<P align="left">the mean segment radius can easily be found to be </P>
+<P align="center">RSEG = 2R/(NSPA)<sup>1/2</sup></P>
+<DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\comp{RSEG}=2R/\sqrt{\comp{NSPA}}.
+\end{displaymath} --></DIV>
+<P>With a mean VDW-radius of 1.5 &Aring;ngstroms, the mean radius is R = 1.5 + 
+RSOLV - RDS <!-- MATH: $R=1.5+\comp{RSOLV}-\comp{RDS}$ -->. Thus <TT>DISEX2</TT> is set to the squared mean distance of two segments multiplied by <TT>DISEX</TT>. </P></DIR>
+</DIR>
+
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html10033"><A HREF="node635.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10029"></A><A HREF="node632.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10023"></A><A HREF="node633.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10031"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10032"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10034"><A HREF="node635.html">DVFILL (Direction Vector FILLing)</A></A> <B>Up:</B> <A NAME="tex2html10030"><A HREF="node632.html">COSMO (Conductor-like Screening</A></A> <B>Previous:</B> <A NAME="tex2html10024"><A HREF="node633.html">A Walk Through</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

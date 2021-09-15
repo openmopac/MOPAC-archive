@@ -1,0 +1,285 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Permutations</TITLE>
+<META NAME="description" CONTENT="8.4.2.1 Permutations">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node490.html"><LINK REL="previous" HREF="node488.html"><LINK REL="up" HREF="node488.html"><LINK REL="next" HREF="node490.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node490.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node488.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node488.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node490.html">Energy of microstates</A> <B>Up:</B> <A HREF="node488.html">Microstates</A> <B>Previous:</B> <A HREF="node488.html">Microstates</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001242100000000000000">Permutations</A> </H3>
+<P>For 5 electrons in 5 M.O.s there are 252 microstates ( <!-- MATH: $10!/(5!5!)$ -->10!/(5!5!)), but as states of different spin do not mix, we can use a smaller number. If doublet states are needed, then 100 states ( <!-- MATH: $5!/(2!3!)(5!/3!2!$ -->5!/(2!3!)(5!/3!2!) are needed. If only quartet states are of interest, then 25 states ( <!-- MATH: $5!/(1!4!)(5!/4!1!$ -->5!/(1!4!)(5!/4!1!) are needed and if the sextet state is required, then only one state is calculated. </P>
+<P>In the microstates listed, state 1 is the ground-state configuration. This can be written as (2,2,1,0,0), meaning that M.O.s 1 and 2 are doubly occupied, M.O. 3 is singly occupied by an alpha electron, and M.O.s 4 and 5 are empty. Microstate 1 has a component of <A NAME="BM13439">&nbsp;</A> spin of 1/2, and is a pure doublet. By Kramer's degeneracy--sometimes called time-inversion symmetry--microstate 2 is also a doublet, and has a spin of 1/2 and a component of spin of -1/2. </P>
+<P>Microstate 3, while it has a component of spin of 1/2, is not a doublet, but is in fact a component of a doublet, a quartet and a sextet. The coefficients of these states can be calculated from Wigner's symbol, also called the <A NAME="BM13441"><A NAME="BM13442"></A></A>Clebsch-Gordon 3-J symbol<A NAME="tex2html91"><A HREF="#foot13958"><SUP>***</SUP></A></A>. Thus, the coefficient in the doublet is <!-- MATH: $\sqrt{1/2}$ --><IMG SRC="img850.gif" ALIGN="MIDDLE" WIDTH=43 HEIGHT=36 ALT="$sqrt{1/2}$">( <!-- MATH: $j_1=3/2,\; m_1=3/2,
+\;j_2=1, \;m_2=-1, \;j=1/2$ --><IMG SRC="img851.gif" ALIGN="MIDDLE" WIDTH=302 HEIGHT=31 ALT="$j_1=3/2,">), in the quartet is <!-- MATH: $\sqrt{4/10}$ --><IMG SRC="img852.gif" ALIGN="MIDDLE" WIDTH=51 HEIGHT=36 ALT="$sqrt{4/10}$">( <!-- MATH: $j_1=3/2,\;
+m_1=3/2, \;j_2=1, \;m_2=-1, \;j=3/2$ --><IMG SRC="img853.gif" ALIGN="MIDDLE" WIDTH=302 HEIGHT=31 ALT="$j_1=3/2,">), and in the sextet, <!-- MATH: $\sqrt{1/10}$ --><IMG SRC="img854.gif" ALIGN="MIDDLE" WIDTH=51 HEIGHT=36 ALT="$sqrt{1/10}$">( <!-- MATH: $j_1=3/2,\; m_1=3/2, \;j_2=1, \;m_2=-1, \;j=5/2$ --><IMG SRC="img855.gif" ALIGN="MIDDLE" WIDTH=302 HEIGHT=31 ALT="$j_1=3/2,">). 
+<P>Microstate 4 is a pure sextet. If all 100 microstates of component of spin = 1/2 were used in a C.I., one of the resulting states would have the same energy as the state resulting from microstate 4. </P>
+<P>Microstate 5 is an excited doublet, and microstate 6 is an excited state of the system, but not a pure spin-state. </P>
+<P>By default, if <I>n</I> M.O.s are included in the MECI, then all possible microstates which give rise to a component of spin = 0 for even electron systems, or 1/2 for odd electron systems, will be used. <A NAME="BM13456">&nbsp;<A NAME="nmeci"></A>&nbsp;</A> <BR>
+</P>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM13950">&nbsp;</A> </P>
+<STRONG><P>Table 1:</STRONG> Sets of Microstates for Various MECI Calculations</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=623>
+<TR><TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="32%" VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Odd Electron Systems</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="33%" VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Even Electron Systems</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Alpha Beta</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">No. of<BR>
+Configs.</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Alpha Beta</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">No. of<BR>
+Configs.</TD>
+</TR>
+<TR><TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C.I.=1</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(1,1)x(0,1)</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(1,1)x(1,1)</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+</TR>
+<TR><TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(1,2)x(0,2)</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(1,2)x(1,2)</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+</TR>
+<TR><TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(2,3)x(1,3)</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">9</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(2,3)x(2,3)</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">9</TD>
+</TR>
+<TR><TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(2,4)x(1,4)</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">24</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(2,4)x(2,4)</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">36</TD>
+</TR>
+<TR><TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">5</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(3,5)x(2,5)</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">100</TD>
+<TD WIDTH="17%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">(3,5)x(3,5)</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="13%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">100</TD>
+</TR>
+</TABLE>
+
+<P><BR>
+(<I>n</I>,<I>m</I>) means <I>n</I> electrons in <I>m</I> M.O.s. </DIV></DIV></P>
+<P>MOPAC is configured to allow a maximum of <TT>MAXCI</TT> states, where <TT>MAXCI</TT> is defined in the file <TT>meci.h</TT>. If more states are needed (see &nbsp;<a href="#nmeci">Table 1</a>), then <TT>MAXCI</TT> in <TT>meci.h</TT> should be modified. Of course, if <TT>MAXCI</TT> is changed, MOPAC should be recompiled. </P>
+<P>If <TT><a href="node138.html">CIS</a></TT>, <TT><a href="node139.html">CISD</a></TT>, or <TT>
+<a href="node140.html">CISDT</a></TT> are specified, then the number of microstates is defined by <TT>
+<a href="node134.html">C.I.=<I>k</I></a></TT> and the keyword. The number of microstates is a function of <I>k</I>. Let <I>n</I> and <I>m</I> be integers, such that: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+n=\frac{k}{2}
+\end{displaymath} --><IMG SRC="img866.gif" WIDTH=36 HEIGHT=39 ALT="begin{displaymath}n=frac{k}{2}end{displaymath}"></DIV><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+m=\frac{k+1}{2}
+\end{displaymath} --><IMG SRC="img867.gif" WIDTH=63 HEIGHT=39 ALT="begin{displaymath}m=frac{k+1}{2}end{displaymath}"></DIV>
+<P>If <I>k</I> is odd, then round down to the next lower integer. Then the number of microstates <I>n<SUB>CIS</I></SUB>, <I>n<SUB>CISD</I></SUB>, and <I>n<SUB>CISDT</I></SUB>, for even-electron systems is: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\begin{array}{lcll}
+n_{CIS}&=& &2nm \nonumber \\
+n_{CISD}&=& 1 + &2nm + (nm)^2 + \frac{n!m!}{2(n-2)!(m-2)!}\nonumber  \\
+n_{CISDT} &=& 1 + &2nm + (nm)^2 + \frac{n!m!}{2(n-2)!(m-2)!} +
+\frac{n!m!}{18(n-3)(m-3)}+\frac{nm\times n!m!}{2(n-2)!(m-2)!}\nonumber
+\end{array}
+\end{displaymath} --><IMG SRC="img868.gif" WIDTH=474 HEIGHT=71 ALT="begin{displaymath}begin{array}{lcll}n_{CIS"></DIV>
+<P>Note that when <TT>CIS</TT> is used, the ground state is <EM>not</EM> included in the list of microstates. Values for the more important <I>k</I> are given in &nbsp;<a href="#tab2">Table 2</a>. <BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM13951">&nbsp;</A> </P>
+<STRONG><P><a name="tab2"></a>Table 2:</STRONG> Number of Microstates for CIS, CISD, and CISDT</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=243>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">C.I.=<I>k</I></TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">CIS</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">CISD</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">CISDT</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">9</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">9</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">8</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">27</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">35</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">5</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">12</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">55</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">91</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">6</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">18</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">118</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">282</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">7</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">24</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">205</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">635</TD>
+</TR>
+<TR><TD WIDTH="37%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">8</TD>
+<TD WIDTH="16%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">32</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">361</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1545</TD>
+</TR>
+</TABLE>
+
+<P><BR>
+(for even electron systems only) </DIV></DIV></P>
+<P><HR></P>
+<H4>Footnotes</H4>
+<DL>
+<DT>3-J symbol<A NAME="foot13958"><A HREF="node489.html#tex2html91"><SUP>***</SUP></A></A> </DT>
+<DD>The symbol is of form <BR>
+<DIV ALIGN="CENTER"><!-- MATH: \begin{eqnarray}</DD></DD></DD>
+<j_1j_2m_1m_2|j_1j_2jm>&=&
+\left \{\frac{(j+m)!(j-m)!(j_1-m_1)!(j_2-m_2)!(j_1+j_2-j)!(2j+1)}
+{(j_1+m_1)!(j_2+m_2)!(j_1-j_2+j)!(j_2-j_1+j)!(j_1+j_2+j+1)!}\right \}^{\frac{1}{2}}
+\nonumber \\
+&&\delta(m,m_1+m_2)\sum_r(-1)^{j_1+r-m_1}\frac{(j_1+m_1+r)!(j_2+j-r-m_1)!}
+{r!(j-m-r)!(j_1-m_1-r)!(j_2-j+m_1+r)!} \nonumber
+\end{eqnarray} -->
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&lt;<I>j</I><SUB>1</SUB><I>j</I><SUB>2</SUB><I>m</I><SUB>1</SUB><I>m</I><SUB>2</SUB>|<I>j</I><SUB>1</SUB><I>j</I><SUB>2</SUB><I>jm</I>&gt;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD VALIGN="MIDDLE">
+<P><IMG SRC="img848.gif" WIDTH=440 HEIGHT=65 ALT="$displaystyle left {frac{(j+m)!(j-m)!(j_1-m_1)!(j_2-m_2)!(j_1+j_2-j)!(2j+1)}......1+m_1)!(j_2+m_2)!(j_1-j_2+j)!(j_2-j_1+j)!(j_1+j_2+j+1)!}right }^{frac{1}{2}}$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><IMG SRC="img849.gif" WIDTH=473 HEIGHT=53 ALT="$displaystyle delta(m,m_1+m_2)sum_r(-1)^{j_1+r-m_1}frac{(j_1+m_1+r)!(j_2+j-r-m_1)!}{r!(j-m-r)!(j_1-m_1-r)!(j_2-j+m_1+r)!}$"></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<DD ALIGN="CENTER"></DIV></DD>
+<DD>where the summation is over all values of r such that all factorials occurring are of non-negative integers (0!=1). See&nbsp;[<A HREF="node715.html#griffith">64</A>]. To use the symbol, the coefficient of momentum (<I>j</I>,<I>m</I>) due to two momenta (<I>j</I><SUB>1</SUB>,<I>m</I><SUB>1</SUB>) and (<I>j</I><SUB>2</SUB>,<I>m</I><SUB>2</SUB>) is <!-- MATH: $<j_1j_2m_1m_2|j_1j_2jm>$ -->&lt;<I>j</I><SUB>1</SUB><I>j</I><SUB>2</SUB><I>m</I><SUB>1</SUB><I>m</I><SUB>2</SUB>|<I>j</I><SUB>1</SUB><I>j</I><SUB>2</SUB><I>jm</I>&gt; </DD>
+</DL>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8184"><A HREF="node490.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8180"></A><A HREF="node488.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8174"></A><A HREF="node488.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8182"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8183"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8185"><A HREF="node490.html">Energy of microstates</A></A> <B>Up:</B> <A NAME="tex2html8181"><A HREF="node488.html">Microstates</A></A> <B>Previous:</B> <A NAME="tex2html8175"><A HREF="node488.html">Microstates</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

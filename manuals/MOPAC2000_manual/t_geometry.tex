@@ -1,0 +1,35 @@
+\section{Geometry optimization}\index{Geometry!BFGS optimizer}
+The default geometry optimizer in MOPAC uses Baker's EigenFollowing method.  If
+this is {\em not} wanted, for example, if there is a need to reduce memory
+demands, then the Broyden Fletcher Goldfarb Shanno method can be used.
+
+The most common use of MOPAC is for geometry optimization. This involves
+starting with an approximation to the desired geometry and, by calculating the
+forces acting on the system, changing the geometry so as to lower the total
+energy. The objective of geometry optimization is to achieve a structure in
+which all the atoms are at equilibrium, that is, one in which the forces acting
+on every atom are very small, and in which the second derivatives are
+everywhere positive.  Such a geometry is called a ground state stationary
+point.
+
+\input{t_ef}
+\input{t_bfgs}
+
+\subsection{Optimization of one unknown}
+If a system has exactly one coordinate to be optimized, then obviously one
+line-search will optimize the geometry.  Because of this, the geometry
+optimization is done a little differently.  Given the initial geometry, the
+$\Delta H_f$ is calculated, and the line-search started. Unlike the normal
+line-search, however, the search is not stopped when the minimum is almost
+reached, instead, the minimum is located with quite high precision.  After the
+line-search is complete, the gradients are not \index{GRADIENTS} calculated
+(unless requested by \comp{GRADIENTS}). Instead, it is assumed that the
+gradient is small, and the results are output.  This saves some time. However,
+if \comp{GRADIENTS} is {\em not} present, and the geometry is not at a
+stationary point (because other coordinates are not optimized), then the
+warning message that the geometry is not at a stationary point will not be
+printed.
+
+\index{Line search|)}
+
+\input{t_geometry2}

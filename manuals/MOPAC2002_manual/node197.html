@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>INT </TITLE>
+<META NAME="description" CONTENT="INT ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node198.html">
+<LINK REL="previous" HREF="node196.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node198.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html4271"
+ HREF="node198.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4267"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html4261"
+ HREF="node196.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4269"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4270"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4272"
+ HREF="node198.html">IRC </A>
+<B> Up:</B> <A NAME="tex2html4268"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html4262"
+ HREF="node196.html">IMEM=n.nn</A><!--End of Navigation Panel--><H2>
+<TT>INT</TT> 
+</H2>
+Regardless of what type of coordinates are used in the data set, <TT>INT</TT>
+will force all the coordinates to be internal coordinates.  Atom 1 is,
+by definition, always defined in Cartesian coordinates. 
+<P>Notes</P>
+<ul>
+  <li>If&nbsp; <TT>INT</TT> is used, the optimization flags are not changed. 
+  Therefore, before running a system with&nbsp;<TT>INT</TT> all the 
+  optimization flags should be set to &quot;1&quot;, except for atoms 1, 2, and 3. 
+  For atom 1, all optimization flags should be set to &quot;0&quot;, for atom 2, the 
+  second and third flags should be &quot;0&quot;, and for atom 3 the third flag should be 
+  &quot;0&quot;.</li>
+  <li>Any dummy atoms are automatically deleted if&nbsp; <TT>INT</TT> is 
+  present.&nbsp; This is because the first step in running <TT>INT</TT> is to 
+  convert the system to Cartesian coordinates.&nbsp; This involved deleting any 
+  dummy atoms.&nbsp; The next step involves conversion from Cartesian to 
+  internal coordinates.</li>
+  <li>&nbsp;<TT>INT</TT> is a rapid and efficient way of deleting atoms from a 
+  molecule that is defined using internal coordinates.&nbsp; Re-label the atoms 
+  to be deleted as dummy atoms, and run <TT>INT</TT> with <TT>
+  <a href="node114.html">0SCF</a>.</TT> </li>
+</ul>
+<p>See also <TT><a href="node344.html">XYZ</a>.</TT></p>
+<p>&nbsp;</p>
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

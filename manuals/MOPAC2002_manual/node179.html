@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>FILL=n </TITLE>
+<META NAME="description" CONTENT="FILL=n ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node180.html">
+<LINK REL="previous" HREF="node178.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node180.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html4055"
+ HREF="node180.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4051"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html4045"
+ HREF="node178.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4053"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4054"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4056"
+ HREF="node180.html">FLEPO </A>
+<B> Up:</B> <A NAME="tex2html4052"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html4046"
+ HREF="node178.html">FIELD=(n.nn,m.mm,l.ll) </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>FILL=<I>n</I></TT> 
+</H2>
+The <I>n</I>'th M.O.  in an RHF calculation is constrained  to  be  filled.
+It  has no effect on a UHF calculation.  After the first iteration (NOTE:
+<A NAME="BM2074">&#160;</A>
+not after the first SCF calculation, but after the first iteration
+within the first SCF calculation) the <I>n</I>'th M.O. is stored, and, if
+occupied, no further action is taken at that time.  If unoccupied, then
+the  HOMO  and the <I>n</I>'th M.O.s are swapped around, so that the <I>n</I>'th
+M.O. is now filled.  In all subsequent iterations the M.O. nearest in
+character to the stored M.O.  is forced to be filled, and the stored
+M.O. replaced by that M.O.  This is necessitated by the fact that in
+a  reaction  a  particular M.O. may change its character
+considerably.  A useful procedure is to run <TT><a href="node116.html">1SCF</a></TT> and
+<TT><a href="node153.html">DENOUT</a></TT> first, in order to identify the M.O.s. The  complete
+job  is then  run  with <TT><a href="node247.html">OLDENS</a></TT> and <TT>FILL=<I>nn</I></TT>, so that the
+eigenvectors at the first iteration are fully known.  As <TT>FILL</TT> is
+known to give difficulty at times, consider using using <TT>
+<a href="node134.html">C.I.=<I>n</I></a></TT>
+and <TT><a href="node292.html">ROOT=<I>m</I></a></TT> instead.
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

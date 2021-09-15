@@ -1,0 +1,24 @@
+gzip -dc oh7.eps.gz > oh7.eps
+gzip -dc diamondbs.eps.gz > diamondbs.eps
+gzip -dc ch2o-tom.eps.gz > ch2o-tom.eps
+gzip -dc picc2h6.eps.gz > picc2h6.eps
+gzip -dc c2h4.eps.gz > c2h4.eps
+gzip -dc benzene2.eps.gz > benzene2.eps
+gzip -dc benzene3.eps.gz > benzene3.eps
+gzip -dc benzene.eps.gz > benzene.eps
+gzip -dc polyacetylene_total.eps.gz > polyacetylene_total.eps
+gzip -dc polyacetylene_pi.eps.gz > polyacetylene_pi.eps
+gzip -dc graphite001.eps.gz > graphite001.eps
+gzip -dc picch2o.eps.gz > picch2o.eps
+gzip -dc picpolyc2h4.eps.gz > picpolyc2h4.eps
+gzip -dc styrene.eps.gz > styrene.eps
+gzip -dc butdiyne.eps.gz > butdiyne.eps
+gzip -dc ful_fac.eps.gz > ful_fac.eps
+gzip -dc c2h6.eps.gz > c2h6.eps
+gzip -dc pichcooh.eps.gz > pichcooh.eps
+gzip -dc hof.eps.gz > hof.eps
+gzip -dc charges.eps.gz > charges.eps
+gzip -dc ch2o-ford.eps.gz > ch2o-ford.eps
+gzip -dc l_c6h5cho.eps.gz > l_c6h5cho.eps
+gzip -dc picbirad.eps.gz > picbirad.eps
+

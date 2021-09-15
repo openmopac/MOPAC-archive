@@ -1,0 +1,243 @@
+%% mopac.sty
+%% chris page, imperial college, june 1999
+%%
+%% modifications to the book.sty class for latex 2e to make a 
+%% mopac manual that looks nice
+%% eg. captions have a smaller font than the rest of the test, page headers
+%% are lower case, chapter headings aren't \Huge
+%%
+%% extra features include:
+%% - \latin function for itallicising foreign words
+%% - \caps function to smallcaps abbreviations, &c., or make them fullcaps
+%%   if you decide later that it looks crap like that
+%% known bugs:
+%% - none (obviously)
+%%
+%% make bigger margins to help binding
+%\addtolength{\oddsidemargin}{0.3in}
+%\addtolength{\evensidemargin}{-0.3in}
+
+%% we only want the month and the year, we don't need the day
+\renewcommand\today{}
+\edef\today{\ifcase\month\or
+  January\or February\or March\or April\or May\or June\or
+  July\or August\or September\or October\or November\or December\fi
+  \space\number\year}
+
+%% rework page headers
+\addtolength{\headheight}{1.0ex}
+\addtolength{\headsep}{1.0ex}
+\addtolength{\topmargin}{-2.0ex}
+\if@twoside
+    \def\ps@headings{%
+	\let\@oddfoot\@empty
+	\let\@evenfoot\@empty
+	\def\@oddhead{\makebox[0pt][l]{\raisebox{-1.0ex}{\makebox[\textwidth]{\hrulefill}}}{\slshape\rightmark}\hfill\thepage}% 
+	\def\@evenhead{\makebox[0pt][l]{\raisebox{-1.0ex}{\makebox[\textwidth]{\hrulefill}}}\thepage\hfil{\slshape\leftmark}}%
+	\let\@mkboth\markboth
+    \def\chaptermark##1{%
+      \markboth {\ifnum \c@secnumdepth >\m@ne
+            \@chapapp\ \thechapter. \ %
+        \fi
+        ##1}{}}%
+    \def\sectionmark##1{%
+      \markright {\ifnum \c@secnumdepth >\z@
+          \thesection. \ %
+        \fi
+        ##1}}}
+\else
+    \def\ps@headings{%
+	\let\@oddfoot\@empty
+	\def\@oddhead{\makebox[0pt][l]{\raisebox{-1.0ex}{\makebox[\textwidth]{\hrulefill}}}{\slshape\rightmark}\hfill\thepage}%
+	\let\@mkboth\markboth
+	\def\chaptermark##1{%
+	    \markright{\ifnum \c@secnumdepth >\m@ne
+			   \if@mainmatter\@chapapp\ \thechapter. \ \fi 
+		       \fi ##1
+	    }
+	}
+    }
+\fi
+
+\newenvironment{copyrightnotice}
+{
+    \if@twocolumn
+        \@restonecoltrue\onecolumn
+    \else
+        \@restonecolfalse
+    \fi
+    \pagestyle{plain}
+    \vspace*{150pt}
+    \begin{center}
+}
+{
+    \end{center}
+    \normalfont
+    \if@restonecol
+        \onecolumn
+    \else
+        \clearpage
+    \fi
+}
+
+%% rename 'bibliography' 'references'
+\def\bibname{References}
+
+%% Unfortunately, to lose the fully uppercase letters in the bibliography 
+%% headers...
+\renewenvironment{thebibliography}[1]{   
+    \chapter*{\bibname
+    \@mkboth{\bibname}{\bibname}}%
+    \list{\@biblabel{\@arabic\c@enumiv}}%
+    {\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \@openbib@code
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy
+    \clubpenalty4000
+    \@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \sfcode`\.\@m}
+    {\def\@noitemerr{\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist
+}
+
+%% ditto contents, figures and index (if present)
+\renewcommand\tableofcontents{%
+     \if@twocolumn
+	 \@restonecoltrue\onecolumn
+     \else
+	 \@restonecolfalse
+     \fi
+     \chapter*{\contentsname\@mkboth{\contentsname}{\contentsname}}%
+     \@starttoc{toc}%
+     \if@restonecol
+	 \twocolumn
+     \fi
+}
+\renewcommand\listoffigures{%
+     \if@twocolumn
+	 \@restonecoltrue\onecolumn
+     \else
+	 \@restonecolfalse
+     \fi
+     \chapter*{\listfigurename\@mkboth{\listfigurename}{\listfigurename}}%
+     \@starttoc{lof}%
+     \if@restonecol
+	 \twocolumn
+     \fi
+}
+\renewcommand\listoftables{%
+    \if@twocolumn
+	\@restonecoltrue\onecolumn
+    \else
+	\@restonecolfalse
+    \fi
+    \chapter*{\listtablename\@mkboth{\listtablename}{\listtablename}}%
+    \@starttoc{lot}%
+    \if@restonecol
+	\twocolumn
+    \fi
+}
+\renewenvironment{theindex}{
+    \if@twocolumn
+	\@restonecolfalse
+    \else
+	\@restonecoltrue
+    \fi
+    \columnseprule \z@
+    \columnsep 35\p@
+    \twocolumn[\@makeschapterhead{\indexname}]%
+    \@mkboth{\indexname}{\indexname}%
+    \thispagestyle{plain}\parindent\z@
+    \parskip\z@ \@plus .3\p@\relax
+    \let\item\@idxitem
+}
+{
+    \if@restonecol
+	\onecolumn
+    \else
+	\clearpage
+    \fi
+}
+
+%% Make chapter headings for non-numbered things a little smaller...
+%% Was \Huge with a \vskip of 40\p@
+\def\@makeschapterhead#1{%
+    \vspace*{50\p@}%
+    {
+	\parindent \z@ \raggedright
+	\normalfont
+	\interlinepenalty\@M
+	\huge \bfseries  #1\par\nobreak
+	\vskip 30\p@
+    }
+}
+
+%% make captions in small font
+\long\def\@makecaption#1#2{%
+    \vskip\abovecaptionskip
+    \sbox\@tempboxa{\small{#1: #2}}%
+    \ifdim \wd\@tempboxa >\hsize
+	\small{#1: #2\par}
+    \else
+	\global \@minipagefalse
+	\hb@xt@\hsize{\hfil\box\@tempboxa\hfil}%
+    \fi
+    \vskip\belowcaptionskip
+}
+
+%% create a command \latin so that you can use \emph exclusively for 
+%% emphasising things
+\DeclareTextFontCommand{\latin}{\ifdim \fontdimen \@ne \font >\z@
+		\upshape \else \itshape \fi}
+
+%% create a command \prog so that you can use \emph exclusively for 
+%% emphasising things
+\DeclareTextFontCommand{\prog}{\ifdim \fontdimen \@ne \font >\z@
+		\upshape \else \itshape \fi}
+
+%% create a command \caps so you can use small caps for abbreviations
+%% it looks nicer 
+%% use \MakeUppercase if you prefer\scshape
+\DeclareTextFontCommand{\caps}{\scshape}
+
+
+%% create a command \mtrx to denote matrices with a bold character
+\newcommand{\mtrx}{\mathbf}
+
+%% create a command \comp to denote computer commands with typewriter fonts
+\DeclareTextFontCommand{\comp}{\ttfamily}
+
+%% create a command \compresstable to use a smaller font for wide tables
+\newcommand{\compresstable}{\footnotesize}
+
+%\setcounter{topnumber}{9}
+%\def\topfraction{.9}
+%\setcounter{bottomnumber}{5}
+%\def\bottomfraction{.9}
+%\setcounter{totalnumber}{9}
+%\def\textfraction{.0}
+% Very few constructs are used but c'est la vie
+% Change fount in math mode for chemical elements; use as $\chem H_2O^+$
+\def\chem{\rm\everymath={\rm}}
+% Arrange for sections and subsecs only to be numbered
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{2}
+% Tricky hyphenations
+\hyphenation{occ-up-ied occ-up-a-tion occ-up-ies block-dia-gonal-iz-at-ion}
+% Indexing requires Lamport's MakeIndex
+% The following lessens the labour of indexing
+\newcommand{\ff}[1]{{\bf #1}}
+\newcommand{\X}[1]{\% {#1} }
+\newcommand{\mi}[1]{#1\index{#1}}
+% use as .... the \mi{spaghetti} tree grows in the warm fertile soil ...
+\makeindex
+% This stuff for headering/footering pages
+%\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}} % remember chapter title
+%\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+                                                % section number and title
+

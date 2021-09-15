@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Locating Transition States</TITLE>
+<META NAME="description" CONTENT="8.7.4.2 Locating Transition States">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node547.html"><LINK REL="up" HREF="node546.html"><LINK REL="next" HREF="node549.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html8932"><A HREF="node549.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8928"></A><A HREF="node546.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8924"></A><A HREF="node547.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8930"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8931"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8933"><A HREF="node549.html">"Size" of a Molecule</A></A> <B>Up:</B> <A NAME="tex2html8929"><A HREF="node546.html">Considerations in Geometry</A></A> <B>Previous:</B> <A NAME="tex2html8925"><A HREF="node547.html">Overriding the default</A></A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><BR>
+Locating Transition States </H3>
+<P>Unlike optimizing ground states, locating transition states involves deciding on an efficient strategy. In general, there are three stages in locating transition states: </P>
+<DL>
+<DT>1. Generating a geometry in the region of the transition state. </DT>
+<DT>2. Refining the transition state geometry. </DT>
+<DT>3. Characterizing the transition state. </DT>
+</DL>
+<P>Of these three, the first is by far the most difficult. The following approaches are suggested as potential strategies for generating a geometry in the region of the transition state. </P>
+<B><P>For narcissistic reactions (reactions in which the reactants and products are the same, e.g. the inversion of ammonia.</B> </P>
+
+<UL>
+<LI>Use geometric constrains, e.g. <TT><a href="node319.html">SYMMETRY</a></TT>, to lock the geometry in the symmetry of the potential transition state. </LI>
+<LI>Minimize the <!-- MATH: $\Delta H_f$ --><font face="Symbol">D</font>H<sub>f</sub>. </LI>
+<LI>Verify that the system is a transition state. If it has more than one negative force constant, use another method. </LI></UL>
+
+<B><P>For a bond making-bond breaking reaction (e.g., an S</B><I><SUB>N</I></SUB><SUP>2</SUP><B> reaction)</B> </P>
+
+<UL>
+<LI>Use <TT>SYMMETRY</TT> to set the two bonds equal. If does <EM>not</EM> matter that the bonds are of different type. For example, to locate the transition state for Br<SUP>-</SUP> reacting with CH<SUB>4</SUB> to give CH<SUB>3</SUB>Br, the C-Br and C-H bonds would be set equal. </LI>
+<LI>Optimize the geometry, to minimize the <!-- MATH: $\Delta H_f$ --> <!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f</sub>. Any geometry optimizer could be used, but of course the default optimizer should be tried first. </LI>
+<LI>Remove the symmetry constraint, and locate the transition state using <TT>
+<a href="node334.html">TS</a></TT>. At this point, the main geometric change is to adjust the two bond lengths involved in the reaction. </LI></UL>
+
+<B><P>For barriers to rotation, inversion, or other simple reaction that does not involve making or breaking bonds</B> </P>
+
+<UL>
+<LI>Optimize the starting geometry. </LI>
+<LI>Optimize the final geometry. </LI>
+<LI>Identify the coordinate that corresponds to the reaction. This is likely to be an angle or a dihedral. </LI>
+<LI>Starting with the higher energy geometry, use a <A HREF="node607.html#rpaths">path option</A> to drive the reaction in the direction of the other geometry. Use about 20 points, and go about half way to the other geometry--the transition state is likely to be between the higher energy geometry and the half-way point. </LI>
+<LI>From the output, locate the highest energy point--this will be near to the transition state. </LI>
+<LI>Starting with the geometry of the highest energy point, repeat the path calculation. Use smaller steps (0.1 times the previous step is usually OK), and again do 20 points. </LI>
+<LI>Inspect the reaction gradient. It should drop as the transition state is approached. If it does, then use <TT>TS</TT> to refine the transition state. </LI></UL>
+
+<B><P>For bond making or bond breaking reactions</B> </P>
+
+<UL>
+<LI>Identify the reaction coordinate (the bond that makes or breaks) </LI>
+<LI>Use a <A HREF="node607.html#rpaths">path calculation</A> to drive the reaction. </LI>
+<LI>The geometry of the highest point on the reaction path should then be used to start a <TT>TS</TT> calculation. </LI></UL>
+
+<B><P>For complicated reactions (e.g. Diels Alder)</B> For these systems, the <TT>
+<a href="node295.html">SADDLE</a></TT> calculation is a suitable method. </P>
+
+<UL>
+<LI>Optimize the reactant geometry. </LI>
+<LI>Using the same atoms in the same sequence, optimize the product geometry. </LI>
+<LI>Run the <TT>SADDLE</TT> calculation. </LI>
+<LI>If the calculation ends because "both reactants and products are on the same side of the transition state," use two of the geometries to set up a new <TT>SADDLE</TT> calculation. Use a smaller <TT>
+<a href="node127.html">BAR=<I>n</I>.<I>nn</I></a></TT>, e.g., <TT>BAR=0.03</TT>, and re-run the calculation. If CPU time is not important, run the original data set with <TT>BAR=0.03</TT>. </LI>
+<LI>Use the final geometry, or the highest energy geometry, if the <TT>SADDLE</TT> does not run to completion, as the starting point for a <TT>TS</TT> calculation. </LI></UL>
+
+<P><HR><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html8932"><A HREF="node549.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8928"></A><A HREF="node546.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8924"></A><A HREF="node547.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8930"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8931"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8933"><A HREF="node549.html">"Size" of a Molecule</A></A> <B>Up:</B> <A NAME="tex2html8929">
+<A HREF="node546.html">Considerations in Geometry</A></A> <B>Previous:</B> <A NAME="tex2html8925">
+<A HREF="node547.html">Overriding the default</A></A> <BR>
+ </P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Outline of the MST Method</TITLE>
+<META NAME="description" CONTENT=" Outline of the MST Method">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node649.html"><LINK REL="previous" HREF="node646.html"><LINK REL="up" HREF="node646.html"><LINK REL="next" HREF="node648.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node648.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node646.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node646.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node648.html">Warnings</A> <B>Up:</B> <A HREF="node646.html">Miertus-Scrocco-Tomasi Solvation Model</A> <B>Previous:</B> <A HREF="node646.html">Miertus-Scrocco-Tomasi Solvation Model</A>
+<!--End of Navigation Panel-->
+<H2>Outline of the MST Method </H2>
+<P>Solvation is computed using a modified version of Miertus, Scrocco and Tomasi&nbsp;[<A HREF="node715.html#mst">75</A>,<A HREF="node715.html#mt">76</A>] self-consistent reaction field method (MST/SCRF), which has been modified&nbsp;[<A HREF="node715.html#lno">77</A>,<A HREF="node715.html#glo">78</A>,<A HREF="node715.html#nol">79</A>,<A HREF="node715.html#lbo">80</A>,<A HREF="node715.html#obl">81</A>] to allow semiempirical Hamiltonians to be used. Following this strategy the solute is placed in a molecular-shaped cavity, which is built using GEPOL routines&nbsp;[<A HREF="node715.html#pastb">82</A>] which use optimized van der Waals' radii&nbsp;[<A HREF="node715.html#ojl">83</A>,<A HREF="node715.html#blo">84</A>,<A HREF="node715.html#rap">85</A>]. The solvent is represented as a continuum which reacts against the solute charge distribution <EM>via</EM> a perturbation operator. The perturbation operator is obtained by solving the Laplace equation at the solute/solvent interface (the solute cavity). The solute electrostatic potential, which is necessary to solve the Laplace equation, is rigorously computed as the expectation value of the <I>r</I><SUP>-1</SUP> operator&nbsp;[<A HREF="node715.html#mst">75</A>,<A HREF="node715.html#mt">76</A>,<A HREF="node715.html#lno">77</A>,<A HREF="node715.html#glo">78</A>,<A HREF="node715.html#nol">79</A>,<A HREF="node715.html#lbo">80</A>,<A HREF="node715.html#obl">81</A>]. </P>
+<P>The free energy of hydration is computed as the addition of three contributions: </P>
+<DL>
+<DT>1. The electrostatic term, which is computed from the linear free energy response theory&nbsp;[<A HREF="node715.html#mst">75</A>,<A HREF="node715.html#mt">76</A>,<A HREF="node715.html#lno">77</A>,<A HREF="node715.html#glo">78</A>,<A HREF="node715.html#nol">79</A>,<A HREF="node715.html#lbo">80</A>,<A HREF="node715.html#obl">81</A>]. </DT>
+<DT>2. The cavitation contribution, which is computed from Pierotti's scaled particle theory&nbsp;[<A HREF="node715.html#ojl">83</A>,<A HREF="node715.html#blo">84</A>].<A NAME="BM23991">&nbsp;</A> </DT>
+<DT>3. The van der Waals terms, which is computed using a linear relation with the solute accessible surface, and optimized "hardness" parameters&nbsp;[<A HREF="node715.html#rap">85</A>]. <A NAME="BM23993">&nbsp;</A> </DT>
+</DL>
+<P>In addition to the free energy of hydration a "solvent-adapted" wavefunction is obtained. Such a wavefunction can be used to determine changes in solute properties due to the solvent&nbsp;[<A HREF="node715.html#lobg">86</A>,<A HREF="node715.html#lo">87</A>,<A HREF="node715.html#lo2">88</A>,<A HREF="node715.html#lobg2">89</A>]. </P>
+<P>The program allows the use of two different strategies to compute the semiempirical Molecular Electrostatic Potential (MEP). The first one&nbsp;[<A HREF="node715.html#lio">90</A>,<A HREF="node715.html#alo">91</A>,<A HREF="node715.html#lo3">40</A>] computes the MEP via the deorthogonalization of the semiempirical wavefunction (no keyword), while the second one&nbsp;[<A HREF="node715.html#frr">92</A>,<A HREF="node715.html#alo2">93</A>] maintains the orthogonality of the wavefunction in the calculation of the MEP (keyword <TT>
+<a href="node254.html">ORT</a></TT>). <A NAME="ort">&nbsp;</A> </P>
+<P>The strategy has been tested in different systems. Optimized versions for MNDO, AM1 and PM3 are available. The comparison of experimental and theoretical free energies of hydration for 23 small neutral molecules yields to RMS deviations in the range of 1 kcal/mol. The best results (RMS 1.0 kcal/mol, r=0.94) are obtained with the AM1 Hamiltonian with orthogonal MEP's. The solvent-induced dipoles matches Monte Carlo/QM and <EM>ab initio</EM> SCRF values. </P>
+<P>Semiempirical/SCRF methods have been successfully applied to several problems. Examples: i) tautomerization of nitroimidazole, and pyridones, ii) solvent effects in the isomerization of amides, and iii) H-bond dimerization. </P>
+<P><HR></P>
+<P><!--Table of Child-Links--><A NAME="CHILD_LINKS">&nbsp;</A> </P>
+
+<UL>
+<LI><A NAME="tex2html10189"><A HREF="node648.html">Warnings</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html10187"><A HREF="node648.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10183"></A><A HREF="node646.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10177"></A><A HREF="node646.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10185"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10186"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10188"><A HREF="node648.html">Warnings</A></A> <B>Up:</B> <A NAME="tex2html10184"><A HREF="node646.html">Miertus-Scrocco-Tomasi Solvation Model</A></A> <B>Previous:</B> <A NAME="tex2html10178"><A HREF="node646.html">Miertus-Scrocco-Tomasi Solvation Model</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

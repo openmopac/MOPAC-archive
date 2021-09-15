@@ -1,0 +1,28 @@
+<head>
+<script>
+<!-- hide this script from non-javascript-enabled browsers
+
+var timeOutInterval = 100;
+
+function paintDocument()
+{
+  if( parent.qaframeLoaded )  {
+    // program frame is loaded, so go ahead
+    parent.qaframe.showSearchForm();
+  }
+  else  {
+    // try again a bit later
+    timerID = setTimeout( 'paintDocument()', timeOutInterval );
+  }
+}
+
+if( parent.qaframe.lastSearchResults != null )
+  document.write( parent.qaframe.lastSearchResults );
+else
+  paintDocument();
+
+// stop hiding -->
+</script>
+<meta name="Microsoft Theme" content="axis 111, default">
+<meta name="Microsoft Border" content="tlb, default">
+</head>

@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Constructing Data Sets</TITLE>
+<META NAME="description" CONTENT="Constructing Data Sets">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><A NAME="tex2html8956"><A HREF="node550.html">
+<!-- Put here the PREVIOUS link in the MOPAC manual -->
+<IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A>
+<A NAME="tex2html8954"></A><A HREF="index.html">
+<IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A>
+<A NAME="tex2html8955"></A><A HREF="node716.html">
+<IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+</P>
+<H1>Constructing Data Sets</H1>
+<P>Setting up the data set for a solid is much more complicated than setting up the equivalent data set for a molecule. For example, the data set for iodine, I<SUB>2</SUB>, might take say 20 seconds to type up. For crystalline I<SUB>2</SUB>, the data set might take 20 minutes to an hour to set up. The reason for this is the presence in solids of the translation vectors. In MOPAC, these are represented by the symbol "Tv", short for Translation Vector. Translation vectors must be the last entries in the Z-matrix, are defined in terms of the positions of atoms or dummy atoms.</P>
+<FONT SIZE=1>
+<P>&nbsp;</P>
+</FONT>
+<P>The recommended procedure for constructing a data set for a solid is as follows:</P>
+
+<UL>
+<LI>Build a primitive unit cell. In this work, the action of simple translations on a primitive unit cell would make the solid. That is, other operations, such as rotation, non-primitive translation, or reflection should not be necessary. </LI>
+<LI>Use MAKPOL to build a cluster. The number of primitive unit cells in each direction should be sufficiently large that the shortest distance between two opposite faces in the cluster is at least 10 &Aring;ngstroms. </LI>
+<LI>Using an editor (vi, Notepad, or WORD, in order of preference), add symmetry to the system. </LI>
+<LI>Run using MOPAC</LI></UL>
+
+<P>Worked examples of this procedure, with explanation of each step are:</P>
+<P><A HREF="Diamond.html">Diamond</A></P>
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2000 </ADDRESS>
+<H1></A></H1></BODY>
+</HTML>

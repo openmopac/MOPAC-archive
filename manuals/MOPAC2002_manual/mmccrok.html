@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>MMCCROK </TITLE>
+<META NAME="description" CONTENT="MINMEP ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node220.html">
+<LINK REL="previous" HREF="node218.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node220.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<a NAME="tex2html4534" href="node220.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></a> 
+<A NAME="tex2html4530"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A>
+<a NAME="tex2html4524" href="mmccr2.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></a> 
+<A NAME="tex2html4532"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4533"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <a NAME="tex2html4535" href="node220.html">MMOK </a>
+<B> Up:</B> <A NAME="tex2html4531"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <a NAME="tex2html4525" href="mmccr2.html">MMCCR2</a><!--End of Navigation Panel--><H2>
+<TT>MMCCROK</TT> 
+</H2>
+<p>NDDO semiempirical methods predict some organic ring systems, such as 
+cyclopentane, to be planar, although 
+they are known to be puckered.&nbsp; To correct for this, if <TT>MMCCR2</TT> is present, 
+then a molecular mechanics correction can be applied.&nbsp; The default 
+form of this correction is:</p>
+<p align="center"><font face="Symbol">D</font>H<sub>f</sub><sup>'</sup> =
+<font face="Symbol">D</font>H<sub>f</sub> + 4.0e<sup>-(angle/20.0)**2</sup></p>
+<P>
+where &quot;angle&quot; is the dihedral or torsion angle between four consecutive <i>sp</i><sup>3</sup> 
+carbon atoms in a five membered ring.&nbsp; The two constants, 4.0 and 20.0, can 
+be changed by use of&nbsp; <TT><a href="mmccr1.html">MMCCR1</a></TT> and <TT>
+<a href="mmccr2.html">MMCCR2</a></TT>, respectively.&nbsp; 
+<P>
+For planar cyclopentane, all the torsion angles are 180 degrees, therefore the 
+effect of the correction is a maximum.<P>
+In cyclopentane, there are five 
+sets of atoms like this, so five corrections would be made.<HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

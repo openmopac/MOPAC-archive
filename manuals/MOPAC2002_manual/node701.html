@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>The shut command</TITLE>
+<META NAME="description" CONTENT="14.7 The shut command">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node702.html"><LINK REL="previous" HREF="node700.html"><LINK REL="up" HREF="node694.html"><LINK REL="next" HREF="node702.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html10881"><A HREF="node702.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10877"></A><A HREF="node694.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10871"></A><A HREF="node700.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10879"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10880"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10882"><A HREF="node702.html">Size of MOPAC</A></A> <B>Up:</B> <A NAME="tex2html10878"><A HREF="node694.html">Installing MOPAC</A></A> <B>Previous:</B> <A NAME="tex2html10872"><A HREF="node700.html">Running MOPAC</A></A>
+<!--End of Navigation Panel-->
+<H1>The shut command </H1>
+<P>If, for whatever reason, a run needs to be stopped prematurely, the command <TT>shut &lt;jobname&gt;</TT> can be issued. This will execute a small command-language file, which copies the data-file to form a new file called <TT>&lt;filename&gt;.end</TT>. </P>
+<P>The next time MOPAC calls function SECOND, the presence of a readable file called <TT>&lt;filename&gt;.end</TT>, is checked for, and if it exists, the apparent elapsed CPU time is increased by 10,000,000 seconds, and a warning message issued. No further action is taken until the elapsed time is checked to see if enough time remains to do another cycle. Since an apparently very long time has been used, there is not enough time left to do another cycle, and the restart files are generated and the run stopped. </P>
+<P>The <TT>shut</TT> command is completely machine-independent. </P>
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

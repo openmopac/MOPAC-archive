@@ -1,0 +1,196 @@
+      SUBROUTINE READ
+      IMPLICIT DOUBLE PRECISION (A-H, O-Z)
+      INCLUDE 'SIZES/NOLIST'
+C
+C MODULE TO READ IN GEOMETRY FILE, OUTPUT IT TO THE USER,
+C AND CHECK THE DATA TO SEE IF IT IS REASONABLE. 
+C EXIT IF NECESSARY.
+C
+C
+C
+C  ON EXIT NATOMS    = NUMBER OF ATOMS PLUS DUMMY ATOMS (IF ANY).
+C          KEYWRD    = KEYWORDS TO CONTROL CALCULATION
+C          KOMENT    = COMMENT CARD
+C          TITLE     = TITLE CARD
+C          LABELS    = ARRAY OF ATOMIC LABELS INCLUDING DUMMY ATOMS.
+C          GEO       = ARRAY OF INTERNAL COORDINATES.
+C          LOPT      = FLAGS FOR OPTIMIZATION OF MOLECULE 
+C          NA        = ARRAY OF LABELS OF ATOMS, BOND LENGTHS.
+C          NB        = ARRAY OF LABELS OF ATOMS, BOND ANGLES.
+C          NC        = ARRAY OF LABELS OF ATOMS, DIHEDRAL ANGLES.
+C          LATOM     = LABEL OF ATOM OF REACTION COORDINATE.
+C          LPARAM    = RC: 1 FOR LENGTH, 2 FOR ANGLE, AND 3 FOR DIHEDRAL
+C          REACT(100)= REACTION COORDINATE PARAMETERS
+C          LOC(1,I)  = LABEL OF ATOM TO BE OPTIMISED.
+C          LOC(2,I)  = 1 FOR LENGTH, 2 FOR ANGLE, AND 3 FOR DIHEDRAL.
+C          NVAR      = NUMBER OF PARAMETERS TO BE OPTIMISED.
+C          XPARAM    = STARTING VALUE OF PARAMETERS TO BE OPTIMISED.
+C
+C**************************************************************************
+C *** INPUT THE TRIAL GEOMETRY  \IE.  KGEOM=0\                          
+C   LABEL(I) = THE ATOMIC NUMBER OF ATOM\I\.                            
+C            = 99, THEN THE I-TH ATOM IS A DUMMY ATOM USED ONLY TO      
+C              SIMPLIFY THE DEFINITION OF THE MOLECULAR GEOMETRY.       
+C   GEO(1,I) = THE INTERNUCLEAR SEPARATION \IN ANGSTROMS\ BETWEEN ATOMS 
+C              NA(I) AND (I).                                           
+C   GEO(2,I) = THE ANGLE NB(I):NA(I):(I) INPUT IN DEGREES; STORED IN    
+C              RADIANS.                                                 
+C   GEO(3,I) = THE ANGLE BETWEEN THE VECTORS NC(I):NB(I) AND NA(I):(I)  
+C              INPUT IN DEGREES - STORED IN RADIANS.                    
+C  LOPT(J,I) = -1 IF GEO(J,I) IS THE REACTION COORDINATE.                 
+C            = +1 IF GEO(J,I) IS A PARAMETER TO BE OPTIMISED              
+C            =  0 OTHERWISE.                                            
+C *** NOTE:    MUCH OF THIS DATA IS NOT INCLUDED FOR THE FIRST 3 ATOMS. 
+C     ATOM\1\  INPUT LABELS(1) ONLY.                                       
+C     ATOM\2\  INPUT LABELS(2) AND GEO(1,2) \SEPARATION BETWEEN ATOMS 1 + 2\ 
+C     ATOM\3\  INPUT LABELS(3), GEO(1,3)    \SEPARATION BETWEEN ATOMS 2 + 3\ 
+C              AND GEO(2,3)              \ANGLE  ATOM\1\:ATOM\2\:ATOM\3\ \
+C                                                                       
+C**************************************************************************
+C
+      DIMENSION LOPT(3,NUMATM)
+      CHARACTER*80 KEYWRD,KOMENT,TITLE,LINE
+      CHARACTER*1 KEYS(80)
+      COMMON /KEYWRD/ KEYWRD
+      COMMON /TITLES/ KOMENT,TITLE
+      COMMON /GEOVAR/ NVAR, LOC(2,MAXPAR), XPARAM(MAXPAR)
+      COMMON /PATH  / LATOM,LPARAM,REACT(100)
+      COMMON /ISTOPE/ AMS(54)
+      COMMON /GMETRY/ GEO(3,NUMATM)
+      COMMON /GEOKST/ NATOMS,LABELS(NUMATM),
+     +NA(NUMATM),NB(NUMATM),NC(NUMATM)
+      COMMON /GEOSYM/ NDEP, LOCPAR(200), IDEPFN(200), LOCDEP(200)
+      LOGICAL PARAM
+      DIMENSION IZOK(99), COORD(3,NUMATM),VALUE(40)
+      EQUIVALENCE (KEYS(1),KEYWRD)
+      DATA IZOK/1,0,0,1,1,1,1,1,1,0,
+     +0,0,1,1,1,1,1,0,
+     @0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
+     #0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,
+     $44*0,1/
+C
+       READ(5,'(A)')KEYWRD,KOMENT,TITLE
+       PARAM=(INDEX(KEYWRD,'PARAM').NE.0)
+       IF(INDEX(KEYWRD,'ENDATA') .NE. 0) THEN
+           NATOMS=0
+           RETURN
+       ENDIF
+       CALL GETGEO(5,LABELS,GEO,LOPT,NA,NB,NC,AMS,NATOMS)
+C
+C
+C OUTPUT FILE TO UNIT 6
+C
+C    WRITE HEADER
+      IF( .NOT. PARAM) THEN
+      IF(INDEX(KEYWRD,'MINDO3') .EQ. 0) THEN
+      WRITE(6,'(1X,16(''*****'')//29X,''MNDO CALCULATION RESULTS'',
+     +      28X,///1X,16(''*****'') )')
+      ELSE
+      WRITE(6,'(1X,16(''*****'')//29X,''MINDO/3 CALCULATION RESULTS'',
+     +      28X,///1X,16(''*****'') )')
+      ENDIF
+      WRITE(6,'('' *'',20X,''VERSION '',F5.2)')VERSON
+      ENDIF
+C
+C CHECK DATA 
+C
+      DO 50 I=1,NATOMS
+        IF (IZOK(LABELS(I)) .EQ. 0 ) THEN
+           WRITE(6,'('' ATOMIC NUMBER '' I3 '' IS NOT AVAILABLE '',
+     +        ''IN MNDO'')') LABELS(I)
+           CALL EXIT
+        END IF
+        IF (LABELS(I) .LE. 0 ) THEN
+           WRITE(6,'('' ATOMIC NUMBER OF '',I3,'' ?'')') LABELS(I)
+           CALL EXIT
+        END IF
+        IF ( NA(I).GE.I.OR. NB(I).GE.I.OR. NC(I).GE.I) THEN
+           WRITE(6,'('' ATOM NUMBER '',I3,'' IS ILLDEFINED'')') I
+           CALL EXIT
+        END IF
+50    CONTINUE        
+C
+C WRITE KEYWORDS BACK TO USER AS FEEDBACK
+      IF( .NOT. PARAM)CALL WRTKEY(KEYWRD)
+       IF( .NOT. PARAM)WRITE(6,'(80(''*''))')
+C
+C CONVERT ANGLES TO RADIANS
+      DO 51 I=1,NATOMS
+         DO 51 J=2,3
+            GEO(J,I) = GEO(J,I) * 0.01745329252D00
+51    CONTINUE
+C
+C FILL IN GEO MATRIX IF NEEDED
+      NDEP=0
+      IF( INDEX(KEYWRD,'SYM') .NE. 0) CALL GETSYM
+         IF(NDEP.NE.0) CALL SYMTRY
+C
+C INITIALIZE FLAGS FOR OPTIMIZE AND PATH 
+      IFLAG = 0
+      NVAR  = 0
+      LATOM = 0
+        DO 60 I=1,NATOMS
+           DO 60 J=1,3
+             IF (LOPT(J,I) ) 52, 60, 54
+C    FLAG FOR PATH
+52         LATOM  = I
+           CONVRT=1.D0
+           LPARAM = J
+           IF(J.GT.1) CONVRT=0.01745329252D00
+           REACT(1)  = GEO(J,I)
+           IREACT=1
+           IF ( IFLAG .NE. 0 ) THEN
+              WRITE(6,'('' ONLY ONE REACTION COORDINATE PERMITTED'')')
+              CALL EXIT
+           END IF
+           IFLAG = 1
+           GO TO 60
+C    FLAG FOR OPTIMIZE
+54         NVAR = NVAR + 1
+           LOC(1,NVAR) = I
+           LOC(2,NVAR) = J
+           XPARAM(NVAR)   = GEO(J,I)
+60      CONTINUE
+C READ IN PATH VALUES
+        IF(IFLAG.EQ.0) GO TO 87
+80      READ(5,'(A)',END=85) LINE
+        CALL NUCHAR(LINE,VALUE,NREACT)
+        DO 83 I=1,NREACT
+          IJ=IREACT+I
+83        REACT(IJ)=VALUE(I)*CONVRT
+        IREACT=IREACT+NREACT
+        GO TO 80
+85    CONTINUE
+       DEGREE=1.D0
+       IF(LPARAM.GT.1)DEGREE=57.29578D0
+       IF(IREACT.LE.1) THEN
+           WRITE(6,'(//10X,'' NO POINTS SUPPLIED FOR REACTION PATH'')')
+           WRITE(6,'(//10X,'' GEOMETRY AS READ IN IS AS FOLLOWS'')')
+           CALL GEOUT
+           STOP
+       ELSE
+           WRITE(6,'(//10X,'' POINTS ON REACTION COORDINATE'')')
+           WRITE(6,'(8X,8F8.2)')(REACT(I)*DEGREE,I=1,IREACT)
+       ENDIF
+       IEND=IREACT+1
+       REACT(IEND)=-1.D12
+C
+C OUTPUT GEOMETRY AS FEEDBACK 
+C    
+87    IF( .NOT. PARAM)WRITE(6,'(1X,A)')KEYWRD,KOMENT,TITLE
+      IF( .NOT. PARAM)CALL GEOUT
+      IF (INDEX(KEYWRD,'PARAM')+INDEX(KEYWRD,'NOXYZ') .EQ. 0) THEN
+        CALL GMETRY(GEO,COORD)
+        WRITE(6,'(//10X,''CARTESIAN COORDINATES '',/)')
+        WRITE(6,'(4X,''NO.'',7X,''ATOM'',9X,''X'',
+     +  9X,''Y'',9X,''Z'',/)')
+        L=0
+        DO 90 I=1,NATOMS
+        IF(LABELS(I) .EQ. 99) GOTO 90
+         L=L+1
+        WRITE(6,'(I6,7X,I3,4X,3F10.4)')
+     +  L,LABELS(I),(COORD(J,L),J=1,3)
+  90    CONTINUE
+        END IF
+      RETURN
+      END

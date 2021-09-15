@@ -1,0 +1,4 @@
+<p>
+<b>Nothing found.</b><br>
+Refine query and try again.
+<p>

@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>General description of the DRC and IRC</TITLE>
+<META NAME="description" CONTENT="General description of the DRC and IRC">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node614.html"><LINK REL="previous" HREF="node612.html"><LINK REL="up" HREF="node609.html"><LINK REL="next" HREF="node614.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node614.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node609.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node612.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node614.html">Option to allow only</A> <B>Up:</B> <A HREF="node609.html">Dynamic and Intrinsic</A> <B>Previous:</B> <A HREF="node612.html">IRC</A><!--End of Navigation Panel--><H2><A NAME="SECTION0012194000000000000000">General description of the DRC and IRC</A> </H2>
+<P>As the IRC usually requires a normal coordinate, a force constant calculation normally has to be done first. If 
+<a href="node198.html">IRC</a> is specified on its own, a normal coordinate is not used and the IRC calculation is performed on the supplied geometry. </P>
+<P>A recommended sequence of operations to start an IRC calculation is as follows: </P>
+<DL>
+<DT>1. Calculate the transition state geometry. If the transition state is not first optimized, then the IRC calculation may give very misleading results. For example, if NH<SUB>3</SUB> inversion is defined as the planar system but without the N-H bond length being optimized, the first normal coordinate might be for N-H stretch rather than inversion. In that case the IRC will relax the geometry to the optimized planar structure.  </DT>
+<DD>&nbsp;</DD>
+<DT>2. Do a normal <TT><a href="node182.html">FORCE</a></TT> calculation, specifying <TT>
+<a href="node200.html">ISOTOPE</a></TT> in order to save the FORCE matrices. (Note: Do not attempt to run the IRC at this point directly unless you have confidence that the FORCE calculation will work as expected. If the IRC calculation is run directly, specify <TT>ISOTOPE</TT> anyway: that will save the FORCE matrix and if the calculation has to be re-done then <TT>
+<a href="node288.html">RESTART</a></TT> will work correctly.) </DT>
+<DD>&nbsp;</DD>
+<DT>3. Using <TT><a href="node199.html">IRC=<I>n</I></a></TT> and <TT>RESTART</TT>, run the IRC calculation. If <TT>RESTART</TT> is specified with <TT>IRC=<I>n</I></TT> then the restart is assumed to be from the FORCE calculation. If, in an <TT>IRC</TT> calculation, <TT>RESTART</TT> is specified, and <TT>IRC=<I>n</I></TT> is <EM>not</EM> present, then the restart is assumed to be from an earlier IRC calculation that was shut down before going to completion. </DT>
+</DL>
+<P>A <a href="node165.html"><TT>DRC</TT></a> calculation is simpler, in that a force calculation is not a prerequisite; however, most calculations of interest normally involve use of an internal coordinate. For this reason IRC=<I>n</I> can be combined with DRC to give a calculation in which the initial motion (0.3kcal worth of kinetic energy) is supplied by the IRC, and all subsequent motion obeys conservation of energy. The DRC motion can be modified in three ways: </P>
+<DL>
+<DT>1. It is possible to calculate the reaction path followed by a system in which the generated kinetic energy decays with a finite half-life. This can be defined by 
+<a href="node166.html"><TT>DRC=<I>n</I></TT>.<I>nnn</I></a>, where <I>n</I>.<I>nnn</I> is the half-life in femtoseconds. If <I>n</I>.<I>nn</I> is 0.0 this corresponds to infinite damping simulating the IRC. A limitation of the program is that time only has meaning when DRC is specified without a half-life. </DT>
+<DD>&nbsp;</DD>
+<DT>2. Excess kinetic energy can be added to the calculation by use of 
+<a href="node204.html"><TT>KINETIC=<I>n</I>.<I>nn</I></TT></a>. After the kinetic energy has built up to 0.2 kcal/mol or if IRC=<I>n</I> is used then <I>n</I>.<I>nn</I> kcal/mol of kinetic energy is added to the system. The excess kinetic energy appears as a velocity vector in the same direction as the initial motion. </DT>
+<DD>&nbsp;</DD>
+<DT>3. The RESTART file <CODE>&lt;filename&gt;.res</CODE> can be edited to allow the user to modify the velocity vector or starting geometry. This file is formatted. </DT>
+</DL>
+<P>Frequently, the DRC leads to a periodic, repeating orbit. One special type--the orbit in which the direction of motion is reversed so that the system retraces its own path--is sensed for and if detected the calculation is stopped after exactly one cycle. If the calculation is to be continued, the keyword <TT>GEO-OK</TT> will allow this check to be by-passed. </P>
+<P><A NAME="BM22576">&nbsp;</A> Sometimes the system will enter a stable state in which the geometry is always changing, but nothing new is occurring. One example would be a system which decomposed into fragments, and the fragments were moving apart. If all forces acting on the atoms become small, then the calculation will be stopped. If the calculation should be continued, then specify <TT>
+<a href="node186.html">GNORM=0</a> <a href="node207.html">LET</a></TT>. </P>
+<P>Due to the potentially very large output files that the DRC can generate, extra keywords are provided to allow selected points to be printed. Two types of control are provided: one controls which points to print, the other controls what is printed. </P>
+<P>By default, every point calculated is printed. Often, this is not desirable, and three keywords are provided to allow printing to be done whenever the system changes by a preset amount. These keywords are: </P>
+<P><DIV ALIGN="CENTER"></P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">KeyWord</TD>
+<TD VALIGN="MIDDLE">
+<P>Default</TD>
+<TD VALIGN="MIDDLE">
+<P>User Specification</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P ALIGN="CENTER"><a href="node341.html">X-PRIO</a></TT></TD>
+<TD VALIGN="MIDDLE">
+<P>0.05 &Aring;ngstroms</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>X-PRIORITY=<I>n</I>.<I>nn</I></TT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P ALIGN="CENTER"><a href="node320.html">T-PRIO</a></TT></TD>
+<TD VALIGN="MIDDLE">
+<P>0.10 Femtoseconds</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>T-PRIORITY=<I>n</I>.<I>nn</I></TT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P ALIGN="CENTER"><a href="node190.html">H-PRIO</a></TT></TD>
+<TD VALIGN="MIDDLE">
+<P>0.10 kcal/mol</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>H-PRIORITY=<I>n</I>.<I>nn</I></TT></TD>
+</TR>
+</TABLE>
+
+<P></DIV></P>
+<P>By default, only the energies involved are printed (one line per point). To allow the geometry to be printed, <TT> <A HREF="node206.html#large"><U><FONT COLOR="#0000ff">LARGE</FONT></U></A></TT> 
+is provided. Using <TT>LARGE</TT> a wide range of control is provided over what is printed. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html9771"><A HREF="node614.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9767"></A><A HREF="node609.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9761"></A><A HREF="node612.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9769"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9770"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9772"><A HREF="node614.html">Option to allow only</A></A> <B>Up:</B> <A NAME="tex2html9768"><A HREF="node609.html">Dynamic and Intrinsic</A></A> <B>Previous:</B> <A NAME="tex2html9762"><A HREF="node612.html">IRC</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

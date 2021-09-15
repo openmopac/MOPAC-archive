@@ -1,0 +1,661 @@
+\section{Dynamic and Intrinsic Reaction Coordinates}\index{Coordinates!reaction}
+\label{t_irc}\index{Molecular dynamics}\index{Time-dependent phenomena}
+The Intrinsic Reaction Coordinate method pioneered and developed by Mark
+Gordon, North Dakota State University,\index{gordon@{\bf Gordon, Mark}}   has
+been incorporated into MOPAC in a modified form.  As this facility is quite
+complicated all the keywords associated with  the IRC have been grouped
+together in this section (these can be seen later on  in this section).
+\index{DRC|(} \index{DRC!definition}
+
+The Dynamic Reaction Coordinate is the path  followed  by  all  the atoms  in
+a  system  assuming  conservation  of  energy;  i.e.,  as the potential energy
+changes the kinetic energy of  the  system  changes  in exactly  the  opposite
+way  so  that  the  total  energy  (kinetic plus potential) is a constant.  It
+is equivalent to the molecular mechanics molecular dynamics calculation, except
+that bond-breaking and bond-making are supported, as are all the electronic
+phenomena of the semiempirical methods.
+
+If started at a  ground  state  geometry,  no \index{Transition state!use with
+DRC} significant  motion should be seen.  Similarly, starting at a transition
+state geometry should not produce  any  motion---after  all  it  is  a
+stationary point and during the lifetime of a calculation it is unlikely to
+accumulate enough momentum to travel far from the starting position.
+
+In order to calculate the DRC path from a transition state,  either an
+initial  deflection  is  necessary  or some initial momentum must be supplied.
+
+Because of the time-dependent nature of the DRC  the  time  elapsed since the
+start of the reaction is meaningful, and is printed.
+
+\subsection*{Description}
+The course of a molecular vibration can be followed by  calculating the
+potential  and  kinetic  energy  at  various  times.   Two  extreme conditions
+can be identified:  (a) gas phase, in which the total  energy is a constant
+through time, there being no damping of the kinetic energy allowed, and (b)
+liquid phase, in which kinetic energy is always set  to zero, the motion of the
+atoms being infinitely damped.\index{Liquids}
+
+All possible degrees of damping  are  allowed.   In  addition,  the facility
+exists  to  dump  energy into the system, appearing as kinetic energy.  As
+kinetic energy is a function of velocity, a vector quantity, the  energy
+appears  as  energy of motion in the direction in which the molecule would
+naturally move.  If the system  is  a  transition  state, then  the  excess
+kinetic  energy  is added after the intrinsic kinetic energy has built up to at
+least 0.2 kcal/mol.\index{Kinetic energy!damping}
+
+For ground-state systems, the excess energy sometimes  may  not  be added;  if
+the  intrinsic kinetic energy never rises above 0.2 kcal/mol then the excess
+energy will not be added.
+
+
+\subsection*{Equations used}
+Force acting on any atom:
+$$ g(i) + g'(i)t + g''(i)t^2 = \frac{dE}{dx(i)} +
+        \frac{d^2E}{dx(i)^2} + \frac{d^3E}{dx(i)^3} $$
+Acceleration due to force acting on each atom:
+$$ a(i) = \frac{1}{M(i)} (g(i) + g'(i)t + g''(i)t^2) $$
+New velocity:
+$$ V(o) + \frac{1}{M(i)} \left(\Delta t g(i) + (1/2) \Delta  t^2 g'(i) +
+(1/3) \Delta t^3g''(i)\right) $$
+or:
+$$ V(i) = V(i) + V'(i)t + V''(i)t^2 + V'''(i)t^3 $$
+That is, the change in velocity is equal to the integral  over  the
+time interval of the acceleration.
+
+New position of atoms:
+$$ X(i) = X(o) + V(o)t + (1/2) V't^2 + (1/3) V''t^3 + (1/4) V'''t^4 $$
+That is, the change in position is equal to the integral  over  the
+time interval of the velocity.
+
+The velocity vector is accurate to the extent that  it  takes  into account
+the  previous velocity, the current acceleration, the predicted acceleration,
+and the change in predicted  acceleration  over  the  time interval.    Very
+little  error  is  introduced  due  to  higher  order contributions to the
+velocity; those that do occur  are  absorbed  in  a re-normalization of the
+magnitude of the velocity vector after each time interval.
+
+The magnitude of $\Delta t$, the time interval, is determined mainly by the
+factor   needed   to   re-normalize  the  velocity  vector.   If  it  is
+significantly different from unity, $\Delta t$ will be reduced; if  it  is
+very close to unity, $\Delta t$ will be increased.
+
+Even with all this, errors creep in and a system,  started  at  the transition
+state,  is  unlikely  to  return precisely to the transition state  unless  an
+excess  kinetic  energy  is  supplied,  for   example 0.2 kcal/mol.
+
+The calculation  is  carried  out  in  Cartesian  coordinates,  and converted
+into   internal  coordinates  for  display.   All  Cartesian coordinates must
+be allowed to vary, in order to  conserve  angular  and translational
+momentum.\index{DRC!conservation of momentum}
+
+\subsection*{IRC}
+\index{IRC|(}
+The Intrinsic Reaction Coordinate is the path followed by  all  the atoms  in
+a  system  and assumes that  all kinetic energy is completely lost at every
+point; i.e., as the potential energy changes  the  kinetic  energy generated
+is  annihilated  so  that  the  total  energy  (kinetic  plus potential) is
+always equal to the potential energy only.
+
+The IRC is intended for use in calculations in which the starting geometry is
+that of the transition state.  A   normal  coordinate  is  chosen,  usually
+the  reaction coordinate, and the system  is  displaced  in  either  the
+positive  or negative  direction  along  this  coordinate.   The  internal
+modes are obtained by calculating the mass-weighted  Hessian  matrix  in  a
+force calculation   and   translating  the  resulting  Cartesian  normal  mode
+eigenvectors to conserve  momentum.   That  is,  the  initial  Cartesian
+coordinates  are  displaced  by  a  small  amount  proportional  to  the
+eigenvector coefficients plus a translational constant; the constant  is
+required  to  ensure that the total translational momentum of the system is
+conserved as zero.  At the present time there may be  small  residual
+rotational  components  which  are not annihilated; these are considered
+unimportant, and will not materially affect the calculation.
+
+\subsection*{General description of the DRC and IRC}
+As the IRC usually requires a normal coordinate, a  force  constant
+calculation  normally  has to be done first.  If IRC is specified on its own, a
+normal coordinate is not used and the IRC calculation is performed on the
+supplied geometry.
+
+A recommended sequence of operations to start an IRC calculation is
+as follows:
+\begin{enumerate}
+\item Calculate the transition state geometry.  If  the  transition state  is
+not first  optimized,  then  the  IRC  calculation  may  give  very misleading
+results.  For example, if NH$_3$ inversion  is  defined as  the  planar
+system  but  without the N--H bond length being optimized, the first normal
+coordinate might be for N--H  stretch rather  than  inversion.   In  that case
+the IRC will relax the geometry to the optimized planar structure.
+
+\index{ISOTOPE!use with IRC}
+\index{FORCE!use with IRC}
+\item Do a normal FORCE calculation, specifying \comp{ISOTOPE} in  order  to
+save  the  FORCE  matrices.   (Note: Do  not  attempt  to  run the IRC at this
+point directly unless you have confidence that  the FORCE  calculation will
+work as expected.  If the IRC calculation is run directly, specify
+\comp{ISOTOPE} anyway:  that will save the FORCE matrix and if the
+calculation  has  to  be  re-done  then  \comp{RESTART} will work correctly.)
+
+\item Using \comp{IRC=$n$} and \comp{RESTART}, run the IRC calculation.   If
+\comp{RESTART} is specified with \comp{IRC=$n$} then the restart is assumed to
+be from the FORCE calculation.  If, in an \comp{IRC} calculation,
+\comp{RESTART}  is specified, and \comp{IRC=$n$} is {\em not} present,  then
+the restart is  assumed to be from an earlier IRC calculation that was  shut
+down  before  going  to completion.
+\end{enumerate}
+
+A DRC calculation is simpler, in that a force calculation is  not  a
+prerequisite;  however,  most  calculations of interest normally involve use of
+an internal coordinate.  For this reason IRC=$n$  can  be  combined with  DRC
+to  give  a  calculation in which the initial motion (0.3kcal worth of kinetic
+energy) is supplied by  the  IRC,  and  all  subsequent motion  obeys
+conservation of energy.  The DRC motion can be modified in three ways:
+\begin{enumerate}
+\item It is possible to calculate the reaction  path  followed  by  a system
+in  which  the  generated  kinetic energy decays with a finite half-life.  This
+can  be  defined  by  DRC=$n.nnn$,  where $n.nnn$  is  the  half-life in
+femtoseconds.  If $n.nn$ is 0.0 this corresponds  to  infinite  damping
+simulating  the   IRC.    A limitation  of  the  program is that time only has
+meaning when DRC is specified without a half-life.
+
+\item Excess kinetic energy can be added to the calculation by use of
+KINETIC=$n.nn$.   After  the  kinetic  energy  has  built  up  to 0.2 kcal/mol
+or if IRC=$n$ is used then $n.nn$ kcal/mol of kinetic energy  is  added  to
+the  system.   The excess kinetic energy appears as a velocity vector  in  the
+same  direction  as  the initial motion.
+
+\index{RESTART!use with IRC/DRC}
+\item The RESTART file \verb/<filename>.res/ can be edited to allow the user
+to  modify the velocity vector or starting geometry.  This file
+is formatted.
+\end{enumerate}
+
+Frequently, the  DRC leads to a periodic, repeating orbit.   One  special
+type---the  orbit in which the direction of motion is reversed so that the
+system retraces its own path---is sensed for  and  if  detected  the
+calculation  is  stopped after exactly one cycle.  If the calculation is to be
+continued,  the  keyword  \comp{GEO-OK}  will  allow  this  check  to  be
+by-passed.
+
+\index{GNORM!use with IRC/DRC}  Sometimes the system will enter a stable state
+in which the geometry is always changing, but nothing new is occurring.  One
+example would be a system which decomposed into fragments, and the fragments
+were moving apart. If all forces acting on the atoms become small, then the
+calculation will be stopped.  If the calculation should be continued, then
+specify \comp{GNORM=0 LET}.
+
+Due to the potentially very large output files  that  the  DRC  can generate,
+extra  keywords  are  provided  to allow selected points to be printed.  Two
+types of control are provided:  one controls which points to  print, the other
+controls what is printed.
+
+By default, every point calculated is printed.  Often, this is not desirable,
+and three keywords are provided to allow printing to be done whenever the
+system changes by a preset amount.  These keywords are:
+
+\begin{center}
+\begin{tabular}{cll}\hline
+          KeyWord &       Default         &   User Specification  \\ \hline
+\comp{X-PRIO}  &   0.05 \AA ngstroms   &         \comp{X-PRIORITY=$n.nn$}  \\
+\comp{T-PRIO}  &   0.10 Femtoseconds   &      \comp{T-PRIORITY=$n.nn$}  \\
+\comp{H-PRIO}  &   0.10 kcal/mol      &      \comp{H-PRIORITY=$n.nn$}\\ \hline
+\end{tabular}
+\end{center}
+
+By default, only the energies involved are printed (one line per point).  To
+allow the geometry to be printed, \hyperref[pageref]{\comp{LARGE} is provided}{, see
+p.~}{ for more detail}{large}.  Using \comp{LARGE} a wide range of control
+is provided over what is printed.
+
+\subsection*{Option to allow only extrema to be output}
+In the geometry specification, if an internal coordinate is  marked for
+optimization  then  when that internal coordinate passes through an extremum a
+message will be printed and the geometry output.
+
+Difficulties can  arise  from  the  way  internal  coordinates  are
+processed.   The  internal  coordinates are generated from the Cartesian
+coordinates, so an internal coordinate supplied  may  have  an  entirely
+different  meaning  on  output.  In particular the connectivity may have
+changed.  For obvious reasons dummy atoms should  not  be  used  in  the
+supplied  geometry  specification.   If  there  is  any  doubt about the
+internal coordinates or if the starting geometry  contains  dummy  atoms then
+run  a  \comp{1SCF} calculation specifying \comp{INT}.  This  will produce an
+ARC file with the ``ideal'' numbering---the internal numbering system used  by
+MOPAC. \ Use this ARC file to construct a data file suitable for the DRC or
+IRC.\index{DRC!dummy atoms in}\index{Dummy atoms!in DRC}
+
+Notes:
+\begin{enumerate}
+\item Any coordinates marked for optimization  will  result  in  only extrema
+being printed.
+\item If extrema are being printed then kinetic energy  extrema  will also be
+printed.
+\end{enumerate}
+
+\subsection*{Keywords for use with the IRC and DRC}
+\index{IRC!keywords for}
+\label{drckeys}
+\begin{enumerate}
+\item Setting up the transition state:  \comp{NLLSQ}, \comp{SIGMA}, or \comp{TS}.
+\item Constructing the FORCE matrix:  \comp{FORCE} or \comp{IRC=$n$},
+\comp{ISOTOPE}, \comp{LET}.
+\item Starting an IRC:  \comp{RESTART} and \comp{IRC=$n$},  \comp{X-PRIO}, \comp{H-PRIO}.
+\item Starting a DRC:  \comp{DRC} or \comp{DRC=$n.nn$}, \comp{KINETIC=$n.nn$},
+\comp{T-PRIO}, etc..
+\item Starting a DRC from a transition state:   (\comp{DRC}  or  \comp{DRC=$n$})  and
+            \comp{IRC=$n$}, \comp{KINETIC=$n$}.
+\item Restarting an IRC:  \comp{RESTART} and \comp{IRC}.
+\item Restarting a DRC:  \comp{RESTART} and (\comp{DRC} or \comp{DRC=$n.nn$}).
+\item Restarting a DRC starting from a transition state:  \comp{RESTART} and
+            (\comp{DRC} or \comp{DRC=$n.nn$}).
+\end{enumerate}
+Other keywords, such as \comp{T=$nnn$} or \comp{GEO-OK} can be used any time.
+
+
+\subsection*{Examples of DRC/IRC data}
+Use of the IRC/DRC facility is quite complicated.  In the following examples
+various `reasonable' options are illustrated for a calculation on water. It is
+assumed  that  an  optimized  transition-state  geometry  is available.
+
+Example  1:   Figure~\ref{h2odrc} illustrates a  Dynamic  Reaction   Coordinate
+calculation,  starting  at   the transition  state  for  water  inverting, the
+initial motion being opposite to the transition normal mode, with 6kcal of
+excess kinetic  energy  added  in. Every point calculated is to be printed
+(Note all coordinates are marked with a zero, and T-PRIO, H-PRIO and X-PRIO are
+all absent).  The results of  an  earlier calculation using the same keywords
+is assumed to exist. The earlier calculation would have constructed the force
+matrix.   While the  total  cpu  time  is specified, it is in fact redundant in
+that the calculation will run to completion in less than 600 seconds.
+
+\index{IRC!example of}
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{verbatim}
+ KINETIC=6 RESTART  IRC=-1 DRC T=600
+ WATER
+
+      H   0.000000 0   0.000000 0   0.000000 0  0 0 0
+      O   0.911574 0   0.000000 0   0.000000 0  1 0 0
+      H   0.911574 0 180.000000 0   0.000000 0  2 1 0
+      0   0.000000 0   0.000000 0   0.000000 0  0 0 0
+\end{verbatim}
+\caption{\label{h2odrc} Example of DRC calculation}
+\end{figure}
+
+Example 2:  Figure~\ref{h2oirc} shows an Intrinsic Reaction Coordinate
+calculation.  Here the restart  is from a previous IRC calculation which was
+stopped before the minimum was reached.  Recall that RESTART with IRC=$n$
+implies  a  restart from  the FORCE calculation.  Since this is a restart from
+within an IRC calculation the keyword IRC=$n$ has been replaced by IRC. \  IRC
+on its  own (without the ``=$n$'') implies an IRC calculation from the starting
+position---here the RESTART position---without initial
+displacement.\index{IRC!example of restart}
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{verbatim}
+ RESTART  IRC  T=600
+ WATER
+
+      H   0.000000 0   0.000000 0   0.000000 0  0 0 0
+      O   0.911574 0   0.000000 0   0.000000 0  1 0 0
+      H   0.911574 0 180.000000 0   0.000000 0  2 1 0
+      0   0.000000 0   0.000000 0   0.000000 0  0 0 0
+\end{verbatim}
+\caption{\label{h2oirc} Example of IRC calculation}
+\end{figure}
+
+\subsection*{Output format for IRC and DRC}
+The IRC and DRC can produce  several  different  forms  of  output. Because of
+the large size of these outputs, users are recommended to use search functions
+to extract information.  To facilitate  this,  specific lines  have specific
+characters.  Thus, a search for the ``\%'' symbol will summarize the energy
+profile while a search  for ``AA'' will  yield  the coordinates of atom 1,
+whenever it is printed.  The main flags to use in searches are:
+
+\begin{description}
+\item[\comp{\%}] Energies for all points calculated,    excluding extrema
+\item[\comp{\%M}] Energies for all turning points
+\item[\comp{\%MAX}] Energies for all maxima
+\item[\comp{\%MIN}] Energies for all minima
+\item[\comp{\%}] Energies for all points calculated
+\item[\comp{AA*}] Internal coordinates for atom 1 for every point
+\item[\comp{AE*}] Internal coordinates for atom 5 for every point
+\item[\comp{123AB*}] Internal coordinates for atom 2 for point 123
+\end{description}
+
+As the keywords for the IRC/DRC are interdependent,  the  following list of
+keywords illustrates various options.\index{DRC!keyword options}
+\index{KINETIC}
+
+\begin{description}
+\item[\comp{DRC}] The Dynamic Reaction Coordinate is calculated.
+Energy is conserved, and no initial impetus.
+\item[\comp{DRC=0.5}] In the DRC kinetic energy is lost with a half-life of
+0.5 femtoseconds.
+\item[\comp{DRC=1.0}] Energy is put into a DRC with an half-life of
+-1.0 femtoseconds, i.e., the system gains   energy.
+\item[\comp{IRC}] The Intrinsic Reaction Coordinate is
+calculated.  No initial impetus is given.
+Energy not conserved.
+\item[\comp{IRC=4}] The IRC is run starting with an impetus in the
+negative of the 4th normal mode direction. The
+impetus is one quantum of vibrational energy.
+\item[\comp{IRC1 KINETIC=1}] The first normal mode is used in an IRC, with
+the initial impetus being 1.0 kcal/mol.
+\item[\comp{DRC KINETIC=5}] In a DRC, after the velocity is defined, 5 kcal
+of kinetic energy is added in the direction of
+the initial velocity.
+\item[\comp{IRC=1 DRC KINETIC=4}] After starting with a 4 kcal impetus in the
+direction of the first normal mode, energy is
+conserved.
+\item[\comp{DRC VELOCITY KINETIC=10}] Follow a DRC trajectory which starts with an
+initial velocity read in, normalized to a
+kinetic energy of 10 kcal/mol.
+\end{description}
+
+
+Instead of every point being printed, the option  exists  to  print specific
+points  determined  by the keywords \comp{T-PRIORITY}, \comp{X-PRIORITY} and
+\comp{H-PRIORITY}.  If any one of these words is specified, then the calculated
+points  are used to define quadratics in time for all variables normally
+printed.  In addition, if the flag for the first atom is set to  ``T''  then
+all  kinetic  energy  turning  points  are printed.  If the flag for any other
+internal coordinate is set to ``T'' then, when that coordinate  passes through
+an extremum, that point will be printed.  As with the PRIORITY's, the point
+will be calculated via  a  quadratic  to  minimize  non-linear errors.
+
+N.B.:  Quadratics are unstable in the regions of inflection points; in  these
+circumstances linear interpolation will be used.  A result of this is that
+points printed in the  region  of  an  inflection  may  not correspond  exactly
+to those requested.  This is not an error and should not affect the quality of
+the results.
+
+\subsection*{Test of DRC---verification of trajectory path}
+Introduction:  Unlike  a  single-geometry  calculation  or  even  a geometry
+optimization, verification of a DRC trajectory is not a simple task.  In this
+section  a  rigorous  proof  of  the  DRC  trajectory  is presented;  it  can
+be used both as a test of the DRC algorithm and as a teaching exercise.  Users
+of the DRC are asked to  follow  through  this proof in order to convince
+themselves that the DRC works as it should.
+
+\subsection*{The nitrogen molecule}
+For the nitrogen molecule (using MNDO) the equilibrium  distance is  $1.103816$
+\AA, the heat of formation is 8.25741 kcal/mol and the vibrational frequency is
+$2738.8$ cm$^{-1}$.   For  small  displacements, the  energy curve versus
+distance is parabolic and the gradient curve is approximately linear, as is
+shown in Table~\ref{n2}.         A  nitrogen molecule is thus a good
+approximation to a harmonic oscillator.
+
+% 40 lines, including this line
+\begin{table}
+\caption{\label{n2}Stretching Curve for Nitrogen Molecule}
+\begin{center}
+\begin{tabular}{rrr}
+\multicolumn{1}{c}{N--N DIST} & \multicolumn{1}{c}{$\Delta H_f$}  & \multicolumn{1}{c}{GRADIENT}\\
+\multicolumn{1}{c}{(\AA ngstroms)} &\multicolumn{1}{c}{(kcal/mol)} & \multicolumn{1}{c}{(kcal/mol/\AA ngstrom)}\\
+\hline
+1.11800   &  8.69441  &   60.84599 \\
+1.11700   &  8.63563  &   56.70706 \\
+1.11600   &  8.58100  &   52.54555 \\
+1.11500   &  8.53054  &   48.36138 \\
+1.11400   &  8.48428  &   44.15447 \\
+1.11300   &  8.44224  &   39.92475 \\
+1.11200   &  8.40444  &   35.67214 \\
+1.11100   &  8.37091  &   31.39656 \\
+1.11000   &  8.34166  &   27.09794 \\
+1.10900   &  8.31672  &   22.77620 \\
+1.10800   &  8.29611  &   18.43125 \\
+1.10700   &  8.27986  &   14.06303 \\
+1.10600   &  8.26799  &    9.67146 \\
+1.10500   &  8.26053  &    5.25645 \\
+1.10400   &  8.25749  &    0.81794 \\
+1.10300   &  8.25890  &   -3.64427 \\
+1.10200   &  8.26479  &   -8.12993 \\
+1.10100   &  8.27517  &  -12.63945 \\
+1.10000   &  8.29007  &  -17.17278 \\
+1.09900   &  8.30952  &  -21.73002 \\
+1.09800   &  8.33354  &  -26.31123 \\
+1.09700   &  8.36215  &  -30.91650 \\
+1.09600   &  8.39538  &  -35.54591 \\
+1.09500   &  8.43325  &  -40.19953 \\
+1.09400   &  8.47579  &  -44.87745 \\
+1.09300   &  8.52301  &  -49.57974 \\
+1.09200   &  8.57496  &  -54.30648 \\
+1.09100   &  8.63164  &  -59.05775 \\
+1.09000   &  8.69308  &  -63.83363 \\
+\end{tabular}
+\end{center}
+\end{table}
+
+\subsubsection{Period of vibration}
+The period of vibration (time taken for the oscillator to undertake one
+complete vibration, returning to its original position and velocity) can be
+calculated in three ways.  Most direct is  the  calculation  from the  energy
+curve; using the gradient constitutes a faster, albeit less direct, method,
+while calculating it from the vibrational  frequency  is very  fast  but
+assumes  that the vibrational spectrum has already been calculated.
+
+\begin{enumerate}
+
+\item From the energy curve. For a simple harmonic oscillator the period $r$ is
+given by: $$ r = 2 \pi \sqrt{\frac{\mu}{k}}  $$ where $k$ is the
+force constant.  \index{Reduced mass}\index{Force constant} The
+reduced  mass, $\mu$,  (in amu)   of   a   nitrogen  molecule  is
+$14.0067/2  =  7.00335$, and  the force-constant, $k$, can be
+calculated from: $$E-c = (1/2) k(R-R_o)^2. $$ Given $R_o =
+1.1038$, $R = 1.092$, $c = 8.25741$ and $E = 8.57496$~kcal/mol
+then:
+ \begin{eqnarray*}
+k &=& 2*0.31755/(0.0118)^2 \; \mbox{(per mole)}\\
+k &=& 4561.2 \mbox{ kcal/mol/A$^2$  (per mole)}\\
+k &=& 1.9084*10^{30} \; \mbox{ ergs/cm$^2$ (per mole)}\\
+k &=& 31.69*10^5  \; \mbox{ dynes/cm (per molecule)}\\
+\end{eqnarray*}
+
+(Experimentally, for N$_2$, k = $23*10^5$ dynes/cm )
+
+Therefore:
+$$ r = 2 \times 3.14159 \times \sqrt{\frac{7.0035}{1.9084\times 10^{30}}}
+\;{\rm seconds} = 12.037 \times 10^{-15}\;{\rm s} = 12.037\;{\rm fs}. $$
+If the frequency is calculated using the other half of the curve ($R=1.118,
+E=8.69441$), then $k=12.333$ fs, or $k$, average, = 12.185 fs.
+
+\item From the gradient curve. The force  constant  is  the  derivative  of
+the  gradient  wrt distance:
+$$ k = \frac{dG}{dx}. $$
+Since we are using discrete points,  the  force  constant  is  best
+obtained from finite differences:
+$$ k = \frac{(G_2-G_1)}{(x_2-x_1)}. $$
+For $x_2 = 1.1100$, $G_2 = 27.098$ and for $x_1 =  1.0980$,
+$G_1  =  -26.311$,
+giving rise to $k = 4450.75$ kcal/mol/\AA$^2$ and a period of $12.185$~fs.
+
+\item From the vibrational frequency. Given a ``frequency'' (wavenumber) of
+vibration of N$_2$ of $\bar{\nu}=2738.8$   cm$^{-1}$,  the period of
+oscillation, in seconds, is given directly by:
+$$ r = \frac{1}{c\bar{\nu}} = \frac{1}{2738.8 \times 2.998 \times 10^{10}} ,$$
+or as $12.179$ fs.
+\end{enumerate}
+
+Summarizing, by three different methods the period  of  oscillation of N$_2$
+is calculated to be $12.1851$, $12.185$ and $12.179$~fs, average $12.183$~fs.
+
+\subsubsection{Initial dynamics of \mbox{N$_{2}$} with N--N distance = 1.094 \AA}
+A useful check on the dynamics of N$_2$ is to  calculate  the  initial
+acceleration  of  the  two  nitrogen  atoms  after releasing them from a
+starting interatomic separation of 1.094 \AA.
+
+At R(N-N) = 1.094 \AA, $G = -44.877$~kcal/mol/\AA\ or $-18.777 \times
+10^{19}$~erg/cm. Therefore acceleration, $f = -18.777 \times 10^{19}
+/14.0067$~cm/sec/sec, or $-13.405 \times 10^{18}$~cm/s$^2$, which is $ -13.405
+\times 10^{15} \times$ Earth surface gravity.
+
+Distance from equilibrium  $= 0.00980$ \AA. After $0.1$ fs, velocity is
+$0.1\times  10^{-15} (-13.405 \times  10^{18})$ cm/sec or $1340.5$ cm/s.
+
+In the  DRC  the  time-interval  between  points  calculated  is  a complicated
+function of the curvature of the local surface.  By default, the first
+time-interval is 0.105fs, so the calculated velocity  at  this time should be
+$0.105/0.100 \times 1340.5 = 1407.6$ cm/s, in the DRC calculation the predicted
+velocity is $1407.6$ cm/s.
+
+The option is provided to allow sampling of the system at  constant
+time-intervals,  the  default being $0.1$~fs.  For the first few points the
+calculated velocities are given in Table~\ref{tdrc}.
+
+\begin{table}
+\caption{\label{tdrc} Velocities in DRC for N$_2$ Molecule}
+\begin{center}
+\begin{tabular}{rrrr}\\ \hline
+      Time  & Calculated &  Linear &    Diff. in \\
+            & Velocity  & Velocity &  Velocity \\ \hline
+      0.000 &      0.0  &    0.0   &    0.0  \\
+      0.100 &   1340.6  & 1340.5   &   -0.1  \\
+      0.200 &   2678.0  & 2681.0   &   -3.0  \\
+      0.300 &   4007.0  & 4021.5   &  -14.5  \\
+      0.400 &   5325.3  & 5362.0   &  -36.7  \\
+      0.500 &   6628.4  & 6702.5   &  -74.1  \\
+      0.600 &   7912.7  & 8043.0   & -130.3  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+As the calculated velocity is  a  fourth-order  polynomial  of  the
+acceleration,   and  the  acceleration,  its  first,  second  and  third
+derivatives, are all changing, the predicted velocity rapidly becomes  a poor
+guide to future velocities.
+
+For simple harmonic motion the velocity at any time is given by:
+$$ v = v_0 \sin(2\pi t/r). $$
+By fitting the computed velocities to simple harmonic motion, a much better fit
+is obtained (Table~\ref{tdrc2}).
+
+\begin{table}
+\caption{\label{tdrc2} Modified  Velocities in DRC for N$_2$ Molecule}
+\begin{center}
+\begin{tabular}{rrrr} \hline
+ & Calculated & Simple Harmonic  &    Diff. \\
+Time  & Velocity  & 25325.Sin(0.5296t) &\\ \hline
+            &           &                   &    \\
+     0.000  &     0.0   &       0.0         &    0.0  \\
+     0.100  &  1340.6   &    1340.6         &    0.0  \\
+     0.200  &  2678.0   &    2677.4         &   +0.6  \\
+     0.300  &  4007.0   &    4006.7         &   +0.3  \\
+     0.400  &  5325.3   &    5324.8         &   +0.5  \\
+     0.500  &  6628.4   &    6628.0         &   +0.4  \\
+     0.600  &  7912.7   &    7912.5         &    0.0  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+
+The repeat-time required for this  motion  is  $11.86$~fs,  in  good agreement
+with  the  three  values calculated using static models.  The repeat time
+should not be calculated from the time required to go from a minimum  to  a
+maximum and then back to a minimum---only half a cycle. For all real systems
+the potential energy is a skewed parabola, so  that the  potential energy
+slopes are different for both sides; a compression (as in this case) normally
+leads to a higher force-constant, and shorter apparent  repeat  time  (as in
+this case).  Only the addition of the two half-cycles is meaningful.
+
+\subsubsection{Conservation of normal coordinate}
+So far this analysis has only considered a homonuclear diatomic.  A detailed
+analysis  of  a  large  polyatomic  is  impractical,  and  for simplicity a
+molecule of formaldehyde will be studied.
+
+In polyatomics, energy can  transfer  between  modes.   This  is  a result  of
+the non-parabolic nature of the potential surface.  For small displacements the
+surface can be considered as  parabolic.   This  means that  for small
+displacements interconversion between modes should occur only very slowly.  Of
+the six normal modes, mode 1, at 1209.5~cm$^{-1}$, the in-plane C--H asymmetric
+bend, is the most unsymmetric vibration, and is chosen to demonstrate
+conservation of vibrational purity.
+
+Mode 1 has a  frequency  corresponding  to  3.46  kcal/mol  and  a predicted
+vibrational time of $27.58$~fs.  By direct calculation, using the DRC, the
+cycle time is $27.59$~fs.  The rate of decay of this mode  has  an estimated
+half-life of a few thousands femtoseconds.
+
+\subsubsection{Rate of decay of starting mode}
+For trajectories initiated by an IRC=$n$  calculation,  whenever  the
+potential  energy is a minimum the current velocity is compared with the
+supplied velocity.  The square of the cosine of the  angle  between  the two
+velocity vectors is a measure of the intensity of the original mode in the
+current vibration.
+
+\subsubsection{Half-Life for decay of initial mode}
+Vibrational purity is assumed to decay according to  zero'th  order kinetics.
+The  half-life is thus $-0.6931472t/\log(<\!\psi^2\!>^2)$~fs, where
+$<\!\psi^2\!>^2$ is the square of  the overlap integral of the wavefunction for
+the  original vibration with that of the current  vibration.   Due to the  very
+slow rate of decay of the starting mode, several half-life calculations
+should  be  examined.   Only  when successive  half-lives  are  similar  should
+any confidence be placed in their value.
+
+\subsubsection{DRC print options}
+The amount of output in the DRC is  controlled  by  three  sets  of
+options.  These sets are:\index{H--PRIORITY}
+\begin{itemize}
+\item Equivalent Keywords \comp{H-PRIORITY}, \comp{T-PRIORITY}, and
+\comp{X-PRIORITY}.
+\item Potential Energy Turning Point option.
+\item Geometry Maxima Turning Point options.
+\end{itemize}
+If \comp{T-PRIORITY} is used then  turning  points  cannot  be  monitored.
+%Currently  \comp{H-PRIORITY} and \comp{X-PRIORITY} are not implemented,
+%but will be as soon as practical.
+
+\index{``T'' - Optimization flag} To monitor geometry turning points, put  a
+``T'' in  place  of  the geometry optimization flag for the relevant geometric
+variable. In the example shown in Figure~\ref{t}, the geometry of formaldehyde
+would first be optimized, then a \comp{FORCE} calculation run, then a DRC
+calculation started, using the first normal mode for the starting velocity.
+Whenever the C=O bond length becomes a maximum or a minimum, a message is
+printed.
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{verbatim}
+ IRC=1 DRC T=20
+ Formaldehyde
+ Monitoring the C=O Bond-length turning points
+  O    0.0 0    0.0 0    0.000000 0   0 0 0
+  C    1.2 T    0.0 0    0.000000 0   1 0 0
+  H    1.0 1  120.0 1    0.000000 0   2 1 0
+  H    1.0 1  120.0 1  180.000000 0   2 1 3
+  0    0.0 0    0.0 0    0.000000 0   0 0 0
+\end{verbatim}
+\caption{\label{t} Example of DRC calculation, monitoring a geometric variable}
+\end{figure}
+
+To monitor the potential energy turning points, put a ``T'' for  the flag for
+atom 1 bond length (Do not forget to put in a bond-length (zero will do)!).
+
+To monitor the geometry, use \comp{LARGE=$n$}.  This will cause the geometry to
+be printed once every $n$ steps.
+
+The effect of using these flags together is as follows.
+\begin{enumerate}
+\item No options:  All calculated points will be printed.  No turning points
+will be calculated.
+
+\item Atom 1 bond length flagged with a ``T'': If  \comp{T-PRIO},  etc.\ are
+NOT  specified,  then  potential  energy turning points will be printed.
+
+\item Internal coordinate flags set to ``T'':  If \comp{T-PRIO}, etc.  are NOT
+specified,  then geometry extrema will be printed.  If only one coordinate is
+flagged, then the turning point will be displayed in  chronologic  order; if
+several are flagged then all turning points occurring in a given time-interval
+will  be  printed  as they  are  detected.   In  other  words,  some  may  be
+out of chronologic order.  Note that each coordinate flagged will give rise  to
+a different geometry:  minimize flagged coordinates to minimize output.
+
+\item Potential and geometric flags set:  The effect is equivalent to the sum
+of the first two options.
+
+\item \comp{T-PRIO} set:  No turning points will be  printed,  but  constant
+time-slices  (by  default  $0.1$~fs)  will  be used to control the print.
+\end{enumerate}
+\index{DRC|)}\index{IRC|)}

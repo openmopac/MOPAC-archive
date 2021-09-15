@@ -1,0 +1,80 @@
+\subsection*{\comp{RKST(100)}}
+\begin{enumerate}
+\item \comp{ESCF} The calculated heat of formation in kcal.mol$^{-1}$.
+\item \comp{ENUCLR} The nuclear energy in eV.
+\addtocounter{enumi}{1}
+\item \comp{ATHEAT} The reference heat of atomization plus ionization, in eV.
+\item \comp{FRACT} The fractional orbital occupancy, in electrons.  Range:
+0.0 to 2.0.
+\item \comp{EMIN} Within any geometry optimization calculation, the lowest
+heat of formation calculated.  Used in deciding when to exit the SCF.
+\item \comp{COSINE} The angle between the current and previous gradient
+vector.  Range: -1.0 to +1.0.
+\item \comp{GNORM} The scalar of the gradient vector. \comp{GNORM=MOD(GRAD)}.
+\item \comp{TIME0} The internal zero of time for determining CPU usage.
+\item \comp{EZQ} The nuclear - solvent interaction term in the Tomasi model.
+\item \comp{EEQ} The electronic - solvent interaction term in the Tomasi model.
+\item \comp{AREA} The surface area of a molecule, in \AA $^2$, calculated by COSMO.
+\addtocounter{enumi}{1}
+\item \comp{GVW} Used by the Tomasi method.
+\item \comp{GVWS} Used by the Tomasi method.
+\item \comp{ELC1} Used by the Tomasi method.
+\item \comp{TLEFT} The allowed amount of CPU time left for the calculation.
+Default: one hour.
+\item \comp{TDUMP} The interval between checkpoints (dumps of the calculation
+that can be used by \comp{RESTART}).  Default: one hour.
+\item \comp{ELECT} The electronic energy in eV.
+\item \comp{STEP} The step size in a reaction path.
+\item \comp{TVEC} A three by three matrix representing the translation vector.
+The first vector is \comp{TVEC(1,1):TVEC(3,1)}.
+\addtocounter{enumi}{8}
+\item \comp{RJKAB1} The two-electron integral over M.O.s used in
+calculating the correction to the energy in the half-electron approximation.
+\item \comp{WTMOL} The molecular weight in AMU.  Calculated in \comp{MOPAC}.
+\item \comp{VERSON} The version number of MOPAC, e.g., \mopacversion .0.
+\item \comp{TOTIME} The total time, in seconds, for the calculation,
+including time used in previous runs, if \comp{RESTART} is used.
+\item \comp{EOUTER} Nuclear energy in eV due to atom pairs not present in
+\comp{P}, \comp{H}, or \comp{F}. Calculated in \comp{HCORZ}, and
+used by \comp{WRITMN} only.
+\item \comp{THRESH} In MOZYME, the threshold value for intensity of a
+LMO on an atom.  An atom with intensity below \comp{THRESH} would either
+(a) not be added to a LMO (in \comp{DIAGG2}), or (b) would be deleted from the
+ LMO (in \comp{TIDY}).
+\addtocounter{enumi}{2}
+\item \comp{CORHYB} The correction to the MOZYME energy due to the use of the
+dipole approximation. (for interactions arising from atoms separated
+by more than \comp{CUTOF2} but less than \comp{CUTOF1}, that is, atoms pairs
+not present in \comp{P}, \comp{H}, or \comp{F}.
+\item \comp{ESCFL} In an intersystem crossing, \comp{ESCFL} is the $\Delta H_f$
+ of the lower state.  Note \mbox{\comp{ESCFL} $<$ \comp{ESCF}}.
+\item \comp{VOLUME} The volume of the system in \AA $^3$, calculated by COSMO.
+\item \comp{FEPSI} Used by COSMO
+\item \comp{RDS}  Used by COSMO.
+\item \comp{DISEX2} Used by COSMO.  \comp{DISEX2} is needed in both \comp{INITSN}
+and \comp{CONSTS}.
+\item \comp{CUTOF1} The cutoff distance for dipolar electrostatic terms.  Beyond
+\comp{CUTOF1}, only point-charge terms are used.  Default: 30 \AA ngstroms.
+\item \comp{CUTOF2} The cutoff distance for NDDO two-electron, two-center terms.
+Beyond \comp{CUTOF2}, only dipole and point charge terms are used.
+\item \comp{CUTOFS} The distance beyond which overlap integrals are {\em not}
+calculated.  By default, \comp{CUTOFS=7\AA }.
+\item \comp{CUTOFP} In polymers, all electrostatic terms involving
+atoms separated
+by more than \comp{CUTOFP} are calculated as if they were separated by
+\item \comp{CUTOFP}  Needed in order to ensure that equivalent atoms are correctly
+predicted.
+\item \comp{FNSQ}
+\item \comp{CLOWER}  In a polymer calculation, \comp{CLOWER} marks the onset,
+in \AA ngstroms, of the truncation function for electrostatic interactions.
+Set in function \comp{TRUNK}
+\item \comp{CUPPER}  In a polymer calculation, \comp{CUPPER} marks the upper bound,
+in \AA ngstroms, of the truncation function for electrostatic interactions.
+Set in function \comp{TRUNK}
+\item \comp{DLM}  Used by intersystem crossing.
+\item \comp{XNORM}  Used by intersystem crossing.
+\item \comp{DIFE}  In an intersystem crossing, \comp{DIFE} is the square
+of the difference in energy of the two states involved.
+\item \comp{PRESSURE} In a solid-state calculation, \comp{PRESSURE} is the stress
+(in kcal/mol) that the system is under.
+\end{enumerate}

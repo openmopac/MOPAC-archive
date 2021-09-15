@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Thermochemistry in MOPAC</TITLE>
+<META NAME="description" CONTENT=" Thermochemistry in MOPAC">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node594.html"><LINK REL="up" HREF="node592.html"><LINK REL="next" HREF="node601.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node601.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node592.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node599.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node601.html">Vibration</A> <B>Up:</B> <A HREF="node592.html">A Note on Thermochemistry</A> <B>Previous:</B> <A HREF="node599.html">Translational terms</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION0012153000000000000000">Thermochemistry in MOPAC</A> </H2>
+<P>It should be noted that M.O. parameters for MINDO/3, MNDO, etc., are optimized so as to reproduce the experimental heat of formation (i.e., standard enthalpy of formation or the enthalpy change to form a mole of compound at 25<sup>o</sup>C from its elements in their standard state) as well as observed geometries (mostly at 25<sup>o</sup>C), and not to reproduce the <!-- MATH: $E_{\rm eq}$ -->
+<i>E<sub>eq</sub></i> and equilibrium geometry at 0 K. </P>
+<P>In this sense, <I>E<SUB>SCF</I></SUB> (defined as Heat of formation, <!-- MATH: $\Delta H_f$ --><font face="Symbol">D</font>H<sub>f</sub>), force constants, normal vibration frequencies, etc. are all related to the values at 25<sup>o</sup>C, not to 0 K. Therefore, the <!-- MATH: $E_{\rm zero}$ -->
+<i>E</i><sub><i>zero </i></sub>calculated in FORCE is not the true <!-- MATH: $E_{\rm zero}$ -->
+<i>E</i><sub><i>zero</i></sub>. Its use as <!-- MATH: $E_{\rm zero}$ --><i>E</i><sub><i>zero</i></sub>should be made at your own risk, bearing in mind the situation discussed above. </P>
+<P>Since <I>E<SUB>SCF</I></SUB> is standard enthalpy of formation (at 25<IMG SRC="img1611.gif" WIDTH=11 HEIGHT=16 ALT="$^circ$">C): </P>
+<P align="center"><IMG SRC="img1612.gif" WIDTH=539 HEIGHT=34 ALT="begin{displaymath}E_{SCF} = E_{rm eq} + E_{rm zero} +E_{rm vib}(298.15) + ......t[ - E_{rm elec}({rm atom}) + Delta H_f({rm atom})right].end{displaymath}"></P>
+<P>To avoid the complication arising from the definition of <I>E<SUB>SCF</I></SUB>, within <A NAME="BM21520">&nbsp;</A> the thermodynamics calculation the Standard Enthalpy of Formation, <font face="Symbol">D</font>H, is calculated by </P>
+<P align="center"><IMG SRC="img1614.gif" WIDTH=168 HEIGHT=29 ALT="begin{displaymath}Delta H = E_{SCF} + (H_T - H_{298}).end{displaymath}"></P>
+
+<P>Here, <I>E<SUB>SCF</I></SUB> is the heat of formation (at 25<sup>o</sup>C) given in the output list, and <I>H<SUB>T</I></SUB> and <I>H</I><SUB>298</SUB> are the enthalpy contributions for the increase of the temperature from 0 K to <I>T</I> and 298.15, respectively. In other words, the enthalpy of formation is corrected for the difference in temperature from 298.15&nbsp;K to <I>T</I>. </P>
+<P>There is a problem in that <I>H<SUB>T</I></SUB> is the heat of formation at <I>T</I> relative to the heat of formation of the elements in their standard state at 298K. This involves mixing standard and not standard terms. There is no easy way to get the correct value for <I>H<SUB>T</I></SUB>, but for rough work <I>H<SUB>T</I></SUB> is useful. For more correct work, calculate <FONT FACE="Symbol">D</FONT>H for the elements in their standard state at <I>T</I>, and use these <FONT FACE="Symbol">D</FONT>H's to get the <FONT FACE="Symbol">D</FONT>H for the compound you're working with (or use tables from the literature).</P>
+<P>The method of calculation for <I>T</I> and <I>H</I><SUB>298</SUB> will be given below. </P>
+<P>In MOPAC, the variables defined below are used: </P>
+<P align="center"><IMG SRC="img1616.gif" WIDTH=58 HEIGHT=39 ALT="begin{displaymath}C_1 = frac{hc}{kT}. nonumberend{displaymath}"></P>
+
+<P ALIGN="CENTER"></DIV></P>
+<P>The wavenumber, <IMG SRC="img1617.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$omega_i$">, in cm<SUP>-1</SUP>: </P>
+<P align="center"><IMG SRC="img1618.gif" WIDTH=51 HEIGHT=29 ALT="begin{displaymath}nu_i = omega_i c nonumberend{displaymath}"></P>
+<P align="center"><IMG SRC="img1619.gif" WIDTH=344 HEIGHT=31 ALT="begin{displaymath}E_{rmomega_i} = exp( -hnu_i/kT) = exp(-omega_i hc/kT) = exp(-omega_i C_1) nonumberend{displaymath}"></P>
+
+
+<P ALIGN="CENTER"></DIV></P>
+<P>The rotational constants <I>A</I>, <I>B</I>, and <I>C</I> in cm<SUP>-1</SUP>: </P>
+<P align="center"><IMG SRC="img1620.gif" WIDTH=86 HEIGHT=44 ALT="begin{displaymath}A = frac{h}{(8pi^2 cI_A)} nonumberend{displaymath}"></P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{equation}
+A = \frac{h}{(8\pi^2 cI_A)}
+\end{equation} -->
+
+<P ALIGN="CENTER"></DIV>
+<P>Energy and Enthalpy in cal/mol, and Entropy in cal/mol/K. Thus, the earlier <A HREF="node595.html#eq2">Equations</A> can be written as follows: </P>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html9598"><A HREF="node601.html">Vibration</A></A> </LI>
+<LI><A NAME="tex2html9599"><A HREF="node602.html">Rotation</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html9600"><A HREF="node603.html">Linear molecule</A></A> </LI>
+<LI><A NAME="tex2html9601"><A HREF="node604.html">Non-linear molecule</A></A> </LI></UL>
+
+<LI><A NAME="tex2html9602"><A HREF="node605.html">Translation</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html9596"><A HREF="node601.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9592"></A><A HREF="node592.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9588"></A><A HREF="node599.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9594"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9595"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9597"><A HREF="node601.html">Vibration</A></A> <B>Up:</B> <A NAME="tex2html9593"><A HREF="node592.html">A Note on Thermochemistry</A></A> <B>Previous:</B> <A NAME="tex2html9589"><A HREF="node599.html">Translational terms</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

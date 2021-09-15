@@ -1,0 +1,131 @@
+\chapter{Program}
+The logic within MOPAC is best understood by use of flow-diagrams.
+
+There are two main sequences, geometric and electronic.  These join only  at
+one  common  subroutine COMPFG.  It is possible, therefore, to understand the
+geometric or electronic sections  in  isolation,  without having studied the
+other section.
+
+\section{Main geometric sequence}
+\index{MOPAC! geometric structure}
+The main geometric sequence in MOPAC is given in Figure~\ref{picgeo}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}
+\hspace*{-1.0in}
+\input{picgeo.tex}
+\end{center}
+\caption{\label{picgeo}Diagram of Main Geometric Sequence in MOPAC}
+\end{figure}
+
+\section{Main electronic flow}
+\index{MOPAC!electronic structure}
+The main conventional electronic sequence in MOPAC is given in
+Figure~\ref{picelec}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}
+\hspace*{-0.5in}
+\input{picelec.tex}
+\end{center}
+\caption{\label{picelec}Diagram of Main Conventional Electronic Sequence in
+MOPAC}
+\end{figure}
+
+The LMO method is similar to the conventional method.  The main changes are:
+\begin{itemize}
+\item \comp{HQRII} and \comp{DIAG} are replaced by \comp{DIAGG}
+(the annihilation operation).
+\item \comp{MECI},  \comp{MECIP}, etc, and \comp{INTERP} are not available.
+\item Extra subroutines, used in creating the initial LMOs, are present.
+\end{itemize}
+
+\section{Control within MOPAC}
+\index{MOPAC!programming policy}
+Almost all the control information is passed {\em via} the  single  datum
+``KEYWRD'',  a  string  of 241 characters, which is read in at the start
+of the job.
+
+Each subroutine is made independent, as far as  possible,  even  at the
+expense  of  extra code or calculation.  Thus, for example, the SCF
+\index{SCF!criterion}\index{ITER}\index{DERIV} criterion is set in  subroutine
+ITER,  and  nowhere  else.   Similarly, subroutine  DERIV  has  exclusive
+control  of  the  step  size  in  the finite-difference calculation of the
+energy derivatives.  If the default values  are  to  be reset, then the new
+value is supplied in KEYWRD, and \index{KEYWRD}\index{READA}\index{INDEX}
+extracted {\em via} INDEX and READA.  The flow of control is  decided  by
+the presence of various keywords in KEYWRD.
+
+When a subroutine is called, it assumes that all data required  for its
+operation  are  available  in  either  modules or arguments. Normally no
+check is made as to the validity of the data received.   All data  are
+``owned'' by one, and only one, subroutine.  Ownership means the \index{STATE}
+implied permission and ability to change the data.  Thus  STATE  ``owns'' the
+number  of  atomic orbitals, in that it calculates this number, and
+\index{NORBS} stores it in the variable NORBS.  Many subroutines use NORBS,
+but  none of  them  is  allowed  to  change it.  For obvious reasons no
+exceptions should be made to this rule.   To  illustrate  the  usefulness  of
+this convention,  consider the eigenvectors, \comp{C} and \comp{CBETA}.  These
+are owned by ITER.  Before ITER is called, \comp{C} and \comp{CBETA} are not
+calculated, after ITER has  been called \comp{C} and \comp{CBETA} are known, so
+any subroutine  which needs to use the eigenvectors can do so in the certain
+knowledge that they exist.
+
+Any variables which are only  used  within  a  subroutine  are  not passed
+outside the subroutine unless an overriding reason exists.  This
+\index{PULAY}\index{CNVG} is found in PULAY and CNVG, among  others  where
+arrays  used  to  hold spin-dependent  data  are used, and these cannot
+conveniently be defined within the subroutines.  In these  examples,  the
+relevant  arrays  are ``owned'' by ITER.
+
+A general subroutine, of which ITER  is  a  good  example,  handles three
+kinds of data:  First, data which the subroutine is going to work on, for
+example  the  one  and  two  electron  matrices;  second,  data necessary  to
+manipulate  the  first set of data, such as the number of atomic orbitals;
+third, the calculated quantities, here  the  electronic energy, and the density
+and Fock matrices.
+
+Reference data are entered into a subroutine by way of modules.
+\index{Reference data}  This is to emphasize their peripheral role.
+Thus the number of orbitals, while essential to ITER, is not central to the
+task it has  to perform, and is passed through a module.
+
+Data the subroutine is going to work on are passed via the argument list.  Thus
+the one and two electron matrices, which are the main reason for ITER's
+existence, are entered as two of the four arguments.  As ITER does  not  own
+these  matrices it can use them but may not change their contents.  The other
+argument is EE, the electronic energy.  EE is owned by ITER even though it
+first appears before ITER is called.
+
+\section{Arrays.}
+\subsection{Array Specification.}\index{Array specification}
+
+In MOPAC, most arrays are created dynamically. The main exceptions are a few
+module arrays: \comp{GEO}, \comp{COORD}, \comp{LABELS},  \comp{NAT},
+\comp{NA}, \comp{NB}, and \comp{NC}.  These arrays are only used at the start
+of the run, and once the job is fully running, they are abandoned.  These
+arrays have the same names as dynamic arrays, but, because they are used only
+at the very start of the run, there is no ambiguity.   The size of these arrays
+is defined by \comp{NUMATM} in the included file \comp{sizes.F90}.   This
+quantity, \comp{NUMATM} is equivalent to the MOPAC~93 parameters  \comp{MAXHEV}
+and \comp{MAXLIT}.  By default, MOPAC can run systems of up to 20,000 atoms.
+Although this is large, the small number of static arrays means that the memory
+required for a small system is still small---less than 8  megabytes.
+
+Most of the memory is assigned dynamically.  Once the data are read in---using
+the static arrays---the dynamic memory arrays are created as needed.
+
+
+
+\section{Names and Storage of Variables in MOPAC}
+
+Most subroutines in MOPAC contain the module
+\comp{common\_systm}. This module contains variables
+that are central to the transmission of information throughout
+the program.
+%\input{ncore}
+\input{ksts}
+\input{rksts}
+\input{ifiles}

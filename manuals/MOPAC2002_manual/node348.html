@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Optimization flags</TITLE>
+<META NAME="description" CONTENT="3.4.2 Optimization flags">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node349.html">
+<LINK REL="previous" HREF="node347.html">
+<LINK REL="up" HREF="node346.html">
+<LINK REL="next" HREF="node349.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6094"
+ HREF="node349.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6090"
+ HREF="node346.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6084"
+ HREF="node347.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6092"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6093"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6095"
+ HREF="node349.html"> Internal Coordinate Definition</A>
+<B> Up:</B> <A NAME="tex2html6091"
+ HREF="node346.html"> Geometry Specification</A>
+<B> Previous:</B> <A NAME="tex2html6085"
+ HREF="node347.html"> Definition of Elements</A>
+<BR>
+<H2><A NAME="SECTION00742000000000000000">
+ Optimization flags</A>
+</H2>
+Each internal coordinate is followed by an flag, to indicate  the
+action to be taken.<A NAME="BM6252">&#160;</A>
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">Flag</TD>
+<TD ALIGN="LEFT">Action</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="LEFT">Optimize the internal coordinate.</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">0</TD>
+<TD ALIGN="LEFT">Do not optimize the internal coordinate.</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">-1</TD>
+<TD ALIGN="LEFT">Reaction coordinate, or grid index.</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">T</TD>
+<TD ALIGN="LEFT">Monitor turning points in DRC</TD>
+</TR>
+</TABLE></DIV>
+<P>
+<A NAME="BM6258">&#160;</A> Remarks: Only one reaction coordinate
+is allowed, but this can be made more versatile  by the use of <TT>SYMMETRY</TT>.
+Two methods of specifying the points to be used on the reaction coordinate are
+allowed.   If the user wants to explicitly specify each point, then the values
+of the reaction coordinate should  follow  immediately  after  the geometry  
+and  any  symmetry  data.   No  terminator  is  required,  and free-format-type
+input is acceptable.
+<P>
+If the points to be used form a regular sequence, then the preferred method
+of specifying them is by use of the two keywords <TT>POINT=<I>n</I></TT> and <TT>STEP=<I>n</I>.<I>nn</I></TT>.
+For example, to rotate a torsion angle through 360<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img222.gif"
+ ALT="$^\circ$">
+in steps of 10<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img223.gif"
+ ALT="$^\circ$">,
+the keywords <TT>POINT=36 STEP=10</TT> would be used.  
+<P>
+If two "reaction coordinates" are used, then MOPAC assumes that  the
+two-dimensional  space  in  the  region of the supplied geometry is to be
+mapped.  The two dimensions to be mapped are in the plane defined by  the
+"-1" labels. Step  sizes  in the two directions must be supplied using
+<TT>STEP1</TT> and <TT>STEP2</TT> on the keyword line.
+<P>
+Using internal coordinates, the first atom has  three  unoptimizable
+coordinates,  the second atom two, (the bond-length can be optimized) and the
+third atom has one  unoptimizable  coordinate.   None  of  these  six
+unoptimizable  coordinates  at the start of the geometry should be marked for
+optimization.  If any are so marked, a  warning  is  given,  but  the
+calculation will continue.
+<P>
+In Cartesian coordinates all parameters can be optimized.
+<P>
+In IRC/DRC calculations, the flag &quot;T&quot; specifies that turning points for the 
+coordinate are to be printed, see <A HREF="node609.html#t_irc">Dynamic and 
+Intrinsic Reaction Coordinates</A> for more detail.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6094"
+ HREF="node349.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6090"
+ HREF="node346.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6084"
+ HREF="node347.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6092"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6093"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6095"
+ HREF="node349.html"> Internal Coordinate Definition</A>
+<B> Up:</B> <A NAME="tex2html6091"
+ HREF="node346.html"> Geometry Specification</A>
+<B> Previous:</B> <A NAME="tex2html6085"
+ HREF="node347.html"> Definition of Elements</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

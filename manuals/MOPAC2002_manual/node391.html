@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>M.O.</TITLE>
+<META NAME="description" CONTENT="M.O.">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node390.html">
+<LINK REL="up" HREF="node387.html">
+<LINK REL="next" HREF="node392.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6695"
+ HREF="node392.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6691"
+ HREF="node387.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6687"
+ HREF="node390.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6693"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6694"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6696"
+ HREF="node392.html"> Definitions of Second</A>
+<B> Up:</B> <A NAME="tex2html6692"
+ HREF="node387.html"> Definitions of First</A>
+<B> Previous:</B> <A NAME="tex2html6688"
+ HREF="node390.html">MANUAL</A>
+<BR>
+<H3><A NAME="SECTION001033400000000000000">
+<TT>M.O.</TT></A>
+</H3>
+This keyword is to be used only when <TT>MANUAL</TT> is also specified. A
+molecular orbital to be used as source of density matrix.  The M.O. comes
+after the other data required by <TT>MANUAL</TT> as a set of free-format
+coefficients. After all these data are read in, the program continues as usual,
+but many limitations apply. For example, if <TT>M.O.</TT> was used, then the
+key-words  <TT>PSI=<I>n</I></TT>, <TT>HOMO</TT> and <TT>LUMO</TT> would all give the same
+result. These limitations are due to the absence of other data. The second set
+of key-words defines the type of plot to be drawn; much of this data is
+obligatory in that there are no defaults for certain data. The user must
+supply:
+<UL>
+<LI>A definition of the center of the plot.
+<LI>A definition for the axis of the vector perpendicular to the plot.
+<LI>A length, in &#197;ngstroms, of the edge of the plot.
+</UL>Other data, which are mutually exclusive, are:
+<UL>
+<LI>A molecular orbital number, given by <TT>PSI=<I>n</I></TT>, or
+<LI>A highest-occupied molecular orbital, defined by the key-word
+ <TT>HOMO</TT>, or
+<LI>A lowest-unoccupied molecular orbital, defined by the 
+key-word <TT>LUMO</TT>, or
+<LI>The explicit molecular-orbital occupancy, see key-word <TT>OCCUPANCY</TT>, or
+<LI>The normal electron density of the molecule. This is specified by
+the absence of the other key-words; i.e., this is the default.
+</UL>  
+If a full electron density map is specified. (That is, if the last option 
+above is taken), then another key-word, <TT>BONDS</TT>, can be used. <TT>BONDS</TT>
+will remove the electron density due to the atom from the plot. The effect of
+this is to  generate a plot showing where the charge build-up in the bonds
+occurs. Note: Ionic separations are not shown by <TT>BONDS</TT>.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6695"
+ HREF="node392.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6691"
+ HREF="node387.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6687"
+ HREF="node390.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6693"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6694"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6696"
+ HREF="node392.html"> Definitions of Second</A>
+<B> Up:</B> <A NAME="tex2html6692"
+ HREF="node387.html"> Definitions of First</A>
+<B> Previous:</B> <A NAME="tex2html6688"
+ HREF="node390.html">MANUAL</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

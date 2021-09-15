@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Density Matrix Construction</TITLE>
+<META NAME="description" CONTENT="8.6.8 Density Matrix Construction">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node541.html">
+<LINK REL="previous" HREF="node538.html">
+<LINK REL="up" HREF="node511.html">
+<LINK REL="next" HREF="node541.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8834"
+ HREF="node541.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8830"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8824"
+ HREF="node539.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8832"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8833"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8835"
+ HREF="node541.html"> Energy Effects of</A>
+<B> Up:</B> <A NAME="tex2html8831"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8825"
+ HREF="node539.html"> Size of LMOs</A>
+<BR>
+<H2><A NAME="SECTION001268000000000000000">
+ Density Matrix Construction</A>
+</H2>
+The general expression for constructing the density matrix from the occupied
+set of molecular orbitals is:
+<p align="center"><IMG
+ WIDTH="113" HEIGHT="48"
+ SRC="img1265.gif"
+ ALT="\begin{displaymath}P_{\lambda \sigma} = 2\sum_{i=1}^{occ}c_{\lambda i}c_{\sigma i}.
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P></P>
+<P>
+This same basic equation is used in the construction of the density matrix in
+LMO theory.  The main difference is that not all density matrix elements are,
+or need to be, evaluated.  
+<P>
+The only elements of the density matrix which need to be evaluated are
+those relating to atoms which are <A HREF="node518.html#cutoff">separated by less than
+<TT>CUTOF2</TT></A>.  To understand why, consider how
+the density matrix is used in the SCF calculation. The Fock matrix is
+constructed from products involving the density matrix, the
+one-electron matrix, and the two-electron integrals. All terms which
+involve  density matrix elements connecting any two atoms only, involve
+one electron integrals and two electron exchange integrals for  the
+same two atoms. All one-electron integrals and two-electron exchange
+integrals for atoms separated by more than <TT>CUTOF2</TT> are zero.
+Therefore, the value of density matrix elements for atoms separated by
+more than <TT>CUTOF2</TT> is unimportant.  To save time and to reduce
+array size, therefore, these density matrix elements are not
+calculated.
+<P>
+Having stated that the construction of the density matrix is the same in
+principle as that used in conventional M.O. theory, the way in which LMOs are
+stored does introduce a technical difference.  The sequence in which the atoms
+are represented in LMOs changes from LMO to LMO.  While it is possible for two
+LMOs to have the same sequence   (a <i> <font face="Symbol">s</font></i>
+and <i> <font face="Symbol">p</font></i>
+LMO involving the same
+two atoms is an example),  in general the LMOs should be considered as
+consisting of a random set of atoms, and should be treated as such.
+<P>
+This unpredictable nature of the composition of the LMOs means that the order
+in which density matrix elements are calculated is determined by the  LMOs, and
+not by the sequence of atoms in the molecule.  
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8834"
+ HREF="node541.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8830"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8824"
+ HREF="node539.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8832"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8833"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8835"
+ HREF="node541.html"> Energy Effects of</A>
+<B> Up:</B> <A NAME="tex2html8831"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8825"
+ HREF="node539.html"> Size of LMOs</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

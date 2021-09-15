@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Recommended use of MOZYME</TITLE>
+<META NAME="description" CONTENT="3.3.2.2 Recommended use of MOZYME">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node227.html">
+<LINK REL="up" HREF="node226.html">
+<LINK REL="next" HREF="node229.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html4642"
+ HREF="node229.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4638"
+ HREF="node226.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html4634"
+ HREF="node227.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4640"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4641"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4643"
+ HREF="node229.html">MS=n </A>
+<B> Up:</B> <A NAME="tex2html4639"
+ HREF="node226.html">MOZYME </A>
+<B> Previous:</B> <A NAME="tex2html4635"
+ HREF="node227.html"> Limitations</A><!--End of Navigation Panel--><H3><A NAME="SECTION0073116200000000000000">
+ Recommended use of MOZYME</A>
+</H3>
+<TT>MOZYME</TT> can be used for simple geometric calculations, such as
+geometry optimization, transition state
+location, and dynamic reaction coordinates, and for the calculation
+of polarizability.  For these calculations, <TT>MOZYME</TT> can be run
+as a "stand alone" calculation.  If a partial geometry optimization is run, then 
+the use of <TT>RAPID</TT> should be considered.
+<P>
+For calculation of vibrational frequencies, frequency-dependent
+polarizability, IRCs, and electronic excited states, <TT>MOZYME</TT> should
+be run first, to optimize the geometry, then a conventional <TT>MOPAC</TT>
+calculation run.  
+<P>
+Another effective strategy is to run a <TT>MOZYME</TT> job, followed by
+a <TT>MOPAC</TT> job, using the <TT><a href="node249.html">OLDGEO</a></TT> feature.  When geometry
+optimizations are being run, a <TT>MOZYME</TT> job can be run for a time,
+then a <TT>MOPAC</TT> job run, using <TT><a href="node288.html">RESTART</a></TT>.  That is, the
+<TT>RESTART</TT> function will work when a geometry optimization or
+transition state location calculation is run, regardless of the 
+method used in generating the SCF. 
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Bugs discovered in the electronics subroutines</TITLE>
+<META NAME="description" CONTENT="13.1.0.1 Bugs discovered in the electronics subroutines">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node693.html">
+<LINK REL="previous" HREF="node691.html">
+<LINK REL="up" HREF="node691.html">
+<LINK REL="next" HREF="node693.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html10766"
+ HREF="node693.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html10762"
+ HREF="node691.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html10756"
+ HREF="node691.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html10764"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html10765"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html10767"
+ HREF="node693.html"> Bugs discovered in</A>
+<B> Up:</B> <A NAME="tex2html10763"
+ HREF="node691.html">Suggested procedure for locating</A>
+<B> Previous:</B> <A NAME="tex2html10757"
+ HREF="node691.html">Suggested procedure for locating</A><!--End of Navigation Panel--><H3><A NAME="SECTION001712100000000000000">
+ Bugs discovered in the electronics subroutines</A>
+</H3>
+Use formaldehyde for this test.  Use keywords <TT>1SCF</TT>, <TT>DEBUG</TT>, and 
+any others necessary.
+<P>
+The main steps are:
+<DL COMPACT>
+<DT>1.
+<DD>Check  the  starting  one-electron  matrix  and   two-electron integral 
+string, using the keyword <TT><a href="hcore.html">HCORE</a></TT>.  It is normally sufficient to verify
+that the two hydrogen atoms  are  equivalent,  and  that  the
+<font face="Symbol">p</font>
+system 
+involves  only <I>p</I><SUB><I>z</I></SUB> on  oxygen  and carbon.  Note that numerical values are
+not checked, but only relative values.
+<P>
+If an error is found, use <TT><a href="node224.html">MOLDAT</a></TT> to verify the  orbital  character, etc.
+<P>
+If faulty the error lies in <TT>READMO</TT>, <TT>GETGEO</TT> or <TT>MOLDAT</TT>.
+<P>
+Otherwise the error lies in <TT>HCORE</TT>, <TT>H1ELEC</TT> or <TT>ROTATE</TT>.
+<P>
+If the starting matrices are correct, go on to step (2).
+<P>
+<DT>2.
+<DD>Check the density or Fock matrix on every iteration,  with  the words
+<TT><a href="fock.html">FOCK</a></TT> or <TT><a href="node154.html">DENSITY</a></TT>.  Check the equivalence of the  two hydrogen
+atoms, and the <font face="Symbol">p</font>
+system, as in (1).
+<P>
+If an error is found, check the first Fock matrix.  If faulty,  the bug  lies 
+in ITER, probably in the Fock subroutines FOCK1 or FOCK2,  or in the (guessed)
+density matrix (MOLDAT).  An exception is  in  the  UHF closed-shell 
+calculation,  where  a  small  asymmetry  is introduced to initiate the
+separation of the <font face="Symbol">a</font>
+and <font face="Symbol">b</font>
+UHF wavefunctions.
+<P>
+If no error is found, check the second Fock matrix.  If faulty, the error lies
+in the density matrix DENSIT, or the diagonalization RSP.
+<P>
+If the Fock matrix is acceptable, check all the Fock matrices.   If the  error
+starts in iterations 2 to 4, the error probably lies in CNVG, if after that, in
+PULAY, if used.
+<P>
+If SCF is achieved, and the heat  of  formation  is  faulty,  check HELECT. 
+If C.I. was used check MECI.
+<P>
+If the derivatives are faulty, use <TT><a href="node149.html">DCART</a></TT> to  verify  the  Cartesian
+derivatives.   If  these  are  faulty, check DCART and DHC.  If they are
+correct,  or  not  calculated,  check  the   DERIV   finite   difference
+calculation.   If the wavefunction is non-variationally optimized, check
+DERNVO.
+</DL>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html10766"
+ HREF="node693.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html10762"
+ HREF="node691.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html10756"
+ HREF="node691.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html10764"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html10765"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html10767"
+ HREF="node693.html"> Bugs discovered in</A>
+<B> Up:</B> <A NAME="tex2html10763"
+ HREF="node691.html">Suggested procedure for locating</A>
+<B> Previous:</B> <A NAME="tex2html10757"
+ HREF="node691.html">Suggested procedure for locating</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

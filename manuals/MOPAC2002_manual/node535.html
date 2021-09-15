@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Conventional Matrix Annihilation</TITLE>
+<META NAME="description" CONTENT="8.6.6.1 Conventional Matrix Annihilation">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node536.html">
+<LINK REL="previous" HREF="node534.html">
+<LINK REL="up" HREF="node534.html">
+<LINK REL="next" HREF="node536.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8777"
+ HREF="node536.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8773"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8767"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8775"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8776"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8778"
+ HREF="node536.html"> Localized Molecular Orbital</A>
+<B> Up:</B> <A NAME="tex2html8774"
+ HREF="node534.html"> Diagonalization</A>
+<B> Previous:</B> <A NAME="tex2html8768"
+ HREF="node534.html"> Diagonalization</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001266100000000000000">
+ Conventional Matrix Annihilation</A>
+</H3>
+The raw material DIAGG is supplied with consists of the occupied LMOs and the
+Fock matrix over atomic orbitals.  The first step, therefore, is to calculate
+the occupied and virtual energy levels, and the potentially non-zero matrix
+elements connecting the occupied and virtual sets.
+<P>
+In a system of <I>N</I> atoms, let a molecular orbital, <i><font face="Symbol">y</font><sub>i</sub></i>,
+be represented by
+<P align="center">
+<IMG
+ WIDTH="100" HEIGHT="51"
+ SRC="img1199.gif"
+ ALT="\begin{displaymath}\psi_i = \sum_{A=1}^N\sum_{\lambda\epsilon A}c_{\lambda i}.
+\end{displaymath}"><BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\psi_i = \sum_{A=1}^N\sum_{\lambda\epsilon A}c_{\lambda i}.
+\end{equation} -->
+</DIV>
+<p>Then the energy of a M.O. can be evaluated from </p>
+<p align="center"><IMG
+ WIDTH="175" HEIGHT="51"
+ SRC="img1200.gif"
+ ALT="\begin{displaymath}\varepsilon_{ii}=\sum_A^N\sum_B^N\sum_{\lambda\epsilon A}\sum_{\sigma\epsilon B}c_{\lambda i}F_{\lambda\sigma}c_{\sigma i}
+\end{displaymath}"><BR></p>
+<P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\varepsilon_{ii}=\sum_A^N\sum_B^N\sum_{\lambda\epsilon A}\sum_{\sigma\epsilon B}c_{\lambda i}F_{\lambda\sigma}c_{\sigma i}
+\end{equation} -->
+</DIV>
+<p>and the matrix element representing the energy term between occupied M.O. <i><font face="Symbol">
+y</font><sub>i</sub></i>
+and virtual M.O. <i><font face="Symbol">y</font></i><sub><i>j</i></sub>
+would be </p>
+<p align="center"><IMG
+ WIDTH="183" HEIGHT="51"
+ SRC="img1203.gif"
+ ALT="\begin{displaymath}\varepsilon_{i j}=\sum_A^N\sum_B^N\sum_{\lambda\epsilon A}\sum_{\sigma\epsilon B}c_{\lambda i}F_{\lambda \sigma}c_{\sigma j}.
+\end{displaymath}"><BR></p>
+<P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\varepsilon_{i j}=\sum_A^N\sum_B^N\sum_{\lambda\epsilon A}\sum_{\sigma\epsilon B}c_{\lambda  i}F_{\lambda \sigma}c_{\sigma  j}.
+\end{equation} -->
+</DIV>
+<p>Annihilation of a matrix element  is achieved by performing a unitary 
+transform on the M.O.s involved </p>
+<P align="center">
+<IMG
+ WIDTH="141" HEIGHT="51"
+ SRC="img1204.gif"
+ ALT="\begin{displaymath}\begin{array}{llrr}
+\psi_i^{'} & = & \alpha\psi_i & + \beta\psi_j \\
+\psi_j^{'} & = &-\beta\psi_i & +\alpha\psi_j
+\end{array}\end{displaymath}"><BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\begin{array}{llrr}
+\psi_i^{'}  & = & \alpha\psi_i & + \beta\psi_j \\
+\psi_j^{'}  & = &-\beta\psi_i  & +\alpha\psi_j
+\end{array}
+\end{equation} -->
+</DIV>
+<p>where the rotation angles <i><font face="Symbol">a</font></i>
+and <i><font face="Symbol">b</font></i>
+are calculated from the molecular
+orbital energy matrix elements </p>
+<p align="center"><IMG
+ WIDTH="195" HEIGHT="65"
+ SRC="img1207.gif"
+ ALT="\begin{displaymath}\begin{array}{lll}
+\alpha &=& \sqrt{\frac{1}{2}(1+D/\sqrt{4\v...
+..._{i j}^2+D^2}} \\
+\beta &=& \phi\sqrt{1-\alpha^2}
+\end{array}\end{displaymath}"><BR></p>
+<P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\begin{array}{lll}
+\alpha &=& \sqrt{\frac{1}{2}(1+D/\sqrt{4\varepsilon_{i j}^2+D^2}} \\
+\beta  &=& \phi\sqrt{1-\alpha^2}
+\end{array}
+\end{equation} -->
+</DIV>
+<p>where D = <i><font face="Symbol">e</font><sub>jj</sub> -<font face="Symbol">e</font><sub>ii</sub></i> 
+<!-- MATH: $D= \varepsilon_{j j}-\varepsilon_{i i}$ -->
+&nbsp;and <i><font face="Symbol">f</font></i>
+= 1 if 
+<!-- MATH: $\varepsilon_{i j}$ -->
+<i><font face="Symbol">e</font><sub>ij</sub></i>
+is negative, <i><font face="Symbol">f</font></i> = -1,
+otherwise. </p>
+<P>
+By evaluating partial sums, the calculation of  
+<!-- MATH: $\varepsilon_{i j}$ -->
+<i><font face="Symbol">e</font><sub>ij</sub></i>
+can 
+be made more efficient. If 
+<!-- MATH: $\varepsilon_{i j}$ -->
+<i><font face="Symbol">e</font><sub>ij</sub></i>
+is re-written as
+<P align="center">
+<IMG
+ WIDTH="184" HEIGHT="51"
+ SRC="img1214.gif"
+ ALT="\begin{displaymath}\varepsilon_{i j} = \sum_A^N\sum_B^N\sum_{\lambda\epsilon A}c...
+...ambda i}\sum_{\sigma\epsilon B}F_{\lambda \sigma}c_{\sigma j};
+\end{displaymath}"><BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\varepsilon_{i j} = \sum_A^N\sum_B^N\sum_{\lambda\epsilon A}c_{\lambda  i}\sum_{\sigma\epsilon B}F_{\lambda \sigma}c_{\sigma  j};
+\end{equation} -->
+</DIV>
+<p>then the partial sum </p>
+<p align="center"><IMG
+ WIDTH="122" HEIGHT="42"
+ SRC="img1215.gif"
+ ALT="\begin{displaymath}F_{\lambda}^{'}(j) = \sum_{\sigma\epsilon B}F_{\lambda \sigma}c_{\sigma j}
+\end{displaymath}"><BR></p>
+<P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+F_{\lambda}^{'}(j) = \sum_{\sigma\epsilon B}F_{\lambda \sigma}c_{\sigma  j}
+\end{equation} -->
+</DIV>
+<p>can be used to simplify 
+<!-- MATH: $\varepsilon_{i j}$ -->
+<i><font face="Symbol">e</font><sub>ij</sub></i>: </p>
+<p align="center"><IMG
+ WIDTH="132" HEIGHT="51"
+ SRC="img1217.gif"
+ ALT="\begin{displaymath}\varepsilon_{i j} =
+\sum_A^N\sum_{\lambda\epsilon A}c_{\lambda i}F_{\lambda}^{'}(j).
+\end{displaymath}"><BR CLEAR="ALL"></p>
+<P>
+Because the vector <I>F</I><SUP>'</SUP>(<I>j</I>) is evaluated once, and then used for all <I>i</I>, the
+calculation of the 
+<!-- MATH: $\varepsilon_{i j}$ -->
+<i><font face="Symbol">e</font><sub>ij</sub></i>
+is changed from an <I>n</I><SUP>3</SUP> process to a
+<I>n</I><SUP>2</SUP> process.  The use of the partial sum <I>F</I><SUP>'</SUP>(<I>j</I>) also speeds up the
+evaluation of the virtual M.O. energies.  Unfortunately, it does not speed up 
+the calculation of the occupied M.O. energies.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8777"
+ HREF="node536.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8773"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8767"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8775"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8776"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8778"
+ HREF="node536.html"> Localized Molecular Orbital</A>
+<B> Up:</B> <A NAME="tex2html8774"
+ HREF="node534.html"> Diagonalization</A>
+<B> Previous:</B> <A NAME="tex2html8768"
+ HREF="node534.html"> Diagonalization</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

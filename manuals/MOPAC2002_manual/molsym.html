@@ -1,0 +1,247 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>MOLSYM </TITLE>
+<META NAME="description" CONTENT="MOLDAT ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node225.html">
+<LINK REL="previous" HREF="node223.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node225.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html4594"
+ HREF="node225.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4590"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A>
+<a NAME="tex2html4584" href="node224.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></a> 
+<A NAME="tex2html4592"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4593"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4595"
+ HREF="node225.html">MOPAC </A>
+<B> Up:</B> <A NAME="tex2html4591"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <a NAME="tex2html4585" href="node224.html">MOLDAT</a><!--End of Navigation Panel--><H2>
+<TT>MOLSYM  </TT> 
+</H2>
+<p>
+Print details of the working in MOLSYM, the routine that works out the symmetry 
+point-group of the molecule.&nbsp; Point-groups are identified using a set of 20 
+integers.&nbsp; These are 0 if the associated operation is absent, 1 if the 
+operation is present.&nbsp; The operations are:</p>
+<div align="center">
+  <center>
+  <table border="1" cellpadding="0" cellspacing="0" style="text-align: center; border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td width="50">
+      <p style="text-align: right; margin-top: 0; margin-bottom: 0">Operation</p>
+      <p style="text-align: right; margin-top: 0; margin-bottom: 0">Number</td>
+      <td width="60">Operation</td>
+    </tr>
+    <tr>
+      <td width="50">1</td>
+      <td width="60">C<sub>2</sub>(X)</td>
+    </tr>
+    <tr>
+      <td width="50">2</td>
+      <td width="60">C<sub>2</sub>(Y)</td>
+    </tr>
+    <tr>
+      <td width="50">3</td>
+      <td width="60">C<sub>2</sub>(Z)</td>
+    </tr>
+    <tr>
+      <td width="50">4</td>
+      <td width="60"><font face="Symbol">s</font>(XY)</td>
+    </tr>
+    <tr>
+      <td width="50">5</td>
+      <td width="60"><font face="Symbol">s</font>(XZ)</td>
+    </tr>
+    <tr>
+      <td width="50">6</td>
+      <td width="60"><font face="Symbol">s</font>(YZ)</td>
+    </tr>
+    <tr>
+      <td width="50">7</td>
+      <td width="60">inversion</td>
+    </tr>
+    <tr>
+      <td width="50">8</td>
+      <td width="60">C<sub>3</sub></td>
+    </tr>
+    <tr>
+      <td width="50">9</td>
+      <td width="60">C<sub>4</sub></td>
+    </tr>
+    <tr>
+      <td width="50">10</td>
+      <td width="60">C<sub>3</sub></td>
+    </tr>
+    <tr>
+      <td width="50">11</td>
+      <td width="60">C<sub>6</sub></td>
+    </tr>
+    <tr>
+      <td width="50">12</td>
+      <td width="60">C<sub>3</sub></td>
+    </tr>
+    <tr>
+      <td width="50">13</td>
+      <td width="60">C<sub>8</sub></td>
+    </tr>
+    <tr>
+      <td width="50">14</td>
+      <td width="60">S<sub>4</sub></td>
+    </tr>
+    <tr>
+      <td width="50">15</td>
+      <td width="60">S<sub>6</sub></td>
+    </tr>
+    <tr>
+      <td width="50">16</td>
+      <td width="60">S<sub>8</sub></td>
+    </tr>
+    <tr>
+      <td width="50">17</td>
+      <td width="60">S<sub>10</sub></td>
+    </tr>
+    <tr>
+      <td width="50">18</td>
+      <td width="60">S<sub>12</sub></td>
+    </tr>
+    <tr>
+      <td width="50">19</td>
+      <td width="60">1 if cubic</td>
+    </tr>
+    <tr>
+      <td width="50">20</td>
+      <td width="60">1 if infinite</td>
+    </tr>
+  </table>
+  </center>
+</div>
+A tetrahedral molecule, for example, would have the pattern:&nbsp; <br>
+&nbsp;<div align="center">
+  <center>
+  <table border="1" cellpadding="0" cellspacing="4" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td bordercolor="#FFFFFF">Operation</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;1</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;2</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;3</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;4</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;5</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;6</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;7</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;8</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;9</td>
+      <td align="right" bordercolor="#FFFFFF">10</td>
+      <td align="right" bordercolor="#FFFFFF">11</td>
+      <td align="right" bordercolor="#FFFFFF">12</td>
+      <td align="right" bordercolor="#FFFFFF">13</td>
+      <td align="right" bordercolor="#FFFFFF">14</td>
+      <td align="right" bordercolor="#FFFFFF">15</td>
+      <td align="right" bordercolor="#FFFFFF">16</td>
+      <td align="right" bordercolor="#FFFFFF">17</td>
+      <td align="right" bordercolor="#FFFFFF">18</td>
+      <td align="right" bordercolor="#FFFFFF">19</td>
+      <td align="right" bordercolor="#FFFFFF">20</td>
+    </tr>
+    <tr>
+      <td bordercolor="#FFFFFF">Value</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>This indicates that operations C<sub>2</sub>(Z), <font face="Symbol">s</font>(XZ),
+<font face="Symbol">s</font>(YZ), C<sub>3</sub>, and S<sub>4 </sub>are present, 
+and that the system is cubic.</p>
+<p>The pattern of operations is unique for each point-group, and is used by 
+subroutine cartab to identify the point-group.</p>
+<P>
+&nbsp;<HR>
+<p>
+<A NAME="tex2html4594"
+ HREF="node225.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4590"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A>
+<a NAME="tex2html4584" href="node224.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></a> 
+<A NAME="tex2html4592"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4593"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4595"
+ HREF="node225.html">MOPAC </A>
+<B> Up:</B> <A NAME="tex2html4591"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <a NAME="tex2html4585" href="node224.html">MOLDAT</a><!--End of Navigation Panel--></p>
+<p>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

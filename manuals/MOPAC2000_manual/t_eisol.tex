@@ -1,0 +1,214 @@
+\subsection{Energies of Isolated Atoms}\index{EISOL}\index{EHEAT}\index{ATHEAT}
+The $\Delta H_f$ calculated by semiempirical methods is defined as the  energy
+in kcal.mol$^{-1}$ required to form one mole of the system in the gas phase at
+298K from its elements in their standard state:
+$$
+\Delta H_f = E_{elect} + E_{nuc} + \sum_AE_{isol}(A) +\sum_AE_{atom}(A)
+$$
+In order to calculate $\Delta H_f$, the quantity $E_{isol}$ must be 
+determined; this is the energy required to form the isolated atom from its 
+valence electrons:
+$$
+E_{isol}(A)=E_{\rm neutral\ atom}(A) -E_{\rm nucleus}(A)-
+E_{\rm valence\ electrons}(A)
+$$
+In the calculation of $E_{elect}$, the energy of valence electrons is  defined
+as zero, likewise in calculating $E_{nuc}$, the energy of the  isolated nucleus
+is defined as zero, therefore the calculation of $E_{isol}$ simplifies to the
+calculation of $E_{\rm neutral\ atom}$.
+
+The energy of $E_{eisol}$ is the energy released when the valence  electrons
+are added to the nucleus.  For example, for the hydrogen atom, this would be 
+$U_{ss}$.  For poly-electronic atoms, the electron-electron  interactions must
+be included, in addition to the one-electron contributions. Most elements have
+open shell ground states, and for these systems, the  nature of the state is
+important.
+
+For all main group elements, that is, elements with valence shell
+configurations of the form $ns^anp^b$, other than the alkali metals, the value
+of $E_{isol}$ is  given by:
+$$
+E_{isol} =aU_{ss}+bU_{pp}+(a-1)G_{ss}+a.bG_{sp}+(b(b-1))/2G_{p2}-bH_{sp}-
+cH_{pp}
+$$
+in which $c=min(b(b-1)/2,(6-b).(5-b)/2)$.  Except for the $H_{pp}$ term, all
+the contributions to $E_{isol}$ are obvious.  Non-zero $H_{pp}$ terms occur
+when there are two or more unpaired electrons in the ground state, in  which
+case there is an exchange stabilization that is otherwise absent.
+
+Because $H_{pp}$ is usually written as $1/2(G_{pp}-G_{p2})$, the expression 
+for systems with 2 to 4 $p$ electrons is recast as:
+$$
+E_{isol} =aU_{ss}+bU_{pp}+(a-1)G_{ss}+a.bG_{sp}+((b(b-1))/2+c/2)G_{p2}-
+(a-1)bH_{sp}-c/2G_{pp},
+$$
+or
+$$
+E_{isol} =2U_{ss}+bU_{pp}+G_{ss}+2.bG_{sp}+((b(b-1))/2+c/2)G_{p2}-
+(a-1)bH_{sp}-c/2G_{pp}.
+$$
+For the alkali metals, the equation for $E_{isol}$ is the same as that for 
+hydrogen.
+
+For the transition metals, the coefficients for the $d-d$ interactions are more
+complicated.
+
+The general form for $E_{isol}$ for a transition metal of configuration
+$s^md^n$s, in which there are $m_a$ $\alpha$ $s$-electrons and $m_b$ $\beta$ 
+$s$-electrons, and $n_a$ $\alpha$ $d$-electrons and $n_b$ $\beta$ 
+$d$-electrons, and the total angular quantum number is $L$, is:
+\begin{eqnarray} \nonumber
+E_{isol}&=&mU_{ss}+nU_{dd}+
+(m(m-1))/2G_{ss}+m.nG_{sd}-(m_an_a+m_bn_b)H_{sd}\\ \nonumber
+&& +(n(n-1))/2\frac{G_{dd}^0}{5} +(-4(n_a^2+n_b^2)+13n-3/2(L(L+1)))\frac{G_{dd}^2}{49}\\ \nonumber 
+&& +(-(n_a^2+n_b^2)/2-9/2n+5/6(L(L+1)))\frac{G_{dd}^4}{49}. \nonumber
+\end{eqnarray}
+As might be imagined, derivation of this expression is by no means  obvious,
+particularly the terms for $G_{dd}^2$ and $G_{dd}^4$.  Interested readers are
+referred to Racah's paper in {\it Phys Rev}, {\bf 61}, 186 (1942). In this,
+Racah derived an expression for the $d$ orbital energy of the ground  state in
+terms of three quantities, $A$, $B$, and $L$, the total angular momentum:
+$$
+<\! ^{n+1}L|H|^{n+1}L>=\frac{1}{2}n(n-1)(A-8B)+\frac{3}{2}[6n-L(L+1)]B.
+$$
+
+The quantities $A$ and $B$, and a third quantity, $C$, not used here, are
+related  to the $G_k$ as follows:
+\begin{eqnarray} \nonumber
+A&=&G_{dd}^0-49G_{dd}^2\\ \nonumber
+B&=&G_{dd}^2-5G_{dd}^4\\ \nonumber
+C&=&35G_{dd}^4 \\ \nonumber
+\end{eqnarray}
+Using Racah's equation, derivation of  $E_{isol}$ is straightforward.  In texts
+on transition metal ion theory, the quantities $G_{dd}^0$, $G_{dd}^0$, and 
+$G_{dd}^0$ are usually represented by the symbols $F_0$, $F_2$, and $F_4$,
+respectively.  However, care should be exercised when reading these texts:
+sometimes other quantities, $F^0$, $F^2$, and $F^4$ are used.  The relationship
+between these three sets of symbols is as follows:
+\begin{eqnarray}\nonumber
+G_{dd}^0  =  F_0 &=& F^0 \\ \nonumber
+G_{dd}^2  =  F_2 &=& \frac{1}{49}F^2 \\ \nonumber
+G_{dd}^4  =  F_4 &=& \frac{1}{441}F^4 \\ \nonumber
+\end{eqnarray}
+
+
+Because the coefficients for the two electron terms are so complicated,  values
+for all elements likely to be parameterized for semiempirical  methods are
+presented in Table~\ref{confs}.  From this table, the values of some 
+coefficients are readily derived.  Thus for the $s$-$d$ coulomb integral,
+$G_{sd}$, the coefficient is simply the number of $s$ electrons times the
+number of $d$ electrons.  One $s$-$d$ exchange integral, $H_{sd}$, exists for 
+each electron in the $s$ shell for which there is an electron of the  same spin
+in the $d$ shell.  For elements with two $s$ electrons, this is simply the
+number of $d$ electrons, for elements with one $s$ electron, the Aufbau
+principle indicates that the $d$ shell with higher occupancy has the same spin
+as that of the $s$ electron.  Finally, the coefficients for the  simple $d$-$d$
+repulsion integral, $G_{dd}^0$, are given by the number of possible $d$-$d$
+interactions.
+
+Note also that there are no elements with both $p$ and $d$ valence electrons,
+therefore terms of the type $G_{pd}$ are not necessary.
+
+\begin{table}
+\caption{\label{confs}Two Electron Energy Contributions to EISOL for Atoms in 
+their Ground States}
+\begin{center}
+\compresstable
+\begin{tabular}{cclcccccccccccc}\hline
+\multicolumn{2}{c}{Element}   &  Orbital & State&  &
+G$_{ss}$ & G$_{sp}$&H$_{sp}$& G$_{pp}$ &G$_{p2}$ &G$_{sd}$&
+H$_{sd}$&G$_{dd}^0$&G$_{dd}^2$& G$_{dd}^4$\\ 
+%                       Gss  Gsp Hsp  Gpp   Gp2  Gsd Hsd Gdd0 Gdd2 Gdd4
+&   & Config.& & Mult.: & 1  & 1  &-1 & -1/2&1/2 &  1& -1/5 &1 &-1/49&-1/49\\
+\hline
+1&H  & $1s^1    $ &$^2S$&&    &    &   &     &    &   &   &    &    &     \\
+2&He & $1s^2    $ &$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+3&Li & $2s^1    $ &$^2S$&&    &    &   &     &    &   &   &    &    &     \\
+4&Be & $2s^2    $ &$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+5&B  & $2s^22p^1$ &$^2P$&& 1  & 2  & 1 &     &    &   &   &    &    &     \\
+6&C  & $2s^22p^2$ &$^3P$&& 1  & 4  & 2 &  1  &  3 &   &   &    &    &     \\
+7&N  & $2s^22p^3$ &$^4S$&& 1  & 6  & 3 &  3  &9   &   &   &    &    &     \\
+8&O  & $2s^22p^4$ &$^3P$&& 1  & 8  & 4 &  1  &13  &   &   &    &    &     \\
+9&F  & $2s^22p^5$ &$^2P$&& 1  & 10 & 5 &     &20  &   &   &    &    &     \\
+10&Ne & $2s^22p^6$ &$^1S$&& 1  & 12 & 6 &     &30  &   &   &    &    &     \\
+11&Na & $3s^1    $ &$^2S$&&    &    &   &     &    &   &   &    &    &     \\
+12&Mg & $3s^2    $ &$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+13&Al & $3s^23p^1$ &$^2P$&& 1  & 2  & 1 &     &    &   &   &    &    &     \\
+14&Si & $3s^23p^2$ &$^3P$&& 1  & 4  & 2 &  1  &3   &   &   &    &    &     \\
+15&P  & $3s^23p^3$ &$^4S$&& 1  & 6  & 3 &  3  &9   &   &   &    &    &     \\
+16&S  & $3s^23p^4$ &$^3P$&& 1  & 8  & 4 &  1  &13  &   &   &    &    &     \\
+17&Cl & $3s^23p^5$ &$^2P$&& 1  & 10 & 5 &     &20  &   &   &    &    &     \\
+18&Ar & $3s^23p^6$ &$^1S$&& 1  & 12 & 6 &     &30  &   &   &    &    &     \\
+19&K  & $4s^1    $ &$^2S$&&    &    &   &     &    &   &   &    &    &     \\
+20&Ca & $4s^2    $ &$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+21&Sc & $4s^23d^1$ &$^2D$&& 1  &    &   &     &    & 2 & 1 &    &    &     \\
+22&Ti & $4s^23d^2$ &$^3F$&& 1  &    &   &     &    & 4 & 2 & 1  & 8  & 1   \\
+23&V  & $4s^23d^3$ &$^4F$&& 1  &    &   &     &    & 6 & 3 & 3  & 15 & 8   \\
+24&Cr & $4s^13d^5$ &$^7S$&&    &    &   &     &    & 5 & 5 & 10 & 35 & 35  \\
+25&Mn & $4s^23d^5$ &$^6S$&& 1  &    &   &     &    &10 & 5 & 10 & 35 & 35  \\
+26&Fe & $4s^23d^6$ &$^5D$&& 1  &    &   &     &    &12 & 6 & 15 & 35 & 35  \\
+27&Co & $4s^23d^7$ &$^4F$&& 1  &    &   &     &    &14 & 7 & 21 & 43 & 36  \\
+28&Ni & $4s^23d^8$ &$^3F$&& 1  &    &   &     &    &16 & 8 & 28 & 50 & 43  \\
+29&Cu & $4s^13d^{10}$&$^2S$&&  &    &   &     &    &10 & 5 & 45 & 70 & 70  \\
+30&Zn & $4s^2     $&$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+31&Ga & $4s^24p^1$ &$^2P$&& 1  & 2  & 1 &     &    &   &   &    &    &     \\
+32&Ge & $4s^24p^2$ &$^3P$&& 1  & 4  & 2 &  1  &3   &   &   &    &    &     \\
+33&As & $4s^24p^3$ &$^4S$&& 1  & 6  & 3 &  3  &9   &   &   &    &    &     \\
+34&Se & $4s^24p^4$ &$^3P$&& 1  & 8  & 4 &  1  &13  &   &   &    &    &     \\
+35&Br & $4s^24p^5$ &$^2P$&& 1  & 10 & 5 &     &20  &   &   &    &    &     \\
+36&Kr & $4s^24p^6$ &$^1S$&& 1  & 12 & 6 &     &30  &   &   &    &    &     \\
+37&Rb & $5s^1    $ &$^2S$&&    &    &   &     &    &   &   &    &    &     \\
+38&Sr & $5s^2    $ &$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+39&Y  & $5s^24d^1$ &$^2D$&& 1  &    &   &     &    & 2 & 1 &    &    &     \\
+40&Zr & $5s^24d^2$ &$^3F$&& 1  &    &   &     &    & 4 & 2 & 1  & 8  & 1   \\
+41&Nb & $5s^14d^4$ &$^6D$&&    &    &   &     &    & 4 & 4 & 6  & 21 & 21  \\
+42&Mo & $5s^14d^5$ &$^7S$&&    &    &   &     &    & 5 & 5 & 10 & 35 & 35  \\
+43&Tc & $5s^24d^5$ &$^6S$&& 1  &    &   &     &    &10 & 5 & 10 & 35 & 35  \\
+44&Ru & $5s^14d^7$ &$^5F$&&    &    &   &     &    & 7 & 5 & 21 & 43 & 36  \\
+45&Rh & $5s^14d^8$ &$^4F$&&    &    &   &     &    & 8 & 5 & 28 & 50 & 43  \\
+46&Pd & $5s^04d^{10}$&$^1S$&&  &    &   &     &    &   &   & 45 & 70 & 70  \\
+47&Ag & $5s^14d^{10}$&$^2S$&&  &    &   &     &    &10 & 5 & 45 & 70 & 70  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\begin{table}
+\caption{Two Electron Energy Contributions to EISOL for Atoms in their Ground 
+States}
+\begin{center}
+\compresstable
+\begin{tabular}{cclcccccccccccc} \hline
+\multicolumn{2}{c}{Element}  &  Orbital & State& &
+G$_{ss}$ & G$_{sp}$&H$_{sp}$& G$_{pp}$ &G$_{p2}$ &G$_{sd}$&
+H$_{sd}$&G$_{dd}^0$&G$_{dd}^2$& G$_{dd}^4$\\ 
+%                     Gss  Gsp Hsp  Gpp   Gp2  Gsd Hsd Gdd0 Gdd2 Gdd4
+&   & Config.& & Mult.: & 1  & 1  &-1 & -1/2&1/2 &  1& -1/5 &1 &-1/49&-1/49\\
+\hline
+48&Cd & $5s^2     $&$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\ 
+49&In & $5s^25p^1$ &$^2P$&& 1  & 2  & 1 &     &    &   &   &    &    &     \\
+50&Sn & $5s^25p^2$ &$^3P$&& 1  & 4  & 2 &  1  &3   &   &   &    &    &     \\
+51&Sb & $5s^25p^3$ &$^4S$&& 1  & 6  & 3 &  3  &9   &   &   &    &    &     \\
+52&Te & $5s^25p^4$ &$^3P$&& 1  & 8  & 4 &  1  &13  &   &   &    &    &     \\
+53&I  & $5s^25p^5$ &$^2P$&& 1  & 10 & 5 &     &20  &   &   &    &    &     \\
+54&Xe & $5s^25p^6$ &$^1S$&& 1  & 12 & 6 &     &30  &   &   &    &    &     \\
+55&Cs & $6s^1    $ &$^2S$&&    &    &   &     &    &   &   &    &    &     \\
+56&Ba & $6s^2    $ &$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+72&Hf & $6s^25d^2$ &$^3F$&& 1  &    &   &     &    & 4 & 2 & 1  & 8  & 1   \\
+73&Ta & $6s^25d^3$ &$^4F$&& 1  &    &   &     &    & 6 & 3 & 3  & 15 & 8   \\
+74&W  & $6s^25d^4$ &$^5D$&& 1  &    &   &     &    & 8 & 4 & 6  & 21 & 21  \\
+75&Re & $6s^25d^5$ &$^6S$&& 1  &    &   &     &    &10 & 5 & 10 & 35 & 35  \\
+76&Os & $6s^25d^6$ &$^5D$&& 1  &    &   &     &    &12 & 6 & 15 & 35 & 35  \\
+77&Ir & $6s^25d^7$ &$^4F$&& 1  &    &   &     &    &14 & 7 & 21 & 43 & 36  \\
+78&Pt & $6s^15d^9$ &$^3D$&&    &    &   &     &    & 9 & 5 & 36 & 56 & 56  \\
+79&Au & $6s^15d^{10}$&$^2S$&&  &    &   &     &    &10 & 5 & 45 & 70 & 70  \\
+80&Hg & $6s^2     $&$^1S$&& 1  &    &   &     &    &   &   &    &    &     \\
+81&Tl & $6s^26p^1$ &$^2P$&& 1  & 2  & 1 &     &    &   &   &    &    &     \\
+82&Pb & $6s^26p^2$ &$^3P$&& 1  & 4  & 2 &  1  &3   &   &   &    &    &     \\
+83&Bi & $6s^26p^3$ &$^4S$&& 1  & 6  & 3 &  3  &9   &   &   &    &    &     \\
+84&Po & $6s^26p^4$ &$^3P$&& 1  & 8  & 4 &  1  &13  &   &   &    &    &     \\ 
+85&At & $6s^25p^5$ &$^2P$&& 1  & 10 & 5 &     &20  &   &   &    &    &     \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}

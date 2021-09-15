@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<TITLE>Frozen density matrix finite difference derivatives</TITLE>
+<META NAME="description" CONTENT=" Frozen density matrix finite difference derivatives">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node583.html"><LINK REL="previous" HREF="node581.html"><LINK REL="up" HREF="node581.html"><LINK REL="next" HREF="node583.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html9364"><A HREF="node583.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9360"></A><A HREF="node581.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9354"></A><A HREF="node581.html"><IMG SRC="previous_motif.gif" BORDER=0 WIDTH=63 HEIGHT=24 ALT="previous"></A><A NAME="tex2html9362"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 WIDTH=65 HEIGHT=24 ALT="contents"></A><A NAME="tex2html9363"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 WIDTH=43 HEIGHT=24 ALT="index"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9365"><A HREF="node583.html">Hessian matrix in</A></A> <B>Up:</B> <A NAME="tex2html9361"><A HREF="node581.html">Gradients</A></A> <B>Previous:</B> <A NAME="tex2html9355"><A HREF="node581.html">Gradients</A></A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION0012131000000000000000">Frozen density matrix finite difference derivatives</A> </H2>
+<P>The first step in calculating the gradients is to calculate the derivatives with respect to Cartesian coordinates. This is done in subroutine DCART. <A NAME="BM20735">&nbsp;</A> </P>
+<P>DCART calculates the energy of each pair of atoms, then moves one atom a small distance (10<SUP>-4</SUP>&Aring;) in each of the three Cartesian directions. The density matrix for the atom-pair is not changed during this calculation, but is set equal to the SCF density matrix. The derivative for each atom is then calculated from: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\left (\frac{dE}{dx}\right )_A = \sum_{B\neq A}\frac{E_{AB}-E_{AB}^{'}}{\delta_x},
+\end{displaymath} --><IMG SRC="img1494.gif" WIDTH=164 HEIGHT=53 ALT="begin{displaymath}left (frac{dE}{dx}right )_A = sum_{Bneq A}frac{E_{AB}-E_{AB}^{'}}{delta_x}, end{displaymath}"></DIV>
+<DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\left (\frac{dE}{dy}\right )_A = \sum_{B\neq A}\frac{E_{AB}-E_{AB}^{'}}{\delta_y},
+\end{displaymath} --><IMG SRC="img1495.gif" WIDTH=164 HEIGHT=53 ALT="begin{displaymath}left (frac{dE}{dy}right )_A = sum_{Bneq A}frac{E_{AB}-E_{AB}^{'}}{delta_y}, end{displaymath}"></DIV>
+<DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\left (\frac{dE}{dz}\right )_A = \sum_{B\neq A}\frac{E_{AB}-E_{AB}^{'}}{\delta_z}.
+\end{displaymath} --><IMG SRC="img1496.gif" WIDTH=164 HEIGHT=53 ALT="begin{displaymath}left (frac{dE}{dz}right )_A = sum_{Bneq A}frac{E_{AB}-E_{AB}^{'}}{delta_z}. end{displaymath}"></DIV>
+<P>where <!-- MATH: $E_{AB}^{'}$ --><I>E<SUB>AB</I></SUB><SUP>'</SUP> is the energy of the pair of atoms after displacement in the appropriate direction. For a stationary point, these derivatives are zero. </P>
+<P>To convert from Cartesian coordinate (c.c.) derivatives into gradients (i.c.), the sum </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+g_i = \sum_j\frac{dE}{d({\rm c.c.}_j)}\frac{d({\rm c.c.}_i)}{d({\rm i.c.}_j)}
+\end{displaymath} --><IMG SRC="img1497.gif" WIDTH=148 HEIGHT=49 ALT="begin{displaymath}g_i = sum_jfrac{dE}{d({rm c.c.}_j)}frac{d({rm c.c.}_i)}{d({rm i.c.}_j)}end{displaymath}"></DIV>
+<P>must be evaluated. Evaluation of <!-- MATH: $\frac{d({\rm c.c.}_i)}{d({\rm i.c.}_j)}$ --><IMG SRC="img1498.gif" ALIGN="MIDDLE" WIDTH=43 HEIGHT=43 ALT="$frac{d({rm c.c.}_i)}{d({rm i.c.}_j)}$">is quite simple, and in done in routine JCARIN. </P>
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

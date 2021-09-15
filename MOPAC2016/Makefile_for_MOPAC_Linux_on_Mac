@@ -1,0 +1,50 @@
+##############################################################
+#
+# Builds MOPAC2016 for CPU on a Linux platform 32 and 64 bit versions
+#
+##############################################################
+MKLROOT= /opt/intel/composer_xe_2013.0.079
+ifeq ($(BITS), 32)
+#
+MATH_LINK 	= -Wl,--start-group  $(MKLROOT)/mkl/lib/ia32/libmkl_intel.a $(MKLROOT)/mkl/lib/ia32/libmkl_intel_thread.a $(MKLROOT)/mkl/lib/ia32/libmkl_core.a -Wl,--end-group -openmp -lpthread -lm
+ifort = /opt/intel/bin/ifort
+FORTRAN_LINKER	= /opt/intel/bin/ifort
+FORTRAN_COMPILER= /opt/intel/bin/ifort -o $@ -c -lpthread -lstdc++ -O3 -I$(INTERMEDIATE_DIR)/$(OBJ) -module $(OBJ)   
+#
+else
+#
+MATH_LINK 	= -Wl,--start-group  $(MKLROOT)/mkl/lib/intel64/libmkl_intel_lp64.a $(MKLROOT)/mkl/lib/intel64/libmkl_intel_thread.a $(MKLROOT)/mkl/lib/intel64/libmkl_core.a -Wl,--end-group -openmp -lpthread -lm
+ifort = $(MKLROOT)/bin/intel64/ifort
+FORTRAN_LINKER	= $(MKLROOT)/bin/intel64/ifort
+FORTRAN_COMPILER= $(MKLROOT)/bin/intel64/ifort -o $@ -c -lpthread -lstdc++ -O3 -I$(INTERMEDIATE_DIR)/$(OBJ) -module $(OBJ)   
+endif
+#
+#                             Path definitions
+#
+#   Location of the source files (currently in the Windows folders)
+# 
+MOPAC_SRC = /media/psf/Home/MOPAC2016_Source/MOPAC_source_code
+#
+#   Location of the intermediate files 
+#
+INTERMEDIATE_DIR = /media/sf_Software/Software
+#
+#
+#                                End of site-sensitive data
+#
+#
+OBJ             =   objects_$(BITS)
+O               =   o 
+#
+# Compiler directives
+#
+#
+#  Executable
+#
+EXE              =   /opt/mopac/MOPAC2016.exe 
+##############################################################################
+#
+#      From this line on, the Linux, Unix, and Windows versions are identical
+#
+##############################################################################
+include /media/psf/Home/MOPAC2016_Source/MOPAC_Makefile_files.txt

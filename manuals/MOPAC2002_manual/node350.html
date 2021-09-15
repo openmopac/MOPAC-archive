@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Constraints</TITLE>
+<META NAME="description" CONTENT="3.4.3.1 Constraints">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node351.html">
+<LINK REL="previous" HREF="node349.html">
+<LINK REL="up" HREF="node349.html">
+<LINK REL="next" HREF="node351.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6120"
+ HREF="node351.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6116"
+ HREF="node349.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6110"
+ HREF="node349.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6118"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6119"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6121"
+ HREF="node351.html"> Conversion to Cartesian</A>
+<B> Up:</B> <A NAME="tex2html6117"
+ HREF="node349.html"> Internal Coordinate Definition</A>
+<B> Previous:</B> <A NAME="tex2html6111"
+ HREF="node349.html"> Internal Coordinate Definition</A>
+<BR>
+<H3><A NAME="SECTION00743100000000000000">
+ Constraints</A>
+</H3>
+<DL COMPACT>
+<DT>1.
+<DD>Interatomic distances must be greater than zero.  Zero &#197;ngstroms
+is  acceptable  only  if  the  parameter  is symmetry-related to
+    another atom, and is the dependent function.
+<P>
+<DT>2.
+<DD>Angles must be in the  range  0.0  to  180.0,  inclusive.   This
+    constraint  is for the benefit of the user only; negative angles
+    are the result of errors in the construction  of  the  geometry,
+    and  angles  greater  than  180  degrees are fruitful sources of
+    errors in the dihedrals.
+<P>
+<DT>3.
+<DD>Dihedral angles must be definable.  If atom <I>i</I> makes a  dihedral with
+    atoms <I>j</I>, <I>k</I>, and <I>l</I>, and the three atoms <I>j</I>, <I>k</I>, and <I>l</I> are in a
+    straight line, then the dihedral has no definable angle.  During the 
+    calculation this constraint is checked continuously, and if atoms <I>j</I>, <I>k</I>,
+    and <I>l</I> lie within 0.02 &#197;ngstroms of a straight  line, an attempt will
+    be made to re-number the connectivity.  If this fails, the calculation will
+    output an error message and then stop. The exceptions to this constraint
+    are:
+<DL COMPACT>
+<DT>(a)
+<DD>if the angle is zero or 180 degrees, in which case the dihedral 
+is not used.
+<P>
+<DT>(b)
+<DD>if atoms <I>j</I>, <I>k</I>, and <I>l</I> lie in an  exactly  straight  line
+    (usually  the result of a symmetry constraint), as in acetylene,
+    acetonitrile, but-2-yne, etc.
+</DL></DL>
+<P>
+If the exceptions are used, care must be taken to  ensure  that  the
+program  does  not  violate these constraints during any optimizations or
+during any calculations of derivatives--see also <TT>FORCE</TT>.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6120"
+ HREF="node351.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6116"
+ HREF="node349.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6110"
+ HREF="node349.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6118"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6119"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6121"
+ HREF="node351.html"> Conversion to Cartesian</A>
+<B> Up:</B> <A NAME="tex2html6117"
+ HREF="node349.html"> Internal Coordinate Definition</A>
+<B> Previous:</B> <A NAME="tex2html6111"
+ HREF="node349.html"> Internal Coordinate Definition</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

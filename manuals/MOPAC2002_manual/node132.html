@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>BIRADICAL </TITLE>
+<META NAME="description" CONTENT="BIRADICAL ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node133.html"><LINK REL="previous" HREF="node131.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node133.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node133.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node131.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node133.html">BONDS </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node131.html">BIGSCF (MOZYME) </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>BIRADICAL</TT> </H2>
+<P>Note: <TT>BIRADICAL</TT> is a redundant keyword, and represents a particular configuration interaction calculation. Experienced users of 
+<a href="node486.html">MECI</a> can duplicate the effect of the keyword <TT>BIRADICAL</TT> by using the MECI keywords <TT>
+<a href="node251.html">OPEN(2,2)</a></TT> and <TT><a href="node306.html">SINGLET</a></TT>. </P>
+<P>For molecules which are believed to have biradicaloid character, the option exists to optimize the lowest singlet energy state which results from the mixing of four microstates. These microstates are, in order: the microstate arising from a one electron excitation from the HOMO to the LUMO (Microstate 1 in the&nbsp;<A HREF="node132.html#birad">Figure</A>); the microstate resulting from the <A NAME="BM1603">&nbsp;</A> time-reversal operator acting on the parent microstate (Microstate 2); the microstate resulting from de-excitation from the formal LUMO to the HOMO (Microstate 3); and the microstate resulting from the single electron in the formal HOMO being excited into the LUMO (Microstate 4). Microstates 1 and 2 mix to form a singlet state,(1/2)<sup>1/2</sup>(<font face="Symbol">Y</font><sub>1</sub>-<font face="Symbol">Y</font><sub>2</sub>) <!-- MATH: $1/\sqrt{2}(\Psi_1 -
+\Psi_2)$ -->, and a triplet state <!-- MATH: $1/\sqrt{2}(\Psi_1 + \Psi_2)$ -->
+(1/2)<sup>1/2</sup>(<font face="Symbol">Y</font><sub>1</sub>+<font face="Symbol">Y</font><sub>2</sub>). Microstates 3 and 4 are true singlet states. The singlet state arising from microstates 1 and 2 mixes with the (micro)states 3 and 4 to form three singlet states. 
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="birad">&nbsp;<A NAME="BM3641"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Configurations used in <TT>BIRADICAL</TT> Calculation</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P><DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{picbirad}$ --><IMG SRC="img102.gif" WIDTH=571 HEIGHT=198 ALT="includegraphics{picbirad}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV><BR>
+A configuration interaction calculation is involved here. A biradical calculation done without C.I. at the RHF level would be meaningless.&nbsp; Either rotational invariance would be lost, as in the D<SUB>2<I>d</I></SUB> form of ethylene, or very artificial barriers to rotations would be found, such as in a methane molecule "orbiting" a D<SUB>2<I>d </I></SUB>ethylene. In both cases the inclusion of limited configuration interaction corrects the error. <TT>BIRADICAL</TT> should not be used if either the HOMO or LUMO is degenerate; in this case, the full manifold of HOMO 
+*LUMO should be included in the C.I., using MECI options. The user should be aware of this situation. When the biradical calculation is performed correctly, the result is normally a net stabilization. However, if the first singlet excited state is much higher in energy than the closed-shell ground state, <TT>
+BIRADICAL </TT>can lead to a destabilization. Abbreviation: <TT>BIRAD</TT>. See also <TT><A HREF="node486.html">MECI</A></TT>, <TT>
+<a href="node134.html">C.I.</a></TT>, <TT><a href="node251.html">OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</a></TT>, <TT><a href="node306.html">SINGLET</a></TT>. 
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html3491"><A HREF="node133.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html3487"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html3481"></A><A HREF="node131.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html3489"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html3490"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html3492"><A HREF="node133.html">BONDS </A></A><B>Up:</B> <A NAME="tex2html3488"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html3482"><A HREF="node131.html">BIGSCF (MOZYME) </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

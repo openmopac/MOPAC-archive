@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Suggested procedure for locating bugs</TITLE>
+<META NAME="description" CONTENT="Suggested procedure for locating bugs">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node690.html">
+<LINK REL="up" HREF="node689.html">
+<LINK REL="next" HREF="node692.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html10752"
+ HREF="node692.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html10748"
+ HREF="node689.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html10744"
+ HREF="node690.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html10750"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html10751"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html10753"
+ HREF="node692.html"> Bugs discovered in</A>
+<B> Up:</B> <A NAME="tex2html10749"
+ HREF="node689.html"> Keywords for use</A>
+<B> Previous:</B> <A NAME="tex2html10745"
+ HREF="node690.html">Notes</A>
+<!--End of Navigation Panel-->
+<H2>Suggested procedure for locating bugs
+</H2>
+Users are supplied with the source code for MOPAC, and,  while  the original 
+code is fairly bug-free, after it has been modified there is a possibility that
+bugs may have been introduced.  In these  circumstances the  author  of  the 
+changes  is obviously responsible for removing the offending bug, and the 
+following  ideas  might  prove  useful  in  this context.
+<P>
+First of all, and most important, before any modifications are done a  back-up 
+copy  of the standard MOPAC should be made.  This will prove invaluable in
+pinpointing deviations from the  standard  working.   This point  cannot  be 
+over-emphasized--<EM>make  a  back-up before modifying MOPAC!</EM>
+<P>
+Clearly, a bug can occur almost  anywhere,  and  a  logical  search sequence is
+necessary in order to minimize the time taken to locate it.
+<P>
+If possible, perform the debugging with a small molecule, in  order to  save 
+time  (debugging  is,  of  necessity,  time  consuming) and to minimize output.
+<P>
+The two sets of subroutines  in  MOPAC,  those  involved  with  the
+electronics  and  those  involved  in  the geometrics, are kept strictly
+separate, so the first question to be answered is which set contains the bug.  
+If the heats of formation, derivatives, I.P.s, and charges, etc., are correct, 
+the  bug  lies  in  the  geometrics;  if  faulty,  in  the electronics.
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<A NAME="CHILD_LINKS">&#160;</A>
+<UL>
+<LI><A NAME="tex2html10754"
+ HREF="node692.html"> Bugs discovered in the electronics subroutines</A>
+<LI><A NAME="tex2html10755"
+ HREF="node693.html"> Bugs discovered in the geometric subroutines</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html10752"
+ HREF="node692.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html10748"
+ HREF="node689.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html10744"
+ HREF="node690.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html10750"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html10751"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html10753"
+ HREF="node692.html"> Bugs discovered in</A>
+<B> Up:</B> <A NAME="tex2html10749"
+ HREF="node689.html"> Keywords for use</A>
+<B> Previous:</B> <A NAME="tex2html10745"
+ HREF="node690.html">Notes</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

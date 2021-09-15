@@ -1,0 +1,164 @@
+\chapter {Bibliography }
+
+\subsubsection*{Elements}
+\begin{description}
+\item[MINDO/3]~\\
+The oldest (1975) of the methods used in MOPAC~\cite{mopac} is
+MINDO/3~\cite{mindo3}, which was parameterized for H, B, C, N, O, F, Si, P, S,
+and Cl~\cite{mindo3}. Some faults were found in the P--O, P--F and P--Cl
+parameters~\cite{mindo3-p}, but these were \emph{not} corrected in MOPAC (see
+Section~\ref{mindo3-p}).
+
+\item[MNDO]~\\
+Later, in 1977 MNDO~\cite{mndo1} appeared.   Initially, parameters were
+available for C, H, N, and O only~\cite{mndo1}.  Results were much
+better~\cite{mndo2} than  for MINDO/3, and MNDO was soon extended to
+B~\cite{mndo-al}, F~\cite{mndo-f},
+%Na~\cite{mndo-na},
+Al~\cite{mndo-al}, Si~\cite{mndo-si},  P~\cite{mndo-p}, S~\cite{mndo-s},
+Cl~\cite{mndo-cl},
+% K~\cite{mndo-k},
+Zn~\cite{mndo-zn},  Ge~\cite{mndo-ge}, Br~\cite{mndo-br}, Sn~\cite{mndo-sn},
+I~\cite{mndo-i}, Hg~\cite{mndo-hg}, and Pb~\cite{mndo-pb}.
+
+\item[AM1]~\\
+Many of the faults in MNDO were corrected in AM1~\cite{am1}, which also was
+initially available only for H, C, N, and O~\cite{am1}.  AM1 has since been
+extended to B~\cite{am1-b}, F~\cite{am1-x}, Al~\cite{am1-al},
+Si~\cite{am1-si},  P~\cite{am1-p}, S~\cite{am1-s}, Cl~\cite{am1-x},
+Zn~\cite{am1-zn}, Ge~\cite{am1-ge},  Br~\cite{am1-x},  I~\cite{am1-x}, and
+Hg~\cite{am1-hg}. Four unpublished elements available under AM1 are As, Se, Sb,
+and Te.
+
+\item[PM3]~\\
+In 1985, PM3~\cite{pm3-1} was developed.  Initially, 12 elements were
+available: H, C, N, O, F, Al, Si, P, S, Cl, Br, and I~\cite{pm3-2}. This set
+was expanded in 1991 to include Be, Mg, Zn, Ga, Ge, As, Se, Cd, In, Sn, Sb, Te,
+Hg, Tl, Pb, and Bi~\cite{pm3-3}.  In 1993 lithium was
+parameterized~\cite{pm3-li}.
+
+\item[MNDO-$d$]~\\
+When $d$ orbitals are added to the basis set~\cite{mndod}, the accuracy of the
+method rises.  At present (1998), parameters are available for Al, Si, P, S,
+Cl, Br, and I~\cite{mndod}.
+\end{description}
+
+\subsubsection*{Geometry}
+By default, geometries are optimized using Baker's EF routine~\cite{ef-ts}. If
+this is not desired, then the
+Broyden~\cite{bfgs1}-Fletcher~\cite{bfgs2}-Goldfarb~\cite{bfgs3}-Shanno~\cite{bfgs4}
+method can be used. This replaces the older
+Davidon~\cite{dfp1}-Fletcher~\cite{dfp2}-Powell~\cite{dfp3} method.   The
+Powell line search in both the BFGS and DFP methods has been upgraded with
+Thiel's FSTMIN technique~\cite{fstmin}.
+
+The energy minimum for intersystem crossing can be calculated using the method
+of Anglada and Bofill~\cite{cross}.
+
+Reaction paths can be followed, but sometimes (unavoidable) numerical
+instability causes difficulty~\cite{boyd}.
+
+Various methods can be used to locate transition states. In the region  of a
+transition state, TS~\cite{ef-ts} is the best method to use. Other options are
+NLLSQ~\cite{nllsq} and SIGMA~\cite{sigma1,sigma2}.
+
+However, getting to this region can often be difficult.  One effective strategy
+is to use the reaction path option.  A more costly method is the \comp{SADDLE}
+technique~\cite{saddle}.  Once the transition state is located, the geometry
+must be refined
+
+All systems can be characterized by determining the number of imaginary
+vibrations using FORCE~\cite{pulayf}.  Ground state systems should have none,
+and transition states should have exactly one imaginary frequency. The normal
+modes can then be used to calculate heat capacities and entropies and other
+thermodynamic quantities~\cite{thermo}.
+
+Molecular dynamics can be followed via DRC~\cite{drc}.
+
+\subsubsection*{Electronics}
+\begin{description}
+\item[SCF]~\\
+Semiempirical methods use approximations to the
+Roothaan~\cite{roothaan}-Hall~\cite{hall} equations.  The four approximate
+methods are MINDO/3~\cite{mindo3}, MNDO~\cite{mndo1}, AM1~\cite{am1}, and
+PM3~\cite{pm3-1} For RHF open shell systems, a
+Multi-Electron-Configuration-Interaction procedure~\cite{meci} is available.
+SCF convergence can be assisted by an inexpensive  SHIFT
+technique~\cite{shift},  by a slightly more complicated Direct Inversion of the
+Iterative Subspace  method (DIIS)~\cite{diis}, or by an expensive but
+sophisticated interpolation  procedure~\cite{king}.
+
+For large systems, an alternative to conventional methods is to use localized
+molecular orbitals~\cite{mozyme}.  This is usually more efficient, particularly
+for geometry optimization~\cite{crambin}.
+
+\item[Gradients]~\\
+For variationally-optimized wavefunctions, two derivative methods are
+available.  The default is to use finite difference, but under user request
+(\comp{ANALYT}), analytical derivatives can be used~\cite{analyt}. When
+analytical derivatives are used, STO-6G~\cite{sto-6g} Gaussian functions are
+used instead of Slater orbitals.
+
+When non-variationally optimized wavefunctions are used, the derivatives
+are much more complicated~\cite{analci}.
+\end{description}
+\subsubsection*{General}
+Fundamental constants are taken from the CODATA report~\cite{codata}.
+A good introduction to MOPAC can be found in Tim Clark's book~\cite{tclark}.
+\begin{description}
+\item[Results]~\\
+The SCF M.O.s, which diagonalize the Fock matrix, can be localized~\cite{local}
+to give M.O.s which can be identified with the conventional picture of
+two-electron bonds and lone pairs. The localization scheme is faster at the
+semiempirical level than the Edmiston-Ruedenberg~\cite{edmrue} or
+Boys~\cite{boys} methods.  Associated with each conventional M.O.\ is a
+bond-index~\cite{m.o.valency}, which represents the contribution to  the
+bond-order matrix due to each M.O.\ Bond orders and valencies can be displayed
+by use of \comp{BONDS}~\cite{bonds}. Other phenomena relating to bonding can
+also be calculated~\cite{nrm85,mrb86,mb89}.  An alternative to the normal
+Coulson density matrix is the Mulliken~\cite{mullik1,mullik2} matrix, invoked
+by \comp{MULLIK}.
+
+Dipole moments for ions are coordinate system dependent, so by
+definition~\cite{dipoles_for_ions},\index{Ions!dipole moment for} the center of
+mass is used. Higher terms, e.g., polarizability, and first and second
+hyperpolarizability, can be calculated~\cite{polar} by \comp{POLAR}.
+
+Ionization potentials~\cite{koopmans} can be corrected using Green's
+Functions~\cite{gf1,gf2,gf3,gf4,gf5,gf6}
+
+\item[Solvent and Electrostatics]~\\
+Solvent phenomena can be studied.  The COSMO technique~\cite{cosmo}, unlike the
+self-consistent reaction fields~\cite{scrf}, allows  geometries to be
+optimized. Although the Miertus-Scrocco-Tomasi model~\cite{mst,mt} cannot
+optimize geometries, is more sophisticated in that it allows cavitation
+effects.  This model has been modified~\cite{lno,glo,nol,lbo,obl}  to  allow
+NDDO methods to be used. In this, optimized VdW radii~\cite{ojl,blo} are used
+to construct~\cite{pastb} a cavity.
+
+The free energy of hydration is computed as the addition of three
+contributions:
+
+\begin{enumerate}
+\item The electrostatic term, which is computed from the linear free energy
+response theory~\cite{mst,mt,lno,glo,nol,lbo,obl}.
+\item The cavitation contribution, which is computed from Pierotti's scaled
+particle theory~\cite{rap}.
+\item The van der Waals terms, which is computed using a linear relation with
+the solute accessible surface, and optimized ``hardness''
+parameters~\cite{ojl,blo}.
+\end{enumerate}
+
+In addition to the free energy of hydration a ``solvent-adapted'' wavefunction
+is obtained. Such a wavefunction can be used to determine changes in
+solute properties due to the solvent~\cite{lobg,lo,lo2,lobg2}.
+
+Electrostatic potentials can be used with the MST method both by deorthogonalizing
+the wavefunction~\cite{lio,alo,lo3} and by keeping the wavefunction
+orthogonal~\cite{frr,alo2}
+
+Other ESP methods available are the Merz-Bessler technique~\cite{esp} and
+the Ford-Wang procedure~\cite{pmep1,pmep2}.  The Ford-Wang is much faster and
+more accurate than the Merz-Bessler method, but is limited to AM1 calculations
+on systems containing H, C, N, O, F, and Cl, only.
+\end{description}

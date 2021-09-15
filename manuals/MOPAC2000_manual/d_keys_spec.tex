@@ -1,0 +1,34 @@
+\section{Keywords}
+\subsection{Specification of Keywords}
+All control data are entered in the form of keywords, which form the first 
+line  of  a data-file.  A description of what each keyword does is given in
+Section~\ref{defkey}. The order in which keywords  appear is not important,
+although they must be separated by a space.  Some keywords can be abbreviated;
+allowed abbreviations are noted in Section~\ref{defkey}  (for example,
+\comp{1ELECTRON} can be entered as \comp{1ELECT}).  However, the full keyword
+is preferred in order to  more  clearly  document  the  calculation  and  to
+prevent  the  possibility  that  an  abbreviated  keyword  might  not  be
+recognized.  If there is insufficient space in the first line for all the
+keywords  needed,  then consider abbreviating the longer words.  One type of
+keyword, those with an equal sign, such as \comp{BAR=0.05},  may  not  be
+abbreviated, and the full word needs to be supplied.
+
+Keywords which involve an equal sign, such as \comp{SCFCRT=1.D-12}, cannot be
+written with spaces before or after the  equal  sign.   Thus  \comp{SCFCRT=
+1.D-12}, \comp{SCFCRT  =  1.D-12}, etc., are not allowed.  
+
+If two keywords which are  incompatible,  like  \comp{UHF}  and \comp{C.I.}, 
+are supplied,  or  a keyword which is incompatible with the species supplied,
+for instance \comp{TRIPLET} and a  methyl  radical,  then  error  trapping 
+will normally occur, and an error message will be printed.  This usually takes
+an insignificant amount of time, so data are quickly checked for obvious
+errors.
+
+Keywords are normally supplied as the first line of a data-file.  Options
+exist, however, which allow users to:
+\begin{itemize}
+\item Supply more than one line of keywords.
+%\item Change other data, namely the title of the job and (optionally)
+%the description of the job into keywords.
+\item To have frequently-used sets of keywords stored in an auxiliary file.
+\end{itemize}

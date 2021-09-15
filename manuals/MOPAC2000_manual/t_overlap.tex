@@ -1,0 +1,300 @@
+\subsection{Overlap Integrals}\index{Overlap!integrals|(}
+The particular technique used for the evaluation of the overlap integral
+depends on the atoms involved and whether analytic derivatives are used. All
+five semiempirical \index{Slater orbitals} methods use Slater-type orbitals,
+STOs, although when analytic derivatives are involved~\cite{analyt}, a
+Gaussian  \index{Gaussian!orbitals} expansion~\cite{analyt} of STOs is normally
+used.
+
+Specific expressions for various of the overlap integrals have appeared in the
+literature. These are normally used for those overlaps which involve only small
+principal quantum numbers, PQN, $n$, and a low angular quantum \index{Quantum
+numbers! in overlap} number, $l$. For the general case, however, in which any
+PQN may be encountered, the general overlap integral is used. As the final
+expression is rather ungainly, a simple derivation of the overlap integral will
+be given.
+
+Slater atomic orbitals are of form\label{so}
+$$
+\varphi = \frac{(2\xi )^{n+1/2}}{(2n)!^{1/2}}r^{n-1}e^{-\xi r}Y_l^m(\theta ,\phi ),
+$$
+where the $Y_l^m(\theta ,\phi )$ are the normalized complex spherical
+\index{Spherical harmonics}
+harmonics. Complex spherical harmonics are chosen for convenience;
+$Y_l^m(\theta ,\phi )$ real orbitals have a similar behavior, but require more
+manipulation. The $\theta$ dependence of
+\index{Laguerre polynomials}
+spherical harmonics are the Laguerre polynomials, of form
+$$
+Y_l^m(\theta ,\phi ) = \frac{e^{im\phi }}{(2\pi )^{1/2}}\left [\frac{(2l+1)(l-m)!}{2(l+m)!}\right ]^{1/2}
+\frac{sin^m\theta\ d^{l+m}(cos^2\theta-1)^l}{2^l\ l!\ (d\ cos\theta)^{l+m}}.
+$$
+For convenience the phase factor is set to +1; this varies according to which
+source is used and the purpose for which the Laguerre polynomials are used.
+
+Solving the differential gives
+$$
+\frac{d^{l+m}}{(d\ cos\theta)^{l+m}}(cos^2\theta-1)^l = \sum_j\frac{l!\ (2j)!\ (-1)^{l+j}}{(l-j)!\ j!\ (2j-l-m)!}(cos\theta )^{2j-l-m},
+$$
+which, on rearranging to have the summation start at zero,
+becomes
+$$
+\frac{d^{l+m}}{(d\ cos\theta)^{l+m}}(cos^2\theta-1)^l = \sum_{j=0}^{1/2(l-m)}\frac{l!\ (2(l-j))!\ (-1)^j}{j!\ (l-j)!\ (l-m-2j)!}(cos\theta )^{l-m-2j}.
+$$
+Substituting this into the STO yields
+\begin{eqnarray}
+\varphi &=& \frac{(2\xi )^{n+1/2}}{(2n)!^{1/2}}\left [\frac{(2l+1)(l-m)!}{2(l+m)!}\right ]^{1/2}\left [\frac{sin^m\theta }{2^l}r^{n-1}e^{-\xi r}\frac{e^{im\phi}}{(2\pi )^{1/2}}\right ] \nonumber \\
+&& \sum_{j=0}^{1/2(l-m)}\frac{(2(l-j))!\ (-1)^j}{j!\ (l-j)!\ (l-m-2j)!}(cos\theta )^{l-m-2j}. \nonumber
+\end{eqnarray}
+At this point it is convenient to collect some of the constants together; thus,
+$$
+C_{lmj}=\left [\frac{(l-m)!}{(l+m)!}\right ]^{1/2}\frac{(2(l-j))!\ (-1)^j}{2^l\ j!\ (l-j)!\ (l-m-2j)!},
+$$
+which allows us to represent the STO in a considerably simplified form:
+$$
+\varphi = \frac{(2\xi )^{n+1/2}}{(2n)!^{1/2}}\frac{(2l+1)^{1/2}}{2^{1/2}}sin^m\theta\
+\/ r^{n-1}\ e^{-\xi r}\frac{e^{im\phi}}{(2\pi )^{1/2}}\sum_{j=0}^{1/2(l-m)}C_{lmj}(cos\theta)^{l-m-2j}.
+$$
+The overlap integral of two STOs can then be represented as
+\begin{eqnarray}
+<\varphi _a\varphi _b>& =& \frac{(2\xi _a)^{na+1/2}(2\xi _b)^{nb+1/2}}{((2n_a)!(2n_b)!)^{1/2}}
+\frac{[(2l_a+1)(2l_b+1)]^{1/2}}{2}\nonumber \\ &&
+\int _0^{\infty}sin^m\theta _a\/sin^m\theta _b\/r_a^{na-1}\/r_b^{n_b-1}e^{-r_a\xi _a}\/e^{-r_b\xi _b}\/
+\frac{e^{im\phi}e^{im\phi *}}{2\pi } \nonumber \\
+ & & \sum_{j_a=0}^{1/2(l_a-m)}C_{i_amj_a}(cos\theta_a)^{l_a-m-2j_a}
+  \sum_{j_b=0}^{1/2(l_b-m)}C_{i_bmj_b}(cos\theta_b)^{l_b-m-2j_b}{\rm d}v\nonumber
+\end{eqnarray}
+It is impractical to solve this integral using polar
+\index{Coordinates!prolate spheroidal}
+coordinates. Instead, a prolate spheroidal coordinate system is used. Using
+the identities:
+$$
+\begin{array}{ccc}
+r_a=\frac{R(\mu + \nu)}{2};  & cos\theta _a = \frac{(1+\mu \nu )}{(\mu + \nu )};&sin\theta _a = \frac{((\mu ^2-1)(1-\nu ^2))^{1/2}}{(\mu + \nu )} \\
+ r_b=\frac{R(\mu - \nu)}{2}; &cos\theta _b = \frac{(1-\mu \nu )}{(\mu - \nu )};&
+sin\theta _b = \frac{((\mu ^2-1)(1-\nu ^2))^{1/2}}{(\mu - \nu )},
+\end{array}
+$$
+this gives
+$
+dv = \frac{R^3}{8}(\mu + \nu )(\mu - \nu)d\mu d\nu d\phi.
+$
+
+Substituting these identities into the previous
+expression we get:
+\begin{eqnarray}
+<\varphi _a\varphi _b>& =& \int _0^{2\pi }\int _{-1}^{1} \int _1^{\infty}
+\xi_a ^{n_a+1/2}\xi_b^{n_b+1/2}\left [\frac{(2l_a+1)(2l_b+1)}{(2n_a)!(2n_b)!}\right ]
+^{1/2} \nonumber \\
+&&\frac{((\mu ^2-1)(1-\nu ^2))^m}{(\mu+\nu)^m(\mu-\nu)^m}
+\frac{R^{n_a-1}}{2^{n_a-1}}(\mu+\nu)^{n_a-1}\frac{R^{n_b-1}}{2^{n_b-1}}(\mu-\nu)^{n_b-1}\nonumber \\
+&&\frac{e^{-R\xi_a(\mu+\nu)/2}e^{-R\xi_b(\mu-\nu)/2}}{2\pi}
+ \nonumber \\
+&&\sum_{j_a=0}^{(l_a-m)/2}\sum_{j_b=0}^{(l_b-m)/2}
+C_{l_amj_a}C_{l_bmj_b}\frac{(1+\mu\nu)^{l_a-m-2j_a}(1-\mu\nu)^{l_b-m-2j_b}}
+{(\mu+\nu)^{l_a-m-2j_a}(\mu-\nu)^{l_b-m-2j_b}} \nonumber \\&&
+\frac{R^3}{8}(\mu+\nu)(\mu-\nu)d\mu d\nu d\phi , \nonumber
+\end{eqnarray}
+which, on integrating over and rearranging, gives:
+\begin{eqnarray}
+<\varphi _a\varphi _b>& =& \int _{-1}^{1} \int _1^{\infty}
+\frac{\xi_a ^{n_a+1/2}\ \xi_b^{n_b+1/2}}{2}\left [\frac{(2l_a+1)(2l_b+1)}{(2n_a)!(2n_b)!}\right ]
+^{1/2}\ R^{n_a+n_b+1} \nonumber \\
+&&\sum_{j_a=0}^{(l_a-m)/2}\sum_{j_b=0}^{(l_b-m)/2}
+C_{l_amj_a}\ C_{l_bmj_b}(\mu^2-1)^m(1-\nu^2)^m(\mu+\nu)^{n_a-l_a+2j_a}\nonumber \\&&
+(\mu-\nu)^{n_b-l_b+2j_b}(1+\mu\nu)^{l_a-m-2j_a}(1-\mu\nu)^{l_b-m-2j_b}
+\ e^{-R\xi_a(\mu+\nu)/2}\ e^{-R\xi_b(\mu-\nu)/2}d\mu d\nu . \nonumber
+\end{eqnarray}
+This is a product of six simple expressions of type $(a+b)^n$. Expanding each
+term as a binomial generates six summations:
+\begin{eqnarray}
+<\varphi _a\varphi _b>& =& \int _{-1}^{1} \int _1^{\infty}
+\frac{\xi ^{n_a+1/2}\ \xi^{n_b+1/2}}{2}\left [\frac{(2l_a+1)(2l_b+1)}{(2n_a)!(2n_b)!}\right ]
+^{1/2}\ R^{n_a+n_b+1} \nonumber \\
+&&\sum_{j_a=0}^{(l_a-m)/2}\sum_{j_b=0}^{(l_b-m)/2}
+C_{l_amj_a}\ C_{l_bmj_b}\sum_{k_a=0}^m\sum_{k_b=0}^m
+\sum_{P_a}^{n_a-l_a+2j_a}\sum_{P_b}^{n_b-l_b+2j_b}
+\sum_{q_a}^{l_a-m-2j_a}\sum_{q_b}^{l_b-m-2j_b} \nonumber \\ &&
+\frac{(l_b-m-2j_b)!}{(l_b-m-2j_b-q_b)!q_b!}
+\frac{(l_a-m-2j_a)!}{(l_a-m-2j_a-q_a)!q_a!}
+\frac{(n_b-l_b+2j_b)!}{(n_b-l_b+2j_b-P_b)!P_b!} \nonumber \\ &&
+\frac{(n_a-l_a+2j_a)!}{(n_a-l_a+2j_a-P_a)!P_a!}
+\frac{m!^2}{(m-k_b)!k_b!(m-k_a)!k_a!}  \nonumber \\ &&
+(-1)^{k_a+k_b+m+P_b+q_b}
+\nu^{2k_a+P_a+P_b+q_a+q_b}
+\mu^{2k_b+n_a-l_a+2j_a+n_b-l_b+2j_b-P_a-P_b+q_a+q_b}{\rm d}\mu\ {\rm d}\nu.
+  \nonumber
+\end{eqnarray}
+
+Using integration by parts, and making use of the following
+integrals (The ``A'' and ``B'' overlap integrals): \label{ab}
+$$
+\int_1^{\infty}x^ne^{-ax}dx=e^{-a}\sum_{\mu=1}^{n+1}\frac{n!}{a^{\mu}(n-\mu+1)}=A_n(a)
+$$
+$$
+\int_{-1}^{1}x^ne^{-ax}dx=-e^{-a}\sum_{\mu=1}^{n+1}\frac{n!}{a^{\mu}(n-\mu+1)}
+-e^a\sum_{\mu=1}^{n+1}\frac{n(-1)^{n-\mu}}{a^{\mu}(n-\mu+1)!} =B_n(a),
+$$
+the overlap integral becomes
+\begin{eqnarray}
+<\varphi _a\varphi _b>& =&
+\frac{\xi ^{n_a+1/2}\xi^{n_b+1/2}}{2}\left [\frac{(2l_a+1)(2l_b+1)}{(2n_a)!(2n_b)!}\right ]
+^{1/2}R^{n_a+n_b+1} \nonumber \\ &&
+\sum_{j_a=0}^{(l_a-m)/2}C_{l_amj_a}\sum_{j_b=0}^{(l_b-m)/2}
+C_{l_bmj_b}\sum_{k_a=0}^m\sum_{k_b=0}^m
+\sum_{P_a=0}^{n_a-l_a+2j_a}\sum_{P_b=0}^{n_b-l_b+2j_b}
+\sum_{q_a=0}^{l_a-m-2j_a}\sum_{q_b=0}^{l_b-m-2j_b} \nonumber \\ &&
+\frac{(l_b-m-2j_b)!}{(l_b-m-2j_b-q_b)!q_b!}
+\frac{(l_a-m-2j_a)!}{(l_a-m-2j_a-q_a)!q_a!}
+\frac{(n_b-l_b+2j_b)!}{(n_b-l_b+2j_b-P_b)!P_b!} \nonumber \\ &&
+\frac{(n_a-l_a+2j_a)!}{(n_a-l_a+2j_a-P_a)!P_a!}
+\frac{m!^2}{(m-k_b)!k_b!(m-k_a)!k_a!}
+(-1)^{k_a+k_b+m+P_b+q_b} \nonumber \\ &&
+B_{2k_a+P_a+P_b+q_a+q_b}\left (\frac{R(\xi_a-\xi_b)}{2}\right )
+A_{2k_b+n_a-l_a+2j_a+n_b-l_b+2j_b-P_a-P_b+q_a+q_b}\nonumber \\ &&
+\left (\frac{R(\xi_a+\xi_b)}{2}\right )
+{\rm d}\mu\ {\rm d}\nu , \nonumber
+\end{eqnarray}
+
+
+in which the coefficients $C_{lmj}$ have the numerical values given
+in Table~\ref{clmj}.
+\begin{table}
+\caption{\label{clmj} Values of $C_{lmj}$}
+\begin{center}
+\begin{tabular}{llllllll} \hline
+l & m & j & C$_{lmj}$    & l & m & j & C$_{lmj}$ \\ \hline
+0 & 0 & 0 & 1.0        & 3 & 0 & 0 & 5/2 \\
+1 & 0 & 0 & 1.0        & 3 & 1 & 0 & (225/48)$^{1/2}$ \\
+1 & 1 & 0 & (1/2)$^{1/2}$ & 3 & 2 & 0 & (15/8)$^{1/2}$ \\
+2 & 0 & 0 & 3/2        & 3 & 3 & 0 & (5/16)$^{1/2}$ \\
+2 & 1 & 0 & (3/2)$^{1/2}$ & 3 & 0 & 1 & -3/2 \\
+2 & 2 & 0 & (3/8)$^{1/2}$ & 3 & 1 & 1 & -(3/16)$^{1/2}$ \\
+2 & 0 & 1 & -1/2       & \\ \hline
+\end{tabular}\\
+Note: In subroutine SS the array AFF(l,m,2j) corresponds to C$_{lmj}$ here.
+\end{center}
+\end{table}
+which is the most convenient form for algorithmic use.
+
+In this form, the overlap integral can be found in function SS.
+\index{Overlap!integrals|)}
+
+\subsubsection{Rotation of Atomic Orbitals}
+As calculated, the overlap integrals represent the overlap of atomic
+orbitals that are aligned along the $z$-axis.  In general, this will not
+be the case, and the diatomic overlap integral matrix must be rotated in
+order to represent the actual orientation used.
+
+The rotation matrices are well known, but the method by which they are
+constructed is by no means simple.  Consider the general case of one atom at
+the origin, and a second atom at some point $p(x,y,z)$.
+Let the angle from the
+second atom to the first atom to $z$ axis be $b$, and the angle of the projection
+of the second atom onto the $xy$ plane to the $y$ axis be $a$.  Then, the $p$-orbital
+transform is as shown in Figure~\ref{p-rot}.
+\input{p_rot}
+The rotation matrices for the higher harmonics are fairly difficult to construct.
+In this work, several mathematical tools will be used.  These are presented in
+Figure~\ref{maths}.
+
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{enumerate}
+\item All odd integrals, i.e., integrals of the type $<\!x^n\!>$, where $n$
+is an odd integer, are zero.
+\item $<\!x^2\!>=<\!y^2\!>=<\!z^2\!> \neq 0$
+\item $<\!x^2y^2\!>=<\!y^2x^2\!>=<\!y^2z^2\!>=<\!z^2x^2\!>\neq 0$
+\item $<\!x^4\!>=<\!y^4\!>=<\!z^4\!>\neq 0$
+\item All integrals of the type $<\!a^nb^mc^l\!>$ where $a$, $b$, and $c$
+are different members of the set ($x$,$y$,$z$) are equal.
+\item The normalization condition for the spherical harmonics is:
+$$
+\int_0^{2\pi}\int_0^{\pi}Y_l^m(\theta\phi)^2\sin\theta {\rm d}\theta{\rm d}\phi =1
+$$
+\item $\cos^2\theta+\sin^2\theta=1$
+\item $\cos 2\theta = 2\cos^2\theta -1$
+\item $\sin 2\theta = 2\sin\theta .\cos\theta$
+\item All atomic orbitals are assumed to be normalized:
+$$
+<\!\psi^2\!>=1
+$$
+\item $x=r\sin\theta.\cos\phi,\ \ y=r\sin\theta.\sin\phi,\ \ z=r\cos\theta.$
+\end{enumerate}
+
+When working with the angular components, it is normally easier to use the
+Cartesian symbols $x$, $y$, and $z$ instead of the trigonometric forms.  This
+avoids the potentially confusing expressions that involve the angles $a$, $b$,
+$\theta$, and $\phi$.
+
+\caption{\label{maths} Mathematical Tools for use with Spherical Harmonics}
+\end{figure}
+
+Consider the rotation of $d(x^2-y^2)$. The rotation components involved are:
+$$
+R(x) = (\cos a.\cos b)x +(\sin a.\cos b)y +(-\sin b)z,
+$$
+and
+$$
+R(y) = (-\sin a)x +(\cos a)y.
+$$
+The rotation matrix element $<d(x^2-y^2)|R|d(x^2-y^2)>$ can be derived
+using the relationship:
+\begin{eqnarray}
+R|d(x^2-y^2)> &=& (\cos^2 a.\cos^2 b)x^2+(2\cos a.\cos b.\sin a.\cos b)xy+
+                (-2\cos a.\cos b.\sin b)xz+\nonumber \\
+              & & (\sin^2a.\cos^2b)y^2+(-2\sin a.\cos b.\sin b)yz+
+(\sin^2b)z^2+\nonumber \\
+              & &(-\sin^2a)x^2+(2\sin a.\cos a)xy+(-\cos^2a)y^2.\nonumber
+\end{eqnarray}
+
+In this expression, the integral over all odd terms vanish, therefore:
+\begin{eqnarray}
+<d(x^2-y^2)|R|d(x^2-y^2)>&=&
+<x^2(\cos^2 a.\cos^2 b-\sin^2a)x^2>+\nonumber \\
+& &<x^2(\sin^2a.\cos^2b-\cos^2a)y^2>+\nonumber \\
+& &<x^2(\sin^2b)z^2>+\nonumber \\
+& &<y^2(-\cos^2 a.\cos^2 b+\sin^2a)x^2>+\nonumber \\
+& &<y^2(-\sin^2a.\cos^2b+\cos^2a)y^2>+ \nonumber \\
+& &<y^2(-\sin^2b)z^2>.\nonumber
+\end{eqnarray}
+The integral $<\!x^4\!>$ has the same value as $<\!y^4\!>$, and
+$<\!x^2y^2\!>$ has the same
+value as $<\!x^2z^2\!>$, etc., therefore this expression can be simplified.
+Collecting together terms of the type $<\!x^4\!>$ gives
+$$
+\cos^2 a.\cos^2 b-\sin^2a -\sin^2a.\cos^2b+\cos^2a,
+$$
+or
+$$
+(\cos^2b+1).(2\cos^2a-1).
+$$
+Collecting terms of the type $<\!y^2x^2\!>$ gives
+$$
+\sin^2a.\cos^2b-\cos^2a+\sin^2b-\cos^2 a.\cos^2 b+\sin^2a-\sin^2b,
+$$
+or
+$$
+-(\cos^2b+1).(2\cos^2a-1).
+$$
+The rotation matrix element is thus:
+$$
+<d(x^2-y^2)|R|d(x^2-y^2)>=<\!x^4-2x^2y^2+y^4\!>\frac{1}{2}(\cos^2b+1).(2\cos^2a-1)
+$$
+As a result of the fact that the angular components of the atomic orbitals
+are normalized, i.e., $<\!x^4-2x^2y^2+y^4\!>$=1:
+$$
+<d(x^2-y^2)|R|d(x^2-y^2)>=(2\cos^2a-1)\cos^2b+\frac{1}{2}(2\cos^2a-1)\sin^2b,
+$$
+which is the form used in the calculation of the $d$-rotation matrix.
+The full set of $d$-orbital rotation matrix elements is presented in
+Table~\ref{d_rot}.
+\input{d_rot}
+
+The $f$-orbitals are even more complicated.  Unlike the $d$-orbitals, there are
+two complete and equivalent sets of $f$-orbitals.  The set selected is that set
+which transforms as $\sigma$, $\pi$, $\delta$, and $\phi$ when viewed along the
+$z$ axis.  The $f$-orbital transform is presented in Table~\ref{f_rot1} and
+\ref{f_rot2}.
+\input{f_rot}

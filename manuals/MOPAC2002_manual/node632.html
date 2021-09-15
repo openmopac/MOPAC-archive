@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>COSMO (Conductor-like Screening Model)</TITLE>
+<META NAME="description" CONTENT="8.22 COSMO (Conductor-like Screening Model)">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node642.html"><LINK REL="previous" HREF="node629.html"><LINK REL="up" HREF="node439.html"><LINK REL="next" HREF="node633.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node633.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node631.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node633.html">A Walk Through COSMO</A> <B>Up:</B> <A HREF="node439.html">Theory</A> <B>Previous:</B> <A HREF="node631.html">Examples of POLAR keyword</A>
+<!--End of Navigation Panel-->
+<H1>COSMO (Conductor-like Screening Model) </H1>
+<P>Based on materials provided by <DIV ALIGN="CENTER">Dr Andreas Klamt <BR>
+Burscheider Strasse 524 <BR>
+D-51381 Leverkusen <BR>
+Germany <BR>
+</DIV></P>
+<P>Unlike the Self-Consistent Reaction Field model&nbsp;[<A HREF="node715.html#scrf">74</A>], the <B>Co</B>nductor-like <B>S</B>creening <B>Mo</B>del (COSMO) is a continuum approach&nbsp;[<A HREF="node715.html#cosmo">30</A>] which, while more complicated, is computationally quite efficient. The expression for the total screening energy is simple enough to allow the first derivatives of the energy with respect to atomic coordinates to be easily evaluated. </P>
+<P>The COSMO procedure generates a conducting polygonal surface around the system (ion or molecule), at the van der Waals' distance. By introducing a <!-- MATH: $\varepsilon$ -->
+<i><font face="Symbol">e</font></i>-dependent correction factor, </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+f(\varepsilon)=\frac{(\varepsilon-1)}{(\varepsilon+\frac{1}{2})},
+\end{displaymath} --><IMG SRC="img1720.gif" WIDTH=99 HEIGHT=46 ALT="begin{displaymath}f(varepsilon)=frac{(varepsilon-1)}{(varepsilon+frac{1}{2})},end{displaymath}"></DIV>
+<P>into the expressions for the screening energy and its gradient, the theory can be extended to finite dielectric constants with only a small error. </P>
+<P>The accuracy of the method can be judged by how well it reproduces known quantities, such as the heat of solution in water (water has a dielectric constant of 78.4 at 25<IMG SRC="img1721.gif" WIDTH=11 HEIGHT=16 ALT="$^{circ}$">C). Here, the keywords used were: </P>
+<TT><P><a href="node244.html">NSPA=60</a> <a href="node187.html">GRADIENTS</a>
+<a href="node116.html">1SCF</a> <a href="node172.html">EPS=78.4</a>
+<a href="node124.html">AM1</a> <a href="node137.html">CHARGE=1</a></TT> </P>
+<P>From the Table we see that the glycine zwitterion becomes the stable form in water, while the neutral species is the stable gas-phase form. </P>
+<P>(After the COSMO paper was published, improvements in the method made the results shown in the&nbsp;<a href="#tab">Table</a> invalid. However, the general conclusion that the method is of useful accuracy is still true.) </P>
+<P>The COSMO method is easy to use, and the derivative calculation is of sufficient precision to allow gradients of 0.1 to be readily achieved. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM23663">&nbsp;</A> </P>
+<STRONG><P><a name="tab"></a>Table:</STRONG> Calculated and Observed Hydration Energies</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> Compound</TD>
+<TD VALIGN="MIDDLE">
+<P>Method</TD>
+<TD VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER"><!-- MATH: $\Delta H_f$ --><IMG SRC="img1722.gif" WIDTH=32 HEIGHT=29 ALT="$Delta H_f$">(kcal/mol)</TD>
+<TD VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Hydration</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">gas phase</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">solution phase</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img1723.gif" WIDTH=25 HEIGHT=16 ALT="$Delta H$">(calc.)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Enthalpy(exp.)&nbsp;<IMG SRC="img1724.gif" WIDTH=12 HEIGHT=25 ALT="dag"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>NH<SUB>4</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P>AM1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">150.6</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">59.5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">91.1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">88.0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>N(Me)<SUB>4</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P>AM1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">157.1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">101.1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">56.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">59.9</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>N(Et)<SUB>4</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P>AM1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">132.1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">84.2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">47.9</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">57.0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Glycine</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>neutral</TD>
+<TD VALIGN="MIDDLE">
+<P>AM1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-101.6</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-117.3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">15.7</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>zwitterion</TD>
+<TD VALIGN="MIDDLE">
+<P>AM1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-59.2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-125.6</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">66.4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-</TD>
+</TR>
+</TABLE>
+
+<P><BR>
+<IMG SRC="img1725.gif" WIDTH=12 HEIGHT=25 ALT="dag">: Y. Nagano, M. Sakiyama, T. Fujiwara, Y. Kondo, J. Phys. Chem., <B>92</B>, 5823 (1988). </DIV></DIV></P>
+<P><HR></P>
+<P><!--Table of Child-Links--><A NAME="CHILD_LINKS">&nbsp;</A> </P>
+
+<UL>
+<LI><A NAME="tex2html10002"><A HREF="node633.html">A Walk Through COSMO</A></A> </LI>
+<LI><A NAME="tex2html10003"><A HREF="node634.html"><U><FONT COLOR="#0000ff"><TT>INITSV</U></FONT></TT> (INITialize SolVation)</A></A> </LI>
+<LI><A NAME="tex2html10004"><A HREF="node635.html"><U><FONT COLOR="#0000ff"><TT>DVFILL</U></FONT></TT> (Direction Vector FILLing)</A></A> </LI>
+<LI><A NAME="tex2html10005"><A HREF="node636.html"><U><FONT COLOR="#0000ff"><TT>COSCAV/COSCAN</U></FONT></TT> (COSmo CAVity)</A></A> </LI>
+<LI><A NAME="tex2html10006"><A HREF="node637.html"><U><FONT COLOR="#0000ff"><TT>MKBMAT</U></FONT></TT></A></A> </LI>
+<LI><A NAME="tex2html10007"><A HREF="node638.html"><U><FONT COLOR="#0000ff"><TT>DIEGRD</U></FONT></TT> (DIElectric GRaDient)</A></A> </LI>
+<LI><A NAME="tex2html10008"><A HREF="node639.html">COSMO Keywords</A></A> </LI>
+<LI><A NAME="tex2html10009"><A HREF="node640.html">Solvent Accessible Surface</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html10010"><A HREF="node641.html">Some hints on the use of COSMO</A></A> </LI></UL>
+</UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html10000"><A HREF="node633.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9996"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9990"></A><A HREF="node631.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9998"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9999"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10001"><A HREF="node633.html">A Walk Through</A></A> <B>Up:</B> <A NAME="tex2html9997"><A HREF="node439.html">Theory</A></A> <B>Previous:</B> <A NAME="tex2html9991"><A HREF="node631.html">Examples of POLAR keyword</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

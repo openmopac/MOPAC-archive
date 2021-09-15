@@ -1,0 +1,110 @@
+\subsection{The BFGS function optimizer}
+The alternative heat of formation minimization routine in  MOPAC is a modified 
+Broyden~\cite{bfgs1}-Fletcher~\cite{bfgs2}-Goldfarb~\cite{bfgs3}-Shanno~\cite{bfgs4}
+or BFGS method. Minor changes were made necessary by the presence of phenomena
+peculiar to chemical systems.
+
+Starting with a user-supplied geometry $x_o$, MOPAC computes an estimate to the
+inverse Hessian $H_o$. The geometry optimization proceeds by
+$$
+x_{k+1} = x_k+\alpha d_k,
+$$
+where
+$$
+d_k=H\,g_k ,
+$$
+and each element of $H$ is defined by
+$$
+H_{k+1}=H_k-\frac{H\ y_k\ p_k^t + p_ky_k^tH}{S}+\frac{Q(p_k\ p_k^t)}{S},
+$$
+where  
+$$
+Q=1+\frac{y_k^t\ H\ y_k}{p_k^t\ y_k},
+$$
+and $g_k$ is the gradient vector on step $k$.
+
+\index{Hessian!in BFGS optimizer} Although this expression for the update of
+the Hessian matrix looks very complicated, the operation can be summarized as
+follows:
+
+The initial Hessian matrix used in geometry optimization is chosen as a
+diagonal matrix, with the diagonal elements determined by a simple formula
+based on the gradients at two geometries.  As the optimization proceeds, the
+gradients at each point are used to improve the Hessian.  In particular, the
+off-diagonal elements are assigned based on the old elements and the current
+gradients.
+
+Two different methods are used to calculate the displacement of $x$ in the
+direction $d$. During the initial stages of geometry optimization, a line
+search is used. This proceeds as follows:
+
+\index{Line search|(}\index{NOTHIEL} The geometry is displaced by $(\alpha/4)d$
+and the energy evaluated via an SCF calculation. If this energy is lower than
+the original value, then a second step of the same size is made. If it is
+higher, then a step of -$(\alpha/4)d$ is made. The energy is then re-evaluated.
+Given the three energies, a prediction is made as to the value of $\alpha$
+which will yield the  minimum  value  of the energy in the direction $d$. Of
+course, the size of the steps are constrained so that the system would not
+suddenly become unrealistic (e.g., break bonds, superimpose atoms, etc.).
+Similarly, the contingency in which the energy versus $\alpha$ function is
+inverse parabolic is considered, as are rarely-encountered curves, e.g., almost
+perfectly linear regressions. By default, Thiel's FSTMIN \index{Thiel@{\bf
+Thiel, Walter}} technique is used~\cite{fstmin}.  This uses gradient
+information from the starting point of the search, and the calculated $\Delta
+H_f$, to decide when to end the line search.  If \comp{NOTHIEL} is specified,
+the older line-search is used, in which case the search is stopped when the
+drop in energy on any step becomes less than 5\% of the total drop or 0.5
+kcal/mol, whichever is smaller.
+
+An  important modification has  been made to the BFGS routine.  For the
+line-search, Thiel's FSTMIN technique is used. This  modification make the
+algorithm run faster most of the time.  However, one unfortunate result of
+these changes is that there is no guarantee that as  the cycles increase, the
+energy will drop monotonically.  If the calculation does not converge on a
+stationary point, then re-run the job with \comp{NOTHIEL}.
+
+As the geometry converges on a local minimum, the prediction of the search
+direction becomes less accurate. There are many reasons for this. For example,
+the finite precision of the SCF calculation may lead to errors in the density
+matrix, or finite step sizes in the derivative calculation (if analytical
+derivatives are not used) may result in errors in the derivatives. For whatever
+reason, the gradient norm and energy minimum may not coincide. The difference
+is typically less than 0.00001 kcal/mol and less than 0.05 units of gradient
+norm. 
+
+Normally, the initial guess to $H$, the inverse Hessian, is the unit matrix.
+However, in chemical systems where the second derivatives are very large, use
+of the unit matrix would result in large changes in the geometry. Thus a
+slightly elongated bond length could, in the first step, change from 1.6\AA\ 
+to -6.5\AA  . To prevent this catastrophe, the initial geometry is perturbed by
+a small amount, thus
+$$
+   x_1=x_0+0.01\times {\rm sign}(g_0),
+$$
+from which a trial inverse Hessian can be constructed:
+$$
+  H_1(i,i)=0.01\times {\rm sign}(g_0(i))/y_1(i).
+$$
+A negative value for $H_1(i,i)$ would lead to difficulties
+within the BFGS optimization. To avoid this, $H_1(i,i)$ is set
+to $0.06/{\rm abs}(g(i))$ whenever sign$(g_0(i))/y_1(i)$ is negative.
+
+As the optimization proceeds, the inverse Hessian matrix becomes more accurate.
+However, as the geometry steadily changes, the inverse Hessian will contain
+information which does not reflect the current point. This can lead to the
+predicted search direction vector making an angle of more than $90^{\circ}$
+with the gradient vector. In other words, the search direction vector may point
+uphill in energy. To guard against this, the inverse Hessian is re-initialized
+whenever the cosine of the angle between the search direction and the gradient
+vector drops below 0.05.
+
+Originally the Davidson-Fletcher-Powell technique was used, but in rare
+instances it failed to work satisfactorily. The BFGS formula appears to work as
+well as or better than the DFP method most of the time. In the infrequent case
+when the DFP is more efficient, the increase in efficiency of the DFP can
+usually be traced to a fortuitous choice of a search direction. Small changes
+in starting conditions can destroy this accidental increased efficiency and
+make the BFGS method appear more efficient. A keyword, \comp{DFP}, is provided
+to allow the DFP optimizer to be used.
+
+

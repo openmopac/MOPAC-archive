@@ -1,0 +1,901 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Rotation of Atomic Orbitals</TITLE>
+<META NAME="description" CONTENT="8.3.14.1 Rotation of Atomic Orbitals">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node483.html"><LINK REL="up" HREF="node483.html"><LINK REL="next" HREF="node485.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!  DO NOT EDIT WITH WORD DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node485.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node483.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node483.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node485.html">Energies of Isolated</A> <B>Up:</B> <A HREF="node483.html">Overlap Integrals</A> <B>Previous:</B> <A HREF="node483.html">Overlap Integrals</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION0012316100000000000000">Rotation of Atomic Orbitals</A> </H3>
+<P>As calculated, the overlap integrals represent the overlap of atomic orbitals that are aligned along the <I>z</I>-axis. In general, this will not be the case, and the diatomic overlap integral matrix must be rotated in order to represent the actual orientation used. </P>
+<P>The rotation matrices are well known, but the method by which they are constructed is by no means simple. Consider the general case of one atom at the origin, and a second atom at some point <I>p</I>(<I>x</I>,<I>y</I>,<I>z</I>). Let the angle from the second atom to the first atom to <I>z</I> axis be <I>b</I>, and the angle of the projection of the second atom onto the <I>xy</I> plane to the <I>y</I> axis be <I>a</I>. Then, the <I>p</I>-orbital transform is as shown in &nbsp;<A HREF="#p-rot">Table 1</A>.
+<P> <BR>
+<DIV ALIGN="CENTER"><STRONG><a name="p-rot"></a>Table 1:</STRONG>
+ Angular Dependence of the <I>p</I>-orbitals</CAPTION>
+ <TABLE>
+
+<TR><TD>
+<P>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER"><I>p</I>(<I>x</I>)</TD>
+<TD ALIGN="CENTER"><I>p</I>(<I>y</I>)</TD>
+<TD ALIGN="CENTER">p(z)</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER"><font face="Symbol">p</font>+</TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $\cos a.\cos b$ -->
+cos <i>a</i> cos <i>b</i></TD>
+<TD ALIGN="CENTER">-sin <i>a</i></TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $\cos a.\sin b$ -->
+cos<i> a</i> sin <i>b</i></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER"><font face="Symbol">p</font>-</TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $\sin a.\cos b$ -->
+sin <i>a</i> cos <i>b</i></TD>
+<TD ALIGN="CENTER">cos<i> a</i></TD>
+<TD ALIGN="CENTER">
+<!-- MATH: $\sin a.\sin b$ -->
+sin <i>a</i> sin <i>b</i></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER"><font face="Symbol">s</font></TD>
+<TD ALIGN="CENTER">-sin <i>b</i></TD>
+<TD ALIGN="CENTER">0</TD>
+<TD ALIGN="CENTER">cos <i>b</i></TD>
+</TR>
+</TABLE></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+The rotation matrices for the higher harmonics are fairly difficult to construct. In this work, several mathematical tools will be used. These are presented in &nbsp;<A HREF="node484.html#maths">Figure 1</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="maths">&nbsp;<A NAME="BM12020"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 1:</STRONG> Mathematical Tools for use with Spherical Harmonics</P>
+
+<TABLE>
+<TR><TD><DL COMPACT>
+<DT>1.
+<DD>All odd integrals, i.e., integrals of the type <IMG
+ WIDTH="46" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img689.gif"
+ ALT="$<\!x^n\!>$">,
+where <I>n</I> is an odd integer, are zero.
+<DT>2.
+<DD>
+<!-- MATH: $<\!x^2\!>=<\!y^2\!>=<\!z^2\!> \neq 0$ -->
+<IMG
+ WIDTH="173" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img690.gif"
+ ALT="$<\!x^2\!>=<\!y^2\!>=<\!z^2\!> \neq 0$"><DT>3.
+<DD>
+<!-- MATH: $<\!x^2y^2\!>=<\!y^2x^2\!>=<\!y^2z^2\!>=<\!z^2x^2\!>\neq 0$ -->
+<IMG
+ WIDTH="278" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img691.gif"
+ ALT="$<\!x^2y^2\!>=<\!y^2x^2\!>=<\!y^2z^2\!>=<\!z^2x^2\!>\neq 0$"><DT>4.
+<DD>
+<!-- MATH: $<\!x^4\!>=<\!y^4\!>=<\!z^4\!>\neq 0$ -->
+<IMG
+ WIDTH="173" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img692.gif"
+ ALT="$<\!x^4\!>=<\!y^4\!>=<\!z^4\!>\neq 0$"><DT>5.
+<DD>All integrals of the type 
+<!-- MATH: $<\!a^nb^mc^l\!>$ -->
+<IMG
+ WIDTH="74" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img693.gif"
+ ALT="$<\!a^nb^mc^l\!>$">
+where <I>a</I>, <I>b</I>, and <I>c</I> are different members of the set (<I>x</I>,<I>y</I>,<I>z</I>) are equal.
+<DT>6.
+<DD>The normalization condition for the spherical harmonics is:
+<P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\int_0^{2\pi}\int_0^{\pi}Y_l^m(\theta\phi)^2\sin\theta {\rm d}\theta{\rm d}\phi =1
+\end{displaymath} -->
+
+<IMG
+ WIDTH="200" HEIGHT="42"
+ SRC="img694.gif"
+ ALT="\begin{displaymath}\int_0^{2\pi}\int_0^{\pi}Y_l^m(\theta\phi)^2\sin\theta {\rm d}\theta{\rm d}\phi =1
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P><DT>7.
+<DD>
+<!-- MATH: $\cos^2\theta+\sin^2\theta=1$ -->
+<IMG
+ WIDTH="122" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img695.gif"
+ ALT="$\cos^2\theta+\sin^2\theta=1$"><DT>8.
+<DD>
+<!-- MATH: $\cos 2\theta = 2\cos^2\theta -1$ -->
+<IMG
+ WIDTH="135" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img696.gif"
+ ALT="$\cos 2\theta = 2\cos^2\theta -1$"><DT>9.
+<DD>
+<!-- MATH: $\sin 2\theta = 2\sin\theta .\cos\theta$ -->
+<IMG
+ WIDTH="138" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img697.gif"
+ ALT="$\sin 2\theta = 2\sin\theta .\cos\theta$"><DT>10.
+<DD>All atomic orbitals are assumed to be normalized:
+<P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<\!\psi^2\!>=1
+\end{displaymath} -->
+
+<IMG
+ WIDTH="67" HEIGHT="28"
+ SRC="img698.gif"
+ ALT="\begin{displaymath}<\!\psi^2\!>=1
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P><DT>11.
+<DD>
+<!-- MATH: $x=r\sin\theta.\cos\phi,\ \ y=r\sin\theta.\sin\phi,\ \ z=r\cos\theta.$ -->
+<IMG
+ WIDTH="302" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img699.gif"
+ ALT="$x=r\sin\theta.\cos\phi,\ \ y=r\sin\theta.\sin\phi,\ \ z=r\cos\theta.$"></DL>
+</TD></TR>
+</TABLE>
+</DIV>
+
+<P>
+When working with the angular components, it is normally easier to use the
+Cartesian symbols <I>x</I>, <I>y</I>, and <I>z</I> instead of the trigonometric forms.  This
+avoids the potentially confusing expressions that involve the angles <I>a</I>, <I>b</I>,
+<IMG
+ WIDTH="15" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img700.gif"
+ ALT="$\theta$">,
+and <IMG
+ WIDTH="15" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img701.gif"
+ ALT="$\phi$">.
+<P>
+
+<BR>
+<P>
+Consider the rotation of 
+<!-- MATH: $d(x^2-y^2)$ -->
+<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>). The rotation components involved are:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+R(x) = (\cos a.\cos b)x +(\sin a.\cos b)y +(-\sin b)z,
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="309" HEIGHT="28"
+ SRC="img702.gif"
+ ALT="\begin{displaymath}R(x) = (\cos a.\cos b)x +(\sin a.\cos b)y +(-\sin b)z,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+R(y) = (-\sin a)x +(\cos a)y.
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="175" HEIGHT="28"
+ SRC="img703.gif"
+ ALT="\begin{displaymath}R(y) = (-\sin a)x +(\cos a)y.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The rotation matrix element 
+<!-- MATH: $<d(x^2-y^2)|R|d(x^2-y^2)>$ -->
+&lt;<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)|<I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt; can be derived
+using the relationship:
+<BR>
+<DIV ALIGN="CENTER">
+
+<!-- MATH: \begin{eqnarray}
+R|d(x^2-y^2)> &=& (\cos^2 a.\cos^2 b)x^2+(2\cos a.\cos b.\sin a.\cos b)xy+
+(-2\cos a.\cos b.\sin b)xz+\nonumber \\
+              & & (\sin^2a.\cos^2b)y^2+(-2\sin a.\cos b.\sin b)yz+
+(\sin^2b)z^2+\nonumber \\
+              & &(-\sin^2a)x^2+(2\sin a.\cos a)xy+(-\cos^2a)y^2.\nonumber
+\end{eqnarray} -->
+
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="465" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img704.gif"
+ ALT="$\displaystyle (\cos^2 a.\cos^2 b)x^2+(2\cos a.\cos b.\sin a.\cos b)xy+
+(-2\cos a.\cos b.\sin b)xz+$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="352" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img705.gif"
+ ALT="$\displaystyle (\sin^2a.\cos^2b)y^2+(-2\sin a.\cos b.\sin b)yz+
+(\sin^2b)z^2+$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="289" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img706.gif"
+ ALT="$\displaystyle (-\sin^2a)x^2+(2\sin a.\cos a)xy+(-\cos^2a)y^2.$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+<P>
+In this expression, the integral over all odd terms vanish, therefore:
+<BR>
+<DIV ALIGN="CENTER">
+
+<!-- MATH: \begin{eqnarray}
+<d(x^2-y^2)|R|d(x^2-y^2)>&=&
+<x^2(\cos^2 a.\cos^2 b-\sin^2a)x^2>+\nonumber \\
+& &<x^2(\sin^2a.\cos^2b-\cos^2a)y^2>+\nonumber \\
+& &<x^2(\sin^2b)z^2>+\nonumber \\
+& &<y^2(-\cos^2 a.\cos^2 b+\sin^2a)x^2>+\nonumber \\
+& &<y^2(-\sin^2a.\cos^2b+\cos^2a)y^2>+ \nonumber \\
+& &<y^2(-\sin^2b)z^2>.\nonumber
+\end{eqnarray} -->
+
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)|<I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="219" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img707.gif"
+ ALT="$\displaystyle <x^2(\cos^2 a.\cos^2 b-\sin^2a)x^2>+$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="219" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img708.gif"
+ ALT="$\displaystyle <x^2(\sin^2a.\cos^2b-\cos^2a)y^2>+$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="123" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img709.gif"
+ ALT="$\displaystyle <x^2(\sin^2b)z^2>+$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="232" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img710.gif"
+ ALT="$\displaystyle <y^2(-\cos^2 a.\cos^2 b+\sin^2a)x^2>+$"></TD>
+<TD  ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="232" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img711.gif"
+ ALT="$\displaystyle <y^2(-\sin^2a.\cos^2b+\cos^2a)y^2>+$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="129" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img712.gif"
+ ALT="$\displaystyle <y^2(-\sin^2b)z^2>.$"></TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+The integral <i>&lt;x</i><sup>4</sup>&gt;
+has the same value as <i>&lt;y</i><sup>4</sup>&gt;,
+and 
+
+<!-- MATH: $<\!x^2y^2\!>$ -->
+<i>&lt;x</i><sup>2</sup><i>y</i><sup>2</sup>&gt;
+has the same
+value as 
+<!-- MATH: $<\!x^2z^2\!>$ -->
+<i>&lt;x</i><sup>2</sup><i>z</i><sup>2</sup>&gt;,
+etc., therefore this expression can be simplified.  
+Collecting together terms of the type <i>&lt;x</i><sup>4</sup>&gt;
+gives
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\cos^2 a.\cos^2 b-\sin^2a -\sin^2a.\cos^2b+\cos^2a,
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="277" HEIGHT="27"
+ SRC="img718.gif"
+ ALT="\begin{displaymath}\cos^2 a.\cos^2 b-\sin^2a -\sin^2a.\cos^2b+\cos^2a,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+or
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+(\cos^2b+1).(2\cos^2a-1).
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="160" HEIGHT="28"
+ SRC="img719.gif"
+ ALT="\begin{displaymath}(\cos^2b+1).(2\cos^2a-1).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Collecting terms of the type 
+<!-- MATH: $<\!y^2x^2\!>$ -->
+<IMG
+ WIDTH="59" HEIGHT="35" ALIGN="MIDDLE" BORDER="0"
+ SRC="img720.gif"
+ ALT="$<\!y^2x^2\!>$">
+gives
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\sin^2a.\cos^2b-\cos^2a+\sin^2b-\cos^2 a.\cos^2 b+\sin^2a-\sin^2b,
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="377" HEIGHT="27"
+ SRC="img721.gif"
+ ALT="\begin{displaymath}\sin^2a.\cos^2b-\cos^2a+\sin^2b-\cos^2 a.\cos^2 b+\sin^2a-\sin^2b,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+or
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+-(\cos^2b+1).(2\cos^2a-1).
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="172" HEIGHT="28"
+ SRC="img722.gif"
+ ALT="\begin{displaymath}-(\cos^2b+1).(2\cos^2a-1).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The rotation matrix element is thus:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<d(x^2-y^2)|R|d(x^2-y^2)>=<\!x^4-2x^2y^2+y^4\!>\frac{1}{2}(\cos^2b+1).(2\cos^2a-1)
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="465" HEIGHT="38"
+ SRC="img723.gif"
+ ALT="\begin{displaymath}<d(x^2-y^2)\vert R\vert d(x^2-y^2)>=<\!x^4-2x^2y^2+y^4\!>\frac{1}{2}(\cos^2b+1).(2\cos^2a-1)
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+As a result of the fact that the angular components of the atomic orbitals
+are normalized, i.e., 
+<!-- MATH: $<\!x^4-2x^2y^2+y^4\!>$ -->
+<i>&lt;x</i><sup>4 </sup>-<sup> </sup>2<i>x</i><sup>2</sup><i>y</i><sup>2 </sup>
++<sup> </sup><i>y</i><sup>4</sup>&gt;=1:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<d(x^2-y^2)|R|d(x^2-y^2)>=(2\cos^2a-1)\cos^2b+\frac{1}{2}(2\cos^2a-1)\sin^2b,
+\end{displaymath} -->
+
+
+<IMG
+ WIDTH="447" HEIGHT="38"
+ SRC="img725.gif"
+ ALT="\begin{displaymath}<d(x^2-y^2)\vert R\vert d(x^2-y^2)>=(2\cos^2a-1)\cos^2b+\frac{1}{2}(2\cos^2a-1)\sin^2b,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+
+
+
+
+<P>which is the form used in the calculation of the <I>d</I>-rotation matrix. The full set of <I>d</I>-orbital rotation matrix elements is presented in &nbsp;<a href="#d_rot">Table 2</a>. <BR>
+<DIV ALIGN="CENTER">
+<STRONG><P><a name="d_rot"></a>Table 2:</STRONG> Angular Dependence of the <I>d</I>-orbitals</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\delta + \ \equiv \ d(x^2-y^2)$ --><IMG SRC="img726.gif" WIDTH=116 HEIGHT=35 ALT="$delta +  equiv  d(x^2-y^2)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(x^2-y^2)$ --><I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $(2\cos^2a-1) \cos^2b+\frac{1}{2}(2\cos^2a-1) \sin^2b$ --><IMG SRC="img727.gif" WIDTH=267 HEIGHT=36 ALT="$(2cos^2a-1) cos^2b+frac{1}{2}(2cos^2a-1) sin^2b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $(2\cos^2a-1) \sin b.\cos b$ --><IMG SRC="img728.gif" WIDTH=151 HEIGHT=35 ALT="$(2cos^2a-1) sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(2z^2-x^2-y^2)$ --><I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sqrt{\frac{3}{4}}(2\cos^2a-1) \sin^2b$ --><IMG SRC="img729.gif" WIDTH=147 HEIGHT=47 ALT="$sqrt{frac{3}{4}}(2cos^2a-1) sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>yz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-2\sin a.\cos a. \sin b$ --><IMG SRC="img730.gif" WIDTH=123 HEIGHT=30 ALT="$-2sin a.cos a. sin b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xy</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-2\sin a.\cos a. \cos b$ --><IMG SRC="img731.gif" WIDTH=126 HEIGHT=30 ALT="$-2sin a.cos a. cos b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\pi + \ \equiv \ d(xz)$ --><IMG SRC="img732.gif" WIDTH=86 HEIGHT=31 ALT="$pi +  equiv  d(xz) $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(x^2-y^2)$ --><I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P>- <!-- MATH: $\cos a. \sin b.\cos b$ --><IMG SRC="img733.gif" WIDTH=104 HEIGHT=30 ALT="$cos a. sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\cos a. (2\cos^2b-1)$ --><IMG SRC="img734.gif" WIDTH=121 HEIGHT=35 ALT="$cos a. (2cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(2z^2-x^2-y^2)$ --><I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sqrt{3}\cos a. \sin b.\cos b$ --><IMG SRC="img735.gif" WIDTH=126 HEIGHT=36 ALT="$sqrt{3}cos a. sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>yz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\sin a. \cos b$ --><IMG SRC="img736.gif" WIDTH=82 HEIGHT=30 ALT="$-sin a. cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xy</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sin a . \sin b$ --><IMG SRC="img737.gif" WIDTH=66 HEIGHT=30 ALT="$sin a . sin b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sigma  \ \equiv \ d(2z^2-x^2-y^2)$ --><IMG SRC="img738.gif" WIDTH=142 HEIGHT=35 ALT="$sigma  equiv  d(2z^2-x^2-y^2) $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(x^2-y^2)$ --><I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sqrt{\frac{3}{4}}\sin^2b$ --><IMG SRC="img739.gif" WIDTH=65 HEIGHT=47 ALT="$sqrt{frac{3}{4}}sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\sqrt{3}\sin b.\cos b$ --><IMG SRC="img740.gif" WIDTH=102 HEIGHT=36 ALT="$-sqrt{3}sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(2z^2-x^2-y^2)$ --><I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\cos^2b-\frac{1}{2}\sin^2b$ --><IMG SRC="img741.gif" WIDTH=102 HEIGHT=36 ALT="$cos^2b-frac{1}{2}sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>yz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xy</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\pi -  \ \equiv \ d(yz)$ --><IMG SRC="img742.gif" WIDTH=86 HEIGHT=31 ALT="$pi -  equiv  d(yz)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(x^2-y^2)$ --><I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\sin a. \sin b.\cos b$ --><IMG SRC="img743.gif" WIDTH=115 HEIGHT=30 ALT="$-sin a. sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sin a. (2\cos^2b-1)$ --><IMG SRC="img744.gif" WIDTH=118 HEIGHT=35 ALT="$sin a. (2cos^2b-1) $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(2z^2-x^2-y^2)$ --><I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sqrt{3}\sin a.\sin b.\cos b$ --><IMG SRC="img745.gif" WIDTH=123 HEIGHT=36 ALT="$sqrt{3}sin a.sin b.cos b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>yz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\cos a. \cos b$ --><IMG SRC="img746.gif" WIDTH=71 HEIGHT=30 ALT="$cos a. cos b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xy</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\cos a. \sin b$ --><IMG SRC="img747.gif" WIDTH=82 HEIGHT=30 ALT="$-cos a. sin b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\delta -  \ \equiv \ d(xy)$ --><IMG SRC="img748.gif" WIDTH=87 HEIGHT=31 ALT="$delta -  equiv  d(xy) $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(x^2-y^2)$ --><I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P>2 <!-- MATH: $\sin a.\cos a. \cos^2b+\sin a.\cos a. \sin^2b$ --><IMG SRC="img749.gif" WIDTH=230 HEIGHT=36 ALT="$sin a.cos a. cos^2b+sin a.cos a. sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $2\sin a.\cos a. \sin b.\cos b$ --><IMG SRC="img750.gif" WIDTH=147 HEIGHT=30 ALT="$2sin a.cos a. sin b.cos b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $d(2z^2-x^2-y^2)$ --><I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sqrt{3}\sin a.\cos a. \sin^2b$ --><IMG SRC="img751.gif" WIDTH=130 HEIGHT=36 ALT="$sqrt{3}sin a.cos a. sin^2b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>yz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $(2\cos^2a-1) \sin b$ --><IMG SRC="img752.gif" WIDTH=116 HEIGHT=35 ALT="$(2cos^2a-1) sin b $"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>d</I>(<I>xy</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $(2\cos^2a-1) \cos b$ --><IMG SRC="img753.gif" WIDTH=118 HEIGHT=35 ALT="$(2cos^2a-1) cos b $"></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P>The <I>f</I>-orbitals are even more complicated. Unlike the <I>d</I>-orbitals, there are two complete and equivalent sets of <I>f</I>-orbitals. The set selected is that set which transforms as
+<i><font face="Symbol">s</font></i>, <i><font face="Symbol">p</font></i>, <i>
+<font face="Symbol">d</font></i>, and <i><font face="Symbol">f </font></i>when viewed along the <I>z</I> axis. The <I>f</I>-orbital transform is presented in &nbsp;<a href="#f_rot">Table 3</a>. <BR>
+<DIV ALIGN="CENTER"><A NAME="BM12417">&nbsp;</A> </P>
+<STRONG><P><a name="f_rot"></a>Table 3:</STRONG> Angular Dependence of the <I>f</I>-orbitals</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sigma \ \equiv \ f(z^3) \ \equiv \ z(5z^2-3r^2)$ --><IMG SRC="img758.gif" WIDTH=177 HEIGHT=35 ALT="$sigma  equiv  f(z^3)  equiv  z(5z^2-3r^2)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>z</I><SUP>3</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{2}\cos b . (5\cos^2b -3)$ --><IMG SRC="img759.gif" WIDTH=131 HEIGHT=36 ALT="$frac{1}{2}cos b . (5cos^2b -3)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{6}}{4}\sin b.(5\cos^2b-1)$ --><IMG SRC="img760.gif" WIDTH=150 HEIGHT=42 ALT="$-frac{sqrt{6}}{4}sin b.(5cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>yz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xyz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P><!-- MATH: $f(z(x^2-y^2))$ --><I>f</I>(<I>z</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{2}\cos b.\sin^2b$ --><IMG SRC="img761.gif" WIDTH=100 HEIGHT=42 ALT="$frac{sqrt{15}}{2}cos b.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(x(x^2-3y^2))$ --><I>f</I>(<I>x</I>(<I>x</I><SUP>2</SUP>-3<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{10}}{4}\sin^3b$ --><IMG SRC="img762.gif" WIDTH=77 HEIGHT=42 ALT="$-frac{sqrt{10}}{4}sin^3b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(y(3x^2-y^2))$ --><I>f</I>(<I>y</I>(3<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+</TR>
+</TABLE>
+
+
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\pi + \ \equiv \  f(xz^2) \ \equiv \ x(5z^2-r^2)$ --><IMG SRC="img763.gif" WIDTH=188 HEIGHT=35 ALT="$pi +  equiv  f(xz^2)  equiv  x(5z^2-r^2)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>z</I><SUP>3</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{6}}{4}\cos a.\sin b.(5\cos^2b-1)$ --><IMG SRC="img764.gif" WIDTH=174 HEIGHT=42 ALT="$frac{sqrt{6}}{4}cos a.sin b.(5cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{4}\cos a.\cos b.(15\cos^2b-11)$ --><IMG SRC="img765.gif" WIDTH=182 HEIGHT=36 ALT="$frac{1}{4}cos a.cos b.(15cos^2b-11)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>yz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{1}{4}\sin a.(5\cos^2b-1)$ --><IMG SRC="img766.gif" WIDTH=141 HEIGHT=36 ALT="$-frac{1}{4}sin a.(5cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xyz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{2}\sin a.\cos b.\sin b$ --><IMG SRC="img767.gif" WIDTH=127 HEIGHT=42 ALT="$frac{sqrt{10}}{2}sin a.cos b.sin b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(z(x^2-y^2))$ --><I>f</I>(<I>z</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{4}\cos a.\sin b.(1-3\cos^2b)$ --><IMG SRC="img768.gif" WIDTH=180 HEIGHT=42 ALT="$frac{sqrt{10}}{4}cos a.sin b.(1-3cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(x(x^2-3y^2))$ --><I>f</I>(<I>x</I>(<I>x</I><SUP>2</SUP>-3<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{4}\cos a.\cos b.\sin^2b$ --><IMG SRC="img769.gif" WIDTH=136 HEIGHT=42 ALT="$frac{sqrt{15}}{4}cos a.cos b.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(y(3x^2-y^2))$ --><I>f</I>(<I>y</I>(3<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{15}}{4}\sin a.\sin^2b$ --><IMG SRC="img770.gif" WIDTH=110 HEIGHT=42 ALT="$-frac{sqrt{15}}{4}sin a.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\pi - \ \equiv \ f(yz^2)  \ \equiv \ y(5z^2-r^2$ --><IMG SRC="img771.gif" WIDTH=182 HEIGHT=35 ALT="$pi -  equiv  f(yz^2)  equiv  y(5z^2-r^2$">)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>z</I><SUP>3</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{6}}{4}\sin a.\sin b.(5\cos^2b-1)$ --><IMG SRC="img772.gif" WIDTH=171 HEIGHT=42 ALT="$frac{sqrt{6}}{4}sin a.sin b.(5cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{4}\sin a.\cos b.(15\cos^2b-11)$ --><IMG SRC="img773.gif" WIDTH=180 HEIGHT=36 ALT="$frac{1}{4}sin a.cos b.(15cos^2b-11)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>yz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{4}\cos a.(5\cos^2b-1)$ --><IMG SRC="img774.gif" WIDTH=132 HEIGHT=36 ALT="$frac{1}{4}cos a.(5cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xyz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{10}}{2}\cos a.\cos b.\sin b$ --><IMG SRC="img775.gif" WIDTH=142 HEIGHT=42 ALT="$-frac{sqrt{10}}{2}cos a.cos b.sin b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(z(x^2-y^2))$ --><I>f</I>(<I>z</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{4}\sin a.\sin b.(1-3\cos^2b)$ --><IMG SRC="img776.gif" WIDTH=177 HEIGHT=42 ALT="$frac{sqrt{10}}{4}sin a.sin b.(1-3cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(x(x^2-3y^2))$ --><I>f</I>(<I>x</I>(<I>x</I><SUP>2</SUP>-3<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{4}\sin a.\cos b.\sin^2b$ --><IMG SRC="img777.gif" WIDTH=134 HEIGHT=42 ALT="$frac{sqrt{15}}{4}sin a.cos b.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(y(3x^2-y^2))$ --><I>f</I>(<I>y</I>(3<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{4}\cos a.\sin^2b$ --><IMG SRC="img778.gif" WIDTH=101 HEIGHT=42 ALT="$frac{sqrt{15}}{4}cos a.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\delta + \ \equiv \ f(xyz) \ \equiv \ xy$ --><IMG SRC="img779.gif" WIDTH=134 HEIGHT=31 ALT="$delta +  equiv  f(xyz)  equiv  xy$">z</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>z</I><SUP>3</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sqrt{15}\sin a.\cos a.\cos b.\sin^2b$ --><IMG SRC="img780.gif" WIDTH=174 HEIGHT=36 ALT="$sqrt{15}sin a.cos a.cos b.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{2}\sin a.\cos a.\sin b.(3\cos^2b-1)$ --><IMG SRC="img781.gif" WIDTH=213 HEIGHT=42 ALT="$frac{sqrt{10}}{2}sin a.cos a.sin b.(3cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>yz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{2}(\cos^2a-\sin^2a)\sin b.\cos b$ --><IMG SRC="img782.gif" WIDTH=192 HEIGHT=42 ALT="$frac{sqrt{10}}{2}(cos^2a-sin^2a)sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xyz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $(\cos^2a-\sin^2a)(\cos^2b-\sin^2b)$ --><IMG SRC="img783.gif" WIDTH=202 HEIGHT=36 ALT="$(cos^2a-sin^2a)(cos^2b-sin^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(z(x^2-y^2))$ --><I>f</I>(<I>z</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sin a.\cos a.\cos b.(3\cos^2b-1)$ --><IMG SRC="img784.gif" WIDTH=190 HEIGHT=35 ALT="$sin a.cos a.cos b.(3cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(x(x^2-3y^2))$ --><I>f</I>(<I>x</I>(<I>x</I><SUP>2</SUP>-3<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{6}}{2}\sin a.\cos a.\sin b.(1+\cos^2b)$ --><IMG SRC="img785.gif" WIDTH=210 HEIGHT=42 ALT="$-frac{sqrt{6}}{2}sin a.cos a.sin b.(1+cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(y(3x^2-y^2))$ --><I>f</I>(<I>y</I>(3<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{6}}{2}(\cos^2a-\sin^2a)\sin b.\cos b$ --><IMG SRC="img786.gif" WIDTH=198 HEIGHT=42 ALT="$-frac{sqrt{6}}{2}(cos^2a-sin^2a)sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\delta -\ \equiv \ f(z(x^2-y^2)) \ \equiv \ z(x^2-y^2$ --><IMG SRC="img787.gif" WIDTH=216 HEIGHT=35 ALT="$delta - equiv  f(z(x^2-y^2))  equiv  z(x^2-y^2$">)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>z</I><SUP>3</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{2}(\cos^2a-\sin^2a)\cos b.\sin^2b$ --><IMG SRC="img788.gif" WIDTH=199 HEIGHT=42 ALT="$frac{sqrt{15}}{2}(cos^2a-sin^2a)cos b.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{4}(\cos^2a-\sin^2a)\sin b.(3\cos^2b-1)$ --><IMG SRC="img789.gif" WIDTH=241 HEIGHT=42 ALT="$frac{sqrt{10}}{4}(cos^2a-sin^2a)sin b.(3cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>yz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\sqrt{10}\sin a.\cos a.\sin b.\cos b$ --><IMG SRC="img790.gif" WIDTH=179 HEIGHT=36 ALT="$-sqrt{10}sin a.cos a.sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xyz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-2\sin a.\cos a.(\cos^2b-\sin^2b)$ --><IMG SRC="img791.gif" WIDTH=193 HEIGHT=36 ALT="$-2sin a.cos a.(cos^2b-sin^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(z(x^2-y^2))$ --><I>f</I>(<I>z</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{2}(\cos^2a-\sin^2a)\cos b.(3\cos^2b-1)$ --><IMG SRC="img792.gif" WIDTH=230 HEIGHT=36 ALT="$frac{1}{2}(cos^2a-sin^2a)cos b.(3cos^2b-1)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(x(x^2-3y^2))$ --><I>f</I>(<I>x</I>(<I>x</I><SUP>2</SUP>-3<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{6}}{4}(\cos^2a-\sin^2a)\sin b.(1+\cos^2b)$ --><IMG SRC="img793.gif" WIDTH=239 HEIGHT=42 ALT="$-frac{sqrt{6}}{4}(cos^2a-sin^2a)sin b.(1+cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(y(3x^2-y^2))$ --><I>f</I>(<I>y</I>(3<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\sqrt{6}\sin a.\cos a.\sin b.\cos b$ --><IMG SRC="img794.gif" WIDTH=159 HEIGHT=36 ALT="$sqrt{6}sin a.cos a.sin b.cos b$"></TD>
+</TR>
+</TABLE>
+
+
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\phi + \ \equiv \ f(x(x^2-3y^2)) \ \equiv \ x(x^2-3y^2$ --><IMG SRC="img795.gif" WIDTH=234 HEIGHT=35 ALT="$phi +  equiv  f(x(x^2-3y^2))  equiv  x(x^2-3y^2$">)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>z</I><SUP>3</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{4}((\cos^2a-\sin^2a)\cos a - 2\sin a.\cos a.\sin a)\sin^3b$ --><IMG SRC="img796.gif" WIDTH=330 HEIGHT=42 ALT="$frac{sqrt{10}}{4}((cos^2a-sin^2a)cos a - 2sin a.cos a.sin a)sin^3b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{4}((\cos^2a-\sin^2a)\cos a - 2\sin a.\cos a.\sin a)\cos b.\sin^2b$ --><IMG SRC="img797.gif" WIDTH=365 HEIGHT=42 ALT="$frac{sqrt{15}}{4}((cos^2a-sin^2a)cos a - 2sin a.cos a.sin a)cos b.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>yz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{15}}{4}((\cos^2a-\sin^2a)\sin a +2\sin a.\cos a.\cos a)\sin^2b$ --><IMG SRC="img798.gif" WIDTH=342 HEIGHT=42 ALT="$-frac{sqrt{15}}{4}((cos^2a-sin^2a)sin a +2sin a.cos a.cos a)sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xyz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{\sqrt{6}}{2}((\cos^2a-\sin^2a)\sin a +2\sin a.\cos a.\cos a)\sin b.\cos b$ --><IMG SRC="img799.gif" WIDTH=365 HEIGHT=42 ALT="$-frac{sqrt{6}}{2}((cos^2a-sin^2a)sin a +2sin a.cos a.cos a)sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(z(x^2-y^2))$ --><I>f</I>(<I>z</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{6}}{4}((\cos^2a-\sin^2a)\cos a - 2\sin a.\cos a.\sin a)\sin b.(1+\cos^2b)$ --><IMG SRC="img800.gif" WIDTH=394 HEIGHT=42 ALT="$frac{sqrt{6}}{4}((cos^2a-sin^2a)cos a - 2sin a.cos a.sin a)sin b.(1+cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(x(x^2-3y^2))$ --><I>f</I>(<I>x</I>(<I>x</I><SUP>2</SUP>-3<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{4}((\cos^2a-\sin^2a)\cos a - 2\sin a.\cos a.\sin a)\cos b.(3+\cos^2b)$ --><IMG SRC="img801.gif" WIDTH=387 HEIGHT=36 ALT="$frac{1}{4}((cos^2a-sin^2a)cos a - 2sin a.cos a.sin a)cos b.(3+cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(y(3x^2-y^2))$ --><I>f</I>(<I>y</I>(3<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $-\frac{1}{4}((\cos^2a-\sin^2a)\sin a +2\sin a.\cos a.\cos a)(1+3\cos^2b)$ --><IMG SRC="img802.gif" WIDTH=372 HEIGHT=36 ALT="$-frac{1}{4}((cos^2a-sin^2a)sin a +2sin a.cos a.cos a)(1+3cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\phi - \ \equiv \ f(y(3x^2-y^2)) \ \equiv \ y(3x^2-y^2)$ --><IMG SRC="img803.gif" WIDTH=240 HEIGHT=35 ALT="$phi -  equiv  f(y(3x^2-y^2))  equiv  y(3x^2-y^2)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>z</I><SUP>3</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{10}}{4}((\cos^2a-\sin^2a)\sin a +2\sin a.\cos a.\cos a)\sin^3b$ --><IMG SRC="img804.gif" WIDTH=330 HEIGHT=42 ALT="$frac{sqrt{10}}{4}((cos^2a-sin^2a)sin a +2sin a.cos a.cos a)sin^3b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{4}((\cos^2a-\sin^2a)\sin a +2\sin a.\cos a.\cos a)\cos b.\sin^2b$ --><IMG SRC="img805.gif" WIDTH=365 HEIGHT=42 ALT="$frac{sqrt{15}}{4}((cos^2a-sin^2a)sin a +2sin a.cos a.cos a)cos b.sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>yz</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{15}}{4}((\cos^2a-\sin^2a)\cos a - 2\sin a.\cos a.\sin a)\sin^2b$ --><IMG SRC="img806.gif" WIDTH=330 HEIGHT=42 ALT="$frac{sqrt{15}}{4}((cos^2a-sin^2a)cos a - 2sin a.cos a.sin a)sin^2b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<I><P>f</I>(<I>xyz</I>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{6}}{4}((\cos^2a-\sin^2a)\cos a - 2\sin a.\cos a.\sin a)2\sin b.\cos b$ --><IMG SRC="img807.gif" WIDTH=361 HEIGHT=42 ALT="$frac{sqrt{6}}{4}((cos^2a-sin^2a)cos a - 2sin a.cos a.sin a)2sin b.cos b$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(z(x^2-y^2))$ --><I>f</I>(<I>z</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{\sqrt{6}}{4}((\cos^2a-\sin^2a)\sin a +2\sin a.\cos a.\cos a)\sin b.(1+\cos^2b)$ --><IMG SRC="img808.gif" WIDTH=394 HEIGHT=42 ALT="$frac{sqrt{6}}{4}((cos^2a-sin^2a)sin a +2sin a.cos a.cos a)sin b.(1+cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(x(x^2-3y^2))$ --><I>f</I>(<I>x</I>(<I>x</I><SUP>2</SUP>-3<I>y</I><SUP>2</SUP>))</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{4}((\cos^2a-\sin^2a)\sin a +2\sin a.\cos a.\cos a)\cos b.(3+\cos^2b)$ --><IMG SRC="img809.gif" WIDTH=387 HEIGHT=36 ALT="$frac{1}{4}((cos^2a-sin^2a)sin a +2sin a.cos a.cos a)cos b.(3+cos^2b)$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<!-- MATH: $f(y(3x^2-y^2)$ --><I>f</I>(<I>y</I>(3<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE">
+<P><!-- MATH: $\frac{1}{4}((\cos^2a-\sin^2a)\cos a - 2\sin a.\cos a.\sin a)(1+3\cos^2b)$ --><IMG SRC="img810.gif" WIDTH=361 HEIGHT=36 ALT="$frac{1}{4}((cos^2a-sin^2a)cos a - 2sin a.cos a.sin a)(1+3cos^2b)$"></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8107"><A HREF="node485.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8103"></A><A HREF="node483.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8099"></A><A HREF="node483.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8105"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8106"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8108"><A HREF="node485.html">Energies of Isolated</A></A> <B>Up:</B> <A NAME="tex2html8104"><A HREF="node483.html">Overlap Integrals</A></A> <B>Previous:</B> <A NAME="tex2html8100"><A HREF="node483.html">Overlap Integrals</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

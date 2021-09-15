@@ -1,0 +1,37 @@
+      DOUBLE PRECISION FUNCTION READA(A,ISTART)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      CHARACTER*1 A(80)
+   2  FORMAT('   IN READA')
+      NINE=ICHAR('9')
+      IZERO=ICHAR('0')
+      MINUS=ICHAR('-')
+      IDOT=ICHAR('.')
+      X=0.D0
+      K=0
+      ONE=1.D0
+      DO 6 J=ISTART,80
+      N=ICHAR(A(J))
+      IF(N.LE.NINE.AND.N.GE.IZERO .OR. N.EQ.MINUS.OR.N.EQ.IDOT) GOTO 7
+   6  CONTINUE
+      READA=0.D0
+      RETURN
+   7  CONTINUE
+      DO 10 I=J,80
+      N=ICHAR(A(I))
+      IF(N.GT.NINE.OR.N.LT.IZERO) GOTO 20
+      K=K*10+N-IZERO
+      GOTO 10
+  20  IF(N.EQ.MINUS.AND.I.EQ.J) THEN
+          ONE=-1.D0
+          GOTO 10
+      ENDIF
+      IF(N.EQ.IDOT.AND.X.EQ.0.D0) THEN
+          X=0.1D0
+          GOTO 10
+      ENDIF
+      GOTO 30
+  10  X=X*10.D0
+  30  IF(X.EQ.0.D0) X=0.999999999D0
+      READA=ONE*K/X
+      RETURN
+      END

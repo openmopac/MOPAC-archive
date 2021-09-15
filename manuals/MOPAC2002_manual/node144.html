@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>CUTOF2=n.nn </TITLE>
+<META NAME="description" CONTENT="CUTOF2=n.nn ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node145.html">
+<LINK REL="previous" HREF="node143.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node145.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html3635"
+ HREF="node145.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html3631"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html3625"
+ HREF="node143.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html3633"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html3634"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3636"
+ HREF="node145.html">CUTOFP=n.nn </A>
+<B> Up:</B> <A NAME="tex2html3632"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html3626"
+ HREF="node143.html">CUTOF1=n.nn</A><!--End of Navigation Panel--><H2><A NAME="SECTION007335000000000000000">
+<TT>CUTOF2=<I>n</I>.<I>nn</I></TT> </A>
+</H2>
+In MOZYME calculations, <a href="node518.html#cutoffs">the cutoff distance for two-electron
+two center and one-electron two center integrals</a> is set by
+<TT>CUTOF2=<I>n</I>.<I>nn</I></TT>.  Below that distance, the interaction between two
+atoms is represented by the exact NDDO approximation.  Above that
+distance, one-electron integrals that depend on the overlap are
+ignored, and two-electron integrals are simplified.  Instead of using
+all 100 two-electron integrals between two heavy atoms, only seven are
+used.  These represent the terms &lt;<i>ss</i>|<i>ss</i>&gt;, &lt;<i>ss</i>|<i>s</i><i>x</i>&gt;, 
+&lt;<i>ss</i>|<i>s</i><i>y</i>&gt;, &lt;<i>ss</i>|<i>s</i><i>z</i>&gt;, &lt;<i>sx</i>|<i>ss</i>&gt;, 
+&lt;<i>sy</i>|<i>ss</i>&gt;, and &lt;<i>sz</i>|<i>ss</i>&gt;.&nbsp;
+At still greater distances, beyond <TT>CUTOF1</TT>, only
+the 
+<!-- MATH: $<\!ss|ss\!>$ -->
+&lt;<i>ss</i>|<i>ss</i>&gt;
+term is used.  Default: For systems of less than 30
+atoms, <TT>CUTOF2</TT> is 1000 &#197;ngstroms; for systems of 30 or more
+atoms, <TT>CUTOF2</TT> is 12 &#197;ngstroms. 
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

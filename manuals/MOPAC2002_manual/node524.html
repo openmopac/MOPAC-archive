@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Construction of Starting Localized Molecular Orbitals</TITLE>
+<META NAME="description" CONTENT="8.6.4.2 Construction of Starting Localized Molecular Orbitals">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node525.html"><LINK REL="previous" HREF="node523.html"><LINK REL="up" HREF="node522.html"><LINK REL="next" HREF="node525.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node525.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node522.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node523.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node525.html">Construction of Sigma</A> <B>Up:</B> <A HREF="node522.html">Construction of Starting</A> <B>Previous:</B> <A HREF="node523.html">Construction of Hybrids</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001264200000000000000">Construction of Starting Localized Molecular Orbitals</A> </H3>
+<P>In order to illustrate the procedure for generating starting LMOs, we will use <A HREF="node524.html#c6h5cho">benzaldehyde</A> as the test example.  Before starting the procedure, let us spend a little time examining the sketch. From the empiric formula of benzaldehyde, C<SUB>7</SUB>H<SUB>6</SUB>O, we see that there are (7*4+6*1+1*6) = 40 valence electrons, and (7*4+6*1+1*4) = 38 valence orbitals. Since each diatomic bond involves two electrons and two orbitals, and each lone-pair involves two electrons and one orbital, we see that there must be 18 diatomic bonds and two lone pairs. The diatomic bonds can be divided into three sets: 14
+<font face="Symbol">s </font>bonds, one localized <font face="Symbol">p </font>bond and three
+<font face="Symbol">p </font>bonds in the aromatic ring. Every atom contributes both atomic orbitals and electrons to the system. These contributions are shown in the&nbsp;<A HREF="#contrib">Table</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM15710">&nbsp;</A> </P>
+<STRONG><P><a name="contrib"></a>Table:</STRONG> Atomic Orbital and Electron Contributions in Benzaldehyde</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> Quantity</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>1</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>2</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>3</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>4</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>5</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>6</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">H<SUB>2</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">H<SUB>3</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">H<SUB>4</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">H<SUB>5</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">H<SUB>6</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>7</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">O<SUB>1</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">H<SUB>7</SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Orbitals</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Electrons</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">6</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="c6h5cho">&nbsp;<A NAME="BM15711"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Electronic Structure of Benzaldehyde</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{l_c6h5cho}$ --><IMG SRC="img1128.gif" WIDTH=570 HEIGHT=220 ALT="includegraphics{l_c6h5cho}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8644"><A HREF="node525.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8640"></A><A HREF="node522.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8634"></A><A HREF="node523.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8642"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8643"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8645"><A HREF="node525.html">Construction of Sigma</A></A> <B>Up:</B> <A NAME="tex2html8641"><A HREF="node522.html">Construction of Starting</A></A> <B>Previous:</B> <A NAME="tex2html8635"><A HREF="node523.html">Construction of Hybrids</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

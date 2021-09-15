@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Charge Balanced Unit Cells</TITLE>
+<META NAME="description" CONTENT="8.9.4 Charge Balanced Unit Cells">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node555.html">
+<LINK REL="previous" HREF="node553.html">
+<LINK REL="up" HREF="node550.html">
+<LINK REL="next" HREF="node555.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html9013"
+ HREF="node555.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html9009"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html9003"
+ HREF="node553.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html9011"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9012"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9014"
+ HREF="node555.html"> Geometry Specification for</A>
+<B> Up:</B> <A NAME="tex2html9010"
+ HREF="node550.html"> Solid state capability</A>
+<B> Previous:</B> <A NAME="tex2html9004"
+ HREF="node553.html"> Derivatives</A>
+<BR>
+<H2><A NAME="SECTION001294000000000000000">
+ Charge Balanced Unit Cells</A>
+</H2>
+<P>
+Obviously, the net charge in a unit cell is zero.  A less obvious need is for
+the dipole of the unit cell to be as small as possible.  Consider the highly
+artificial system:
+<P>
+<PRE>+     +     +     +     +     +     +     +
+                        -     -     -     -     -     -     -     -
+                        |     |     |     |     |     |     |     |
+                       / \   / \   / \   / \   / \   / \   / \   / \
+                      /   \_/   \_/   \_/   \_/   \_/   \_/   \_/   \_ 
+                      A                           C D                B
+</PRE>
+<P>
+This system represents a simple hydrocarbon backbone with anionic sites
+covalently bound.  The anionic charge is balanced by cation counterions. 
+However, although there is one cation for each anion, and the unit cell is
+uncharged, the unit cell does have a large dipole.
+<P>
+Why is this undesirable?   For the purpose of this discussion, let
+<TT><a href="node145.html">CUTOFP</a></TT> be infinite.  Then electrons in atom <I>A</I> would be stabilized by
+every cationic charge and destabilized by every anionic charge.  With
+increasing distance the effect of the cations and anions would more-or-less
+cancel out.  However, at large distances an asymmetry in the charge
+distribution is introduced.  To the left of <I>A</I> there would be 8 anions and 12
+cations, while to the right of <I>A</I> there would be 16 anions and 12 cations. 
+The potential effect of this asymmetry would be a net positive potential at
+<I>A</I>.  Similarly, at <I>B</I> there would be a net negative potential arising from
+the charges.
+<P>
+As a result of the Born-von K&#225;rm&#225;n periodic boundary conditions, atom
+<I>A</I> is bonded to atom <I>B</I>.  Because of the symmetry of this system, <I>A</I> and 
+<I>B</I> should have the same charge (roughly zero), but because of the large unit cell
+dipole, there will be an induced dipole in the bond <I>A</I>-<I>B</I>.  There will be
+induced dipoles in all bonds of the <I>A</I>-<I>B</I> type, for example <I>C</I>-<I>D</I>, but
+these will be very small compared to that in the <I>A</I>-<I>B</I> bond.
+<P>
+The overall effect of this induced bond dipole is that the molecular geometry
+in  the region of <I>A</I> and <I>B</I> is deformed.  In a correctly optimized system,
+the effect of having a large dipole in the unit cell is to induce gradient
+effects at the ends of the unit cell.  
+<P>
+To avoid these effects, the unit cell should be chosen in such a way as to make
+the dipole of the unit cell as small as possible.  For most systems, the
+default value of <TT>CUTOFP</TT> used by the program will prevent this problem
+from occurring.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html9013"
+ HREF="node555.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html9009"
+ HREF="node550.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html9003"
+ HREF="node553.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html9011"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html9012"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html9014"
+ HREF="node555.html"> Geometry Specification for</A>
+<B> Up:</B> <A NAME="tex2html9010"
+ HREF="node550.html"> Solid state capability</A>
+<B> Previous:</B> <A NAME="tex2html9004"
+ HREF="node553.html"> Derivatives</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

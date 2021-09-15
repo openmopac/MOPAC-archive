@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Degenerate States</TITLE>
+<META NAME="description" CONTENT="8.4.8 Degenerate States">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node502.html">
+<LINK REL="previous" HREF="node500.html">
+<LINK REL="up" HREF="node486.html">
+<LINK REL="next" HREF="node502.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8326"
+ HREF="node502.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8322"
+ HREF="node486.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8316"
+ HREF="node500.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8324"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8325"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8327"
+ HREF="node502.html"> Calculation of Spin</A>
+<B> Up:</B> <A NAME="tex2html8323"
+ HREF="node486.html"> Multi-Electron Configuration Interaction</A>
+<B> Previous:</B> <A NAME="tex2html8317"
+ HREF="node500.html"> Definition of some</A>
+<!--End of Navigation Panel-->
+<H2>Degenerate States
+</H2>
+By the Jahn-Teller theorem, systems with orbital degeneracy will distort so as
+to remove the degeneracy.  However, many dynamic Jahn-Teller systems are known
+in which the time-average geometry is of the higher point-group.  These systems
+are the kind that will be addressed here. <A NAME="BM13957">&#160;</A>
+<P>
+The analytical RHF configuration interaction first derivative calculation
+developed by Liotard&nbsp;[<A
+ HREF="node715.html#analci">43</A>] has been modified to allow systems with
+degenerate states to be run.
+<P>
+Each of the degenerate states is a linear combination of microstates. Each
+microstate can be described by a Slater 
+determinant&nbsp;[<A
+ HREF="node715.html#slater_det1">66</A>,<A
+ HREF="node715.html#slater_det2">67</A>], which represents a specific pattern
+of occupancy of molecular orbitals. Each M.O. is a linear combination of
+Slater atomic orbitals.
+<P>
+The whole state is best described by an equal
+mixture of the degenerate states of which it is composed.  Note that this is
+NOT a combination of states, rather it is a mixture.  An example of a
+combination of  states is a state function, composed of a linear combination of
+microstates.  In such a combination the phase-factor between microstates is
+significant, thus state(1)= 
+<!-- MATH: $1/\sqrt{2}$ -->
+(1/<!-- MATH: $\sqrt{2}D_2$ -->2)<sup>1/2</sup>(Microstate(a) + Microstate(b)) is
+different from state(2) 
+<!-- MATH: $1/\sqrt{2}$ -->
+(1/<!-- MATH: $\sqrt{2}D_2$ -->2)<sup>1/2</sup>(Microstate(a) - Microstate(b)).  An
+example of a mixture of states is the <SUP>2</SUP>T<SUB>2<I>g</I></SUB> state of TiF<SUB>6</SUB><SUP>3-</SUP>, a
+<I>d</I><SUP>1</SUP> system, in which the best description of the state is an equal mixture of
+the three degenerate space components of T<SUB>2<I>g</I></SUB>, and an equal mixture of the
+two spin components of the Kramer's doublet.  The overall state is thus 
+1/6(<IMG
+ WIDTH="16" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img992.gif"
+ ALT="$\alpha$">(T<SUB>2<I>g</I></SUB>(x)+T<SUB>2<I>g</I></SUB>(y)+T<SUB>2<I>g</I></SUB>(z))+
+<IMG
+ WIDTH="15" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img993.gif"
+ ALT="$\beta$">(T<SUB>2<I>g</I></SUB>(x)+T<SUB>2<I>g</I></SUB>(y)+T<SUB>2<I>g</I></SUB>(z)).
+<P>
+If equimixtures are not used, then the Jahn-Teller theorem applies, and the
+system would immediately distort so as to remove the degeneracy.  In the case
+of TiF<SUB>6</SUB><SUP>3-</SUP>, this would result in distortion from O<SUB><I>h</I></SUB> to D<SUB>4<I>h</I></SUB>symmetry.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8326"
+ HREF="node502.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8322"
+ HREF="node486.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8316"
+ HREF="node500.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8324"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8325"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8327"
+ HREF="node502.html"> Calculation of Spin</A>
+<B> Up:</B> <A NAME="tex2html8323"
+ HREF="node486.html"> Multi-Electron Configuration Interaction</A>
+<B> Previous:</B> <A NAME="tex2html8317"
+ HREF="node500.html"> Definition of some</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

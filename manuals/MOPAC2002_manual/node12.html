@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>New Functionalities of MOPAC</TITLE>
+<META NAME="description" CONTENT="1.1.1 New Functionalities of MOPAC">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node13.html"><LINK REL="previous" HREF="node11.html"><LINK REL="up" HREF="node11.html"><LINK REL="next" HREF="node13.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<DT><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node13.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node11.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node11.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node13.html">Technical, Compatibility, and Other</A> <B>Up:</B> <A HREF="node11.html">General Description of MOPAC</A> <B>Previous:</B> <A HREF="node11.html">General Description of MOPAC</A>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION00511000000000000000">New Functionalities of MOPAC</A> </H2>
+<DT><b><font face="Arial">New features of MOPAC 2002</font></b></DT>
+<dd>
+<dd>&nbsp;</dd>
+<STRONG></dd>
+<DT>Addition of AM1-<I>d</I></STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>New AM1 parameters  available for V and Pd. These elements use a <I>s-p-d</I> 
+basis set. The full set of metals that can be run using AM1 is now V, Fe, Cu, 
+Mo, Pd, Ag, and Pt.<dt>
+<STRONG></dt><dd>&nbsp;</dd>
+<DT>Linear scaling COSMO</STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>The COSMO method used in a MOZYME calculation has been modified to allow large systems to be calculated. The time for evaluation of solvent phase SCF is now 25% longer than that needed for a gas-phase calculation.
+Previously, the memory demand limited application to systems of less 
+than 1,000 atoms, and the calculations took much longer.</DD>
+<dt>&nbsp;</dt>
+<DT><STRONG>Improved SCF convergence in MOZYME</STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>Level shifting methods have been applied to the MOZYME SCF calculation. The result of this is a more rapid and robust convergence to the SCF. </DD>
+<STRONG><DT>Improved evaluation of canonical molecular orbitals</STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>The method for evaluating eigenvectors in a MOZYME calculation has been improved to increase speed and decrease memory requirements. </DD>
+<dt>
+<STRONG></dt>
+<DT>Addition of new parameter sets</STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>Parameters are available for all non-radioactive main-group elements, Zn, Cd, and Hg for the methods MNDO, AM1, PM3, and PM5.<DD></DD>&nbsp;<STRONG><DT>New method PM5</STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>A new parameter set, called PM5, has been added. Parameters are available for all non-radioactive main-group elements, Zn, Cd, and Hg. 
+Except for dipole moments, the new method appears to have a
+<a href="node650.html">higher accuracy</a> than earlier methods.</DD>
+<dt>&nbsp;</dt>
+<dt><b>Molecular Mechanics correction for carbon ring systems</b></dt>
+<dd>&nbsp;</dd>
+<dd>NDDO semiempirical methods predict some organic ring systems, such as 
+cyclopentane, to be planar, although they are known to be puckered.&nbsp; To 
+correct for this, a molecular mechanics correction can be applied.&nbsp; </dd>
+</DD>
+<dt>&nbsp;</dt>
+<DT><FONT FACE="Arial">
+<B>New features of MOPAC 2000</B></FONT></DT>
+<dd>&nbsp;</dd>
+<STRONG>
+<DT>Addition of AM1-<I>d</I></STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>AM1 parameters are now available for Fe, Cu, Mo, Ag, and Pt. These elements use a <I>s-p-d</I> basis set.</DD>
+<dt>&nbsp;</dt>
+<DT><b>Extension of oscillators to include p-d transitions</b></DT>
+<dd>&nbsp;</dd>
+<DD>In order to properly model electronic excitations in transition metals, the 
+transition dipole from p to d atomic orbitals has been added.</DD>
+<dt>&nbsp;</dt>
+<DT><b>Extension of polymer function to layer and solid systems</b></DT>
+<dd>&nbsp;</dd>
+<DD>Solids can now be modeled with the same accuracy as molecules.&nbsp; Unit 
+cell parameters can be optimized.</DD>
+<dt>&nbsp;</dt>
+<DT><b>Ability to compute heat capacities of solids</b></DT>
+<dd>&nbsp;</dd>
+
+<DD>The heat capacity of solids can now be modeled using the normal THERMO 
+option.</DD>
+<dt>&nbsp;</dt>
+<DT><b>Ability to simulate pressure effects on solids</b></DT>
+<dd>&nbsp;</dd>
+
+<DD>The effect of an applied pressure acting on a unit cell (a solid) can now be 
+simulated.</DD>
+<dt>&nbsp;</dt>
+<DT><b>Ability to simulate tension effects on polymers</b></DT>
+<dd>&nbsp;</dd>
+
+<DD>The effect of an applied tension acting on a polymer chain can now be 
+simulated.</DD>
+<dt>&nbsp;</dt>
+<DT><b>Number of atoms allowed increased to 99999</b></DT>
+<dd>&nbsp;</dd>
+
+<DD>The previous limit, due to formatting, of 9,999 atoms has been increased to 
+99,999 atoms. </DD>
+</DD>
+<dt>&nbsp;</dt>
+<DT><b>Memory reduction in MOZYME function</b></DT>
+<dd>&nbsp;</dd>
+
+<DD>Systems of more than about 5,000 atoms had been difficult to calculate due 
+to the severe memory demand.&nbsp; By using direct SCF and other changes, 
+systems of 20,000 atoms can now be modeled.</DD>
+<dt>
+<STRONG></dt><dd>&nbsp;</dd>
+<DT>Option to run PM3(tm)</STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>The <A HREF="node177.html">EXTERNAL</A> keyword has been extended to allow PM3(tm) parameter sets to be read in.  PM3(tm) calculations can then be run using keyword <A HREF="node263.html">PM3</A>.
+<dt>&nbsp;</dt>
+<STRONG><DT>Modification of COSMO surface construction</STRONG> </DT>
+<dd>&nbsp;</dd>
+<DD>Dr Klamt has modified the surface construction to make it more accurate and more robust. </DD>
+<dt>&nbsp;</dt>
+<dt><b>Program converted from FORTRAN 77 to FORTRAN 90</b></dt>
+<dd>&nbsp;</dd>
+<dd>The newer language, FORTRAN 90, permits better quality control and more 
+complete debugging than the older FORTRAN 77</dd>
+</DD>
+<dt>&nbsp;</dt>
+<DT>&nbsp;</DT>
+<FONT FACE="Arial">
+<B><DT>New features of MOPAC 97</DT>
+</B></FONT><STRONG><DD>
+<DT>Addition of MNDO-<I>d</I></STRONG> </DT>
+<DD>&nbsp; <BR>
+In 1992, W. Thiel and A. A. Voityuk published a modified MNDO method&nbsp;[<A HREF="node715.html#mndod_0">5</A>] in which <I>d</I> orbitals were added to the conventional <I>s</I>-<I>p</I> basis set. The result of this was a new method, MNDO-<I>d</I>, which was more accurate than any other NDDO method. For example, using the <I>s</I> and <I>p</I> basis set only, none of the popular semiempirical methods correctly predict the point group for ClF<SUB>3</SUB>, whereas when <I>d</I>-orbitals are added, the correct point group is obtained. At present, parameters for only a few main-group elements are available, namely: Al, Si, P, S, Cl, Br, and I. </DD>
+<DD>Calculations using MNDO-<I>d</I> can be run by use of the new keyword <TT>MNDOD</TT>. In accordance with the description of the method, for elements for which MNDO-<I>d</I> parameters are not yet available, MNDO parameters are used by default. MNDO-<I>d</I> cannot be used with the solvation methods at present. </DD>
+<DD>At the present time, parameters are not available for any transition metals, although many researchers are interested in including transition metals in their calculations. As soon as transition metal parameters are available they can be used in a MOPAC calculation using the keyword <TT>EXTERNAL</TT>. </DD>
+<STRONG><br>
+&nbsp;<DT>Excited States in Solution</STRONG> </DT>
+<DD>&nbsp; <BR>
+The COSMO method has been extended&nbsp;[<A HREF="node715.html#cosmo-rs">11</A>] to allow calculation of electronic excited states in solution. Because the refractive index is needed in the calculation, it must be supplied in the data set. Accordingly, the keyword <TT>N=n.nn</TT> has been defined. Examples of the use of the COSMO method are provided in the data sets distributed with MOPAC. </DD>
+<STRONG><br>
+&nbsp;<DT>Extension of the Tomasi Model of Solvation</STRONG> </DT>
+<DD>&nbsp; <BR>
+In earlier versions of MOPAC containing the Tomasi model, a large amount of data defining the solvent had to be supplied. Three new keywords have now been defined, which automatically provide default values for common solvents. The keyword for water is <TT>H2O</TT>. Recently, the Tomasi method has been extended to organic solvents. As a result, two more keywords are provided, <TT>CHCL3</TT> (for chloroform) )&nbsp;[<A HREF="node715.html#chcl3">12</A>] and <TT>CCL4</TT> (for carbon tetrachloride)&nbsp;[<A HREF="node715.html#ccl4">13</A>]. </DD>
+<STRONG><br>
+&nbsp;<DT>Dynamic Memory Allocation</STRONG> </DT>
+<DD>&nbsp; <BR>
+Most of the arrays that depend on the size of the system are now allocated dynamically. Previous versions of MOPAC used static memory allocation, and, in order to efficiently run calculations on systems of different sizes, two or three different versions of MOPAC had to be available. With dynamic memory allocation, a single executable can be used for small, medium, and large systems. </DD>
+<DD>Not all arrays can be made dynamic. When MOPAC starts, it does not know how much memory will be needed for the geometry, so a few static arrays are needed. However, these are relatively small. Because of this, the default number of atoms is set to 20000. </DD>
+<STRONG><br>
+&nbsp;<DT>Linear Scaling&nbsp;</STRONG> </DT>
+<DD>&nbsp; <BR>
+A new method, called MOZYME, allows systems of several thousand atoms to be run in a practical time. The method uses localized molecular orbitals, and gives results that are the same as those of conventional methods. MOZYME should be regarded as an alternative way of solving the SCF equations, that is, it gives the same results, but by a different method. Commercial use of the MOZYME 
+function is protected by a US patent, number: 5,604,686. Details of the patent 
+can be obtained from the Internet.&nbsp; Currently, a patent on this procedure is being applied for in Japan. </DD>
+<DD>&nbsp;</DD>
+</DD>
+<DT><HR></DT>
+<DT><!--Navigation Panel--><A NAME="tex2html1448"><A HREF="node13.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html1444"></A><A HREF="node11.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html1438"></A><A HREF="node11.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html1446"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html1447"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html1449"><A HREF="node13.html">Technical, 
+Compatibility,&nbsp; and Other</A></A> <B>Up:</B> <A NAME="tex2html1445"><A HREF="node11.html">What is MOPAC?</A></A> <B>Previous:</B> <A NAME="tex2html1439"><A HREF="node11.html">What is MOPAC?</A></A> <!--End of Navigation Panel--></DT>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

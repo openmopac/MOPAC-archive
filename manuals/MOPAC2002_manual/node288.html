@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>RESTART </TITLE>
+<META NAME="description" CONTENT="RESTART ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node289.html">
+<LINK REL="previous" HREF="node287.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node289.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html5361"
+ HREF="node289.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5357"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5351"
+ HREF="node287.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5359"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5360"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5362"
+ HREF="node289.html">RMAX=n.nn </A>
+<B> Up:</B> <A NAME="tex2html5358"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5352"
+ HREF="node287.html">RESEQ </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>RESTART</TT> 
+</H2>
+        When a job has been stopped, for whatever reason,  and  intermediate
+   results  have  been  stored, then the calculation can be restarted at the
+   point where it stopped by specifying <TT>RESTART</TT>.  The most common cause of a
+   job  stopping  before  completion is its exceeding the time allocated.  A
+   saddle-point calculation has no restart, but  the  output  file  contains
+   information  which  can  easily  be  used to start the calculation from a
+   point near to where it stopped.
+<P>
+It is not necessary to change the geometric data to reflect the  new
+   geometry, although this can be done, if desired.
+A convenient way to monitor a  long  run  is  to  specify  <TT>
+<a href="node116.html">1SCF</a></TT>  and
+   <TT>RESTART</TT>; this will give a normal output file at very little cost.
+<P>
+Several functions in MOPAC are not allowed under MOZYME, examples being the 
+<TT><a href="node182.html">FORCE</a></TT> calculation and the frequency-dependent hyperpolarizability.  
+<TT>RESTART</TT> can be used to allow a calculation to start in MOPAC or MOZYME,
+ and then change to the other if desired.  
+<P>
+Note:  Two restarts exist in the IRC calculation.  If an  IRC
+   calculation  stops  while in the FORCE calculation, then a normal restart
+   can be done.  If the job stops while doing  the  IRC  calculation  itself
+   then  the keyword <TT><a href="node199.html">IRC=<I>n</I></a></TT> should be changed to <TT>
+<a href="node198.html">IRC</a></TT>, or it can be omitted if
+   <TT><a href="node165.html">DRC</a></TT> is also specified.  The absence of  the  string  "<TT>IRC=</TT>"  is  used  to
+   indicate  that  the  <TT>FORCE</TT>  calculation  was completed before the restart
+   files were written.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html5361"
+ HREF="node289.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html5357"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html5351"
+ HREF="node287.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html5359"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html5360"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html5362"
+ HREF="node289.html">RMAX=n.nn </A>
+<B> Up:</B> <A NAME="tex2html5358"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html5352"
+ HREF="node287.html">RESEQ </A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

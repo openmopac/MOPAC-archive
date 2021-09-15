@@ -1,0 +1,354 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Approximations used in MNDO, MINDO/3, AM1, PM3, and MNDO-d</TITLE>
+<META NAME="description" CONTENT="8.2.1 Approximations used in MNDO, MINDO/3, AM1, PM3, and MNDO-d">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node456.html"><LINK REL="previous" HREF="node441.html"><LINK REL="up" HREF="node441.html"><LINK REL="next" HREF="node443.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node442.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node441.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node440.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node442.html">Approximations used</A> <B>Up:</B> <A HREF="node439.html">Theory</A> <B>Previous:</B> <A HREF="node440.html">Introduction</A> <BR>
+<H1>Semiempirical Theory - Introduction</H1>
+<P>There are six distinct methods available within MOPAC: MINDO/3, MNDO, AM1, PM3, PM5, and MNDO-<I>d</I>. All are semiempirical, and have roughly the same structure. A complete knowledge of these methods is not necessary in order to use MOPAC; however, a superficial understanding of these methods and their relationship to <EM>ab&nbsp;initio</EM> methods is important for using MOPAC and particularly for interpreting the results. </P>
+<P>The six methods within MOPAC have many features in common. They are all self-consistent field (SCF) methods, they take into account electrostatic repulsion and exchange stabilization, and, in them, all calculated integrals are evaluated by approximate means. Further, they all use a restricted basis set of one <I>s</I> orbital and three <I>p</I> orbitals (<I>p<SUB>x</I></SUB>, <I>p<SUB>y</I></SUB>, and <I>p<SUB>z</I></SUB>) per atom (except MNDO-<I>d</I>, which has five <I>d</I> orbitals in addition to the <I>s</I>-<I>p</I>basis set) and ignore overlap integrals in the secular equation. Thus, instead of solving </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+|H-ES| = 0,
+\end{displaymath} -->|<I>H</I>-<I>ES</I>| = 0, </DIV>
+<P>the expression </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+|H-E| = 0,
+\end{displaymath} -->|<I>H</I>-<I>E</I>| = 0, </DIV>
+<P>in which <I>H</I> is the secular determinant, <I>S</I> is the overlap matrix, and <I>E</I> is the set of eigenvalues, is solved. These approximations considerably simplify quantum mechanical calculations on systems of chemical interest. As a result, larger systems can be studied. Computational methods are only models, and there is no advantage in rigorously solving Schr&ouml;dinger's equation for a large system if that system has had to be abbreviated in order to make the calculations tractable. Semiempirical methods are thus seen to be well balanced: they are accurate enough to have useful predictive powers, yet fast enough to allow large systems to be studied. </P>
+<P>All the semiempirical methods contain sets of parameters. For MINDO/3 and PM5 atomic and diatomic parameters exist, while MNDO, AM1, PM3, and MNDO-<I>d</I> use only single-atom parameters. Not all parameters are optimized for all methods; for example, in MINDO/3, MNDO and AM1 the two electron one center integrals are normally taken from atomic spectra. In the list given in the&nbsp;<A HREF="#pars">Table</A>, parameters optimized for a given method are indicated by '*'. A '+' indicates that the value of the parameter was obtained from experiment (not optimized). Where neither symbol is given, the associated parameter is not used in that method. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM9673">&nbsp;</A> </P>
+<STRONG><P>Table:</STRONG> Parameters used in Semiempirical Methods</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=659>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P>Parameter</TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<P>Description</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">MINDO/3</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">MNDO</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">AM1</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">PM3</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">PM5</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P>U<I><SUB>ss</I></SUB> and U<I><SUB>pp</I></SUB></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>s</I> and <I>p</I> atomic orbital<BR>
+one-electron one-center integrals</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P><i><font face="Symbol">b</font><sub>s</sub> </i>and <i>
+<font face="Symbol">b</font></i><sub><i>p</i></sub></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>s</I> and <I>p</I> atomic orbital one-electron<BR>
+two-center resonance integral terms</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P>I<I><SUB>s</I></SUB></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>s</I> atomic orbital ionization potential<BR>
+for two center resonance integral term</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P>I<I><SUB>p</I></SUB></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>p</I> atomic orbital ionization potential<BR>
+for two center resonance integral term</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P><!-- MATH: $\beta_{A,B}$ --><i><font face="Symbol">b</font><sub>AB</sub></i></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<P>Diatomic two center one-electron<BR>
+resonance integral multiplier</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P><i><font face="Symbol">x</font><sub>s</sub></i></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>s</I>-type Slater atomic orbital exponent</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P><i><font face="Symbol">x</font></i><sub><i>p</i></sub></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>p</I>-type Slater atomic orbital exponent</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P><i><font face="Symbol">a</font><sub>A</sub></i></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<P>Atom <I>A</I> core-core repulsion term</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P><!-- MATH: $\alpha_{AB}$ --><i><font face="Symbol">a</font><sub>AB</sub></i></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<P>Atoms <I>A</I> and <I>B</I> core-core repulsion term</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<I><P>Gss</I></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>s</I>-<I>s</I> atomic orbital one center<BR>
+two electron repulsion integral</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<I><P>Gsp</I></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>s</I>-<I>p</I> atomic orbital one center<BR>
+two electron repulsion integral</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<I><P>Gpp</I></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>p</I>-<I>p</I> atomic orbital one center<BR>
+two electron repulsion integral</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<I><P>Gp</I>2</TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>p</I>-<I>p</I>' atomic orbital one center<BR>
+two electron repulsion integral</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<I><P>Hsp</I></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<I><P>s</I>-<I>p</I> atomic orbital one-center<BR>
+two-electron exchange integral</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P>K<I><SUB>nA</I></SUB> or a<I><SUB>nA</I></SUB></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<P>A Gaussian multiplier for <I>n</I>th<BR>
+Gaussian of atom A</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P>L<I><SUB>nA</I></SUB> or b<I><SUB>nA</I></SUB></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<P>A Gaussian exponent multiplier<BR>
+Gaussian of atom A</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+<TR><TD WIDTH="17%" VALIGN="MIDDLE">
+<P>M<I><SUB>nA</I></SUB> or c<I><SUB>nA</I></SUB></TD>
+<TD WIDTH="52%" VALIGN="MIDDLE">
+<P>A Radius of center of <I>n</I>th<BR>
+Gaussian of atom A</TD>
+<TD WIDTH="10%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="6%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+<TD WIDTH="5%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">*</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P>All five semiempirical methods also use two experimentally determined constants per atom: the atomic mass of the most abundant isotope and the heat of atomization. </P>
+<P><HR></P>
+<P><!--Table of Child-Links--><A NAME="CHILD_LINKS">&nbsp;</A> </P>
+
+<UL>
+<LI><A NAME="tex2html7543"><A HREF="node442.html">Approximations used in MNDO, MINDO/3, AM1, PM3, and MNDO-<I>d</I></A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html7544"><A HREF="node443.html">Basic Roothaan-Hall Equations</A></A> </LI>
+<LI><A NAME="tex2html7545"><A HREF="node444.html">Neglect of diatomic overlap integral</A></A> </LI>
+<LI><A NAME="tex2html7546"><A HREF="node445.html">Neglect of three and four center integrals</A></A> </LI>
+<LI><A NAME="tex2html7547"><A HREF="node446.html">One-center two-electron integrals</A></A> </LI>
+<LI><A NAME="tex2html7548"><A HREF="node447.html">NDDO two-electron two-center integrals</A></A> </LI>
+<LI><A NAME="tex2html7549"><A HREF="node448.html">Final Assembly of Two-Electron Two-Center Integrals</A></A> </LI>
+<LI><A NAME="tex2html7550"><A HREF="node449.html">MINDO/3 Two electron two center integrals</A></A> </LI>
+<LI><A NAME="tex2html7551"><A HREF="node450.html">The one-center one-electron integral
+<i>H<sub><font face="Symbol">mm</font></sub></i> <!-- MATH: $H_{\mu\mu}$ --></A></A></LI>
+<LI><A NAME="tex2html7552"><A HREF="node451.html">The two-center one-electron integral </A>
+<i><A HREF="node450.html">H<sub><font face="Symbol">mn</font></sub></A></i><A HREF="node451.html"> <!-- MATH: $H_{\mu\nu}$ --></A></A></LI>
+<LI><A NAME="tex2html7553"><A HREF="node452.html">Core-core repulsion integrals</A></A> </LI>
+<LI><A NAME="tex2html7554"><A HREF="node453.html">MINDO/3 modification to the core-core term</A></A> </LI>
+<LI><A NAME="tex2html7555"><A HREF="node454.html">MNDO modification to the core-core term</A></A> </LI>
+<LI><A NAME="tex2html7556"><A HREF="node455.html">AM1 and PM3 modifications to the core-core term</A></A> </LI></UL>
+
+<LI><A NAME="tex2html7557"><A HREF="node456.html">Self-Consistent Field Calculation</A></A> </LI>
+<LI><A NAME="tex2html7558"><A HREF="node457.html">Calculation of
+<font face="Symbol">D</font>H<sub>f <!-- MATH: $\Delta H_f$ --></sub></A><sub>
+<i><A HREF="node450.html">&nbsp; </A></i><A HREF="node450.html"> <!-- MATH: $H_{\mu\mu}$ --></A></A></A>
+</sub></A></LI></UL>
+
+<!--End of Table of Child-Links-->
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

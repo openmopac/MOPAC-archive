@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Failure of NDDO Approximation</TITLE>
+<META NAME="description" CONTENT="Failure of NDDO Approximation">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node378.html">
+<LINK REL="previous" HREF="node376.html">
+<LINK REL="up" HREF="node376.html">
+<LINK REL="next" HREF="node378.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6503"
+ HREF="node378.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6499"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6493"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6501"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6502"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6504"
+ HREF="node378.html">Starting M.O.s</A>
+<B> Up:</B> <A NAME="tex2html6500"
+ HREF="node376.html"> Theory</A>
+<B> Previous:</B> <A NAME="tex2html6494"
+ HREF="node376.html"> Theory</A>
+<BR>
+<H4><A NAME="SECTION001010010000000000000">
+Failure of NDDO Approximation</A>
+</H4> 
+Before going on to calculate  electron density, let us examine the reason for
+the breakdown of the NDDO approximation when electron density is being
+calculated.
+<P>
+Consider again the H<SUB>2</SUB> system.  The bonding M.O.  is 
+<!-- MATH: $\psi =
+1/\sqrt{2}(\varphi_1 + \varphi_2)$ -->
+<IMG
+ WIDTH="131" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img294.gif"
+ ALT="$\psi =
+1/\sqrt{2}(\varphi_1 + \varphi_2)$">,
+which is   the M.O. which gives rise to the
+density matrix shown above.
+<P>
+Consider what would happen if the electron density were to be calculated using
+this density matrix.  For each point in space there would be a density, 
+<!-- MATH: $\rho(x,y,z)$ -->
+<IMG
+ WIDTH="57" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img295.gif"
+ ALT="$\rho(x,y,z)$">,
+which would arise from:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\rho(x,y,z) = 1.0\varphi_1(x,y,z)^2 + 1.0\varphi_2(x,y,z)^2 + 2.0\varphi_1(x,y,z)\varphi_2(x,y,z)
+\end{displaymath} -->
+<IMG
+ WIDTH="409" HEIGHT="29"
+ SRC="img296.gif"
+ ALT="\begin{displaymath}\rho(x,y,z) = 1.0\varphi_1(x,y,z)^2 + 1.0\varphi_2(x,y,z)^2 + 2.0\varphi_1(x,y,z)\varphi_2(x,y,z)
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Now, the integral of this function over all space would equal the number of electrons
+in H<SUB>2</SUB>:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+N_e = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\rho(x,y,z)dx\,dy\,dz
+\end{displaymath} -->
+<IMG
+ WIDTH="237" HEIGHT="42"
+ SRC="img297.gif"
+ ALT="\begin{displaymath}N_e = \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty}\rho(x,y,z)dx\,dy\,dz
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The integral over all space of a normalized atomic orbital is 1.00; therefore,
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+N_e = 1.0 + 1.0 + 2<\varphi_1\varphi_2> \neq 2,
+\end{displaymath} -->
+<IMG
+ WIDTH="206" HEIGHT="29"
+ SRC="img298.gif"
+ ALT="\begin{displaymath}N_e = 1.0 + 1.0 + 2<\varphi_1\varphi_2> \neq 2,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+In other words, the total number of electrons in H<SUB>2</SUB>, assuming the NDDO 
+approximation,  is greater than 2.0.  The extra density comes from the product
+<!-- MATH: $2.0\varphi_1(x,y,z)\varphi_2(x,y,z)$ -->
+<IMG
+ WIDTH="142" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img299.gif"
+ ALT="$ 2.0\varphi_1(x,y,z)\varphi_2(x,y,z)$">,
+which must not be neglected.  If it
+were to be neglected, then all phenomena such as bonds and lone pairs could not
+be modeled.
+<P>
+Another way of looking at this is to recognize that, in H<SUB>2</SUB>, electron density
+between the atoms is greater when a bond exists than when it does not exist.
+Given this, it follows that, in order to ensure that the total number of
+electrons in the system remains constant when a bond forms, at some other point
+in space the electron density must be less when a bond exists than when it does
+not exist.  In other words, if density builds up in some region of space, then
+it must become less somewhere else in order that the total number of electrons
+would remain constant.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6503"
+ HREF="node378.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6499"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6493"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6501"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6502"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6504"
+ HREF="node378.html">Starting M.O.s</A>
+<B> Up:</B> <A NAME="tex2html6500"
+ HREF="node376.html"> Theory</A>
+<B> Previous:</B> <A NAME="tex2html6494"
+ HREF="node376.html"> Theory</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

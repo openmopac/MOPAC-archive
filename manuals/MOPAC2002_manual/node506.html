@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Diagonalization of the Fock matrix</TITLE>
+<META NAME="description" CONTENT="8.5.3 Diagonalization of the Fock matrix">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node507.html">
+<LINK REL="previous" HREF="node505.html">
+<LINK REL="up" HREF="node503.html">
+<LINK REL="next" HREF="node507.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8391"
+ HREF="node507.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8387"
+ HREF="node503.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8381"
+ HREF="node505.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8389"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8390"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8392"
+ HREF="node507.html"> Exercises involving eigenvectors</A>
+<B> Up:</B> <A NAME="tex2html8388"
+ HREF="node503.html"> An SCF Calculation</A>
+<B> Previous:</B> <A NAME="tex2html8382"
+ HREF="node505.html"> Assembly of the</A>
+<H2>Diagonalization of the Fock matrix
+</H2>
+The Fock matrix is then diagonalized to yield the
+following set of eigenvalues, or one-electron energies,  and eigenvectors, or 
+molecular orbitals:
+<p>&nbsp;</p>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">Energy Level</TD>
+<TD ALIGN="CENTER" COLSPAN=6>Molecular Orbital Coefficients</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="RIGHT">1</TD>
+<TD ALIGN="RIGHT">2</TD>
+<TD ALIGN="RIGHT">3</TD>
+<TD ALIGN="RIGHT">4</TD>
+<TD ALIGN="RIGHT">5</TD>
+<TD ALIGN="RIGHT">6</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">6 -0.4857</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">-0.4082</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">-0.4082</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">-0.4082</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">5 -1.8388</TD>
+<TD ALIGN="RIGHT">0.5774</TD>
+<TD ALIGN="RIGHT">-0.2887</TD>
+<TD ALIGN="RIGHT">-0.2887</TD>
+<TD ALIGN="RIGHT">0.5774</TD>
+<TD ALIGN="RIGHT">-0.2887</TD>
+<TD ALIGN="RIGHT">-0.2887</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">4 -1.8388</TD>
+<TD ALIGN="RIGHT">0.0000</TD>
+<TD ALIGN="RIGHT">0.5000</TD>
+<TD ALIGN="RIGHT">-0.5000</TD>
+<TD ALIGN="RIGHT">0.0000</TD>
+<TD ALIGN="RIGHT">0.5000</TD>
+<TD ALIGN="RIGHT">-0.5000</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">3 -6.9317</TD>
+<TD ALIGN="RIGHT">0.5774</TD>
+<TD ALIGN="RIGHT">0.2887</TD>
+<TD ALIGN="RIGHT">-0.2887</TD>
+<TD ALIGN="RIGHT">-0.5774</TD>
+<TD ALIGN="RIGHT">-0.2887</TD>
+<TD ALIGN="RIGHT">0.2887</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">2 -6.9317</TD>
+<TD ALIGN="RIGHT">0.0000</TD>
+<TD ALIGN="RIGHT">0.5000</TD>
+<TD ALIGN="RIGHT">0.5000</TD>
+<TD ALIGN="RIGHT">0.0000</TD>
+<TD ALIGN="RIGHT">-0.5000</TD>
+<TD ALIGN="RIGHT">-0.5000</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="RIGHT">1 -14.8670</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+<TD ALIGN="RIGHT">0.4082</TD>
+</TR>
+</TABLE></DIV>
+&nbsp;<p>These form a normalized, orthogonal set. Under the NDDO approximation, 
+overlaps between different atomic orbitals are ignored, i.e., 
+<!-- MATH: $<\varphi_i|\varphi_j>=\delta(i,j)$ -->
+<IMG
+ WIDTH="122" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1005.gif"
+ ALT="$<\varphi_i\vert\varphi_j>=\delta(i,j)$">,
+so instead of
+<BR></p>
+<P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<\psi_i|\psi_j> = \sum_{\lambda}\sum_{\sigma}c_{\lambda i}c_{\sigma j}<\varphi_{\lambda}|\varphi_{\sigma}>
+\end{displaymath} -->
+<IMG
+ WIDTH="228" HEIGHT="43"
+ SRC="img1006.gif"
+ ALT="\begin{displaymath}<\psi_i\vert\psi_j> = \sum_{\lambda}\sum_{\sigma}c_{\lambda i}c_{\sigma j}<\varphi_{\lambda}\vert\varphi_{\sigma}>
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+we have
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<\psi_i|\psi_j> = \sum_{\lambda}c_{\lambda i}c_{\lambda j} = \delta(i,j).
+\end{displaymath} -->
+<IMG
+ WIDTH="199" HEIGHT="43"
+ SRC="img1007.gif"
+ ALT="\begin{displaymath}<\psi_i\vert\psi_j> = \sum_{\lambda}c_{\lambda i}c_{\lambda j} = \delta(i,j).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8391"
+ HREF="node507.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8387"
+ HREF="node503.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8381"
+ HREF="node505.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8389"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8390"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8392"
+ HREF="node507.html"> Exercises involving eigenvectors</A>
+<B> Up:</B> <A NAME="tex2html8388"
+ HREF="node503.html"> An SCF Calculation</A>
+<B> Previous:</B> <A NAME="tex2html8382"
+ HREF="node505.html"> Assembly of the</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

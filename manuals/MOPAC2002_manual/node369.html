@@ -1,0 +1,337 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Structure of &lt;filename&gt;.ops</TITLE>
+<META NAME="description" CONTENT="5.1.2.1 Structure of &lt;filename&gt;.ops">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node368.html"><LINK REL="up" HREF="node368.html"><LINK REL="next" HREF="node370.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node370.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node368.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node368.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node370.html">Calculating Points in k-space</A> <B>Up:</B> <A HREF="node368.html">Data input for</A> <B>Previous:</B> <A HREF="node368.html">Data input for</A> <BR>
+<H3>Structure of &lt;filename&gt;.ops </H3>
+<P>This file holds the definitions of the symmetry operations for the space-group. The format is 'free format' - one or more spaces are treated as one space. The first line should contain one of the following two words: "Cartesian" or "Crystallographic". If "Cartesian" is selected, then the rotation axis is relative to the Cartesian coordinates of the atoms; if "Crystallographic" is selected, then the rotation axis is relative to the crystal coordinates of the atoms. (In practice, "Cartesian" is <EM>much</EM> easier to use.) </P>
+<P>Each operation is defined by one line and is composed of 12 data. In order, these data are: </P>
+<OL>
+
+<DL>
+<DT><LI>A '1' or '0'. '1' if the operation is composed of the inversion operation times a rotation, '0' if the operation is a pure rotation. </LI></DT>
+<DT><LI>The non-primitive translations. These are given as their reciprocals, thus a (0.5,0.5,0.0) translation would be entered as '2&nbsp;2&nbsp;0'. The absence of a non-primitive translation is indicated by a zero. (three numbers) </LI></DT>
+<DT><LI>The rotation expressed as a fraction of a circle. </LI></DT>
+<DT><LI>The axis about which the operation is performed. Units are Cartesian coordinates, or, if "Crystallographic" is selected, the crystal coordinates. (three numbers) </LI></DT>
+<DT><LI>The center about which the operation is performed. Units are Cartesian coordinates, in Angstroms. (three numbers) </LI></DT>
+<DT><LI>A text string describing the operation. </LI></DT>
+<DT>
+<LI>The operations list is terminated by an operation which has a '2' for the inversion option. </DT></OL>
+
+<P>Examples of these operations are illustrated in the&nbsp;<A HREF="#sgo">Table</A> by the 10 classes of operation for the O<I><SUB>h</I></SUB> group in O<I><SUB>h</I></SUB><SUP>7</SUP>. </P>
+<P>The Fock matrix will be symmetrized if, and only if, every operation of the group is represented once. For O<I><SUB>h</I></SUB>, this would involve a total of 49 lines, 48 for the operations of O<I><SUB>h</I></SUB>, and one line to terminate the operations file. </P>
+<P><BR>
+<DIV ALIGN="CENTER">
+
+<DL>
+<A NAME="BM7208">&nbsp;</A> <DIV ALIGN="CENTER"><A NAME="BM7207">&nbsp;</A> </P>
+<STRONG><P>Table:</STRONG> Space-Group<A NAME="sgo"></A> Operations of O<I><SUB>h</I></SUB><SUP>7</P></SUP>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>i</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">N.P.T</TD>
+<TD VALIGN="MIDDLE">
+<P>Rotation</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Axis of Rotation</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Center of Operation</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>Identity</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.3333</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>C<SUB>3</SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.5</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>C<SUB>2</SUB>=C<SUB>4</SUB><SUP>2</SUP></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0.5</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>C<SUB>2</SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0.25</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>C<SUB>4</SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>Inversion</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.25</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>S<SUB>4</SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.5</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P><IMG SRC="img236.gif" WIDTH=21 HEIGHT=29 ALT="$sigma_d$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0.333333</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>S<SUB>6</SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0.5</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P><IMG SRC="img237.gif" WIDTH=20 HEIGHT=29 ALT="$sigma_h$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>0.0</TD>
+<TD VALIGN="MIDDLE">
+<P>End</TD>
+</TR>
+</TABLE>
+
+<P>N.P.T.: Non-Primitive Translation </DIV></DIV></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6353"><A HREF="node370.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6349"></A><A HREF="node368.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6345"></A><A HREF="node368.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6351"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6352"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6354"><A HREF="node370.html">Calculating Points in k-space</A></A> <B>Up:</B> <A NAME="tex2html6350"><A HREF="node368.html">Data input for</A></A> <B>Previous:</B> <A NAME="tex2html6346"><A HREF="node368.html">Data input for</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

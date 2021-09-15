@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Installing Density</TITLE>
+<META NAME="description" CONTENT="6.7 Installing Density">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node426.html">
+<LINK REL="previous" HREF="node415.html">
+<LINK REL="up" HREF="node375.html">
+<LINK REL="next" HREF="node426.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html7127"
+ HREF="node426.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7123"
+ HREF="node375.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7117"
+ HREF="node424.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7125"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7126"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7128"
+ HREF="node426.html"> Running DENSITY</A>
+<B> Up:</B> <A NAME="tex2html7124"
+ HREF="node375.html">Calculation of Electron</A>
+<B> Previous:</B> <A NAME="tex2html7118"
+ HREF="node424.html">PLOTGR</A>
+<BR>
+<H1><A NAME="SECTION001070000000000000000">
+ Installing Density</A>
+</H1>
+DENSITY is distributed with MOPAC, and is normally written
+to the sub-directories <TT>.../density_source/</TT> and 
+<TT>.../density_examples</TT>.
+ 
+The parameter file SIZES should be read and, if necessary, modified before
+<TT>Makefile</TT> is run. The two parameters within SIZES that the user can
+modify are MAXLIT and MAXHEV. MAXLIT is assigned a value equal to the largest
+number of hydrogen atoms that a DENSITY job is expected to run, MAXHEV is
+assigned the corresponding number of heavy (non-hydrogen) atoms. 
+<P>
+Once you are satisfied with the contents of SIZES, compile DENSITY by issuing
+the command 'make'. Once this is complete, there is no  reason to keep the
+object  files, and if space is at a premium these can be deleted at this time.
+They should be kept if modifications are to be made to the program, in order to
+allow rapid re-linking with the modified subroutines.
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

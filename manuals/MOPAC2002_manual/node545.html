@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Optimization of one unknown</TITLE>
+<META NAME="description" CONTENT="8.7.3 Optimization of one unknown">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node546.html">
+<LINK REL="previous" HREF="node544.html">
+<LINK REL="up" HREF="node542.html">
+<LINK REL="next" HREF="node546.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8898"
+ HREF="node546.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8894"
+ HREF="node542.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8888"
+ HREF="node544.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8896"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8897"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8899"
+ HREF="node546.html"> Considerations in Geometry</A>
+<B> Up:</B> <A NAME="tex2html8895"
+ HREF="node542.html"> Geometry optimization</A>
+<B> Previous:</B> <A NAME="tex2html8889"
+ HREF="node544.html"> The BFGS function</A>
+<BR>
+<H2><A NAME="SECTION001273000000000000000">
+ Optimization of one unknown</A>
+</H2>
+If a system has exactly one coordinate to be optimized, then obviously one
+line-search will optimize the geometry.  Because of this, the geometry
+optimization is done a little differently.  Given the initial geometry, the
+<!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f
+</sub>&nbsp;is calculated, and the line-search started. Unlike the normal
+line-search, however, the search is not stopped when the minimum is almost
+reached, instead, the minimum is located with quite high precision.  After the
+line-search is complete, the gradients are not <A NAME="BM17994">&#160;</A> calculated
+(unless requested by <TT><a href="node187.html">GRADIENTS</a></TT>). Instead, it is assumed that the
+gradient is small, and the results are output.  This saves some time. However,
+if <TT>GRADIENTS</TT> is <EM>not</EM> present, and the geometry is not at a
+stationary point (because other coordinates are not optimized), then the
+warning message that the geometry is not at a stationary point will not be
+printed.
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

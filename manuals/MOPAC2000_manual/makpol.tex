@@ -1,0 +1,130 @@
+\chapter{Program MAKPOL}
+\index{MAKPOL!description}
+Construction of data sets for multiple unit cells is  tedious.  By automating
+this process, only the fundamental unit  cell need be specified, the other unit
+cells being generated  by translation.  In addition, since the geometry of all 
+fundamental unit cells in a polymer are identical, symmetry  conditions can be
+imposed on each unit cell.  This has two  advantages: first, the calculation
+runs significantly faster, and  \index{Periodic boundary conditions} second,
+periodic boundary conditions are imposed not only on the  whole cluster, but
+also on each fundamental unit cell.  
+
+A data set for MAKPOL is similar to a data set for MOPAC.  It consists of one
+or more lines of keywords, followed by comments (if needed), then a geometry in
+Cartesian or internal coordinates.  The name of the input data set should be of
+form `\comp{make~$<\!$filename$\!>$.dat}', in which case the resulting data set
+will be `\comp{$<\!$filename$\!>$.dat}'.
+
+
+MAKPOL uses the unit cell supplied by the user to generate all the unit cells
+used in the cluster unit cells. \label{makpol:mers} The number of unit cells in
+the cluster is determined by the keyword \comp{MERS($n3$,$n2$,$n1$)}.  If the
+system is a layer structure then ``$n3$,'' is omitted. If the system is a
+polymer, then ``$n3$,$n2$,'' is omitted. The order in which cells are generated
+is as follows:
+\begin{sloppypar}
+Cell(0,0,0), Cell(0,0,1), Cell(0,0,2), \ldots Cell(0,0,N1-1),
+Cell(0,1,0), Cell(0,1,1), \ldots Cell(0,N2-1,N1-1), Cell(1,0,0),
+\ldots Cell(N3-1,N2-1,N1-1).
+\end{sloppypar}
+
+The geometry of the extended system is first calculated in Cartesian
+coordinates. There are two ways the atoms can be arranged.  The default order
+is as follows: all atoms in the first unit cell, all atoms in the second unit
+cell, etc.  An alternative is to have atom one in all the unit cells then atom
+two in all  unit cells, then atom three, etc.  The choice of which order to use
+depends on the purpose for which the cluster data set will be used.
+
+The whole system is then converted into internal coordinates, and the 
+translation vectors added.   If wanted, symmetry conditions can be imposed -
+this is useful when the geometry is to be optimized.
+
+\section{Keywords used by MAKPOL}
+Any of the keywords used by MOPAC can be used in a MAKPOL data set, but, only a
+few keywords will be used by MAKPOL: the rest will be ignored.  Keywords that
+are used in  MAKPOL are given below.
+
+\begin{description}
+\item[\comp{BCC}]~\\
+When \comp{BCC} is added (Body Centered Cubic), all odd unit cells are omitted.
+An odd unit cell is one for which the addition of the cell indices results in
+an odd number, thus (0,0,0) and (1,1,0) would be allowed, but (1,1,1) and
+(2,1,0) would not.  Diamond is an example of a BCC solid.\label{makpol:bcc}
+
+\item[\comp{DEBUG}]~\\
+Print diagnostic data on how MAKPOL is working. This is not a particularly
+useful keyword---do not use it for routine work. 
+
+\item[\comp{LET}]~\\ 
+By default, when \comp{SORT} is {\em not} used, all atoms in the fundamental
+unit cell will be placed inside  the boundaries of the unit cell.  Any atoms
+that were outside the boundaries will  be translated inside the unit cell. 
+This is necessary for the band structure calculation (in BZ). If you do not
+want the atoms to be moved, add \comp{LET}.
+
+
+\item[\comp{MERS=($n3$,$n2$,$n1$)}]~\\
+The number of unit cells in each  direction is defined by $n3$, $n2$,  and
+$n1$.  The total number of unit cells generated will be $n3\times n2\times n1$,
+or, if \comp{BCC} is used,  $(n3\times n2\times n1)/2$.
+
+\item[\comp{SORT}]~\\
+The default order of atoms in a cluster is as follows: all atoms in the first
+unit cell, all atoms in the second unit cell, etc.  An alternative order can be
+requested by adding \comp{SORT}.  In this case, the order of occurrence is:
+atom one in all the unit cells, atom two in all unit cells, atom three, etc. 
+The choice of which order to use depends on the purpose for which the cluster
+data set will be used.
+
+For geometry optimizations, \comp{SORT} is useful, particularly when used with 
+\comp{SYMMETRY}.  
+
+For band structure calculations, \comp{SORT} should {\em not} be used---these
+calculations require the default order of atoms.  To emphasize this point, if
+\comp{SORT} is specified, then the keyword \comp{MERS} will be deleted from the
+resulting data set.
+
+\item[\comp{SYMMETRY}]~\\ 
+This keyword has two distinct functions.  When \comp{SYMMETRY} is specified,
+then any symmetry data present in the input data set will be used.  This is
+useful for reducing the number of variables that need to be changed on going
+from one system to another (for example, on going from diamond to cubic boron
+nitride). If no symmetry data are present, then this function will not be used.
+
+The second function of \comp{SYMMETRY} is to impose symmetry conditions on the
+resulting cluster data set.  Only four symmetry conditions are recognized: 
+bond-lengths that are equal, bond angles that are equal, equal dihedral angles,
+and dihedral angles that are the negative of reference dihedrals.
+
+For high symmetry systems, the cluster data set should be edited to increase
+the symmetry.  For example, in diamond, all angles and dihedrals are symmetry
+defined, so all the optimization flags for these variables should be set to
+zero, and all symmetry functions involving angles and dihedrals should be
+deleted. In addition, all ``bond lengths'' in diamond are simple multiples of
+the fundamental C-C distance, so extra symmetry functions (involving function
+19) should be added.  If this is done correctly, then only one geometric
+variable will be left.
+\end{description}
+
+A test-example of the MAKPOL input-data for diamond is given in
+Figure~\ref{makpolc}.
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\index{Data!for diamond}
+\begin{verbatim}
+ bcc mers=(4,4,4)
+ Diamond, 64 atoms
+
+ c
+ xx  0.785065  1
+ c   0.785065  0   180       0     0 0     1
+ xx  1.0000000 0    54.73561 0     0 0     1 2 3
+ xx  1.0000000 0    54.73561 0   120 0     1 2 4
+ xx  1.0000000 0    54.73561 0   240 0     1 2 4
+ TV  1.8130299 1     0.0     0     0 0     1 4 2
+ TV  1.8130299 1     0.0     0     0 0     1 5 2
+ TV  1.8130299 1     0.0     0     0 0     1 6 2
+\end{verbatim}
+\caption{\label{makpolc} Data set for Diamond for MAKPOL}
+\end{figure}

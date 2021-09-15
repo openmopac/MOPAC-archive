@@ -1,0 +1,62 @@
+\subsubsection{Re-Orthogonalization of LMOs}\label{reorth}
+During the course of a long calculation, the LMOs will become increasingly
+non-orthogonal.  Subroutine \comp{CHECK} ensures that the LMOs remain
+normalized; this is a very rapid calculation.  Ensuring that the LMOs are all
+orthogonal is not so simple.  Re-orthogonalizing the LMOs is a lengthy
+calculation, and is not routinely performed.  However, the option exists to
+re-orthogonalize the LMOs, and this can be done either during a \comp{1SCF}
+calculation (the preferred way), or periodically during a geometry
+optimization.
+
+Re-orthogonalizing consists of taking pairs of LMOs, $\psi_i$ and $\psi_j$, and
+forming linear combinations such that the overlap ($<\!\psi_i|\psi_j\!>$) is
+zero.  The LMOs involved form the full set, that is, both occupied  plus
+virtual sets are used.
+
+The two LMOs can be regarded as unit vectors that are almost at 90$^{\circ}$ to
+each other.  Let the difference from  90$^{\circ}$ be $\alpha$.  If the vectors
+are each rotated by -$\frac{1}{2}\alpha$, then they will become perfectly
+orthogonal. This operation is most conveniently performed using perturbation
+theory. Let:
+$$
+<\!\psi_i|\psi_i\!> \simeq 1 \simeq <\!\psi_j|\psi_j\!>
+$$
+and 
+$$
+|<\!\psi_i|\psi_j\!>| = S_{ij} \ll 1,
+$$
+then
+$$
+\psi_i' = \psi_i - \frac{1}{2}S_{ij}\psi_j
+$$
+and 
+$$
+\psi_j' = \psi_j - \frac{1}{2}S_{ij}\psi_i.
+$$
+
+That the new LMOs are orthogonal can readily be demonstrated:
+\begin{eqnarray}
+<\!\psi_i'|\psi_j'\!> &=&<(\psi_i - \frac{1}{2}S_{ij}\psi_j)|
+(\psi_j - \frac{1}{2}S_{ij}\psi_i)\!> \nonumber \\
+ &=&<\psi_i|\psi_j>-\frac{1}{2}S_{ij}<\!\psi_i|\psi_i>-
+\frac{1}{2}S_{ij}<\!\psi_j|\psi_j\!>+\frac{1}{4}S_{ij}^2<\!\psi_j|\psi_i\!> 
+\nonumber \\
+&=& S_{ij}-\frac{1}{2}S_{ij}-\frac{1}{2}S_{ij} +\frac{1}{4}S_{ij}^3 \nonumber \\
+&=& 0 \nonumber
+\end{eqnarray}
+
+The calculation of the overlaps, $S_{ij}$, is most conveniently done for one
+LMO, $\phi_i$, with all other LMOs.  Because of this, $\phi_i$ should not be
+modified while the re-orthogonalization is done.  In order to avoid modifying
+$\phi_i$, the rotation is changed so that $\phi_i$ remains stationary and all
+the rotation is incurred by $\phi_j$, thus:
+$$
+\psi_i' = \psi_i 
+$$
+and
+$$
+\psi_j' = \psi_j - S_{ij}\psi_i.
+$$
+
+Before the re-orthogonalization, the LMOs are almost orthogonal, and the use of
+perturbation theory here is fully justified.

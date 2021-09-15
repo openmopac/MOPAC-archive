@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Assembly of the starting Fock matrix</TITLE>
+<META NAME="description" CONTENT="8.5.2 Assembly of the starting Fock matrix">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node506.html">
+<LINK REL="previous" HREF="node504.html">
+<LINK REL="up" HREF="node503.html">
+<LINK REL="next" HREF="node506.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8379"
+ HREF="node506.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8375"
+ HREF="node503.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8369"
+ HREF="node504.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8377"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8378"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8380"
+ HREF="node506.html"> Diagonalization of the</A>
+<B> Up:</B> <A NAME="tex2html8376"
+ HREF="node503.html"> An SCF Calculation</A>
+<B> Previous:</B> <A NAME="tex2html8370"
+ HREF="node504.html"> Starting density matrix</A>
+<!--End of Navigation Panel-->
+<H2>Assembly of the starting Fock matrix
+</H2>
+In the first iteration this is particularly simple, as there are no
+off-diagonal terms in the density matrix. Only the on-diagonal terms are
+affected. Each on-diagonal term in the Fock matrix F<SUB><I>aa</I></SUB> is modified by the
+electrostatic field of all the electrons in the system except the electron or
+fraction of an electron in the atomic orbital <i><font face="Symbol">f</font></i><sub><i>a</i></sub>.
+Consider F(1,1). The
+total initial population of <i><font face="Symbol">f</font></i><sub><i>1</i></sub>
+is 1.0, composed of equal amounts of <i><font face="Symbol">a</font></i>
+and <i><font face="Symbol">b</font></i>
+electron density. An electron in <i><font face="Symbol">f</font></i><sub><i>1</i></sub>
+would
+therefore experience the electrostatic repulsion of half an electron. An
+electron cannot repel itself; however, it will be repelled by its partner
+electron of opposite spin.
+<P>
+In addition, each electron will be affected, normally repelled, by the
+electrostatic field of all the electrons on all the other atoms. Each atom has
+one electron, so the total energy of an electron, i.e., the diagonal Fock
+matrix element, is given by:
+<P align="center">
+F(1,1) = -51.7124+1/2(12.848)+2(9.6585+7.0635)+6.3622<BR CLEAR="ALL">
+<P></P>
+<P>
+The Fock matrix is obtained by adding the two-electron     
+terms to the one electron matrix. The elements of the Fock
+matrix represent the sum of the one and two electron
+interactions. For the system of six hydrogen atoms, this
+has the following form:
+<P>
+&nbsp;<DIV ALIGN="CENTER">
+Initial Fock Matrix (eV) <BR>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">Atom</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">6</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">-0.6992</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-0.6992</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-0.6992</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+</TR>
+</TABLE></DIV>
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8379"
+ HREF="node506.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8375"
+ HREF="node503.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8369"
+ HREF="node504.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8377"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8378"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8380"
+ HREF="node506.html"> Diagonalization of the</A>
+<B> Up:</B> <A NAME="tex2html8376"
+ HREF="node503.html"> An SCF Calculation</A>
+<B> Previous:</B> <A NAME="tex2html8370"
+ HREF="node504.html"> Starting density matrix</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

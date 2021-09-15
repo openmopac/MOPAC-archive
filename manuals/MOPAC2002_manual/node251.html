@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>OPEN(n1,n2) </TITLE>
+<META NAME="description" CONTENT="OPEN(n1,n2) ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node252.html"><LINK REL="previous" HREF="node250.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node252.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel-->
+<a href="optc.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></a><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node250.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <a href="optc.html">OPT-C </a><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node250.html">OMIN=n.nn</A><!--End of Navigation Panel--><H2>
+<TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> </H2>
+<P>Do <EM>not</EM> use <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> for ground-state systems <EM>except</EM> for high symmetry systems with open shells, such as twisted (D<SUB>2<I>d</I></SUB>) ethylene or molecular oxygen O<SUB>2</SUB>. </P>
+<P>For most systems, the M.O. occupancy in the SCF calculation can be either two or zero. In order for some systems to have the correct symmetry, however, some M.O.s may need a fractional occupancy in the SCF. For example, ground-state O<SUB>2</SUB> has two half occupied <IMG SRC="img129.gif" ALIGN="MIDDLE" WIDTH=14 HEIGHT=29 ALT="$pi$">M.O.s. In order to allow such systems to be defined, <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> should be used. Examples of <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> are given in the <A HREF="#BM3780">Table</A>. </P>
+<P>The M.O. occupancy during the SCF calculation can be defined in terms of doubly occupied, empty, and fractionally occupied M.O.s. The fractionally occupied M.O.s are defined by <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT>, where <I>n</I><SUB>1</SUB> = number of electrons in the open-shell manifold, and <I>n</I><SUB>2</SUB> = number of open-shell M.O.s; <I>n</I><SUB>1</SUB>/<I>n</I><SUB>2</SUB> must be in the range 0 to 2. </P>
+<P>Notes: </P>
+
+<UL>
+<TT><LI>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> cannot be used instead of <TT>
+<a href="node134.html">C.I.=<I>n</I><SUB>2</SUB></a></TT>. <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> modifies the SCF calculation, but <TT>C.I.=<I>n</I><SUB>2</SUB></TT> does not modify the SCF calculation. Both keywords cause a C.I. calculation to be done. </LI>
+<LI>Be careful to ensure that <I>n</I><SUB>1</SUB> is odd if the system has an odd number of electrons, and even if the system has an even number of electrons. </LI></UL>
+
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM3780">&nbsp;</A> </P>
+<STRONG><P>Table:</STRONG> Use of <TT>OPEN(<I>n</I>,<I>m</I>)</P></TT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Keywords</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Example</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Number of M.O.s</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No. of Electrons</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>OPEN(2,2)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Twisted Ethylene</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>OPEN(1,2)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">O<SUB>2</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<TT><P>OPEN(5,3)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">CH<SUB>4</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">5</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<TT><P>OPEN(1,1)</TT> will be assumed for odd-electron systems unless an <TT>OPEN</TT> keyword is used. Errors introduced by use of fractional occupancy are automatically corrected in a MECI calculation when <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> is used. See also <TT>C.I.=<I>n</I></TT>. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><a href="optc.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></a><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node250.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <a href="optc.html">OPT-C </a><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node250.html">OMIN=n.nn</A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

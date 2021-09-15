@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Reducing the Size of Localized Molecular Orbitals</TITLE>
+<META NAME="description" CONTENT="8.6.7 Reducing the Size of Localized Molecular Orbitals">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node540.html">
+<LINK REL="previous" HREF="node534.html">
+<LINK REL="up" HREF="node511.html">
+<LINK REL="next" HREF="node539.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8811"
+ HREF="node539.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8807"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8801"
+ HREF="node537.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8809"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8810"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8812"
+ HREF="node539.html"> Size of LMOs</A>
+<B> Up:</B> <A NAME="tex2html8808"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8802"
+ HREF="node537.html"> Localized Molecular Orbital</A>
+<BR>
+<H2><A NAME="SECTION001267000000000000000">
+ Reducing the Size of Localized Molecular Orbitals</A>
+</H2>
+If, as a result of matrix element annihilation,  the LMOs are allowed  to
+expand so that they include more and more atoms without limit, then  eventually
+the efficiency of the calculation would be severely impaired. To prevent this
+occurring, a procedure is needed which will allow the size  of LMOs to be
+reduced.  
+<P>
+Atoms can be added at an LMO as a result of matrix element annihilation. What
+is not so obvious is that  annihilation can also make the contribution of an
+atom to the LMO so small that the atom can subsequently be deleted from that
+LMO without harm. Of course, if an atom is deleted from an LMO, changes should
+be made to the  five arrays representing the LMOs.  The operation of removing
+atoms from LMOs and adjusting the  appropriate arrays is done in subroutine
+<TT>TIDY</TT>.
+<P>
+This compression is carried out by copying all the information on each atom in
+the LMOs.  During the copy operation, any atom whose contribution to an LMO is
+insignificant is  not copied.  In addition, unused space at the end of each LMO
+is also not copied.  The result of the copy is to produce a set of LMOs in
+which only atoms which contribute significantly are present, and with no unused
+space between the LMOs. 
+<P>
+Before the LMOs can be used once more, they must be redistributed in their
+arrays so that each LMO has some unused space at the end to allow for expansion
+during the next matrix annihilation operation.
+<P>
+<BR><HR>
+<!--Table of Child-Links-->
+<UL>
+<LI><A NAME="tex2html8813"
+ HREF="node539.html"> Size of LMOs</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8811"
+ HREF="node539.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8807"
+ HREF="node511.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8801"
+ HREF="node537.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8809"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8810"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8812"
+ HREF="node539.html"> Size of LMOs</A>
+<B> Up:</B> <A NAME="tex2html8808"
+ HREF="node511.html"> Localized Molecular Orbital</A>
+<B> Previous:</B> <A NAME="tex2html8802"
+ HREF="node537.html"> Localized Molecular Orbital</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

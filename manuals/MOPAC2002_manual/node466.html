@@ -1,0 +1,366 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Theory of Mulliken Populations</TITLE>
+<META NAME="description" CONTENT="Theory of Mulliken Populations">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node465.html">
+<LINK REL="up" HREF="node465.html">
+<LINK REL="next" HREF="node467.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html7893"
+ HREF="node467.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7889"
+ HREF="node465.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7885"
+ HREF="node465.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7891"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7892"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7894"
+ HREF="node467.html"> Localized orbitals</A>
+<B> Up:</B> <A NAME="tex2html7890"
+ HREF="node465.html"> Mulliken populations</A>
+<B> Previous:</B> <A NAME="tex2html7886"
+ HREF="node465.html"> Mulliken populations</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001234100000000000000">
+Theory of Mulliken Populations</A>
+</H3>
+The NDDO methods (MNDO, AM1, etc) all use Slater orbitals,
+but an implication of one of the approximations made, that 
+<!-- MATH: $\sum(F_{\mu \nu}-E_i\delta_{\mu\nu})
+C_{\nu i} =0$ -->
+<IMG
+ WIDTH="151" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img536.gif"
+ ALT="$\sum(F_{\mu \nu}-E_i\delta_{\mu\nu})
+C_{\nu i} =0$">,
+is that the conventional molecular orbitals are normalized
+to unity:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_i=\sum_{\lambda}c_{\lambda i}\phi_{\lambda}
+\end{displaymath} -->
+<IMG
+ WIDTH="83" HEIGHT="43"
+ SRC="img537.gif"
+ ALT="\begin{displaymath}\psi_i=\sum_{\lambda}c_{\lambda i}\phi_{\lambda}
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+with
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<\psi_i^2> = 1 = \sum_{\lambda}c_{\lambda i}^2
+\end{displaymath} -->
+<IMG
+ WIDTH="126" HEIGHT="43"
+ SRC="img538.gif"
+ ALT="\begin{displaymath}<\psi_i^2> = 1 = \sum_{\lambda}c_{\lambda i}^2
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+For example, for H<SUB>2</SUB>, the occupied M.O. is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_1 = \sqrt{\frac{1}{2}}(\phi_{H_1}+\phi_{H_2}),
+\end{displaymath} -->
+<IMG
+ WIDTH="136" HEIGHT="45"
+ SRC="img539.gif"
+ ALT="\begin{displaymath}\psi_1 = \sqrt{\frac{1}{2}}(\phi_{H_1}+\phi_{H_2}),
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and the unoccupied M.O. is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_2 = \sqrt{\frac{1}{2}}(\phi_{H_1}-\phi_{H_2}).
+\end{displaymath} -->
+<IMG
+ WIDTH="136" HEIGHT="45"
+ SRC="img540.gif"
+ ALT="\begin{displaymath}\psi_2 = \sqrt{\frac{1}{2}}(\phi_{H_1}-\phi_{H_2}).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The diagonal of the density matrix is then constructed using the Coulson
+formula:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+P_{1,1}=P_{2,2}=2.0\times\left(\sqrt{\frac{1}{2}}\right)^2 =1.0.
+\end{displaymath} -->
+<IMG
+ WIDTH="218" HEIGHT="57"
+ SRC="img541.gif"
+ ALT="\begin{displaymath}P_{1,1}=P_{2,2}=2.0\times\left(\sqrt{\frac{1}{2}}\right)^2 =1.0.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The off-diagonal terms are constructed in the same way:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+P_{1,2}=P_{1,2}=2.0\times\left(\sqrt{\frac{1}{2}}\right)^2 =1.0.
+\end{displaymath} -->
+<IMG
+ WIDTH="218" HEIGHT="57"
+ SRC="img542.gif"
+ ALT="\begin{displaymath}P_{1,2}=P_{1,2}=2.0\times\left(\sqrt{\frac{1}{2}}\right)^2 =1.0.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+If, instead of using<font face="Symbol"> S</font>(<i>F<sub><font face="Symbol">mn</font></sub> 
+- E<sub>i</sub><font face="Symbol">d<sub>mn</sub></font></i>)<i>C<sub><font face="Symbol">n</font>i</sub>
+</i>  
+<!-- MATH: $\sum(F_{\mu
+\nu}-E_i\delta_{\mu\nu}) C_{\nu i} =0$ -->
+= 0, 
+<!-- MATH: $\sum(F_{\mu \nu}-E_i)
+C_{\nu i} =0$ -->
+<font face="Symbol">S</font>(<i>F<sub><font face="Symbol">mn</font></sub> - E<sub>i</sub></i>)<i>C<sub><font face="Symbol">n</font>i</sub>
+</i>  
+<!-- MATH: $\sum(F_{\mu
+\nu}-E_i\delta_{\mu\nu}) C_{\nu i} =0$ -->
+= 0 
+<!-- MATH: $\sum(F_{\mu \nu}-E_i\delta_{\mu\nu}) C_{\nu i} =0$ -->
+,
+<!-- MATH: $\sum(F_{\mu \nu}-E_i) C_{\nu i} =0$ -->
+&nbsp;is used, then the occupied and unoccupied
+M.O.s become:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_1 = \sqrt{\frac{1}{2(1+S)}}(\phi_{H_1}+\phi_{H_2}),
+\end{displaymath} -->
+<IMG
+ WIDTH="180" HEIGHT="54"
+ SRC="img545.gif"
+ ALT="\begin{displaymath}\psi_1 = \sqrt{\frac{1}{2(1+S)}}(\phi_{H_1}+\phi_{H_2}),
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and the unoccupied M.O. is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\psi_1 = \sqrt{\frac{1}{2(1-S)}}(\phi_{H_1}-\phi_{H_2}).
+\end{displaymath} -->
+<IMG
+ WIDTH="180" HEIGHT="54"
+ SRC="img546.gif"
+ ALT="\begin{displaymath}\psi_1 = \sqrt{\frac{1}{2(1-S)}}(\phi_{H_1}-\phi_{H_2}).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where <I>S</I> is the overlap integral: 
+<!-- MATH: $\int\phi_{H_1}\phi_{H_2}{\rm d}v$ -->
+&lt;<i><font face="Symbol">f</font><sub>H1</sub></i><font face="Symbol">|<i>f</i></font><i><sub>H1</sub>&gt;</i><P>
+In this case, the Coulson population would give 
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\begin{array}{cc|cc|}
+&   & \frac{1}{1+S} & \frac{1}{1+S} \\
+P  & = &               &               \\
+   &   & \frac{1}{1+S} & \frac{1}{1+S} \\
+\end{array}
+\end{displaymath} -->
+<IMG
+ WIDTH="115" HEIGHT="66"
+ SRC="img548.gif"
+ ALT="\begin{displaymath}\begin{array}{cc\vert cc\vert}
+& & \frac{1}{1+S} & \frac{1}{...
+... & = & & \\
+& & \frac{1}{1+S} & \frac{1}{1+S} \\
+\end{array}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+From this we see that the Coulson representation is unsuitable for  two
+reasons: first, the number of electrons in the system, represented by the
+diagonal terms, does not add to 2.0. Second, the off-diagonal terms, which
+should represent the  number of electrons resulting from the overlap of the two
+atomic orbitals, becomes unity as the overlap <EM>decreases</EM>.  
+<P>
+To correct for this, it is physically meaningful to multiply the matrix 
+elements by the overlap.  This gives:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\begin{array}{cc|cc|}
+&   & \frac{1}{1+S} & \frac{S}{1+S} \\
+P  & = &               &               \\
+   &   & \frac{S}{1+S} & \frac{1}{1+S} \\
+\end{array}
+\end{displaymath} -->
+<IMG
+ WIDTH="115" HEIGHT="66"
+ SRC="img549.gif"
+ ALT="\begin{displaymath}\begin{array}{cc\vert cc\vert}
+& & \frac{1}{1+S} & \frac{S}{...
+... & = & & \\
+& & \frac{S}{1+S} & \frac{1}{1+S} \\
+\end{array}\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Now the off-diagonal terms accurately represent the number of electrons which are
+associated with the overlap electron density.  The total number of electrons
+in the system is now correct: 
+<!-- MATH: $\frac{1}{1+S}$ -->
+<IMG
+ WIDTH="28" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img550.gif"
+ ALT="$ \frac{1}{1+S} $">
+on atom 1, 
+<!-- MATH: $\frac{1}{1+S}$ -->
+<IMG
+ WIDTH="28" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img551.gif"
+ ALT="$ \frac{1}{1+S} $">on atom 2, and 
+<!-- MATH: $\frac{2S}{1+S}$ -->
+<IMG
+ WIDTH="28" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img552.gif"
+ ALT="$ \frac{2S}{1+S} $">
+in the overlap region, giving a total of 2.0.
+<P>
+Although this representation is correct, it is potentially misleading, in that
+the diagonal terms do not add to the number of electrons.  Mulliken reasoned
+that the electron density resulting from the overlaps should be divided into
+two equal parts and added to the diagonal terms.  When that is done, we get:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\begin{array}{cc|ll|}
+&   & \frac{1}{1+S}+\frac{S}{1+S} & \frac{S}{1+S} \\
+P  & = &               &               \\
+   &   & \frac{S}{1+S} & \frac{1}{1+S} +\frac{S}{1+S}\\
+\end{array}
+\end{displaymath} -->
+<IMG
+ WIDTH="195" HEIGHT="66"
+ SRC="img553.gif"
+ ALT="\begin{displaymath}\begin{array}{cc\vert ll\vert}
+& & \frac{1}{1+S}+\frac{S}{1+...
+...& \frac{S}{1+S} & \frac{1}{1+S} +\frac{S}{1+S}\\
+\end{array}
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+or
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\begin{array}{cc|ll|}
+&   & 1.0  & \frac{S}{1+S} \\
+P  & = &               &               \\
+   &   &  \frac{S}{1+S} & 1.0\\
+\end{array}
+\end{displaymath} -->
+<IMG
+ WIDTH="115" HEIGHT="66"
+ SRC="img554.gif"
+ ALT="\begin{displaymath}\begin{array}{cc\vert ll\vert}
+& & 1.0 & \frac{S}{1+S} \\
+P & = & & \\
+& & \frac{S}{1+S} & 1.0\\
+\end{array}
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+This simple example can be extended to systems involving heteroatoms and to
+polyatomics, and is fully general.
+<P>
+The Mulliken analysis can be applied to semiempirical methods.  To do this, it
+is necessary to first convert the M.O.s from solutions 
+<P>
+of <font face="Symbol">&nbsp;S</font>(<i>F<sub><font face="Symbol">mn</font></sub> 
+- E<sub>i</sub><font face="Symbol">d<sub>mn</sub></font></i>)<i>C<sub><font face="Symbol">n</font>i</sub>
+</i>  
+<!-- MATH: $\sum(F_{\mu
+\nu}-E_i\delta_{\mu\nu}) C_{\nu i} =0$ -->
+= 0
+to solutions of&nbsp; 
+<!-- MATH: $\sum(F_{\mu \nu}-E_i)
+C_{\nu i} =0$ -->
+<font face="Symbol">S</font>(<i>F<sub><font face="Symbol">mn</font></sub> - E<sub>i</sub></i>)<i>C<sub><font face="Symbol">n</font>i</sub>
+</i>  
+<!-- MATH: $\sum(F_{\mu
+\nu}-E_i\delta_{\mu\nu}) C_{\nu i} =0$ -->
+= 0.
+The simplest way to do this is to take the conventional M.O.s
+and multiply them by 
+<!-- MATH: $S^{-\frac{1}{2}}$ -->
+<i>S</i><sup>1/2</sup>.
+In the case of H<SUB>2</SUB>, the resulting
+M.O.s are exactly correct; in general, a small error is introduced.  This error
+arises from the incomplete annihilation of the secular matrix elements, and is
+quite unimportant.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7893"
+ HREF="node467.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7889"
+ HREF="node465.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7885"
+ HREF="node465.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7891"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7892"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7894"
+ HREF="node467.html"> Localized orbitals</A>
+<B> Up:</B> <A NAME="tex2html7890"
+ HREF="node465.html"> Mulliken populations</A>
+<B> Previous:</B> <A NAME="tex2html7886"
+ HREF="node465.html"> Mulliken populations</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Final Assembly of Two-Electron Two-Center Integrals</TITLE>
+<META NAME="description" CONTENT="8.2.1.6 Final Assembly of Two-Electron Two-Center Integrals">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node449.html">
+<LINK REL="previous" HREF="node447.html">
+<LINK REL="up" HREF="node442.html">
+<LINK REL="next" HREF="node449.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html7654"
+ HREF="node449.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7650"
+ HREF="node442.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7644"
+ HREF="node447.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7652"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7653"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7655"
+ HREF="node449.html"> MINDO/3 Two electron</A>
+<B> Up:</B> <A NAME="tex2html7651"
+ HREF="node442.html"> Approximations used in</A>
+<B> Previous:</B> <A NAME="tex2html7645"
+ HREF="node447.html"> NDDO two-electron two-center</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001221600000000000000">
+ Final Assembly of Two-Electron Two-Center Integrals</A>
+</H3>
+ With all the component parts defined, the two-electron
+two-center integrals are assembled from the sum of all the
+interactions of the charges on one center with those on the
+other center. The distance between the two charges must be
+determined--this is the vector addition of <I>R</I>, the
+interatomic distance in Bohr, and the two <I>c</I> terms defining
+the location of the charges from the nucleus--as well as
+the appropriate additive terms, <I>AM</I>, <I>AD</I> or <I>AQ</I> selected. Two
+examples will illustrate this assembly:
+<P>
+&lt;<I>ss</I>|<I>ss</I>&gt;:&nbsp;&nbsp; This is represented by a single term. For
+monopoles, <I>c</I>=0 and <I>G</I><SUB><I>A</I></SUB>=<I>AM</I><SUB><I>A</I></SUB>, <I>G</I><SUB><I>B</I></SUB>=<I>AM</I><SUB><I>B</I></SUB> giving:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+<ss|ss> = \frac{14.399}
+{(R^2_{AB}+1/2[\frac{1}{AM_A} + \frac{1}{AM_B}]^20.529177^2)^{1/2}}.
+\end{displaymath} -->
+<IMG
+ WIDTH="321" HEIGHT="49"
+ SRC="img464.gif"
+ ALT="\begin{displaymath}<ss\vert ss> = \frac{14.399}
+{(R^2_{AB}+1/2[\frac{1}{AM_A} + \frac{1}{AM_B}]^20.529177^2)^{1/2}}.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+<!-- MATH: $<ss|p_{\pi}p_{\pi}>$ -->
+&lt;<i>ss</i>|<!-- MATH: $p_{\pi}p_{\pi}$ --><i>p<sub><font face="Symbol">p </font>
+</sub>p<sub><font face="Symbol">p </font></sub></i>&gt;:&nbsp;&nbsp;
+<!-- MATH: $p_{\pi}p_{\pi}$ -->
+<i>p<sub><font face="Symbol">p </font></sub>p<sub><font face="Symbol">p </font>
+</sub></i>&nbsp;is expressed as the sum of a monopole
+and a linear quadrupole. This gives rise to a total of four
+charges, hence four terms. However, since the interaction
+of the monopole with each of the two negative charges of the
+dipole are the same, only three terms need to be evaluated.
+In  general, symmetry considerations lower the total number of
+terms that need to be evaluated, so the maximum number in
+any integral is 8. The full integral is then represented as:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{eqnarray}
+<ss|p_{\pi}p_{\pi}>& =&
+\frac{14.399}
+{(R^2_{AB}+1/2[\frac{1}{AM_A} + \frac{1}{AM_B}]^20.529177^2)^{1/2}} \nonumber \\
+&&+\frac{\frac{1}{2}14.399}
+{(R^2_{AB}+(2D_2^B)^21/2[\frac{1}{AM_A} + \frac{1}{AQ_B}]^20.529177^2)^{1/2}} \nonumber \\
+&&-\frac{14.399} 
+{(R^2_{AB}+1/2[\frac{1}{AM_A} + \frac{1}{AQ_B}]^20.529177^2)^{1/2}}.  \nonumber  
+\end{eqnarray} -->
+<TABLE ALIGN="CENTER" CELLPADDING="0" WIDTH="100%">
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<i>ss</i>|<!-- MATH: $p_{\pi}p_{\pi}$ --><i>p<sub><font face="Symbol">p
+  </font></sub>p<sub><font face="Symbol">p </font></sub></i>&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="249" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img468.gif"
+ ALT="$\displaystyle \frac{14.399}
+{(R^2_{AB}+1/2[\frac{1}{AM_A} + \frac{1}{AM_B}]^20.529177^2)^{1/2}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="304" HEIGHT="59" ALIGN="MIDDLE" BORDER="0"
+ SRC="img469.gif"
+ ALT="$\displaystyle +\frac{\frac{1}{2}14.399}
+{(R^2_{AB}+(2D_2^B)^21/2[\frac{1}{AM_A} + \frac{1}{AQ_B}]^20.529177^2)^{1/2}}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="264" HEIGHT="51" ALIGN="MIDDLE" BORDER="0"
+ SRC="img470.gif"
+ ALT="$\displaystyle -\frac{14.399}
+{(R^2_{AB}+1/2[\frac{1}{AM_A} + \frac{1}{AQ_B}]^20.529177^2)^{1/2}}.$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P><HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7654"
+ HREF="node449.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7650"
+ HREF="node442.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7644"
+ HREF="node447.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7652"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7653"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7655"
+ HREF="node449.html"> MINDO/3 Two electron</A>
+<B> Up:</B> <A NAME="tex2html7651"
+ HREF="node442.html"> Approximations used in</A>
+<B> Previous:</B> <A NAME="tex2html7645"
+ HREF="node447.html"> NDDO two-electron two-center</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

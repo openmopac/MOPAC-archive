@@ -1,0 +1,382 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>MANUAL</TITLE>
+<META NAME="description" CONTENT="MANUAL">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node391.html"><LINK REL="previous" HREF="node389.html"><LINK REL="up" HREF="node387.html"><LINK REL="next" HREF="node391.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node391.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node387.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node389.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node391.html">M.O.</A> <B>Up:</B> <A HREF="node387.html">Definitions of First</A> <B>Previous:</B> <A HREF="node389.html">DMAT</A> <BR>
+<H3><A NAME="SECTION001033300000000000000">&nbsp;<A NAME="BM7889"></A>&nbsp;</A> <BR>
+<TT>MANUAL</TT> </H3>
+<P>This word was used in the writing and de-bugging of DENSITY, but now is only intended for testing and demonstration purposes. </P>
+<P>When <TT>MANUAL</TT> is specified, either <TT>DMAT</TT> or <TT>M.O.</TT> must be specified on the same line as <TT>MANUAL</TT>. </P>
+<P>If <TT>MANUAL</TT> is specified, the following data must be supplied on the next few lines: </P>
+<DL>
+<DT>1. Number of atoms, orbitals, and electrons (NATOMS, NORBS, NELECS). One line, free format, integer. </DT>
+<DD>&nbsp;</DD>
+<DT>2. Cartesian coordinates for each atom, one atom per line, free format, real, in order x, y, z. There will be NATOMS of these. </DT>
+<DD>&nbsp;</DD>
+<DT>3. Labels for all atoms. For example, all carbon atoms might be called "1", all hydrogen atoms "2", etc. Free format, integer. There will be NATOMS of these numbers. The numbers must be 1 to NUNI, NUNI being the number of unique atom-types in the molecule. </DT>
+<DD></DD>
+</DL>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Compound</TD>
+<TD VALIGN="MIDDLE">
+<P>Atom Labels</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">NUNI</TD>
+<TD VALIGN="MIDDLE" COLSPAN=6>
+<P ALIGN="CENTER">Line would read</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methane</TD>
+<TD VALIGN="MIDDLE">
+<P>C: 1, H: 2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>CH4</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Formic Acid</TD>
+<TD VALIGN="MIDDLE">
+<P>H: 1, C: 2, O: 3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>HCOOH</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Thiomethanol</TD>
+<TD VALIGN="MIDDLE">
+<P>C: 1, H: 2, S: 3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>CH3SH</TD>
+</TR>
+</TABLE>
+
+<DL>
+<DT>4. Atomic Numbers for all unique atoms. Free format, integer. There are NUNI of these numbers. If atom of type 1 is a carbon atom, then the corresponding atomic number would be 6. Using the examples above, we have: </DT>
+</DL>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Atomic Numbers</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Line would read</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Compound</TD>
+<TD VALIGN="MIDDLE">
+<P>Unique atom:</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methane</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>6</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Formic Acid</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>6</TD>
+<TD VALIGN="MIDDLE">
+<P>8</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Thiomethanol</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>6</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>16</TD>
+</TR>
+</TABLE>
+
+<DL>
+<DT>5. Principal Quantum numbers. Free format, integer. There are NUNI of these numbers. </DT>
+</DL>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Principal Quantum Numbers</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Line would read</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Compound</TD>
+<TD VALIGN="MIDDLE">
+<P>Unique atom:</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methane</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Formic Acid</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Thiomethanol</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+</TR>
+</TABLE>
+
+<DL>
+<DT>6. Number of orbitals for all unique atoms. Free format, integer, there are NUNI of these numbers. </DT>
+</DL>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Number of Orbitals</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Line would read</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Compound</TD>
+<TD VALIGN="MIDDLE">
+<P>Unique atom:</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methane</TD>
+<TD VALIGN="MIDDLE">
+<P>4</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Formic Acid</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>4</TD>
+<TD VALIGN="MIDDLE">
+<P>4</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Thiomethanol</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>4</TD>
+<TD VALIGN="MIDDLE">
+<P>9</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+</TABLE>
+
+<DL>
+<DT>7. Orbital exponents for all unique atoms, format is 3F10, three numbers per atom (one each for <I>s</I>, <I>p</I>, and <I>d</I> orbital exponents); if <I>p</I> or <I>d</I> is absent, these can be left blank. </DT>
+</DL>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Compound</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Unique atom</TD>
+<TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Line would read</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methane</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P>1.78</TD>
+<TD VALIGN="MIDDLE">
+<P>1.78</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P>1.3</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Thiomethanol</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P>1.78</TD>
+<TD VALIGN="MIDDLE">
+<P>1.78</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P>1.</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P>2.4</TD>
+<TD VALIGN="MIDDLE">
+<P>2.1</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+</TR>
+</TABLE>
+
+<DL>
+<DT>8. If M.O. is specified, the eigenvector coefficients are read in at this point. Free format, there are NORBS of these. Otherwise, if DMAT specified, the lower-half of the density matrix, in free-format, is read in. There would be (NORBS<IMG SRC="img345.gif" ALIGN="MIDDLE" WIDTH=17 HEIGHT=29 ALT="$times$">(NORBS+1))/2 of these numbers. </DT>
+</DL>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="d_hcooh">&nbsp;<A NAME="BM8077"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Full Example of Manual Data for Formic Acid</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> </P>
+<PRE>Line  1:      MANUAL       M.O.                   (Key-words
+Line  2:      FORMIC ACID                         (Title
+Line  3:      5  14 18                            (NATOMS, NORBS, NELECS
+Line  4:   0.0000    0.0000    0.0000             (Cartesian coordinates
+Line  5:   1.2270    0.0000    0.0000
+Line  6:   1.9164    1.1676    0.0000
+Line  7:   1.3973    1.9625    0.0000
+Line  8:   1.8882   -0.8836    0.0000
+Line  9:    1 2 1 3 3                             (Labels
+Line 10:    8 6 1                                 (Atomic Numbers
+Line 11:    2 2 1                                 (Princ. Quant. Nos.
+Line 12:    4 4 1                                 (Orbitals per atom
+Line 13:   2.699905  2.699905                     (Exponents
+Line 14:   1.787537  1.787537  
+Line 15:   1.331967                    (below: eigenvector coefficients
+Line 16:   -0.1616  0.4769  -0.0514   0.0000  -0.0628  -0.3488  -0.0032  
+Line 17:    0.0000  0.2634   0.6282  -0.0893   0.0000  -0.2925  -0.2457  
+Line 18:    CENTER=2 LINE=(0,0,1) EDGE=4          (Rest of data</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6685"><A HREF="node391.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6681"></A><A HREF="node387.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6675"></A><A HREF="node389.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6683"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6684"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6686"><A HREF="node391.html">M.O.</A></A> <B>Up:</B> <A NAME="tex2html6682"><A HREF="node387.html">Definitions of First</A></A> <B>Previous:</B> <A NAME="tex2html6676"><A HREF="node389.html">DMAT</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

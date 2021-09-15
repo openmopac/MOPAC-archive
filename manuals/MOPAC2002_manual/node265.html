@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>PMEPR </TITLE>
+<META NAME="description" CONTENT="PMEPR ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node266.html"><LINK REL="previous" HREF="node264.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node266.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node266.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node264.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node266.html">POINT1=n </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node264.html">PMEP</A><!--End of Navigation Panel--><H2>
+<TT>PMEPR</TT> </H2>
+<P>The Parametric Molecular Electrostatic Potential of Wang and Ford&nbsp;[<A HREF="node715.html#pmep1">45</A>,<A HREF="node715.html#pmep2">46</A>] is generated. When <TT>PMEPR</TT> is used, extra data must follow the Z-matrix and symmetry data. This extra data defines the plane in which the electrostatic potential is plotted, and is summarized in the&nbsp;<A HREF="#pmepd">Table</A>. Other keywords, e.g., <TT>
+<a href="node219.html">MINMEP</a></TT>(to print the minima) or <TT>
+<a href="node275.html">PRTMEP</a></TT>(to write data for <TT>esplot</TT> to use) <EM>must</EM> be present. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM3795">&nbsp;</A> </P>
+<STRONG><P>Table:</STRONG> Data Required by PMEPR</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=270>
+<TR><TD WIDTH="33%" VALIGN="MIDDLE">
+<P>Name of</TD>
+<TD WIDTH="67%" VALIGN="MIDDLE">
+<P>Allowed Values</TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="MIDDLE">
+<P>Datum</TD>
+<TD WIDTH="67%" VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="MIDDLE">
+<P>ICASE</TD>
+<TD WIDTH="67%" VALIGN="MIDDLE">
+<P>1, 2, 3</TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="MIDDLE">
+<P>N1</TD>
+<TD WIDTH="67%" VALIGN="MIDDLE">
+<P>1-NUMAT</TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="MIDDLE">
+<P>N2</TD>
+<TD WIDTH="67%" VALIGN="MIDDLE">
+<P>1-NUMAT, not N1</TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="MIDDLE">
+<P>N3</TD>
+<TD WIDTH="67%" VALIGN="MIDDLE">
+<P>1-NUMAT, not N1 or N2</TD>
+</TR>
+<TR><TD WIDTH="33%" VALIGN="MIDDLE">
+<P>X0</TD>
+<TD WIDTH="67%" VALIGN="MIDDLE">
+<P>Any real number</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV><BR>
+The various planes which can be drawn through the system are identified by the datum ICASE: </P>
+<TT><DL>
+<DD>ICASE=1</TT> If <TT>X0</TT> is zero, then the plane generated passes through atoms <TT>N1</TT>, <TT>N2</TT> and <TT>N3</TT>. Obviously, these atoms should not lie on a straight line. If <TT>X0</TT> is non-zero, then the plane is parallel to the plane of atoms <TT>N1</TT>, <TT>N2</TT> and <TT>N3</TT>, but <TT>X0</TT> &Aring;ngstroms above it. </DD>
+<TT><DD>ICASE=2</TT> If <TT>X0</TT> is zero, then the plane generated is perpendicular to the plane of <TT>N1</TT>, <TT>N2</TT> and <TT>N3</TT>, and includes the line from atom <TT>N1</TT> to <TT>N2</TT>. If <TT>X0</TT> is non-zero, then the plane is perpendicular to the plane of <TT>N1</TT>, <TT>N2</TT> and <TT>N3</TT>, and is <TT>X0</TT> &Aring;ngstroms above, and parallel to, the line from atom <TT>N1</TT> to <TT>N2</TT>. </DD>
+<TT><DD>ICASE=3</TT> The plane used is that which bisects the angle <TT>N2</TT>-<TT>N1</TT>-<TT>N3</TT>. <TT>X0</TT> is meaningless in this context, and should be set to zero. </DD>
+</DL>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html5086"><A HREF="node266.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html5082"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html5076"></A><A HREF="node264.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html5084"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html5085"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html5087"><A HREF="node266.html">POINT1=n </A></A><B>Up:</B> <A NAME="tex2html5083"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html5077"><A HREF="node264.html">PMEP </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

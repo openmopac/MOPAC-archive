@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Keywords used by MAKPOL</TITLE>
+<META NAME="description" CONTENT="4.1 Keywords used by MAKPOL">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node363.html"><LINK REL="up" HREF="node363.html"><LINK REL="next" HREF="node365.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node365.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node363.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node363.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node365.html">Generation of Band Structures</A> <B>Up:</B> <A HREF="node363.html">Program MAKPOL</A> <B>Previous:</B> <A HREF="node363.html">Program MAKPOL</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H1><A NAME="SECTION00810000000000000000">Keywords used by MAKPOL</A> </H1>
+<P>Any of the keywords used by MOPAC can be used in a MAKPOL data set, but, only a few keywords will be used by MAKPOL: the rest will be ignored. Keywords that are used in MAKPOL are given below. </P>
+<B><TT><DL>
+<DT>BCC</B></TT> </DT>
+<DD>&nbsp; <BR>
+When <TT>BCC</TT> is added (Body Centered Cubic), all odd unit cells are omitted. An odd unit cell is one for which the addition of the cell indices results in an odd number, thus (0,0,0) and (1,1,0) would be allowed, but (1,1,1) and (2,1,0) would not. Diamond is an example of a BCC solid.<A NAME="makpol_bcc">&nbsp;</A></DD>
+<B><TT><DT>DEBUG</B></TT> </DT>
+<DD>&nbsp; <BR>
+Print diagnostic data on how MAKPOL is working. This is not a particularly useful keyword--do not use it for routine work. </DD>
+<B><TT><DT>LET</B></TT> </DT>
+<DD>&nbsp; <BR>
+By default, when <TT>SORT</TT> is <EM>not</EM> used, all atoms in the fundamental unit cell will be placed inside the boundaries of the unit cell. Any atoms that were outside the boundaries will be translated inside the unit cell. This is necessary for the band structure calculation (in BZ). If you do not want the atoms to be moved, add <TT>LET</TT>. </DD>
+<B><TT><DT>MERS=(<I>n</I>3,<I>n</I>2,<I>n</I>1)</B></TT> </DT>
+<DD>&nbsp; <BR>
+The number of unit cells in each direction is defined by <I>n</I>3, <I>n</I>2, and <I>n</I>1. The total number of unit cells generated will be <!-- MATH: $n3\times n2\times n1$ --><IMG SRC="img232.gif" ALIGN="MIDDLE" WIDTH=84 HEIGHT=29 ALT="$n3times n2times n1$">, or, if <TT>BCC</TT> is used, <!-- MATH: $(n3\times n2\times n1)/2$ --><IMG SRC="img233.gif" ALIGN="MIDDLE" WIDTH=111 HEIGHT=31 ALT="$(n3times n2times n1)/2$">. </DD>
+<B><TT><DT>SORT</B></TT> </DT>
+<DD>&nbsp; <BR>
+The default order of atoms in a cluster is as follows: all atoms in the first unit cell, all atoms in the second unit cell, etc. An alternative order can be requested by adding <TT>SORT</TT>. In this case, the order of occurrence is: atom one in all the unit cells, atom two in all unit cells, atom three, etc. The choice of which order to use depends on the purpose for which the cluster data set will be used. </DD>
+<DD>For geometry optimizations, <TT>SORT</TT> is useful, particularly when used with <TT>SYMMETRY</TT>. </DD>
+<DD>For band structure calculations, <TT>SORT</TT> should <EM>not</EM> be used--these calculations require the default order of atoms. To emphasize this point, if <TT>SORT</TT> is specified, then the keyword <TT>MERS</TT> will be deleted from the resulting data set. </DD>
+<B><TT><DT>SYMMETRY</B></TT> </DT>
+<DD>&nbsp; <BR>
+This keyword has two distinct functions. When <TT>SYMMETRY</TT> is specified, then any symmetry data present in the input data set will be used. This is useful for reducing the number of variables that need to be changed on going from one system to another (for example, on going from diamond to cubic boron nitride). If no symmetry data are present, then this function will not be used. </DD>
+<DD>The second function of <TT>SYMMETRY</TT> is to impose symmetry conditions on the resulting cluster data set. Only four symmetry conditions are recognized: bond-lengths that are equal, bond angles that are equal, equal dihedral angles, and dihedral angles that are the negative of reference dihedrals. </DD>
+<DD>For high symmetry systems, the cluster data set should be edited to increase the symmetry. For example, in diamond, all angles and dihedrals are symmetry defined, so all the optimization flags for these variables should be set to zero, and all symmetry functions involving angles and dihedrals should be deleted. In addition, all "bond lengths" in diamond are simple multiples of the fundamental C-C distance, so extra symmetry functions (involving function 19) should be added. If this is done correctly, then only one geometric variable will be left. </DD>
+</DL>
+<P>A test-example of the MAKPOL input-data for diamond is given in the&nbsp;<A HREF="node364.html#makpolc">Figure</A>. <BR>
+<DIV ALIGN="CENTER"><A NAME="makpolc">&nbsp;<A NAME="BM6938"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Data set for Diamond for MAKPOL</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P><A NAME="BM6933">&nbsp;</A> </P>
+<PRE> bcc mers=(4,4,4)
+ Diamond, 64 atoms
+ c
+ xx  0.785065  1
+ c   0.785065  0   180       0     0 0     1
+ xx  1.0000000 0    54.73561 0     0 0     1 2 3
+ xx  1.0000000 0    54.73561 0   120 0     1 2 4
+ xx  1.0000000 0    54.73561 0   240 0     1 2 4
+ TV  1.8130299 1     0.0     0     0 0     1 4 2
+ TV  1.8130299 1     0.0     0     0 0     1 5 2
+ TV  1.8130299 1     0.0     0     0 0     1 6 2</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6279"><A HREF="node365.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6275"></A><A HREF="node363.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6271"></A><A HREF="node363.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6277"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6278"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6280"><A HREF="node365.html">Generation of Band Structures</A></A> <B>Up:</B> <A NAME="tex2html6276"><A HREF="node363.html">Program MAKPOL</A></A> <B>Previous:</B> <A NAME="tex2html6272"><A HREF="node363.html">Program MAKPOL</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

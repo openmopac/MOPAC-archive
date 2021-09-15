@@ -1,0 +1,84 @@
+#
+# Dependencies of PARAM Fortran source files
+#
+
+$(OBJ)/param.$(O): \
+  $(OBJ)/param_global_C.$(O)  \
+  $(PARAM_SRC)/param.F90
+		 $(FORTRAN_COMPILER)   $(PARAM_SRC)/param.F90
+
+$(OBJ)/param_global_C.$(O): \
+  $(PARAM_SRC)/param_global_C.F90
+		 $(FORTRAN_COMPILER)   $(PARAM_SRC)/param_global_C.F90
+
+$(OBJ)/datinp.$(O): $(OBJ)/Param_global_C.$(O) $(PARAM_SRC)/datinp.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/datinp.F90
+
+$(OBJ)/pparsav.$(O): $(PARAM_SRC)/pparsav.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/pparsav.F90
+
+$(OBJ)/chkpar.$(O): $(PARAM_SRC)/chkpar.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/chkpar.F90
+
+$(OBJ)/direct.$(O): $(PARAM_SRC)/direct.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/direct.F90
+
+$(OBJ)/extract_parameter.$(O): $(PARAM_SRC)/extract_parameter.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/extract_parameter.F90
+
+$(OBJ)/savgeo.$(O):   $(PARAM_SRC)/savgeo.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/savgeo.F90
+
+$(OBJ)/parkey.$(O):   $(PARAM_SRC)/parkey.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/parkey.F90
+
+$(OBJ)/partab.$(O):   $(PARAM_SRC)/partab.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/partab.F90
+
+$(OBJ)/rapid0.$(O):   $(PARAM_SRC)/rapid0.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/rapid0.F90
+
+$(OBJ)/parfg.$(O):   $(PARAM_SRC)/parfg.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/parfg.F90
+
+$(OBJ)/resetp.$(O):   $(PARAM_SRC)/resetp.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/resetp.F90
+
+$(OBJ)/depfn.$(O):   $(PARAM_SRC)/depfn.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/depfn.F90
+
+$(OBJ)/optgeo.$(O):   $(PARAM_SRC)/optgeo.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/optgeo.F90
+
+$(OBJ)/getmol.$(O):   $(PARAM_SRC)/getmol.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/getmol.F90
+
+$(OBJ)/getpar.$(O):   $(PARAM_SRC)/getpar.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/getpar.F90
+
+$(OBJ)/pardip.$(O):   $(PARAM_SRC)/pardip.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/pardip.F90
+
+$(OBJ)/pargeo.$(O):   $(PARAM_SRC)/pargeo.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/pargeo.F90
+
+$(OBJ)/empire.$(O):   $(PARAM_SRC)/empire.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/empire.F90
+
+$(OBJ)/parips.$(O):   $(PARAM_SRC)/parips.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/parips.F90
+
+$(OBJ)/filusp.$(O):   $(PARAM_SRC)/filusp.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/filusp.F90
+
+$(OBJ)/psort.$(O):   $(PARAM_SRC)/psort.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/psort.F90
+
+$(OBJ)/rapid1.$(O):  $(PARAM_SRC)/rapid1.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/rapid1.F90
+
+$(OBJ)/rapid2.$(O): $(PARAM_SRC)/rapid2.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/rapid2.F90
+
+$(OBJ)/rapid3.$(O): $(PARAM_SRC)/rapid3.F90
+	 $(FORTRAN_COMPILER)   $(PARAM_SRC)/rapid3.F90

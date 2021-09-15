@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Examples of POLAR keyword</TITLE>
+<META NAME="description" CONTENT="Examples of POLAR keyword">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node630.html"><LINK REL="up" HREF="node630.html"><LINK REL="next" HREF="node632.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html9988"><A HREF="node632.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html9984"></A><A HREF="node630.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html9980"></A><A HREF="node630.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html9986"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html9987"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html9989"><A HREF="node632.html">COSMO (Conductor-like Screening Model)</A></A> <B>Up:</B> <A NAME="tex2html9985"><A HREF="node630.html">Time-Dependent Hartree-Fock</A></A> <B>Previous:</B> <A NAME="tex2html9981"><A HREF="node630.html">Time-Dependent Hartree-Fock</A></A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION0012211100000000000000">Examples of <TT>POLAR</TT> keyword</A> </H3>
+<P>To calculate the NLO quantities <!-- MATH: $\alpha, \beta,$ --><font face="Symbol"><i>
+a, b </i> </font>and <i><font face="Symbol">g </font></i>at 1.0eV: <BR>
+<TT>POLAR(E=(1.0)) </TT><BR>
+This same calculation can be set up by setting all the variables to their default value: </P>
+<PRE>POLAR(IWFLB=0,E=(1.),BETA=0,GAMMA=1,TOL=1.D-3,MAXITU=500,MAXITA=150,BTOL=1.D-3)</PRE>
+<P>This takes up the entire keyword line. If more than one line is needed to hold the keyword, use the <TT>+</TT> option, as in: </P>
+<PRE>+ symmetry 1scf uhf POLAR(IWFLB=0,E=(1.),BETA=0,GAMMA=1,TOL=1.D-3,MAXITU=501,
+ MAXITA=151,BTOL=1.D-3)</PRE>
+<P>Note: This is not a recommended way of writing a keyword. In order for a keyword to be recognized, the 'join' of the two lines must be perfect. In other words, the last character of the first line must be in column 80, unless character 1 was not blank, in which case the last character must be in column 79. Anyhow, it is unlikely that such long keywords would be used very often. </P>
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

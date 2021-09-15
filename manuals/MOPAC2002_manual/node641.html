@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Some hints on the use of COSMO</TITLE>
+<META NAME="description" CONTENT="8. Some hints on the use of COSMO">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node640.html"><LINK REL="up" HREF="node640.html"><LINK REL="next" HREF="node642.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html10114"><A HREF="node642.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10110"></A><A HREF="node640.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10106"></A><A HREF="node640.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10112"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10113"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10115"><A HREF="node642.html">Parametric Molecular Electrostatic</A></A> <B>Up:</B> <A NAME="tex2html10111"><A HREF="node640.html">Solvent Accessible Surface</A></A> <B>Previous:</B> <A NAME="tex2html10107"><A HREF="node640.html">Solvent Accessible Surface</A></A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION0012228100000000000000">Some hints on the use of COSMO</A> </H3>
+
+<UL>
+<TT><LI><a href="node116.html">1SCF</a></TT> calculations run in general without problems. On gas-phase geometries they give useful solvation energies for neutral rigid molecules. </LI>
+<LI>For geometry optimization Eigenvector Following has proved to be most efficient in combination with COSMO. Gradient norms of about 1% of the dielectric energy should be reachable, in many cases even less. Nevertheless, don't use a too small <TT>GNORM</TT> criterion, since the calculation may have convergence problems. </LI>
+<LI>Keep in mind that energy differences of about 1% of the dielectric energy may arise due to small differences in the segmentatation. </LI>
+<LI>Dr Klamt does not recommend the use of COSMO in <TT>FORCE</TT> calculations at the present time. </LI>
+<TT><LI><a href="node335.html">UHF</a></TT> calculations should run without additional problems. </LI>
+<TT><LI><a href="node134.html">C.I.</a></TT> calculations can now be done, and C.I. gradients are now valid; this has been the result of recent work by Dr Klamt. </LI></UL>
+
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

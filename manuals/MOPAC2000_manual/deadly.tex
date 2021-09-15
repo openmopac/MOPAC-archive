@@ -1,0 +1,1901 @@
+\chapter{Error messages produced by MOPAC}\label{errormessages}
+\index{MOPAC!error messages}
+\index{Error!messages|(}
+\index{Messages|see{Error messages}}
+\index{Derivatives!|see{{\em also} Gradient}}
+\index{Gradient!|see{{\em also} Derivatives}}
+MOPAC produces several hundred messages, all of which are intended to be 
+self-explanatory.  However, when an error occurs it is useful to have more
+information than is given in the standard messages.
+
+The following alphabetical list gives more complete definitions of the
+messages printed.
+
+\begin{description}
+\item[\comp{1SCF SPECIFIED WITH PATH. \ldots} (FATAL)]~\\ 
+The pair of options, \comp{1SCF} with a path calculation, is not allowed, except
+in a \comp{RESTART} calculation.
+\index{1SCF SPECIFIED WITH \ldots}
+\index{Error message!1SCF SPECIFIED WITH\ldots}
+
+\item[\comp{A SINGLE ATOM HAS NO VIBRATIONAL MODES} (FATAL)]~\\
+An attempt has been made to calculate the vibrations of a single atom.
+The smallest system that can have vibrations is a diatomic molecule.
+\index{Error message!A SINGLE ATOM HAS \ldots}
+\index{Error message!SINGLE ATOM HAS \ldots}
+\index{A SINGLE ATOM HAS \ldots}
+\index{SINGLE ATOM HAS NO VIB\ldots}
+
+\item[\comp{A SYMMETRY FUNCTION IS USED TO DEFINE A NON-EXISTENT ATOM} (FATAL)]~\\
+Symmetry functions can only be used in the definition of atoms or dummy atoms.
+Check the dependent atom numbers in the symmetry data.
+\index{Error message!A SYMMETRY FUN\ldots}
+\index{Error message!SYMMETRY FUNCTION \ldots}
+\index{A SYMMETRY FUNCTION \ldots}
+\index{SYMMETRY FUNCTION IS \ldots}
+
+\item[\comp{ALL CONVERGERS ARE NOW FORCED ON}]~\\
+The default SCF convergers have not worked.  A new set of convergers will be tried.
+This is often caused by faulty data, so the data should be checked to see if
+anything is wrong.  This sometimes happens naturally, particularly with exotic 
+systems.
+\index{ALL CONVERGERS ARE \ldots}
+
+\item[\comp{AN ATTEMPT WAS MADE TO PRINT\ldots}]~\\
+To avoid printing very large matrices in MOZYME, an upper limit (200) 
+has been set on the 
+size of matrix that can be printed. If the array requested is larger than this
+limit, only part of the array will be printed.
+\index{AN ATTEMPT WAS MADE \ldots}
+
+\item[\comp{AN UNOPTIMIZABLE GEOMETRIC PARAMETER \ldots}]~\\
+When internal coordinates are supplied, six coordinates  cannot  be
+optimized.   These  are  the  three coordinates of atom 1, the angle and
+dihedral on atom 2 and the dihedral on atom 3.  An attempt has been made to 
+optimize  one of these.  This is usually indicative of a typographic error, but
+might simply be an oversight.  Either way, the error will  be corrected and the
+calculation will not be stopped here.
+\index{Error message!AN UNOPTIMIZABLE \ldots}
+\index{Error message!UNOPTIMIZABLE \ldots}
+\index{AN UNOPTIMIZABLE GEO\ldots}
+\index{UNOPTIMIZABLE GEO\ldots}
+
+\item[\comp{ANALYTIC C.I.\ DERIVATIVES DO NOT WORK\ldots} (FATAL)]~\\
+The analytical C.I.\ derivative calculation failed.  Add \comp{NOANCI} or 
+\comp{UHF} and re-run.
+\index{ANALYTIC C.I.\ DERIV\ldots}
+\index{Error message!ANALYTIC C.I.\ DERIV\ldots}
+
+\item[\comp{ANALYTICAL DERIVATIVES TOO INACCURATE\ldots} (FATAL)]~\\
+The analytical C.I.\ derivative calculation failed.  Add \comp{NOANCI} or 
+\comp{UHF} and re-run.
+\index{ANALYTICAL DERIVATIVES \ldots}
+\index{Error message!ANALYTICAL DERIV\ldots}
+
+\item[\comp{AT LEAST ONE ATOM DEFINED BY CVB\ldots} (FATAL)]~\\
+The atoms defined in \comp{CVD} are limited to the real atoms.  If any
+dummy atoms are used, these should {\em not} be included in the atom
+numbering used.
+\index{AT LEAST ONE ATOM \ldots}
+\index{Error message!AT LEAST ONE ATOM \ldots}
+
+\item[\comp{AT LEAST ONE ATOM HAS A ZERO MASS} (FATAL)]~\\
+In a \comp{FORCE} calculation, the mass of an atom is zero.  To correct
+this, \hyperref[pageref]{give the mass explicitly}{, see p.~}{}{atom_mass}.
+\index{Error message!AT LEAST ONE ATOM \ldots}
+\index{AT LEAST ONE ATOM HAS \ldots}
+
+\item[\comp{At this point, both reactants \ldots}]~\\
+In a \comp{SADDLE} calculation, both reactants and products are on the same side
+of the transition state.  Options at this point are:
+\index{At this point, both reactants \ldots}
+\begin{itemize}
+\item If it is near to the transition state (the gradient norm has been dropping
+for reactants or products, or the ``DISTANCE A-B'' is small, e.g.\ less than 
+0.2), refine the geometry using \comp{TS}.
+\item If it is not near to the transition state, identify geometries on
+both sides of the transition state (these will be separated in the output by
+the message ``REACTANTS AND PRODUCTS SWAPPED AROUND''), and use these to start
+a new \comp{SADDLE} calculation.  Add \comp{BAR=0.02}.
+\item If CPU time is not important, add \comp{BAR=0.02} to the original data set
+and re-run.
+\end{itemize}
+
+\item[\comp{Atom $nn$ is Cartesian\ldots} (FATAL)]~\\
+An attempt has been made to use symmetry function 19 (the bond length is
+a multiple of the reference bond length) using an atom whose position is 
+defined using Cartesian coordinates.  Correct the error and re-run.
+\index{Atom $nn$ is Cartesian\ldots}
+\index{Error message!Atom $nn$ is Cartesian\ldots}
+
+\item[\comp{Atom $nn$ is internal\ldots} (FATAL)]~\\
+An attempt has been made to use symmetry function 18 (the ``$z$'' coordinate is
+set equal to minus the reference ``$y$'' coordinate) using an atom whose
+position is defined using internal coordinates.  Correct the error and re-run.
+\index{Atom $nn$ is internal\ldots}
+\index{Error message!Atom $nn$ is internal\ldots}
+
+\item[\comp{ATOM NUMBER $nn$ IS ILLDEFINED} (FATAL)]~\\
+The rules for definition of atom connectivity are:
+\index{Error message!ATOM NUMBER \ldots}
+\index{ATOM NUMBER $nn$ IS ILL\ldots}
+\begin{enumerate}
+\item Atom 1 has no connectivity.
+\item Atom 2 can be Cartesian or internal.  If internal, it must be defined
+with connectivity (1,0,0).
+\item Atom 3 can be Cartesian or internal.  If internal, it must be defined 
+with connectivity (2,1,0) or (1,2,0). 
+\item All other atoms can be Cartesian or internal.  If internal, they
+must be defined  in  terms  of  already-defined
+atoms:   these  atoms must all be different.  Thus atom 9 might
+be connected to atom 5, make an angle with atom 6, and  have  a
+dihedral  with  atom  7.  If the dihedral was with atom 5, then
+the geometry definition would be faulty.
+\end{enumerate}
+ 
+If any of these rules is broken, a fatal error message is  printed,
+and the calculation stopped.
+ 
+\item[\comp{ATOMIC MASS OF ATOM $nn$ TOO SMALL} (FATAL)]~\\
+In a \comp{DRC} calculation, all atoms must have masses greater than 0.1 times
+the mass of a hydrogen atom.  If sparkles are used, these have no default mass.
+Atom masses are specified as numbers after the symbol, e.g.\ H1.008 or +12.00 (for
+a ``+'' sparkle having a mass of 12.00.)
+\index{ATOMIC MASS OF \ldots}
+\index{Error message!ATOMIC MASS OF ATOM\ldots}
+
+\item[\comp{ATOMIC NUMBER $nn$ IS NOT AVAILABLE \ldots} (FATAL)]~\\
+An element has been used for which parameters  are  not  available. Only  if  a
+typographic error has been made can this be rectified.  This check is not
+exhaustive, in that even if  the  elements  are  acceptable there  are  some 
+combinations  of  elements within \mi{MINDO/3} that are not allowed.  This is a
+fatal error message.
+\index{Error message!ATOMIC NUMBER \ldots}
+\index{ATOMIC NUMBER $nn$ IS \ldots}
+
+
+\item[\comp{ATOMIC NUMBER OF $nn$ ?}  (FATAL)]~\\
+An atom has been specified with a negative or zero  atomic  number. This  is 
+normally  caused  by forgetting to specify an atomic number or symbol.  This is
+a fatal error message.
+\index{Error message!ATOMIC NUMBER \ldots}
+\index{ATOMIC NUMBER OF $NN$ ?}
+
+             
+\item[\comp{ATOMS  $nn$ AND $nn$ ARE SEPARATED BY nn.nnnn ANGSTROMS}  (FATAL)]~\\
+Two genuine atoms (not dummies)  are  separated  by  a  very  small
+distance.    This  can  occur  when  a  complicated  geometry  is  being
+optimized, in which case the user may wish to  continue.   This  can  be done 
+by  using  the  keyword \comp{GEO-OK}. \  More often, however, this message
+indicates a mistake, and the calculation is, by default, stopped.
+\index{Error message!ATOMS $nn$ AND $nn$ \ldots}
+\index{ATOMS $nn$ AND $nn$ ARE SEP\ldots}
+
+\item[\comp{ATTEMPT TO GO DOWNHILL IS UNSUCCESSFUL \ldots}]~\\
+A  quite  rare  message,  produced  by   Bartel's gradient\index{Bartel's
+method}   norm minimization.  Bartel's method attempts to minimize the gradient
+norm by searching the gradient space for a minimum.  Apparently  a  minimum 
+has been found, but not recognized as such.  The program has searched in all
+$3N-6$ directions, and found no way down, but the criteria for a minimum have 
+not been satisfied.  No advice is available for getting round this error.
+\index{Error message!ATTEMPTS TO GO \ldots}
+\index{ATTEMPT TO GO DOWN\ldots}
+
+
+\item[\comp{AVAILABLE MEMORY IN GREENS FUNCTION TOO SMALL} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!AVAILABLE MEMORY\ldots}
+\index{AVAILABLE MEMORY IN \ldots}
+
+\item[\comp{BOTH GEOMETRIES ARE IDENTICAL} (FATAL)]~\\
+The \comp{SADDLE} technique uses two geometries, one for the reactant(s) and
+one for the product(s).  These must be different.  Correct fault and re-run.
+\index{Error message!BOTH GEOMETRIES ARE\ldots}
+\index{BOTH GEOMETRIES ARE \ldots}
+
+\item[\comp{BOTH SYSTEMS ARE ON THE SAME SIDE \ldots}]~\\
+A non-fatal message, but still cause for concern.  During a  SADDLE
+calculation  the  two  geometries  involved are on opposite sides of the
+transition  state.   This  situation  is  verified  at  every  point  by
+calculating  the  cosine  of the angle between the two gradient vectors. For as
+long as it is negative, then the two geometries are  on  opposite sides  of 
+the   TS.  If, however, the cosine becomes positive, then the assumption is
+made that one moiety has fallen over the  TS  and  is  now below  the other
+geometry.  That is, it is now further from the  TS than the other, temporarily 
+fixed,  geometry.   To  correct  this,  identify geometries  corresponding  to 
+points  on  each  side  of the  TS.  (Two geometries on the output separated
+by  the  message   \comp{``SWAPPING\ldots''})  and make  up  a  new  data-file
+using these geometries.  This corresponds to points on the reaction path near
+to the  TS. \ Run a new job using  these two geometries, but with 
+\comp{BAR}\index{BAR} set to  a third or a quarter of its original value, e.g.\
+\comp{BAR=0.05}.  This normally allows the  TS to be located.
+\index{Error message!BOTH SYSTEMS ARE \ldots}
+\index{BOTH SYSTEMS ARE ON \ldots}
+
+
+\item[\comp{C.I.\ IS OF SIZE LESS THAN ROOT SPECIFIED} (FATAL)]~\\
+The value of $n$ in \comp{ROOT=$n$} is less than the size of the C.I. 
+
+\begin{latexonly}
+See p.~\pageref{setmic} for the sizes of various C.I.\ matrices, implied by
+\comp{C.I.=$m$}
+\end{latexonly}
+\begin{htmlonly}
+\htmlref{The sizes of various C.I.\ matrices}{setmic}, implied by 
+\comp{C.I.=$m$} appear elsewhere
+\end{htmlonly}.
+
+\index{Error message!C.I.\ IS OF SIZE LESS \ldots}
+\index{C.I.\ IS OF SIZE LESS THAN \ldots}
+
+\item[\comp{C.I.\ NOT ALLOWED WITH UHF} (FATAL)]~\\
+There is no UHF configuration  interaction  calculation  in  MOPAC.  Either
+remove the keyword that implies C.I.\ or the word UHF.
+\index{Error message!C.I.\ NOT ALLOWED \ldots}
+\index{C.I.\ NOT ALLOWED WITH UHF}
+
+\item[\comp{CALCULATION ABANDONED AT THIS POINT} (FATAL)]~\\
+A particularly annoying message!  In  order  to  define  an  atom's position, 
+the  three  atoms  used  in  the  connectivity table must not accidentally fall
+into a  straight  line.   This  can  happen  during  a geometry  optimization
+or gradient minimization.  If they do, and if the angle made by the atom being
+defined is not zero or  180  degrees,  then its  position  becomes 
+ill-defined.   This  is  not  desirable, and the calculation will stop in order
+to allow corrective action to  be  taken. Note  that  if  the  three  atoms 
+are in an exactly straight line, this message will not be triggered.  
+\index{Error message!CALCULATION ABAND\ldots} 
+\index{CALCULATION ABANDONED \ldots} 
+
+
+\item[\comp{Cannot open {\em filename}.out!} (FATAL)]~\\
+The program cannot open the output file.  Possible causes are (a) the file
+already exists, but is owned by another user, (b) the subdirectory is ``read
+only'', (c) there is no space left on the partition (unlikely).
+\index{Cannot open {\em filename}.out!}
+\index{Error message!Cannot open {\em filename}.out!}
+
+              
+\item[\comp{Cannot write density matrix to {\em filename}.den} (FATAL)]~\\
+The program cannot open the density restart file.  Possible causes are (a)  the
+file already exists, but is owned by another user, (b) the subdirectory  is
+``read only'', (c) there is no space left on the partition (unlikely).
+\index{Cannot write density \ldots}
+\index{Error message!Cannot write density matrix\ldots}
+
+
+\item[\comp{CARTESIAN CALCULATION NOT ALLOWED WITH \ldots} (FATAL)]~\\
+\comp{XYZ} is not allowed when geometries are specified using GAUSSIAN format.
+To allow \comp{XYZ} to be used, first do a \comp{0SCF} calculation to convert
+GAUSSIAN format geometry into the MOPAC format. 
+\index{Error message!CARTESIAN CALC\ldots}
+\index{CARTESIAN CALCULATION \ldots}
+
+
+\item[\comp{CHARGE ON ATOM $N$ UNREASONABLE} (FATAL)]~\\
+The range of allowed charges for an atom is limited.  Allowed charges are:
+Group I: +1; II: +1, +2; III: +1, +2, +3; IV: -1, +1; V: +1; VI: -1, -2; VII:
+-1.  Any charges outside these ranges are considered unreasonable.
+\index{CHARGE ON ATOM $N$ \ldots}
+\index{Error message!CHARGE ON ATOM $N$\ldots}
+
+Correct the geometry and re-run.
+
+\item[\comp{Connectivity of atom $NN$\ldots}]~\\
+The rules for definition of atom connectivity are:
+\index{Connectivity of atom $NN$\ldots}
+\index{Error message!Connectivity of atom $NN$\ldots}
+\begin{enumerate}
+\item Atom 1 has no connectivity.
+\item Atom 2 can be Cartesian or internal.  If internal, it must be defined
+with connectivity (1,0,0).
+\item Atom 3 can be Cartesian or internal.  If internal, it must be defined
+with connectivity (2,1,0) or (1,2,0).
+\item All other atoms can be Cartesian or internal.  If internal, they
+must be defined  in  terms  of  already-defined
+atoms:   these  atoms must all be different.  Thus atom 9 might
+be connected to atom 5, make an angle with atom 6, and  have  a
+dihedral  with  atom  7.  If the dihedral was with atom 5, then
+the geometry definition would be faulty.
+\end{enumerate}
+
+If any of these rules is broken, a fatal error message is  printed,
+and the calculation stopped.
+
+\item[\comp{COORDINATES MUST BE CARTESIAN} (FATAL)]~\\
+In a \comp{DRC} calculation, in which an initial velocity is to be used, the
+geometry must be supplied in Cartesian coordinates, in order for the velocity
+to be meaningful.  If it is essential that internal  coordinates be used for
+the geometry, add \comp{LET}, and re-run.  The velocity vector, however, must
+still be in Cartesian coordinates.
+\index{Error message!COORDINATES MUST \ldots}
+\index{COORDINATES MUST BE \ldots}
+
+\item[\comp{CROSS requires ROOT=2 or higher} (FATAL)]~\\
+In an intersystem crossing calculation, the crossing is defined in terms of
+the higher energy state.  Because of this, \comp{ROOT=$n$} {\em must} be used,
+and $n$ \comp{must} be more than 1.
+\index{CROSS requires ROOT=2 \ldots}
+\index{Error message!CROSS requires ROOT=2\ldots}
+
+\item[\comp{CUTOF1 WAS SET SMALLER THAN CUTOF2}]~\\
+In a MOZYME calculation in which \comp{CUTOF}s were used, \comp{CUTOF1} (the 
+transition from dipole plus monopole to monopole only) was set smaller than
+the transition from NDDO to dipole plus monopole.  \comp{CUTOF1} would be
+automatically increased to a reasonable value and the calculation allowed to
+continue.
+\index{CUTOF1 WAS SET SMALL\ldots}
+
+\item[\comp{DATA ARE NOT AVAILABLE FOR ELEMENT NO.\ $N$} (FATAL)]~\\
+
+Parameters are not available for the element with atomic number $N$. If
+new parameters are available, these can be supplied to MOPAC by use of
+\hyperref[pageref]{\comp{EXTERNAL=}}{, see p.~}{}{external}.
+\index{DATA ARE NOT AVAIL\ldots}
+\index{Error message!DATA ARE NOT AVAIL\ldots}
+
+\item[\comp{Data for TOMASI Model missing or faulty} (FATAL)]~\\
+When \comp{TOM} is specified, extra data are required after the geometry
+in order to define the solvent, unless \comp{H2O}, \comp{CCL4}, or 
+\comp{CHCL3} is used.
+\index{Error message!Data for TOMASI Model \ldots}
+\index{Data for TOMASI Model miss\ldots}
+
+\item[\comp{DEGENERATE LEVELS DETECTED IN MECI \ldots } (FATAL)]~\\
+If only some M.O.s of a degenerate manifold are used in a MECI calculation,
+the results will be nonsense.  To prevent such calculations, the message
+\comp{DEGENERATE LEVELS \ldots} is printed, and the job stopped.  To continue,
+specify \comp{GEO-OK}. \ See Space Quantization and \comp{GEO-OK}.
+\index{Error message!DEGENERATE LEVELS \ldots}                              
+\index{DEGENERATE LEVELS \ldots}                              
+
+\item[\comp{DENSITY FILE MISSING OR CORRUPT} (FATAL)]~\\
+In a run involving  \comp{OLDENS}, the old density matrix,
+in $<\!$filename$\!>$.den, is either missing or corrupt.  Either generate
+a new $<\!$filename$\!>$.den file using \comp{1SCF} and \comp{DENOUT} or
+do not use \comp{OLDENS}.
+\index{Error message!DENSITY FILE MISSING \ldots}
+\index{DENSITY FILE MISSING \ldots}
+
+\item[\comp{Density Restart File missing or corrupt} (FATAL)]~\\
+In a run involving \comp{OLDENS}, the old density matrix,
+in $<\!$filename$\!>$.den, is either missing or corrupt.  Either generate
+a new $<\!$filename$\!>$.den file using \comp{1SCF} and \comp{DENOUT} or
+do not use \comp{OLDENS}.
+\index{Error message!Density Restart File missing \ldots}
+\index{Density Restart File missing \ldots}
+
+\item[\comp{DIPOLE CONSTRAINTS NOT USED}]~\\
+An attempt had been made to run an \comp{ESP} calculation, with dipole 
+constraints, on an ionized system.  This is not allowed, the keyword
+\comp{DIPOLE} will be ignored and the calculation allowed to proceed.
+\index{DIPOLE CONSTRAINTS \ldots}
+
+\item[\comp{DUE TO A PROGRAM BUG, THE FIRST THRE\ldots} (FATAL)]~\\
+Due to a problem caused by the definition of internal coordinates,
+the first three atoms must not form a straight line.
+\index{Error message!DUE TO A PROGRAM\ldots}
+\index{DUE TO A PROGRAM \ldots}
+
+\item[\comp{ECHO is not allowed at this point} (FATAL)]~\\
+\comp{ECHO} can only be used at the start of a run.  If the run has several
+geometries, and at least one is in GAUSSIAN format, then \comp{ECHO} would
+cause an infinite loop to be created.  Remove \comp{ECHO} and re-run.
+\index{Error message!ECHO is not allowed \ldots}
+\index{ECHO is not allowed at this point}
+
+\item[\comp{EIGENVECTOR FOLLOWING IS NOT RECOMMENDED\ldots} (FATAL)]~\\
+If internal coordinates are used, the maximum number of variables is 3$N$-6.  If 
+Cartesian coordinates are used, up to 3$N$ variables can be used.  If \comp{GEO-OK}
+is present, any number of variables can be used.
+\index{EIGENVECTOR FOLLOWING \ldots}
+\index{Error message!EIGENVECTOR FOLLOW\ldots}
+
+\item[\comp{EITHER ADD `LET' OR \ldots} (FATAL)]~\\
+A \comp{FORCE} calculation is {\em only} meaningful if the geometry is
+at a stationary point.  Either add \comp{LET}, to run the current geometry,
+or refine the geometry and re-run.
+\index{EITHER ADD 'LET' OR \ldots}
+\index{Error message!EITHER ADD 'LET' \ldots}
+
+\item[\comp{ELEMENT NOT FOUND}     (FATAL)]~\\
+When an external file  is  used  to  redefine  MNDO,  AM1, PM3, or MNDO-$d$
+parameters, the chemical symbols used must correspond to known elements. Any
+that do not will trigger this fatal message.
+\index{Error message!ELEMENT NOT FOUND}
+\index{ELEMENT NOT FOUND}
+\index{MNDO}\index{AM1}\index{PM3}\index{MNDO-$d$}
+                           
+\item[\comp{ELEMENT NOT RECOGNIZED}     (FATAL)]~\\
+When a Gaussian data set is supplied, the chemical symbols used must
+correspond  to known elements.  Any that do not will trigger this fatal
+message. Correct the data set and re-run.
+\index{ELEMENT NOT RECOGNIZED}    
+\index{Error message!ELEMENT NOT REC\ldots}    
+
+\item[\comp{ERROR  TOO MANY NEIGHBORS} (FATAL)]~\\
+An extraordinarily difficult error to make.  An atom has more than 200
+neighboring atoms, in an \comp{ESP} or \comp{PMEP} calculation.
+\index{ERROR  TOO MANY \ldots}
+\index{Error message!ERROR TOO MANY \ldots}
+
+\item[\comp{ERROR DETECTED DURING READ\ldots} (FATAL)]~\\
+In a \comp{PATH} calculation involving a \comp{RESTART}, the \comp{RESTART} file
+is faulty---damaged or corrupt.  To correct this,  start over again.
+\index{Error message!ERROR DETECTED \ldots}
+\index{ERROR DETECTED DURING \ldots}
+                    
+\item[\comp{ERROR DETECTED IN SUBROUTINE CHECK\ldots} (FATAL)]~\\
+In a MOZYME calculation, the LMOs are periodically re-normalized.  This
+involves making small adjustments to the LMOs.  If large changes are necessary,
+something has gone wrong in the LMO procedure.  Try restarting the job, but do 
+{\em not} use \comp{OLDENS}.  If this does not work, there is a problem in the 
+program.
+\index{ERROR DETECTED IN SUB\ldots}
+\index{Error message!ERROR DETECTED IN \ldots}
+
+\item[\comp{ERROR DURING READ AT ATOM NUMBER \ldots} (FATAL)]~\\
+Something is wrong with the geometry data.  In order to  help  find the 
+error,  the  geometry  already  read in is printed.  The error lies either on
+the last  line  of  the  geometry  printed,  or  on  the  next (unprinted)
+line.  This is a fatal error.
+\index{Error message!ERROR DURING READ \ldots} 
+\index{ERROR DURING READ AT \ldots} 
+
+
+\item[\comp{Error in BLAS} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in BLAS}
+
+\item[\comp{ERROR IN CVB KEYWORD} (FATAL)]~\\
+An error is present in the \htmlref{\comp{CVB} keyword}{cvb} used in
+defining specific bonds in a Lewis structure.  
+\begin{latexonly}
+See p.~\pageref{cvb} for details of this keyword.
+\end{latexonly}
+
+\item[\comp{Error in EF} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in EF}
+
+\item[\comp{Error in GETGEO} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in GETGEO}
+
+\item[\comp{Error in GETMEM} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in GETMEM}
+
+\item[\comp{Error in GREENF} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in GREENF}
+
+\item[\comp{Error in MOLDAT.} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in MOLDAT.}
+
+\item[\comp{Error in PATHS} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in PATHS}
+
+\item[\comp{Error in PMEP} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in PMEP}
+
+\item[\comp{ERROR IN READ OF FIRST THREE LINES} (FATAL)]~\\
+The data-set has a severe error in the first three lines.  This is a very
+unusual error, and indicates that the data-set is likely to be severely
+in error, or that MOPAC has not been installed correctly.
+\index{Error message!ERROR IN READ OF \ldots}
+\index{ERROR IN READ OF FIRST \ldots}
+
+\item[\comp{Error in READMO} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in READMO}
+
+\item[\comp{Error in TOM} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in TOM}
+
+\item[\comp{Error in UPDATE} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in UPDATE}
+
+\item[\comp{Error in USAGE} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{Error message!Error in USAGE}
+
+\item[\comp{ERROR!! MODE IS LARGER\ldots} (FATAL)]~\\
+In a system of $N$ variables, a request has been made to follow the $M$th
+mode, where $M>N$.  Correct the data and re-run.
+\index{ERROR!! MODE IS LARGER\ldots}
+\index{Error message!ERROR!! MODE IS LARGER\ldots}
+
+\item[\comp{ERROR: PERMANENT ARRAY} (FATAL)]~\\
+This error can {\em only} be caused by a programming error.  Please contact
+Dr~Stewart as soon as possible.
+\index{ERROR: PERMANENT ARRAY}
+\index{Error message!ERROR: PERM\ldots}
+
+\item[\comp{ERRORS DETECTED IN CONNECTIVITY} (FATAL)]~\\
+The \htmlref{connectivity in the MOPAC internal coordinate
+Z-matrix}{int} is faulty.  
+\begin{latexonly}
+For a description of the connectivity rules, see p.~\pageref{int}.
+\end{latexonly}
+\index{Error message!ERRORS DETECTED \ldots}
+\index{ERRORS DETECTED IN CON\ldots}
+
+\item[\comp{EXCITED USED WITH TRIPLET} (FATAL)]~\\
+\comp{EXCITED} implies the first singlet excited state.  This cannot be used
+if \comp{TRIPLET} is requested.  Correct the data set and re-run.
+\index{EXCITED USED WITH TRIPLET}
+\index{Error message!EXCITED USED \ldots}
+
+\item[\comp{EXTERNAL PARAMETERS FILE MISSING OR EMPTY} (FATAL)]~\\
+\comp{EXTERNAL=$text$} has been specified, but the file $text$ is
+either missing or empty.
+\index{Error message!EXTERNAL PARA\ldots}
+\index{EXTERNAL PARAMETERS \ldots}
+
+\item[\comp{FAILED IN SEARCH, SEARCH CONTINUING}]~\\
+Not a fatal error.   The  McIver-Komornicki\index{McIver-Komornicki method}
+gradient  minimization involves use of a line-search to find the lowest
+gradient.  This message is merely advice.  However, if \comp{SIGMA}
+\index{SIGMA}  takes a long time,  consider  doing\index{TS}\index{NLLSQ}
+something  else,  such  as  using \comp{TS} or  \comp{NLLSQ}, or refining the
+geometry a bit before resubmitting it to \comp{SIGMA}.
+\index{Error message!FAILED IN SEARCH \ldots} 
+
+
+\item[\comp{FAILED TO ACHIEVE SCF. }]~\\
+The SCF calculation failed to go to  completion;  an  unwanted  and depressing
+message that unfortunately appears every so often.
+\index{Error message!FAILED TO ACHIEVE SCF} 
+\index{FAILED TO ACHIEVE SCF}
+
+To  date  three  unconditional  convergers  have  appeared  in  the
+literature:   the  \comp{SHIFT}\index{SHIFT}  technique,   Pulay's  method, and
+the Camp-King converger.  It would not  be  fair  to  the  authors  to 
+condemn  their methods.   In  MOPAC  all  sorts  of  weird  and  wonderful 
+systems are calculated, systems the authors of  the  convergers  never 
+dreamed  of. MOPAC  uses  a  combination  of all three convergers at times. 
+Normally only a quadratic damper is used.
+
+If this message appears, suspect first that the  calculation  might be  faulty,
+then, if you feel confident, use \comp{PL} to monitor a single SCF. Based  on 
+the  SCF  results  either  increase  the  number  of  allowed iterations
+(default:  200) or use \comp{PULAY}, or Camp-King, or a mixture.
+
+If nothing works, then consider slackening the SCF criterion.  This will  
+allow  heats  of  formation  to  be  calculated  with  reasonable precision,
+but the gradients are likely to be imprecise.
+
+                  
+\item[\comp{Fatal error in reading from channel 9} (FATAL)]~\\
+A fatal error has occurred during an attempted restart of a \comp{DRC} or 
+\comp{IRC} calculation.  Likely causes are:
+\begin{itemize}
+\item The restart file does not exist.
+\item The restart file is from a different type of job.
+\item The restart file was written in FORMATTED or UNFORMATTED code, and an
+attempt was made to read it in in the other code.  This is most likely to
+happen if MOPAC has been recompiled between runs.
+\end{itemize}
+
+\item[\comp{Fatal error in trying to open RESTART file} (FATAL)]~\\
+In a \comp{FORCE} calculation, the \comp{RESTART} file is missing. Remove {\bf
+RESTART} and re-run.
+\index{Error message!Fatal error in try\ldots}
+\index{Fatal error in trying to open \ldots}
+
+
+\item[\comp{FAULT DETECTED IN INTERNAL COORDINATES} (FATAL)]~\\
+The nature of the fault in the internal coordinates is described in the
+output file immediately before this message.  Correct fault and re-run.
+\index{Error message!FAULT DETECTED IN INT\ldots}
+\index{FAULT DETECTED IN INT\ldots}
+
+\item[\comp{FAULT IN READ OF AB INITIO DERIVATIVES} (FATAL)]~\\
+When \comp{AIDER} is used, the {\em ab initio} derivatives must be supplied
+after the Z-matrix.  Correct fault and re-run.
+\index{Error message!FAULT IN READ OF AB \ldots}
+\index{FAULT IN READ OF \ldots}
+
+\item[\comp{FAULTY LINE: $text$} (FATAL)]~\\
+An error was detected during the read of an \htmlref{\comp{EXTERNAL}
+parameter set}{external}. An unrecognized parameter type was used.
+
+\begin{latexonly}
+See p.~\pageref{external} for details of how to define parameters.
+\end{latexonly}
+\index{FAULTY LINE: $text$}
+\index{Error message!FAULTY LINE: $text$}
+
+\item[\comp{FILE {\em file}.den is missing} (FATAL)]~\\
+An attempt has been made to read in an old density matrix ({\em fime}.den), but
+this file apparently does not exist in the subdirectory.  Correct the error and
+re-run.
+\index{FILE {\em file}.den is missing}
+\index{Error message!FILE {\em file}.den is missing}
+
+\item[\comp{First atom must not be H if keyword H2O used} (FATAL)]~\\
+In \comp{TOM} calculations where \comp{H2O} is used, the first atom must not be
+hydrogen.  Hydrogen atoms are assigned values that depend on the type of atom
+they are attached to.  Re-arrange the system so that the positions of hydrogen
+atoms are defined using other atoms.
+\index{Error message!First atom must not be H \ldots}
+\index{First atom must not be H \ldots}
+
+
+\item[\comp{GAUSSIAN INPUT REQUIRES STAND-ALONE JOB} (FATAL)]~\\
+Because of the way Gaussian geometries are recognized, only one such geometry
+is permitted in any given run, unless \comp{AIGIN} is used.  To correct this
+fault, either add \comp{AIGIN} or break the run into parts, and run each part as
+a separate job.
+\index{Error message!GAUSSIAN INPUT REQ\ldots}
+\index{GAUSSIAN INPUT REQ\ldots}
+
+
+\item[\comp{Geometry cannot be optimized when TOM is used} (FATAL)]~\\
+In its current form, the gradients in \comp{TOM} calculations are incorrect. 
+The best strategy here is to optimize the geometry first, possibly using {\bf
+COSMO}, then do a single SCF using \comp{TOM}.
+\index{Error message!Geometry cannot be \ldots}
+\index{Geometry cannot be optimized \ldots}
+
+
+\item[\comp{GEOMETRY CONTAINS FAULTS\ldots} (FATAL)]~\\
+Errors in the geometry were detected when the Lewis structure was constructed
+in a MOZYME calculation.  Correct the errors using information in the output,
+or add \comp{GEO-OK},  and re-run.
+\index{GEOMETRY CONTAINS \ldots}
+\index{Error message!GEOMETRY CONTAINS \ldots}
+
+\item[\comp{Geometry in PLATO is unrecognizable!} (FATAL)]~\\
+This error occurs when a geometry appears to be cubic, but does not belong  to
+any of the cubic point groups.  Check the geometry to verify that it is what is
+wanted.  If it is, then add \comp{NOSYM} and re-run; this will prevent the 
+symmetry routines being used.
+\index{Error message!Geometry in PLATO \ldots}
+\index{Geometry in PLATO \ldots}
+
+\item[\comp{Geometry is apparently cubic\ldots} (FATAL)]~\\
+A severe error.  The geometry has confused the symmetry recognition
+subroutines. Most likely, the geometry is nonsense.  Examine the geometry
+printed after this message, and take corrective action.  If the geometry is
+correct, add \comp{NOSYM}, to disable the symmetry features.
+\index{Geometry is apparently cubic\ldots}
+\index{Error message!Geometry is apparently cubic\ldots}
+
+\item[\comp{GEOMETRY IS FAULTY} (FATAL)]~\\
+The nature of the fault in the geometry is described in the output file
+immediately before this message.  Correct fault and re-run.
+\index{Error message!GEOMETRY IS FAULTY}
+\index{GEOMETRY IS FAULTY}
+
+
+\item[\comp{GEOMETRY TOO UNSTABLE FOR EXTRAPOLATION \ldots}]~\\
+In a reaction path calculation the initial geometry for a point is calculated
+by quadratic extrapolation using the previous three points.
+\index{Error message!GEOMETRY TOO UN\ldots}
+\index{GEOMETRY TOO UNSTABLE \ldots}
+
+If a quadratic fit is likely to lead to an inferior geometry,  then the 
+geometry  of  the  last  point  calculated will be used.  The total effect  is 
+to  slow  down  the  calculation,  but  no  user  action  is recommended.
+
+\item[\comp{GNORM HAS BEEN SET TOO LOW\ldots}]~\\
+By default, the lowest value for \comp{GNORM} is 0.01.  To override this, add
+\comp{LET}.  There is no routine need to reduce the \comp{GNORM} below 0.01, and
+if \comp{LET} is used, the geometry optimization procedures are modified.
+Because of this, \comp{LET} should not be used routinely.
+\index{GNORM HAS BEEN SET \ldots}
+
+\item[\comp{GRADIENT IS TOO LARGE TO ALLOW \ldots} (FATAL)]~\\
+Before a FORCE calculation can be performed the gradient norm  must be  so
+small that the third and higher order components of energy in the force field
+are negligible.  If, in the system  under  examination,  the gradient  norm 
+is  too  large,  a warning message will be printed and the calculation
+stopped,  unless \comp{LET} has been specified.  In  some  cases  the  {\bf
+FORCE} calculation  may be run only to decide if a state is a ground state or a
+transition  state,  in  which   case   the   results   have   only   two
+interpretations.  Under these circumstances, \comp{LET} may be warranted.
+\index{Error message!GRADIENT IS TOO LA\ldots}
+\index{GRADIENT IS TOO LARGE \ldots}
+
+\item[\comp{GRADIENT IS VERY LARGE \ldots}]~\\
+In a calculation of the thermodynamic properties of the system,  if the 
+rotation  and  translation vibrations are non-zero, as would be the case if the
+gradient norm was significant, then these `vibrations' would interfere  with 
+the  low-lying  genuine  vibrations.   The criteria for THERMO  are  much 
+more  stringent  than  for  a  vibrational  frequency calculation,  as  it is
+the lowest few genuine vibrations that determine the internal vibrational
+energy, entropy, etc.
+\index{Error message!GRADIENT IS VERY \ldots}
+\index{GRADIENT IS VERY LARGE \ldots}
+
+\item[\comp{GREENS FUNCTION IS NOT ALLOWED  WITH EXTENDED SYSTEMS} (FATAL)]~\\
+The program has not been set up to allow Greens function corrections to
+polymers and other extended systems.  No correction is possible, this kind of
+calculation cannot be run.
+\index{Error message!GREENS FUNCTION IS \ldots}
+\index{GREENS FUNCTION IS NOT \ldots}
+
+\item[\comp{Hydrogen atom $N$ is\ldots} (FATAL)]~\\
+In a MOZYME calculation, hydrogen atom $N$ is unreasonably far from any heavy
+atom. Check the geometry and re-run.
+\index{Hydrogen atom $N$ is\ldots}
+\index{Error message!Hydrogen atom $N$ is\ldots}
+
+\item[\comp{Hydrogen atoms must be defined using bond-lengths when keyword H2O is used} (FATAL)]~\\
+In \comp{TOM} calculations where \comp{H2O} is used, hydrogen atoms are  assigned
+values that depend on the type of atom they are attached to.  Re-arrange the
+system so that the positions of hydrogen atoms are defined in terms of their
+bond-lengths.
+\index{Error message!Hydrogen atoms must be \ldots}
+
+\item[\comp{HYDROGENS MUST BE BONDED TO NON\ldots} (FATAL)]~\\
+In a MOZYME calculation, hydrogen atoms should be bonded to non-hydrogen atoms.
+If molecular hydrogen is present, add \comp{LET}, otherwise remove the molecular
+hydrogen.
+\index{HYDROGENS MUST BE \ldots}
+\index{Error message!HYDROGENS MUST BE \ldots}
+
+\item[\comp{If QPMEP is used, then PMEP must also be present} (FATAL)]~\\
+\comp{QPMEP} is a keyword that modifies a \comp{PMEP} (Parametric Molecular
+Electrostatic Potential) calculation.  On its own, \comp{QPMEP} will do nothing
+useful.
+\index{Error message!If QPMEP is used, \ldots}
+\index{If QPMEP is used, then  \ldots}
+
+\item[\comp{ILLEGAL ATOMIC NUMBER} (FATAL)]~\\
+An element has been specified by an atomic number which is  not  in the  range 
+1  to  107.   Check the data:  the first datum on one of the lines is faulty. 
+Most likely line 4 is faulty.
+\index{Error message!ILLEGAL ATOMIC\ldots}
+\index{ILLEGAL ATOMIC NUMBER}
+                  
+\item[\comp{IMPOSSIBLE NUMBER OF CLOSED SHELL ELECTRONS} (FATAL)]~\\
+The keywords used imply that the number of closed shells (doubly-occupied
+levels) is less than zero!  Correct the error in the data set, and re-run.
+\index{Error message!IMPOSSIBLE NUMBER \ldots}
+\index{IMPOSSIBLE NUMBER OF \ldots}
+
+\item[\comp{IMPOSSIBLE NUMBER OF OPEN SHELL ELECTRONS} (FATAL)]~\\
+The keyword \comp{OPEN($n1$,$n2$)}\index{OPEN} has been used,   but  for  an 
+even-electron system  $n1$  was  specified  as  odd or for an odd-electron
+system $n1$ was specified as even.  Either way, there is a conflict which the
+user  must resolve.
+\index{Error message!IMPOSSIBLE NUMBER \ldots} 
+\index{IMPOSSIBLE NUMBER OF \ldots} 
+
+\item[\comp{IMPOSSIBLE OPTION REQUESTED} (FATAL)]~\\
+A  general  catch-all.   This  message  will  be  printed  if   two
+incompatible  options  are  used,  such  as  both   \comp{MINDO/3} and \comp{AM1}
+being specified.  Check the keywords, and resolve the conflict.
+\index{Error message!IMPOSSIBLE OPTION\ldots}
+\index{IMPOSSIBLE OPTION REQ\ldots}
+
+\item[\comp{IMPOSSIBLE VALUE OF DELTA S} (FATAL)]~\\
+The keywords used imply that either the number of $\alpha$ or the number
+of $\beta$ electrons is negative!  Correct error and re-run.
+\index{Error message!IMPOSSIBLE VALUE OF \ldots}
+\index{IMPOSSIBLE VALUE \ldots}
+
+\item[\comp{INPUT FILE MISSING OR EMPTY} (FATAL)]~\\
+The data set is either empty or does not exist, or MOPAC has not been
+installed correctly.  Correct error and re-run.
+\index{INPUT FILE MISSING \ldots}
+\index{Error message!INPUT FILE MISSING OR \ldots}
+
+\item[\comp{INSUFFICIENT DATA ON DISK FILES FOR A FORCE} (FATAL)]~\\
+A \comp{FORCE} calculation has been attempted using \comp{RESTART}, however,
+the $<$filename$>$.res file is either corrupt or does not exist.
+The best course of action would be to start over from the beginning---that
+is, remove \comp{RESTART}, and re-run the job.
+\index{INSUFFICIENT DATA ON \ldots}
+\index{Error message!INSUFFICIENT DATA ON \ldots}
+
+\item[\comp{JOB STOPPED BY OPERATOR}]~\\
+Any MOPAC calculation, for which the \comp{shut} command works, can be stopped 
+by  a  user  who issues the command \comp{shut $<$filename$>$},  from the
+directory which contains \comp{ $<$filename$>$.dat}.
+\index{JOB STOPPED BY OPERATOR}
+\index{Error message!JOB STOPPED BY\ldots}
+
+MOPAC will then stop the calculation at the first convenient point, usually 
+after  the  current cycle has finished.  A restart file will be written and the
+job ended.  The message will be printed as soon as it is detected, which would
+be the next time the timer routine is accessed.
+                    
+\item[\comp{KEYWORD AIDER SPECIFIED, BUT NOT PRESENT AFTER Z-MATRIX.  JOB STOPPED} (FATAL)]~\\
+When \comp{AIDER} is used, the {\em ab initio} derivatives must be supplied
+after the Z-matrix.  Correct fault and re-run.
+\index{KEYWORD AIDER \ldots}
+\index{Error message!KEYWORD AIDER SPECIF\ldots} 
+
+\item[\comp{KEYWORD ANALYT CANNOT BE USED HERE} (FATAL)]~\\
+Analytical derivatives (which use STO$n$ Gaussian orbitals) cannot be
+used with RHF open shell derivatives calculated using Liotard's method.
+To correct this, either add \comp{NOANCI} or remove \comp{ANALYT}.
+\index{KEYWORD ANALYT \ldots}
+\index{Error message!KEYWORD ANALYT \ldots}
+
+\item[\comp{LINE OF KEYWORDS DOES NOT HAVE ENOUGH  SPACES FOR PARSING. PLEASE CORRECT LINE.} (FATAL)]~\\
+Every keyword must be preceded by a space.  This applies to the first keyword.
+As supplied, the keywords line does not have a space before the first keyword,
+and there is no space to move the keywords around in order to put a space there.
+\index{LINE OF KEYWORDS \ldots}
+\index{Error message!LINE OF KEYWORDS \ldots}
+
+Delete or abbreviated keywords so that there are unused spaces.
+
+\item[\comp{MAX.\ NUMBER OF ATOMS ALLOWED: \ldots} (FATAL)]~\\
+To correct this, edit the file \comp{sizes.h} to increase the value of 
+\comp{NUMATM}, re-run ``make'' and re-run the job.
+\index{MAX. NUMBER OF ATOMS \ldots}
+\index{Error message!MAX. NUMBER OF AT\ldots}
+                      
+\item[\comp{MAXIMUM ALLOWED NUMBER OF ANIONS EXCEEDED} (FATAL)]~\\
+In a routine MOZYME calculation, the maximum number of anions  allowed is 200.
+If there are more than 200, add \comp{LET}, however, first check that the data 
+set is correct.
+\index{MAXIMUM ALLOWED \ldots}
+\index{Error message!MAXIMUM ALLOWED \ldots}
+
+\item[\comp{MAXIMUM ALLOWED NUMBER OF CATIONS EXCEEDED} (FATAL)]~\\
+In a routine MOZYME calculation, the maximum number of cations allowed is 200.
+If there are more than 200, add \comp{LET}, however, first check that the data set
+is correct.
+\index{MAXIMUM ALLOWED \ldots}
+\index{Error message!MAXIMUM ALLOWED \ldots}
+
+\item[\comp{MICROSTATES SPECIFIED BY KEYWORDS  BUT MISSING FROM DATA} (FATAL)]~\\
+If \comp{MICROS=$n$} is present, then after the geometry and symmetry
+data, if any, there should be a line with the word
+\htmlref{\comp{MICRO}}{rs} followed by $n$ microstates.
+
+\begin{latexonly}
+See p.~\pageref{rs} for examples
+\end{latexonly}.
+\index{MICROSTATES SPECIFIED \ldots}
+\index{Error message!MICROSTATES SPEC\ldots}
+
+\item[\comp{MISSING VAN DER WAALS RADIUS  $Chemical-symbol$} (FATAL)]~\\
+In the \comp{COSMO} method and in generating Lewis structures, van der Waals
+radii are used.  If a VDW radius is missing, it can be  supplied by use of
+\hyperref[pageref]{\comp{VDW($text$)}}{, see p.~}{}{key_vdw}.
+\index{MISSING VAN DER WAALS \ldots}
+\index{Error message!MISSING VAN DER \ldots}
+
+\item[\comp{MIXED PARAMETER SETS.  USE ''PARASOK'' TO CONTINUE} (FATAL)]~\\
+A calculation using mixed parameter sets has been attempted.  By default,
+MNDO parameters are used if the element has not been parameterized for
+the specified method.  Use of such mixed parameter sets is not usually
+recommended.  To allow such sets to be used, add \comp{PARASOK}.
+\index{MIXED PARAMETER SETS.  \ldots}
+\index{Error message!MIXED PARAMETER \ldots}
+
+\item[\comp{MODIFY SUBROUTINE NAMES} (FATAL)]~\\
+The MOZYME function is designed to work with proteins of up to 2,000 residues,
+about 28,000 atoms.  Larger systems can be run, provided no attempt is made
+to work out the residue sequence.  This means that \comp{RESIDUES}, \comp{PDBOUT}, and
+\comp{RESEQ} cannot be used.  If larger systems need to be run, modify \comp{MAXRES}
+in ``atomrs.F'' and in ``names.F''.
+\index{MODIFY SUBROUTINE NAMES}
+\index{Error message!MODIFY SUBROUTINE \ldots}
+
+\item[\comp{MORE THAN 3N-6 COORDINATES OPTIMIZED!} (FATAL)]~\\
+In an \comp{EF} calculation, more than 3$N$-6 coordinates are flagged for
+optimization.  By implication, at least one root of the Hessian matrix is
+exactly zero.  Since \comp{EF} involves using the inverse of an approximate
+Hessian, the method is intrinsically unstable.  However, for most systems,
+the geometry optimizes completely before the Hessian is accurate enough for
+the instability to cause problems.  
+\index{MORE THAN 3N-6 COORD\ldots}
+\index{Error message!MORE THAN 3N-6 COORD\ldots}
+
+To correct this fault, either reduce the number of coordinates being optimized,
+or add \comp{GEO-OK}.
+
+\item[\comp{MORE THAN ONE GEOMETRY OPTION HAS BEEN SPECIFIED} (FATAL)]~\\
+The keywords indicate that two or more geometric operations have been
+requested for one system.  Only one operation (e.g.\ geometry optimization by
+\comp{TS} or by \comp{NLLSQ}) is allowed for any given system.
+\index{MORE THAN ONE GEO\ldots}
+\index{Error message!MORE THAN ONE GEO\ldots}
+
+\item[\comp{MULLIKEN POPULATION NOT AVAILABLE WITH UHF} (FATAL)]~\\
+The requested operation, a Mulliken population analysis using a UHF wavefunction,
+has not been written in the program.  This type of calculation will not run.
+\index{MULLIKEN POPULATION \ldots}
+\index{Error message!MULLIKEN POPULATION \ldots}
+
+\item[\comp{NAME NOT FOUND} (FATAL)]~\\
+Various atomic parameters can  be  modified  in  MOPAC  by  use  of 
+\comp{EXTERNAL=}.  These comprise the symbols given in Table~\ref{expar}.
+\index{NAME NOT FOUND}
+\index{Error message!NAME NOT FOUND}
+
+\begin{table}
+\begin{center}
+\caption{\label{expar} Names of Parameters for use with \comp{EXTERNAL=$<$file$>$}}
+\begin{tabular}{llll}\\
+          Uss    &    Betas    &    Gp2    &     GSD   \\
+          Upp    &    Betap    &    Hsp    &     GPD   \\
+          Udd    &    Betad    &    AM1    &     GDD   \\
+          Zs     &    Gss      &    Expc   &     FN1   \\
+          Zp     &    Gsp      &    Gaus   &     FN2   \\
+          Zd     &    Gpp      &    Alp    &     FN3   \\
+\end{tabular}
+\end{center}
+\end{table}
+         
+Thus to change the Uss of hydrogen to $-13.6$ the line \comp{USS    H    -13.6}
+could be used.  If an attempt is made to modify  any  other  parameters, then
+an error message is printed, and the calculation terminated.
+
+\item[\comp{NEGATIVE SYMBOLICS MUST BE PRECEDED BY THE POSITIVE EQUIVALENT} (FATAL)]~\\
+When specifying GAUSSIAN Z-matrix geometries, a negative symbolic must be
+related to an already defined positive symbolic.  Correct the data set and
+re-run.
+\index{NEGATIVE SYMBOLICS \ldots}
+\index{Error message!NEGATIVE SYMBOLICS \ldots}
+
+\item[\comp{NEWGEO CAN ONLY BE RUN IF THERE ARE NO DUMMY ATOMS, OR IF `RESEQ' IS USED} (FATAL)]~\\
+In a protein, \comp{NEWGEO} converts backbone atoms to Cartesian, and 
+side-chain atoms  to internal coordinates.  For this function to work
+correctly, there must  not be any dummy  atoms.  Dummy atoms can be removed by
+\comp{RESEQ}, or by a  \comp{0SCF} + \comp{INT} run.
+\index{NEWGEO CAN ONLY \ldots}
+\index{Error message!NEWGEO CAN ONLY \ldots}
+
+\item[\comp{NLLSQ USED WITH REACTION PATH;} (FATAL)]~\\
+The capability of using \comp{NLLSQ} with a reaction path is not available
+within MOPAC. \ As an alternative, use \comp{TS}.
+\index{NLLSQ USED WITH \ldots}
+\index{Error message!NLLSQ USED WITH \ldots}
+
+\item[\comp{NO ATOMS IN SYSTEM} (FATAL)]~\\
+The system provided does not contain any atoms!  Check the data-set.  A common
+error is to have a blank line before the keyword line.  There should be
+exactly three lines before the Z-matrix, unless `+' is used.
+\index{NO ATOMS IN SYSTEM}
+\index{Error message!NO ATOMS IN SYSTEM}
+
+\item[\comp{NO DUMMY ATOMS ALLOWED BEFORE} (FATAL)]~\\
+In a \comp{FORCE} calculation on a polymer or solid, no dummy atoms are
+allowed.  This is a program limitation.  Modify the data-set (use \comp{0SCF}
+and \comp{INT} or \comp{XYZ} to get rid of the dummy atoms), and re-run.
+\index{NO DUMMY ATOMS \ldots}
+\index{Error message!NO DUMMY ATOMS \ldots}
+
+\item[\comp{NO PEPTIDE LINKAGES FOUND.  CHECK DATA SET} (FATAL)]~\\
+At least one of the following keywords: \comp{RESIDUES}, \comp{PDBOUT}, and
+\comp{RESEQ} was used on a system that had no peptide linkages.  Modify the
+data set and re-run.
+\index{NO PEPTIDE LINKAGES \ldots}
+\index{Error message!NO PEPTIDE LINK\ldots}
+
+
+\item[\comp{NO POINTS SUPPLIED FOR REACTION PATH} (FATAL)]~\\
+A reaction path calculation is indicated by a `--1' in the optimization
+flags.  If \comp{STEP=$n$} and \comp{POINT=$m$} are present, then the
+reaction path is defined by $n$ and $m$.  If these keywords are not
+present, \htmlref{the reaction path must be specified by numbers after
+the Z-matrix and symmetry data}{sn2} (if any). 
+\begin{latexonly}
+See p.~\pageref{sn2} for an example.
+\end{latexonly}
+\index{NO POINTS SUPPLIED \ldots}
+\index{Error message!NO POINTS SUPPLIED \ldots}
+
+\item[\comp{NO RESTART FILE EXISTS!} (FATAL)]~\\
+An attempt has been made to restart a job, but the \comp{$<$filename$>$.res}
+file does not exist.  The easiest correction is to remove \comp{RESTART}
+and re-run.
+\index{NO RESTART FILE EXISTS!}
+\index{Error message!NO RESTART FILE EXISTS!}
+
+
+\item[\comp{NOANCI MUST BE USED FOR RHF OPEN-SHELL SYSTEMS THAT INVOLVE TRANSLATION VECTORS} (FATAL)]~\\
+Liotard's analytical RHF open shell derivatives have not been extended to allow
+polymers or solids to be calculated.  An alternative is to use \comp{UHF}.
+\index{NOANCI MUST BE USED \ldots}
+\index{Error message!NOANCI MUST BE USED \ldots}
+
+\item[\comp{NONET SPECIFIED WITH ODD NUMBER OF ELECTRONS, CORRECT FAULT} (FATAL)]~\\
+When \comp{NONET} is specified, the system must have an even number of  
+electrons.  Check (a) the system, and (b) the charge (if any).  Correct 
+data set and re-run. 
+\index{NONET SPECIFIED \ldots}
+\index{Error message!NONET SPECIFIED \ldots}
+ 
+\item[\comp{NUMBER OF DOUBLY FILLED PLUS PARTLY FILLED LEVELS GREATER THAN TOTAL NUMBER OF ORBITALS} (FATAL)]~\\
+The keywords used here imply a system that is larger than that used.
+Correct data set (probably by changing the keywords) and re-run.
+\index{NUMBER OF DOUBLY \ldots}
+\index{Error message!NUMBER OF DOUBLY \ldots}
+
+\item[\comp{NUMBER OF ELECTRONS IN M.O.s BELOW ACTIVE SPACE IS LESS THAN ZERO} (FATAL)]~\\
+In a C.I.\ calculation, the active space extends below the lowest energy level.
+Correct data set (probably by changing the keywords) and re-run. 
+\index{NUMBER OF ELECTRONS \ldots}
+\index{Error message!NUMBER OF ELEC\ldots}
+
+\item[\comp{NUMBER OF M.O.s IN ACTIVE SPACE EXCEEDS MAXIMUM ALLOWED SIZE OF ACTIVE SPACE} (FATAL)]~\\
+In a C.I.\ calculation, the number of M.O.s in the active space is greater
+than that allowed by the program.
+Modify the data set (probably by changing the keywords) and re-run. 
+\index{NUMBER OF M.O.s IN  \ldots}
+\index{Error message!NUMBER OF M.O.s in \ldots}
+
+\item[\comp{NUMBER OF M.O.s REQUESTED IN C.I.\ IS GREATER THAN THE NUMBER OF ORBITALS} (FATAL)]~\\
+In a C.I.\ calculation, the active space requested is greater than the
+number of orbitals in the system.
+Correct data set (probably by changing the keywords) and re-run. 
+\index{NUMBER OF M.O.s REQ\ldots}
+\index{Error message!NUMBER OF M.O.s REQ\ldots}
+
+\item[\comp{NUMBER OF OCCUPIED ORBITALS IS INCORRECT IN MAKVEC} (FATAL)]~\\
+During the construction of the starting LMOs in a MOZYME calculation, more occupied
+LMOs were found than expected.  This is a programming problem.
+Please inform Dr~Stewart as soon as possible.
+\index{NUMBER OF OCCUPIED \ldots}
+\index{Error message!NUMBER OF OCCUPIED \ldots}
+
+
+\item[\index{NUMBER OF OPEN-SHELLS \ldots} (FATAL)]~\\
+\comp{NUMBER OF OPEN-SHELLS ALLOWED IN C.I.\ IS LESS THAN 
+THAT SPECIFIED BY OTHER KEYWORDS}
+The size of the active space in a C.I.\ calculation implied by \comp{C.I.=($n$,$m$)}
+is less than that implied by other keywords, e.g., \comp{SEXTET}.
+Correct data set by changing the keywords and re-run.
+\index{Error message!NUMBER OF OPEN-S\ldots}
+
+\item[\comp{NUMBER OF PARTICLES, $nn$ GREATER THAN \ldots}]~\\
+When user-defined microstates are not used, the MECI will calculate all 
+possible  microstates  that  satisfy the space and spin constraints imposed. 
+This is done in PERM, which permutes $N$ electrons in $M$  levels. If  $N$ is
+greater than $M$, then no possible permutation is valid.  This is not a fatal
+error---the program will continue to run, but  no  C.I.\ will be done.
+\index{NUMBER OF PARTICLES \ldots}
+\index{Error message!NUMBER OF PART\ldots}
+                  
+\item[\comp{NUMBER OF PERMUTATIONS TOO GREAT, LIMIT }{\em nnnn} (FATAL)]~\\
+Unless the file \comp{meci.h} is changed, the number of permutations of  alpha
+or beta microstates is  limited to 4$\times$\comp{MAXCI} or 4800.  Thus  if 3
+alpha electrons are permuted among 5 M.O.s, that will generate $10 = 5!/(3!2!)$
+alpha microstates, which is an allowed  number. However  if 7 alpha electrons
+are permuted among 15 M.O.s, then 6435 alpha microstates result and the arrays
+defined will  be  insufficient.    To correct this error, increase \comp{MAXCI}
+in \comp{meci.h} and recompile.
+\index{NUMBER OF PERM\ldots}
+\index{Error message!NUMBER OF PERM\ldots}
+
+
+\item[\comp{NUMERICAL PROBLEMS IN BRACKETING LAMBDA}]~\\
+Although this is not a deadly error, it does indicate that there are potential
+problems in optimizing geometries.  If the run finishes correctly, don't worry.
+If the geometry is not optimized sufficiently, try one or more of the following
+strategies:
+\index{NUMERICAL PROBLEMS \ldots}
+\index{Error message!NUMERICAL PROBLEMS\ldots}
+\begin{itemize}
+\item Use \comp{LET}.  This allows more of the potential energy surface to
+be sampled, thus giving more information to the Hessian.
+\item Tighten up the SCF criterion.  Try \comp{RELSCF=0.1} or \comp{RELSCF=0.01}.
+\item If the calculation involves an open shell RHF, consider running it with 
+\comp{UHF}.
+\item Carefully examine the data set---is there any possibility that it is
+faulty?
+\item Go to a different coordinate system.  If Cartesian, go to internal
+coordinates, and {\em vice versa}.
+\end{itemize}
+
+\item[\comp{OCCUPIED C VECTOR DAMAGED IN SELMOS} (FATAL)]~\\
+In a MOZYME calculation, when \comp{RAPID} is used (in a partial geometry 
+optimization), the occupied M.O.\ coefficients were found to be corrupt.
+Please inform Dr~Stewart as soon as possible.
+\index{OCCUPIED C VECTOR \ldots}
+\index{Error message!OCCUPIED C VECTOR \ldots}
+
+\item[\comp{OCCUPIED IC VECTOR DAMAGED IN SELMOS} (FATAL)]~\\
+In a MOZYME calculation, when \comp{RAPID} is used (in a partial geometry 
+optimization), the list of atoms in the occupied M.O.\ was found to be corrupt.
+Please inform Dr~Stewart as soon as possible.
+\index{OCCUPIED IC VECTOR \ldots}
+\index{Error message!OCCUPIED IC VECTOR \ldots}
+
+\item[\comp{OCTET SPECIFIED WITH EVEN NUMBER OF ELECTRONS, CORRECT FAULT} (FATAL)]~\\
+When \comp{OCTET} is specified, the system must have an odd number of
+electrons.  Check (a) the system, and (b) the charge (if any).  Correct
+data set and re-run.
+\index{OCTET SPECIFIED \ldots}
+\index{Error message!OCTET SPECIFIED \ldots}
+
+\item[\comp{OLDENS FILE FOR \emph{file}.den IS CORRUPT} (FATAL)]~\\
+Although a file called \emph{file}.den exists, its contents do not match the data
+set supplied for the calculation.  The easiest option is to delete \comp{OLDENS}
+and re-run.  Note: \comp{OLDENS} cannot be used to switch from a conventional to a
+MOZYME run, or {\em vice versa}.
+\index{OLDENS FILE FOR $file$.den \ldots}
+\index{Error message!OLDENS FILE \ldots}
+
+\item[\comp{OLDGEO used and previous geometry had no atoms.} (FATAL)]~\\
+For \comp{OLDGEO} to work, an earlier calculation in the same data set must exist,
+and must contain at least one atom.  Correct fault and re-run.
+\index{OLDGEO used and \ldots}
+\index{Error message!OLDGEO used and \ldots}
+
+\item[\comp{OMIN MUST BE BETWEEN 0 AND 1} (FATAL)]~\\
+Keyword \comp{OMIN=$n$} has been used, with an unreasonable value for $n$.
+Modify $n$ and re-run.
+\index{OMIN MUST BE \ldots}
+\index{Error message!OMIN MUST BE \ldots}
+
+\item[\comp{ONLY $N$ POINTS ALLOWED IN REACTION COORDINATE} (FATAL)]~\\
+The maximum number of points on a reaction coordinate is three times the maximum
+number of atoms allowed.  To increase this number, edit the file \comp{sizes.h} 
+to increase the value of \comp{NUMATM}, re-run ``make'' and re-run the job.
+\index{ONLY $N$ POINTS \ldots}
+\index{Error message!ONLY $N$ POINTS \ldots}
+
+\item[\comp{ONLY DIHEDRAL SYMBOLICS CAN BE PRECEEDED BY A `-' SIGN} (FATAL)]~\\
+Symmetry relationships are allowed when a geometry is read in in Gaussian format, 
+however the range of relationships is limited to setting bond lengths equal,
+setting bond angles equal, setting dihedrals equal, and setting dihedrals
+equal to the negative of a reference dihedral.  An attempt has been made to set
+a bond length or a bond angle to the negative of a reference.  This is not
+allowed.  Correct the data set and re-run.
+\index{ONLY DIHEDRAL SYMBOL\ldots}
+\index{Error message!ONLY DIHEDRAL SYM\ldots}
+
+\item[\comp{Only H, C, N, O, F, and S allowed} (FATAL)]~\\
+The TOMASI model has parameters for H, C, N, O, F, and S only.  This
+model will not work for systems that contain other elements.  Try using
+COSMO?
+\index{Only H, C, N, O, F, and S allowed}
+\index{Error message!Only H, C, N, O, F, \ldots}
+ 
+\item[\comp{ONLY ONE REACTION COORDINATE PERMITTED} (FATAL)]~\\
+In a reaction coordinate calculation, only one optimization flag can be
+set to ``-1'', all others must either be ``0'' or ``1''.  In order for
+two optimization flags to be set to ``-1'', \htmlref{a grid calculation
+must be run}{step}.  This involves  keywords \comp{STEP1=$n.nn$} and
+\comp{STEP2=$m.mm$}.  
+\begin{latexonly}
+For details on how to do this, see p.~\pageref{step}.
+\end{latexonly}
+\index{ONLY ONE REACTION \ldots}
+\index{Error message!ONLY ONE REACTION\ldots}
+
+\item[\comp{PANIC: Temporary array being destroyed\ldots}]~\\
+Although this is not a fatal error, it does indicate a severe programming
+error  in the program. Each time a temporary array is destroyed, a check is
+made to verify that the correct amount of memory is freed up.  If the check
+fails, this message will be printed.  Please inform Dr~Stewart as soon as
+possible.
+\index{PANIC: Temporary array \ldots}
+
+\item[\comp{PARAMETERS FOR SOME ELEMENTS MISSING} (FATAL)]~\\
+An attempt has been made to run a calculation on a system that contains
+atoms for which there are no parameters.  Check that the method you are
+using \hyperref[pageref]{has been parameterized}{ (p.~}{)}{mndoel}.  If
+this bug occurs during a port of MOPAC, it is likely to be caused by
+the BLOCKDATA file not being used by the compiler.  One way around this
+fault is to paste the file \comp{block.F} at the end of the file
+\comp{mopac.F}, and then delete \comp{block.F}.  This usually corrects
+this problem.
+\index{PARAMETERS FOR SOME \ldots}
+\index{Error message!PARAMETERS FOR \ldots}
+
+\item[\comp{PERMANENT INTEGER ARRAY $name$ DAMAGED} (FATAL)]~\\
+All permanent arrays are separated by a single datum, that acts as a
+sensor.  If this datum is changed, there is a high probability that
+part or all of the array has been overwritten, as the result of an
+error in programming.  Please inform Dr~Stewart as soon as possible.
+\index{PERMANENT INTEGER \ldots}
+\index{Error message!PERMANENT INTEGER \ldots}
+
+\item[\comp{PERMANENT REAL ARRAY $name$ DAMAGED} (FATAL)]~\\
+All permanent arrays are separated by a single datum, that acts as a sensor.
+If this datum is changed, there is a high probability that part or all of the array
+has been overwritten, as the result of an error in programming.  Please inform 
+Dr~Stewart as soon as possible.
+\index{PERMANENT REAL ARRAY \ldots}
+\index{Error message!PERMANENT REAL ARRAY}
+
+\item[\comp{POLAR does not work with open-shell RHF} (FATAL)]~\\
+The \comp{POLAR} method only works with RHF closed shell systems.  If only the
+polarizability is needed, use \comp{STATIC} instead of \comp{POLAR}.
+\index{POLAR does not work with \ldots}
+\index{Error message!POLAR does not work \ldots}
+
+\item[\comp{POLAR does not work with UHF} (FATAL)]~\\
+The \comp{POLAR} calculation only works with Restricted Hartree Fock calculations,
+both closed shell and open shell, and both ground and excited states.
+If only the polarizability is needed, use \comp{STATIC}; this uses external
+fields and works with \comp{UHF}, however it is not as precise as \comp{POLAR}.
+\index{POLAR does not work with \ldots}
+\index{Error message!POLAR does not work \ldots}
+
+\item[\comp{POLAR has not been implemented with MINDO} (FATAL)]~\\
+\comp{POLAR} only works with the NDDO methods, MNDO, AM1, PM3, and MNDO-$d$.
+If only the polarizability is needed, use \comp{STATIC}; this uses external
+fields and works with \comp{MINDO/3}, however it is not as precise as \comp{POLAR}.
+
+\item[\comp{PROBLEM IN SYMR} (FATAL)]~\\
+There is a problem in subroutine \comp{SYMR}.  The system has symmetry, but
+small distortions are preventing the symmetry operations from being done
+correctly---the subroutine has become confused.  To correct this, add
+\hyperref[pageref]{\comp{NOSYM}}{, p.~}{}{nosym}.
+\index{PROBLEM IN SYMR}
+\index{Error message!PROBLEM IN SYMR}
+
+\item[\comp{QUARTET SPECIFIED WITH EVEN NUMBER} (FATAL)]~\\
+When \comp{QUARTET} is specified, the system must have an odd number of 
+electrons.  Check (a) the system, and (b) the charge (if any).  Correct
+data set and re-run. 
+\index{QUARTET SPECIFIED \ldots}
+\index{Error message!QUARTET SPECIFIED \ldots}
+
+\item[\comp{QUINTET SPECIFIED WITH ODD NUMBER OF ELECTRONS, CORRECT FAULT} (FATAL)]~\\
+When \comp{QUINTET} is specified, the system must have an even number of  
+electrons.  Check (a) the system, and (b) the charge (if any).  Correct 
+data set and re-run. 
+\index{QUINTET SPECIFIED \ldots}
+\index{Error message!QUINTET SPECIFIED \ldots}
+ 
+\item[\comp{Ran out of storage for $array name$} (FATAL)]~\\
+The amount of dynamic memory reserved for storing arrays is less than that
+required by the program.  This is a programming bug.  The strategy to follow
+to identify the fault is:
+\index{Ran out of storage for $array name$}
+\index{Error message!Ran out of storage \ldots}
+\begin{itemize}
+\item Re-run the calculation, but add \comp{SIZES}.  This will print out the
+amount of memory reserved for each array, and the arrays created and destroyed,
+and the arrays that exist when the run stopped.
+\item Determine whether the error is in the integer or real arrays.
+\item  Check the total memory reserved for the permanent arrays.  This should
+be slightly greater than the total actually used.  If it is less, then a change
+needs to be made to \comp{setupr.F} or \comp{setupi.F}, to include the missing 
+array.
+\item Check the total memory reserved for the temporary arrays.  This should be
+slightly greater than the total actually used.  If it is less, identify which
+array(s) exist at the end of the calculation, for which memory was not reserved
+at the start.  Make the appropriate correction to \comp{tmpi.F} (if the array 
+is integer), \comp{tmpmr.F} (if real, and conventional), or \comp{tmpzr.F} (if
+real, and MOZYME).
+\end{itemize}
+A temporary correction to fix this problem is to add \comp{RMEM=$nnn$} (if the 
+shortage is in real memory) or  \comp{IMEM=$nnn$} (is the shortage is in integer
+memory), where $nnn$ is the amount of memory (as array elements, not bytes)
+needed. Please inform Dr~Stewart as soon as possible.
+
+\item[\comp{RESEQ cannot be used with XYZ} (FATAL)]~\\
+The pair of keywords \comp{RESEQ} and \comp{XYZ} is not supported.  However, the
+effect of these two keywords can be reproduced in a two stage calculation 
+by using \comp{RESEQ} in the first calculation and \comp{OLDGEO}, \comp{XYZ}, 
+and \comp{0SCF} in the second calculation.
+
+\item[\comp{RESTART FILE EXISTS, BUT IS CORRUPT} (FATAL)]~\\
+In a \comp{BFGS} run involving \comp{RESTART}, the file $<\!$filename$\!>$.res, 
+is corrupt.  Remove \comp{RESTART}  and re-run.          
+\index{RESTART FILE EXISTS, \ldots}
+\index{Error message!RESTART FILE EXISTS, \ldots}
+ 
+\item[\comp{RESTART FILE EXISTS, BUT IS FAULTY} (FATAL)]~\\
+In a \comp{FORCE} calculation, involving \comp{RESTART}, the file 
+$<\!$filename$\!>$.res, is corrupt.  Remove \comp{RESTART}  and re-run.       
+\index{RESTART FILE EXISTS, \ldots}
+\index{Error message!RESTART FILE EXISTS, \ldots}
+ 
+\item[\comp{Restart file is corrupt!} (FATAL)]~\\
+In a run involving \comp{RESTART}, the file $<\!$filename$\!>$.res, is corrupt.  
+Remove \comp{RESTART}  and re-run.       
+\index{Restart file is corrupt!}
+\index{Error message!Restart file is corrupt!}
+ 
+\item[\comp{ROOT REQUESTED DOES NOT EXIST IN C.I.} (FATAL)]~\\
+A specific excited state has been specified, but it does not exist in the 
+set of states calculated.  Correct the data set and re-run.
+\index{ROOT REQUESTED DOES \ldots}
+\index{Error message!ROOT REQUESTED \ldots}
+ 
+\item[\comp{RSOLV MUST NOT BE NEGATIVE} (FATAL)]~\\
+In COSMO calculations, the radius of a solvent molecule must be positive.
+Correct dat set and re-run.
+\index{RSOLV MUST NOT BE \ldots}
+\index{Error message!RSOLV MUST NOT BE \ldots}
+ 
+\item[\comp{Run stopped because keyword LEWIS was used}]~\\
+\comp{LEWIS} is only used when a description of the Lewis structure is wanted.
+This can be done very rapidly, provided no quantum mechanical calculations are
+run.  Therefore, when \comp{LEWIS} is used, the calculation is stopped immediately
+after the Lewis structure is printed.  If the calculation is to be continued,
+remove \comp{LEWIS}.
+\index{Run stopped because keyword LEWIS was used}
+
+\item[\comp{SEPTET SPECIFIED WITH ODD NUMBER OF ELECTRONS, CORRECT FAULT} (FATAL)]~\\
+When \comp{SEPTET} is specified, the system must have an even number of
+electrons.  Check (a) the system, and (b) the charge (if any).  Correct
+data set and re-run.
+\index{SEPTET SPECIFIED \ldots}
+\index{Error message!SEPTET SPECIFIED \ldots}
+  
+\item[\comp{SETUP FILE MISSING, EMPTY OR CORRUPT} (FATAL)]~\\
+In a run involving \comp{SETUP}, the \comp{SETUP} file  is either missing
+or is corrupt.  Either create a valid \comp{SETUP} file or remove \comp{SETUP}
+from the data set, and re-run.
+\index{SETUP FILE MISSING \ldots}
+\index{Error message!SETUP FILE MISSING, \ldots}
+ 
+\item[\comp{SEXTET SPECIFIED WITH EVEN NUMBER OF ELECTRONS, CORRECT FAULT} (FATAL)]~\\
+When \comp{SEXTET} is specified, the system must have an odd number of  
+electrons.  Check (a) the system, and (b) the charge (if any).  Correct 
+data set and re-run. 
+\index{SEXTET SPECIFIED \ldots}
+\index{Error message!SEXTET SPECIFIED \ldots}
+ 
+\item[\comp{SIGMA USED WITH REACTION PATH;} (FATAL)]~\\
+The only geometry options allowed with reaction paths are \comp{EF} and
+the default BFGS optimizers.  Delete \comp{SIGMA} and re-run.
+\index{SIGMA USED WITH \ldots}
+\index{Error message!SIGMA USED \ldots}
+ 
+\item[\comp{Size of active space allowed: $N$} (FATAL)]~\\
+The largest active space in a C.I.\ calculation is $N$.  If a larger size is
+needed, edit \comp{meci.h} to increase the value of \comp{NMECI}, re-run ``make'',
+and re-run the job.
+\index{Size of active space allowed: $N$}
+\index{Error message!Size of active \ldots}
+
+\item[\comp{SOME ELEMENTS HAVE BEEN SPECIFIED FOR WHICH NO PARAMETERS ARE AVAILABLE\ldots} (FATAL)]~\\
+Parameters are not available for the element with atomic number $N$. If
+new parameters are available, these can be supplied to MOPAC by use of
+\hyperref[pageref]{\comp{EXTERNAL=}}{, see p.~}{}{external}.
+\index{SOME ELEMENTS HAVE \ldots}
+\index{Error message!SOME ELEMENTS HAVE \ldots}
+
+\item[\comp{Something disastrous has happened} (FATAL)]~\\
+In a MOZYME calculation, something has gone wrong in an SCF calculation.
+The effect is to increase the heat of formation suddenly by over 200 
+kcal.mol$^{-1}$.  The job will automatically shut down, and can subsequently
+be restarted.  In the unlikely event that the shutdown sequence fails to start,
+the geometry will be printed, and the calculation stopped.
+\index{Something disastrous \ldots}
+\index{Error message!Something disaster\ldots}
+
+Re-start the calculation, either using \comp{RESTART} or the final geometry
+printed, but do {\em not} use \comp{OLDENS}.
+
+\item[\comp{SPECIFIED SPIN COMPONENT NOT SPANNED BY ACTIVE SPACE} (FATAL)]~\\
+A spin state has been specified, but the active space is too small to
+allow that state to exist.  Correct the data set and re-run.
+\index{SPECIFIED SPIN COMP\ldots}
+\index{Error message!SPECIFIED SPIN \ldots}
+ 
+
+\item[\comp{Storage needed for next step: $NNN$} (FATAL)]~\\
+The amount of dynamic memory reserved for storing arrays is less than that
+required by the program.  This is a programming bug.  The strategy to follow
+to identify the fault is:
+\index{Storage needed for next \ldots}
+\index{Error message!Storage needed for \ldots}
+\begin{itemize}
+\item Re-run the calculation, but add \comp{SIZES}.  This will print out the
+amount of memory reserved for each array, and the arrays created and destroyed,
+and the arrays that exist when the run stopped.
+\item Determine whether the error is in the integer or real arrays.
+\item  Check the total memory reserved for the permanent arrays.  This should be
+slightly greater than the total actually used.  If it is less, then a change
+needs to be made to \comp{setupr.F} or \comp{setupi.F}, to include the missing
+array.
+\item Check the total memory reserved for the temporary arrays.  This should be
+slightly greater than the total actually used.  If it is less, identify which
+array(s) exist at the end of the calculation, for which memory was not reserved
+at the start.  Make the appropriate correction to \comp{tmpi.F} (if the array
+is integer), \comp{tmpmr.F} (if real, and conventional), or \comp{tmpzr.F} (if 
+real, and MOZYME).
+\end{itemize}
+A temporary correction to fix this problem is to add \comp{RMEM=$nnn$} (if the 
+shortage is in real memory) or 
+\comp{IMEM=$nnn$} (is the shortage is in integer memory), where $nnn$ is the amount
+of memory (as array elements, not bytes) needed.
+Please inform Dr~Stewart as soon as possible.
+
+\item[\comp{STRUCTURE UNRECOGNIZABLE}]~\\
+A problem was encountered while trying to identify the amino acid residues in 
+a protein. Although not deadly, this represents a fault in the program.
+Please inform Dr~Stewart as soon as possible.
+\index{STRUCTURE UNRECOGNIZABLE}
+
+\item[\comp{SYMMETRY SPECIFIED, BUT CANNOT BE USED IN DRC}]~\\
+This  is  self  explanatory.   The  DRC  requires   all   geometric
+constraints  to  be  lifted.   Any  symmetry  constraints  will first be
+applied, to symmetrize the geometry,  and  then  removed  to  allow  the
+calculation to proceed.
+\index{SYMMETRY SPECIFIED \ldots}
+\index{Error message!SYMMETRY SPECIFIED \ldots}
+
+\item[\comp{SYSTEM DOES NOT APPEAR TO BE OPTIMIZABLE}]~\\
+This is a gradient norm minimization message.  These routines  will only  
+work   if  the  nearest  minimum  to  the  supplied  geometry  in gradient-norm
+space is a transition state or a ground  state.   Gradient norm  space  can 
+be  visualized  as  the  space  of  the  scalar of the derivative of the energy
+space with respect to  geometry.   To  a  first approximation,  there are twice
+as many minima in gradient norm space as there are in energy space.
+\index{SYSTEM DOES NOT \ldots}
+\index{Error message!SYSTEM DOES NOT \ldots}
+
+It is unlikely that  there  exists  any  simple  way  to  refine  a geometry 
+that  results in this message.  While it is appreciated that a large amount of
+effort has probably already been expended in getting  to this  point,  users 
+should  steel  themselves  to writing off the whole geometry.  It is not
+recommended that a minor  change  be  made  to  the geometry and the job
+re-runted. % re-runted?!
+
+Try using \comp{TS} or \comp{SIGMA} instead of \comp{POWSQ}.
+                                                  
+\item[\comp{SYSTEM SPECIFIED WITH ODD NUMBER OF ELECTRONS, CORRECT FAULT} (FATAL)]~\\
+When \comp{EXCITED} or \comp{BIRADICAL} is used, the system {\em must} be a
+singlet---\comp{must} have an even number of electrons.  Correct the data set
+and re-run.
+\index{SYSTEM SPECIFIED \ldots}
+\index{Error message!SYSTEM SPECIFIED \ldots}
+
+\item[\comp{SYSTEMS WITH TV CANNOT BE RUN WITH `INT'} (FATAL)]~\\
+The effect of \comp{INT} is to convert the geometry into internal coordinates. 
+This is done in two steps: first, the geometry is converted into Cartesian
+coordinates,  this removes any dummy atoms; then it is converted into internal
+coordinates. An unwanted, but logical, consequence of this is that translation
+vectors are made useless.  To achieve the effect of \comp{INT}, remove the
+translation vectors, run the calculation with \comp{0SCF}, then add the
+translation vectors back in  `by hand'.  Note that translation vectors can be
+Cartesian or internal.
+\index{SYSTEMS WITH TV \ldots} 
+\index{Error message!SYSTEMS WITH TV \ldots}
+
+
+\item[\comp{TEMPERATURE RANGE STARTS TOO LOW, \ldots}]~\\
+The  thermodynamics  calculation  assumes  that   the   statistical summations 
+can be replaced by integrals.  This assumption is only valid above 100K, so the
+lower temperature  bound  is  set  to  100,  and  the calculation continued.
+\index{TEMPERATURE RANGE \ldots}
+\index{Error message!TEMPERATURE \ldots}
+
+\item[\comp{The COSMO option cannot be used\ldots} (FATAL)]~\\
+Due to a program limitation, sparkles cannot be used in a COSMO calculation.
+There is no recovery---try using real atoms instead of sparkles.
+\index{The COSMO option cannot be \ldots}
+\index{Error message!The COSMO option \ldots}
+
+\item[\comp{The data set contains alternative location indicators. Keyword ALT\_A must be used} (FATAL)]~\\
+The PDB format allows for alternate locations.  According to this format,
+atoms  are defined by four characters (characters 13-16), after which comes 
+the alternate location indicator. Usually,  this (the 17th character) is a
+space, however, in atoms that have  positional disorder the 17th character will
+be a letter, e.g.\ `A', `B', `C', etc. A valid geometry will contain only one of
+the alternative locations, and this can be identified in the data set by use of
+\comp{ALT\_A=$letter$}.  For a  full definition of the PDB format, see the WWW
+sites: http://pdb.pdb.bnl.gov/pdb-docs/atoms.html  and
+http://www.pdb.bnl.gov/pdb-docs/Format.doc/Contents\_Guide\_21.html.
+\index{The data set contains alt\ldots}
+\index{Error message!The data set contains \ldots}
+
+\item[\comp{The data set contains alternative location indicators. Keyword ALT\_R must be used} (FATAL)]~\\
+The PDB format allows for alternate residues.  According to this format, a 
+given residue site can be occupied by one of two or more possible residues. 
+The indicator is character 27, and by default is a space.  If there are
+alternative residues possible, these are indicated by a letter, e.g.\ `A', `B',
+`C', etc. A valid geometry will contain only one of the alternative residues,
+and this can be identified in the data set by use of \comp{ALT\_R=$letter$} or
+by \comp{ALT\_R= }.
+\index{The data set contains alt\ldots}
+\index{Error message!The data set contains \ldots}
+                    
+\item[\comp{THE FOLLOWING SYMBOL HAS BEEN DEFINED MORE THAN ONCE: $symbol$} (FATAL)]~\\
+A symbolic parameter in a Gaussian Z-matrix geometry has been defined
+more than once.  Remove the excess definitions and re-run.
+\index{THE FOLLOWING SYMBOL \ldots}
+\index{Error message!THE FOLLOWING SYM\ldots}
+
+\item[\comp{THE FOLLOWING SYMBOL WAS NOT USED: $symbol$} (FATAL)]~\\
+A symbolic parameter in a Gaussian Z-matrix geometry has been defined,
+but was not present in the Z-matrix.  Remove the definition and re-run.
+\index{THE FOLLOWING SYMBOL \ldots}
+\index{Error message!THE FOLLOWING SYM\ldots}
+
+\item[\comp{THE GEOMETRY DATA-SET CONTAINED ERRORS} (FATAL)]~\\
+The geometry was not in MOPAC Z-matrix format, or in Cartesian format,
+or in Gaussian format.  The output immediately before this error message
+describes the errors detected.  Correct the geometry and re-run.
+\index{THE GEOMETRY DATA-SET \ldots}
+\index{Error message!THE GEOMETRY DATA-\ldots}
+ 
+\item[\comp{THE GREENS FUNCTION IS LIMITED TO 200 ORBITALS} (FATAL)]~\\
+The  Greens function correction to the I.P.'s calculation is limited to
+systems of 200 orbitals.  Larger systems cannot be run.  This is a program 
+limitation.
+\index{THE GREENS FUNCTION IS \ldots}
+\index{Error message!THE GREENS FUNCT\ldots}
+ 
+\item[\comp{THE HAMILTONIAN REQUESTED IS NOT AVAILABLE IN THIS PROGRAM} (FATAL)]~\\
+This is a bug that occurs only during a port of MOPAC. It is probably caused by
+the BLOCKDATA file not being used by the compiler.  One way around this
+fault is to paste the file \comp{block.F} at the end of the file \comp{mopac.F},
+and then delete \comp{block.F}. \ This usually corrects this problem.
+\index{THE HAMILTONIAN REQ\ldots}
+\index{Error message!THE HAMILTONIAN \ldots}
+
+\item[\comp{The input data file does not exist} (FATAL)]~\\
+This is a bug that occurs only during a port of MOPAC. The first step in
+trying to remove this bug is to check that the command:
+\index{The input data file does not exist}
+\index{Error message!The input data file \ldots}
+\begin{verbatim}
+% mopac.exe test
+\end{verbatim}
+will run the data set \comp{test.dat}.  Once this works, that is, once it
+does not generate this error message, check out \comp{mopac.csh}.
+
+\item[\comp{THE SCF CALCULATION FAILED.} (FATAL)]~\\
+The SCF failed to form.  To correct this, add \comp{PL} and try using
+different convergers.  In order, try \comp{SHIFT=$n$}, $n$=50 is a good starting
+value, then \comp{PULAY}, then \comp{CAMP}.  Quite often, the fault lies in the
+geometry.  Use the information from the output generated by \comp{PL} as a
+guide.
+\index{THE SCF CALCULATION \ldots}
+\index{Error message!THE SCF CALCULATION \ldots}
+ 
+\item[\comp{THE STATE REQUIRED IS NOT PRESENT IN THE SET OF CONFIGURATIONS AVAILABLE} (FATAL)]~\\
+A specific excited state has been specified, but it does not exist in the
+set of states calculated.  Correct the data set and re-run.
+\index{THE STATE REQUIRED IS \ldots}
+\index{Error message!THE STATE REQUIRED \ldots}
+ 
+\item[\comp{There are more than 200 atoms in moiety} (FATAL)]~\\
+A non-proteinaceous moiety in a protein apparently contains more than $N$
+atoms.  If this is true, then edit ``ligand.F'' to change the value of \comp{NATOMR}
+in subroutine \comp{MOIETY}, re-run ``make'', and re-run the job.
+\index{There are more than $N$ \ldots}
+\index{Error message!There are more \ldots}
+
+\item[\comp{There are more than 200 atoms in residue $M$} (FATAL)]~\\
+A residue apparently contains more than 200 atoms.  A likely cause is if
+the residue contains covalent bonds to another part of the protein (common
+cross links, e.g.\ N-S, O-S, and S-S, are automatically broken when 
+residues are being analyzed).  Check the atom list printed after the error
+message to identify the atoms that are considered part of the residue,
+modify the data-set and re-run.
+\index{There are more than $N$ \ldots}
+\index{Error message!There are more \ldots}
+
+\item[\comp{THERE ARE NO VARIABLES IN THE SADDLE} (FATAL)]~\\
+For a \comp{SADDLE} calculation, the two geometries must be optimizable, 
+that is, at least one coordinate must have the optimization flag set to ``1''.
+\index{THERE ARE NO VARIABLES} \ldots
+\index{Error message!THERE ARE NO VAR\ldots}
+ 
+\item[\comp{There are too many keywords} (FATAL)]~\\
+Although each line of keywords can have up to 120 characters, 
+the maximum number of characters plus spaces for all keywords is limited to 241.
+Reduce the number of keywords, or abbreviate those that can be shortened.
+\index{There are too many keywords}
+\index{Error message!There are too \ldots}
+
+\item[\comp{There is a bug in MOZYME} (FATAL)]~\\
+This message should never appear!  When \comp{NEWGEO} was used to convert
+a protein geometry to mixed coordinates, an absurd
+set of coordinates was detected.  Please inform Dr~Stewart as soon as possible.
+\index{There is a bug in MOZYME}
+\index{Error message!There is a bug in MOZYME}
+
+\item[\comp{THERE IS A FAULT IN GEOCHK} (FATAL)]~\\
+During the check of the Lewis structure, the number of electrons calculated
+from the Lewis structure does not equal the number of electrons from the
+valence shell of the atoms plus any net charge.  This can only happen if 
+there is a program bug.  Please inform Dr~Stewart as soon as possible.
+\index{THERE IS A FAULT IN \ldots}
+\index{Error message!THERE IS A FAULT \ldots}
+
+\item[\comp{THERE IS A FAULT IN RESEQ} (FATAL)]~\\
+During an attempt to re-sequence the atoms in a protein, the number of atoms
+in the new system differed from the number in the original system.
+This can only happen if there is a program bug.  
+Please inform Dr~Stewart as soon as possible.
+\index{THERE IS A FAULT IN RESEQ}
+\index{Error message!THERE IS A FAULT \ldots}
+
+\item[\comp{There is a mistake in SUTUPI or TMPI} (FATAL)]~\\
+The amount of memory needed in annihilating matrix elements in a MOZYME
+calculation is estimated.  Sometimes this estimate is low, and more memory
+is needed.
+Fix this problem by following the instructions printed after the error message.
+Please inform Dr~Stewart as soon as possible.
+\index{There is a mistake \ldots}
+\index{Error message!There is a mistake \ldots}
+
+\item[\comp{There is a mistake in SUTUPR or TMPZR} (FATAL)]~\\
+The amount of memory needed in annihilating matrix elements in a MOZYME
+calculation is estimated.  Sometimes this estimate is low, and more memory
+is needed.
+Fix this problem by following the instructions printed after the error message.
+Please inform Dr~Stewart as soon as possible.
+\index{There is a mistake \ldots}
+\index{Error message!There is a mistake \ldots}
+
+\item[\comp{THERE IS A RISK OF INFINITE LOOPING \ldots}]~\\
+The SCF criterion has been reset by the user, and the new value  is so  small 
+that  the SCF test may never be satisfied.  This is a case of user beware!
+\index{THERE IS A RISK OF INF\ldots}
+\index{Error message!THERE IS A RISK \ldots}
+ 
+\item[\comp{THERE MUST BE EXACTLY THREE VELOCITY DATA PER LINE} (FATAL)]~\\
+The format for the initial velocity in a DRC calculation is three numbers
+per line, corresponding to the $x$, $y$, and $z$ speeds in cm.sec$^{-1}$.
+Correct the data set and re-run.
+\index{THERE MUST BE EXACTLY \ldots}
+\index{Error message!THERE MUST BE \ldots}
+ 
+\item[\comp{THIS MESSAGE SHOULD NEVER APPEAR, CONSULT A PROGRAMMER!}]~\\
+This message should never appear; a fault has been introduced  into MOPAC, 
+most  probably  as  a  result  of  a programming error.  If this message
+appears in the basic version of MOPAC  (a  version  ending  in 00),  please 
+contact JJPS as I would be most interested in how this was achieved.
+\index{THIS MESSAGE SHOULD \ldots}
+\index{Error message!THIS MESSAGE \ldots}
+ 
+
+\item[\comp{THREE ATOMS BEING USED TO DEFINE \ldots} (FATAL)]~\\
+If the Cartesian coordinates of an  atom  depend  on  the  dihedral angle  it
+makes with three other atoms, and those three atoms fall in an almost straight
+line, then a small change in the  Cartesian  coordinates of  one  of  those
+three atoms can cause a large change in its position. Normally, the
+connectivity will automatically be changed to prevent this  happening, however,
+if there is no obvious way to correct the problem, this message will be
+printed.  When that happens, the data  should be changed to make the geometric
+specification of the atom in  question less ambiguous. Note that neither 
+\comp{LET}  nor  \comp{GEO-OK} will allow the calculation to proceed.
+\index{THREE ATOMS BEING \ldots}
+\index{Error message!THREE ATOMS BEING \ldots}
+
+
+\item[\comp{TIME UP }]~\\
+The time defined on the keywords line or 3,600 seconds, if no  time was 
+specified, is likely to be exceeded if another cycle of calculation were to be
+performed.  A controlled termination of the run would  follow this  message.  
+The  job  may terminate earlier than expected:  this is ordinarily due to one
+of the recently completed cycles taking  unusually long,  and  the  safety 
+margin  has  been  increased  to  allow for the possibility that the next cycle
+might also  run  for  much  longer  than expected.
+\index{Error message!TIME UP}
+\index{TIME UP}
+ 
+\item[\comp{TOO MANY CONFIGURATIONS} (FATAL)]~\\
+The size of the C.I.\ matrix requested is larger than that allowed by
+MOPAC.  Either reduce the size requested, or increase the allowed size.
+To do that, increase the value of \comp{MAXCI} in the file \comp{meci.h},
+and recompile.
+\index{TOO MANY CONFIGURATIONS}
+\index{Error message!TOO MANY CONFIG\ldots}
+ 
+\item[\comp{TOO MANY ITERATIONS IN LAMDA BISECT} (FATAL)]~\\
+During a run involving \comp{EF}, the search procedure failed.
+This was most likely due to a faulty geometry.  Check the geometry
+carefully, make corrections, and re-run.
+\index{TOO MANY ITERATIONS \ldots} 
+\index{Error message!TOO MANY ITER\ldots}
+ 
+\item[\comp{TRIPLET SPECIFIED WITH ODD NUMBER OF ELECTRONS, CORRECT FAULT} (FATAL)]~\\
+If \comp{TRIPLET} has been specified the number of electrons must be even.
+Check  the  charge  on  the  system,  the empirical formula, and whether 
+\comp{TRIPLET} was intended.
+\index{TRIPLET SPECIFIED \ldots}
+\index{Error message!TRIPLET SPECIFIED \ldots}
+
+\item[\comp{TRUST RADIUS NOW LESS THAN \ldots}]~\\
+When \comp{EF} is used, the calculated trust radius has become too small.
+An easy fix is to add \comp{LET}, another option is to specify \comp{RMIN=-10}.
+\index{TRUST RADIUS NOW LESS \ldots}
+ 
+\item[\comp{TS FAILED TO LOCATE TRANSITION STATE} (FATAL)]~\\
+The geometry is almost certainly faulty.  Locating transition states
+is still more art than science.  Modify geometry, and re-run.
+\index{TS FAILED TO LOCATE \ldots}
+\index{Error message!TS FAILED \ldots}
+
+\item[\comp{TS SEARCH AND BFGS UPDATE WILL NOT WORK} (FATAL)]~\\
+In \comp{EF}, a transition state optimization has been requested.  
+The rarely used option \comp{IUPD=2} has been specified.  This option
+is not allowed for transition states.  Remove \comp{IUPD=2} and re-run.
+\index{TS SEARCH AND BFGS \ldots}
+\index{Error message!TS SEARCH AND \ldots}
+               
+\item[\comp{TS SEARCH REQUIRE BETTER THAN DIAGONAL HESSIAN} (FATAL)]~\\
+When using \comp{TS}, do not also use \comp{IGTHES=0}.  Remove \comp{IGTHES=0}
+and re-run.
+\index{TS SEARCH REQUIRE \ldots}
+\index{Error message!TS SEARCH REQUIRE \ldots}
+ 
+\item[\comp{TWO ADJACENT POINTS ARE IDENTICAL:} (FATAL)]~\\
+In a reaction path, adjacent points must be different.  A common mistake
+is to have the first point (this comes from the Z-matrix) and the second point
+(this comes from the extra data after the Z-matrix and symmetry data (if any))
+the same.  Correct the data set (the fault is in the reaction coordinate data
+after the the Z-matrix and symmetry data (if any)).
+\index{TWO ADJACENT POINTS \ldots}
+\index{Error message!TWO ADJACENT POINTS \ldots}
+
+\item[\comp{TWO ATOMS ARE COINCIDENT.  A FATAL ERROR.} (FATAL)]~\\
+In the input geometry, two atoms have the same coordinates.  Correct the
+error and re-run.
+\index{TWO ATOMS ARE COIN\ldots}
+\index{Error message!TWO ATOMS ARE \ldots}
+
+\item[\comp{UNABLE TO ACHIEVE SELF-CONSISTENCY}]~\\
+See the error-message: ``FAILED TO ACHIEVE SCF.''
+\index{UNABLE TO ACHIEVE \ldots}
+\index{Error message!UNABLE TO ACHIEVE \ldots}
+
+\item[\comp{UNACCEPTABLE VALUE FOR NO. OF ORBITALS ON ATOM} (FATAL)]~\\
+Allowed values for the number of orbitals per atom are 1, 4, and 9.
+Correct the \comp{EXTERNAL} file, and re-run.
+\index{UNACCEPTABLE VALUE \ldots}
+\index{Error message!UNACCEPTABLE VALUE \ldots}
+
+\item[\comp{UNDEFINED SYMMETRY FUNCTION USED} (FATAL)]~\\
+Symmetry operations are restricted to those defined, i.e.,  in  the
+range 1--19.  Any other symmetry operations will trip this fatal message.
+\index{UNDEFINED SYMMETRY \ldots}
+\index{Error message!UNDEFINED SYM\ldots}
+
+\item[\comp{UNKNOWN RESIDUE: $N$}]~\\
+The 20 common amino acid residues are automatically identified. Other residues 
+can be made known to MOPAC by use of the keyword \comp{XENO=$text$}. The numbers
+printed after this message are the numbers of C, N, O, and S atoms found in the
+residue.
+\index{UNKNOWN RESIDUE: $N$}
+\index{Error message!UNKNOWN RESIDUE: $N$}
+
+Inspect the residue, and identify which of the 20 common residues it is related
+to.  In \comp{XENO} specify the number of extra atoms needed to make up the numbers
+in the unknown residue.  Re-run the calculation.
+
+\item[\comp{UNRECOGNIZED ELEMENT NAME} (FATAL)]~\\
+In the geometric specification a chemical  symbol  which  does  not correspond 
+to  any  known element has been used.  The error lies in the first datum on a
+line of geometric data.
+\index{UNRECOGNIZED ELEMENT \ldots}
+\index{Error message!UNRECOGNIZED ELE\ldots}
+
+\item[\comp{UNRECOGNIZED HESS OPTION} (FATAL)]~\\
+The allowed values for $n$ in \comp{HESS=$n$} are 0, 1, and 2. Correct the
+keyword and re-run.
+\index{UNRECOGNIZED HESS OPTION}
+\index{Error message!UNRECOGNIZED HESS \ldots}
+
+\item[\comp{UNRECOGNIZED KEY-WORDS.} (FATAL)]~\\
+Check these keywords.  Correct any misspellings and re-run, or, if the
+keywords are DEBUG keywords, add \comp{DEBUG} and re-run.
+\index{UNRECOGNIZED KEY-WORDS.}
+\index{Error message!UNRECOGNIZED KEY\ldots}
+
+\item[\comp{UNRECOGNIZED SPECIES: \textit{text}}]~\\
+While reading a PDB file, an unrecognized chemical symbol has been used.
+Recognized symbols are those for any element that can be handled by MOPAC,
+and the symbols `X' (for hydrogen) and `L' (for a lone pair).
+\index{UNRECOGNIZED SPECIES: $text$}
+
+The job will not be stopped by this error message, but the
+\textit{text} should be examined to see if it is a real element, but
+with an unconventional symbol.  If it is, add
+\comp{PDB(\textit{code})}, where \textit{code} 
+\begin{htmlonly}
+\htmlref{is defined elsewhere}{key_pdb}
+\end{htmlonly}
+\begin{latexonly}
+is defined on p.~\pageref{key_pdb}
+\end{latexonly}.  Even if $text$ does
+not apply to an element, \comp{PDB($code$)} can still be used, but set
+the atomic number to zero.  This will prevent the error message from
+recurring.
+
+\item[\comp{UPPER BOUND OF ACTIVE SPACE IS GREATER THAN THE NUMBER OF ORBITALS} (FATAL)]~\\
+The keywords used here imply a system that is larger than that used.
+Correct data set (probably by changing the keywords) and re-run.
+\index{UPPER BOUND OF ACTIVE \ldots}
+\index{Error message!UPPER BOUND OF ACT\ldots}
+
+\item[\comp{Use AIGIN to allow more geometries to be used} (FATAL)]~\\
+Only one GAUSSIAN geometry is allowed in a run, unless each GAUSSIAN
+geometry is identified by \comp{AIGIN} on the keyword line.  Add \comp{AIGIN}
+to each GAUSSIAN geometry keyword line, and re-run.
+\index{Use AIGIN to allow more \ldots}
+\index{Error message!Use AIGIN to allow more \ldots}
+ 
+\item[\comp{USE EITHER SAFE OR UNSAFE, BUT NOT BOTH} (FATAL)]~\\
+MOPAC can be compiled so as to either minimize memory demand or to
+maximize reliability.  Depending on which option was used, the
+alternative option can be selected at run time by using
+\htmlref{\comp{SAFE}}{safe} or \htmlref{\comp{UNSAFE}}{unsafe}.
+
+\begin{latexonly}
+See p.~\pageref{safe} and p.~\pageref{unsafe} for more detail.
+\end{latexonly}
+\index{USE EITHER SAFE OR \ldots}
+\index{Error message!USE EITHER SAFE \ldots}
+ 
+\item[\comp{VALUE OF NPPA NOT ALLOWED: IT MUST BE $NNN$} (FATAL)]~\\
+This error is caused by a program bug.  Please make a report to Dr.~Stewart.
+\index{VALUE OF NPPA NOT \ldots}
+\index{Error message!VALUE OF NPPA NOT \ldots}
+
+\item[\comp{VAN DER WAALS} (FATAL)]~\\
+In the \comp{ESP} method, van der Waals radii are used. Only the following
+elements are allowed: H, B, C, N, O, F, P, S, Cl, Br, I.  
+\index{VAN DER WAALS}
+\index{Error message!VAN DER WAALS}
+
+In the \comp{PMEP} method, van der Waals radii are also used. Only the 
+elements  up to $Z$=17 and bromine are allowed.
+
+\item[\comp{VECPRT CAN ONLY PRINT ARRAYS OF SIZE .LT. 200} (FATAL)]~\\
+To minimize output, the size of arrays that can be printed in a MOZYME
+calculation is limited to 200.  Bigger arrays are truncated so that only 
+the sub-array of size 200 is printed.  If larger arrays are to be printed, 
+edit ``vecprt.F'' to change \comp{MAXARR} to the desired value, re-run ``make'',
+and re-run the job.
+\index{VECPRT CAN ONLY PRINT ARRAYS OF SIZE .LT. 200}
+
+\item[\comp{VIRTUAL  C VECTOR DAMAGED IN SELMOS} (FATAL)]~\\
+In a MOZYME calculation, when \comp{RAPID} is used (in a partial geometry
+optimization), the virtual  M.O.\ coefficients were found to be corrupt.
+Please inform Dr~Stewart as soon as possible.
+\index{VIRTUAL  C VECTOR \ldots}
+\index{Error message!VIRTUAL  C VECTOR \ldots}
+
+\item[\comp{VIRTUAL  IC VECTOR DAMAGED IN SELMOS} (FATAL)]~\\
+In a MOZYME calculation, when \comp{RAPID} is used (in a partial geometry
+optimization), the list of atoms in the virtual M.O.\  was found to be corrupt.
+Please inform Dr~Stewart as soon as possible.
+\index{VIRTUAL  IC VECTOR \ldots}
+\index{Error message!VIRTUAL  IC VECTOR \ldots}
+
+\item[\comp{WARNING -- GEOMETRY IS NOT AT A STATIONARY POINT}]~\\
+Under certain circumstances the gradient norm can drop to zero, but the
+derivatives of the energy with respect to Cartesian coordinates might be
+quite large.  If this happens, this error message will be printed.
+\index{WARNING -- GEOMETRY \ldots}
+\index{Error message!WARNING -- GEOM\ldots}
+
+To avoid this message, make sure that the geometry can be optimized, given the
+optimization flags you have chosen.  In particular, if (3$N$-6) optimization
+flags are set, and there are no dummy atoms, then it is unlikely that this
+message will be generated. 
+
+\item[\comp{WARNING -- SPARKLES ARE NOT TREATED CORRECTLY}]~\\
+When \comp{ENPART} is used on a system involving sparkles, the energy terms
+due to the sparkles are not printed correctly.
+\index{WARNING -- SPARKLES ARE \ldots}
+
+\item[\comp{WARNING }]~\\
+Don't pay too  much  attention  to  this  message.   Thermodynamics
+calculations  require  a  higher  precision  than  vibrational frequency
+calculations.  In particular, the gradient norm should  be  very  small.
+However,  it  is  frequently  not  practical to reduce the gradient norm
+further, and to date no-one has determined just how slack  the  gradient
+criterion  can be before unacceptable errors appear in the thermodynamic
+quantities.  The 0.4 gradient norm is only a suggestion.
+\index{Error message!WARNING}
+\index{WARNING}
+
+\item[\comp{WARNING! NO BACKBONE ATOMS IDENTIFIED}]~\\
+When \comp{NEWGEO} is used to generate a mixed coordinate $Z$-matrix for a
+protein, this message will be generated if no backbone atoms (the --NH--CH--CO--
+of a peptide) are found.  Check that at least one ``CO--NH'' linkage exists.
+\index{WARNING NO BACKBONE ATOMS \ldots}
+\index{Error!messages|)}
+\end{description}

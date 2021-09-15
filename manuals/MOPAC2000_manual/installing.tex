@@ -1,0 +1,364 @@
+\chapter{Installing MOPAC}
+\section{Overview}
+\index{MOPAC!installing}\index{Installing MOPAC}
+MOPAC is distributed in compressed form.  The top copy is designed 
+for use with the following scalar compilers:
+\begin{enumerate}
+\item Pentium II/Pro running Linux with Portland Group compiler.
+\item The same, but using GNU g77 compiler.
+\item DEC Alpha workstation with UNIX 4.0 and Fortran 5.0.
+\item SGI R5000 Indy running IRIX 6.2 and Fortran 7.1.
+\item SGI R10000 PowerChallenge running IRIX 6.2 and Fortran 7.2.
+\item Sun UltraSPARC with Fortran 4.2.
+\item Generic Sun SPARC with Fortran 4.2.
+\item Older Suns with Sun 2.0.1 compiler.
+\item HAL workstations with Fujitsu compiler.
+\item IBM workstations.  
+\item Fujitsu VX/VPP300/VPP700 series. 
+\end{enumerate}
+and parallel compilers:
+\begin{enumerate}
+\item Fujitsu AP3000 using Sun Fortran 77 compiler.
+\item Fujitsu AP3000 using Fujitsu Fortran 90 compiler.
+\item Fujitsu VX/VPP300/VPP700 running MPI 1.1.
+\item Multiprocessor SGI PowerChallenge running SGI's MPI.
+\item Sun Ultra Enterprise 10000 running MPICH.
+\end{enumerate}
+
+To get MOPAC up and running, carry out the following instructions:
+\begin{enumerate}
+\item Obtain a copy of MOPAC 2000, by E-mail to 
+\htmladdnormallink{\comp{mwada@se.fujitsu.co.jp}}{mailto:mwada@se.fujitsu.co.jp}.
+or from the web-site 
+\htmladdnormallink{\comp{http://www.winmopac.com}}{http://www.winmopac.com}.
+\item Create a directory to hold MOPAC (\comp{mkdir mopac}).
+\item Move into the MOPAC directory (\comp{cd mopac}).
+\item Copy the distribution file into this directory.
+\item If the file is compressed, uncompress it.  Compressed files that end in
+``.Z'' should be uncompressed with \comp{uncompress}, files that end in ``.gz''
+should be \comp{gunzip}'d.
+\item The distribution file is stored as UNIX ``tar'' form, so read the file
+using \comp{tar -xvf $<$file$>$}
+\item Go into the \comp{./src} directory.
+\item  Before the Makefile can be run, it needs to know what set of compiler
+options to use. These sets of options are stored in files in the sub-directory 
+\comp{MAKE\_INCLUDE}.  Select the appropriate set and note the name of the
+file.
+\item Make this name known to the Makefile by issuing the command:
+\begin{verbatim}
+setenv MOPAC_PLATFORM <file>
+\end{verbatim}
+in which \comp{$<$file$>$} is the name of the file, after removing the prefix
+``md.''.
+For example, to select the options in the file \comp{md.Sun\_SPARC}, issue the command:
+\begin{verbatim}
+setenv MOPAC_PLATFORM Sun\_SPARC
+\end{verbatim}
+\item Run the Makefile by issuing the command \comp{make}.
+\end{enumerate}
+
+\section{\comp{sizes.h}}\index{sizes.h|(} \label{sizes}\index{Memory!requirements}
+The file \comp{sizes.h} determines how big a system MOPAC can run.  
+The current maximum size of MOPAC, in terms of atoms, can be
+found in the output file near the start, at the end of the fourth line
+of stars.  The end of that line would look something like this:
+\begin{verbatim}
+******************020000
+\end{verbatim}
+This means that the program was configured to run systems of up to 20,000 atoms.
+ 
+Whenever you modify \comp{sizes.h}, re-run \comp{make}.
+
+When \comp{make} is run, it compiles  all the FORTRAN files, using  the  array 
+sizes given  in \comp{sizes.h}:  these should be modified  before \comp{make}
+is run. If, for whatever reason, \comp{sizes.h} needs to be changed, then 
+\comp{make} should  be  re-run, as modules compiled with different
+\comp{sizes.h} will be incompatible.
+
+\index{NUMATM}\index{NUMATM} The parameters within \comp{sizes.h} that the 
+user  can  modify  are \comp{NUMATM},  \comp{MAXTIM} and \comp{MAXDMP}.   
+\comp{NUMATM} is assigned a value equal to the largest number of atoms that a
+MOPAC  job  is  expected  to run. Note, however, that because MOPAC now uses
+dynamic memory allocation, the size of the program depends mainly on the size
+of the system being run, and only to a very small degree on the value of
+\comp{NUMATM}.  Because of this, the value of \comp{NUMATM} can be quite large,
+for example, 100--20,000.
+
+\comp{MAXTIM} is the default maximum time in seconds a job is allowed to  run 
+before  either completion  or a restart file being written.  \comp{MAXDMP} is
+the default time in seconds for the automatic writing of  the  restart 
+files.   If  your computer  is  very  reliable,  and disk space is at a
+premium, you might want to set \comp{MAXDMP} as \comp{MAXDMP=999999}.
+
+\index{SYBYL}\index{ISYBYL}\index{NMECI}\index{NPULAY}\index{MESP} If SYBYL
+output is wanted, set \comp{ISYBYL} to 1,  otherwise  set  it  to zero.
+
+If you want, \comp{MESP} can be varied. 
+
+The quantity \comp{ISAFE} is used to decide whether memory or reliability is
+the more important.  If \comp{ISAFE} is set to 1, then a larger amount of 
+memory will be needed, but the reliability of MOPAC is increased.  If the
+special SCF convergers are needed, and \comp{ISAFE=1}, then they will be used. 
+If \comp{ISAFE=0}, then MOPAC will not allocate memory for these special SCF
+convergers.  Whichever choice is made, the other choice can be selected at
+run-time by use of keywords. Thus if \comp{ISAFE=0} is selected, then the
+run-time default is to minimize memory usage.  If keyword \comp{SAFE} is used,
+then the other option will be used for that job.  See also keywords \comp{SAFE}
+and \comp{UNSAFE}
+
+\section{\comp{meci.h}}\index{meci.h} \label{mecih}
+The maximum values of the variables used in a Multi-Electron Configuration
+Interaction calculation are stored in \comp{meci.h}.  These variables are
+described in the file. Normally, the values supplied are sufficient for most
+work.  However, if you want, \comp{NMECI}  can be changed.  Setting it to 1
+will save  some space, but will prevent all C.I.\ calculations except simple
+radicals. A useful value for \comp{NMECI} is 4.  This will allow simple excited
+states to be run.
+
+\section{\comp{symtry.h}}\index{symtry.h} \label{symtryh}
+This file holds the maximum number of symmetry functions allowed. This value
+should be sufficiently large to allow any system to be run (the default value
+would allow the fullerene C$_{1500}$ to be run, using all possible symmetry
+operations.)
+
+\section{Compiling MOPAC}
+A recommended sequence of operations to get MOPAC  up  and  running
+would be:
+\index{mopac.csh}
+\begin{enumerate}
+\item Read through the \comp{README} and \comp{make} files to  familiarize 
+yourself  with what is being done.
+\item Edit the file \comp{mopac.csh} so that the address of \comp{mopac.exe} is
+correct.
+\index{make!use of}
+\item Compile MOPAC (\comp{make}).  This operation takes a few minutes, and 
+should be run ``on-line''.
+\index{mopac.exe}
+
+When everything is successfully compiled,  the  object  files  will then  be 
+assembled into an executable image called \comp{mopac.exe}.  Once the image
+exists, there is no reason to keep the object files, and if  space is at a
+premium these can be deleted at this time (\comp{make clean}).
+
+If you need to make any  changes  to  any  of  the  files, or to any of the
+INCLUDE'd files (\comp{sizes.h}, \comp{meci.h},  or \comp{symtry.h}) re-run
+\comp{make}.
+\end{enumerate}
+
+In order for users to have access to  MOPAC, the file \comp{mopac.csh} must be
+placed in a directory in the user's \comp{path}. One possible location would be
+\comp{/usr/local/bin}.
+
+\index{sizes.h|)}
+
+\section{Running MOPAC}\index{MOPAC!running}
+To run MOPAC, enter the command \comp{mopac} 
+                  
+You will receive the message {\sc  What file?} to which the reply should be the
+actual data-file name. For example, \comp{port}, the file is assumed to end in
+\comp{.dat}, e.g.\ \comp{port.dat}.
+
+
+To familiarize yourself with the system, the  following  operations
+might be useful.
+\begin{enumerate}
+\item Run the (supplied) test molecules, and  verify  that  MOPAC  is producing
+``acceptable'' results.
+\item Make some simple modifications to  the  datafiles  supplied  in order to
+test your understanding of the data format
+\item  When satisfied that MOPAC is working, and that data  files  can be made,
+begin production runs.
+\end{enumerate}
+\index{Restarts}
+   
+Restarts should be user transparent.  If MOPAC does make any restart files, do
+not change them (it would be hard  to  do  anyhow,  as they're  in  machine 
+code), as they will be used when you run a RESTART job.  The files used by
+MOPAC are given in Table~\ref{allfiles}.
+
+\section{The  shut command}
+\index{SHUT}
+If, for whatever reason, a run needs to be stopped prematurely, the command
+\comp{shut $<$jobname$>$} can be issued. This  will execute a small
+command-language file, which copies the data-file to  form  a  new  file called
+\comp{$<$filename$>$.end}.
+
+The next time MOPAC  calls  function  SECOND,  the  presence  of  a readable
+file called \comp{$<$filename$>$.end}, is checked for, and if it exists,  the 
+apparent  elapsed  CPU  time  is increased  by  10,000,000  seconds,  and  a 
+warning  message issued.  No further action is taken until the elapsed time 
+is  checked  to  see  if enough  time remains to do another cycle.  Since an
+apparently very long time has been used, there is not enough time left to do 
+another  cycle, and the restart files are generated and the run stopped.
+
+The \comp{shut} command is completely machine-independent.
+
+\section{Size of MOPAC}
+MOPAC now uses dynamic allocation of memory for all arrays that depend on the
+size of the system. This means that the size of MOPAC is no longer a static
+quantity. Instead, the size of the MOPAC executable image will depend on the
+system being run. 
+
+Because the amount of memory required for the static arrays is small, the value
+of \comp{NUMATM} should be set as large as practical.  For a  machine with 10
+Mb, \comp{NUMATM} could be set to 200. For larger machines, set \comp{NUMATM}
+to the largest value that is  likely to be encountered (20,000, for example).
+
+\begin{table}
+\caption{\label{sizesc} Size of Source Code for MOPAC}
+\begin{center}
+\begin{tabular}{rrcrcr} \hline
+Version & \multicolumn{5}{c}{Number of lines in program} \\
+\hline
+ 5.00 & 22,084 & = & 17,718 code & + & 4,366 comment.  \\
+ 6.00 & 30,815 & = & 23,910 code & + & 6,905 comment.  \\
+93.00 & 47,676 & = & 35,841 code & + & 11,835 comment.  \\
+\mopacversion .00 & 84,148 & = & 64,649 code & + & 19,499 comment.  \\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+\section{Porting MOPAC to other platforms}\label{porting}
+\index{MOPAC!porting}\index{Porting MOPAC}
+\index{MOPAC!version numbers}\index{Version numbers}
+\index{SUN}
+\index{SPARC-2}
+MOPAC is designed to be run on several different platforms. This set is
+obviously not exhaustive, and it might be necessary to ported the program to
+other machines. After such a port has been done, the new  program  should  be 
+given  a name in accordance with the following convention:
+
+\begin{itemize}
+\item MOPAC~\mopacversion .00 is reserved for the original MOPAC.
+\item MOPAC~\mopacversion .$nm$, $n$ = 1-9 is reserved for vendors who port MOPAC
+to new platforms. The first ``port'' should be called MOPAC~\mopacversion .10. 
+If the vendor makes other changes, the names MOPAC~\mopacversion .20 -
+MOPAC~\mopacversion .90 may be used.
+\item MOPAC~\mopacversion .$nm$, $m$ = 1-9 are reserved for user's in-house use.
+\end{itemize}
+
+By this convention, users will know immediately which MOPAC they are running. 
+Thus MOPAC~\mopacversion .23 would be the third in-house modification of a
+vendor's second version of MOPAC~\mopacversion . 
+\index{Validating MOPAC}\index{MOPAC!validating}
+ 
+To  validate  the  new  program,  the data-set \comp{port.dat} should be run
+(see Chapter~\ref{examples}). If  all  tests are passed, within the tolerances
+given in the tests, then the new program can be called a valid version of
+MOPAC. \ Insofar  as is practical, the mode of submission of a MOPAC job should
+be preserved, e.g.,
+
+\begin{verbatim}
+(prompt) MOPAC <data-set> [<queue-options>...]
+\end{verbatim}
+ 
+Any changes which do not violate  the FORTRAN--77  conventions,  and which 
+users  believe  would  be  generally desirable, can be sent to the author.
+
+The main difficulty in modifying the program so that it runs on other platforms
+is likely to be in the channel assignments.  In an attempt to make this easier,
+all channel assignments are defined in subroutine GETDAT.  MOPAC uses the UNIX
+instructions \comp{iargc} and \comp{getarg}.  These read in the number of
+arguments supplied with the MOPAC command, and if this is greater than zero, it
+then reads in the name of the job. This is stored in JOBNAM.
+
+Other possible trouble-spots are (a) the CPU timer (in \comp{second.F}), and
+the date  function \comp{fdate} (in \comp{readmo.F} and \comp{writmn.F}); (b)
+the \comp{RESTART} command; (c) the INCLUDE files \comp{sizes.h},
+\comp{meci.h}, and \comp{symmetry.h}.  Most compilers now support the INCLUDE
+statement, in one form or another, so this should not be too much of a problem.
+
+The following is a complete list of known machine-specific code in MOPAC:
+
+\begin{description}
+\item[\comp{MALLOC}]~\\
+When the \comp{DYNAMIC\_MEMORY} option is used, the dynamic memory of MOPAC is 
+assigned by \comp{MALLOC} at the start of a run. If your machine supports
+\comp{MALLOC} or other call to allocate memory, then the dynamic version can be
+used.  If not, then use the CPP command for static memory allocation
+(\comp{STATIC\_MEMORY}).
+
+The function \comp{iargc} and subroutine \comp{getarg} are used to allow data
+in  the form of an argument to be passed into the program.  The argument
+actually  used is the name of the data-set, less the \comp{.dat} suffix.  This
+name is then used to determine all the file-names which are used within MOPAC.
+
+In order to make porting easier, all channel numbers are contained in an array
+\comp{IFILES}, and  assigned in GETDAT. The default order is that
+\comp{IFILES($i$)=$i$}.  The default assignments are shown in
+Table~\ref{allfiles}.
+
+\begin{table}\index{Channel assignments}
+\caption{\label{allfiles}Files used by MOPAC}
+\begin{center}
+\begin{tabular}{cllll}
+\hline
+Channel & Name                      & Input? & Output? & Contents \\ \hline
+2       & \comp{$<$filename$>$.dat} & Yes    &         & Data-set          \\
+4       & \comp{$<$filename$>$.end} & Yes    &         & Shut command \\
+5       & SCRATCH                   &        &         & Internal working \\
+6       & \comp{$<$filename$>$.out} &        & Yes     & Results file\\
+9       & \comp{$<$filename$>$.res} & Yes    & Yes     & Restart file \\
+10      & \comp{$<$filename$>$.den} & Yes    & Yes     & Density file \\
+11      & \comp{$<$filename$>$.log} &        & Yes     & Log file \\
+12      & \comp{$<$filename$>$.arc} &        & Yes     & Archive file \\
+13      & \comp{$<$filename$>$.gpt} &        & Yes     & Graphics file\\
+14      & User-defined              & Yes    &         & New parameters\\
+15      & \comp{$<$filename$>$.esr} &        & Yes     & ESP Restart\\
+16      & \comp{$<$filename$>$.syb} &        & Yes     & SYBYL file \\
+18      & \comp{$<$filename$>$.brz} &        & Yes     & Brillouin Zone \\
+20      & \comp{$<$filename$>$.ump} &        & Yes     & Data for grid\\
+21      & \comp{$<$filename$>$.esp} &        & Yes     & ESP data\\
+22      & SCRATCH                   &        &         & Used by GEOUTG\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+All the data are read in on channel 2, and immediately written to a SCRATCH
+channel, 5.  For the rest of the job, data are read off channel 5 as if it were
+the ordinary input channel. By doing this, the data-set is used only  at the
+very start of a job, and is released immediately afterwards.
+
+If, for whatever reason, a channel number must be changed, then the change
+should be made in GETDAT, after the \comp{C====\ldots} line, and should be of
+form:
+\begin{verbatim}
+IFILES(5)=8
+\end{verbatim}
+This change would make the SCRATCH file, which holds the input data,  channel
+8 instead of the default channel 5.  Of course, if the channel numbers are
+to be changed, care should be taken to avoid channel numbers which are
+already in use.
+
+\item[Character Conversion]~\\
+Conversion from lower to upper case or upper to lower case occurs several times
+in MOPAC.  Because FORTRAN-77 does not recognize lower case letters, these
+conversions may cause some difficulty.
+
+\item[\comp{SECOND}]~\\
+SECOND returns the CPU time elapsed since an arbitrary zero of time. Three
+mechanisms are provided for determining CPU time.  One of these should  be
+suitable for new compilers.
+
+SECOND also checks a file with the  name \comp{$<$filename$>$.end}.  If this
+file is of non-zero length, the elapsed CPU time is increased by 10,000,000
+seconds. This normally causes a premature shutdown due to elapsed time being
+exceeded. This is a useful feature, and should be implemented in all MOPAC
+programs.
+
+\item[\comp{INCLUDE}]~\\
+The small files \comp{sizes.h}, \comp{meci.h}, \comp{mozyme\_mpi.h}, and
+\comp{symtry.h}, are used to set various parameters within MOPAC. These files
+are included in many subroutines. INCLUDE is not standard FORTRAN, but appears
+to be supported by most compilers in one form or another.
+
+\item[The MOPAC command]~\\
+To run MOPAC, a user issues the command \comp{mopac $<$filename$>$}.  The verb
+\comp{mopac} causes a shell-script, \comp{mopac.csh}, to be executed.  This
+program, \comp{mopac.csh}, is written in SUN UNIX, but should be easily
+convertible to other flavors of UNIX.  As with SECOND, \comp{mopac.csh} should
+be converted, as it saves users a lot of time.
+\end{description}

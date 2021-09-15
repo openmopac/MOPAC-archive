@@ -1,0 +1,591 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Little Groups</TITLE>
+<META NAME="description" CONTENT="5.1.3.1 Little Groups">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node370.html"><LINK REL="up" HREF="node370.html"><LINK REL="next" HREF="node372.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node372.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node370.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node370.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node372.html">Lines in k-space</A> <B>Up:</B> <A HREF="node370.html">Calculating Points in k-space</A> <B>Previous:</B> <A HREF="node370.html">Calculating Points in</A>
+<H3>Little Groups </H3>
+<P>The symmetry operations supplied in <TT>&lt;filename&gt;.ops</TT> are used to generate a little group of the space group. A "little group" is the sub-group of the space-group at a specific point in <I>k</I>-space. There are too many little groups to allow all the irreducible representations to be labeled. In addition, there is no generally-accepted convention for describing them. Because of this, the little group is given as a group-table. Thus the little group for<font face="Symbol"> 
+G</font> would have the form shown in <A HREF="#lgd">Table 2</A>. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="BM7211">&nbsp;</A> </P>
+<STRONG><P>Table 1:</STRONG> Sy<A NAME="sod"></A>mmetry Points in <I>k</I>-space for Diamond</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE" COLSPAN=3>
+<P ALIGN="CENTER">Point</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Little Group*</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Symbol</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">O<I><SUB>h</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><font face="Symbol">G</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.500</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">(D<SUB>4<I>h</I></SUB>)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">X</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.500</TD>
+<TD VALIGN="MIDDLE">
+<P>0.250</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">(C<SUB>2<I>v</I></SUB>)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">W</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.500</TD>
+<TD VALIGN="MIDDLE">
+<P>0.125</TD>
+<TD VALIGN="MIDDLE">
+<P>0.125</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">(C<SUB>2<I>v</I></SUB>)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">U</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.375</TD>
+<TD VALIGN="MIDDLE">
+<P>0.375</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">(C<SUB>2<I>v</I></SUB>)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">K</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.250</TD>
+<TD VALIGN="MIDDLE">
+<P>0.250</TD>
+<TD VALIGN="MIDDLE">
+<P>0.250</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">D<SUB>3<I>d</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">L</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>4<I>v</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><font face="Symbol">D</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.500</TD>
+<TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">(C<SUB>2<I>v</I></SUB>)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Z</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.500</TD>
+<TD VALIGN="MIDDLE">
+<P>0.045</TD>
+<TD VALIGN="MIDDLE">
+<P>0.045</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">(C<SUB>2<I>v</I></SUB>)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">S</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P>0.000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>2<I>v</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><font face="Symbol">S</font></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P>0.250</TD>
+<TD VALIGN="MIDDLE">
+<P>0.377</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>2</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Q</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P>0.123</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<SUB>3<I>v</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><IMG SRC="img245.gif" WIDTH=15 HEIGHT=16 ALT="$Lambda $"></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER">* Point groups in parentheses only approximate little groups.</DIV> <BR>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="BM7212">&nbsp;</A> </P>
+<STRONG><P>Table 2:</STRONG> Little<A NAME="lgd"></A> Group for
+  <font face="Symbol">G </font>for Diamond</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Level</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Energy</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><font face="Symbol">G</font></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">E</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>3</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>2</SUB>=C<SUB>4</SUB><SUP>2</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>2</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>4</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">I</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">S<SUB>4</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img249.gif" WIDTH=21 HEIGHT=29 ALT="$sigma_d$"></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">S<SUB>6</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img250.gif" WIDTH=20 HEIGHT=29 ALT="$sigma_h$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-58.0408</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-9.4687</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.9807</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4.1933</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></DIV></P>
+<P>From this we see that there are four different irreducible representations: 1, 2, 3, and 4. These representations can be equated with those of the O<I><SUB>h </I></SUB>point-group, so 1 and 4, being non-degenerate, become <I>a</I>, while 2 and 3, being 3-fold degenerate, become <I>t</I>. So far we have (<I>a</I>, <I>t</I>, <I>t</I>, <I>a</I>). The effect of inversion on the eigenfunctions allows us to assign <EM>gerade</EM> and <EM>ungerade</EM>, thus (<I>a<SUB>g</I></SUB>, <I>t<SUB>g</I></SUB>, <I>t<SUB>u</I></SUB>, <I>a<SUB>u</I></SUB>), while C<SUB>4</SUB> resolves the "1"-"2" nature of the representations: (<I>a</I><SUB>1<I>g</I></SUB>, <I>t</I><SUB>2<I>g</I></SUB>, <I>t</I><SUB>1<I>u</I></SUB>, <I>a</I><SUB>2<I>u</I></SUB>). </P>
+<P>Inspection of the eigenvectors reveals, as expected, that the two <I>a</I> representations can be identified with the <I>s</I> atomic orbitals, and the two <I>t</I> representations, with the six <I>p</I> atomic orbitals. </P>
+<P>For points other than <font face="Symbol">G</font>, the little groups become complex. Consider a point on
+<font face="Symbol">D</font>, the line connecting <font face="Symbol">G </font>and X, or (0,0,0) and (1/2,0,0). The little group for (0.123,0,0) has the form shown in <A HREF="#dig">Table 3</A>. <BR>
+<DIV ALIGN="CENTER"><A NAME="BM7128">&nbsp;</A> <A NAME="BM7213">&nbsp;</A> </P>
+<STRONG><P>Table 3:</STRONG> Little <A NAME="dig"></A>Group for
+  <font face="Symbol">D </font>for Diamond</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Level</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Energy</TD>
+<TD VALIGN="MIDDLE">
+<P><font face="Symbol">G</font></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">E</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>2</SUB>=C<SUB>4</SUB><SUP>2</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>4</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img257.gif" WIDTH=21 HEIGHT=29 ALT="$sigma_d$"></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img258.gif" WIDTH=20 HEIGHT=29 ALT="$sigma_h$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-54.2893</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img259.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img260.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-10.2758</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-10.1336</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-<IMG SRC="img261.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-<IMG SRC="img262.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.9087</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img263.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img264.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.5003</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>6</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3.7878</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-<IMG SRC="img265.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-<IMG SRC="img266.gif" WIDTH=15 HEIGHT=30 ALT="$theta$"></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></DIV><BR>
+Here <font face="Symbol">q </font>= e <sup>ik/2<font face="Symbol">p</font></sup> <!-- MATH: $e^{-ik/2\pi}$ -->. </P>
+<P>As is seen, complications arise for those operations which involve <A NAME="BM7136"></A>non-primitive translations,<A NAME="BM7137">&nbsp;</A>e.g. C<SUB>4</SUB> and <IMG SRC="img269.gif" ALIGN="MIDDLE" WIDTH=20 HEIGHT=29 ALT="$sigma_h$">, when points other than
+<font face="Symbol">G </font>are studied. The complex phase-factor can cause interpretation of the group characters to be difficult. One option is to correct for the phase-factor by multiplying the character by <!-- MATH: $e^{ik/2\pi}$ -->
+e <sup>ik/2<font face="Symbol">p</font></sup> . This would make the little group for
+<font face="Symbol">D </font>easier to read (<A HREF="#mdig">Table 4</A>). </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="BM7214">&nbsp;</A> </P>
+<STRONG><P>Table 4:</STRONG> Mo<A NAME="mdig"></A>dified Little Group for
+  <font face="Symbol">D </font>for Diamond</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Level</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Energy</TD>
+<TD VALIGN="MIDDLE">
+<P><font face="Symbol">G</font></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">E</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>2</SUB>=C<SUB>4</SUB><SUP>2</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">C<SUB>4</SUB></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img276.gif" WIDTH=21 HEIGHT=29 ALT="$sigma_d$"></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT"><IMG SRC="img277.gif" WIDTH=20 HEIGHT=29 ALT="$sigma_h$"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-54.2893</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-10.2758</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-10.1336</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0.9087</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>5</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1.5003</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">0</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>6</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3.7878</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-1</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"></DIV></P>
+<P>However, for some little groups, this procedure may cause complications. Thus, at <I>L</I>, the inversion operation becomes sensitive to the point chosen, e.g. (0.25,0.25,0.25) will give a different character for the <I>I</I> operation than (0.25,0.25,-0.25). </P>
+<P>A third option is to assume that the lowest-lying level represents the totally symmetric representation. (Note: this is different from transforming as the totally symmetric representation. Only one point, the
+<font face="Symbol">G</font>-point, can ever contain a totally symmetric representation.) By making that assumption, all characters can be related to those of the lowest-lying level. </P>
+<P>Users are given key-words which select these alternatives to the basic character tables when the <I>k</I>-point is specified. The key-words are: </P>
+<DL>
+<DD><A NAME="BM7151">&nbsp;<A NAME="BM7152"></A>&nbsp;</A> </DD>
+<B><TT><DT>one  </B></TT> Assume the lowest energy level is totally symmetric. All operations involving non-primitive translations are then multiplied by a (complex) factor that will make the lowest energy level totally symmetric. Example: <TT>0.123 0 0 one</TT>. </DT>
+<DD><A NAME="BM7155">&nbsp;<A NAME="BM7156"></A>&nbsp;</A> </DD>
+<B><TT><DT>byk  </B></TT> Multiply all operations which involve non-primitive translations by a phase factor ("byk"--"multiply by k") which depends on the current value of <I>k</I>. Example: <TT>0.123 0 0 byk</TT>. </DT>
+</DL>
+<P>Using the points option, assignment of the symmetry of lines and points in <I>k</I>-space becomes very easy. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6376"><A HREF="node372.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6372"></A><A HREF="node370.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6368"></A><A HREF="node370.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6374"></A><A NAME="tex2html6374"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6375"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6377"><A HREF="node372.html">Lines in k-space</A></A> <B>Up:</B> <A NAME="tex2html6373"><A HREF="node370.html">Calculating Points in k-space</A></A> <B>Previous:</B> <A NAME="tex2html6369"><A HREF="node370.html">Calculating Points in</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

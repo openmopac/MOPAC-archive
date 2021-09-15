@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>EXTERNAL=name </TITLE>
+<META NAME="description" CONTENT="EXTERNAL=name ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node178.html"><LINK REL="previous" HREF="node176.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node178.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node178.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 ALT="up" width="26" height="24"></A><A HREF="node176.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node178.html">FIELD=(n.nn,m.mm,l.ll) </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node176.html">EXCITED</A><!--End of Navigation Panel--><H2>
+<TT>EXTERNAL=name</TT> </H2>
+<P>Normally, all semiempirical parameters are taken from the BLOCK DATA files within MOPAC. When the supplied parameters are not suitable, as in an element recently parameterized, and the parameters have not yet installed in the user's copy of MOPAC, then the new parameters can be inserted at run time by use of <TT>EXTERNAL=&lt;filename&gt;</TT>, where <TT>&lt;filename&gt;</TT> is the name of the file which contains the new parameters. </P>
+<TT><P>&lt;filename&gt;</TT> consists of a series of parameter definitions in the format: </P>
+<TT><P>&lt;Parameter&gt; &lt;Element&gt; &lt;Value of parameter&gt;</TT> <BR>
+where the possible parameters are <TT>USS, UPP, UDD, ZS, ZP, ZD, BETAS, BETAP, BETAD, GSS, GSP, GPP, GP2, HSP, ALP, FNnm</TT>, <TT>n</TT>=1,2, or 3, and <TT>m</TT>=1 to 10, and the elements are defined by their chemical symbols, such as Si or SI. </P>
+<P>When new parameters for elements are published, they can be typed in as shown. This file is ended by a blank line, the word END or nothing i.e., no end-of-file delimiter). An example of a parameter data file is given in the <A HREF="node177.html#external_fig">Figure</A>: <BR>
+<DIV ALIGN="CENTER"><A NAME="external_fig">&nbsp;<A NAME="BM3694"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Use of <TT>EXTERNAL=<I>name</P></I></TT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> </P>
+<PRE>Line  1:    USS      Si    -34.08201495
+Line  2:    UPP      Si    -28.03211675
+Line  3:    BETAS    Si     -5.01104521
+Line  4:    BETAP    Si     -2.23153969
+Line  5:    ZS       Si      1.28184511
+Line  6:    ZP       Si      1.84073175
+Line  7:    ALP      Si      2.18688712
+Line  8:    GSS      Si      9.82
+Line  9:    GPP      Si      7.31
+Line 10:    GSP      Si      8.36
+Line 11:    GP2      Si      6.54
+Line 12:    HSP      Si      1.32</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV></P>
+<P>Derived parameters do not need to be entered; they will be calculated from the optimized parameters. All "constants" such as the experimental <A NAME="BM2064">&nbsp;</A> heat of atomization are already inserted for all elements. </P>
+<P>NOTE: <TT>EXTERNAL</TT> can only be used to input parameters for NDDO methods. It is unlikely, however, that any more MINDO/3 parameters will be published. </P>
+<P>See also <TT><a href="node155.html">DEP</a></TT>, to make a permanent change. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html4031"><A HREF="node178.html">
+<IMG SRC="next_motif.gif" BORDER=0 ALT="next" width="37" height="24"></A><A NAME="tex2html4027"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 ALT="up" width="26" height="24"></A><A NAME="tex2html4021"></A><A HREF="node176.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html4029"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html4030"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html4032"><A HREF="node178.html">FIELD=(n.nn,m.mm,l.ll) </A></A><B>Up:</B> <A NAME="tex2html4028"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html4022"><A HREF="node176.html">EXCITED </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

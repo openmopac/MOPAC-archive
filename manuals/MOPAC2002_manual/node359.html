@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Conversion Between Various Formats</TITLE>
+<META NAME="description" CONTENT="3.4.8 Conversion Between Various Formats">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node360.html"><LINK REL="previous" HREF="node357.html"><LINK REL="up" HREF="node346.html"><LINK REL="next" HREF="node360.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node361.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node346.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node358.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node361.html">Examples of Coordinate</A> <B>Up:</B> <A HREF="node346.html">Geometry Specification</A> <B>Previous:</B> <A HREF="node358.html">Preparing the data</A>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION00748000000000000000">Conversion Between Various Formats</A> </H2>
+<P>MOPAC can accept any of the following formats: Cartesian, MOPAC internal coordinates, a mixture of Cartesian and MOPAC internal coordinates, Brookhaven Protein Data Bank, and Gaussian internal coordinates. Both MOPAC and Gaussian Z-matrices can also contain dummy atoms. If the <TT>0SCF</TT> option is requested, the geometry defined on input will be printed in MOPAC Z-matrix format, along with other optional formats. </P>
+<P>The type(s) of geometry printed at the end of a <A HREF="node114.html">0SCF</A> calculation depend only on the keywords <A HREF="node344.html">XYZ</A>, <A HREF="node197.html">INT</A>, <A HREF="node119.html">AIGOUT</A>, <A HREF="node258.html">PDBOUT</A>, and <A HREF="node243.html">NOXYZ</A>. The geometry printed is independent of the type of input geometry, and therefore makes a convenient conversion mechanism. </P>
+<P>If <TT>XYZ</TT> is present, all dummy atoms are removed and the internal coordinate definition remade. All symmetry relations are lost if <TT>XYZ</TT> is used. </P>
+<P>If <TT>NOXYZ</TT> is present, Cartesian coordinates will not be printed. If <TT>AIGOUT</TT> is present, a data set using Gaussian Z-matrix format is printed. </P>
+<P>Note: Only if the keyword <A HREF="node319.html">SYMMETRY</A> is present in a MOPAC internal coordinate geometry, or two or more internal coordinates in a Gaussian Z-matrix have the same symbolic will symmetry be present in the MOPAC or Gaussian geometries output. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6225"><A HREF="node361.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6221"></A><A HREF="node346.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6215"></A><A HREF="node358.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6223"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6224"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6226"><A HREF="node361.html">Examples of Coordinate</A></A> <B>Up:</B> <A NAME="tex2html6222"><A HREF="node346.html">Geometry Specification</A></A> <B>Previous:</B> <A NAME="tex2html6216"><A HREF="node358.html">Preparing the data</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

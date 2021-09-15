@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Outer Valence Green's Function</TITLE>
+<META NAME="description" CONTENT="8.3.7 Outer Valence Green's Function">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node473.html">
+<LINK REL="previous" HREF="node471.html">
+<LINK REL="up" HREF="node458.html">
+<LINK REL="next" HREF="node473.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html7966"
+ HREF="node473.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7962"
+ HREF="node458.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7956"
+ HREF="node471.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7964"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7965"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7967"
+ HREF="node473.html"> Using ab initio</A>
+<B> Up:</B> <A NAME="tex2html7963"
+ HREF="node458.html"> Miscellaneous Topics in</A>
+<B> Previous:</B> <A NAME="tex2html7957"
+ HREF="node471.html"> Oscillator Strength</A>
+<BR>
+<H2>Outer Valence Green's Function
+</H2>
+This section is based on materials supplied by
+<DIV ALIGN="CENTER">
+Dr David Danovich
+<BR>
+The Fritz Haber Research Center for 
+Molecular Dynamics
+<BR>
+The Hebrew University of Jerusalem
+<BR>
+91904 Jerusalem
+<BR>
+Israel </DIV>
+<P>
+The OVGF technique was used with the self-energy part extended to include
+third order perturbation corrections,&nbsp;[<A
+ HREF="node715.html#gf1">34</A>].  The higher order contributions
+were estimated by the renormalization procedure.  The actual expression used to
+calculate the self-energy part, 
+<!-- MATH: $\sum_{pp}(w)$ -->
+<IMG
+ WIDTH="52" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img605.gif"
+ ALT="$\sum_{pp}(w)$">,
+chosen in the diagonal form,
+is given in equation&nbsp;(<A HREF="node472.html#gfeq1">1</A>), where 
+<!-- MATH: $\sum_{pp}^{(2)}(w)$ -->
+<IMG
+ WIDTH="53" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img606.gif"
+ ALT="$\sum_{pp}^{(2)}(w)$">
+and 
+<!-- MATH: $\sum_{pp}^{(3)}(w)$ -->
+<IMG
+ WIDTH="53" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img607.gif"
+ ALT="$\sum_{pp}^{(3)}(w)$">
+are
+the second- and third-order corrections, and <I>A</I> is the screening factor accounting
+for all the contributions of higher orders.
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\sum_{pp}(w) = \sum_{pp}^{(2)}(w)+(1-A)^{-1}\sum_{pp}^{(3)}(w).
+\end{equation} -->
+<TABLE  ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD ALIGN="CENTER" NOWRAP><A NAME="gfeq1">&#160;</A><IMG
+ WIDTH="215" HEIGHT="54"
+ SRC="img608.gif"
+ ALT="\begin{displaymath}
+\sum_{pp}(w) = \sum_{pp}^{(2)}(w)+(1-A)^{-1}\sum_{pp}^{(3)}(w).
+\end{displaymath}"></TD>
+<TD  ALIGN="RIGHT">
+(1)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+The particular expression which was used for the second-order corrections is given in
+equation&nbsp;(<A HREF="node472.html#gfeq2">2</A>).
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+\sum_{pp}^{(2)}(w) = \sum_a\sum_{i,j}\frac{(2V_{paij}-V_{paji})V_{paij}}{w+e_a-e_i-e_j}
++\sum_{a,b}\sum_i\frac{(2V_{piab}-V_{piba})V_{piab}}{w+e_i-e_a-e_b},
+\end{equation} -->
+<TABLE ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD ALIGN="CENTER" NOWRAP><A NAME="gfeq2">&#160;</A><IMG
+ WIDTH="403" HEIGHT="55"
+ SRC="img609.gif"
+ ALT="\begin{displaymath}
+\sum_{pp}^{(2)}(w) = \sum_a\sum_{i,j}\frac{(2V_{paij}-V_{paj...
+...{a,b}\sum_i\frac{(2V_{piab}-V_{piba})V_{piab}}{w+e_i-e_a-e_b},
+\end{displaymath}"></TD>
+<TD ALIGN="RIGHT">
+(2)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+where
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+V_{pqrs} = \int\int\psi_p^*(1)\psi_q^*(2)(1/r_{12})\psi_r^*(1)\psi_s^*(2){\rm d}\tau_1{\rm d}\tau_2.
+\end{displaymath} -->
+<IMG
+ WIDTH="323" HEIGHT="38"
+ SRC="img610.gif"
+ ALT="\begin{displaymath}V_{pqrs} = \int\int\psi_p^*(1)\psi_q^*(2)(1/r_{12})\psi_r^*(1)\psi_s^*(2){\rm d}\tau_1{\rm d}\tau_2.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+In equation&nbsp;(<A HREF="node472.html#gfeq2">2</A>), <I>i</I> and <I>j</I> denote occupied orbitals, <I>a</I> and <I>b </I>denote virtual orbitals, <I>p</I> denotes orbitals of unspecified occupancy, and
+<I>e</I> denotes an orbital energy. The equations are solved by an iterative
+procedure, represented in  equation&nbsp;(<A HREF="node472.html#gfeq3">3</A>).
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{equation}
+w_p^{i+1}=e_p+\sum_{pp}(w^i).
+\end{equation} -->
+<TABLE ALIGN="CENTER">
+<TR VALIGN="MIDDLE"><TD ALIGN="CENTER" NOWRAP><A NAME="gfeq3">&#160;</A><IMG
+ WIDTH="123" HEIGHT="43"
+ SRC="img611.gif"
+ ALT="\begin{displaymath}
+w_p^{i+1}=e_p+\sum_{pp}(w^i).
+\end{displaymath}"></TD>
+<TD ALIGN="RIGHT">
+(3)</TD></TR>
+</TABLE>
+</DIV>
+<BR CLEAR="ALL"><P></P>
+<P>
+The SCF energies and the corresponding integrals, which were calculated by one
+of the semiempirical methods (MNDO, AM1, or PM3), were taken as the zero'th
+approximation and all M.O.s may be included in the active space for the OVGF
+calculations.
+<P>
+The expressions used for 
+<!-- MATH: $\sum_{pp}^{(3)}$ -->
+<IMG
+ WIDTH="31" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img612.gif"
+ ALT="$\sum_{pp}^{(3)}$">
+and <I>A</I> are given in [<A
+ HREF="node715.html#gf2">35</A>].
+<P>
+The OVGF method itself, is described in detail in [<A
+ HREF="node715.html#gf1">34</A>].
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7966"
+ HREF="node473.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7962"
+ HREF="node458.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7956"
+ HREF="node471.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7964"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7965"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7967"
+ HREF="node473.html"> Using ab initio</A>
+<B> Up:</B> <A NAME="tex2html7963"
+ HREF="node458.html"> Miscellaneous Topics in</A>
+<B> Previous:</B> <A NAME="tex2html7957"
+ HREF="node471.html"> Oscillator Strength</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

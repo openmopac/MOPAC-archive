@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>AM1, etc. modifications to the core-core term</TITLE>
+<META NAME="description" CONTENT="8. AM1 and PM3 modifications to the core-core term">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node454.html"><LINK REL="up" HREF="node442.html"><LINK REL="next" HREF="node456.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node456.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node442.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node454.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node456.html">Self-Consistent Field Calculation</A> <B>Up:</B> <A HREF="node442.html">Approximations used in</A> <B>Previous:</B> <A HREF="node454.html">MNDO modification to</A>
+<!--End of Navigation Panel-->
+<H3>AM1, etc. modifications to the core-core term </H3>
+<P>These modifications are the same as that for MNDO with the addition of an extra term to reduce the excessive core-core repulsions just outside bonding distances. The additional term may be considered as a van der Waal's attraction term. The AM1 and PM3 core-core terms are: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+E_N(A,B)=E_N^{MNDO}(A,B)+\frac{Z_AZ_B}{R_{AB}}
+(\sum_ka_{kA}e^{-b_{kA}(R_{AB}-c_{kA})^2}+\sum_ka_{kB}e^{-b_{kB}(R_{AB}-c_{kB})^2}).
+\end{displaymath} --><IMG SRC="img495.gif" WIDTH=492 HEIGHT=46 ALT="begin{displaymath}E_N(A,B)=E_N^{MNDO}(A,B)+frac{Z_AZ_B}{R_{AB}}(sum_ka_{kA}e......}(R_{AB}-c_{kA})^2}+sum_ka_{kB}e^{-b_{kB}(R_{AB}-c_{kB})^2}).end{displaymath}"></DIV>
+<P>The extra terms define spherical Gaussian functions, the <I>a</I>, <I>b</I>, and <I>c</I> are adjustable parameters. PM3 has two Gaussians per atom, while AM1 has between two and four. </P>
+<BLOCKQUOTE>When I originally developed the theory and software for AM1, my purpose for having the Gaussian modification was to correct for the excessive repulsions in the region outside the normal bonding distance and less than the van der Waals distance. My reasoning was as follows: The excessive repulsion depends on distance only. This must be due to a fault in the approximations. It is not necessary to identify either the faulty approximation, or to modify it so as to correct the fault. All that is necessary is to add a new term, using the well-known method of operator equivalents. In this, I decided to treat the symptom of the fault, and not the cause. As subsequent events have shown, this has proved to be an effective approach. However, it is still intellectually unsatisfactory, in that the final justification is that "the end justifies the means." Hopefully, a better approximation than the <EM>ad hoc</EM> one I chose will eventually be developed. </BLOCKQUOTE>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html7736"><A HREF="node456.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html7732"></A><A HREF="node442.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html7728"></A><A HREF="node454.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html7734"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html7735"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html7737"><A HREF="node456.html">Self-Consistent Field Calculation</A></A> <B>Up:</B> <A NAME="tex2html7733"><A HREF="node442.html">Approximations used in</A></A> <B>Previous:</B> <A NAME="tex2html7729"><A HREF="node454.html">8. MNDO modification to</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

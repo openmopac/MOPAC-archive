@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>How large can a gradient be and still be acceptable?</TITLE>
+<META NAME="description" CONTENT=" How large can a gradient be and still be acceptable?">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node578.html"><LINK REL="previous" HREF="node576.html"><LINK REL="up" HREF="node573.html"><LINK REL="next" HREF="node578.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel-->
+<a href="node579.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></a><A HREF="node573.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node576.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <a href="node579.html">Self-Consistency Test</a> <B>Up:</B> <A HREF="node573.html">Level of Precision</A> <B>Previous:</B> <A HREF="node576.html">Reasons for low</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION0012114000000000000000">How large can a gradient be and still be acceptable?</A> </H2>
+<P>A common source of confusion is the limit to which the <TT>GNORM</TT> should be reduced in order to obtain acceptable results. There is no easy answer. However, a few guidelines can be given. </P>
+<P><A NAME="BM20456">&nbsp;<A NAME="BM20457"></A>&nbsp;</A> First of all, setting the <TT>
+<a href="node186.html">GNORM</a></TT> to an arbitrarily small number is not sensible. If <TT>GNORM=0.000001</TT> and <TT>LET</TT> are used, a geometry can be obtained which is precise to about 0.000001 &Aring;. If <TT>ANALYT</TT> is also used, the results obtained will be slightly different. Chemically, this change is meaningless, and no significance should be attached to such numbers. In addition, any minor change to the algorithm, such as porting it to a new machine, will give rise to small changes in the optimized geometry. Even the small changes involved in going from one version of MOPAC to another causes small changes in the optimized geometry of test molecules. </P>
+<P>As a guide, a <TT>GNORM</TT> of 0.1 is sufficient for all heat-of-formation work, and a <TT>GNORM</TT> of 0.01 for most geometry work. If the system is large, you may need to settle for a <TT>GNORM</TT> of 1.0-0.5. </P>
+<P>This whole topic was raised by Dr. Donald B. Boyd while he was at Lilly Research Laboratories, who provided unequivocal evidence for a failure of MOPAC and convinced me of the importance of increasing precision in certain circumstances.<A NAME="BM20487">&nbsp;</A> </P>
+<P><HR></P>
+<P><!--Navigation Panel--><a href="node579.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></a><A HREF="node573.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node576.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <a href="node579.html">Self-Consistency Test</a> <B>Up:</B> <A HREF="node573.html">Level of Precision</A> <B>Previous:</B> <A HREF="node576.html">Reasons for low</A> <BR>
+</P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

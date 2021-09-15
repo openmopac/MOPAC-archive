@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Overriding the default options</TITLE>
+<META NAME="description" CONTENT="8.7.4.1 Overriding the default options">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node548.html">
+<LINK REL="previous" HREF="node546.html">
+<LINK REL="up" HREF="node546.html">
+<LINK REL="next" HREF="node548.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8922"
+ HREF="node548.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8918"
+ HREF="node546.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8912"
+ HREF="node546.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8920"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8921"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8923"
+ HREF="node548.html"> Locating Transition States</A>
+<B> Up:</B> <A NAME="tex2html8919"
+ HREF="node546.html"> Considerations in Geometry</A>
+<B> Previous:</B> <A NAME="tex2html8913"
+ HREF="node546.html"> Considerations in Geometry</A>
+<BR>
+<H3><A NAME="SECTION001274100000000000000">
+ Overriding the default options</A>
+</H3>
+In the EigenFollowing geometry optimization method, the geometry is changed on
+each cycle; if the 
+<!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f
+</sub>&nbsp;decreases, the cycle is completed.  If it does
+not drop, the step-size is reduced, and the 
+<!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f
+</sub>&nbsp;recalculated.  Only
+when the 
+<!-- MATH: $\Delta H_f$ -->
+<font face="Symbol">D</font>H<sub>f
+</sub>&nbsp;decreases, compared to the previous cycle, is the current
+cycle considered to be successful.  During the calculation, the confidence
+level or trust radius is continuously checked.  If this becomes too small, the
+calculation will be stopped.  This can readily happen if (a) the geometry was
+already almost  optimized; (b) a reaction path or grid calculation is being
+performed; (c) if the geometry is in internal coordinates and "big rings" are
+involved; or (d) if the  gradients are not correctly calculated (in a
+complicated C.I., for example).
+<P>
+For cases (a) and (b), add <TT><a href="node207.html">LET</a></TT> and <TT>
+<a href="node151.html">DDMIN=0</a></TT>.  In case (c) use
+either mixed coordinates or entirely Cartesian coordinates. Case (d) is
+difficult--if nothing else works, add <TT><a href="node234.html">NOANCI</a></TT>; this will always cause
+the derivatives to be correctly calculated, but will also use a lot of time.
+<P>
+Adding <TT>LET</TT> and <TT>DDMIN=0</TT> is often very effective, particularly when
+reaction paths are being calculated.  The first geometry optimization might
+take more cycles, but the resulting Hessian matrix is better tempered, and
+subsequent steps are generally more efficient.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8922"
+ HREF="node548.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8918"
+ HREF="node546.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8912"
+ HREF="node546.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8920"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8921"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8923"
+ HREF="node548.html"> Locating Transition States</A>
+<B> Up:</B> <A NAME="tex2html8919"
+ HREF="node546.html"> Considerations in Geometry</A>
+<B> Previous:</B> <A NAME="tex2html8913"
+ HREF="node546.html"> Considerations in Geometry</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

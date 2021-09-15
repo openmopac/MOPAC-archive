@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Calculation of </TITLE>
+<META NAME="description" CONTENT="8.2.3 Calculation of ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node456.html">
+<LINK REL="up" HREF="node441.html">
+<LINK REL="next" HREF="node458.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html7758"
+ HREF="node458.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7754"
+ HREF="node441.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7750"
+ HREF="node456.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7756"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7757"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7759"
+ HREF="node458.html"> Miscellaneous Topics in</A>
+<B> Up:</B> <A NAME="tex2html7755"
+ HREF="node441.html"> Semiempirical Theory</A>
+<B> Previous:</B> <A NAME="tex2html7751"
+ HREF="node456.html"> Self-Consistent Field Calculation</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION001223000000000000000">
+ Calculation of <font face="Symbol"> 
+<!-- MATH: $\Delta H_f$ -->
+D</font>H<sub>f</sub></A><sub> </sub>
+</H2>
+<P>
+The SCF calculation produces a density, <I>P</I>, and Fock
+matrix, <I>F</I>. These, together with the one-electron matrix, <I>H</I>,
+allow the total electronic energy to be calculated via
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+E_{elect} = \frac{1}{2}\sum_{\mu}\sum_{\nu}P_{\mu\nu}(H_{\mu\nu}+F_{\mu\nu}).
+\end{displaymath} -->
+<IMG
+ WIDTH="204" HEIGHT="47"
+ SRC="img498.gif"
+ ALT="\begin{displaymath}E_{elect} = \frac{1}{2}\sum_{\mu}\sum_{\nu}P_{\mu\nu}(H_{\mu\nu}+F_{\mu\nu}).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The total core-core repulsion energy is given by:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+E_{nuc} = \sum_A\sum_{B<A}E_N(A,B).
+\end{displaymath} -->
+<IMG
+ WIDTH="147" HEIGHT="42"
+ SRC="img499.gif"
+ ALT="\begin{displaymath}E_{nuc} = \sum_A\sum_{B<A}E_N(A,B).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The addition of these two terms represents the energy
+released when the ionized atoms and valence electrons
+combine to form a molecule.
+<P>
+A more useful quantity is the
+heat of formation of the compound from its elements in their
+standard state. This is obtained when the energy required
+<A NAME="BM9664">&#160;</A>
+to ionize the valence electrons of the atoms involved
+(calculated using semiempirical parameters), 
+<!-- MATH: $E_{isol}(A)$ -->
+<I>E</I><SUB><I>isol</I></SUB>(<I>A</I>), and
+<A NAME="BM9666">&#160;</A>
+heat of atomization, 
+<!-- MATH: $E_{atom}(A)$ -->
+<I>E</I><SUB><I>atom</I></SUB>(<I>A</I>), are added to the electronic
+plus nuclear energy. This yields:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\Delta H_f = E_{elect} + E_{nuc} + \sum_AE_{isol}(A) +\sum_AE_{atom}(A).
+\end{displaymath} -->
+<IMG
+ WIDTH="297" HEIGHT="42"
+ SRC="img500.gif"
+ ALT="\begin{displaymath}\Delta H_f = E_{elect} + E_{nuc} + \sum_AE_{isol}(A) +\sum_AE_{atom}(A).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+This is the quantity which MOPAC calls the "Heat of Formation".  
+An alternative but equivalent definition of 
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A><sub> </sub>,
+more
+suited for comparison with experimental 
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A>, is:
+<P>
+"
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A><sub> </sub>&nbsp;is the calculated gas-phase heat of formation at 298K
+ of one mole of a compound from its elements in their standard state."
+<P>
+Things to note about this definition:  unlike <EM>ab initio</EM> methods, which
+yield the energy at 0<I>K</I>, semiempirical methods give 
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A><sub>&nbsp; </sub>at 298<I>K</I>.  This follows from the way in which semiempirical methods
+are parameterized: the reference 
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A><sub> </sub>&nbsp;are conventionally given at
+298<I>K</I>.  This means that  semiempirical methods will reproduce 
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A><sub> </sub>for 298<I>K</I>.  Secondly, note that 
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A><sub> </sub>&nbsp;are for gas-phase systems.
+To calculate 
+<!-- MATH: $\Delta H_f$ -->
+<A NAME="SECTION001223000000000000000">
+ <font face="Symbol">D</font>H<sub>f</sub></A><sub> </sub>&nbsp;in the liquid or solid phases, additional terms are
+necessary.
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html7758"
+ HREF="node458.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html7754"
+ HREF="node441.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html7750"
+ HREF="node456.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html7756"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html7757"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html7759"
+ HREF="node458.html"> Miscellaneous Topics in</A>
+<B> Up:</B> <A NAME="tex2html7755"
+ HREF="node441.html"> Semiempirical Theory</A>
+<B> Previous:</B> <A NAME="tex2html7751"
+ HREF="node456.html"> Self-Consistent Field Calculation</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

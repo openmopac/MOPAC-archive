@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Translation Vector</TITLE>
+<META NAME="description" CONTENT="3.4.4 Translation Vector">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node353.html">
+<LINK REL="previous" HREF="node349.html">
+<LINK REL="up" HREF="node346.html">
+<LINK REL="next" HREF="node353.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6142"
+ HREF="node353.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6138"
+ HREF="node346.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6132"
+ HREF="node351.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6140"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6141"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6143"
+ HREF="node353.html"> Gaussian Z-matrices</A>
+<B> Up:</B> <A NAME="tex2html6139"
+ HREF="node346.html"> Geometry Specification</A>
+<B> Previous:</B> <A NAME="tex2html6133"
+ HREF="node351.html"> Conversion to Cartesian</A>
+<!--End of Navigation Panel-->
+<H2>Translation Vector
+</H2>
+The translation vector is the distance through which an atom must be moved
+(translated) in order to be in the next unit cell.  The symbol for a
+translation vector is <TT>Tv</TT>.  The <TT>Tv</TT> should be specified at the end
+of the geometry. No real or dummy atoms should come after a <TT>Tv</TT>, although
+symmetry data, etc, are allowed.  The order of the data is thus: (real and
+dummy atoms) (translation vector(s)) (blank line) (symmetry data or MECI data
+etc, if needed).
+<P>
+Each translation vector is specified by one <TT>Tv</TT>.  The 'bond
+length' of the <TT>Tv</TT> is the translation vector distance, and the
+direction of the vector is given by the connectivity.  <A HREF="node437.html#pthf">An
+example of a single <TT>Tv</TT></A> is given 
+, where the translation vector distance is 12.3&#197;ngstroms, 
+and moves atom 1 in the direction of dummy atom 11.
+<P>
+Dummy atoms are useful in defining the direction of the <TT>Tv</TT>.  There must
+not be real atoms in two unit cells related by a <TT>Tv</TT>, but at the same
+time we want a way to specify where an atom will be after it has been
+translated.  Therefore it is convenient to put a dummy atom where an original
+atom will be moved to, and then define the <TT>Tv</TT> in terms of that dummy
+atom and the original atom.
+<P>
+Note that in the polytetrahydrofuran example, the angle and dihedral of the
+<TT>Tv</TT> are not flagged for optimization.  This is because the direction of
+the <TT>Tv</TT> can be defined as being from a real atom (here atom 1) to a dummy
+atom (atom 11), and the coordinates of the dummy atom are marked for
+optimization.  Unless  absolutely necessary, do <EM>not</EM> optimize the angle
+and dihedral of a <TT>Tv</TT>.
+<P>
+Two and three dimensional systems have two and three <TT>Tv</TT> respectively.
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6142"
+ HREF="node353.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6138"
+ HREF="node346.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6132"
+ HREF="node351.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6140"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6141"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6143"
+ HREF="node353.html"> Gaussian Z-matrices</A>
+<B> Up:</B> <A NAME="tex2html6139"
+ HREF="node346.html"> Geometry Specification</A>
+<B> Previous:</B> <A NAME="tex2html6133"
+ HREF="node351.html"> Conversion to Cartesian</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

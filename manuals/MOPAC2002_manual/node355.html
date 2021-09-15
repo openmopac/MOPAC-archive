@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Exceptions to the full Gaussian standard</TITLE>
+<META NAME="description" CONTENT="3.4.5.2 Exceptions to the full Gaussian standard">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node354.html">
+<LINK REL="up" HREF="node353.html">
+<LINK REL="next" HREF="node356.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6178"
+ HREF="node356.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6174"
+ HREF="node353.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6170"
+ HREF="node354.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6176"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6177"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6179"
+ HREF="node356.html"> Cartesian Coordinate Definition</A>
+<B> Up:</B> <A NAME="tex2html6175"
+ HREF="node353.html"> Gaussian Z-matrices</A>
+<B> Previous:</B> <A NAME="tex2html6171"
+ HREF="node354.html"> Specification of Gaussian</A>
+<BR>
+<H3><A NAME="SECTION00745200000000000000">
+ Exceptions to the full Gaussian standard</A>
+</H3>
+<DL COMPACT>
+<DT>1.
+<DD>The option of defining an atom's position by  one  distance  and
+two  angles  is  not  allowed.   In other words, the N4 variable
+       described in the Gaussian manual must  either  be  zero  or  not
+       specified.   MOPAC  requires the geometry of atoms to be defined
+       in terms of, at most, one distance, one angle, and one dihedral.
+ 
+<DT>2.
+<DD>Gaussian Cartesian coordinates are not supported.
+ 
+<DT>3.
+<DD>Chemical symbols must not be followed by an integer  identifying
+ the  atom.  Numbers after a symbol are used by MOPAC to indicate
+ isotopic mass.  If labels are desired, they should  be  enclosed
+ in parentheses, thus <TT>Cl(on C5)34.96885</TT>.
+<P>
+<DT>4.
+<DD>The connectivity (N1, N2, N3) must be integers.  Labels are  not
+          allowed.
+</DL> 
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

@@ -1,0 +1,72 @@
+\subsection{Koopmans' Theorem.}\index{Koopmans' theorem}
+\index{Ionization potential}
+Koopmans' theorem~\cite{koopmans} can be understood as follows:  for
+closed-shell systems, the negative of the HOMO energy is the ionization
+potential. That is, the energy required to form the cation {\em provided that
+the ionization process is adequately represented by the removal of an electron
+from an orbital without change in the wave-functions of the other electrons.}
+
+MOZYME does not use  eigenvectors (LMOs are not eigenvectors), therefore,
+Koopmans' theorem cannot be used unless eigenvectors are generated.  To use
+Koopmans' theorem, add \comp{VECTORS} and \comp{EIGEN} to the keyword line.
+This will cause the eigenvectors to be generated, and from the eigenvalues the
+ionization potential can be calculated.
+
+The only alternative way to calculate the I.P.\ is to calculate the $\Delta
+H_f$ of the parent species, then, without allowing the geometry to relax,
+calculate the $\Delta H_f$ of the ionized system.  The difference in  $\Delta
+H_f$, in kcal.mol$^{-1}$, divided by 23.06, is the predicted I.P., in eV.
+
+\subsection{Dipole moments.}\index{Dipole moment!definition}
+\index{Dipole moment!for ions}
+For neutral systems, the dipole moment is calculated from the atomic charges
+and the lone-pairs as
+\begin{equation}
+\mu_x  = cC\sum_AQ_Ax_A + cCa_o2\sum_A P(s-p_x)_AD_1(A)
+\end  {equation}
+\begin{equation}
+\mu_y  = cC\sum_AQ_Ay_A + cCa_o2\sum_A P(s-p_y)_AD_1(A)
+\end  {equation}
+\begin{equation}
+\mu_z  = cC\sum_AQ_Az_A + cCa_o2\sum_A P(s-p_z)_AD_1(A)
+\end  {equation}
+\begin{equation}
+\mu = \mu_x+\mu_y+\mu_z
+\end  {equation}
+Where $c$ = speed of light, $C$ = charge on the electron, and $a_o$ = Bohr
+radius, or $cC = 2.99792458 \times 1.60217733 = 4.8032066$, and $cCa_o2 = 
+2.99792458 \times 1.60217733 \times 0.529177249 \times 2.0  = 5.0834948$.  $D_1(A)$ is defined  in
+Table~\ref{aa}
+\begin{latexonly}
+(see p.~\pageref{aa})
+\end{latexonly}.
+
+Formally, the dipole moment for an ion is undefined; however, it is convenient
+to set up a `working definition.'  Consider a heteronuclear diatomic ion in a
+uniform electric field.  The ion will accelerate.  To compensate for this, it
+is convenient to consider the ion in an accelerating frame of reference.  The
+ion will  experience a torque which acts about the center of mass, in a manner
+similar to that of a polar molecule.  This allows us to define the dipole of an
+ion as the dipole the system would exhibit while accelerating in a uniform
+electric field.  To formalize this definition:
+\begin{equation}
+\mu_x  = cC\sum_AQ_A(x_A-x_{cog}) + cCa_o2\sum_A P(s-p_x)_AD(A)
+\end  {equation}
+\begin{equation}
+\mu_y  = cC\sum_AQ_A(y_A-y_{cog}) + cCa_o2\sum_A P(s-p_y)_AD(A)
+\end  {equation}
+\begin{equation}
+\mu_z  = cC\sum_AQ_A(z_A-z_{cog}) + cCa_o2\sum_A P(s-p_z)_AD(A)
+\end  {equation}
+\begin{equation}
+\mu = \mu_x+\mu_y+\mu_z,
+\end  {equation}
+where $x_{cog}$ is the $x$-coordinate of the center of gravity of the system
+\begin{equation}
+x_{cog} = \sum_AM_Ax_A,
+\end  {equation}
+and $y_{cog}$ and $z_{cog}$ have similar definitions.  This general expression
+will work for all discrete species, charged and uncharged, and is rotation and
+position invariant.
+
+

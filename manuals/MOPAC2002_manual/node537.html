@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Localized Molecular Orbital Matrix Element Annihilation</TITLE>
+<META NAME="description" CONTENT="8.6.6.3 Localized Molecular Orbital Matrix Element Annihilation">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node536.html">
+<LINK REL="up" HREF="node534.html">
+<LINK REL="next" HREF="node538.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8799"
+ HREF="node538.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8795"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8791"
+ HREF="node536.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8797"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8798"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8800"
+ HREF="node538.html"> Reducing the Size</A>
+<B> Up:</B> <A NAME="tex2html8796"
+ HREF="node534.html"> Diagonalization</A>
+<B> Previous:</B> <A NAME="tex2html8792"
+ HREF="node536.html"> Localized Molecular Orbital</A>
+<BR>
+<H3><A NAME="SECTION001266300000000000000">
+ Localized Molecular Orbital Matrix Element Annihilation</A>
+</H3>
+Once the matrix elements have been calculated, annihilation is
+relatively straightforward.  As with conventional SCF matrix annihilation,
+the operation to be performed is:
+<p align="center"><IMG
+ WIDTH="141" HEIGHT="51"
+ SRC="img1238.gif"
+ ALT="\begin{displaymath}\begin{array}{llrr}
+\psi_i^{'} & = & \alpha\psi_i & + \beta\psi_j \\
+\psi_j^{'} & = &-\beta\psi_i & +\alpha\psi_j
+\end{array}\end{displaymath}"><BR></p>
+<BR CLEAR="ALL"><P></P>
+where <i><font face="Symbol">a</font></i>
+and <i><font face="Symbol">b</font></i>
+are calculated using the matrix elements just
+derived.
+<P>
+Because of the way LMOs are represented (the five arrays for each set, occupied
+and virtual), care must be taken to ensure that the two by two rotation is done
+correctly.  For the rotation to be performed, each atomic orbital in <i><font face="Symbol">
+y</font><sub><font face="Symbol">i</font>
+</sub></i>must be matched with the same atomic orbital in <i><font face="Symbol">
+y</font><sub>j
+</sub></i>.
+Three distinct
+situations occur: the same atom might be present in both <i><font face="Symbol">
+y</font></i><sub><i>i</i></sub>
+and <i><font face="Symbol">y</font><sub>j</sub></i>; <i><font face="Symbol">y</font></i><sub><i>i</i></sub>
+might have an atom which <i><font face="Symbol">y</font><sub>j</sub></i>
+does not have; and <i><font face="Symbol">y</font><sub>j</sub></i>
+might
+have an atom which <i><font face="Symbol">y</font></i><sub><i>i</i></sub>
+does not have. The procedure for dealing with these
+situations is as follows:
+<UL>
+<LI>Both LMOs have the same atom.
+<P>
+<IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1249.gif"
+ ALT="$\ \ $">Simple rotation of the coefficients is performed:
+<P align="center">
+<IMG
+ WIDTH="243" HEIGHT="51"
+ SRC="img1250.gif"
+ ALT="\begin{displaymath}\begin{array}{llrr}
+\sum_{\lambda\epsilon A} \psi_i^{'}(\lamb...
+... =
+&-\beta\psi_i(\lambda) & +\alpha\psi_j(\lambda)
+\end{array}\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+<P>
+<LI>Occupied LMO <i><font face="Symbol">y</font></i><sub><i>i</i></sub>
+has atom <I>A</I>, virtual LMO <i><font face="Symbol">y</font><sub>j</sub></i>
+does not 
+have atom <I>A</I>.
+<P>
+<IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1253.gif"
+ ALT="$\ \ $">If the product 
+<!-- MATH: $\beta\rho_A(i)$ -->
+<IMG
+ WIDTH="48" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1254.gif"
+ ALT="$\beta\rho_A(i)$">
+is above a threshold, then the rotation
+<P align="center">
+<IMG
+ WIDTH="169" HEIGHT="49"
+ SRC="img1255.gif"
+ ALT="\begin{displaymath}\begin{array}{llrr}
+\sum_{\lambda\epsilon A} \psi_i^{'}(\lamb...
+...n A}\psi_j^{'}(\lambda) & =
+&-\beta\psi_i(\lambda)
+\end{array}\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+is performed. If it is less than the threshold, no rotation is done.
+The most important effect of this rotation is to place an atom in the virtual
+LMO <i><font face="Symbol">y</font><sub>j</sub></i>,
+an atom which was not in <i><font face="Symbol">y</font><sub>j</sub></i>
+before the two by two rotation
+was started.  That is, the number of atoms in <i><font face="Symbol">y</font><sub>j</sub></i>
+is increased by one.
+<P>
+<LI>Virtual  LMO <i><font face="Symbol">y</font><sub>j</sub></i>
+has atom <I>A</I>, occupied LMO <i><font face="Symbol">y</font><sub>j</sub></i>
+does not 
+have atom <I>A</I>.
+<P>
+<IMG
+ WIDTH="12" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img1261.gif"
+ ALT="$\ \ $">Again, if the product 
+<!-- MATH: $\beta\rho_A(i)$ -->
+<IMG
+ WIDTH="48" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1262.gif"
+ ALT="$\beta\rho_A(i)$">
+is above a threshold, then the rotation
+<P align="center">
+<IMG
+ WIDTH="159" HEIGHT="51"
+ SRC="img1263.gif"
+ ALT="\begin{displaymath}\begin{array}{llrr}
+\sum_{\lambda\epsilon A} \psi_i^{'}(\lam...
+...on A}\psi_j^{'}(\lambda) & =
+&\alpha\psi_j(\lambda)
+\end{array}\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+is performed.  The number of atoms in the occupied LMO is increased by one.
+</UL>
+<P>
+At the start of the first SCF calculation, each LMO contains at most two atoms,
+so the most dramatic effect of matrix element annihilation is to cause the
+LMOs to expand so that they involve more atoms.  In the first few iterations,
+the number of atoms in each LMO increases rapidly.  After about 10-30 iterations,
+the rate of increase becomes very small, as the size of the LMOs becomes stable.
+<P>
+During the first SCF calculation, the number of atoms in certain LMOs may 
+increase so rapidly that the gap between LMOs might vanish.  Any further
+expansion would then cause vector overwriting to occur.  To avoid this
+happening, the annihilation step is modified as follows:
+The situation where vector overwriting is about to occur is detected.  The
+degree of mixing of the two LMOs is then halved, and the annihilation is attempted
+again.  If this procedure does not work, then the degree of mixing 
+is halved again.  This
+is done repeatedly until the danger of vector overwriting has been removed.
+This technique is only used near the end of the SCF calculation; at other
+times the degree of mixing is simply set to zero.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8799"
+ HREF="node538.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8795"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8791"
+ HREF="node536.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8797"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8798"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8800"
+ HREF="node538.html"> Reducing the Size</A>
+<B> Up:</B> <A NAME="tex2html8796"
+ HREF="node534.html"> Diagonalization</A>
+<B> Previous:</B> <A NAME="tex2html8792"
+ HREF="node536.html"> Localized Molecular Orbital</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

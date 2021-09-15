@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Program DENSITY</TITLE>
+<META NAME="description" CONTENT="6.2 Program DENSITY">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node384.html"><LINK REL="previous" HREF="node376.html"><LINK REL="up" HREF="node375.html"><LINK REL="next" HREF="node384.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node384.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node375.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node382.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node384.html">Data</A> <B>Up:</B> <A HREF="node375.html">Calculation of Electron</A> <B>Previous:</B> <A HREF="node382.html">Bonds</A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H1><A NAME="SECTION001020000000000000000">Program DENSITY</A> </H1>
+<P>The program DENSITY is designed to generate maps of electron density distribution and molecular orbital intensity within  <A HREF="node383.html#d_mol">molecules</A> and &nbsp;<A HREF="node383.html#d_solids">solids</A>. Two main modes of operation are provided: manual data input, which is a "stand-alone" mode, and normal input, which assumes the existence of large unformatted data-files produced by, e.g. MOPAC. </P>
+<P>To generate the large unformatted data-file, MOPAC should be run using the key-word <TT>GRAPH</TT>. At present, MOPAC can only produce graphics files in the RHF mode, the UHF capability having not yet being written. </P>
+<P><BR>
+<DIV ALIGN="CENTER">&nbsp;<A NAME="BM8068">&nbsp;</A> </P>
+<STRONG><P>Figure 1:</STRONG> Total electron density map for benzene</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <A NAME="BM7794">&nbsp;</A> <A NAME="BM7795">&nbsp;</A> <A NAME="BM7796">&nbsp;</A> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{benzene2}$ -->
+  <IMG SRC="img332.gif" ALT="includegraphics{benzene2}" width="502" height="502"><BR>
+&nbsp; <BR>
+Keywords used are: </P>
+<TT><P>CENTER=(0.7,1.2,0) LINE=(0.0,0.0,1.0) EDGE=6.0</TT> </P>
+<P>Atom C<SUB>1</SUB> is at the origin, C<SUB>2</SUB> is at coordinates (0.0,1.39,0), and C<SUB>3</SUB> is at (2.09,1.20,0). Note that, because the atomic orbitals of carbon have a node at the nucleus, the electron density at every carbon nucleus is almost zero. </DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="d_mol">&nbsp;<A NAME="BM8069"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 2:</STRONG> Bonds map for benzene</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{benzene3}$ -->
+  <IMG SRC="img333.gif" ALT="includegraphics{benzene3}" width="502" height="502"><BR>
+&nbsp; <BR>
+Keywords used: </P>
+<TT><P>CENTER=(0.7,1.2,0) LINE=(0.0,0.0,1.0) EDGE=6.0 BONDS</TT> </P>
+<P>Note the build-up of density <EM>between</EM> all bonded pairs of atoms. </P>
+<P>The six roughly triangular regions represent the loss of electron density, as do the six egg-shaped lobes on the hydrogens. In the center of the benzene ring, there is no significant gain or loss of electron density. </DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="BM7820">&nbsp;</A> </P>
+<STRONG><P>Figure 3:</STRONG> Detail of C-H bond in benzene</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{benzene}$ -->
+  <IMG SRC="img334.gif" ALT="includegraphics{benzene}" width="498" height="252"><BR>
+&nbsp; <BR>
+Keywords used: </P>
+<TT><P>MULT=1 CENTER=(-0.27,-0.5,0) LINE=(0,0,1) EDGE=3 AXIS=.4 GRID NO-CONTOURS</TT> </P>
+<P>This type of plot is best viewed with the contours added in, but for the sake of clarity they have been omitted from this picture. </DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><BR>
+<DIV ALIGN="CENTER">&nbsp;<A NAME="BM8070">&nbsp;</A> </P>
+<STRONG><P>Figure 4:</STRONG> Total electron density map for polyacetylene</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <A NAME="BM7825">&nbsp;</A> <A NAME="BM7826">&nbsp;</A> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{polyacetylene_total}$ -->
+  <IMG SRC="img335.gif" ALT="includegraphics{polyacetylene_total}" width="502" height="502"><BR>
+&nbsp; <BR>
+Keywords used are: </P>
+<TT><P>CENTER=(0.0,0.0,0.0) LINE=(0,0,1) EDGE=7.0</TT> </P>
+<P>The picture is centered on atom C<SUB>1</SUB>, and shows the 'join' of the central unit cell with the adjacent unit cell. Note that the 'join' is quite invisible. </DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><BR>
+<DIV ALIGN="CENTER">&nbsp;<A NAME="BM8071">&nbsp;</A> </P>
+<STRONG><P>Figure 5:</STRONG> Bonds map for polyacetylene</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{polyacetylene_pi}$ -->
+  <IMG SRC="img336.gif" ALT="includegraphics{polyacetylene_pi}" width="502" height="502"><BR>
+&nbsp; <BR>
+Keywords used: </P>
+<TT><P>CENTER=(0.0,0.0,0.6) LINE=(0,0,1) EDGE=7.0 BONDS</TT> </P>
+<P>As with benzene, note the build-up of density <EM>between</EM> all bonded pairs of atoms. In order to show the strong
+<font face="Symbol">p</font>-bond, the center of the plot has been raised 0.6&Aring; above the backbone chain. </DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="d_solids">&nbsp;<A NAME="BM8072"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 6:</STRONG> Graphite, Total Electron Density</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER"><!-- MATH: $\includegraphics{graphite001}$ -->
+  <IMG SRC="img338.gif" ALT="includegraphics{graphite001}" width="502" height="502"><BR>
+&nbsp; <BR>
+Keywords used: </P>
+<TT><P>CENTER=(0.0,0.0,0.0) LINE=(0,0,1) EDGE=4.0</TT> </P>
+<P>The center of the plot is at C<SUB>1,1</SUB> in a 5 *5 array of atoms. The picture therefore shows the 'join' of four unit cells, cells (0,0), (0,-1), (-1,0), and (-1,-1). As with polyacetylene, the 'join' is invisible. </DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P>Although DENSITY has a very simple data-input, users are warned that care is needed in precisely wording a request. As an example, in learning how to use DENSITY a user might want to plot the highest-filled
+<font face="Symbol">p</font>orbital in benzene, and choose the plane to be that of the carbon atoms. At first sight this appears reasonable, but when one recalls that the
+<font face="Symbol">p</font>system has a node in this plane, another choice of plane is seen to be essential. A better choice of plane would be one parallel to the plane of the carbon atoms, but 0.5 to 1.0 &Aring;ngstroms above it. </P>
+<P>Similarly, if only a detail of the molecule is to be studied, it is wasteful to plot the whole molecule. The picture is essentially made up of 2,500 pixels, so fine detail can very easily be lost if the whole molecule is used. </P>
+<P>With one important exception the whole program is written using the FORTRAN-77 standard, so translation to allow DENSITY to run on different machines should not be difficult. FORTRAN-77 does not support graphical functions, and an interface, designed to allow users to easily write their own interfaces, has been written. This interface is, of course, machine-dependent. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html6573"><A HREF="node384.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html6569"></A><A HREF="node375.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html6563"></A><A HREF="node382.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html6571"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html6572"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html6574"><A HREF="node384.html">Data</A></A> <B>Up:</B> <A NAME="tex2html6570"><A HREF="node375.html">Calculation of Electron</A></A> <B>Previous:</B> <A NAME="tex2html6564"><A HREF="node382.html">Bonds</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

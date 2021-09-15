@@ -1,0 +1,23 @@
+##############################################################################
+#
+#   Compile and build MOPAC2012 for Mac OS-X
+#
+##############################################################################
+#
+#  The default operating system is Mac OS-X.
+#  The following set of definitions apply to this OS.
+#
+##############################################################################
+MOPAC_SRC = ./MOPAC_source_code
+OBJ       = ./objects
+FORTRAN_COMPILER = ifort -c -O3 -I.$(OBJ) -module $(OBJ)  -o $@
+FORTRAN_LINKER   = ifort -lpthread -lstdc++ -O3
+O                = o 
+MATH_LINK        =   $(MKLROOT)/lib/libmkl_intel.a \
+                     $(MKLROOT)/lib/libmkl_intel_thread.a \
+                     $(MKLROOT)/lib/libmkl_core.a  \
+                     /opt/intel/composer_xe_2013/lib/libiomp5.a \
+                     -lpthread \
+                     -lm
+EXE              =   /opt/mopac/mopac2012.exe
+include MOPAC_Makefile_files.txt

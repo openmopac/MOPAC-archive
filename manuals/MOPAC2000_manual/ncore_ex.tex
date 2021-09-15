@@ -1,0 +1,69 @@
+\begin{table}
+\caption{\label{ncore}Example of Contents of \comp{NCORE}}
+\index{Arrays!permanent!order of creation}
+\compresstable
+\begin{center}
+\begin{tabular}{crrlr}  \hline
+Type of  &  Size$^{\dag}$ for  & \comp{NCORE}($i$)*  & Name        &  Size \\
+Array    &  Bacteriorhodopsin &    &             & (Symbolic) \\ \hline
+INTEGER& 13,586,596& 14  & \comp{IJBO}         & NUMAT$^2$ \\
+INTEGER&      4,100& 19  & \comp{NCE}          & NORBS-NELECS/2 \\
+INTEGER&      5,013& 20  & \comp{NCF}          & NELECS/2 \\
+INTEGER&      5,013& 21  & \comp{NCOCC}        & NELECS/2 \\
+INTEGER&      4,100& 22  & \comp{NCVIR}        & NORBS-NELECS/2  \\
+INTEGER&      5,013& 24  & \comp{NNCF}         & NELECS/2 \\
+INTEGER&      4,100& 25  & \comp{NNCE}         & NORBS-NELECS/2 \\
+INTEGER&      3,686& 47  & \comp{KOPT}         & NUMAT \\
+INTEGER&      3,686& 41  & \comp{JOPT}         & NUMAT \\
+INTEGER&  1,955,070& 26  & \comp{ICOCC}        & fn(NELECS/2)\\
+INTEGER&  1,599,000& 27  & \comp{ICVIR}        & fn(NORBS-NELECS/2) \\
+INTEGER&      3,686& 40  & \comp{IOPT}         & NUMAT  \\
+INTEGER&     33,174& 32  & \comp{IBONDS}       & 9$*$NUMAT \\
+INTEGER&      3,686& 30  & \comp{NBOND}        & NUMAT \\
+INTEGER&      9,113& 33  & \comp{NFMO}         & NORBS \\
+INTEGER&      3,686&  9  & \comp{NAT}          & NUMAT  \\
+INTEGER&      3,686&  8  & \comp{LABELS}       & NUMAT \\
+INTEGER&     11,058&  4  & \comp{NA,NB,NC}     & 3$*$NUMAT \\
+INTEGER&     11,058& 60  & \comp{NAMO}         & 3$*$NUMAT \\
+INTEGER&     11,058& 61  & \comp{JNDEX}        & 3$*$NUMAT \\
+INTEGER&     22,117&  6  & \comp{LOC}          & 6$*$NUMAT \\
+INTEGER&      9,114& 31  & \comp{IFACT,I1FACT} & NORBS+1  \\
+INTEGER&     73,720& 50  & \comp{JELEM}        &  20$*$NUMAT\\
+INTEGER&      7,372& 10  & \comp{NFIRST,NLAST} & 2$*$NUMAT\\
+INTEGER&      3,686& 13  & \comp{IORBS}        & NUMAT \\
+   REAL&     11,058&  3  & \comp{GEO}          & 6$*$NATOMS \\
+   REAL&      7,372& 34  & \comp{TXTATM}       & 2$*$NATOMS \\
+   REAL&     11,058&  7  & \comp{COORD}        & 3$*$NUMAT \\
+   REAL&     11,058&  5  & \comp{XPARAM}       & 3$*$NATOMS \\
+   REAL&      9,113& 11  & \comp{USPD}         & NORBS \\
+   REAL&      9,113& 12  & \comp{PSPD}         & NORBS \\
+   REAL&      3,686& 51  & \comp{ATMASS}       & NUMAT \\
+   REAL&     11,058& 52  & \comp{REACT}        & 3$*$NUMAT \\
+   REAL&     11,058& 65  & \comp{PROFIL}       & 3$*$NUMAT  \\
+   REAL&      3,686& 73  & \comp{CH}           & NUMAT \\
+   REAL& 25,423,399& 16  & \comp{W}            & \htmlref{N16}{n16} 
+\begin{latexonly}
+(See p.\pageref{n16})
+\end{latexonly}\\
+   REAL&     11,058& 23  & \comp{GRAD}         & 3$*$NATOMS\\
+   REAL&     11,058& 43  & \comp{DXYZ}         & 3$*$NUMAT  \\
+   REAL&    904,417& 17  & \comp{P}            &    MPACK  \\
+   REAL&    904,417& 15  & \comp{H}            &   MPACK\\
+   REAL&    904,417& 18  & \comp{F}            &   MPACK\\
+   REAL&      9,114& 38  & \comp{EIGF}         & NORBS+1 \\
+   REAL&     11,058& 42  & \comp{OLDXYZ}       & 3$*$NUMAT \\
+   REAL&     11,058& 64  & \comp{XPAREF}       & 3$*$NATOMS\\
+   REAL&  4,832,532& 28  & \comp{COCC}         & N28 \\
+   REAL&  3,952,400& 29  & \comp{CVIR}         & N28 \\
+\hline
+\end{tabular}
+ 
+$*$: The elements of \comp{NCORE} are listed in the order in which they
+are filled.  Thus the first permanent integer array created  \comp{IJBO} and
+the first real array, \comp{GEO}.
+
+\dag: The sizes of the arrays for bacteriorhodopsin are given to illustrate
+how big the arrays are for a typical protein of 231 residues.
+\end{center}
+\end{table}
+

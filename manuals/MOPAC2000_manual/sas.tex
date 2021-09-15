@@ -1,0 +1,52 @@
+\subsection{Solvent Accessible Surface}\index{SAS|ff}
+\index{Solvent Accessible Surface|ff}
+The solvent accessible surface is a continuous surface of the molecule which
+can be reached by the center of charge of a solvent molecule.  The calculation 
+of the SAS is carried out as follows:
+
+\begin{itemize} 
+\item Each atom is assigned a van der Waals' radius.  VdW radii used in COSMO
+are given in Table~\ref{vdw}.
+\begin{table}
+\caption{\label{vdw} Van der Waals radii (\AA ) used in COSMO}
+\begin{center}
+\begin{tabular}{llllllllllllll}
+\hline
+ I  & R    & II & R    &III& R    &IV & R    & V & R    &VI & R    &VII& R \\
+\hline
+ H  & 1.08 & \\
+ Li & 1.80 &    &      &   &      & C & 1.53 & N & 1.48 & O & 1.36 & F & 1.30\\
+ Na & 2.30 &    &      & Al& 2.05 & Si& 2.10 & P & 1.75 & S & 1.70 & Cl& 1.65\\
+ K  & 2.80 & Ca & 2.75 &   &      &   &      &   &      &   &      &Br & 1.80\\
+    &      &    &      &   &      &   &      &   &      &   &      &I  &  2.05\\
+\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+\item To each radius is added a distance equal to the radius of the solvent. By
+default, this is 1.0\AA, but may be changed by the user using 
+\comp{RSOLV=$n.nn$}. This gives the distance from the nucleus to the center of
+a solvent molecule.
+\item A set of points is generated on this surface. These points produce a
+basic grid.
+\item All points which are inside the surface of any other atom are excluded.
+\item The remaining points are moved towards the center of the atom.  The
+distance moved is equal to the distance of the center of charge of the solvent
+molecule from the center of the solvent molecule.  By default, this distance is
+set to \comp{RSOLV}, but may be set explicitly by keyword \comp{RSOLV=$n.nn$}.
+\item Each of the remaining points represents a small area of the solvent
+accessible surface.  The total SAS is calculated from the number of points.
+\end{itemize}
+
+From this definition of the SAS we see that the SAS of each atom is a  surface
+of radius equal to the van der Waals' radius plus the radius of the solvent
+molecule minus the distance of the center of charge of the solvent molecule to
+the center of the solvent molecule.  In other words, the radius is the VdW
+radius plus the distance from the surface of the solvent molecule to the center
+of charge of the solvent molecule.  By default, this extra distance is zero.
+Only that part of the atom surface which can be touched by the solvent molecule
+is used.  This means that only those atoms on the surface of the molecule can
+contribute to the SAS.  Of those atoms  that are on the surface of the molecule
+there will be parts of the surface which cannot be reached by the solvent
+because the solvent molecule is too bulky.

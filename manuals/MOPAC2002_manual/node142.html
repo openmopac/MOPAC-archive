@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>CROSS </TITLE>
+<META NAME="description" CONTENT="CROSS ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node143.html">
+<LINK REL="previous" HREF="node141.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node143.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html3611"
+ HREF="node143.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html3607"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A>
+<a NAME="tex2html3601" href="coswrt.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></a> 
+<A NAME="tex2html3609"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html3610"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html3612"
+ HREF="node143.html">CUTOF1=n.nn </A>
+<B> Up:</B> <A NAME="tex2html3608"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <a NAME="tex2html3602" href="coswrt.html">COSWRT </a>
+<!--End of Navigation Panel-->
+<H2>
+<TT>CROSS</TT> 
+</H2>
+When <TT>CROSS</TT> is specified, the minimum energy geometry subject to the
+constraint that two electronic states are degenerate is calculated using the
+method of Anglada and Bofill&nbsp;[<A
+ HREF="node715.html#cross">28</A>].  In other words, the lowest energy
+intersystem crossing geometry is generated.
+<P>
+For <TT>CROSS</TT> to work, an electronic  excited state must be defined using <TT><a href="node292.html">ROOT=<i>n</i></a></TT>, in which case the states <I>n</I> and <I>n</I>-1 will be used in the
+intersystem crossing.  These states can be further defined by use of keywords
+such as <TT><a href="node306.html">SINGLET</a></TT>or <TT> 
+<a href="node333.html">TRIPLET</a></TT>, etc.  For example, for a singlet-triplet
+intersystem  crossing, <TT>ROOT=2</TT> could be used.  For a singlet-singlet
+intersystem crossing <TT>ROOT=2 SINGLET</TT> might be suitable, and for a 
+triplet-triplet crossing, <TT>ROOT=2 TRIPLET</TT> could be used.
+<P>
+<TT>CROSS</TT> works best when the states start off degenerate, or almost degenerate.
+If they are far apart in energy, the calculation will likely fail.
+<P>
+In addition to <TT>CROSS</TT> and <TT>ROOT=<I>n</I></TT>, other keywords, defining the C.I.,
+will be needed.
+<P>
+A recommended sequence of&nbsp; steps involved in a <TT>CROSS</TT> calculation 
+are:
+<P>
+(A) Optimize the geometry of the high-energy system (the reactant).<br>
+(B) Re-optimize the geometry using C.I. of the size needed in the <TT>CROSS</TT> 
+calculation.&nbsp;
+<P>
+Somehow generate a geometry where the desired states are degenerate.&nbsp; This 
+requires a good knowledge of the system involved.&nbsp; For example:<P>
+(C) Set up a reaction path to move in the direction of the low energy form.<br>
+(D) Identify the geometry where the desired states are degenerate.<br>
+(E) Run the <TT>CROSS</TT> calculation.<P>
+<b>Example of a CROSS calculation</b><P>
+Consider the decomposition of 1,2-dioxetane into two molecules of formaldehyde, 
+in which the crossing point wanted involves a singlet and a triplet state having 
+the same energy.&nbsp; This is a little artificial, but illustrates the steps 
+involved.<P>
+First, set up a guessed geometry for 1,2-dioxetane, Figure 1.&nbsp; Two dummy 
+atoms are used in this geometry; they are present so that later on a reaction 
+path can be set up, in which the two oxygen atoms are forced apart.&nbsp; The 
+first dummy atom is defined as being midway between the two carbon atoms, and 
+the second dummy atom is defined as being midway between the two oxygen atoms.&nbsp; 
+This is achieved using <TT>SYMMETRY</TT> and the (locked) angles of 180 degrees. 
+The system has C<sub>2v</sub> symmetry.<P align="center">
+<b>Figure 1</b>: <b>Guessed geometry of 1,2-dioxetane.</b><div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td><TT>MNDO SYMMETY<br>
+      1,2 - Dioxetane<br>
+      <br>
+      XX<br>
+      XX 1.6 1&nbsp;&nbsp; 0 0&nbsp;&nbsp; 0 0 1<br>
+      C&nbsp; 0.7 1&nbsp; 90 0&nbsp;&nbsp; 0 0 1 2<br>
+      C&nbsp; 0.7 0 180 0&nbsp;&nbsp; 0 0 1 3 2<br>
+      O&nbsp; 0.7 1&nbsp; 90 0&nbsp;&nbsp; 0 0 2 1 3<br>
+      O&nbsp; 0.7 0 180 0&nbsp;&nbsp; 0 0 2 5 1<br>
+      H&nbsp; 1.0 1 109 1&nbsp; 90 1 3 1 2<br>
+      H&nbsp; 1.0 0 109 0 -90 0 3 1 2<br>
+      H&nbsp; 1.0 0 109 0&nbsp; 90 0 4 1 2<br>
+      H&nbsp; 1.0 0 109 0 -90 0 4 1 2<br>
+      <br>
+      3 1 4<br>
+      5 1 6<br>
+      7 1 8 9 10<br>
+      7 2 8 9 10<br>
+      7 3 9<br>
+      7 14 8 10<br>
+&nbsp;</TT></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<P>
+After optimizing the geometry, a reaction path is set up, Figure 2. In this, the 
+O-O distance starts at 2*0.656 Angstroms, and increases to 1.4, 1.6, 1.8, etc. 
+A.&nbsp; The geometry is allowed to optimize, subject to the symmetry constraint 
+that it remains C<sub>2v</sub>. During this reaction, the triplet excited state 
+drops in energy, until at an O-O distance of 2.0 Angstroms it became very small.<P>
+<TT><a href="node183.html">GEO-OK</a></TT> is used to prevent the run failing when degenerate levels are 
+encountered - that is expected in this type of calculation.<P>
+<TT><a href="node134.html">C.I.=2</a></TT> is used because a C.I. is necessary.&nbsp; In more realistic 
+calculations, higher C.I.s might be needed, e.g., <TT>C.I.=4.</TT><P>
+<TT><a href="node212.html">MECI</a></TT> is used, as we want to monitor the singlet-triplet gap.<P>
+Keywords <TT><a href="node313.html">STEP=n.nn</a></TT> and <TT>
+<a href="node268.html">POINT=n</a></TT> are not used, as we need full 
+outputs for each optimized geometry.<P>
+&nbsp;<P align="center">
+<b>Figure 2</b>: <b>Reaction path for Decomposition of 1,2-dioxetane.</b><div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td><TT>GEO-OK C.I.=2 MECI MNDO SYMMETRY<br>
+      1,2 - Dioxetane<br>
+      <br>
+      XX 0.000000&nbsp; 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 0 
+      0 0 <br>
+      XX 1.439169&nbsp; 1&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 
+      0 0 <br>
+      C&nbsp; 0.778102&nbsp; 1&nbsp; 90.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 
+      2 0 <br>
+      C&nbsp; 0.778102&nbsp; 0 180.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 3 2
+      <br>
+      O&nbsp; 0.656227 -1&nbsp; 90.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 2 1 3
+      <br>
+      O&nbsp; 0.656227&nbsp; 0 180.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 2 5 1
+      <br>
+      H&nbsp; 1.109383&nbsp; 1 117.548994 1&nbsp; 113.537541 1 3 1 2 <br>
+      H&nbsp; 1.109383&nbsp; 0 117.548994 0 -113.545543 1 3 1 2 <br>
+      H&nbsp; 1.109383&nbsp; 0 117.548994 0&nbsp; 113.545239 1 4 1 2 <br>
+      H&nbsp; 1.109383&nbsp; 0 117.548994 0 -113.537234 1 4 1 2 <br>
+      <br>
+      3 1 4<br>
+      5 1 6<br>
+      7 1 8 9 10<br>
+      7 2 8 9 10<br>
+      7 3 9<br>
+      7 14 8 10<br>
+      <br>
+      0.7 0.8 0.9 1.0 1.1<br>
+      &nbsp;</TT></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<P>
+At an O-O separation of 2 A, the singlet-triplet energy difference is small.&nbsp; 
+Normally, the optimized geometry at that point would be used to start the <TT>
+CROSS</TT> calculation, but because this system is very simple, the original 
+geometry from Figure 2 was used, with the O-O separation set to 2 A.<P>
+A common problem with systems that have symmetry is that the symmetry is 
+retained, even when it should be lost.&nbsp; To avoid this, the angle and 
+dihedral of one oxygen are perturbed, by 5 degrees.&nbsp; In addition, the 
+symmetry constraints on the hydrogen atoms are removed.&nbsp; The only symmetry 
+retained is that the dummy atoms should be exactly half way between the carbon 
+atoms and between the oxygen atoms. In other words, all symmetry is removed, and 
+the system perturbed to remove the original symmetry.<P>
+The <TT>CROSS</TT> calculation was run on the system shown in Figure 3.&nbsp; 
+This resulted in a rapid optimization to a system with C<sub>2v</sub> symmetry.<P align="center">
+<b>Figure 3</b>: <b>Refinement of Singlet-Triplet Intersection for 
+1,2-dioxetane.</b><div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td><TT>CROSS ROOT=2 GEO-OK C.I.=2 MECI MNDO SYMMETRY<br>
+      1,2 - Dioxetane<br>
+      <br>
+      XX 0.000000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 0 0 0 <br>
+      XX 1.439169 1&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 0 0 <br>
+      C&nbsp; 0.778102 1&nbsp; 90.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 2 0<br>
+      C&nbsp; 0.778102 0 180.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 3 2 <br>
+      O&nbsp; 1.000000 1&nbsp; 95.000000 1&nbsp;&nbsp;&nbsp; 5.000000 1 2 1 3 <br>
+      O&nbsp; 1.000000 0 180.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 2 5 1  <br>
+      H&nbsp; 1.109383 1 117.548994 1&nbsp; 113.537541 1 3 1 2 <br>
+      H&nbsp; 1.109383 1 117.548994 1 -113.545543 1 3 1 2  <br>
+      H&nbsp; 1.109383 1 117.548994 1&nbsp; 113.545239 1 4 1 2 <br>
+      H&nbsp; 1.109383 1 117.548994 1 -113.537234 1 4 1 2 <br>
+      <br>
+      3 1 4<br>
+      5 1 6<br>
+&nbsp;</TT></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<P>
+The optimized geometry is shown in Figure 4.<P align="center">
+<b>Figure 4</b>: <b>Refined Geometry of Singlet-Triplet Intersection for 
+1,2-dioxetane.</b><div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td><TT>CROSS ROOT=2 GEO-OK C.I.=2 MECI MNDO SYMMETRY<br>
+      1,2 - Dioxetane<br>
+      <br>
+      XX 0.000000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 0 0 0<br>
+      XX 1.417514 1&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 0 0<br>
+      C&nbsp; 0.745329 1&nbsp; 90.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 2 0<br>
+      C&nbsp; 0.745329 0 180.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 3 2<br>
+      O&nbsp; 0.998732 1&nbsp; 89.998851 1&nbsp;&nbsp;&nbsp; 0.024264 1 2 1 3<br>
+      O&nbsp; 0.998732 0 180.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 2 5 1 <br>
+      H&nbsp; 1.113373 1 117.476881 1&nbsp; 117.670381 1 3 1 2<br>
+      H&nbsp; 1.113407 1 117.548994 0 -117.710810 1 3 1 2<br>
+      H&nbsp; 1.113374 1 117.548994 0&nbsp; 117.671350 1 4 1 2<br>
+      H&nbsp; 1.113450 1 117.548994 0 -117.698139 1 4 1 2<br>
+      <br>
+      3 1 4<br>
+      5 1 6<br>
+&nbsp;</TT></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

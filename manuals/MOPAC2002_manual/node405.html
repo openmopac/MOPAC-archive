@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>PHASE</TITLE>
+<META NAME="description" CONTENT="PHASE">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node406.html">
+<LINK REL="previous" HREF="node404.html">
+<LINK REL="up" HREF="node392.html">
+<LINK REL="next" HREF="node406.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6877"
+ HREF="node406.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6873"
+ HREF="node392.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6867"
+ HREF="node404.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6875"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6876"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6878"
+ HREF="node406.html">PSI=n</A>
+<B> Up:</B> <A NAME="tex2html6874"
+ HREF="node392.html"> Definitions of Second</A>
+<B> Previous:</B> <A NAME="tex2html6868"
+ HREF="node404.html">OCCUPANCY</A>
+<H3>
+<TT>PHASE</TT>
+</H3>
+Two formats for this are possible. If <TT>PHASE</TT> is specified, the data being
+added to the plot is multiplied by -1, i.e. negated.  If <TT>PHASE=<I>n</I>.<I>nnnn</I></TT>
+is used, the data are multiplied by <I>n</I>.<I>nnnn</I>. For example, to form the
+normalized M.O. of formaldehyde resulting from equal and opposite amounts of
+the second and third M.O.s, i.e. 0.7071(M.O.2 - M.O.3), the following  data
+could be used.
+<PRE>Line 1:
+Line 2:   FORMALDEHYDE
+Line 3: CENTER=2 LINE=(0,0,1) EDGE=1 PSI=2 PHASE=0.7071 ADD
+Line 4: CENTER=2 LINE=(0,0,1) EDGE=1 PSI=3 PHASE=-0.7071
+Line 5:
+</PRE>Note that the first phase is positive. It is not the plot that is reversed,
+only the data going in to the plot, so that the data arising from line 4 are to
+be multiplied by -0.7071 before being added to the plot.
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

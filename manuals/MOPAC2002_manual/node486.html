@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Multi-Electron Configuration Interaction</TITLE>
+<META NAME="description" CONTENT="8.4 Multi-Electron Configuration Interaction">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node503.html"><LINK REL="previous" HREF="node458.html"><LINK REL="up" HREF="node439.html"><LINK REL="next" HREF="node487.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html8129"><A HREF="node487.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8125"></A><A HREF="node439.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8119"></A><A HREF="node485.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8127"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8128"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8130"><A HREF="node487.html">Starting electronic configuration</A></A> <B>Up:</B> <A NAME="tex2html8126"><A HREF="node439.html">Theory</A></A> <B>Previous:</B> <A NAME="tex2html8120"><A HREF="node485.html">Energies of Isolated</A></A> <BR>
+<H1>Multi-Electron Configuration Interaction </H1>
+<P>For some systems a single determinant is insufficient to describe the electronic wave function. For example, square cyclobutadiene and twisted ethylene require at least two configurations to describe their ground states. More than one configuration is also needed if an excited state is required, for example, if the RHF SCF converges on a ground state or, if half-electron methods are used, on a mixture of states, while the excited state involves a different configuration.&nbsp; Radicals also present a difficulty at the RHF level in that the SCF wavefunction corresponds to an equal mixture of the two doublets, with a corresponding error in the total energy. In order to correct for this error, MOPAC contains a very large Multi-Electron Configuration Interaction calculation, MECI&nbsp;[<A HREF="node715.html#meci">39</A>] (pronounced "me-sigh") which, in addition to automatically correcting "half-electron" energies, allows almost any configuration interaction calculation to be performed. Because of its complexity, two distinct levels of input are supported; the default values will be of use to the novice while an expert has available an exhaustive set of keywords from which a specific C.I. can be tailored. </P>
+<P>MECI is a completely general C.I. The resulting states are space and spin-quantized, there is no restriction on total spin, the starting wavefunction can be closed or open shell, and both even and odd electron systems are allowed, although for simplicity in describing the method, the starting configuration is assumed to be closed-shell. </P>
+<P><HR>
+
+<UL>
+<LI><A NAME="tex2html8131"><A HREF="node487.html">Starting electronic configuration</A></A> </LI>
+<LI><A NAME="tex2html8132"><A HREF="node488.html">Microstates</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html8133"><A HREF="node489.html">Permutations</A></A> </LI>
+<LI><A NAME="tex2html8134"><A HREF="node490.html">Energy of microstates</A></A> </LI>
+<LI><A NAME="tex2html8135"><A HREF="node491.html">Zero of energy used in MECI</A></A> </LI></UL>
+
+<LI><A NAME="tex2html8136"><A HREF="node492.html">Construction of secular determinant</A></A> </LI>
+<LI><A NAME="tex2html8137"><A HREF="node493.html">States arising from various calculations</A></A> </LI>
+<LI><A NAME="tex2html8138"><A HREF="node494.html">Spin angular momentum</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html8139"><A HREF="node495.html">Calculation of spin-states</A></A> </LI></UL>
+
+<LI><A NAME="tex2html8140"><A HREF="node496.html">Choice of State to be Optimized</A></A> </LI>
+
+<UL>
+<LI><A NAME="tex2html8141"><A HREF="node497.html">Quantum Numbers</A></A> </LI>
+<LI><A NAME="tex2html8142"><A HREF="node498.html">Polarizability</A></A> </LI>
+<LI><A NAME="tex2html8143"><A HREF="node499.html">Franck-Condon considerations</A></A> </LI></UL>
+
+<LI><A NAME="tex2html8144"><A HREF="node500.html">Definition of some C.I. Keywords</A></A> </LI>
+<LI><A NAME="tex2html8145"><A HREF="node501.html">Degenerate States</A></A> </LI>
+<LI><A NAME="tex2html8146"><A HREF="node502.html">Calculation of Spin Density</A></A> </LI></UL>
+
+<P><!--End of Table of Child-Links--></P>
+<P><HR></P>
+<P>&nbsp;</P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

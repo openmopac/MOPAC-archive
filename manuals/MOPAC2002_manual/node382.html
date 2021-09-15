@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>Bonds</TITLE>
+<META NAME="description" CONTENT="Bonds">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node381.html">
+<LINK REL="up" HREF="node376.html">
+<LINK REL="next" HREF="node383.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html6561"
+ HREF="node383.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6557"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6553"
+ HREF="node381.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6559"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6560"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6562"
+ HREF="node383.html"> Program DENSITY</A>
+<B> Up:</B> <A NAME="tex2html6558"
+ HREF="node376.html"> Theory</A>
+<B> Previous:</B> <A NAME="tex2html6554"
+ HREF="node381.html"> Molecular Orbitals</A>
+<BR>
+<H4><A NAME="SECTION001010060000000000000">
+Bonds</A>
+</H4>
+Bonds can be modeled by generating a difference map.  The density due to
+the atoms can be subtracted from the density arising from the density matrix.
+The density due to the atoms is that given by MOPAC: i.e., using the
+un-re-normalized M.O.s, but spherically averaged before use, thus:
+<BR>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{eqnarray}
+P^{\dagger}_{ss}& =& P_{ss} \nonumber \\
+P^{\dagger}_{p_xp_x}= P^{\dagger}_{p_yp_y}=P^{\dagger}_{p_zp_z}& =&\frac{1}{3}(P_{p_xp_x}+P_{p_yp_y}+P_{p_zp_z})\nonumber \\
+P^{\dagger}_{d_{x^2-y^2}d_{x^2-y^2}}=P^{\dagger}_{d_{xz}d_{xz}} &=&\nonumber \\
+P^{\dagger}_{d_{z^2}d_{z^2}}= P^{\dagger}_{d_{yz }d_{yz }}=P^{\dagger}_{d_{xy }d_{xy }}&=&\frac{1}{5}(P_{d_{x^2-y^2}d_{x^2-y^2}} +P_{d_{xz}d_{xz}} +P_{d_{z^2}d_{z^2}} +
+P_{d_{yz }d_{yz }}+P_{d_{xy }d_{xy }}) \nonumber
+\end{eqnarray} -->
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="22" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img325.gif"
+ ALT="$\displaystyle P^{\dagger}_{ss}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><I>P</I><SUB><I>ss</I></SUB></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="134" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img326.gif"
+ ALT="$\displaystyle P^{\dagger}_{p_xp_x}= P^{\dagger}_{p_yp_y}=P^{\dagger}_{p_zp_z}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="151" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img327.gif"
+ ALT="$\displaystyle \frac{1}{3}(P_{p_xp_x}+P_{p_yp_y}+P_{p_zp_z})$"></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="131" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img328.gif"
+ ALT="$\displaystyle P^{\dagger}_{d_{x^2-y^2}d_{x^2-y^2}}=P^{\dagger}_{d_{xz}d_{xz}}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD>&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="154" HEIGHT="37" ALIGN="MIDDLE" BORDER="0"
+ SRC="img329.gif"
+ ALT="$\displaystyle P^{\dagger}_{d_{z^2}d_{z^2}}= P^{\dagger}_{d_{yz }d_{yz }}=P^{\dagger}_{d_{xy }d_{xy }}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="312" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img330.gif"
+ ALT="$\displaystyle \frac{1}{5}(P_{d_{x^2-y^2}d_{x^2-y^2}} +P_{d_{xz}d_{xz}} +P_{d_{z^2}d_{z^2}} +
+P_{d_{yz }d_{yz }}+P_{d_{xy }d_{xy }})$"></TD>
+</TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+Using this re-normalized, isotropic, density matrix the difference map can now be
+calculated:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<!-- MATH: \begin{displaymath}
+\rho(x,y,z) = \sum_{\lambda}\sum_{\sigma}
+\varphi_{\lambda}(x,y,z)P_{\lambda\sigma}^{\dagger}\varphi_{\sigma}(x,y,z) -\sum_{\lambda}
+P^{\dagger}_{\lambda\lambda}(\varphi_{\lambda}(x,y,z))^2
+\end{displaymath} -->
+<IMG
+ WIDTH="389" HEIGHT="43"
+ SRC="img331.gif"
+ ALT="\begin{displaymath}\rho(x,y,z) = \sum_{\lambda}\sum_{\sigma}
+\varphi_{\lambda}(x...
+...mbda}
+P^{\dagger}_{\lambda\lambda}(\varphi_{\lambda}(x,y,z))^2
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+This map is the most informative, but is somewhat difficult to see when first used.
+<P>
+The difference map will <EM>always</EM> have both positive and negative regions in
+space.  For most, but not all systems, bonding is indicated by a build-up of
+density between two atoms.  Exceptions are, for example, F<SUB>2</SUB> and Cl<SUB>2</SUB>.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html6561"
+ HREF="node383.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html6557"
+ HREF="node376.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html6553"
+ HREF="node381.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html6559"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html6560"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html6562"
+ HREF="node383.html"> Program DENSITY</A>
+<B> Up:</B> <A NAME="tex2html6558"
+ HREF="node376.html"> Theory</A>
+<B> Previous:</B> <A NAME="tex2html6554"
+ HREF="node381.html"> Molecular Orbitals</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

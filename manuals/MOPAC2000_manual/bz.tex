@@ -1,0 +1,389 @@
+\chapter{Generation of Band Structures}
+\section{Program BZ}
+\subsection{Description} \index{BZ!description of}
+Unlike molecules, whose eigenvalue spectrum consists of infinitely sharp lines
+(Kronecker-$\delta$ type), the eigenvalues of solids form bands.  These bands
+are conventionally represented by Brillouin Zones (BZ).  For a polymer, the BZ
+consists of a line, for a layer structure, a surface, and for a solid, a
+three-dimensional shape.  The dimensions of the BZ are inverse distance: if two
+polymers have unit cells of 10 and 8 \AA, then the ratio of their unit cell
+translation vectors is 1.25:1, and the ratio of their BZ's is 1:1.25.
+
+Although MOPAC can generate all the information necessary  to generate
+band-structures, for ease of use this job is given to a special program called
+BZ. \  MOPAC is designed to run in batch mode, but drawing band-structures is
+an interactive operation.
+
+Before BZ can be run, a MOPAC calculation must first be run in order to
+generate the data needed by BZ. \  Most of this data is invisible to the user,
+but the user must supply to MOPAC one or two data which BZ will use.  These
+data are:
+
+\begin{description}
+\item[\comp{MERS=($n_1$,$n_2$,$n_3$)}]~\\
+(See Chapter~\ref{makpol:mers}  and Section~\ref{mopac:mers})  BZ needs to know how
+the Fock matrix is organized, and  \comp{MERS} gives the number of unit cells
+in each direction.  MOPAC uses the keyword \comp{MERS} as the prompt to write
+out a file for use by BZ.  Within MOPAC, \comp{MERS} has no other use.
+\index{MERS}
+\item[\comp{BCC} \normalfont{(optional)}]~\\
+Like \comp{MERS}, \comp{BCC} is not used by MOPAC. \comp{BCC} (see
+Chapter~\ref{makpol:bcc})  indicates that the system is Body-Centered-Cubic; in
+other words, that every odd unit cell is missing.  If the keyword \comp{BCC} is
+present, MOPAC informs BZ that the system is Body-Centered-Cubic.
+\end{description}
+
+
+BZ is an interactive utility program.  It can perform three types of
+calculation:
+\begin{itemize}
+\item  Points in $k$-space are to be studied.
+\item  Lines in $k$-space are to be drawn.
+\item  Surfaces in $k$-space are to be drawn.
+\end{itemize}
+
+\subsection{Data input for BZ}\index{Data! for BZ}
+Once the MOPAC calculation has been completed, the band structure can be
+generated. The instruction to generate band structures is:
+
+\comp{bz $<$filename$>$}
+
+where \comp{$<$filename$>$} is the name of the file. This must be the same as
+that used for the MOPAC calculation.
+
+When BZ starts, it invites the user to specify the type
+of calculation to be performed. The allowed types are:
+\begin{description}
+\item[0] Points in $k$-space are to be studied.
+\item[1] Lines in $k$-space are to be drawn.
+\item[2] Surfaces in $k$-space are to be drawn.
+\end{description}
+
+Instead of supplying data at the prompt, a data set can be supplied, using the
+ command:
+
+\comp{bz $<$filename$>$ $<$filename2$>$}
+
+A second file, called \comp{$<$filename2$>$.bz}, must exist.  This file will
+contain the data that would otherwise be supplied by the prompt.
+
+\index{Help! with BZ}
+In addition, the user is invited to enter the number `3' to request help. Help
+describes diagnostic key-words which allow an interested user to follow the
+calculation.
+
+Some of the operations in BZ are very sensitive to perturbations in the Fock
+matrix, specifically any perturbations which lower the symmetry.  The first
+thing BZ does, therefore, is to restore symmetry.  To do this, BZ reads in a
+list of symmetry operations and symmetrizes the Fock matrix.
+
+At the present time, the user must supply all operations of the group.
+Eventually this will be done automatically by the program, but for now the job
+of defining symmetry is given to the user.
+
+\subsubsection{Structure of $<$filename$>$.ops}
+\index{Space group!operations}
+This file holds the definitions of the symmetry operations for the space-group.
+The format is `free format' - one or more spaces are treated as one space. The
+first line should contain one of the following two words: ``Cartesian'' or
+``Crystallographic''.  If ``Cartesian'' is selected, then the rotation axis is
+relative to the Cartesian coordinates of the atoms; if ``Crystallographic'' is
+selected, then the rotation axis is relative to the crystal coordinates of the
+atoms.  (In practice, ``Cartesian'' is {\em much} easier to use.)
+
+Each operation is defined by one line and is composed of 12 data.
+In order, these data are:
+\begin{enumerate}
+\item A `1' or `0'.  `1' if the operation is composed of the inversion operation times
+a rotation, `0' if the operation is a pure rotation.
+\item The non-primitive translations.  These are given as their reciprocals, thus
+a (0.5,0.5,0.0) translation would be entered as `2~2~0'. The absence of
+a non-primitive translation is indicated by a zero. (three numbers)
+\item The rotation expressed as a fraction of a circle.
+\item The axis about which the operation is performed. Units are
+Cartesian coordinates, or, if ``Crystallographic'' is selected, the crystal
+coordinates. (three numbers)
+\item The center about which the operation is performed. Units are
+Cartesian coordinates, in Angstroms. (three numbers)
+\item A text string describing the operation.
+\end{enumerate}
+
+The operations list is terminated by an operation which has a `2' for the
+inversion option.
+
+Examples of these operations are illustrated in Table~\ref{sgo}
+by the 10 classes of operation for the O$_h$ group in O$_h^7$.
+
+
+The Fock matrix will be symmetrized if, and only if, every operation of
+the group is represented once.  For O$_h$, this would involve a total of 49
+lines, 48 for the operations of O$_h$, and one line to terminate the operations
+file.
+
+% 24 lines, including this one
+\begin{table}
+\caption{\label{sgo}
+ Space-Group Operations of O$_h^7$}
+\index{oh7@{$O_h^7$}|ff}
+\begin{center}
+\begin{tabular}{lllllllrrrll}\\ \hline
+i& \multicolumn{3}{c}{N.P.T}  & Rotation & \multicolumn{3}{c}{Axis of Rotation} &
+ \multicolumn{3}{c}{Center of Operation}& Name\\ \hline
+0& 0& 0& 0& 0.0     &  0.0&0.0 &1.0 &  0.0& 0.0& 0.0 &  Identity  \\
+0& 0& 0& 0& 0.3333  &  1.0&1.0 &1.0 &  0.0& 0.0& 0.0 &  C$_3$  \\
+0& 0& 0& 0& 0.5     &  1.0&0.0 &0.0 &  0.0& 0.0& 0.0 &  C$_2$=C$_4^2$  \\
+0& 2& 2& 2& 0.5     &  1.0&0.0 &-1.0 & 0.0& 0.0& 0.0 &  C$_2$  \\
+0& 2& 2& 2& 0.25    &  0.0&0.0 &1.0 &  0.0& 0.0& 0.0 &  C$_4$  \\
+1& 2& 2& 2& 0.0     &  0.0&0.0 &1.0 &  0.0& 0.0& 0.0 &  Inversion  \\
+1& 0& 0& 0& 0.25    &  0.0&0.0 &1.0 &  0.0& 0.0& 0.0 &  S$_4$  \\
+1& 0& 0& 0& 0.5     &  1.0&1.0 &0.0 &  0.0& 0.0& 0.0 &  $\sigma_d$  \\
+1& 2& 2& 2& 0.333333&  1.0&1.0 &1.0 &  0.0& 0.0& 0.0 &  S$_6$  \\
+1& 2& 2& 2& 0.5     &  0.0&0.0 &1.0 &  0.0& 0.0& 0.0 &  $\sigma_h$  \\
+2& 0& 0& 0& 0.0     &  0.0&0.0 &1.0 &  0.0& 0.0& 0.0 &  End  \\ \hline
+\end{tabular}
+
+N.P.T.: Non-Primitive Translation \end{center}
+\end{table}
+
+\subsection{Calculating Points in $k$-space}
+\index{ksp@{$k$-space}!calculating points in}
+
+A point in $k$-space is specified by one number for a polymer, two
+numbers for a layer system, and three numbers for a solid.   All symmetry
+points and lines for diamond are shown in Table~\ref{sod} and Figure~\ref{oh7}.
+% 21 lines, including this one
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+% \setlength{\unitlength}{0.1cm}
+\begin{center}
+% \begin{picture}(100,100)
+% \put(62,47){$\Gamma$}
+% \put(106,42){X}
+% \put(108,68){W}
+% \put(107.5,58){$\longleftarrow$Z}
+% \put(96.5,54){S$\longrightarrow$}
+% \put(84,44){$\Delta$}
+% \put(100.2,59.5){U}
+% \put(76,71){L}
+% \put(92,71){Q}
+% \put(56,80){K}
+% \put(61,63){$\Sigma$}
+% \put(69,59){$\Lambda$}
+% %\put(14,38){\psfig{figure=oh7.ps}}
+% \put(14,38){\includegraphics{oh7}}
+% \end{picture}
+\includegraphics{oh7}
+\end{center}
+\caption{\label{oh7}Brillouin zone for Diamond}
+\end{figure}
+A ``random'' point is indicated by the number 0.123.  (Note: 0.377 = 0.500 -
+0.123)
+
+These high-symmetry points have associated subgroup symmetries, thus $\Gamma $
+has the symmetry O$_h$, $\Lambda $ has the symmetry C$_{3v}$, and X has the
+symmetry D$_{4h}$.
+
+\subsubsection{Little Groups}\index{Little groups|(}
+The symmetry operations supplied in \comp{ $<$filename$>$.ops} are used to
+generate a little group of the space group.  A ``little group'' is the
+sub-group of the space-group at a specific point in $k$-space.  There are too
+many little groups to allow all the irreducible representations to be labeled.
+In addition, there is no generally-accepted convention for describing them.
+Because of this, the little group is given as a group-table.  Thus the little
+group for $\Gamma$ would have the form shown in Table~\ref{lgd}.
+
+% 22 lines, including this line
+\begin{table}
+\begin{center}
+\caption{\label{sod} Symmetry Points in $k$-space for Diamond}
+\begin{tabular}{lllcc} \\ \hline
+\multicolumn{3}{c}{Point} & Little Group* & Symbol\\ \hline
+  0.000& 0.000& 0.000  & O$_h$ &  $\Gamma$\\
+  0.500& 0.000& 0.000  & (D$_{4h}$)&X\\
+  0.500& 0.250& 0.000  & (C$_{2v}$)&W\\
+  0.500& 0.125& 0.125  & (C$_{2v}$)&U\\
+  0.375& 0.375& 0.000  & (C$_{2v}$)&K\\
+  0.250& 0.250& 0.250  & D$_{3d}$ &L\\
+  0.123& 0.000& 0.000  & C$_{4v}$ &$\Delta $\\
+  0.500& 0.123& 0.000  & (C$_{2v}$) &Z\\
+  0.500& 0.045& 0.045  & (C$_{2v}$)&S\\
+  0.123& 0.123& 0.000  & C$_{2v}$ &$\Sigma $\\
+  0.123& 0.250& 0.377  &  C$_{2}$ &Q\\
+  0.123& 0.123& 0.123  & C$_{3v}$ &$\Lambda $\\ \hline
+\end{tabular}
+
+* Point groups in parentheses only approximate little groups.\end{center}\end{table}
+\begin{table}
+\begin{center}
+\caption{\label{lgd} Little Group for $\Gamma$ for Diamond}
+\begin{tabular}{lrrrrrrrrrrrr}\\ \hline
+Level & Energy & $\Gamma$ & E & C$_3$ & C$_2$=C$_4^2$ & C$_2$ & C$_4$
+ & I & S$_4$ & $\sigma_d$ & S$_6$
+&$\sigma_h$ \\ \hline
+  1& -58.0408& 1& 1& 1& 1& 1 &1&1&1&1&1&1 \\
+  2&  -9.4687& 2& 3& 0&-1& 1&-1&3&-1&1&0&-1 \\
+  3&   0.9807& 3& 3& 0&-1&-1&1&-3&-1&1&0&1 \\
+  4&   4.1933& 4& 1& 1& 1&-1&-1&-1&1&1&-1&-1\\ \hline
+\end{tabular}\end{center} \end{table}
+
+From this we see that there are four different irreducible representations: 1,
+2, 3, and 4. These representations can be equated with those of the O$_h$
+point-group, so 1 and 4, being non-degenerate, become $a$, while 2 and 3, being
+3-fold degenerate, become $t$. So far we have ($a$, $t$, $t$, $a$).  The effect
+of inversion on the eigenfunctions allows us to assign {\em gerade} and  {\em
+ungerade}, thus ($a_g$, $t_g$, $t_u$, $a_u$), while C$_4$ resolves the
+``1''-``2'' nature of the representations: ($a_{1g}$, $t_{2g}$, $t_{1u}$,
+$a_{2u}$).
+
+Inspection of the eigenvectors reveals, as expected, that the two
+$a$ representations can be identified with the $s$ atomic orbitals, and the two
+$t$ representations, with the six $p$ atomic orbitals.
+
+For points other than $\Gamma$, the little groups become complex. Consider a
+point on $\Delta$, the line connecting $\Gamma$ and X, or (0,0,0) and
+(1/2,0,0). The little group for (0.123,0,0) has the form shown in
+Table~\ref{dig}.
+\begin{table}
+\begin{center}
+\caption{\label{dig} Little Group for $\Delta$ for Diamond}
+ \index{Diamond!little group|(}
+\begin{tabular}{lrlrrrrr} \\ \hline
+Level&Energy&$\Gamma$&E &C$_2$=C$_4^2$ &C$_4$&$\sigma_d$
+&$\sigma_h$  \\  \hline
+  1& -54.2893 &1 & 1& 1& $\theta$    &   1& $\theta$   \\
+  2& -10.2758 &2 & 2&-2& 0           &   0& 0              \\
+  3& -10.1336 &3 & 1& 1&-$\theta$    &   1& -$\theta$   \\
+  4&   0.9087 &1 & 1& 1& $\theta$    &   1& $\theta$   \\
+  5&   1.5003 &2 & 2&-2& 0           &   0& 0  \\
+  6&   3.7878 &3 & 1& 1&-$\theta$    &   1& -$\theta$  \\ \hline
+\end{tabular}\end{center}\end{table}
+Here $\theta$ = $e^{-ik/2\pi}$.
+
+
+As is seen, complications arise for those operations which involve
+\index{Characters!complex}\index{Complex characters} non-primitive
+translations,\index{Translations!non-primitive} \index{Non-primitive
+translations} e.g.\  C$_{4}$ and $\sigma_h$, when points other than $\Gamma$ are
+studied. The complex phase-factor can cause interpretation of the group
+characters to be difficult.  One option is to correct for the phase-factor by
+multiplying the character by $e^{ik/2\pi}$. This would make the little group
+for $\Delta$ easier to read (Table~\ref{mdig}).
+
+\begin{table}
+\begin{center}
+\caption{\label{mdig} Modified Little Group for $\Delta$ for Diamond}
+\begin{tabular}{lrlrrrrr} \\ \hline
+Level&Energy&$\Gamma$&E &C$_2$=C$_4^2$ &C$_4$&$\sigma_d$
+&$\sigma_h$  \\ \hline
+  1& -54.2893 &1 & 1& 1& 1     &   1& 1    \\
+  2& -10.2758 &2 & 2&-2& 0     &   0& 0              \\
+  3& -10.1336 &3 & 1& 1&-1     &   1& -1    \\
+  4&   0.9087 &1 & 1& 1& 1     &   1& 1    \\
+  5&   1.5003 &2 & 2&-2& 0     &   0& 0  \\
+  6&   3.7878 &3 & 1& 1&-1     &   1& -1   \\ \hline
+\end{tabular}\end{center}\end{table}
+
+However, for some little groups, this procedure may cause complications. Thus,
+at $L$, the inversion operation becomes sensitive to the point chosen, e.g.
+(0.25,0.25,0.25) will give a different character for the $I$ operation than
+(0.25,0.25,-0.25).
+
+A third option is to assume that the lowest-lying level represents the totally
+symmetric representation.  (Note: this is different from transforming as the
+totally symmetric representation.  Only one point, the $\Gamma$-point, can ever
+contain a totally symmetric representation.) By making that assumption, all
+characters can be related to those of the  lowest-lying level.
+
+Users are given key-words which select these alternatives to the basic
+character tables when the $k$-point is specified.  The key-words are:
+
+\begin{description}
+\index{One! use in BZ}\index{BZ!use of ``one''}
+\item[\comp{one}] Assume the lowest energy level is totally symmetric.  All operations
+involving non-primitive translations are then multiplied by a (complex) factor
+which will make the lowest energy level totally symmetric. Example: \comp{0.123 0 0 one}.
+
+\index{Byk! use in BZ}\index{BZ!use of ``byk''}
+\item[\comp{byk}] Multiply all operations which involve non-primitive translations by
+a phase factor (``byk''---``multiply by k'')  which depends on the current value
+of $k$. Example: \comp{0.123 0 0 byk}.
+\end{description}
+
+Using the points option, assignment of the symmetry of lines and points in
+$k$-space becomes very easy.
+
+\subsection{Lines in $k$-space}
+
+A line  in $k$-space is specified by two numbers for a polymer, four numbers
+for a layer system, and six numbers for a solid.  The number of points
+calculated for each line is proportional to the length of the line in
+$k$-space. For a line of length 1.0, for example $\Gamma$ to $\Gamma$, 300
+points would be calculated. \index{Walks in
+$k$-space}\index{ksp@{$k$-space}!walks} The data needed to specify a
+band-structure `walk' from $\Gamma $ to X to  W to L to $\Gamma $ is given in
+Table~\ref{walk}, and for diamond, the band-structure for this `walk' is given
+in Figure~\ref{walk-pic}.
+
+\begin{table}
+\begin{center}
+\caption{\label{walk}A ``Walk'' in $k$-Space ($\Gamma $ to X to W to L to $\Gamma $)}
+\begin{tabular}{ccccccccc} \\ \hline
+Start && Stop&\multicolumn{3}{c}{Start} & \multicolumn{3}{c}{Stop} \\ \hline
+$\Gamma$&-&X & 0.000& 0.000& 0.000& 0.500& 0.000& 0.000  \\
+X       &-&W        & 0.500& 0.000& 0.000& 0.500& 0.250& 0.000  \\
+W       &-&L        & 0.500& 0.250& 0.000& 0.250& 0.250& 0.250  \\
+L       &-&$\Gamma$ & 0.250& 0.250& 0.250& 0.000& 0.000& 0.000  \\ \hline
+\end{tabular}
+\end{center}
+\end{table}
+\begin{figure}
+\begin{makeimage}
+\end{makeimage}
+\begin{center}
+\includegraphics{diamondbs}
+\end{center}
+\caption{\label{walk-pic}Band structure for Diamond}
+\label{pbt}
+\end{figure}
+\index{Little groups|)}
+\index{Diamond!little group|)}
+
+
+\subsection{Surfaces in $k$-space}
+\index{ksp@{$k$-space}!surfaces in}\index{Surfaces in $k$-space} A surface is
+defined by seven data.  Three numbers are used to specify the center of the
+surface, three are used to define a perpendicular, and one number is used to
+define the length of an edge.
+
+For example, to generate the hexagonal face of the Brillouin Zone for diamond,
+the specification would be (0.25 0.25 0.25 1 1 1 0.7071), the center of the
+plot being (0.25 0.25 0.25), and (1 1 1) defining the direction.
+
+Two dimensional surfaces use 80 points in each direction, and an interpolation
+procedure is used to double this number to 160 points in each direction.  The
+length of a side in a two-dimensional plot is defined by the user at
+run-time.
+
+The cost of generating the surface is quite large.  Because of this, the data
+are stored on disk, once they are generated.
+
+The user is prompted for input.
+
+\subsection{Files used by BZ}
+\index{Files used by BZ}\index{BZ!files used by}
+BZ uses the following files:
+\begin{description}
+\item[\comp{ $<$filename$>$.ops}] a symmetry file.
+\item[\comp{ $<$filename$>$.brz}] a Fock matrix file made by MOPAC.
+\end{description}
+
+The file \comp{$<$filename$>$.brz} {\em must} exist.  The file
+\comp{$<$filename$>$.ops}
+{\em should}, but does not have to, exist.    If \comp{$<$filename$>$.ops} is
+written,  the first two lines should look like this:
+\begin{verbatim}
+0 0 0 0 0.0       0.0       0.0       1.0  0.0 0.0 0.0  'Identity'
+2 0 0 0 0.0       0.0       0.0       0.0  0.0 0.0 0.0  'Terminus'
+\end{verbatim}
+More lines can be added, as needed,  to define the other symmetry operations.

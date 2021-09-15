@@ -1,0 +1,65 @@
+\subsection{Correction to the Peptide Linkage}
+\index{Peptide linkage!correction to barrier}
+The residues in peptides are joined together by  peptide  linkages, --HNCO--.  
+These  linkages  are  almost  flat, and normally adopt a trans configuration,
+the hydrogen and oxygen atoms being on opposite sides  of the  C--N  bond.  
+Experimentally,  the  barrier  to  interconversion  in \index{N-methyl
+acetamide|ff} N-methyl acetamide is about 14 kcal/mol, but all  four  methods 
+within \index{PM3!fault in peptide linkage} MOPAC  predict  a  significantly 
+lower  barrier,  PM3 giving the lowest value.
+
+The low barrier can be traced  to  the  tendency  of  semiempirical methods  
+to   give   pyramidal   nitrogens.    The   degree   to  which pyramidalization
+of the nitrogen atom is preferred can be  seen  in  the series of compounds
+given in Table~\ref{py}.
+
+To correct this, a molecular-mechanics correction has been applied.
+\index{MMOK}   This  consists  of  identifying  the --R--HNCO-- unit, and
+adding a torsion potential of form: 
+\[
+k \sin \! ^{2} \theta
+\]
+where $\theta$ is the X--N--C--O angle, X=R or H, and $k$ varies from method to 
+method.   This  has  two effects:  there is a force constraining the nitrogen
+to be planar, and the HNCO barrier in N--methyl acetamide is  raised to  14.00 
+kcal/mol.   When the MM correction is in place, the nitrogen atom for all
+methods for the last three compounds shown above is planar. The correction
+should be user-transparent.
+
+\subsubsection{Cautions}\label{mmok}
+\begin{enumerate}
+\item This correction will lead to errors of 0.5--1.5  kcal/mol  if
+the   peptide   linkage   is  made  or  broken  in  a  reaction
+calculation.
+\item If the correction is applied to formamide the nitrogen will  be
+            flat, contrary to experiment.
+\item When calculating rotation barriers, take into account the rapid
+\index{Rotation barriers}
+            rehybridization  which  occurs.   When the dihedral is 0 or 180
+            degrees the nitrogen will be planar (sp$^2$), but  at  90  degrees
+            the nitrogen should be pyramidal, as the partial double bond is
+            broken.  At that geometry the true  transition  state  involves
+            motion  of the nitrogen substituent so that the nitrogen in the
+            transition state is more nearly sp$^2$.  In other words, a  simple
+            rotation  of  the  HNCO  dihedral will not yield the activation
+            barrier, however it will be within 2 kcal/mol of  the  correct
+            answer.   The  14  kcal barrier mentioned earlier refers to the
+            true transition state.
+\end{enumerate}     
+% 16 lines, including this line
+\begin{table}
+\caption{\label{py}Comparison of Observed and Calculated Pyramidalization of 
+Nitrogen}
+\begin{center}
+\begin{tabular}{llllll} \hline
+        Compound    & MINDO/3  & MNDO  & AM1   &PM3  &  Exp  \\ \hline
+  Ammonia           & Py       &  Py   & Py    &Py   &  Py  \\
+  Aniline           & Py       &  Py   & Py    &Py   &  Py  \\
+  Formamide         & Py       &  Py   & Flat  &Py   &  Py  \\
+  Acetamide         & Flat     &  Py   & Flat  &Py   &  Flat  \\
+  N-methyl formamide& Flat     &  Py   & Flat  &Py   &  Flat  \\
+  N-methyl acetamide& Flat     &  Flat & Flat  &Py   &  Flat \\ \hline 
+\end{tabular}
+\end{center}
+\end{table}
+

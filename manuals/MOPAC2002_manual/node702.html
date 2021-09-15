@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Size of MOPAC</TITLE>
+<META NAME="description" CONTENT="14.8 Size of MOPAC">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node703.html"><LINK REL="previous" HREF="node701.html"><LINK REL="up" HREF="node694.html"><LINK REL="next" HREF="node703.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node703.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node694.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node701.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node703.html">Porting MOPAC to</A> <B>Up:</B> <A HREF="node694.html">Installing MOPAC</A> <B>Previous:</B> <A HREF="node701.html">The shut command</A>
+<!--End of Navigation Panel-->
+<H1><A NAME="SECTION001880000000000000000">Size of MOPAC</A> </H1>
+<P>MOPAC now uses dynamic allocation of memory for all arrays that depend on the size of the system. This means that the size of MOPAC is no longer a static quantity. Instead, the size of the MOPAC executable image will depend on the system being run. </P>
+<P>Because the amount of memory required for the static arrays is small, the value of <TT>NUMATM</TT> should be set as large as practical. For a machine with 10 Mb, <TT>NUMATM</TT> could be set to 200. For larger machines, set <TT>NUMATM</TT> to the largest value that is likely to be encountered (20,000, for example). </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"> </P>
+<STRONG><P>Table:</STRONG> Size of Source Code for MOPAC</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=623>
+<TR><TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Version</TD>
+<TD WIDTH="86%" VALIGN="MIDDLE" COLSPAN=5>
+<P ALIGN="CENTER">Number of lines in program</TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">5.00</TD>
+<TD WIDTH="12%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">22,084</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="22%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">17,718 code</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="30%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4,366 comment.</TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">6.00</TD>
+<TD WIDTH="12%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">30,815</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="22%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">23,910 code</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="30%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">6,905 comment.</TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">93.00</TD>
+<TD WIDTH="12%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">47,676</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="22%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">35,841 code</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="30%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">11,835 comment.</TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2000.00</TD>
+<TD WIDTH="12%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">84,148</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="22%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">64,649 code</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="30%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">19,499 comment.</TD>
+</TR>
+<TR><TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2002.00</TD>
+<TD WIDTH="12%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">130,329</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">=</TD>
+<TD WIDTH="22%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">118,269 code</TD>
+<TD WIDTH="11%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">+</TD>
+<TD WIDTH="30%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">12,060 comment.</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html10893"><A HREF="node703.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10889"></A><A HREF="node694.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10883"></A><A HREF="node701.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html10891"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10892"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10894"><A HREF="node703.html">Porting MOPAC to</A></A> <B>Up:</B> <A NAME="tex2html10890"><A HREF="node694.html">14. Installing MOPAC</A></A> <B>Previous:</B> <A NAME="tex2html10884"><A HREF="node701.html">The shut command</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

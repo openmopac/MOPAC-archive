@@ -1,0 +1,262 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<HTML>
+<HEAD>
+<TITLE> Localized Molecular Orbital Matrix Element Evaluation</TITLE>
+<META NAME="description" CONTENT="8.6.6.2 Localized Molecular Orbital Matrix Element Evaluation">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node537.html">
+<LINK REL="previous" HREF="node535.html">
+<LINK REL="up" HREF="node534.html">
+<LINK REL="next" HREF="node537.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8789"
+ HREF="node537.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8785"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8779"
+ HREF="node535.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8787"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8788"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8790"
+ HREF="node537.html"> Localized Molecular Orbital</A>
+<B> Up:</B> <A NAME="tex2html8786"
+ HREF="node534.html"> Diagonalization</A>
+<B> Previous:</B> <A NAME="tex2html8780"
+ HREF="node535.html"> Conventional Matrix Annihilation</A>
+<BR>
+<H3><A NAME="SECTION001266200000000000000">
+ Localized Molecular Orbital Matrix Element Evaluation</A>
+</H3>
+It is important in LMO work that only those matrix elements which are
+potentially non-zero be evaluated; therefore, modifications need to be made to
+the equations just described. For the purpose of the following discussion, the
+system being studied should be assumed to be very large, i.e., to contain
+thousands of atoms.
+<P>
+To assist in understanding how the modifications are made, it is convenient at
+this time to write the occupied LMO as:
+<P align="center">
+<IMG
+ WIDTH="334" HEIGHT="57"
+ SRC="img1219.gif"
+ ALT="\begin{displaymath}\psi_i = \sum_{j=1}^{NCF(i)}\sum_{\lambda\epsilon ICOCC(j+NNCF(i))}COCC(\lambda+NCOCC(i))
+\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+and the virtual LMO as:
+<p align="center"><IMG
+ WIDTH="334" HEIGHT="57"
+ SRC="img1220.gif"
+ ALT="\begin{displaymath}\psi_j = \sum_{l=1}^{NCE(j)}\sum_{\sigma \epsilon ICVIR(l+NNCE(j))}CVIR(\sigma
++NCVIR(j)).\end{displaymath}"><BR></p>
+<P></P>
+<BR CLEAR="ALL"><P></P>
+These expressions also illustrate the relationships of the five arrays which
+are used to represent the LMOs.
+<P>
+Then the partial sum, <I>F</I><SUP>'</SUP>(<I>j</I>), can be represented as:
+<P align="center">
+<IMG
+ WIDTH="378" HEIGHT="57"
+ SRC="img1221.gif"
+ ALT="\begin{displaymath}F_{\lambda}^{'}(j) =
+\sum_{l=1}^{NCE(j)}\sum_{\sigma \epsilon ICVIR(l+NNCE(j))}CVIR(\sigma +
+NCVIR(j))F_{\lambda \sigma}.
+\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+<P>
+The number of terms in this sum is already much smaller than in conventional
+matrix annihilation in that the number of atoms represented in each LMO, 
+<I>NCE</I>(<I>j</I>), is much less than the total number of atoms.
+<P>
+Because all Fock matrix elements connecting atoms which are separated by  more
+than <TT>CUTOF2</TT> are automatically zero, only those terms which refer to
+atoms separated by less that <TT>CUTOF2</TT> need be evaluated.
+<P>
+All LMOs consist of a central part consisting of one to three atoms, which 
+accounts for almost all of the wavefunction.  In the regions of an LMO far away
+from the center, the contribution of any atom to the wavefunction becomes very
+small.  If the Fock matrix elements connecting this distant atom to any other
+atom is also very small, then quantities which depend of both of these terms
+becomes quite negligible.    To test whether this condition exists, two scalar
+quantities need to be calculated.  The first is the contribution of each atom
+to the LMO:
+<P align="center">
+<IMG
+ WIDTH="100" HEIGHT="43"
+ SRC="img1222.gif"
+ ALT="\begin{displaymath}\rho_A(j) =\sum_{\lambda\epsilon A}\psi_{\lambda j}^2
+\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+and second is the magnitude  of the Fock matrix vector connecting each pair of
+atoms:
+<p align="center"><IMG
+ WIDTH="113" HEIGHT="43"
+ SRC="img1223.gif"
+ ALT="\begin{displaymath}F_{A B} = \sum_{\lambda\epsilon A \sigma\epsilon B}F_{\lambda \sigma}^2.
+\end{displaymath}"><BR></p>
+<P></P>
+<BR CLEAR="ALL"><P></P>
+<P>
+During the evaluation of  
+<!-- MATH: $F_{\lambda}^{'}(j)$ -->
+<IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1224.gif"
+ ALT="$F_{\lambda}^{'}(j)$">,
+the quantity 
+<!-- MATH: $\rho_AF_{A B}$ -->
+<IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1225.gif"
+ ALT="$\rho_AF_{A B}$">
+is
+computed. Only if it is above a preset limit are the terms involving atoms <I>A</I>and <I>B</I> used.  
+<P>
+As soon as 
+<!-- MATH: $F_{\lambda}^{'}(j)$ -->
+<IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1226.gif"
+ ALT="$F_{\lambda}^{'}(j)$">
+is calculated, the magnitude of each atom's
+contribution to 
+<!-- MATH: $F_{\lambda}^{'}(j)$ -->
+<IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1227.gif"
+ ALT="$F_{\lambda}^{'}(j)$">
+is determined, and stored:  
+<P align="center">
+<IMG
+ WIDTH="138" HEIGHT="43"
+ SRC="img1228.gif"
+ ALT="\begin{displaymath}F_A(j)=\sum_A\sum_{\lambda\epsilon A}F_{\lambda}^{'}(j)^2.
+\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+<P>
+Together, these three modifications result in a large reduction in the time
+necessary to compute the partial sum 
+<!-- MATH: $F_{\lambda}^{'}(j)$ -->
+<IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1229.gif"
+ ALT="$F_{\lambda}^{'}(j)$">.
+<P>
+The virtual energy levels are calculated using 
+<!-- MATH: $F_{\lambda}^{'}(j)$ -->
+<IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1230.gif"
+ ALT="$F_{\lambda}^{'}(j)$">:
+<P align="center">
+<IMG
+ WIDTH="372" HEIGHT="57"
+ SRC="img1231.gif"
+ ALT="\begin{displaymath}\varepsilon_{jj}= \sum_{l=1}^{NCE(j)}\sum_{\sigma \epsilon ICVIR(l+NNCE(j))}
+CVIR(\sigma +NCVIR(j))F_{\sigma}^{'}(j).
+\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+In the same manner as 
+<!-- MATH: $\rho_AF_{A B}$ -->
+<IMG
+ WIDTH="44" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1232.gif"
+ ALT="$\rho_AF_{A B}$">
+was used in deciding whether the terms
+involving atoms <I>A</I> and <I>B</I> should be evaluated in the calculation of 
+<!-- MATH: $F_{\lambda}^{'}(j)$ -->
+<IMG
+ WIDTH="40" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1233.gif"
+ ALT="$F_{\lambda}^{'}(j)$">,
+the quantity 
+<!-- MATH: $F_A(j)\rho_A$ -->
+<IMG
+ WIDTH="56" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1234.gif"
+ ALT="$F_A(j)\rho_A$">
+is evaluated and used to
+decide which terms in the current summation should be used.
+<P>
+Now the calculation of the occupied-virtual matrix elements can be performed. 
+The quantity to be calculated is
+<P align="center">
+<IMG
+ WIDTH="377" HEIGHT="57"
+ SRC="img1235.gif"
+ ALT="\begin{displaymath}\varepsilon_{i j} =
+\sum_{k=1}^{NCF(i)}\sum_{\lambda\epsilon ICOCC(k)+NNCF(i)}COCC(\lambda+NCOCC(i))
+F_{\lambda}^{'}(j).
+\end{displaymath}"><BR><P></P>
+<BR CLEAR="ALL"><P></P>
+<P>
+Because this is a single sum over atoms, not much time is saved by testing to
+see if any terms can be omitted.  However, the test is a simple one, and  it
+does result in a small increase in speed by evaluating the quantity
+<!-- MATH: $F_A(j)\rho_A(i)$ -->
+<IMG
+ WIDTH="72" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1236.gif"
+ ALT="$F_A(j)\rho_A(i)$">,
+and comparing it to a preset limit.  Since both <I>F</I><SUB><I>A</I></SUB>(<I>j</I>) and
+<IMG
+ WIDTH="37" HEIGHT="31" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1237.gif"
+ ALT="$\rho_A(i)$">
+have already been calculated, this test is very rapid.
+<P>
+Calculation of the occupied-virtual matrix elements presents a new problem.
+There are a large number of these elements, many of which involve only atoms
+which are far from the LMO centers.  To see why this is so, consider two LMOs
+which have exactly one atom in common.  For this to happen, the atom in
+question must be very far from the centers of both LMOs.  The energy terms
+arising from such an atom must, of necessity, be very small. In the interest of
+efficiency, all calculations involving such atoms should be ignored. 
+Unfortunately, it is not possible to <I>a priori</I> determine which terms to
+include and which to leave out.  Therefore, at the start of the SCF
+calculation, all terms must be evaluated.  As soon as  large changes in the
+LMOs have stopped, a list can be constructed of those occupied-virtual matrix
+elements which need to be considered for annihilation.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8789"
+ HREF="node537.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8785"
+ HREF="node534.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8779"
+ HREF="node535.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8787"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8788"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8790"
+ HREF="node537.html"> Localized Molecular Orbital</A>
+<B> Up:</B> <A NAME="tex2html8786"
+ HREF="node534.html"> Diagonalization</A>
+<B> Previous:</B> <A NAME="tex2html8780"
+ HREF="node535.html"> Conventional Matrix Annihilation</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

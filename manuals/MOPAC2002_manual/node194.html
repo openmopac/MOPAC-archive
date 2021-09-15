@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>HYBRID </TITLE>
+<META NAME="description" CONTENT="HYBRID ">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node195.html"><LINK REL="previous" HREF="node193.html"><LINK REL="up" HREF="node109.html"><LINK REL="next" HREF="node195.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node195.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node193.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node195.html">HYPERFINE </A><B>Up:</B> <A HREF="node109.html">Keywords</A> <B>Previous:</B> <A HREF="node193.html">HESS=n </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT><a name="top"></a>HYBRID</TT> </H2>
+<P>The keyword <TT>HYBRID</TT> will print some of the working of the subroutine <TT>HYBRID</TT>, which constructs the hybrid orbitals used in making the starting LMOs. Thus, if <TT>HYBRID</TT> is used with methane (run using PM3 with standard coordinates <A HREF="node194.html#ch4">Figure 1</A> then <TT>HYBRID</TT> would generate the output shown in <A HREF="node194.html#hyb_ch4">Figure 2</A>. </P>
+<P>To understand the output, it is useful to be able to refer to the one-electron matrix, <A HREF="node194.html#ch4_1el">Figure 3</A> . The eight lines below <CODE>ATOM NUMBER 2</CODE> show the elements of the secular determinant. This determinant can be described as follows: </P>
+
+<UL>
+<LI>The rows and columns of the determinant represents the atomic orbitals of the atom being hybridized (here, carbon) and the <I>s</I> atomic orbitals of the atoms bonded to it, in order. </LI>
+<LI>A block of 10 elements, all zero. This is common to all determinants used in <TT>HYBRID</TT>. These terms represent pairs of atomic orbitals on carbon. </LI>
+<LI>The first 4 elements on line 5 are the interaction of the atomic orbitals on carbon with the 1<I>s</I> atomic orbital on hydrogen 1. </LI>
+<LI>The first 4 elements on line 6 are the interaction of the atomic orbitals on carbon with the 1<I>s</I> atomic orbital on hydrogen 3. </LI>
+<LI>The first 4 elements on line 7 are the interaction of the atomic orbitals on carbon with the 1<I>s</I> atomic orbital on hydrogen 4. </LI>
+<LI>The first 4 elements on line 8 are the interaction of the atomic orbitals on carbon with the 1<I>s</I> atomic orbital on hydrogen 5. </LI>
+<LI>All monatomic terms and all terms between the <I>s</I> orbitals of the ligands are set to zero. </LI>
+<LI>A small perturbation is applied to each interaction term. This amounts to 0.0001 times the address of the array element. This perturbation is necessary in order to destroy any accidental symmetry of the kind that can form in simple unsaturated systems such as benzene. </LI></UL>
+
+<P>Diagonalization of this determinant gives eight eigenvalues: <CODE>-10.3711 -3.6163</CODE>, etc., and eight eigenvectors, the first four of which can be used in constructing the hybrids. A unitary transform of the first four eigenvectors generates hybrid orbitals: these are printed under the heading <CODE>Hybrid orbitals</CODE>. Only the four coefficients on the carbon are of interest, so these are extracted off and re-normalized. This gives the final block of output, which is the hybrid orbitals themselves. </P>
+<P>The unitary transform <A HREF="node523.html#make_hybrid">to convert from eigenvectors to hybrids</A> is the localization operation. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="ch4">&nbsp;<A NAME="BM3714"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 1:</STRONG> Standard MOPAC-type Data Set for Methane <A HREF="#top"><B>(top)</B></A></P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<PRE>  hybrid PM3 MOZ    1SCF      MOPAC
+            METHANE  HEAT OF FORMATION (PM3) = -13.026
+ 
+      H
+      C    1.08701794  1
+      H    1.08701784  0  109.4712210  0
+      H    1.08701784  0  109.4712210  0 -120.00  0    2 1 3
+      H    1.08701784  0  109.4712210  0  120.00  0    2 1 3</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV><BR>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="hyb_ch4">&nbsp;<A NAME="BM3715"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 2:</STRONG> Example of Output Generated by <TT>HYBRID </TT><A HREF="#top"><B>(top)</B></A></P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<PRE>  ATOM NUMBER  2
+    0.0000
+    0.0000    0.0000
+    0.0000    0.0000    0.0000                  (Secular Determinant)
+    0.0000    0.0000    0.0000    0.0000
+   -5.1852    3.1518    0.0300    0.0400    0.0000
+   -5.1852   -1.0239   -2.9227    0.0400    0.0000    0.0000
+   -5.1852   -1.0239    1.5063    2.5971    0.0000    0.0000    0.0000
+   -5.1852   -1.0239    1.5063   -2.5171    0.0000    0.0000    0.0000    0.0000
+  -10.3711   -3.6163   -3.6163   -3.6160    3.6160    3.6163    3.6163   10.3711
+   -0.7071    0.0031    0.0047    0.0062   -0.3545   -0.3519   -0.3554   -0.3524
+    0.0000    0.0000   -0.5657    0.4243    0.0000   -0.4619   -0.0691    0.5309
+    0.0000   -0.6565    0.1576    0.2102    0.5685   -0.0608   -0.4025   -0.1052
+   -0.0084   -0.2627   -0.3939   -0.5251    0.2261   -0.3989    0.4549   -0.2879
+ Hybrid orbitals
+ 
+   -0.3566   -0.2031   -0.5758    0.0020    0.0000   -0.7071    0.0000    0.0000
+    0.3557    0.2031   -0.2902    0.4980    0.0000    0.0000    0.0000    0.7071
+    0.3518   -0.6134   -0.0015   -0.0020    0.7071    0.0000    0.0000    0.0000
+    0.3500    0.2031   -0.2902   -0.5020    0.0000    0.0000    0.7071    0.0000
+ 
+                        -0.50431    -0.28724    -0.81434     0.00287
+                         0.50310     0.28724    -0.41040     0.70424
+                         0.49751    -0.86745    -0.00214    -0.00285
+                         0.49502     0.28725    -0.41038    -0.70995</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV></P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="ch4_1el">&nbsp;<A NAME="BM3716"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 3:</STRONG> One Electron Matrix for Methane <A HREF="#top"><B>(top)</B></A></P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<PRE>         S H 1    S C 2    Px C 2   Py C 2   Pz C 2    S H 3    S H 4   S H 5
+------------------------------------------------------------------------------
+ S H 1 -71.1558
+ S C 2  -5.1952 -84.0140
+Px C 2   3.1318   0.0000 -72.1164
+Py C 2   0.0000   0.0000   0.0000 -72.1164
+Pz C 2   0.0000   0.0000   0.0000   0.0000 -72.1164
+ S H 3  -1.6988  -5.1952  -1.0439  -2.9527   0.0000 -71.1558
+ S H 4  -1.6988  -5.1952  -1.0439   1.4763   2.5571  -1.6988 -71.1558
+ S H 5  -1.6988  -5.1952  -1.0439   1.4763  -2.5571  -1.6988  -1.6988 -71.1558</PRE></TD>
+</TR>
+</TABLE>
+
+<P></DIV><BR>
+<HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html4235"><A HREF="node195.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html4231"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html4225"></A><A HREF="node193.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html4233"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html4234"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html4236"><A HREF="node195.html">HYPERFINE </A></A><B>Up:</B> <A NAME="tex2html4232"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html4226"><A HREF="node193.html">HESS=n </A></A><!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

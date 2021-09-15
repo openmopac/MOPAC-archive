@@ -1,0 +1,113 @@
+\subsection{Considerations in Geometry Optimization}
+The default settings in MOPAC are designed to allow most systems to be
+optimized in an efficient way.  Quite often, however, problems arise.  The
+following  notes are intended as background material for use when things go
+wrong.
+
+\subsubsection{Overriding the default options}
+In the EigenFollowing geometry optimization method, the geometry is changed on
+each cycle; if the $\Delta H_f$ decreases, the cycle is completed.  If it does
+not drop, the step-size is reduced, and the $\Delta H_f$ recalculated.  Only
+when the $\Delta H_f$ decreases, compared to the previous cycle, is the current
+cycle considered to be successful.  During the calculation, the confidence
+level or trust radius is continuously checked.  If this becomes too small, the
+calculation will be stopped.  This can readily happen if (a) the geometry was
+already almost  optimized; (b) a reaction path or grid calculation is being
+performed; (c) if the geometry is in internal coordinates and ``big rings'' are
+involved; or (d) if the  gradients are not correctly calculated (in a
+complicated C.I., for example).
+
+For cases (a) and (b), add \comp{LET} and \comp{DDMIN=0}.  In case (c) use
+either mixed coordinates or entirely Cartesian coordinates. Case (d) is
+difficult---if nothing else works, add \comp{NOANCI}; this will always cause
+the derivatives to be correctly calculated, but will also use a lot of time.
+
+Adding \comp{LET} and \comp{DDMIN=0} is often very effective, particularly when
+reaction paths are being calculated.  The first geometry optimization might
+take more cycles, but the resulting Hessian matrix is better tempered, and
+subsequent steps are generally more efficient.
+
+\subsubsection{Locating Transition States}\index{Locating transition states}
+\index{Transition states!locating}\index{Narcissistic reactions}
+Unlike optimizing ground states, locating transition states involves deciding on 
+an efficient strategy.  In general, there are three stages in locating 
+transition states:
+\begin{enumerate}
+\item Generating a geometry in the region of the transition state.
+\item Refining the transition state geometry.
+\item Characterizing the transition state.
+\end{enumerate}
+Of these three, the first is by far the most difficult.  The following 
+approaches are suggested as potential strategies for generating a geometry in 
+the region of the transition state.
+
+{\bf For narcissistic reactions (reactions in which the reactants and 
+products are the same, e.g.\ the inversion of ammonia.}
+\begin{itemize}
+\item Use  geometry constrains, e.g.\ \comp{SYMMETRY}, to lock the geometry in
+the symmetry of the potential transition state.
+\item Minimize the $\Delta H_f$.
+\item Verify that the system is a transition state.  If it has more than one 
+negative force constant, use another method.
+\end{itemize}
+
+{\bf For a bond making-bond breaking reaction (e.g., an S$_{N^2}$ reaction)}
+\begin{itemize}
+\item  Use \comp{SYMMETRY} to set the two bonds equal.  If does {\em not} 
+matter that the bonds are of different type. For example, to locate the
+transition  state for Br$^-$ reacting with CH$_4$ to give CH$_3$Br, the C--Br
+and C--H bonds  would be set equal.
+\item  Optimize the geometry, to minimize the $\Delta H_f$.  Any geometry
+optimizer could be used, but of course the default optimizer should be tried
+first.
+\item Remove the symmetry constraint, and locate the transition state using
+\comp{TS}.
+At this point, the main geometric change is to adjust the two bond lengths
+involved in the reaction.
+\end{itemize}
+
+{\bf For barriers to rotation, inversion, or other simple reaction that 
+does not involve making or breaking bonds}
+\begin{itemize}
+\item Optimize the starting geometry.
+\item Optimize the final geometry.
+\item Identify the coordinate that corresponds to the reaction. This is likely
+to be an angle or a dihedral.
+\item Starting with the higher energy geometry, use a \hyperref[pageref]{path option}{ (see 
+p.~}{)}{rpaths} to drive the reaction in the direction of the other
+geometry.   Use about 20 points, and go about half way to the other
+geometry---the transition state is likely to be between the higher energy
+geometry and the half-way point.
+\item From the output, locate the highest energy point---this will be near to
+the transition state.
+\item Starting with the geometry of the highest energy point, repeat the path 
+calculation.  Use smaller steps (0.1 times the previous step is usually OK),
+and again do 20 points.
+\item Inspect the reaction gradient.  It should drop as the transition state is
+approached.  If it does, then use \comp{TS} to refine the transition state.
+\end{itemize}
+
+{\bf For bond making or bond breaking reactions}
+\begin{itemize}
+\item Identify the reaction coordinate (the bond that makes or breaks)
+\item Use a \hyperref[pageref]{path calculation}{ (see 
+p.~}{)}{rpaths} to drive the reaction.
+\item The geometry of the highest point on the reaction path should then be 
+used to start a \comp{TS} calculation.
+\end{itemize}
+
+{\bf For complicated reactions (e.g.\ Diels Alder)}
+For these systems, the \comp{SADDLE} calculation is a suitable method.
+\begin{itemize}
+\item Optimize the reactant geometry.
+\item Using the same atoms in the same sequence, optimize the product geometry.
+\item Run the \comp{SADDLE} calculation.
+\item If the calculation ends because ``both reactants and products are on
+ the same side of the transition state,'' use two of the geometries to set
+up a new \comp{SADDLE} calculation.  Use a smaller \comp{BAR=$n.nn$}, e.g.,
+\comp{BAR=0.03}, and re-run the calculation.  If CPU time is not important,
+run the original data set with \comp{BAR=0.03}.
+\item Use the final geometry, or the highest energy geometry, if the 
+\comp{SADDLE} does not run to completion, as the starting point for a 
+\comp{TS} calculation.
+\end{itemize}

@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Specification of Keywords</TITLE>
+<META NAME="description" CONTENT="3.3.1 Specification of Keywords">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node109.html"><LINK REL="up" HREF="node109.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html3227"><A HREF="node112.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html3223"></A><A HREF="node109.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html3217"></A><A HREF="node109.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html3225"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html3226"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html3228"><A HREF="node112.html">&amp;</A></A> <B>Up:</B> <A NAME="tex2html3224"><A HREF="node109.html">Keywords</A></A> <B>Previous:</B> <A NAME="tex2html3218"><A HREF="node109.html">Keywords</A></A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION00731000000000000000">Specification of Keywords</A> </H2>
+<P>All control data are entered in the form of keywords, which form the first line of a data-file. A <A HREF="node109.html">one-line description</A> of what each keyword does is available. The order in which keywords appear is not important, although they must be separated by a space. Some keywords can be abbreviated (for example, <TT>
+<a href="node115.html">1ELECTRON</a></TT> can be entered as <TT>1ELECT</TT>). However, the full keyword is preferred in order to more clearly document the calculation and to prevent the possibility that an abbreviated keyword might not be recognized. If there is insufficient space in the first line for all the keywords needed, then consider abbreviating the longer words. One type of keyword, those with an equal sign, such as <TT>
+<a href="node127.html">BAR=0.05</a></TT>, may not be abbreviated, and the full word needs to be supplied. </P>
+<P>Keywords which involve an equal sign, such as <TT><a href="node298.html">SCFCRT=1.D-12</a></TT>, cannot be written with spaces before or after the equal sign. Thus <TT>SCFCRT= 1.D-12</TT>, <TT>SCFCRT = 1.D-12</TT>, etc., are not allowed. </P>
+<P>If two keywords which are incompatible, like <TT><a href="node335.html">UHF</a></TT> and <TT>
+<a href="node134.html">C.I.=n</a></TT>, are supplied, or a keyword which is incompatible with the species supplied, for instance <TT>
+<a href="node333.html">TRIPLET</a></TT> and a methyl radical, then error trapping will normally occur, and an error message will be printed. This usually takes an insignificant amount of time, so data are quickly checked for obvious errors. </P>
+<P>Keywords are normally supplied as the first line of a data-file. Options exist, however, which allow users to: </P>
+
+<UL>
+<LI>Supply more than one line of keywords. </LI>
+<LI>To have frequently-used sets of keywords stored in an auxiliary file. </LI></UL>
+
+<P><HR></P>
+<P>&nbsp;</P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE> Size of LMOs</TITLE>
+<META NAME="description" CONTENT="8.6.7.1 Size of LMOs">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="previous" HREF="node538.html">
+<LINK REL="up" HREF="node538.html">
+<LINK REL="next" HREF="node540.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html8822"
+ HREF="node540.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8818"
+ HREF="node538.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8814"
+ HREF="node538.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8820"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8821"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8823"
+ HREF="node540.html"> Density Matrix Construction</A>
+<B> Up:</B> <A NAME="tex2html8819"
+ HREF="node538.html"> Reducing the Size</A>
+<B> Previous:</B> <A NAME="tex2html8815"
+ HREF="node538.html"> Reducing the Size</A>
+<BR>
+<H3>Size of LMOs
+</H3>
+When a SCF is achieved, the LMOs extend over more atoms than might be
+expected.  Each LMO is about 90-99% on one or two atoms, and if the
+surrounding few atoms are included, almost 100% of the LMO can be accounted
+for.   From this, it would appear that the intensity of the LMO would continue
+to decrease rapidly with distance from the center.  This is normally not the
+case. Instead, LMOs usually have intensity on a large number of atoms,
+sometimes several  hundred atoms.  As a result, the calculations take a much
+longer time than would otherwise be expected.
+<P>
+Some effort has been expended in trying to find ways of reducing the size of
+LMOs. These attempts have not been successful.  The definitive failure was
+provided as follows:
+<P>
+Using MOPAC, the LMOs for a large system were generated using <TT>
+<a href="node274.html">PRECISE</a></TT>.
+The resulting LMOs were as expected, over 90% on two atoms, with most of the
+rest of the wavefunction on the nearby atoms.  However, the intensity did not
+drop rapidly to zero with increasing distance.  Instead, it held  more or less
+constant at about 10<SUP>-5</SUP> to 10<SUP>-8</SUP> for a large number of atoms before
+finally dropping to a negligible value.
+<P>
+This behavior did not change on increasing the precision of the localization.
+<P>
+Because of this result, it was obvious that further localization of the MOZYME 
+LMOs would not be useful.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html8822"
+ HREF="node540.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html8818"
+ HREF="node538.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html8814"
+ HREF="node538.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html8820"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html8821"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html8823"
+ HREF="node540.html"> Density Matrix Construction</A>
+<B> Up:</B> <A NAME="tex2html8819"
+ HREF="node538.html"> Reducing the Size</A>
+<B> Previous:</B> <A NAME="tex2html8815"
+ HREF="node538.html"> Reducing the Size</A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

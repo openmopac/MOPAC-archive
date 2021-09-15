@@ -1,0 +1,325 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Calculation of heat of formation</TITLE>
+<META NAME="description" CONTENT="8.5.7 Calculation of heat of formation">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="previous" HREF="node509.html"><LINK REL="up" HREF="node503.html"><LINK REL="next" HREF="node511.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A HREF="node511.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A HREF="node503.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A HREF="node509.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A><BR>
+<B>Next:</B> <A HREF="node511.html">Localized Molecular Orbital</A> <B>Up:</B> <A HREF="node503.html">An SCF Calculation</A> <B>Previous:</B> <A HREF="node509.html">Iterating Fock matrix</A>
+<!--End of Navigation Panel-->
+<H2><A NAME="SECTION001257000000000000000">Calculation of heat of formation</A> </H2>
+<P>The heat of formation is defined as: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\Delta H_f = E_{elect} + E_{nuc}-E_{isol}+E_{atom},
+\end{displaymath} --><IMG SRC="img1010.gif" WIDTH=219 HEIGHT=32 ALT="begin{displaymath}Delta H_f = E_{elect} + E_{nuc}-E_{isol}+E_{atom},end{displaymath}"></DIV>
+<P>where <I>E<SUB>elect</I></SUB> is the electronic energy, <I>E<SUB>nuc</I></SUB> is the nuclear-nuclear repulsion energy, -<I>E<SUB>isol</I></SUB> is the energy required to strip all the valence electrons off all the atoms in the system, and <I>E<SUB>atom</I></SUB> is the total heat of atomization of all the atoms in the system. </P>
+<I><P>E<SUB>elect</I></SUB> is calculated from <!-- MATH: $\frac{1}{2}{\bf P(H + F)}$ --><IMG SRC="img1011.gif" ALIGN="MIDDLE" WIDTH=73 HEIGHT=36 ALT="$frac{1}{2}{bf P(H + F)}$">, or </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+E_{elect} = \frac{1}{2}\sum_{\lambda=1}^6\sum_{\sigma=1}^6P_{\lambda\sigma}(H_{\lambda\sigma} + F_{\lambda\sigma}).
+\end{displaymath} --><IMG SRC="img1012.gif" WIDTH=221 HEIGHT=52 ALT="begin{displaymath}E_{elect} = frac{1}{2}sum_{lambda=1}^6sum_{sigma=1}^6P_{lambdasigma}(H_{lambdasigma} + F_{lambdasigma}).end{displaymath}"></DIV>
+<P>Using the data we have already derived, we can calculate <I>E<SUB>elect</I></SUB> as:<br>
+&nbsp;<div align="center">
+  <center>
+<TABLE CELLSPACING=0 BORDER=0 style="border-collapse: collapse" bordercolor="#111111" cellpadding="0">
+<TR><TD VALIGN="MIDDLE" >
+<P ALIGN="RIGHT"><I>E<SUB>elect</SUB></I></TD>
+<TD VALIGN="MIDDLE" >
+<P ALIGN="CENTER">=</TD>
+<TD VALIGN="MIDDLE" >
+<P>3(+1.0000)(-51.7124 + -5.4823)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE" >
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE" width="217">
+<P>+ 6(+0.6667)( -3.2457 + -6.4652)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" >
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE" >
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE" >
+<P>+ 3(-0.3333)( -0.6992 + -0.3611)</TD>
+</TR>
+</TABLE>
+  </center>
+</div>
+<P>or </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+E_{elect}  = -210.0898 {\rm eV}.
+\end{displaymath} --><IMG SRC="img1013.gif" WIDTH=143 HEIGHT=30 ALT="begin{displaymath}E_{elect} = -210.0898 {rm eV}.end{displaymath}"></DIV>
+<I><P>E<SUB>nuc</I></SUB> is a relatively straightforward calculation, and is equal to 130.2902eV. The total energy of the system is thus -79.7996 eV. </P>
+<P>We are now ready to calculate the <!-- MATH: $\Delta H_f$ --><font face="Symbol">D</font>H<sub>f&nbsp;
+</sub>. As the total energy and <I>E<SUB>isol</I></SUB> are in eV, we must first convert them into kcal/mol: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\Delta H_f = 23.061( -79.7996 + 71.4377) + 6(52.1020){\rm\ kcal/mol}
+\end{displaymath} --><IMG SRC="img1015.gif" WIDTH=378 HEIGHT=32 ALT="begin{displaymath}Delta H_f = 23.061( -79.7996 + 71.4377) + 6(52.1020){rm kcal/mol}end{displaymath}"></DIV>
+<P>or </P>
+<P align="center"><font face="Symbol">D</font>H<sub>f&nbsp;
+</sub>&nbsp;= 119.780 kcal/mol. </P>
+<P align="left">It is convenient to combine <I>E<SUB>isol</I></SUB> and <I>E<SUB>atom</I></SUB> together, to simplify this calculation. In order to convert any total energy <!-- MATH: $(E_{elect} + E_{nuc})$ -->(<I>E<SUB>elect</I></SUB> + <I>E<SUB>nuc</I></SUB>)into a <!-- MATH: $\Delta H_f$ --><font face="Symbol">D</font>H<sub>f
+</sub>, the following operation must be performed: </P>
+<P><DIV ALIGN="CENTER"><!-- MATH: \begin{displaymath}
+\Delta H_f = 23.061(E_{elect} + E_{nuc}  -\sum_i E_{(isol-atom)}  )
+\end{displaymath} --><IMG SRC="img1018.gif" WIDTH=279 HEIGHT=42 ALT="begin{displaymath}Delta H_f = 23.061(E_{elect} + E_{nuc} -sum_i E_{(isol-atom)} )end{displaymath}"></DIV>
+<P>in which the index <I>i</I> is over all atoms in the system. </P>
+<P>Users of MOPAC may wish to verify this calculation for a system of their own choice. To facilitate this, the data in the Table&nbsp;may prove useful. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER">&nbsp;</P>
+<STRONG><P>Table:</STRONG> Values of <!-- MATH: $E_{(isol-atom)}$ --><I>E</I><SUB>(<I>isol</I>-<I>atom</I>)</SUB> </P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Element</TD>
+<TD VALIGN="MIDDLE" COLSPAN=4>
+<P ALIGN="CENTER"><!-- MATH: $E_{(isol-atom)}$ --><I>E</I><SUB>(<I>isol</I>-<I>atom</I>)</SUB> (eV/atom)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">MINDO/3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">MNDO</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">AM1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">PM3</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Hydrogen</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-14.764312</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-14.165588</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-13.655739</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-15.332633</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Lithium</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-6.793583</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Beryllium</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-27.541992</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Boron</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-67.584394</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-70.200344</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-69.601659</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Carbon</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-126.880346</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-127.910952</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-128.226140</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-118.640263</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Nitrogen</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-192.410048</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-207.466249</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-207.307791</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-162.513823</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Oxygen</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-309.652672</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-320.451178</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-318.682192</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-291.924879</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Fluorine</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-475.817831</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-477.502913</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-483.109715</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-438.336301</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Aluminum</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-47.931017</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-50.311708</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Silicon</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-95.576505</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-87.539565</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-83.701885</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-72.488357</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Phosphorus</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-154.270388</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-156.236921</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-124.436836</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-121.236135</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Sulfur</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-231.996798</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-228.891710</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-186.333060</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Chlorine</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-347.185366</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-354.374768</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-373.455532</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-316.452049</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Zinc</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-31.231065</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Germanium</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-80.129955</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Bromine</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-347.840783</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-353.473742</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-353.699430</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Tin</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-95.454929</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Iodine</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-341.704860</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-347.970786</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-289.422586</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Mercury</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-29.456154</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Lead</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">-107.856099</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+<P>These numbers may be used in conjunction with the semiempirical electronic and nuclear energies to calculate the heat of formation. </P>
+<P><HR></P>
+<P><!--Navigation Panel--><A NAME="tex2html8437"><A HREF="node511.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html8433"></A><A HREF="node503.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html8429"></A><A HREF="node509.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></A><A NAME="tex2html8435"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html8436"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html8438"><A HREF="node511.html">Localized Molecular Orbital</A></A> <B>Up:</B> <A NAME="tex2html8434"><A HREF="node503.html">An SCF Calculation</A></A> <B>Previous:</B> <A NAME="tex2html8430"><A HREF="node509.html">Iterating Fock matrix</A></A> <!--End of Navigation Panel--></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

@@ -1,0 +1,224 @@
+
+$$ H_{i,j} (\mathrm{millidynes/\AA}) = 10^5\frac{({\mathrm{Kcal\
+to\ ergs}})}
+ {(\mathrm{\AA\ to\ cm})^2(\mathrm{Mole\ to\
+molecule})} H_{i,j}(\mathrm{kalmol/\AA  })
+ $$
+
+
+
+
+or
+$$
+H_{i,j} (\mathrm{millidynes/\AA}) = 10^5\frac{4.184*10^3*10^7}{(10^{-8*2})
+(6.022*10^{23})}H_{i,j}(\mathrm{kcal/mol/\AA ^2}).
+$$
+Diagonalization of this matrix yields the force constants of the system.
+
+In order to calculate the vibrational frequencies, the Hessian matrix is first
+mass-weighted:
+$$
+H^m_{i,j} = \frac{H_{i,j}}{\sqrt{M_i*M_j}}.
+$$
+
+Then the Hessian is converted from millidynes per \AA ngstrom to dynes per
+centimeter by multiplying by 10$^5$.
+
+Diagonalization of this matrix yields eigenvalues, $\epsilon$, which represent
+the quantities $\sqrt{k/\mu}$, from which the vibrational frequencies can be
+calculated:
+$$
+\bar{\nu}_i = \frac{1}{2\pi c}\sqrt{\epsilon_i}.
+$$
+
+\subsection{Mechanism of the frame in FORCE calculation}
+\index{Frame!description of}
+The FORCE calculation uses Cartesian coordinates, and all 3N  modes are
+calculated, where N is the number of atoms in the system.  Clearly, there will
+be 5 or 6 ``trivial'' vibrations,  which  represent  the  three translations
+and two or three rotations.  If the molecule is exactly at a stationary point,
+then these ``vibrations'' will have a  force  constant and  frequency  of
+precisely  zero.   If the force calculation was done correctly, and the
+molecule was not exactly at a stationary point,  then the  three  translations
+should be exactly zero, but the rotations would be non-zero.  The extent to
+which  the  rotations  are  non-zero  is  a measure of the error in the
+geometry.
+
+If  the  distortions  are  non-zero,  the  trivial  vibrations  can interact
+with  the  low-lying genuine vibrations or rotations, and with the transition
+vibration if present.
+
+To prevent this the analytic form of the rotations  and  vibrations is
+calculated,  and arbitrary eigenvalues assigned; these are 500, 600, 700, 800,
+900, and 1000 millidynes/\AA ngstrom for Tx, Ty, Tz, Rx,  Ry  and Rz  (if
+present),  respectively.  The rotations are about the principal axes of inertia
+for the system, taking  into  account  isotopic  masses. The ``force matrix''
+for these trivial vibrations is determined, and added on to the calculated
+force matrix.  After diagonalization the  arbitrary eigenvalues are subtracted
+off the trivial vibrations, and the resulting numbers are the ``true'' values.
+Interference with genuine vibrations  is thus avoided.
+
+\subsection{Vibrational Analysis}\index{Vibrational analysis}
+Analyzing normal coordinates is very tedious.  Users  are  normally familiar
+with the internal coordinates of the system they are studying, but not familiar
+with the Cartesian coordinates.  To  help characterize the  normal
+coordinates,  a very simple analysis is done automatically, and users are
+strongly encouraged to use this analysis first,  and  then to look at the
+normal coordinate eigenvectors.
+
+In the analysis, each pair of bonded atoms is examined  to  see  if there  is
+a  large  relative  motion  between them.  By bonded is meant \index{Van der
+Waals|ff} within the van der Waals' distance.  If there  is  such  a  motion,
+the indices  of  the  atoms,  the  relative  distance  in \AA ngstroms, and the
+percentage radial motion are printed.   Radial  plus  tangential  motion adds
+to  100\%,  but  as there are two orthogonal tangential motions and only one
+radial, the radial component is printed.
+
+Vibrations in the range +50 to {\em i}50 cm$^{-1}$ cannot be described
+accurately in the vibrational analysis, due to numerical difficulties. However,
+the normal coordinates and frequencies are printed in the section above
+``DESCRIPTION OF VIBRATIONS''.
+
+\subsection{Reduced masses}\index{Reduced mass|ff}\index{Simple harmonic motion}
+\index{Mass!reduced}
+A molecular vibration normally involves all the atoms moving simultaneously.
+This is clearly very different from the  simple harmonic motion of a mass
+attached to a spring that is attached to an immovable object.  Nevertheless, it
+is convenient to visualize a molecular vibration as consisting of a single
+mass, $M$, on the end of a spring of force constant $k$. For such a  system,
+the period of vibration, $T$, is given by:
+$$
+T=2\pi\sqrt{\frac{M}{k}}.
+$$
+
+How, then, do we relate the complicated motion of a molecular vibration to the
+mass and spring model?
+
+During a molecular vibration, each atom follows a simple harmonic motion. So
+the problem is, to what extent does each atom contribute to the mass, and to
+what extent does each atom contribute to the spring?
+
+In order to answer this, first consider some simple systems.  In the system
+H--X, where X has a very large mass, compared to that of the H,  the effective
+mass is obviously that of H.  In H$_2$, the effective mass is half that of a
+single H.   Why is this so?  In H--X, particle X is stationary, and particle H
+contributes 100\% of the energy to the vibration.  In H$_2$, each particle
+obviously contributes 50\%, but now the center of mass is half way between the
+two particles.  If the force constants are the same in H--X and in H--H, then
+the period of vibration of H--X will be $\sqrt{2}$ times that of H--H.  This is
+the same period as for a system of two particles, each of which having a mass
+twice that of a H particle.  For a system of two particles, $A$ and $B$, having
+masses $M_A$ and $M_B$,  the vibrational wavefunction, $\psi_v$, is:
+$$
+\psi_v=\sqrt{\frac{M_B}{M_A+M_B}}\psi_A-\sqrt{\frac{M_A}{M_A+M_B}}\psi_B.
+$$
+This can be interpreted as particle $A$ moves $(\sqrt{\frac{M_B}{M_A+M_B}})^2$
+in the time particle $B$ moves $(\sqrt{\frac{M_A}{M_A+M_B}})^2$.  The center of
+mass, $\rho$, stays constant:
+$$
+\rho=\sum_iM_i\delta x_i = M_A\frac{M_A}{M_A+M_B}- M_B\frac{M_A}{M_A+M_B} = 0.
+$$
+The square of the coefficients of the wavefunction represent the contribution
+to the motion.  The effective mass, $\mu$, for this system is:
+$$
+\mu = \frac{M_A\times M_B}{M_A+M_B}.
+$$
+What fraction is due to $A$ and what fraction is due to $B$?  From the
+wavefunction, the intensity of $A$ is $\frac{M_B}{M_A+M_B}$, and the relative
+rate of motion is also $\frac{M_B}{M_A+M_B}$, so the contribution to the
+effective mass due to $A$ is:
+$$
+(\frac{M_B}{M_A+M_B})M_A;
+$$
+likewise, for $B$:
+$$
+(\frac{M_A}{M_A+M_B})M_B.
+$$
+Consider two particles, $A$ and $B$, of mass 1 and 4, respectively.   The
+wavefunction for the vibration is:
+$$
+\psi_v = \sqrt{\frac{4}{5}}\psi_A-\sqrt{\frac{1}{5}}\psi_B,
+$$
+where $A$ contributes
+$$
+\frac{16}{25}\times 1 = 0.64
+$$
+and $B$ contributes
+$$
+\frac{1}{25}\times 4 = 0.16
+$$
+to the effective mass of $\frac{4}{5}$.
+
+In other words, the contribution to the effective mass is equal to the
+intensity of the wavefunction on each atom, times the mass of the atom, times
+the intensity of the wavefunction.  This is intuitively correct:  the total
+vibration is composed of contributions from each particle, and the amount each
+particle contributes is proportional to its intensity in the wavefunction.  The
+mass of each particle is also proportional to its intensity in the
+wavefunction.
+
+Extension to polyatomic molecules is now trivial.  The effective mass is given
+by:
+$$
+\mu = \sum_A <\!\psi_AM_A\psi_A\!>\times <\!\psi_A|\psi_A\!>.
+$$
+When written in this way, the quantum nature of the expression is obvious.
+However, for computational convenience, the effective mass is rewritten as:
+$$
+\mu = \sum_A(\psi_A^2)^2\times M_A
+$$
+or
+$$
+\mu = \sum_A(\sum_{i=1}^3c_{A_i}^2)^2M_A.
+$$
+This expression is suitable for most systems.  However, it is not a
+well-defined quantity.  Under certain circumstances involving degenerate
+vibrations, the quantity $\mu$ can become ill-defined.  This phenomenon can be
+attributed to the  fact that the reduced mass is not an observable.
+
+\subsection{Effective masses}\index{Mass!effective}\index{Effective mass}
+Another way of regarding the effective mass of a mode can be derived from
+consideration of the simple harmonic oscillator:
+$$
+   E =  \sqrt{\frac{k}{\mu}}.
+$$
+Diagonalization of the mass-weighted Hessian yields the energies, and from the
+normal coordinates the force-constants can readily be derived.  From these two
+quantities, the effective mass can readily be calculated:
+$$
+\mu = \frac{k}{E^2}.
+$$
+For a homonuclear diatomic, the effective mass calculated this way is equal
+to the mass of one atom.
+
+\subsection{Travel}\index{Travel}
+To continue the idea of representing a normal mode as a simple harmonic
+oscillator, the distance the atoms move through can be represented as the
+distance the idealized mass moves through.  This can be calculated knowing the
+energy of the mode and the force constant:
+$$
+     E = \frac{1}{2}kx^2.
+$$
+Here $k$ is the force-constant for the mode, and is given by
+$$
+k = <\psi|Hessian|\psi>;
+$$
+$E$ is the energy of the mode.
+
+From this, the distance, $x$, which the system moves through, can be calculated
+from
+$$
+x =\sqrt{\frac{2\times 1.196266\times 10^8 \times 1000 \times 10^8 \nu}{N k}},
+$$
+where $1.196266\times 10^8$ is the conversion factor from cm$^{-1}$ to ergs,
+1000 converts from millidynes to dynes, $10^8$ converts from cm to \AA , and
+$N$ converts from moles to molecules.
+
+Note that $x$, which in the output is called TRAVEL, is in mass weighted
+space, not simple space.  This quantity can also be calculated using the DRC,
+by depositing one quantum of energy into a vibrational mode.  For a system at a
+stationary point, the relevant keywords would be \comp{IRC=1 DRC t=1m}.  For
+larger systems, the time may need to be increased.  At least one coordinate
+must have an optimization flag set to 1.  This is required in order to instruct
+the DRC to print the turning points. \index{Normal coordinates!calculation
+of|)}

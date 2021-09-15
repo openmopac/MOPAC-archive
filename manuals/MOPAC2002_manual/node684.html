@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>TOLERG "Test on Gradient Satisfied"</TITLE>
+<META NAME="description" CONTENT="TOLERG "Test on Gradient Satisfied"">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node685.html">
+<LINK REL="previous" HREF="node683.html">
+<LINK REL="up" HREF="node680.html">
+<LINK REL="next" HREF="node685.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html10665"
+ HREF="node685.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html10661"
+ HREF="node680.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html10655"
+ HREF="node683.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html10663"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html10664"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html10666"
+ HREF="node685.html">TOLERF "Heat of Formation</A>
+<B> Up:</B> <A NAME="tex2html10662"
+ HREF="node680.html"> Geometric optimization criteria</A>
+<B> Previous:</B> <A NAME="tex2html10656"
+ HREF="node683.html">DELHOF "Herbert's Test Satisfied"</A>
+<BR>
+<BR>
+<!--End of Navigation Panel-->
+<H3><A NAME="SECTION001620400000000000000">
+TOLERG "Test on Gradient Satisfied"</A>
+</H3>
+<DL>
+<DT><STRONG>Defined in:</STRONG>
+<DD><TT>FLEPO</TT>
+<DT><STRONG>Default value:</STRONG>
+<DD>1.0
+<DT><STRONG>Basic test:</STRONG>
+<DD>The gradient norm in kcals/mol/&#197;ngstrom is less than
+TOLERG multiplied by the square root of the number of coordinates to be
+optimized.
+<DT><STRONG>Exceptions:</STRONG>
+<DD>&nbsp;
+<UL>
+<LI>If <TT><a href="node186.html">GNORm=<i>n.nn</i></a></TT>&nbsp; is specified, TOLERG=<I>n</I>.<I>nnn</I> divided by the square
+root of the number of coordinates to be optimized, and the secondary tests are
+not done.  If <TT>LET</TT> is not specified, <I>n</I>.<I>nnn</I> is reset to 0.01, if it was
+smaller than 0.01.
+<LI>If <TT><a href="node274.html">PRECISE</a></TT> is specified, TOLERG=0.2 <A NAME="BM36536">&#160;</A>
+<LI>If a <TT><a href="node295.html">SADDLE</a></TT> calculation, TOLERG is made a function of the last
+gradient  norm.
+</UL></DL>
+<P>
+<BR><HR>
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>

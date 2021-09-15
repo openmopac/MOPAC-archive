@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Linear Scaling COSMO</TITLE>
+<META NAME="description" CONTENT="DIEGRD (DIElectric GRaDient)">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot">
+<LINK REL="next" HREF="node639.html"><LINK REL="previous" HREF="node637.html"><LINK REL="up" HREF="node632.html"><LINK REL="next" HREF="node639.html"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others --><!--Navigation Panel--><A NAME="tex2html10081"><A HREF="node639.html"><IMG SRC="next_motif.gif" BORDER=0 WIDTH=36 HEIGHT=24 ALT="next"></A><A NAME="tex2html10077"></A><A HREF="node632.html"><IMG SRC="up_motif.gif" BORDER=0 WIDTH=25 HEIGHT=24 ALT="up"></A><A NAME="tex2html10071"></A><a href="node638.html"><IMG SRC="previous_motif.gif" BORDER=0 ALT="previous" width="63" height="24"></a><A NAME="tex2html10079"></A><A HREF="index.html"><IMG SRC="contents_motif.gif" BORDER=0 ALT="contents" width="65" height="24"></A><A NAME="tex2html10080"></A><A HREF="node716.html"><IMG SRC="index_motif.gif" BORDER=0 ALT="index" width="43" height="24"></A></A><BR>
+<B>Next:</B> <A NAME="tex2html10082"><A HREF="node639.html">COSMO Keywords</A></A> <B>Up:</B> <A NAME="tex2html10078"><A HREF="node632.html">COSMO (Conductor-like Screening</A></A> <B>Previous:</B> <A NAME="tex2html10072">
+<a href="node638.html">DIEGRD</a></A> <BR>
+<BR>
+<!--End of Navigation Panel-->
+<H2><a name="SECTION0012226000000000000000">Linear Scaling COSMO</a> </H2>
+<p>The COSMO solvation model has been re-written to allow large systems to be 
+more easily calculated.&nbsp; This work was done by Dr Andrey Bliznuk, 
+Australian National University, Canberra, Australia.&nbsp; </p>
+<font FACE="TIMES">
+<p>The main additions to the SCF that need to be done on each iteration for 
+COSMO calculations are:</p>
+<ul>
+  <li>solve the system of linear equations (1) to find induced charges <i>q</i> 
+  on the molecular surface: <i>A * q = -B * Q </i>(1)</li>
+  <li>add corrections to the Fock matrix due to these charges: </li>
+</ul>
+<i>
+<p>Fnew = F + B</i></font><i><font FACE="TIMES" SIZE="4"><sup>T</sup></font><font FACE="TIMES"> 
+* q </font></i><font FACE="TIMES">(2)</p>
+<p ALIGN="JUSTIFY">Linear-scaling COSMO implementation uses the conjugated 
+gradients method [1] to solve the system of equations (1). This iterative method 
+allow to solve the systems of linear equations without storing matrices <i>A </i>
+and<i> B</i>, thus avoiding excessive memory requirements of the Cholessky 
+method used in conventional COSMO. The matrix vector products <i>A * q, B * Q</i> 
+and <i>B</i></font><i><font FACE="TIMES" SIZE="4"><sup>T</sup></font><font FACE="TIMES"> 
+* q </font></i><font FACE="TIMES">are computed using modified version of the 
+adaptive fast multipole method [2]. This method uses <i>O</i>(N) operations to 
+compute the products and doesn't require evaluations of the matrices <i>A</i> 
+and <i>B</i>. All other calculations are performed similarly to the conventional 
+COSMO. </p>
+<p>&nbsp;</p>
+<p ALIGN="JUSTIFY">1. R. Barret, M. Berry, T.F. Chan, J. Demmel, J. Donato, J. 
+Dongarra, V. Eijkhout, R. Pozo, C. Romine, and H. van der Vorst &quot;Templates for 
+the solution of linear systems: building blocks for iterative methods&quot;, SIAM, 
+Philadelphia, 1994.</p>
+<p ALIGN="JUSTIFY">2. H. Cheng, L. Greengard and V. Rokhlin &quot; A fast adaptive 
+multipole algorithm in three dimensions&quot;, J. Comp. Phys., 1999, 155, 468-498.
+</p>
+</font>
+
+<P><HR></P>
+<ADDRESS>J. J. P. Stewart <BR>
+Fujitsu Ltd. 2001 </ADDRESS></BODY>
+</HTML>

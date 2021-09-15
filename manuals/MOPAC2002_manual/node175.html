@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>ESR </TITLE>
+<META NAME="description" CONTENT="ESR ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+
+<LINK REL="next" HREF="node176.html">
+<LINK REL="previous" HREF="node174.html">
+<LINK REL="up" HREF="node109.html">
+<LINK REL="next" HREF="node176.html">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<A NAME="tex2html4007"
+ HREF="node176.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4003"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html3997"
+ HREF="node174.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4005"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4006"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4008"
+ HREF="node176.html">EXCITED </A>
+<B> Up:</B> <A NAME="tex2html4004"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html3998"
+ HREF="node174.html">ESPRST </A>
+<!--End of Navigation Panel-->
+<H2>
+<TT>ESR</TT> 
+</H2>
+The unpaired spin density arising from an odd-electron system can be
+calculated  both  RHF  and  UHF.  In a UHF calculation the alpha and beta
+M.O.s have  different  spatial  forms,  so   spin  density  can
+naturally  be  present  on in-plane hydrogen atoms such as in the phenoxy
+radical.
+<P>
+In the RHF formalism  a  MECI  calculation  is  performed.  
+In general, <TT>ESR</TT> can be used for <EM>any</EM> system for which M<IMG
+ WIDTH="38" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img115.gif"
+ ALT="$_S \neq 0$">.
+If the C.I. calculation
+results in many states, then the spin density for the state requested
+and the next few states will be printed.  For example, if benzene cation, D<SUB>6<I>h</I></SUB>,
+is calculated, using <TT>ESR <a href="node251.html">OPEN(3,2)</a></TT>, then the spin density for
+the two degenerate components of E<SUB>1<I>g</I></SUB> will be printed.  For this system, the
+total spin density on any given atomic orbital or any atom is given
+by the <EM>average</EM> of the spin densities for the two components.  For
+benzene<SUP>+</SUP>, this would be 1/6 electrons.
+<P>
+Thus, for example, for ethylene, <TT>ESR <a href="node333.html">TRIPLET</a>
+<a href="node134.html">C.I.=2</a></TT> would 
+give meaningful results, as would
+<TT>ESR <a href="node229.html">MS=1</a> C.I.=2</TT>. However, <TT>ESR
+<a href="node292.html">ROOT=2</a> C.I.=2</TT> would not, as this
+would be used to calculate the spin density arising from the M<SUB><I>S</I></SUB> = 0component of a triplet
+state, which will have a zero spin density.
+<P>
+If  the  keywords  <TT>OPEN</TT>  and  <TT>C.I.=</TT>  are  both  
+absent, then only a single state is
+calculated.  The spin density is then calculated from the  state
+function.   In  order  to have spin density on the hydrogens in,
+for example, the phenoxy radical, several states should be mixed.
+<P>
+<HR>
+<!--Navigation Panel-->
+<A NAME="tex2html4007"
+ HREF="node176.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="next" SRC="next_motif.gif" width="37" height="24"></A> 
+<A NAME="tex2html4003"
+ HREF="node109.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="up" SRC="up_motif.gif" width="26" height="24"></A> 
+<A NAME="tex2html3997"
+ HREF="node174.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="previous" SRC="previous_motif.gif" width="63" height="24"></A> 
+<A NAME="tex2html4005"
+ HREF="index.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="contents" SRC="contents_motif.gif" width="65" height="24"></A> 
+<A NAME="tex2html4006"
+ HREF="node716.html">
+<IMG ALIGN="BOTTOM" BORDER="0" ALT="index" SRC="index_motif.gif" width="43" height="24"></A> 
+<BR>
+<B> Next:</B> <A NAME="tex2html4008"
+ HREF="node176.html">EXCITED </A>
+<B> Up:</B> <A NAME="tex2html4004"
+ HREF="node109.html"> Keywords</A>
+<B> Previous:</B> <A NAME="tex2html3998"
+ HREF="node174.html">ESPRST </A>
+<!--End of Navigation Panel-->
+<ADDRESS>
+<I>J. J. P. Stewart</I>
+<BR><I>Fujitsu Ltd. 2001</I>
+</ADDRESS>
+</BODY>
+</HTML>
