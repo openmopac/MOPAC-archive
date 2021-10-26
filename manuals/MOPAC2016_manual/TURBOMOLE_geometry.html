@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Specification of TURBOMOLE geometry</TITLE></HEAD>
+<BODY>
+<h1 align="center">Specification of TURBOMOLE geometry</h1>
+
+
+<P>TURBOMOLE geometries can be converted into MOPAC input data sets by adding 
+the standard three lines at the beginning of the geometry.<BR>
+<P align="left">&nbsp;Example of a MOPAC input data set that uses the TURBOMOLE geometry specification:</P>
+  <div align="left">
+<PRE>Line 1:  PM6
+Line 2:  Ammonia
+Line 3:  In TURBOMOLE format
+Line 4:  $coord
+Line 5:       .00000000000000       .00000000000000       .54561506935122      n
+Line 6:      -.87806233111566      1.52084856970468      -.18187168978374      h
+Line 7:      -.87806233111566     -1.52084856970468      -.18187168978374      h
+Line 8:      1.75612466223131       .00000000000000      -.18187168978374      h
+Line 9:  $end
+Line 10:</pre>
+  
+</div>
+<p>Lines 1, 2, and 3 are normal MOPAC lines. Line 1 is keywords, lines 2 and 3 
+are comments<br>
+Line 4 consists of the TURBOMOLE text &quot;$coord&quot; This line is ignored by MOPAC. It 
+does not need to be present.<br>
+Lines 5-8 are the geometry definition.&nbsp; Coordinates are in atomic units.&nbsp; 
+The chemical symbol follows the Cartesian&nbsp; coordinate for each atom.<br>
+Line 9 consists of the TURBOMOLE text &quot;$end&quot; This line is ignored by MOPAC. It 
+does not need to be present.<br>
+Line 10 is the normal blank line that indicates the end of a MOPAC input data 
+set.</p>
+<p>By default, geometries are flagged for optimization.&nbsp; To prevent this, 
+use keywords such as <a href="one_scf.html"><TT>1SCF</TT></a> or <a href="nooptx.html">
+<TT>NOOPT</TT></a>.</p>
+  
+</BODY>
+</HTML>

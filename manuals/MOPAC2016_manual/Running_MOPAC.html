@@ -1,0 +1,174 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 12.0">
+<TITLE>Running MOPAC</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H1>Running MOPAC </H1>
+<h2>General</h2>
+<p>Data sets can have any name, but for convenience they should end in &quot;.mop&quot;, 
+&quot;.dat&quot;, or &quot;.arc&quot;&nbsp; Examples of valid data set names are: H2O.mop, water.mop, 
+water.dat, water.arc, &quot;water dimer.mop&quot;.&nbsp; Other names can be used, such as 
+water.mopac, water.archive. If suffixes other than &quot;.mop&quot;, &quot;.dat&quot;, or &quot;.arc&quot; 
+are used, then the resulting files may have names other than those desired.</p>
+<h2>Results</h2>
+<p>All successful MOPAC jobs write an output file, e.g., water.out.&nbsp; This 
+contains information on the system, what happened during the run, and a lot of 
+results.&nbsp; Many MOPAC jobs also generate an archive file, e.g., water.arc, 
+this summarizes the calculation and contains the geometry resulting from the 
+job.&nbsp; When working on a project, the ARC file is useful as a quick way to 
+&quot;see&quot; what the system is that's being worked on.</p>
+<p>A really useful pair of files are the .html and .pdb files.&nbsp; These, 
+together with the .arc file, allow detailed information on the system to be seen 
+easily.</p>
+<p>MOPAC does not produce any graphics.&nbsp; The easiest graphics program to 
+use is JSmol, which uses the <a href="html.html">HTML</a> file written by MOPAC.</p>
+<p>&nbsp;</p>
+<h2>From the desktop in Windows:</h2>
+<p>This is the recommended sequence for getting MOPAC up and running on a 
+Windows platform.&nbsp; It will install the license key and set up the 
+association of MOPAC2016 with the data set in one step.</p>
+<p>Make up a data-set with the name of the set being that of the license-key.&nbsp; 
+Thus if the key is &quot;12345678a12345678 then create a file (using, e.g., notepad) 
+with the name &quot;12345678a12345678.mop&quot;&nbsp; The file can be empty, it's only the 
+name that is important.</p>
+<p>In Windows Explorer, navigate to the file, and right-click on it.&nbsp; Use 
+&quot;Open with&quot; and browse to C:\Program files\mopac. 
+Select MOPAC2016.exe and click on &quot;open&quot;. If you want to, put a check in &quot;always 
+use this program to open this kind of file&quot; to associate files ending in &quot;.mop&quot; 
+with MOPAC2016, then click on &quot;ok&quot;.&nbsp; MOPAC2016 will start by displaying the 
+End User License Agreement.&nbsp; After reviewing it, if it is acceptable, type 
+&quot;yes&quot; when prompted.&nbsp; You will probably need to 
+scroll down to see this part. If you hear a beep or ping sound, and you can't 
+type &quot;yes&quot;, then look for another window on the screen.&nbsp; This window might 
+be behind the current window.&nbsp; Type &quot;yes&quot; in this other window and press th 
+return key.</p>
+<p>From then on, whenever you want to run a MOPAC job, either double click on 
+the data set (if you chose to make the association) or right-click and use &quot;Open 
+with&quot; and select MOPAC2016.</p>
+<p>&nbsp;</p>
+<h2>From the DOS prompt:</h2>
+<p>In Windows systems, this is referred to as the &quot;command prompt.&quot;&nbsp; 
+Although running from the command prompt is straightforward, by preparing a 
+suitable icon the ease of use of the command prompt can be improved.&nbsp; The 
+steps involved in preparing the icon are as follows:</p>
+<p>Paste a shortcut to the command prompt on the desktop.<br>
+Open the icon by double-clicking.<br>
+Right-click on the blue bar at the top and select &quot;properties.&quot;<br>
+In &quot;Font&quot; chose &quot;Lucida Console&quot;, bold, size14.<br>
+In &quot;Layout&quot; chose &quot;Screen buffer size&quot; Width: 107; Height: 6000; &quot;Window size&quot; 
+Width: 107; Height 50; &quot;Window position&quot; -4, -4, uncheck &quot;let system position 
+window&quot;<br>
+In &quot;Colors&quot; chose &quot;Screen background&quot; as white (255,255,255), &quot;Screen text&quot; as 
+black (0,0,0).<br>
+Click on &quot;OK&quot;, then chose &quot;Modify shortcut that started this window.&quot;</p>
+<p>Double click on the icon to get the DOS prompt.</p>
+<p>At the dos prompt, C:\&gt;, type the path plus executable name followed by the 
+file to be run.&nbsp; If the path contains spaces, then enclose the path plus 
+executable name in quotation marks, thus:</p>
+<p>C:\&gt; &quot;C:\program 
+files\mopac\MOPAC2016.exe&quot; water</p>
+<p>where &quot;water&quot; is the name of the data set, with or without a 
+suffix, to be run.&nbsp; If the location of 
+the MOPAC executable is put in the path, then the command can be shortened to 
+just the executable followed by the data set, e.g.:</p>
+<p>C:\&gt; MOPAC2016 water</p>
+<p>If the data set contains spaces, then enclose it in quotation marks, thus:</p>
+<p>C:\&gt; MOPAC2016 &quot;benzoic acid&quot;</p>
+<h2>Linux Version</h2>
+<p>For ease of use, put an alias to the location of the MOPAC executable in the 
+startup command sequence (the .bashrc or .cshrc)</p>
+<p>Once that is done, the procedure for running a MOPAC job is the same as 
+running from the DOS prompt.</p>
+<h2>Windows Version</h2>
+<p>Before the Windows version can be used, make a MOPAC executable icon on the 
+desktop, by copying the executable from &quot;C:/Program Files/MOPAC/MOPAC2012.exe&quot; 
+(use Windows Explorer, right-click on the executable, left-click on &quot;Copy&quot;) and 
+pasting a shortcut on the desktop (put the cursor on the desktop, right-click, 
+left-click on &quot;Paste shortcut&quot;).</p>
+<P>In Windows Explorer, highlight one or more MOPAC data-sets that you want to run.&nbsp; Drag them to the 
+icon for MOPAC, and drop them there.&nbsp; Up to 50 files can be &quot;dragged and 
+dropped&quot; at a time.&nbsp; The jobs will run as if in a batch queue.&nbsp; The 
+progress of each job will be displayed in the MOPAC window.&nbsp; The current 
+job can be paused, by clicking on the &quot;State - pause&quot; option, and resumed by 
+clicking on the &quot;State - resume&quot; option.&nbsp; The &quot;Shut&quot; command (to stop the 
+current calculation by making it appear to run out of time) can be given by 
+clicking on the &quot;Shutdown&quot; key. </P>
+<P>&nbsp;</P>
+<P>To familiarize yourself with the system, the following operations might be useful. </P>
+<DL>
+<DT>1. Run some test molecules, and verify that MOPAC is producing &quot;acceptable&quot; 
+results. Representative examples are:</DT>
+<dd>&nbsp;</dd>
+<dd>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" id="AutoNumber1" width="480">
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+
+    <a href="ref_data/benzene.mop"  target="_parent">Benzene</a></td>
+    <td width="310" bordercolor="#FFFFFF">A 
+    simple organic compound. </td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="ref_data/fe(c5h5)2.mop">Ferrocene</a> </td>
+    <td width="310" bordercolor="#FFFFFF">A simple organometallic compound.</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="mopac_examples/examples_in_manual/polyethylene.mop">Polyethylene</a></td>
+    <td width="310" bordercolor="#FFFFFF">A simple polymer</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="mopac_examples/polymers/stretch_polyethylene.mop">Stretching 
+    polyethylene</a></td>
+    <td width="310" bordercolor="#FFFFFF">Example of reaction path</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="mopac_examples/solids/diamond.mop">Diamond</a></td>
+    <td width="310" bordercolor="#FFFFFF">A simple solid</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="ref_data/Chromium%20diacetate_dimer.mop">Chromium acetate</a></td>
+    <td width="310" bordercolor="#FFFFFF">A complex with a metal-metal bond</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF"><a href="ref_data/fe(iii)(h2o)6.mop">
+    [Fe(H<sub>2</sub>O)<sub>6</sub>]<sup>2+</sup></a></td>
+    <td width="310" bordercolor="#FFFFFF">A low-spin open-shell d<sup>5</sup> 
+    transition metal complex</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="ref_data/Mn(II)(H2O)6%206Ag%20-%20%204Tg%20(G).mop">[Mn(H<sub>2</sub>O)<sub>6</sub>]<sup>2+</sup></a></td>
+    <td width="310" bordercolor="#FFFFFF">A high-spin open-shell d<sup>5</sup> 
+    transition metal complex</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="ref_data/Fe2(tetra-t-butyl%20cyclobutadiene)2(CO)3.mop">Fe<sub>2</sub>(C<sub>4</sub>Me<sub>3</sub>)<sub>2</sub>(CO)<sub>3</sub></a></td>
+    <td width="310" bordercolor="#FFFFFF">A complicated organometallic complex</td>
+  </tr>
+  <tr>
+    <td width="167" bordercolor="#FFFFFF">
+    <a href="ref_data/Ni3(Cp)3(CO)3.mop">Ni<sub>2</sub>(Cp)<sub>3</sub>(CO)<sub>2</sub></a></td>
+    <td width="310" bordercolor="#FFFFFF">Another complicated organometallic complex</td>
+  </tr>
+</table>
+</dd>
+<dd>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+</dd>
+<DT>2. Make some simple modifications to the data-files supplied in order to test your understanding of the data format </DT>
+<DT>3. When satisfied that MOPAC is working, and that data files can be made, begin production runs. </DT>
+</DL>
+<P>Restarts should be user transparent. If MOPAC does make any restart files, do not change them (it would be hard to do anyhow, as they're in machine code), as they will be used when you run a RESTART job. </P>
+
+</BODY>
+</HTML>

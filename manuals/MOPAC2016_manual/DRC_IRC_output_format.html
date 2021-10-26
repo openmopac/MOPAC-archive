@@ -1,0 +1,182 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Output format for IRC and DRC</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1><A NAME="SECTION0012198000000000000000">Output format for IRC and DRC</A> 
+</h1>
+<P>The IRC and DRC can produce several different forms of output. Because of the large size of these outputs, users are recommended to use search functions to extract information. To facilitate this, specific lines have specific characters. Thus, a search for the "%" symbol will summarize the energy profile while a search for "AA" will yield the coordinates of atom 1, whenever it is printed. The main flags to use in searches are: </P>
+<TABLE >
+<TR><TD >
+<DL>
+<DT><B><TT>%</DT>
+</DL></B></TT></TD>
+<TD >
+<DL>
+<DT>Energies for all points calculated, excluding extrema </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>%M</B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>Energies for all turning points </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>%MAX</B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>Energies for all maxima </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>%MIN</B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>Energies for all minima </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>%</DT>
+</DL></B></TT></TD>
+<TD >
+<DL>
+<DT>Energies for all points calculated </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>AA*</DT>
+</DL></B></TT></TD>
+<TD >
+<DL>
+<DT>Internal coordinates for atom 1 for every point </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>AE*</DT>
+</DL></B></TT></TD>
+<TD >
+<DL>
+<DT>Internal coordinates for atom 5 for every point </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>123AB*</B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>Internal coordinates for atom 2 for point 123 </DT>
+</DL></TD>
+</TR>
+</TABLE>
+<DL>
+<DT>&nbsp;As the keywords for the IRC/DRC are interdependent, the following list of keywords illustrates various options.<A NAME="BM22665">&nbsp;</A> <A NAME="BM22666">&nbsp;</A> </DT>
+</DL>
+<TABLE>
+<TR><TD >
+<B><TT><DL>
+<DT><a href="drc0.html">DRC</a></DT>
+</DL></B></TT></TD>
+<TD >
+<DL>
+<DT>The Dynamic Reaction Coordinate is calculated. Energy is conserved, and no initial impetus. </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<TT>
+<B><DL>
+<DT><a href="drc.html">DRC=0.5</a></B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>In the DRC kinetic energy is lost with a half-life of femtoseconds. </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>DRC=1.0</B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>Energy is put into a DRC with an half-life of -1.0 femtoseconds, i.e., the system gains energy. </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<TT>
+<B><DL>
+<DT><a href="irc0.html">IRC</a></B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>The Intrinsic Reaction Coordinate is calculated. No initial impetus is given. Energy not conserved. </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<TT>
+<B><DL>
+<DT><a href="irc.html">IRC=4</a></B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>The IRC is run starting with an impetus in the negative of the 4th normal mode direction. The impetus is one quantum of vibrational energy. </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<TT>
+<B><DL>
+<DT>IRC=1 <a href="kinetic.html">KINETIC=1</a></B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>The first normal mode is used in an IRC, with the initial impetus being 1.0 kcal/mol. </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>DRC KINETIC=5</B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>In a DRC, after the velocity is defined, 5 kcal of kinetic energy is added in the direction of the initial velocity. </DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>IRC=1 </DT>
+</DL></B></TT></TD>
+<TD >
+<B><TT><DL>
+<DT>DRC KINETIC=4</B></TT> After starting with a 4 kcal impetus in the direction of the first normal mode, energy is conserved.</DT>
+</DL></TD>
+</TR>
+<TR><TD >
+<B><TT><DL>
+<DT>DRC <a href="velocity.html">VELOCITY</a> KINETIC=10</B></TT> </DT>
+</DL></TD>
+<TD >
+<DL>
+<DT>Follow a DRC trajectory which starts with an initial velocity read in, normalized to a kinetic energy of 10 kcal/mol. </DT>
+</DL></TD>
+</TR>
+</TABLE>
+<P>Instead of every point being printed, the option exists to print specific points determined by the keywords <TT>
+<a href="t-priority0.html">T-PRIORITY</a></TT>, <TT><a href="x-priority0.html">X-PRIORITY</a></TT> and <TT>
+<a href="h-priority0.html">H-PRIORITY</a></TT>. If any one of these words is specified, then the calculated points are used to define quadratics in time for all variables normally printed. In addition, if the flag for the first atom is set to
+<a href="DRC_print_options.html">"T"</a> then all kinetic energy turning points are printed. If the flag for any other internal coordinate is set to "T" then, when that coordinate passes through an extremum, that point will be printed. As with the PRIORITY's, the point will be calculated via a quadratic to minimize non-linear errors. </P>
+<P>N.B.: Quadratics are unstable in the regions of inflection points; in these circumstances linear interpolation will be used. A result of this is that points printed in the region of an inflection may not correspond exactly to those requested. This is not an error and should not affect the quality of the results.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <BR>
+</P>
+                                                </BODY>
+</HTML>

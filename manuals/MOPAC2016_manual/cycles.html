@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>CYCLES=n </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>CYCLES=<I>n</I></TT>
+</h1>
+When <TT>CYCLES=<I>n</I></TT> is specified, a maximum of <I>n</I> distinct geometry cycles
+are allowed.  After <I>n</I> cycles, the calculation is stopped in the same manner
+as when the allowed time is exceeded.  Geometry cycles are (A) cycles of
+optimization in <TT><a href="ef.html">EF</a>, <a href="sigma.html">SIGMA</a>,
+<a href="nllsq.html">NLLSQ</a></TT>, and <TT><a href="bfgs.html">BFGS</a></TT>, (B) steps in a <TT>
+<a href="force.html">FORCE</a></TT>
+calculation, and (C) points calculated in an <TT><a href="irc0.html">IRC</a></TT> or <TT>
+<a href="drc0.html">DRC</a></TT>
+calculation.
+<P>
+<TT>CYCLES</TT> is intended to be an alternative to the <TT>
+<a href="t=n.html">T=<I>n</I>.<I>nn</I></a></TT> keyword,
+when platforms of different speeds are being used, particularly in porting. See
+also <TT><a href="bigcycles.html">BIGCYCLES</a></TT>.
+</BODY>
+</HTML>

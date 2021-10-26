@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE>PM6-DH2 </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>PM6-DH2</TT></h1>
+<p class="MsoBodyText"><span lang="CS" style="font-size: 14.0pt">Use the PM6-DH2 
+procedure of: M. Korth, M. Pitonák, J. Rezác, and P. Hobza, &quot;<i>A Transferable 
+H-bonding Correction For Semiempirical Quantum-Chemical Methods</i>&quot;, &nbsp;J. Chem. 
+Theory Comp. <b>2010, </b><i>6, </i>344–352 and J. Rezác, J. Fanfrlik, D. 
+Salahub and P. Hobza, &quot; <i>Semiempirical Quantum Chemical PM6 Method Augmented 
+by Dispersion and H-Bonding Correction Terms Reliably Describes Various Types of 
+Noncovalent Complexes &quot; </i>J. Chem. Theory Comp. <b>2009</b>, 5, 1749-1760. 
+See:&nbsp;</span><font size="4" face="Times New Roman">
+<a href="pm6_dh2_abstract.html">Abstract</a>.</font></p>
+<p class="MsoBodyText"><font face="Times New Roman" size="4">The PM6-DH2 method 
+was parameterized to reproduce interaction energies for geometries obtained from 
+high-level quantum mechanical calculations, see <a href="PM6_dh2_accuracy.html">
+accuracy</a>. While it is possible to use it for 
+geometry optimization, please be aware of the following limitation and that the 
+method should be used with extra care. Users are recommended to optimize the 
+geometry with the PM6 or other PM6-DXX methods and calculate the final energy or interaction 
+energy using PM6-DH2.</font></p>
+<p class="MsoBodyText"><font face="Times New Roman" size="4"><b>
+<font color="#FF0000">KNOWN LIMITATION OF PM6-DH2:</font> </b><i>&nbsp; The 
+gradients obtained by the current implementation of the -H correction do not 
+include the term containing the derivative of atomic charges with change of the 
+coordinates. The structure obtained by minimization using this gradient is not 
+the exact minimum of PM6-DH2 energy. This error is negligible in the case of 
+weaker H-bonds, but in case of a strongly bound formic acid dimer, the error is 
+0.30 kcal/mol. This error can be avoided by using </i>
+<a href="noanci.html"><TT>NOANCI</TT></a>,<i> but then the calculations will then 
+take much longer. </i></font></p>
+<p ALIGN="LEFT"><font face="Times New Roman" size="4">The PM6-DH2 procedure corrects 
+binding errors in the PM6 method.&nbsp; It can be used with geometry 
+optimization or with a single point (</font><font face="Helvetica" size="4"><a href="one_scf.html"><TT><font face="Times New Roman">1SCF</font></TT></a></font><font face="Times New Roman" size="4">) 
+calculation.&nbsp; Normally, two or three calculations would be needed to get 
+the binding energy.&nbsp; </font></p>
+<p ALIGN="LEFT"><span style="font-size: 14.0pt">To print the individual components of DH2, add <a href="disp.html"><tt>DISP</tt></a></span></p>
+<p ALIGN="LEFT"><font face="Times New Roman" size="4"><br>
+&nbsp;</font></p>
+<p ALIGN="LEFT">&nbsp;</p>
+<p ALIGN="LEFT">&nbsp;</p>
+<p ALIGN="LEFT">&nbsp;</p>
+</BODY>
+</HTML>

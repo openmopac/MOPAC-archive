@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE>PM6-DH2 </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>PM6-DH+</TT></h1>
+<p class="MsoBodyText"><span lang="CS" style="font-size: 14.0pt">Use</span><span style="font-size: 14.0pt">s</span><span lang="CS" style="font-size: 14.0pt"> the PM6-DH</span><span style="font-size: 14.0pt">+</span><span lang="CS" style="font-size: 14.0pt"> 
+procedure of M. Korth, </span>
+<a href="http://pubs.acs.org/doi/abs/10.1021/ct100408b"><span style="font-size: 14pt">&quot;</span><span style="font-size: 14pt" lang="cs">Third-Generation 
+Hydrogen-Bonding Corrections for Semiempirical QM Methods and Force Fields</span></a><span style="font-size: 14pt">,&quot;
+</span><span style="font-size: 14pt" lang="cs">J. Chem. Theory Comput., 2010, 6 
+(12), pp 3808–3816</span><span style="font-size: 14pt">.&nbsp; </span></p>
+<p class="MsoBodyText"><span style="font-size: 14pt"><b>Abstract:</b>&nbsp; 
+Computational modeling of biological systems is a rapidly evolving field that 
+calls for methods that are able to allow for extensive sampling with systems 
+consisting of thousands of atoms. Semiempirical quantum chemical (SE) methods 
+are a promising tool to aid with this, but the rather bad performance of 
+standard SE methods for non-covalent interactions is clearly a limiting factor. 
+Enhancing SE methods with empirical corrections for dispersion and 
+hydrogen-bonding interactions was found to be a big improvement, but for the 
+hydrogen-bonding corrections the drawback of breaking down in the case of 
+substantial changes to the hydrogen bond, e.g., proton transfer, posed a serious 
+limitation for its general applicability. This work presents a further improved 
+hydrogen bonding correction that can be generally included in parameter fitting 
+procedures, as it does not suffer from the conceptual flaws of previous 
+approaches: hydrogen bonds are now treated as an interaction term between 
+electronegative acceptor and donor atoms, “weighted” by a function of the 
+position of H atoms between them, and multiplied with a damping function to 
+correct the short- and long-range behavior. The performance of the new approach 
+is evaluated for PM6, AM1, OM3, and SCC-DFTB as well as several force-field (FF) 
+methods for a number of standard benchmark sets with hydrogen-bonded systems. 
+The new approach is found to reach the same accuracy as the second-generation 
+hydrogen-bonding correction with less parameters, while it avoids among other 
+issues the conceptual problem with electronic structure changes. SE methods 
+augmented this way reach the accuracy of DFT-D approaches for a large number of 
+cases investigated, while still being about 3 orders of magnitude faster. 
+Moreover, the new correction scheme is transferable also to FF methods that were 
+shown to have serious problems with hydrogen-bonding interactions.</span></p>
+<p class="MsoBodyText"><font face="Times New Roman" size="4">The PM6-DH+ method 
+was parameterized to reproduce interaction energies for geometries obtained from 
+high-level quantum mechanical calculations.&nbsp; See
+<a href="pm6_dh_plus_accuracy.html">accuracy</a>.</font></p>
+<p ALIGN="LEFT"><font face="Times New Roman" size="4">The PM6-DH+ procedure corrects 
+binding errors in the PM6 method.&nbsp; It can be used with geometry 
+optimization or with a single point (</font><font face="Helvetica" size="4"><a href="one_scf.html"><TT><font face="Times New Roman">1SCF</font></TT></a></font><font face="Times New Roman" size="4">) 
+calculation.&nbsp; Normally, two or three calculations would be needed to get 
+the binding energy.&nbsp; </font></p>
+</span>
+<h3 ALIGN="LEFT"><font size="4">Notes</font></h3>
+<p ALIGN="LEFT"><font size="4">Frozen geometries were used during the 
+development of PM6-DH+.&nbsp; By contrast, in the proposed strategy, fully 
+optimized geometries are used.&nbsp; No inconsistency is involved - by sketching 
+a simple Born cycle, it becomes apparent that any errors arising from optimizing 
+the PM6-DH+ parameters using frozen geometries and using those same parameters 
+when calculating the binding energy using the above strategy would be very 
+small; they would contribute only second order perturbation effects, and would 
+be completely negligible.&nbsp; </font></p>
+<p ALIGN="LEFT"><span style="font-size: 14.0pt">To print the individual components of DH+, add <a href="disp.html"><tt>DISP</tt></a></span></p>
+<p ALIGN="LEFT">&nbsp;</p>
+<p ALIGN="LEFT">&nbsp;</p>
+<p ALIGN="LEFT">&nbsp;</p>
+</BODY>
+</HTML>

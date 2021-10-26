@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>CH4 plus F </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+By default, UHF CH<sub>4</sub> plus F generates an excited state</h1>
+<p align="left">
+In general, SCF calculation involving halogen atoms that are far from neutral 
+organic molecules give rise to electronic excited states.&nbsp; An example would 
+be a fluorine atom about 10 Angstroms from a methane molecule.&nbsp; In this 
+system (see data set below), the fluorine atom should have one unpaired extra 
+alpha electron, and methane should be neutral.&nbsp; Instead, the SCF results in 
+the fluorine atom having one unpaired beta electron and methane has two unpaired 
+alpha electrons.&nbsp; What went wrong?&nbsp; The problem was traced to the 
+initial guess for the density matrix.&nbsp; In the first few iterations of the 
+SCF calculation, fluorine has a unit negative charge.&nbsp; The odd alpha 
+electron goes on to the methane.&nbsp; As the SCF forms, a second alpha electron 
+goes on to the methane; this results in the excited state forming.</p>
+<p align="left">
+To correct errors of this type, add <a href="pulay.html"><TT>PULAY</TT></a> to the 
+keyword list.</p>
+<p align="left">
+This error occurs so rarely that a bug-fix has not been made.&nbsp; </p>
+<p align="left">
+&nbsp;</p>
+<p align="left">
+Data set that shows this fault:
+<PRE> 1scf 
+  CH4 plus F
+
+  F    -0.13005907 +1   0.05852702 +1   0.00195838 +1                         0.0000
+  C    11.69496462 +1  -5.34383705 +1  -1.18161572 +1                        -0.4405
+  H    10.09784740 +1  -4.44034777 +1   1.15461967 +1                        -0.0002
+  H    12.10011696 +1  -6.26901783 +1  -0.86283618 +1                         0.1468
+  H    10.80424362 +1  -5.32647020 +1  -1.75399119 +1                         0.1468
+  H    12.17920911 +1  -4.43724484 +1  -0.92583745 +1                         0.1470
+ 
+</PRE>
+
+</BODY>
+</HTML>

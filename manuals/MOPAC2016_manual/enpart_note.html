@@ -1,0 +1,139 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>ENPART note on interaction energies </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+Note on interaction energies in ENPART</h1>
+<p>The heat released when two molecules interact is often of interest.&nbsp; The 
+origin of this energy can be worked out by an analysis of the terms in ENPART, 
+but it is not easy to do.&nbsp; To understand why it is complicated, consider 
+the stabilization energy arising from two water molecules hydrogen bonding 
+together.&nbsp; The heat released when they bond is 4.9 kcal/mol.&nbsp; This is 
+the difference in <span class="b">&Delta;</span>H<sub>f&nbsp; </sub>of the 
+separated molecules and the <span class="b">&Delta;</span>H<sub>f</sub> of the 
+hydrogen-bonded pair. (The data sets used here are at the bottom of this page.)</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" height="124" style="border-left-style: none; border-right-style: none; border-top: 1.5pt solid green; border-bottom: 1.5pt solid green" fpstyle="1,011101100">
+    <tr>
+      <td align="center" height="19" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">&nbsp;Energy 
+      quantity</td>
+      <td height="19" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+      Two isolated<br>
+      water molecules</td>
+      <td height="19" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">&nbsp;</td>
+      <td height="19" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">&nbsp;Water 
+      dimer, <br>
+      hydrogen bonded</td>
+      <td height="19" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">&nbsp;</td>
+      <td height="19" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+      Difference</td>
+    </tr>
+    <tr>
+      <td align="center" height="23" style="border-style: none"> <span class="b">&Delta;</span>H<sub>f&nbsp;</sub></td>
+      <td align="right" height="23" style="border-style: none">-108.61</td>
+      <td align="center" height="23" style="border-style: none">&nbsp;</td>
+      <td align="right" height="23" style="border-style: none">-113.53</td>
+      <td align="center" height="23" style="border-style: none">&nbsp;</td>
+      <td align="right" height="23" style="border-style: none">-4.91</td>
+    </tr>
+    <tr>
+      <td align="left" height="22" style="border-style: none">Self-energy of 
+      first H<sub>2</sub>O </td>
+      <td align="right" height="22" style="border-style: none">&nbsp;-7358.09</td>
+      <td align="center" height="22" style="border-style: none">&nbsp;</td>
+      <td align="right" height="22" style="border-style: none">-7354.93</td>
+      <td align="center" height="22" style="border-style: none">&nbsp;</td>
+      <td align="right" height="22" style="border-style: none">+3.16</td>
+    </tr>
+    <tr>
+      <td align="left" height="22" style="border-style: none">Self-energy of 
+      second H<sub>2</sub>O </td>
+      <td align="right" height="22" style="border-style: none">&nbsp;-7358.09</td>
+      <td align="center" height="22" style="border-style: none">&nbsp;</td>
+      <td align="right" height="22" style="border-style: none">-7353.27</td>
+      <td align="center" height="22" style="border-style: none">&nbsp;</td>
+      <td align="right" height="22" style="border-style: none">+4.82</td>
+    </tr>
+    <tr>
+      <td align="left" height="19" style="border-style: none">Water-water 
+      interaction energy </td>
+      <td align="right" height="19" style="border-style: none">0.00</td>
+      <td align="center" height="19" style="border-style: none">&nbsp;</td>
+      <td align="right" height="19" style="border-style: none">-12.89</td>
+      <td align="center" height="19" style="border-style: none">&nbsp;</td>
+      <td align="right" height="19" style="border-style: none">-12.89</td>
+    </tr>
+    <tr>
+      <td align="left" height="19" style="border-style: none">Total energy of 
+      system </td>
+      <td height="19" style="border-style: none" align="right">-14716.18</td>
+      <td height="19" style="border-style: none">&nbsp;</td>
+      <td height="19" style="border-style: none" align="right">-14721.09</td>
+      <td height="19" style="border-style: none">&nbsp;</td>
+      <td height="19" style="border-style: none" align="right">-4.91</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p align="center">(All energies in kcal/mol)</p>
+<p><b>Question:</b></p>
+<p>From ENPART, the energy of interaction of the two water molecules is 12.89 
+kcal/mol, much larger than the heat of dimerization, 4.9 kcal/mol Why is this?&nbsp; </p>
+<p><b>Answer:</b></p>
+<p>In an isolated water molecule, the energy is, by definition, a minimum.&nbsp; 
+When a water molecule interacts with anything, even another water molecule, its 
+geometry and electronic structure <i>must</i> change.&nbsp; Any change <i>must</i> 
+result in an increase in energy.&nbsp; In this system, the effect of the second 
+water molecule on the electronics and 
+structure of the first water molecule is to cause its energy to rise by 3.2 
+kcal/mol, and the corresponding effect of the first water molecule on the second water 
+is to cause its energy to increase by 4.8 kcal/mol.&nbsp; These increases in 
+energy are much less than the energy of interaction, -12.9 kcal/mol, therefore 
+there is a net stabilization of 4.9 kcal/mol.</p>
+<p>The point here is that the energy of the hydrogen bond is not the energy of 
+interaction of the two water molecules, it is much less.<br>
+&nbsp;</p>
+<p>Data sets used here:</p>
+<PRE>    enpart(3,3) PM6
+  Two isolated water molecules
+
+  O         0.00000000 +0    0.0000000 +0    0.0000000 +0                     
+  H         0.94888226 +1    0.0000000 +0    0.0000000 +0    1    0    0       
+  H         0.94887671 +1  107.5510095 +1    0.0000000 +0    1    2    0       
+  O       100.00000000 +0  134.3949691 +1  172.4547072 +1    1    2    3      
+  H         0.94884149 +1   25.7258314 +1 -142.9814115 +1    4    1    2       
+  H         0.94891219 +1   81.8463828 +1 -152.5832808 +1    4    1    3       
+  </PRE>
+In the optimized hydrogen-bonded water dimer predicted by PM6, the O-O distance is 2.37 &Aring;, much less than the correct 2.91&Aring; given by 
+G. S. Tschumper, M. L. Leininger, B. C. Hoffman, E. F. Valeev, H. F. Schaefer III,
+M. Quack, J. Chem. Phys. 116, 690 (2002).&nbsp; The potential energy surface of 
+H2O dimer is very flat, and the energy of the correct structure is only slightly 
+above that of the predicted structure.&nbsp; With the exception of the water 
+dimer, PM6 predicts hydrogen-bonded structures with good accuracy.<PRE>   enpart(3,3) PM6
+ Two water molecules hydrogen-bonded together, PM6 optimized geometry
+
+  O         0.00000000 +0    0.0000000 +0    0.0000000 +0                     
+  H         0.94764900 +1    0.0000000 +0    0.0000000 +0    1    0    0       
+  H         0.96476300 +1  108.1613840 +1    0.0000000 +0    1    2    0       
+  O         2.05858800 +1   96.4475540 +1  179.9402340 +1    3    1    2      
+  H         0.96087500 +1   84.7452660 +1  -52.9965190 +1    4    3    1       
+  H         0.96083600 +1   84.9704820 +1  106.0583530 +1    4    3    5     
+   </PRE>
+Here is the correct, fully optimized water dimer geometry:<PRE>  enpart(3,3) 1scf PM6
+ Two water molecules hydrogen-bonded together, reference geometry from Tschumper, et.al.
+    
+  O         0.000000  0        0.000000  0        0.000000  0      0     0     0       
+  H         0.958071  1        0.000000  0        0.000000  0      1     0     0       
+  H         0.965310  1      104.452397  1        0.000000  0      1     2     0      
+  H         2.470416  1      154.448639  1      134.557884  1      3     1     2       
+  H         1.518484  1       72.101385  1      132.496880  1      4     3     1       
+  O         0.959705  1       47.110146  1       33.416060  1      4     3     5       
+     </PRE>   
+ 
+
+</BODY>
+</HTML>

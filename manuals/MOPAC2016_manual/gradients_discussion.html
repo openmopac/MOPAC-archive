@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Gradients</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1>Gradients </H1>
+<P>By "gradients" we generally mean "the derivative of the energy with respect to coordinates". The two most commonly used gradients are with respect to Cartesian coordinates, in which case the units are kcal/mol/&Aring;ngstrom, or with respect to internal coordinates, in which case the units are either kcal/mol/&Aring;ngstrom or kcal/mol/radian, depending on whether the coordinate is a distance (in which case it would be kcal/mol/&Aring;ngstrom) or an angle or dihedral (in which case it would be kcal/mol/radian). The particular gradient actually being used at any given point should be clear from the context. In all cases, the gradient can be regarded as the following derivative </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img1492.gif" WIDTH=81 HEIGHT=47 ALT="begin{displaymath}g_i = frac{d(Delta H_f)}{dx_i}end{displaymath}"></DIV>
+<P>In discussion "gradient" will be reserved for the derivative with respect to coordinates flagged for optimization (internal or Cartesian), and "derivative" will be used for both gradients and terms which are used to calculate gradients, such as Cartesian derivatives which are used to calculate internal coordinate gradients. </P>
+<P>There are four very different ways to calculate gradients, although all four result in the same type of derivative. The four ways are: </P>
+<STRONG><DL>
+<DT>Frozen density matrix finite difference derivatives</STRONG> </DT>
+<DD>&nbsp; <BR>
+In these procedures, once an SCF has been achieved, the derivatives can be calculated using the density matrix from the SCF calculation. These methods can only be used with variationally optimized wavefunctions. </DD>
+<dt>
+<STRONG></dt><BR>
+<DT>Analytical derivatives, using frozen density matrix approximation</STRONG> </DT>
+<DD>&nbsp; <BR>
+Not as fast as the first method, but more accurate. Useful when finite difference derivatives are suspected to be of insufficient accuracy. When analytical derivatives are wanted, specify <TT>ANALYT</TT>. Analytical derivatives cannot be used with non-variational finite difference derivatives. </DD>
+<dt>
+<STRONG></dt><BR>
+<DT>Non-variational finite difference derivatives</STRONG> </DT>
+<DD>&nbsp; <BR>
+For non-variational <A NAME="BM20721">&nbsp;</A>wavefunctions (systems for which the electronic energy is modified after the SCF calculation is done, e.g. C.I. calculations), a sophisticated derivative routine in <TT>DERNVO</TT> calculates the effect on the derivative of the post-SCF energy terms. This method is used automatically in RHF C.I. calculations. If this method is <EM>not</EM> wanted, specify <TT>
+<a href="noanci.html">NOANCI</a></TT>. </DD>
+<dt>
+<STRONG></dt><BR>
+<DT>Brute force gradients</STRONG> </DT>
+<DD>&nbsp; <BR>
+These should be avoided whenever possible. To calculate the gradient, a small change is made in the desired coordinate, then a full SCF is done, and the gradient calculated from </DD>
+<DD><DIV ALIGN="CENTER">
+                     <IMG SRC="img1493.gif" WIDTH=108 HEIGHT=45 ALT="begin{displaymath}g_i = frac{Delta H_f-Delta H_f'}{x-x^{'}}.end{displaymath}"></DIV>
+<DD>These gradients are very slow, and are of poor accuracy, but sometimes they are the only way to obtain gradients. These derivatives cannot be used with variationally optimized wavefunctions, but can be used with non-variational wavefunctions by specifying <TT>NOANCI</TT>. </DD>
+</DL>
+<P>Note that <TT>ANALYT</TT> and <TT>NOANCI</TT> apply to two very different things: <TT>ANALYT</TT> applies to the derivatives using a frozen density matrix approximation, and uses true analytical methods. <TT>NOANCI</TT> prevents Liotard's C.I. derivative method being used. Of course <TT>NOANCI</TT> has no meaning for variationally optimized wavefunctions. </P>
+                                                </BODY>
+</HTML>

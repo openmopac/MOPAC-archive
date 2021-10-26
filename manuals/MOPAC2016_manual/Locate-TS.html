@@ -1,0 +1,292 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>LOCATE-TS</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: center;
+																													}
+																													.auto-style2 {
+																														text-align: left;
+																													}
+																													.auto-style3 {
+	text-align: center;
+	font-size: medium;
+}
+.auto-style5 {
+	text-align: center;
+	color: #000080;
+}
+																													.auto-style6 {
+	font-weight: normal;
+}
+																													.auto-style7 {
+																														font-size: medium;
+																													}
+																													.auto-style8 {
+																														text-decoration: underline;
+																													}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>LOCATE-TS, LOCATE-TS(C:[n.nn[,n.nn[,n.nn...]]][;Set:m])<a name="let"></a></TT></h1>
+<h2>Description</h2>
+<p>This function was developed specifically for locating transition states in 
+enzyme-catalyzed reactions, but can be used for more general reactions.</p>
+<p>The objective of <tt>LOCATE-TS </tt>is 
+to locate and refine a transition state joining two stationary points in a reaction.&nbsp; These points are 
+more commonly referred to as reactants and products, but for 
+convenience in this description these geometries will be referred to as <strong>
+A</strong> and 
+<strong>B</strong>.&nbsp; <strong>A</strong> and 
+<strong>B</strong> are used because during the calculation the geometries will 
+be modified as they move towards each other, and would therefore no longer be 
+stationary points.&nbsp; In <tt>LOCATE-TS, </tt>the geometry optimization is performed on both <strong>A</strong> 
+and <strong>B</strong> simultaneously.&nbsp;&nbsp; For small systems consider using <a href="saddle.html"><tt>SADDLE</tt></a>.</p>
+<p>The function being optimized is:</p>
+<p class="auto-style1">&nbsp;&Delta;H<sub>f</sub>' = &Delta;H<sub>f<strong>A</strong></sub> + &Delta;H<sub>f<strong>B</strong></sub> 
++c&Sigma;<sub>i</sub>(X<sub><strong>A</strong></sub><sup>i</sup> - X<sub><strong>B</strong></sub><sup>i</sup>)<sup>2</sup></p>
+<p class="auto-style2">where &#916;H<sub>f<strong>A</strong></sub> and &#916;H<sub>f<strong>B</strong></sub>&nbsp; are the 
+calculated heats of formation of <strong>A</strong> 
+and <strong>B</strong>, respectively. &quot;c&quot; 
+is a constant, in kcal/mol/&Aring;ngstrom<sup>2</sup>, and X<sub><strong>A</strong></sub><sup>i</sup> 
+and X<sub><strong>B</strong></sub><sup>i</sup> are the coordinates of atom &quot;i&quot; in the <strong>A</strong> 
+and <strong>B</strong>, respectively.&nbsp; </p>
+<h2>Advice on using<tt> LOCATE-TS</tt></h2>
+<p>Both geometries used must be as good as possible: They should be stationary 
+points on the Potential Energy Surface (PES); they should include PDB data, 
+either by using a PDB file or, more commonly, by using the normal MOPAC data-set 
+format, and having the atoms labeled with PDB data.</p>
+<p>It is helpful to have all the files involved located in the same folder.&nbsp; Although not essential, 
+this will make the job 
+of defining <tt>GEO_DAT </tt>and <tt>GEO_REF</tt> easier.</p>
+<p>Because of the large probability of introducing errors into the data sets, 
+instead of preparing specific data-sets it is safer to define the geometries 
+to be used using <a href="geo_dat.html"><tt>GEO_DAT</tt></a> and <a href="geo_ref.html">
+<tt>GEO_REF</TT></a>, and having 
+these keywords point to ARC files.&nbsp; This results in a very small data set.&nbsp; 
+For example, if the reactant geometry is in Step_1.arc and the product geometry 
+is in Step_2.arc, the data set would be as follows:</p>
+<p class="auto-style3"><strong>Example of a complete data set for LOCATE-TS</strong></p>
+<p class="auto-style5"><strong>LOCATE-TS GEO_DAT=&quot;Step_1.arc&quot; 
+GEO_REF=&quot;Step_2.arc&quot; EPS=78.4 
+</strong> </p>
+<p><tt><a href="eps.html">EPS</a></tt> is specified here, because using implicit 
+solvation gives a more realistic model for biochemical reactions.&nbsp;&nbsp; Keyword&nbsp; <tt>LOCATE-TS</TT> 
+causes the <a href="mozyme.html"><tt>MOZYME</tt></a> function to be used, so 
+there is no need to add 
+keyword <tt>MOZYME</tt>, if it is supplied, it will be ignored.</p>
+<p><span class="auto-style7"><strong>WARNING: </strong></span><strong>The quality of the 
+transition state geometry is normally not very good.&nbsp; It's good enough to 
+allow tests, such as </strong> <a href="force.html"><tt><strong>FORCE</strong></tt></a><strong> and inspection using a GUI, 
+to be run to verify that it is, in fact, a transition state, but the heat of 
+formation is likely to be in error because the geometry is not fully optimized. 
+Unless corrected, this fault would compromise any comparison of transition-state 
+heats of formation with heats of formation of ground-state systems.&nbsp; This 
+correction is not done automatically - finding transition state geometries 
+requires a lot of CPU time, and, often at the start of a project, many attempts will fail.&nbsp; 
+So rather than perform a lengthy geometry optimization on a faulty transition 
+state, a &quot;quick and dirty&quot; job is done.&nbsp; Once a good transition state is 
+found, it can then be refined as follows:</strong></p>
+<h3><strong>Reactions involving bond making and bond breaking, i.e., chemical 
+reactions</strong></h3>
+<p>Geometries resulting from transition state refinement could be regarded as 
+being composed of two sets: those atoms directly involved in the reaction, and 
+all other atoms. As a result of the refinement the positions of all atoms in the 
+first set, typically 7 or fewer, would be highly optimized. By freezing the 
+positions of these atoms and then running the second geometry optimization 
+procedure, the geometry of the entire transition-state system could be optimized 
+to the same precision as that used for stable intermediates. In test 
+calculations, a gradient minimization was performed using the atoms in the first 
+set to verify that this operation did not introduce spurious forces; in all 
+cases, this resulted in only insignificant changes in the heat of formation and 
+in the positions of the atoms.&nbsp; Use <a href="invert.html"><tt>INVERT</tt></a> to 
+quickly switch optimization flags.</p>
+<p>If keyword <tt><a href="let.html">LET</a></tt> is present, docking of the two systems will not be performed 
+in a <tt> LOCATE-TS</tt> job.&nbsp; This is useful in small systems if the atoms are in 
+the same order in the reactants and products.&nbsp; Avoid using <tt>LET </tt>in large 
+systems, instead identify any mis-matches and edit the reactants or product 
+labels to correct the error.&nbsp;&nbsp; </p>
+<h3><strong>Reactions involving only conformational changes</strong></h3>
+<p>Transition states between different conformers can be located using <tt> LOCATE-TS</tt>. 
+As with chemical reactions, conformational changes involve &quot;reactants&quot; and 
+&quot;products,&quot; but no bonds are made or broken.&nbsp; Once the approximate 
+transition state is located, it can be refined using <a href="ts.html"><tt>TS</TT></a> or 
+other transition-state refinement method. Unlike the refinement when chemical 
+reactions are modeled, <tt>INVERT</tt> cannot be used because no bonds are made 
+or broken.</p>
+<h2>Worked exercise in locating a transition state.</h2>
+<p>A complete enzyme catalyzed mechanism for the hydrolysis of a peptide bond is 
+given in <a href="Chymotrypsin_mechanism.html">Chymotrypsin Mechanism</a>.&nbsp; 
+The worked exercise involves determining the transition state for the first 
+reaction step.&nbsp; Except for Step 3 =&gt; Step 4, the other steps are similar.
+</p>
+<p>Download <a href="Step_1.arc"><strong>Step_1.arc</strong></a> and <strong>
+<a href="Step_2.arc">Step_2.arc</a></strong> and store them in a new folder.&nbsp; 
+In the same folder, create a text file, Step_1_2_Transition_State.mop.&nbsp; 
+Edit this file to add the text in the above example.&nbsp; Run the job using 
+MOPAC.&nbsp; It should run for about one day.&nbsp; If an ARC file is generated, 
+the test was successful.&nbsp; If it was not generated, please contact me at
+<a href="mailto:MrMOPAC@ATT.net">MrMOPAC@ATT.net</a>, and send me 
+the data set and output files.&nbsp;</p>
+<h2>How&nbsp; LOCATE-TS works</h2>
+<p class="auto-style2">The process that LOCATE-TS uses is as follows: The 
+reference data set geometry, defined using <a href="geo_ref.html"><tt>GEO_REF</tt></a>, 
+is rotated and translated to put it into the best overlap with the geometry from 
+the input data set.&nbsp; At this point, the two geometries are likely to be 
+quite different.&nbsp; This difference can be expressed as a distance, defined 
+as the square root of the sum in the above equation.&nbsp; Typical distances in 
+enzyme chemistry are 
+in the order of 50 - 300&Aring;.&nbsp; Geometry optimization is then started, using a small 
+value for &quot;c,&quot; by default this is 3 kcal/mol/Ångstrom<sup>2</sup>.&nbsp; 
+The first step consists of solving the SCF equations using the
+<a href="mozyme.html">
+<tt>MOZYME</tt></a> technique.&nbsp; (There is no need to specify
+<tt>MOZYME</TT>, the presence of <tt>LOCATE-TS</tt> implies <tt>MOZYME</TT>.)&nbsp; All subsequent steps 
+use the wavefunction from this initial SCF calculation, and the pull exerted by 
+the &quot;c&quot; term. This causes the two geometries to move towards each other without 
+imposing a large stress. During this process, the distance will typically drop 
+by a large amount - the two geometries can be regarded as moving across an 
+almost level plane until they stop near the bottom of the activation barrier.&nbsp; 
+The value of &quot;c&quot; is then increased; the new default value is <nobr>30 kcal/mol/Ångstrom<sup>2</sup></nobr>.&nbsp; 
+This large pull then moves <strong>A</strong> and <strong>B</strong> up the 
+barrier to near to the transition state.&nbsp; As with the previous step, the 
+first point involves solving the SCF equations, and all subsequent points use 
+the frozen wavefunction.&nbsp; This optimization is repeated a few times using 
+the same value of &quot;c&quot; to ensure that the wavefunction is sufficiently relaxed.&nbsp; 
+When the optimization is finished the geometries of <strong>A</strong> and <strong>B</strong> are almost the same, with 
+one on each side of the transition state. </p>
+<p class="auto-style2">An estimate of the transition state geometry, <strong>C</strong>,&nbsp; 
+is obtained by averaging the two geometries.&nbsp; The next few steps involve a 
+pair of operations, each pair being repeated a small number of times, typically 
+two to five times.&nbsp; The first of this pair of operations 
+involves geometry optimization of <strong>C</strong>, while holding fixed all 
+atoms involved in bond making or bond breaking, i.e. optimizing the positions of all atoms except those in 
+the active site.&nbsp; The second step involves transition state location, i.e., 
+gradient minimization, but this time using only the atoms in the active site.&nbsp;</p>
+<h2>Options for LOCATE-TS</h2>
+<h3 class="auto-style6"> <tt><strong>LOCATE-TS</strong></tt></h3>
+<p class="auto-style6"><tt>LOCATE-TS</tt> can be used on its own, i.e., without 
+any of the terms in the square brackets; if that is done, then 
+the default optimization procedure is used, and output is small.&nbsp; The default optimization can 
+be reproduced using <tt>LOCATE-TS(C:3,30,30,30;SET:1)</tt></p>
+<p class="auto-style6">About half the time the default <tt>LOCATE-TS</tt> does 
+not finish correctly. Almost always the first big step, moving the reactants and 
+products up the reaction barrier, runs correctly, and most of the time when 
+failures occur they occur in the refinement of the transition state. Because of 
+this behavior, at the end of the first big step three data sets are generated 
+that can then be used in attempting to refine the transition stae.&nbsp; These 
+data sets have the names <strong>&lt;name&gt;_30p0_first.mop</strong>,&nbsp;
+<strong>&lt;name&gt;_30p0_second.mop</strong>, 
+and&nbsp; <strong>&lt;name&gt;_30p0_average.mop</strong>.&nbsp;&nbsp; <strong>&lt;name&gt;_30p0_first.mop</strong> is the 
+final geometry generated from the original data set (the reactant) or by the 
+file defined by <tt>GEO_DAT</tt>.&nbsp; <strong>&lt;name&gt;_30p0_second.mop</strong> is the final 
+geometry from <tt>GEO_REF</tt>. <strong>&lt;name&gt;_30p0_first.mop</strong> and 
+<strong>&lt;name&gt;_30p0_second.mop</strong> 
+are thus the geometries on each side of the transition state, near the top of 
+the reaction barrier.&nbsp; An approximation to the transition state geometry is 
+the average of these two structures, this is given in <strong>&lt;name&gt;_30p0_average.mop</strong>.&nbsp; 
+The final value of &quot;c&quot; used is indicated by the text &quot;<strong>30p0</strong>&quot;&nbsp; This specific 
+case represents a value of &quot;c&quot; of <nobr>30.0 kcal/mol/&Aring;ngstrom<sup>2</sup></nobr>.</p>
+<h3 class="auto-style6"><tt><strong>LOCATE-TS(C:30,30,30,40,40;SET:1)</strong></tt></h3>
+<p class="auto-style6">If <tt>LOCATE-TS</tt> does not finish correctly, examine 
+the structures on each side of the transition state.&nbsp; If these look 
+correct, then try to refine them by using this option.&nbsp; Do not start with a 
+constraint lower than the last value used in the previous run - if the 
+constraint is lowered, the two systems will move away from the transition state.&nbsp; 
+Using options of the type shown here increases the possibility that the 
+refinement would work correctly because the refinement would be started with a 
+geometry that was nearer to the transition state. </p>
+<p class="auto-style6">If the structures on each side of the transition state do 
+not look correct, then start over with a more cautious set of constraints.&nbsp; An example of 
+such a cautious set would be <tt>LOCATE-TS(C:1,3,10,20,25,25;SET:1)</tt> This 
+starts the procedure with a small penalty function, <nobr>1.0 kcal/mol/&Aring;ngstrom<sup>2</sup></nobr> 
+followed, in order, by increasing biases, until a penalty of <nobr>25.0 kcal/mol/&Aring;ngstrom<sup>2</sup></nobr>
+is used. The transition state would then be refined using Set 1, i.e., all atoms 
+involved in bond making or bond breaking.</p>
+<p class="auto-style6">When this form of the keyword is used, the output will be 
+larger, and intermediate files generated; these files can then be used in 
+locating the transition state manually.&nbsp; The number of constraints used can be decreased to zero or 
+increased up to 20.&nbsp; Two main options for the size of the active site are provided. 
+<tt>SET:1</tt> consists of only those atoms involved in bond making or bond 
+breaking and 
+<tt>SET:2</tt> which consists of <tt>SET:1</tt> plus nearest neighbors.</p>
+<h3 class="auto-style6"><tt><strong>
+LOCATE-TS(C:0.001,0.002,0.005,0.010,0.020,0.05,0.1,0.2,0.5,1,2,5,10,20,50,100,200) 
+NOSWAP</strong></tt></h3>
+<p class="auto-style6">Used when reactions involving conformational changes are 
+being modeled.&nbsp; Because no bonds 
+are made or broken, &quot;;SET:x&quot; is not used.&nbsp; Because conformational changes 
+typically involve large geometric changes the starting bias is very small. For 
+the same reason, keyword <a href="noswap.html"><TT>NOSWAP</TT></a> is also used.</p>
+<h3 class="auto-style6"> <tt><strong>LOCATE-TS(C:;SET:1)</strong></tt></h3>
+<p class="auto-style6">The two data sets used by&nbsp; <tt>LOCATE-TS</tt> are 
+passed directly, i.e., without modification, to the transition state refinement 
+operation. If the two geometries are near to the transition state, there is an 
+increased probability that the process for recognizing bond-breaking and bond 
+making operation will not work correctly.&nbsp; To avoid problems with this 
+operation, use the next option, <em>vis</em> <tt><strong>LOCATE-TS(SET:1).</strong></tt></p>
+<h3 class="auto-style6"> <tt><strong>LOCATE-TS(SET:1)</strong></tt></h3>
+<p class="auto-style6">This option uses only one data-set, usually the one 
+generated by an earlier run, e.g., <strong>&lt;name&gt;_30p0_average.mop.&nbsp;
+</strong>Carefully define the atoms 
+involved in bond-breaking and bond-making by setting their 
+optimization flags set to &quot;1&quot;, all other optimization flags being set to zero. 
+When this option is used the option for &quot;<tt>SET:2</tt>&quot; is meaningless.</p>
+<p class="auto-style6">&nbsp;&nbsp; <tt>LOCATE-TS</tt> was developed and optimized for 
+use with enzymes.&nbsp; It can be used for other species, but the probability of 
+success is lower.</p>
+<p>&nbsp;</p>
+<h2 class="auto-style8">When Things Go Wrong</h2>
+<p>Quite often, particularly with difficult reactions, e.g., hydride, H<sup>-</sup>, 
+migration, the gradient minimizer might fail to produce a valid geometry. When 
+this happens, have a look at the geometry in &quot;&lt;filename&gt; Loop1.mop&quot;&nbsp; If it 
+looks reasonable, proceed as follows:</p>
+<p>Edit the set of keywords to convert it into a normal transition-state 
+optimization calculation.&nbsp; This will involve deleting the keywords <tt>GEO_REF </tt> 
+and <tt>LOCATE-TS</tt>, and adding the keywords <tt>MOZYME</tt>, <tt>TS</tt>, <tt>GNORM=3</tt>.&nbsp; 
+The geometry already has the flags set for the atoms involved in the reaction.&nbsp; 
+Run that job.&nbsp; It will likely fail, but the resulting geometry will likely 
+be nearer to the transition state, and if that geometry is run, the gradient 
+minimization will likely work.&nbsp; Well, it did work on several difficult 
+transition states.</p>
+<p>At this point, a reasonable question is, why doesn't MOPAC do this itself.&nbsp; 
+The short answer is &quot;Yes, it should.&quot;&nbsp; The longer answer is, someone has to 
+write the software to do this.&nbsp; An even longer answer is, there should be 
+better gradient minimizers.&nbsp; Until work on this is done, the process just 
+described is the best that exists in MOPAC.</p>
+<p>If <tt>LOCATE-TS</tt> fails to produce a reasonable transition state, it is 
+possible to get better geometries for the reactants and products, i.e., 
+geometries on each side of the transition state.&nbsp; In addition, the average 
+of these geometries might be a useful approximation to the transition state.&nbsp; 
+When <tt>LOCATE-TS</tt> is run it produces a set of data-set files for each 
+value of bias used, one for the reactants, one for the products, and one for the 
+average.&nbsp; These can be identified by the value of the bias and the words 
+&quot;first&quot;, &quot;second&quot;, and &quot;average&quot; in the the file-names.&nbsp; If the transition 
+state geometry was correct, then delete these intermediate geometries.&nbsp; If 
+it is not correct, look at these files to see if anything useful can be found.&nbsp; 
+In particular, look for intermediate geometries that are on the slope of the 
+activation barrier.&nbsp; These might be useful in restarting the transition 
+state location.</p>
+<p class="auto-style6">&nbsp;</p>
+<h3>TS, SIGMA, NLLSQ</h3>
+<p>Three different gradient optimization methods can be used: Baker's 
+Eigenfollowing method <a href="ts.html"><tt>TS</tt></a>, the McIver-Komornicki gradient 
+minimization method <a href="sigma.html"><tt>SIGMA</tt></a>, and Bartel's
+<a href="nllsq.html"><tt>NLLSQ</tt></a>. If one of these keywords is present, that method 
+will be used. Otherwise, Baker's Eigenfollowing method will be used by default.&nbsp; </p>
+<h3>Complete worked examples of <tt>LOCATE-TS</tt></h3>
+<p><tt>LOCATE-TS </tt> was used 
+to locate transition states in the <a href="Chymotrypsin_mechanism.html">
+chymotrypsin mechanism</a>.&nbsp; To reproduce this mechanism, download the ARC 
+files for the intermediates (Step 1 to Step 6), and use the <tt>LOCATE-TS</tt> keyword in 
+the transition state stationary point arc files.</p>
+<p>A simple worked example of a conformational change is
+<a href="Test%20of%20LOCATE-TS%20using%20Nitrogen%20inversion.zip">provided</a> 
+by the inversion of a nitrogen atom in triethanolamine.</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+</BODY>
+</HTML>

@@ -1,0 +1,72 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Trial-and-error methods for locating transition states</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: center;
+																													}
+																													.auto-style2 {
+																														font-size: medium;
+																													}
+																													.auto-style3 {
+	font-size: small;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html">Modeling proteins</a>)</font></p>
+<h1 class="auto-style1" >Trial-and-error methods for locating transition states</h1>
+<h3>Introduction</h3>
+<p>For most simple reactions, i.e., reactions where a stable stationary point 
+goes to another stable stationary point, the transition state can be located 
+using&nbsp; <a href="Locate-TS.html"><tt>LOCATE-TS</tt></a>.&nbsp; When <tt>LOCATE-TS</tt> 
+fails, there are definite procedures that can be followed.</p>
+<p><strong><span class="auto-style2">User errors:</span></strong> Most failures 
+of <tt>LOCATE-TS</tt> 
+are due to user errors.&nbsp; This sounds harsh, but during the testing phase of
+<tt>LOCATE-TS</tt> 
+several failures were encountered.&nbsp; In every case a fault in the chemistry 
+of the reaction was found.&nbsp; Two typical faults were: (A) There was an 
+intermediate stable minimum between the reactant and the product, and (B) There 
+was a typographical error - a simple user mistake.&nbsp; Given that enzymes 
+lower activation barriers, if the calculated barrier is large, carefully examine 
+the reaction to see if there could be an alternative step that would lower the 
+barrier.&nbsp;&nbsp; </p>
+<p>&nbsp;In the first stage of <tt>LOCATE-TS</tt> 
+structures <strong>A</strong> and <strong>B</strong> are moved towards each 
+other.&nbsp; At the start of this process, a weak force is used to roughly orientate <strong>A</strong> 
+and <strong>B</strong>, then the force is increased so that the two structures 
+move up the barrier, and the distance between them gets less and less.&nbsp; 
+Finally, when the distance is small enough (the largest motion of any atom is 
+less than about 0.7 &Aring;) the geometries of the two structures are averaged, 
+and the resulting structure is used as the starting point for the gradient 
+minimization. At this point, three files are printed out: 
+&lt;file&gt;_30p0_average.mop, &lt;file&gt;_30p0_first.mop, and &lt;file&gt;_30p0_second.mop. 
+(This assumes that the final pull was 30 kcal/mol/&Aring;.)</p>
+<p><span class="auto-style2"><strong>Add more steps to the orientation process:</strong> 
+</span>Look at &lt;file&gt;_30p0_first.mop and &lt;file&gt;_30p0_second.mop.&nbsp; 
+These should be obviously related to 
+structures <strong>A</strong> and <strong>B</strong> .&nbsp; If they are not, 
+and you're sure that the the starting points are correct, try using more steps 
+in <tt>LOCATE-TS.</tt></p>
+<p><span class="auto-style2"><strong>Check the starting geometry for the 
+gradient minimization:</strong></span>&nbsp; Have a look at the file 
+&lt;file&gt;_30p0_average.mop, this is the &quot;best guess&quot; for the starting point for 
+refining the transition state. If the starting structure for gradient 
+minimization does not look correct, the failure likely 
+occurred in the gradient minimization, so use a GUI to examine the geometry.&nbsp; 
+If the geometry does not look like the transition state for the reaction, 
+carefully examine the reactants and products to verify that the reaction is the 
+one that was intended.</p>
+<p><strong><span class="auto-style2">Alternative gradient minimization methods:</span></strong>&nbsp; 
+If the starting structure for gradient minimization looks correct, but the 
+transition state did not refine correctly, try refining the transition state by 
+alternatively minimizing the heat of formation while holding the atoms in the 
+transition state fixed and minimizing the gradient of the atoms in the 
+transition state while holding all other atoms fixed.&nbsp; This can be done in 
+a single run, but requires more human effort to set up the data set correctly.&nbsp; 
+For more help, please write to MrMOPAC@ATT.net.</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

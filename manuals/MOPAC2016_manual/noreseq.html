@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>NORESEQ </TITLE>
+
+</HEAD>
+<body bgcolor=white>
+<H2 align="center">
+<TT>NORESEQ</TT> 
+</H2>
+<p>By default, proteins are re-sequenced into the standard PDB file sequence, 
+i.e., all atoms in a residue are contiguous, when keywords <tt>
+<a href="ADD-H.html">ADD-H</a></tt> or <tt><a href="site.html">SITE</a> </tt> are 
+used, or if the input data set is a pure PDB file.&nbsp; To prevent <tt>ADD-H</tt> or <tt>SITE</tt> 
+from re-sequencing the data, add <tt>NORESEQ</tt>.&nbsp; To stop a pure PDB file 
+from being resequenced, convert it to a MOPAC data set by adding the standard 
+three lines to the start, and use keywords <tt>ADD-H</tt> and <tt>NORESEQ.</tt></p>
+<p>Some PDB files contain severe topologic errors that confuse the residue 
+recognition routine, a pre-requisite step for resequencing. Such errors result in a 
+warning message being printed, and the run stopped.&nbsp; This type of problem 
+occurs most often when adding hydrogen atoms using <tt>ADD-H.</tt>&nbsp; 
+By default <tt>ADD-H</tt> uses the residue recognition routine, and a topologic 
+problem could prevent <tt>ADD-H</tt> from working correctly.&nbsp; To avoid this problem, run <tt>ADD-H</tt> 
+with <tt>NORESEQ;</tt> this avoids using the residue recognition routine.&nbsp;&nbsp; 
+Of course, the topologic problem is still present, even after hydrogen atoms are 
+added.&nbsp; To correct the underlying problem, first optimize the positions of 
+the hydrogen atoms, then optimize the positions of the atoms responsible for the 
+topologic error.</p>
+<p>Unless corrective action is taken, some topologic errors can result in an incorrect assignment of 
+hydrogen atoms when using <tt>ADD-H</tt>.&nbsp; To correct this fault, use <a href="CVB.html"><tt>CVB</tt></a> 
+with <tt>ADD-H</tt> 
+and <tt>NORESEQ</tt>. This is an unusual use of <tt>CVB</tt> in that it normally 
+cannot be used with <tt>ADD-H</tt>, but it is justified in this specific case.</p>
+<p>See also: <tt><a href="reseq.html">RESEQ</a></tt>, <a href="residues.html">
+<TT>RESIDUES</TT></a>, <TT><a href="xeno.html">XENO</a></TT>,
+<a href="chains.html"><TT>CHAINS</TT></a>, and <a href="start_res.html"><TT>START_RES</TT></a>.</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

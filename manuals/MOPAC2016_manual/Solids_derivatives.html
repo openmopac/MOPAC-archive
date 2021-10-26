@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Derivatives</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2><A NAME="SECTION001293000000000000000">
+ Derivatives</A>
+</H2>
+Solid-state derivatives with respect to geometry are handled differently from
+molecule derivatives.  If the Cartesian coordinate derivatives are printed,
+using <TT><a href="debug.html">DEBUG</a></TT> and <TT><a href="dcart.html">DCART</a></TT>, then for a molecule with an  optimized
+geometry all the derivatives will be zero.  This is  not the case for an
+infinite system.
+<P>
+An infinite system is represented by cell supplied by the user, called the
+Central Unit Cell, or the CUC, and the cells surrounding this CUC. When
+<TT>DCART</TT>, <TT>LARGE</TT>, and <TT>DEBUG</TT> are used in an infinite system
+calculation for which  the geometry has been optimized, the Cartesian
+derivatives for all unit cells are output. Many of these will be quite large,
+up to about 60 kcal/mol/&Aring;.  This is not an error, rather it is a peculiarity
+of the way solid-state derivatives are stored.
+<P>
+The Cartesian derivatives of the CUC represent the sum of all forces acting on
+the atoms of the CUC due to all the atoms in the CUC.  Thus, if the atoms in
+the CUC are the set (<I>a</I>,<I>b</I>,<I>c</I>,<I>d</I>,<I>e</I>,<I>f</I>), then the Cartesian  derivatives
+for atom <I>a</I> represent the forces on <I>a</I> due to the set
+(<I>b</I>,<I>c</I>,<I>d</I>,<I>e</I>,<I>f</I>).  The Cartesian derivatives of atom <I>a</I> do <EM>NOT</EM>
+include terms from  the surrounding unit cells.  Because of this, those atoms
+in the CUC  which are at the cell boundaries are likely to have large
+derivatives.
+<P>
+The Cartesian derivatives of the surrounding unit cells represent the  forces
+acting on the atoms in those cells arising from the atoms of the CUC.  Again,
+this is an unbalanced set of forces, and those atoms near to the cell
+boundaries are likely to have large resultant forces.
+<P>
+It is possible to evaluate the total, balanced, forces acting on the atoms of
+the CUC.  This is done by simply adding the forces acting on the atoms of the
+three unit cells.  When the keywords given above are used, the last part of the
+derivative output consists of the forces acting on the CUC itself.
+<P>
+Only by representing the forces in this unusual manner can the information
+necessary for calculating the derivative of the translation vector be
+generated.
+</BODY>
+</HTML>

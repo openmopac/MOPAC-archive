@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>DRC </TITLE>
+                                                                                                            </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center"><TT>DRC</TT> </h1>
+<P>A Dynamic Reaction Coordinate calculation&nbsp;[<A HREF="references.html#drc">29</A>] is to be run. By default, total energy is conserved, so that as the 'reaction' proceeds in time, energy is transferred between kinetic and potential forms. See
+<a href="theory.html#DRC_coordinates">Dynamic and Intrinsic Reaction Coordinates</a> for more details.   </P>
+<P>By default, steps of 0.1fs are used.  This default can be changed using keywords:</P>
+<P>To print reaction coordinate steps that are separated by constant time, use <A HREF="t-priority0.html"><U><FONT COLOR="#0000ff"><TT>T-PRIORITY</TT></FONT></U></A> or 
+<A HREF="t-priority.html"><U><FONT COLOR="#0000ff"><TT>T-PRIORITY=<I>n</I>.<I>nn</I></TT></FONT></U></A>.&nbsp; 
+This is the option normally chosen. <BR>
+To print reaction coordinate steps that are separated by constant energy, use <A HREF="h-priority0.html"><U><FONT COLOR="#0000ff"><TT>H-PRIORITY</TT></FONT></U></A> or 
+<A HREF="h-priority.html"><U><FONT COLOR="#0000ff"><TT>H-PRIORITY=<I>n</I>.<I>nn</I></TT></FONT></U></A>.<BR>
+To print reaction coordinate steps that are separated by constant distance, use <A HREF="x-priority0.html"><U><FONT COLOR="#0000ff"><TT>X-PRIORITY</TT></FONT></U></A>  or <A HREF="x-priority.html"><U><FONT COLOR="#0000ff"><TT>X-PRIORITY=<I>n</I>.<I>nn</I></TT></U></FONT></TT></A>.</P>
+<P>Use <TT><a href="large.html">LARGE</a></TT> to control print of internal coordinates and Cartesian coordinates.</P>
+
+<P>A useful keyword for limiting the DRC is <TT> <a href="cycles.html">BIGCYCLES=<i>n</i></a>.&nbsp; BIGCYCLES=<I>n</I></TT> will run until
+<i>n</i> complete oscillations have occurred.&nbsp;&nbsp; Normal modes of 
+vibration can be generated using <TT>BIGCYCLES=1</TT> and <a href="irc.html">
+<TT>IRC=<i>n</i></TT></a>, where <i>n</i> is the <i>n</i>'t normal mode of interest. 
+Such a normal mode would involve one complete oscillation, from equilibrium to 
+turning point back to equilibrium, then up the other side of the potential well 
+to the other turning point, then back to the equilibrium position, at which 
+point the DRC is stopped.</P>
+<P>Most of the trajectories mapped out by&nbsp; <TT>BIGCYCLES=1 IRC=n DRC</TT> are 
+anharmonic, that is, they reflect the asymmetry of the Morse potential.&nbsp; 
+They are, however, accurate within the semiempirical approximation used.&nbsp; 
+Thus if a vibrational frequency is <i>m</i> cm<sup>-1</sup>, the duration of one 
+complete vibration will be 1/(<i>m.c</i>) seconds.&nbsp; For example, if a 
+normal mode has an energy (frequency) of 1000 cm<sup>-1</sup>, each complete 
+vibration would take 33.4 femtoseconds.</P>
+<P>Individual DRC paths can be joined together to form a single path using the Windows MOPAC utility 
+program &quot;<a href="Join.html">JOIN</a>&quot;</P>
+</BODY>
+</HTML>

@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Vibrational Analysis</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2>Vibrational Analysis </H2>
+<P>Analyzing normal coordinates is very tedious. Users are normally familiar with the internal coordinates of the system they are studying, but not familiar with the Cartesian coordinates. To help characterize the normal coordinates, a very simple analysis is done automatically, and users are strongly encouraged to use this analysis first, and then to look at the normal coordinate eigenvectors. </P>
+<P>In the analysis, each pair of bonded atoms is examined to see if there is a large relative motion between them. By bonded is meant 
+that the atoms a separated by less than the van der Waals' distance. If there is such a motion, the indices of the atoms, the relative distance in &Aring;ngstroms, and the percentage radial motion are printed. Radial plus tangential motion adds to 100%, but as there are two orthogonal tangential motions and only one radial, the radial component is printed. </P>
+<P><strong>Imaginary frequencies:&nbsp; </strong>Results for the analysis of vibrations in the region of <i>i</i>50 to <em>+</em>50 cm<SUP>-1</SUP>,
+although printed, are not described accurately in the vibrational analysis, 
+because of numerical difficulties.&nbsp;&nbsp; All vibrations must be used in the 
+thermochemistry analysis, so the topic of low-frequency and imaginary frequency 
+vibrations is of interest.</P>
+<P><strong>Cause of imaginary frequencies:&nbsp; </strong>&nbsp;If the vibrational frequencies of the alkane homologues 
+	were to be calculated correctly, then the lowest vibrational frequency would 
+converge to zero as the size 
+	increases. This is because, in the limit, the vibrational structure 
+	converges on that of polyethylene.&nbsp; Computational noise would then perturb 
+the zero, so the lowest vibrational frequency might go imaginary.&nbsp; This is a feature 
+	of all computational methods, including the most accurate ones. As a simple 
+	test, calculate the vibrational frequencies of a few long <em>n</em>-alkanes - 
+	inevitably&nbsp; there will be one or more negative numbers.&nbsp; To reiterate, the 
+	fault is not the method, the fault is caused by the use of finite precision 
+in arithmetic and to software limitations.</div>&nbsp; These errors are largest 
+in the low frequencies, i.e., in the ones most users don't care about.<br><br>
+<strong>How imaginary frequencies are treated:</strong>&nbsp;&nbsp; All low and 
+imaginary frequencies contribute approximately the same amount to the various 
+thermodynamic quantities, for example, each of these frequencies contributes 
+roughly (1/2)RT to the internal energy, so for convenience imaginary vibrations 
+are used in thermodynamic analyses as if they were real vibrations. This option 
+can be justified because all imaginary frequencies are the result of arithmetic 
+errors, and therefore have no physical meaning. Ignoring them is not an option - 
+that would be the equivalent of ignoring (1/2)RT per imaginary frequency in the 
+internal energy.<br><br>
+<div id="yiv9401634493yui_3_16_0_ym19_1_1512057849716_26554" dir="ltr">
+	<br clear="none"></div>
+<P>&nbsp;</P>
+                                                </BODY>
+</HTML>

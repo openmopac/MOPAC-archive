@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>LET </TITLE>
+                                                                                                                  </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>LET, LET(<i>nnn</i>)</TT> </h1>
+<P>As MOPAC evolves, the meaning of <TT>LET</TT> is changing.</P>
+<P>Now <TT>LET</TT> means essentially "I know what I'm doing, override safety checks".</P>
+<P>Currently, <TT>LET</TT> has the following meanings:</P>
+<DL>
+<DT>1.In a <TT><a href="force.html">FORCE</a></TT> calculation, it means that the supplied geometry is to be used, even if the gradients are large.</DT>
+<DT>2.<A NAME="BM2402">&nbsp;</A>In a geometry optimization, the specified <TT>
+<a href="gnorm.html">GNORM</a></TT> is to be used, even if it is less than 0.01.</DT>
+<DT>3.In a <TT><a href="polar.html">POLAR</a></TT> calculation, the molecule is to be orientated along its principal moments of inertia before the calculation starts. <TT>LET</TT> will prevent this step being done.</DT>
+<DT>4.In a EF calculation, allow the
+<span class="b">&Delta;</span>H<sub>f</sub> to rise. Obviously, the
+<span class="b">&Delta;</span>H<sub>f</sub> should decrease on every step, but 
+sometimes, particularly with very flat potential energy surfaces, motion in 
+response to the gradients might not result in a decrease in energy.&nbsp; By 
+using <TT>LET</TT>, small increases in
+<span class="b">&Delta;</span>H<sub>f</sub> are allowed.&nbsp; This will allow the 
+gradient minimum to be reached.&nbsp; This is a well-defined point, whereas the 
+minimum in energy is not, so in this case the use of <TT>LET</TT> is justified.&nbsp; 
+Note that the use of<TT> LET</TT> will not result in motion to a different 
+minimum.<br>5. When comparing protein geometries, it means that hydrogen atoms 
+that would otherwise not be paired up, because they are on different residues, 
+are in fact paired up.<br>6. In a <a href="Locate-TS.html"><tt>LOCATE-TS</tt></a> 
+calculation, do not perform a comparison of the reactants and products.&nbsp; 
+Useful only with small systems where the use of PDB labels can cause problems.<br>
+7. In a <a href="lbfgs.html"><tt>LBFGS</TT></a> calculation, the default number of cycles used in identifying the 
+lowest-energy geometry is increased from 30 to 60.&nbsp; Other values can be set 
+using <tt>LET(<i>nnn</i>)</TT>, where &quot;<i>nnn</i>&quot; is the number of cycles to be used instead of 60.</DT>
+	<dd></dd>
+</DL>
+</BODY>
+</HTML>

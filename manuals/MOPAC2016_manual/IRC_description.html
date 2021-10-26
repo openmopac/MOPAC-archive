@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>IRC</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2>IRC </H2>
+<P>The Intrinsic Reaction Coordinate is the path followed by all the atoms in a system and assumes that all kinetic energy is completely lost at every point; i.e., as the potential energy changes the kinetic energy generated is annihilated so that the total energy (kinetic plus potential) is always equal to the potential energy only.&nbsp;
+The calculation of the IRC is that of a fully damped DRC. Within the
+calculation, a fictional time interval is used to determine the degree of
+motion. This time interval, <i><span class="b">&Delta;</span>t</i>, starts off at
+0.1fs (1*10<sup>-16</sup>s), and changes depending on the factor needed to re-normalize the velocity vector. If it is significantly different from unity,
+<i><span class="b">&Delta;</span>t </i>will be reduced; if it is very close to unity,
+<i><span class="b">&Delta;</span>t </i>will be increased.&nbsp; Typical values of
+<i><span class="b">&Delta;</span>t</i> are between 0.1 and 1fs. </P>
+<P>The IRC is intended for use in calculations in which the starting geometry is that of the transition state. A normal coordinate is chosen, usually the reaction coordinate, and the system is displaced in either the positive or negative direction along this coordinate. The internal modes are obtained by calculating the mass-weighted Hessian matrix in a force calculation and translating the resulting Cartesian normal mode eigenvectors to conserve momentum. That is, the initial Cartesian coordinates are displaced by a small amount proportional to the eigenvector coefficients plus a translational constant; the constant is required to ensure that the total translational momentum of the system is conserved as zero. At the present time there may be small residual rotational components which are not annihilated; these are considered unimportant, and will not materially affect the calculation. </P>
+                                                </BODY>
+</HTML>

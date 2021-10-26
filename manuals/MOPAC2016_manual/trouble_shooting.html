@@ -1,0 +1,811 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Troubleshooting</TITLE>
+<style><!--
+div{color:#000}
+div{font-family:arial,sans-serif}
+.g{margin:1em 0}
+td{color:#000}
+td{font-family:arial,sans-serif}
+.j{width:34em}
+BLOCKQUOTE.CITE {margin:0; padding-left:0.5em; border-left:2px solid;}
+.auto-style1 {
+	font-family: "Times New Roman", Times, serif;
+}
+-->
+</style>
+</HEAD>
+<h1 align="center"><font face="Arial">Troubleshooting and<br>
+Frequently Asked Questions</font></h1>
+<h4><font face="Arial">&nbsp;&nbsp;&nbsp; <a href="trouble_shooting.html#MOPAC2012"><font color="#000000">
+MOPAC2016</font></a><br>
+&nbsp;&nbsp;&nbsp;
+<a href="trouble_shooting.html#Downloading"><font color="#000000">Downloading, installing, and 
+getting started</font></a><br>
+&nbsp;&nbsp;&nbsp;
+<a href="trouble_shooting.html#License%20Issues"><font color="#000000">License Issues</font></a></font><br>
+&nbsp;&nbsp;&nbsp; <a href="trouble_shooting.html#types%20of%20calculations"><font color="#000000" face="Arial">How to do specific types of calculations</font></a></font><br>
+<font face="Arial">&nbsp;&nbsp;&nbsp; <a href="trouble_shooting.html#Faults%20in%20MOPAC">
+<font color="#000000">Faults in MOPAC</font></a></font></h4>
+  
+<p><a name="MOPAC2012">MOPAC2016</a></p>
+  
+<ul>
+  <li><font face="Times New Roman"><a href="MOPAC2012.html">What is 
+  MOPAC2016?</a></font></li>
+  <li><font face="Times New Roman"><a href="trouble_shooting.html#related%20to%20MOPAC2002">How is 
+  MOPAC2016 related to MOPAC2012? </a></font></li>
+  <li><a href="trouble_shooting.html#public%20domain%20software">Is MOPAC2016 public domain software?</a></li>
+  <li><a href="trouble_shooting.html#network%20connectivity">Does MOPAC2016 use any network 
+  connectivity? </a></li>
+  <li><a href="trouble_shooting.html#forms%20of%20MOPAC2012">What forms of MOPAC2016 manual are there?</a> </li>
+  <li><a href="trouble_shooting.html#source%20code%20for%20MOPAC2012">Can I get the source code for 
+  MOPAC2016 so I can compile it?</a></li>
+  <li><a href="trouble_shooting.html#application%20refused">Why was my application for a license key 
+  refused with the message: &quot;Remote host said: 554 refused mailfrom because of 
+  SPF policy&quot;</a></li>
+  <li><a href="trouble_shooting.html#parallel%20version">Are there plans to develop a parallel version 
+  of MOPAC2016?</a><br>
+  <br>
+&nbsp;</li>
+</ul>
+<p dir="ltr">
+<a name="Downloading">Downloading</a>, installing and getting started</p>
+<ul>
+  <li><a href="MOE.html">How do I use MOPAC with MOE?</a></li>
+	<li><a href="trouble_shooting.html#requested%20a%20license">I've requested a license key, but nothing happened.&nbsp; What has gone 
+  wrong?</a></li>
+  <li><a href="trouble_shooting.html#Password%20invalid">When MOPAC is run, it gives the message 
+  &quot;Password invalid,&quot; what's wrong?</a></li>
+  <li><a href="trouble_shooting.html#permission%20denied">Why does MOPAC gives the message &quot;permission denied&quot; on my Linux machine.
+  </a> </li>
+  <li><a href="trouble_shooting.html#default%20location">I can't put MOPAC into the default location.</a></li>
+  <li><a href="trouble_shooting.html#The%20password">Why will MOPAC not run even though the password 
+  was installed correctly?</a></li>
+  <li><a href="trouble_shooting.html#64%20bits">My Linux OS&nbsp; is 64 bits.&nbsp; MOPAC does not run.&nbsp; 
+  Why?</a></li>
+  <li><a href="trouble_shooting.html#new%20to%20MOPAC">I'm completely new to MOPAC, how do I get started?</a></li>
+  <li><a href="trouble_shooting.html#several%20machines">How do I run MOPAC on a multi-processor machine?</a></li>
+  <li><a href="trouble_shooting.html#visualize%20results">How do I visualize results using Jmol?</a></li>
+  <li><a href="trouble_shooting.html#Version%20Number">When I install a new version of MOPAC, why does 
+  the Version Number not change?</a></li>
+</ul>
+
+
+
+<p><a name="License Issues">License Issues</a></p>
+  
+<ul>
+  <li><font face="Times New Roman"><a href="trouble_shooting.html#license%20key">Who can I share my 
+  license key with?</a></font></li>
+  <li><a href="trouble_shooting.html#license%20is%20for%20a%20year">My license is for a year. What happens 
+  when it expires?</a></li>
+</ul>
+
+
+
+<p><font color="#000000" face="Times New Roman">How to do specific 
+<a name="types of calculations">types of calculations</a></font><font face="Times New Roman"><a name="types of calculations"></font></a></font></p>
+<ul>
+  <li><a href="trouble_shooting.html#no%20keywords">What are the defaults if no keywords are used?</a></li>
+  <li><a href="trouble_shooting.html#orientate%20the%20system">How do I orientate the system in a special 
+  way?</a></li>
+  <li><a href="trouble_shooting.html#different%20directory">Can the output be sent to a different 
+  directory?</a></li>
+  <li><b>Batch jobs and queues: </b>
+  <a href="trouble_shooting.html#multiple_jobs">How do I run multiple jobs, with a pre-set maximum number of jobs running at 
+  any one time?</a></li>
+  <li dir="ltr">
+  <p dir="ltr">
+  <a  href="trouble_shooting.html#HOMO%20or%20LUMO">
+  How do I get the atomic orbital coefficients of the HOMO or LUMO?</a></li>
+  <li dir="ltr">
+  <p dir="ltr">
+  <a href="trouble_shooting.html#eigenvalues">Can MOZYME calculations give eigenvalues?</a></li>
+  <li dir="ltr">
+  <p dir="ltr">
+  <a href="trouble_shooting.html#freeze%20an%20atoms%20position">How do I freeze an atom's position during 
+  a geometry optimization?</a></li>
+  <li><a href="trouble_shooting.html#use%20C.I.">When should I use C.I. and when should I use UHF?</a></li>
+  <!-- <li><a href="vibs1atom.html">How do I calculate the vibrations of a single 
+  atom?</a></li>-->
+  <li><a href="trouble_shooting.html#kinetic%20energy%20and%20temperature">In a DRC calculation, what is 
+  the relationship of kinetic energy and temperature?</a><li>
+  <a href="trouble_shooting.html#geometry%20optimization">Why does MOPAC sometimes have difficulties 
+  with geometry optimization?</a><li>
+  <a href="trouble_shooting.html#geometry%20optimization%20and%20force%20constant">How do I do a geometry 
+  optimization and force constant calculation in one run?</a><li>
+  <a href="trouble_shooting.html#re-orientation">How can the re-orientation of a molecule be 
+  prevented in a polarizability calculation?</a><li><a href="trouble_shooting.html#help%20me">Can you help me with my research?</a></li>
+</ul>
+
+
+
+<p><a name="Faults in MOPAC">Faults in MOPAC</a></p>
+  
+<ul>
+  <li><a href="trouble_shooting.html#Internal%20Error">What does, &quot;Internal Error-Unexpected error file 
+  &quot;E:\forrtl\build\qwnbuild\qwgswc.c&quot;, line 1051&quot;&nbsp; mean?</a></li>
+  <li><a href="trouble_shooting.html#gradient%20sometimes%20increase%20suddenly">Why does the gradient 
+  sometimes increase suddenly during a geometry optimization?</a></li>
+  <li><a href="trouble_shooting.html#net%20charges">Why do net charges not add to exact 
+  integer values?</a></li>
+  <li><a href="trouble_shooting.html#gradient%20different">Why is&nbsp; the sign of the gradient 
+  different from that of the forces in, e.g., Gaussian 03?</a></li>
+  <li><a href="trouble_shooting.html#precision%20of%20the%20gradients">Why cannot the precision of the 
+  gradients in the AUX file be increased?</a></li>
+  <li><font face="Times New Roman"><a href="trouble_shooting.html#bug%20in%20MOPAC">I've found a bug 
+  in MOPAC. How do I report it to get it fixed?</a></font></li>
+</ul>
+
+
+
+<p>&nbsp;</p>
+
+
+
+<hr>
+<p><b><font face="Arial">MOPAC2016</font></b></p>
+<p><font face="Arial">How is MOPAC2016 <a name="related to MOPAC2002">related to 
+MOPAC2012</a>?  </font></p>
+<p class="auto-style1">MOPAC2016 has a robust editing capability for work with 
+biomolecules, and a transition state location/refinement procedure. <font face="Times New Roman">
+Other than that, MOPAC2016 is identical to MOPAC2012</font></p>
+<p><font face="Times New Roman">MOPAC2012 contains the PM7 and PM7-TS methods.&nbsp; 
+Other than that, MOPAC2012 is identical to MOPAC2009</font></p>
+<p><font face="Times New Roman">MOPAC2009 was MOPAC2007 with the addition 
+of the MOZYME function.<br>
+MOPAC2007 was a re-write of MOPAC 6, and included 
+the new method PM6.&nbsp; It is owned by SCC.&nbsp; The main differences between 
+MOPAC2007 and MOPAC2002 are:</font></p>
+<p><font face="Times New Roman">MOPAC2002 contains MOZYME, 
+the Localized Molecular Orbital method for rapidly calculating the electronic 
+structures of large molecules.&nbsp; MOPAC2007 did not contain MOZYME.<br>
+MOPAC2002 can run MINDO/3, intersystem crossing, and the NDDO 
+method PM5. MOPAC2007 did not contain these functions.</font></p>
+<p><font face="Arial"><u>I</u>s MOPAC2016 <a name="public domain software">public domain software</a>?</font></p>
+<p>No.&nbsp; MOPAC2016 is owned by Stewart Computational Chemistry.&nbsp; 
+Executables are made available at no cost to academic users, and source code 
+will be made available to selected groups.</p>
+<p dir="ltr"><font face="Arial">Does MOPAC2016 use any network connectivity? <br>
+  </font><font face="Times New Roman"><b><br>
+</b>MOPAC2016 does not use any <a name="network connectivity">network 
+connectivity</a>.</font><br>
+<br>
+If you chose to make the executable available over a network, then you have 
+control of that functionality, but the program itself does not have any built-in 
+network functionality.<br>
+<br>
+MOPAC2016 is designed to be completely &quot;clean&quot; - it does not modify the Register 
+(in WINDOWS) or any parts of the kernel (in Linux or UNIX). This is because 
+MOPAC2016 is intended for use in a wide range of environments and many are very 
+sensitive about security.</p>
+<p dir="ltr"><font face="Arial">What <a name="forms of MOPAC2012">forms of 
+MOPAC2016</a> manual are there? </font></p>
+<p dir="ltr">The MOPAC2016 Manual exists in only one&nbsp; form, the on-line 
+manual you are looking at just now.&nbsp; There are no PDF or hard-copy manuals.&nbsp; 
+This was a deliberate policy decision: Writing and maintaining more than one 
+manual would involve a lot of work, and the on-line manual should be sufficient 
+for most users.&nbsp; If you need hard copy - print the individual pages 
+involved.</p>
+<p dir="ltr"><font face="Arial">Can I get the
+<a name="source code for MOPAC2012">source code for MOPAC2016</a> so I can 
+compile it?</font></p>
+<p>In general, the answer is, &quot;No!&quot;&nbsp; Currently, MOPAC2016 is made available 
+in executable form for use on Windows, Macintosh, and Linux platforms only.&nbsp; </p>
+<p>Only in exceptional circumstances will source code be made available for this 
+type of work. Most executables must originate from OpenMOPAC.net in order to 
+ensure that all executables are up-to-date and have undergone quality assurance 
+testing.&nbsp; </p>
+<p>If a specific compilation is needed, and are the resources required are 
+provided to SCC, and attempt will be made to do the port.&nbsp; The resources 
+required are: a computer, running the target operating system, and an installed 
+and working FORTRAN 90 compiler.&nbsp; If the port is successful, and MOPAC2016 
+is validated for that OS, then it will be maintained on OpenMOPAC.net along with 
+the other operating systems it currently runs on. Because this procedure 
+obviously involves a significant expense, before any action is taken, please 
+discuss this with SCC.</p>
+<p><font face="Arial">Why is my <a name="application refused">application 
+refused</a> with the message: &quot;Remote host said: 554 refused mailfrom because of 
+SPF policy&quot;</font></p>
+<p>This message will be sent if the ISP for OpenMOPAC.net has reason to believe 
+that your E-mail address might not be legitimate.&nbsp; See
+<a href="http://www.openspf.org/FAQ/What_is_SPF">
+http://www.openspf.org/FAQ/What_is_SPF</a> for more information.&nbsp; If your 
+application for a license key was refused because of that message, please send an E-mail to 
+<a href="mailto:MrMOPAC@ATT.net">MrMOPAC@ATT.net</a> 
+.</p>
+<p><font face="Arial">Are there plans to develop a <a name="parallel version">
+parallel version</a> of MOPAC2016?</font></p>
+<p>Done!</p>
+<p><font face="Arial"><br>
+<b>Downloading, installing and getting started</b></font></p>
+<p><font face="Arial">I've <a name="requested a license">requested a license</a> key, but nothing happened.&nbsp; What has gone 
+wrong?</font></p>
+<p>When you request a license key, an E-mail message will be automatically sent 
+to the address you used in the form.&nbsp; If you do not get an acknowledgment 
+message after submitting the form, then there is a problem with the E-mail 
+address you provided.&nbsp; No E-mail help can be given on this, since messages 
+cannot be sent to you.</p>
+<p><font face="Arial">When MOPAC is run, it gives the message &quot;<a name="Password invalid">Password 
+invalid</a>,&quot; what's wrong?</font></p>
+<p>MOPAC will only work after the password has been correctly recognized.&nbsp; 
+The &quot;Password invalid&quot; message is given when both:</p>
+<p>(A) The password has not been installed, and<br>
+(B) The name of the data set being run is not &lt;password&gt;.mop</p>
+<p>To correct this fault, make a data set called &lt;password&gt;.mop, e.g., 
+if your password is 1234567a12345678 then make a data set called 1234567a12345678.mop, and open it with the MOPAC executable.&nbsp; MOPAC should 
+produce a black screen with white text.&nbsp; Press &lt;return&gt; two times, followed 
+by a space the the word &quot;yes&quot; (without the quotation marks). then press &lt;return&gt; 
+once more. Exit from MOPAC.&nbsp; The password should now be installed.</p>
+<p><font face="Arial">Why does MOPAC gives the message &quot;<a name="permission denied">permission 
+denied</a>&quot; on my Linux machine.</font></p>
+<p>MOPAC needs to read the license key, which is stored in the same subdirectory 
+as the MOPAC2016.exe executable.&nbsp; If the directory or the license key are 
+protected against reading, then the &quot;permission denied&quot; message will be seen.&nbsp; 
+To correct this, the subdirectory and file must have read and write permission.&nbsp; 
+Use the &quot;chmod&quot; command to set the permissions, the simplest is &quot;chmod 777 /opt/mopac/&quot;.&nbsp; 
+If the &quot;chmod&quot; command cannot be used, put MOPAC in a subdirectory you have 
+control over, see the next question..&nbsp; </p>
+<p><font face="Arial">I can't put MOPAC into the <a name="default location">
+default location</a>.</font></p>
+<p>By default, the MOPAC executable should be put in the Windows folder 
+C:/Program Files/MOPAC or the Linux or Macintosh subdirectory /opt/mopac.&nbsp; If necessary, 
+the executable can be put somewhere else.&nbsp; If that is done, then the 
+location of the MOPAC2016 license key must be defined using the environmental 
+variable MOPAC_LICENSE.&nbsp; If MOPAC_LICENSE is not defined, then MOPAC 
+behaves as if it was defined as &quot;C:\Program 
+Files\MOPAC\&quot;&nbsp; or &quot;/opt/mopac/&quot;&nbsp; </p>
+<p><b>Windows: </b> </p>
+<p>(start) =&gt; Settings =&gt; Control Panel =&gt; System =&gt; Advanced =&gt; 
+Environmental Variables =&gt; User variables for &lt;user&gt; =&gt; New =&gt; Variable name = MOPAC_LICENSE Variable value = C:\Program 
+Files\MOPAC\ =&gt; OK =&gt; OK =&gt; OK </p>
+<p><b>Linux: </b> </p>
+<p>Edit&nbsp; .bashrc to add the line(s): </p>
+<p>export MOPAC_LICENSE=/home/mydirectory/<br>
+  alias mopac='/home/mydirectory/MOPAC2016.exe'</p>
+<p>or</p>
+<p>Edit .cshrc to add the line(s)</p>
+  <p>setenv MOPAC_LICENSE /home/mydirectory/<br>
+  alias mopac '/home/mydirectory/MOPAC2016.exe'</p>
+<p><b>Macintosh:</b></p>
+<p>Edit&nbsp; .profile to add the line(s): </p>
+<p>export MOPAC_LICENSE=/home/mydirectory/<br>
+  alias mopac='/home/mydirectory/MOPAC2016.exe'</p>
+<p>&nbsp;</p>
+<p>A re-boot might be necessary in order for the environmental variable to be 
+recognized.</p>
+<p>
+<font face="Arial">Why will MOPAC not run even though <a name="the password">the password</a> was installed correctly?.</font></p>
+<p><font face="Arial" size="2">When MOPAC2016 is run, the message 'File 
+&quot;C:\Program Files\mopac\password for MOPAC2016&quot; is currently inaccessible' 
+appears.&nbsp; The license key is correctly installed, but MOPAC2016 does not 
+have permission to read the license key file.&nbsp; Change the permissions on 
+the file &quot;C:\Program Files\mopac\password for MOPAC2016&quot; so that you can open it 
+using, e.g., notepad.</font></p>
+<p><font face="Arial">My Linux OS&nbsp; is <a name="64 bits">64 bits</a>.&nbsp; 
+MOPAC does not run.&nbsp; Why?</font></p>
+<p>Most likely you will need to install the 32-bit glibc and gcc libraries.</p>
+<p><font face="Arial">I'm completely <a name="new to MOPAC">new to MOPAC</a>, how do I get started?</font></p>
+<p>Start by running a simple calculation.&nbsp; Open the page &quot;<a href="example_coord.html">Geometry 
+Optimization Data Set for Formic Acid</a>.&nbsp; This describes the MOPAC 
+data set for HCOOH.&nbsp; Make up a file for this data set either by (A) 
+downloading the data set, (B) highlighting the data set, and copying it into a 
+file called &quot;formic_acid.mop&quot;, or (C) open notepad and typing up the data set. 
+Save it as &quot;formic_acid.mop&quot;.&nbsp; Run the data set using MOPAC2016 by 
+following the instructions in <a href="Running_MOPAC.html">RUNNING MOPAC</a>. To 
+see what the results mean, look at <a href="Formic_Acid_output.html">Formic Acid 
+output. </a></p>
+<p>Most users prefer to view their data sets and output files using a
+<a href="../resellers.html" target="_parent">Graphical User Interface</a>. 
+Several are available at no cost, but of course they are less powerful than the 
+commercial programs. </p>
+<p><font face="Arial">How do I run MOPAC jobs on a <a name="several machines">
+multi-processor machine?</a></font></p>
+<p><font face="Times New Roman">By default, MOPAC will use multi-threading, so a 
+single job will use as many threads as it needs to make the job run faster.&nbsp; 
+Conventional jobs typically run several times faster but jobs that use MOZYME 
+normally only run a few percent faster.&nbsp; </font></p>
+<p><font face="Times New Roman">If a large number of jobs is to be run, either 
+simultaneously or using a queuing system, the most efficient method is to add 
+keyword <a href="threads.html"><TT>THREADS=1</TT></a> to the data-sets.&nbsp;&nbsp; 
+When multi-threading is disabled there is less system overhead and as a result 
+normally over 99% of the CPU power will be available for running MOPAC.&nbsp; If 
+a queuing system is used, set the maximum number of jobs to be run 
+simultaneously to 1 or 2 more than the number of available processors.&nbsp; The 
+extra one or two jobs can then make use of any unused CPU power when, for 
+example, files are being read or written.
+</font></p>
+<p><font face="Arial">How do I <a name="visualize results">visualize Molecular 
+Orbitals</a> using Jmol?</font></p>
+<p>First, download Jmol, version 11.1.28 or higher, and MOPAC2016, version 7.101 
+or higher.<br>
+Open the Jmol package and put the contents into a folder (call this folder &quot;whateverdirectoryjmolisin&quot;)<br>
+Run a MOPAC job with keyword GRAPHF.&nbsp; This will generate a file ending in .mgf 
+(MOPAC Graphics File)<br>
+Then:</p>
+<p>EITHER:<br>
+<br>
+At the DOS prompt, open the .mgf file using the command: 
+whateverdirectoryjmolisin\jmol.jar filename.mgf<br>
+Within Jmol, do a left-click so that you can rotate the molecule, then do a 
+right click.<br>
+Navigate Surfaces =&gt; Molecular Orbitals</p>
+<p>OR</p>
+<p>In Windows:<br>
+Create a utility called Jmol_MOPAC.cmd&nbsp; The utility contains one line: whateverdirectoryjmolisin\jmol.jar&nbsp;&nbsp;&nbsp; 
+%1<br>
+Right-click on a .mfg file, and browse to Jmol_MOPAC.cmd<br>
+Put a check in the option &quot;Always use the selected program to open this type of 
+file&quot;<br>
+Click on &quot;OK&quot;<br>
+Within Jmol, do a left-click so that you can rotate the molecule, then do a 
+right click.<br>
+Navigate Surfaces =&gt; Molecular Orbitals<br>
+After this is done, a double click on a .mgf will automatically open it. </p>
+<p>The result should look like this:&nbsp; <a target="_parent" href="CH2O.mgf.txt">CH2O</a></p>
+<p><font face="Arial">When I install a new version of MOPAC, why does the
+<a name="Version Number">Version Number</a> not change?</font></p>
+<p>Every version of MOPAC has a unique version number.&nbsp; The first few lines 
+of the output should look like this: <PRE> *******************************************************************************
+ ** Site#: nnnn           &lt;TextTextTextTextTextText&gt;           Version 7.263W **
+ *******************************************************************************
+ ** Cite this work as: MOPAC2016, James J. P. Stewart, Stewart Computational  **
+ ** Chemistry, Version 7.263W web: HTTP://OpenMOPAC.net   Days remaining: nnn **
+ *******************************************************************************</PRE>
+<p>The version number is near the end of line 2 of the output, and should&nbsp; 
+be of form n.nnnW (for Windows platforms) or n.nnnL (for Linux platforms). The 
+decimal part of the version refers to the Julian date when the executable was 
+made.&nbsp; In this example, the version was built on the 263rd day of the year 
+2007. When a new executable is downloaded, the ZIP file will have the version 
+number in the name of the file. Before opening a distribution ZIP file, look at 
+the version number in the file name - make sure it is correct.&nbsp; In some 
+instances, the version number printed by the executable will be higher than that 
+in the ZIP file - this is not a fault - it just indicates a minor, undocumented, 
+bug-fix has occurred since the last official release. </p>
+<p>A&nbsp; problem sometimes occurs when a new version is installed but after it 
+is installed and MOPAC is run, the resulting output shows that the old version 
+is still being used.
+To fix this problem, first delete the old executable before opening the ZIP file 
+containing the new MOPAC.&nbsp; Then try to run MOPAC2016.&nbsp; If MOPAC2016 
+still executes, then you have two or more 
+old copies of the executable of MOPAC on your machine, and when 
+you run MOPAC, it's one of these old versions that's running.<br>
+<br>
+To correct this problem, delete every copy of the MOPAC2016  executable until 
+it will no longer run.&nbsp; Then install the new executable from the ZIP file.<br>
+&nbsp;</p>
+<p><b><font face="Arial">License Issues</font></b></p>
+<p><font face="Arial">Who can I share my <a name="license key">license key</a> 
+with?</font></p>
+<p><font face="Times New Roman">Each academic license key is valid for all users 
+at the educational site.&nbsp; Everyone at the site can install MOPAC2016 on 
+their computers at the site and at home.&nbsp; Please do NOT request separate 
+license keys, because issuing each key requires some work.&nbsp; The keys may 
+NOT be freely distributed off-site.</font></p>
+<p><font face="Arial">My <a name="license is for a year">license is for a year</a>. 
+What happens when it expires?</font></p>
+<p dir="ltr">The original plan was that users were encouraged to stay up to date with 
+their copy of MOPAC.&nbsp; To encourage this, each new version would re-set the expiry date to one year from the date of creation of the 
+new program.&nbsp; By staying up-to-date you can be sure that all the bugs that have 
+already been reported have been fixed. </p>
+<p>&nbsp;</p>
+<p><b><font color="#000000" face="Arial">How to do specific 
+types of calculations</font><font face="Arial"><a name="types of calculations"></font></a></font></b></p>
+<p><font face="Arial">What are the defaults if <a name="no keywords">no keywords</a> 
+are used?</font></p>
+<p>If no keywords are supplied, then the following options are used:</p>
+<div align="left">
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="719">
+    <tr>
+      <td width="174"><font face="Times New Roman">PM7</font></td>
+      <td width="545"><font face="Times New Roman">(Default method)</font></td>
+    </tr>
+    <tr>
+      <td width="174"><font face="Times New Roman">RHF</font></td>
+      <td width="545"><font face="Times New Roman">(Not UHF)</font></td>
+    </tr>
+    <tr>
+      <td width="174"><font face="Times New Roman">Singlet or doublet</font></td>
+      <td width="545"><font face="Times New Roman">(Default spin states)</font></td>
+    </tr>
+    <tr>
+      <td width="174"><font face="Times New Roman">Geometry optimization </font>
+      </td>
+      <td width="545"><font face="Times New Roman">(Not a single point)</font></td>
+    </tr>
+    <tr>
+      <td width="174"><font face="Times New Roman">T=2D</font></td>
+      <td width="545"><font face="Times New Roman">(Default time: 2 CPU days)</font></td>
+    </tr>
+    <tr>
+      <td width="174"><font face="Times New Roman">DUMP=2H</font></td>
+      <td width="545"><font face="Times New Roman">(Checkpoint files (.res and 
+      .den) written every two hours)</font></td>
+    </tr>
+  </table>
+</div>
+<p><font face="Arial">How do I <a name="orientate the system">orientate the 
+system</a> in a special way?</font></p>
+<p>The simplest way to set up the system so that it is orientated the way you 
+want it, is to use <a href="cart_coord.html">Cartesian coordinates</a>.&nbsp; An alternative is to use three 
+dummy atoms at the start of an <a href="int_coord_def.html">internal coordinate</a> Z-matrix, one at the origin, 
+one along the &quot;x&quot; axis, and one along the &quot;y&quot; axis:</p>
+<TT><p>&nbsp;XX&nbsp; 0.0 0&nbsp; 0.0 0&nbsp; 0.0 0<br>
+&nbsp;XX&nbsp; 1.0 0 90.0 0&nbsp; 0.0 0 1 0 0<br>
+&nbsp;XX&nbsp; 1.0 0 90.0 0 90.0 0 2 1 0</p></TT>
+<p>and then use internal coordinates to position the real atoms relative to the 
+dummy atoms.&nbsp; This is not as easy as using Cartesian coordinates.</p>
+<p><font face="Arial">Can the output be sent to a <a name="different directory">
+different directory?</a></font></p>
+<p>The output is always sent to the directory that the data set was in. To send 
+the output to a different directory, use the following procedure:</p>
+<p>(A) Copy the data files to the directory where you want the output to go to. 
+If the data sets were in directory A and you want the output to be in directory 
+B, copy the data sets from A to B. Do not move the data sets - copy them - so 
+there are two sets of data files, one in A and one in directory B.<br>
+(B) Run the data sets in directory B using MOPAC.<br>
+(C) Delete the data sets in B. Now the output of the data sets in directory A 
+will be in directory B.</p>
+<p><font face="Arial">How do I run a <a name="batch job">batch job?</a></font></p>
+<p>To run a batch job, make up a command file, e.g. MOPAC2016_Batch_job.cmd, and 
+paste in the following lines:<PRE>REM
+REM  How to run several MOPAC2016 jobs with one command.
+REM
+REM  Use the program &quot;MOPAC2016 for all windows" version of MOPAC.
+REM  Do NOT use the program &quot;MOPAC2016 for WINDOWS XP" - if you do
+REM  it will request a finish dialogue ("Program finished with exit code 0.
+REM  Exit Window?) 
+REM
+REM  Use commands of the following type to run all the jobs.
+REM
+ call MOPAC2016.exe job1
+ call MOPAC2016.exe job2
+ call MOPAC2016.exe job3
+ call MOPAC2016.exe job4</PRE>
+<font face="Arial" size="3">How do I get the atomic orbital coefficients of the <a name="HOMO or LUMO">HOMO or LUMO</a>?</font>
+<p>
+<font face="Times New Roman" size="3">Add  keyword <a href="vectors.html">VECTORS</a> to the data set.  From the output, identify the number of occupied levels.  The atomic orbital coefficients of the HOMO 
+are then given by the eigenvector with that number on the line &quot;Root No.&quot; in the &quot;EIGENVECTORS&quot; array.  The LUMO is the next higher eigenvector.</font>
+<font face="Times New Roman" size="3">For example, if formaldehyde (CH<sub>2</sub>O) is being calculated, then there are 6 doubly occupied levels.  The sixth eigenvector is the HOMO and the seventh
+eigenvector is the LUMO.</font> </p>
+<p>
+<font face="Arial" size="3">Can MOZYME calculations give <a name="eigenvalues">eigenvalues</a> 
+and eigenvectors?</font>
+</p>
+<p>Yes, if <a href="eigen.html"><TT>EIGEN</TT></a> and <a href="vectors.html"><TT>VECTORS</TT></a> are both present..&nbsp; 
+The operation to generate eigenvalues&nbsp; and eigenvectors uses matrix 
+algebra, and therefore will need a lot of CPU time and memory for large systems 
+such as proteins.&nbsp; Do NOT use this pair of keywords as the default.</p>
+<p>
+<font face="Arial" size="3">How do I <a name="freeze an atoms position">freeze an atom's position</a> during a geometry optimization?</font>
+</p>
+<p><font face="Times New Roman" size="3">There are two ways to do this, 
+depending on what is meant by &quot;freeze.&quot;</font></p>
+<p><font face="Times New Roman">To freeze the Cartesian coordinate of an atom.<br>
+To do this, the atom's position must be defined using Cartesian coordinates.<br>
+Consider the following entry in a Z- matrix::<br>
+H -1.31 1&nbsp;&nbsp; 0.12 1&nbsp;&nbsp; 1.89 1 <br>
+The atom's position is defined using Cartesian coordinates, because there is no 
+connectivity given.&nbsp; In this entry, the hydrogen atom is located at 
+Cartesian coordinate: (-1.31, 0.12, 1.89), and the three &quot;1&quot;s on this line mean 
+&quot;Optimize the X, Y, and Z coordinates of the atom.&quot;&nbsp; If you want to freeze 
+the position of the atom, change the three &quot;1&quot;s to zeros, e.g.:<br>
+H -1.31 0&nbsp;&nbsp; 0.12 0&nbsp;&nbsp; 1.89 0 </font>
+</p>
+<p><font face="Times New Roman">To freeze a bond-length, angle, or dihedral:<br>
+Consider the following entry in a Z-matrix:: <br>
+&nbsp;H 1.092&nbsp;&nbsp; 1 120.615&nbsp;&nbsp; 1 179.979&nbsp; 1 10 9 11 <br>
+In this entry, the hydrogen atom is 1.092 Angstroms from atom 10, makes an angle 
+of 120.615 degrees with atom 9, and a dihedral of 179.979 degrees with atom 11.<br>
+The three &quot;1&quot;s on this line mean &quot;Optimize the bond length, angle, and 
+dihedral.&quot;&nbsp; If you want to fix the bond-length at 1.092 Angstroms, then the 
+entry would be:<br>
+&nbsp;H 1.092&nbsp;&nbsp; 0 120.615&nbsp;&nbsp; 1 179.979&nbsp; 1 10 9 11 <br>
+To optimize only the angle, the entry would be: <br>
+H 1.092&nbsp;&nbsp; 0 120.615&nbsp;&nbsp; 1 179.979&nbsp; 0 10 9 11 </font>
+</p>
+<p><font face="Times New Roman">When a bond length, angle, or dihedral angle is 
+frozen, the atom must be in internal coordinates.&nbsp; This does not mean that 
+the other atoms in the system must also be in internal coordinates - they can be 
+in internal or Cartesian coordinates, as the user chooses.&nbsp; The only 
+requirement is that the atoms used in the connectivity are specified before the 
+atom whose coordinates are frozen is specified. </font>
+</p>
+<p><font face="Times New Roman">For more information, see
+<a href="Optimization_flags.html">Optimization Flags</a>.</font><br>
+</p>
+<p><font face="Arial">When should I <a name="use C.I.">use C.I.</a> and when 
+should I use UHF?</font></p>
+<p>The following generalizations should be used as a guide:&nbsp; Use C.I. when 
+modeling excited states or when there is a need for spin quantization.&nbsp; Use 
+UHF when optimizing geometries, doing reaction paths, calculating normal modes, 
+etc.</p>
+<p>Considerations: UHF is normally significantly faster than SCF-C.I., and the 
+gradients are mathematically more stable.&nbsp; So where the geometry is 
+important - ground state or transition state - vibrational frequencies, DRC or 
+IRC, unless there is an overriding reason to use ROHF (RHF-C.I.), it's best to 
+avoid it.&nbsp; In organic chemistry, particularly in biochemistry, UHF is best 
+for modeling odd-electron systems, i.e., radicals. In inorganic chemistry, 
+RHF-C.I. is often the preferred method, particularly when the electronic state 
+is important, thus in octahedral chromium-III complexes, the ground state, <sup>
+4</sup>A<sub>2g</sub>, should be defined using the OPEN(3,3) keyword. RHF-C.I. 
+also allows high and low spin to me modeled.</p>
+<p><font face="Arial">In a DRC calculation, what is the relationship of
+<a name="kinetic energy and temperature">kinetic energy and temperature</a>?</font></p>
+<p><font face="Times New Roman">For a system at the equilibrium geometry, the 
+kinetic energy in a DRC calculation is equal to the enthalpy or internal energy 
+of the system, or&nbsp; </font><span class="b">&Delta;</span><font face="Times New Roman">H<sub>f</sub>(T</font><font face="Times New Roman">) 
+-  </font><span class="b">&Delta;</span><font face="Times New Roman">H<sub>f</sub>(0), where &quot;T&quot; is the temperature of the system.</font></p>
+<p><font face="Times New Roman"><br>
+Normally, the system is not at the equilibrium geometry, so the previous 
+statement can be generalized to:<br>
+The kinetic plus potential energy of a DRC system is equal to&nbsp; </font>
+<span class="b">&Delta;</span><font face="Times New Roman">H<sub>f</sub>(T) -
+</font><span class="b">&Delta;</span><font face="Times New Roman">H<sub>f</sub>(0), 
+where &quot;T&quot; is the temperature of the system.</font></p>
+<p><font face="Times New Roman"><br>
+So, if you know the heat of formation of the system (that is, the heat of 
+formation of the optimized geometry) and the total energy in a DRC calculation 
+(Heat of formation plus potential plus kinetic energy) then the internal energy 
+can be readily calculated as the difference of these two quantities. </font></p>
+<p><font face="Times New Roman">The temperature of the system can then be worked 
+out by running a <a href="thermo.html">THERMO</a> calculation, and finding what 
+temperature corresponds to the enthalpy of the system in the DRC.&nbsp; Consider 
+formaldehyde:&nbsp; If, in a DRC calculation using PM6, the potential plus 
+kinetic energies equals 2.403 kcal/mol, then the temperature of the system would 
+be 298K.&nbsp; If a THERMO calculation were to be run on formaldehyde, the 
+enthalpy at 298K would be 2.403 kcal/mol.</font></p>
+<p><font face="Arial">Why does MOPAC sometimes have difficulties with
+<a name="geometry optimization">geometry optimization</a>?</font></p>
+<p><font face="Times New Roman">Sometimes a geometry optimization goes wrong, 
+and MOPAC starts to give messages of the type:</font></p>
+<p><font face="Times New Roman">NUMERICAL PROBLEMS IN BRACKETING LAMDA </font></p>
+<p><font face="Times New Roman">The commonest cause of this is the &quot;big ring&quot; 
+problem - the data set is in internal coordinates and the system contains large 
+rings.&nbsp; Small changes in internal coordinate angles or dihedrals make large 
+changes in the distances of some pairs of atoms that should be bonded together.&nbsp; 
+If a calculation gives this message, the easiest way to correct it is to add 
+keyword &quot;<a href="xyz.html">XYZ</a>&quot;&nbsp; Do not use this keyword if you are 
+using keyword <a href="symmetry.html">SYMMETRY</a> or if any coordinates are not 
+marked for optimization.</font></p>
+<p><font face="Arial">How do I do a
+<a name="geometry optimization and force constant">geometry optimization and 
+force constant</a> calculation in one run?</font></p>
+<p dir="ltr"><font face="Times New Roman">Before a force calculation is run, the 
+geometry must be optimized.&nbsp; This is most easily done in two steps: The 
+geometry is optimized in one calculation, then the <a href="force.html">FORCE</a> 
+calculation is run using the optimized geometry, in a second calculation.&nbsp; 
+Both calculations are run in one job.&nbsp; This is best illustrated by the 
+following example.&nbsp; In this, the geometry of formaldehyde is first 
+optimized, then the force calculation run.&nbsp; Keyword <a href="oldgeo.html">
+OLDGEO</a> instructs the FORCE calculation to use the geometry from the previous 
+calculation.</font></p>
+<p><font face="Courier">&nbsp;SYMMETRY precise<br>
+Formaldehyde (Geometry optimization)<br>
+<br>
+O 0.0 0&nbsp;&nbsp;&nbsp;&nbsp; 0.0 0&nbsp;&nbsp;&nbsp;&nbsp; 0.0 0 <br>
+C 1.2 1&nbsp;&nbsp;&nbsp;&nbsp; 0.0 0&nbsp;&nbsp;&nbsp;&nbsp; 0.0 0&nbsp;&nbsp; 
+1 0 0 <br>
+H 1.0 1&nbsp;&nbsp; 122.0 1&nbsp;&nbsp;&nbsp;&nbsp; 0.0 0&nbsp;&nbsp; 2 1 0 <br>
+H 1.0 0&nbsp;&nbsp; 122.0 0&nbsp;&nbsp; 180.0 0&nbsp;&nbsp; 2 1 3 <br>
+<br>
+3 1 4<br>
+3 2 4<br>
+<br>
+oldgeo force<br>
+Formaldehyde (using optimized geometry from the previous step)<br>
+Last line of data set.</font></p>
+<p><font face="Arial">How can the <a name="re-orientation">re-orientation</a> of 
+a molecule be prevented in a polarizability calculation?</font></p>
+<p>By default, a molecule in a polarizability calculation is rotated so that it 
+is oriented along the principal moments of inertia.&nbsp; To prevent this 
+re-orientation being done, add keyword <a href="let.html">LET</a>.</p>
+<p><b><font face="Arial">Batch jobs and Queues: How do I run <a name="multiple_jobs">multiple jobs</a>, 
+with a pre-set maximum number of jobs running at any one time?</font></b></p>
+<p><font face="Times New Roman">There are two ways to do this: (1) A simple 
+batch file that runs one job until it finishes, then it runs the next job, and 
+(2) A simple batch queue system that runs a a pre-set number of jobs at the same 
+time.&nbsp; When a job ends, and there are more jobs to be run, another job 
+starts.</font></p>
+<p><b><font face="Arial">Simple batch file</font></b></p>
+<p>Write a command script (.cmd in windows, .csh in Linux and Mac) to run each 
+job in turn.&nbsp; For example, to run jobs &quot;test_1.mop&quot;, &quot;test_2.mop&quot;, and 
+&quot;test_3.mop&quot;, the following Windows script might be used:</p>
+<p>&quot;C:/Program Files/MOPAC/MOPAC2016.exe&quot; test_1.mop<br>
+&quot;C:/Program Files/MOPAC/MOPAC2016.exe&quot; test_2.mop<br>
+&quot;C:/Program Files/MOPAC/MOPAC2016.exe&quot; test_3.mop</p>
+<p>This would run test_1, then when it finished, it would run test_2, then when 
+that finished it would run test_3.</p>
+<p><b><font face="Arial">Simple batch queue system</font></b></p>
+<p>A utility &quot;Wait.exe&quot; (Download
+<a href="../Downloads/Wait_for_Windows.zip">Windows</a> and <a href="../Downloads/Wait_for_Mac.zip">Mac</a> 
+versions) has been written.&nbsp; It runs continuously but uses 
+very little CPU time. While Wait.exe is running, it blocks the next instruction, 
+here a call to run a MOPAC job, until the number of MOPAC jobs running has 
+dropped below a pre-set limit.&nbsp; For Windows, the batch file would 
+look like this:<br>
+<br>
+call C:\Users\jstewart\Utility\MOPAC.cmd Test_1<br>
+call C:\Users\jstewart\Utility\MOPAC.cmd Test_2<br>
+call C:\Users\jstewart\Utility\MOPAC.cmd Test_3</p>
+<p>and the MOPAC.cmd would look like this: </p>
+<p><b>ECHO off<br>
+REM<br>
+REM Command file to run MOPAC jobs. <br>
+REM A maximum of n jobs, where &quot;n&quot; is an integer, that are allowed to run at any 
+given time.<br>
+REM<br>
+REM Here, n = 4, and is on the line that begins with the word &quot;call&quot;<br>
+REM Replace &quot;Windows_ &quot; with whatever the executable is called. The name can be 
+shortened from the right to any unique string.<br>
+REM Replace &quot;G:\&quot; with a folder where temporary files created by wait.exe can be 
+stored. <br>
+echo %1<br>
+call C:\Users\jstewart\Utility\wait.exe G:\ Windows_ 2<br>
+REM<br>
+REM Only when the number of MOPAC jobs running drops below &quot;n&quot; will<br>
+REM wait.exe terminate, at which point the MOPAC job can start and control<br>
+REM reverts to the calling file<br>
+REM<br>
+echo Starting job %1<br>
+start &quot; &quot; &quot;C:/Program Files/MOPAC/MOPAC2016.exe&quot; %1</b><br>
+&nbsp;</p>
+<p>In this example, Test_1 and Test_2 would start running, but Test_2 would be 
+prevented from running until either of the MOPAC jobs that were currently 
+running finished.</p>
+<p>For Mac, the batch file would 
+look like this:</p>
+<p dir="ltr">~/utilities/run_MOPAC.csh &quot;Test_1&quot;<br>
+~/utilities/run_MOPAC.csh &quot;Test_2&quot;<br>
+~/utilities/run_MOPAC.csh &quot;Test_3&quot;</p>
+<p dir="ltr">where run_MOPAC.csh would look like this:</p>
+<p dir="ltr"><b>#<br>
+# Run a MOPAC job.<br>
+# The job will start as soon as there are fewer than a preset number of jobs 
+already running<br>
+#<br>
+# &quot;wait.exe&quot; checks every few seconds to see how many jobs are running.<br>
+# While wait.exe is running, it uses almost no time.<br>
+#<br>
+if [ -f &quot;$1&quot; ]<br>
+then<br>
+export dataset=&quot;$1&quot;<br>
+else<br>
+export dataset=&quot;$1&quot;.mop<br>
+if [ ! -f &quot;$dataset&quot; ]<br>
+then<br>
+echo &quot; &quot;<br>
+echo Input data-set \&quot;&quot;$1&quot;\&quot; does not exist<br>
+echo &quot; &quot;<br>
+exit<br>
+fi<br>
+fi<br>
+sleep 1<br>
+/Users/jstewart/Wait/Wait.exe &quot;/Users/jstewart/Wait&quot; mopac2016 2<br>
+datestamp=$(date)<br>
+echo $datestamp &quot; &quot; Starting \&quot;$dataset\&quot;<br>
+nice open -ga /Applications/MOPAC.app &quot;$dataset&quot; </b></p>
+<p dir="ltr">If you don't want to use MOPAC as an Application, then replace the 
+previous line with</p>
+<p dir="ltr"><b>nice /opt/mopac/MOPAC2016.exe &quot;$dataset&quot; <br>
+&nbsp;</b></p>
+<p>Of course, change the paths to suit local conditions. For more details on 
+Wait.exe, run it at the command prompt, without arguments.</p>
+<p>There had been a fault in the MacOS that caused the computer to panic and 
+re-boot when a lot of MOPAC jobs that used MOZYME were run simultaneously.&nbsp; 
+This fault was traced to certain read/write operations that involved hard drives 
+or SSD's.&nbsp; The fault was fixed by using scratch files instead. Also, reduce 
+the frequency of dumps by adding <a href="dump.html"><TT>DUMP=2D</TT></a>.&nbsp; Now 
+multi-processor Mac computers can run 50 or more jobs simultaneously for weeks 
+at a time.</p>
+<p>For both Windows and Mac machines, if multiple jobs are run simultaneously, so that the computer is running at 
+its maximum rate, add keyword <a href="threads.html"><TT>THREADS=1</TT></a>.&nbsp; 
+Without this keyword, each copy of MOPAC will try to use several threads, and 
+the different MOPAC jobs will compete for resources, so the computer's operating 
+system will work hard to decide which process gets which thread.&nbsp; This 
+wastes valuable CPU time.</p>
+<p><font face="Arial">Can you <a name="help me">help me</a> with my research?</font></p>
+<p><font face="Times New Roman">No.&nbsp; A small amount of research is done, 
+but that work is restricted to investigating how well or how badly MOPAC 
+performs in certain types of simulations. Almost all the work at SCC is directed 
+towards making MOPAC2016 a better tool for research.&nbsp;&nbsp;&nbsp; If your 
+request has a side-effect of improving MOPAC, including improving the manual, 
+then help might be provided, otherwise&nbsp; if you really want help, contract 
+work can be done, but be warned this is expensive because it takes time away 
+form the primary task!&nbsp; The best analogy is that the objective of SCC is to 
+make a good television, not to produce the show that is seen on the set.&nbsp;&nbsp;
+</font></p>
+</TT>
+<p><b><font face="Arial">Faults in MOPAC</font></b></p>
+<p>
+<font face="Arial">Why does the <a name="gradient sometimes increase suddenly">
+gradient sometimes increase suddenly</a> during a geometry optimization?</font><p>
+<font face="Times New Roman">Sometimes, particularly during a geometry 
+optimization, the gradient will unexpectedly increase then drop back down again.&nbsp; 
+Why does this happen?&nbsp; The accurate answer is, I don't know.&nbsp; There 
+are two possibilities: (A) The geometry optimizer changed the geometry by a 
+large amount in an energetically unfavorable direction.&nbsp; This resulted in 
+both the gradient and
+</font>
+<span class="b">&Delta;</span><font face="Times New Roman">H<sub>f</sub> 
+increasing.&nbsp; The information obtained from that faulty step then allowed 
+the geometry optimizer to block that specific direction for future steps.&nbsp; 
+(B) There is a bug in the calculation of gradients.&nbsp;&nbsp; If the bug is in 
+the gradient calculation, it would be very difficult to find.</font><p>
+<font face="Times New Roman">If the gradient and </font><span class="b">&Delta;</span><font face="Times New Roman">H<sub>f</sub>&nbsp; 
+both rise then fall back, and the rest of the geometry optimization looks okay, 
+then ignore the fluctuation.</font><p>
+<font face="Arial">Why do <a name="net charges">net charges</a> not add to exact 
+integer values?</font><p dir="ltr">
+In general, when the net atomic charges on all atoms are added, the result is 
+not an exact integer, but instead is in error by an integer multiple of 10^(-6).&nbsp;&nbsp; 
+This is a consequence of the way number are represented in files.<p dir="ltr">
+All numbers printed in MOPAC are ill-defined in the last decimal.&nbsp; Consider a 
+regular triatomic system with net charge of +1.&nbsp; Using double precision (16 
+significant figure precision) the charge on each atom would be:<br>
+<br>
+<br>
+0.3333333333333333 <br>
+0.3333333333333333<br>
+0.3333333333333333<br>
+<br>
+In the NET ATOMIC CHARGES section, this would be printed as:<br>
+<br>
+0.333333<br>
+0.333333<br>
+0.333333<br>
+<br>
+for a total charge of 0.999999, i.e., an error of -0.000001, or -1x10^(-6) for 6 
+figure precision.&nbsp; If the charges were printed to 8 significant figures, the 
+error would be -1x10^(-8), and if to 3 figures, the error would be -1x10^(-3).<br>
+<br>
+Using the standard rules for addition of real numbers of finite precision, an 
+error of a small integer times 10^(-6) for a net charge for a neutral system of
+<i>n</i> atoms 
+would be completely reasonable.&nbsp; Conversely, an error in the net charge of <i>n</i> times 10^(-6) 
+would be impossible.<p>
+<font face="Arial">Why is&nbsp; the sign of the <a name="gradient different">
+gradient different </a>from that of the forces in, e.g., Gaussian 03?</font><p>
+<font face="Times New Roman">The sign of the forces is the negative of the sign 
+of the gradient.&nbsp; Gradient is
+</font>
+<span class="b">&Delta;</span><font face="Times New Roman">E/</font><span class="b">&Delta;</span><font face="Times New Roman">x, 
+force is -</font><span class="b">&Delta;</span><font face="Times New Roman">E/</font><span class="b">&Delta;</span><font face="Times New Roman">x. 
+Gradient is the slope of the potential energy surface, force is in the downhill 
+direction.</font><p>
+<font face="Arial">Why cannot the <a name="precision of the gradients">precision 
+of the gradients</a> in the AUX file be increased?</font><p dir="ltr">
+<font face="Times New Roman">They can.&nbsp; See PRECISION in
+<a href="auxiliary.html"><TT>AUX</TT></a>.<p><font face="Arial">I've found a <a name="bug in MOPAC">bug 
+  in MOPAC</a>. How do I report it to get it fixed?</font></p>
+<p><font face="Times New Roman">First, make sure that your copy of MOPAC is 
+up-to-date.&nbsp; If it's not, then download a new copy and check that the bug 
+is still present.&nbsp; If it is, then please send an E-mail to </font> 
+<a href="mailto:MrMOPAC@ATT.net" style="text-decoration: none">MrMOPAC@ATT.net</a> 
+describing the bug, and include a data set that illustrates the bug, and output 
+from that data set, as attachments </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</font>
+</HTML>

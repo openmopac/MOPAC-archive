@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>CHARGE=n </TITLE>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>CHARGE=<I>n</I></TT> </h1>
+<P>When the system being studied is an ion, the charge, <I>n</I>, on the ion must be supplied by <TT>CHARGE=<I>n</I></TT>. For cations <I>n</I> can be 1, 2, 3, etc.; for anions -1 or -2 or -3, etc. Examples of various charged systems are given in the Table below.
+<h3> <a href="mozyme.html"><TT>MOZYME</TT></a>-specific definition of <TT>
+CHARGE:</TT></h3>
+<P>If <TT>CHARGE=<I>n</I></TT> is not present, the charge required by the 
+<a href="Lewis_structures.html">Lewis structure</a> will be used.&nbsp; In 
+general, it is safer to use <TT>CHARGE=<I>n</I></TT> because if a change is 
+accidentally made to the net charge, the error will be detected and the run 
+stopped.<br>
+If <TT>CHARGE=<I>n</I></TT> is present, including <TT>CHARGE=0</TT>, that charge will be used, unless 
+it is in conflict with the Lewis structure, in which case the job will be 
+stopped.<br>
+If both <a href="geo-ok.html"><TT>GEO-OK</TT></a> and <TT>CHARGE=<I>n</I></TT> 
+are 
+present, that charge will be used, unless it is in conflict with the Lewis 
+structure, in which case the charge required by the Lewis structure will be 
+used. (This is not a useful option; it is equivalent to <TT>CHARGE=<I>n</I></TT> 
+being absent)<P>In cases where the charge supplied is in conflict with that 
+required by the Lewis structure, the Lewis structure will be printed.&nbsp; 
+That, together with the printed charged sites, will allow the correct charge to 
+be determined.<P>To change the charge calculated by MOZYME use one or more of 
+the following keywords:<P><tt><a href="metal.html">METAL</a></tt> &nbsp;- Change the formal 
+charge of a 
+metal atom.<br><tt><a href="setpi.html">SETPI</a></tt> &nbsp;- Change Lewis structure 
+by adding and deleting &pi;-bonds.<br><tt><a href="CVB.html">CVB</a></tt> &nbsp;- Change the topography of the system 
+by making and deleting connectivities. 
+<P>&nbsp;<P><BR>
+<DIV ALIGN="CENTER">&nbsp;
+<STRONG><P>Table:</STRONG> Use of <TT>CHARGE=<I>n</I></TT>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>Ion</TD>
+<TD VALIGN="MIDDLE">
+<P>Keyword</TD>
+<TD VALIGN="MIDDLE">
+<P>Ion</TD>
+<TD VALIGN="MIDDLE">
+<P>Keyword</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>NH<SUB>4</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=1</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>CH<SUB>3</SUB>COO<SUP>-</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=-1</TT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>C<SUB>2</SUB>H<SUB>5</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=1</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>(COO)<SUP>=</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=-2</TT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>SO<SUB>4</SUB><SUP>=</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=-2</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>PO<SUB>4</SUB><SUP>-3</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=-3</TT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>HSO<SUB>4</SUB><SUP>-</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=-1</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>H<SUB>2</SUB>PO<SUB>4</SUB><SUP>-</SUP></TD>
+<TD VALIGN="MIDDLE">
+<TT><P>CHARGE=-1</TT></TD>
+</TR>
+</TABLE>
+</CENTER></P>
+<P ALIGN="CENTER"></DIV></P>
+</BODY>
+</HTML>

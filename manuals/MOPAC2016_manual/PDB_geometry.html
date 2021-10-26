@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Specification of PDB geometrys</TITLE></HEAD>
+<BODY>
+<h1 align="center">Specification of PDB geometry</h1>
+
+
+<p align="left"><a href="http://www.rcsb.org/pdb/home/home.do">PDB files</a> 
+normally consist of a block of descriptive text - lines starting with words such 
+as &quot;HEADER&quot;, &quot;TITLE&quot;, &quot;REMARK&quot;, etc.&nbsp; After the descriptive text there is a 
+block of lines that specify the atoms and their positions.&nbsp; The first line 
+of this block will start with the text &quot;ATOM&quot; or &quot;HETATM&quot;</p>
+
+
+<p align="left">The simplest way to convert a PDB file into a MOPAC data set is 
+to delete all the descriptive text in the PDB file and replace it with the 
+normal three lines of text of a MOPAC data set. For example, given a PDB file 
+like the following:</p>
+
+<PRE>HEADER    DNA-BINDING PROTEIN                     23-FEB-98               
+TITLE     THE CRYSTAL STRUCTURE OF DPS, A FERRITIN HOMOLOG THAT BINDS           
+TITLE    2 AND PROTECTS DNA                                                     
+COMPND    MOL_ID: 1;                                                            
+COMPND   2 MOLECULE: DPS;                                                       
+COMPND   3 CHAIN: A, B, C, D, E, F, G, H, I, J, K, L;                           
+SOURCE    MOL_ID: 1;                                                            
+  (lots of lines deleted)                              
+REMARK   1                                                                      
+REMARK   2                                                                      
+REMARK   2 RESOLUTION. 1.60 ANGSTROMS.                                          
+REMARK   3                                                                      
+REMARK   3 REFINEMENT.                                                          
+REMARK   3   PROGRAM     : X-PLOR 3.851                                         
+ATOM      1  N   SER A   9      24.406  72.250  57.799  1.00 29.89           N  
+ATOM      2  CA  SER A   9      25.023  73.353  58.534  1.00 30.04           C  
+ATOM      3  C   SER A   9      25.215  74.573  57.639  1.00 30.09           C  
+ATOM      4  O   SER A   9      25.784  74.455  56.546  1.00 30.03           O  
+ATOM      5  CB  SER A   9      26.394  72.928  59.070  1.00 30.33           C  
+ATOM      6  OG  SER A   9      27.109  74.019  59.642  1.00 30.46           O  
+ATOM      7  N   LYS A  10      24.750  75.744  58.086  1.00 30.02           N  </PRE>
+
+The MOPAC data set would look like this:
+
+<PRE>xyz 0scf
+Convert a PDB file into a normal MOPAC file, and preserve the geometry
+ This line should hold comments. 
+ATOM      1  N   SER A   9      24.406  72.250  57.799  1.00 29.89           N  
+ATOM      2  CA  SER A   9      25.023  73.353  58.534  1.00 30.04           C  
+ATOM      3  C   SER A   9      25.215  74.573  57.639  1.00 30.09           C  
+ATOM      4  O   SER A   9      25.784  74.455  56.546  1.00 30.03           O  
+ATOM      5  CB  SER A   9      26.394  72.928  59.070  1.00 30.33           C  
+ATOM      6  OG  SER A   9      27.109  74.019  59.642  1.00 30.46           O  
+ATOM      7  N   LYS A  10      24.750  75.744  58.086  1.00 30.02           N  
+</PRE>
+
+
+<p>By default, geometries are flagged for optimization.&nbsp; To prevent this, 
+use keywords such as <a href="one_scf.html"><TT>1SCF</TT></a> or <a href="nooptx.html">
+<TT>NOOPT</TT></a>.&nbsp; Most PDB files do not include hydrogen atoms, if they 
+are missing then they need to be added before any MOPAC work is done. <br>
+Don't worry if the job fails immediately, simply read the error message and 
+follow the advice given.<br>
+Another common option is to use <TT> <a href="pdbout.html">PDBOUT</TT></a>, in which 
+case the descriptive text should 
+be included in the data set, but with every line of descriptive text starting 
+with an asterisk. The MOPAC data set would look like this: </p>
+  
+<PRE>*HEADER    DNA-BINDING PROTEIN                     23-FEB-98               
+*TITLE     THE CRYSTAL STRUCTURE OF DPS, A FERRITIN HOMOLOG THAT BINDS           
+*TITLE    2 AND PROTECTS DNA                                                     
+*COMPND    MOL_ID: 1;                                                            
+*COMPND   2 MOLECULE: DPS;                                                       
+*COMPND   3 CHAIN: A, B, C, D, E, F, G, H, I, J, K, L;                           
+*SOURCE    MOL_ID: 1;                                                            
+  (lots of lines deleted)
+   xyz 0scf
+Convert a PDB file into a normal MOPAC file, and preserve the geometry
+
+ATOM      1  N   SER A   9      24.406  72.250  57.799  1.00 29.89           N  
+ATOM      2  CA  SER A   9      25.023  73.353  58.534  1.00 30.04           C  
+ATOM      3  C   SER A   9      25.215  74.573  57.639  1.00 30.09           C  
+ATOM      4  O   SER A   9      25.784  74.455  56.546  1.00 30.03           O  
+ATOM      5  CB  SER A   9      26.394  72.928  59.070  1.00 30.33           C  
+ATOM      6  OG  SER A   9      27.109  74.019  59.642  1.00 30.46           O  
+ATOM      7  N   LYS A  10      24.750  75.744  58.086  1.00 30.02           N  </PRE>
+
+
+<p>&nbsp;</p>
+  
+</BODY>
+</HTML>

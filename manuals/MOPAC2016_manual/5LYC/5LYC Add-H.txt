@@ -1,0 +1,15 @@
+reset;center {7.268602739726027 -28.68117808219179 -43.986575342465756}; rotate z 82.96; rotate y 89.89; rotate z -48.28; zoom 529.41; set rotationRadius 37.95;
+display 201:B
+select 201:B.Fe, 201:B.NB, 201:B.C1B, 201:B.C2B, 201:B.C3B, 201:B.C4B, 201:B.ND, 201:B.C1D, 201:B.C2D, 201:B.C3D, 201:B.C4D
+label %a
+color label black
+set labelAlignment  CENTER
+select off
+connect (201:B.FE) (201:B.NB) delete
+connect (201:B.FE) (201:B.NB) partial
+connect (201:B.FE) (201:B.ND) delete
+connect (201:B.FE) (201:B.ND) partial
+connect (201:B.C2B) (201:B.C3B) delete
+connect (201:B.C2B) (201:B.C3B) double
+connect (201:B.C2D) (201:B.C3D) delete
+connect (201:B.C2D) (201:B.C3D) double

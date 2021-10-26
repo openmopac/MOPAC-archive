@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+ <TITLE>Locating and Refining Transition States in Proteins</TITLE> 
+<style type="text/css">.auto-style1 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+</style>
+</HEAD>
+<BODY>
+<p><font face="Arial">(<a href="modeling_proteins.html#Locating">Modeling proteins</a>)</font></p>
+<h1 align="center">
+Locating and Refining Transition States in Proteins</h1>
+<p>
+<span class="auto-style1">The task of locating and refining transition states in enzyme-catalyzed 
+reactions has normally been regarded as very difficult, if not impossible.&nbsp; 
+Hopefully, this has changed now that a fully automatic procedure, </span> <a href="Locate-TS.html">
+<tt>LOCATE-TS</tt></a>,<span class="auto-style1"> has been developed.&nbsp;</span>
+                                                <tt>LOCATE-TS</tt><span class="auto-style1"> was 
+developed specifically for locating transition states in proteins; it will work 
+for some other types of reactions, but be aware that it has been optimized for 
+protein work.</span><p>
+LOCATE-TS <span class="auto-style1">was tested using the chymotrypsin mechanism.&nbsp; The default 
+setting worked for locating most transition states, for the rest, 
+<a href="trial_and_error_methods_for_locating_transition_states.html">trial-and-error methods for locating transition states</a> were used.&nbsp; These 
+resulted in all the stationary points between intermediates being located. 
+</span> <p class="auto-style1">
+The <a href="Chymotrypsin_mechanism.html">chymotrypsin mechanism</a> was used as 
+the example in modeling proteins.&nbsp; Some features of this example are common 
+to all projects involving modeling enzyme mechanisms.&nbsp; Among these are:<ul>
+	<li><span class="auto-style1">Generate optimized arc files for each
+	<a href="Making_reactants_and_products.html">candidate intermediate</a> 
+	(stationary point) in the mechanism. Give these files simple names, e.g., 
+	Step_1 - Step_6.&nbsp; If, as often happens, there are other possible 
+	intermediates then these should also be given simple names, e.g., Step_6a or 
+	Step_7. <br> </span> <br class="auto-style1"> </li>
+	<li><span class="auto-style1">If several keywords are common to each data set, e.g.,&nbsp;</span>
+	<a href="eps.html"><tt>EPS=78.4</tt></a>, <a href="mozyme.html"><tt>MOZYME</tt></a>,
+	<a href="charge.html"><tt>CHARGE=1</tt></a>, <a href="CVB.html"><tt>CVB(1000:-1001)</tt></a>,<a href="gnorm.html"> 
+	<tt>GNORM=20</tt></a>, <tt><a href="t=n.html">T=1W</a></tt>, 
+	<span class="auto-style1">then create a file, e.g., SETUP.TXT, containing these 
+	keywords, and use keyword</span> <a href="setup.html"><tt>SETUP</tt></a> 
+	<span class="auto-style1">to indicate that the set of keywords is to 
+	be read in.<br></span><br class="auto-style1"></li>
+	<li><span class="auto-style1">Data sets for locating transition states should be given 
+	systematic simple names.&nbsp; Examples would be 
+	Step_1_2_Transition_State.mop and Step_1_3_Transition_State.mop.&nbsp; <br>
+	</span> <br class="auto-style1"> </li>
+	<li><span class="auto-style1">Individual data sets for locating transition states should use keywords</span>
+	<a href="eps.html"><tt>EPS=78.4</tt></a>, <a href="Locate-TS.html"><tt>LOCATE-TS</tt></a>,
+	<a href="geo_dat.html"><tt>GEO_DAT</tt></a> <span class="auto-style1">and</span> <a href="geo_ref.html"><tt>GEO_REF</tt></a>.
+	<span class="auto-style1">Each data set should consist of only one to three lines: keywords, title 
+	(optional), and 
+	comment (also optional) lines. </span> <tt>GEO_DAT</tt> 
+	<span class="auto-style1">and</span> <tt>GEO_REF </tt>
+	<span class="auto-style1">should refer to ARC 
+	files for the intermediates, not to &lt;file&gt;.mop files.&nbsp; &lt;file&gt;.arc files 
+	can easily be inspected to see if they are suitable - the heat of formation 
+	is easily seen, as is the gradient norm.&nbsp; If the ARC file is edited to 
+	make a new MOP file, the potential for introducing an error is large, and 
+	finding an error in a MOP file is not easy.<br></span>
+	<br class="auto-style1"></li>
+	<li><span class="auto-style1">The choice of which ARC file to use fo</span>r
+	<a href="geo_dat.html"><tt>GEO_DAT</tt></a> <span class="auto-style1">and which for</span>
+	<a href="geo_ref.html"><tt>GEO_REF</tt></a> <span class="auto-style1">is arbitrary. The names can be 
+	switched around at the user's discretion. </span> </li>
+</ul>
+<p class="auto-style1">
+All possible combinations of intermediates were used in modeling the chymotrypsin mechanism, 
+however only the transition states connecting adjacent pairs of 
+intermediates are meaningful; the rest were included in this example to 
+illustrate different types of reactions. Transition states connected by a red 
+dot are not meaningful.<p class="auto-style1">
+&nbsp;                                                </BODY>
+</HTML>

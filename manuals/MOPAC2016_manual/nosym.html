@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>NOSYM </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>NOSYM</TT> </h1>
+<p>
+By default, symmetry point-groups are
+automatically assigned, and used in identifying the irreducible representations
+of molecular orbitals, vibrations, and states, and in accelerating the
+construction of the Hessian in FORCE calculations.</p>
+<P>Sometimes a system almost has the symmetry of a point group higher than C<SUB>1</SUB>. Minor deviations from exact symmetry are allowed, but these
+sometimes cause difficulties. If that happens, then the job will fail. To prevent this happening, the symmetry can be re-defined as C<SUB>1</SUB>. This effectively disables all the symmetry features, so some jobs, particularly <A HREF="force.html"><TT><FONT COLOR="#0000ff"><U>FORCE</U></FONT></TT></A> calculations, will take longer to run. </P>
+<P>Use <TT>NOSYM</TT> if there is any reason to suspect that the point-group symmetry features are causing problems. </P>
+<P> A second type of symmetry can be used by specifying&nbsp; <TT><A HREF="symmetry.html"><U><FONT COLOR="#0000ff">SYMMETRY</FONT></U></A></TT>.&nbsp;
+This is distinct from the default of using the point-group of the system to
+label irreducible representations and to accelerate <TT>FORCE</TT>
+calculations. When <TT>SYMMETRY</TT> is used, the symmetry relations between
+coordinates are defined by the user.&nbsp; These can be used for defining the
+point-group of a molecule, for example the D<sub>6h</sub> of benzene, but no point-group
+theory is used when <TT>SYMMETRY</TT> is specified.&nbsp;  </P>
+</BODY>
+</HTML>

@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Modeling proteins</TITLE>
+<style type="text/css">.auto-style1 {
+	font-family: Arial;
+}
+																													.auto-style4 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style5 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+}
+																													.auto-style6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+																													.auto-style7 {
+	font-weight: normal;
+}
+																													.auto-style8 {
+	line-height: 200%;
+	font-family: Arial;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<p dir="ltr">&nbsp;</p>
+<h1 align="center"><font face="Arial">Modeling proteins and Enzyme-Catalyzed Reactions 
+(<a href="proteins.html">Back to &quot;Proteins&quot;</a>)</font></h1>
+<body>
+<h2 class="auto-style4">Introduction</h2>
+<p class="auto-style4">For the purposes of 
+investigating protein behavior, it is useful to regard the program MOPAC as a 
+complete laboratory, with all the utilities and tools needed for modeling 
+protein behavior.&nbsp; As with tools in any laboratory, a certain level of 
+skill is needed; a potential user who just wants to look at an enzyme-catalyzed 
+reaction and is not willing to prepare a suitable model will inevitably be 
+disappointed.&nbsp; Potential users must be willing to do two things: first, to 
+acquire the skills necessary for manipulating the complicated models, and 
+second, to construct and use such models.&nbsp; These are difficult tasks, and a 
+lot of patience is required.&nbsp; To help with them, MOPAC provides a set of 
+utilities to assist in building models and for detecting errors that occur 
+during this process.</p>
+<p class="auto-style4">Any researcher who wants to use MOPAC for modeling 
+proteins and is willing to invest the effort to learn how to do that has a right 
+to expect the program to work as described in this Manual.&nbsp; Obviously there 
+are faults in MOPAC, but a serious effort has been made, taking more than a 
+year, to check that the program works correctly, and to simplify identifying and 
+correcting faults in protein data-sets. The current on-line manual and MOPAC 
+program are the culmination of that effort.</p>
+<p><span class="auto-style4">Why should an 
+experimentalist use computational chemistry modeling tools?&nbsp; Probably the 
+most important reason is that they provide an alternative to the other two 
+approaches: experiment and understanding.&nbsp; To give a simple example, 
+consider an X-ray structure of a protein.&nbsp; This structure is physics, not 
+chemistry, and almost all (well over 90%) of the structures examined thus far 
+have had mild to severe errors when looked at from a chemical point of view.&nbsp; 
+Examples would be unrealistic single bond lengths, e.g., C-C bonds of length 
+~1.1 &Aring; instead of the expected 1.5 &Aring;,
+unrealistic non-covalently bonded distances, and simple errors such as a C-NH<sub>2</sub> 
+being mistaken for a C=O and </span><span class="auto-style5">vice versa</span><span class="auto-style4">. These errors can be detected 
+using MOPAC, and, more important, they can be corrected.&nbsp; The result is a 
+structure that is much more chemically realistic than the starting PDB 
+structure.&nbsp; Put another way, the result of simply building a model of a 
+protein is a structure that is more realistic, i.e., nearer to the structure of 
+the biochemical that occurs in nature, than anything available from any other 
+source. </span></p>
+<p class="auto-style4">To reiterate, for a model to be useful it must be 
+realistic.&nbsp; When an enzyme catalyzes a reaction, the energy changes 
+involved are often very small, frequently less than the energy involved in 
+making a single hydrogen bond.&nbsp; If there is a fault in the model that might 
+cause it to be in a high-energy state, and later on in the simulation that fault 
+corrected itself, the resulting energy change would more than likely invalidate 
+all the work that had gone before.&nbsp;It is important, therefore, to make sure that 
+the starting model is as error free as possible.&nbsp; Unfortunately, and 
+without exception, all data sources for protein structures (including the most 
+important one: the Protein Data Bank) have limitations.&nbsp; These range from 
+minor faults - ones that were previously regarded as unimportant - such as 
+missing hydrogen atoms, to quite severe geometric errors, such as carbon-carbon 
+single bonds having a bond-length of less than 1.4 &Aring;ngstroms.&nbsp; Therefore, before any work can be done, a realistic model of the 
+protein must be constructed.&nbsp; This operation involves several steps, and 
+requires great care to be exercised to ensure that the resulting model is as 
+good as possible. </p>
+<p class="auto-style4">MOPAC contains many
+<a href="Tools%20for%20use%20with%20Proteins.html"><strong>Tools for use with 
+Proteins</strong></a>. </p>
+<h2 align="left" style="line-height: 200%" class="auto-style1">Steps and 
+processes involved in modeling Proteins</h2>
+<ul>
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b> <a href="Installing_MOPAC.html" name="Installing">Installing MOPAC2016</a>: </b> How to get the program, install, and activate it</font></li>  
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b> <a href="Running_a_simple_job.html" name="Running">Running a simple job</a>:</b> Constructing a data set for formaldehyde, running it, analyzing the results. Some nomenclature (jobs, calculations, etc.)</font></li>
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b> <a href="Getting_a_starting_protein_structure.html" name="Getting">Getting a starting protein structure</a>: </b>The PDB, what to look for and what to watch out for</font></li>
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b> <a href="Graphical_use_interfaces.html" name="Graphical">Graphical User Interfaces</a>: </b>What to look for</font></li>
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b> <a href="preparing_a_Starting_data_set.html" name="Preparing">Preparing a starting data set</a>: </b>
+Adding hydrogen atoms</font></li>
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b> <a href="Solvate_or_not_Solvate.html" name="Solvation">Solvation</a>:</b> Use solvation - it make the model more realistic</font></li>
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b> <a href="Resequencing.html" name="Resequencing">Resequencing</a>: </b>What to watch out for</font></li>
+<li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b>
+  <a href="Determining_ionized_sites.html" name="Determining">Determining Ionized Sites</a> 
+  and 
+  <a href="salt_bridges.html" name="Salt">Salt bridges</a>: </b>Correct 
+  placement of hydrogen atoms</font></li>
+    <li>
+	<p align="left" style="line-height: 200%"><font face="Arial" size="4">
+	<b>
+	<a href="Running_a_1SCF_calculation.html" name="1SCF">Running a 1SCF 
+calculation</a>:</b> 
+Issues involved in </font></li>
+  <font size="4">
+	<li>
+	<p align="left" style="line-height: 200%"><font face="Arial" size="4"><b>
+	<a href="Validate_starting_model.html" name="Check">Check that the Starting Model is valid</a>: 
+	</b></font><font face="Arial">Examine the active site</font></li>
+  <li>
+<p align="left" style="line-height: 200%"><font face="Arial" size="4">
+<b>
+<a href="correcting_errors_in_X-ray_structures.html" name="Correcting">Correcting errors in the X-ray structure</a>: </b></font><font face="Arial">
+Improving on the X-ray structure</font></li>
+  <li><p align="left" style="line-height: 200%"><font face="Arial" size="4"><b>
+  <a href="Unconstrained_optimization.html" name="Unconstrained">Unconstrained optimization</a>: </b></font><font face="Arial">Generating the starting point for modeling protein chemistry</font></li>
+  <li>
+	<p align="left" style="line-height: 200%"><font face="Arial" size="4"><b>
+	<a href="Compare_the_geometries_of_two_systems.html">Compare the geometries 
+    of two systems</a></b></font></li>
+	<li>
+	<p align="left" class="auto-style8">
+	<a href="Editing%20the%20Starting%20Model.html"><strong>Editing the Starting 
+	Model to make small changes</strong></a>: Changing -C<font face="Arial" size="4">OOH 
+	to -CONH2 or CH2OH to CH3</font></li>
+	<li>
+	<p align="left" style="line-height: 200%"><b><font face="Arial" size="4">
+	<a href="MOPAC_or_PDB_format.html" name="Choosing">Choosing a format: 
+MOPAC or PDB</a></font></b><font face="Arial" size="4"><b>:<span class="auto-style4">
+	</span> </b></font>
+	<span class="auto-style4">Issues and considerations
+	</span>
+	<li>
+	<p align="left" style="line-height: 200%">
+	<span class="auto-style4">
+	<b>
+	<a href="backup_starting_model.html" name="Make a backup">Make a backup copy of the starting model</a>: </b>
+	Avoid the risk of losing a lot of hard work</span></li>
+	<li> <p align="left" style="line-height: 200%" class="auto-style6"> 
+	<a href="Chymotrypsin_mechanism.html" name="Worked">Worked example: Chymotrypsin</a>:
+	<span class="auto-style7">Complete catalytic cycle</span></li>
+	<li> <p align="left" style="line-height: 200%" class="auto-style6"> 
+	<a href="Chymotrypsin_starting_model.html" name="Constructing">Constructing a Chymotrypsin Starting Model</a>:
+	<span class="auto-style7">The minimum energy structure is best</span></li>
+	<li> <p align="left" style="line-height: 200%" class="auto-style6"> 
+	<a href="Making_reactants_and_products.html" name="Making">Making reactants and products</a>:
+	<span class="auto-style7">Techniques for generating intermediates</span></li>
+    <li> <p align="left" style="line-height: 200%" class="auto-style6">
+	<a href="Locating_and_Refining_Transition_States_in_Proteins.html" name="Locating">Locating 
+	and Refining Transition States in Proteins</a>: <span class="auto-style7">
+	Generating transition state geometries</span></li>
+    <li> <p align="left" style="line-height: 200%" class="auto-style6">
+	<a href="Verifying_transition_states.html" name="Verifying">Verifying transition states</a>:
+	<span class="auto-style7">Show that there is exactly one imaginary force 
+	constant</span></li>
+    <li> <p align="left" style="line-height: 200%" class="auto-style6">
+	<a href="Protein_intrinsic_reaction_coordinates.html" name="Intrinsic">Intrinsic Reaction Coordinates</a>:
+	<span class="auto-style7">Show that the imaginary mode connects reactants 
+	and products</span></li>
+   </BODY></HTML>

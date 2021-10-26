@@ -1,0 +1,218 @@
+<HTML>
+<HEAD>
+<TITLE>Param data sets</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1 align="center">PARAM input data file</H1>
+<p align="left">A PARAM input data file control a parameter optimization 
+calculation, and control how surveys are run. </p>
+<h3 align="left">Structure of an input data set for parameter optimization</h3>
+<p align="left">Data files have names, in the format &lt;file&gt;.dat. An example of a 
+PARAM data set, &quot;br.dat&quot;, is given in the following box:</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="895">
+    <tr>
+      <td width="193">Comment</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">&nbsp;</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1">
+      <b><font color="#008000">* </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Comment</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">&nbsp;</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">* Optimize PM8 parameters for a single element
+      </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Comment</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">&nbsp;</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">*</font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Control</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 1</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">set=..\normal\all_ref_data.txt ref=N:\;R:\;L:\ 
+      params=..\new\params.txt;br.rp </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Parameters</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 2</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">(br)(All) </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">End of parameters</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 3</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">end </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">ref. data file names</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 4</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: solid; border-bottom-width: 1">&nbsp;</td>
+    </tr>
+    </table>
+  </center>
+</div>
+<p align="left">Like a MOPAC data set, a PARAM data set can include comment 
+lines.&nbsp; These are lines that start with an asterisk (*).&nbsp; Such lines 
+are completely ignored by PARAM. </p>
+<p align="left">A long control line can be split into more lines by adding two 
+characters, a space and an ampersand, to the end of a line.&nbsp; When &quot; &amp;&quot; is 
+present, the next line is read as a continuation of the current line. </p>
+<p align="left"><b>Line 1:</b> <a href="allkeys.html">PARAM Keywords</a> that 
+control the type of job. In the example, three keywords are used,
+<a href="keyword_set.html">SET</a>, <a href="keyword_ref.html">REF</a>, and
+<a href="keyword_params.html">PARAMS</a>.&nbsp; These keywords indicate that:</p>
+<p align="left">The set of reference data file names is in the file
+<font color="#008000"><b>all_ref_data.txt</b></font>, stored in folder
+<font color="#008000"><b>..\normal.</b></font><br>
+The reference data files themselves are in folders <font color="#008000"><b>N:\</b></font>,
+<b><font color="#008000">R:\</font></b>, and <b><font color="#008000">L:\</font></b>.&nbsp; 
+This is also the order of searching.<br>
+The default PM8 parameters are to be replaced using parameters in file <b>
+<font color="#008000">params.txt.</font></b> The file <font color="#008000"><b>
+params.txt</b></font> is in folder <b><font color="#008000">..\new</font></b><br>
+The modified parameters are to be replaced by the parameters in file<b><font color="#008000"> 
+br.rp</font></b>.&nbsp; This file is in the current folder.</p>
+<p align="left">Since no method was specified, the approximations and initial 
+set of parameters are those of PM8.&nbsp; This is the default.</p>
+<p align="left"><b>Line 2:</b> The parameters to be optimized. Here, all 
+parameters for the element Bromine are to be optimized.</p>
+<p align="left">There are default lower and upper bounds for parameters.&nbsp; 
+If the default limits need to be altered, the new limits should be put after the 
+parameter, as in:</p>
+<p align="left">alpb_h H 0.9 5<br>xfac_c H 0.1 5 <br>xfac_n H 0.1 5 <br>xfac_o H 
+0.1 5 <br>FN21 N 0.5 5<br>FN21 C 0.5 5<br>HSP C 0.5 5<br>xfac_O O 0.1 5 <br>
+xfac_F F 0.1 5 </p>
+<p align="left">All entries that modify parameter limits should be put before 
+entries of the type (Br)(all); only the first occurrence of a parameter is used 
+in specifying parameters. There are 60 other parameters, these have names PAR1, 
+PAR2, PAR3, ... PAR9, PAR10, ... PAR60.&nbsp; These are global, this means that 
+they do not apply to any specific atom, but instead apply to phenomena such as 
+dispersion and hydrogen bonds. These parameters can be specified using the 
+following style:</p>
+<p align="left">*<br>* PAR7, PAR8, and PAR9 are parameters for Grimme's &quot;D3&quot; 
+method <br>*<br>PAR7 0.2 1.3 = s3 in subroutine DFTD3<br>PAR8 12.0 15.0 = alp in 
+subroutine DFTD3<br>PAR9 0.5 2.0 = rs6 in subroutine DFTD3</p>
+<p align="left"><b>Line 3:</b> The terminator for the list of parameters to be 
+optimized.</p>
+<p align="left"><b>Line 4:</b> Blank here, but can contain the set of reference 
+data file names.</p>
+<p align="left">&nbsp;</p>
+<h3 align="left">Structure of an input data set for running a survey</h3>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="895">
+    <tr>
+      <td width="193">Comment</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">&nbsp;</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-top-style: solid; border-top-width: 1">
+      <b><font color="#008000">* </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Comment</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">&nbsp;</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">* Survey the new method for elements H C N and O
+      </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Comment</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">&nbsp;</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">*</font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Control</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 1</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">set=..\normal\all_ref_data.txt ref=N:\ params=..\new\params.txt 
+      only survey</font></b></td>
+    </tr>
+    <tr>
+      <td width="193">Parameters</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 2</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">(H C N O)(USS) </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">End of parameters</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 3</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1">
+      <b><font color="#008000">end </font></b></td>
+    </tr>
+    <tr>
+      <td width="193">ref. data file names</td>
+      <td width="20">&nbsp;</td>
+      <td width="72">Line 4</td>
+      <td width="15" style="border-right-style: solid; border-right-width: 1">&nbsp;</td>
+      <td width="595" bordercolor="#808080" style="border-left-style: solid; border-left-width: 1; border-right-style: solid; border-right-width: 1; border-bottom-style: solid; border-bottom-width: 1">&nbsp;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p align="left"><b>Line 1:</b> <a href="allkeys.html">PARAM Keywords</a> that 
+control the type of job. In the example, five keywords are used,
+<a href="keyword_set.html">SET</a>, <a href="keyword_ref.html">REF</a>,
+<a href="keyword_params.html">PARAMS</a>, <a href="keyword_only.html">
+ONLY</a> and <a href="keyword_survey.html">SURVEY</a>.&nbsp; These keywords indicate that:</p>
+<p align="left">The set of reference data file names is in the file
+<font color="#008000"><b>all_ref_data.txt</b></font>, stored in folder
+<font color="#008000"><b>..\normal.</b></font><br>
+The reference data files themselves are in the folder <font color="#008000"><b>N:\</b></font>.&nbsp; 
+No other folders are used, as the survey is over normal compounds.<br>
+The default PM6 parameters are to be replaced using parameters in file <b>
+<font color="#008000">params.txt.</font></b> The file <font color="#008000"><b>
+params.txt</b></font> is in folder <b><font color="#008000">..\new<br>
+</font></b><font color="#008000"><b>only</b></font>: means that only reference data that contains one or more elements 
+marked for optimization are to be used in the survey.<br>
+<font color="#008000"><b>survey</b></font>:&nbsp; 
+means &quot;run a survey&quot; not a parameter optimization.</p>
+<p align="left">Since no method was specified, the approximations and initial 
+set of parameters are those of PM6.&nbsp; This is the default.</p>
+<p align="left"><b>Line 2:</b> The set of elements to be used in the survey, 
+here hydrogen, carbon, nitrogen, and oxygen. It is sufficient to use the 
+parameter USS.&nbsp; In a survey, these parameters will not be modified; they 
+are only used as a way of indicating which elements are to be used in selecting 
+systems.</p>
+<p align="left"><b>Line 3:</b> The terminator for the list of parameters to be 
+optimized. </p>
+<p align="left"><b>Line 4:</b> Blank here, but if SET is not used, then line 4 
+on should contain the set of reference 
+data file names.</p>
+<p align="left">&nbsp;</p>
+<p align="left"><br>
+&nbsp;</p>
+</BODY>
+</HTML>

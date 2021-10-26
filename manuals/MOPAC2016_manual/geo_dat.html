@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>GEO_DAT=<i>text </i></TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>GEO_DAT=&quot;<i>text</i>&quot;</TT> </h1>
+<font face="Arial"> <TT>GEO_DAT</TT> provides an alternative method for 
+supplying a geometry for a job.&nbsp;&nbsp;&nbsp;If more than one line of keywords is 
+supplied, then this keyword should be on the first line.
+
+<p>Ways to specify &quot;<em>text</em>&quot; :</p>
+
+<p><TT>GEO_DAT=&quot;CRAMBIN 1CBN X-ray.mop</TT>&quot;<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT>=&quot;CRAMBIN.arc</TT>&quot; <br>
+<font face="Arial"> <TT>GEO_DAT=&quot;CRAMBIN.pdb</TT>&quot; 
+</font>
+<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT>=&quot;./CRAMBIN.arc</TT>&quot;<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT>=&quot;../CRAMBIN.arc</TT>&quot; <br>
+<font face="Arial"> <TT>GEO_DAT=&quot;../<font face="Arial"><TT>../arc files/C</TT></font>RAMBIN.arc</TT>&quot;
+</font>
+<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT>=&quot;sub folder/CRAMBIN.arc</TT>&quot;
+<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT><font face="Arial"><TT>=</TT></font>&quot;./sub 
+folder/CRAMBIN.arc</TT>&quot;<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT>=&quot;M:\data sets\CRAMBIN 1CBN X-ray.mop</TT>&quot;<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT>=&quot;/Users/jstewart/data_sets/CRAMBIN_1CBN_X-ray.mop</TT>&quot;<br>
+<font face="Arial"> <TT>GEO_DAT</TT></font><TT>=&quot;~/data_sets/CRAMBIN_1CBN_X-ray.mop</TT>&quot;</p>
+
+<p>Only the geometry in the file specified by
+<font face="Arial"> <TT>GEO_DAT</TT> will be used, i.e., all keywords, comments, 
+etc., will be ignored.</font></p>
+<p>Warning: If
+<font face="Arial"> <TT>GEO_DAT</TT> refers to a file that has the same name as 
+the data-set, but with a different suffix, and the data-set generates a file 
+with that suffix, then the file referred to by <TT>GEO_DAT</TT> will be 
+over-written.&nbsp; For example, if <TT>GEO_DAT</TT> refers to test.arc, and the 
+data set name is test.mop, and the run would generate a file called test.arc, 
+then the original test.arc will be over-written.&nbsp; If test-mop is run again, 
+then different results might be obtained, because the file referred to by <TT>GEO_DAT</TT> 
+had changed.</font></p>
+<p>See also <a href="Locate-TS.html"><tt>LOCATE-TS</tt></a> and
+<a href="geo_ref.html"><tt>GEO_REF</tt></a></p>
+</font>
+</BODY>
+</HTML>

@@ -1,0 +1,234 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Tools in MOPAC for use with Proteins</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+	font-family: Arial;
+	text-align: center;
+}
+																													.auto-style6 {
+																														text-align: left;
+																														margin-top: 6px;
+																													}
+																													.auto-style7 {
+																														margin-top: 6px;
+																													}
+																													.auto-style9 {
+																														text-align: left;
+																														margin-top: 6px;
+																														margin-bottom: 0;
+																													}
+																													.auto-style12 {
+																														margin-top: 6px;
+																														font-family: Arial;
+																													}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 class="auto-style1" dir="ltr"><a name="Tools_in_MOPAC_for_use_with_Proteins">Tools in MOPAC for use with Proteins</a> <font face="Arial">
+(<a href="proteins.html">Back to &quot;Proteins&quot;</a>)</font></h1>
+<p class="auto-style1"><a href="#Adding_hydrogen_atoms">Adding hydrogen atoms</a> 
+- <a href="#Finding_and_correcting_faults_in_the_PDB_file">Finding and 
+correcting faults in the PDB file</a> - <a href="#Resequencing">Resequencing</a> 
+- <a href="#Comparing_two_geometries">Comparing two geometries</a><br>
+<a href="#Freezing_an_interatomic_distance_">Freezing an interatomic distance</a> 
+- <a href="#Atom_numbers_and_labels">Atom numbers and labels</a></p>
+<h2><a name="Adding_hydrogen_atoms">Adding hydrogen atoms</a> (<a href="#Tools_in_MOPAC_for_use_with_Proteins">top</a>)</h2>
+<p class="auto-style6">Most PDB files do not include hydrogen atoms, so these 
+need to be added before any serious calculations are done.&nbsp; The simplest 
+way to add hydrogen atoms is to run the un-modified PDB file using MOPAC.&nbsp; 
+This will produce a fully-hydrogenated system, with all ionizable sites 
+neutralized.&nbsp; As this is normally not suitable for modeling because some 
+sites should be ionized, an alternative and better 
+hydrogenation strategy is to make a MOPAC data-set that uses the PDB file.</p>
+<h3>Adding hydrogen atoms using a MOPAC data-set (recommended procedure)</h3>
+<p class="auto-style7">To hydrogenate a PDB file, create a MOPAC data-set that has an 
+informative name, for example, if the PDB file is 5A5A.pdb, then name the MOPAC 
+data-set &quot;5A5A Add-H.mop&quot;&nbsp;&nbsp;This file should contain the 
+following lines:</p>
+<PRE><a href="geo_dat.html">GEO_DAT</a>="5A5A.pdb" <a href="ADD-H.html">ADD-H</a> <a href="site.html">SITE</a>=(SALT) <a href="html.html">HTML</a> <a href="output.html">OUTPUT</a> <a href="nocomments.html"><tt>NOCOMMENTS</TT></a>
+Adding hydrogen atoms to 5A5A</PRE>
+<p class="auto-style7">By using <tt>GEO_DAT</tt> the PDB file can be 
+left unmodified. Having the PDB file in a different folder reduces the 
+possibility of altering it.&nbsp; If that is done, 
+edit the <tt>GEO_DAT </tt>keyword to suit, for example <tt>GEO_DAT=&quot;../../original 
+PDB files/5A5A.pdb&quot;</tt>.&nbsp;<br><tt>ADD-H</tt> is the command to hydrogenate the 
+entire system and neutralize all ionizable sites.<br><tt>SITE=(SALT)</tt> This will 
+form <a href="salt_bridges.html">salt-bridges</a>, ionized pairs of amino-acid 
+residues that are near each other.<br><tt>HTML </tt>At the start of a 
+project, a simple and rapid way is needed for checking various parts of the 
+protein system.&nbsp; The fastest way, see <a href="html.html"><TT>HTML</TT></a>, is to use Firefox and the JSmol program.<br>
+<tt>OUTPUT </tt> At this stage the focus is on hydrogenation and on any problems 
+associated with the original PDB file, so suppressing the geometry in the output 
+file allows details of the hydrogenation to be seen more easily.<br>
+<tt>NOCOMMENTS</TT> This will suppress the PDB comments, remarks, etc.&nbsp; <br><br>Run the 
+hydrogenation job, e.g., MOPAC2016.exe &quot;5A5A Add-H.mop&quot;<br><br>Look at the 
+output and at the JSmol HTML file.&nbsp; In the output, look to see if there are 
+any messages that might cause concern, such as &quot;Residues where the number of 
+hydrogen atoms is not equal to that expected&quot; If any such messages appear, 
+carefully look at the site(s) mentioned.&nbsp; If the cause of the report is 
+found, take the appropriate action.&nbsp; Most often the cause will be a severe 
+error in the original PDB file.</p>
+<p class="auto-style7">Check the hydrogenation of hetero groups, particularly 
+porphyrin and heme heterocycles, and systems where there are more than one valid 
+Lewis structure, such as guanine.&nbsp; If the system has known charged sites or 
+if there are sites that should be ionized, and they're currently not charged, or 
+if a hydrogen atom is missing that should be present, 
+or a hydrogen atom is present and it's not wanted, then edit the hydrogenation 
+data-set, e.g., edit &quot;5A5A Add-H.mop&quot; to correct the error, then save the 
+edited file and re-run the hydrogenation. If other errors are found, make the 
+appropriate changes to the hydrogenation data set and re-run it.&nbsp; By 
+editing the hydrogenation data-set, a complete record of all the corrections 
+that were made would be generated. </p>
+<p class="auto-style7" dir="ltr">The next step involves transitioning from the 
+simple hydrogenation to a more realistic and useful data-set.&nbsp; To do this, 
+edit the ARC file to make a new data-set.&nbsp; Making sure that the various 
+sites in the protein are correctly ionized is essential, so add
+<a href="charges.html"><TT>CHARGES</TT></a>, this will print out all the charged sites 
+found in the system along with the net charge on the protein. If there there are faults in the charges, 
+correct them by using <TT>SITE</TT> to add or delete hydrogen atoms as 
+appropriate in the previous step, and in complicated cases, particularly heme, by using 
+<a href="CVB.html"><tt>CVB</TT></a> and <a href="setpi.html"><tt>SETPI</TT></a> to ensure that the 
+Lewis structure is correct.</p>
+<p class="auto-style7">All that remains is to optimize the positions of the 
+hydrogen atoms.&nbsp; To do this, copy the ARC file for the hydrogenated system 
+and name the copy, e.g., &quot;5A5A Opt-H.mop&quot;.&nbsp; Edit this file to make a 
+data set.&nbsp; Use keywords:</p>
+<p class="auto-style7">&nbsp;<tt><a href="charge.html">CHARGE=n</a> HTML OUTPUT 
+<a href="eps.html">EPS=78.4</a> <a href="nooptx.html">NOOPT</a>
+<a href="opth.html">OPT-H</a> <a href="mozyme.html">MOZYME</a>
+<a href="gnorm.html">GNORM=5</a></tt></p>
+<p class="auto-style7">Set the charge to suit the system.&nbsp; If the supplied 
+and calculated charges are different, examine the list of calculated ionized 
+sites to find what caused the difference, then take the appropriate action.<br>Use <tt>EPS=78.4</tt> in all protein work, it mimics implicit water as the solvent.<br><tt>NOOPT</tt> and <tt>OPT-H</tt> 
+together specify that only the positions of the hydrogen atoms 
+are to be optimized.<br><tt>MOZYME</tt> - essential.<br><tt>GNORM=5</tt> (or for large systems, 
+over ~5000 atoms, <tt>GNORM=10</tt>) High precision of geometry optimization is not 
+essential here.</p>
+<p class="auto-style7">Run this job.&nbsp; It will take from an hour to about 
+two days, depending on the size of the system.&nbsp; A useful user-pacifier at 
+this point is to use the Linux &quot;tail&quot; utility, as in:</p>
+<p class="auto-style7">tail -100f &quot;5A5A Opt-H.out&quot;</p>
+<p class="auto-style7">When the job finishes, have a look at the results.&nbsp; 
+Most likely there will not be anything very interesting.&nbsp; If there are 
+error message, examine them and take the appropriate action.</p>
+<h2><a name="Finding_and_correcting_faults_in_the_PDB_file">Finding and 
+correcting faults in the PDB file</a> (<a href="#Tools_in_MOPAC_for_use_with_Proteins">top</a>)</h2>
+<h3>Common features of PDB files that cause problems (<a href="ADD-H%20Proteins.html">Worked 
+examples</a>)</h3>
+<ul>
+	<li>Severely incorrect bond-lengths.&nbsp; Bond-lengths are used in 
+	assigning hydrogen atoms to heterogroups.&nbsp; For example, a C<sub>2</sub>F 
+	structure could be any one of the three molecules H-C&equiv;C-F, H2C=CHF, or 
+	H<sub>3</sub>C-CH<sub>2</sub>F. The C-C distance is used in deciding which 
+	of these molecule to make.&nbsp; If the C-C distance is severely incorrect, then 
+	the wrong hydrogenation will be used. </li>
+	<li>An atom might be in a completely wrong position.&nbsp; An example is 
+	when two nitrogen atoms in the guanidine group in arginine are within 0.2 &Aring;ngstroms 
+	of each other.&nbsp; </li>
+	<li>Frequently, when a molecule has a finite (typically 50%) probability of 
+	being in two different positions, both positions will be reported along with 
+	the probability.&nbsp; This is not an error in the PDB structure, but severe 
+	problems can occur if both molecules are used in making the starting model.&nbsp; 
+	The commonest example is when a water molecule can be in two positions 
+	separated by about one &Aring;ngstrom. This would be represented in the PDB 
+	structure as an O<sub>2</sub> molecule, and hydrogenation would produce H<sub>2</sub>O<sub>2</sub>.&nbsp; 
+    See also <a href="alt_a.html"><tt>ALT_A</TT></a> for handling structural disorder.</li>
+</ul>
+<p>If there is a reason to suspect that there are errors in the PDB file a test 
+to identify geometric errors can be run.&nbsp; But don't do this test unless 
+there is a good reason. This requires 
+running a single SCF calculation and calculating the gradients (forces) acting on 
+all the non-hydrogen atoms. For this, start with the ARC file from the 
+<a href="#Adding_hydrogen_atoms">hydrogenation operation</a>.&nbsp; Use the ARC file in which the positions of the hydrogen 
+atoms have been optimized.&nbsp; Edit this file to make a data-set named, e.g., 
+&quot;5A5A Opt-H 1SCF.mop&quot;&nbsp; Use keywords:</p>
+<p class="auto-style7">&nbsp;<tt><a href="charge.html">CHARGE=n</a>
+<a href="html.html">HTML</a> <a href="output.html">OUTPUT</a> <a href="eps.html">
+EPS=78.4</a> <a href="invert.html">INVERT</a>
+<a href="mozyme.html">MOZYME</a> <a href="gradients.html">GRADIENTS</a>
+<a href="one_scf.html">1SCF</a></tt></p>
+<p class="auto-style7"> <tt>INVERT </tt>reverses all the optimization flags, so the 
+hydrogen atoms optimization flags are set &quot;off&quot; and the optimization flags for 
+all other atoms are set &quot;on.&quot;</p>
+<p class="auto-style7">Run this job, and look at the section in the output 
+headed &quot;LARGEST ATOMIC GRADIENTS&quot;&nbsp; Large gradients indicate a large 
+difference between the calculated local environment of an atom and the local 
+environment in the PDB file.&nbsp; Most PDB files do not distinguish the C-OH 
+and C=O bond-lengths in a carboxylate, -COOH, group, but semiempirical methods 
+predict a significant difference, typically the C-OH bond-length is ~1.31 &Aring;ngstroms 
+and the C=O bond-length is 1.23  &Aring;ngstroms. Because of this, gradients on 
+carboxylate carbon and oxygen atoms are often in the range 100 - 200 kcal.mol<sup>-1</sup>.&Aring<sup>-1</sup>.&nbsp; 
+These can be ignored, unless they are over 200 kcal&middot;mol<sup>-1</sup>.&Aring:<sup>-1</sup>. </p>
+<p class="auto-style7">Bond-lengths for sulfate and phosphate are not well 
+reproduced, errors of up to 0.1 &Aring; are not uncommon. </p>
+<p class="auto-style7">Look for any remaining large gradients, those in the 
+range 150 - 200 kcal&middot;mol<sup>-1</sup>.&Aring;<sup>-1</sup>.&nbsp; If any exist, 
+look at their local environment using JSmol. In particular, if the atom is in a heterogroup or in a modified residue, check the hydrogenation carefully.&nbsp; 
+Most hydrogenation errors can be found by this test.&nbsp; </p>
+<h3>Check residue names</h3>
+<p>In some proteins fragments of residues might be missing, for example a 
+threonine residue might have the methyl group missing.&nbsp; Residues of this 
+type can be detected by using keyword <a href="residues.html"><tt>RESIDUES</tt></a>.&nbsp; 
+Again, only correct errors of this type if they are considered to be important.</p>
+
+<h2><a name="Resequencing">Resequencing</a> (<a href="#Tools_in_MOPAC_for_use_with_Proteins">top</a>)</h2>
+		<p>Resequencing puts all atoms into the standard PDB order, i.e., within 
+		each residue the first atom is the nitrogen, this is followed by the 
+		rest of the non-hydrogen atoms, then the hydrogen atoms.&nbsp; </p>
+		<p>When hydrogen atoms are added or deleted using the SITE keyword, 
+		resequencing is done automatically.&nbsp; To prevent this happening, add 
+		<tt><a href="noreseq.html">NORESEQ</a></tt>.</p>
+		<h2><a name="Comparing_two_geometries">Comparing two geometries</a> (<a href="#Tools_in_MOPAC_for_use_with_Proteins">top</a>)</h2>
+		<p>Two protein systems can be compared to see how similar they are.&nbsp; 
+		Examples of pairs of systems that can be compared are:</p>
+		<ul>
+			<li>The hydrogenated PDB X-ray structure and the fully-optimized PM7 
+			geometry.</li>
+			<li>&nbsp;Two stable intermediates in an enzyme catalytic mechanism.</li>
+			<li>A transition state and the reactants or products in an enzyme 
+			catalytic mechanism.</li>
+			<li>Two different PDB X-ray structures for the same protein or the 
+			equivalent fully-optimized PM7 geometries, etc.</li>
+			<li>A PDB X-ray structure and the equivalent fully-optimized PM7 
+			geometry.</li>
+			<li>Two PDB X-ray structures for closely-related proteins.</li>
+		</ul>
+		<p>Although the <a href="compare.html">COMPARE</a> operation does not 
+		need Firefox and JSmol, using them to examine details of the comparison 
+		is extremely helpful.&nbsp; </p>
+		<p>When two systems have different compositions, atoms that present in 
+		one structure but not in the other will be deleted.&nbsp; Atoms that are 
+		present in both structures, but have slightly different PDB labels, for 
+		example a C<sub>&delta;1</sub> in one 
+		structure might be a C<sub>&delta;2</sub> in 
+		the other, will be used in the comparison.&nbsp; Only the labels in the 
+		data structure will be changed; the labels in the reference structure 
+		will not be changed.</p>
+		<h2><a name="Freezing_an_interatomic_distance_">Freezing an interatomic 
+		distance</a> (<a href="#Tools_in_MOPAC_for_use_with_Proteins">top</a>)</h2>
+		<p>Proteins are normally defined using Cartesian coordinates.&nbsp; 
+		Internal coordinates are essential if an interatomic distance, angle, or 
+		dihedral is to be frozen.&nbsp; To do this, mixed coordinates are 
+		needed.&nbsp; All atoms, except the atom to be frozen, should be defined 
+		in Cartesian coordinates.&nbsp; The atom to be frozen should be defined 
+		in internal coordinates, then the optimization flag for the specific 
+		coordinate set to zero.</p>
+		<p>If the connectivity is entirely numeric, then the frozen atom can 
+		have a connectivity that refers to one, two, or three atoms that have 
+		not yet been defined.&nbsp; <br>If the connectivity uses atom labels, 
+		the atoms used in the connectivity must already be defined.</p>
+		<h2><a name="Atom_numbers_and_labels">Atom numbers and labels</a> (<a href="#Tools_in_MOPAC_for_use_with_Proteins">top</a>)</h2>
+		<p>Atoms can be defined by their atom numbers.&nbsp; This option is not 
+		recommended, because the atom numbers might change if atoms are added or deleted.&nbsp; Instead, atom labels are recommended.&nbsp; Two 
+		types - PDB labels and JSmol labels - are supported.&nbsp; <br>If an 
+		atom has the PDB label &quot;ATOM 1112 CZ ARG A 423&quot;, then the atom label 
+		would be &quot;CZ ARG A 423&quot;. <br>If an atom has the JSmol label 
+		&quot;[LEU]149:A.CD2&quot;, then the atom label would be &quot;[LEU]149:A.CD2&quot;. <br>In 
+		the limit, a connectivity for an atom could use all three types of 
+		label: number, PDB, and JSmol.</p>
+		
+<p class="auto-style9">&nbsp;</p>
+</BODY>
+</HTML>

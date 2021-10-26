@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SEPTET </TITLE>
+                                                                                                                   </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>SEPTET</TT> </h1>
+<P>RHF interpretation: The desired spin-state is a septet: the state with component of spin M<I><SUB>S</I></SUB> = 3 and spin S = 3. In order to define this type of calculation other keywords <EM>must</EM> also be used. For a 'simple' septet calculation, use <TT>C.I.=6</TT>. </P>
+<P>When the configuration interaction calculation is done, all microstates having a component of spin, M<I><SUB>S</I></SUB>, equal to 3 are selected. These microstates are then used in the construction of states. Because of the way in which the microstates were chosen, only states of spin equal to or greater than 3 can be constructed. From this set, only a septet state can be selected; all other states will be ignored. If <TT>ROOT=<I>n</I></TT> is present, then the <I>n</I>'th septet state will be selected; otherwise, the first septet state will be chosen. </P>
+<P>The septet states are the highest spin states normally calculable using MOPAC in its unmodified form. If several septets are to be calculated, say the second or third, then <TT>
+<a href="ci=n.html">C.I.(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</a></TT> should be used. 
+<P>See also <a href="ms.html"><tt>MS=n</tt></a>, <A HREF="singlet.html"><tt>SINGLET</tt></A>, <A HREF="doublet.html"><tt>DOUBLET</tt></A>, <A HREF="triplet.html"><tt>TRIPLET</tt></A>, 
+<A HREF="quartet.html"><tt>QUARTET</tt></A>, <A HREF="quintet.html"><tt>QUINTET</tt></A>, <A HREF="sextet.html"><tt>SEXTET</tt></A>, <A HREF="octet.html"><tt>OCTET</tt></A>, and <A HREF="nonet.html"><tt>NONET</tt></A>.
+ UHF interpretation: The system will have six more alpha electrons than beta electrons. </P>
+</BODY>
+</HTML>

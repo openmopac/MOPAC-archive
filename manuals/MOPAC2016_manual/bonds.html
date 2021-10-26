@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>BONDS </TITLE>
+                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+                                                                                  <TT>
+                                                                                  <FONT SIZE=5>
+                                                                                  <B>BONDS ALLBONDS</B></FONT></TT></h1>
+<P>The rotationally invariant bond order&nbsp;[<A HREF="references.html#bonds">15</A>] between all pairs of 
+atoms is printed. In this context a bond is defined as the sum of the squares of the density matrix elements connecting any two atoms. For ethane, 
+ethylene, and acetylene, the carbon-carbon bond orders are roughly 1.00, 2.00 and 3.00 respectively. The diagonal terms are the valencies calculated 
+from the atomic terms only and are defined as the sum of the bonds the atom makes with other atoms. In RHF calculations, the total density matrix 
+(alpha plus beta density matrices) is perfectly duodempotent, that is, the square of the density matrix, P, is exactly two times the density matrix,
+ or P*P = 2*P (see <A HREF="bond_orders.html#bonds">Bond Orders</A>), and valencies will be correct.&nbsp; 
+ In UHF and non-variationally optimized wavefunctions the calculated valency will be incorrect, the degree 
+of error being proportional to the non-duodempotency of the total density 
+matrix. (In UHF work, the individual alpha and beta&nbsp; density matrices are 
+idempotent, that is, P(alpha)*P(alpha) = 1.0*P(alpha) and P(beta)*P(beta) = 1.0*P(beta), 
+but, in general, the sum of these two matrices is not duodempotent, i.e., (P(alpha)+P(beta))*(P(alpha)+P(beta)) 
+&#8800;. 2.0*(P(alpha)+P(beta)).)<P>The bonding contributions of all M.O.s in the system are printed immediately before the bonds matrix. The idea of molecular orbital valency was developed by Gopinathan, Siddarth, and Ravimohan&nbsp;[<A HREF="references.html#m_o_valency"><FONT SIZE=2>23</FONT></A>]. Just as an atomic orbital has a 'valency', so does a molecular orbital. This leads to the following relations: The sum of the bonding contributions of all occupied M.O.s is the same as the sum of all valencies which, in turn is equal to two times the sum of all bonds. The sum of the bonding contributions of all M.O.s is zero. </FONT> </P>
+<P>In <a href="mozyme.html"><tt>MOZYME</tt></a> calculations, only 
+bonds of order greater than 0.01 and those that do not involve hydrogen atoms are printed.&nbsp; If <tt>ALLBONDS</tt>
+is present, all bonds of order greater than 0.001, including hydrogen atoms, are printed.</P>
+<P>If <TT>LARGE</TT> is present, then the Medrano-Bochicchio-Reale population analysis is printed. For each atom, the following quantities are generated: </P>
+<UL>
+<LI>The non-shared charge (sometimes called the self or inactive charge). </LI>
+<LI>The charge used to form bonds with other atoms (the active charge). </LI>
+<LI>The total charge (the sum of the first two terms). </LI>
+<LI>The valence (from the bonds matrix). </LI>
+<LI>The free valence (the difference of the last two terms). </LI>
+<LI>The statistical promotion (total charge minus core charge). </LI>
+<LI>The "Mulliken promotion" </LI></UL>
+<P>Note that the last two terms are expressed in units of the electron, not the proton charge. </P>
+<P>For more information, see [<A HREF="references.html#nrm85"><FONT SIZE=2>24</FONT></A><FONT SIZE=2>,</FONT><A HREF="references.html#mrb86"><FONT SIZE=2>25</FONT></A><FONT SIZE=2>,</FONT><A HREF="references.html#mb89"><FONT SIZE=2>26</FONT></A><FONT SIZE=2>,</FONT><A HREF="references.html#rb91"><FONT SIZE=2>27</FONT></A>], and also see J. A. Medrano, R. C. Bochicchio, S. G. Das, "The ROHF Extension of the Statistical Population Analysis of Electron and Spin Densities", J. Phys. B. </P></FONT></BODY>
+</HTML>

@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Language" content="en-us">
+
+<TITLE>Programs</TITLE>
+                             <h3>
+<a href="../Documentation/INDEX.html">INDEX</a>&nbsp;&nbsp; </h3>
+<H1 ALIGN="CENTER">
+</A>WINDOWS Utility Programs for use with PARAM</H1>
+<p>A set of utility programs are provided for preparing data-sets for PARAM and 
+for analyzing the results. Because they work within individual folders these 
+programs should be run at the command prompt level, i.e., using &quot;cmd.exe&quot;.&nbsp; 
+All the programs and utilities can be found in the folder &quot;%PARAM_Source%Source_code\Bin_and_cmd&quot; 
+Most programs are command scripts, i.e., they end in &quot;.cmd&quot;, the rest are 
+executables, i.e., they end in &quot;.exe&quot; but for simplicity both types will be 
+referred to as &quot;programs.&quot;</p>
+<p>PARAM is exported with all the files needed to carry out parameter 
+optimization work, and a folder structure, named &quot;PARAM_for export&quot; that allows 
+the utilities to be used easily.&nbsp; A convenient way of regarding this folder 
+structure is as a rigidly-structured quarantined domain that has only minimal 
+interaction with the rest of the computer.&nbsp; One advantage of this rigid 
+structure is that the utilities can be used easily because the relative 
+positions of the various folders is hard-wired. Another is that the entire 
+structure can be easily copied to make a duplicate which can then be used in 
+parameterizing either an existing semiempirical method or a new method.&nbsp;&nbsp;&nbsp;&nbsp; </p>
+<h2>Environment programs</h2>
+<h3>SETUPDOS (Sets up environment for a project involving PARAM)</h3>
+<p>This sets the environment that allows </p>
+<p>Within SETUPDOS, the PATH is extended to include the folder&nbsp; &quot;%PARAM_Source%Source_code\Bin_and_cmd&quot; 
+Finally, the command prompt program cmd.exe is started.</p>
+<p>SETUPDOS is the only program that needs to be accessible from the desktop. 
+Copy &quot;setupdos.cmd&quot; from &quot;PARAM_for_export\Source_code\Bin_and_cmd&quot; and paste a 
+shortcut on the desktop.&nbsp; When this shortcut is clicked, a command-prompt 
+window opens.&nbsp; The first time SETUPDOS is run the window has default 
+settings, these are not convenient for the type of work to be done.&nbsp; They 
+can be changed by right-clicking on the blue bar at the top, and selecting 
+&quot;Properties&quot; from the drop-down window. Within &quot;Options&quot; change &quot;Edit options&quot; 
+to put a tick in both &quot;QuickEdit Mode&quot; and &quot;Insert Mode&quot; For &quot;Font&quot;, &quot;TT Lucida 
+Console&quot; and &quot;Size&quot; 14 are easy on the eyes. In &quot;Layout&quot; if there is a tick in 
+&quot;Let system position window&quot; remove it. Set the window position to &quot;Left&quot; = 6, 
+&quot;right&quot; = 4, i.e., the start is at the very top left point on the screen.&nbsp; 
+Set the window size to fill the entire screen, and set the &quot;Screen Buffer Size&quot; 
+&quot;Height&quot; to a large number, 6000 is good - that allows scrolling back a long 
+way.&nbsp; Click on &quot;OK&quot; and exit the &quot;Properties&quot; window.&nbsp; The next time 
+the shortcut is clicked the window that is made should look better than the 
+default.&nbsp;</p>
+<p>Initially, the domain consists of the folders &quot;Data_normal&quot;, &quot;HTML files&quot;, 
+&quot;Optimize parameters&quot;, &quot;Source_code&quot;, &quot;Survey&quot;, and &quot;Working&quot;.</p>
+<h2>Utility programs for preparing data-sets for PARAM </h2>
+<h3>FILES (Constructs a file &quot;files.out&quot; that contains the names and empirical 
+formula of the reference data files.)</h3>
+<p>FILES creates a list of all reference data files in a folder and writes it to 
+a file &quot;all.txt&quot;, It then uses a program &quot;files_program.exe&quot; to work out the 
+empirical formula for each entry in that list and uses that formula to put the file names in 
+chemical order, so H<sup>+</sup> is first and Bi<sub>2</sub>I<sub>6</sub> is 
+last.&nbsp; This list is then written to a file &quot;files.out&quot;&nbsp;which 
+is needed by other programs.&nbsp;</p>
+<h3>SELECT (Runs in a reference-data folder that contains &quot;file.out&quot; and 
+generates a new file &quot;bits.txt&quot;.)</h3>
+<p>Program SELECT selects a set of systems to be used in a parameter 
+optimization run. This set is written to a file named &quot;bits.txt&quot;&nbsp; SELECT is 
+run in a folder that contains a collection of reference data but before it can 
+be run, a file &quot;files.out&quot; must be created in the folder, this is done using 
+utility program &quot;FILES&quot; </p>
+<p>To run SELECT, navigate to the folder &quot;Data_normal&quot; This contains a set of 
+reference data, each entry ends in &quot;.mop&quot; and a file &quot;files.out&quot;&nbsp; 
+Use SELECT with one of the following options: ALL, AND, NOT, ONLY.&nbsp; SELECT 
+reads &quot;files.out&quot; and uses the options provided with SELECT to construct the 
+file &quot;bits.txt&quot;&nbsp; As soon as a good version of &quot;bits.txt&quot; 
+is made, it should then be moved to a different folder, 
+likely &quot;Working&quot; or &quot;Optimize parameters&quot;, or re-named.&nbsp; This will prevent 
+it being over-written if SELECT is run again. The easiest way to run SELECT is 
+to use one of the following options.</p>
+<h4>ALL (Runs SELECT with the &quot;ALL&quot; option.)</h4>
+<p>Selects all the files in &quot;files.out&quot;.&nbsp; This option would normally be 
+used only when a new method is being prepared for release.&nbsp; It allows 
+operations, such as surveys and statistics, to be performed on a very wide range 
+of chemistry.</p>
+<h4>AND (Runs SELECT with the &quot;AND&quot; option.)</h4>
+<p>Selects the files in &quot;files.out&quot; that contain all the elements specified; 
+other elements are allowed.</p>
+<h4>NOT (Runs SELECT with the &quot;NOT&quot; option.)</h4>
+<p>Selects the files in &quot;files.out&quot; that do not contain any of the elements 
+specified. Only useful for selecting sets such as the inorganic compounds or 
+non-lanthanides.</p>
+<h4>ONLY (Runs SELECT with the &quot;ONLY&quot; option.)</h4>
+<p>Selects the files in &quot;files.out&quot; that contain one or more of the elements 
+specified; no other elements are allowed.</p>
+<h2>Utility programs for analyzing results of PARAM</h2>
+<h3>STATS (Constructs statistical analyses of the accuracy of different 
+methods.)</h3>
+<p>Run program STATS in a folder that contains the results of survey jobs run 
+using PARAM. </p>
+<p>STATS generates statistical information on the accuracy of methods that can 
+be run using MOPAC.&nbsp; Up to 12 different methods can be compared in one run.&nbsp; 
+There is no simple measure of accuracy for computational methods, so four basic 
+quantities are used - heats of formation, geometries, ionization potentials, and 
+dipole moments.&nbsp; The accuracy of a method also depends on the systems being 
+used.&nbsp; By default, all systems are used, but this default is the least 
+informative.&nbsp; A better option is to compare how well the different methods 
+work with specific groups of elements, for example H and C for hydrocarbons, H, 
+C, N, and O for some simple organics, etc.</p>
+<p>Each run of STATS will generate entries in the folder &quot;HTML files&quot; If there 
+are no statistics files already in &quot;HTML files&quot;, new files will be created.&nbsp; 
+If there are files, then the summary files will be updated to include the latest 
+results from STATS.&nbsp; After several runs of STATS these summary files can 
+start to look untidy so an option is to delete all the STATS files from &quot;HTML 
+files&quot; and start over.</p>
+<h3>SETUPMAP (Constructs a HTML file listing all the reference data, and 
+individual HTML 
+files for each reference datum.) </h3>
+<p>SETUPMAP generates a list of reference data and a local URL for each of the 
+individual reference data files.&nbsp; The graphics are best viewed with 
+Firefox, but first JSmol must be installed and Firefox needs to be edited to 
+allow local URLs to be opened using JSmol, see
+<a href="../MOPAC2016_manual/README_for_JSmol.html">Installing JSmol</a> for instructions 
+on how to do this. </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</HTML>

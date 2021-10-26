@@ -1,0 +1,147 @@
+ *******************************************************************************
+ ** Site#: 10005        For non-commercial use only    Version 17.019W 64BITS **
+ *******************************************************************************
+ ** Cite this program as: MOPAC2016, Version: 17.019W, James J. P. Stewart,   **
+ ** Stewart Computational Chemistry, web: HTTP://OpenMOPAC.net. Days left: 365**
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2016                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                              PM7 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                Thu Jan 19 10:26:12 2017  *
+ *  GEO-OK     - OVERRIDE INTERATOMIC DISTANCE AND OTHER SAFETY CHECKS
+ *  GEO_DAT    - DATA SET GEOMETRY IS IN FILE "TRANSITION STATE 1-2.ARC"
+ *  GEO_REF    - REFERENCE GEOMETRY IS IN FILE "TRANSITION STATE 2-3.ARC"
+ *  OPT        - OPTIMIZE COORDINATES OF ALL ATOMS
+ *  LET        - OVERRIDE SOME SAFETY CHECKS
+ *  0SCF       - AFTER READING AND PRINTING DATA, STOP
+ *  T=         - A TIME OF 172800.0 SECONDS REQUESTED
+ *  DUMP=N     - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *  OUTPUT     - MINIMIZE OUTPUT
+ *  HTML       - WRITE HTML SCRIPT TO READ PDB FILE USING JSMOL
+ *******************************************************************************
+output opt geo_dat="Transition state 1-2.arc" geo_ref="Transition state 2-3.arc" 0scf HTML GEO-OK output let
+ Compare Transition states 1-2 and 2-3
+ Note that the Imidazolium ring on His 57 rotates in going from TS 1-2 to TS 2-3
+ 
+
+                         After docking
+
+                      Atoms that move a lot
+
+  Atom No.           Atom Label             GEO_REF Coordinates       Movement    Integral
+
+    4584    (HETATM 4588  O   HOH C 647)  32.281  -0.661  34.519        3.08         3.08
+    4585    (HETATM 4589 1H   HOH C 647)  31.471  -0.714  35.060        2.93         6.01
+    4586    (HETATM 4590 2H   HOH C 647)  32.745  -1.491  34.673        2.82         8.82
+    3510    (ATOM   3513  O   THR C 253)  29.893  -0.909  35.710        2.60        11.42
+    3522    (ATOM   3525 1H   LEU C 254)  28.724  -2.366  33.149        1.98        13.40
+    2742    (ATOM    770  HG  SER G 195)  28.716   1.778  34.495        1.00        14.40
+    3509    (ATOM   3512  C   THR C 253)  29.035  -1.217  34.873        0.96        15.36
+    3514    (ATOM   3520  H   THR C 253)  28.778   0.840  35.991        0.89        16.25
+    3521    (ATOM   3524  N   LEU C 254)  29.326  -2.152  33.941        0.80        17.05
+    2711    (ATOM   2712 2HE  MET G 192)  27.280  -1.354  39.626        0.74        17.79
+    2710    (ATOM   2711 1HE  MET G 192)  28.853  -1.847  39.004        0.64        18.43
+    3507    (ATOM   3510  N   THR C 253)  27.979   0.877  35.309        0.63        19.05
+    2703    (ATOM   2706  CE  MET G 192)  27.865  -2.226  39.319        0.62        19.67
+    3515    (ATOM   3521  HA  THR C 253)  27.132  -0.974  35.869        0.62        20.29
+    3508    (ATOM   3511  CA  THR C 253)  27.659  -0.532  34.971        0.58        20.88
+    2712    (ATOM   2713 3HE  MET G 192)  28.020  -2.871  40.192        0.57        21.45
+    2702    (ATOM   2705  SD  MET G 192)  27.137  -3.117  37.915        0.55        21.99
+     768    (ATOM    769  HE1 HIS F  57)  28.652   4.632  34.597        0.53        22.52
+    2708    (ATOM   2709 1HG  MET G 192)  25.375  -4.346  39.069        0.50        23.02
+    3520    (ATOM   3519 3HG2 THR C 253)  25.628  -2.301  34.879        0.49        23.51
+    3523    (ATOM   3526 2H   LEU C 254)  30.257  -2.545  33.901        0.47        23.99
+    3485    (ATOM   3488  C   TRP C 252)  26.875   1.748  35.986        0.47        24.45
+    4166    (HETATM 4173 2H   HOH F 615)  25.973  -4.939  32.369        0.46        24.92
+    2737    (ATOM   2740  OG  SER G 195)  27.068   2.999  35.342        0.45        25.36
+    3482    (ATOM   3483 3HB  ALA C 251)  31.434   2.510  36.120        0.44        25.81
+    2701    (ATOM   2704  CG  MET G 192)  25.400  -3.458  38.404        0.44        26.25
+    4164    (HETATM 4171  O   HOH F 615)  26.883  -5.231  32.374        0.44        26.69
+     766    (ATOM    767  HD1 HIS F  57)  30.883   5.725  33.765        0.44        27.12
+    2709    (ATOM   2710 2HG  MET G 192)  24.883  -3.774  37.472        0.43        27.56
+     767    (ATOM    768  HD2 HIS F  57)  31.328   1.481  33.595        0.43        27.99
+
+   Difference between GEO_DAT and GEO_REF: 173.684 = total,  0.0379 = Average,  0.1139 = RMS, in Angstroms
+
+                             Differences between bond-lengths for the two geometries
+
+           Diff.                 Atom 1                       Atom 2                  Bond length      Bond length
+                                                                                      in GEO_DAT      in GEO_REF
+   1       0.123     N(ATOM   3510  N   THR C 253)    C(ATOM   3488  C   TRP C 252)      1.437            1.560
+   2       0.041     N(ATOM   3510  N   THR C 253)    H(ATOM   3520  H   THR C 253)      1.010            1.051
+   3       0.025     O(ATOM   3489  O   TRP C 252)    C(ATOM   3488  C   TRP C 252)      1.259            1.284
+   4       0.025     N(ATOM   3510  N   THR C 253)    C(ATOM   3511  CA  THR C 253)      1.459            1.484
+   5       0.021     N(ATOM   3524  N   LEU C 254)    C(ATOM   3512  C   THR C 253)      1.373            1.352
+   6       0.019     O(ATOM   3513  O   THR C 253)    C(ATOM   3512  C   THR C 253)      1.219            1.238
+   7       0.014     N(ATOM    759  ND1 HIS F  57)    H(ATOM    767  HD1 HIS F  57)      1.057            1.042
+   8       0.013     O(ATOM   3515  OG1 THR C 253)    H(ATOM   3523  HG1 THR C 253)      0.988            1.002
+   9       0.013     N(ATOM   3524  N   LEU C 254)    H(ATOM   3525 1H   LEU C 254)      1.005            1.018
+  10       0.011     O(ATOM   3515  OG1 THR C 253)    C(ATOM   3514  CB  THR C 253)      1.404            1.393
+  11       0.011     O(HETATM 3976  O   HOH F 473)    H(HETATM 3978 2H   HOH F 473)      0.975            0.965
+  12       0.011     O(HETATM 4186  O   HOH F 625)    H(HETATM 4188 2H   HOH F 625)      0.967            0.978
+  13       0.010     N(ATOM    761  NE2 HIS F  57)    C(ATOM    760  CD2 HIS F  57)      1.397            1.387
+
+    GEO_DAT:  'Transition state 1-2.arc'
+    GEO_REF:  'Transition state 2-3.arc'
+ 
+          Heat of formation of GEO_DAT system:  -47881.845 Kcal/mol
+          Heat of formation of GEO_REF system:  -47882.196 Kcal/mol
+                                        Diff.:       0.351 Kcal/mol
+
+
+                    Analysis of Non-Covalent Interactions
+
+          Total non-covalent energy of GEO_DAT system:  -9349.61 Kcal/mol
+          Total non-covalent energy of GEO_REF system:  -9349.90 Kcal/mol
+                                           Difference:      0.29 Kcal/mol
+
+          Number of hydrogen bonds common to both systems: 1621
+
+
+                            Hydrogen bonds in GEO_DAT but not in GEO_REF
+
+               Donor atom                     Hydrogen atom            H-bond length(A)     Energy    Sum
+
+   1   "ATOM   3479  O   ALA C 251"      "HETATM 4589 1H   HOH C 647"       1.734           -4.017   -4.017
+   2   "ATOM   2740  OG  SER G 195"      "ATOM    770  HG  SER G 195"       1.219           -3.055   -7.073
+   3   "ATOM   3524  N   LEU C 254"      "HETATM 4590 2H   HOH C 647"       2.325           -2.140   -9.213
+   4   "ATOM    761  NE2 HIS F  57"      "ATOM   3520  H   THR C 253"       2.704           -1.378  -10.591
+   5   "HETATM 3976  O   HOH F 473"      "ATOM   3525 1H   LEU C 254"       1.961           -1.317  -11.908
+
+
+                            Hydrogen bonds in GEO_REF but not in GEO_DAT
+
+               Donor atom                     Hydrogen atom            H-bond length(A)     Energy    Sum
+
+   1   "HETATM 4588  O   HOH C 647"      "HETATM 3977 1H   HOH F 473"       1.713           -4.725   -4.725
+   2   "ATOM   3513  O   THR C 253"      "HETATM 4589 1H   HOH C 647"       1.718           -4.432   -9.157
+   3   "HETATM 4186  O   HOH F 625"      "ATOM   3525 1H   LEU C 254"       1.817           -2.718  -11.875
+
+
+    The following files will be written to "M:\OpenMOPAC_NET\Manual\Chymotrypsin_J_Mol_Mod_(2017)_files\MOPAC_files\":
+    'Compare TS 1-2 and TS 2-3.html'
+    'Transition state 1-2.pdb'
+    'Transition state 2-3.pdb'
+
+          GEO_REF with 0SCF: Job complete
+
+ ******************************************************************************
+ *                                                                            *
+ *     Error and normal termination messages reported in this calculation     *
+ *                                                                            *
+ * GEO_REF with 0SCF: Job complete                                            *
+ * JOB ENDED NORMALLY                                                         *
+ *                                                                            *
+ ******************************************************************************
+
+
+
+ TOTAL JOB TIME:             0.00 SECONDS
+
+ == MOPAC DONE ==

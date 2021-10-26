@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SCF Test in MOPAC </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+SCF Test in MOPAC
+</h1>
+<p align="left">
+An exact definition of the SCF test used in MOPAC is not easy to write because 
+of the large number of qualifying criteria used, so in the following description 
+some details have been left out.&nbsp; For most systems, the SCF criterion can 
+be described as follows:</p>
+<p align="left">
+First, two quantities need to be defined</p>
+<p align="left">
+SCFCRT: This is the primary quantity used in deciding if a self-consistent field 
+exists.&nbsp;&nbsp; For most operations (<a href="one_scf.html"><TT>1SCF</TT></a>, 
+geometry optimization, reaction path, etc.) the value of SCFCRT is 10<sup>-4</sup>, but 
+for gradient minimization and <a href="force.html"><TT>FORCE</TT></a> calculations a 
+higher precision, 10<sup>-7</sup>, is needed.&nbsp; For other calculations, the 
+precision can be increased to 10<sup>-6</sup> using <a href="precise.html">
+<TT>PRECISE</TT></a>.&nbsp; The value of SCFCRT can also be set using <a href="scfcrt.html">
+<TT>SCFCRT</TT></a> or modified using <a href="relscf.html"><TT>RELSCF</TT></a>.&nbsp; The value 
+of SCFCRT is a constant in any calculation.</p>
+<p align="left">
+SELCON: For all &quot;difficult&quot; calculations (<TT>FORCE</TT>, gradient minimization, RHF open 
+shell, etc.) SELCON is set to SCFCRT.&nbsp;&nbsp; For normal ground state 
+calculations SELCON is set to 100 times SCFCRT and possibly higher depending on 
+the gradient.&nbsp; The value of SELCON can vary from one SCF calculation to the 
+next.</p>
+<p align="left">
+For an SCF field to exist, the following test must be passed twice 
+consecutively:&nbsp; The change in <span class="b">&Delta;</span>H<sub>f</sub> on going from one iteration to the 
+next must be less than SELCON kcal mol<sup>-1</sup>, and the largest change in density matrix element 
+values must be less than&nbsp; 0.05(SELCON)<font face="Times New Roman"><sup>½</sup>.&nbsp;
+</font>
+</p>
+<p align="left">
+&nbsp;</p>
+<p align="left">
+&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

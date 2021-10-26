@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Time-Dependent Hartree-Fock</TITLE>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2><A NAME="SECTION0012211000000000000000">Time-Dependent Hartree-Fock</A> </H2>
+<P>This procedure is based on the detailed description given by M. Dupuis and S. Karna (J. Comp. Chem. 12, 487 (1991)). The program is capable of calculating the quantities shown in the&nbsp;Table.
+See also <a href="polarizability.html">units</a>.<BR>
+<DIV ALIGN="CENTER"> <DIV ALIGN="CENTER"> </P>
+<STRONG><P>Table:</STRONG> Quantities Calculable using <TT>POLAR</P></TT>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"> Type of Phenomenon</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Symbol</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Frequency Dependent Polarizability</TD>
+<TD VALIGN="MIDDLE">
+<P>                                       <IMG SRC="img1702.gif" WIDTH=70 HEIGHT=31 ALT="$alpha(-omega"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Second Harmonic Generation</TD>
+<TD VALIGN="MIDDLE">
+<P>                                              <IMG SRC="img1703.gif" WIDTH=94 HEIGHT=31 ALT="$beta(-2omega"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Electrooptic Pockels Effect</TD>
+<TD VALIGN="MIDDLE">
+<P>                                        <IMG SRC="img1704.gif" WIDTH=83 HEIGHT=31 ALT="$beta(-omega"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Optical Rectification</TD>
+<TD VALIGN="MIDDLE">
+<P>                                        <IMG SRC="img1705.gif" WIDTH=83 HEIGHT=31 ALT="$beta(0"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Third Harmonic Generation</TD>
+<TD VALIGN="MIDDLE">
+<P>                                                      <IMG SRC="img1706.gif" WIDTH=110 HEIGHT=31 ALT="$gamma(-3omega"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>DC-EFISH</TD>
+<TD VALIGN="MIDDLE">
+<P>                                                 <IMG SRC="img1707.gif" WIDTH=105 HEIGHT=31 ALT="$gamma(-2omega"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Optical Kerr Effect</TD>
+<TD VALIGN="MIDDLE">
+<P>                                           <IMG SRC="img1708.gif" WIDTH=94 HEIGHT=31 ALT="$gamma(-omega"></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Intensity Dependent Index of Refraction</TD>
+<TD VALIGN="MIDDLE">
+<P>                                                      <IMG SRC="img1709.gif" WIDTH=114 HEIGHT=31 ALT="$gamma(-omega"></TD>
+</TR>
+</TABLE>
+</DIV></DIV>
+<P>Keywords for the <TT>POLAR</TT> calculation are given inside the <TT>
+<a href="polar.html">POLAR</a></TT> keyword. Quantities under user-control are: </P>
+<B><TT><DL>
+<DT>IWFLB=<I>n</B></I></TT> The type of <IMG SRC="img1710.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=31 ALT="$beta$">calculation to be performed. This variable is only important if iterative beta calculations are chosen. </DT>
+<B><TT><DT>IWFLB=0</B></TT> static (This is the default) </DT>
+<B><TT><DT>IWFLB=1</B></TT> second harmonic generation </DT>
+<B><TT><DT>IWFLB=2</B></TT> electrooptic Pockels effect </DT>
+<B><TT><DT>IWFLB=3</B></TT> optical rectification </DT>
+<B><TT><DT>E=(                                       <IMG SRC="img1711.gif" ALIGN="MIDDLE" WIDTH=81 HEIGHT=29 ALT="$n_1, n_2, n_3, ldots$">)</B></TT> The energies, in eV, of the radiation to be used. Up to 10 energies can be specified. If this option is not used, the default energies of 0.0, 0.25, and 0.50 eV will be used. </DT>
+<B><TT><DT>BETA=<I>n</B></I></TT> Type of beta calculation. </DT>
+<B><TT><DT>BETA=0</B></TT> <IMG SRC="img1712.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=31 ALT="$beta$">(0;0) static (This is the default) </DT>
+<B><TT><DT>BETA=1</B></TT> iterative calculation with type of <IMG SRC="img1713.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=31 ALT="$beta$">chosen by <TT>IWFLB</TT> </DT>
+<B><TT><DT>BETA=-1</B></TT> Noniterative calculation of second harmonic generation </DT>
+<B><TT><DT>BETA=-2</B></TT> Noniterative calculation of electrooptic Pockels effect </DT>
+<B><TT><DT>BETA=-3</B></TT> Noniterative calculation of optical rectification </DT>
+<B><TT><DT>GAMMA=<I>n</B></I></TT> Type of gamma calculation: </DT>
+<B><TT><DT>GAMMA=0</B></TT> No gamma calculation </DT>
+<B><TT><DT>GAMMA=1</B></TT> third harmonic generation (This is the default) </DT>
+<B><TT><DT>GAMMA=2</B></TT> DC-EFISH </DT>
+<B><TT><DT>GAMMA=3</B></TT> intensity dependent index of refraction </DT>
+<B><TT><DT>GAMMA=4</B></TT> optical Kerr effect </DT>
+<B><TT><DT>TOL=<I>n</I>.<I>nn</B></I></TT> Cutoff tolerance for <IMG SRC="img1714.gif" ALIGN="MIDDLE" WIDTH=16 HEIGHT=29 ALT="$alpha$">calculations, default=0.001. </DT>
+<B><TT><DT>MAXITU=<I>nnn</B></I></TT> Maximum number of interactions for beta, default: 500. </DT>
+<B><TT><DT>MAXITA=<I>nnn</B></I></TT> Maximum number of iterations for <IMG SRC="img1715.gif" ALIGN="MIDDLE" WIDTH=16 HEIGHT=29 ALT="$alpha$">calculations, default: 150. </DT>
+<B><TT><DT>BTOL=<I>n</I>.<I>nn</B></I></TT> Cutoff tolerance for <IMG SRC="img1716.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=31 ALT="$beta$">calculations The default is 0.001. </DT>
+</DL>
+                                                </BODY>
+</HTML>

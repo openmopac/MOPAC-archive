@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SETUP </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>SETUP</TT>
+</h1>
+        <p>If, on the keyword line, the word '<TT>SETUP</TT>' is specified, then a line 
+of keywords will be read from a file with the name SETUP. The file SETUP or 
+        (optionally) SETUP.txt must 
+exist.&nbsp; As with the normal keyword line, if &quot;<a href="plusplus.html">++</a>&quot; 
+        is used, the line of keywords can be split into two or more lines. Keywords in SETUP are put after 
+all keywords in the data set.</p>
+<p>Keywords in the data-set will take precedence over similar keywords in the SETUP file.&nbsp; For example, if&nbsp; &quot;CHARGE=0&quot; is present in the SETUP file, 
+and the data-set contains &quot;CHARGE=2&quot;, then &quot;CHARGE=0&quot; will be ignored.&nbsp;
+</p><p>
+Any keyword in the data-set that is preceded by a minus sign, e.g., -PM6, will remove 
+that keyword from the SETUP file before the job starts.
+<p>
+Any keyword in <TT>SETUP</TT> that is preceded by a minus sign, e.g., -PM6, will remove 
+that keyword from the data-set file before the job starts.
+<p><TT>SETUP</TT> is particularly useful when 
+running a large number of jobs that all use the same or similar keywords.&nbsp; 
+Thus if a set of calculations involving PM6 are to be run, then the <TT>SETUP</TT> 
+file could 
+contain the keyword PM6.&nbsp; The run would then produce a set of archive 
+files, all with the keyword PM6 present.&nbsp; If, later on, the set of archive 
+files files needed to be run using PM7, then the <TT>SETUP</TT> file could contain &quot; -PM6 PM7&quot; </p>
+<p>The location of the <TT>SETUP</TT> file and its name can be changed by use of 
+<TT>SETUP=&lt;name&gt; </TT>or<tt> SETUP=&lt;file location and name&gt;</TT>, e.g., <TT>
+SETUP=protein.txt, SETUP=C:/Users/My_setup.txt, </tt>
+or<tt> SETUP=&quot;C:/my files/My setup.txt&quot; </tt>or by specifying the 
+setup file directly, in which case the name of the setup file must begin with 
+the word &quot;SETUP&quot;, e.g., SETUP_for_PM6-D3H4.txt. For proteins, a useful set of keywords to have in the <TT>SETUP</TT> file is: <tt><a href="mozyme.html">MOZYME</a> <a href="eps.html">EPS=78.4</a> <a href="t=n.html">
+T=</a></tt><a href="t=n.html">2w</a></p>
+<h2>Limitations on SETUP names</h2>
+<p>Setup names must NOT contain keywords.&nbsp; For example, SETUP=&quot;Step 1 - 
+ADD-H.txt&quot; should not be used because&nbsp; ADD-H is a keyword. Also, the string 
+&quot; -&quot; is used to indicate that a keyword in the data-set is to be ignored.</p>
+<h2>Use in recursive jobs (<a href="setup.zip">Example</a>)</h2>
+<p>A SETUP file can include a SETUP file, for example, if hydrogen atoms are to 
+be added to a system, and then their positions are to be optimized, the contents 
+of the SETUP file would be:</p>
+<p>ADD-H SETUP=&quot;Optimize positions of hydrogen atoms.txt&quot;</p>
+<p>The ARC file produced by this job could then be used as a data-set for a 
+second job in which the positions of the hydrogen atoms were optimized.&nbsp; 
+This second job would use the included file &quot;Optimize positions of hydrogen 
+atoms.txt&quot; and this file would contain the keywords for the optimization, and, 
+optionally, another SETUP file for use by a subsequent job.</p>
+<p>NOOPT OPT-H SETUP=&quot;Optimize all atom positions.txt&quot; </p>
+<p>&nbsp;</p>
+<p dir="ltr">&nbsp;</p>
+</BODY>
+</HTML>

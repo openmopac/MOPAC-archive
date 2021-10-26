@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>RESTART </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>RESTART</TT>
+</h1>
+        When a job has been stopped, for whatever reason,  and  intermediate
+   results  have  been  stored, then the calculation can be restarted at the
+   point where it stopped by specifying <TT>RESTART</TT>.  The most common cause of a
+   job  stopping  before  completion is its exceeding the time allocated.  A
+   saddle-point calculation has no restart, but  the  output  file  contains
+   information  which  can  easily  be  used to start the calculation from a
+   point near to where it stopped.
+<p>The restart file contains all the geometry data: current geometry, cycle 
+number, gradient and Hessian information, if calculated, etc.&nbsp; It does not 
+contain information on the atoms, so the restart data set has to have a normal 
+geometry just like a non-restart data set.&nbsp; This is used only for supplying 
+the atom-types and number of atoms..&nbsp; </p>
+<p>Example: If the following data set is run, it will stop after three geometry
+optimization cycles, and output a message indicating that restart files have
+been created.</p>
+<p>cycles=3<br>
+Ethanol<br>
+C2H5OH<br>
+O<br>
+C 1.5 1 0 0 0 0 1<br>
+C 1.5 1 120 1 0 0 2 1<br>
+H 1.0 1 120 1 90 1 1 2 3<br>
+H 1.0 1 109 1 120 1 2 1 3<br>
+H 1.0 1 109 1 240 1 2 1 3<br>
+H 1.0 1 109 1 0 1 3 2 1<br>
+H 1.0 1 109 1 120 1 3 2 1<br>
+H 1.0 1 109 1 240 1 3 2 1</p>
+<p>By adding the word &quot;RESTART&quot; to the original data set, and re-submitting the
+job, the calculation can be continued.&nbsp; In this example, &quot;cycles=3&quot; has
+been deleted; this allows the job to run to completion.<br>
+<br>
+restart <br>
+Ethanol<br>
+C2H5OH<br>
+O<br>
+C 1.5 1 0 0 0 0 1<br>
+C 1.5 1 120 1 0 0 2 1<br>
+H 1.0 1 120 1 90 1 1 2 3<br>
+H 1.0 1 109 1 120 1 2 1 3<br>
+H 1.0 1 109 1 240 1 2 1 3<br>
+H 1.0 1 109 1 0 1 3 2 1<br>
+H 1.0 1 109 1 120 1 3 2 1<br>
+H 1.0 1 109 1 240 1 3 2 1<br>
+&nbsp;</p>
+<P>
+It is not necessary to change the geometric data to reflect the  new
+   geometry, although this can be done, if desired.
+When <TT>RESTART</TT> is used, the &lt;file&gt;.res file contains all the geometric data, and 
+this will immediately over-write the geometry supplied by the data set.&nbsp; 
+Note, however, that the data set must have a geometry because the &lt;file&gt;.res file 
+does not contain the atom types. A convenient way to monitor a  long  run  is  to  specify  <TT>
+<a href="one_scf.html">1SCF</a></TT>  and
+   <TT>RESTART</TT>; this will give a normal output file at very little cost.
+<P>
+Note:  Two restarts exist in the IRC calculation.  If an  IRC
+   calculation  stops  while in the FORCE calculation, then a normal restart
+   can be done.  If the job stops while doing  the  IRC  calculation  itself
+   then  the keyword <TT><a href="irc.html">IRC=<I>n</I></a></TT> should be changed to <TT>
+<a href="irc0.html">IRC</a></TT>, or it can be omitted if
+   <TT><a href="drc0.html">DRC</a></TT> is also specified.  The absence of  the  string  "<TT>IRC=</TT>"  is  used  to
+   indicate  that  the  <TT>FORCE</TT>  calculation  was completed before the restart
+   files were written.
+<P>
+See also <a href="oldens.html"><TT>OLDENS</TT></a>.</BODY></HTML>

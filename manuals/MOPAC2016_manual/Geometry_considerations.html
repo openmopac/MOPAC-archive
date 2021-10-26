@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Considerations in Geometry Optimization</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2><A NAME="SECTION001274000000000000000">
+ Considerations in Geometry Optimization</A>
+</H2>
+The default settings in MOPAC are designed to allow most systems to be
+optimized in an efficient way.  Quite often, however, problems arise.  The
+following  notes are intended as background material for use when things go
+wrong.
+<H3><A NAME="SECTION001274100000000000000">
+ Overriding the default options</A>
+</H3>
+<p>In the EigenFollowing geometry optimization method, the geometry is changed on
+each cycle; if the
+<span class="b">&Delta;</span>H<sub>f
+</sub>&nbsp;decreases, the cycle is completed.  If it does
+not drop, the step-size is reduced, and the
+<span class="b">&Delta;</span>H<sub>f
+</sub>&nbsp;recalculated.  Only
+when the
+<span class="b">&Delta;</span>H<sub>f
+</sub>&nbsp;decreases, compared to the previous cycle, is the current
+cycle considered to be successful.  During the calculation, the confidence
+level or trust radius is continuously checked.  If this becomes too small, the
+calculation will be stopped.  This can readily happen if (a) the geometry was
+already almost  optimized; (b) a reaction path or grid calculation is being
+performed; (c) if the geometry is in internal coordinates and "big rings" are
+involved; or (d) if the  gradients are not correctly calculated (in a
+complicated C.I., for example). </p>
+<P>
+For cases (a) and (b), add <TT><a href="let.html">LET</a></TT> and <TT>
+<a href="ddmin.html">DDMIN=0</a></TT>.  In case (c) use
+either mixed coordinates or entirely Cartesian coordinates. Case (d) is
+difficult--if nothing else works, add <TT><a href="noanci.html">NOANCI</a></TT>; this will always cause
+the derivatives to be correctly calculated, but will also use a lot of time.
+<P>
+Adding <TT>LET</TT> and <TT>DDMIN=0</TT> is often very effective, particularly 
+when reaction paths are being calculated. The first geometry optimization might 
+take more cycles, but the resulting Hessian matrix is better tempered, and 
+subsequent steps are generally more efficient. </BODY></HTML>

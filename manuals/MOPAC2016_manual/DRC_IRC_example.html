@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Examples of DRC/IRC data</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1><A NAME="SECTION0012197000000000000000">Examples of DRC/IRC data</A> </h1>
+<P>Use of the IRC/DRC facility is quite complicated. In the following examples various 'reasonable' options are illustrated for a calculation on water. It is assumed that an optimized transition-state geometry is available. </P>
+<P>Example 1: <A HREF="DRC_IRC_example.html#h2odrc">Figure 1</A> illustrates a Dynamic Reaction Coordinate calculation, starting at the transition state for water inverting, the initial motion being opposite to the transition normal mode, with 6kcal of excess kinetic energy added in. Every point calculated is to be printed (Note all coordinates are marked with a zero, and T-PRIO, H-PRIO and X-PRIO are all absent). The results of an earlier calculation using the same keywords is assumed to exist. The earlier calculation would have constructed the force matrix. While the total cpu time is specified, it is in fact redundant in that the calculation will run to completion in less than 600 seconds. </P>
+<P><A NAME="BM22637">&nbsp;</A> <BR>
+<DIV ALIGN="CENTER"><A NAME="h2odrc">&nbsp;<A NAME="BM22798"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 1:</STRONG> Example of DRC calculation</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> </P>
+<PRE> KINETIC=6 RESTART  IRC=-1 DRC T=600
+ WATER
+      H   0.000000 0   0.000000 0   0.000000 0  0 0 0
+      O   0.911574 0   0.000000 0   0.000000 0  1 0 0
+      H   0.911574 0 180.000000 0   0.000000 0  2 1 0
+      0   0.000000 0   0.000000 0   0.000000 0  0 0 0</PRE></TD>
+</TR>
+</TABLE>
+<P></DIV></P>
+<P>Example 2: <A HREF="DRC_IRC_example.html#h2oirc">Figure 2</A> shows an Intrinsic Reaction Coordinate calculation. Here the restart is from a previous IRC calculation which was stopped before the minimum was reached. Recall that RESTART with IRC=<I>n </I>implies a restart from the FORCE calculation. Since this is a restart from within an IRC calculation the keyword IRC=<I>n</I> has been replaced by irc0. IRC on its own (without the "=<I>n</I>") implies an IRC calculation from the starting position--here the RESTART position--without initial displacement.<A NAME="BM22646">&nbsp;</A> </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="h2oirc">&nbsp;<A NAME="BM22799"></A>&nbsp;</A> </P>
+<STRONG><P>Figure 2:</STRONG> Example of IRC calculation</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> </P>
+<PRE> RESTART  IRC  T=600
+ WATER
+      H   0.000000 0   0.000000 0   0.000000 0  0 0 0
+      O   0.911574 0   0.000000 0   0.000000 0  1 0 0
+      H   0.911574 0 180.000000 0   0.000000 0  2 1 0
+      0   0.000000 0   0.000000 0   0.000000 0  0 0 0</PRE></TD>
+</TR>
+</TABLE>
+</DIV>
+<P>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <BR>
+                                                                                                                                                                                                                                                                                                           </P>
+                                                </BODY>
+</HTML>

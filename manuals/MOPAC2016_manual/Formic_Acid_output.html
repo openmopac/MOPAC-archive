@@ -1,0 +1,311 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Formic acid</TITLE>
+<script language="Javascript" src="mouseover.js"></script>
+<style type="text/css">#key, #non_com, #version, #days_left, #cite, #method, #date, #t_equals, #dump, #echo_keys, #echo_title,
+#refs, #point_gp, #type, #empirical, #int_coords, #opt, #rms, #geo_fin, #scf_fin, #hof, #tot_energy,
+#sas, #cos_vol, #ip, #n_filled, #mw, #size, #nscf, #cpu, #opt_geo, #end_pg, #eigs, #charges, #dip, 
+#pops, #done
+{position:absolute; left: 30;  visibility:hidden; color: blue;}</style>
+
+<h1>Description of a simple MOPAC2007 Output File </h1>
+<p>(move the cursor over the file to see what the parts are)</HEAD><BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff"><TT></P>
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="key" style="width: 550;">When a request is made for a license key, a unique 
+site number is assigned.  This can be used for identifying the site where MOPAC2007 is being used. The site number is unique to each site.</div> 
+<div id="non_com" style="width: 550;">MOPAC2007 is made available at no cost for Academic use. 
+A condition of that use is that the program should not be used in any for-profit activity. 
+This means that if you want to use MOPAC2007 in research for a for-profit organization you will need to get a commercial license.</div>
+<div id="version" style="width: 550;">The version number refers to the particular compilation of MOPAC2007.
+The first number is the year (here 2007), the three decimals refer to the Julian date (here the 60th day of the year),
+and the letter indicates the platform Windows (W) or Linux (L). </div>
+<div id="days_left" style="width: 550;">The "days remaining" shows how long this version of MOPAC2007 will be valid for. 
+Each new version of MOPAC2007 is valid for one year from its date of creation, so the "days remaining" can
+be re-set by downloading a new copy of MOPAC2007 from OpenMOPAC.net. </div>
+<div id="cite" style="width: 550;">Until PM6 is published, the only reference available is the program MOPAC2007.
+  </div>
+<div id="method" style="width: 550;">The specific NDDO method used in the calculation is given here.  </div>
+<div id="date" style="width: 550;">The precise date and time that the calculation was started is given here  </div>
+<div id="t_equals" style="width: 550;">Keyword "T=" can be used to define the CPU time allowed for this calculation.
+If the keyword is not used (this case), then the default of two days is used.  </div>
+<div id="dump" style="width: 550;"> "DUMP=n" can be used to set the time between writing a restart file.  If a restart file is written,
+and the job is stopped, then in most cases it can be restarted by using RESTART and, optionally, OLDENS.
+If the keyword is not used (this case), then the default of two hours is used.  </div>
+<div id="echo_keys" style="width: 550;"> At the start of a calculation, all keywords are echoed back. In this case, the only keyword used
+is "AM1."  If there is any doubt of which keywords were used, this line should be read.  </div>
+<div id="echo_title" style="width: 550;">The second and third lines of the imput data set are output here.
+These lines are not used by the program, they are indended for documenting the calculation. </div>
+</tr></table>
+<PRE> *******************************************************************************
+ ** <a
+   onMouseOver="toggleDiv('key',1)" onMouseOut="toggleDiv('key',0)">Site#:  </a>1321            <a
+   onMouseOver="toggleDiv('non_com',1)" onMouseOut="toggleDiv('non_com',0)">For non-commercial use only</a>         <a
+   onMouseOver="toggleDiv('version',1)" onMouseOut="toggleDiv('version',0)">Version 7.060W</a> **
+ *******************************************************************************
+ ** <a
+   onMouseOver="toggleDiv('cite',1)" onMouseOut="toggleDiv('cite',0)">Cite this work as: MOPAC2007, James J. P. Stewart, Stewart Computational</a>  **
+ ** <a
+   onMouseOver="toggleDiv('cite',1)" onMouseOut="toggleDiv('cite',0)">Chemistry, Version 7.060W web: HTTP://OpenMOPAC.net   <a
+   onMouseOver="toggleDiv('days_left',1)" onMouseOut="toggleDiv('days_left',0)">Days remaining: 366</a> **
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2007                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                            <a
+   onMouseOver="toggleDiv('method',1)" onMouseOut="toggleDiv('method',0)">AM1 CALCULATION RESULTS</a>
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                <a
+   onMouseOver="toggleDiv('date',1)" onMouseOut="toggleDiv('date',0)">Thu Mar  1 16:17:07 2007</a>  *
+ *  <a href="am1.html" style="text-decoration: none">AM1</a>      - The AM1 Hamiltonian to be used
+ *  <a onMouseOver="toggleDiv('t_equals',1)" onMouseOut="toggleDiv('t_equals',0)" href="t=n.html" style="text-decoration: none">T=</a>       - A TIME OF 172800.0 SECONDS REQUESTED
+ *  <a onMouseOver="toggleDiv('dump',1)" onMouseOut="toggleDiv('dump',0)" href="dump.html" style="text-decoration: none">DUMP=N</a>   - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *******************************************************************************
+<a onMouseOver="toggleDiv('echo_keys',1)" onMouseOut="toggleDiv('echo_keys',0)">AM1</a>
+<a onMouseOver="toggleDiv('echo_title',1)" onMouseOut="toggleDiv('echo_title',0)">Formic acid</a>
+<a onMouseOver="toggleDiv('echo_title',1)" onMouseOut="toggleDiv('echo_title',0)">Example of normal geometry definition</a>
+ <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+     
+     
+     
+     <div id="int_coords" style="width: 550;">The input geometry is output here. An atom's position is defined using internal
+coordinates if it has a connectivity (a number in the NA column), otherwise it is in Cartesian coordinates.
+The optimization flag "1" is replaced here by "*" </div>
+
+<div id="refs" style="width: 550;">    The original journal reference for all elements used in the calculation are printed. </div>
+<div id="point_gp" style="width: 550;">The Point-Group theory point group of the starting geometry is printed. 
+This might be different from the point-group at the end of the calculation if the geometry changes significantly. </div>
+<div id="type" style="width: 550;">The type of calculation (RHF, UHF, ROHF, etc.) is given here. If ROHF, then
+the open-shell or active space will be indicated by the fractional occupancy of the M.O.s used in the SCF calculation. </div>
+<div id="empirical" style="width: 550;">The empirical formula is printed. This is the number and type of each element
+used in the calculation. </div>
+
+</tr></table>
+  <a onMouseOver="toggleDiv('int_coords',1)" onMouseOut="toggleDiv('int_coords',0)">ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       O          0.0000000       0.000000       0.000000   
+     2       C          1.2000000  *    0.000000       0.000000   
+     3       O          1.3200000  *  116.800000  *    0.000000        2     1     0
+     4       H          0.9800000  *  123.900000  *    0.000000        3     2     1
+     5       H          1.1100000  *  127.300000  *  180.000000        2     1     3</a>
+    
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         O        0.0000    0.0000    0.0000
+     2         C        1.2000    0.0000    0.0000
+     3         O        1.7952    1.1782    0.0000
+     4         H        1.3156    2.0328    0.0000
+     5         H        1.8726   -0.8830    0.0000
+
+  <a onMouseOver="toggleDiv('refs',1)" onMouseOut="toggleDiv('refs',0)">H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)
+  C: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)
+  O: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)</a>
+
+           <a onMouseOver="toggleDiv('empirical',1)" onMouseOut="toggleDiv('empirical',0)">Empirical Formula: C H2 O2</a>
+      <a onMouseOver="toggleDiv('point_gp',1)" onMouseOut="toggleDiv('point_gp',0)">MOLECULAR POINT GROUP   :   Cs</a>  
+
+
+      <a onMouseOver="toggleDiv('type',1)" onMouseOut="toggleDiv('type',0)">RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS =    9</a>
+      <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+
+
+
+<div id="opt" style="width: 550;">The geometry optimization process can be followed by watching how the heat of formation
+and gradient norm decrease as the number of cycles of optimization increases. </div>
+<div id="rms" style="width: 550;">Geometry optimization normally stops when the gradient norm, in kcal/mol/(Angstrom or radian),
+drops below 1.0. </div>
+<div id="geo_fin" style="width: 550;">This is the normal geometry optimization termination message. If you
+get this message, then most likely the calculation was successful </div>
+<div id="scf_fin" style="width: 550;">This is the normal Self Consistent Field calculation termination message. If any
+other message is printed, the calculation is most likely faulty </div>
+ </div></tr></table>
+          DIAGONAL MATRIX USED AS START HESSIAN
+
+ <a onMouseOver="toggleDiv('opt',1)" onMouseOut="toggleDiv('opt',0)">CYCLE:   1 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:   118.472 HEAT:-91.15276    
+ CYCLE:   2 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:    64.573 HEAT:-93.61392    
+ CYCLE:   3 TIME:   0.016 TIME LEFT:  2.00D  GRAD.:    23.477 HEAT:-95.72593    
+ CYCLE:   4 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:    16.802 HEAT:-96.77744    
+ CYCLE:   5 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:    14.051 HEAT:-97.31996    
+ CYCLE:   6 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:     4.873 HEAT:-97.39856    
+ CYCLE:   7 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:     1.076 HEAT:-97.41413    
+ CYCLE:   8 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:     0.467 HEAT:-97.41479 </a>   
+
+     <a onMouseOver="toggleDiv('rms',1)" onMouseOut="toggleDiv('rms',0)">RMS GRADIENT =  0.46676  IS LESS THAN CUTOFF =  1.00000</a>
+
+
+
+ -------------------------------------------------------------------------------
+AM1
+ Formic acid
+ Example of normal geometry definition
+
+
+     <a onMouseOver="toggleDiv('geo_fin',1)" onMouseOut="toggleDiv('geo_fin',0)">GEOMETRY OPTIMISED USING EIGENVECTOR FOLLOWING (EF). </a>    
+     <a onMouseOver="toggleDiv('scf_fin',1)" onMouseOut="toggleDiv('scf_fin',0)">SCF FIELD WAS ACHIEVED</a>                                   
+
+
+                                AM1    CALCULATION
+                                                       MOPAC2007 (Version: 7.060W)
+                                                       Thu Mar  1 16:17:07 2007
+                                                       No. of days left = 366
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="110" valign="top">
+
+
+
+<div id="hof" style="width: 550;">In MOPAC, the Heat of Formation is defined as the heat required in kcal/mol or KJ/mol to form one mole of a substance 
+from its elements in their standard state at 298K.  For molecules and ions, the substance is gas-phase, for solvated, solution phase, and for crystals, the solid state. </div>
+ <div id="tot_energy" style="width: 550;">    The total energy is the sum of the electronic and nuclear (core-core) energies.  This quantity is
+ only useful in debugging.  It cannot be related to any observable or to anything calculated using high level methods. </div>
+<div id="sas" style="width: 550;">The COSMO area is the total Solvent Accessible Surface area of the molecule.  The default solvent is water. </div>
+<div id="cos_vol" style="width: 550;">The COSMO area is the size of the cavity that would need to exist in water (the default solvent)
+for one molecule of the substance in solution. </div>
+<div id="ip" style="width: 550;">    The Ionization potential, in eV, is the smallest energy required to remove an electron.
+In RHF calculations, it is the negative of the Highest Occupied Molecular Orbital energy (Koopmans' theorem), for UHF the HOMO
+can be of either spin up or down, and for odd-electron ROHF systems it is the negative of the Singly Occupied Molecular Orbital energy, corrected
+for the error arising from the use of "half electrons". </div>
+<div id="n_filled" style="width: 550;">    Number of doubly-occupied levels.  For UHF, the number of alpha and beta electrons is given.
+ For ROHF, the number of doubly filled and fractionally filled levels is output. In this example, there are 9 filled levels corresponding
+  to the 18 valence electrons. <br>Each of the two oxygen atoms contributes 6 electrons, the carbon atom gives 4, and each hydrogen 1 electron. </div>
+<div id="mw" style="width: 550;">    The molecular weight in grams is determined by the empirical formula and the standard atomic 
+weights of the elements.  For chlorine, the standard atomic weight is 35.45. </div>
+<div id="size" style="width: 550;">    The second and third molecular dimensions represent the size of the smallest rectangular hole 
+that the molecule could go through.  The first molecular dimension is the 
+distance between the most distant atoms, the second dimension is the largest distance between two atoms in a plane perpendicular to the first dimension, 
+and the third dimension is the largest distance between two atoms in direction perpendicular to the first two dimensions. </div>
+<div id="cpu" style="width: 550;">The total CPU time used up in this calculation.  If restarts were used, then the total time for all
+the separate calculations </div>
+<div id="nscf" style="width: 550;">    The number of separate SCF calculations run.  In a geometry optimization, each cycle of optimization might involve more
+than one SCF, particularly if the potential energy surface is complicated. </div>
+
+
+</tr></table>
+          <a onMouseOver="toggleDiv('hof',1)" onMouseOut="toggleDiv('hof',0)"
+          >FINAL HEAT OF FORMATION =        -97.41479 KCAL =    -407.58348 KJ</a>
+
+
+          <a onMouseOver="toggleDiv('tot_energy',1)" onMouseOut="toggleDiv('tot_energy',0)">TOTAL ENERGY            =       -797.12666 EV
+          ELECTRONIC ENERGY       =      -1697.04783 EV</a>  POINT GROUP:     Cs  
+          <a onMouseOver="toggleDiv('tot_energy',1)" onMouseOut="toggleDiv('tot_energy',0)">CORE-CORE REPULSION     =        899.92117 EV</a>
+          <a onMouseOver="toggleDiv('sas',1)" onMouseOut="toggleDiv('sas',0)">COSMO AREA              =         71.42 SQUARE ANGSTROMS</a>
+          <a onMouseOver="toggleDiv('cos_vol',1)" onMouseOut="toggleDiv('cos_vol',0)">COSMO VOLUME            =         52.65 CUBIC ANGSTROMS</a>
+
+          <a onMouseOver="toggleDiv('ip',1)" onMouseOut="toggleDiv('ip',0)">IONIZATION POTENTIAL    =         11.81903</a>
+          <a onMouseOver="toggleDiv('n_filled',1)" onMouseOut="toggleDiv('n_filled',0)">NO. OF FILLED LEVELS    =          9</a>
+          <a onMouseOver="toggleDiv('mw',1)" onMouseOut="toggleDiv('mw',0)">MOLECULAR WEIGHT        =         46.026</a>
+
+          <a onMouseOver="toggleDiv('size',1)" onMouseOut="toggleDiv('size',0)"
+          >MOLECULAR DIMENSIONS (Angstroms)
+
+            Atom       Atom       Distance
+            H     5    H     4     2.86513
+            O     3    O     1     2.10425
+            C     2    H     4     0.00000</a>
+
+
+           <a onMouseOver="toggleDiv('nscf',1)" onMouseOut="toggleDiv('nscf',0)"
+          >SCF CALCULATIONS        =         10</a>
+           <a onMouseOver="toggleDiv('cpu',1)" onMouseOut="toggleDiv('cpu',0)"
+          >COMPUTATION TIME        =          0.016 SECONDS</a>
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="110" valign="top">
+
+
+
+
+
+
+
+<div id="opt_geo" style="width: 550;">    The optimized geometry is printed. Note that the two dihedral angles were not
+marked for optimization and are therefore exactly the same as the starting angles (0 and 180 degrees) </div>
+<div id="end_pg" style="width: 550;">    The point-group of the optimized geometry.  Normally the same as that of the starting
+geometry, but it can be different if the starting geometry was quantitatively incorrect</div>
+<div id="eigs" style="width: 550;">    The energies, in electron volts, of the molecular orbitals.  There are nine filled M.O.s in formic acid, so the highest filled M.O. has an energy of -11.8eV.  The rest of the M.O.s are empty. </div>
+<div id="charges" style="width: 550;">The "CHARGE" is the nuclear charge (a whole number) minus the number of
+electrons in each atomic orbital. "p-Pop" is the number of electrons in all three "p" orbitals. If an atom has a "d" shell, then there
+would be acolumn headed "d-Pop", and the numbers underneath would be the total "d" population. </div>
+</tr></table>
+   <a onMouseOver="toggleDiv('opt_geo',1)" onMouseOut="toggleDiv('opt_geo',0)"
+          >ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       O          0.0000000       0.000000       0.000000   
+     2       C          1.2304588  *    0.000000       0.000000   
+     3       O          1.3568332  *  117.681304  *    0.000000        2     1     0
+     4       H          0.9712524  *  110.582833  *    0.000000        3     2     1
+     5       H          1.1033197  *  129.967961  *  180.000000        2     1     3</a>
+
+           Empirical Formula: C H2 O2
+
+
+
+      <a onMouseOver="toggleDiv('end_pg',1)" onMouseOut="toggleDiv('end_pg',0)"
+          >MOLECULAR POINT GROUP   :   Cs  </a>
+
+
+                   <a onMouseOver="toggleDiv('eigs',1)" onMouseOut="toggleDiv('eigs',0)"
+          >EIGENVALUES
+
+-40.62125 -36.77351 -24.87659 -18.96303 -18.12673 -16.19373 -14.67936 -12.58306
+ -11.81903   0.95713   2.28141   3.84205   5.09596   6.44101</a>
+
+
+              <a onMouseOver="toggleDiv('charges',1)" onMouseOut="toggleDiv('charges',0)"
+          >NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+
+  ATOM NO.   TYPE          CHARGE      No. of ELECS.   s-Pop       p-Pop       
+    1          O          -0.357283        6.3573     1.91393     4.44335
+    2          C           0.260327        3.7397     1.26671     2.47296
+    3          O          -0.324044        6.3240     1.86042     4.46363
+    4          H           0.241808        0.7582     0.75819
+    5          H           0.179193        0.8208     0.82081</a>
+    <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="110" valign="top">
+
+
+
+<div id="dip" style="width: 550;">    The molecular dipole, in Debye is given by the bottom right number, here 1.48.  
+Dipole moments for ions are defined in terms of an accelerating frame: The ion is centered on its center of mass, and the dipole
+evaluated in the same way as for a molecule.  If the center of mass changes, e.g. by doing isotopic substitution, then
+the ion's dipole would also change. </div>
+<div id="pops" style="width: 550;">Atomic orbital electron populations for each orbital are output. </div>
+<div id="done" style="width: 550;">If this message is NOT printed at the end of a run, something has gone wrong. </div>
+</tr></table>
+
+ <a onMouseOver="toggleDiv('dip',1)" onMouseOut="toggleDiv('dip',0)"
+          >DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     1.722    -0.361     0.000     1.759
+ HYBRID        -0.243     0.298     0.000     0.384
+ SUM            1.479    -0.063     0.000     1.480</a>
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         O                  0.0000    0.0000    0.0000
+     2         C                  1.2305    0.0000    0.0000
+     3         O                  1.8608    1.2015    0.0000
+     4         H                  1.2142    1.9263    0.0000
+     5         H                  1.9392   -0.8456    0.0000</a>
+
+
+          <a onMouseOver="toggleDiv('pops',1)" onMouseOut="toggleDiv('pops',0)"
+          >ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.91393   1.13249   1.87986   1.43100   1.26671   0.88857   0.86899   0.71541
+   1.86042   1.42153   1.18851   1.85359   0.75819   0.82081</a>
+
+
+
+ TOTAL CPU TIME:             0.03 SECONDS
+
+ <a onMouseOver="toggleDiv('done',1)" onMouseOut="toggleDiv('done',0)"
+          >== MOPAC DONE ==</a></font></PRE></TT>
+</BODY>
+</HTML>

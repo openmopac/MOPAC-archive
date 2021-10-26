@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>C.I. One-Electron States </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<B>
+States resulting from one-electron excitations</B></h1>
+<p align="left">
+This job illustrates how to calculate the energies of electronic states of 
+formic acid resulting from one-electron excitation.<p align="left">
+Data-set: <PRE><b> bonds
+First, optimize the geometry of formic acid
+
+   O    0.0  0    0.0 0    0.0 0   0  0  0
+   C    1.20 1    0.0 0    0.0 0   0  0  0
+   O    1.32 1  116.8 1    0.0 0   2  1  0
+   H    0.98 1  123.9 1    0.0 0   3  2  1
+   H    1.11 1  127.3 1  180.0 0   2  1  3    
+
+cis c.i.=4 meci oldgeo
+Now calculate the excited states of formic acid</b></PRE>
+There are two calculations in this data set.  In the first calculation, the 
+geometry of formic acid is optimized.&nbsp; No keywords are needed for this 
+operation, but because a blank line is not easy to see, the keyword
+<a href="bonds.html"><tt>BONDS</TT></a> has been added. BONDS is not necessary, but is 
+used here only to show where the keyword line is.<p>The second calculation is 
+the Configuration Interaction (C.I.) calculation.&nbsp; This uses the optimized 
+geometry of formic acid from the previous calculation (using
+<a href="oldgeo.html"><tt>OLDGEO</TT></a>).&nbsp; Four C.I. keywords are used here:</p>
+<p><a href="cis.html"><tt>CIS</TT></a>:&nbsp; Use only the ground state and those states 
+that can be created by excitation of one electron.</p>
+<p><a href="ci=n.html"><tt>C.I.=4</TT></a>: Use an active space of four molecular 
+orbitals.&nbsp; Since this keyword is unqualified, these four M.O.s are the 
+HOMO, HOMO-1, LUMO, and LUMO+1.&nbsp; That is, the two highest occupied and two 
+lowest unoccupied M.O.s&nbsp; The C.I. thus involves four electrons.</p>
+<p><a href="meci.html"><tt>MECI</TT></a>: Print out the microstates and the States.</p>
+<p>Other keywords, such as <a href="singlet.html"><tt>SINGLET</TT></a> are unnecessary here, because no geometric operations are being done.</p>
+<p>In the output, there are a total of nine states: one for the ground state and 
+eight resulting from one-electron excitations.&nbsp; In most C.I. calculations, 
+the ground state would be stabilized by C.I., but in this case Koopmans' theorem 
+applies.&nbsp; This says that no state resulting from one-electron excitation 
+from a ground state configuration will interact with the ground state.&nbsp; The 
+ground state is included in the CIS calculation, to indicate its position in the 
+energy spectrum.</p>
+<p>The PMx-type methods in MOPAC are not accurate for predicting excitation energies, 
+where possible use <a href="indo.html"><tt>INDO</TT></a> instead.&nbsp; INDO is 
+similar to ZINDO.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+</BODY>
+</HTML>

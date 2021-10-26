@@ -1,0 +1,18 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Option to allow only extrema to be output</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1><A NAME="SECTION0012195000000000000000">Option to allow only extrema to be output</A> 
+</h1>
+<P>In the geometry specification, if an internal coordinate is marked for optimization then when that internal coordinate passes through an extremum a message will be printed and the geometry output. </P>
+<P>Difficulties can arise from the way internal coordinates are processed. The internal coordinates are generated from the Cartesian coordinates, so an internal coordinate supplied may have an entirely different meaning on output. In particular the connectivity may have changed. For obvious reasons dummy atoms should not be used in the supplied geometry specification. If there is any doubt about the internal coordinates or if the starting geometry contains dummy atoms then run a <TT>1SCF</TT> calculation specifying <TT>INT</TT>. This will produce an ARC file with the "ideal" numbering--the internal numbering system used by MOPAC. Use this ARC file to construct a data file suitable for the DRC or irc0.<A NAME="BM22597">&nbsp;<A NAME="BM22598"></A>&nbsp;</A> </P>
+<P>Notes: </P>
+<DL>
+<DT>1. Any coordinates marked for optimization will result in only extrema being printed. </DT>
+<DT>2. If extrema are being printed then kinetic energy extrema will also be printed. </DT>
+</DL>
+                                                </BODY>
+</HTML>

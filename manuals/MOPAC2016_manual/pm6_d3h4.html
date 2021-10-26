@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE>PM6-D3H4 </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>PM6-D3H4</TT>
+</h1>
+<p><tt>PM6-D3H4</tt> implements the 
+corrections to hydrogen bonding and dispersion, see: &quot;Advanced 
+Corrections of Hydrogen Bonding and Dispersion for Semiempirical Quantum 
+Mechanical Methods&quot;, 
+	Jan &#344;ezá&#269; and Pavel Hobza,&nbsp;  Journal of Chemical Theory and Computation, <strong>2012</strong>
+	<em>8</em> (1), 141-151 
+DOI: 10.1021/ct200751e.<p>
+This implementation allows reactions to be modeled, but does not allow for 
+periodic boundary conditions, i.e., it should not be used for modeling molecular 
+solids of the type found in organic chemistry.</p>
+<p class="MsoBodyText">
+There are three parts to the D3H4 function in PM6-D3H4:</p>
+<p class="MsoBodyText">
+(A) A correction to the dispersion.&nbsp; This uses Grimme's D3 method, 
+unmodified, with method-specific (here PM6) variables:&nbsp; s6 = 0.88, alp = 
+22.0, rs18 = 1.0, rs6 = 1.18.</p>
+<p class="MsoBodyText">
+(B) The &quot;H4&quot; hydrogen-bond function developed by &#344;ezá&#269; and Hobza.</p>
+<p class="MsoBodyText">
+(C) A correction for the known fault in PM6 that hydrogen - hydrogen steric 
+repulsive interactions are too small. For details, see: Vorlová, B.; 
+Nachtigallová, D.; Jirásková-Vaní&#269;ková, J.; Ajani, H.; Jansa, P.; &#344;ezá&#269;, J.; 
+Fanfrlík, J.; Otyepka, M.; Hobza, P.; Konvalinka, J.; Lepšík, M. <i>European 
+Journal of Medicinal Chemistry</i> <b>2015</b>, <i>89</i>, 189–197.</p>
+<p class="MsoBodyText">
+To print the individual components of D3H4, add <a href="disp.html"><tt>DISP</tt></a></p></span>
+</BODY>
+</HTML>

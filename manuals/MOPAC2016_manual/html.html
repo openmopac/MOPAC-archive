@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>HTML </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>HTML </TT>&nbsp;<tt> HTML(NORES)</TT></h1>
+<p>&nbsp;When <tt>HTML</tt> is present a simple web-page will be 
+written.&nbsp; This web-page is intended for use with
+the Graphical-User Interface <a href="http://sourceforge.net/projects/jsmol/", target="_parent">JSmol</a>, the successor to 
+Jmol.&nbsp;&nbsp; To suppress printing of the residue sequence, use <tt>HTML(NORES).</tt>&nbsp; 
+If charges are calculated, these will be put in columns 62-66 of the PDB file 
+written by keyword <tt>HTML</tt>, and these will be available in the web-page.</p>
+<p>Proteins are large, complicated organic compounds, and visualizing them is 
+difficult.&nbsp; There are many good GUI's, one of which is 
+JSmol; JSmol allows fine control over the display of features in a protein.&nbsp; 
+The web-page written by MOPAC when <tt>HTML</tt> is present uses JSmol to 
+display the protein.&nbsp; JSmol allows simple editing of structures.</p>
+<h2>Animations</h2>
+<p>Two different modes are provided for showing animations.</p>
+<h3>Animations with one graph showing the molecule and next to it another graph 
+showing the energy profile.</h3>
+<p>Use keyword <tt>HTML</tt> plus keywords that produce a set of frames, e.g., <tt>
+<a href="irc0.html">IRC</a></tt>, <tt><a href="drc0.html">DRC</a></tt>, 
+<tt><a href="step.html">STEP</a></tt>, etc., but do NOT use keyword <tt>
+<a href="pdbout.html">PRBOUT</a></tt>.</p>
+<h3>Animations with a graph showing the system in PDB format with the option to 
+show charges.</h3>
+<p>Use keywords <tt>HTML </tt> and <tt>PRBOUT </tt> plus keywords that produce a 
+set of frames, e.g., <tt>IRC</tt>, <tt>DRC</tt>, 
+<tt>STEP</tt>, etc.</p>
+<p>For several examples, see
+<a href="Individual%20JSmol%20paths/Animations.html">Animations</a>.</p>
+<p>&nbsp;</p>
+<h2>Requirements for displaying and editing a protein using JSmol</h2>
+<p>The JSmol software must be present.&nbsp; The files and folders needed for 
+using JSmol with MOPAC can be downloaded from the
+<a href="http://sourceforge.net/projects/jmol/files/latest/download?source=files", target="_parent">
+latest Jmol distribution</a>. This involves downloading a 
+file with a name like &quot;Jmol-14.0.13-binary.zip&quot; Open the ZIP file, and select jsmol.zip.&nbsp; Extract the folder in jsmol.zip. By default, JSmol will be put 
+into a folder called &quot;jsmol&quot;.&nbsp; Then follow the instructions in
+<a href="README_for_JSmol.html">
+HTTP://OpenMOPAC.net/Manual/README_for_JSmol.html</a>.&nbsp; </p>
+<p>Prepare a MOPAC data set for the protein.&nbsp; The name of the data set will 
+be used for both the HTML file and for the PDB file that MOPAC will make. For 
+this description, let the name of the data set be &quot;test.mop&quot;&nbsp; Edit the data 
+set to add keywords &quot;0SCF HTML&quot;&nbsp; The next line, a user-controlled 
+text line, should have the title of the web-page, e.g. &quot;Chymotrypsin&quot;&nbsp; Run 
+&quot;test.mop&quot; using MOPAC, this will create some files, including &quot;test.html&quot; and &quot;test.pdb&quot;&nbsp; 
+At this point, have a quick look at these files using a text editor, they should 
+look like a normal HTML and a normal PDB file.</p>
+<p>Copy the files &quot;test.html&quot; and &quot;test.pdb&quot; into the folder 
+&quot;jsmol&quot;, then open &quot;test.html&quot; 
+using Firefox (other browsers - Internet Explorer and Chrome were tested - they 
+didn't work!).&nbsp; Once everything works, 
+use the instructions in
+<a href="README_for_JSmol.html">
+HTTP://OpenMOPAC.net/Manual/README_for_JSmol.html</a> to modify Firefox so you 
+don't need to copy the HTML and PDB files into the jsmol folder - this will make 
+running the HTML files much easier.</p>
+<h3>Displaying parts of the protein</h3>
+<p>The first JSmol picture is that of the entire protein.&nbsp; This is too 
+complicated to be of any use, so click on &quot;Toggle display all&quot; - this will 
+delete everything.&nbsp; Clicking &quot;Toggle display all&quot; again will put everything 
+back.&nbsp; Start with everything deleted, i.e., an empty picture.&nbsp; Now 
+look at the list of residues.&nbsp; Clicking on a residue will display it, 
+clicking on it again will delete it.&nbsp; Build up the part of the protein you 
+are interested in.</p>
+<p>The other controls are easy to use. </p>
+<h3>Examples:</h3>
+<p>Comparison of two PDB structures for
+<a href="../JSmol_examples/Compare%201EJG%20and%201CBN.html">Crambin</a> (<a href="../JSmol_examples/Crambin.zip">zip</a>)</p>
+<p><a href="../JSmol_examples/Chymotrypsin_Step_5.html">Detail of ester 
+hydrolysis step</a> in chymotrypsin peptide hydrolysis.</p>
+<p><a href="../JSmol_examples/Chymotrypsin%20Make%20Step%202.html">Detail of 
+tetrahedral intermediate</a> in chymotrypsin peptide hydrolysis.</p>
+<p>Animation of <a href="../JSmol_examples/Diels-Alder.html">Diels-Alder 
+reaction</a> involving ethylene and butadiene (animation only).</p>
+<p>Animation of <a href="../JSmol_examples/Diels-Alder_energies.html">Diels-Alder 
+reaction</a> involving ethylene and butadiene (energies and animation).</p>
+<p>C=O stretch <a href="../JSmol_examples/Formaldehyde_vib.html">vibration</a> 
+in formaldehyde.</p>
+<p><a href="../JSmol_examples/HCN-HNC%20Intrinsic%20Reaction%20Coordinate.html">
+HCN &lt;=&gt; HNC</a> Intrinsic Reaction Coordinate</p>
+<p>Examples of HTML files generated by MOPAC <a href="../Chymo.html">
+Chymotrypsin</a>, <a href="../Enzyme_specificity_(2016).html">MTH1</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

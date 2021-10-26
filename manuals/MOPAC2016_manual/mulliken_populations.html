@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Mulliken populations</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Mulliken populations
+</H2>
+By default, the density matrix printed is the Coulson matrix, which
+assumes that the atomic orbitals are orthogonalized.
+<P>
+If the assumption of orthogonality is not made, then the Mulliken density
+matrix can be constructed. To construct the Mulliken density matrix (also known
+as the Mulliken population analysis), the M.O.s must first be re-normalized,
+using the overlap matrix, <I>S</I>:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="92" HEIGHT="29"
+ SRC="img533.gif"
+ ALT="\begin{displaymath}\psi_i^{'} = \psi_i\times S^{-\frac{1}{2}}.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+From these M.O.s, a Coulson population is carried out. The off diagonal terms
+are simply the Coulson terms multiplied by the overlap:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="154" HEIGHT="48"
+ SRC="img534.gif"
+ ALT="\begin{displaymath}P_{\lambda\sigma\neq\lambda}'=S_{\lambda\sigma}2\sum_{i=1}^{occ}c_{\lambda i}
+c_{\sigma i},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+while the on-diagonal terms are given by the Coulson terms, plus half the sum
+of the off-diagonal elements:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="216" HEIGHT="51"
+ SRC="img535.gif"
+ ALT="\begin{displaymath}P_{\lambda \lambda}' =S_{\lambda\sigma}2\sum_{i=1}^{occ}c_{\l...
+... i}
++ \frac{1}{2}\sum_{\sigma\neq\lambda}P_{\lambda \sigma}'.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+A check of the correctness of the Mulliken populations is to add the diagonal
+terms: these should equal the number of electrons in the system.&nbsp;&nbsp; As
+with the Coulson population, the unit of the Mulliken population analysis is the
+electron.&nbsp; For the hydrogen atom, the <i>P<sub>ss</sub></i> population
+would be 1.00.</BODY></HTML>

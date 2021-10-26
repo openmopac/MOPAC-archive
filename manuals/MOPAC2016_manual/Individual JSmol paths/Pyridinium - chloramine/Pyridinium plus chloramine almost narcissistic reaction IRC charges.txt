@@ -1,0 +1,22 @@
+#
+# Write atomic partial charges as circles with numbers.
+#
+reset;center {-0.6585000000000001 -0.291 0.393}; rotate z 92.1; rotate y 106.2; rotate z -90.16; zoom 201.43;
+frame TITLE "Delay while charges are being defined"
+delay 1
+delay 1
+frame all
+select *.N, *.C1, *.C2, *.C3,*.H, *.2H, *.1H, *.3CL, *.H1, *.H2, *.H3
+var sel = {selected};
+for (var x IN @sel){
+select @x; 
+var txt =  @x.temperature*0.5;
+if (@txt > 0){spacefill @txt;}; 
+if (!@txt > 0){txt = -txt; spacefill @txt; }; 
+txt =  (x.temperature > 0 ? '+':'')+format('%1.2f',x.temperature ); 
+label @txt; color label black;
+set labelOffset 0 0;}
+select 0;
+frame TITLE "Frame : @{_modelNumber}"
+animation mode loop;
+animation on

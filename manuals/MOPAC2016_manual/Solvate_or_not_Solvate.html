@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Solvate or not solvate</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Solvation">Modeling proteins</a>)</font></p>
+<h1>Solvate or not solvate?</h1>
+<p>By default, all systems are modeled in the gas phase.&nbsp; This means that 
+any phenomenon that depends on solvent effects, such as the stabilization of 
+ions on the surface of a protein, will not be modeled.&nbsp; When modeling 
+proteins, use solvation (add keyword <a href="eps.html"><tt>EPS=78.4</tt></a>).&nbsp; It 
+lowers the geometric error by about 15%.&nbsp; The jobs will take a longer time 
+to run, but the model is more realistic, and it's normally worth the extra CPU 
+time.</p>
+<p>The exception is when the positions of the hydrogen atoms are being optimized 
+and everything else is frozen.&nbsp; This operation does not involve the 
+non-hydrogen atoms moving, so not using solvation will not affect the results 
+significantly. Of course, in order to allow heats of formation to be compared, 
+for example in testing for <a href="salt_bridges.html">salt bridges</a>, the set 
+of keywords used should be the same, in particular if <tt>
+EPS=78.4</tt> is used in&nbsp;one job it should be used in the other.</p>
+</BODY>
+</HTML>

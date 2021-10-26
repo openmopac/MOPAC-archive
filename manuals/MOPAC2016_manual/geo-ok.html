@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>GEO-OK </TITLE>
+                                                                                                                  </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<TT><h1 align="center" dir="ltr">GEO-OK</TT> </h1>
+<P>Normally the program will stop if certain errors occur.&nbsp; If <TT>GEO-OK</TT> is present, the job will continue, but there is an increased probability that the results will not be meaningful.&nbsp; The errors that are affected are:</P>
+<P>If two atoms are within 0.1 &Aring;ngstroms of each other.<BR>
+In practice, most jobs that terminate due to these checks contain errors in data, so caution should be exercised if <TT>GEO-OK</TT> is used. </P>
+<P>In <TT><a href="mozyme.html">MOZYME</a></TT> calculations, if the supplied charge is incorrect and <TT>GEO-OK</TT> 
+is present, it will be replaced by the correct charge, and the calculation 
+allowed to continue. In general, this is not a good idea: if a charge is 
+supplied, and MOZYME predicts a different charge, examine the system to find out 
+which is correct; don't simply assume MOZYME is right!</P>
+<P>When <a href="Protein_structure_comparison.html">comparing protein structures</a>, 
+a special keyword, <tt>GEO-OK+</tt>, is provided to allow tautomeric hydrogen atoms, 
+i.e., hydrogen atoms that are on different atoms in the two structures, to be 
+used in the comparison.&nbsp; This is a special case, and should not be used 
+routinely. </P>
+</BODY>
+</HTML>

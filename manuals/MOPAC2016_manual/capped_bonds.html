@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Capped Bonds</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Capped Bonds
+</H2>
+Sometimes the system being studied is too large to be calculated using MOPAC.
+When only a part of the system is of interest, a mechanism exists to allow only
+that part to be calculated, and to ignore or not consider the rest of the
+system.  Capped bonds are used to satisfy valency requirements.
+<P>
+The procedure for using capped bonds (Cb) is as follows:
+<DL COMPACT>
+<DT>1.
+<DD>Identify all atoms which are important to the calculation.  For an
+enzyme, this would be the residues of the active site, for example.&nbsp;
+<dt>&nbsp;</dt>
+<DT>2.
+<DD>Identify bonds which would be broken in order to isolate the atoms of
+interest. Make sure these are single bonds, and try to ensure that there is not
+more than one  broken bond on any atom.  Examples of "good" broken bonds are:
+CH<SUB>2</SUB>-CH<SUB>2</SUB>, CH<SUB>2</SUB>-NH, NH-NH.
+<dt>&nbsp;</dt>
+<DT>3.
+<DD>Attach a Cb to each atom which has a broken bond.  The Cb should be
+positioned in the direction of the atom which has deleted, and should have a
+bond-length of 1.7&Aring;, exactly. Do not mark the Cb bond length for
+optimization. If two broken bonds exist on an atom, use two Cb, but make the
+Cb-atom-Cb angle 109.471221<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img628.gif"
+ ALT="$^\circ$">,
+exactly, and do not let it optimize.
+</DL>
+<P>
+A Cb behaves like a monovalent atom, but always has a zero charge.  In other
+words, a Cb has a core charge of +1, and always has an electron population of
+1.0.  Cbs  have one orbital, and so can be regarded as being hydrogen-like.
+<P>
+Capped bonds are different from hydrogen atoms, however, in that they have a
+large <i><span class="b">&beta;</span></i>-value.  The <i><span class="b">&beta;</span></i>
+value is used in the calculation of the
+one-electron two-center integral. Because the <i><span class="b">&beta;</span></i>
+value is so large, the
+difference in electronegativity of the Cb and the atom it is attached to, <I>&nbsp;A</I>,
+becomes negligible.   Therefore the bonding M.O. consists of
+(1/2)<sup>1/2</sup>(Cb+A).
+From this, it follows that the bonding M.O. contributes 1.0 electrons
+to the Cb.
+<P>
+In addition to the bonding M.O., there is an antibonding M.O.  This M.O. is of
+form
+(1/2)<sup>1/2</sup>(Cb-A),
+and is of very high energy.
+<P>
+To prevent capped bonds from forming bonds to all nearby atoms, overlaps from
+capped bonds to all atoms further away than 1.8&Aring; are set to zero.  Because
+of this, the coupling between capped bonds and all atoms, other than <I>A</I>, is
+zero. Of course, <I>A</I> can interact with other atoms, once it has satisfied the
+demands of the attached capped bond.
+<P>
+Because of the  huge <i><span class="b">&beta;</span></i>-value, the energy of a Cb-atom bond is very large.
+To prevent this interfering with the calculation, when the electronic energy is
+calculated, contributions from Cb are ignored.  For this reason it is important
+that the bond-length for the Cb should not be optimized.
+<P>
+The M.O. energy levels due to Cb-type bonds are also enormous.  Before the
+M.O. energy levels are printed in the normal output, energy levels arising
+from Cb-atom bonds are first set to zero.
+<P>
+The electronic behavior of capped bonds can easily be studied by use of
+<TT><a href="one_scf.html">1SCF</a></TT> <TT><a href="density.html">DENSITY</a></TT> <TT>
+<a href="vectors.html">VECTORS</a></TT>.
+<BR>
+</BODY>
+</HTML>

@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>PRESSURE </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<P>&nbsp;<H2 align="center">
+<TT>P=n.nn</TT>&nbsp; </H2>
+<P>The effect of an applied pressure on a solid can be simulated by <TT>P=n.nn</TT>, 
+where <TT>n.nn</TT> is the pressure in Newtons per square meter, or <TT>P=n.nnGpa</TT>, 
+where <TT>n.nn</TT> is the pressure in Gigapascals.</P>
+<P>Typical bulk moduli are in the order of 10 - 700 GPa (gigapascals), and typical pressures 
+should be <TT>n.nn</TT> = 1.D<SUP>9</SUP> to <TT>n.nn</TT> =1.D<SUP>10</SUP> NM<SUP>-2</SUP>. 
+In general, solids are subjected to compression only, not tension, therefore the sign of <TT>n.nn</TT> should normally be positive, e.g. <TT>P=2.D9</TT> 
+or <TT>P=2.0GPa,</TT> however, for mechanically strong solids, negative pressures, even quite large pressures, can be used.</P>
+<P>As the pressure rises, the calculated heat of formation will become more 
+positive because energy must be used in generating the volume of the solid under 
+pressure. Geometry optimization minimizes the total heat of formation =&Delta;H<sub>f</sub> of the solid + energy due to volume. The final geometry is 
+then the optimized geometry at equilibrium with that pressure.</P>
+<P>Bulk moduli, B, in Pascals, can be calculated from the change in unit cell volume at zero pressure (Vol(0)) 
+to the unit cell volume under a pressure of <TT>P=n.nn</TT> (Vol(<TT>n.nn</TT> ) from:</P>
+<P ALIGN="CENTER">B=n.nn*Vol(0)/(Vol(0)-Vol(n.nn))</P>
+<P ALIGN="left">For polymers, the applied strain is in units of Newtons per mole. That is, for one mole 
+of polymer chains, stacked side by side, the applied force is <TT>n.nn</TT> Newtons. Suitable values 
+for <TT>P=n.nn</TT> are in the order of 10<SUP>13</SUP> Newtons. In general, polymers are subjected to 
+tension only, not compression, therefore the sign of <TT>n.nn</TT> should normally be negative, e.g. <TT>P=-2.D13</TT> .</P>
+<P>Useful conversion factors are:</P>
+<P>1 GPa = 10<SUP>9</SUP>N.M<SUP>-2</SUP> = 10<SUP>10</SUP>dynes.cm<SUP>-2</SUP> = 10<SUP>16</SUP>erg.m<SUP>-3</SUP> </P>
+<P>1 GPa = 6.0221367/(4.184*10)kcal.mol<SUP>-1</SUP>.Angstrom<SUP>-3</SUP> = 0.14393kcal.mol<SUP>-1</SUP>.Angstrom<SUP>-3</SUP>.</P>
+<P>so a unit cell of&nbsp; 100A<sup>3</sup> under 1 GPa would have an energy 
+equivalent of 14.39 kcal.mol<SUP>-1</SUP>.</P>
+</BODY>
+</HTML>

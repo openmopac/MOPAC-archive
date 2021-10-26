@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>XYZ </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>XYZ</TT> </h1>
+<P>Regardless of the coordinate system used in defining the geometry, if <TT>XYZ</TT> is present, then all atoms will be converted to Cartesian coordinates, and the calculation will be run entirely in Cartesian coordinates. </P>
+<P>When a system involving several rings, or big rings, is optimized using
+internal coordinates, the geometry optimizers often have difficulty.&nbsp; This
+is because the effect of a small change in an angle can be a large change in the
+interatomic distance of two bonded atoms.&nbsp; This is particularly important
+in enzymes and other large molecules.&nbsp; This problem is completely solved if
+Cartesian coordinates are used.&nbsp; Therefore, if problems are encountered
+with geometry optimizations, particularly if internal coordinates are used,
+keyword <TT>XYZ</TT> should be used.</P>
+<P>Notes</P>
+<ul>
+  <li>If&nbsp; <TT>XYZ</TT> is used, the optimization flags are not changed. 
+  Therefore, before running a system with&nbsp; <TT>XYZ</TT> all the 
+  optimization flags should be set to &quot;1&quot;. For atoms 1, 2, and 3, the 
+  optimization flags are forced to 1 if all the other optimization flags are set 
+  to 1.&nbsp; To be safe, use <TT>XYZ</TT> with <tt><a href="zero_scf.html">0SCF</a></TT>, then 
+  edit the resulting ARC file to delete <TT>XYZ</TT> and set the 
+  optimization flags by hand.</li>
+  <li>Be very careful if some atoms have optimization flags set to&quot;0&quot;.&nbsp; If 
+  the geometry supplied is in internal coordinates, and an atom, say atom 10, 
+  has all three optimization flags set to &quot;0&quot;, then that means &quot;Do not change 
+  the bond length, angle, and dihedral of atom 10, with reference to the atoms 
+  used for the connectivity.&quot;&nbsp; The atom can still move if the atom it is 
+  attached to moves.&nbsp; If that atom is converted to Cartesian coordinates, 
+  the optimization flags will still be zero, but now the definition changes to 
+  &quot;Do not change the Cartesian coordinates of atom 10.&quot;&nbsp; This is very 
+  different from the internal coordinate definition.</li>
+  <li>Any dummy atoms are automatically deleted if&nbsp; <TT>XYZ</TT> is
+  present.&nbsp; Dummy atoms are only meaningful if internal coordinates are
+  used.&nbsp; </li>
+</ul>
+<P>See also <a href="int.html"><TT>INT</TT></a></BODY></HTML>

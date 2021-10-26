@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>THREADS </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>THREADS=n</TT>
+</h1>
+<p>By default, the maximum number of threads are used.&nbsp; To reduce this 
+number, use <TT>THREADS=<i>n</i></TT>, where <TT><i>n</i></TT> is the number of threads to be 
+used. </p>
+<p>If <TT><i>n</i></TT> is greater than the maximum, it will be re-set to the 
+maximum.&nbsp; If <TT><i>n</i></TT> is less than 1 it will be re-set to 1.</p>
+<p>The maximum number of threads is normally equal to the number of cores, even 
+if each core supports two threads.</p>
+<p>In the special case of <TT>THREADS=1</TT>, parallelization is switched off.</p>
+<p>See also <a href="nogpu.html"><tt>NOGPU</tt></a>.</p>
+</BODY>
+</HTML>

@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Worked example: Chymotrypsin</TITLE>
+                                                                                                                    <style type="text/css">.auto-style5 {
+																														
+																														text-align: center;
+																													}
+																													.auto-style6 {
+																														
+																														text-align: left;
+																													}
+																													.auto-style7 {
+	text-decoration: underline;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Making">Modeling proteins</a>)</font></p>
+<h1 class="auto-style5">Editing the Starting 
+	Model to make small changes</h1>
+<p class="auto-style6">When a small change needs to be made to a protein, for 
+example to convert a carboxylic acid or carboxylate anion into an amide group, 
+one way to proceed is as follows:</p>
+<p class="auto-style6">Start with the best geometry available, here the Starting 
+Model should be used.</p>
+<p class="auto-style6">The geometry should be in PDB form, and all atoms in each 
+residue should be contiguous.&nbsp; In the unlikely event that they are not, run <a href="reseq.html">
+<tt>RESEQ</tt></a> <a href="pdbout.html"><tt>PDBOUT</tt></a> to make them contiguous.</p>
+<p class="auto-style6">Using an editor, e.g., notepad or vi, edit the PDB file 
+to replace the old atom label with the new atom label. If, as is likely,&nbsp;the 
+number or positions of the hydrogen atoms are now incorrect, use keyword
+<a href="site.html"><TT>SITE</TT></a> if a hydrogen atom is to be added.&nbsp; If a hydrogen atom 
+needs to be deleted, delete it by editing the PDB file.&nbsp; Keyword <tt>SITE</TT> could 
+be used for deleting a hydrogen atom, but it's faster to simply edit it out.</p>
+<p class="auto-style6"><span class="auto-style7"><strong>Notes</strong></span></p>
+<p class="auto-style6">Working with the data in MOPAC format is just as easy as 
+using PDB format, but looking at the geometries using a GUI is more difficult, 
+so whenever possible 
+use the PDB format.</p>
+<p class="auto-style6">Even small changes, such as converting a -COOH or -COO(-) 
+into -CONH2, involve a change in empirical formula and possibly net charge.&nbsp; 
+This means that comparison of heats of formation of the modified structure with 
+that of the original structure cannot be done.</p>
+<p class="auto-style6">Finally, and most important: By only modifying one 
+residue in the original geometry, no issues of ionization are involved; the 
+original ionization states are preserved, except in the edited residue.</p>
+</BODY>
+</HTML>

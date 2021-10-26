@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>Program STATS</TITLE>
+                                                                                                                                                                   </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">PARAM Utility: STATS</h1>
+<p align="left">&nbsp;The STATS utility compares the accuracy of various methods. 
+With the exception of the very early stages of method development, it is useful 
+at all stages.&nbsp; As soon as a new method has reached the stage where it can 
+be compared with existing methods, STATS can be run, and the comparison made. 
+STATS calls the utilities STATISTICS (which does the hard work), and MERGE.</p>
+<h3 align="left">How to use STATS</h3>
+<p align="left">First, run surveys of the appropriate methods.&nbsp; Name each 
+survey after the method, so if AM1 is to be surveyed, the data set used in the 
+survey should be called am1.dat or AM1.dat.&nbsp; <br>
+At the DOS prompt, go to the folder that contains the survey files.&nbsp; These 
+files will have names that end in &quot;.geos&quot;, &quot;.heats&quot;, &quot;.ips&quot;, &quot;.dips&quot;.<br>
+Assuming the surveys available are AM1, PM3, PM6, and new, use the command:<br>
+C:&gt; STATS NEW AM1 PM3 PM6 </p>
+<p align="left">STATS will then write the message:<br>
+<TT>What elements? A blank, or 'All', or symbols of elements 
+to be used,<br>
+or 'NOT' followed by either 'TM' (to exclude transition metals)<br>
+or by symbols of elements that are not to be used.)</TT></p>
+<p align="left">Make the appropriate response.&nbsp; <br>
+If statistics for all compounds of H, C, N, and O, only, are to be compared, 
+then type in &quot;H C N O&quot;.<br>
+If statistics for all compounds are to be compared, then don't type anything or 
+type in the word &quot;ALL&quot;.<br>
+If statistics for all compounds except those containing the halogens are to be 
+compared, then&nbsp; type in &quot;NOT F Cl Br I&quot;<br>
+If statistics for all compounds except those containing any transition metals 
+are to be compared, then&nbsp; type in &quot;NOT TM&quot;</p>
+<p align="left">Press &quot;return&quot;</p>
+<p align="left">Several HTML windows will open - these give details of the 
+statistical analyses. As an example, if PM6 and PM3 are compared for accuracy of 
+prediction of heats of formation for compounds involving H C N and O, only, the 
+table would like like this: </p>
+                                                <h2 align="center">Average 
+                                                Errors in Heat of Formation 
+                                                (kcal/mol )</h2>
+<p align="center">&nbsp;</p>
+<center>
+<table border="1" cellSpacing="0" cellPadding="7" width="638">
+  <tr>
+    <td>&nbsp;&nbsp;&nbsp;&nbsp; Element </td>
+    <td>PM6 </td>
+    <td>No. in set</td>
+    <td>PM3</td>
+    <td>No. in set</td>
+  </tr>
+  <tr>
+    <td>&nbsp; 1 Hydrogen</td>
+    <td><b><font color="#000000">4.42</font></b></td>
+    <td>1123</td>
+    <td><b><font color="#ff0000">5.47</font></b></td>
+    <td>1123</td>
+  </tr>
+  <tr>
+    <td>&nbsp; 6 Carbon</td>
+    <td><b><font color="#000000">4.43</font></b></td>
+    <td>1120</td>
+    <td><b><font color="#ff0000">5.49</font></b></td>
+    <td>1120</td>
+  </tr>
+  <tr>
+    <td>&nbsp; 7 Nitrogen</td>
+    <td><b><font color="#000000">4.42</font></b></td>
+    <td>463</td>
+    <td><b><font color="#ff0000">5.94</font></b></td>
+    <td>463</td>
+  </tr>
+  <tr>
+    <td>&nbsp; 8 Oxygen</td>
+    <td><b><font color="#000000">4.61</font></b></td>
+    <td>626</td>
+    <td><b><font color="#ff0000">5.86</font></b></td>
+    <td>626</td>
+  </tr>
+  <tr>
+    <td>All elements, <br>
+    avoiding double counting</td>
+    <td><b><font color="#000000">4.63</font></b></td>
+    <td>1154</td>
+    <td><b><font color="#ff0000">5.60</font></b></td>
+    <td>1154</td>
+  </tr>
+  <tr>
+    <td>Same as above, but<br>
+    with double counting </td>
+    <td><b><font color="#000000">4.46</font></b></td>
+    <td>3332</td>
+    <td><b><font color="#ff0000">5.62</font></b></td>
+    <td>3332</td>
+  </tr>
+</table>
+</center>
+<p align="left">&nbsp;</p>
+                                                <p align="left">The color coding 
+                                                allows relative accuracy of 
+                                                methods to be compared. The 
+                                                first method in the list, here 
+                                                PM6, is used as the standard.&nbsp; 
+                                                1154 compounds involving oxygen 
+                                                (element 8) were used.&nbsp; For 
+                                                PM6, the average unsigned error 
+                                                was 4.61 kcal/mol.&nbsp; For 
+                                                PM3, the average was 5.86 
+                                                kcal/mol.&nbsp; In other words, 
+                                                PM3 was not as accurate as PM6.&nbsp; 
+                                                Where the accuracy is lower, the 
+                                                number would be printed in <b>
+                                                <font color="#FF0000">red</font></b>, 
+                                                where it is higher, the number 
+                                                would be in <b>
+                                                <font color="#0000FF">blue</font></b>.</p>
+<p align="left">The last two lines in the table summarize the statistics.&nbsp; 
+&quot;All elements, avoiding double counting&quot; counts each system once only. Note that 
+it is possible for the average unsigned error to exceed all of the average 
+unsigned errors of the individual elements.&nbsp; </p>
+<p align="left">&quot;Same as above, but with double counting&quot; counts each compound 
+that contains hydrogen plus each that contains carbon, etc.&nbsp; In other 
+words, if the statistics for H, C, N, and O were averaged. </p>
+<p align="left">Up to four methods can be compared in any one run.&nbsp; 
+Obviously the lowest number of methods that can be compared is two, but if only 
+one method is used, a set of statistics can still be generated.</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+                                                </BODY>
+</HTML>

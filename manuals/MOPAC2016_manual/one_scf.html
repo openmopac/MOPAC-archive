@@ -1,0 +1,14 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>1SCF </TITLE>
+                                                                                                                </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center"><A NAME="SECTION00737000000000000000"><TT>1SCF</TT> </A></h1>
+<P>When users want to examine the results of a single SCF calculation of a geometry, <TT>1SCF</TT> should be used. <TT>1SCF</TT> can be used in conjunction with <TT>RESTART</TT>, in which case a single SCF calculation will be done, and the results printed. </P>
+<P>When <TT>1SCF</TT> is used on its own (that is, <TT>RESTART</TT> is not also used), then derivatives will only be calculated if <TT>GRAD</TT> is also specified. </P>
+<TT><P>1SCF</TT> is helpful in a learning situation. MOPAC normally performs many SCF calculations, and in order to minimize output when following the working of the SCF calculation, <TT>1SCF</TT> is very useful. See <A HREF="SCF_calcn.html#1scf">An SCF Calculation</A> for a worked example of an SCF. <A NAME="BM3621">&nbsp;</A> </P>
+<P>When calculating the energies required to form electronic excited states, to avoid geometry reorganization, <TT>1SCF</TT> must be used (see <A HREF="meci_Franck_Condon.html#FC">Frank Condon Considerations</A>). This allows the vertical transition energies to be calculated (the Franck-Condon transitions). </P>
+</BODY>
+</HTML>

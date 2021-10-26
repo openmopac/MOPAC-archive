@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<TITLE>Program MERGE</TITLE>
+                                                                                                                                                                   </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">PARAM Utilities: Program MERGE</h1>
+<p align="left">&nbsp;</p>
+<p align="left">MERGE combines survey tables of heats of formation, dipoles, 
+etc., for various methods, to create HTML documents suitable for posting on the 
+internet.&nbsp; The files created by MERGE allow easy comparison of different 
+methods. MERGE should only be run when the appropriate survey tables exist.&nbsp; 
+That is, MERGE should be run after:</p>
+<p align="left">(a) Method development is complete, or almost complete.<br>
+(b) Surveys have been done of the new method and appropriate older methods</p>
+<h3 align="left">How to run MERGE</h3>
+<p align="left">First, run surveys of the appropriate methods.&nbsp; Name each 
+survey after the method, so if AM1 is to be surveyed, the data set used in the 
+survey should be called am1.dat or AM1.dat.&nbsp; <br>
+At the DOS prompt, go to the folder that contains the survey files.&nbsp; These 
+files will have names that end in &quot;.geos&quot;, &quot;.heats&quot;, &quot;.ips&quot;, &quot;.dips&quot;.<br>
+Assuming the surveys available are AM1, PM3, PM6, and new, use the command:<br>
+C:&gt; MERGE AM1 PM3 PM6 NEW</p>
+<p align="left">MERGE is very forgiving - if some data are missing, it will fill 
+the appropriate cell with a space or a &quot;-&quot; symbol.</p>
+<p align="left">References will be formatted to make them easy to read.</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+                                                </BODY>
+</HTML>

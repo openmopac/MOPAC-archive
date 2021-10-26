@@ -1,0 +1,240 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE>SITE</TITLE>
+
+</HEAD>
+<body bgcolor=white>
+<H2 align="center">
+<TT>&nbsp;SITE=(<em>text</em>)</TT> 
+</H2>
+<p>Quite often, after hydrogen atoms have been added to a protein, the 
+formal, i.e., Lewis structure, ionization state of various sites are not what is wanted.&nbsp; This fault can be 
+corrected by setting the ionization 
+state of various sites in a protein using <TT>SITE=(</tt><i>text</i><tt>)</TT>.&nbsp; 
+This adds or removed individual hydrogen atoms; because of this the job cannot 
+continue.&nbsp;&nbsp; The job will be stopped after the <tt>SITE</tt> operation has been performed, because <tt>SITE</tt> 
+changes the formula, so adding <tt><a href="zero_scf.html">0SCF</a></tt> is not necessary.</p>
+<p> <tt>SITE</tt> can also be used to add hydrogen atoms to carbons.</p>
+<p>By default, the resulting structure will be resequenced.&nbsp; If this is not wanted, add 
+<tt><a href="noreseq.html">NORESEQ</a></tt>. </p>
+<p>Four methods of specifying sites to be ionized or deionized are supported. Method <strong>A</strong> is 
+recommended when starting with a new protein.&nbsp; Method <strong>B</strong> is 
+very specific, but writing the keyword requires the most work; method <strong>C</strong> 
+is less specific but the keyword is easy to write; method <strong>D</strong> 
+affects all suitable residues, and its keyword is easy to write.&nbsp; Use 
+option <strong>A</strong> first, then, if necessary and if possible, use <strong>C</strong>, 
+and only when specific atoms are involved use
+<strong>B</strong>. Option<strong> D</strong> is sometimes useful in identifying 
+all ionizable sites.</p>
+<p>&nbsp;</p>
+<p><strong>(A) </strong>&nbsp;<strong>Adding Salt Bridges.</strong>
+<a name="Salt bridges">Salt bridges</a> 
+can be added using <tt>SITE=(SALT[=n.n])</tt>. All  pairs of potentially charged 
+sites (residues only) within about 4 &Aring;ngstroms, or n.n &Aring;ngstroms if &quot;=n.nn&quot; is present, 
+will be created.&nbsp; The default of 4.0 Angstroms was chosen to conform with 
+Barlow, D. J. and Thornton, J. M. (1983) J. Mol. Biol., 168, 867–885.&nbsp; The 
+distance is &quot;about 4&nbsp;&Aring;ngstroms&quot; because the salt bridges are 
+calculated from the Lewis structure, which might put the charge on a -COO(-) 
+group on the wrong oxygen, or on a guanidinium on the wrong nitrogen. To allow 
+for this, the cutoff is increased by 2.0&nbsp;&Aring;ngstroms.&nbsp;&nbsp; If a charged site already exists it will not be 
+considered as a potential charged site.&nbsp; This option can be 
+used with <a href="ADD-H.html"><tt>ADD-H</tt></a>, for example as &quot;<tt><a href="html.html">HTML</a> ADD-H 
+SITE=(SALT)</tt>&quot;&nbsp; Here, <tt>ADD-H</tt> 
+will generate a system with all sites neutral, then <tt>SITE=(SALT)</tt>will 
+create salt bridges using (N<sub>&zeta;</sub> of Lys, N<sub>&epsilon;</sub>, N<sub>&eta;1</sub> 
+or N<sub>&eta;2</sub> of an Arg, N<sub>&delta;1</sub> or N<sub>&epsilon;2</sub> of a 
+His, or a terminal -NH<sub>2</sub> group) and a carboxylic acid group.&nbsp; 
+This is equivalent to the definition used in &quot;Hydrogen bonds and salt bridges across 
+protein–protein interfaces&quot;, Dong Xu, Chung-Jung Tsai and Ruth Nussinov, Protein 
+Engineering vol.10 no.9 pp.999–1012, 1997.&nbsp; Note that sulfate, phosphate and other ionizable sites, 
+including those on non-peptide substrates are not considered, when this 
+option is used.</p>
+<p>Sometimes <tt>SITE=(SALT)</tt>.makes a mistake, particularly if metal atoms 
+are involved.&nbsp; If this happens, use additional <tt>SITE</tt> keyword(s) to 
+add or remove hydrogen atoms as necessary.&nbsp; When this is done, put the <tt>SITE=(SALT)</tt>keyword 
+after all the other <tt>SITE </tt>keyword(s).</p>
+<p><strong>(B) Modifying specific residues. </strong>&nbsp;Individual residues to be ionized or de-ionized. In 
+this format, <em>text</em> has the form &quot;Annn(q1[q2])[,Bmmm(q3[q4])]...&quot; where &quot;A&quot; is the chain 
+letter, &quot;nnn&quot; is the residue number, and &quot;q1&quot; and &quot;q2&quot; are the charges, either +, 0, or &ndash;.&nbsp; 
+If residue 123 in chain B is an Arg, then, to ionize it, use <tt>SITE=(B123(+))</tt>. 
+If the first residue in that chain, i.e., the -NH<sub>2</sub> end, is also to be ionized, then use <tt>SITE=(B123(+),B1(+))</tt>. 
+If a carboxylic acid group, e.g. an Asp at residue site D234, should also be 
+ionized, then use&nbsp;<tt>SITE=(B123(+),B1(+),D234(&ndash;))</tt>. A 
+<a href="salt_bridges.html">salt bridge</a> can be 
+created using a construction of the form <tt>SITE=(A12(+),B34(-)). </tt>To de-ionize a 
+site use charge &quot;(0)&quot; thus if the sites just described were ionized, they could 
+then be de-ionized by using <tt>SITE=(B123(0),B1(0),D234(0)).</TT> If a residue 
+has two ionizable sites, such as a Lys at the start of a chain, or Asp at the 
+end of a chain, use two charges, to indicate the ionization state of each site, 
+e.g., <tt>SITE=(B1(++),B100(--))</tt>. No specific 
+tautomer is defined - if it's not the one wanted, use method <strong>A</strong>.&nbsp; An 
+alternative would be to make the change outside MOPAC, to do this, edit the 
+resulting &lt;file&gt;.out, &lt;file&gt;.arc, or &lt;file&gt;.pdb to make a new data set. 
+This should work for sulfate and phosphate groups, but is easily confused by 
+hetero-groups, e.g., ADP or ATP.&nbsp; </p>
+<p><strong>(C) Modifying specific atoms</strong>.&nbsp; 
+</p>
+<p><strong>For oxygen and nitrogen only:</strong> This option should only be used when option <strong>B</strong> cannot be used, 
+because it requires more effort to define the atom involved.&nbsp; Individual oxygen and nitrogen atoms can be ionized or neutralized by adding or 
+removing hydrogen atoms.&nbsp; This method is completely general in that it can 
+be used for all ionizable oxygen and nitrogen atoms, and completely 
+specific in that the only atom affected is the one specified.&nbsp; To achieve 
+this generality, this option requires the atom to be specified in a very precise way.&nbsp; 
+The format for this option is: <tt>SITE=("</tt><em>text</em><tt>"(n))</tt> where <tt><em>text</em></tt> is the PDB name of 
+the atom, this is given in PDB files in columns 13 to 26 for an atom.&nbsp; An 
+alternative is to use the JSmol format.&nbsp; With JSmol, the label starts with 
+a &quot;[&quot; and ends at the character before &quot; #&quot;.&nbsp; As with 
+the PDB format, spaces are not important when the 
+JSmol format is used, i.e., <tt>SITE=(&quot;[LYS]4:A.NZ&quot;(+),&quot;[ASP] 43: A&nbsp; 
+.OD2&quot;(0))</tt>.&nbsp;&nbsp; As with option B, the charge, n, can be 
++ or 0 (for nitrogen) and +, 0 or &ndash; (for oxygen).&nbsp; 
+If <tt>n</tt>=1 for the nitrogen atom in pyridine, then the nitrogen would become a 
+cation, and the pyridine would become pyridinium.&nbsp; If <tt>n</tt>=1 for methylamine, 
+the result would be [CH<sub>3</sub>-NH<sub>3</sub>]<sup>+</sup>, if <tt>n</tt>=0 for a 
+positively-charged nitrogen atom, then that atom would lose a hydrogen to become 
+neutral. If <tt>n</tt>= &ndash; for an oxygen in acetic acid, the result would be acetate.&nbsp; 
+If <tt>n</tt>=0 for a negatively-charged oxygen atom in a compound, the result would be a hydroxy group. 
+To convert a hydroxyl group bonded to an atom into a water molecule, use &quot;+&quot; for 
+the charge on the oxygen atom.&nbsp; &nbsp;</p>
+<p>This option works for any oxygen or nitrogen atom, including those in sulfate 
+and phosphate, etc.</p>
+<p>If the PDB label for the atom is not unique, the first such label will be 
+used.&nbsp; To avoid this potential error, make the appropriate atom's label 
+unique.&nbsp; Spaces are not important, but using them makes it easier to read 
+the atom label.</p>
+<p>&nbsp;Examples are: <tt>SITE=(&quot;OG1 THR G 166&quot;(0))</tt> and <tt>SITE=(&quot;OG 
+SER G 195&quot;(0),&quot;OD2 ASP G 194&quot;(-),&quot;[PO4]1157:B.O8&quot;(-))</tt>. </p>
+<p>Wildcards are allowed for the residue name and for the chain letter.&nbsp; 
+When a wildcard is used, a letter is replaced by an asterisk, &quot;*&quot;, thus:<tt> SITE=(&quot;OG 
+*** G 195&quot;(0),&quot;OD2 *** * 194&quot;(-),&quot;[***]1157:*.O8&quot;(-))</tt>. 
+The first occurrence that matches will be used.&nbsp; Using wildcards allows similar systems to be modified easily, for example if 
+8-Oxo-guanine monophosphate and Guanine monophosphate are present, and the N7 
+has to be protonated or deprotonated (steps in converting from one to the 
+other), and the residue names are 8OG and GMP, and they have the same residue 
+number, then rather than use the full name, wildcards can be used, thus <tt>SITE=(&quot;N7&nbsp; 
+*** * 1157&quot;(0)) </TT>or<tt> SITE=(&quot;[***]1157:*.N7&quot;(+)).</tt></p>
+<p>If an attempt is made to modify an atom that can't be modified, e.g., to make 
+the 
+oxygen atom in CH<sub>3</sub>-O-CH<sub>3</sub> into an anion, an error message will be 
+generated, but be aware that not all possible cases have been defined. </p>
+<p><strong>For carbon only:</strong> Sometimes hydrogenation puts the wrong 
+number of hydrogen atoms on a carbon atom.&nbsp; To correct that, the option is 
+provided to change the number of hydrogen atoms.&nbsp; For example, if only two 
+hydrogen atoms are put on a methyl carbon, then a third hydrogen atom must be 
+added to make a correct methyl group.&nbsp; 
+This operation can be done using the <tt>SITE</tt> keywords of the type 
+<tt>SITE=("[9G1]301:A.C07"(+).</tt> If two or three hydrogen atoms are to be 
+added or deleted, then put the characters &quot;2&quot; or &quot;3&quot; after the sign symbol.&nbsp; The format is similar to that for oxygen and nitrogen in the previous 
+section, but after the symbols &quot;+&quot;, &quot;0&quot;, and &quot;-&quot;, an optional &quot;2&quot; or &quot;3&quot; can be 
+supplied.&nbsp; &nbsp;</p>
+<p>These three formats, <strong>A</strong>,<strong> B</strong>, and <strong>C</strong> can be combined, 
+although if <tt>SALT</tt> is used, it should be first, because it automatically 
+constructs salt bridges.&nbsp; A simpler way to define 
+ionization states is to use two or more <tt>SITE </tt>keywords.&nbsp; For 
+example, if all common salt bridges are wanted and one or more atoms are to be 
+protonated or deprotonated, then the two keywords <tt>SITE=(SALT)</tt> and<tt> SITE=(&quot;OG1 
+THR G 166&quot;(0),etc.)</tt> could be used.&nbsp; If a large number of changes 
+need to be made, use two or more <tt>SITE</tt> commands.</p>
+<p><strong>(D) Modifying all specified ionizable groups.</strong> This format applies to all residues with the specified groups.&nbsp; <i>
+Text</i> in this case can be one or more of the entries in the table below.&nbsp; 
+Entries should be separated by a comma or by a semicolon.&nbsp;</p>
+<p>To neutralize all sites in a protein, use <TT>SITE=(COOH,NH2,ARG,HIS)</TT>.&nbsp; To 
+ionize all sites, use <TT>SITE=(COO,NH3,ARG(+),HIS(+),SO4,PO4)</TT> or, to avoid 
+extra typing, use <tt>SITE=(IONIZE)</tt>. Note: This option is equivalent to <TT>SITE=(COO,NH3,ARG(+),SO4,PO4),</TT> 
+i.e., it will not automatically ionize His.&nbsp;&nbsp; Serine, threonine, 
+tyrosine, and the NH<sub>2</sub> side-chain of asparagine 
+cannot be modified using this format.&nbsp; The SO4 option will delete hydrogen 
+atoms attached to an oxygen on SO<sub>4</sub>, PO4 will delete a hydrogen atom 
+attached to an oxygen on PO<sub>4</sub>, if one exists, to give the mono-anion, 
+i.e., CH<sub>3</sub>-O-P(OH)<sub>2</sub>O would become ]CH<sub>3</sub>-O-P(OH)O<sub>2</sub>]<sup>-</sup>, 
+and H<sub>3</sub>PO<sub>4</sub> would become [H<sub>2</sub>PO<sub>4</sub>]<sup>-</sup>.&nbsp; No specific 
+tautomer is defined - if it's not the one wanted, make the change using method
+<strong>C</strong>.&nbsp;&nbsp;&nbsp; The pKa of H<sub>3</sub>PO<sub>4</sub> is 
+2.12, of [H<sub>2</sub>PO<sub>4</sub>]<sup>-</sup> = 7.21, and of [HPO<sub>4</sub>]<sup>=</sup> 
+= 12.67.</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-top:1.5pt solid green; border-bottom:1.5pt solid green; border-left-style:none; border-right-style:none" fpstyle="1,011111100">
+    <tr>
+      <td style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">Text</td>
+      <td style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+	  &nbsp;</td>
+      <td style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">Effect</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">COOH</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Add a hydrogen atom to -COO groups</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">COO</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Remove the hydrogen atom from -COOH groups</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">NH3</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">
+      <p align="left">Add a hydrogen atom to -NH<sub>2</sub> groups (except in 
+	  -CO-NH<sub>2</sub>)</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">NH2</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Remove a hydrogen atom from 
+	  -NH<sub>3</sub> groups</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">Arg(+)</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Add a hydrogen atom to -Arg-</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">Arg</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Remove a hydrogen atom from -Arg(+)-</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">His(+)</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Add a hydrogen atom to -His-</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">His</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Remove a hydrogen atom from -His(+)-</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">SO4</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Remove any hydrogen atoms from 
+	  a sulfate group</td>
+    </tr>
+    <tr>
+      <td style="border-style: none" valign="top">PO4</td>
+      <td style="border-style: none" valign="top">&nbsp;</td>
+      <td style="border-style: none" valign="top">Remove any hydrogen atoms from 
+	  a phosphate group</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>Option <strong>D</strong> cannot be used with options <b>A, B</b>, or <strong>C</strong>.&nbsp;
+Option <strong>D</strong> can be useful during preliminary work on proteins, to 
+identify all ionizable sites.</p>
+<h3>Use of <TT>SITE</TT> to:</h3>
+<ul>
+	<li>Move a hydrogen atom in -COOH from one oxygen to the other.&nbsp; To 
+	move a hydrogen atom on OD1 in Asp 100 to OD2, use <tt>SITE=(&quot;OD1 ASP A 
+	100&quot;(-),&quot;OD2 ASP A 100&quot;(0))</tt></li>
+	<li>Move a hydrogen atom from&nbsp; ND1 to NE2 in histidine.&nbsp; To move a 
+	hydrogen atom on ND1 in His 100 to NE2, use <tt>SITE=(&quot;ND1 HIS A 
+	100&quot;(0),&quot;NE2 HIS A 100&quot;(+))</tt></li>
+</ul>
+<p>see also&nbsp;
+<a href="atom_numbers.html">atom numbers</a>, <a href="ADD-H.html"><tt>ADD-H</tt></a></p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

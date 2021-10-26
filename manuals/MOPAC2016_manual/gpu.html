@@ -1,0 +1,670 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>GPU </TITLE>
+<style type="text/css">.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: left;
+	color: #FF0000;
+}
+.auto-style3 {
+	text-align: left;
+	color: #000080;
+}
+.auto-style4 {
+	text-align: center;
+}
+.auto-style5 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-style: none;
+	border-color: inherit;
+	border-width: medium;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style6 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	white-space: normal;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: solid;
+	border-top-color: inherit;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	border-bottom-width: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style7 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: left;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-style: none;
+	border-color: inherit;
+	border-width: medium;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style8 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: solid;
+	border-top-color: inherit;
+	border-top-width: 1px;
+	border-bottom-style: none;
+	border-bottom-color: inherit;
+	border-bottom-width: medium;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style9 {
+	border-collapse: collapse;
+}
+.auto-style10 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: left;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: solid;
+	border-top-color: inherit;
+	border-top-width: 1px;
+	border-bottom-style: none;
+	border-bottom-color: inherit;
+	border-bottom-width: medium;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style11 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: solid;
+	border-top-color: inherit;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	border-bottom-width: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style12 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: left;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: none;
+	border-top-color: inherit;
+	border-top-width: medium;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	border-bottom-width: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style13 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: none;
+	border-top-color: inherit;
+	border-top-width: medium;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	border-bottom-width: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style14 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: left;
+	vertical-align: middle;
+	white-space: nowrap;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: solid;
+	border-top-color: inherit;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	border-bottom-width: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style15 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: left;
+	vertical-align: middle;
+	white-space: normal;
+	border-left-style: none;
+	border-left-color: inherit;
+	border-left-width: medium;
+	border-right-style: none;
+	border-right-color: inherit;
+	border-right-width: medium;
+	border-top-style: none;
+	border-top-color: inherit;
+	border-top-width: medium;
+	border-bottom-style: solid;
+	border-bottom-color: inherit;
+	border-bottom-width: 1px;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style16 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	white-space: normal;
+	border-style: none;
+	border-color: inherit;
+	border-width: medium;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+.auto-style17 {
+	color: black;
+	font-size: 11.0pt;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: none;
+	font-family: Calibri, sans-serif;
+	text-align: left;
+	vertical-align: middle;
+	white-space: normal;
+	border-style: none;
+	border-color: inherit;
+	border-width: medium;
+	padding-left: 1px;
+	padding-right: 1px;
+	padding-top: 1px;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+GPU
+</h1>
+<p class="auto-style1">
+<a href="http://www.quantum-chem.pro.br/">Prof. Rocha's group</a> has modified MOPAC so that it can
+<a href="http://pubs.acs.org/doi/abs/10.1021/ct3004645">use a GPU chip</a>.&nbsp; 
+Versions of MOPAC that labeled &quot;CPU+GPU&quot; will 
+detect a GPU chip automatically.&nbsp; Read
+<a href="Requirements_for_GPU_MOPAC.html">Requirements for GPU MOPAC</a> before 
+installing it.&nbsp; If the GPU chip is not to be used, add keyword <a href="nogpu.html"><tt>NOGPU</tt></a>.&nbsp; 
+Using a GPU chip will not accelerate jobs that use <a href="mozyme.html"><tt>MOZYME</tt></a>. </p>
+<p class="auto-style1">
+&nbsp;</p>
+<p class="auto-style1">
+Versions of MOPAC that can use a GPU chip are:</p>
+<ul>
+	<li>
+	<p class="auto-style3">MOPAC2016 for 64 bit Windows 7</p>
+	</li>
+	<li>
+	<p class="auto-style3">MOPAC2016 for 32 bit Windows 7</p>
+	</li>
+	<li>
+	<p class="auto-style3">MOPAC2016 for 64 bit Linux</p>
+	</li>
+</ul>
+<p class="auto-style1">Versions of MOPAC that cannot take advantage of a GPU 
+chip are:</p>
+<ul>
+	<li>
+	<p class="auto-style2">MOPAC2016 with a small run-time Window, both 32-bit 
+	and 64-bit</p>
+	</li>
+	<li>
+	<p class="auto-style2">MOPAC2012 for 32 bit Linux</p>
+	</li>
+	<li>
+	<p class="auto-style2">MOPAC2016 for the Macintosh</p>
+	</li>
+</ul>
+<p class="auto-style1">Download new
+<a href="../Download_MOPAC_Executable_Step2.html">executables</a>.</p>
+<p class="auto-style1">Small jobs are slowed down when a GPU chip is used, but 
+large jobs run faster, for this reason small jobs are run with the GPU disabled.&nbsp; The following 
+two Tables gives examples of the 
+performance that can be expected when a GPU chip is present.&nbsp; These 
+examples are simple organic systems, but the same performance can be expected 
+when any system of a comparable size is used.&nbsp; These simple organic systems 
+could also be run using MOZYME; they were chosen here purely to illustrate the 
+effect of using the GPU chip. The practical upper limit is about 5,000 atoms or 
+about 15,000 orbitals on a machine with 16Gb of RAM.</p>
+<p class="auto-style4">Table I Timing Tests (<a href="../GPU_Timing_Tests.zip">data-sets</a>)</p>
+<p class="auto-style4">
+<table border="0" cellpadding="0" cellspacing="0" class="auto-style9" style="width: 900pt" width="1198" align="center">
+	<colgroup>
+		<col style="mso-width-source:userset;mso-width-alt:7058;width:145pt" width="193">
+		<col style="mso-width-source:userset;mso-width-alt:3803;width:78pt" width="104">
+		<col style="width:48pt" width="64">
+		<col style="mso-width-source:userset;mso-width-alt:4717;width:97pt" width="129">
+		<col style="mso-width-source:userset;mso-width-alt:3803;width:78pt" width="104">
+		<col style="mso-width-source:userset;mso-width-alt:5632;width:116pt" width="154">
+		<col style="width:48pt" width="64">
+		<col style="mso-width-source:userset;mso-width-alt:4608;width:95pt" width="126">
+		<col style="mso-width-source:userset;mso-width-alt:3547;width:73pt" width="97">
+		<col style="mso-width-source:userset;mso-width-alt:5961;width:122pt" width="163">
+	</colgroup>
+	<tr height="44" style="mso-height-source:userset;height:33.0pt">
+		<td class="auto-style11" height="44" style="height: 33.0pt; width: 145pt" width="193">
+		Chemical name</td>
+		<td class="auto-style11" style="width: 78pt" width="104">No. of Atoms</td>
+		<td class="auto-style6" style="width: 48pt" width="64">Windows <br>Time 
+		(m)</td>
+		<td class="auto-style6" style="width: 97pt" width="129">Windows Time<br>
+		<span style="mso-spacerun:yes">&nbsp;</span>Multi-threading</td>
+		<td class="auto-style6" style="width: 78pt" width="104">Windows Time<br>
+		<span style="mso-spacerun:yes">&nbsp;</span>GPU</td>
+		<td class="auto-style6" style="width: 116pt" width="154">Windows Time<br>
+		<span style="mso-spacerun:yes">&nbsp;</span>Multi-threading &amp; GPU</td>
+		<td class="auto-style6" style="width: 48pt" width="64">Linux <br>Time<span style="mso-spacerun:yes">&nbsp;</span></td>
+		<td class="auto-style6" style="width: 95pt" width="126">Linux Time<br>
+		<span style="mso-spacerun:yes">&nbsp;</span>Multi-threading</td>
+		<td class="auto-style6" style="width: 73pt" width="97">Linux Time<br>
+		<span style="mso-spacerun:yes">&nbsp;</span>GPU</td>
+		<td class="auto-style6" style="width: 122pt" width="163">Linux Time<br>
+		<span style="mso-spacerun:yes">&nbsp;</span>Multi-threading &amp; GPU</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style10" height="20" style="height: 15.0pt">Crambin</td>
+		<td class="auto-style8">637</td>
+		<td class="auto-style8">0.70</td>
+		<td class="auto-style8">0.20</td>
+		<td class="auto-style8">0.50</td>
+		<td class="auto-style8">0.20</td>
+		<td class="auto-style8">0.50</td>
+		<td class="auto-style8">0.20</td>
+		<td class="auto-style8">0.40</td>
+		<td class="auto-style8">0.20</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">Pancreatic 
+		trypsin inhibitor</td>
+		<td class="auto-style5">1455</td>
+		<td class="auto-style5">9.80</td>
+		<td class="auto-style5">3.10</td>
+		<td class="auto-style5">9.50</td>
+		<td class="auto-style5">3.30</td>
+		<td class="auto-style5">9.80</td>
+		<td class="auto-style5">3.10</td>
+		<td class="auto-style5">6.00</td>
+		<td class="auto-style5">2.10</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">Barnase</td>
+		<td class="auto-style5">2066</td>
+		<td class="auto-style5">37.30</td>
+		<td class="auto-style5">10.50</td>
+		<td class="auto-style5">31.50</td>
+		<td class="auto-style5">9.50</td>
+		<td class="auto-style5">25.30</td>
+		<td class="auto-style5">7.50</td>
+		<td class="auto-style5">14.20</td>
+		<td class="auto-style5">4.30</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">
+		Bacteriorhodopsin</td>
+		<td class="auto-style5">3352</td>
+		<td class="auto-style5">55.30</td>
+		<td class="auto-style5">16.50</td>
+		<td class="auto-style5">39.50</td>
+		<td class="auto-style5">13.40</td>
+		<td class="auto-style5">52.70</td>
+		<td class="auto-style5">16.10</td>
+		<td class="auto-style5">24.30</td>
+		<td class="auto-style5">8.90</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">Papain</td>
+		<td class="auto-style5">3996</td>
+		<td class="auto-style5">143.20</td>
+		<td class="auto-style5">42.00</td>
+		<td class="auto-style5">111.30</td>
+		<td class="auto-style5">35.00</td>
+		<td class="auto-style5">139.30</td>
+		<td class="auto-style5">40.00</td>
+		<td class="auto-style5">67.10</td>
+		<td class="auto-style5">21.10</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">Outer surface 
+		protein</td>
+		<td class="auto-style5">4934</td>
+		<td class="auto-style5">141.20</td>
+		<td class="auto-style5">42.50</td>
+		<td class="auto-style5">84.10</td>
+		<td class="auto-style5">29.00</td>
+		<td class="auto-style5">125.00</td>
+		<td class="auto-style5">38.00</td>
+		<td class="auto-style5">50.80</td>
+		<td class="auto-style5">19.50</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style12" height="20" style="height: 15.0pt"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+		<td class="auto-style13"></td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style14" height="20" style="height: 15.0pt">Increase in 
+		speed ratios</td>
+		<td class="auto-style11">No. of Atoms</td>
+		<td class="auto-style11">Windows</td>
+		<td class="auto-style11">Multi-threading</td>
+		<td class="auto-style11">GPU</td>
+		<td class="auto-style11">Multi-threading &amp;GPU</td>
+		<td class="auto-style11">Linux</td>
+		<td class="auto-style11">Multi-threading</td>
+		<td class="auto-style11">GPU</td>
+		<td class="auto-style11">Multi-threading &amp; GPU</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style10" height="20" style="height: 15.0pt">Crambin</td>
+		<td class="auto-style8">637</td>
+		<td class="auto-style8">1.00</td>
+		<td class="auto-style8">3.50</td>
+		<td class="auto-style8">1.40</td>
+		<td class="auto-style8">3.50</td>
+		<td class="auto-style8">1.00</td>
+		<td class="auto-style8">2.50</td>
+		<td class="auto-style8">1.25</td>
+		<td class="auto-style8">2.50</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">Pancreatic 
+		trypsin inhibitor</td>
+		<td class="auto-style5">1455</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.16</td>
+		<td class="auto-style5">1.03</td>
+		<td class="auto-style5">2.97</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.16</td>
+		<td class="auto-style5">1.63</td>
+		<td class="auto-style5">4.67</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">Barnase</td>
+		<td class="auto-style5">2066</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.55</td>
+		<td class="auto-style5">1.18</td>
+		<td class="auto-style5">3.93</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.37</td>
+		<td class="auto-style5">1.78</td>
+		<td class="auto-style5">5.88</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">
+		Bacteriorhodopsin</td>
+		<td class="auto-style5">3352</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.35</td>
+		<td class="auto-style5">1.40</td>
+		<td class="auto-style5">4.13</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.27</td>
+		<td class="auto-style5">2.17</td>
+		<td class="auto-style5">5.92</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt">Papain</td>
+		<td class="auto-style5">3996</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.41</td>
+		<td class="auto-style5">1.29</td>
+		<td class="auto-style5">4.09</td>
+		<td class="auto-style5">1.00</td>
+		<td class="auto-style5">3.48</td>
+		<td class="auto-style5">2.08</td>
+		<td class="auto-style5">6.60</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style12" height="20" style="height: 15.0pt">Outer 
+		surface protein</td>
+		<td class="auto-style13">4934</td>
+		<td class="auto-style13">1.00</td>
+		<td class="auto-style13">3.32</td>
+		<td class="auto-style13">1.68</td>
+		<td class="auto-style13">4.87</td>
+		<td class="auto-style13">1.00</td>
+		<td class="auto-style13">3.29</td>
+		<td class="auto-style13">2.46</td>
+		<td class="auto-style13">6.41</td>
+	</tr>
+</table>
+</p>
+<p class="auto-style4">(Jobs run on a machine running Windows 7 Pro and Ubuntu 
+Linux, with 16Gb of RAM, 
+four 3.6GHz cores, each with two threads, and two Nvidia K20c GPU.&nbsp; At run 
+time, a maximum of four threads and one GPU chip were used.)</p>
+<p class="auto-style4">Table II Timing Tests </p>
+<p class="auto-style4">
+<table border="0" cellpadding="0" cellspacing="0" class="auto-style9" align="center">
+	<colgroup>
+		<col style="mso-width-source:userset;mso-width-alt:7058;">
+		<col style="mso-width-source:userset;mso-width-alt:4608;">
+		<col style="mso-width-source:userset;mso-width-alt:5961;width:122pt" width="163">
+	</colgroup>
+	<tr height="44" style="mso-height-source:userset;height:33.0pt">
+		<td class="auto-style6" height="44" style="height: 33.0pt; width: 188px">
+		Chemical name</td>
+		<td class="auto-style6" style="width: 238px">Linux Time<br>
+		<span style="mso-spacerun:yes">&nbsp;CPU</span></td>
+		<td class="auto-style6" style="width: 284px">Linux Time
+		&nbsp;GPU with boost on</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style17" height="20" style="height: 15.0pt; width: 188px;">Pancreatic 
+		trypsin inhibitor</td>
+		<td class="auto-style16" style="width: 238px">4.61</td>
+		<td class="auto-style16" style="width: 284px">2.72</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style17" height="20" style="height: 15.0pt; width: 188px;">Barnase</td>
+		<td class="auto-style16" style="width: 238px">9.76</td>
+		<td class="auto-style16" style="width: 284px">4.83</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style17" height="20" style="height: 15.0pt; width: 188px;">
+		Bacteriorhodopsin</td>
+		<td class="auto-style16" style="width: 238px">29.37</td>
+		<td class="auto-style16" style="width: 284px">9.54</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style17" height="20" style="height: 15.0pt; width: 188px;">Papain</td>
+		<td class="auto-style16" style="width: 238px">58.18</td>
+		<td class="auto-style16" style="width: 284px">22.58</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style17" height="20" style="height: 15.0pt; width: 188px;">Outer surface 
+		protein</td>
+		<td class="auto-style16" style="width: 238px">68.48</td>
+		<td class="auto-style16" style="width: 284px">21.71</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style15" height="20" style="height: 15.0pt; width: 188px;"></td>
+		<td class="auto-style13" style="width: 238px"></td>
+		<td class="auto-style13" style="width: 284px"></td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style14" height="20" style="height: 15.0pt; width: 188px;">Increase in 
+		speed ratios</td>
+		<td class="auto-style11" style="width: 238px">CPU</td>
+		<td class="auto-style11" style="width: 284px">&nbsp;GPU</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt; width: 188px;">Pancreatic 
+		trypsin inhibitor</td>
+		<td class="auto-style5" style="width: 238px">1.00</td>
+		<td class="auto-style5" style="width: 284px">1.70</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt; width: 188px;">Barnase</td>
+		<td class="auto-style5" style="width: 238px">1.00</td>
+		<td class="auto-style5" style="width: 284px">2.02</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt; width: 188px;">
+		Bacteriorhodopsin</td>
+		<td class="auto-style5" style="width: 238px">1.00</td>
+		<td class="auto-style5" style="width: 284px">3.08</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style7" height="20" style="height: 15.0pt; width: 188px;">Papain</td>
+		<td class="auto-style5" style="width: 238px">1.00</td>
+		<td class="auto-style5" style="width: 284px">2.58</td>
+	</tr>
+	<tr height="20" style="height:15.0pt">
+		<td class="auto-style12" height="20" style="height: 15.0pt; width: 188px;">Outer 
+		surface protein</td>
+		<td class="auto-style13" style="width: 238px">1.00</td>
+		<td class="auto-style13" style="width: 284px">3.15</td>
+	</tr>
+</table>
+</p>
+<p class="auto-style4">(Jobs run on a Ubuntu 12.04 Linux machine with 16Gb of RAM, 
+using four 2.00GHz cores, and an Nvidia K40 GPU. </p>
+<p class="auto-style1">These increases in speed are compared to MOPAC with the 
+Math Kernel Library.&nbsp; To compare with the legacy MOPAC see
+<a href="MKL.html">MKL timings</a>. For details of how GPU acceleration is done, see:</p>
+<h4><a href="http://pubs.acs.org/doi/abs/10.1021/ct3004645">GPU Linear Algebra Libraries and GPGPU Programming for Accelerating MOPAC 
+Semiempirical Quantum Chemistry Calculations</a></h4>
+<div>
+	Julio Daniel Carvalho Maia, Gabriel Aires Urquiza Carvalho, Carlos Peixoto 
+	Mangueira, Jr., Sidney Ramos Santana, Lucidio Anjos Formiga Cabral, and Gerd 
+	B. Rocha</div>
+<div>
+	<cite>Journal of Chemical Theory and Computation</cite> <strong>2012</strong>
+	<em>8</em> (9), 3072-3081.&nbsp; DOI: 10.1021/ct3004645.</div>
+<p class="auto-style1">&nbsp;</p>
+</BODY>
+</HTML>

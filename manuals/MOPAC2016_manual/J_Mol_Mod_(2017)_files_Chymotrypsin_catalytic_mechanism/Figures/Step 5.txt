@@ -1,0 +1,21 @@
+reset;center {27.186 2.721 35.183}; rotate z 170.74; rotate y 62.85; rotate z -139.09; zoom 627.67; translate x 1.0; translate y -22.0; set rotationRadius 33.83;
+reset;center {27.186 2.721 35.183}; rotate z 167.23; rotate y 64.2; rotate z -137.52; zoom 627.67; translate x 1.0; translate y -22.0; set rotationRadius 33.83;
+Display  57, 192, 195, 252:C.C, 252:C.O, 252:C.CA, 252:C.C, 252, 253,  647;
+hide add 252:C.N, 252:C.H, 195:G.O, 57:F.2HB
+select *; label off;
+set labelAlignment CENTER; set labeloffset 0 0 
+select  57:F.CE1; label His 57;   set labeloffset 70 0;  color label black; font label 20
+select  195:G.CB; label Ser 195;  set labeloffset -40 -00;  color label black; font label 20
+select  214:G.C;  label Ser 214;  set labeloffset  40  20;  color label black; font label 20
+select  252:C.CB; label Trp 252;  set labeloffset  40 -50;  color label black; font label 20
+select  192:G.SD; label Met 192;  set labeloffset  40 00;  color label black; font label 20
+select  253:C.CA;  label "   Thr 253 |(Amine departing)";  set labeloffset  40 80;  color label black; font label 20
+select *; set labelfront
+select 195:G.OG, 252:C.C, 252:C.O, 252:C.CA, 253:C.N, 253:C.O; label %a;  color label black; font label 20;  set labelfront off
+select  647; halos
+frame TITLE " "
+measure off
+measure (192:G.SD) (253:C.O)
+measure (647:C.1H) (253:C.O)
+measure (647:C.O) (647:C.2H)
+color background white

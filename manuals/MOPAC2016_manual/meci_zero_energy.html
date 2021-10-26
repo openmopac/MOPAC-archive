@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Zero of energy used in MECI</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H3><A NAME="SECTION001242300000000000000">
+ Zero of energy used in the Multi Electron Configuration Interaction</A>
+</H3>
+The energy of the system after all the electronic terms arising from the
+electrons of the M.O.s involved in the starting configuration are removed
+is a useful quantity. Removal of these terms lowers the orbital
+energies thus:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="172" HEIGHT="53"
+ SRC="img877.gif"
+ ALT="\begin{displaymath}\epsilon_{ii}^+ = \epsilon_{ii} -\sum_{j=B}^A(J_{ij}-K_{ij})O_j^g.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The arbitrary zero of energy in a MECI calculation is the  starting ground
+state, without any correction for errors introduced by the use of fractional
+occupancies.  In order to calculate the energy of the various configurations,
+the  energy  of  the  vacuum  state  (i.e.,  the  state resulting from removal
+of the electrons used in the C.I.)  needs  to  be evaluated.  This energy is
+given by:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="403" HEIGHT="53"
+ SRC="img878.gif"
+ ALT="\begin{displaymath}GSE=E_g^+ = - \sum_{i=B}^A2\epsilon_{ii}^+O_i^g+J_{ii}(O_i^g)^2+
+\sum_{i=B}^A\sum_{j=B}^{i-1}2(2J_{ij}-K_{ij})O_i^gO_j^g
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>(Within the MECI routine, <I>GSE</I> refers to <I>E</I><SUB><I>g</I></SUB><SUP>+</SUP>.)
+<P>
+By redefining the system so that those filled M.O.s which are not used in the
+MECI are considered part of an
+unpolarizable core, the new energy levels
+<i><sub>&nbsp;</sub>&epsilon;<sub>i</sub></i><sup><i>-</i></sup>
+can be identified with
+the one-electron energies <I>H</I><SUB><I>ii</I></SUB> and the total electronic energy <I>E</I><SUB><I>r</I></SUB> of any
+microstate is set equal to the sum of the energy of the electrons considered in
+the microstate plus <I>E</I><SUB><I>g</I></SUB><SUP>+</SUP>.
+<BR>
+</BODY>
+</HTML>

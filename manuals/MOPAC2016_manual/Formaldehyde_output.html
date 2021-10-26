@@ -1,0 +1,459 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Formaldehyde, output for vibrations calculation</TITLE>
+<script language="Javascript" src="mouseover.js"></script>
+<style type="text/css">#skip, #keys, #force, #icd, #gn, #Rot, #pmi, #orient, #unique, #step, #FM, #zpe, #nca, #vibs, #milli
+
+{position:absolute; left: 30;  visibility:hidden; color: blue;}</style>
+
+<h1>Description of a simple vibrational calculation output file</h1>
+<p>(move the cursor over the file to see what the parts are)</HEAD><BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff"><TT></P>
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="skip" style="width: 550;">A FORCE calculation requires an optimized geometry, so the first part of this output is a normal MOPAC optimization.
+Scroll down to the line "START OF FORCE CALCULATION OUTPUT" (about half way down) to see the FORCE calculation output.</div> 
+</tr></table>
+<PRE> 
+ <a onMouseOver="toggleDiv('skip',1)" onMouseOut="toggleDiv('skip',0)">*******************************************************************************
+ ** Site#:   10            For non-commercial use only         Version 7.101W **
+ *******************************************************************************
+ ** Cite this work as: MOPAC2007, James J. P. Stewart, Stewart Computational  **
+ ** Chemistry, Version 7.101W web: HTTP://OpenMOPAC.net   Days remaining: 363 **
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2007                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                            PM6 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                Wed Apr 11 11:13:27 2007  *
+ *  SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED
+ *  T=       - A TIME OF 172800.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *******************************************************************************
+
+
+
+     PARAMETER DEPENDENCE DATA
+
+        REFERENCE ATOM      FUNCTION NO.    DEPENDENT ATOM(S)
+            3                  1               4
+            3                  2               4
+
+             DESCRIPTIONS OF THE FUNCTIONS USED
+
+   1      BOND LENGTH    IS SET EQUAL TO THE REFERENCE BOND LENGTH   
+   2      BOND ANGLE     IS SET EQUAL TO THE REFERENCE BOND ANGLE    
+ SYMMETRY
+ Formaldehyde
+
+  ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       O          0.0000000       0.000000       0.000000   
+     2       C          1.2108153  *    0.000000       0.000000        1     0     0
+     3       H          1.0974996  *  122.023501  *    0.000000        2     1     0
+     4       H          1.0974996     122.023501     180.000000        2     1     3
+ 
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         O        0.0000    0.0000    0.0000
+     2         C        1.2108    0.0000    0.0000
+     3         H        1.7928    0.9305    0.0000
+     4         H        1.7928   -0.9305    0.0000
+
+  H (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+  C (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+  O (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+
+           Empirical Formula: C H2 O 
+
+
+
+      MOLECULAR POINT GROUP   :   C2v 
+
+
+      RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS =    6
+
+
+ -------------------------------------------------------------------------------
+ SYMMETRY
+ Formaldehyde
+
+
+
+     GRADIENTS WERE INITIALLY ACCEPTABLY SMALL                
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                               PM6     CALCULATION
+                                                       MOPAC2007 (Version: 7.101W)
+                                                       Wed Apr 11 11:13:27 2007
+                                                       No. of days left = 363
+
+
+
+
+          FINAL HEAT OF FORMATION =        -20.69775 KCAL =     -86.59937 KJ
+
+
+          TOTAL ENERGY            =       -440.23219 EV
+          ELECTRONIC ENERGY       =       -825.76440 EV  POINT GROUP:     C2v 
+          CORE-CORE REPULSION     =        385.53221 EV
+          COSMO AREA              =         60.76 SQUARE ANGSTROMS
+          COSMO VOLUME            =         42.60 CUBIC ANGSTROMS
+
+          IONIZATION POTENTIAL    =         10.20363
+          NO. OF FILLED LEVELS    =          6
+          MOLECULAR WEIGHT        =         30.026
+
+          MOLECULAR DIMENSIONS (Angstroms)
+
+            Atom       Atom       Distance
+            H     3    O     1     2.01987
+            H     4    O     1     1.65176
+            O     1    C     2     0.00000
+
+
+          SCF CALCULATIONS        =          1
+          COMPUTATION TIME        =          0.000 SECONDS
+
+
+
+
+  ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       O          0.0000000       0.000000       0.000000   
+     2       C          1.2108153  *    0.000000       0.000000        1     0     0
+     3       H          1.0974996  *  122.023501  *    0.000000        2     1     0
+     4       H          1.0974996     122.023501     180.000000        2     1     3
+
+           Empirical Formula: C H2 O 
+
+
+
+      MOLECULAR POINT GROUP   :   C2v 
+
+
+                  EIGENVALUES
+
+ -32.00372 -23.55732 -17.17527 -15.14025 -14.75913 -10.20363   0.03208   4.08556
+   4.45994   4.74270
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+
+  ATOM NO.   TYPE          CHARGE      No. of ELECS.   s-Pop       p-Pop       
+    1          O          -0.422510        6.4225     1.85390     4.56861
+    2          C           0.236385        3.7636     1.14506     2.61855
+    3          H           0.093063        0.9069     0.90694
+    4          H           0.093063        0.9069     0.90694
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     2.978     0.000     0.000     2.978
+ HYBRID        -0.160     0.000     0.000     0.160
+ SUM            2.818     0.000     0.000     2.818
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         O                  0.0000    0.0000    0.0000
+     2         C                  1.2108    0.0000    0.0000
+     3         H                  1.7928    0.9305    0.0000
+     4         H                  1.7928   -0.9305    0.0000
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.85390   1.29031   1.93516   1.34314   1.14506   0.89773   1.06397   0.65686
+   0.90694   0.90694
+
+
+
+ TOTAL CPU TIME:             0.02 SECONDS
+
+ == MOPAC DONE ==</a></pre>
+<PRE><font color="#0000FF">                           START OF FORCE CALCULATION OUTPUT</font></pre>
+<PRE> *******************************************************************************
+ ** Site#:   10            For non-commercial use only         Version 7.101W **
+ *******************************************************************************
+ ** Cite this work as: MOPAC2007, James J. P. Stewart, Stewart Computational  **
+ ** Chemistry, Version 7.101W web: HTTP://OpenMOPAC.net   Days remaining: 363 **
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2007                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                            PM6 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                Wed Apr 11 11:13:27 2007  *
+ *  <a onMouseOver="toggleDiv('keys',1)" onMouseOut="toggleDiv('keys',0)">OLDGEO   - PREVIOUS GEOMETRY TO BE USED</A>
+ *  <a onMouseOver="toggleDiv('force',1)" onMouseOut="toggleDiv('force',0)">FORCE    - FORCE CALCULATION SPECIFIED</A>
+ *  T=       - A TIME OF 172800.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *******************************************************************************
+oldgeo force
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="keys" style="width: 550;">The starting geometry for the FORCE calculation is the optimized geometry from the previous 
+calculation.  The use of a double calculation - first a geometry optimization, then a FORCE calculation using the optimized geometry -
+is the easiest way to calculate the vibrations. </div> 
+<div id="force" style="width: 550;">Keyword FORCE instructs MOPAC to calculate the vibrational freqencies.</div> 
+
+</tr></table>
+  ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       O          0.0000000       0.000000       0.000000   
+     2       C          1.2108153  *    0.000000       0.000000        1     0     0
+     3       H          1.0974996  *  122.023501  *    0.000000        2     1     0
+     4       H          1.0974996     122.023501     180.000000        2     1     3
+ 
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         O        0.0000    0.0000    0.0000
+     2         C        1.2108    0.0000    0.0000
+     3         H        1.7928    0.9305    0.0000
+     4         H        1.7928   -0.9305    0.0000
+
+  H (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+  C (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+  O (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+
+           Empirical Formula: C H2 O 
+
+
+
+      MOLECULAR POINT GROUP   :   C2v 
+
+
+      RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS =    6
+
+
+
+          HEAT OF FORMATION =  -20.697747 KCALS/MOLE
+          <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="icd" style="width: 550;">Before the normal modes are calculated, a check is done to ensure that the structure is at a
+stationary point, this can be either a ground state or a transition state geometry</div> 
+<div id="gn" style="width: 550;">The gradient norm is acceptably low, so the calculation can continue.  If it was high,
+then the calculation would be stopped and a warning given.  To over-ride this check, use keyword "LET"</div> 
+<div id="Rot" style="width: 550;">The rotational constants depend on the geometry only. </div> 
+<div id="pmi" style="width: 550;">The rotational constants can be re-written as the Principal Moments of Inertia.</div> 
+<div id="orient" style="width: 550;">To make the normal modes easier to see, the molecule is orientated along
+its Principal Moments of Inertia. The smallest is "X", then "Y" then"Z".  If you do not want reorientation done, 
+add keyword "NOREOR".</div> 
+</tr></table><a onMouseOver="toggleDiv('icd',1)" onMouseOut="toggleDiv('icd',0)">
+          INTERNAL COORDINATE DERIVATIVES
+
+   NUMBER  ATOM       BOND         ANGLE      DIHEDRAL
+
+     1       O
+     2       C     -0.044282
+     3       H      0.000000     0.000000
+     4       H     -0.001510     0.000000     0.000000
+
+
+          </A><a onMouseOver="toggleDiv('gn',1)" onMouseOut="toggleDiv('gn',0)">GRADIENT NORM =   0.12762
+
+          </A>MOLECULAR WEIGHT =   30.03<a onMouseOver="toggleDiv('Rot',1)" onMouseOut="toggleDiv('Rot',0)">
+
+
+
+          ROTATIONAL CONSTANTS IN CM(-1)
+
+          A =    9.658776   B =    1.286026   C =    1.134917
+
+</A><a onMouseOver="toggleDiv('pmi',1)" onMouseOut="toggleDiv('pmi',0)">
+
+           PRINCIPAL MOMENTS OF INERTIA IN UNITS OF 10**(-40)*GRAM-CM**2
+
+          A =    2.898170   B =   21.766874   C =   24.665044</A>
+          <a onMouseOver="toggleDiv('orient',1)" onMouseOut="toggleDiv('orient',0)">
+
+
+          ORIENTATION OF MOLECULE IN FORCE CALCULATION
+
+    NO.       ATOM         X         Y         Z
+
+     1          O      -0.6047    0.0000    0.0000
+     2          C       0.6061    0.0000    0.0000
+     3          H       1.1881    0.9305    0.0000
+     4          H       1.1881   -0.9305    0.0000</A>
+
+
+    FIRST DERIVATIVES WILL BE USED IN THE CALCULATION OF SECOND DERIVATIVES<a onMouseOver="toggleDiv('unique',1)" onMouseOut="toggleDiv('unique',0)">
+
+
+    FOR POINT-GROUP C2v  THERE ARE   4 UNIQUE SYMMETRY FUNCTIONS.</A><a onMouseOver="toggleDiv('step',1)" onMouseOut="toggleDiv('step',0)">
+
+
+ STEP:   1 TIME =     0.00 SECS, INTEGRAL =      0.00 TIME LEFT: 172800.00
+ STEP:   2 TIME =     0.00 SECS, INTEGRAL =      0.00 TIME LEFT: 172800.00
+ STEP:   3 TIME =     0.00 SECS, INTEGRAL =      0.00 TIME LEFT: 172800.00
+ STEP:   4 TIME =     0.02 SECS, INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:   5 TIME =     0.00 SECS, INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:   6 TIME =     0.00 SECS, INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:   7 TIME =     0.00 SECS, INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:   8 TIME =     0.00 SECS, INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:   9 TIME =     0.00 SECS, INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:  10                       INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:  11                       INTEGRAL =      0.02 TIME LEFT: 172799.98
+ STEP:  12                       INTEGRAL =      0.02 TIME LEFT: 172799.98</A><a onMouseOver="toggleDiv('FM',1)" onMouseOut="toggleDiv('FM',0)">
+
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="unique" style="width: 550;">When present, symmetry is used to speed up the construction of the Hessian or force matrix.
+First, the point-group is identified, then the symmetry operations of the group are used to accelerate the construction of the Hessian.
+If you do NOT want symmetry to be used, add keyword "NOSYM" </div> 
+<div id="step" style="width: 550;">For all systems, the Hessian is of size 3N by 3N, where N is the number of atoms. 
+ Constructing the Hessian is a slow operation, so each of the 3N steps is printed as it is done.  When symmetry is used to speed up the 
+ calculation, the text "TIME =     n.nn SECS," will not be printed</div> 
+<div id="FM" style="width: 550;">The vector sum of the force constants is printed.  If the full force matrix is needed, add keyword "DEBUGFORCE"</div> 
+<div id="zpe" style="width: 550;">The zero point energy is calculated from N*h*c/(2x10^(10)*4.184)*sum_i (nu_i), where nu_i are the 
+vibrational frequencies, that is, it is the sum of (1/2)h*mu.  mu = c*nu</div> 
+<div id="nca" style="width: 550;">The (3N-6) non-trivial modes or normal coordinates are printed, along with their vibrational frequencies and symmetry labels.
+Each mode is represented by the mass-weighted normalized x, y, and z velocity components of each atom when the mode goes through the equilibrium geometry.</div> 
+</tr></table>
+
+           FORCE MATRIX IN MILLIDYNES/ANGSTROM
+
+
+                  O  1       C  2       H  3       H  4
+ ------------------------------------------------------
+     O    1  13.833631
+     C    2  12.333946  15.892804
+     H    3   1.028611   3.252661   3.992890
+     H    4   1.028662   3.252790   0.476883   3.992890</A>
+
+
+          HEAT OF FORMATION =  -20.697747 KCALS/MOLE
+
+          <a onMouseOver="toggleDiv('zpe',1)" onMouseOut="toggleDiv('zpe',0)">
+ZERO POINT ENERGY      15.272 KCAL/MOL</A>
+
+
+           <a onMouseOver="toggleDiv('nca',1)" onMouseOut="toggleDiv('nca',0)">
+NORMAL COORDINATE ANALYSIS
+
+
+   Root No.    1       2       3       4       5       6
+
+              1 B2    1 B1    1 A1    2 A1    2 B2    3 A1  
+
+            1100.7  1155.9  1351.1  1792.9  2615.9  2666.5
+  
+         1  0.0000  0.0000  0.0285  0.2910  0.0000 -0.0030
+         2 -0.0486  0.0000  0.0000  0.0000  0.0039  0.0000
+         3  0.0000  0.0262  0.0000  0.0000  0.0000  0.0000
+         4  0.0000  0.0000  0.0275 -0.3732  0.0000 -0.0392
+         5  0.0971  0.0000  0.0000  0.0000  0.0584  0.0000
+         6  0.0000 -0.1076  0.0000  0.0000  0.0000  0.0000
+         7  0.3810  0.0000 -0.3900 -0.0859 -0.2766  0.2572
+         8 -0.1931  0.0000  0.2659 -0.1442 -0.3786  0.4040
+         9  0.0000  0.4331  0.0000  0.0000  0.0000  0.0000
+        10 -0.3810  0.0000 -0.3900 -0.0859  0.2766  0.2572
+        11 -0.1931  0.0000 -0.2659  0.1442 -0.3786 -0.4040
+        12  0.0000  0.4331  0.0000  0.0000  0.0000  0.0000
+
+
+           MASS-WEIGHTED COORDINATE ANALYSIS
+
+
+   Root No.    1       2       3       4       5       6
+
+              1 B2    1 B1    1 A1    2 A1    2 B2    3 A1  
+
+            1100.7  1155.9  1351.1  1792.9  2615.9  2666.5
+  
+         1  0.0000  0.0000  0.1662 -0.6627  0.0000  0.0171
+         2 -0.2698  0.0000  0.0000  0.0000  0.0222  0.0000
+         3  0.0000  0.1443  0.0000  0.0000  0.0000  0.0000
+         4  0.0000  0.0000  0.1386  0.7365  0.0000  0.1960
+         5  0.4673  0.0000  0.0000  0.0000  0.2908  0.0000
+         6  0.0000 -0.5132  0.0000  0.0000  0.0000  0.0000
+         7  0.5310  0.0000 -0.5704  0.0491 -0.3991 -0.3724
+         8 -0.2691  0.0000  0.3889  0.0824 -0.5461 -0.5848
+         9  0.0000  0.5982  0.0000  0.0000  0.0000  0.0000
+        10 -0.5310  0.0000 -0.5704  0.0491  0.3991 -0.3724
+        11 -0.2691  0.0000 -0.3889 -0.0824 -0.5461  0.5848
+        12  0.0000  0.5982  0.0000  0.0000  0.0000  0.0000</A>
+
+
+          DESCRIPTION OF VIBRATIONS
+          <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="vibs" style="width: 550;">This analysis is the easiest way to describe each vibration.  The first number in the energy 
+contribution is the normalized percentage contribution of the diatomic term to the energy of vibration; this adds to 100. The number in parentheses
+is the un-normalized contribution. The RADIAL term gives the percentage stretch; the rest is bending or tangential motion. </div> 
+</tr></table><a onMouseOver="toggleDiv('vibs',1)" onMouseOut="toggleDiv('vibs',0)">
+ VIBRATION   1  1B2       ATOM PAIR     ENERGY CONTRIBUTION     RADIAL
+ FREQ.     1100.67       C 2 --  H 3          +43.6% ( 78.5%)    14.3%
+ T-DIPOLE   0.2926       C 2 --  H 4          +43.6% ( 78.5%)    14.3%
+ TRAVEL     0.1293       O 1 --  C 2          +12.7% ( 42.4%)     0.0%
+ RED. MASS  0.9107
+
+ VIBRATION   2  1B1       ATOM PAIR     ENERGY CONTRIBUTION     RADIAL
+ FREQ.     1155.91       C 2 --  H 4          +45.3% ( 62.6%)     0.0%
+ T-DIPOLE   0.1461       C 2 --  H 3          +45.3% ( 62.6%)     0.0%
+ TRAVEL     0.1409       O 1 --  C 2           +9.3% ( 28.4%)     0.0%
+ RED. MASS  1.0983
+
+ VIBRATION   3  1A1       ATOM PAIR     ENERGY CONTRIBUTION     RADIAL
+ FREQ.     1351.10       C 2 --  H 3          +49.6% ( 61.4%)     0.3%
+ T-DIPOLE   0.1257       C 2 --  H 4          +49.6% ( 61.4%)     0.3%
+ TRAVEL     0.1945       O 1 --  C 2           +0.8% (  7.6%)   100.0%
+ RED. MASS  0.4745
+
+ VIBRATION   4  2A1       ATOM PAIR     ENERGY CONTRIBUTION     RADIAL
+ FREQ.     1792.88       O 1 --  C 2          +60.1% (100.1%)   100.0%
+ T-DIPOLE   2.4960       C 2 --  H 3          +20.0% ( 57.7%)    18.1%
+ TRAVEL     0.0526       C 2 --  H 4          +20.0% ( 57.7%)    18.1%
+ RED. MASS  6.6199
+
+ VIBRATION   5  2B2       ATOM PAIR     ENERGY CONTRIBUTION     RADIAL
+ FREQ.     2615.87       C 2 --  H 3          +49.5% ( 72.4%)    98.7%
+ T-DIPOLE   0.1198       C 2 --  H 4          +49.5% ( 72.4%)    98.7%
+ TRAVEL     0.1315       O 1 --  C 2           +1.0% ( 10.1%)     0.0%
+ RED. MASS  0.5078
+
+ VIBRATION   6  3A1       ATOM PAIR     ENERGY CONTRIBUTION     RADIAL
+ FREQ.     2666.50       C 2 --  H 4          +49.5% ( 69.5%)    95.6%
+ T-DIPOLE   0.0707       C 2 --  H 3          +49.5% ( 69.5%)    95.6%
+ TRAVEL     0.1419       O 1 --  C 2           +1.0% (  9.9%)   100.0%</A>
+ RED. MASS  0.4834
+
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="milli" style="width: 550;">Force constants, in internal coordinates, are printed, if the data was supplied in internal coordinates.
+This is useful when individual force constants in a molecule are wanted.  Be careful when calculating internal force constants for cyclic systems,
+e.g., benzene. </div> 
+</tr></table><a onMouseOver="toggleDiv('milli',1)" onMouseOut="toggleDiv('milli',0)">
+           FORCE CONSTANT IN INTERNAL COORDINATES (Millidynes/A)
+           
+    ATOM   CHEMICAL  BOND LENGTH      BOND ANGLE     TWIST ANGLE
+   NUMBER   SYMBOL  FORCE CONSTANT  FORCE CONSTANT  FORCE CONSTANT
+
+      1       O        0.000000        0.000000        0.000000
+      2       C       13.804069        0.000000        0.000000
+      3       H        3.899044        0.937825        0.000000
+      4       H        3.899044        0.937825        0.257944</A>
+
+
+
+ TOTAL CPU TIME:             0.03 SECONDS
+
+ == MOPAC DONE ==
+</BODY></HTML>

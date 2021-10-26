@@ -1,0 +1,161 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Use of reaction path to locate transition states </TITLE>
+                                                                                                                 <style type="text/css">.auto-style1 {
+																													 font-size: large;
+																													 border-top-style: solid;
+																													 border-top-width: 1px;
+																													 border-bottom-style: solid;
+																													 border-bottom-width: 1px;
+																												 }
+																												 .auto-style2 {
+																													 border-top-style: none;
+																													 border-top-width: medium;
+																												 }
+																												 .auto-style3 {
+																													 border-bottom-style: solid;
+																													 border-bottom-width: 1px;
+																												 }
+																												 .auto-style4 {
+																													 border-top-style: solid;
+																													 border-top-width: 1px;
+																													 border-bottom-style: none;
+																													 border-bottom-width: medium;
+																												 }
+																												 </style>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+Use of reaction path to locate transition states</h1>
+<B><P>For barriers to rotation, inversion, or other simple reaction that does not involve making or breaking bonds</B> </P>
+<UL>
+<LI>Optimize the starting geometry. </LI>
+<LI>Optimize the final geometry. </LI>
+<LI>Identify the coordinate that corresponds to the reaction. This is likely to be 
+an interatomic distance, an angle or a dihedral. </LI>
+<LI>Starting with the higher energy geometry, use a <A HREF="reaction_paths.html#rpaths">path option</A> to drive the reaction in the direction of the other geometry. Use about 20 points, and go about half way to the other geometry--the transition state is likely to be between the higher energy geometry and the half-way point. </LI>
+<LI>From the output, locate the highest energy point--this will be near to the transition state. </LI>
+<LI>Starting with the geometry of the highest energy point, repeat the path calculation. Use smaller steps (0.1 times the previous step is usually 
+good), and again do 20 points. </LI>
+<LI>Inspect the reaction gradient. It should drop as the transition state is approached. If it does, then use <TT>TS</TT> to refine the transition state. </LI>
+</UL>
+<B><P>For bond making or bond breaking reactions involving exactly one change in 
+covalent bonding</B></P>
+<UL>
+<LI>Identify the reaction coordinate (the bond that makes or breaks) </LI>
+<LI>Use a path calculation to drive the reaction. </LI>
+<LI>The geometry of the highest point on the reaction path should then be used to start a <TT>TS</TT> calculation. </LI>
+</UL>
+<p>For barriers involving an angle or dihedral and no covalent bonds are made or 
+broken</p>
+<ul>
+	<li>Identify the angle or dihedral that would be used as the &quot;reaction path&quot;</li>
+<LI>Use a path calculation to drive the reaction. </LI>
+<LI>The geometry of the highest point(s) on the reaction path should then be used to start a <TT>TS</TT> calculation. </LI>
+</ul>
+
+<p>
+<table align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="auto-style1">Animation of reaction</td>
+		<td class="auto-style1">&nbsp;</td>
+		<td class="auto-style1">ZIP file</td>
+		<td class="auto-style1">&nbsp;</td>
+		<td class="auto-style1">Description</td>
+	</tr>
+	<tr>
+		<td class="auto-style4">
+		<a href="Individual%20JSmol%20paths/I-CH3-F/F-CH3-I.html">CH<sub>3</sub>I + F(-) &#8660;I(-) + CH<sub>3</sub>F</a></td>
+		<td class="auto-style4">&nbsp;</td>
+		<td class="auto-style4">
+		<a href="Individual%20JSmol%20paths/I-CH3-F/I-CH3-F.zip">CH<sub>3</sub>I 
+		+ F(-)</a></td>
+		<td class="auto-style4">&nbsp;</td>
+		<td class="auto-style4">S<sub>N</sub>2 reaction in aqueous media</td>
+	</tr>
+	<tr>
+		<td class="auto-style2">
+		&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+		<td class="auto-style2">
+		&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>
+		<a href="Individual%20JSmol%20paths/Propyl%20hydrogen%20migration/Reaction%20path%20for%20hydrogen%20migration%20in%20propyl%20radical.html">CH<sub>3</sub>CHCH<sub>3</sub> &hArr; CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub></a></td>
+		<td>&nbsp;</td>
+		<td>
+		<a href="Individual%20JSmol%20paths/Propyl%20hydrogen%20migration/Propyl%20hydrogen%20migration.zip">CH<sub>3</sub>CHCH<sub>3</sub></a></td>
+		<td>&nbsp;</td>
+		<td>Hydrogen atom migration</td>
+	</tr>
+	<tr>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Butane%20C-C-C-C%20rotation/Rotation_barrier.html">
+		Butane rotation</a></td>
+		<td>&nbsp;</td>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Butane%20C-C-C-C%20rotation/Butane.zip">
+		Butane</a></td>
+		<td>&nbsp;</td>
+		<td>Torsion rotation about C-C-C-C</td>
+	</tr>
+	<tr>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style3"> 
+		&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+		<td class="auto-style3"> 
+		&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+	</tr>
+</table>
+<br> </p>
+
+</BODY>
+</HTML>

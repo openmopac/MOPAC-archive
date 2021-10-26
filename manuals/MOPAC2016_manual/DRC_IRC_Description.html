@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Description</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+                                                                                                                                                                                                                                                                                               <h1><A NAME="SECTION0012191000000000000000">Description</A> of DRC/IRC</h1>
+<P>The course of a molecular vibration can be followed by calculating the potential and kinetic energy at various times. Two extreme conditions can be identified: (a) gas phase, in which the total energy is a constant through time, there being no damping of the kinetic energy allowed, and (b) liquid phase, in which kinetic energy is always set to zero, the motion of the atoms being infinitely damped.<A NAME="BM22540">&nbsp;</A> </P>
+<P>All possible degrees of damping are allowed. In addition, the facility exists to dump energy into the system, appearing as kinetic energy. As kinetic energy is a function of velocity, a vector quantity, the energy appears as energy of motion in the direction in which the molecule would naturally move. If the system is a transition state, then the excess kinetic energy is added after the intrinsic kinetic energy has built up to at least 0.2 kcal/mol.<A NAME="BM22541">&nbsp;</A> </P>
+<P>For ground-state systems, the excess energy sometimes may not be added; if the intrinsic kinetic energy never rises above 0.2 kcal/mol then the excess energy will not be added. </P>
+<h3>IRC Reaction Coordinate Definition</h3>
+<P>The IRC is a purely geometric structure, that is, it is time-independent.&nbsp;
+A plot of the IRC has two axes: potential energy and reaction coordinate.&nbsp;
+While potential energy is easy to understand - it's just the heat of formation -
+the meaning of the reaction coordinate is not so obvious. To understand the
+meaning used here, consider the first half of a reaction, going from reactants
+to the transition state. In this discussion, it is a requirement that the
+Potential Energy Surface (PES) increases monotonically in going from reactant(s)
+to the transition state. If this requirement&nbsp; is not true, then the PES can
+be divided into two or more sections in such a manner that in each section the
+requirement is true.&nbsp; The discussion that follows woiuld then apply to each
+section.</P>
+<P>Both reactants and transition state have well-defined geometries.&nbsp; For
+the transition state, it is the stationary point on the PES which is the highest
+point on the minimum energy path from reactants to products. If the reactant is
+a single entity, e.g. the keto-enol tautomerization reaction, then it is that
+entity in its lowest energy configuration. If the reactant consists of two
+entities, e.g. the Diels Alder reaction or the Sn2 CH3Cl + F(-) reaction, then
+it is the associated complex. If no associated complex is formed, then it is the
+two isolated species.</P>
+<P>The &quot;length&quot; of the reaction coordinate can be defined as follows:&nbsp; In
+the definition of the Cartesian geometry, let both the transition state and the
+reactants share the same center of mass. No rotation is permitted. Given that
+the coordinate of atom <i>i</i> in the reactant(s) is&nbsp; R<sub>i</sub>(x,y,z),
+and the corresponding coordinate in the products is P<sub>i</sub>(x,y,z), then
+the length, L, of the reaction coordinate is:</P>
+<P align="center">L = (&Sigma;<font face="Times New Roman"><sub>i</sub>(</font>R<sub>i</sub>(x,y,z)
+-P<sub>i</sub>(x,y,z))<sup>2</sup>)<sup>1/2</sup></P>
+<P align="left">The reaction coordinate is represented by a set of points. The
+difference in geometry between each adjacent point on the reaction coordinate
+can be defined in a similar manner. By default, the <a href="x-priority0.html">
+step-size</a> is 0.05 Angstroms, so the difference, <span class="b">&Delta;</span>l
+between the geometries of two points, X(j) and X(j+1), on a reaction coordinate
+is: </P>
+<P align="center"><span class="b">&Delta;</span>l = 0.05 = (&Sigma;<font face="Times New Roman"><sub>i</sub>(</font>X(j)<sub>i</sub>(x,y,z)
+-X(j+1)<sub>i</sub>(x,y,z))<sup>2</sup>)<sup>1/2</sup></P>
+<P align="left">Note that the addition of all the step-sizes is <i>not</i> equal
+to the length of the reaction coordinate. It would only be equal if the reaction
+coordinate involved all atoms moving in straight lines; as this only occurs in
+diatomic reactions, this condition is normally not satisfied.&nbsp; In the
+output, the difference between each pair of points is a constant, when <TT><A HREF="x-priority0.html"><U><FONT COLOR="#0000ff">X-PRIORITY</FONT></U></A></TT>
+is in force, and the distance from the transition state is also printed.</P>
+<h3>DRC Reaction Coordinate Definition</h3>
+<P>Unlike the IRC, the default coordinate for the DRC is time, with a default <A HREF="t-priority0.html"><FONT COLOR="#0000ff"><U>
+step size</U></FONT></A> of 0.1 fs. For long trajectories, particularly those of
+several picoseconds, a time step on 1 or more femtoseconds is suggested.</P>
+                                                </BODY>
+</HTML>

@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SLOPE </TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>
+<TT>SMOOTH</TT>
+</H2>
+        In some GRID or PATH maps, there are artifacts in the potential energy
+surface, caused by the way the maps are generated.&nbsp; To prevent these
+artifacts, use SMOOTH.<p>In a grid map, the PES is constructed in the same way a
+field is ploughed: A line is generated, left to right. At the end of the line, a
+step is taken in the other direction, then a line is generated right to left.
+Another step is taken, and the process continued until the &quot;field&quot; is
+&quot;ploughed&quot;.&nbsp; The effect of SMOOTH is to plough the field again, in reverse,
+then to plough it twice more, at 90 degrees to the original direction. For each
+point, four separate calculations are done, one for each ploughing.&nbsp; The
+point with the lowest energy is then used.</p>
+<p>In a path map, after the path has been generated, the direction is reversed,
+and the path re-calculated.&nbsp; As with the GRID map, the lower energy
+conformer is used at each point.</p>
+<p>A limitation of SMOOTH is that the calculation must be run without using <TT><A HREF="restart.html"><U><FONT COLOR="#0000ff">RESTART</FONT></U></A></TT>.&nbsp; </p>
+<p>Without &quot;SMOOTH&quot;:</p>
+<p><sub>&nbsp; &gt;</sub>____________________<br>
+&nbsp;
+_____________________|<br>
+&nbsp;
+|_____________________<br>
+&nbsp;
+_____________________|<br>
+&nbsp;
+|_____________________<br>
+&nbsp;
+_____________________|<br>
+&nbsp;
+|_____________________<br>
+<sub>&nbsp; &lt;</sub>____________________|<br>
+&nbsp;</p>
+<p>With &quot;SMOOTH&quot;, the following grids are also used:</p>
+<p>Grid 2</p>
+<p><sub>&nbsp; &lt;</sub>____________________<br>
+&nbsp;
+_____________________|<br>
+&nbsp;
+|_____________________<br>
+&nbsp;
+_____________________|<br>
+&nbsp;
+|_____________________<br>
+&nbsp;
+_____________________|<br>
+&nbsp;
+|_____________________<br>
+<sub>&nbsp; &gt;</sub>____________________|</p>
+<P>
+Grid 3<P>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___&nbsp;&nbsp;&nbsp;&nbsp; ___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+___<br>
+&nbsp;
+v&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; ^&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|__ |&nbsp;&nbsp;&nbsp;&nbsp; |__ |&nbsp; &nbsp;&nbsp; |__ |&nbsp;&nbsp;&nbsp;&nbsp;
+|__ |<br>
+&nbsp;<P>
+Grid 4<P>
+&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ___&nbsp;&nbsp;&nbsp;&nbsp; ___&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+___<br>
+&nbsp; ^&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; 
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; v<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp;
+|&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;&nbsp;&nbsp; |&nbsp;&nbsp;
+<br>
+&nbsp;
+|__ |&nbsp;&nbsp;&nbsp;&nbsp; |__ |&nbsp;&nbsp; &nbsp; |__ |&nbsp;&nbsp;&nbsp;&nbsp;
+|__ |<br>
+&nbsp;</BODY></HTML>

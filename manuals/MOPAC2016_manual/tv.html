@@ -1,0 +1,176 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Translation Vector</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Translation Vector for defining Polymers, Layer systems, and Solids</H2>
+<p>Please use <a href="makpol.html"><TT>MAKPOL</TT></a> for 
+building data-sets for solids, it is easier to use than constructing the Tv &quot;by hand&quot;&nbsp; 
+If you do want to construct the translation vectors, the following information 
+will be useful:</p>
+<h3>Definition of Translation Vectors</h3>
+<p>Translation vectors define the distance vectors that all atoms in the cluster 
+are translated through to form another cluster in the solid.&nbsp; The Tv can 
+be in Cartesian or internal coordinates.&nbsp; If a Tv is defined in Cartesian 
+coordinates, then it is used directly.&nbsp; If it is defined in internal coordinates, then 
+it is converted to 
+Cartesian coordinates at run time, and the Cartesian 
+coordinates of atom 1 (real or dummy) is subtracted from it.&nbsp; If atom 1 
+is at the origin, i.e., at (0.0, 0.0, 0.0) then the coordinates defined by Tv 
+are the translation vectors,&nbsp;this simplifies visualizing the translation 
+vectors using a GUI, in that a line drawn from atom 1 to the Tv would represent 
+the translation vector. </p>
+<p>Most GUI's cannot display the Tv because Tv is not a chemical symbol.&nbsp; 
+To allow a GUI to display the Tv, edit the geometry to replace the Tv by an 
+element that is not already in the system.&nbsp; A good choice would be He or Rn.&nbsp; 
+If the translation vectors are to be displayed, make sure that atom 1 is real, 
+not a dummy atom, and is at the origin.</p>
+<p>In solids, the three translation vectors should define a cluster unit cell 
+that is big enough to hold a sphere of diameter about 10 - 15&nbsp;&Aring;.&nbsp; 
+This is to allow every atom in the cluster to interact with atoms in adjacent 
+clusters as if they were different atoms.&nbsp; If a cluster unit cell was not 
+large enough, an atom might interact incorrectly with its equivalent atom in an 
+adjacent unit cell.&nbsp; If the cluster unit cell is too small, the error 
+message &quot;<span><strong>Volume of unit cell unreasonably small</strong>&quot; will be printed and the 
+job stopped.</span></p>
+<h3>Historical and background 
+interest.</h3>
+The translation vector is the distance through which an atom must be moved
+(translated) in order to be in the next unit cell.  The symbol for a
+translation vector is <TT>Tv</TT>.  The <TT>Tv</TT> should be specified at the end
+of the geometry. No real or dummy atoms should come after a <TT>Tv</TT>, although
+symmetry data, etc, are allowed.  The order of the data is thus: (real and
+dummy atoms) (translation vector(s)) (blank line) (symmetry data or MECI data
+etc, if needed).
+<p>Translation vectors can be defined in internal coordinates or Cartesian 
+coordinates.&nbsp; Both definitions give rise to the same result, but the 
+methods of definition are very different.&nbsp; Before proceeding, remember that 
+atom positions are defined as being in internal coordinates if there is a 
+connectivity.&nbsp; If there is no connectivity, the atom position is defined in 
+Cartesian coordinates. The utility <a href="makpol.html"><TT>MAKPOL</TT></a> is provided 
+to simplify construction of MOPAC data sets for solids.</p>
+<p>The number of translation vectors determines the type of infinite solid.&nbsp; 
+A polymer has one <TT>Tv</TT>, a layer system has two <TT>Tv</TT>, and a solid has three <TT>Tv.&nbsp; </TT></p>
+<h4>Internal coordinate definition of translation vector </h4>
+<p>If a <TT>Tv</TT> has a connectivity, then its position is defined using 
+internal coordinates.&nbsp; The translation vector is then given by the 
+difference in position of the atom the <TT>Tv</TT>&nbsp; is connected to and the 
+position defined by <TT>Tv</TT>.&nbsp;&nbsp; For example, consider polyethylene:
+  <PRE>        Polyethylene, -[C12H24]-
+  
+  C         0.00000000 +0    0.0000000 +0    0.0000000 +0                        -0.2638
+  C         1.53502951 +1    0.0000000 +0    0.0000000 +0     1     0     0      -0.2639
+  C         1.53434080 +1  111.4738515 +1    0.0000000 +0     2     1     0      -0.2638
+  C         1.53486713 +1  111.4515730 +1 -179.5035734 +1     3     2     1      -0.2638
+  C         1.53436383 +1  111.4544128 +1 -179.5609499 +1     4     3     2      -0.2639
+  C         1.53487336 +1  111.4657224 +1 -179.9694611 +1     5     4     3      -0.2638
+  C         1.53438258 +1  111.4286979 +1 -179.7424610 +1     6     5     4      -0.2638
+  C         1.53483201 +1  111.4669973 +1  179.6187779 +1     7     6     5      -0.2638
+  C         1.53442061 +1  111.4159036 +1  179.6200571 +1     8     7     6      -0.2639
+  C         1.53492245 +1  111.4448809 +1  179.5385773 +1     9     8     7      -0.2638
+  C         1.53443267 +1  111.3905812 +1  179.4842656 +1    10     9     8      -0.2639
+  C         1.53474400 +1  111.3843156 +1 -179.9610941 +1    11    10     9      -0.2638
+  H         1.10720431 +1  109.8104572 +1  -57.5906521 +1     1     2     3       0.1319
+  H         1.10698586 +1  109.8681806 +1  116.0168453 +1     1     2    13       0.1319
+  H         1.10709315 +1  109.8700918 +1  122.0438631 +1     2     1     3       0.1319
+  H         1.10713575 +1  109.8236237 +1  115.9314480 +1     2     1    15       0.1319
+  H         1.10712021 +1  109.8652470 +1 -122.0100491 +1     3     2     4       0.1319
+  H         1.10709847 +1  109.8813887 +1 -116.0033729 +1     3     2    17       0.1319
+  H         1.10711978 +1  109.8682857 +1  122.0383223 +1     4     3     5       0.1319
+  H         1.10711511 +1  109.8397525 +1  115.9441858 +1     4     3    19       0.1319
+  H         1.10713850 +1  109.8677152 +1 -122.0280078 +1     5     4     6       0.1319
+  H         1.10712347 +1  109.8680744 +1 -115.9603262 +1     5     4    21       0.1319
+  H         1.10712096 +1  109.8603331 +1  122.0225998 +1     6     5     7       0.1319
+  H         1.10706606 +1  109.8553502 +1  115.9629566 +1     6     5    23       0.1319
+  H         1.10712955 +1  109.8765480 +1 -121.9985907 +1     7     6     8       0.1319
+  H         1.10711605 +1  109.8542406 +1 -115.9994488 +1     7     6    25       0.1319
+  H         1.10707238 +1  109.8604415 +1  122.0413124 +1     8     7     9       0.1319
+  H         1.10709630 +1  109.8633232 +1  115.9604117 +1     8     7    27       0.1319
+  H         1.10708893 +1  109.8924995 +1 -122.0076508 +1     9     8    10       0.1319
+  H         1.10711581 +1  109.8477424 +1 -116.0065534 +1     9     8    29       0.1319
+  H         1.10704898 +1  109.8675671 +1  122.0217258 +1    10     9    11       0.1319
+  H         1.10708168 +1  109.8627808 +1  115.9892025 +1    10     9    31       0.1319
+  H         1.10704508 +1  109.9042865 +1 -122.0607012 +1    11    10    12       0.1319
+  H         1.10715046 +1  109.8566042 +1 -115.9742091 +1    11    10    33       0.1319
+  H         1.10698039 +1  109.8868070 +1  -58.2346895 +1    12    11    10       0.1319
+  H         1.10741358 +1  109.7138737 +1  116.0025351 +1    12    11    35       0.1320
+ Tv        15.21694969 +1   34.2865646 +1   -0.0375057 +1     1     2     3     </PRE>
+ 
+The 'bond length', 15.22 <font face="Courier New">&Aring;</font>ngstroms, is the distance 
+of Tv from atom 1.  The direction is given by the angle (here 34 degrees) and dihedral (-0.04 degrees).  So atom 1, on translation, would be moved to the position of Tv.  All other atoms would then be moved the same way.&nbsp;&nbsp;
+
+<p>But this way of defining Tv has a severe drawback - a small change in the 
+angle or dihedral of Tv would produce a large change in position of the Tv.&nbsp; 
+An easy way around this is to define Tv in terms of atoms near to its desired 
+position.&nbsp; To illustrate this, 
+consider polyethylene again.&nbsp; By using the carbon atom at the end of the 
+unit cell and two other atoms for angle and dihedral, the end of the data set 
+would now look like 
+this:</p>
+<pre>
+  H         1.10698039 +1  109.8868070 +1  -58.2346895 +1    12    11    10       0.1320
+  H         1.10741358 +1  109.7138737 +1  116.0025351 +1    12    11    35       0.1320
+ Tv         1.53482200 +1  111.5010360 +1  122.0188610 +1    12    11    36
+</PRE>
+&nbsp;This is a perfectly general and robust method of defining Tv in terms 
+of internal coordinates.<p>&nbsp;</p>
+<h4>Cartesian coordinate definition of translation vector </h4>
+<p>If the connectivity is missing Tv is defined as Cartesian coordinates.&nbsp; 
+The absolute position of Tv defines the motion of all atoms.&nbsp; Consider polyethylene 
+again.&nbsp; In Cartesian coordinates, the data set would be:<PRE>Polyethylene, -[C12H24]-
+
+  C         0.00000000 +1    0.0000000 +1    0.0000000 +1                         0.0000
+  C         1.53502951 +1    0.0000000 +1    0.0000000 +1                         0.0000
+  C         2.09671572 +1    1.4278341 +1    0.0000000 +1                         0.0000
+  C         3.63153284 +1    1.4272569 +1   -0.0123771 +1                         0.0000
+  C         4.19338646 +1    2.8550080 +1   -0.0014355 +1                         0.0000
+  C         5.72820359 +1    2.8547421 +1   -0.0145707 +1                         0.0000
+  C         6.28919628 +1    4.2827881 +1    0.0028023 +1                         0.0000
+  C         7.82402390 +1    4.2834120 +1   -0.0008140 +1                         0.0000
+  C         8.38373432 +1    5.7120857 +1    0.0070968 +1                         0.0000
+  C         9.91863588 +1    5.7134285 +1    0.0149906 +1                         0.0000
+  C        10.47706263 +1    7.1426306 +1    0.0100363 +1                         0.0000
+  C        12.01179057 +1    7.1438002 +1    0.0169597 +1                         0.0000
+  H        -0.37524221 +1    0.5583029 +1    0.8794274 +1                         0.0000
+  H        -0.37621723 +1    0.5451135 +1   -0.8869777 +1                         0.0000
+  H         1.91131794 +1   -0.5524188 +1    0.8825507 +1                         0.0000
+  H         1.91048784 +1   -0.5523063 +1   -0.8830279 +1                         0.0000
+  H         1.72795936 +1    1.9771690 +1    0.8876740 +1                         0.0000
+  H         1.71422443 +1    1.9828794 +1   -0.8782324 +1                         0.0000
+  H         4.01464282 +1    0.8652321 +1    0.8611611 +1                         0.0000
+  H         3.99989284 +1    0.8845857 +1   -0.9042980 +1                         0.0000
+  H         3.82488823 +1    3.3975418 +1    0.8905409 +1                         0.0000
+  H         3.81002536 +1    3.4169220 +1   -0.8749396 +1                         0.0000
+  H         6.11169319 +1    2.2888993 +1    0.8563337 +1                         0.0000
+  H         6.09647982 +1    2.3164462 +1   -0.9091127 +1                         0.0000
+  H         5.91538732 +1    4.8232426 +1    0.8938195 +1                         0.0000
+  H         5.91095296 +1    4.8460271 +1   -0.8720690 +1                         0.0000
+  H         8.20242684 +1    3.7254711 +1    0.8773217 +1                         0.0000
+  H         8.19832236 +1    3.7375404 +1   -0.8882750 +1                         0.0000
+  H         8.00284989 +1    6.2609926 +1    0.8898619 +1                         0.0000
+  H         8.01178944 +1    6.2664053 +1   -0.8761314 +1                         0.0000
+  H        10.29078179 +1    5.1665370 +1    0.9026699 +1                         0.0000
+  H        10.29979525 +1    5.1573344 +1   -0.8631362 +1                         0.0000
+  H        10.09560328 +1    7.6993624 +1    0.8875824 +1                         0.0000
+  H        10.10444119 +1    7.6888972 +1   -0.8779548 +1                         0.0000
+  H        12.38474913 +1    6.6007161 +1    0.9065479 +1                         0.0000
+  H        12.38973517 +1    6.5834579 +1   -0.8602742 +1                         0.0000
+ Tv        12.57289793 +1    8.5719164 +0    0.0067071 +0  </PRE>
+<p>Now Tv is defined as X=12.57, Y=8.57, and Z=0.01.&nbsp; On translation, every 
+atom would be displaced by this amount.&nbsp; Although it is the default, atom 1 
+does not need to be at the origin, however if it is not at the origin, 
+visualization of the translation vectors can be misleading.</p>
+<p>The definition of Tv, Cartesian or internal, does not depend on the 
+definitions of any of the other atoms, that is, some atoms can be in Cartesian 
+coordinates and some in internal coordinates.&nbsp; The definitions gives here 
+refer to the Tv only.</p>
+<p>For polymers, internal coordinates are easier than Cartesian coordinates.&nbsp; 
+For solids, Cartesian coordinates are recommended, unless the system has high 
+symmetry, in which case internal coordinates are preferred, as that allows 
+extensive use of symmetry functions to reduce the number of geometric parameters 
+to be optimized.&nbsp; In most high symmetry cases, only one or two geometric 
+parameters need to be optimized.</p>
+<P>
+&nbsp;</BODY></HTML>

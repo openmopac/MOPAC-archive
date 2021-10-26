@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Atom numbering</TITLE>
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<h1 class="auto-style1">Atom numbering</h1>
+<p>Atom numbering refers to the order of real atoms in the data set.&nbsp;This 
+order is also used in the working within MOPAC. 
+This means that dummy atoms are not counted, and that the number in an 
+atom label, if present, is ignored.</p>
+<p>For proteins, individual atom numbers can be defined using the PDB or Jmol 
+labels of the atoms.&nbsp; When the job starts to run, the labels will be 
+replaced by the atom number.&nbsp; This is particularly useful when the 
+positions of one or two atoms in a protein need to be defined using internal 
+coordinates.&nbsp; </p>
+<p>Here is a part of a data-set where all the atoms are defined using Cartesian 
+coordinates:</p>
+<pre> 
+  N(ATOM    238  N   ILE A  34)   0.51224417 +1   6.53818990 +1  -1.04530637 +1
+  C(ATOM    239  CA  ILE A  34)  -0.16583088 +1   5.27003704 +1  -0.80703857 +1
+  C(ATOM    240  C   ILE A  34)  -0.68714875 +1   4.80818590 +1  -2.17651227 +1
+  O(ATOM    241  O   ILE A  34)  -1.39480687 +1   5.59251124 +1  -2.84577137 +1
+  C(ATOM    242  CB  ILE A  34)  -1.34157959 +1   5.35970563 +1   0.16960032 +1
+  C(ATOM    243  CG1 ILE A  34)  -0.88698566 +1   5.93876778 +1   1.50252957 +1
+  C(ATOM    244  CG2 ILE A  34)  -1.97622375 +1   3.98432823 +1   0.34729045 +1
+  C(ATOM    245  CD1 ILE A  34)  -2.11986936 +1   6.24297761 +1   2.36481093 +1
+  N(ATOM    246  N   ILE A  35)  -0.41349112 +1   3.53815368 +1  -2.52406899 +1
+  C(ATOM    247  CA  ILE A  35)  -0.96588627 +1   2.96694653 +1  -3.72618837 +1
+  C(ATOM    248  C   ILE A  35)  -1.70739788 +1   1.68320195 +1  -3.38891197 +1
+  O(ATOM    249  O   ILE A  35)  -1.36948744 +1   1.03220215 +1  -2.40835407 +1
+  C(ATOM    250  CB  ILE A  35)   0.14480897 +1   2.67981879 +1  -4.80718686 +1
+  C(ATOM    251  CG1 ILE A  35)   1.17485652 +1   1.69119218 +1  -4.29719814 +1
+  C(ATOM    252  CG2 ILE A  35)   0.75772955 +1   4.00257136 +1  -5.26108111 +1
+  C(ATOM    253  CD1 ILE A  35)   2.13561476 +1   1.20998426 +1  -5.39083727 +1</pre>
+<p>If CB on Ile 35 needed to be defined in internal coordinates, the data set 
+fragment would look like this:<PRE> 
+  N(ATOM    238  N   ILE A  34)   0.51224417 +1   6.53818990 +1  -1.04530637 +1
+  C(ATOM    239  CA  ILE A  34)  -0.16583088 +1   5.27003704 +1  -0.80703857 +1
+  C(ATOM    240  C   ILE A  34)  -0.68714875 +1   4.80818590 +1  -2.17651227 +1
+  O(ATOM    241  O   ILE A  34)  -1.39480687 +1   5.59251124 +1  -2.84577137 +1
+  C(ATOM    242  CB  ILE A  34)  -1.34157959 +1   5.35970563 +1   0.16960032 +1
+  C(ATOM    243  CG1 ILE A  34)  -0.88698566 +1   5.93876778 +1   1.50252957 +1
+  C(ATOM    244  CG2 ILE A  34)  -1.97622375 +1   3.98432823 +1   0.34729045 +1
+  C(ATOM    245  CD1 ILE A  34)  -2.11986936 +1   6.24297761 +1   2.36481093 +1
+  N(ATOM    246  N   ILE A  35)  -0.41349112 +1   3.53815368 +1  -2.52406899 +1
+  C(ATOM    247  CA  ILE A  35)  -0.96588627 +1   2.96694653 +1  -3.72618837 +1
+  C(ATOM    248  C   ILE A  35)  -1.70739788 +1   1.68320195 +1  -3.38891197 +1
+  O(ATOM    249  O   ILE A  35)  -1.36948744 +1   1.03220215 +1  -2.40835407 +1
+  C(ATOM    250  CB  ILE A  35)   1.57627536 +1  111.9745394 +1  112.2059245 +1   247   246   240
+  C(ATOM    251  CG1 ILE A  35)   1.17485652 +1   1.69119218 +1  -4.29719814 +1
+  C(ATOM    252  CG2 ILE A  35)   0.75772955 +1   4.00257136 +1  -5.26108111 +1
+  C(ATOM    253  CD1 ILE A  35)   2.13561476 +1   1.20998426 +1  -5.39083727 +1</PRE>
+<p>In this specific case the atom number in the label is the same as the actual 
+atom number.&nbsp; This is normally not the case,</p>
+<p>&nbsp;When PDB atom labels are used, the format for specifying an atom is &quot;<em>text</em>&quot;, 
+where the quotation marks are part of the specification.&nbsp; Only part of the 
+PDB label is used; <em>text</em> starts at the first character of the atom name 
+and ends with the last character of the residue number.&nbsp; If the atom name 
+is preceded by a number, that number must be included, thus if an atom name is 
+3HB, the <em>text</em> would start with &quot;3&quot;.&nbsp; Here is an example of an atom in a protein being defined using PDB atom labels:</p>
+<PRE> 
+  N(ATOM    238  N   ILE A  34)   0.51224417 +1   6.53818990 +1  -1.04530637 +1
+  C(ATOM    239  CA  ILE A  34)  -0.16583088 +1   5.27003704 +1  -0.80703857 +1
+  C(ATOM    240  C   ILE A  34)  -0.68714875 +1   4.80818590 +1  -2.17651227 +1
+  O(ATOM    241  O   ILE A  34)  -1.39480687 +1   5.59251124 +1  -2.84577137 +1
+  C(ATOM    242  CB  ILE A  34)  -1.34157959 +1   5.35970563 +1   0.16960032 +1
+  C(ATOM    243  CG1 ILE A  34)  -0.88698566 +1   5.93876778 +1   1.50252957 +1
+  C(ATOM    244  CG2 ILE A  34)  -1.97622375 +1   3.98432823 +1   0.34729045 +1
+  C(ATOM    245  CD1 ILE A  34)  -2.11986936 +1   6.24297761 +1   2.36481093 +1
+  N(ATOM    246  N   ILE A  35)  -0.41349112 +1   3.53815368 +1  -2.52406899 +1
+  C(ATOM    247  CA  ILE A  35)  -0.96588627 +1   2.96694653 +1  -3.72618837 +1
+  C(ATOM    248  C   ILE A  35)  -1.70739788 +1   1.68320195 +1  -3.38891197 +1
+  O(ATOM    249  O   ILE A  35)  -1.36948744 +1   1.03220215 +1  -2.40835407 +1
+  C(ATOM    250  CB  ILE A  35)   1.57627536 +1  111.9745394 +1  112.2059245 +1   "CA  ILE A  35" "N   ILE A  35" "C   ILE A  34"
+  C(ATOM    251  CG1 ILE A  35)   1.17485652 +1   1.69119218 +1  -4.29719814 +1
+  C(ATOM    252  CG2 ILE A  35)   0.75772955 +1   4.00257136 +1  -5.26108111 +1
+  C(ATOM    253  CD1 ILE A  35)   2.13561476 +1   1.20998426 +1  -5.39083727 +1</PRE>
+<p>&nbsp;When Jmol (JSmol) atom labels are used, the format is similar to the 
+PDB format, except the text is now in JSmol style.&nbsp; To use this style, open 
+a PDB file using JSMOL, and identify the atom of interest.&nbsp; Hover the 
+cursor over the atom, and a small pop-up window containing the 
+JSmol atom label will appear.&nbsp; All the text in this label, up to but not including the 
+hash (#) sign, should be used. Example of an atom in a protein being defined using Jmol atom labels:</p>
+<PRE>  
+  N(ATOM    238  N   ILE A  34)   0.51224417 +1   6.53818990 +1  -1.04530637 +1
+  C(ATOM    239  CA  ILE A  34)  -0.16583088 +1   5.27003704 +1  -0.80703857 +1
+  C(ATOM    240  C   ILE A  34)  -0.68714875 +1   4.80818590 +1  -2.17651227 +1
+  O(ATOM    241  O   ILE A  34)  -1.39480687 +1   5.59251124 +1  -2.84577137 +1
+  C(ATOM    242  CB  ILE A  34)  -1.34157959 +1   5.35970563 +1   0.16960032 +1
+  C(ATOM    243  CG1 ILE A  34)  -0.88698566 +1   5.93876778 +1   1.50252957 +1
+  C(ATOM    244  CG2 ILE A  34)  -1.97622375 +1   3.98432823 +1   0.34729045 +1
+  C(ATOM    245  CD1 ILE A  34)  -2.11986936 +1   6.24297761 +1   2.36481093 +1
+  N(ATOM    246  N   ILE A  35)  -0.41349112 +1   3.53815368 +1  -2.52406899 +1
+  C(ATOM    247  CA  ILE A  35)  -0.96588627 +1   2.96694653 +1  -3.72618837 +1
+  C(ATOM    248  C   ILE A  35)  -1.70739788 +1   1.68320195 +1  -3.38891197 +1
+  O(ATOM    249  O   ILE A  35)  -1.36948744 +1   1.03220215 +1  -2.40835407 +1
+  C(ATOM    250  CB  ILE A  35)   1.57627536 +1  111.9745394 +1  112.2059245 +1   "[ILE]34:A.CA" "[ILE]34:A.N" "[ILE]34:A.C"
+  C(ATOM    251  CG1 ILE A  35)   1.17485652 +1   1.69119218 +1  -4.29719814 +1
+  C(ATOM    252  CG2 ILE A  35)   0.75772955 +1   4.00257136 +1  -5.26108111 +1
+  C(ATOM    253  CD1 ILE A  35)   2.13561476 +1   1.20998426 +1  -5.39083727 +1</PRE>
+  <p>Using Jmol or PDB labels is particularly useful when <a href="step.html">
+  defining a reaction path</a>. All three ways of defining connectivity can be 
+  used for any atom, but don't - it would make the data set unnecessary 
+  complicated.</p>
+&nbsp;<h3>Dummy atoms</h3>
+<p>In the following example, the geometry of nitrogen trifluoride, a molecule 
+with C<sub>3v</sub> symmetry, is defined using two geometric variables, the N-F 
+distance, and the angle between a fluorine atom, the nitrogen, and the C<sub>3</sub> 
+axis.&nbsp; The atom numbering is thus: N(1), F(2), F(3), F(4), with the atom 
+numbers in parenthesis.</p>
+
+<pre>SYMMETRY 
+Nitrogen trifluoride
+ Using dummy atoms to allow C3v symmetry to be imposed.
+  N     0.00000000 +0    0.0000000 +0    0.0000000 +0                         
+ XX     1.36495796 +1    0.0000000 +0    0.0000000 +0     1     0     0
+ XX     1.00000000 +0  120.0000000 +0    0.0000000 +0     2     1     0
+  F     1.36495796 +0  117.0472386 +1  180.0000000 +0     1     2     3      
+  F     1.36495796 +0  117.0472386 +0   60.0000000 +0     1     2     3      
+  F     1.36495796 +0  117.0472386 +0  -60.0000000 +0     1     2     3      
+
+   2  1    4    5    6
+   4  2    5    6</pre>
+<h3>&nbsp; PDB Atom serial numbers</h3>
+<p>Files that use Protein Data Bank format label atoms with a word, either &quot;ATOM&nbsp; 
+&quot; or &quot;HETATM&quot;, an atom serial number, an atom name, and a description of the atom.&nbsp; 
+First, be aware that the 
+atom serial number refers to the line in the coordinate definition, not to the atom. The 
+first number is normally 1, the next atom is 2, etc.&nbsp; If a line does not 
+define an atom, for example a line that indicates the end of a chain, then that 
+line is also given a number.&nbsp; Thus, in 8GCH, chymotrypsin, there is a gap 
+between residues 11 and 16, this is indicated by a line that starts with the word &quot;TER&quot;&nbsp; 
+followed by a number.&nbsp; Up to the first occurrence of a line starting with 
+&quot;TER&quot; the atom serial numbers correspond to the order in which the atom occurs, 
+but because the &quot;TER&quot; line uses a number, the next atom has an atom serial 
+number that is one larger than the number of the atom.&nbsp; This can be seen in 
+the following snippet of 8GCH:<PRE>ATOM     70  CD2 LEU E  10       9.438  14.352  39.180  1.00 15.69           C
+ATOM     71  N   SER E  11       6.843  10.440  42.087  1.00 15.10           N
+TER      72      SER E  11
+ATOM     73  N   ILE F  16      18.164   1.430  39.984  1.00  5.77           N
+ATOM     74  CA  ILE F  16      17.888   2.418  41.019  1.00  5.90           C</PRE>
+Residue serine 11 in chain E consists of a nitrogen atom only, the rest of the 
+residue and everything up to the start of isoleucine 16 is missing.&nbsp; This 
+gap is indicated by the word &quot;TER&quot; on the line with serial number 72.&nbsp; Up 
+to this line each atom serial number corresponds to the order of occurrence of 
+each atom, so the serine 11 nitrogen atom is the 70th atom defined, and has the 
+serial number &quot;70&quot;.&nbsp; The &quot;TER&quot; uses up a number, so the next atom, the 
+nitrogen of isoleucine 16, has an atom serial number that is two, not one, 
+higher than the previous atom.&nbsp; That is, there is a gap of size one in the 
+atom serial numbers.&nbsp; When a PDB file is read in, atoms are given atom 
+numbers, and in the snippet above, the atom numbers would be C(70), N(71), 
+N(72), C(73).&nbsp; So after N(71) the atom numbers used in MOPAC do not agree 
+with the atom serial numbers used in the PDB format.<p>When MOPAC writes a PDB 
+file, it switches from MOPAC numbering to the numbering convention defined by 
+the PDB format.</p>
+<p>&nbsp;</p>
+&nbsp;<p align="left">&nbsp;</p>
+<DL dir="ltr">
+<div align="left">
+  <dt dir="ltr">&nbsp;</dt>
+</div>
+
+</dl>
+<P>
+&nbsp;</BODY></HTML>

@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>GNORM=n.nn </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>GNORM=<I>n</I>.<I>nn</I></TT> </h1>
+<P>The geometry optimization termination criteria (see
+<a href="Geometry_criteria.html">Criteria</a>) in both gradient minimization and energy minimization can be over-ridden by specifying a gradient norm requirement. For example, <TT>GNORM=20</TT> would allow the geometry optimization to exit as soon as the gradient norm dropped below 20.0 
+kcal/mol/<font face="Times New Roman">&Aring;ngstrom</font>, the default being 1.0. </P>
+<P>For proteins and solids, i.e., large systems, <TT>GNORM=10</TT> should be 
+used.&nbsp; Lower values might work, but there is an increased risk of the heat 
+of formation not decreasing, and all that happens is that CPU time is wasted.</P>
+<P>For small system high-precision work, <TT>GNORM=0.0</TT> is recommended. Unless <TT>
+<a href="let.html">LET</a></TT> is also used, the <TT>GNORM</TT> will be set to the larger of 0.01 and the specified <TT>GNORM</TT>. Results from <TT>GNORM=0.01</TT> are easily good enough for all high-precision work. </P>
+<P>N.b.: Do not confuse <TT>GNORM</TT>, the keyword, with GNORM, the value of the scalar of the calculated gradient. 
+The keyword <TT>GNORM</TT> defines the criterion for an optimized geometry,&nbsp; GNORM 
+is the value calculated during a geometry optimization, and is printed in the 
+output at the end of each cycle.&nbsp; When&nbsp; GNORM, drops below the level 
+set by <TT>GNORM=n.nn</TT>, the geometry optimization will terminate.</P>
+</BODY>
+</HTML>

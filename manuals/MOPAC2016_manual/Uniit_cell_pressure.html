@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Pressure on a unit cell</TITLE>
+                                                                                                               </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2 align="center">
+Pressure on the faces of a unit cell</H2>
+<p>For convenience, MOPAC calculations of crystalline solids use unit cells that 
+are six-sided volumes with three sets of two parallel surfaces.&nbsp; When the 
+geometry of a system is optimized, the dimensions of these unit cells change so 
+that the forces (pressures) acting on the faces is in equilibrium with the 
+forces inside the unit cell arising from the chemical structure of the solid.&nbsp; 
+By default, the applied external pressure, P(ext.), is zero; this can be changed by 
+keyword <a href="p=n.html"><tt>P=n.m</tt> </a>or <a href="p=n.html"><tt>P=n.mGpa</tt></a>.</p>
+<p>In modeling calculations, solids are defined by three translation vectors, Tv.&nbsp; 
+The individual components are usually referred to as Tv<sub>1</sub>, Tv<sub>2</sub>, 
+and Tv<sub>3</sub>.&nbsp; These vectors can be orthogonal as in the 
+orthorhombic solids, or have contained angles that differ from 90&deg;.&nbsp; 
+For convenience all Tv vectors are defined as originating at coordinates 
+(0,0,0);&nbsp; this allows their termini to be defined by the Cartesian 
+coordinates for the individual Tv.&nbsp;&nbsp; At equilibrium the forces, g = g<sub>x</sub>, 
+g<sub>y</sub>, and g<sub>z</sub>, acting on each vector terminus would be zero.&nbsp; 
+If the system is not at equilibrium, then the force-vector for each translation 
+vector would be non-zero.</p>
+<p>By convention, translation vectors are expressed in &Aring;ngstroms and gradients 
+(force-vectors) are expressed in kcal/mol/&Aring;ngstrom.</p>
+<p>Calculation of the pressure acting on the various surfaces in the direction 
+of the third translation vector is done using the coordinates of the three Tv and the force-vectors of each 
+translation vector, g, only.</p>
+<p>&nbsp;The scalar, f<sub>1</sub>, of the component of the gradient vector, g<sub>1</sub>, 
+in the direction of the translation vector, Tv<sub>1</sub>, is given by:</p>
+<p>&nbsp;f<sub>1</sub> = (g<sub>1</sub>(x)&middot;Tv<sub>1</sub>(x) + g<sub>1</sub>(y)&middot;Tv<sub>1</sub>(y)&nbsp; 
++ g<sub>1</sub>(z)&middot;Tv<sub>1</sub>(z)).</p>
+<p>Using the volume of the unit cell, V = |Tv<sub>1</sub>&middot;(Tv<sub>2</sub>&otimes;Tv<sub>3</sub>)|&nbsp; 
+or:</p>
+<p>V = |Tv<sub>3</sub>(x)*(Tv<sub>1</sub>(y)&middot;Tv<sub>2</sub>(z) - Tv<sub>1</sub>(z)&middot;Tv<sub>2</sub>(y)) 
++ Tv<sub>3</sub>(y)*(Tv<sub>1</sub>(z)&middot;Tv<sub>2</sub>(x) - Tv<sub>1</sub>(x)&middot;Tv<sub>2</sub>(z)) 
++ Tv<sub>3</sub>(z)*(Tv<sub>1</sub>(x)&middot;Tv<sub>2</sub>(y) - Tv<sub>1</sub>(y)&middot;Tv<sub>2</sub>(x))|,</p>
+<p>and conversion factors to go from kcals and moles to ergs and unit cells, the 
+pressure, P, in Pascals, can be calculated using:</p>
+<p>P = -4184&middot;10<sup>30</sup>/(6.022&middot;10<sup>23</sup>)&middot;f&middot;V<sup>-1</sup></p>
+<p>If an external pressure, P(ext.), is used, this should be added on at this 
+point: P = P + P(ext.)</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

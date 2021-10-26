@@ -1,0 +1,186 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>AUX </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>AUX[([<i>n</i>][,][COMP][,][PRECISION=<i>m</i>][,][MOS=n][,][XP][,][XS][,][XW])]</TT>
+</h1>
+When <TT>AUX</TT> is used then auxiliary information is output to a file called 
+&lt;file&gt;.aux.&nbsp; When <TT>AUX</TT>(<i>n</i>) is used, output for the
+<font color="#006600">changing geometry</font> is re-directed to output channel
+<i>n, n </i>is limited to the range 0 - 99. Thus <TT>AUX</TT>(6) would re-direct the changing geometry to standard 
+output unit 6. Useful values are <i>n</i> = 0 and <i>n</i> = 6. Avoid using 
+units 2 to 4, and 9 to 30, as these are used by MOPAC. The &lt;file&gt;.aux&nbsp; 
+files are intended for use by Graphical User Interfaces (GUI's), but the files 
+can be converted using a simple Windows utility,
+<a href="../Downloads/Read_AUX.zip">Read_AUX</a>, into ASCII tables for use by 
+programs such as EXCEL.<br><br>AUX is supported by Avogadro, Gabedit, and Molden.<br>
+<br>
+When <TT>COMP</TT> is present, all large blocks of data are printed in compressed form.&nbsp;
+<br>
+To increase precision by <i>m</i> digits (<i>m</i> limited to the range 1 to 9), use <TT>PRECISION=<i>m</i></TT>.<br>
+By default, only the 10 highest occupied&nbsp; and 10 lowest unoccupied M.O.s 
+are printed, unless <TT><a href="large.html">LARGE</a></TT> is present, in which 
+case all M.O.s are printed To change the default, use <TT>MOS=<i>n</i></TT>, where <i>n</i> is the number of occupied 
+and virtual M.O.s to be printed.&nbsp; If <i>n</i> is greater than the number of M.O.s, 
+it will be re-set to all the M.O.s, so an alternative way to print all the M.O.s 
+is to use <TT>MOS=99999</TT>. To prevent printing of M.O.'s, use <TT>MOS=-99999</TT>.<br>
+The commas are optional.<br>
+If the re-direction unit &quot;<i>n</i>&quot; is used together with any of COMP, 
+PRECISION, or MOS, then &quot;<i>n</i>&quot; must come first, followed by the other 
+options.<br><br>For large systems, the AUX file might still be very large, even 
+if COMP is used.&nbsp; To reduce the size of the AUX file, use one or more of 
+the following options:<br><br>If XP is present, the density matrix will not be 
+printed.<br>If XS is present, the overlap matrix will not be printed.<br>If XW 
+is present, the M.O.s will not be printed.&nbsp; This is an alternative to <TT>MOS=-99999</TT>. <p>Only data considered to be important to GUI programs 
+will be included in the .aux file.&nbsp; A consequence of this is that some data 
+might be missing.&nbsp; If such data can be identified, and a message sent to
+MrMOPAC@ATT.net, then the data will be added to the .aux file.</p>
+<p>The auxiliary information is a very compact form of the results of a 
+calculation in a primitive mark-up language. This file is intended for use by 
+other programs. An example of the auxiliary file for water is given below.&nbsp; 
+No explanation is necessary: the file is intended to be self-descriptive. <br>
+&nbsp;<font face="Courier"> START OF MOPAC FILE<br>
+&nbsp;####################################<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Start of Input data&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;####################################<br>
+&nbsp;MOPAC_VERSION=MOPAC2007.7.150W<br>
+&nbsp;DATE="Mon Jun&nbsp; 4 12:15:37 2007"<br>
+&nbsp;METHOD=PM6<br>
+&nbsp;TITLE=" Water"<br>
+&nbsp;KEYWORDS=" SYMMETRY"<br>
+&nbsp;ATOM_EL[0003]=<br>
+&nbsp; O&nbsp; H&nbsp; H <br>
+&nbsp;ATOM_X:ANGSTROMS[0009]=<br>
+&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.6018&nbsp;&nbsp;&nbsp; 0.7647&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.6018&nbsp;&nbsp; -0.7647&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;AO_ATOMINDEX[0006]=<br>
+&nbsp; 1&nbsp; 1&nbsp; 1&nbsp; 1&nbsp; 2&nbsp; 3<br>
+&nbsp;ATOM_SYMTYPE[0006]=<br>
+&nbsp; S PX PY PZ&nbsp; S&nbsp; S <br>
+&nbsp;AO_ZETA[0006]=<br>
+&nbsp; 5.4218&nbsp; 2.2710&nbsp; 2.2710&nbsp; 2.2710&nbsp; 1.2686&nbsp; 1.2686<br>
+&nbsp;ATOM_PQN[0006]=<br>
+&nbsp;2 2 2 2 1 1<br>
+&nbsp;NUM_ELECTRONS=0008<br>
+&nbsp;EMPIRICAL_FORMULA="H2 O"<br>
+<font color="#008080">&nbsp;</font><font color="#006600">####################################<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Geometry optimization&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;####################################<br>
+&nbsp;HEAT_OF_FORM_UPDATED:KCAL/MOL=-0.540108D+02<br>
+&nbsp;GRADIENT_UPDATED:KCAL/MOL/ANG=+0.210682D+02<br>
+&nbsp;ATOM_X_UPDATED:ANGSTROMS[0009]=<br>
+&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.6018&nbsp;&nbsp;&nbsp; 0.7647&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.6018&nbsp;&nbsp; -0.7647&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;HEAT_OF_FORM_UPDATED:KCAL/MOL=-0.542600D+02<br>
+&nbsp;GRADIENT_UPDATED:KCAL/MOL/ANG=+0.893385D+01<br>
+&nbsp;ATOM_X_UPDATED:ANGSTROMS[0009]=<br>
+&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5693&nbsp;&nbsp;&nbsp; 0.7558&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5693&nbsp;&nbsp; -0.7558&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;HEAT_OF_FORM_UPDATED:KCAL/MOL=-0.543026D+02<br>
+&nbsp;GRADIENT_UPDATED:KCAL/MOL/ANG=+0.225094D+01<br>
+&nbsp;ATOM_X_UPDATED:ANGSTROMS[0009]=<br>
+&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5641&nbsp;&nbsp;&nbsp; 0.7630&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5641&nbsp;&nbsp; -0.7630&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;HEAT_OF_FORM_UPDATED:KCAL/MOL=-0.543063D+02<br>
+&nbsp;GRADIENT_UPDATED:KCAL/MOL/ANG=+0.144932D+00<br>
+&nbsp;ATOM_X_UPDATED:ANGSTROMS[0009]=<br>
+&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5610&nbsp;&nbsp;&nbsp; 0.7655&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5610&nbsp;&nbsp; -0.7655&nbsp;&nbsp;&nbsp; 0.0000</font><br>
+&nbsp;####################################<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Final SCF results&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #<br>
+&nbsp;####################################<br>
+&nbsp;HEAT_OF_FORMATION:KCAL/MOL=-0.543063D+02<br>
+&nbsp;ENERGY_ELECTRONIC:EV=-0.458386D+03<br>
+&nbsp;ENERGY_NUCLEAR:EV=+0.139308D+03<br>
+&nbsp;POINT_GROUP=C2v <br>
+&nbsp;DIPOLE:DEBYE=+0.206870D+01<br>
+&nbsp;AREA:SQUARE ANGSTROMS=+0.424512D+02<br>
+&nbsp;VOLUME:CUBIC ANGSTROMS=+0.251444D+02<br>
+&nbsp;ATOM_X_OPT:ANGSTROMS[0009]=<br>
+&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5610&nbsp;&nbsp;&nbsp; 0.7655&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp;&nbsp; 0.5610&nbsp;&nbsp; -0.7655&nbsp;&nbsp;&nbsp; 0.0000<br>
+&nbsp;ATOM_CHARGES[0003]=<br>
+&nbsp;-0.61867 +0.30933 +0.30933<br>
+&nbsp;OVERLAP_MATRIX[000021]=<br>
+&nbsp;#&nbsp; Lower half triangle only<br>
+&nbsp;&nbsp; 1.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 1.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 1.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 1.0000<br>
+&nbsp;&nbsp; 0.1618&nbsp;&nbsp; 0.2330&nbsp;&nbsp; 0.3180&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 1.0000&nbsp;&nbsp; 0.1618&nbsp;&nbsp; 0.2330&nbsp; -0.3180&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.2333<br>
+&nbsp;&nbsp; 1.0000<br>
+&nbsp;EIGENVECTORS[000036]=<br>
+&nbsp; -0.8288&nbsp; -0.2451&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp; -0.3556&nbsp; -0.3556&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.8129&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp; 0.4118&nbsp; -0.4118&nbsp;&nbsp; 0.4394&nbsp; -0.8417&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp; -0.2220&nbsp; -0.2220&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000<br>
+&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 1.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.3463&nbsp;&nbsp; 0.4812&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp; -0.5694&nbsp; -0.5694<br>
+&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.5824&nbsp;&nbsp; 0.0000&nbsp; -0.5748&nbsp;&nbsp; 0.5748<br>
+&nbsp;TOTAL_DENSITY_MATRIX[000021]=<br>
+&nbsp;#&nbsp; Lower half triangle only<br>
+&nbsp;&nbsp; 1.7601&nbsp; -0.3333&nbsp;&nbsp; 1.5370&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 1.3216&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 2.0000<br>
+&nbsp;&nbsp; 0.3944&nbsp;&nbsp; 0.5480&nbsp;&nbsp; 0.6695&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.6907&nbsp;&nbsp; 0.3944&nbsp;&nbsp; 0.5480&nbsp; -0.6695&nbsp;&nbsp; 0.0000&nbsp;&nbsp; 0.0123<br>
+&nbsp;&nbsp; 0.6907<br>
+&nbsp;M.O.SYMMETRY_LABELS[0006]=<br>
+&nbsp; 1a1&nbsp;&nbsp;&nbsp;&nbsp; 1b2&nbsp;&nbsp;&nbsp;&nbsp; 2a1&nbsp;&nbsp;&nbsp;&nbsp; 1b1&nbsp;&nbsp;&nbsp;&nbsp; 3a1&nbsp;&nbsp;&nbsp;&nbsp; 2b2&nbsp;
+<br>
+&nbsp;EIGENVALUES[0006]=<br>
+&nbsp; -30.402&nbsp; -18.983&nbsp; -14.111&nbsp; -11.905&nbsp;&nbsp;&nbsp; 4.067&nbsp;&nbsp;&nbsp; 6.038<br>
+&nbsp;MOLECULAR_ORBITAL_OCCUPANCIES[00006]=<br>
+&nbsp;2.0000 2.0000 2.0000 2.0000 0.0000 0.0000</font><p>
+<font face="Courier New">When <TT>COMP</TT> is present, the overlap and density matrices, 
+and eigenvectors, are printed in compressed form.<br>
+Compare the previous uncompressed data with the following compressed data to see 
+how the compression is done.</font><p>
+<PRE> OVERLAP_INDICES[013]=
+     1     3     6    10    15    21    18    13    20    17    12    16    11
+ OVERLAP_COEFFICIENTS[013]=
+   1.0000   1.0000   1.0000   1.0000   1.0000   1.0000  -0.3180   0.3180   0.2336   0.2332
+   0.2332   0.1619   0.1618
+ SET_OF_MOS=       1       6
+ MO_INDICES[004]=
+     1     6     5     2
+ MO_COEFFICIENTS[004]=
+   0.8287   0.3558   0.3557   0.2452
+ MO_INDICES[003]=
+     3     5     6
+ MO_COEFFICIENTS[003]=
+   0.8129   0.4118  -0.4118
+ MO_INDICES[004]=
+     2     1     5     6
+ MO_COEFFICIENTS[004]=
+   0.8416  -0.4396   0.2219   0.2219
+ MO_INDICES[001]=
+     4
+ MO_COEFFICIENTS[001]=
+   1.0000
+ MO_INDICES[004]=
+     5     6     2     1
+ MO_COEFFICIENTS[004]=
+   0.5694   0.5693  -0.4812  -0.3465
+ MO_INDICES[003]=
+     3     6     5
+ MO_COEFFICIENTS[003]=
+   0.5824   0.5749  -0.5748
+ DENSITY_MATRIX_INDICES[014]=
+    10     1     3     6    21    15    13    18    12    17    16    11     2    20
+ DENSITY_MATRIX_COEFFICIENTS[014]=
+   2.0000   1.7599   1.5369   1.3217   0.6908   0.6908   0.6695  -0.6695   0.5480   0.5480
+   0.3945   0.3945  -0.3334   0.0124</PRE>
+<PRE>When COMP and MOS are present, a user-defined set of M.O.s is printed.  The default is the 10 highest M.O.s and 10 lowest virtual M.O.s.
+If <a href="large.html"><TT>LARGE</TT></a> is present, all the M.O.s are printed.
+   </PRE>
+</p>
+</BODY>
+</HTML>

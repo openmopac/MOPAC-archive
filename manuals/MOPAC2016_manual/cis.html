@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>CIS </TITLE>
+                                                                                                                   </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>CIS</TT>  </h1>
+<P>In configuration interaction calculations, the ground state and microstates resulting from single electron excitations are used if <TT>CIS</TT> is specified. (Read <TT>CIS</TT> as Configuration Interaction Singles.) </P>
+<P>In a configuration interaction involving an active space in which <i>n</i>
+levels are doubly occupied and <i>m</i> levels are empty, the number of states
+considered in the C.I. would be (1 + <i>2.n.m</i>).&nbsp; By
+<a href="references.html#koopmans">Koopmans' theorem</a>, the ground microstate
+does not interact with any microstates resulting from one-electron excitation;
+this means that the lowest state resulting from the C.I. consists of the doubly
+occupied microstate only. It is included in the C.I. so that the relative
+energies are relative to the ground state.&nbsp; Because the C.I. cannot affect
+the lowest root, a CIS ground-state calculation should not be used in runs that
+affect the geometry, e.g. geometry optimization or vibrational frequency
+calculations.</P>
+</BODY>
+</HTML>

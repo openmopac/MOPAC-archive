@@ -1,0 +1,167 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>MOLSYM </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>MOLSYM  </TT>
+</h1>
+<p>
+Print details of the working in MOLSYM, the routine that works out the symmetry
+point-group of the molecule.&nbsp; Point-groups are identified using a set of 20
+integers.&nbsp; These are 0 if the associated operation is absent, 1 if the
+operation is present.&nbsp; The operations are:</p>
+<div align="center">
+  <center>
+  <table border="1" cellpadding="0" cellspacing="0" style="text-align: center; border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td width="50">
+      <p style="text-align: right; margin-top: 0; margin-bottom: 0">Operation</p>
+      <p style="text-align: right; margin-top: 0; margin-bottom: 0">Number</td>
+      <td width="60">Operation</td>
+    </tr>
+    <tr>
+      <td width="50">1</td>
+      <td width="60">C<sub>2</sub>(X)</td>
+    </tr>
+    <tr>
+      <td width="50">2</td>
+      <td width="60">C<sub>2</sub>(Y)</td>
+    </tr>
+    <tr>
+      <td width="50">3</td>
+      <td width="60">C<sub>2</sub>(Z)</td>
+    </tr>
+    <tr>
+      <td width="50">4</td>
+      <td width="60"><span class="b">&Sigma;</span>(XY)</td>
+    </tr>
+    <tr>
+      <td width="50">5</td>
+      <td width="60"><span class="b">&Sigma;</span>(XZ)</td>
+    </tr>
+    <tr>
+      <td width="50">6</td>
+      <td width="60"><span class="b">&Sigma;</span>(YZ)</td>
+    </tr>
+    <tr>
+      <td width="50">7</td>
+      <td width="60">inversion</td>
+    </tr>
+    <tr>
+      <td width="50">8</td>
+      <td width="60">C<sub>3</sub></td>
+    </tr>
+    <tr>
+      <td width="50">9</td>
+      <td width="60">C<sub>4</sub></td>
+    </tr>
+    <tr>
+      <td width="50">10</td>
+      <td width="60">C<sub>3</sub></td>
+    </tr>
+    <tr>
+      <td width="50">11</td>
+      <td width="60">C<sub>6</sub></td>
+    </tr>
+    <tr>
+      <td width="50">12</td>
+      <td width="60">C<sub>3</sub></td>
+    </tr>
+    <tr>
+      <td width="50">13</td>
+      <td width="60">C<sub>8</sub></td>
+    </tr>
+    <tr>
+      <td width="50">14</td>
+      <td width="60">S<sub>4</sub></td>
+    </tr>
+    <tr>
+      <td width="50">15</td>
+      <td width="60">S<sub>6</sub></td>
+    </tr>
+    <tr>
+      <td width="50">16</td>
+      <td width="60">S<sub>8</sub></td>
+    </tr>
+    <tr>
+      <td width="50">17</td>
+      <td width="60">S<sub>10</sub></td>
+    </tr>
+    <tr>
+      <td width="50">18</td>
+      <td width="60">S<sub>12</sub></td>
+    </tr>
+    <tr>
+      <td width="50">19</td>
+      <td width="60">1 if cubic</td>
+    </tr>
+    <tr>
+      <td width="50">20</td>
+      <td width="60">1 if infinite</td>
+    </tr>
+  </table>
+  </center>
+</div>
+A tetrahedral molecule, for example, would have the pattern:&nbsp; <br>
+&nbsp;<div align="center">
+  <center>
+  <table border="1" cellpadding="0" cellspacing="4" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td bordercolor="#FFFFFF">Operation</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;1</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;2</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;3</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;4</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;5</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;6</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;7</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;8</td>
+      <td align="right" bordercolor="#FFFFFF">&nbsp;9</td>
+      <td align="right" bordercolor="#FFFFFF">10</td>
+      <td align="right" bordercolor="#FFFFFF">11</td>
+      <td align="right" bordercolor="#FFFFFF">12</td>
+      <td align="right" bordercolor="#FFFFFF">13</td>
+      <td align="right" bordercolor="#FFFFFF">14</td>
+      <td align="right" bordercolor="#FFFFFF">15</td>
+      <td align="right" bordercolor="#FFFFFF">16</td>
+      <td align="right" bordercolor="#FFFFFF">17</td>
+      <td align="right" bordercolor="#FFFFFF">18</td>
+      <td align="right" bordercolor="#FFFFFF">19</td>
+      <td align="right" bordercolor="#FFFFFF">20</td>
+    </tr>
+    <tr>
+      <td bordercolor="#FFFFFF">Value</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+      <td align="right" bordercolor="#FFFFFF">1</td>
+      <td align="right" bordercolor="#FFFFFF">0</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>This indicates that operations C<sub>2</sub>(Z), <span class="b">&Sigma;</span>(XZ),
+<span class="b">&Sigma;</span>(YZ), C<sub>3</sub>, and S<sub>4 </sub>are present,
+and that the system is cubic.</p>
+<p>The pattern of operations is unique for each point-group, and is used by
+subroutine cartab to identify the point-group.</p>
+</BODY>
+</HTML>

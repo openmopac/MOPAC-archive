@@ -1,0 +1,314 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Overlap Integrals</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2>Overlap Integrals </H2>
+<P>The particular technique used for the evaluation of the overlap integral depends on the atoms involved and whether analytic derivatives are used. All five semiempirical methods use Slater-type orbitals, STOs, although when analytic derivatives are involved&nbsp;[<A HREF="references.html#analyt">16</A>], a Gaussian expansion&nbsp;[<A HREF="references.html#analyt">16</A>] of STOs is normally used. </P>
+<P>Overlap integrals used in molecular systems are the product of the radial 
+component, described on this page, and an <a href="rotate_atomic_orbitals.html">
+angular component</a>.&nbsp; </P>
+<P>Specific expressions for various of the overlap integrals have appeared in the literature. These are normally used for those overlaps which involve only small principal quantum numbers, PQN, <I>n</I>, and a low angular quantum number, <I>l</I>. For the general case, however, in which any PQN may be encountered, the general overlap integral is used. As the final expression is rather ungainly, a simple derivation of the overlap integral will be given. </P>
+<P>Slater atomic orbitals are of form<A NAME="so">&nbsp;</A> </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img635.gif" WIDTH=446 HEIGHT=101 ALT="begin{displaymath}varphi = frac{(2xi )^{n+1/2}}{(2n)!^{1/2}}r^{n-1}e^{-xi r}Y_l^m(theta ,phi ),end{displaymath}"></DIV>
+<P>where the                                      <IMG SRC="img636.gif" ALIGN="MIDDLE" WIDTH=60 HEIGHT=31 ALT="$Y_l^m(theta ,phi )$">are the normalized complex spherical harmonics.
+<a href="complex_spherical_harmonics.html">Complex spherical harmonics</a> are chosen for convenience;                                      <IMG SRC="img637.gif" ALIGN="MIDDLE" WIDTH=60 HEIGHT=31 ALT="$Y_l^m(theta ,phi )$"><a href="real_spherical_harmonics.html">real orbitals
+</a>have a <a href="spherical_harmonic_relationships.html">similar behavior</a>, but require more manipulation. The <IMG SRC="img638.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=30 ALT="$theta$">dependence of spherical harmonics are the Laguerre polynomials, of form </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img639.gif" WIDTH=720 HEIGHT=86 ALT="begin{displaymath}Y_l^m(theta ,phi ) = frac{e^{imphi }}{(2pi )^{1/2}}left......eta d^{l+m}(cos^2theta-1)^l}{2^l l! (d costheta)^{l+m}}.end{displaymath}"></DIV>
+<P>For convenience the phase factor is set to +1; this varies according to which source is used and the purpose for which the Laguerre polynomials are used. </P>
+<P>Solving the differential gives </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img640.gif" WIDTH=742 HEIGHT=88 ALT="begin{displaymath}frac{d^{l+m}}{(d costheta)^{l+m}}(cos^2theta-1)^l = sum_......2j)! (-1)^{l+j}}{(l-j)! j! (2j-l-m)!}(costheta )^{2j-l-m},end{displaymath}"></DIV>
+<P>which, on rearranging to have the summation start at zero, becomes </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img641.gif" WIDTH=834 HEIGHT=102 ALT="begin{displaymath}frac{d^{l+m}}{(d costheta)^{l+m}}(cos^2theta-1)^l = sum_......2(l-j))! (-1)^j}{j! (l-j)! (l-m-2j)!}(costheta )^{l-m-2j}.end{displaymath}"></DIV>
+<P>Substituting this into the STO yields <BR>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0>
+<TR>
+<TD><IMG ALIGN="TOP" SRC="img642.gif" WIDTH=32 HEIGHT=59 </TD>
+<TD><font size="5">=</font></TD>
+<TD><IMG ALIGN="TOP" SRC="img643.gif" WIDTH=461 HEIGHT=93 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img644.gif" WIDTH=467 HEIGHT=98 </TD>
+</TABLE>
+</CENTER></P>
+<P></DIV></P>
+<P>At this point it is convenient to collect some of the constants together; thus, </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img645.gif" WIDTH=583 HEIGHT=93 ALT="begin{displaymath}C_{lmj}=left [frac{(l-m)!}{(l+m)!}right ]^{1/2}frac{(2(l-j))! (-1)^j}{2^l j! (l-j)! (l-m-2j)!},end{displaymath}"></DIV>
+<P>which allows us to represent the STO in a considerably simplified form: </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img646.gif" WIDTH=801 HEIGHT=92 ALT="begin{displaymath}varphi = frac{(2xi )^{n+1/2}}{(2n)!^{1/2}}frac{(2l+1)^{1/......2pi )^{1/2}}sum_{j=0}^{1/2(l-m)}C_{lmj}(costheta)^{l-m-2j}.end{displaymath}"></DIV>
+<P>The overlap integral of two STOs can then be represented as <BR>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0>
+<TR>
+<TD><IMG ALIGN="TOP" SRC="img647.gif" WIDTH=101 HEIGHT=42 </TD>
+<TD>=</TD>
+<TD><IMG ALIGN="TOP" SRC="img648.gif" WIDTH=581 HEIGHT=120 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img649.gif" WIDTH=584 HEIGHT=121 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img650.gif" WIDTH=589 HEIGHT=125 </TD>
+<TR>
+</TABLE>
+</CENTER>
+<P><A NAME="BM11641"></A>It is impractical to solve this integral using polar  coordinates. Instead, a prolate spheroidal coordinate system is used. Using the identities: </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img651.gif" WIDTH=790 HEIGHT=135 ALT="begin{displaymath}begin{array}{ccc}r_a=frac{R(mu + nu)}{2}"></DIV>
+<P>this gives                                                                           
+<IMG SRC="img652.gif" ALIGN="MIDDLE" WIDTH=427 HEIGHT=84 ALT="$dv = frac{R^3}{8}(mu + nu )(mu - nu)dmu dnu dphi.$"></P>
+<P>Substituting these identities into the previous expression we get:
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0>
+<TR>
+<TD><IMG ALIGN="TOP" SRC="img653.gif" WIDTH=107 HEIGHT=47 </TD>
+<TD>=</TD>
+<TD><IMG ALIGN="TOP" SRC="img644.gif" WIDTH=477 HEIGHT=89 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img655.gif" WIDTH=488 HEIGHT=77 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img656.gif" WIDTH=235 HEIGHT=85 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img657.gif" WIDTH=492 HEIGHT=85 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img658.gif" WIDTH=242 HEIGHT=78 </TD>
+<TR>
+</TABLE>
+</CENTER></P>
+<P></DIV></P>
+<P>which, on integrating over and rearranging, gives: <BR>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0>
+<TR>
+<TD><IMG ALIGN="TOP" SRC="img659.gif" WIDTH=87 HEIGHT=37 </TD>
+<TD>=</TD>
+<TD><IMG ALIGN="TOP" SRC="img660.gif" WIDTH=458 HEIGHT=85 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img661.gif" WIDTH=532 HEIGHT=90 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img662.gif" WIDTH=795 HEIGHT=62 </TD>
+<TR>
+</TABLE></CENTER>
+<P></DIV></P>
+<P>This is a product of six simple expressions of type (<I>a</I>+<I>b</I>)<I><SUP>n</I></SUP>. Expanding each term as a binomial generates six summations: <BR>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0>
+<TR>
+<TD><IMG ALIGN="TOP" SRC="img663.gif" WIDTH=111 HEIGHT=48 </TD>
+<TD>=</TD>
+<TD><IMG ALIGN="TOP" SRC="img664.gif" WIDTH=565 HEIGHT=101 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img665.gif" WIDTH=724 HEIGHT=114 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img666.gif" WIDTH=609 HEIGHT=74 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img667.gif" WIDTH=454 HEIGHT=85 </TD>
+</TABLE>
+</CENTER></P>
+<P></DIV></P>
+<P>Using integration by parts, and making use of the following integrals (The "A" and "B" overlap integrals): <A NAME="ab">&nbsp;</A> </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img669.gif" WIDTH=462 HEIGHT=87 ALT="begin{displaymath}int_1^{infty}x^ne^{-ax}dx=e^{-a}sum_{mu=1}^{n+1}frac{n!}{a^{mu}(n-mu+1)}=A_n(a)end{displaymath}"></DIV>
+<DIV ALIGN="CENTER">
+                     <IMG SRC="img670.gif" WIDTH=764 HEIGHT=89 ALT="begin{displaymath}int_{-1}^{1}x^ne^{-ax}dx=-e^{-a}sum_{mu=1}^{n+1}frac{n!}{......_{mu=1}^{n+1}frac{n(-1)^{n-mu}}{a^{mu}(n-mu+1)!} =B_n(a),end{displaymath}"></DIV>
+<P>the overlap integral becomes <BR>
+<P ALIGN="CENTER"><CENTER><TABLE CELLSPACING=0 BORDER=0>
+<TR>
+<TD><IMG ALIGN="TOP" SRC="img671.gif" WIDTH=128 HEIGHT=55 </TD>
+<TD>=</TD>
+<TD><IMG ALIGN="TOP" SRC="img672.gif" WIDTH=479 HEIGHT=98 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img673.gif" WIDTH=732 HEIGHT=110 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img674.gif" WIDTH=742 HEIGHT=92 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img675.gif" WIDTH=735 HEIGHT=96 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img676.gif" WIDTH=736 HEIGHT=91 </TD>
+<TR>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD><IMG ALIGN="TOP" SRC="img677.gif" WIDTH=216 HEIGHT=83 </TD>
+<TR>
+</TABLE>
+</CENTER></P>
+<P></DIV></P>
+<P>in which the coefficients <I>C<SUB>lmj</I></SUB> have the numerical values given in the Table.
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM11889">&nbsp;</A> 
+<STRONG><P>Table:</STRONG> Values of <I>C<SUB>lmj</P></I></SUB>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> l</TD>
+<TD VALIGN="MIDDLE">
+<P>m</TD>
+<TD VALIGN="MIDDLE">
+<P>j</TD>
+<TD VALIGN="MIDDLE">
+<P>C<I><SUB>lmj</I></SUB></TD>
+<TD VALIGN="MIDDLE">
+<P>l</TD>
+<TD VALIGN="MIDDLE">
+<P>m</TD>
+<TD VALIGN="MIDDLE">
+<P>j</TD>
+<TD VALIGN="MIDDLE">
+<P>C<I><SUB>lmj</I></SUB></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>5/2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>1.0</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>(225/48)<SUP>1/2</SUP></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>(1/2)<SUP>1/2</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>(15/8)<SUP>1/2</SUP></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>3/2</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>(5/16)<SUP>1/2</SUP></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>(3/2)<SUP>1/2</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>-3/2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>(3/8)<SUP>1/2</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P>3</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>-(3/16)<SUP>1/2</SUP></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>2</TD>
+<TD VALIGN="MIDDLE">
+<P>0</TD>
+<TD VALIGN="MIDDLE">
+<P>1</TD>
+<TD VALIGN="MIDDLE">
+<P>-1/2</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+</TABLE>
+</CENTER>
+</div>
+<P align="left"><BR></CENTER></DIV>
+Note : In subroutine SS the array AFF(l,m,2j) corresponds to C<I><SUB>lmj</I></SUB> here.
+This is the most convenient form for algorithmic use.&nbsp; In this form, the overlap integral can be found in function SS. <A NAME="BM11845">&nbsp;</A></BODY></HTML>

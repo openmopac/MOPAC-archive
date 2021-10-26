@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Geometric optimization criteria</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1>Geometric optimization criteria </H1>
+<P><HR></P>
+<H3><A NAME="SECTION001620100000000000000">
+GNORM "RMS GRADIENT =  <I>n</I>.<I>nn</I> IS LESS THAN CUTOFF =  <I>m</I>.<I>mm</I>"</A>
+</H3>
+<DL>
+<DT><STRONG>Defined in:</STRONG>
+<DD><TT>EF</TT>
+<DT><STRONG>Default value:</STRONG>
+<DD>1.0
+<DT><STRONG>Basic test:</STRONG>
+<DD>The calculated GNORM is less than that defined by <TT>
+<a href="gnorm.html">GNORM</a></TT> .
+</DL>
+<P><HR>
+<p></p>
+<H3>TOLERX "Test on X Satisfied"
+</H3>
+<p><STRONG>Defined in:</STRONG> <br>
+<TT>&nbsp;&nbsp;&nbsp;&nbsp; FLEPO</TT> </p>
+<DL>
+<DT><STRONG>Default value:</STRONG>
+<DD>0.0001 &Aring;ngstroms
+<DT><STRONG>Basic test:</STRONG>
+<DD>The projected change in geometry is less than <TT>TOLERX</TT> &Aring;ngstroms.
+<DT><STRONG>Exception:</STRONG>
+<DD>If <TT>
+<a href="gnorm.html">GNORM</a></TT> is specified, the TOLERX test is not used.
+</DL>
+<P><HR>
+<H3><A NAME="SECTION001620300000000000000">DELHOF "Herbert's Test Satisfied"</A> </H3>
+<STRONG><DL>
+<DT>Defined in:</STRONG> </DT>
+<TT><DD>FLEPO</TT> </DD>
+<STRONG><DT>Default value:</STRONG> </DT>
+<DD>0.001 </DD>
+<STRONG><DT>Basic test:</STRONG> </DT>
+<DD>The projected change in geometry is less than <TT>DELHOF</TT> kcals/mol. </DD>
+<STRONG><DT>Exception:</STRONG> </DT>
+<DD>If <TT>
+<a href="gnorm.html">GNORM</a></TT>&nbsp; is specified, the DELHOF test is not used. </DD>
+</DL>
+<P><HR>
+<H3><A NAME="SECTION001620400000000000000">
+TOLERG "Test on Gradient Satisfied"</A>
+</H3>
+<DL>
+<DT><STRONG>Defined in:</STRONG>
+<DD><TT>FLEPO</TT>
+<DT><STRONG>Default value:</STRONG>
+<DD>1.0
+<DT><STRONG>Basic test:</STRONG>
+<DD>The gradient norm in kcals/mol/&Aring;ngstrom is less than
+TOLERG multiplied by the square root of the number of coordinates to be
+optimized.
+<DT><STRONG>Exceptions:</STRONG>
+<DD>&nbsp;
+<UL>
+<LI>If <TT>
+<a href="gnorm.html">GNORM</a></TT>&nbsp; is specified, TOLERG=<I>n</I>.<I>nnn</I> divided by the square
+root of the number of coordinates to be optimized, and the secondary tests are
+not done.  If <TT>LET</TT> is not specified, <I>n</I>.<I>nnn</I> is reset to 0.01, if it was
+smaller than 0.01.
+<LI>If <TT><a href="precise.html">PRECISE</a></TT> is specified, TOLERG=0.2 <A NAME="BM36536">&#160;</A>
+<LI>If a <TT><a href="saddle.html">SADDLE</a></TT> calculation, TOLERG is made a function of the last
+gradient  norm.
+</UL></DL>
+<P><HR>
+<H3><A NAME="SECTION001620500000000000000">
+TOLERF "Heat of Formation Test Satisfied"</A>
+</H3>
+<DL>
+<DT><STRONG>Defined in:</STRONG>
+<DD><TT>FLEPO</TT>
+<DT><STRONG>Default value:</STRONG>
+<DD>0.002 kcal/mol
+<DT><STRONG>Basic test:</STRONG>
+<DD>The calculated heats of formation on two successive cycles
+differ by less than TOLERF.
+<DT><STRONG>Exception:</STRONG>
+<DD>If <TT>
+<a href="gnorm.html">GNORM</a></TT>&nbsp; is specified, the TOLERF test is not used.
+<DT><STRONG>Secondary tests:</STRONG>
+<DD>For the TOLERG, TOLERF, and TOLERX tests, a second
+test in which no individual component of the gradient should be larger than
+TOLERG must be satisfied.
+<DT><STRONG>Other tests:</STRONG>
+<DD>If, after the TOLERG, TOLERF, or TOLERX test has been
+satisfied three consecutive times the heat of formation has dropped by less
+than 0.3kcal/mol, then the optimization is stopped.
+</DL>
+<P><HR>
+<H3><A NAME="SECTION001620600000000000000">
+TOL2</A>
+</H3>
+<DL>
+<DT><STRONG>Defined in:</STRONG>
+<DD><TT>POWSQ</TT>
+<DT><STRONG>Default value:</STRONG>
+<DD>0.4
+<DT><STRONG>Basic test:</STRONG>
+<DD>The absolute value of the largest component of the gradient
+is less than <TT>TOL2</TT>
+<DT><STRONG>Exceptions:</STRONG>
+<DD>&nbsp;
+<UL>
+<LI>If&nbsp; <a href="precise.html"><TT>PRECISE</TT></a> is specified, <TT>TOL2</TT>=0.01 <A NAME="BM36552">&#160;</A>
+<LI>If <TT>
+<a href="gnorm.html">GNORM</a></TT>&nbsp; is specified, <TT>TOL2</TT>=<I>n</I>.<I>nn</I>
+<LI>If <TT><a href="let.html">LET</a></TT> is not specified, <TT>TOL2</TT> is reset to 0.01, if <I>n</I>.<I>nn</I>
+was smaller than 0.01.
+</UL></DL>
+<P><HR>
+<p></p>
+<H3><A NAME="SECTION001620700000000000000">TOLS1</A> </H3>
+<STRONG><DL>
+<DT>Defined in:</STRONG> </DT>
+<TT><DD>NLLSQ</TT> </DD>
+<STRONG><DT>Default value:</STRONG> </DT>
+<DD>0.000 000 000 001 </DD>
+<STRONG><DT>Basic test:</STRONG> </DT>
+<DD>The square of the ratio of the projected change in the geometry to the actual geometry is less than <TT>TOLS1</TT>. </DD>
+<STRONG><DT>Name: </DT>
+</STRONG><DD>&lt;none&gt;</DD>
+<STRONG><DT>Defined in:</STRONG> </DT>
+<TT><DD>NLLSQ</TT> </DD>
+<STRONG><DT>Default value:</STRONG> </DT>
+<DD>0.2 </DD>
+<STRONG><DT>Basic test:</STRONG> </DT>
+<DD>Every component of the gradient is less than 0.2. </DD>
+</DL>
+
+</BODY>
+</HTML>

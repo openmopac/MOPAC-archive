@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Locating Transition States</TITLE>
+                                                                                                                 <style type="text/css">.auto-style2 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+																												 .auto-style3 {
+																													 text-decoration: underline;
+																												 }
+																												 </style>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+Locating Transition States </h1>
+<P>Locating transition state geometries is different from optimizing ground 
+states, where general all-purpose methods can be used.&nbsp; Locating a 
+transition state geometry involves deciding on which of several different strategy 
+should be used. 
+Several options are available. 
+These range from simple one-step optimizations to quite complicated processes.&nbsp; The 
+choice of which option to use depends on the type of reaction that is being 
+studied.&nbsp; In general, the simplest method that will locate the 
+transition state should be used.&nbsp; Be aware that sometimes none of the techniques described below will work.&nbsp; 
+When that happens, the possibility that there is a fault in the model of the 
+chemical system must be considered, and 
+that a re-examination of the project might be necessary.&nbsp; </P>
+<h2>Techniques for locating transition states</h2>
+<P>In order of complexity, these are:</P>
+<h3><a href="Narcissistic%20reactions.html">Narcissistic reactions</a></h3>
+<P>In narcissistic reactions the reactants and products look the same.&nbsp; 
+Reactions of this type are also called fluxional and degenerate rearrangement 
+reactions; all three names reflect the fact that the product(s) of reaction are 
+essentially the same as the reactant(s), the only difference being that the 
+order of the atoms has changed.&nbsp; If this option can be used - use it!&nbsp; 
+It's simple, fast, and reliable.</P>
+<h3 class="auto-style3">More complicated methods</h3>
+<P>All the following methods involve two steps.&nbsp; The first step depends on 
+the method used, and produces a geometry that is near to the transition state.&nbsp; 
+This approximate transition state geometry is then optimized to produce the 
+refined transition state.&nbsp; For this, any of the standard transition state 
+refinement methods can be used: <TT><a href="ts.html">TS</a></TT>, <A HREF="sigma.html"><tt>SIGMA</tt></A> or <A HREF="nllsq.html"><tt>NLLSQ</tt></A>.</P>
+<h3><a href="Almost%20narcissistic%20reactions.html">Almost narcissistic 
+reactions</a></h3>
+<P class="auto-style2">For convenience, reactions that are similar, but not the 
+same as, narcissistic reactions can be modeled using a method similar to that 
+used for narcissistic reactions.&nbsp; The only difference is the addition of a 
+step to optimize the transition state geometry. As with true narcissistic 
+reactions, if this option can be used - use it!&nbsp; It's almost as simple, 
+fast, and reliable as the narcissistic reactions.</P>
+<h3>
+<a href="Use%20of%20reaction%20path%20to%20locate%20a%20transition%20state.html">Use of reaction path</a></h3>
+<p>
+In some reactions, one specific atomic parameter, either an interatomic 
+distance, bond angle, or dihedral, can be identified as being related to the 
+reaction path.&nbsp; In this type of reaction, simply increasing or decreasing 
+the atomic parameter will allow the path to be mapped out.&nbsp; The transition 
+state geometry is then the highest point on the reaction path.&nbsp; </p>
+<h3>
+<a href="Locating%20transition%20state%20geometries%20using%20a%20reaction%20path%20defined%20with%20a%20dummy%20atom.html">Use of reaction path, starting near the transition state</a></h3>
+<P class="auto-style2">This option is new in the sense that it has not been used 
+before.&nbsp; However, it is not new in that it uses tools that have existed in MOPAC 
+for a long time.</P>
+<P class="auto-style2">&nbsp;</P>
+<P class="auto-style2">In reactions where an atom, A, moves from being bonded to 
+another atom, B, to being bonded to a third atom, C, can be assumed to have a 
+transition state somewhere between B and C.&nbsp; Using symmetry, a dummy atom 
+is placed at a point equidistant from B and C, and a reaction path for atom A is 
+then constructed.&nbsp; Atom A is moved in a straight line from atom B to the 
+dummy atom, and then in a line away from atom B, still in a straight line away 
+from atom B.&nbsp; At each point on this line the positions of all atoms, and, 
+most important, the position of the dummy atom are optimized.&nbsp;&nbsp; 
+Setting up this type of reaction path requires a significant effort, but as with 
+the first few methods, when it can be used it is very reliable.</P>
+<P class="auto-style2">&nbsp;</P>
+<h3>CPU intensive methods SADDLE and LOCATE-TS</h3>
+<P>If at all possible, avoid using these methods.&nbsp; They are very CPU 
+intensive, and quite often require the user to make value judgments. They are, 
+however, often the only techniques that are successful when working with 
+enzymes.</P>
+<P>Both methods use two data-sets, one that represents the reactants and one for 
+the products.&nbsp; Both methods work by reducing the distance,<em> R</em><sub>RP</sub>, 
+between the systems representing the reactants and products, in a systematic 
+manner.&nbsp; </P>
+<P>SADDLE works by moving whichever system has the lower energy in the direction 
+of the other system, that is, it reduces <em>R</em><sub>RP</sub> by moving one 
+system towards the other while holding the other system fixed.&nbsp; The 
+geometry of the moving system is then optimized, subject to the constraint that
+<em>R</em><sub>RP</sub> is held constant.&nbsp; If the optimized heat of 
+formation rises above that of the system that was held fixed, then the roles are 
+reversed.&nbsp; That is, the system that was held fixed is now optimized subject 
+to the <em>R</em><sub>RP</sub> constraint, and the system that was being 
+optimized is now held fixed.&nbsp; This procedure slowly moves both systems up 
+the reaction barrier while simultaneously keeping the heats of the two systems 
+roughly the same. Eventually <em>R</em><sub>RP</sub> becomes small enough that 
+gradient minimization methods can be used for refining the transition state. </P>
+<P>LOCATE-TS works in a different way.&nbsp; It uses a bias to move both systems 
+towards each other.&nbsp; The bias can be regarded as a force pulling the 
+reactants towards the products, and pulling the products towards the reactants.&nbsp; 
+Both pulls are equal and opposite in direction.&nbsp; At each step, the geometries 
+of both systems are optimized, subject to the bias; at the end of each step both 
+systems will be in equilibrium with the bias.&nbsp; This means that the slope of 
+the reaction barrier for one system is equal and opposite to the slope of the 
+other system.&nbsp; Put another way, the gradients due to the bias acting on 
+both systems are equal and opposite.&nbsp; Motion up the reaction barrier is 
+achieved by increasing the bias.&nbsp; Near the top of the barrier, the slope 
+decreases as the transition state is approached, and gradient minimization 
+methods can then be used for refining the transition state.&nbsp; </P>
+<P>So SADDLE works by moving up the barrier by moving whichever system has the 
+lower energy in the direction of the other system, and LOCATE-TS works by moving 
+both systems up the barrier simultaneously, while keeping the slope of the 
+barrier the same by using a bias.&nbsp; In practice, the LOCATE-TS method is 
+more efficient than the SADDLE method.</P>
+<h3>
+<a href="Use%20of%20the%20SADDLE%20technique%20to%20locate%20a%20transition%20state.html">Use of the SADDLE technique</a></h3>
+<p>
+For more complicated reactions, the fact that the transition-state geometry is 
+the highest point on the lowest-energy path between reactants and products can 
+be used for locating it.&nbsp; The SADDLE technique uses as data both the optimized reactant 
+geometry and the optimized product geometry.&nbsp; It calculates the distance in &Aring;ngstroms 
+between the two, and whichever system has the lower heat of 
+formation is moved a small distance towards the other geometry, thus shortening 
+the distance between them.&nbsp; If the new &Delta;H<sub>f</sub> is still lower than that of the other geometry, another step is 
+taken.&nbsp; When the &Delta;H<sub>f</sub> rises above that of the other 
+geometry, the stationary and moving geometries are swapped around. This 
+procedure results in the distance between the two geometries getting steadily 
+shorter, and both geometries have roughly the same heat of formation, and the 
+transition state geometry is somewhere between the two geometries. Eventually 
+the distance becomes very small, and the average of the two geometries is then a 
+good approximation to the transition state. </p>
+<h3>
+<a href="Use%20of%20the%20LOCATE-TS%20technique%20to%20locate%20a%20transition%20state.html">Use of LOCATE-TS technique</a></h3>
+<p>
+<em>This technique is particularly suitable for modeling complicated systems 
+such as transition states for individual steps in enzyme-catalyzed reactions.</em></p>
+<p>
+An alternative to the SADDLE technique is to replace the&nbsp;&Delta;H<sub>f</sub> 
+criterion with the gradient criterion.&nbsp; In the LOCATE-TS method, the 
+starting point is the same as in the SADDLE technique.&nbsp; A bias or force is 
+then applied to both the reactants and products, pulling them towards each 
+other.&nbsp; This force is steadily increased until the approximate transition 
+state is located.&nbsp; The transition state is then refined in a set of 
+two-step operations.&nbsp; One operation involves gradient minimization of only 
+those atoms that are directly involved in the reaction, the other operation is 
+an unconstrained geometry optimization of all the other atoms.</p>
+<p>
+Once an acceptable transition state geometry is obtained, it should be further 
+refined by running the geometry optimization with a tighter criterion, for 
+proteins GNORM=5 would be appropriate.&nbsp; Monitor the job to watch the heat 
+of formation.&nbsp; When it stops decreasing (it does not decrease over say 50 - 
+100 cycles) the geometry can be considered as being at an energy minimum.</p>
+<p>
+Caveat: The LOCATE-TS technique uses the MOZYME LMO method, and will not work 
+for systems that cannot be run using MOZYME.</p>
+<h3>
+<a href="Use%20of%20a%202-D%20grid%20to%20locate%20a%20transition%20state.htm">
+Use of a two-dimensional grid</a></h3>
+<p>
+Use this technique only for demonstration purposes.&nbsp; It produces a 
+two-dimensional contour map for a reaction.&nbsp; The X and Y dimensions are two 
+geometric variables, and the third dimension is the energy at that point.&nbsp; 
+Visual inspection should show the approximate location of the transition state.&nbsp; 
+Re-running the job, focusing on the region around the transition state, should 
+produce a more refined geometry.</p>
+<p>
+Although this technique can be used with proteins it is very CPU intensive.&nbsp; 
+A better alternative is to use a mixture of LOCATE-TS and SADDLE.&nbsp; Use 
+LOCATE-TS with a small bias, for example LOCATE-TS(C:3,3,3,5,5;), to quickly 
+minimize the distance between the reactants and products, then switch to SADDLE 
+to ascend the barrier.</p>
+<dd>
+<p>&nbsp;</p>
+<p>
+&nbsp;</p>
+ </P>
+                                                </BODY>
+</HTML>

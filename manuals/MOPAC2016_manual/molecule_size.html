@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>"Size" of a molecule</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1>"Size" of a molecule </H1>
+<P>A useful measure of a molecule is its size. There are several possible ways of defining the size of a molecule. The definition used in MOPAC is as follows: </P>
+<P>The first dimension is the maximum distance between any pair of atoms. </P>
+<P>For systems of 20 or fewer atoms, this distance, and the atoms involved, is worked out explicitly. For systems of 21 or more atoms, an atom is selected; the atom, <I>K</I>, most distant from it is then identified, then the atom, <I>L</I>, most distant from <I>K</I> is identified. In most systems, the distance R(<I>K</I>-<I>L</I>) is the first dimension. To ensure that it is, the point half-way between <I>K </I>and <I>L</I> is selected, and atom <I>K</I> is then re-defined as the atom most distant from that point. A new <I>L</I> is determined. This sequence in repeated up to 10 times, or until atoms <I>K</I> and <I>L</I> no longer change. There is no guarantee that the first dimension is, in fact, the largest distance, but it is likely to be close to the largest possible value. </P>
+<P>The second dimension is the maximum distance in the plane perpendicular to the first dimension between any pair of atoms. </P>
+<P>The technique that was used in determining the first dimension for systems of over 21 atoms is used here. </P>
+<P>The third dimension is the maximum distance between any two atoms on the line perpendicular to the plane of the first two atoms. </P>
+<P>This quantity is explicitly calculated. </P>
+<P>Note that the second and third dimensions do <EM>not</EM> define the smallest rectangular slot that a molecule would go through; it will normally be slightly larger than the minimum slot. Nevertheless, the "dimensions" of a molecule can be regarded as a good measure of the size of hole that the molecule could pass through. Of course, allowance must be made for the finite size of atoms. </P>
+<P>Monatomic systems have no "dimension", linear systems have two zero "dimensions", and flat systems have one zero "dimension". </P>
+                                                </BODY>
+</HTML>

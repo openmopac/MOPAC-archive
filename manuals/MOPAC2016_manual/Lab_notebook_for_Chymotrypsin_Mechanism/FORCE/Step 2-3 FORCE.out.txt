@@ -1,0 +1,205 @@
+ *******************************************************************************
+ ** Site#: 9872         For non-commercial use only    Version 17.239W 64BITS **
+ *******************************************************************************
+ ** Cite this program as: MOPAC2016, Version: 17.239W, James J. P. Stewart,   **
+ ** Stewart Computational Chemistry, web: HTTP://OpenMOPAC.net. Days left: 361**
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2016                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                              PM7 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                Thu Aug 31 21:53:05 2017  *
+ *  GEO-OK     - OVERRIDE INTERATOMIC DISTANCE AND OTHER SAFETY CHECKS
+ *  INVERT     - REVERSE ALL OPTIMIZATION FLAGS
+ *  GEO_DAT    - DATA SET GEOMETRY IS IN FILE "../TS/STEP 2-3.ARC"
+ *  MOZYME     - USE LOCALIZED M.O.s IN SOLVING THE SCF EQUATIONS
+ *
+ *
+ *
+ *                 CHARGE ON SYSTEM =    -1
+ *
+ *
+ *
+ *  EPS= 78.40 - USE ANDREAS KLAMT'S COSMO IMPLICIT SOLVATION MODEL
+ *  XYZ        - CARTESIAN COORDINATE SYSTEM TO BE USED
+ *  FORCETS    - VERIFY THAT TRANSITION STATE IS GENUINE
+ *  T=         - A TIME OF      1.0 WEEKS   REQUESTED
+ *  DUMP=N     - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *  OUTPUT     - REDUCE OUTPUT, BUT PRINT:
+ *           N - NORMAL COORDINATES)
+ *  ISOTOPE    - FORCE MATRIX WRITTEN TO DISK (CHAN. 9 )
+ *******************************************************************************
+invert output xyz EPS=78.4 geo-ok GEO_DAT="../TS/Step 2-3.arc" T=1W CHARGE=-1 MOZYME FORCETS output(N) isotope
+ Verify that the Chymotrypsin Step 2-3 transition state is valid
+
+ 
+
+ General Reference for PM7:
+ "Optimization of Parameters for Semiempirical Methods VI: More Modifications to the 
+ NDDO Approximations and Re-optimization of Parameters", J. J. P. Stewart, J. Mol. Mod., 1:32, 19 (2013)
+ http://www.springerlink.com/openurl.asp?genre=article&id=doi:10.1007/s00894-012-1667-x
+
+           Empirical Formula: C1115 H2449 N302 O704 S16  =  4586 atoms
+
+
+   Ion Atom No.           Label               Charge (Distances are between charged sites predicted by Lewis structure theory)
+ 
+    1   N  144   (ATOM    144  N   SER E  11)   +1  (2.5 Angstroms from anion  O  214, Label: ATOM    215  OE2 GLU F  20)
+    2   N  148   (ATOM    149  N   ILE F  16)   +1  (2.6 Angstroms from anion  O 2728, Label: ATOM   2730  OD2 ASP G 194)
+    3   C  761   (ATOM    762  CE1 HIS F  57)   +1  (3.6 Angstroms from anion  O 1446, Label: ATOM   1447  OD2 ASP F 102)
+    4   C 2142   (ATOM   2144  CZ  ARG G 154)   +1  (4.4 Angstroms from anion  O  229, Label: ATOM    230  OE2 GLU F  21)
+ 
+    1   O  214   (ATOM    215  OE2 GLU F  20)   -1  (2.5 Angstroms from cation  N  144, Label: ATOM    144  N   SER E  11)
+    2   O  229   (ATOM    230  OE2 GLU F  21)   -1  (4.4 Angstroms from cation  C 2142, Label: ATOM   2144  CZ  ARG G 154)
+    3   O 1446   (ATOM   1447  OD2 ASP F 102)   -1  (3.6 Angstroms from cation  C  761, Label: ATOM    762  CE1 HIS F  57)
+    4   O 2728   (ATOM   2730  OD2 ASP G 194)   -1  (2.6 Angstroms from cation  N  148, Label: ATOM    149  N   ILE F  16)
+    5   O 3486   (ATOM   3489  O   TRP C 252)   -1  (5.0 Angstroms from cation  C  761, Label: ATOM    762  CE1 HIS F  57)
+
+          COMPUTED CHARGE ON SYSTEM: -1, THIS AGREES WITH THE CHARGE DEFINED BY KEYWORD "CHARGE"
+
+
+          HEAT OF FORMATION =  -47882.175583 KCALS/MOLE
+
+
+          GRADIENT NORM =  30.75258
+
+
+          TIME FOR SCF CALCULATION = 1788.78
+
+          TIME FOR DERIVATIVES     =  800.66
+
+
+    FIRST DERIVATIVES WILL BE USED IN THE CALCULATION OF SECOND DERIVATIVES
+
+          ESTIMATED TIME TO COMPLETE CALCULATION =    46609.88 SECONDS
+ STEP:   1 TIME =  3183.62 SECS, INTEGRAL =   3183.62 TIME LEFT: 599026.94
+ STEP:   2 TIME =  1903.69 SECS, INTEGRAL =   5087.31 TIME LEFT: 597123.25
+ STEP:   3 RESTART FILE WRITTEN, INTEGRAL =   6542.82 TIME LEFT: 595667.74
+ STEP:   4 TIME =  1411.09 SECS, INTEGRAL =   7953.91 TIME LEFT: 594256.66
+ STEP:   5 TIME =  3083.70 SECS, INTEGRAL =  11037.61 TIME LEFT: 591172.95
+ STEP:   6 TIME =  1262.20 SECS, INTEGRAL =  12299.81 TIME LEFT: 589910.75
+ STEP:   7 RESTART FILE WRITTEN, INTEGRAL =  14309.31 TIME LEFT: 587901.25
+ STEP:   8 TIME =  2166.33 SECS, INTEGRAL =  16475.64 TIME LEFT: 585734.92
+ STEP:   9 TIME =  2416.15 SECS, INTEGRAL =  18891.79 TIME LEFT: 583318.77
+
+          MOLECULAR WEIGHT =31867.17
+
+
+
+          ROTATIONAL CONSTANTS IN CM(-1)
+
+          A =    0.00000350   B =    0.00000292   C =    0.00000257
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN UNITS OF 10**(-40)*GRAM-CM**2
+
+          A =  7999611.5385   B =  9596124.4577   C = 10911159.0641
+
+
+
+          HEAT OF FORMATION =  -47882.124735 KCALS/MOLE
+
+          ZERO POINT ENERGY       9.119 KCAL/MOL
+
+         NOTE: SYSTEM IS NOT A GROUND STATE, THEREFORE ZERO POINT
+         ENERGY IS NOT MEANINGFULL. ZERO POINT ENERGY PRINTED
+         DOES NOT INCLUDE THE  1 IMAGINARY FREQUENCIES
+
+
+                         Atoms used in the FORCETS calculation
+
+   1     N(ATOM    761  NE2 HIS F  57)  29.66624905 +1   2.75355164 +1  34.16083361 +1
+   2     H(ATOM    770  HG  SER G 195)  28.71112155 +1   1.78118439 +1  34.48101547 +1
+   3     N(ATOM   3510  N   THR C 253)  27.97427551 +1   0.88003788 +1  35.29516716 +1
+
+
+           NORMAL COORDINATE ANALYSIS (Total motion = 1 Angstrom)
+
+
+   Root No.       1         2         3         4         5         6         7         8
+
+                 1         2         3         4         5         6         7         8     
+
+                -734.7     345.1     374.6     633.5     864.9     926.4    1048.7    1072.6
+  
+           1   -0.1455   -0.1320    0.1104   -0.0772    0.3069    0.2024    0.2211   -0.1243
+           2   -0.1235    0.0237    0.0200    0.0072    0.1280    0.1706    0.2135   -0.0943
+           3    0.0191   -0.3611    0.3469   -0.2228    0.0686   -0.0977   -0.2045    0.0862
+           4    0.5291   -0.3467   -0.2853    0.0739    0.1194    0.0630    0.0527   -0.0041
+           5    0.4594    0.4079    0.3204   -0.0540    0.1116    0.0915   -0.0079   -0.0277
+           6    0.0755   -0.2052    0.3350    0.2981   -0.2977    0.0389    0.2305   -0.0993
+           7   -0.0062   -0.0379   -0.0437   -0.1303   -0.2177    0.5850   -0.1658    0.0468
+           8    0.0247    0.0169    0.0038   -0.1198   -0.0507   -0.0045    0.2710    0.6517
+           9   -0.1003    0.0000    0.0798    0.4162    0.2303    0.1340   -0.2335    0.2992
+
+
+   Root No.       9
+
+                 9     
+
+                1112.6
+  
+           1   -0.4492
+           2    0.7172
+           3    0.1899
+           4    0.0601
+           5   -0.0037
+           6   -0.0612
+           7   -0.0328
+           8   -0.0251
+           9    0.0221
+
+
+           MASS-WEIGHTED COORDINATE ANALYSIS (NORMAL COORDINATES)
+
+
+   Root No.       1         2         3         4         5         6         7         8
+
+                 1         2         3         4         5         6         7         8     
+
+                -734.7     345.1     374.6     633.5     864.9     926.4    1048.7    1072.6
+  
+           1   -0.2117   -0.2009    0.1759   -0.1376    0.5580    0.3199    0.3924   -0.1787
+           2   -0.1798    0.0361    0.0319    0.0129    0.2328    0.2696    0.3788   -0.1355
+           3    0.0279   -0.5496    0.5527   -0.3973    0.1248   -0.1544   -0.3628    0.1239
+           4    0.7133   -0.4886   -0.4208    0.1221    0.2010    0.0921    0.0867   -0.0054
+           5    0.6193    0.5748    0.4726   -0.0892    0.1879    0.1339   -0.0130   -0.0368
+           6    0.1017   -0.2892    0.4941    0.4922   -0.5012    0.0569    0.3788   -0.1322
+           7   -0.0084   -0.0533   -0.0645   -0.2151   -0.3665    0.8561   -0.2725    0.0623
+           8    0.0333    0.0238    0.0056   -0.1978   -0.0854   -0.0065    0.4453    0.8677
+           9   -0.1352    0.0001    0.1178    0.6874    0.3878    0.1961   -0.3837    0.3984
+
+
+   Root No.       9
+
+                 9     
+
+                1112.6
+  
+           1   -0.5151
+           2    0.8225
+           3    0.2178
+           4    0.0639
+           5   -0.0039
+           6   -0.0650
+           7   -0.0348
+           8   -0.0267
+           9    0.0235
+
+ **********************
+ *                    *
+ * JOB ENDED NORMALLY *
+ *                    *
+ **********************
+
+
+
+ TOTAL JOB TIME:         21483.48 SECONDS
+
+ == MOPAC DONE ==

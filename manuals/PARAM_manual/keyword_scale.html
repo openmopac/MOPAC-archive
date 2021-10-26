@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<TITLE>SCALE</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>NOSCALE</TT></h1>
+<p>During a parameter optimization, the effect on a calculated datum caused by 
+changes in the parameters can be predicted.&nbsp; If the calculated change is 
+very different to that predicted, the parameter optimization process might fail 
+to converge.&nbsp; Most runs do not have any problems, and in a run that does 
+have problems, normally only one or two data are involved.&nbsp; Rather than 
+stop such a run, the weights of the offending data are automatically reduced.&nbsp; 
+To prevent this automatic reduction in weights, add keyword <TT>NOSCALE</TT>.&nbsp;
+<TT>NOSCALE</TT> on the PARAM keyword line affects all reference data.</p>
+<p>An alternative, that prevents the weights of individual reference data files 
+from being changed, is to have the word <tt>NOSCALE </tt>on the third line of individual 
+reference data files.</p>
+<TT>NOCALE</TT> does not affect normal data, that is, for normal data the 
+default scaling faction is 1.0.&nbsp; For data that cause problems, when <TT>NOSCALE</TT> 
+is not present the scaling factor decreases 
+so as to reduce the impact of that data.&nbsp; If an individual datum stops causing 
+problems, the scaling factor will increase to 1.0 again, for that datum.<p>&nbsp;</p>
+</BODY>
+</HTML>

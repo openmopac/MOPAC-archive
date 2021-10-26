@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Validate Starting Model</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Check">Modeling proteins</a>)</font></p>
+<h1><font face="Arial">Checking that the starting model is valid</font></h1>
+<p>Before doing any serious modeling, it is very important that the starting 
+model is as correct as possible.&nbsp; Effort spent here in validating the model 
+will save wasting a lot of time later on.&nbsp; Of course, eliminating all 
+errors is practically impossible, but if the number of errors is minimized, then 
+the likelihood of the remaining errors causing problems later on is diminished.</p>
+<h2>Use keyword <a href="html.html"><tt>HTML</TT></a></h2>
+<p>A simple web-page will be written when <TT>HTML</TT> is used.&nbsp; This 
+web-page allows Firefox to open a <a href="http://jmol.sourceforge.net/">Jmol</a> script 
+that can be used easily for examining details of proteins.&nbsp; Two steps need 
+to be done to get this graphical user interface to work. First, JSmol needs to 
+be installed, and second a minor change needs to be done to get Firefox to read 
+local web-pages.&nbsp; But once these are done, using <TT>HTML</TT> is very 
+easy.</p>
+<h2>Check all <a href="Determining_ionized_sites.html">charged sites</a></h2>
+<p>Proteins can have a large number of charged sites.&nbsp; These can be divided 
+into two groups, salt bridges and all other charged sites.&nbsp; This check 
+should be done at least twice.&nbsp; The first time it should be done is after 
+the 1SCF calculation. To check for errors in ionization, start by looking at the 
+output file from the <a href="Running_a_1SCF_calculation.html">1SCF calculation</a>. 
+Later on, when the geometry is optimized and before any research work is 
+started, the check should be run again. There are two lists in the output that 
+are relevant, these are headed:<PRE> Ion PDB Label Charge Distance PDB label for Salt Bridge Charge</PRE> 
+and <pre> Salt Bridges Found (Up to 8.0 Angstroms)</PRE>
+<p dir="ltr">All ionized sites identified by the Lewis structure are shown in the first list 
+but only the salt-bridges are shown in the second list. In the second list the atomic charges are calculated from the 
+electron density.</p>
+</BODY>
+</HTML>

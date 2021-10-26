@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>REORTH </TITLE>
+<META NAME="description" CONTENT="REORTH ">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<H2 align="center">
+<TT>REORTH</TT> 
+</H2>
+During a <TT><a href="mozyme.html">MOZYME</a> </TT>run, the steady accumulation of small errors (for example,
+roundoff, and more important, the elimination of atoms from LMOs) will
+result in the LMOs becoming non-orthogonal.  These errors can be eliminated
+almost completely by re-orthogonalizing the LMOs.  If <TT>REORTH</TT>
+is present, then the LMOs will be re-orthogonalized at the end of every 10th SCF 
+calculation, starting with the first SCF.
+<p>In practice, a better strategy is to allow the job to run for ~500 cycles or 
+1-2 CPU days, then shut it down and restart it using <a href="restart.html">
+<tt>RESTART</tt></a>, but without using keyword <a href="oldens.html"><tt>OLDENS</tt></a>.&nbsp; 
+That will cause the LMO's to be recalculated, and job to resume starting with 
+the geometry at the end of the previous run.</p>
+</BODY>
+</HTML>

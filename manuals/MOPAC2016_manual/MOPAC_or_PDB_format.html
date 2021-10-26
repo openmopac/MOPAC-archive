@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>MOPAC or PDB format</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														font-family: Arial, Helvetica, sans-serif;
+																													}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Choosing">Modeling proteins</a>)</font></p>
+<h1 class="auto-style1">Choosing a format: MOPAC or PDB</h1>
+<p class="auto-style1">The two main formats used by MOPAC are the native MOPAC 
+format 
+and the PDB format, so a reasonable question would be, &quot;Which is better?&quot;&nbsp; 
+The easiest way to answer this is to compare the features of the MOPAC and PDB 
+formats as they apply to data sets that can be run using MOPAC.</p>
+<h2 class="auto-style1">PDB format</h2>
+<h3 class="auto-style1">Advantages:</h3>
+<p class="auto-style1">Exact compatibility with the PDB format.</p>
+<h3 class="auto-style1">Disadvantages:</h3>
+<p><span class="auto-style1">The user cannot specify individual atoms for optimization, however sets of 
+atoms can be selected using </span> <a href="nooptx.html"><tt>
+NOOPT</TT></a><span class="auto-style1">,&nbsp; </span>
+<a href="optx.html"><TT>OPT-H</TT></a><span class="auto-style1">, etc.&nbsp; 
+</span> <br class="auto-style1"><span class="auto-style1">Coordinates are 
+limited to three decimals, so calculated properties would be slightly different 
+to those predicted if 
+the MOPAC format were to be used.&nbsp; These differences are quite small, a few tenths of a 
+Kcal/mol for chymotrypsin, and if a geometry optimization is involved, are 
+really quite unimportant.</span></p>
+<h2 class="auto-style1">MOPAC format</h2>
+<h3 class="auto-style1">Advantages:</h3>
+<p class="auto-style1">Very fine control of geometry optimization is possible, for example gradient 
+minimization of the individual atoms involved in a reaction can be specified.</p>
+<h3 class="auto-style1">Disadvantages:</h3>
+<p class="auto-style1">The geometry does not include all information that is 
+present in the PDB geometry.&nbsp; Extra information, such as the positions of 
+missing residues and chain ends and chain letters must be given by keyword <a href="start_res.html"><TT>START_RES</TT></a>&nbsp; at the start of the data set.&nbsp; This 
+extra information is only needed if an exact comparison with the original PDB 
+file has to be made.</p>
+<h2 class="auto-style1">Suggested use of PDB and MOPAC formats</h2>
+<p><span class="auto-style1">Set up data sets for modeling using the MOPAC format.&nbsp; This is easy to 
+use, and when atom numbers are replaced by <a href="atom_numbers.html">PDB or 
+Jmol labels</a>, editing optimization flags and  adding or 
+deleting atoms is straightforward.&nbsp; Include keyword </span> <a href="pdbout.html"><TT>
+PDBOUT</TT></a> <span class="auto-style1">or&nbsp;<a href="html.html"><tt>HTML</tt></a>, 
+so that the job will produce a PDB file suitable for use with a GUI. This gives 
+the best of both formats: MOPAC format is easy to edit, and PDB format is easy 
+to use with GUIs.</span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

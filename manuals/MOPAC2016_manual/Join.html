@@ -1,0 +1,223 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>MOPAC utility program "join" </TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+	text-align: left;
+}
+																													.auto-style2 {
+																														text-decoration: underline;
+																													}
+																													.auto-style3 {
+																														margin-left: 40px;
+																													}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">MOPAC utility program &quot;JOIN&quot;</h1>
+<p class="auto-style1">Program &quot;JOIN&quot; is a utility for joining together two 
+parts of a reaction coordinate trajectory created using the Dynamic Reaction Coordinate, 
+<a href="drc0.html">DRC</a>, the 
+Intrinsic Reaction Coordinate, <a href="irc0.html">IRC</a>, or a
+<a href="point.html">reaction path</a>. These trajectories can be modeled using 
+JSmol.</p>
+<p class="auto-style1">Only the Windows version of JOIN is available.&nbsp; To 
+install JOIN download &quot;<a href="Join.zip">JOIN</a>&quot; and place the 
+executable in a location where you keep other .exe files. If that folder is not 
+in the PATH, add a short file named JOIN.cmd file to a folder that is in the 
+PATH, this file should contain a single line of the type &quot;<strong>C:\Users\yourname\location 
+of JOIN\JOIN.exe&nbsp; %1&nbsp; %2</strong>&quot; </p>
+<p class="auto-style1">JOIN is run at the command-prompt level, in the folder 
+that contains the arguments.&nbsp; If JOIN is 
+run without any arguments, it will print a brief message describing what it can 
+do.</p>
+<p class="auto-style1"><span class="auto-style2"><strong>One argu<a name="One_argument"></a>ment:</strong></span> Quite often a trajectory needs to be 
+reversed.&nbsp; For example, a reaction coordinate is normally written as going 
+from a reactant over a transition state to a product, and the &Delta;H<sub>f</sub> 
+of the product is lower than that of the reactant.&nbsp; The reactant is usually 
+on the left of the graph and the product on the right.&nbsp; If a trajectory is 
+calculated, and the positions of the reactant and products are reversed, then 
+the reaction path can be reversed using Join.&nbsp; </p>
+<p class="auto-style1">JOIN can be used to create a multi-step reaction, i.e., 
+one where a reactant goes over a transition state then down to an intermediate 
+that has a higher energy than the reactant, then the intermediate goes over a 
+transition state to a lower-energy product.&nbsp; In the first reaction, the 
+left-right convention is reversed, so that the intermediate (with a &Delta;H<sub>f</sub> 
+higher than that of the reactant) is on the right of the graph. If the graph is 
+the wrong way round, it can be reversed using JOIN.</p>
+<p class="auto-style1">In all cases, the original trajectory is over-written.</p>
+<p class="auto-style1"><strong><span class="auto-style2">Two ar<a name="Two_arguments"></a>guments:</span>
+</strong>When two arguments are used, the trajectory specified by the second 
+argument is attached to the end of the trajectory specified by the first 
+argument. &nbsp;</p>
+<p class="auto-style1">The output from JOIN when the two arguments are used is 
+named &quot;new.xyz&quot;&nbsp;&nbsp;&nbsp; If JSmol had been installed, see
+<a href="README_for_JSmol.html">instructions</a>, 
+then the new reaction path can be animated. A worked example of such an
+<a href="Individual%20JSmol%20paths/new/new.html">animation</a> is included in 
+the ZIP file</p>
+<h2><span class="auto-style2">Notes</span> </h2>
+<h3>Suggested procedure for building a multi-step Intrinsic Reaction Coordinate 
+reaction path</h3>
+<p><strong>First</strong>, generate all the transition states, then use <a href="irc.html"><tt>IRC=1*</tt></a> 
+to generate the reaction coordinate for each reaction step.&nbsp; Here are the 
+steps needed for each IRC calculation:</p>
+<p class="auto-style3">Run a <a href="force.html"><tt>FORCE</tt></a> calculation to work out the reaction coordinate, 
+and use keyword <a href="isotope.html"><tt>ISOTOPE</tt></a> to store the force matrix.&nbsp; This will be used in 
+each of the IRC calculations. This step does not need to be done if the system 
+is small and runs fast.</p>
+<p class="auto-style3">Set up an IRC job, using the same geometry and same name as that used 
+in the FORCE calculation. Use keyword <tt>IRC=1*</tt> if the system is small 
+enough to run in a reasonable time.&nbsp; If it is big, make up two jobs, one 
+with <tt>IRC=1 </tt>and one with <tt>IRC=-1,</tt> the results of these two 
+half-path jobs 
+can be joined together to give the same results as <tt>IRC=1*</tt>.&nbsp; </p>
+<p class="auto-style3">If the <tt>FORCE</tt> calculation had been done, then add keyword <a href="restart.html"><tt>RESTART</tt></a>, this will 
+read in the FORCE matrix, which will be used in generating the reaction 
+coordinate normal mode required by <tt>IRC=1</tt>. </p>
+<p class="auto-style3">Decide on a suitable step-size, e.g.,
+<a href="x-priority.html"><tt>X-PRIORITY=0.2</tt></a>.&nbsp; This step-size should be 
+used for all parts of a reaction path.&nbsp; It should not be changed for any 
+step, if it is changed any resulting animation or graph will be distorted. </p>
+<p class="auto-style3">A useful option at this point is to include 
+<a href="html.html"><tt>HTML</tt></a>.&nbsp; 
+This will result in a simple HTML web-page being constructed that can be used 
+to verify that the correct path is being generated.&nbsp; A common fault is that 
+both the forward <tt>IRC=1</tt> and reverse <tt>IRC=-1</tt> paths are the same, 
+this typically occurs when the potential energy surface at the top of a barrier 
+is relatively flat. An easy way to ensure that the paths are correct is to add
+<a href="kinetic.html"><tt>KINETIC=20</tt></a>.&nbsp; This shifts the starting 
+point for the IRC path a significant distance in the appropriate direction&nbsp;&nbsp; </p>
+<p class="auto-style3">To minimize the chance of artifacts being created by 
+insufficient precision, add keyword <a href="precise.html"><tt>PRECISE</tt></a>.</p>
+<p class="auto-style3">Add
+<a href="cycles.html"><tt>CYCLES=10000</tt></a> to ensure that long IRC's can be 
+created.</p>
+<p class="auto-style3">If the behavior of the dipole during a reaction is of 
+interest, add <a href="dipole.html"><tt>DIPOLE</tt></a>.&nbsp; </p>
+<p>If all the keywords just described were used, then the keyword set would 
+consist of &quot;<strong>IRC=1* HTML X-PRIORITY=0.2 CYCLES=10000 PRECISE KINETIC=20 
+RESTART DIPOLE</strong>&quot;</p>
+<p>Give the jobs for the various trajectories simple descriptive names, such as 
+&quot;start.mop&quot;, &quot;Step-2.mop&quot;, &quot;end.mop&quot;, etc. These 
+will produce trajectories that have names ending in .xyz, e.g., start.xyz.&nbsp; Don't use long names - that would 
+just result in more work typing then in when using JOIN. </p>
+<p><strong>Second</strong>, optimize the geometry at the end of each path.&nbsp; IRC paths 
+terminate before the exact stationary point is reached because the forces acting 
+on the atoms become so small that the IRC starts to wander erratically.&nbsp; To 
+include the exact stationary point, a very short path, consisting of a single 
+geometry, must be made.</p>
+<p class="auto-style3">Edit an IRC path, to isolate a terminal geometry, then 
+use that as a starting point for a normal geometry optimization.</p>
+<p class="auto-style3">This geometry optimization should use keywords PRECISE 
+and HTML.&nbsp; Again, check that the resulting geometry looks correct.</p>
+<p class="auto-style3">In the data-set, after the geometry, add a second 
+calculation using keywords <a href="oldgeo.html"><tt>OLDGEO</tt></a><tt> IRC CYCLES=1</tt> and, 
+optionally <tt>DIPOLE</tt>. This will generate the stationary point in the path 
+format.&nbsp; Remember: short names are preferred. Run that job.</p>
+<p><strong>Third</strong>, start to join the various parts together. These should be joined in 
+the order in which they occur in the reaction path.</p>
+<p class="auto-style3">If half-paths were used, then join up all matching 
+half-paths to form a full path of the type 1*, i.e. the energy goes from a 
+minimum to a transition state to a second minimum. Both half-paths include a 
+point representing the transition state, so edit one of the half-paths to delete 
+the first model; this is the transition state. Then <a href="#One_argument">reverse</a> the half-path 
+that would come before the other half path, finally <a href="#Two_arguments">join</a> the two parts using 
+JOIN. </p>
+<p class="auto-style3">Start with the stationary point at the beginning and the 
+first path.&nbsp; Join these together using a command of the type: <strong>JOIN 
+exact-start path-1</strong>&nbsp; This will generate a new file named new.xyz 
+that has the two trajectories joined together.</p>
+<p class="auto-style3">Examine the file new.xyz by running new.html (this file 
+is included in the JOIN zip file) If it looks correct, rename it as, e.g., 
+start-path-1.xyz.</p>
+<p class="auto-style3">Join the new path to the stationary point at the end of 
+the first path, e.g. <strong>JOIN start-path-1 exact-intermediate-1</strong>.</p>
+<p class="auto-style3">Examine the new file new.xyz, and if it looks correct, 
+rename it as, e.g., start-path-1-int-1.xyz.</p>
+<p class="auto-style3">Join the new path to the next path, e.g., <strong>JOIN 
+start-path-1-int-1 path-2</strong> , check that it's correct, the re-name it as, 
+e.g., <strong>start-path-1-int-1-path-2.xyz</strong></p>
+<p class="auto-style3">Continue adding stationary points and path segments until 
+the entire trajectory is constructed.</p>
+<p>This sequence is obviously quite tedious to carry out, and it would need to 
+be run several times, so as soon as a step is done correctly, put the command 
+into a Windows command script.&nbsp; An example of such as script is:</p>
+<p><strong>REM<br>REM Generate whole of reaction path for heats<br>REM<br>
+JOIN &quot;Exact start&quot; &quot;IRC for axial chair - boat&quot;<br>if exist 
+&quot;axial-TS1.xyz&quot; del &quot;axial-TS1.xyz&quot;<br>rename new.xyz &quot;axial-TS1.xyz&quot;<br>REM<br>
+JOIN&nbsp; &quot;axial-TS1&quot; &quot;Exact middle&quot;<br>if exist 
+&quot;axial-TS1-intermediate.xyz&quot; del &quot;axial-TS1-intermediate.xyz&quot;<br>rename new.xyz 
+&quot;axial-TS1-intermediate.xyz&quot;<br>REM<br>JOIN&nbsp; 
+&quot;axial-TS1-intermediate&quot; &quot;IRC equatorial chair - boat&quot;<br>if exist 
+&quot;axial-TS1-intermediate-TS2.xyz&quot; del &quot;axial-TS1-intermediate-TS2.xyz&quot;<br>rename 
+new.xyz &quot;axial-TS1-intermediate-TS2.xyz&quot;<br>REM<br>JOIN e 
+&quot;axial-TS1-intermediate-TS2&quot; &quot;Exact end&quot;<br>if exist 
+&quot;axial-TS1-intermediate-TS2-equatorial.xyz&quot; del 
+&quot;axial-TS1-intermediate-TS2-equatorial.xyz&quot;<br>rename new.xyz 
+&quot;axial-TS1-intermediate-TS2-equatorial.xyz&quot;</strong></p>
+<p>This will simplify construction of the whole path, and reduce the probability 
+of making a typographic error.</p>
+<h3>Excel</h3>
+<p>Microsoft Office program Excel can be used for making graphs that are 
+suitable for publication.&nbsp; The starting point for this is a file that holds the 
+entire trajectory.&nbsp; A list of the heats of formation for the various points 
+can then be extracted from the trajectory file using Windows &quot;find&quot; command.&nbsp; 
+For example, if the trajectory is named <strong>
+axial-TS1-intermediate-TS2-equatorial.xyz</strong>, then a file containing the 
+heats of formation can be generated using:</p>
+<p>f<strong>ind &quot;HEAT&quot; axial-TS1-intermediate-TS2-equatorial.xyz &gt; bits.txt</strong></p>
+<p>The file bits.txt can then be used in Excel.&nbsp; Two useful operations 
+within Excel are (1) Add a column, <strong>Reaction coordinate</strong>, 
+containing the reaction coordinate in &Aring;ngstroms (the Profile number minus 
+one times the step-size defined in X-PRIORITY=<em>n.nn</em>), and (2) add a 
+column, <strong>Heat</strong>, containing the heats of formation minus the 
+lowest heat of formation, normally the last point in the trajectory.&nbsp; By 
+plotting <strong>Heat</strong> against <strong>Reaction coordinate</strong>, a 
+traditional potential energy profile graph can be made.</p>
+<h3>How the joins are performed</h3>
+<p>Normally there will be a small miss-match in the geometries at the end of one 
+trajectory and the start of the next trajectory.&nbsp; To prevent a 
+discontinuity, the size of the miss-match is evaluated, and using the step-size, 
+a number of new points are added.&nbsp; Typically this would be one to six 
+points.</p>
+<p>The orientation of the geometry of the system at the end of one trajectory 
+would normally be different to that at the start of the next trajectory.&nbsp; 
+Because orientation is not important from a chemistry perspective, the geometry 
+at the start of the second trajectory is rotated and translated to minimize the 
+distance between the it and the final geometry in the first trajectory.&nbsp; 
+This rotation and translation is then applied to every point in the second 
+trajectory.</p>
+<p>A consequence of this operation is that only the geometries in the first 
+trajectory are those calculated by MOPAC, all the rest are rotated and 
+translated.</p>
+<h3>Distances between points on a trajectory</h3>
+<p>Two types of distance are used in describing reactions. One is the distance 
+in terms of the IRC.&nbsp; To calculate this, the difference in Profile number 
+of the two points, typically stationary points, either stable minima or 
+transition state geometries, is evaluated and then multiplied by the step-size 
+defined in X-PRIORITY=<em>n.nn.&nbsp; </em>This would be the same as the 
+distance in the Excel chart.&nbsp; The other distance would be the straight-line 
+distance between the two geometries.&nbsp; Distances of this type should all be 
+calculated using geometries taken from the same trajectory file; do <em>not</em> 
+use any of the geometries that were used in making the trajectory file.&nbsp; Convert each 
+geometry of interest into a data-set, and use keywords <strong>1SCF HTML</strong>, 
+then run the job using MOPAC.&nbsp; Distances between pairs of points can then 
+be calculated using data sets containing the following instructions:&nbsp; </p>
+<p><strong><a href="compare.html">COMPARE</a> <a href="geo_dat.html">GEO_DAT</a>=&quot;First 
+geometry.arc&quot; +<br><a href="geo_ref.html">GEO_REF</a>=&quot;Second geometry.arc&quot; <br>
+Compare &quot;First geometry&quot; and &quot;Second geometry&quot; </strong> </p>
+<p>The ARC files contain the heat of formation of the system.&nbsp; This is 
+useful for checking that the correct geometry is being used.&nbsp; A concise summary of the differences would be given in the HTML file 
+generated by that run. By definition, all distances calculated using the IRC 
+would be equal to or greater than the equivalent straight-line distance.&nbsp;&nbsp;The length of a piece of string is always equal to or greater than the distance 
+between its ends.</p>
+<p>&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp; </p>
+<p>&nbsp;</p>
+<p class="auto-style3">&nbsp;</p>
+<p class="auto-style3">&nbsp;</p>
+<p class="auto-style3">&nbsp;</p>
+</BODY>
+</HTML>

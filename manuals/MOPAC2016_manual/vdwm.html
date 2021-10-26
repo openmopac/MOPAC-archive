@@ -1,0 +1,294 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>VDW(text) </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>VDWM(<I>text</I>)</TT> </h1>
+<P>In <a href="mozyme.html"><TT>MOZYME</TT></a>,&nbsp; the
+<a href="Lewis_structures.html"><TT>LEWIS</TT></a> structure is constructed from the 
+topology of the system.&nbsp; Atoms are considered to be connected if they are 
+within 10% of the addition of the two radii, or within twice the heavy-atom 
+radius if one of the atoms is hydrogen.&nbsp; Values for all radii used are 
+shown in the Table below.</P>
+<P>The criterion of whether atoms are connected or not can be changed by 
+modifying the radii. using the <TT>VDWM</TT> keyword.&nbsp;&nbsp; The format of the command is: </P>
+<TT><P>VDWM(&lt;chemical symbol<SUB>1</SUB>&gt;=<I>n</I>.<I>nn</I>;&lt;chemical symbol<SUB>2</SUB>&gt;=<I>n</I>.<I>nn</I>;&lt;chemical symbol<SUB>3</SUB>&gt;=<I>n</I>.<I>nn;</I>...)</TT> </P>
+<P>For example, if a hydrogen atom should be regarded as connected to a 
+nitrogen, but the N-H distance is 1.62 Angstroms, then <TT>VDWM(N=0.85)</TT> would override the default values of the van der Waals radii of 
+nitrogen (0.75), and result in the hydrogen being connected (the N-H distance of 
+1.62 being less than 2*0.85).</P>
+<P>If a fluorine atom should be connected to a bromine, but the F-Br distance is 
+2.1 Angstroms, i.e., it is too large for the two atoms to be regarded as being 
+connected (2.1 &gt; 1.1(0.71 + 1.14), then either the F radius, or the Br radius, 
+or both, could be increased.&nbsp; One possible change would be to use keyword 
+<TT>VDWM(F=0.75;Br=1.2)</TT></P>
+<P>Entries for different elements should be separated by a colon, a comma, or a 
+semi-colon. </P>
+<P align="center">
+<STRONG>&nbsp;Table 1:</STRONG> Default  radii (Angstroms) used in MOZYME</P>
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=749>
+<TR><TD WIDTH="39" VALIGN="MIDDLE">
+<P ALIGN="CENTER">I</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER">II</TD>
+<TD WIDTH="390" VALIGN="BOTTOM" COLSPAN=10 ROWSPAN=4>
+<P ALIGN="CENTER">Transition Metals</P>
+<P>&nbsp;</P>
+<P>&nbsp;</TD>
+<TD WIDTH="49" VALIGN="MIDDLE">
+<P ALIGN="CENTER">III</TD>
+<TD WIDTH="36" VALIGN="MIDDLE">
+<P ALIGN="CENTER">IV</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER">V</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER">VI</TD>
+<TD WIDTH="32" VALIGN="MIDDLE">
+<P ALIGN="CENTER">VII</TD>
+<TD WIDTH="38" VALIGN="MIDDLE">
+VIII</TD>
+</TR>
+<TR><TD WIDTH="39" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">H<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.37</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P style="margin-top: 0; margin-bottom: 0">&nbsp;</TD>
+<TD WIDTH="211" VALIGN="MIDDLE" COLSPAN=5>
+<P style="margin-top: 0; margin-bottom: 0">&nbsp;</TD>
+<TD WIDTH="38" VALIGN="MIDDLE">
+<p style="margin-top: 0; margin-bottom: 0">He</p>
+<p style="margin-top: 0; margin-bottom: 0">0.32</TD>
+</TR>
+<TR><TD WIDTH="39" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Li<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.34</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Be<p ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.90</TD>
+<TD WIDTH="49" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">B<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.82</TD>
+<TD WIDTH="36" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">C<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.77</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">N<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.75</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">O<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.73</TD>
+<TD WIDTH="32" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">F<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.71</TD>
+<TD WIDTH="38" VALIGN="MIDDLE">
+<p style="margin-top: 0; margin-bottom: 0">Ne</p>
+<p style="margin-top: 0; margin-bottom: 0">0.69</TD>
+</TR>
+<TR><TD WIDTH="39" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Na<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.54</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Mg<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.30</TD>
+<TD WIDTH="49" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Al<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.18</TD>
+<TD WIDTH="36" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Si<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.11</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">P<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.06</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">S<p ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.02</TD>
+<TD WIDTH="32" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Cl<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+0.99</TD>
+<TD WIDTH="38" VALIGN="MIDDLE">
+<p style="margin-top: 0; margin-bottom: 0">Ar</p>
+<p style="margin-top: 0; margin-bottom: 0">0.97</TD>
+</TR>
+<TR><TD WIDTH="39" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">K<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.96</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Ca<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.74</TD>
+<TD WIDTH="33" VALIGN="TOP" align="center">
+<P align="center" style="margin-top: 0; margin-bottom: 0">Sc<P align="center" style="margin-top: 0; margin-bottom: 0">
+1.44</TD>
+<TD WIDTH="39" VALIGN="TOP" align="center">
+<P align="center" style="margin-top: 0; margin-bottom: 0">Ti<P align="center" style="margin-top: 0; margin-bottom: 0">
+1.36</TD>
+<TD WIDTH="32" VALIGN="TOP" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">V<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.25</TD>
+<TD WIDTH="39" VALIGN="TOP" align="center">
+<P align="center" style="margin-top: 0; margin-bottom: 0">Cr<P align="center" style="margin-top: 0; margin-bottom: 0">
+1.27</TD>
+<TD WIDTH="28" VALIGN="TOP" align="center">
+<P align="center" style="margin-top: 0; margin-bottom: 0">Mn<P align="center" style="margin-top: 0; margin-bottom: 0">
+1.39</TD>
+<TD WIDTH="28" VALIGN="TOP" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Fe<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.25</TD>
+<TD WIDTH="35" VALIGN="TOP" align="center">
+<P align="center" style="margin-top: 0; margin-bottom: 0">Co<P align="center" style="margin-top: 0; margin-bottom: 0">
+1.26</TD>
+<TD WIDTH="35" VALIGN="TOP" align="center">
+<P align="center" style="margin-top: 0; margin-bottom: 0">Ni<P align="center" style="margin-top: 0; margin-bottom: 0">
+1.21</TD>
+<TD WIDTH="31" VALIGN="TOP" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Cu<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.38</TD>
+<TD WIDTH="27" VALIGN="MIDDLE" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Zn<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.31</TD>
+<TD WIDTH="49" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Ga<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.26</TD>
+<TD WIDTH="36" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Ge<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.22</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">As<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.19</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Se<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.16</TD>
+<TD WIDTH="32" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Br<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.14</TD>
+<TD WIDTH="38" VALIGN="MIDDLE">
+<p style="margin-top: 0; margin-bottom: 0">Kr</p>
+<p style="margin-top: 0; margin-bottom: 0">1.10</TD>
+</TR>
+<TR><TD WIDTH="39" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Rb<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+2.11</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Sr<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.92</TD>
+<TD WIDTH="33" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Y<P style="margin-top: 0; margin-bottom: 0">
+1.62</TD>
+<TD WIDTH="39" VALIGN="TOP" align="center">
+<P align="center" style="margin-top: 0; margin-bottom: 0">Zr<P align="center" style="margin-top: 0; margin-bottom: 0">
+1.48</TD>
+<TD WIDTH="32" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Nb<P style="margin-top: 0; margin-bottom: 0">
+1.37</TD>
+<TD WIDTH="39" VALIGN="TOP" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Mo<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.45</TD>
+<TD WIDTH="28" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Tc<P style="margin-top: 0; margin-bottom: 0">
+1.56</TD>
+<TD WIDTH="28" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Ru<P style="margin-top: 0; margin-bottom: 0">
+1.26</TD>
+<TD WIDTH="35" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Rh<P style="margin-top: 0; margin-bottom: 0">
+1.35</TD>
+<TD WIDTH="35" VALIGN="TOP" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Pd<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.31</TD>
+<TD WIDTH="31" VALIGN="TOP" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Ag<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.53</TD>
+<TD WIDTH="27" VALIGN="MIDDLE" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Cd<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.48</TD>
+<TD WIDTH="49" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">In<p ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.44</TD>
+<TD WIDTH="36" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Sn<p ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.41</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Sb<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.38</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Te<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.35</TD>
+<TD WIDTH="32" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">I<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.33</TD>
+<TD WIDTH="38" VALIGN="MIDDLE">
+<p style="margin-top: 0; margin-bottom: 0">Xe</p>
+<p style="margin-top: 0; margin-bottom: 0">1.30</TD>
+</TR>
+<TR><TD WIDTH="39" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Cs<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+2.25</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Ba<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.98</TD>
+<TD WIDTH="33" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">La<P style="margin-top: 0; margin-bottom: 0">
+1.69</TD>
+<TD WIDTH="39" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Hf<P style="margin-top: 0; margin-bottom: 0">
+1.50</TD>
+<TD WIDTH="32" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Ta<P style="margin-top: 0; margin-bottom: 0">
+1.38</TD>
+<TD WIDTH="39" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">W<P style="margin-top: 0; margin-bottom: 0">
+1.46</TD>
+<TD WIDTH="28" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Re<P style="margin-top: 0; margin-bottom: 0">
+1.59</TD>
+<TD WIDTH="28" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Os<P style="margin-top: 0; margin-bottom: 0">
+1.28</TD>
+<TD WIDTH="35" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Ir<p style="margin-top: 0; margin-bottom: 0">
+1.37</TD>
+<TD WIDTH="35" VALIGN="TOP" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Pt<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.28</TD>
+<TD WIDTH="31" VALIGN="TOP" align="center">
+<P style="margin-top: 0; margin-bottom: 0">Au<P style="margin-top: 0; margin-bottom: 0">
+1.44</TD>
+<TD WIDTH="27" VALIGN="MIDDLE" align="center">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Hg<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.49</TD>
+<TD WIDTH="49" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Tl<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+148</TD>
+<TD WIDTH="36" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Pb<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.47</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">Bi<P ALIGN="CENTER" style="margin-top: 0; margin-bottom: 0">
+1.46</TD>
+<TD WIDTH="33" VALIGN="MIDDLE">
+<P style="margin-top: 0; margin-bottom: 0">&nbsp;</TD>
+<TD WIDTH="32" VALIGN="MIDDLE">
+<P style="margin-top: 0; margin-bottom: 0">&nbsp;</TD>
+<TD WIDTH="38" VALIGN="MIDDLE">
+<p style="margin-top: 0; margin-bottom: 0">&nbsp;</TD>
+</TR>
+</TABLE>
+</CENTER>
+<p></p>
+<P>
+<p>Related key-words:&nbsp; <TT><a href="lewis.html">LEWIS</a>, <a href="CVB.html">
+CVB</a>, <a href="setpi.html">SETPI,</a>  <a href="metal.html">METAL</a>,
+<a href="charge.html">CHARGE</a>, <a href="charges.html">CHARGES</a>, and <a href="mozyme.html">MOZYME</a></TT><br>
+See also: <a href="Lewis_structures.html">Lewis Structures</a>,
+<a href="mozyme_introduction.html">MOZYME introduction</a><p>&nbsp;<p>&nbsp;<DL dir="ltr">
+<div align="left">
+  <dt dir="ltr">&nbsp;</dt>
+</div>
+
+</dl>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Instructions on using MOPAC2016 with the MOE software</TITLE></HEAD>
+<h1>Instructions on using MOPAC2016 with the MOE software</h1>
+<p>Based on materials provided by the Chemical Computing Group.</p>
+<p>To type the &quot;SetRC&quot; command, you need to open MOE, press the SVL button in 
+the top right corner of the MOE window, and type in the command. It is case 
+sensitive, and on Windows, you need to use forward slashes in a file path. and 
+make sure that there are plain single quotes e.g.</p>
+<p>SetRC ['mopac2007.exe', 'c:/Program Files/MOPAC/mopac.exe']</p>
+<p>================</p>
+<p><br>
+Because MOPAC2016 is not a default part of MOE, it is necessary to specify 
+the location of the executable program, which must be installed separately. The 
+executable location is stored in the RC file, and can be configured using the SetRC command, e.g.:</p>
+<p>SetRC ['mopac2016.exe', '/opt/mopac/mopac.exe']</p>
+<p>MOPAC2016 requires a license file in order to run. The 
+user should follow the MOPAC documentation regarding installing the license.</p>
+<p>================</p>
+<p>Keywords to a MOPAC calculation can be changed by launching a MOPAC calculation from 
+(MOE | Compute | Simulations | SCF Calculation).&nbsp; Then view the input file 
+for MOPAC and make changes from there.</p>
+</HTML>

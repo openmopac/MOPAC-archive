@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>OLDGEO </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>OLDGEO</TT>
+</h1>
+        If multiple geometries are to be run, and the  final  geometry  from
+   one  calculation  is  to  be  used  to start the next calculation, <TT>OLDGEO</TT>
+   should be specified.  Example:  If MNDO, AM1, and PM3 calculation,  were
+   to  be done on one system, for which only a rough geometry was available,
+   then after the MNDO calculation, the AM1 calculation could be done  using
+   the  optimized  MNDO  geometry  as  the  starting geometry, by specifying
+   <TT>OLDGEO</TT>.  After the AM1 calculation was done, then a PM3 calculation
+could also be done, starting with the old AM1 geometry, by again specifying
+<TT>OLDGEO</TT>.
+<p>When an <TT>OLDGEO</TT> calculation is started, none of the keywords from the 
+previous calculation are assumed to be present.&nbsp; Thus, if the first 
+calculation had keywords <TT><a href="pm3.html">PM3</a> <a href="root.html">ROOT=4</a>
+<a href="cis.html">CIS</a> <a href="ci=n.html">C.I.=4</a></TT>, none of these 
+keywords would be used by the <TT>OLDGEO</TT> calculation, unless they were 
+explicitly present in the <TT>OLDGEO</TT> keyword line.</p>
+</BODY>
+</HTML>

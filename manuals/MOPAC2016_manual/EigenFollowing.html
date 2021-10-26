@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> EigenFollowing</TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center"><A NAME="SECTION001271000000000000000">
+ EigenFollowing</A>
+</h1>
+<P>
+The current version of the EF optimization routine is a combination of the
+original EF algorithm of Simons et al. (J. Phys. Chem. 89, 52) as
+implemented by  Baker (J. Comp. Chem. 7, 385) and the QA algorithm of Culot
+et al.  (Theo. Chim. Acta 82, 189), with some added features for improving
+stability.
+<P>
+The geometry optimization is based on a second order Taylor expansion of  the
+energy around the current point. At this point the energy, the gradient  and
+some estimate of the Hessian are available. There are three fundamental  steps
+in determining the next geometry based on this information:
+<UL>
+<LI>finding the "best" step within or on the hypersphere with
+    the current trust radius.
+<LI>possibly reject this step based on various criteria.
+<LI>update the trust radius.
+</UL>
+<P>
+<DL COMPACT>
+<DD>&nbsp;<DT>1.
+<DD>For a minimum search the correct Hessian has only positive eigenvalues.
+For a Transition State (TS) search the correct Hessian should  have exactly one
+negative  eigenvalue, and the corresponding eigenvector should be in the
+direction  of the desired reaction coordinate.  The geometry step is
+parameterized  as <I>g</I>/(<I>s</I>-<I>H</I>), where <I>s</I> is a shift factor which ensure that the
+step-length is  within or on the hypersphere. If the Hessian has the correct
+structure, a pure  Newton-Raphson step is attempted. This corresponds to
+setting the shift factor  to zero. If this step is longer than the trust
+radius, a P-RFO step is attempted.  If this is also too long, then the best
+step on the hypersphere is made via  the QA formula.  This three step procedure
+is the default. The pure NR step can  be skipped by giving the keyword
+<TT><a href="nonr.html">NONR</a></TT>. An alternative to the QA step is to  simply scale the P-RFO step
+down to the trust radius by a multiplicative  constant, this can be
+accomplished by specifying <TT><a href="rscal.html">RSCAL</a></TT>.
+<P>
+&nbsp;<DT>2.
+<DD>Using the step determined from 1), the new energy and gradient are
+evaluated. If it is a TS search, two criteria are used in determining whether
+the step is "appropriate". The ratio between the actual and predicted energy
+change should ideally be 1. If it deviates substantially from this value, the
+second order Taylor expansion is no longer accurate. <TT><a href="rmin.html">RMIN</a></TT> and <TT>
+<a href="rmax.html">RMAX</a></TT>
+(default  values 0 and 4) determine the limits on how far from 1 the ratio can
+be before the step is rejected. If the ratio is outside the <TT>RMIN</TT> and
+<TT>RMAX</TT> limits, the  step is rejected, the trust   radius reduced by a
+factor of two and a new step  is determined. The second criteria is that the
+eigenvector along which the  energy is being maximized should not change
+substantially between iterations.  The minimum overlap of the TS eigenvector
+with that of the previous iteration  should be larger than <TT>
+<a href="omin.html">OMIN</a></TT>,
+otherwise the step is rejected. Such a step  rejection can be recognized in the
+output by the presence of (possibly more)  lines with the   same CYCLE number.
+The default <TT>OMIN</TT> value is 0.8, which allows  fairly large changes to
+occur, and should be suitable for most uncomplicated  systems. See below for a
+discussion of how to use <TT>RMIN</TT>, <TT>RMAX</TT> and <TT>OMIN</TT> for
+difficult cases. The selection of which eigenvector to follow towards the TS
+is  given by <TT>MODE=<I>n</I></TT>, where <I>n</I> is the number of the Hessian
+eigenvector to follow.  The default is <TT>MODE=1</TT>. These features can be
+turned off by giving suitable  values as keywords, e.g. <TT>RMIN=-100
+RMAX=100</TT> effectively inhibits step  rejection. Similarly setting <TT>OMIN=0</TT>
+disables step rejection based on large  changes in the structure of the TS
+mode. The default is to use mode following  even if the TS mode is the lowest
+eigenvector. This means that the TS mode may  change to   some higher mode
+during the optimization. To turn off mode  following, and thus always follow the
+mode with lowest eigenvalue, set <TT>MODE=0</TT>. If  it is a minimum search the
+new energy should be lower than the previous.
+<P>
+The  acceptance criteria used is that the actual/predicted ratio should be
+larger  than <TT>RMIN</TT>, which for the default   value of <TT>RMIN=0</TT> is
+equivalent to a lower  energy. If the ratio is below <TT>RMIN</TT>, the step is
+rejected, the trust radius  reduced by a factor of two and a new step is
+predicted. The <TT>RMIN</TT>, <TT>RMAX</TT> and <TT>OMIN</TT>  features has been
+introduced in the current version of EF to improve the  stability of TS
+optimizations. Setting <TT>RMIN</TT> and <TT>RMAX</TT> close to one will give a
+very stable, but also very slow, optimization. Wide limits on <TT>RMIN</TT> and
+<TT>RMAX</TT> may  in some cases give a  faster convergence, but there is always
+the risk that  very poor steps are accepted, causing the optimization to
+diverge. The default  values of 0 and 4 rarely rejects steps which would lead
+to faster convergence,  but may occasionally accept poor steps. If TS searches
+are found to cause problems, the first try should be to lower the limits to 0.5
+and 2. Tighter  limits like 0.8 and 1.2, or   even 0.9 and 1.1, will almost
+always slow the  optimization down significantly but may be necessary in some
+cases.
+<P>
+In minimum  searches it is usually desirable that the energy decreases in each
+iteration.  In certain very rigid systems, however, the initial diagonal
+Hessian may be so  poor that the   algorithm cannot find an acceptable step
+larger than DDMIN, and  the optimization terminates after only a few cycles
+with the "TRUST RADIUS  BELOW DDMIN" warning long before the stationary point
+is reached. In such cases  the user can add <TT><a href="ddmin.html">DDMIN=0.0</a></TT> and  <TT>RMIN</TT>
+set to some negative value, say -10, thereby allowing  steps which allow the
+energy to increase. An alternative is to use <TT>LET DDMIN=0.0</TT>.
+<P>
+The algorithm has the capability of following  Hessian eigenvectors other than
+the one with the lowest eigenvalue toward a TS.  Such higher mode following are
+always much more difficult to make converge.  Ideally, as the optimization
+progresses, the TS mode should at some point  become the lowest eigenvector.
+Care must be taken during the optimization,  however, that the   nature of the
+mode does not change all of a sudden, leading to  optimization to a different
+TS than the one desired. <TT>OMIN</TT> has been designed for  ensuring that the
+nature of the TS mode only changes gradually, specifically  the overlap between
+to successive TS modes should be higher than OMIN. While  this concept at first
+appears very promising, it is not without problems when  the Hessian is
+updated.
+<P>
+As the updated Hessian in each step is only  approximately correct,   there is
+a upper limit on how large the TS mode  overlap between steps can be. To
+understand this, consider a series of steps  made from the same geometry (e.g. at some point in the optimization), but with  steadily smaller step-sizes. The
+update adds corrections to the Hessian to  make it a better approximation to
+the exact Hessian. As the step-size become  small, the updated Hessian
+converges toward the exact Hessian, at least in the  direction of the step.
+The old Hessian is constant, thus the overlap between  TS modes thus does not
+converge toward 1, but rather to a constant value which  indicate how well the
+old approximate Hessian resembles the exact Hessian. Test  calculations suggest
+a typical upper limit around 0.9, although cases have been  seen where the
+limit is more like 0.7. It appears that an updated Hessian in  general is not
+of sufficient accuracy for reliably rejecting steps with TS  overlaps much
+greater than 0.80. The default <TT>OMIN</TT> of 0.80 reflects the  typical use of
+an updated Hessian. If the Hessian is recalculated in each step,  however, the
+TS mode overlap does converge toward 1 as the step-size goes toward  zero, and
+in this cases there is no problems following high lying modes.
+<P>
+Unfortunately setting <TT>RECALC=1</TT> is very expensive in terms of computer
+time, but  used in conjecture with <TT>OMIN=0.90</TT> (or possibly higher), and
+maybe also tighter  limits on <TT>RMIN</TT>   and <TT>RMAX</TT>, it represents an
+option of locating transitions  structures that otherwise might not be
+possible. If problems are encountered with  many step rejections due to small
+TS mode overlaps, try reducing <TT>OMIN</TT>, maybe  all the way down to 0. This
+most likely will work if the TS mode is the lowest  Hessian eigenvector, but it
+is doubtful that it will produce any useful results  if a high lying   mode is
+followed. Finally, following modes other than the  lowest toward a TS indicates
+that the starting geometry is not "close" to the  desired TS. In most cases it
+is thus much better to further refined the  starting geometry, than to try
+following high lying modes. There are cases,  however, where it is very
+difficult to locate a starting geometry which has  the correct Hessian, and
+mode following may be of some use here.
+</DL>
+</BODY>
+</HTML>

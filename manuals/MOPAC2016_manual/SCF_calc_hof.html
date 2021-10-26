@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Calculation of heat of formation</TITLE>
+                                                                                                                 <style type="text/css">.auto-style1 {
+	text-align: center;
+}
+</style>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2><A NAME="SECTION001257000000000000000">Calculation of heat of formation</A> </H2>
+<P>The heat of formation is defined as: </P>
+<P align="center"><span class="b">&Delta;</span>H<i><sub>f</sub></i> = E<i><sub>elect</sub></i>
++ E<i><sub>nuc</sub></i> - E<i><sub>isol</sub></i> + E<i><sub>atom </sub> + E<sub><sub>bits</sub></sub></i></P>
+<P><DIV ALIGN="CENTER">
+                     </DIV>
+<P>where <I>E<SUB>elect</I></SUB> is the electronic energy, <I>E<SUB>nuc</I></SUB> is the nuclear-nuclear repulsion energy, -<I>E<SUB>isol</I></SUB> 
+is the energy required to strip all the valence electrons off all the atoms in 
+the system, <I>E<SUB>atom</I></SUB> is the total heat of atomization of all the atoms in the system, 
+and <i>E<sub><sub>bits</sub></sub></i> is the energy from hydrogen bonds and dispersion. 
+These energies can be printed by adding keyword <a href="disp.html"><tt>DISP</tt></a>.&nbsp; 
+</P>
+<h3>Solvation effects</h3>
+<P>If <a href="eps.html"><tt>EPS=n.nn</tt></a> is also present, then solvation 
+effects are modeled.&nbsp; The energy due to the stabilization of the system as 
+a result of the solvent is printed on the line &quot;DIELECTRIC ENERGY&quot;.&nbsp; The 
+destabilization of the solvent due to the system is not printed.&nbsp; Energies 
+due to solvation are present in the terms E<i><sub>elect</sub></i>
+and E<i><sub>nuc</sub></i>, that is, the solvation terms are included in these 
+two quantities, and cannot be separated from them. Thus, the E<i><sub>elect</sub></i>
+and E<i><sub>enuc</sub></i> terms for a solvated system, E<sub><i>elect</i></sub>(solvated) 
+and E<sub><i>enuc</i></sub>(solvated) should be thought of as:</P>
+<P class="auto-style1">E<sub><i>elect</i></sub>(solvated) = E<i><sub>elect</sub></i>
++ (some solvation terms)</P>
+<P class="auto-style1">and </P>
+<P class="auto-style1">E<sub><i>enuc</i></sub>(solvated) = E<i><sub>enuc</sub></i> 
++ (some other solvation terms)</P>
+<P>The easiest way to calculate the solvation energy would be to calculate the 
+solvated system, then, in a separate job and using the final geometry from the 
+solvated calculation, do a 1SCF calculation but without solvation, then take the 
+difference in heats of formation. </P>
+<P>An alternative would be to calculate the heat of formation using solvent, and 
+in a separate job, run the same calculation but without solvent.&nbsp; The 
+solvent effect would then be obtained by taking the difference in the two heats 
+of formation.</P>
+<P>&nbsp;Because the &quot;TOTAL ENERGY&quot; includes E<i><sub>elect</sub></i>
+and E<i><sub>nuc</sub></i>, that term also includes the solvation effects.</P>
+<h4>Single atom</h4>
+<p>For a single atom, there is no nuclear term, therefore:</p>
+<P align="center"><span class="b">&Delta;</span>H<i><sub>f</sub></i> = E<i><sub>elect</sub></i>&nbsp;
+- E<i><sub>isol</sub></i> + E<i><sub>atom</sub></i></P>
+<p align="center">&nbsp;</p>
+<p>But E<i><sub>elect</sub></i> = E<i><sub>isol</sub></i> for an isolated atom,
+therefore </p>
+<P align="center"><span class="b">&Delta;</span>H<i><sub>f</sub></i> =&nbsp; E<i><sub>atom</sub></i></P>
+<p align="center">&nbsp;</p>
+<p>where E<i><sub>atom</sub></i> is the experimental heat of formation of the
+isolated atom from the element in its standard state. For example, in nitrogen
+this is half the heat required to break a N<sub>2</sub> molecule into its
+separated atoms. Isolated nitrogen atoms have the configuration 1s<sup>2</sup>
+2s<sup>2</sup> 2p<sup>3</sup>, and the state <a href="Energies_of_isolated_atoms.html#confs">4S<sub>u</sub></a>, 
+i.e. quartet S. Experimentally, this energy is 113 kcal/mol.&nbsp; This means 
+that all semiempirical methods predict the heats of formation of isolated atoms 
+with a zero error, except in those few instances when the predicted ground state 
+is incorrect.</p>
+                                                </BODY>
+</HTML>

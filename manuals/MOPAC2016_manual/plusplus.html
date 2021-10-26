@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>++ </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>++</TT>
+</h1>
+<h3>Why this keyword is needed</h3>
+<p>In some complicated structures, particularly when several such structures are 
+present in a single protein, the Lewis structure can only be constructed if 
+various bonds are made or broken using keyword <a href="CVB.html"><TT>CVB</TT></a>. 
+Editing long CVB&nbsp; keywords can be difficult.&nbsp; To make this task easier 
+keyword &quot;++&quot; has been written.&nbsp; All it does is to allow a single, long, 
+keyword or <FONT face="Trebuchet MS, Verdana">
+<a href="setup.html"><tt>SETUP</TT></a></FONT>
+    line to 
+be split into parts to simplify writing the long keyword line.&nbsp; At 
+run-time, the &quot;++&quot; will be used in reconstructing the long keyword line.</p>
+<h3>How to use &quot;++&quot;</h3>
+<p>Two &quot;+&quot; signs, i.e., &quot;++&quot; can be used to split a long keyword into parts that 
+can be put on separate lines.&nbsp; For example, in defining the bonds in the 
+heme ring systems in oxy-hemoglobin the keyword:</p>
+<p>
+CVB=(&quot;[HEM]1142:A.Fe&quot;:-&quot;[HEM]1142:A.NA&quot;,&quot;[HEM]1142:A.Fe&quot;:-&quot;[HEM]1142:A.NC&quot;,&quot;[HEM]1290:B.Fe&quot;:-&quot;[HEM]1290:B.ND&quot;,&quot;[HEM]1290:B.Fe&quot;:-&quot;[HEM]1290:B.NB&quot;,&quot;[HEM]1542:C.Fe&quot;:-&quot;[HEM]1542:C.NB&quot;,&quot;[HEM]1542:C.Fe&quot;:-&quot;[HEM]1542:C.ND&quot;,&quot;[HEM]1690:D.Fe&quot;:-&quot;[HEM]1690:D.NB&quot;,&quot;[HEM]1690:D.Fe&quot;:-&quot;[HEM]1690:D.ND&quot;,&quot;[HEM]1142:A.Fe&quot;:-&quot;[OXY]1143:A.O1&quot;,&quot;FE 
+HEM B1290&quot;:-&quot;O2 OXY B1291&quot;,&quot;FE HEM C1542&quot;:-&quot;O1 OXY C1543&quot;,&quot;[HEM]1690:D.Fe&quot;:-&quot;O2 
+OXY D1691&quot;) setpi</p>
+<p>is difficult to read and very difficult to debug.&nbsp; But if &quot;++&quot; is used, 
+then it can be rewritten as:</p>
+<p>CVB=( ++<br>
+&quot;[HEM]1142:A.Fe&quot;:-&quot;[HEM]1142:A.NA&quot;, ++<br>
+&quot;[HEM]1142:A.Fe&quot;:-&quot;[HEM]1142:A.NC&quot;, ++<br>
+&quot;[HEM]1290:B.Fe&quot;:-&quot;[HEM]1290:B.ND&quot;, ++<br>
+&quot;[HEM]1290:B.Fe&quot;:-&quot;[HEM]1290:B.NB&quot;, ++<br>
+&quot;[HEM]1542:C.Fe&quot;:-&quot;[HEM]1542:C.NB&quot;, ++<br>
+&quot;[HEM]1542:C.Fe&quot;:-&quot;[HEM]1542:C.ND&quot;, ++<br>
+&quot;[HEM]1690:D.Fe&quot;:-&quot;[HEM]1690:D.NB&quot;, ++<br>
+&quot;[HEM]1690:D.Fe&quot;:-&quot;[HEM]1690:D.ND&quot;, ++<br>
+&quot;[HEM]1142:A.Fe&quot;:-&quot;[OXY]1143:A.O1&quot;, ++<br>
+&quot;FE HEM B1290&quot;:-&quot;O2 OXY B1291&quot;, ++<br>
+&quot;FE HEM C1542&quot;:-&quot;O1 OXY C1543&quot;, ++<br>
+&quot;[HEM]1690:D.Fe&quot;:-&quot;O2 OXY D1691&quot;) ++<br>
+&nbsp; setpi</p>
+<p>When the job starts, each line ending in &quot;++&quot; has the following line joined 
+to it, and the &quot;++&quot; is deleted. If &quot;++&quot; is used, and the next line 
+starts with one or more spaces, these spaces will be preserved in the final 
+keyword line.</p>
+<p><font color="#FF0000"><b>WARNING!</b></font> A common mistake is to have a 
+&quot;++&quot; after a keyword ends and forget to add a space before the next keyword at 
+the start of the following line.&nbsp; If this happened, so the space was not 
+present, the next keyword would be attached to the end of the last keyword on 
+the line with the &quot;++&quot;. An example of the correct use of this space can be seen 
+in the space before &quot;setpi&quot; above.</p>
+</BODY>
+</HTML>

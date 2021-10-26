@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>VDW(text) </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>VDW(<I>text</I>)</TT> </h1>
+<P>In a COSMO calculation (keyword <a href="esp.html"><TT>ESP=78.4</TT></a>), the Van der Waals radii of atoms can be set or changed by use of <TT>VDW</TT>. The format of the command is: </P>
+<TT><P>VDW(&lt;chemical symbol<SUB>1</SUB>&gt;=<I>n</I>.<I>nn;</I>&lt;chemical symbol<SUB>2</SUB>&gt;=<I>n</I>.<I>nn;</I>&lt;chemical symbol<SUB>3</SUB>&gt;=<I>n</I>.<I>nn</I>;...)</TT> </P>
+<P>For example, <TT>VDW(Cl=2.33;Br=2.50)</TT> would override the default values of the van der Waals 
+radii of chlorine and bromine (1.65 and 1.80, respectively). <br>
+&nbsp;</P>
+<P>By default, the COSMO VdW radius is 117% of the default VdW radius.<br>
+&nbsp;</P>
+<P>Where radii specific for various methods are available, they are used.&nbsp;
+Radii available are:</P>
+<p></p>
+<STRONG><P align="center">Table 1:</STRONG> Default  radii (Angstroms) used in
+COSMO</P>
+<CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=2 WIDTH=651>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">I</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">II</TD>
+<TD VALIGN="MIDDLE" ROWSPAN=4>
+<P ALIGN="center">&nbsp;</P>
+</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">III</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">IV</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">V</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">VI</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">VII</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">H<br>
+1.08</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE" COLSPAN=5>
+<P>&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Li<br>
+1.80</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Be</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">B</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">C<br>
+1.53</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">N<br>
+1.48</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">O<br>
+1.36</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">F<br>
+1.30</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Na<br>
+2.30</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Mg</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Al<br>
+2.05</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Si<br>
+2.10</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">P<br>
+1.75</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">S<br>
+1.70</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Cl<br>
+1.65</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">K<br>
+2.30</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Ca<br>
+2.75</TD>
+<TD VALIGN="TOP" rowspan="3">
+<P>&nbsp;<P align="center">Transition Metals<br>
+(none)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Ga</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Ge</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">As</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Se</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Br<br>
+1.80</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Rb</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Sr</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">In</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Sn</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Sb</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Te</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">I<br>
+2.05</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Cs</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Ba</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Tl</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Pb</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Bi</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+</TR>
+</TABLE>
+</CENTER>
+<p></p>
+<P></BODY>
+</HTML>

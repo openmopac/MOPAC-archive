@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>IRC </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<TT><h1 align="center">IRC</TT> </h1>
+<P>An Intrinsic Reaction Coordinate calculation is to be run. All kinetic energy is shed at every point in the calculation. See <A HREF="DRC_coordinates.html#t_irc">Dynamic and Intrinsic Reaction Coordinates</A> for more details. </P>
+<P>By default, steps of 0.05 &Aring;ngstroms are used.  This default can be changed using keywords:</P>
+<P>To print reaction coordinate, RC, steps that are separated by constant distance, use <A HREF="x-priority0.html"><TT><FONT COLOR="#0000ff"><U>X-PRIORITY</U></FONT></TT></A>  or <A HREF="x-priority.html"><TT><FONT COLOR="#0000ff"><U>X-PRIORITY=<I>n</I>.<I>nn</I></U></FONT></TT></A>. 
+This is the option normally chosen. <br>
+</P>
+<P>Movement along a RC is defined as the addition of the 
+distances each atom moves through, so a default step along a RC
+means that the sum of the motions of all the atoms amounts to 0.05&nbsp;&Aring;ngstroms.&nbsp;&nbsp;&nbsp; 
+With rare exceptions, RCs are not straight lines through coordinate space, so 
+the distance the atoms move over several steps is less than the sum of the 
+individual steps.&nbsp; A consequence of this is that the distance between the 
+starting and ending points of a RC is smaller than the length of the RC.&nbsp;&nbsp;&nbsp;
+
+</P>
+<P>Use <TT><a href="large.html">LARGE</a></TT> to control print of internal coordinates and Cartesian coordinates.</P>
+<P>For double-sided IRC's, use <a href="irc.html"><tt>IRC=1* </tt></a>or <a href="irc.html"><tt>IRC=-1* </tt></a></P>
+<P>In a multi-step reaction, individual reactions can be generated using <tt>IRC</tt>, 
+then these reactions can be joined together using the Windows MOPAC utility 
+program &quot;<a href="Join.html">JOIN</a>&quot;</P>
+<P>&nbsp;</P>
+</BODY>
+</HTML>

@@ -1,0 +1,262 @@
+
+<HTML><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Reducing Computation Time</TITLE>
+
+
+</head>
+
+<body lang=EN-US style='tab-interval:35.45pt;line-break:strict'>
+
+<span LANG="EN"><font FACE="Arial">
+<h1 ALIGN="center" DIR="LTR">Use of MKL and Multi-Threading to reduce 
+computation time</h1>
+<p ALIGN="left" DIR="LTR">This description is based on materials provided by 
+Prof Gerd B. <a href="HTTP://www.quantum-chem.pro.br/">Rocha</a>, Universidade Federal da Paraíba, João Pessoa, Brazil.</p>
+<p ALIGN="JUSTIFY" DIR="LTR">The modifications in the semiempirical quantum 
+chemistry MOPAC2016 code that accelerate single-point energy calculations (1SCF) 
+of medium-size (up to 4000 atoms) molecular systems using multithreaded 
+shared-memory CPUs are now presented. </p>
+</font><font FACE="Arial" SIZE="4">
+<p ALIGN="JUSTIFY" DIR="LTR"></p>
+</font><font FACE="Arial" SIZE="5"><b>
+<p ALIGN="CENTER" DIR="LTR"><font face="Arial">Computational aspects</font></p>
+<p ALIGN="CENTER" DIR="LTR"></p>
+</b></font><font FACE="Arial">
+<p ALIGN="JUSTIFY" DIR="LTR">The modifications consisted of using a combination 
+of highly optimized linear algebra libraries (LAPACK and BLAS from Intel MKL 
+(Math Kernel Library)) to 
+reduce the computation time for parts of MOPAC such as the pseudodiagonalization, full 
+diagonalization, and density matrix assembling.</p>
+<p ALIGN="JUSTIFY" DIR="LTR">The SCF procedure in MOPAC is driven by the ITER 
+subroutine which is called exclusively by the COMPFG subroutine. The most 
+time-consuming steps in conventional semi-empirical calculations are the Fock 
+matrix diagonalization and density matrix assembly, since these are <i>O(N³)</i> 
+procedures, <i>N</i> being the number of basis functions. The rest of the 
+procedures carried out in the SCF have <i>N²</i> complexity, such as the 
+assembly of Fock Matrix. So, most of our efforts were to replace these 
+subroutine calls for more-optimized similar versions from MKL.</p>
+<p ALIGN="JUSTIFY" DIR="LTR">The pseudodiagonalization in MOPAC is carried out 
+in subroutine DIAG, and its algorithm starts by forming the occupied-virtual 
+block of the Fock matrix, F<sub>o&#8722;v</sub>, in the molecular orbital basis of the 
+previous iteration:</p>
+<p ALIGN="JUSTIFY" DIR="LTR"></p>
+</font></span>
+<p ALIGN="CENTER" DIR="LTR"><i><font face="Arial">F<sub>o-v</sub> = C<sub>o</sub><sup>T</sup>FC<sub>v</sub></font></i></p>
+<span LANG="EN"><font FACE="Arial">
+<p ALIGN="JUSTIFY" DIR="LTR">where <i>C<sub>o</sub></i> is the occupied orbitals 
+sub-matrix and <i>C<sub>v</sub></i> is the same for the virtual ones. Two matrix 
+multiplications are necessary for the assembly of <i>F<sub>o&#8722;v</sub></i> in this 
+first part.</p>
+</font><font FACE="serif,MS Mincho" LANG="JA">
+<p ALIGN="JUSTIFY" DIR="LTR"></font><font FACE="Arial">Once <i>F<sub>o&#8722;v</sub>
+</i>is built, the second part of DIAG performs a series of 2x2 vector rotations 
+(unitary transformations) which approximately eliminates the elements of <i>F<sub>o&#8722;v</sub></i>. 
+Let i be indexes for the occupied orbitals and </font></span><span LANG="PT-BR">
+<font FACE="Arial">&#945;</font></span><span LANG="EN"><font FACE="Arial"> be indexes 
+for the virtual ones. The expressions to calculate the new eigenvectors (<i>C<sub>i</sub><sup>new</sup>
+</i>and <i>C<sub>a</sub><sup>new</sup></i>) 
+from the old ones (<i>C<sub>i</sub></i> and <i>C</i></font></span><font FACE="Arial"><span LANG="PT-BR"><i><sub>&#945;</sub></i></span><span LANG="EN">) 
+by applying successive rotations of 2x2 vectors, and these are given by the 
+following formulae:</p>
+<p ALIGN="JUSTIFY" DIR="LTR"></p>
+</span></font>
+<p ALIGN="CENTER" DIR="LTR"><span LANG="EN"><font FACE="Arial"><i>C<sub>i</sub><sup>new</sup> 
+= cC<sub>i </sub>- sC<sub>a&nbsp;&nbsp;&nbsp; </sub></i>and<i>&nbsp;&nbsp;&nbsp; 
+C<sub>a</sub><sup>new</sup> = sC<sub>i </sub>+ cC<sub>a</sub></i></font></span></p>
+<span LANG="EN"><font FACE="Arial"><i>
+<p ALIGN="CENTER" DIR="LTR"></p>
+</i>
+<p ALIGN="CENTER" DIR="LTR">where</p>
+<p ALIGN="CENTER" DIR="LTR"><i>s = F<sub>ia</sub></i>/(</font><i>&epsilon;</i><font FACE="Arial"><i><sub>i</sub> 
+- </i></font><i>&epsilon;</i><font FACE="Arial"><i><sub>a</sub>
+</i>)&nbsp; and <i>c = </i>(<i>1 - s<sup>2</sup></i>)<i><sup>½</sup></i></p>
+<i>
+<p ALIGN="CENTER" DIR="LTR"></p>
+</i></font></span><span LANG="EN"><font FACE="Arial">
+<p ALIGN="CENTER" DIR="LTR"></p>
+</font><font FACE="serif,MS Mincho" LANG="JA">
+<p ALIGN="JUSTIFY" DIR="LTR"></font><font FACE="Arial">In these equations,
+</font></span><i><span LANG="PT-BR"><font FACE="Arial">&#949;</font></span><sub><span LANG="EN"><font FACE="Arial">i</font></span></sub></i><span LANG="EN"><font FACE="Arial"> 
+and </font></span><font FACE="Arial"><span LANG="PT-BR"><i>&#949;<sub>&#945;</sub></i></span><span LANG="EN"> 
+are the molecular orbital energies for the last conventional SCF iteration 
+(using a full diagonalization procedure). This approach significantly reduces 
+the SCF procedure, making it faster.</p>
+<p ALIGN="JUSTIFY" DIR="LTR">To hasten it, we have replaced both matrix 
+multiplications for more-optimized MKL procedures (DGEMM), as well as the Jacobi 
+rotations step. Also, we have replaced the full diagonalization procedure 
+subroutine (using subroutines from EISPACK 3 library) with Intel MKL DSYEVD. At 
+the density matrix assembly step, we have used DSYRK instead of DGEMM, since the 
+product matrix is symmetric.</p>
+<p ALIGN="JUSTIFY" DIR="LTR"></p>
+</span></font><span LANG="EN"><font FACE="Arial" SIZE="5"><b>
+<p ALIGN="CENTER" DIR="LTR">Benchmarks</p>
+</b></font><font FACE="Arial">
+<p ALIGN="JUSTIFY" DIR="LTR"></p>
+<p ALIGN="JUSTIFY" DIR="LTR">Below, we present times, in seconds, for a 
+single-point calculation run on a 2 x 2.93 GHz 6-Core Intel Xeon with 16Gb of 
+1333 DDR3 memory chips Mac Pro computer, using 12 of the 24 threads</p>
+</font><font SIZE="2">
+<p ALIGN="LEFT" DIR="LTR"></p>
+</font></span>
+<p ALIGN="CENTER"></p>
+<center>
+<table BORDER CELLSPACING="1" CELLPADDING="7" WIDTH="651" DIR="LTR">
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="center"><span LANG="EN">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">Species</font></span></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><span LANG="EN">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">#atoms</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="EN">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">Current MOPAC2016</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="EN">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">MOPAC with MKL</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="EN">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">MOPAC2016 with MKL and multi-threading</font></span></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="left"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="JUSTIFY" DIR="LTR">Naphthalene</font></span></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">18</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">0.02</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="EN">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">0.15</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="EN">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">0.02</font></span></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="left"><font face="Arial">Crambin</font></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><font face="Arial">642</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">468</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">114</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">12</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="left"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="JUSTIFY" DIR="LTR">(H</font><sub><font FACE="Arial">2</font></sub><font FACE="Arial">O)</font><sub><font FACE="Arial">573</font></sub></span></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">1719</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">3,082</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">584</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">79</font></span></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="left"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="JUSTIFY" DIR="LTR">1G6X</font></span></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">1455</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">8,612</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">1,240</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">142</font></span></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="left"><font face="Arial">1EZG 
+    (Thermal Hysteresis Protein)</font></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><font face="Arial">2064</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">22,959</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">2,118</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">300</font></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="left"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="JUSTIFY" DIR="LTR">1RNB (Barnase)</font></span></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">2066</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">34,372</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">4,108</font></span></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><span LANG="PT-BR">
+    <font FACE="Arial">
+    <p ALIGN="CENTER" DIR="LTR">411</font></span></td>
+  </tr>
+  <tr>
+    <td WIDTH="134" VALIGN="MIDDLE" align="left"><font face="Arial">
+    Bacteriorhodopsin (1BRX)</font></td>
+    <td WIDTH="90" VALIGN="MIDDLE" align="center"><font face="Arial">3352</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center">141,773</td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">11,192</font></td>
+    <td WIDTH="113" VALIGN="MIDDLE" align="center"><font face="Arial">1,394</font></td>
+  </tr>
+</table>
+</center>
+<p></p>
+<span LANG="EN"><font SIZE="2">
+<p ALIGN="LEFT" DIR="LTR"></p>
+</font><font FACE="Arial">
+<p ALIGN="JUSTIFY" DIR="LTR">&nbsp;</p>
+</font><font FACE="Arial" SIZE="5"><b>
+<p ALIGN="CENTER" DIR="LTR">Additional details</p>
+</b></font><font FACE="Arial">
+<p ALIGN="JUSTIFY" DIR="LTR">Multi-threading does not speed up MOZYME 
+calculations because they use sparse matrices. </p>
+<p ALIGN="JUSTIFY" DIR="LTR">In MOPAC, proteins can be modeled using the MOZYME 
+technique, however, that technique is limited to closed shell RHF calculations. 
+This means that proteins with free radical sites, excited state proteins, and 
+proteins containing iron, chromium or other transition metal atoms should not be 
+modeled using MOZYME. </p>
+<p ALIGN="JUSTIFY" DIR="LTR">Such modifications reduce the computation time so 
+that conventional MOPAC methods can now be used for many proteins. This means 
+that it is now practical to use conventional MOPAC methods - RHF-CI and UHF - 
+for modeling most of the smaller proteins, and by implication that it will be 
+possible to model many systems that currently cannot or should not be modeled 
+using MOZYME.</p>
+<p ALIGN="JUSTIFY" DIR="LTR">All technical details of the modifications to the 
+MOPAC2016 code, as well as some results, benchmarks and an application in 
+biomolecules, can be found in the publication:</p>
+<p ALIGN="JUSTIFY" DIR="LTR">Maia, J. D. C.; Urquiza Carvalho, G. A.; Mangueira, 
+C. P.; Santana, S. R.; Cabral, L. A. F.; Rocha, G. B., &quot;GPU Linear Algebra 
+Libraries and GPGPU Programming for Accelerating MOPAC Semiempirical Quantum 
+Chemistry Calculations&quot; Journal of Chemical Theory and Computation 2012, 8, 
+3072–3081. See: <a href="http://pubs.acs.org/doi/abs/10.1021/ct3004645">
+http://pubs.acs.org/doi/abs/10.1021/ct3004645</a></p>
+<p ALIGN="JUSTIFY" DIR="LTR"><br>
+&nbsp;</p>
+<p ALIGN="JUSTIFY" DIR="LTR">In this publication you also can find all about the 
+GPU-powered MOPAC that was released in January 2014. For details of the effect 
+of using a GPU, see <a href="gpu.html">GPU</a>.</p>
+<p ALIGN="JUSTIFY" DIR="LTR">&nbsp;</p>
+<p ALIGN="JUSTIFY" DIR="LTR">&nbsp;</p>
+<dir>
+  <dir>
+    </font></span><span LANG="PT-BR">
+    <p ALIGN="LEFT" DIR="LTR"></p>
+  </dir>
+</dir>
+</span>
+
+</body>
+
+</html>

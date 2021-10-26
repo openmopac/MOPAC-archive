@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>NOREOR </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>NOREOR</TT>
+</h1>
+When the symmetry of a molecule is being worked out, the molecule is
+orientated by default.  If <TT>NOREOR</TT> is specified, the molecule will
+<EM>not</EM> be reorientated.  The main reason to not reorientate the molecule
+is to allow a lower point-group to be used, and to allow the <I>x</I> and <I>y</I> axes
+in Abelian groups to be defined by the user.<p>When <a href="geo_ref.html"><tt>GEO_REF</tt></a> 
+is used, the default is that the reference geometry is rotated and translated to 
+give the maximum overlap with the data-set geometry. This operation will be 
+suppressed when <TT>NOREOR</TT> is present.</p>
+<p>In a <a href="force.html"><tt>FORCE</tt></a> calculation, <TT>NOREOR</TT> will prevent the molecules being reoriented to 
+line up the moment of inertia axes with the Cartesian axes. </p>
+</BODY>
+</HTML>

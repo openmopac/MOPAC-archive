@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Precision in Proteins </TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: left;
+																													}
+																													.auto-style2 {
+																														font-family: Symbol;
+																													}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+Precision in Proteins </h1>
+<p class="auto-style1">
+When default settings are used, the precision of protein calculations is in the 
+order of 1 kcal.mol<sup>-1</sup>.&nbsp; Note that this is precision, not 
+accuracy; errors in accuracy can be in the order of hundreds of kcal.mol<sup>-1</sup>.&nbsp; 
+Precision is a measure of how reproducible a given calculation is.&nbsp; 
+Obviously, if the calculation was completely precise, the same job would give 
+the same results on all operating systems, and, more important, give the same 
+results when insignificant changes are made to the starting data.&nbsp; In 
+practice, small changes in input data can give rise to significant changes in 
+the results.&nbsp; This is obviously not acceptable when comparing relative 
+energies of closely-related systems.</p>
+<p class="auto-style1">
+Several techniques and strategies are available to increase precision.&nbsp; 
+Using these, particularly minimizing the domain to be optimized, can result in a 
+reduction in errors in precision to about 0.02 to 0.05 kcal.mol<sup>-1</sup>.</p>
+<h3>
+Use a good starting model</h3>
+<p>
+When making a starting model, geometry optimization should be run until there is 
+no significant change in <span class="auto-style2">D</span>H<sub>f</sub>.&nbsp; If this is not done, then when 
+changes are made to the geometry, a mutation or a step in a reaction mechanism, 
+and the geometry optimized, the original and changed systems might optimize to 
+significantly different final geometries, even if the change is relatively 
+small.&nbsp; This can happen if a hydrogen bond that should exist forms during 
+one calculation and not during the other.&nbsp; A suitable strategy would be to 
+use keywords <tt><a href="gnorm.html">GNORM=3</a> <a href="t=n.html">T=2W</a></tt>, and monitor the optimization periodically.&nbsp; When 
+the <span class="auto-style2">D</span>H<sub>f</sub> stops dropping, use the 
+<a href="shut.html">SHUT</a> command to stop the run.&nbsp; When the job ends, 
+edit the output file, &lt;name&gt;.out, to make a new data set that uses the last 
+geometry output.&nbsp; This geometry represents the structure with the lowest 
+calculated <span class="auto-style2">D</span>H<sub>f</sub>, not necessarily the 
+last structure calculated.</p>
+<h3>
+Make similar systems as similar as possible</h3>
+<p>
+When comparing closely-related systems, start with one of the two systems, 
+optimize it as completely as possible, then make the smallest change possible to 
+make the other system.&nbsp; The idea here is that when the geometry 
+optimization of the changed system starts, the geometry should (a) be as similar 
+as possible to the original system, and (b) be as near as possible to the final 
+geometry. For example, if a hydrogen atom is being migrated from one site to 
+another, the starting position of the hydrogen atom in the new site should be as 
+good as possible - bond length within a few percent, and pointing in the right 
+direction.&nbsp; If possible, avoid &quot;cut and paste&quot; of large pieces of protein - 
+the joins are almost certain to be poor. Instead, edit one or more individual 
+atoms to achieve the desired modification.</p>
+<h3>
+Minimize the domain to be optimized</h3>
+<p>
+If unconstrained optimizations are carried out on two closely-related systems, 
+there is a high probability that small changes far from the site of interest 
+would introduce energy changes in the order of 1 kcal.mol<sup>-1</sup> - 
+this is the origin of the large default precision. Such energy changes could 
+make any deductions worthless.&nbsp; To prevent this happening, optimize the 
+geometry using only 
+the minimum set of atoms by using <a href="opt_label.html"><tt>OPT(text)</tt></a>.&nbsp; 
+This technique has the added advantage of requiring much less time than a full 
+optimization.</p>
+<p>
+&nbsp;</p>
+
+</BODY>
+</HTML>

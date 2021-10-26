@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>THERMO </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>THERMO</TT> </h1>
+<P>The thermodynamic quantities, internal energy, heat capacity, partition function, and entropy can be calculated&nbsp;[<A HREF="references.html#thermo">50</A>] for translation, rotation and vibrational degrees of freedom for a single temperature, or a range of temperatures. Special situations such as 
+single atoms, linear systems and transition states are accommodated. The approximations used in the THERMO calculation are invalid below 100K, and checking of the lower bound of the temperature range is done to prevent temperatures of less than 100K being used. See the <A HREF="thermochemistry.html#tsuneo">Note on Thermochemistry</A> for more detail. </P>
+<P>Another limitation, for which no checking is done, is that there should be no internal rotations. If any exist, they will not be recognized as such, and the calculated quantities will be too low as a result. </P>
+<P>Systems consisting of a single atom have no vibrations, so they do not have 
+vibrational, rotational, or internal thermodynamic properties, but do have 
+translational thermodynamic properties.&nbsp; These systems can be run using <TT>THERMO</TT>.</P>
+<P>If <TT>THERMO</TT> is specified on its own, then the default values of the temperature range are assumed. This starts at 200K and increases in steps of 10 degrees to 400K. Three options exist for overriding the default temperature range. These are:
+<a href="thermo0.html"><TT>THERMO(nnn)</TT></a>, <A NAME="tex2html5794"><A HREF="thermo1.html"><TT>THERMO(nnn,mmm)</TT></A></A>, and <A NAME="tex2html5806"><A HREF="thermo.html"><TT>THERMO(nnn,mmm,lll)</TT></A></A>. See also <A HREF="trans.html"><TT>TRANS</TT></A>.</P>
+</BODY>
+</HTML>

@@ -1,0 +1,812 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>A Note on Thermochemistry</TITLE>
+                                                                                                                                                      <style type="text/css">.auto-style1 {
+																																						  text-align: left;
+																																					  }
+																																					  .auto-style2 {
+	font-size: medium;
+}
+																																					  </style>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1 align="center">A Note on Thermochemistry </H1>
+Thermodynamic quantities, such as heat capacity,
+  entropy, and internal energy, can be calculated using the vibrational
+  frequencies (energies),&nbsp; moments of inertia of the molecule, its symmetry
+  number, and a knowledge of the temperature.&nbsp; In this section, the
+  relationships of these quantities is described.<h2>Moment of inertia: </h2>
+<P>The moments of inertia are calculated using&nbsp; <i>I<sub>A</sub> = </i>
+<span class="b">&Sigma;</span><i><sub>i</sub>m<sub>i</sub></i>(<i>R<sub>Ai</sub></i>)<sup>2</sup>, 
+where <i>i</i> runs over all atoms in the system, <i>m<sub>i </sub></i>is the 
+mass of the atom in amu, and <i>R<sub>Ai</sub></i> is the distance from the axis 
+of rotation, <i>A</i>, to atom <i>i</i> in <font face="Times New Roman">
+&Aring;ngstroms.</font></P>
+<P>The axes of rotation are calculated as follows:&nbsp; </P>
+<P>First, a 3 by 3 matrix, <i><b>t</b></i>,&nbsp; is constructed, with the 
+elements of <b><i>t</i></b> being:</P>
+<P><i>t</i><sub>1,1</sub> =&nbsp; Y<sup>2</sup> +&nbsp; Z<sup>2 </sup>=<sup>
+</sup><span class="b">&Sigma;</span><i><sub>i</sub>m<sub>i</sub></i>(<i>y<sub>i</sub></i><sup>2</sup> 
++ <i>z<sub>i</sub></i><sup>2</sup>)<br>
+<i>t</i><sub>1,2</sub> =&nbsp; -X.Y<sup> </sup>=<sup> -</sup><span class="b">&Sigma;</span><i><sub>i</sub>m<sub>i</sub>x<sub>i</sub>y<sub>i<br>
+</sub>t</i><sub>2,2</sub> =&nbsp; X<sup>2</sup> +&nbsp; Z<sup>2 </sup>=<sup>
+</sup><span class="b">&Sigma;</span><i><sub>i</sub>m<sub>i</sub></i>(<i>x<sub>i</sub></i><sup>2</sup> 
++ <i>z<sub>i</sub></i><sup>2</sup>)<br>
+<i>t</i><sub>1,3</sub> =&nbsp; -X.Z<sup> </sup>=<sup> -</sup><span class="b">&Sigma;</span><i><sub>i</sub>m<sub>i</sub>x<sub>i</sub>z<sub>i<br>
+</sub></i><i>t</i><sub>2,3</sub> =&nbsp; -Y.Z<sup> </sup>=<sup> -</sup><span class="b">&Sigma;</span><i><sub>i</sub>m<sub>i</sub>y<sub>i</sub>z<sub>i<br>
+</sub></i><i>t</i><sub>3,3</sub> =&nbsp; X<sup>2</sup> +&nbsp; Y<sup>2 </sup>=<sup>
+</sup><span class="b">&Sigma;</span><i><sub>i</sub>m<sub>i</sub></i>(<i>x<sub>i</sub></i><sup>2</sup> 
++ <i>y<sub>i</sub></i><sup>2</sup>)</P>
+<P>where<i> m<sub>i </sub></i>is the mass of the atom in amu, and <i>x<sub>i</sub></i>,
+<i>y<sub>i</sub></i>, and <i>z<sub>i</sub></i>, are the Cartesian coordinates of 
+the atoms, in <font face="Times New Roman">&Aring;ngstroms.&nbsp; Then </font> <i><b>t</b></i><font face="Times New Roman"> is 
+diagonalized. The resulting eigenvalues, </font>(amu &Aring;ngstrom<SUP>2</SUP>)<font face="Times New Roman">, 
+are divided by <i>N.A</i><sup>2</sup>, where <i>N</i>=Avogardo's number and <i>A</i> 
+= number of &Aring;ngstroms in a centimeter, to give the moments of inertia in g.cm<sup>2</sup>.&nbsp; 
+Because a useful unit is 10<sup>-40</sup>.g.cm<sup>2</sup>, the moments of 
+inertia are multiplied by 10<sup>40</sup> before being printed.&nbsp;&nbsp; The 
+eigenvectors associated with the eigenvalues&nbsp;are the axes of rotation, <i>
+A</i>, <i>B</i>, and <i>C</i>.&nbsp; </font> </P>
+<P>Useful conversion factors <br>
+&nbsp;1                                          g cm<SUP>2 </SUP>&nbsp;= 
+1.660540x10<sup>-40</sup>&nbsp; (amu &Aring;ngstrom<SUP>2</SUP>) <br>
+Rotational constants in cm<sup>-1</sup>:&nbsp;
+<i>A</i> = <i>hN</i>10<sup>16</sup>/(8<span class="b">&pi;</span><sup>2</sup><i>c</i>)/(amu &Aring;ngstrom<SUP>2</SUP>)
+<br>
+<I>A</I> (in MHz) =
+5.053791x10<sup>5</sup>/(amu &Aring;ngstrom<SUP>2</SUP>)&nbsp;                                           <BR>
+<I>A</I> (in cm<SUP>-1</SUP>) =&nbsp; 5.053791x10<sup>5</sup>/<i>c</i>(amu &Aring;ngstrom<SUP>2</SUP>)&nbsp; =
+16.85763/(amu &Aring;ngstrom<SUP>2</SUP>)&nbsp;                                           &nbsp;
+<BR>
+</P>
+<H2><A NAME="SECTION0012152000000000000000">
+ Thermochemistry from <EM>ab initio</EM> MO methods</A> 
+<span class="auto-style2">(See also </span>
+<a href="HoF%20versus%20total%20energies.html"><span class="auto-style2">&Delta;H</span><sub><span class="auto-style2">f</span></sub><span class="auto-style2"> vs. Total 
+Energies</span></a>)</H2>
+<p>Ab initio MO methods provide total energies, <i>
+E<sub>eq</sub></i>,
+as  the  sum  of
+electronic   and   nuclear-nuclear  repulsion  energies  for  molecules,
+isolated in vacuum, without vibration at 0  K. <A NAME="BM21737">&#160;</A> </p>
+<p align="center"><IMG
+ WIDTH="161" HEIGHT="30"
+ SRC="img1550.gif"
+ ALT="\begin{displaymath}E_{\rm eq} = E_{\rm el} + E_{\rm nuclear-nuclear} \nonumber
+\end{displaymath}"></p>
+<P></P>
+<p>From the 0 K potential surface and using  the  harmonic  oscillator approximation,  we can calculate the vibrational
+frequencies, <i>&nu;<sub>i</sub></i>,
+of the normal modes of vibration.  Using these, we can
+calculate  vibrational, rotational   and   translational   contributions  to
+the  thermodynamic quantities such as the partition function and heat capacity
+which  arise
+from heating the system from 0 to T K.&nbsp; </p>
+<P>
+<I>Q</I>: partition function, <I>E</I>: energy, <I>S</I>: entropy,
+and <I>C</I>: Heat capacity at constant pressure = C<SUB><I>p</I></SUB>. In <EM>ab initio</EM>
+calculations,<A NAME="BM21273">&#160;</A> the heat capacity calculated is C<SUB><I>v</I></SUB>.
+The relationship between C<SUB><I>p</I></SUB> and C<SUB><I>v</I></SUB> (in cal.degree<SUP>-1</SUP>.mol<SUP>-1</SUP>) is:
+<br>
+<!--End of Navigation Panel-->
+  <h3><a name="SECTION0012152100000000000000">Vibrational terms</a> (see also
+  <a href="vibrational_analysis.html">note</a> concerning imaginary frequencies)</h3>
+  <p>The vibrational contribution to the internal energy arises from population 
+  of the vibrational energy levels.&nbsp; The vibrational partition coefficient, <i>Q<sub>vib,</sub></i> 
+  is given by:</p>
+  <p align="center">
+  <img height="45" alt="begin{displaymath}Q_{rm vib} = prod_i{frac{1}{[1 - exp(-hnu_i/kT)]}}end{displaymath}" src="img1552.gif" width="190"></p>
+  <!-- MATH: $E_{\rm vib}$ -->
+  <p><i>E<sub>vib</sub></i>, for a molecule at the temperature <i>T</i> as: </p>
+  <p align="center"><img height="47" src="img1554.gif" width="248" </p>
+  <p>where <i>h</i> is Planck's constant, <i>&nu;<sub>i
+  </sub></i>the <i>i</i>-th normal vibration frequency, and <i>k</i> the 
+  Boltzmann constant. For 1 mole of molecules,
+  <!-- MATH: $E_{\rm
+vib}$ --><i>E<sub>vib </sub></i>should be multiplied by the Avogadro number <i>N<sub>a</sub></i> 
+  = <i>R</i>/<i>k</i>. Thus: </p>
+  <center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center" width="269">
+      <img height="47" src="img1557.gif" width="265" 
+      <td vAlign="center" width="192">
+      <p align="right">Equation 1</td>
+    </tr>
+  </table>
+  </center>
+  <p>Note that the first term in the above equation is the zero-point vibration 
+  energy, <i>E</i><sub>zpe</sub>. Hence, the second term is the additional 
+  vibrational contribution due to the temperature increase from 0 K to T K. 
+  Namely, </p>
+  <center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center" align="right"><i>E<sub>vib</sub></i> </td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center">&nbsp;<i>E<sub>zpe</sub>+<sub> </sub>E<sub>vib </sub></i>(<i>T</i>)</td>
+    </tr>
+    <tr>
+      <td vAlign="center" align="right"><i>E<sub>zpe</sub></i> </td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center" align="left">
+      <img height="51" src="img1561.gif" width="63"     </tr>
+    <tr>
+      <td vAlign="center" align="right"><i>E<sub>vib</sub>(T)</i></td>
+      <td vAlign="center" align="middle">= </td>
+      <td vAlign="center" align="left">
+      <img height="53" src="img1563.gif" width="167"></td>
+      <td vAlign="center" width="192">
+      <p align="right">Equation&nbsp; 2</td>
+    </tr>
+  </table>
+  </center>
+  <p align="left">The value of
+  <!-- MATH: $E_{\rm vib}$ --><i>E<sub>vib </sub></i>from GAUSSIAN 82 and 86 
+  includes
+  <!-- MATH: $E_{\rm zero}$ --><i>E<sub>zpe </sub></i>as defined by Equation 1 
+  and Equation 2. <br>
+&nbsp;</p>
+  <center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center">
+      <p align="right"><i>S<sub>vib</sub></i> </td>
+      <td vAlign="center" width="21">
+      <p align="center">=</td>
+      <td vAlign="center"><img height="53" src="img1567.gif" width="361"     </tr>
+    <tr>
+      <td vAlign="center" align="right"><i>C<sub>vib</sub></i></td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center"><img height="57" src="img1569.gif" width="216"></td>
+    </tr>
+  </table>
+  </center>
+  <p>At temperature <i>T</i>&gt;0 K, a molecule rotates about the x, y, and z-axes 
+  and translates in x, y, and z-directions. By assuming the equipartition of 
+  energy, energies for rotation and translation,
+  <!-- MATH: $E_{\rm rot}$ --><i>E<sub>rot </sub></i>and
+  <!-- MATH: $E_{\rm tr}$ --><i>E<sub>tr</sub></i>, are calculated. </p>
+  <h3>Rotational terms </h3>
+  <p><i><span class="b">&Sigma;</span></i> is the symmetry number (Examples of 
+  symmetry numbers are shown in the Table). <i>I</i> is moment of inertia. <i>I</i><sub><i>A</i></sub>,
+  <i>I</i><sub><i>B</i></sub>, and <i>I</i><sub><i>C</i></sub> are moments of 
+  inertia about A, B, and C axes. <br>
+&nbsp;</p>
+        <a name="BM21709">&nbsp;</a>
+      <div align="center">
+        <center>
+      <table cellPadding="3" border="1" style="border-collapse: collapse" bordercolor="#111111" cellspacing="0">
+        <caption><strong>Table:</strong> Table of Symmetry Numbers </caption>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>1</sub></td>
+          <td align="left">C<sub><i>I</i></sub></td>
+          <td align="left">C<sub><i>S</i></sub>:</td>
+          <td align="right">1</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<sub>2</sub></td>
+          <td align="left">D<sub>2<i>d</i></sub></td>
+          <td align="left">D<sub>2<i>h</i></sub>:</td>
+          <td align="right">4</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">C<!-- MATH: $_{\infty v}$ --><img height="45" alt="$_{\infty v}$" src="img1573.gif" width="30" align="middle" border="0">:</td>
+          <td align="right">1</td>
+        </tr>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>2</sub></td>
+          <td align="left">C<sub>2<i>v</i></sub></td>
+          <td align="left">C<sub>2<i>h</i></sub>:</td>
+          <td align="right">2</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<sub>3</sub></td>
+          <td align="left">D<sub>3<i>d</i></sub></td>
+          <td align="left">D<sub>3<i>h</i></sub>:</td>
+          <td align="right">6</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<!-- MATH: $_{\infty h}$ -->
+          <img height="45" alt="$_{\infty h}$" src="img1574.gif" width="30" align="middle" border="0">:</td>
+          <td align="right">2</td>
+        </tr>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>3</sub></td>
+          <td align="left">C<sub>3<i>v</i></sub></td>
+          <td align="left">C<sub>3<i>h</i></sub>:</td>
+          <td align="right">3</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<sub>4</sub></td>
+          <td align="left">D<sub>4<i>d</i></sub></td>
+          <td align="left">D<sub>4<i>h</i></sub>:</td>
+          <td align="right">8</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">T, T<sub><i>h</i></sub> T<sub><i>d</i></sub>:</td>
+          <td align="right">12</td>
+        </tr>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>4</sub></td>
+          <td align="left">C<sub>4<i>v</i></sub></td>
+          <td align="left">C<sub>4<i>h</i></sub>:</td>
+          <td align="right">4</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<sub>5</sub></td>
+          <td align="left">D<sub>5<i>d</i></sub></td>
+          <td align="left">D<sub>5<i>h</i></sub>:</td>
+          <td align="right">10</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">O, O<sub><i>h</i></sub>:</td>
+          <td align="right">24</td>
+        </tr>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>5</sub></td>
+          <td align="left">C<sub>5<i>v</i></sub></td>
+          <td align="left">C<sub>5<i>h</i></sub>:</td>
+          <td align="right">5</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<sub>6</sub></td>
+          <td align="left">D<sub>6<i>d</i></sub></td>
+          <td align="left">D<sub>6<i>h</i></sub>:</td>
+          <td align="right">12</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">I, I<sub><i>h</i></sub>:</td>
+          <td align="right">60</td>
+        </tr>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>6</sub></td>
+          <td align="left">C<sub>6<i>v</i></sub></td>
+          <td align="left">C<sub>6<i>h</i></sub>:</td>
+          <td align="right">6</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<sub>7</sub></td>
+          <td align="left">D<sub>7<i>d</i></sub></td>
+          <td align="left">D<sub>7<i>h</i></sub>:</td>
+          <td align="right">14</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">S<sub>4</sub>:</td>
+          <td align="right">2</td>
+        </tr>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>7</sub></td>
+          <td align="left">C<sub>7<i>v</i></sub></td>
+          <td align="left">C<sub>7<i>h</i></sub>:</td>
+          <td align="right">7</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">D<sub>8</sub></td>
+          <td align="left">D<sub>8<i>d</i></sub></td>
+          <td align="left">D<sub>8<i>h</i></sub>:</td>
+          <td align="right">16</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">S<sub>6</sub>:</td>
+          <td align="right">3</td>
+        </tr>
+        <tr vAlign="baseline">
+          <td align="left">C<sub>8</sub></td>
+          <td align="left">C<sub>8<i>v</i></sub></td>
+          <td align="left">C<sub>8<i>h</i></sub>:</td>
+          <td align="right">8</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">&nbsp;</td>
+          <td align="left">&nbsp;</td>
+          <td align="left">&nbsp;</td>
+          <td align="right">&nbsp;</td>
+          <td align="middle">&nbsp;</td>
+          <td align="left">S<sub>8</sub>:</td>
+          <td align="right">4</td>
+        </tr>
+      </table>
+
+        </center>
+</div>
+
+  <h4><a name="SECTION0012152210000000000000">Linear molecule</a> </h4>
+  <p>Values for <i>Q<sub>rot</sub></i>, <i>E<sub>rot</sub></i>, and <i>S<sub>rot</sub></i> 
+  for a linear molecule are defined below: </p>
+  
+    <div align="center">
+      <center>
+      <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" height="76" width="170">
+        <tr>
+          <td height="19" width="24"><i>Q<sub>ro</sub></i></td>
+          <td height="19" width="25" align="center">&nbsp;</td>
+          <td height="19" width="25" align="center">=</td>
+          <td height="19" width="25" align="center">&nbsp;</td>
+          <td height="19" width="121"><img height="56" src="img1576.gif" width="55" 
+        </tr>
+        <tr>
+          <td height="19" width="24"><i>E<sub>ro</sub></i></td>
+          <td height="19" width="25" align="center">&nbsp;</td>
+          <td height="19" width="25" align="center">=</td>
+          <td height="19" width="25" align="center">&nbsp;</td>
+          <td height="19" width="121">2/2)<i>RT</i></td>
+        </tr>
+        <tr>
+          <td height="19" width="24"><i>S<sub>rot</sub></i></td>
+          <td height="19" width="25" align="center">&nbsp;</td>
+          <td height="19" width="25" align="center">=</td>
+          <td height="19" width="25" align="center">&nbsp;</td>
+          <td height="19" width="121"><img height="56" src="img1579.gif" width="121" >
+        </tr>
+        <tr>
+          <td height="19" width="24">&nbsp;</td>
+          <td height="19" width="25">&nbsp;</td>
+          <td height="19" width="25">=</td>
+          <td height="19" width="25">&nbsp;</td>
+          <td height="19" width="121"><img height="29" src="img1580.gif" width="214" 
+        </tr>
+      </table>
+      </center>
+</div>
+  
+    <p>where
+  <!-- MATH: $-4.349 203 = R \ln[8\times 10^{-16} \pi^2 k/(N_a h^2)] + R$ -->
+  <img height="35" alt="$ -4.349 203 = R ln[8times 10^{-16} pi^2 k/(N_a h^2)] + R$" src="img1581.gif" width="286" align="middle">.
+  </p>
+  <p align="center">
+  <img height="28" alt="begin{displaymath}C_{rm rot} = (2/2)R nonumberend{displaymath}" src="img1582.gif" width="84"></p>
+  
+    <!-- MATH: \begin{equation}
+C_{\rm rot} = (2/2)R
+\end{equation} -->
+ 
+  <h4>Non-linear molecule </h4>
+  <p>Values for <i>Q<sub>rot</sub></i>, <i>E<sub>rot</sub></i>, and <i>S<sub>rot</sub></i> 
+  for a non-linear molecule are defined below:<br>
+&nbsp;</p>
+  <center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center" align="right"><i>Q<sub>rot</sub></i> </td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center"><img height="64" src="img1584.gif" width="189" TD </td>
+    </tr>
+    <tr>
+      <td vAlign="center" align="right">&nbsp;</td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center"><img height="71" src="img1585.gif" width="367" TD </td>
+    </tr>
+    <tr>
+      <td vAlign="center" align="right"><i>E<sub>rot</sub></i> </td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center">(3/2)<i>RT</i></td>
+    </tr>
+    <tr>
+      <td vAlign="center" align="right"><i>S<sub>rot</sub></i> </td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center"><img height="62" src="img1588.gif" width="433" TD  </td>
+    </tr>
+    <tr>
+      <td vAlign="center" align="right">&nbsp;</td>
+      <td vAlign="center" align="middle">=</td>
+      <td vAlign="center"><img height="31" src="img1589.gif" width="328"> </td>
+    </tr>
+  </table>
+  </center>
+  <p>Here,
+  <!-- MATH: $-5.386 3921$ -->-5.386 3921 is calculated as: </p>
+     <img height="54" src="img1590.gif" width="336" 
+    <div align="center">
+      <p align="center"><img height="28" src="img1591.gif" width="84"></div>
+  </div>
+  <h3><a name="SECTION0012152300000000000000">Translational terms</a> </h3>
+  <p>Given that <i>M</i> is the molecular weight, then the values for <i>Q<sub>tra</sub></i>,
+  <i>E</i><sub><i>tra</i></sub>,&nbsp; <i>S</i><sub><i>tra</i></sub>, and <i>C</i><sub><i>tra
+  </i></sub>for a molecule are as defined below:<br>
+&nbsp;</p>
+  <div align="center">
+    <a name="eq19">&nbsp;</a>&nbsp;&nbsp;<a name="eq22"> </a>&nbsp;&nbsp; <center>
+    <table cellSpacing="0" border="0">
+      <tr>
+        <td vAlign="center"><i>Q<sub>tra</sub></i> </td>
+        <td vAlign="center" align="middle">=</td>
+        <td vAlign="center"><img height="69" src="img1593.gif" width="127" TD </td>
+      </tr>
+      <tr>
+        <td vAlign="center" align="right"><i>E</i><sub><i>tra</i></sub></td>
+        <td vAlign="center" align="middle">=</td>
+        <td vAlign="center">(3/2)<i>RT</i></td>
+      </tr>
+      <tr>
+        <td vAlign="center" align="right"><i>S</i><sub><i>tra</i></sub></td>
+        <td vAlign="center" align="middle">= </td>
+        <td vAlign="center"><img height="53" src="img1596.gif" width="357" TD </td>
+      </tr>
+      <tr>
+        <td vAlign="center" align="right">&nbsp;</td>
+        <td vAlign="center" align="middle">=</td>
+        <td vAlign="center"><img height="31" src="img1597.gif" width="282"></td>
+      </tr>
+      <tr>
+        <td vAlign="center" align="right"><i>C</i><sub><i>tra</i></sub></td>
+        <td vAlign="center" align="middle">=</td>
+        <td vAlign="center">(5/2)<i>R</i></td>
+      </tr>
+    </table>
+    </center>
+  </div>
+  <p>or
+  <!-- MATH: $H_{\rm tra} = (5/2)RT$ --><i>H<sub>tra </sub>= (5/2)RT </i>due to 
+  the <i>PV</i> term (cf.
+  <!-- MATH: $H = U + pV$ --><i>H</i> = <i>U</i> + <i>PV</i>). The internal 
+  energy <i>U</i> at <i>T</i> is: </p>
+  <p align="center"><i>U = E<sub>eq</sub></i> + [<i>E<sub>vib </sub>+ E<sub>rot</sub> 
+  + E<sub>tra</sub></i>]</p>
+  <p>or, in terms of the zero point energy, <i>E<sub>zpe</sub></i>, and real 
+  vibrations,<i> E<sub>vib </sub></i>(<i>T</i>),</p>
+  <p align="center"><i>U = E<sub>eq</sub></i> + [(<i>E<sub>zpe </sub>+<sub>
+  </sub>E<sub>vib </sub></i>(<i>T</i>))<i>+ E<sub>rot</sub> + E<sub>tra</sub></i>].</p>
+  <p>Enthalpy <i>H</i> for one mole of gas is defined as </p>
+  <p align="center"><i>H</i> = <i>U</i> + <i>PV</i><a name="eq26">&nbsp;</a> </p>
+  <p>Assumption of an ideal gas (i.e., <i>PV</i> = <i>RT</i>) leads to </p>
+  <p align="center"><i>H</i> = <i>U</i> + <i>PV</i> = <i>U</i> + <i>RT</i></p>
+  <p>Thus, Gibbs free energy <i>G</i> can be calculated as: </p>
+  <p align="center"><i>G</i> = <i>H</i> - <i>T S</i> </p>
+<H2><A NAME="SECTION0012153000000000000000">Thermochemistry in MOPAC</A> 
+<span class="auto-style2">(See also </span>
+<a href="HoF%20versus%20total%20energies.html"><span class="auto-style2">&Delta;H</span><sub><span class="auto-style2">f</span></sub><span class="auto-style2"> vs. Total 
+Energies</span></a>)</H2>
+<P>It should be noted that M.O. parameters for MNDO, AM1, etc., are optimized so as to reproduce the experimental heat of formation (i.e., standard enthalpy of formation or the enthalpy change to form a mole of compound at 25<sup>o</sup>C from its elements in their standard state) as well as observed geometries (mostly at 25<sup>o</sup>C), and not to reproduce the
+<i>E<sub>eq</sub></i> and equilibrium geometry at 0 K. </P>
+<P>In this sense, <I>E<SUB>SCF</SUB></I> (defined as Heat of formation,                            <span class="b">&Delta;</span>H<sub>f</sub>), force constants, normal vibration frequencies, etc. are all related to the values at 25<sup>o</sup>C, not to 0 K. Therefore, the
+<i>E</i><sub>0 </sub>calculated in FORCE is not the true
+<i>E</i><sub>0</sub>. Its use as                              <i>E</i><sub>0<i>
+</i></sub>should be made at your own risk, bearing in mind the situation discussed above. </P>
+<P>Since <I>E<SUB>SCF</SUB></I> is standard enthalpy of formation (at 25<IMG SRC="img1611.gif" WIDTH=11 HEIGHT=16 ALT="$^circ$">C): </P>
+<P align="center">E<sub>SCF</sub> = E<sub>eq</sub> + E<sub>zpe</sub> + E<sub>vib</sub>+ E<sub>rot</sub> + E<sub>tra</sub>&nbsp; + PV + &Sigma;[-E<sub>elec</sub>(atom)
++ <span class="b">&Delta;</span>H<sub>f</sub>(atom)].</P>
+<P class="auto-style1">E<sub>eq</sub>: Electronic plus nuclear energy for the 
+equilibrium geometry at 0 K;&nbsp; E<sub>zpe</sub>: Zero-point energy; E<sub>vib</sub>: 
+Vibrational energy at 298.15 K; E<sub>rot</sub>: Rotational energy at 298.15 K; E<sub>tra</sub>: 
+Translational energy at 298.15 K.</P>
+<P>To avoid the complication arising from the definition of <I>E<SUB>SCF</SUB></I>, within&nbsp; the thermodynamics calculation the Standard Enthalpy of Formation, <span class="b">&Delta;</span>H, is calculated by </P>
+<P align="center"><span class="b">&Delta;</span><i>H&nbsp; =&nbsp; E<sub>SCF</sub></i>&nbsp;
++ (<i>H<sub>T</sub> - H</i><sub>298</sub>). </P>
+<P>Here, <I>E<SUB>SCF</SUB></I> is the heat of formation (at 25<sup>o</sup>C) given in the output list, and <I>H<SUB>T</SUB></I> and <I>H</I><SUB>298</SUB> are the enthalpy contributions for the increase of the temperature from 0 K to <I>T</I> and 298.15, respectively. In other words, the enthalpy of formation is corrected for the difference in temperature from 298.15&nbsp;K to <I>T</I>. </P>
+<P>There is a problem in that <I>H<SUB>T</SUB></I> is the heat of formation at <I>T</I> relative to the heat of formation of the elements in their standard state at 298K. This involves mixing standard and not standard terms. There is no easy way to get the correct value for <I>H<SUB>T</SUB></I>, but for rough work <I>H<SUB>T</SUB></I> is useful. For more correct work, calculate <span class="b">&Delta;</span>H for the elements in their standard state at <I>T</I>, and use these <span class="b">&Delta;</span>H's to get the <span class="b">&Delta;</span>H for the compound you're working with (or use tables from the literature).</P>
+<P>This problem is, however, not normally important, because the most common use
+of <I>H<SUB>T</SUB></I> is for calculating the thermodynamics of reactions at
+temperatures other than 298K.&nbsp; For all reactions, the types and number of
+atoms must be the same in reactants and products, therefore the fact that the <I>H<SUB>T</SUB></I>
+are relative to the elements in their standard state at 298K is irrelevant.&nbsp;
+Consider the simple Diels-Alder reaction:</P>
+<P align="center">C<sub>2</sub>H<sub>4</sub> + C<sub>4</sub>H<sub>6</sub> = C<sub>6</sub>H<sub>10</sub></P>
+<P>The heat of this reaction at 298K is <i>H</i><sub>298</sub>( C<sub>6</sub>H<sub>10</sub>)
+- <i>H</i><sub>298</sub>(C<sub>2</sub>H<sub>4</sub>) - <i>H</i><sub>298</sub>( C<sub>4</sub>H<sub>6</sub>).&nbsp;
+At any other temperature, the heat of reaction would be:</P>
+<P align="center"><i>H<sub>R </sub></i>=<i><sub> </sub>H<sub>T</sub></i>( C<sub>6</sub>H<sub>10</sub>)
+- <i>H<sub>T</sub></i>(C<sub>2</sub>H<sub>4</sub>) - <i>H<sub>T</sub></i>( C<sub>4</sub>H<sub>6</sub>).</P>
+<P align="left">Care must, however, be taken to account for changes in volume -
+if any of the reactants or products are gaseous, then appropriate corrections
+must be made to<i> H<sub>R</sub></i> .&nbsp; Complications arise only if
+absolute heats of formation are needed.&nbsp; Thus, if the heat of formation of
+benzoic acid (C<sub>7</sub>H<sub>6</sub>O<sub>2</sub>) at 398K (100C) is needed,
+the <i>H</i><sub>398</sub>(C<sub>7</sub>H<sub>6</sub>O<sub>2</sub>) generated by
+MOPAC would be for the reaction:</P>
+<P align="center"><i>7H</i><sub>298</sub>(graphite) + 3<i>H</i><sub>298</sub>(H<sub>2</sub>)
++ <i>H</i><sub>298</sub>(O<sub>2</sub>) =&gt; <i>H</i><sub>398</sub>(C<sub>7</sub>H<sub>6</sub>O<sub>2</sub>)</P>
+<P align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+=&gt;<i>H</i><sub>398</sub>(C<sub>7</sub>H<sub>6</sub>O<sub>2</sub>)&nbsp; </P>
+<P align="left">Note that on the left side, the temperatures are 298K.&nbsp; For
+H<sub>2</sub> and O<sub>2</sub>, the heats of formation at 398K can readily be
+calculated, but for graphite the calculation is more complicated.&nbsp; The
+easiest way to generate a balanced equation would be to use tables of heats of
+formation of the elements at non-standard temperatures.</P>
+<P align="left">Finally, as mentioned above, changes in volume must also be
+taken into account: if the reaction volume changes, then <i>R</i><span class="b">&Delta;</span>N(T-298)
+must be added or subtracted, where <i>R</i> is the gas constant (~
+2cals/degree/mol), and <span class="b">&Delta;</span>N is the change in volume.&nbsp;
+Thus for the formation of methane from graphite and hydrogen, 2 volumes of
+reactant (H<sub>2</sub> + graphite) yield 1 volume of methane, therefore
+<span class="b">&Delta;</span>N = 1.</P>
+<P>The method of calculation for <I>T</I> and <I>H</I><SUB>298</SUB> will be given below. </P>
+<P>In MOPAC, the variables defined below are used: </P>
+<P align="center"><IMG SRC="img1616.gif" WIDTH=58 HEIGHT=39 ALT="begin{displaymath}C_1 = frac{hc}{kT}. nonumberend{displaymath}"></P>
+<P ALIGN="CENTER"></DIV></P>
+<P>The wavenumber, <IMG SRC="img1617.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$omega_i$">, in cm<SUP>-1</SUP>: </P>
+<P align="center"><IMG SRC="img1618.gif" WIDTH=51 HEIGHT=29 ALT="begin{displaymath}nu_i = omega_i c nonumberend{displaymath}"></P>
+<P align="center"><IMG SRC="img1619.gif" WIDTH=344 HEIGHT=31 ALT="begin{displaymath}E_{rmomega_i} = exp( -hnu_i/kT) = exp(-omega_i hc/kT) = exp(-omega_i C_1) nonumberend{displaymath}"></P>
+<P ALIGN="CENTER"></DIV></P>
+<P>The rotational constants <I>A</I>, <I>B</I>, and <I>C</I> in cm<SUP>-1</SUP>: </P>
+<P align="center"><IMG SRC="img1620.gif" WIDTH=86 HEIGHT=44 ALT="begin{displaymath}A = frac{h}{(8pi^2 cI_A)} nonumberend{displaymath}"></P>
+<P><DIV ALIGN="CENTER">
+<P ALIGN="CENTER"></DIV>
+<P>Energy and Enthalpy in cal/mol, and Entropy in cal/mol/K. Thus, the earlier Equations can be written as follows: </P>
+<h3><a name="SECTION0012153100000000000000">Vibration</a> </h3>
+<center>
+<table cellSpacing="0" border="0">
+  <tr>
+    <td vAlign="center">
+    <p align="right"><img height="29" src="img1621.gif" width="31"></td>
+    <td vAlign="center">
+    <p align="center">=</td>
+    <td vAlign="center"><img height="49" src="img1622.gif" width="84" TD  </td>
+  </tr>
+  <tr>
+    <td vAlign="center"><i>
+    <p align="right">E</i><sub>zpe</sub></td>
+    <td vAlign="center">
+    <p align="center">=</td>
+    <td vAlign="center"><img height="49" src="img1623.gif" width="115" TD 
+    </td>
+  </tr>
+  <tr>
+    <td vAlign="center">
+    <p align="right">&nbsp;</td>
+    <td vAlign="center">
+    <p align="center">=</td>
+    <td vAlign="center"><img height="43" src="img1624.gif" width="97" TD  </td>
+  </tr>
+  <tr>
+    <td vAlign="center"><img height="31" src="img1625.gif" width="52" TD  </td>
+    <td vAlign="center">=</td>
+    <td vAlign="center"><font size="2">
+    <img height="60" src="Image2.gif" width="273"></font></td>
+  </tr>
+  <tr>
+    <td vAlign="center">
+    <p align="right"><img height="29" src="img1627.gif" width="28" TD  </td>
+    <td vAlign="center">
+    <p align="center">=</td>
+    <td vAlign="center"><img height="62" src="img1628.gif" width="285"> </td>
+  </tr>
+  <tr>
+    <td vAlign="center">
+    <p align="right">&nbsp;</td>
+    <td vAlign="center">
+    <p align="center">=</td>
+    <td vAlign="center"><img height="62" src="img1629.gif" width="248" TD 
+    </td>
+  </tr>
+  <tr>
+    <td vAlign="center">
+    <p align="right"><img height="29" src="img1630.gif" width="29" TD  </td>
+    <td vAlign="center">
+    <p align="center">=</td>
+    <td vAlign="center"><img height="62" src="img1631.gif" width="183" TD 
+    </td>
+  </tr>
+  <tr>
+    <td vAlign="center">
+    <p align="right">&nbsp;</td>
+    <td vAlign="center">
+    <p align="center">=</td>
+    <td vAlign="center"><img height="62" src="img1632.gif" width="141" TD 
+    </td>
+  </tr>
+</table>
+</center>
+<P><b>Rotation</b>:<!--End of Navigation Panel--></P>
+<h4><a name="SECTION0012153210000000000000">Linear molecule</a> </h4>
+<div align="center">
+  <center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center">
+      <p align="right"><img height="29" src="img1633.gif" width="29"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center"><img height="49" src="img1634.gif" width="191"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right"><img height="29" src="img1635.gif" width="28"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">(2/2)<i>RT</i></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right"><img height="29" src="img1636.gif" width="25"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center"><img height="53" src="img1637.gif" width="383"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right"><img height="29" src="img1638.gif" width="27"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">(2/2)<i>R</i></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<h4><a name="SECTION0012153220000000000000">Non-linear molecule</a> </h4>
+<div align="center">
+  <center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle Q_{rm rot}$" src="img1639.gif" width="29"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="60" alt="$displaystyle frac{1}{sigma}left[frac{pi}{(A B C C_1^3)}right]^{1/2}$" src="img1640.gif" width="115"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle E_{rm rot}$" src="img1641.gif" width="28"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">(3/2)<i>RT</i></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle S_{rm rot}$" src="img1642.gif" width="25"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="62" alt="$displaystyle frac{R}{2}lnleft{frac{pi}{sigma^2ABC}left(frac{kT}{hc}right)^3 right} + (3/2)R$" src="img1643.gif" width="219"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">&nbsp;</td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="44" alt="$displaystyle 0.5R { 3ln(kT/hc) - 2lnsigma +lnleft(frac{pi}{A B C}right) + 3}$" src="img1644.gif" width="262"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">&nbsp;</td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="44" alt="$displaystyle 0.5R { -3ln C_1 - 2lnsigma + lnleft(frac{pi}{A B C}right) + 3}$" src="img1645.gif" width="239"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle C_{rm rot}$" src="img1646.gif" width="27"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">(3/2)<i>R</i></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<h3><a name="SECTION0012153300000000000000">Translation</a> </h3>
+<div align="center">
+  <center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle Q_{rm tra}$" src="img1647.gif" width="29"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="69" alt="$displaystyle left( frac{sqrt{2pi MkT/N_a}}{h} right)^3= left( frac{sqrt{1.660540times^{-24}times 2pi MkT}}{h} right)^3$" src="img1648.gif" width="348"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle E_{rm tra}$" src="img1649.gif" width="27"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">(3/2)<i>RT</i></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle H_{rm tra}$" src="img1650.gif" width="28"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="31" alt="$displaystyle (3/2)RT + pV = (5/2)RT " src="img1651.gif" width="251"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">
+      <img height="29" alt="$displaystyle S_{rm tra}$" src="img1652.gif" width="25"></td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="31" alt="$displaystyle (R/2) [ 5ln T + 3ln M ] - 2.31482" src="img1653.gif" width="285"></td>
+    </tr>
+    <tr>
+      <td vAlign="center">
+      <p align="right">&nbsp;</td>
+      <td vAlign="center">
+      <p align="center">=</td>
+      <td vAlign="center">
+      <img height="31" alt="$displaystyle 0.993608 [ 5ln T + 3ln M] - 2.31482$" src="img1654.gif" width="225"></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>In MOPAC: </p>
+<div align="center">
+  <!-- MATH: \begin{equation}
+H _{\rm vib} = E_{\rm vib}(T)
+\end{equation} --><center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center">
+      <p align="center"><a name="eq53">&nbsp;</a><img height="30" alt="begin{displaymath}H _{rm vib} = E_{rm vib}(T) nonumberend{displaymath}" src="img1655.gif" width="91"></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>(Note:
+<!-- MATH: $E_{\rm zero}$ -->
+<img height="29" alt="$E_{rm zero}$" src="img1656.gif" width="35" align="middle">is
+<em>not</em> included in
+<!-- MATH: $H_{\rm vib}$ -->
+<img height="29" alt="$H_{rm vib}$" src="img1657.gif" width="31" align="middle">;
+<img height="29" alt="$omega_i$" src="img1658.gif" width="19" align="middle">is 
+not derived from force-constants at 0 K) and for <i>T</i>: </p>
+<p align="center"><i>H</i><sub><i>T</i></sub> = [<i>H<sub>vib</sub> + H<sub>rot</sub> 
++ H<sub>tra</sub></i>]</p>
+<p>while for <i>T</i>=298.15&nbsp;K: </p>
+<p align="center"><i>H<sub>298</sub></i> = [<i>H<sub>vib</sub> + H<sub>rot</sub> 
++ H<sub>tra</sub></i>]</p>
+<p>Note that <i>H<sub>T</sub></i> (and <i>H</i><sub>298</sub>) is equivalent to:
+</p>
+<p align="center">(<i>E<sub>vib</sub>-E</i><sub><i>zpe</i></sub>) +<i> E<sub>rot
+</sub>+ </i>(<i>E<sub>tra</sub>+ pV</i>)</p>
+<p>except that the normal frequencies are those obtained from force constants at 
+25<img height="16" alt="$^circ$" src="img1662.gif" width="11">C, or at least not 
+at 0 K. </p>
+<p>Thus, Standard Enthalpy of Formation, <span class="b">&Delta;</span>H, can be 
+calculated using&nbsp;U 
+and H and Escf, thus:
+</p>
+<p align="center"><i><span class="b">&Delta;</span>H</i> = <i>E<sub>SCF</sub> +
+</i>(<i>H<sub>T</sub> - H<sub>298</sub></i>)</p>
+<p>Note that
+<!-- MATH: $E_{\rm zero}$ -->
+<img height="29" alt="$E_{rm zero}$" src="img1665.gif" width="35" align="middle">is 
+already counted in&nbsp;<i>E<sub>scf</sub>.</i>
+</p>
+<p>By using </p>
+<center>
+<table cellSpacing="0" border="0">
+  <tr>
+    <td vAlign="center">
+    <p align="center"><i>H</i> = <i>U</i> + <i>pV</i> = <i>U</i> + <i>RT</i>
+    </td>
+  </tr>
+</table>
+</center>
+<p>Standard Internal Energy of Formation,
+<img height="29" alt="$Delta U$" src="img1666.gif" width="25" align="middle">, 
+can be calculated as: </p>
+<div align="center">
+  <!-- MATH: \begin{equation}
+\Delta U = \Delta H - R(T - 298.15)
+\end{equation} --><center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center">
+      <p align="center">
+      <img height="28" alt="begin{displaymath}Delta U = Delta H - R(T - 298.15) nonumberend{displaymath}" src="img1667.gif" width="167"></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>Standard Gibbs Free-Energy of Formation,
+<img height="29" alt="$Delta G$" src="img1668.gif" width="25" align="middle">, 
+can be calculated <a name="BM21695">&nbsp;</a>by taking the difference from that for 
+the isomer or that at different temperature: </p>
+<div align="center">
+  <!-- MATH: \begin{equation}
+\Delta G = [\Delta H - TS] \;(\mbox{for the state under consideration})
+- [\Delta H - TS]\; (\mbox{for reference state})
+\end{equation} --><center>
+  <table cellSpacing="0" border="0">
+    <tr>
+      <td vAlign="center">
+      <p align="center"><a name="eq59">&nbsp;</a><img height="28" alt="begin{displaymath}Delta G = [Delta H - TS] " src="img1669.gif" width="516"></td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>Taking the difference is necessary to cancel the unknown values of standard 
+entropy of formation for the constituent elements. </p>
+                                                </BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Protein Intrinsic Reaction Coordinates</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: center;
+																													}
+																													.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Intrinsic">Modeling proteins</a>)</font></p>
+<h1 class="auto-style1" >Protein Intrinsic Reaction Coordinates</h1>
+<h3 class="auto-style2">General</h3>
+<p class="auto-style2">The final step in validating a transition state in an enzyme-catalyzed 
+mechanism is to check that the candidate transition state does, in fact, connect 
+the two stable intermediates it's supposed to connect.</p>
+<h3 class="auto-style2">Verifying that the transition state is for the intended reaction</h3>
+<p><span class="auto-style2">At this point, a</span> <a href="force.html"><tt>FORCETS</tt></a> 
+<span class="auto-style2">calculation should have 
+been done, and a restart file written using</span> <a href="isotope.html"><tt>ISOTOPE</tt></a>. 
+<span class="auto-style2">If this has not been done, <a href="Verifying_transition_states.html">do it</a>.&nbsp; 
+Assuming a restart file now exists, proceed as follows:</span></p>
+<p><span class="auto-style2">Copy the</span> <tt>FORCETS</tt> 
+<span class="auto-style2">data-set to create a new data set.&nbsp; A suitable 
+name would be Step_1_2_IRC.mop.&nbsp; Copy the </span> <tt>FORCETS</tt> 
+<span class="auto-style2">restart file as 
+well, i.e., to give Step_1_2_IRC.res</span></p>
+<p><span class="auto-style2">Edit the data set to replace</span> <tt>FORCETS</tt> <tt>ISOTOPE</tt> 
+<span class="auto-style2">with</span> <tt>
+<a href="irc.html">IRC=1*</a> <a href="restart.html">RESTART</a> 
+<a href="x-priority.html">X-PRIORITY=0.05</a> <a href="eps.html">EPS=78.4</a>
+<a href="cycles.html">CYCLES=100</a></tt> 
+<span class="auto-style2">Run the job.&nbsp; It will produce several files.&nbsp; The file ending in .xyz 
+is suitable for mapping using JSmol.&nbsp; Examine the animation of this file 
+using JSmol or other GUI, and if the start of the animation is the reactant and 
+the end of the animation is the product, then the IRC is correct.&nbsp; If the 
+animation is backwards, that is if the reactants and products are swapped 
+around, re-run using</span> <tt>
+<a href="irc.html">IRC=-1*</a></tt>&nbsp;&nbsp; <span class="auto-style2">If the reaction is not complete, 
+increase the size of <em>nn</em> in</span> <tt>
+CYCLES=<em>nn.</em></tt><p class="auto-style2">If everything works, go out and celebrate.
+</BODY>
+</HTML>

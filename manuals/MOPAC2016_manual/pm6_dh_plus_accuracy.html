@@ -1,0 +1,1163 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>PM6-DH+, Accuracy </TITLE>
+<style>table.MsoNormalTable
+	{mso-style-parent:"";
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif"
+	}
+td
+	{padding-top:1.0px;
+	padding-right:1.0px;
+	padding-left:1.0px;
+	color:windowtext;
+	font-size:18.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	text-align:general;
+	vertical-align:bottom;
+	border:medium none;
+	}
+.oa1
+	{border-top:1.0pt solid white;
+	border-right:1.0pt solid white;
+	border-bottom:3.0pt solid white;
+	border-left:1.0pt solid white;
+	background:#00CC99;
+	text-align:center;
+	vertical-align:middle;
+	padding-bottom:3.6pt;
+	padding-left:7.2pt;
+	padding-top:3.6pt;
+	padding-right:7.2pt}
+.oa2
+	{border-top:1.0pt solid white;
+	border-right:1.0pt solid white;
+	border-bottom:3.0pt solid white;
+	border-left:1.0pt solid white;
+	background:#00CC99;
+	text-align:right;
+	vertical-align:middle;
+	padding-bottom:3.6pt;
+	padding-left:7.2pt;
+	padding-top:3.6pt;
+	padding-right:7.2pt}
+.oa3
+	{border-top:3.0pt solid white;
+	border-right:1.0pt solid white;
+	border-bottom:1.0pt solid white;
+	border-left:1.0pt solid white;
+	background:#E7F6EF;
+	vertical-align:middle;
+	padding-bottom:3.6pt;
+	padding-left:7.2pt;
+	padding-top:3.6pt;
+	padding-right:7.2pt}
+.oa4
+	{border-top:3.0pt solid white;
+	border-right:1.0pt solid white;
+	border-bottom:1.0pt solid white;
+	border-left:1.0pt solid white;
+	background:#E7F6EF;
+	text-align:right;
+	vertical-align:middle;
+	padding-bottom:3.6pt;
+	padding-left:7.2pt;
+	padding-top:3.6pt;
+	padding-right:7.2pt}
+.oa5
+	{border:1.0pt solid white;
+	background:#E7F6EF;
+	vertical-align:middle;
+	padding-bottom:3.6pt;
+	padding-left:7.2pt;
+	padding-top:3.6pt;
+	padding-right:7.2pt}
+.oa6
+	{border:1.0pt solid white;
+	background:#E7F6EF;
+	text-align:right;
+	vertical-align:middle;
+	padding-bottom:3.6pt;
+	padding-left:7.2pt;
+	padding-top:3.6pt;
+	padding-right:7.2pt}
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+PM6-DH+ - Accuracy
+</h1>
+<p align="left">
+<font size="4">PM6-DH+ gives much improved interaction energies compared to PM6.&nbsp; 
+Whereas in PM6, the </font><span style="color: black"><font size="4">average 
+unsigned error for </font></span><font size="4">interaction energies </font>
+<span style="color: black"><font size="4">for the complexes in the S22 set, 
+using the S22 geometries, is 
+3.27 Kcal/mol, for PM6-DH+, the equivalent average unsigned error is 0.57 
+Kcal/mol. For details of PM6-DH+, see: </font></span>
+<span lang="CS" style="font-size: 14.0pt">M. Korth, </span><span style="font-size: 14pt">&quot;</span><span style="font-size: 14pt" lang="cs">Third-Generation 
+Hydrogen-Bonding Corrections for Semiempirical QM Methods and Force Fields</span><span style="font-size: 14pt">,&quot;
+</span><span style="font-size: 14pt" lang="cs">J. Chem. Theory Comput., 2010, 6 
+(12), pp 3808</span><span style="font-size: 14pt">-</span><span style="font-size: 14pt" lang="cs">3816</span><span style="font-size: 14pt">.&nbsp; </span></p>
+<p align="left">
+<span style="font-size: 14pt">Unlike PM6-DH2, there are no errors in the 
+gradient of the energy with respect to geometry, so PM6-DH+ can be used to 
+optimize geometries.</span></p>
+<p align="left">
+<span style="font-size: 14pt">However, the errors in the PM6-DH2 gradients are 
+small, and the average unsigned error in hydrogen bonding energy from PM6-DH+ 
+for the optimized structures is 0.87 kcal/mol compared to PM6-DH2 average of 
+0.60 kcal/mol.</span></p>
+<p align="left">
+<font size="4">The following table is provided to assist users in deciding which 
+method to use. Intermolecular interactions that are different between PM6-DH2 
+and PM6-DH+ are shown in black, where hydrogen bonds are absent the results are 
+in green, and should be the same for both methods. (There are small differences 
+in the optimized geometry results because PM6-DH+ uses derivatives calculated by 
+diatomic finite difference, and PM6-DH2 uses derivatives calculated by 
+differences of full SCF calculations.)</font></p>
+<table border="0" cellpadding="0" cellspacing="0" width="1601" style="border-collapse:
+ collapse;width:1201pt">
+  <colgroup>
+    <col width="231" style="width: 173pt"><col width="167" style="width: 125pt">
+    <col width="103" style="width: 77pt">
+    <col width="64" span="2" style="width:48pt">
+    <col width="94" style="width: 71pt"><col width="64" style="width:48pt">
+    <col width="64" style="width:48pt"><col width="90" style="width: 68pt">
+    <col width="64" style="width:48pt">
+    <col width="64" span="2" style="width:48pt">
+    <col width="64" style="width:48pt"><col width="111" style="width: 83pt">
+    <col width="64" span="2" style="width:48pt">
+    <col width="101" style="width: 76pt"><col width="64" style="width:48pt">
+  </colgroup>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td colspan="7" width="504" style="width: 379pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    PM6 - type calculations at the S22 geometry</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td colspan="7" width="532" style="width: 399pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    PM6 - type calculations at the PM6-type geometry</td>
+  </tr>
+  <tr height="47" style="height: 35.25pt">
+    <td height="47" width="231" style="height: 35.25pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    Chemical Sample</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    Ref. : CCSD(T)/CBS</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    PM6 error</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    &nbsp;PM6-DH2 error</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    mod</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    PM6-DH+ error</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    mod</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    PM6 error</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    &nbsp;PM6-DH2 error</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    mod</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    PM6-DH+ error</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; vertical-align: middle; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    mod</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    01 Ammonia dimer</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -3.170</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.865</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.034</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.034</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.042</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.008</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.008</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.809</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.905</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.905</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -2.149</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.149</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    02 Water dimer</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -5.020</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.084</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.121</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.121</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.573</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.452</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.452</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.132</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.103</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.103</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.620</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.620</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    03 Formic acid dimer</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -18.610</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    7.474</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.044</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.044</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.916</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.872</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.872</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    8.573</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.275</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.275</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.290</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.290</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    04 Formamide dimer</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -15.960</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    3.412</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.095</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.095</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.987</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.892</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.892</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    5.130</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.754</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.754</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.427</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.427</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    05 Uracil HB</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -20.470</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    7.146</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.727</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.727</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.841</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.114</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.114</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    7.973</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.068</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.068</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.055</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.055</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    06 Pyridoxine aminopyridine</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -16.710</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    6.729</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.355</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.355</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.427</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.072</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.072</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    7.111</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.339</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.339</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.605</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.605</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    07 Adenine thymine WC</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -16.370</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    7.311</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.083</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.083</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.579</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.496</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.496</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    7.482</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.411</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.411</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.964</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.964</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    08 Methane dimer</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.530</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.466</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.461</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.082</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    09 Ethylene dimer</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.510</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.109</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.449</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.449</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.449</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.449</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.103</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.426</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.426</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.426</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.426</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    10 Benzene methane</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.500</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.026</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.107</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.107</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.107</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.107</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.007</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.008</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.008</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.002</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.002</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    11 Benzene dimer stack</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -2.730</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.856</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.840</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.840</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.840</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.840</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.156</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.884</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.884</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.884</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.884</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    12 Pyrazine dimer</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -4.420</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.614</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.921</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.921</td>
+    <td align="right" width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.921</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.921</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.275</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.371</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.371</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.371</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.371</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    13 Uracil dimer stack</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -9.880</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    5.422</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.439</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.439</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.027</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.466</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.466</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    5.440</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.937</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.937</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.696</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.696</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    14 Indole benzene stack</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -5.220</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    5.291</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.168</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.168</td>
+    <td align="right" width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.168</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.168</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.664</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.111</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.111</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.213</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.213</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    15 Adenine thymine stack</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -12.230</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    7.288</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.541</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.541</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.026</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.567</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.567</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    6.921</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.571</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.571</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.511</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.511</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    16 Ethene ethyne</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.530</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.982</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.580</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.580</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.580</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.580</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.984</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.552</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.552</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.552</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.552</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    17 Benzene water</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -3.280</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.999</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.101</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.101</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.101</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.101</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.644</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.277</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.277</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.277</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.277</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    18 Benzene ammonia</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -2.350</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.822</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.193</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.193</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.193</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.193</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.327</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.041</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.041</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.039</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.039</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    19 Benzene hydrogen cyanide</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -4.460</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.475</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.472</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.472</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.472</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.472</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.444</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.455</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.455</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.452</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.452</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    20 Benzene dimer T</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -2.740</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.965</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.152</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.152</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.152</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.152</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.937</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.125</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.125</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.125</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.125</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    21 Indole benzene T</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -5.730</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    3.326</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.801</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.801</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.000</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.801</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.801</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    3.219</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.614</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.614</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.615</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.615</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    22 Phenol dimer</td>
+    <td width="167" style="width: 125pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -7.050</td>
+    <td width="103" style="width: 77pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    3.673</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.007</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.007</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.001</td>
+    <td width="90" style="width: 68pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.008</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.008</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.758</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.115</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.115</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.113</td>
+    <td width="64" style="width: 48pt; color: #00B050; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.113</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    23 Methanol dimer</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -5.700</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    2.201</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.552</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.552</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.105</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.657</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.657</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.933</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.583</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.583</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.235</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.235</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    24 Methanol formaldehyde</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -5.310</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.899</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.099</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.099</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.321</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.222</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.222</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.418</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -0.363</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.363</td>
+    <td align="right" width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    -1.052</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    1.052</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; text-align: general; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+  </tr>
+  <tr height="25" style="height: 18.75pt">
+    <td height="25" width="231" style="height: 18.75pt; width: 173pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="167" style="width: 125pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="103" style="width: 77pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    Average:</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    3.268</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="94" style="width: 71pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.090</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.373</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="90" style="width: 68pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.049</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.571</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    3.121</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="111" style="width: 83pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.005</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.599</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">&nbsp;</td>
+    <td width="101" style="width: 76pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.037</td>
+    <td width="64" style="width: 48pt; font-size: 12.0pt; font-family: Arial, sans-serif; text-align: center; white-space: normal; color: windowtext; font-weight: 400; font-style: normal; text-decoration: none; vertical-align: bottom; border: medium none; padding-left: 1px; padding-right: 1px; padding-top: 1px">
+    0.865</td>
+  </tr>
+</table>
+<p><font size="4">Note: Heats of formation predicted by PM6-DH+ should not be 
+compared to reference heats of formation.&nbsp; This is because PM6-DH+ is 
+designed for predicting energies of interaction.&nbsp; If heats of formation are 
+wanted then use PM6, for which the predicted&nbsp; <span class="b">&Delta;</span>H<sub>f&nbsp;
+</sub>can be compared to experimental values.</font></p>
+<p><font size="4">The above values are for the S22 set.&nbsp; M. Korth has also supplied 
+data for two other sets.&nbsp; First, results 
+for the 105 small, H-bonded complexes of the PM6-DH1 Fit Set; giving Mean Signed (MSE), Mean Unsigned (MUEs), and Root Mean Square Errors (RMSE) 
+as well as the Maximum Error Span,</font><font FACE="NimbusSanL-Regu" SIZE="3">
+      </font>
+      <font FACE="Arial" SIZE="3">
+      r</font><font size="4">,<font FACE="CMR10" SIZE="3">&nbsp;</font>with 
+respect to the Benchmark CCSD(T)/CBS Interaction Energies.&nbsp; All 
+values are in kcal/mol.</font></p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-top:1.5pt solid green; border-bottom:1.5pt solid green; border-left-style:none; border-right-style:none" width="478" fpstyle="1,011111100">
+    <tr>
+      <font FACE="NimbusSanL-Regu" SIZE="3">
+      <td align="center" width="68" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">&nbsp;</td>
+      <td align="center" width="142" colspan="2" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">PM6-D</td>
+      <td align="center" width="273" colspan="2" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">PM6-DH2</td>
+      <td align="center" width="267" colspan="2" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">PM6-DH+</td>
+</font>
+    </tr>
+    <tr>
+      <font FACE="NimbusSanL-Regu" SIZE="3">
+      <td align="center" width="68" style="border-style: none">MSE</td>
+      <td align="right" width="92" style="border-style: none">-1.66</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">-0.43</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">0.46</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+</font>
+    </tr>
+    <tr>
+      <font FACE="NimbusSanL-Regu" SIZE="3">
+      <td align="center" width="68" style="border-style: none">MUE</td>
+      <td align="right" width="92" style="border-style: none">1.77</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">1.15</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">1.21</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+</font>
+    </tr>
+    <tr>
+      <font FACE="NimbusSanL-Regu" SIZE="3">
+      <td align="center" width="68" style="border-style: none">RMSE</td>
+      <td align="right" width="92" style="border-style: none">2.35</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">1.54</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">1.44</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+</font>
+    </tr>
+    <tr>
+      <font FACE="NimbusSanL-Regu" SIZE="3">
+      <td align="center" width="68" style="border-style: none">r</td>
+      <td align="right" width="92" style="border-style: none">9.61</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">7.37</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">6.18</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+</font>
+    </tr>
+  </table>
+  </center>
+</div>
+<font FACE="NimbusSanL-Regu" SIZE="3"></font>
+<p>
+<font size="4">Second, results for the JSCH2005 H-bonded DNA 
+base pairs with 
+respect to the Benchmark CCSD(T)/CBS Interaction Energies 
+are presented. Again all values are in kcal/mol.</p>
+</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-top:1.5pt solid green; border-bottom:1.5pt solid green; border-left-style:none; border-right-style:none" width="478" fpstyle="1,011111100">
+    <tr>
+      <td align="center" width="68" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">&nbsp;</td>
+      <td align="center" width="142" colspan="2" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">PM6-D</td>
+      <td align="center" width="273" colspan="2" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">PM6-DH2</td>
+      <td align="center" width="267" colspan="2" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">PM6-DH+</td>
+    </tr>
+    <tr>
+      <td align="center" width="68" style="border-style: none">MSE</td>
+      <td align="right" width="92" style="border-style: none">-6.10</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">-0.54</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">-0.87</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" width="68" style="border-style: none">MUE</td>
+      <td align="right" width="92" style="border-style: none">6.10</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">1.76</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">1.35</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" width="68" style="border-style: none">RMSE</td>
+      <td align="right" width="92" style="border-style: none">6.30</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">2.23</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">1.59</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" width="68" style="border-style: none">r</td>
+      <td align="right" width="92" style="border-style: none">7.67</td>
+      <td align="right" width="50" style="border-style: none">&nbsp;</td>
+      <td align="right" width="186" style="border-style: none">7.94</td>
+      <td align="right" width="87" style="border-style: none">&nbsp;</td>
+      <td align="right" width="154" style="border-style: none">5.94</td>
+      <td align="right" width="113" style="border-style: none">&nbsp;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+</font>
+<p>&nbsp;</p>
+<font FACE="NimbusSanL-Regu" SIZE="4">
+<p ALIGN="LEFT">
+PM6-DH+ has some theoretical and practical advantages over the other hydrogen 
+bonding correction methods in PM6; for a detailed discussion of these issues 
+see: <span lang="CS" style="font-size: 14.0pt">M. Korth, </span>
+<a href="http://pubs.acs.org/doi/abs/10.1021/ct100408b"><span style="font-size: 14pt">&quot;</span><span style="font-size: 14pt" lang="cs">Third-Generation 
+Hydrogen-Bonding Corrections for Semiempirical QM Methods and Force Fields</span></a><span style="font-size: 14pt">,&quot;
+</span><span style="font-size: 14pt" lang="cs">J. Chem. Theory Comput., 2010, 6 
+(12), pp 3808</span><span style="font-size: 14pt">-</span><span style="font-size: 14pt" lang="cs">3816</span><span style="font-size: 14pt">.&nbsp; </span></p>
+</BODY>
+</HTML>

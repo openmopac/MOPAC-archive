@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Vibrational Quantities - Derivation</TITLE>
+<style type="text/css">table.MsoTableGrid
+	{border:solid windowtext 1.0pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	}
+.auto-style1 {
+	text-align: left;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+Derivation of vibrational quantities (<a href="theory.html#Normal%20Coordinate%20Calculation">Back 
+to theory</a>)</h1>
+<p class="auto-style1">
+Molecular vibrations can be expressed in two very different ways.&nbsp; The 
+simpler way to describe a vibration is as a simple harmonic motion of the atoms 
+in a molecule.&nbsp; For example, in the case of the diatomic nitrogen molecule, 
+N<sub>2</sub>, the normal mode of vibration consists of the two nitrogen atoms 
+moving together and apart.&nbsp; This is the classical way of describing a 
+vibration.&nbsp; The other way is to describe molecular vibrations in terms of 
+quantum-theoretical wavefunctions.&nbsp; For the N<sub>2</sub> normal mode, the 
+wavefunction would have a positive value in the region of space around one of 
+the nitrogen atoms, and a negative value in the region of space around the other 
+nitrogen atom, that is, there would be a phase-change in going from one atom to 
+the other.&nbsp; To understand the significance of this, be aware that quantum 
+theory predicts that the probability of finding an atom at any given point in 
+space can be obtained from the square of the vibration wavefunction at that 
+point.&nbsp; </p>
+<p class="auto-style1">
+The quantum theoretical description is definitely more complicated than the 
+classical picture, and involves some phenomena that have no equivalent in the 
+real world, the world we live in.&nbsp; A simple example of such a 
+phenomenon can be provided by comparing the classical and quantum descriptions 
+of the vibration of an N<sub>2</sub> molecule.&nbsp; In the classical 
+description of the vibration, each nitrogen atom moves away from its equilibrium 
+position, slows down, stops, then reverses direction.&nbsp; So each atom spends 
+most of its time at the extremes of the vibration and a smaller amount of time 
+at in the region of the equilibrium position.&nbsp; This is characteristic of 
+simple harmonic motion.&nbsp; The quantum description is that the two nitrogen 
+atoms spend most of their time in the region of the extremes of the classical vibration.&nbsp; This, 
+too, is similar to the classical description.&nbsp; But the quantum and 
+classical descriptions differ when the probability of finding the two atoms in 
+the region of the equilibrium position is calculated.&nbsp; In the quantum 
+picture, the probability of finding the atoms near to the equilibrium position 
+drops to exactly zero.&nbsp; This is a direct consequence of the phase-change in 
+the wavefunction in v=1.</p>
+<p class="auto-style1">
+Within MOPAC, the vibrational analysis uses a mixture of quantum and classical 
+descriptions.&nbsp; Quantum theory is used in calculating the vibrational 
+frequencies and their wavefunctions, and classical theory is used in mapping out 
+the trajectories of the atoms in each vibration. Concepts such as atom position, 
+velocity, acceleration, simple harmonic motion, etc., are classical.&nbsp; 
+Eigenstates (vibrational frequencies), eigenfunctions (normal modes), 
+orthonormality of the modes, probability distributions, etc., are quantum 
+theoretical.</p>
+<p class="auto-style1">
+In the following derivations the first part uses mainly quantum theory, and the 
+second part uses mainly classical theory.&nbsp;&nbsp; A common drawback in many 
+descriptions of vibrational phenomena is that relating algebraic expressions to 
+real quantities is often difficult.&nbsp; To reduce the effort required in 
+relating expressions and numerical values, these relationships will be given 
+when appropriate.&nbsp; A good starting point for all numerical work is a list 
+of the <a href="Vibrational%20Quantities%20-%20constants.html">Fundamental and Secondary constants</a> 
+used in this analysis.</p>
+<h2>
+Calculation of Vibrational Frequencies</h2>
+<p class="auto-style1">
+Vibrational frequencies are calculated using a Hessian matrix; 
+this is a 3N x 3N matrix of second derivatives of the energy with respect to 
+Cartesian coordinates.&nbsp; In its original form, the Hessian matrix is in kcal 
+mol<sup>-1</sup> &Aring;<sup>-2</sup> , but the usual form for representing the 
+force matrix is in (millidynes &Aring;<sup>-1</sup>), so this conversion is made 
+before the matrix is used (see <a href="Hessian_Matrix.html">Hessian Matrix</a>;).&nbsp; 
+The Hessian matrix is then mass-weighted.&nbsp; Diagonalization of this matrix 
+produces normal modes and eigenvalues that can be converted into vibrational 
+frequencies and other quantities. </p>
+<h2>Worked examples of derivation of various properties</h2>
+<p>Steps in modeling the vibration of a nitrogen molecule are 
+<a href="Vibrational%20Quantities%20-%20Worked%20examples.html">described</a>.&nbsp; 
+Nitrogen was chosen as the example system because it's a stable, diatomic, 
+closed-shell molecule. &nbsp; Quantities calculated include: </p>
+<ul>
+	<li>Force constants</li>
+	<li>Reduced masses</li>
+	<li>Vibrational energies as cm<sup>-1</sup> (frequencies or wavenumbers), kcal mol<sup>-1</sup>, 
+	Joules, and ergs</li>
+	<li>Initial velocity in centimeters per second</li>
+	<li>Period of oscillation in femtoseconds</li>
+	<li>Angular frequency in reciprocal seconds</li>
+	<li>Zero point energy</li>
+	<li>Travel in &Aring;ngstroms. </li>
+	<li>Vibrational transition dipole (system used is HCl)</li>
+</ul>
+<p>Equations for each step are given, and then applied to the N<sub>2</sub> 
+or HCl 
+molecule.</p>
+<p>Nitrogen does not have a vibrational transition dipole, so for that 
+calculation a molecule of hydrogen chloride was used.</p>
+<h2>Quantum versus classical description of vibrations</h2>
+<p>
+A discussion of the relationship of
+<a href="Vibrational%20Quantities%20-%20Quantum%20versus%20Classical%20vibrations.html">
+quantum and classical</a> vibrational quantities is presented.&nbsp; The main 
+differences are that the energies of vibrations predicted using quantum theory 
+are quantized, and the ground-state energy predicted by quantum theory is 
+non-zero.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<span style="mso-fareast-font-family: &quot;Times New Roman&quot;; mso-fareast-theme-font: minor-fareast">
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+</BODY>
+</HTML>

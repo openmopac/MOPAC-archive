@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>MOPAC's SHUT command</TITLE>
+                                                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1 align="center">The SHUT command </H1>
+<p align="left">The SHUT command is not a keyword, instead it is a small command 
+script that can be used to send a message to a running MOPAC job to instruct it 
+to shut down in a tidy manner, and to generate restart and density files.&nbsp; 
+When MOPAC reads the message, it increases the apparent CPU time by 10,000,000 
+seconds (over 100 days).&nbsp; This exceeds any reasonable job time, so MOPAC 
+behaves as if it had run out of time.</p>
+<p align="left"><strong>Caveat</strong>: Because the SHUT command stops a job in 
+a tidy manner, it will not stop a job if a time-consuming process such as an SCF 
+is running, instead it will wait until the process has finished.&nbsp; This 
+means that if the process needs a lot of time to complete, it might appear that 
+SHUT has not worked.&nbsp; SCF calculations are one of the most time-consuming 
+steps, so if a <a href="one_scf.html"><tt>1SCF</tt></a> job is run, the job will normally 
+go to completion even if the SHUT command is issued.</p>
+<p align="left"><b>How SHUT works</b></p>
+<p align="left">When a MOPAC job is running, it periodically checks a file 
+called &lt;name&gt;.end.&nbsp; At the start of the run,&nbsp; &lt;name&gt;.end is empty, 
+that is, it is a file with nothing in it.&nbsp; While&nbsp; &lt;name&gt;.end has nothing 
+in it, the job will continue normally.&nbsp; If there is any text at all in&nbsp; 
+&lt;name&gt;.end the next time MOPAC checks the file it will increase the 
+apparent CPU time by 10<sup>7</sup> seconds.&nbsp; SHUT simply puts some text into 
+&lt;name&gt;.end.&nbsp; The two scripts given below.</p>
+<p align="left">For WINDOWS:&nbsp; Copy the script below and put it into a file 
+called shut.cmd.&nbsp; Put shut.cmd into a folder in the PATH.&nbsp; shut.cmd is 
+used at the command prompt in the folder where the job is running.&nbsp; To use 
+it to shut down a job called &lt;file&gt;.mop, issue the command &quot;shut &lt;file&gt;&quot; , e.g.:</p>
+<p align="left">M:\&gt; shut crambin</p>
+<p align="left">would issue the SHUTDOWN command to the running job crambin. </p>
+<p align="left">Start of WINDOWS shut.cmd script:<br>
+<b>echo off<br>
+if exist %1.dat goto dat<br>
+if exist %1.mop goto mop<br>
+if exist %1.arc goto arc<br>
+echo The file %1.mop, %1.dat, or %1.arc does not exist in this folder<br>
+goto end<br>
+:dat<br>
+copy %1.dat %1.end<br>
+goto end1<br>
+:arc<br>
+copy %1.arc %1.end<br>
+goto end1<br>
+:mop<br>
+copy %1.mop %1.end<br>
+:end1<br>
+echo shutdown command issued to %1<br>
+:end</b><br>
+&nbsp;</p>
+<p align="left">For Mac and Linux:&nbsp; Copy the script below and put it into a 
+file called shut.csh.&nbsp; Change permissions on shut.csh to make it executable 
+(chmod +x shut.csh)&nbsp; Put shut.csh into a directory in the PATH, or alias it 
+in the .bashrc or .cshrc scripts.&nbsp; shut.csh is used at the command prompt 
+in the directory where the job is running.&nbsp; To use it to shut down a job 
+called &lt;file&gt;.mop, issue the command &quot;shut &lt;file&gt;&quot; , e.g.:</p>
+<p align="left">~ &gt; shut crambin</p>
+<p align="left">or </p>
+<p align="left">~ &gt; shut crambin.mop</p>
+<p align="left">would issue the SHUTDOWN command to the running job crambin. <br>
+</p>
+Start of Linux and Mac file shut.csh:<PRE><b>#!/bin/sh
+#
+#  SHUTDOWN command
+# Remove last four characters of file.
+#
+file=$1
+if [ `expr "$file" : ".*.mop"` -gt 0 ]; then file=${file:0:`expr $file : '.*'` -4}; fi
+if [ `expr "$file" : ".*.out"` -gt 0 ]; then file=${file:0:`expr $file : '.*'` -4}; fi
+if [ `expr "$file" : ".*.dat"` -gt 0 ]; then file=${file:0:`expr $file : '.*'` -4}; fi
+if [ `expr "$file" : ".*.arc"` -gt 0 ]; then file=${file:0:`expr $file : '.*'` -4}; fi
+echo Shutdown > $file.end
+</b>
+</PRE>
+
+<PRE>The second form, ~ &gt; shut crambin.mop, is useful if the name is long and has been supplied to &quot;shut.csh&quot; using &quot;copy and paste.&quot;</PRE>
+</BODY></HTML>

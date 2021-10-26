@@ -1,0 +1,21 @@
+reset;center {27.105 2.907 35.422}; rotate z 131.7; rotate y 48.91; rotate z -102.19; zoom 1015.2; translate x -6.73; translate y 0.5; set rotationRadius 33.84;
+reset;center {27.186 2.721 35.183}; rotate z 172.55; rotate y 59.27; rotate z -141.27; zoom 928.4; set rotationRadius 33.83;
+Display 57, 195, 252:C.C, 252:C.O, 252:C.CA, 252:C.CB, 252:C.C, 252, 253, 647;
+hide add 252:C.N, 252:C.H, 252:C.HE3, 252:C.NE1, 57:F.C, 253:C.OG1, 253:C.HG1
+select *; label off;
+set labelAlignment CENTER; set labeloffset 0 0 
+select  57:F.CE1; label His 57;   set labeloffset 110 10;  color label black; font label 20
+select  195:G.CB; label Ser 195;  set labeloffset  -30 40;  color label black; font label 20
+select  214:G.C;  label Ser 214;  set labeloffset  40  20;  color label black; font label 20
+select  252:C.CB; label Trp 252;  set labeloffset  80  10;  color label black; font label 20
+select  253:C.1H;  label Thr 253;  set labeloffset  50 50;  color label black; font label 20
+select  647:C.O;  label H<sub>2</sub>O 647;  set labeloffset  00  40;  color label black; font label 20
+select *; set labelfront
+select 195:G.OG, 252:C.C, 252:C.O, 252:C.CA, 253:C.N; label %a;  color label black; font label 20;  set labelfront off
+select 57:F.NE2, 253:C.N; label %a; color label pink; font label 20;  set labelfront off
+select 195:G.HG, 252, 253
+frame TITLE " "
+measure off
+measure (253:C.N) (252:C.C); font measure 20
+color background white
+

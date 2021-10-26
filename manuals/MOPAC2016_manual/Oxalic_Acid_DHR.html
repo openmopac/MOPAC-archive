@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Fault in PM6 in Prediction of Oxalic Acid geometry</TITLE>
+
+<h1>Fault in PM6 in Prediction of Oxalic Acid Heat of Reaction</h1>
+
+<p>&nbsp;</p>
+
+<p>PM6 predicts the heat of reaction of oxalic acid (HOOC-COOH) decomposing to 
+CO<sub>2</sub> + C(OH)<sub>2</sub> to be in error by 29.6 kcal/mol. There is no reason to doubt 
+the B88PW91 result, therefore PM6 has a definite error.</p>
+
+<p align="center"><b><font size="4">Reaction</font></b></p>
+
+<center>
+<table CELLSPACING="0" BORDER="0" CELLPADDING="0" WIDTH="363" style="border-left-style: none; border-right-style: none; border-top: 1.5pt solid green; border-bottom: 1.5pt solid green" fpstyle="1,011111100">
+  <tr>
+    <td VALIGN="TOP" HEIGHT="16" width="34" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+    </td>
+    <td VALIGN="TOP" HEIGHT="16" width="98" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+    <p ALIGN="CENTER">Oxalic acid</td>
+    <td VALIGN="TOP" HEIGHT="16" width="16" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+    <p ALIGN="CENTER">&#8594;</td>
+    <td VALIGN="TOP" HEIGHT="16" width="50" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+    <p ALIGN="CENTER">CO<sub>2</sub></td>
+    <td VALIGN="TOP" HEIGHT="16" width="17" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+    <p ALIGN="CENTER">+</td>
+    <td VALIGN="TOP" HEIGHT="16" width="74" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+    <p ALIGN="CENTER">C(OH)<sub>2</sub></td>
+    <td VALIGN="TOP" HEIGHT="16" width="46" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+    <font FACE="Symbol">
+    <p ALIGN="RIGHT">&Delta;</font>H<sub>r</sub></td>
+  </tr>
+  <tr>
+    <td VALIGN="TOP" HEIGHT="16" width="34" style="border-style: none">
+    <p ALIGN="CENTER">Ref.</td>
+    <td VALIGN="TOP" HEIGHT="16" width="98" style="border-style: none">
+    <p ALIGN="CENTER">-175.0</td>
+    <td VALIGN="TOP" HEIGHT="16" width="16" style="border-style: none"></td>
+    <td VALIGN="TOP" HEIGHT="16" width="50" style="border-style: none">
+    <p ALIGN="CENTER">-94.1</td>
+    <td VALIGN="TOP" HEIGHT="16" width="17" style="border-style: none"></td>
+    <td VALIGN="TOP" HEIGHT="16" width="74" style="border-style: none">
+    <p ALIGN="CENTER">-41.4</td>
+    <td VALIGN="TOP" HEIGHT="16" width="46" style="border-style: none">
+    <p ALIGN="RIGHT">39.5</td>
+  </tr>
+  <tr>
+    <td VALIGN="TOP" HEIGHT="16" width="34" style="border-style: none">
+    <p ALIGN="CENTER">PM6</td>
+    <td VALIGN="TOP" HEIGHT="16" width="98" style="border-style: none">
+    <p ALIGN="CENTER">-156.3</td>
+    <td VALIGN="TOP" HEIGHT="16" width="16" style="border-style: none"></td>
+    <td VALIGN="TOP" HEIGHT="16" width="50" style="border-style: none">
+    <p ALIGN="CENTER">-84.8</td>
+    <td VALIGN="TOP" HEIGHT="16" width="17" style="border-style: none"></td>
+    <td VALIGN="TOP" HEIGHT="16" width="74" style="border-style: none">
+    <p ALIGN="CENTER">-61.6</td>
+    <td VALIGN="TOP" HEIGHT="16" width="46" style="border-style: none">
+    <p ALIGN="RIGHT">9.9</td>
+  </tr>
+</table>
+</center>
+<p></p>
+<p>The main source of the error is likely to be in C(OH)<sub>2</sub>. If that is 
+the case, then it is also likely that divalent carbon is in error.</p>
+<p align="center"><b><font size="4">Reference and PM6 heats of formation 
+(kcal/mol) </font></b></p>
+<div align="center">
+  <center>
+  <table CELLSPACING="0" BORDER="0" CELLPADDING="2" WIDTH="321" style="border-left-style: none; border-right-style: none; border-top: 1.5pt solid green; border-bottom: 1.5pt solid green" fpstyle="1,011111100">
+    <tr>
+      <td VALIGN="TOP" HEIGHT="16" width="123" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+      Molecule</td>
+      <td VALIGN="TOP" HEIGHT="16" width="54" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+      <p ALIGN="RIGHT">Ref.</td>
+      <td VALIGN="TOP" HEIGHT="16" width="82" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+      <p ALIGN="RIGHT">PM6</td>
+      <td VALIGN="TOP" HEIGHT="16" width="46" style="border-left-style: none; border-right-style: none; border-top-style: none; border-bottom: .75pt solid green">
+      <p ALIGN="RIGHT">Diff</td>
+    </tr>
+    <tr>
+      <td VALIGN="TOP" HEIGHT="16" width="123" style="border-style: none">Oxalic 
+      acid</td>
+      <td VALIGN="TOP" HEIGHT="16" width="54" style="border-style: none">
+      <p ALIGN="RIGHT">-175.0</td>
+      <td VALIGN="TOP" HEIGHT="16" width="82" style="border-style: none">
+      <p ALIGN="RIGHT">-156.3</td>
+      <td VALIGN="TOP" HEIGHT="16" width="46" style="border-style: none">
+      <p ALIGN="RIGHT">18.7</td>
+    </tr>
+    <tr>
+      <td VALIGN="TOP" HEIGHT="16" width="123" style="border-style: none">CO<sub>2</sub></td>
+      <td VALIGN="TOP" HEIGHT="16" width="54" style="border-style: none">
+      <p ALIGN="RIGHT">-94.1</td>
+      <td VALIGN="TOP" HEIGHT="16" width="82" style="border-style: none">
+      <p ALIGN="RIGHT">-84.8</td>
+      <td VALIGN="TOP" HEIGHT="16" width="46" style="border-style: none">
+      <p ALIGN="RIGHT">9.3</td>
+    </tr>
+    <tr>
+      <td VALIGN="TOP" HEIGHT="16" width="123" style="border-style: none">C(OH)<sub>2</sub></td>
+      <td VALIGN="TOP" HEIGHT="16" width="54" style="border-style: none">
+      <p ALIGN="RIGHT">-41.4</td>
+      <td VALIGN="TOP" HEIGHT="16" width="82" style="border-style: none">
+      <p ALIGN="RIGHT">-61.6</td>
+      <td VALIGN="TOP" HEIGHT="16" width="46" style="border-style: none">
+      <p ALIGN="RIGHT">-20.2</td>
+    </tr>
+  </table>
+  </center>
+</div>
+
+
+
+</HTML>

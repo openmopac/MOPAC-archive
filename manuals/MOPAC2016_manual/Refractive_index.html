@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Piezoelectric Effects</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>
+Refractive Index
+</H2>
+<h3><font size="4">Introduction</font></h3>
+<p>For a vacuum, the refractive index is 1.000.&nbsp; This means that light
+travels through a vacuum at the speed c.&nbsp; When light goes through a medium
+such as glass, the time needed to travel a given distance increases.&nbsp;&nbsp;
+The conventional way of looking at this is to say that light is slowed down as
+it passes through the glass.&nbsp; An alternative, and equivalent, explanation
+would be to say that the apparent distance the light has to travel has
+increased.&nbsp; The extra distance can be expressed as a ratio, thus a
+refractive index of 1.4 would mean that the light was slowed by a factor of 1.4
+or that the distance was increased by the same factor.&nbsp; In three
+dimensions, the refractive index represents the extra volume that appears to
+exist when light goes through a medium. Thus if a glass had a refractive index
+of 1.4, it would mean that a 10cc block of it would appear to have a volume of
+14 cc, if the volume was determined using light.</p>
+<p>Refractive index is related to polarizability, in that it represents the
+extra volume that appears to exist when light goes through a medium.
+</p>
+<p>The refractive index of a solid cannot be calculated directly.&nbsp; Nor can
+the polarizability of a solid be calculated, if translation vectors are used.&nbsp;
+</p>
+<h3>How to Calculate Refractive Index</h3>
+<p>The polarizability at various energies (wavelengths) can be calculated for
+the cluster, using <A HREF="polar.html"><TT><FONT COLOR="#0000ff"><U>POLAR</U></FONT></TT></A>,
+if translation vectors are removed and the &quot;dangling bonds&quot; are satisfied.&nbsp;
+The best atom for this is the capped bond (<a href="geometry_specification.html#BM6243">Cb</a>).&nbsp;
+Obviously, the calculated polarizability includes the contributions from the
+surface, so the surface effects must be removed.&nbsp; This is easily done by
+doing calculations on different clusters.&nbsp; Consider a cluster of size
+10x10x10&Aring;.&nbsp; If this was increased to 15x15x15, the surface area (surface
+effect) would increase from 6x10x10 to 6x15x15 square &Aring;ngstroms, while the
+volume (what we want) would increase from 10x10x10 to 15x15x15 cubic &Aring;ngstroms.</p>
+<p>Given the polarizability, <i>a</i>, and the volume, <i>V</i>,&nbsp; of the
+cluster, the average refractive index, <i>n</i>,&nbsp; is readily given by <i>n</i>
+= (1+<i>a</i>/<i>v</i>).&nbsp; If <A HREF="let.html"><TT><FONT COLOR="#0000ff"><U>LET</U></FONT></TT></A>
+is used, the system will not be re-oriented, and the individual polarizabilities
+(in <i>x</i>, <i>y</i>, and <i>z</i>) can be calculated. From these, the
+refractive indices in different directions can be calculated.</p>
+</BODY>
+</HTML>

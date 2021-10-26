@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Symmetry of Atomic States </TITLE>
+                                                                                                                  </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<h2 align="center">Symmetry of Atomic States</h2>
+<p align="left">Atomic States have symbols such as <sup>(2S+1)</sup>L<sub>Ms</sub>.&nbsp;&nbsp; 
+Thus a vanadium atom, 3d<sup>3</sup>4s<sup>2</sup> would give rise to the 
+states: <sup>4</sup>P, <sup>4</sup>D, <sup>4</sup>F, <sup>4</sup>G, <sup>4</sup>H,
+<sup>6</sup>S, and <sup>6</sup>D.&nbsp; Some of these States occur more than 
+once, for example the <sup>4</sup>P State occurs four times. All components of a 
+single State that have the same spin, S, and angular momentum, L, are 
+degenerate.&nbsp;Following Griffith, &quot;The Theory of Transition Metal Ions&quot;, the L 
+orbital angular momenta values are represented in MOPAC by the letters S, P, D, 
+F, G, H, I, K, L, M corresponding to the angular momenta L = 0, 1, 2, 3, 4, 5, 
+6, 7, 8, 9, 10.&nbsp; Note that symbol &quot;J&quot; is missing, this is because it is 
+used extensively in other aspects of atomic theory.
+</p>
+<p align="left">All atomic States that can exist for a <i>s-p-d</i> basis set 
+with any allowed number of electrons are automatically identified. By specifying 
+the component of spin, using Ms=n.n, individual magnetic components within a 
+manifold such as <sup>6</sup>S can be identified.&nbsp; </p>
+<p align="left">
+Atomic 
+theory is both beautiful and complicated.&nbsp; Simple spin-spin and orbit-orbit 
+coupling, i.e., Russell-Saunders or L-S coupling, can be modeled, but 
+relativistic coupling (j - j coupling) cannot be modeled, due the the absence of 
+the spin-orbit interaction terms.&nbsp; Despite the lack of spin-orbit 
+interactions, a lot of elegant symmetry work can still be done.&nbsp; One of the 
+most beautiful sections of atomic symmetry theory involves the coupling of two space 
+ 
+angular momenta&nbsp; Coupling coefficients involve the Wigner or 
+Clebsch-Gordan 3j symbol &lt;L<sub>1</sub>L<sub>2</sub>m<sub>1</sub>m<sub>2</sub>|L<sub>1</sub>L<sub>2</sub>Lm&gt; 
+which equals:</p>
+<p align="center">
+<font size="4">{(L+m)!(L-m)!(L<sub>1</sub>-m<sub>1</sub>)!(L<sub>2</sub>-m<sub>2</sub>)!(L<sub>1</sub>+L<sub>2</sub>-L)!(2L+1)/((L<sub>1</sub>+m<sub>1</sub>)!(L<sub>2</sub>+m<sub>2</sub>)!(L<sub>1</sub>-L<sub>2</sub>+L)!(L<sub>2</sub>-L<sub>1</sub>+L)!(L<sub>1</sub>+L<sub>2</sub>+L+1)!)}</font><sup><font size="4">0.5<br>
+</font></sup><font size="4">×<span class="b">&Delta;</span>(m,m<sub>1</sub>+m<sub>2</sub>)<span class="b">&Sigma;</span><sub>r</sub>(-1)<sup>(L</sup></font><sup><font size="2">1</font><font size="4">+r-m</font><font size="2">1</font><font size="4">)</font></sup><font size="4">{((L<sub>1</sub>+m1+r)!(L<sub>2</sub>+L-r-m<sub>1</sub>)!)/(r!(L-m-r)!(L<sub>1</sub>-m<sub>1</sub>-r)!(L<sub>2</sub>-L+m<sub>1</sub>+r)!)}</font></p>
+<p align="left">
+&nbsp;with 0! = 1.&nbsp; All aspects of this can be modeled.&nbsp; For users of MOPAC 
+who are brave enough to explore this topic, two tools are provided:</p>
+<p align="left">A <a href="CG_coefficients.html">set of Wigner coefficients</a> 
+otherwise known as the Clebsch-Gordan or Wigner 3j coefficients for all values of <i>l</i><sub>1</sub> 
+and <i>l</i><sub>2</sub> up to 6.&nbsp; This is a large file, over 1Mb.&nbsp; 
+Each coefficient is expressed four ways:</p>
+<p align="left">(A) As a decimal.<br>
+(B) As a rational fraction.<br>
+(C) As a rational fraction with a common denominator<br>
+(D) As a rational fraction expressed as powers of prime numbers, thus the 
+coefficient for the most complicated term, &lt;6,4,5,-3|6,5,9,1&gt;, is 
+(367^2)/(2^2.3.5.7.11.13.17)<br>
+&nbsp;</p>
+<p align="left">A FORTRAN 90 <a href="FORTRAN_CG.html">source code</a> to generate these coefficients.</p>
+<p align="left">An illustrative exercise in atomic theory is to use the shift 
+<a href="meci_spin_ang_mom.html">step-down operators</a>, I-,&nbsp; to move through the associated Hilbert spin-space, e.g., to 
+go from 6S with Ms = 5/2 to Ms = -5/2, then show that the State is annihilated 
+on application of the step-down operator once more.&nbsp; Moving through the 
+orbital angular momentum space is tedious, and definitely not worth doing.</p>
+<p align="left">&nbsp;</p>
+</BODY>
+</HTML>

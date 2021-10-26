@@ -1,0 +1,231 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<TITLE>Use of the SADDLE technique to locate a transition state </TITLE>
+                                                                                                                 <style type="text/css">.auto-style1 {
+																													 font-size: large;
+																													 border-top-style: solid;
+																													 border-top-width: 1px;
+																													 border-bottom-style: solid;
+																													 border-bottom-width: 1px;
+																												 }
+																												 .auto-style2 {
+																													 border-top-style: none;
+																													 border-top-width: medium;
+																												 }
+																												 .auto-style3 {
+																													 border-bottom-style: solid;
+																													 border-bottom-width: 1px;
+																												 }
+																												 .auto-style4 {
+																													 border-top-style: solid;
+																													 border-top-width: 1px;
+																													 border-bottom-style: none;
+																													 border-bottom-width: medium;
+																												 }
+																												 .auto-style7 {
+	text-align: left;
+}
+																												 </style>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+Use of the SADDLE technique to locate a transition state</h1>
+<UL>
+	<LI>Optimize the geometry of the reactant(s).</LI>
+<LI>Using the same atoms in the same sequence, optimize the geometry of the 
+products. </LI>
+	<LI>To save time, run a LOCATE-TS calculation to move the reactants and 
+	products nearer to each other.&nbsp; A typical example would be 
+	LOCATE-TS=(C:10,10;)</LI>
+	<LI>Run a SADDLE calculation using either the reactant(s) and product(s) or 
+	the &quot;first&quot; and &quot;second&quot; geometries from the LOCATE-TS job.<br>For neatness, 
+	format the data-set as follows:<pre>GEO_DAT="text" +
+GEO_REF="text" +
+SADDLE plus other keywords</pre>
+	</LI>
+	<LI>Most calculations end because "both reactants and products are on the same side of the transition state" 
+	If this happens, examine the output and find a geometry with a large COSINE.&nbsp; 
+	Anything over about 0.7 is good.&nbsp; The smaller the value of "DISTANCE A 
+	- B" the better, anything below about 0.2 should be okay.&nbsp; Use that 
+	geometry to start a transition state refinement calculation and IRC run.</LI>
+</UL>
+<p>&nbsp;</p>
+<p align="center">
+&nbsp;</p>
+
+<p>
+<table align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="auto-style1">Animation of reaction</td>
+		<td class="auto-style1">&nbsp;</td>
+		<td class="auto-style1">ZIP file</td>
+		<td class="auto-style1">&nbsp;</td>
+		<td class="auto-style1">Description</td>
+	</tr>
+	<tr>
+		<td class="auto-style4">
+		<a href="Individual%20JSmol%20paths/I-CH3-F/F-CH3-I.html">CH<sub>3</sub>I + F(-) &#8660;I(-) + CH<sub>3</sub>F</a></td>
+		<td class="auto-style4">&nbsp;</td>
+		<td class="auto-style4">
+		<a href="Individual%20JSmol%20paths/I-CH3-F/I-CH3-F.zip">CH<sub>3</sub>I 
+		+ F(-)</a></td>
+		<td class="auto-style4">&nbsp;</td>
+		<td class="auto-style4">S<sub>N</sub>2 reaction in aqueous media</td>
+	</tr>
+	<tr>
+		<td class="auto-style2">
+		&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+		<td class="auto-style2">
+		&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+	</tr>
+	<tr>
+		<td>
+		<a href="Individual%20JSmol%20paths/Propyl%20hydrogen%20migration/Reaction%20path%20for%20hydrogen%20migration%20in%20propyl%20radical.html">CH<sub>3</sub>CHCH<sub>3</sub> &hArr; CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub></a></td>
+		<td>&nbsp;</td>
+		<td>
+		<a href="Individual%20JSmol%20paths/Propyl%20hydrogen%20migration/Propyl%20hydrogen%20migration.zip">CH<sub>3</sub>CHCH<sub>3</sub></a></td>
+		<td>&nbsp;</td>
+		<td>Hydrogen atom migration</td>
+	</tr>
+	<tr>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td>
+		<a href="Individual%20JSmol%20paths/Ester%20hydrolysis/Step%206%20-%20Force%20from%20SADDLE.html">
+		CH<sub>3</sub>COOH + CH<sub>3</sub>CH<sub>2</sub>OH &#8660; CH<sub>3</sub>COOCH<sub>2</sub>CH<sub>3</sub> 
+		+ H<sub>2</sub>O</a></td>
+		<td>&nbsp;</td>
+		<td>
+		<a href="Individual%20JSmol%20paths/Ester%20hydrolysis/Ester_hydrolysis.zip">
+		Ester</a></td>
+		<td>&nbsp;</td>
+		<td>Ester hydrolysis in aqueous media</td>
+	</tr>
+	<tr>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		<a href="Individual%20JSmol%20paths/1,5%20Hexadiene/1,5-Hexadiene_IRC.html">
+		1,5-hexadiene &#8660; 1,5-hexadiene</a></td>
+		<td>&nbsp;</td>
+		<td> 
+		<a href="Cope.zip">Cope</a></td>
+		<td>&nbsp;</td>
+		<td>1,5 Hexadiene Cope re-arrangement</td>
+	</tr>
+	<tr>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Acetone%20keto-enol%20tautomerization/ts.html">
+		CH<sub>3</sub>-CHOH=CH<sub>2</sub> &#8660; CH<sub>3</sub>-CO-CH<sub>3</sub></a></td>
+		<td>&nbsp;</td>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Acetone%20keto-enol%20tautomerization/work.zip">Keto-Enol</a></td>
+		<td>&nbsp;</td>
+		<td>Acetone keto - enol tautomerization</td>
+	</tr>
+	<tr>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Isochorismic%20acid%20to%20pyruvic%20acid%20plus%20salicylic%20acid/TS.html">isochorismic acid t&#8660; pyruvic plus salicylic acids</a></td>
+		<td>&nbsp;</td>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Isochorismic%20acid%20to%20pyruvic%20acid%20plus%20salicylic%20acid/Isochorismic%20acid%20to%20pyruvic%20acid%20plus%20salicylic%20acid.zip">
+		Isochorismic acid</a></td>
+		<td>&nbsp;</td>
+		<td>Retro-ene elimination</td>
+	</tr>
+	<tr>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Hydride%20transfer%20to%20C4%20on%20N-methyl%20pyridinium/SADDLE%20Refine%20transition%20state%20and%20map%20the%20IRC.html">
+		[HCO-CH-CH<sub>3</sub>]<sup>-</sup> + [C<sub>5</sub>H<sub>5</sub>N-CH<sub>3</sub>]<sup>+<br>
+		</sup>&hArr; HCO-CH=CH<sub>2</sub> + C<sub>5</sub>H<sub>6</sub>N-CH<sub>3</sub></a></td>
+		<td>&nbsp;</td>
+		<td class="auto-style7"> 
+		<a href="Individual%20JSmol%20paths/Hydride%20transfer%20to%20C4%20on%20N-methyl%20pyridinium/SADDLE%20Hydride%20transfer.zip">
+		SADDLE <br>for Hydride transfer</a></td>
+		<td>&nbsp;</td>
+		<td>Hydride transfer from a methyl group on<br>propionaldehyde 
+		anion to the para or C<sub>4</sub> carbon <br>on the pyridinium cation. 
+		This reaction, although<br><a href="Hydride%20transfer.html">interesting</a>, 
+		was particularly difficult to model.</td>
+	</tr>
+	<tr>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Narcissistic%20reaction%20involving%20butane%20plus%20butyl%20radical/SADDLE%20verify%20TS%20for%20C4H10%20plus%20C4H9%20-%20C4H9%20plus%20C4H10.html">
+		Butane plus butyl &hArr; butyl plus butane </a></td>
+		<td></td>
+		<td class="auto-style7"> 
+		<a href="Individual%20JSmol%20paths/Narcissistic%20reaction%20involving%20butane%20plus%20butyl%20radical/butane%20plus%20butyl%20radical.zip">
+		Butane + butyl</a></td>
+		<td>&nbsp;</td>
+		<td>A narcissistic reaction in which a hydrogen<br>atom migrates from a 
+		n-butane molecule to<br>a n-butyl radical</td>
+	</tr>
+	<tr>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style3"> 
+		&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+		<td class="auto-style3"> 
+		&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+	</tr>
+</table>
+<br> </p>
+
+</BODY>
+</HTML>

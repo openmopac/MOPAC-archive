@@ -1,0 +1,257 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>OPEN(n1,n2) </TITLE>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> </h1>
+<p>
+<b>RHF description: </b>The M.O. occupancy during the SCF calculation can be defined in terms of doubly occupied, empty, and fractionally occupied M.O.s.
+By default, RHF SCF calculations are run using doubly occupied M.O.s, with, at
+most, one singly occupied M.O.&nbsp; For
+some systems, the symmetry of the M.O.s can be preserved only if two or more
+M.O.s have fractional occupancies. Such fractional occupancies can be defined
+using <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT>, where <I>n</I><SUB>1</SUB> = number of electrons in the open-shell manifold, and <I>n</I><SUB>2</SUB> = number of open-shell M.O.s;&nbsp;
+The ratio of <I>n</I><SUB>1</SUB> to <I>n</I><SUB>2</SUB> is restricted to&nbsp; <I>
+2 &gt;&nbsp; n</I><SUB>1</SUB>/<I>n</I><SUB>2</SUB>&nbsp; &gt; 0.&nbsp; Example: if
+<TT>OPEN(3,4)</TT>were used then the occupancy near the HOMO-LUMO gap would be
+...2, 2, 2, 0.75, 0.75, 0.75, 0.75, 0, 0, 0, ...</p>
+<p>
+The two <span class="b">&pi;</span>
+M.O.s in&nbsp; molecular oxygen would not be degenerate if a closed-shell SCF
+were run.&nbsp; In order to maintain the degeneracy, <TT>OPEN(2,2)</TT> would need to be
+used.
+</p>
+<P>Do <EM>not</EM> use <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> for ground-state systems <EM>except</EM> for high symmetry systems with open shells, such as twisted (D<SUB>2<I>d</I></SUB>) ethylene or molecular oxygen O<SUB>2</SUB>,
+or if there is a very small band-gap (such as in metal clusters).</P>
+<P>Examples of <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> are given in the Table.
+
+<TT>OPEN(1,1)</TT> will be assumed for odd-electron systems unless an <TT>OPEN</TT> keyword is used. Errors introduced by use of fractional occupancy are automatically corrected
+[<a href="references.html#136">136</a>] in a MECI calculation when <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> is used. See also <TT>C.I.=<I>n</I></TT>. </P>
+<P>Notes: </P>
+<UL>
+<TT><LI>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> cannot be used instead of <TT>
+<a href="ci=n.html">C.I.=<I>n</I><SUB>2</SUB></a></TT>. <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> modifies the SCF calculation, but <TT>C.I.=<I>n</I><SUB>2</SUB></TT> does not modify the SCF calculation. Both keywords cause a C.I. calculation to be done. </LI>
+<LI>Be careful to ensure that <I>n</I><SUB>1</SUB> is odd if the system has an odd number of electrons, and even if the system has an even number of electrons. </LI></UL>
+<p><b>UHF description: </b>The M.O. occupancy during the SCF calculation can be defined in terms of 
+singly occupied, empty, and fractionally occupied M.O.s.
+By default, UHF SCF calculations are run using singly occupied M.O.s. When <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>) </TT>
+is present, the highest <i>n<sub>2</sub></i> <span class="b">&alpha;</span> 
+molecular orbitals are each given a population of <i>n</i><sub><i>1</i></sub>/<i>n<sub>2</sub></i> 
+electrons.&nbsp; To use <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> 
+in a UHF calculation, <a href="uhf.html"><TT>UHF</TT></a> must also be present.&nbsp; 
+Because fractional electrons are used, small errors in energy, on the order of 
+1-2 kcal/mol, are introduced when <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>) </TT>is used.&nbsp; These errors are <i>not</i> corrected by C.I., however they are 
+small and should not affect the results significantly.</p>
+<p>Because <TT>OPEN</TT> only applies to the <span class="b">&alpha;</span> 
+electrons, care must be exercised in defining the number of <span class="b">&alpha;</span> 
+and <span class="b">&beta;</span> electrons.&nbsp; For example, if the cation of 
+tetrahedral methane were to be calculated, the keywords needed would be &quot;<TT>OPEN(2,3)<a href="ms.html">MS=-0.5</a> 
+UHF CHARGE=1&quot; If MS=-0.5</TT> was not present, then there would be four <span class="b">&alpha;</span> 
+and three <span class="b">&beta;</span> electrons, instead of the required three <span class="b">&alpha;</span> 
+and four <span class="b">&beta;</span> electrons.</p>
+<p>The main use of <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT> in 
+UHF calculations is to mimic the dynamic Jahn-Teller effect in transition metal 
+complexes.&nbsp; Without <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT>an octahedral complex&nbsp; system that could undergo Jahn-Teller distortion 
+would be distorted.&nbsp; However, in many X-ray structures, systems that should 
+Jahn-Teller distort do not in fact distort and instead retain high symmetry, 
+typically O<sub>h</sub>.&nbsp; This high symmetry can be regarded as a dynamic J-T effect. 
+Transition metal complexes are, as their name suggests, complicated, and 
+correctly defining the various J-T states is also complicated.&nbsp; The 
+following set of examples is provided to illustrate how to define keywords for 
+various octahedral systems.&nbsp; These systems are assumed to have a three-fold 
+degenerate set of &quot;d&quot; M.O.s, with dominant contributions from the <i>d</i>-orbitals
+<i>d<sub>xy</sub></i>, <i>d<sub>yz</sub></i>, <i>d<sub>xz</sub></i>, that can be 
+related to the<i> t<sub>2g</sub></i> set of point group O<sub>h</sub>, and a two-fold 
+degenerate set, composed mainly of the other two <i>d</i>-orbitals; these are equivalent 
+to the <i>&nbsp;e<sub>g</sub></i> set of point group O<sub>h</sub>.</p>
+<p dir="ltr">
+<i>d</i><sup>0</sup>:
+
+No keyword needed - closed shell, i.e., <sup>1</sup>A<sub>1g</sub>.<i><br>
+d</i><sup>1</sup>:
+
+keywords: &quot;<TT>UHF OPEN(1,3)</TT>&quot;&nbsp; One <span class="b">&alpha;</span>
+<i>d</i> electron in a <i>&nbsp;t<sub>2g </sub></i>set of M.O.s.&nbsp; The 
+resulting state is <sup>2</sup>T<sub>2g</sub>.<br>
+<i>d</i><sup>2</sup>:
+
+keywords: &quot;<TT>UHF OPEN(2,3) MS=1</TT>&quot;&nbsp; Two <span class="b">&alpha;</span> <i>d</i> electrons in 
+a <i>&nbsp;t<sub>2g </sub></i>set of M.O.s.&nbsp; The resulting state is <sup>3</sup>T<sub>1g</sub>.<br>
+<i>d</i><sup>3</sup>:
+
+keywords: &quot;<TT>UHF MS=1.5</TT>&quot;&nbsp; The state is <sup>4</sup>A<sub>2g</sub>.<br>
+<i>d</i><sup>4</sup>:
+
+keywords for low spin: <TT>&quot;UHF OPEN(1,3)MS=-1</TT>&quot;&nbsp; Because <TT>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</TT>, 
+applies only to &alpha; electrons, and because there are 
+four electrons in a <i>&nbsp;t<sub>2g </sub></i>set of M.O.s, the only way to 
+have a fractional population of the <span class="b">&alpha;</span> set of M.O.s is 
+to have the <span class="b">&beta;</span> set filled, i.e., &alpha;<sup>1</sup>&beta;<sup>3</sup> .&nbsp;By 
+using &quot;<TT>MS=-1</TT>&quot; the number of&nbsp; &beta;
+electrons<font face="Symbol"> </font>is defined as being two more than the 
+number of <span class="b">&alpha;</span> electrons&nbsp; The resulting state is 
+<sup>3</sup>T<sub>1g</sub>.<i><br>
+d</i><sup>4</sup>:
+
+keywords for high spin: <TT>&quot;UHF OPEN(1,2) MS=2</TT>&quot;&nbsp; In 
+high-spin <i>d</i><sup>4</sup> complexes, there are three <span class="b">&alpha;</span> 
+electrons in the <i>t<sub>2g </sub></i>&nbsp;set of M.O.s, and a single &alpha;
+electron in the two-fold degenerate<i> e<sub>g</sub></i> M.O.&nbsp; &quot;<TT>MS=2</TT>&quot; 
+results in there being four more &alpha; than
+&beta; electrons.&nbsp; The resulting state is <sup>5</sup>E<sub>g</sub>.<br>
+<i>d</i><sup>5</sup>:
+
+keywords for low spin: <TT>&quot;UHF OPEN(2,3) MS=-0.5</TT>&quot;&nbsp; See
+<i>d</i><sup>4</sup> low spin. This gives rise to a&nbsp; <sup>2</sup>T<sub>2g</sub> 
+state.<i><br>
+d</i><sup>5</sup>:
+
+keywords for high spin: &quot;<TT>UHF MS=2.5</TT>&quot;&nbsp; The state is <sup>
+6</sup>A<sub>1g</sub>.<br>
+<i>d</i><sup>6</sup>: No keyword needed - closed shell, i.e., <sup>1</sup>A<sub>1g</sub>.<i><br>
+d</i><sup>6</sup>: keywords for high spin<TT>: &quot;UHF OPEN(1,3) MS=-2</TT>&quot;<i>&nbsp; </i>
+The resulting state is <sup>5</sup>T<sub>2g</sub> = A<sub>2g </sub>(from the <span class="b">&beta;</span><sup>2</sup> 
+of e<sub>g </sub>symmetry)*A<sub>2g </sub>(from the &beta;<sup>3</sup> 
+of t<sub>2g </sub>symmetry)*T<sub>2g </sub>(from the &alpha;<sup>1</sup> 
+of t<sub>2g </sub>symmetry).<br>
+<i>d</i><sup>7</sup>:
+
+keywords for low spin: <TT>&quot;UHF OPEN(1,2)</TT>&quot;&nbsp; As with <i>d</i><sup>1</sup>, 
+the extra electron has, by default, <span class="b">&alpha;</span> spin, and so 
+the keyword &quot;<TT>MS=0.5</TT>&quot; is unnecessary.&nbsp; The resulting state is <sup>
+2</sup>E<sub>g</sub>.<i><br>
+d</i><sup>7</sup>:
+
+keywords for high spin: <TT>&quot;UHF OPEN(1,2) MS=-1.5</TT>&quot;&nbsp; With seven 
+d-electrons and&nbsp; <TT>MS=-1.5</TT> there are three more <span class="b">&alpha;</span> 
+than &beta; electrons, i.e., &alpha;<sup>2</sup>&beta;<sup>5</sup>.&nbsp; 
+The resulting state is&nbsp; <sup>4</sup>T<sub>1g</sub>.<br>
+<i>d</i><sup>8</sup>:
+
+keywords: <TT>&quot;UHF MS=1</TT>&quot;&nbsp;&nbsp; 
+The resulting state is&nbsp; <sup>
+3</sup>A<sub>2g</sub>.<br>
+<i>d</i><sup>9</sup>:
+
+keywords: <TT>&quot;UHF OPEN(1,2)</TT>&quot;&nbsp;&nbsp; 
+The resulting state is&nbsp; <sup>
+2</sup>E<sub>g</sub>.<br>
+<i>d</i><sup>10</sup>:
+
+No keyword needed - closed shell, i.e., <sup>1</sup>A<sub>1g</sub>.</p>
+<p dir="ltr">
+A similar exercise could be done with the T<sub>d</sub> complexes. As this is 
+simple, albeit tedious, it is left as an exercise.</p>
+<div align="center" style="float: left">
+  <center>
+<TABLE BORDER CELLSPACING=0 CELLPADDING=3 style="border-collapse: collapse" bordercolor="#111111">
+<TR><TD VALIGN="MIDDLE" align="center" colspan="6">
+
+<STRONG>Table:</STRONG> Use of <TT>OPEN(<I>n</I>,<I>m</I>)</TT></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" align="center">
+UHF Keywords</TD>
+  <TD VALIGN="MIDDLE" align="center">
+<P>RHF Keywords</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Example</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Number of M.O.s</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">No. of Electrons</TD>
+<TD VALIGN="MIDDLE">
+State</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" align="center"><TT>MS=1</TT></TD>
+  <TD VALIGN="MIDDLE" align="center">
+<TT><P>OPEN(2,2)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Twisted Ethylene</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<sup>3</sup>A<sub>2</sub></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" align="center">
+<TT>OPEN(1,2)</TT></TD>
+  <TD VALIGN="MIDDLE" align="center">
+<TT><P>OPEN(1,2)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">O<SUB>2</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<sup>2</sup><span class="b">&pi;</span><sub>g</sub></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" align="center">
+<TT><P>MS=-0.5 OPEN(2,3)</TT></TD>
+  <TD VALIGN="MIDDLE" align="center">
+<TT><P>OPEN(5,3)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">CH<SUB>4</SUB><SUP>+</SUP></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">5</TD>
+<TD VALIGN="MIDDLE">
+<sup>2</sup>T<sub>2</sub></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" align="center"><TT>MS=1.5</TT></TD>
+  <TD VALIGN="MIDDLE" align="center">
+<TT>OPEN(3,3)</TT></TD>
+<TD VALIGN="MIDDLE" align="center">
+[Cr<sup>III</sup>F<sub>6</sub>]<sup>3-</sup></TD>
+<TD VALIGN="MIDDLE" align="center">
+3</TD>
+<TD VALIGN="MIDDLE" align="center">
+3</TD>
+<TD VALIGN="MIDDLE" align="center">
+<sup>4</sup>A<sub>2g</sub></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" align="center"><TT>MS=2.5</TT></TD>
+  <TD VALIGN="MIDDLE" align="center">
+<TT>OPEN(5,5)</TT></TD>
+<TD VALIGN="MIDDLE" align="center">
+[Mn<sup>II</sup>(H2O)<sub>6</sub>]<sup>2+</sup></TD>
+<TD VALIGN="MIDDLE" align="center">
+5</TD>
+<TD VALIGN="MIDDLE" align="center">
+5</TD>
+<TD VALIGN="MIDDLE" align="center">
+<sup>6</sup>A<sub>1</sub></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" align="center">
+<TT>MS=-0.5 OPEN(2,3)</TT></TD>
+  <TD VALIGN="MIDDLE" align="center">
+<TT>OPEN(5,3)</TT></TD>
+<TD VALIGN="MIDDLE" align="center">
+[Fe<sup>III</sup>(CN)<sub>6</sub>]<sup>3-</sup></TD>
+<TD VALIGN="MIDDLE" align="center">
+3</TD>
+<TD VALIGN="MIDDLE" align="center">
+5</TD>
+<TD VALIGN="MIDDLE" align="center">
+<sup>2</sup>T<sub>2g</sub></TD>
+</TR>
+</TABLE>
+
+  </center>
+</div>
+
+<P>&nbsp;</P>
+<div align="left">
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="1" height="0">
+    <tr>
+      <td width="1" height="0"></td>
+    </tr>
+  </table>
+</div>
+</BODY>
+</HTML>

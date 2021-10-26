@@ -1,0 +1,100 @@
+<HTML><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<TITLE>Ligand 9G1</TITLE></HEAD>
+<style type="text/css">.auto-style4 {
+margin-top: 0px;
+text-align: center;
+line-height: 85%;
+}
+.auto-style5 {
+text-decoration: none;
+}
+</style>
+<!--
+ 
+   Start of JSmol script
+ 
+-->
+<meta charset="utf-8"> <script type="text/javascript" src="../jsmol/JSmol.min.js"></script>  
+<script type="text/javascript">
+
+$(document).ready(function() {Info = {
+          width: 1500,
+          height: 1000,
+          color: "0xB0B0B0",
+          disableInitialConsole: true, 
+          addSelectionOptions: false,
+          j2sPath: "../jsmol/j2s",
+          jarPath: "../jsmol/java",
+          use: "HTML5", script: 
+           
+// Data set to be loaded
+ 
+"load \
+          '9g1.pdb'; \
+          set measurementUnits ANGSTROMS; \
+          set bondRadiusMilliAngstroms (50); \
+          spacefill 15%; \
+          set display selected; \
+          hBonds calculate; \
+          set defaultDistanceLabel '%0.3VALUE %UNITS'; \
+          select none; \
+          set perspectivedepth off; \
+          connect 0.8  1.5 (hydrogen) (phosphorus) create; \
+          set zoomLarge false;" 
+} 
+$("#mydiv").html(Jmol.getAppletHtml("jmolApplet0",Info))}); 
+</script>
+<!--
+ 
+   End of JSmol script
+ 
+-->
+<h1 align="center">Ligand&nbsp;9G1</h1>
+<BODY  BGCOLOR="#ffffff">
+<TABLE>
+<TD>
+<TABLE>
+<TR>
+<TD colspan="2">
+<TABLE>
+<TR><TD> Date:</TD><TD> &nbsp;&nbsp; &nbsp;</TD><TD>May 29 2017 10:57</TD></TR>
+<TR><TD> No. atoms:</TD><TD> &nbsp;&nbsp; &nbsp;</TD><TD>  112</TD></TR>
+<TR><TD> Formula:</TD><TD> &nbsp;&nbsp; &nbsp;</TD><TD>C<sub>30</sub>H<sub>48</sub>N<sub>7</sub>O<sub>23</sub>P<sub>4</sub></TD></TR>
+<TR><TD> Net charge:</TD><TD> &nbsp;&nbsp; &nbsp;</TD><TD>Zero</TD></TR>
+</TABLE>
+</TD></TR><TR>
+<TD><a href="javascript:Jmol.script(jmolApplet0,'
+if (isOK1);  Display *; zoom 0; isOK1 = FALSE; else hide *; 
+    Q000    = FALSE;
+isOK1 = TRUE; isOK2 = FALSE; lzoom = TRUE; lcenter = TRUE;
+endif;')">Toggle display all</a>
+</TD>
+<TD><a href="javascript:Jmol.script(jmolApplet0,'
+if (lcenter);  lcenter = FALSE; else lcenter = TRUE; center {visible}; end if;
+')">Toggle center picture</a> </TD>
+</TR> <TR>
+<TD><a href="javascript:Jmol.script(jmolApplet0,'console;')">Console</a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (lzoom); zoom 0; select */2.1; color bonds green; select none; lzoom = FALSE; else lzoom = TRUE; end if ')">Fit to screen</a> </TD></TR><TR>
+<TD><a href="javascript:Jmol.script(jmolApplet0,'display within(3,visible);select */2.1; color bonds green; select none; if (lzoom); zoom 0; end if ')">Near Neighbors</a> </TD> 
+<TD><a href="javascript:Jmol.script(jmolApplet0,'connect (all) (all) delete; connect; display add connected(visible); select *; hbonds calculate; select  */2.1; color bonds green; select none; if (lzoom); delay 0.001; zoom 0; end if ')">Connected Neighbors</a> </TD> 
+<TR>
+<TD colspan="2"><a href="javascript:Jmol.script(jmolApplet0,'script common.txt;')"><strong style="font-size:20px">Common Script</strong>
+</a>&nbsp; (Read file from:<br> "<a href="common.txt"  target="_blank">common.txt</a>")</TD>
+</TR> <TR>
+<TD colspan="2"><a href="javascript:Jmol.script(jmolApplet0,'script \'9g1.txt\';')"><strong style="font-size:20px">Specific Script</strong>
+</a>&nbsp; (Read file from:<br> "<a href="9g1.txt"  target="_blank">9g1.txt</a>")</TD>
+</TR></TABLE>
+<p align="center">Toggle Individual Residues</p>
+<TABLE>
+<TR>
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!   Q000   );   display ADD      0;     Q000    = TRUE; else 
+ hide ADD      0;     Q000    = FALSE; end if; if (lcenter); center {visible}; end if; if (lzoom); zoom 0; end if;')" class="auto-style5">  
+<p class="auto-style4">X<br>0       </p> </a></TD>
+</TR>
+</TABLE><br> 
+ </TD><TD>
+<span id=mydiv></span><a href="javascript:Jmol.script(jmolApplet0)"></a></TD></TABLE>
+</BODY>
+</HTML>

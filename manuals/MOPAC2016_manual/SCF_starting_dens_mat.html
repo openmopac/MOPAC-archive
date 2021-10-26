@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Starting density matrix</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Starting density matrix
+</H2>
+The density matrix is necessary in order to calculate the Fock matrix, but, in
+turn, the Fock matrix is necessary in order to calculate the density matrix. To
+break this impasse, a guessed density matrix is used. The guess is very crude:
+all off-diagonal matrix elements are set to zero, and all on-diagonal terms on
+any atom are set equal to the core charge of that atom divided by the number of
+atomic orbitals. Our starting guess for H<SUB>6</SUB> consists of a unit matrix.
+<P>
+Each iteration of the SCF calculation consists of assembling a Fock matrix from
+the one-electron matrix, the two-electron integrals, and the density matrix,
+diagonalizing it to obtain the eigenvectors, and finally reassembling the
+density matrix. At some point the change in density matrix drops below a preset
+limit. When this happens we say that the field is self-consistent. We will now
+carry out these steps for the H<SUB>6</SUB> system.
+</BODY>
+</HTML>

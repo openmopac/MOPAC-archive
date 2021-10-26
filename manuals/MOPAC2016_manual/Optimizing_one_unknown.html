@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Optimization of one unknown</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2><A NAME="SECTION001273000000000000000">
+ Optimization of one unknown</A>
+</H2>
+If a system has exactly one coordinate to be optimized, then obviously one
+line-search will optimize the geometry.  Because of this, the geometry
+optimization is done a little differently.  Given the initial geometry, the
+<span class="b">&Delta;</span>H<sub>f
+</sub>&nbsp;is calculated, and the line-search started. Unlike the normal
+line-search, however, the search is not stopped when the minimum is almost
+reached, instead, the minimum is located with quite high precision.  After the
+line-search is complete, the gradients are not <A NAME="BM17994">&#160;</A> calculated
+(unless requested by <TT><a href="gradients.html">GRADIENTS</a></TT>). Instead, it is assumed that the
+gradient is small, and the results are output.  This saves some time. However,
+if <TT>GRADIENTS</TT> is <EM>not</EM> present, and the geometry is not at a
+stationary point (because other coordinates are not optimized), then the
+warning message that the geometry is not at a stationary point will not be
+printed.
+</BODY>
+</HTML>

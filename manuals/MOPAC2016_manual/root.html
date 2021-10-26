@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>ROOT=n </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>ROOT=<I>n</I></TT>
+</h1>
+        In a configuration interaction calculation, a specific state can be 
+requested by specifying the state name and the quantum number of that state.&nbsp; 
+The lowest state of each type has the quantum number 1, the next is 2 and so on.&nbsp; 
+To see the quantum numbers and state names, run a 1SCF calculation for the 
+desired configuration interaction.&nbsp; The normal way to define the C.I. is to 
+use the keywords <A HREF="ci=n.html"><TT><FONT COLOR="#0000ff"><U>C.I.=<I>n</I></U></FONT></TT></A>. 
+and <a href="meci.html"><tt>MECI</tt></a> (to print out the state information).
+        Two ways of defining the desired state are provided:  <TT>ROOT=<i>n</i></TT>, where<i> n</i> is an integer, and
+<TT>ROOT=<i>n</i>&lt;text&gt;</TT>, where <i>n</i> is an integer and &lt;text&gt; is a text string.<p>  <TT>
+ROOT=</TT>n</p>
+<p>The  <I>n</I>'th  root  of  a  C.I. calculation  is  to  be  used  in   the
+   calculation.   If  a  keyword  specifying the spin-state is also present,
+   e.g.  <TT>SINGLET</TT> or <TT>TRIPLET</TT>, then the  <I>n</I>'th  root  of  that  state  will  be
+   selected.   Thus  <TT>ROOT=3</TT>  and <TT>SINGLET</TT> will select the third singlet root.
+   If <TT>ROOT=3</TT> is used on its own, then the third root will be used, 
+regardless of the states' name.&nbsp; This might be a triplet, the third singlet, or the second singlet (the second 
+root might be a triplet). If the state selected is degenerate, all components of 
+that state will be selected. </p>
+<p>  <TT>ROOT=</TT>n&lt;text&gt;</p>
+<p>  The  <I>n</I>'th root of a C.I. calculation that has the symmetry &lt;text&gt; is
+to be used in the calculation.&nbsp; If a keyword specifying the spin-state is
+also present, e.g.  <TT>SINGLET</TT> or <TT>TRIPLET</TT>, then the  <I>n</I>'th  root  of  that  state
+that has the symmetry &lt;text&gt; will  be
+   selected.   Thus, in an octahedral system, <TT>ROOT=3T2g</TT>  and <TT>SINGLET</TT> will select the third singlet
+T2g root.
+   If <TT>ROOT=3T2g</TT> is used without any spin-state being specified, then
+the third T2g root will be used, regardless of spin. If the state selected is
+degenerate, all components of that state will be selected. </p>
+<p>  See also <A HREF="ci=n.html"><TT><FONT COLOR="#0000ff"><U>C.I.=<I>n</I></U></FONT></TT></A> 
+and <TT><a href="ms.html">MS=n.m</a>.</TT></p>
+<P>
+To see how these different forms behave, consider the following states of a d<sup>6</sup>
+transition metal complex:<PRE>STATE	Q.N.	 Spin	  Symmetry
+ 1	 1	TRIPLET	    T2g
+ 4	 1	SINGLET     A1g
+ 5	 1	SINGLET	    T2g
+ 8	 1	TRIPLET	    T1g
+11	 1	QUINTET	    T1g
+14	 1	SEPTET	    A1g
+15	 1	QUINTET	    T2g
+18	 2	TRIPLET	    T1g
+21	 3	TRIPLET	    T1g
+24	 2	SINGLET	    T2g
+27	 2	TRIPLET     T2g
+30	 1	TRIPLET	    A2g
+31	 1	SINGLET	    T1g
+34	 3	TRIPLET	    T2g
+37	 4	TRIPLET	    T1g
+40	 1	TRIPLET	    Eg
+42	 2	SINGLET	    T1g
+45	 1	SINGLET	    Eg
+47	 1	QUINTET     Eg</PRE>
+
+
+<P>
+<TT>ROOT=14</TT> would select the 14th state, the 1<sup>7</sup>A<sub>1g</sub> state. No
+spin being specified, <TT>ROOT</TT> applies to the STATE column.<P>
+<TT>ROOT=7</TT> and <TT>QUINTET</TT> would select the 47th and 48th states, the 1<sup>5</sup>E<sub>g </sub>&nbsp;state.
+This is the 7th quintet state, the states 1-6 being T1g, T1g, T1g, T2g, T2g,
+and T2g. That these states are degenerate is not important, because
+<TT>ROOT=n</TT> specifies the n'th state, without regard to symmetry.
+<P>
+<TT>ROOT=2T2g</TT> and <TT>TRIPLET</TT> would select the 27th, 28th, and 29th states, the 2<sup>3</sup>T<sub>2g</sub>
+state. This is the preferred method of specifying states. When  <TT>ROOT=</TT>n&lt;text&gt;
+is used then the state specified will not change if the state moves up or down
+the list of states. If the system has no symmetry,
+<TT>ROOT=<i>n</i>A</TT> can be used.<P>
+When a geometry is to be optimized, symmetry should be used, if present.&nbsp;
+This is particularly important in octahedral transition metal complexes. If the
+state has orbital degeneracy, e.g. if it is of type E, T, G, or H, then Jahn-Teller
+effects might cause a loss of symmetry. High symmetry is automatically detected,
+so, if present, it will be conserved. However, during a normal unconstrained
+geometry optimization, minor excursions from high symmetry are allowed, and
+these might confuse the high-symmetry detector.&nbsp; To prevent this, use
+symmetry.&nbsp; In the case of a simple octahedral complex, MX<sub>6</sub>, the data set
+might look like this:<P>
+<TT>ROOT=1T2g QUINTET&nbsp; OPEN(5,5) MECI&nbsp; SYMMETRY<br>
+Generic octahedral complex<br>
+<br>
+M 0.0 0&nbsp;&nbsp; 0 0&nbsp;&nbsp; 0 0 0 0 0<br>
+X 2.0 1&nbsp;&nbsp; 0 0&nbsp;&nbsp; 0 0 1 0 0 <br>
+X 2.0 0&nbsp; 90 0&nbsp;&nbsp; 0 0 1 2 0 <br>
+X 2.0 0&nbsp; 90 0&nbsp; 90 0 1 2 3<br>
+X 2.0 0&nbsp; 90 0 180 0 1 2 3 <br>
+X 2.0 0&nbsp; 90 0 -90 0 1 2 3 <br>
+X 2.0 0 180 0&nbsp;&nbsp; 0 0 1 2 3 <br>
+<br>
+2 1 3 4 5 6 7</TT><P>
+<TT><br></TT>
+&nbsp;</BODY></HTML>

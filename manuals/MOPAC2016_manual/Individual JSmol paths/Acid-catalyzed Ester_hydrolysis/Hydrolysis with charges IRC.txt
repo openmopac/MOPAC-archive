@@ -1,0 +1,27 @@
+#
+# Write atomic partial charges as circles with numbers.
+#
+reset;center {2.2184999999999997 0.4185000000000001 0.9465}; rotate z -33.17; rotate y 146.38; rotate z 107.5; zoom 183.72; translate x 9.8; translate y 11.8; set rotationRadius 5.55;
+measure all (4.1H) (3.O1)
+delay 1
+frame all
+select *.C2, *.O1, *.1H, *.O, *.2H, *.3H, *.O2, *.H
+var sel = {selected};
+for (var x IN @sel){
+select @x; 
+var txt =  @x.temperature*0.5;
+if (@txt > 0){spacefill @txt;}; 
+if (!@txt > 0){txt = -txt; spacefill @txt; }; 
+txt =  (x.temperature > 0 ? '+':'')+format('%1.2f',x.temperature ); 
+label @txt; color label black;
+set labelOffset 0 0;}
+select 0;
+frame TITLE "Frame : @{_modelNumber}"
+animation mode loop;
+animation on
+#
+#   Notes
+#
+# For slow-motion, type "animation FPS 4" in the console.
+#
+# 

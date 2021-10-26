@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>KE07 Ring Opening</TITLE>
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+.auto-style2 {
+	text-align: left;
+}
+.auto-style3 {
+	text-indent: 20px;
+}
+.auto-style4 {
+	font-size: medium;
+}
+.auto-style7 {
+	border-style: solid;
+	border-width: 1px;
+	margin-top: 0px;
+}
+</style>
+</HEAD>
+<BODY>
+<h1 class="auto-style1">KE07 Ring opening (Files)</h1>
+<table align="left">
+	<tr>
+		<td>
+<span class="auto-style4" style="font-family: &quot;Book Antiqua&quot;; mso-ascii-font-family: &quot;Book Antiqua&quot;; mso-fareast-font-family: +mn-ea; mso-bidi-font-family: +mn-cs; color: black; mso-color-index: 1; mso-font-kerning: 12.0pt; language: en-US;">
+		<img class="auto-style7" height="308" src="Kemp%20mechanism.gif" style="float: left" width="754"></span>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<p style="language: en-US; margin-top: 0pt; margin-bottom: 0pt; text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; mso-line-break-override: restrictions; punctuation-wrap: simple">
+In this reaction, the heterocyclic ring in 5-nitro-benzisoxazole opens to form a 
+cyanide or nitrile group and a hydoxyl anion.&nbsp; This reaction does not occur 
+in nature because the heterocyclic ring substrate is highly strained.&nbsp; That strain is 
+relieved when the ring opens, so the reaction is, for all practical purposes, irreversible. </p>
+<p class="auto-style2">Locating the transition state for the 
+		re-arrangement involves the following steps:<br>
+</p>
+<h2>Adding hydrogen atoms (File: &quot;3CSM Add-H.mop&quot;)</h2>
+<p>PDB file 3CSM does not include hydrogen atoms, so the first step is to 
+hydrogenate the system.&nbsp; Keywords in this file are:</p>
+<p><strong>GEO_DAT=&quot;3CSM.pdb&quot;:</strong>&nbsp; For convenience the original PDB 
+file is not edited, instead it is added to the run using this keyword.&nbsp; If 
+the data-set &quot;3CSM Add-H.mop&quot; had a fault, the data-set could be edited easily 
+and the integrity of the original PDB file would not be compromised.</p>
+<p><strong>CHAINS=(A):</strong>&nbsp; 3CSM is dimeric but only one of the two 
+systems is needed.&nbsp; By using this keyword, all atoms of system &quot;A&quot; are 
+selected, and all atoms of system &quot;B&quot; are excluded.</p>
+<p><strong>ADD_H: </strong>Hydrogen atoms are added so as to neutralize all 
+sites.&nbsp; This operation is almost always used together with a SITE keyword, 
+this changes the hydrogenation of various sites so that the system is more 
+realistic.</p>
+<p><strong>
+SITE=(salt,&quot;[ARG]157:A.NH2&quot;(+),&quot;[TSA]400:A.O2&quot;(-),&quot;[GLU]44:A.OE1&quot;(0),&quot;[HIS]47:A.ND1&quot;(0),&quot;[TSA]400:A.O3&quot;(-),&quot;[ARG]16:A.NH2&quot;(+),&quot;[TSA]400:A.C6&quot;(-),&quot;[TSA]400:A.C8&quot;(-)):
+</strong>This really big keyword adds and deletes hydrogen atoms as necessary to 
+make a realistic system.&nbsp; In order, the <a href="../site.html">SITE</a> 
+arguments used are:</p>
+<p class="auto-style3"><strong>SALT:</strong> Make all reasonable
+<a href="../salt_bridges.html">salt bridges</a> between residues.</p>
+<p class="auto-style3"><strong>&quot;[ARG]157:A.NH2&quot;(+),&quot;[TSA]400:A.O2&quot;(-): </strong>
+Make a salt bridge between a residue and the substrate (the substrate is not a 
+residue, so SALT would not make this salt bridge.)</p>
+<p class="auto-style3"><strong>&quot;[TSA]400:A.O3&quot;(-),&quot;[ARG]16:A.NH2&quot;(+): </strong>
+The same as&nbsp; &quot;[ARG]157:A.NH2&quot;(+),&quot;[TSA]400:A.O2&quot;(-).&nbsp;</p>
+<p class="auto-style3"><strong>&quot;[GLU]44:A.OE1&quot;(0),&quot;[HIS]47:A.ND1&quot;(0): </strong>
+Not critical.&nbsp; This salt bridge was created automatically, but both 
+residues are on the surface, and it looks as if they are solvated.</p>
+<p class="auto-style3"><strong>&quot;[TSA]400:A.C6&quot;(-),&quot;[TSA]400:A.C8&quot;(-): </strong>
+This dehydrogenation is important and interesting.&nbsp; The main difference 
+between TSA and chorismate or prephenate is that TSA has two extra hydrogen 
+atoms.&nbsp; When TSA was hydrogenated, the correct structure for TSA was 
+produced.&nbsp; To convert this TSA structure into the chorismate or prephenate, 
+two hydrogen atoms need to be deleted.&nbsp; These arguments do this.&nbsp;</p>
+<p><strong>HTML: </strong>Not essential, but very useful in deciding where to 
+add or delete hydrogen atoms. HTML produces a JSmol web-page that can be opened 
+using NETSCAPE.&nbsp; Individual atoms to be used in the SITE keyword can easily 
+be identified in this web-page.&nbsp; A useful trick is to start editing the 
+SITE keyword and hover the cursor over the appropriate atom in the web-page.&nbsp; 
+That displays the JSmol label, which can then be typed in the SITE keyword.&nbsp; 
+If the PDB label is available, that can be used.
+</p>
+<p><strong>NOCOMMENTS:</strong>&nbsp; Suppress all PDB HEADER, TITLE, COMPOUND, 
+SOURCE, etc., remarks.</p>
+<p><strong>OUTPUT: </strong>Suppress all voluminous output.</p>
+<p>Run &quot;3CSM Add-H.mop&quot; and edit the resulting ARC file, as follows:</p>
+<h2>Making the Chorismate and Prephenate systems</h2>
+<p>Edit &quot;3CSM Add-H.arc&quot; to replace</p>
+<p><strong>START_RES=(1A-222 300A-400) chains=(A) HTML output</strong></p>
+<p>with</p>
+<p><strong>START_RES=(1A-222 300A-400) chains=(A) HTML Opt mozyme eps=78.4 gnorm=5 
+output charge=0 t=2w </strong>
+</p>
+<p>These are the keywords for an unconstrained global optimization of a system 
+in aqueous media.&nbsp; Normally there would be an intermediate step in which 
+the positions of the hydrogen atoms would be optimized, but as this is a very 
+simple reaction, this step is not necessary.</p>
+<p>Starting with &quot;3CSM Add-H.arc&quot; use an editor to move the O7 in the substrate 
+away from C5, i.e., deliberately break the C5-O7 bond. Save the resulting 
+structure as &quot;3CSM Chorismate.mop&quot;
+</p>
+<p>Starting with &quot;3CSM Add-H.arc&quot; use an editor to move the C9 in the substrate 
+away from C1, i.e., deliberately break the C9-C1 bond. Save the resulting 
+structure as &quot;3CSM Prephenate.mop&quot;
+</p>
+<h2>Optimizing the geometry of the Chorismate and Prephenate systems</h2>
+<p class="auto-style2">Run both &quot;3CSM Chorismate.mop&quot; and &quot;3CSM Prephenate.mop&quot; 
+These jobs take a long time, typically a few days, so a useful strategy is to 
+run both of them at the same time on a machine that is dedicated to running long 
+jobs.</p>
+<p class="auto-style2">&nbsp;</p>
+</BODY>
+</HTML>

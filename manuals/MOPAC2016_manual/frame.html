@@ -1,0 +1,13 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Mechanism of the frame in FORCE calculation</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2>Mechanism of the frame in FORCE calculation </H2>
+<P>The FORCE calculation uses Cartesian coordinates, and all 3N modes are calculated, where N is the number of atoms in the system. Clearly, there will be 5 or 6 "trivial" vibrations, which represent the three translations and two or three rotations. If the molecule is exactly at a stationary point, then these "vibrations" will have a force constant and frequency of precisely zero. If the force calculation was done correctly, and the molecule was not exactly at a stationary point, then the three translations should be exactly zero, but the rotations would be non-zero. The extent to which the rotations are non-zero is a measure of the error in the geometry. </P>
+<P>If the distortions are non-zero, the trivial vibrations can interact with the low-lying genuine vibrations or rotations, and with the transition vibration if present. </P>
+<P>To prevent this the analytic form of the rotations and vibrations is calculated, and arbitrary eigenvalues assigned; these are 500, 600, 700, 800, 900, and 1000 millidynes/&Aring;ngstrom for Tx, Ty, Tz, Rx, Ry and Rz (if present), respectively. The rotations are about the principal axes of inertia for the system, taking into account isotopic masses. The "force matrix" for these trivial vibrations is determined, and added on to the calculated force matrix. After diagonalization the arbitrary eigenvalues are subtracted off the trivial vibrations, and the resulting numbers are the "true" values. Interference with genuine vibrations is thus avoided. </P>
+                                                </BODY>
+</HTML>

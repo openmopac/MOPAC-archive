@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Solid-state Symmetry Operations</TITLE> 
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+.auto-style2 {
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style3 {
+	text-align: center;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style4 {
+	border-top-style: solid;
+	border-top-width: 1px;
+}
+.auto-style5 {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+</style>
+</HEAD>
+<BODY>
+<h1 class="auto-style1">Solid-state Symmetry Operations</h1>
+Solid-state symmetry operations are used in two ways in Program BZ.<br><br>
+(A)&nbsp;
+To symmetrize the energy matrix so that the band-structure is more 
+symmetric.&nbsp; If symmetry operations are not performed on a band-structure, 
+then small artifacts can appear in band structures.&nbsp; For example, bands of 
+different symmetry should be able to cross.&nbsp; If the energy matrix is not 
+symmetrized, small errors in symmetry, due to errors in geometry or 
+insufficiently tight criteria, can result in small gaps between the bands, 
+resulting in the appearance of a non-crossing interaction.<br><br>
+(B)&nbsp;
+To generate the little group for a point in <em>k</em>-space, i.e., symmetry 
+theory can be used in analyzing the properties of individual points in the 
+Brillouin zone.<h3>Description and construction of<a name="the symmetry-operations file file.ops"> 
+the symmetry-operations file &lt;file&gt;.ops</a></h3>
+<p>&nbsp;Because of the usefulness of symmetry, the 
+option exists to read in all the <a href="Solids_space_group_operations.html">space-group operations</a> for the system.&nbsp; 
+For a file containing energy band information &lt;file&gt;.brz, the symmetry 
+operations would be provided in a file named &lt;file&gt;.ops.&nbsp; If &lt;file&gt;.ops is&nbsp; 
+present, these operations will be automatically used in constructing little 
+groups and in symmetrizing the band structure.</p>
+<p>The order of translation vectors is important. Within BZ,<em> k</em>-space is 
+orientated so that the first <em>k</em>-direction is along the &quot;x&quot; axis, the 
+second <em>k</em>-direction is in the &quot;xy&quot; plane, and the third <em>k</em>-direction 
+is out-of-plane.&nbsp; If the axes are all at 90&deg; to each other, no problems 
+arise. If the axes are not all at 90&deg; to each other, then for the symmetry 
+operations to work, the order of the axes is important.&nbsp;&nbsp; If, as would 
+normally be the case, internal coordinates are used, then the first translation 
+direction should be along the unique axis, if one exists.&nbsp; For a worked 
+example see graphite. </p>
+<p>Symmetry operations are represented by the product of a point-group operation 
+and a translation in the crystallographic unit cell. Each symmetry operation is 
+defined using 12 data, these are, in order:</p>
+<table align="center" cellpadding="4" cellspacing="4">
+	<tr>
+		<td class="auto-style2">Datum</td>
+		<td class="auto-style3">Value</td>
+		<td class="auto-style3">Purpose </td>
+	</tr>
+	<tr>
+		<td class="auto-style4">1</td>
+		<td class="auto-style4">0</td>
+		<td class="auto-style4">Pure rotation or identity operation</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>1</td>
+		<td>Inversion operation</td>
+	</tr>
+	<tr>
+		<td>1</td>
+		<td>2</td>
+		<td>End of symmetry operations</td>
+	</tr>
+	<tr>
+		<td>2-4</td>
+		<td>0</td>
+		<td>No translation</td>
+	</tr>
+	<tr>
+		<td>2-4</td>
+		<td>2 or larger</td>
+		<td>The reciprocal of the fraction non-trivial translation vector in 
+		each<br>of the three directions.&nbsp; For example, &quot;2 0 0&quot; would 
+		represent a translation <br>of 0.5, 0.0, 0.0 of the crystallographic 
+		unit cell or half a translation vector <br>representing motion through 
+		one unit cell in the first translation direction.</td>
+	</tr>
+	<tr>
+		<td>5</td>
+		<td>n.nn</td>
+		<td>The rotation angle expressed as a fraction of a circle. <br>Example: 0.1666 
+represents a rotation of 60<font face="Times New Roman">º</font>, i.e., &nbsp;360 
+times 1/6.</td>
+	</tr>
+	<tr>
+		<td>6-8</td>
+		<td>a.aa b.bb c.cc</td>
+		<td>The axis for the rotation.&nbsp; This can be un-normalized.&nbsp; If no rotation 
+is involved, then use (0.0 0.0 1.0)</td>
+	</tr>
+	<tr>
+		<td>9-11</td>
+		<td>a.aa b.bb c.cc</td>
+		<td>The location of the center of the point-group operation, in &Aring;ngstroms.&nbsp; 
+		<br>In most systems, 
+the first atom will be at the origin, i.e., at 
+coordinates (0.0,0.0,0.0)&nbsp; <br>A useful strategy is to make sure that atom 1 is 
+at the center of symmetry.&nbsp; <br>If the center of the point-group operation is 
+between atoms, then use the MOPAC <br>data set, output, or arc file to work out its 
+coordinates.<br><br><em>IF POSSIBLE, AVOID USING NON-ZERO VALUES.&nbsp; USE 
+		NON-TRIVIAL TRANSLATIONS INSTEAD.<br>ONLY USE NON-ZERO VALUES FOR 
+		POLYMERS. </em></td>
+	</tr>
+	<tr>
+		<td class="auto-style5">12</td>
+		<td class="auto-style5">text</td>
+		<td class="auto-style5">A brief (max: 12 characters) description of the operation.&nbsp; 
+		<br>The text must 
+be preceded and followed by either an inverted comma (') or a quotation symbol 
+(&quot;).</td>
+	</tr>
+</table>
+<p>&nbsp;</p>
+<p>Examples of such data are:</p>
+<PRE>0 0 0 0 0.5       1.0       0.0       0.0  0.0 0.0 0.0  'C2=C4(2)'
+0 2 2 2 0.25      0.0       1.0       0.0  0.0 0.0 0.0  'C4'
+1 2 2 2 0.5       0.0       1.0       0.0  0.0 0.0 0.0  'Sigma-h'
+2 0 0 0 0.0       0.0       0.0       1.0  0.0 0.0 0.0  'End'</PRE>
+<p class="auto-style1">&nbsp;</p>
+</BODY>
+</HTML>

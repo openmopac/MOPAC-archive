@@ -1,0 +1,28 @@
+reset;center {27.186 2.721 35.183}; rotate z 172.55; rotate y 59.27; rotate z -141.27; zoom 928.4; set rotationRadius 33.83;
+Display 57, 195, 252, 253, 647;
+hide add 57:F.c, 57:F.O
+select *; label off;
+set labelAlignment CENTER; set labeloffset 0 0 
+select  57:F.CE1; label His 57;   set labeloffset 80 00;  color label black; font label 20
+select  195:G.CB; label Ser 195;  set labeloffset -10 30;  color label black; font label 20
+select  214:G.C;  label Ser 214;  set labeloffset  40  20;  color label black; font label 20
+select  253:C.H;  label Thr 253;  set labeloffset  -40 -10;  color label black; font label 20
+select  647:C.O;  label H<sub>2</sub>O 647;  set labeloffset  00  40;  color label black; font label 20
+select  252:C.HA; label Trp 252;  set labeloffset -60 180;  color label black; font label 20
+
+select *; set labelfront on
+select 195:G.OG, 195:G.HG, 252:C.C, 252:C.O, 252:C.CA; label %a; color label white; font label 20;  set labelfront off
+select 57:F.NE2, 253:C.N; label %a; color label pink; font label 20;  set labelfront off
+select 252:C.C, 195:G.OG, 195:G.HG, 57:F.NE2
+frame TITLE " "
+center 195:G.OG
+measure off
+measure (195:G.OG) (252:C.C); font measure 20
+measure (253:C.N) (252:C.C); font measure 20
+connect (195:G.OG) (195:G.HG) DELETE; connect (195:G.OG) (195:G.HG) SINGLE; connect (195:G.OG) (195:G.HG) HBOND
+connect (57:F.NE2) (195:G.HG) delete; connect (57:F.NE2) (195:G.HG) SINGLE;  connect (57:F.NE2) (195:G.HG) HBOND
+connect (195:G.OG) (252:C.C) DELETE; connect (195:G.OG) (252:C.C) SINGLE;  connect (195:G.OG) (252:C.C) HBOND
+color background white
+
+
+

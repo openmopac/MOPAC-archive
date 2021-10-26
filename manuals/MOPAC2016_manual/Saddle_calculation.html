@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Use of SADDLE Calculation</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1>Use of <TT>SADDLE</TT> Calculation </H1>
+<P>The <TT><a href="saddle.html">SADDLE</a></TT> technique is used for locating a transition state, given two geometries, one on each side of the transition state. In order for the <TT>SADDLE</TT> technique to work, the Z-matrix must be specified as follows: </P>
+<UL>
+<LI>The first geometry, defining one geometry is defined as usual. If symmetry data is supplied, it should follow the first geometry. After the geometry, or geometry and symmetry data, there should be a blank line to indicate the end of the data </LI>
+<LI>The second geometry should then be specified. There must be a one-to-one correspondence of the atoms in the second geometry to those of the first geometry. </LI></UL>
+<P>From this specification, it follows that if two molecules react to form one molecule, then the first geometry must contain all the atoms of the two molecules. The easiest way of defining such a geometry is to define one molecule, then have an unusually long bond-length from one atom in the first molecule to the first atom in the second molecule. The two molecules together form the first geometry. Likewise, if a molecule decomposes, e.g. C<SUB>2</SUB>H<SUB>5</SUB>OH                             <IMG SRC="img1701.gif" WIDTH=20 HEIGHT=16 ALT="$rightarrow$">C<SUB>2</SUB>H<SUB>4</SUB> + H<SUB>2</SUB>O, every atom in the product must be defined in the same order as the atoms in the reactant. </P>
+<P>An example of a data-set for a <TT>SADDLE</TT> calculation, modeling the ethyl radical hydrogen migration from one methyl group to the other is given in the&nbsp;<A HREF="Saddle_calculation.html#c2h5s">Figure</A>. <A NAME="BM23204">&nbsp;</A> </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="c2h5s">&nbsp;<A NAME="BM23260"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Example of data for <TT>SADDLE</TT> calculation</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<PRE>Line  1:   UHF  SADDLE
+Line  2:   ETHYL RADICAL HYDROGEN MIGRATION
+Line  3:
+Line  4:    C   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line  5:    C   1.479146 1    0.000000 0    0.000000 0   1 0 0
+Line  6:    H   1.109475 1  111.328433 1    0.000000 0   2 1 0
+Line  7:    H   1.109470 1  111.753160 1  120.288410 1   2 1 3
+Line  8:    H   1.109843 1  110.103163 1  240.205278 1   2 1 3
+Line  9:    H   1.082055 1  121.214083 1   38.110989 1   1 2 3
+Line 10:    H   1.081797 1  121.521232 1  217.450268 1   1 2 3
+Line 11:    O   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line 12:    C   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line 13:    C   1.479146 1    0.000000 0    0.000000 0   1 0 0
+Line 14:    H   1.109475 1  111.328433 1    0.000000 0   2 1 0
+Line 15:    H   1.109470 1  111.753160 1  120.288410 1   2 1 3
+Line 16:    H   2.109843 1   30.103163 1  240.205278 1   2 1 3
+Line 17:    H   1.082055 1  121.214083 1   38.110989 1   1 2 3
+Line 18:    H   1.081797 1  121.521232 1  217.450268 1   1 2 3
+Line 19:    O   0.000000 0    0.000000 0    0.000000 0   0 0 0
+Line 20:</PRE></TD>
+</TR>
+</TABLE>
+<P></DIV></P>
+<P>Details of the mathematics of <TT>SADDLE</TT> appeared in print in 1984 (M. J. S. Dewar, E. F. Healy, J. J. P. Stewart, <EM>J. Chem. Soc. Faraday Trans. II</EM>, 3, 227, (1984)), so only a superficial description will be given here. </P>
+<P>The main steps in the saddle calculation are as follows: </P>
+<DL>
+<DT>1. The heats of formation of both systems are calculated. </DT>
+<DT>2. A vector <I>R</I> of length 3<I>N</I> defining the difference between the two geometries in Cartesian coordinates is calculated. The scalar of the vector is called the <TT>BAR</TT>, and represents the distance between the two geometries. </DT>
+<DT>3. The <TT>BAR</TT> is reduced by some fraction, normally about 5 to 15 percent. Normally, the default step is used, but this can be changed by use of <TT>
+<a href="bar.html">BAR=<I>n</I>.<I>nn</I></a></TT>, where <I>n</I>.<I>nn</I> is the fraction. <TT>BAR=0.15</TT> is the default. </DT>
+<DT>4. The geometry of lower energy is identified; call this <I>G</I>. </DT>
+<DT>5. Geometry <I>G</I> is optimized, subject to the constraint that it maintains a constant distance <I>P</I> from the other geometry. </DT>
+<DT>6. If the newly-optimized geometry is higher in energy than the other geometry, and the last two steps involved the same geometry moving, make the other geometry <I>G</I> without modifying <I>P</I>, and go to 5. </DT>
+<DT>7. Otherwise go back to 2. </DT>
+</DL>
+<P>The mechanism of 5 involves the coordinates of the moving geometry being perturbed by an amount equal to the product of the discrepancy between the calculated and required <I>P</I> and the vector <I>R</I>. </P>
+<TT><P>SADDLE</TT> works with Cartesian coordinates, so before the calculation starts, the two geometries are superimposed as much as possible. This is done as follows: </P>
+<DL>
+<DT>1. Both geometries are converted into Cartesian coordinates. </DT>
+<DT>2. Both geometries are centered about the origin of Cartesian space. </DT>
+<DT>3. One geometry is rotated until the difference vector is a minimum -- this minimum is within 1 degree of the absolute bottom. </DT>
+<DT>4. The <TT>SADDLE</TT> calculation then proceeds as described above. </DT>
+</DL>
+<P>The two geometries must be related by a continuous deformation of the coordinates. For this, internal coordinates are unsuitable in that while bond lengths and bond angles are <A NAME="BM23225">&nbsp;</A> unambiguously defined (being both positive), the dihedral angles can be either positive or negative. Clearly 300 degrees could equally well be specified as -60 degrees. A wrong choice of dihedral would mean that instead of the desired reaction vector being used, a completely incorrect vector was used, with disastrous results. </P>
+<P>To prevent this, a <TT>SADDLE</TT> calculation will always convert coordinates into Cartesian before starting the run. If symmetry is to be used, then the geometry must be supplied in Cartesian coordinates, because internal symmetry relations are not meaningful here. </P>
+<P>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      &nbsp;<H2>How to escape from a hilltop </H2>
+<P>A particularly irritating phenomenon sometimes occurs when a transition state is being refined. A rough estimate of the geometry of the transition state has been obtained by either a <TT>
+<a href="saddle.html">SADDLE</a></TT> or reaction path or by good guesswork. This geometry is then refined by <TT>
+<a href="ts.html">TS</a></TT>, <TT><a href="sigma.html">SIGMA</a></TT> or by <TT>
+<a href="nllsq.html">NLLSQ</a></TT>, and the system characterized by a force calculation. Remember that <TT>NLLSQ</TT> is preferred over <TT>SIGMA</TT> when the GNORM is large, so <TT>NLLSQ</TT> is probably the method of choice, if for any reason <TT>TS</TT> does not work. It is at this point that things often go wrong. Instead of only one negative force constant, two or more are found. In the past, the recommendation has been to abandon the work and to go on to something less masochistic. It is possible, however, to systematically progress from a multiple maximum to the desired transition state. The technique used will now be described. </P>
+<P>If a multiple maximum is identified, most likely one negative force constant corresponds to the reaction coordinate, in which case the objective is to render the other force constants positive. The associated normal mode eigenvalues are complex, but in the output are printed as negative frequencies, and for the sake of simplicity will be described as negative vibrations. Use a graphical user interface program to display the negative vibrations, and identify which mode corresponds to the reaction coordinate. This is the one we need to retain. </P>
+<P>Hitherto, simple motion in the direction of the other modes has <A NAME="BM23242">&nbsp;</A> proved difficult. However the
+<a href="drc0.html"><TT>DRC</TT></a> provides a convenient mechanism for automatically following a normal coordinate. Pick the largest of the negative modes to be annihilated, and run the DRC along that mode until a minimum is reached. At that point, refine the geometry once more using <TT>TS</TT> and repeat the procedure until only one negative mode exists. </P>
+<P>To be on the safe side, after each <TT>DRC</TT>+<TT>TS</TT> sequence do the <TT>DRC</TT>+<TT>TS</TT> operation again, but use the negative of the initial normal coordinate to start the trajectory. After both stationary points are reached, choose the lower point as the starting point for the next elimination. The lower point is chosen because the transition state wanted is the highest point on the lowest energy path connecting reactants to products. Sometimes the two points will have equal energy: this is normally a consequence of both trajectories leading to the same point or symmetry equivalent points. </P>
+<P>After all spurious negative modes have been eliminated, the remaining normal mode corresponds to the reaction coordinate, and the transition state has been located. </P>
+<P>This technique is relatively rapid, and relies on starting from a stationary point to begin each trajectory. If any other point is used, the trajectory will not be even roughly simple harmonic. If, by mistake, the reaction coordinate is selected, then the potential energy will drop to that of either the reactants or products, which, incidentally, forms a handy criterion for selecting the spurious modes: if the potential energy only drops by a small amount, and the time evolution is roughly simple harmonic, then the mode is one of the spurious modes. If there is any doubt as to whether a minimum is in the vicinity of a stationary point, allow the trajectory to continue until one complete cycle is executed. At that point the geometry should be near to the initial geometry. </P>
+<P>Superficially, a line-search might appear more attractive than the relatively expensive DRC. However, a line-search in Cartesian space will normally not locate the minimum in a mode. An obvious example is the mode corresponding to a methyl rotation. </P>
+<P>&nbsp;</P>
+                                                </BODY>
+</HTML>

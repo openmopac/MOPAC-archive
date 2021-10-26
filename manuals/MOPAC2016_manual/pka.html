@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>PI </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>pKa</TT>
+</h1>
+<p align="center">
+&nbsp;</p>
+<p align="left">
+When <TT>pKa</TT> is specified, the pKa of hydrogen atoms attached to oxygen atoms is 
+calculated and printed.&nbsp; For a large set of <a href="../pKa_table.html">
+compounds</a>, the average unsigned error is about 0.31 pKa units. </p>
+<p align="left">
+pKa is calculated using the O-H distance calculated using PM6, and a charge 
+calculated using a method specifically designed to reproduce the charge for pKa.&nbsp; </p>
+<p align="left">
+Do not use COSMO in optimizing the geometry.&nbsp; Use PM6 only.&nbsp; When the 
+pKa calculation is done on the optimized PM6 geometry, the COSMO technique is 
+switched on temporarily in order to get a better charge on the hydrogen atom(s). 
+Once the pKa calculation finishes, the COSMO is switchod off again.</p>
+<p align="left">
+Known problem: If an ionizable hydrogen is within hydrogen-bonding distance of 
+an atom with a large negative charge, as in the ene-ol form of acetylacetone, 
+then the predicted pKa will be much too negative.&nbsp; This is a consequence of 
+the induced extra positive charge on that hydrogen.&nbsp; </p>
+        </BODY>
+</HTML>

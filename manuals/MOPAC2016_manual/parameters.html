@@ -1,0 +1,261 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Parameters used in Semiempirical Methods</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY  BGCOLOR="#ffffff">
+<H3 align="center">Parameters used in Semiempirical Methods </H3>
+    <p>All the semiempirical methods contain sets of parameters. Atomic and 
+    diatomic parameters exist in PM6, while MNDO, AM1, PM3, and MNDO-<i>d</i> 
+    use only single-atom parameters. Not all parameters are optimized for all 
+    methods; for example, in MNDO and AM1 the two electron one center integrals 
+    are normally taken from atomic spectra. In the following Table, parameters 
+    optimized for a given method are indicated by '<sub><font size="5">*</font></sub>'. 
+    A '+' indicates that the value of the parameter was obtained from experiment 
+    (not optimized). Where neither symbol is given, the associated parameter is 
+    not used in that method. </p>
+    <p align="center"><b>Table of Parameters</b></p>
+    <div align="center">
+      <center>
+    <table cellSpacing="0" cellPadding="3" width="815" border="1" style="border-collapse: collapse" bordercolor="#111111">
+      <tr>
+        <td vAlign="center" width="141">Parameter</td>
+        <td vAlign="center" width="372">Description</td>
+        <td vAlign="center" width="54">
+        Units</td>
+        <td vAlign="center" width="49">
+        <p align="center">MNDO</td>
+        <td vAlign="center" width="39">
+        <p align="center">AM1</td>
+        <td vAlign="center" width="52">
+        <p align="center">PM3</td>
+        <td vAlign="center" width="58">
+        <p align="center">PM6</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141">U<sub><i>ss</i></sub>, U<sub><i>pp</i></sub>,<i><sub> </sub></i>U<sub><i>dd</i></sub></td>
+        <td vAlign="center" width="372"><i>s</i>, <i>p</i>, and <i>d</i> atomic orbital<br>
+        one-electron one-center integrals</td>
+        <td vAlign="center" width="54">
+        eV</td>
+        <td vAlign="center" width="49">
+        <p align="center">*</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i><span class="b">&beta;</span><sub>s</sub></i>,&nbsp; <i><span class="b">&beta;</span></i><sub><i>p</i></sub>,<i>
+        </i>and <i><span class="b">&beta;</span></i><sub><i>d</i></sub></td>
+        <td vAlign="center" width="372"><i>s, p, </i>&nbsp;and <i>d</i> atomic orbital 
+        one-electron<br>
+        two-center resonance integral terms</td>
+        <td vAlign="center" width="54">
+        eV</td>
+        <td vAlign="center" width="49">
+        <p align="center">*</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i>&xi;<sub>s</sub></i><font face="Times New Roman">, </font><i>&xi;</i><sub><i>p</i></sub><font face="Times New Roman">, 
+        and </font><i>&xi;</i><sub><i>d</i></sub></td>
+        <td vAlign="center" width="372"><i>s</i><font face="Times New Roman">,</font><i> 
+        p</i><font face="Times New Roman">, and </font><i>d</i> Slater atomic orbital 
+        exponent</td>
+        <td vAlign="center" width="54">
+        bohr<sup>-1</sup></td>
+        <td vAlign="center" width="49">
+        <p align="center">*</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i>&xi;<sub>s</sub></i><sub>n</sub><font face="Times New Roman">,</font><i> &xi;</i><sub><i>p</i>n</sub><font face="Times New Roman">, 
+        and </font><i>&xi;</i><sub><i>d</i>n</sub></td>
+        <td vAlign="center" width="372"><i>s</i><font face="Times New Roman">,</font><i> 
+        p</i><font face="Times New Roman">, and </font><i>d</i> Slater atomic orbital 
+        internal exponent</td>
+        <td vAlign="center" width="54">
+        bohr<sup>-1</sup></td>
+        <td vAlign="center" width="49">
+        <p align="center">*</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i><span class="b">&alpha;</span><sub>A</sub></i></td>
+        <td vAlign="center" width="372">Atom <i>A</i> core-core repulsion term</td>
+        <td vAlign="center" width="54">
+        <font SIZE="2">&Aring;</font><sup>-1</sup></td>
+        <td vAlign="center" width="49">
+        <p align="center">*</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">&nbsp;</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141">
+        <!-- MATH: $\alpha_{AB}$ --><i><span class="b">&alpha;</span><sub>AB</sub></i></td>
+        <td vAlign="center" width="372">Atoms <i>A</i> and <i>B</i> core-core 
+        repulsion term</td>
+        <td vAlign="center" width="54">
+        <font SIZE="2">&Aring;</font><sup>-1</sup></td>
+        <td vAlign="center" width="49">
+        <p align="center">&nbsp;</td>
+        <td vAlign="center" width="39">
+        <p align="center">&nbsp;</td>
+        <td vAlign="center" width="52">
+        <p align="center">&nbsp;</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i>Gss</i></td>
+        <td vAlign="center" width="372"><i>s</i>-<i>s</i> atomic orbital one 
+        center<br>
+        two electron repulsion integral</td>
+        <td vAlign="center" width="54">
+        eV</td>
+        <td vAlign="center" width="49">
+        <p align="center">+</td>
+        <td vAlign="center" width="39">
+        <p align="center">+</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i>Gsp</i></td>
+        <td vAlign="center" width="372"><i>s</i>-<i>p</i> atomic orbital one 
+        center<br>
+        two electron repulsion integral</td>
+        <td vAlign="center" width="54">
+        eV</td>
+        <td vAlign="center" width="49">
+        <p align="center">+</td>
+        <td vAlign="center" width="39">
+        <p align="center">+</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i>Gpp</i></td>
+        <td vAlign="center" width="372"><i>p</i>-<i>p</i> atomic orbital one 
+        center<br>
+        two electron repulsion integral</td>
+        <td vAlign="center" width="54">
+        eV</td>
+        <td vAlign="center" width="49">
+        <p align="center">+</td>
+        <td vAlign="center" width="39">
+        <p align="center">+</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i>Gp</i>2</td>
+        <td vAlign="center" width="372"><i>p</i>-<i>p</i>' atomic orbital one 
+        center<br>
+        two electron repulsion integral</td>
+        <td vAlign="center" width="54">
+        eV</td>
+        <td vAlign="center" width="49">
+        <p align="center">+</td>
+        <td vAlign="center" width="39">
+        <p align="center">+</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141"><i>Hsp</i></td>
+        <td vAlign="center" width="372"><i>s</i>-<i>p</i> atomic orbital 
+        one-center<br>
+        two-electron exchange integral</td>
+        <td vAlign="center" width="54">
+        eV</td>
+        <td vAlign="center" width="49">
+        <p align="center">+</td>
+        <td vAlign="center" width="39">
+        <p align="center">+</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141">K<sub><i>nA</i></sub> or a<sub><i>nA</i></sub></td>
+        <td vAlign="center" width="372">A Gaussian multiplier for <i>n</i>th<br>
+        Gaussian of atom A</td>
+        <td vAlign="center" width="54">
+        none</td>
+        <td vAlign="center" width="49">
+        <p align="center">&nbsp;</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141">L<sub><i>nA</i></sub> or b<sub><i>nA</i></sub></td>
+        <td vAlign="center" width="372">A Gaussian exponent multiplier<br>
+        Gaussian of atom A</td>
+        <td vAlign="center" width="54">
+        <font SIZE="2">&Aring;</font><sup>-2</sup></td>
+        <td vAlign="center" width="49">
+        <p align="center">&nbsp;</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+      <tr>
+        <td vAlign="center" width="141">M<sub><i>nA</i></sub> or c<sub><i>nA</i></sub></td>
+        <td vAlign="center" width="372">A Radius of center of <i>n</i>th<br>
+        Gaussian of atom A</td>
+        <td vAlign="center" width="54">
+        <font SIZE="2">&Aring;</font></td>
+        <td vAlign="center" width="49">
+        <p align="center">&nbsp;</td>
+        <td vAlign="center" width="39">
+        <p align="center">*</td>
+        <td vAlign="center" width="52">
+        <p align="center">*</td>
+        <td vAlign="center" width="58">
+        <p align="center">*</td>
+      </tr>
+    </table>
+                                       </center>
+</div>
+                                       </BODY>
+</HTML>

@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Polarizability Additive Corrections</TITLE>
+                                                                                                             </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2>
+Additive corrections to Polarizability Volume<TT> </H2>
+</TT><P>Polarizability volumes calculated using NDDO methods are too low by
+about 30%.&nbsp; By applying atomic corrections, this error can be reduced to
+about 1.5%.&nbsp; The form of the atomic correction used is:</P>
+<P align="center"><i>P</i><sub>(corrected)</sub> =&nbsp; <i>a +C<sub>1</sub>P +
+</i><span class="b">&Sigma;</span><i><sub>i</sub>C<sub>i</sub></i></P>
+<P align="left">where <i>i</i> runs over all atoms in the molecule, <i>P</i> is
+the uncorrected polarizability volume, and&nbsp; <i>
+a</i>, <i>C<sub>1</sub></i>, and <i>C<sub>i</sub></i> are constants.</P>
+<P align="left">Constants are available for the elements H, C, N, O, F, Cl, Br, 
+and I, for MNDO, AM1, and PM3, and H, C, N, O, F, Si, P, S, Cl, Br, and I, are 
+available in PM6 and PM7.&nbsp; These corrections are applied automatically when either <A NAME="tex2html3944"><a href="polar.html"><TT>POLAR</TT></a></A>&nbsp;or <A NAME="tex2html3944">
+</a><a href="static.html"><TT>STATIC</TT></a></A>&nbsp; is used.</P>
+<P align="left">As an example, the PM3 polarizability for dichloromethane, CH<sub>2</sub>Cl<sub>2</sub>,
+is 3.31 A<sup>3</sup>, and the experimental value is 6.48 A<sup>3</sup>. To
+convert the calculated polarizability to the corrected value, the following PM3
+constants are used:</P>
+<P align="left">a&nbsp; = 0.28759,&nbsp;&nbsp; C<sub>1 </sub>= 0.246502,&nbsp;&nbsp;
+C<sub>H </sub>= 0.178581,&nbsp;&nbsp; C<sub>C </sub>&nbsp;=&nbsp; 1.24273,&nbsp;&nbsp;
+C<sub>Cl </sub>= 1.8556.</P>
+<P align="left">The conversion equation is thus:</P>
+<P align="center"><i>P(corrected)</i> = 0.28759&nbsp; +&nbsp; 0.246502x3.31&nbsp;
++ (2x0.178581 + 1.24273 + 2x1.8556)&nbsp; =&nbsp; 6.41&Aring;<sup>3</sup>.</P>
+<P align="left">The error is thus reduced from&nbsp; 49% to 1%.</P>
+<P align="left">Constants are not available for other elements, but if only one
+such atom is present in a molecule, the error resulting from the absence of a
+correction is minor. Thus if the polarizability of chlorophyll&nbsp; is
+calculated, the atomic contribution due to the single magnesium atom will not be
+included in the corrected polarizability.&nbsp; This will introduce an error,
+but in most cases the error will be quite small.</P>
+<P align="left">For normal organic compounds, the 
+<a href="../PM7_accuracy/Polarizabilities.html">average error in polarizability</a> 
+should be less than 2%.</P>
+
+</BODY>
+</HTML>

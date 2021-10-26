@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Automatically correcting faulty charges </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<B>
+MOZYME example: </B>Automatically correcting faulty charge</h1>
+<p align="left">
+In a <TT>
+<a href="mozyme.html">MOZYME</a></TT> calculation, any errors in net charge are 
+automatically corrected unless <a href="charge.html"><TT>CHARGE=<i>n</i></TT></a> is present.&nbsp; In this example, CH<sub>3</sub>-NH<sub>3</sub> is 
+obviously a cation (methyl ammonium cation), but in the data set shown here, no 
+charge is specified.&nbsp; Because of this, when the job 
+is run the correct charge is calculated, and the output and ARC files will be 
+correct.<p align="left">
+Data-set: <PRE><b>  mozyme 
+ Methylammonium ion, no charge is specified, therefore the charge is assigned at run time
+  C         0.00000000 +0    0.0000000 +0    0.0000000 +0                        
+  N         1.50605484 +1    0.0000000 +0    0.0000000 +0     1     0     0      
+  H         1.03644234 +1  110.9040994 +1    0.0000000 +0     2     1     0       
+  H         1.03643101 +1  110.9036359 +1  120.0082541 +1     2     1     3      
+  H         1.03641712 +1  110.8984303 +1  119.9977109 +1     2     1     4       
+  H         1.11206587 +1  111.8774978 +1   60.0148557 +1     1     2     3       
+  H         1.11205744 +1  111.8759622 +1  119.9971123 +1     1     2     6      
+  H         1.11209052 +1  111.8816803 +1  120.0004127 +1     1     2     7       
+ 
+</b></PRE>
+</BODY>
+</HTML>

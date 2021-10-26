@@ -1,0 +1,620 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Vibrational quantities - Example of Nitrogen molecule</TITLE>
+<style type="text/css">.auto-style1 {
+	text-align: left;
+}
+.auto-style2 {
+	text-align: center;
+}
+.auto-style4 {
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style7 {
+	text-align: center;
+	border-top-style: none;
+	border-top-width: medium;
+}
+.auto-style8 {
+	text-align: center;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+}
+.auto-style9 {
+	font-family: Symbol;
+}
+.auto-style10 {
+	text-align: center;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+}
+.auto-style11 {
+	text-align: center;
+	border-top-style: none;
+	border-top-width: medium;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style12 {
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	text-align: center;
+}
+.auto-style14 {
+	background-color: #FFFFFF;
+}
+.auto-style15 {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style16 {
+	text-align: right;
+}
+.auto-style17 {
+	font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+.auto-style21 {
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+}
+.auto-style23 {
+	border-top-style: none;
+	border-top-width: medium;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+	text-align: center;
+}
+.auto-style24 {
+	text-decoration: underline;
+}
+.auto-style20 {
+	border-top-style: none;
+	border-top-width: medium;
+	border-bottom-style: none;
+	border-bottom-width: medium;
+}
+.auto-style22 {
+	border-top-style: solid;
+	border-top-width: 1px;
+}
+.auto-style25 {
+	border-bottom-style: none;
+	border-bottom-width: medium;
+}
+.auto-style13 {
+	background-color: #FFFFFF;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">Vibrational Quantities - Example of Nitrogen molecule</h1>
+<p class="auto-style1">Back to <a href="Vibrational%20Quantities%20-%20Derivation.html">Vibrational 
+Relationships - Derivation</a></p>
+<p class="auto-style1">A nitrogen molecule, N<sub>2</sub>, provides a good, 
+simple, quantitative introduction to molecular vibration quantities.&nbsp; The MNDO method will be used mainly because it is very old and stable, and all the 
+steps described here can be reproduced using any copy of MOPAC. Several 
+different quantities will be used in this example.&nbsp; To assist in 
+conversions, a set of <a href="Vibrational%20Quantities%20-%20constants.html">conversion 
+factors</a> are useful.</p>
+<p class="auto-style1">The starting point will be the N<sub>2</sub> molecule at its 
+equilibrium distance, 
+1.1038 &Aring;ngstroms.</p>
+<p class="auto-style1"><strong>Data-set</strong></p>
+<p class="auto-style1">The following dataset was used as the source for many of the numbers mentioned here.&nbsp; Keywords <a href="dforce.html"><tt>DFORCE</tt></a>,
+<a href="fmat.html"><tt>FMAT</tt></a>, <a href="large.html"><tt>LARGE</tt></a>, 
+<a href="nosym.html"><tt>NOSYM</tt></a>, and
+<a href="noreor.html"><tt>NOREOR</tt></a> were used in order to provide expanded output, 
+normally only <a href="force.html"><tt>FORCE</tt></a> would be used.</p>
+<pre>DFORCE MNDO FMAT LARGE NOSYM NOREOR
+  Calculate the vibrational frequency of N2
+  
+ N     0.00000000 +0   0.00000000 +0   0.00000000 +0
+ N     1.10380157 +1   0.00000000 +0   0.00000000 +0</pre>
+<p class="auto-style1"><strong>Build the Hessian matrix</strong></p>
+<p class="auto-style1">Hessian matrices for vibrational calculations are 
+constructed using the gradients of the displaced Cartesian coordinates for each 
+atom, and the following expression, for a description of how this is 
+constructed, see
+<a href="Hessian_Matrix.html#Equation_1:_Construct_Hessian_matrix">Hessian 
+matrix</a>. </p>
+<p class="auto-style2">
+<IMG
+ WIDTH="400" HEIGHT="64"
+ SRC="img1510.gif"
+ ALT="\begin{displaymath}H_{i,j} = \frac{1}{2}\left(\frac{(\frac{\delta E}{\delta x_i}...
+...ta E}{\delta x_j})_{_{-0.5\Delta x_i}}}
+{\Delta x_i}\right).
+\end{displaymath}"></p>
+<p class="auto-style1">In this 
+equation, &Delta;x<sub>i</sub> = &Delta;x<sub>j</sub> = 0.00833333 &Aring;. This 
+step-size was selected automatically, and similar step-size would work just as 
+well. Only one matrix element, H(1,4), is important, this represents the N-N 
+stretch along the &quot;X&quot; axis.</p>
+<p class="auto-style1">Four gradients are present in this equation, their values 
+for Hessian element H(1,4) 
+are:</p>
+<p class="auto-style1">
+<table>
+	<tr>
+		<td class="auto-style12">&nbsp;</td>
+		<td class="auto-style12">Gradient&nbsp;</td>
+		<td class="auto-style4">Dist. N-N (&Aring;)&nbsp;</td>
+		<td class="auto-style4">Gradient (kcal mol<sup>-1</sup> &Aring;<sup>-1</sup>)&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style8">1&nbsp;</td>
+		<td class="auto-style8">(<span class="auto-style9">d</span>E/<span class="auto-style9">d</span>x<sub>1</sub>)@(+0.5&Delta;x<sub>4</sub>)&nbsp;</td>
+		<td class="auto-style8">1.10796823&nbsp;&nbsp;</td>
+		<td class="auto-style8">-18.292733</td>
+	</tr>
+	<tr>
+		<td class="auto-style7">2&nbsp;</td>
+		<td class="auto-style7">(<span class="auto-style9">d</span>E/<span class="auto-style9">d</span>x<sub>1</sub>)@(-0.5&Delta;x<sub>4</sub>)&nbsp;</td>
+		<td class="auto-style7">1.09963491&nbsp;&nbsp;</td>
+		<td class="auto-style7">+18.832255&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style10">3&nbsp;</td>
+		<td class="auto-style10">(<span class="auto-style9">d</span>E/<span class="auto-style9">d</span>x<sub>4</sub>)@(+0.5&Delta;x<sub>1</sub>)&nbsp;</td>
+		<td class="auto-style10">1.09963491&nbsp;&nbsp;</td>
+		<td class="auto-style10">-18.832815</td>
+	</tr>
+	<tr>
+		<td class="auto-style11">4&nbsp;</td>
+		<td class="auto-style11">(<span class="auto-style9">d</span>E/<span class="auto-style9">d</span>x<sub>4</sub>)@(-0.5&Delta;x<sub>1</sub>)&nbsp;</td>
+		<td class="auto-style11">1.10796823&nbsp;&nbsp;</td>
+		<td class="auto-style11">+18.292156&nbsp;&nbsp;</td>
+	</tr>
+</table>
+</p>
+<p class="auto-style1">
+Ideally, gradients 1 and 4 should be the same, as should gradients 2 and 3, but 
+because of numerical imprecision there are small differences.&nbsp; A 30% 
+reduction in numerical imprecision can be achieved by averaging gradients 1 and 
+4, and 2 and 3.</p>
+<p class="auto-style1">
+Matrix element H(1,4) can then be calculated using these gradients, giving 
+H(1,4) = -4455.175 kcal x mol<sup>-1</sup> x &Aring;<sup>-2</sup></p>
+<p class="auto-style1"><strong>Convert to SI</strong></p>
+<p class="auto-style1">Converting the Hessian from (kcal mol<sup>-1</sup> &Aring;<sup>-2</sup>) to (millidynes 
+&Aring;<sup>-1</sup>) involves multiplying the Hessian by a factor.&nbsp; This 
+factor can be expressed variously as:</p>
+<table align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>Factor &nbsp;</td>
+		<td>= (J m<sup>-1</sup> to millidynes) (kcal to Joules)/((Å to m)(Mole 
+		to molecule))</td>
+	</tr>
+	<tr>
+		<td style="height: 20px"></td>
+		<td style="height: 20px">= (10<sup>8</sup>)(4184)/((10<sup>-10</sup>)(6.022 
+x 10<sup>23</sup>))<br>= 6.9477 x 10<sup>-3</sup></td>
+	</tr>
+</table>
+<p class="auto-style1">When this is done, the matrix element becomes H(1,4) = 
+-4455.175 x 6.9477 x 10<sup>-3</sup> = -30.9520 millidynes x 
+&Aring;<sup>-1</sup></p>
+<p class="auto-style1"><strong>Mass-weighting the Hessian</strong></p>
+<p class="auto-style1">The final step in preparing the matrix for 
+diagonalization involves mass-weighting.&nbsp; This operation is straightforward: </p>
+<p class="auto-style1">For all matrix elements:
+<table align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>H<sub>i,j</sub><sup>m</sup> &nbsp;</td>
+		<td>= H<sub>i,j</sub> x (M<sub>i</sub> 
+x M<sub>j</sub>)<sup>-&frac12;</sup> millidynes x 
+&Aring;<sup>-1</sup> x amu<sup>-1</sup></td>
+	</tr>
+</table>
+</p>
+<p class="auto-style1">Nitrogen atoms have a mass of M<sub>i</sub> = 14.0067 amu, 
+so matrix element H(1,4) is:</p>
+<p class="auto-style2">
+<table align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td>H<sub>1,4</sub><sup>m</sup> &nbsp;</td>
+		<td>= -30.9520*(14.0067*14.0067)<sup>-&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td style="height: 20px"></td>
+		<td style="height: 20px">= -2.20980 millidynes x 
+&Aring;<sup>-1</sup> x amu<sup>-1</sup></td>
+	</tr>
+</table>
+</p>
+<p class="auto-style1"><strong>Convert the mass-weighted Hessian into normal 
+modes of vibration</strong></p>
+<p class="auto-style1">When the mass-weighted Hessian is diagonalized, the 
+result is a set of eigenvalues, <i>&epsilon;</i><sub>i</sub>, 
+and associate eigenvectors, <em>&psi;</em><sub>i</sub>.&nbsp; 
+The eigenvectors are the coefficients of the wave-function that represents the 
+normal modes of vibration, and form an orthonormal set.&nbsp; 
+The eigenvalues represent the force constants for the modes divided by the 
+effective mass.&nbsp; Nitrogen has only one non-trivial vibration, so: </p>
+<table align="center">
+	<tr>
+		<td class="auto-style15" colspan="2">Eigenvalue &epsilon;<sub>1</sub> of mass-weighted 
+		Hessian</td>
+	</tr>
+	<tr>
+		<td class="auto-style4">&epsilon;<sub>1</sub></td>
+		<td class="auto-style4">= 4.4196 millidynes x 
+&Aring;<sup>-1</sup> x amu<sup>-1</sup></td>
+	</tr>
+	</table>
+<p class="auto-style1">and the eigenvector: <em>&psi;</em><sub>1</sub> 
+is (0.7071) x (N<sub>1</sub>(x) 
+- N<sub>2</sub>(x)).&nbsp; This represents the N - N stretch mode. </p>
+<p class="auto-style1"><strong>Recap of force constant and reduced mass</strong></p>
+<p class="auto-style1">Eigenvalues,&nbsp;<em>&epsilon;</em><sub>i</sub>, of the mass-weighted Hessian are related to 
+the force-constant, <em>k</em><sub>i</sub>, and reduced mass,&nbsp;<em>&mu;</em><sub>i</sub>, for 
+a normal mode of vibration 
+by:</p>
+<p class="auto-style2"><em>&epsilon;</em><sub>i</sub> = <em>k</em><sub>i</sub>/<em>&mu;</em><sub>i</sub>&nbsp;</p>
+<p><strong>Calculation of the Reduced Mass for the N-N stretch</strong></p>
+<p>Given the normal mode eigenvector, the reduced mass for the vibration can be 
+calculated from:</p>
+<p class="auto-style2"><em>&mu;</em><sub>i</sub> = &Sigma;<sub>A</sub>((<i>&psi;</i><sub>i</sub>(A)(x))<sup>2 </sup>
++ (<i>&psi;</i><sub>i</sub>(A)(y))<sup>2 </sup>+ (<i>&psi;</i><sub>i</sub>(A)(z))<sup>2</sup>)<sup>2</sup> M<sub>A</sub> 
+amu</p>
+<p class="auto-style1">where &quot;A&quot; refers to atom A, and &quot;x&quot;, &quot;y&quot;, and &quot;z&quot; refer 
+to the respective Cartesian coordinate of atom &quot;A&quot;.</p>
+<p>For the vibration in N<sub>2</sub>, this sum is:</p>
+<table align="center">
+	<tr>
+		<td><i>&mu;</i><sub>1</sub>&nbsp;</td>
+		<td>= ((0.7071)<sup>2</sup>)<sup><sup>2</sup></sup> x 14.0067 + ((-0.7071)<sup>2</sup>)<sup>2</sup> x 14.0067</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 7.00335 amu</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 1.16294 x 10<sup>-23</sup> g</td>
+	</tr>
+</table>
+<p><strong>Calculation of the Force Constants for the N-N stretch</strong></p>
+<p class="auto-style14">Given <em>&epsilon;</em><sub>1</sub> and <em>&mu;</em><sub>1</sub>, the force constant,
+<em>k</em><sub>1</sub> is:</p>
+<table align="center">
+	<tr>
+		<td><em>k</em><sub>1</sub>&nbsp;</td>
+		<td>= 4.4196 x 7.00335 millidynes x&nbsp;&Aring;<sup>-1</sup> x amu<sup>-1</sup> 
+		x amu</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 30.952 millidynes x&nbsp;&Aring;<sup>-1</sup></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 30.952 x 10<sup>5</sup> dynes x cm<sup>-1</sup></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+<p class="auto-style1"><strong>Convert eigenvalues to wavenumbers (frequencies) in reciprocal 
+centimeters</strong></p>
+<p class="auto-style1">The eigenvalues are then converted into vibrational 
+frequencies, <em>&#957;</em><sub>i</sub>, in 
+cm<sup>-1 </sup>via:</p>
+<table align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td><i>&nu;</i><sub>i</sub> &nbsp;</td>
+		<td>= 1/(2&#960;c) x (N<i> </i>x<i> </i>10<sup>5</sup> x<i> &epsilon;</i>)<sup>&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td style="height: 20px"></td>
+		<td style="height: 20px">= 1/(2 x 3.1416 x 2.9979 x 10<sup>10</sup>) x (6.022 
+x 10<sup>28</sup> x 4.4196)<sup>&frac12;</sup><br></td>
+	</tr>
+	<tr>
+		<td style="height: 20px">&nbsp;</td>
+		<td style="height: 20px">= 1.3028 x 10<sup>3 </sup>x <em>&epsilon;</em><sub>i</sub><sup>&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td style="height: 20px">&nbsp;</td>
+		<td style="height: 20px">= 2738.8 cm<sup>-1</sup></td>
+	</tr>
+</table>
+<p class="auto-style1">Here, &quot;c&quot; is in centimeters per second, N is in 
+moles, 
+and <em>&epsilon;</em> is in millidynes x 
+&Aring;<sup>-1</sup> x amu<sup>-1</sup></p>
+<p class="auto-style1"><strong>Convert wavenumbers to period of oscillation (<em>T</em>) in 
+femtoseconds</strong></p>
+<p class="auto-style1">The period for a molecular vibration is normally given in 
+femtoseconds, fs; one femtosecond is 10<sup>-15</sup> of a second. The 
+conversion from wavenumber to period is given by:</p>
+<table align="center">
+<tr>
+		<td style="width: 6px"><em>T</em></td>
+		<td>= 10<sup>15</sup><em> /( </em>c<em> x &nu;)</em></td>
+	</tr>
+	<tr>
+		<td style="width: 6px">&nbsp;</td>
+		<td>= 10<sup>15 </sup>/ (2.9979 x 10<sup>10</sup> x 2738.8)</td>
+	</tr>
+	<tr>
+		<td style="width: 6px">&nbsp;</td>
+		<td>= 12.179 fs</td>
+	</tr>
+	<tr>
+		<td style="width: 6px">&nbsp;</td>
+		<td>= 12.179 x 10<sup>-15</sup> s</td>
+	</tr>
+</table>
+<p class="auto-style1"><strong>Convert wavenumbers to Angular Frequency, <em>&omega;</em></strong></p>
+<p> Angular frequency is the angular displacement per second, or 2&pi;/T:</p>
+<table align="center">
+<tr>
+		<td style="width: 6px"><em>&omega;</em></td>
+		<td>= 2 x 3.1416/(12.179 x 10<sup>-15</sup>)</td>
+	</tr>
+	<tr>
+		<td style="width: 6px">&nbsp;</td>
+		<td>= 5.1589 x 10<sup>14</sup> s<sup>-1</sup></td>
+	</tr>
+	</table>
+<p class="auto-style1"><strong>Convert frequency into kcal/mol</strong></p>
+<table align="center">
+	<tr>
+		<td>&nu;<sub>1</sub> (kcal mol<sup>-1</sup>) </td>
+		<td>= &nu;<sub>1</sub>(cm<sup>-1</sup>) x N x h 
+		x c x (ergs per kcal)<sup>-1</sup></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 2738.8 x 6.022 x 10<sup>23</sup> x 6.626 x 10<sup>-27</sup> x 2.9979 x 10<sup>10</sup> 
+		x (4.184<sup> </sup>x 10<sup>10</sup>)<sup> -1</sup></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 2738.8 x 2.859 x 10<sup>-3</sup></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 7.830 kcal x mol<sup>-1</sup></td>
+	</tr>
+</table>
+&nu;<sub>1</sub> was in cm<sup>-1</sup>, N 
+is in units in one mole, h is in erg - seconds, and c is in centimeters per 
+second.&nbsp; Cancelling dimensions gives (cm<sup>-1</sup> x N x (erg x s) x (cm x s<sup>-1</sup>) 
+x (4.184 x (erg kcal<sup>-1</sup>)<sup>-1</sup> = N x J x 4184<sup>-1</sup>&nbsp; =&nbsp; kcal per mole.<br>
+<br><strong>Convert frequency into SI units<br><br></strong>Converting the 
+quantities in a molecular vibration into SI units requires making a serious 
+decision.&nbsp; Should the quantities refer to one mole of atoms or molecules (in the case 
+of N<sub>2</sub>, this would be two particles each of mass 14.0067 g),&nbsp;or should 
+the quantities refer to individual atoms and molecules.&nbsp; The arbitrary choice made 
+here is to use individual atoms and molecules.<br><br>The 
+starting point for this conversion is the same as that for converting frequency 
+into kcal mol<sup>-1</sup>. <br>
+<table align="center">
+	<tr>
+		<td>&nu;<sub>1</sub></td>
+		<td>(erg)= (&nu;<sub>1</sub>(cm<sup>-1</sup>) x h x c) </td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 2738.8 x 6.626 x 10<sup>-27</sup> x 2.9979 x 10<sup>10</sup> 
+		</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 2738.8 x 1.9864 x 10<sup>-16</sup></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 5.4404 x 10<sup>-13</sup> erg</td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td>= 5.4404 x 10<sup>-20</sup> J</td>
+	</tr>
+</table>
+&nbsp;<p class="auto-style1"><strong>Zero point energy</strong></p>
+
+<p class="auto-style1">The zero-point energy of a polyatomic molecule is the sum 
+of the zero-point energies of all its normal modes.&nbsp; The zero-point energy 
+of a normal mode is half of its vibrational energy.&nbsp; For N<sub>2</sub>, the vibration of 2738.8 cm<sup>-1</sup>, corresponds to an energy of 7.83 kcal mol<sup>-1</sup>, 
+so its zero-point energy is 3.915 kcal mol<sup>-1</sup>. </p>
+<p class="auto-style1"><strong>Convert energy represented by frequency into velocity 
+of the atoms</strong><p class="auto-style1">
+The starting point for this operation is the familiar E = &frac12;mv<sup>2</sup>. 
+For this operation, the cgs system will be used.&nbsp; Rearranging E = &frac12;mv<sup>2</sup> 
+gives the velocity, v = (2E/m)<sup>&frac12;</sup>. At this point, E is the energy in 
+ergs per mole, and &quot;m&quot; is the reduced mass of the vibration in amu. These 
+quantities can be re-worded as ergs per molecule and reduced mass in grams. 
+Expanding and solving for the velocity gives:<br><table align="center" style="width: 371px">
+	<tr>
+		<td class="auto-style16">v</td>
+		<td style="width: 340px">= (2E/m)<sup>&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td class="auto-style16">&nbsp;</td>
+		<td style="width: 340px">= (2 x (4.184 x 10<sup>10</sup> x &nu;<sub>1</sub>) 
+		x <i>&mu;</i><sub>1</sub><sup>-1</sup>)<sup>&frac12;</sup>&nbsp;
+		</td>
+	</tr>
+	<tr>
+		<td class="auto-style16">&nbsp;</td>
+		<td style="width: 340px">= (2 x (4.184 x 10<sup>10</sup> x 7.830 x 7.00335<sup>-1</sup>)<strong><sup>&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td>&nbsp;</td>
+		<td style="width: 340px">= 3.0587 x 10<sup>5</sup> cm x s<sup>-1</sup></td>
+	</tr>
+	</table>
+<p class="auto-style1">This velocity can be split into velocity per 
+atom, v<sub>A</sub>, using the vibrational wavefunction, <em>&psi;</em><sub>i</sub>.&nbsp; First, the wavefunction must be re-normalized so that the 
+total motion is 1.0 &Aring;ngstroms.&nbsp; This is done by dividing the 
+coefficients for each atom by the square-root of the atomic mass:<p class="auto-style2">&nbsp;<em>&psi;</em><sub>iA</sub><sup>'</sup> 
+= <em>&psi;</em><sub>iA</sub> x m<sub>A</sub><sup>-&frac12;</sup><p class="auto-style1">
+Then re-normalizing using a normalization factor <em>N</em>,
+<p class="auto-style2"><em>N</em> = (&Sigma;<sub>A</sub><span class="auto-style17"> 
+(<em>&psi;</em><sub>iA</sub><sup>'</sup><sub>(x)</sub><sup>2</sup><sub>&nbsp; </sub>+ <em>&psi;</em><sub>iA</sub><sup>'</sup><sub>(y)</sub><sup>2</sup><sub> </sub> 
+&nbsp;+<em> &psi;</em><sub>iA</sub><sup>'</sup><sub>(z)</sub><sup>2</sup><sub> </sub> 
+&nbsp; )<sup>&frac12;</sup>)<sup>-1 </sup></span>
+<p class="auto-style1">to give:<p class="auto-style2"> <em>&psi;</em><sub>i</sub><sup>&quot;</sup> 
+= <em>N</em> x<em> &psi;</em><sub>i</sub><sup>'</sup><p class="auto-style1">Finally, the starting 
+velocity of each atom can be calculated from:<p class="auto-style2">&nbsp;v<sub>A</sub> = v x <em>&psi;</em><sub>i</sub><sup>&quot;</sup>(A)<p class="auto-style1">
+For nitrogen, the wavefunction from the mass-weighted Hessian was <em>&psi;</em><sub>1</sub> 
+= 0.7071 x N<sub>1</sub>(x) 
+- 0.7071 x N<sub>2</sub>(x).&nbsp; After re-normalizing, this becomes <em>&psi;</em><sub>1</sub><sup>&quot;</sup> 
+= 0.5 x N<sub>1</sub>(x) 
+- 0.5 x N<sub>2</sub>(x), and the velocity of each atom becomes:<p class="auto-style2">
+v<sub>1</sub> = 1.52935 x 10<sup>5</sup> cm x sec<sup>-1</sup><p class="auto-style1">
+and</p>
+<p class="auto-style2">
+v<sub>2</sub> = -1.52935 x 10<sup>5</sup> cm x sec<sup>-1</sup><p class="auto-style1">
+in the &quot;x&quot; direction.&nbsp; This calculation is a bit tedious, 
+but an easier way to obtain the same result is to examine the output file from a DRC 
+calculation, see below.</p>
+<p class="auto-style1"><strong>&nbsp;Travel</strong></p>
+	<p class="auto-style1">In a molecular vibration the system starts at the 
+	energy minimum, then each atom moves along a path defined by the normal mode 
+	eigenvector.&nbsp; At the turning point - the point where atomic motion 
+	stops - the sum of the distances that the atoms are from their original 
+	position is the travel distance.&nbsp; In the case of the N<sub>2</sub> 
+	molecule, this is the distance from N<sub>1</sub> to its equilibrium 
+	position plus the distance of N<sub>2</sub> from its equilibrium position.&nbsp; 
+	This quantity can also be calculated using the energy of the vibration and 
+	the force constant for the mode.&nbsp; The cgi system is used in this 
+	calculation: </p>
+<table align="center">
+	<tr>
+		<td class="auto-style14"><em>&nu;</em><sub>1</sub></td>
+		<td><span class="auto-style14">= &frac12; <em>k</em> &Delta;x<sub>1</sub></span><sup><span class="auto-style14">2</span></sup></td>
+	</tr>
+	<tr>
+		<td class="auto-style14">&Delta;x<sub>1</sub></td>
+		<td>= (2&nu;<sub>1</sub>/<em>k</em><sub>1</sub>)<sup>&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td class="auto-style14">&nbsp;</td>
+		<td>= (2 x 5.4405 x 10<sup>-13</sup><span class="auto-style14"> 
+		x (30.952 x 10<sup>5</sup>)<sup>-1</sup>)</span><sup>&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td class="auto-style14">&nbsp;</td>
+		<td>= (3.5154 x 10<sup>-19</sup>)<sup>&frac12;</sup></td>
+	</tr>
+	<tr>
+		<td class="auto-style14">&nbsp;</td>
+		<td>= 0.5929 x 10<sup>-9</sup> cm</td>
+	</tr>
+	<tr>
+		<td class="auto-style14">&nbsp;</td>
+		<td>= 0.05929 &Aring;</td>
+	</tr>
+	</table>
+<p class="auto-style1">The travel can be partitioned into contributions from 
+individual atoms using the same strategy as that used in the previous section on 
+velocity, but a faster way to obtain the same result is to examine the output 
+file from a DRC calculation, see below..<p class="auto-style1"><strong>Maximum acceleration</strong></p>
+<p class="auto-style1">Acceleration is at a maximum at the turning point of the 
+energy in a molecular vibration.&nbsp; At that point, the geometry is at its 
+maximum distortion from the equilibrium.&nbsp; Assuming simple harmonic motion, 
+then the acceleration, a, is given by:</p>
+<p class="auto-style2">a = -(2&pi;f)<sup>2</sup>x</p>
+<p class="auto-style1">where f = frequency in hertz. = 1/(12.17 *10<sup>-15</sup>) = 
+8.22 x 10<sup>13</sup> hertz, and x, the travel or distance from the geometry at 
+the energy minimum, is a = 0.05929 Å = 5.929 x 10<sup>-10</sup> cm.&nbsp; 
+Solving this gives:</p>
+<p class="auto-style2">a = 2.667 x 10<sup>23</sup> x 5.929 x 10<sup>-10</sup> cm 
+x s<sup>-2</sup>&nbsp; = 1.581 x 10<sup>14</sup> cm x s<sup>-2</sup>&nbsp; </p>
+<p class="auto-style1">This acceleration can be compared with the acceleration 
+due to gravity.&nbsp; 1G = 9.807 x 10<sup>2</sup> cm x s<sup>-2</sup>, therefore 
+the maximum 
+acceleration is 1.612 x 10<sup>11</sup> G</p>
+<h3>Animation of a single vibrational cycle for N<sub>2</sub></h3>
+<p>An animation of
+a 
+<a href="Individual%20JSmol%20paths/One%20cycle%20of%20a%20nitrogen%20vibration/N2%20one%20complete%20vibrational%20cycle.html">single complete vibration</a> of the N-N stretch normal mode and the
+<a href="Individual%20JSmol%20paths/One%20cycle%20of%20a%20nitrogen%20vibration/N2%20one%20complete%20vibrational%20cycle.out.txt">output</a> can be used in 
+verifying many of the calculations shown here.&nbsp;&nbsp; 
+<p>To reproduce this 
+cycle, use the following data-set:</p>
+<PRE>IRC=1 DRC T-priority large bigcycles=1  mndo HTML 
+N2 one complete vibrational cycle
+(To see N-N distance, click on "Script" at the bottom.)
+
+N
+N 1.10380157 1 </PRE>
+
+Notes<p>
+The step-size used in this animation is 0.1 femtosecond or 1 x10<sup>-16</sup> s.<br>
+Small differences can be seen when the calculated results and the equivalent 
+results obtained from the animation or output are compared.&nbsp; Some of these 
+are due to round-off, and some are due to the difference between simple harmonic 
+motion and the calculated trajectory, but in general the agreement is very good, 
+indicating that the trajectory was almost simple harmonic.<table align="center" class="auto-style21">
+	<tr>
+		<td class="auto-style23" colspan="4">
+		<p class="auto-style24"><strong>Comparison of Quantities calculated 
+		here with those in the animation or output</strong></p>
+		</td>
+		<td class="auto-style23">
+		&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style20" style="width: 174px">&nbsp;</td>
+		<td class="auto-style20" style="width: 138px">&nbsp;</td>
+		<td class="auto-style20" style="width: 120px">&nbsp;</td>
+		<td class="auto-style20">&nbsp;</td>
+		<td class="auto-style20">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style4" style="width: 174px">Quantity</td>
+		<td class="auto-style4" style="width: 138px">Units</td>
+		<td class="auto-style4" style="width: 120px">Calc'd</td>
+		<td class="auto-style4">Animation and output</td>
+		<td class="auto-style4">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style22" style="width: 174px">Period of oscillation</td>
+		<td class="auto-style22" style="width: 138px">femtoseconds</td>
+		<td class="auto-style22" style="width: 120px">12.17</td>
+		<td class="auto-style22">12.2</td>
+		<td class="auto-style22">&nbsp;</td>
+	</tr>
+	<tr>
+		<td style="width: 174px">Energy of vibration</td>
+		<td style="width: 138px">kcal mol<sup>-1</sup></td>
+		<td style="width: 120px">7.83</td>
+		<td>7.83</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td style="width: 174px">Travel </td>
+		<td style="width: 138px">Ångstroms</td>
+		<td style="width: 120px">0.0593</td>
+		<td>0.0596</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style15" style="width: 174px">Initial velocity</td>
+		<td class="auto-style15" style="width: 138px">cm s<sup>-1</sup></td>
+		<td class="auto-style15" style="width: 120px">3.0587 x 10<sup>5</sup></td>
+		<td class="auto-style15">3.0585 x 10<sup>5</sup> <sup>&dagger;</sup></td>
+		<td class="auto-style15">&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style25" colspan="4">&dagger;: Output only.</td>
+		<td class="auto-style25">&nbsp;</td>
+	</tr>
+</table>
+</BODY>
+</HTML>

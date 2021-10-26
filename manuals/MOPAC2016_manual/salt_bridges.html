@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Salt Bridges</TITLE>
+                                                                                                                                                      <style type="text/css">.auto-style1 {
+																														font-family: Arial, Helvetica, sans-serif;
+																													}
+																													</style>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<font class="auto-style1">(<a href="modeling_proteins.html#Salt">Modeling proteins</a>)</font>
+<H1 align="center">&nbsp;Salt Bridges</H1>
+<h2 align="left">What they are:</h2>
+<p align="left">A salt bridge is a non-covalent interaction between two ionized 
+sites.&nbsp; It has two components: a hydrogen bond and an electrostatic 
+interaction.&nbsp;&nbsp; In a salt bridge, a proton migrates from a carboxylic 
+acid group to a primary amine or to the guanidine group in Arg.&nbsp; Typical 
+salt bridges involve Lys or Arg as the bases and Asp or Glu as the acids. Of all the 
+non-covalent interactions, salt bridges are among the strongest.</p>
+<h2 align="left"><a href="ADD-H.html"><tt>ADD-H</tt></a>:</h2>
+<p align="left">When hydrogen atoms are added to a PDB file the default is for all ionizable sites, including the type that 
+allow salt bridges to form, to be neutralized.&nbsp; In other words, salt 
+bridges are not created by default; in fact, if there were salt bridges in the 
+PDB file, running the PDB file using MOPAC would destroy then.&nbsp; 
+A legitimate question at this point is: &quot;Should ionizable residues be ionized?&quot;&nbsp; Some residues, e.g.,&nbsp; Asp, Glu, Arg, Lys, 
+His, and Tyr as well as the first and last residues of a protein are potentially 
+ionizable, so why not ionize them by default?&nbsp; Conventional wisdom suggests that most ionizable residues 
+should be ionized, but if that is done some unreasonable structures might be 
+created.&nbsp; Thus in <a href="http://www.rcsb.org/pdb/explore/explore.do?structureId=1qgk">1QGK</a> the sequence Gln<sub>333</sub>-Asp<sub>334</sub>-Glu<sub>335</sub>-Asn<sub>336</sub>-Asp-<sub>337</sub>-Asp-<sub>338</sub>-Asp<sub>339</sub>-Asp<sub>340</sub>-Asp<sub>341</sub>-Trp<sub>342</sub>, or (QDENDDDDDW), is present.&nbsp; If the Glu and all the Asp were 
+ionized, then this set of connected residues would 
+have a net charge of -7.&nbsp; This is unlikely to happen because of the large 
+buildup of charge; a more likely structure would 
+involve one or more salt bridges and possibly one or two of the other acid 
+residues also being ionized. When the sequence Asp334-Asp341 was extracted from 
+1QGK and optimized, on its own, as the 7+ anion, the system expanded by about 
+12%, and when solvated the system contracted by about 3%. Without more information, deciding which residues should be ionized is very 
+difficult, if not impossible. </p>
+<p>The alternative to selecting which residues to 
+ionize is to define all residues as being initially neutral; this is the default 
+in MOPAC.&nbsp; A second operation using
+<a href="site.html"><tt>SITE=(SALT</tt></a>) can form all simple salt bridges,
+<a href="site.html"><tt>SITE</tt></a> can also be used to ionize individual 
+atoms or residues.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+<h2 align="left">Optimizing the positions of hydrogen atoms:</h2>
+<p align="left">After hydrogen atoms have been added to a biomolecule, 
+the positions of the hydrogen atoms must be optimized before work can be started 
+on modeling protein chemistry.&nbsp; During&nbsp;
+<a href="Optimizing_hydrogen_atoms.html">this operation</a>&nbsp;some hydrogen 
+atoms might migrate from acid to basic residues to give rise to salt bridges, 
+but is unlikely that all of the ones that should be present would form.&nbsp; 
+Therefore, carefully review the structure of the protein, in particular, look 
+at the ionization state of the Lys and Arg residues.&nbsp; Examine the environment of each 
+neutral Lys and Arg residue, 
+if there is a nearby unionized acidic residue, 
+carefully move the proton from the acid to the base residue.&nbsp; </p>
+<h2 align="left">Criterion for deciding if a salt bridge should exist:</h2>
+<p dir="ltr">Once all changes have been made, re-run the partial optimization to 
+allow the hydrogen atoms that have been modified to move into their correct 
+positions.&nbsp; If there is any doubt regarding whether a salt bridge should or 
+should not be present, optimize the positions of the hydrogen atoms in the two 
+candidate systems - the salt bridge and the neutral form - separately.&nbsp; 
+Of course, in order to allow heats of formation to be compared, the set of 
+keywords used should be the same, in particular if <a href="eps.html"><tt>
+EPS=78.4</tt></a> is used in&nbsp; one job it should be used in the other.&nbsp; Whichever one has the lower energy is the preferred structure.&nbsp; The resulting structure will then be a good starting point for subsequent 
+operations.</p>
+<h2 dir="ltr">Influence of solvent:</h2>
+<p dir="ltr">If solvent is considered to be important, then add keyword 
+<a href="eps.html"><tt>EPS=78.4</tt></a>; this will cause Andreas Klamt's COSMO implicit solvation model to be 
+used.&nbsp; When a readily ionizable residue is on or near the surface of a 
+protein, implicit solvation will lower the energy required for ionization.&nbsp; 
+If two ionizable residues are near to each other, but are still too far apart to 
+allow a salt bridge to be the more stable form, then solvation might provide 
+enough extra stabilization to make the salt bridge the stable form.</p>
+<h2 dir="ltr">Complicated salt bridges:</h2>
+<p dir="ltr">Sometimes a salt bridge can be stabilized by the presence of a 
+single bridging water or hydronium ion.&nbsp; This situation can occur inside, 
+i.e., not on the surface of, a protein when the two ionizable residues are 
+further apart than normal.</p>
+<p dir="ltr">&nbsp;</p>
+</BODY>
+</HTML>

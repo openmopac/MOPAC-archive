@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Localized Molecular Orbitals: Storage Considerations</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H3>Localized Molecular Orbitals: Storage Considerations </H3>
+<P>When they are first made, the LMOs are highly compact functions. Each LMO consists of one or two atom labels and a set of 
+five to eighteen atomic orbital coefficients. However, as soon as the LMOs start to interact, mixing of the LMOs will occur, and the size of the LMOs will increase rapidly. This expansion must be allowed for. Later on, further mixing of the LMOs may result in the contribution to an atom to a certain LMO becoming negligible, in which case the atom can be deleted from the LMO. This results in the LMO becoming smaller. A mechanism must be constructed to allow the size of the LMOs to be changed. Because the occupied and unoccupied LMO sets are treated in a similar manner, only the storage of the occupied set will be described. Therefore, for the rest of this section, all reference to LMOs should be understood as applying to the occupied set only.&nbsp; </P>
+<P>Before going further, we need to spend a little time to understand how LMOs are stored. The atomic orbital coefficients of all LMOs are stored in a single REAL array, <TT>COCC</TT>. A second array, <TT>NCOCC</TT>, holds the starting location in <TT>COCC</TT> of each LMO. 
+<a name="starting-addresses"></a>For convenience, all starting locations are defined as the location immediately <EM>before</EM> the location of the first element of an array. The atom numbers (not the atomic numbers) used in all LMOs are stored in an INTEGER array, <TT>ICOCC</TT>, and a second INTEGER array, <TT>NNCF</TT>, holds the starting location in <TT>ICOCC</TT> of each LMO. Finally, the number of atoms in each LMO are stored in an array <TT>NCF</TT>. &nbsp;Figure 1 illustrates these arrays for methane. </P>
+<P>&nbsp;</P>
+<P><BR>
+<DIV ALIGN="CENTER">&nbsp;<A NAME="BM17125">&nbsp;</A>
+  <p></p>
+<STRONG><P>Figure 1:<A NAME="store_slmo"></A></STRONG> Storage of Starting LMOs in Methane</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER">
+  <IMG SRC="img1195.gif" WIDTH=575 HEIGHT=282 ALT="begin{picture}(50,30)(0,-24)put(00, 02){makebox(2.7,2){1}makebox(2.7,2){2}......){2}framebox (2.7,2){2}framebox (2.7,2){2}framebox (2.7,2){2} }end{picture}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P>During the SCF calculation, the number of atoms in each LMO will increase. To allow for this, some space must be left between the end of one LMO and the start of the next LMO. The amount of space is determined by dividing all the unused space by the number of LMOs. If the size of the vector <TT>COCC</TT> is 40, and the size of <TT>ICOCC</TT> is 25, then the storage of the LMO vectors, after adjusting to allow for expansion, is as shown in &nbsp;Figure 2. </P>
+<P><BR>
+<DIV ALIGN="CENTER">&nbsp;<A NAME="BM17143">&nbsp;</A>
+  <p></p>
+<STRONG><P>Figure 2:<A NAME="store_slmoe"></A></STRONG> Storage of Starting LMOs in Methane, Showing Space Available for Expansion</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER">
+  <IMG SRC="img1196.gif" WIDTH=573 HEIGHT=257 ALT="begin{picture}(50,30)(0,-24)put(00, 02){makebox(2.7,2){1}makebox(2.7,2){2}......){2}framebox (2.7,2){2}framebox (2.7,2){2}framebox (2.7,2){2} }end{picture}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P>After a few iterations, the number of atoms in each LMO will have increased. In general, this number will be less than the number of atoms in the system, but in the example we are using, every LMO will contain all the atoms. This is shown in &nbsp;Figure 3. For large systems, the number of atoms in any one LMO will vary. Very large LMOs may have 300 or more atoms, while small LMOs may have only 25 atoms. On average, LMOs will have about 150-200 atoms. </P>
+<P>For every array used in describing the occupied LMOs, there exists an equivalent array for the virtual LMOs. The&nbsp;Table gives the names of the arrays for the virtual LMOs. </P>
+<P><BR>
+<DIV ALIGN="CENTER">&nbsp;<A NAME="BM17161">&nbsp;</A>
+  <p></p>
+<STRONG><P>Figure <A NAME="arrays"></A>3:<A NAME="store_slmoes"></A></STRONG> Storage of Iterating LMOs in Methane</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <DIV ALIGN="CENTER">
+  <IMG SRC="img1197.gif" WIDTH=572 HEIGHT=257 ALT="begin{picture}(50,30)(0,-24)put(00, 02){makebox(2.7,2){1}makebox(2.7,2){2}......){5}framebox (2.7,2){5}framebox (2.7,2){5}framebox (2.7,2){5} }end{picture}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<P><BR>
+<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"><A NAME="BM17162">&nbsp;</A>
+  <p></p>
+<STRONG><P>Table:</STRONG> Names of Arrays Used to Represent LMOs</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P> Occupied</TD>
+<TD VALIGN="MIDDLE">
+<P>Unoccupied</TD>
+<TD VALIGN="MIDDLE">
+<P>Contents</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>NCF</TD>
+<TD VALIGN="MIDDLE">
+<P>NCE</TD>
+<TD VALIGN="MIDDLE">
+<P>Number of Atoms in LMO</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>NNCF</TD>
+<TD VALIGN="MIDDLE">
+<P>NNCE</TD>
+<TD VALIGN="MIDDLE">
+<P>Starting Address of Atoms</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>ICOCC</TD>
+<TD VALIGN="MIDDLE">
+<P>ICVIR</TD>
+<TD VALIGN="MIDDLE">
+<P>Atom Numbers</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>NCOCC</TD>
+<TD VALIGN="MIDDLE">
+<P>NCVIR</TD>
+<TD VALIGN="MIDDLE">
+<P>Starting Address of LMO</TD>
+</TR>
+</TABLE>
+
+<P></DIV></DIV></P>
+
+</BODY>
+</HTML>

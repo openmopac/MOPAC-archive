@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Worked example: Chymotrypsin</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: center;
+																													}
+																													.auto-style2 {
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+}
+																													.auto-style3 {
+	color: #0000FF;
+}
+																													.auto-style4 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Making">Modeling proteins</a>)</font></p>
+<h1 class="auto-style1" ><font face="Arial" ><b>Chymotrypsin mechanism: Making reactants and 
+products</b></font></h1>
+<h2 class="auto-style4">General</h2>
+<p class="auto-style2">&nbsp;There are several steps in any enzyme-catalyzed reaction; 
+these are minima on the potential energy surface, and, except for the first and 
+last steps, are usually referred to as intermediates.&nbsp;&nbsp; There are 
+about six steps in the mechanism for the hydrolysis of a peptide bond using 
+chymotrypsin, a well-understood process.&nbsp; In other 
+enzyme-catalyzed reactions the mechanism might be less well understood.&nbsp; 
+This is, however, not a serious limitation, in that an attempt can be made to construct a 
+mechanism, and that mechanism can then be modeled.&nbsp; New information can 
+then be obtained from the resulting model, and this can then be used to modify 
+the mechanism.&nbsp; </p>
+<p class="auto-style2">All mechanisms should start with a well-behaved starting 
+model.&nbsp; This model should contain all the parts that will be used in the 
+mechanism. In the case here, chymotrypsin, the essential parts are: (a) The 
+protein chymotrypsin, (b) the substrate, and (c) the water molecule that will be 
+consumed in the hydrolysis.</p>
+<h2 class="auto-style4">Methods for making steps in the reaction mechanism</h2>
+<p class="auto-style4">Building the first step, the starting model, requires a large amount of human 
+effort.&nbsp; This has already been <a href="Chymotrypsin_starting_model.html">described</a> 
+for chymotrypsin, and will not be elaborated on 
+here. It is sufficient to say that the starting model is valid.</p>
+<p class="auto-style4">In Step 2, the Ser195 hydroxyl oxygen forms a covalent bond with the peptide 
+carbonyl carbon of Trp252; at the same time, the hydroxyl hydrogen migrates to 
+His57.&nbsp; Simply moving the atoms towards each other and hoping that when the 
+geometry is optimized they will be covalently bound is one option, but in most 
+cases an operation of this type requires a good GUI and a lot of skill.&nbsp; 
+Two strategies are recommended for modifying one stable system to form another 
+stable system.&nbsp; First, the modification can be performed using JSmol.&nbsp; 
+Three types of <a href="../JSmol_examples/MOPAC_JSmol.html">examples</a> of the 
+JSmol editor are:&nbsp; A simple hydrogen migration, an enol to keto reaction, 
+and the formation of a tetrahedral intermediate.&nbsp; Operations of this kind 
+are easy to perform using JSmol.&nbsp; The second method is to do everything 
+using MOPAC.&nbsp; This is more difficult to set up, and takes considerably 
+longer to run, but is much more versatile than JSmol.&nbsp;&nbsp; </p>
+<h2>Examples of using MOPAC to make stable systems are as follows:</h2>
+<h3 class="auto-style4">Use of a reaction path to make a covalent bond</h3>
+<p class="auto-style4">A covalent bond can be made by using a reaction path to lower the interatomic 
+distance between a pair of atoms that were initially well separated.&nbsp; This 
+is done using a reaction coordinate, here the inter-atomic distance.&nbsp; 
+Enzyme geometries are normally always expressed in Cartesian coordinates, but an 
+interatomic distance requires internal coordinates.&nbsp; This means that one 
+atom in the model must be defined in internal coordinates while all the other 
+atoms are expressed in Cartesian coordinates.&nbsp; To set up the internal 
+coordinate, look at the atom numbers of the two atoms that are to be moved 
+together.&nbsp; The atom with the higher number will be the moving atom, atom
+<strong>A</strong>, the atom with the lower number will be the atom that the 
+moving atom moves to, atom <strong>NA</strong>.&nbsp; Using a GUI, measure the 
+distance between <strong>A</strong> and <strong>NA</strong>.&nbsp; Internal 
+coordinates need an angle and a dihedral angle (a torsion angle), so select 
+another atom to be used in defining an angle, atom <strong>NB</strong> and a 
+dihedral, <strong>NC</strong>, and measure the angles <strong>A-NA-NB</strong> 
+and <strong>A-NA-NB-NC</strong>. Edit the data set to replace the Cartesian 
+coordinates of atom <strong>A</strong> with the new internal coordinates.&nbsp; Set the 
+optimization flag to &quot;-1&quot; for the distance, and the optimization flags for the 
+angle and dihedral to &quot;1&quot;&nbsp; An example of 
+such an edited file would be:<pre> 
+  N(ATOM   3483  N   TRP C 252)  29.05500547 +1   2.39047640 +1  37.84548040 +1
+  C(ATOM   3484  CA  TRP C 252)  27.71521548 +1   1.84347569 +1  38.05684432 +1
+  C(ATOM   3485  C   TRP C 252)   <span class="auto-style3">2.508      -1 125.0         1 116.1         1 &quot;OG  SER G 195&quot; &quot;CB  SER G 195&quot; &quot;CA  SER G 195&quot;                 &larr; Atom in internal coordinates</span>
+  O(ATOM   3486  O   TRP C 252)  26.05974399 +1   0.53071662 +1  37.01434338 +1                               <span class="auto-style3">(Columns lined up for ease of reading)</span>
+  C(ATOM   3487  CB  TRP C 252)  26.71410326 +1   2.92780987 +1  38.49027948 +1</pre>
+<p class="auto-style4">Here the carbonyl carbon in Trp 252, PDB label   <span class="auto-style3">&quot;</span>C&nbsp;&nbsp; TRP C 
+252<span class="auto-style3">&quot;</span>, is separated from the oxygen 
+on Ser195, PDB label   &quot;OG&nbsp; SER G 195&quot;, by 2.508&Aring;, and makes an angle of 125&deg; with   &quot;CB&nbsp; SER G 195&quot;, 
+and a dihedral of 116&deg; with  &quot;CA&nbsp; SER G 195&quot;.</p>
+<p class="auto-style4">A useful alternative to using atom numbers when defining 
+the connectivity is to use <a href="atom_numbers.html">atom labels</a>.</p>
+<p class="auto-style4"><strong>WARNING:</strong> A common problem occurs when 
+the atom serial numbers in a PDB file are mistakenly used as atom numbers, and 
+are then used for defining <strong>NA</strong>,<strong> NB</strong>, and<strong> 
+NC</strong>. Serial numbers in a PDB file include non-atoms, for example a &quot;TER&quot; 
+record (indicating the end of a chain) increments the serial number by one. 
+Every time a &quot;TER&quot; is present the atom serial numbers for all subsequent atoms 
+increases by one relative to the atom number.&nbsp; If you really want to use 
+atom numbers, then to avoid this problem, run a <tt><a href="zero_scf.html">0SCF</a> </TT>
+job using the system being studied.&nbsp; Use the output to identify the atom 
+numbers to be used for<strong> NA</strong>,<strong> NB</strong>, and<strong> NC</strong>. 
+(Tip: Check that the coordinate of the atom in the output file is the same as 
+that in the GUI.)</p>
+<p><span class="auto-style4">Keywords for the reaction path can then be specified.&nbsp; In this case the 
+keywords would be</span> <tt><a href="gnorm.html">GNORM=30</a> <a href="step.html">
+STEP=-0.2</a> <a href="point.html">POINTS=5</a></tt>.<span class="auto-style4"> This job is then run. This 
+will take several hours.&nbsp; The normal reaction path accuracy is not needed, 
+so the job can be run relatively quickly by using a large step and a large 
+gradient criterion.</span></p>
+<p><span class="auto-style4">Edit the results to make a new data set. To replace the internal coordinates 
+by Cartesian, change the distance optimization flag from &quot;-1&quot; to &quot;1&quot; and use keywords</span> <tt>0SCF <a href="xyz.html">
+XYZ</a></TT>. 
+<span class="auto-style4">Then using a GUI, inspect the region of interest, here the region around atoms 
+3485 and 2737. In this specific case, the hydroxyl hydrogen is still attached to 
+the Ser195 oxygen atom.&nbsp; Using the GUI, move this hydrogen atom so that it 
+is ca. 1.0Å from the ring nitrogen of His57.&nbsp; The resulting structure is 
+then run normally.</span></p>
+<h3 class="auto-style4">Use of a reaction path to move two moieties apart or to break a covalent bond</h3>
+<p class="auto-style4">Sometimes it is necessary to break a covalent bond or to separate two atoms 
+that are near to each other. If the resulting structure is not known, it is 
+easier to simply increase the distance between the atom pairs.&nbsp; This is in 
+contrast to the previous section, where two atoms are pulled together, and a 
+bond may or may not break.&nbsp; In the case being described here, two atoms are 
+pushed apart, and other bonds may or may not make.</p>
+<p class="auto-style4">An example of this type of process occurs in going from Step 3 to Step 4.&nbsp; 
+In Step 3, there is an amine in close proximity to the tetrahedral carbon; the N 
+- C distance being only 1.72 &Aring;.&nbsp; In going from Step 3 to Step 4, the 
+N - C distance is steadily increased.&nbsp; The &quot;reaction path&quot; would be defined 
+on the keyword line by &quot;GNORM=20 STEP=0.1 POINTS=15&quot;&nbsp; A lower GNORM is used 
+here, because the actual path is now of interest, not just the end product.&nbsp; 
+The step-size is positive because the interatomic separation is increasing.&nbsp; 
+15 steps should be sufficient to increase the separation to ~ 3.2 &Aring;.
+<p class="auto-style4">In the data set, the nitrogen atom that is being moved is defined in internal 
+coordinates, and the reaction coordinate is defined by the optimization flag 
+&quot;-1&quot;<PRE>  H(ATOM   3503  HZ2 TRP C 252)  25.32819248 +1   4.04224496 +1  43.95587272 +1
+  H(ATOM   3504  HZ3 TRP C 252)  24.19115878 +1   7.04202205 +1  41.07045984 +1
+  H(ATOM   3505  HH2 TRP C 252)  24.27393886 +1   6.22511542 +1  43.41277681 +1
+  N(ATOM   3506  N1  TRP C 252)  <span class="auto-style3"> 1.73       -1 101.26        1  81.74        1 3484 2737 2736  &larr; Atom in internal coordinates</span>
+  C(ATOM   3507  C1  TRP C 252)  27.02440006 +1  -0.54493077 +1  34.80486955 +1
+  H(ATOM   3508  H1  TRP C 252)  28.28895525 +1   0.15309699 +1  36.31190994 +1
+  H(ATOM   3509  HG  SER G 195)  28.37109739 +1   1.06634870 +1  34.92755644 +1</PRE>
+<PRE>A better alternative to using atom numbers when defining 
+the connectivity is to use <a href="atom_numbers.html">atom labels</a>.</PRE>
+<h3 class="auto-style4">Proton shifts and other very simple steps</h3>
+<p><span class="auto-style4">If the only significant change is a proton shift or other very simple 
+re-arrangement, then moving the atom &quot;by hand&quot; using a GUI is simplest.&nbsp; In 
+going from Step 2 to Step 3, a proton, initially on His57, migrates to the 
+nitrogen atom on Thr253.&nbsp; Using a GUI, identify the proton on His57, then 
+move it so that it is near to the nitrogen of Thr253.&nbsp; It is helpful during 
+this process to hide the rest of the model.&nbsp; Look at the His57 - Thr253 
+assembly from different orientations, to check that the proton is where it 
+should be.&nbsp; Then, once everything looks correct, optimize the geometry of 
+Step 3.</span>&nbsp; </p>
+</BODY>
+</HTML>

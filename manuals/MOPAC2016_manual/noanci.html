@@ -1,0 +1,14 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>NOANCI </TITLE>
+                                                                           </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<TT><h1 align="center">NOANCI</TT> </h1>
+<P>RHF open-shell derivatives are normally calculated using Liotard's analytical C.I. method&nbsp;[<A HREF="references.html#analci">43</A>]. In general, do <EM>not</EM> use <TT>NOANCI</TT> (NO ANalytical Configuration Interaction derivatives). <TT>NOANCI</TT> should <EM>only </EM>be used if there is cause to believe that the derivatives are faulty, 
+because it evaluates the gradient using finite differences involving complete 
+SCF calculations. In contrast, Liotard's method is very fast, so using <TT>NOANCI</TT> will cause the job to take much longer than if <TT>NOANCI</TT> were <EM>not</EM> used. </P>
+<P>In the unusual situation when analytical C.I. derivatives are <EM>not</EM> to be used, specify <TT>NOANCI</TT>. See also <A HREF="gradients_discussion.html#derivs"><TT>GRADIENTS</TT></A>.</P>
+</BODY>
+</HTML>

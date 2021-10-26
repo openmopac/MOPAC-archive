@@ -1,0 +1,15 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>ISOTOPE </TITLE>
+                                                                                                              </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>ISOTOPE</TT> </h1>
+<P>Generation of the <a href="force.html">FORCE</a> matrix is very time-consuming, and in isotopic substitution studies several vibrational calculations may be needed. To allow the frequencies to be calculated from the (constant) <A NAME="BM2310">&nbsp;</A> force matrix, <TT>ISOTOPE</TT> is used. When a <TT>FORCE</TT> calculation is completed, <TT>ISOTOPE</TT> will cause the force matrix to be stored, regardless of whether or not any intervening restarts have been made. To re-calculate the frequencies, etc., starting at the end of the force matrix calculation, specify <TT>
+<a href="restart.html">RESTART</a></TT>. </P>
+<P>The two keywords <TT>RESTART</TT> and <TT>ISOTOPE</TT> can be used together. For example, if a normal <TT>FORCE</TT> calculation runs for a long time, the user may want to divide it up into stages and save the final force matrix. Once <TT>ISOTOPE</TT> has been used, it does not need to be used on subsequent <TT>RESTART</TT> runs. <TT>ISOTOPE</TT> can also be used with <TT>FORCE</TT> to set up a <TT>RESTART</TT> file for an <TT>
+<a href="irc.html">IRC=<I>n</I></a></TT> calculation. </P>
+</BODY>
+</HTML>

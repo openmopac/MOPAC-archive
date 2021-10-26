@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Correcting errors in the X-ray structure </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p dir="ltr">(<a href="modeling_proteins.html#Correcting">Modeling proteins</a>)</p>
+<h1>Correcting errors in the X-ray structure</h1>
+<p>
+<font face="Arial">
+
+Of their nature,
+
+X-ray structures are physics, not chemistry.&nbsp; A good X-ray structure will 
+have a resolution of ~1&Aring;.&nbsp; X-ray structures are very good for secondary 
+(alpha helices, beta sheets, etc.) and tertiary (folding and packing of alpha 
+helices and beta sheets, etc.) structures, but are not good in predicting bond 
+lengths and angles.&nbsp; On the other hand, semiempirical methods are good at 
+predicting chemical structures, but are of lower accuracy in predicting 
+secondary and tertiary structures.&nbsp; By combining the two techniques, 
+structures that are of unprecedented accuracy can be generated.</font></p>
+<p>
+<font face="Arial">
+
+Once the positions of the hydrogen atoms have been optimized and the structure 
+re-checked, errors in the positions of the heavy atoms can be corrected by a 
+constrained geometry optimization.&nbsp; The constraint is that the optimized 
+structure is biased towards the starting X-ray structure.&nbsp; This bias is 
+provided by the keyword <a href="geo_ref.html"><TT>GEO_REF=&quot;SELF&quot;</TT></a>&nbsp; This 
+provides a bias of 3 kcal/mol per &Aring;ngstrom squared in favor of the X-ray 
+structure.&nbsp; This has little effect on bond lengths, and angles, but has a 
+large effect on tertiary structures, particularly when the inter-chain forces 
+are weak.</font></p>
+<p>
+<font face="Arial">In some cases, the PDB structure errors are very large.&nbsp; 
+When severe errors are found, correct them before proceeding.</font></p>
+<p>
+<font face="Arial">To set up a run, edit the archive file from the optimization 
+of the positions of the hydrogen atoms, to give a new data set, call this &lt;name_Geo_Ref&gt;.mop&nbsp; 
+In addition to any keywords that are specific to the system, e.g.,
+<a href="start_res.html"><TT>START_RES=(text)</TT></a> and <a href="chains.html">
+<TT>CHAINS=(TEXT)</TT></a>, add the keywords <a href="gnorm.html"><TT>GNORM=20</TT></a>
+<a href="mozyme.html"><TT>MOZYME</TT></a> <TT> <a href="PL.html">PL</a>
+<a href="pdbout.html">PDBOUT</a>,</TT> and <TT>GEO_REF=&quot;SELF&quot;</TT> </font> </p>
+<p>
+<font face="Arial">Start the job running.&nbsp; Monitor it for the first two or 
+three cycles, and if all is well, let it run unattended.&nbsp; Geometry 
+optimization of a protein is a time consuming operation; the job will run for a 
+day up to three weeks, depending on the size of the system.&nbsp; The default maximum 
+run time is two days.&nbsp; If it runs out of time and stops, then edit the data 
+set to add the keywords <a href="t=n.html"><TT>T=2w</TT></a> and <a href="restart.html">
+<TT>RESTART</TT></a>, then re-run the data set.&nbsp; This will re-start 
+at the geometry where the previous run ended, and will re-calculate the SCF; 
+this eliminates any accumulated errors in the SCF from the previous run.&nbsp; 
+Then let it run again.&nbsp; If it still needs more time, examine the output to 
+verify that the system is optimizing properly.&nbsp; If it isn't, then looking for errors in the data set.</font></p>
+<p>
+<font face="Arial">Once the constrained optimization is complete, 
+<a href="compare.html">compare</a> the 
+starting and final structures, looking for changes.&nbsp; Verify that the changes 
+are improvements (they should all be improvements).&nbsp; In particular, look at 
+possible errors in the original PDB structure, and see if they have been 
+corrected.</font></p>
+<p>
+<font face="Arial">
+
+</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

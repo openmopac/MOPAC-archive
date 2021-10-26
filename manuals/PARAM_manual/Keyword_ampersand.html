@@ -1,0 +1,44 @@
+<HTML>
+<HEAD>
+<TITLE>&amp; </TITLE>
+                                                                           </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>&amp;</TT> </h1>
+<P>An '<TT>&amp;'</TT> means 'Join the next line to the end of the current 
+line'.&nbsp; In the following example keyword
+<a href="http://openmopac.net/param_manual/keyword_ref.html"><tt>REF</tt></a> is followed 
+by the paths and names of several folders.&nbsp; By using ampersands these paths 
+and names can be put on consecutive lines, making them much easier to read. 
+Whitespace between the last printed character and the ampersand is eliminated. 
+If the next line starts with whitespace, that whitespace will also be 
+eliminated.&nbsp; Most keywords should not be split across lines, however 
+keywords that involve quoted text, as in paths and filenames, can be split at 
+the starting quotation mark. If a path or filename is not quoted, and an 
+ampersand is used, simply add quotation marks.</P>
+<P>Example</P>
+<PRE>ref= &amp;
+&quot;../../reference data/Data Intermolecular interactions/S22 Intermolecular&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/S22 Separated&quot;; &amp;
+*
+* The folder name on the next line normally would not have quotation marks around it, 
+* but because the previous line ended in an ampersand the next line needs to start 
+* with a quotation mark, otherwise a space would be inserted to indicate the start 
+* of a new keyword
+*
+&quot;local_files&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/S66 Intermolecular&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/S66 Separated&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/L7 Intermolecular&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/L7 Separated&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/S12L Intermolecular&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/X40 Separated&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/X40 intermolecular&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/Water dimers all&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/D3H4 Ionic Intermolecular&quot;; &amp;
+&quot;../../reference data/Data Intermolecular interactions/D3H4 Ionic Separated&quot;; &amp;
+&quot;../../reference data/Data normal&quot;; &amp;
+&quot;../../reference data/Data levels&quot;; &amp;
+&quot;../../reference data/Data erratic&quot; &amp;</PRE>
+</BODY>
+</HTML>

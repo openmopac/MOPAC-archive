@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> How to make Excel 3-D charts for BZ </TITLE>
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+.auto-style2 {
+	text-align: left;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<BR>
+<h1 class="auto-style1">How to make Excel 3-D charts for BZ</h1>
+<p class="auto-style2">Program BZ can generate a square array of 161 by 161 
+points, suitable for use with Excel.&nbsp; These can be read by Excel and used 
+for making nice images.&nbsp; </p>
+<p class="auto-style2">&nbsp;</p>
+<h2>Instructions for making 3-D charts</h2>
+<H3>Locate the Brillouin zone surface data</H3>
+<p>&nbsp;Using Windows Explorer, locate a file representing a surface generated 
+by program BZ.&nbsp; This should be in the folder where BZ was run, and will 
+have a name such as &quot;Diamond surface number 01.txt&quot;.</p>
+<H3>Put the surface data into Excel</H3>
+<p>Open the file using Notepad.&nbsp; The file will consist of a 161 by 161 
+array of numbers. Copy everything (right-click on the Notepad window area, and 
+click on &quot;Select All&quot;, then right-click on the Notepad area, and click on 
+&quot;Copy&quot;) and paste it into an Excel spreadsheet.&nbsp; Select cell <strong>A1</strong>, 
+right-click, and click on &quot;Paste&quot;.&nbsp; At this point, all the data is in 
+column <strong>A</strong>.&nbsp; To put all the data into their correct cells, 
+click on Data =&gt;Text to Columns (in Data Tools) =&gt; Finish (in the small window 
+&quot;Convert Text to Columns Wizard)&nbsp; If this has been done correctly, then row
+<strong>1</strong> and column <strong>A</strong> will start with the numbers 1, 
+2, 3, 4.</p>
+<H3>To insert a 3-D chart</H3>
+<p>Select all the data in the spreadsheet.&nbsp; Easy ways to do this are: (A) 
+Click on the cell to the right of the column header A.&nbsp; This cell is also 
+above the row header 1.&nbsp; It's slightly grey and has a small triangle in it. 
+(B) Press Control-A on the keyboard.</p>
+<p>Click on &quot;Insert&quot; then click in the &quot;Other Charts&quot; and select the first of 
+the &quot;Surface&quot; chart types. A small surface chart window will then open.</p>
+<H3>Move the chart to its own window</H3>
+<p>Right click on the edge of the chart window, select &quot;Move Chart&quot;.&nbsp; In 
+the &quot;Move Chart&quot; window, select &quot;New Sheet&quot; and click on &quot;OK&quot;</p>
+<H3>Orientate the chart</H3>
+<p>Right-click on the chart area, and select &quot;3-D Rotation&quot; To rotate the chart, 
+use the up-and-down arrows next to the numbers with a degree symbol (&deg;) next 
+to &quot;X&quot; and &quot;Y&quot;.&nbsp; The chart will update after a brief delay.</p>
+<p>The colors might change as the chart is rotated.&nbsp; To prevent this, 
+select &quot;Axes&quot; =&gt; &quot;Axis Options&quot; then change all &quot;Auto&quot; to &quot;Fixed&quot;</p>
+<H3>Remove clutter</H3>
+<p>To remove all the straight lines and numbers, right-click on each one in 
+turn, and click on delete. This is a bit tedious, so use the resulting chart as 
+a template for future charts.</p>
+<H3>Make a template</H3>
+<p>Save your work first.&nbsp; Then save the current chart as, e.g., 
+template.xlsx.&nbsp; For all subsequent 3-D charts, open template.xlsx, and 
+replace the data with new data.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+ </BODY>
+</HTML>

@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Chymotrypsin</TITLE>
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+.auto-style2 {
+	text-align: left;
+}
+</style>
+</HEAD>
+<BODY>
+<h1 class="auto-style1">Chymotrypsin&nbsp; (Files)</h1>
+<p style="language: en-US; margin-top: 0pt; margin-bottom: 0pt; text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; mso-line-break-override: restrictions; punctuation-wrap: simple">
+The enzyme chymotrypsin hydrolyzes peptide bonds in proteins.&nbsp; A good 
+starting point for modeling chymotrypsin is the PDB file 8GCH, this contains a 
+complete copy of chymotrypsin plus a tripeptide substrate.&nbsp; This substrate 
+is a product of autolysis, and can be used in constructing a realistic substrate 
+that would be suitable for modeling the hydrolysis mechanism.&nbsp; A 
+description of the computed mechanism is
+<a href="https://link.springer.com/article/10.1007/s00894-017-3326-8">available</a> 
+on-line, and all the files used in that work are available as
+<a href="../J_Mol_Mod_(2017)_files_Chymotrypsin_catalytic_mechanism/Supplementary_Material.html">
+supplementary material</a>, so only the steps involved in constructing the 
+starting model (step 1 of the mechanism) from 8GCH need be described here. </p>
+<p style="language: en-US; margin-top: 0pt; margin-bottom: 0pt; text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; mso-line-break-override: restrictions; punctuation-wrap: simple">
+&nbsp;</p>
+<h2 style="language: en-US; margin-top: 0pt; margin-bottom: 0pt; text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; mso-line-break-override: restrictions; punctuation-wrap: simple">
+Editing 8GCH to make a more realistic substrate</h2>
+<p style="language: en-US; margin-top: 0pt; margin-bottom: 0pt; text-align: left; direction: ltr; unicode-bidi: embed; vertical-align: baseline; mso-line-break-override: restrictions; punctuation-wrap: simple">
+&nbsp;</p>
+Before starting, the substrate needs to be modified to make it more realistic.&nbsp; 
+Substrate residue Trp252 terminates in a -COO group, this is clearly the product 
+of the hydrolysis of a peptide bond.&nbsp; Inspection of 8GCH shows that the 
+sequence of residues in the substrate, Gly-Ala-Trp, occurs exactly once, in 
+chain &quot;G&quot; at residues 205, 206, and 207.&nbsp; The next two residues in chain 
+&quot;G&quot; are Thr and Leu.&nbsp; From this sequence, a reasonable conclusion would be 
+that, before hydrolysis occurred, the substrate sequence was 
+Gly-Ala-Trp-Thr-Leu.&nbsp;&nbsp;
+<p>The substrate was edited to replace OXT of Trp252 with Thr.&nbsp; To minimize 
+the effect of the carboxylate end of Thr, this residue was edited to add a 
+nitrogen atom to the peptide &quot;C&quot; atom, i.e., to edit -NH-CH(C(C(H)(CH3)(OH))-CHO 
+to -NH-CH(C(C(H)(CH3)(OH))-C(NH2)(O). (The hydrogen atoms are not present at 
+this point, they are only shown here to simplify reading the formulae.)&nbsp; As 
+a result of the extra atoms being added, one water atom HOH487 was deleted and three water oxygen atoms, those for 
+HOH615, HOH625, and HOH647 were moved to avoid steric clashes.&nbsp; All 
+atoms added or moved can be identified in the next data-set by the presence of 
+the text &quot;PROT&quot;</p>
+<h2>Adding hydrogen atoms (File: &quot;8GCH Add-H.mop&quot;)</h2>
+<p>PDB file 8GCH does not include hydrogen atoms, so the first step is to 
+hydrogenate the system.&nbsp; Keywords used in this file are:</p>
+<p><strong>ADD_H: </strong>Hydrogen atoms are added so as to neutralize all 
+sites.&nbsp; This operation is almost always used together with a SITE keyword 
+which changes the hydrogenation of various sites so that the system is more 
+realistic.</p>
+<p><strong>
+SITE=(salt,&quot;[HIS]57:F.NE2&quot;(0)): </strong>SITE adds and deletes hydrogen atoms as necessary to 
+make a realistic system.&nbsp; The two <a href="../site.html">SITE</a> 
+arguments used here are <strong>SALT -</strong> make all reasonable
+<a href="../salt_bridges.html">salt bridges</a> between residues, and <strong>
+&quot;[HIS]57:F.NE2&quot;(0) -</strong> SALT had made a salt bridge between Asp102 and 
+His57, but His57 should be neutral, so this option removes a hydrogen atom.&nbsp; 
+Of the two hydrogen atoms in the imidazolium ring, the one that's further from 
+Asp102 is deleted.</p>
+<p><strong>HTML: </strong>Not essential, but very useful in deciding where to 
+add or delete hydrogen atoms. HTML produces a JSmol web-page that can be opened 
+using NETSCAPE.&nbsp; Individual atoms to be used in the SITE keyword can easily 
+be identified in this web-page.&nbsp; A useful trick is to start editing the 
+SITE keyword and hover the cursor over the appropriate atom in the web-page.&nbsp; 
+That displays the JSmol label, which can then be typed in the SITE keyword.&nbsp; 
+If the PDB label is available, that can be used.
+</p>
+<p><strong>NOCOMMENTS:</strong>&nbsp; Suppress all PDB HEADER, TITLE, COMPOUND, 
+SOURCE, etc., remarks.</p>
+<p><strong>OUTPUT: </strong>Suppress all voluminous output.</p>
+<p><strong>NOOPT, OPT-H, MOZYME, CHARGE=-1 EPS=78.4:</strong> These keywords are 
+not used in this job, but are present so they will be in the keyword list for 
+the next job.</p>
+<p>Run &quot;8GCH Add-H.mop&quot; and copy the resulting ARC file, giving the 
+copy the name &quot;8GCH Opt-H.mop&quot;</p>
+<h2>Making the Chorismate and Prephenate systems<p>&nbsp;</p>
+<p>Edit &quot;3CSM Add-H.arc&quot; to replace</p>
+<p><strong>START_RES=(1A-222 300A-400) chains=(A) HTML output</strong></p>
+<p>with</p>
+<p><strong>START_RES=(1A-222 300A-400) chains=(A) HTML Opt mozyme eps=78.4 gnorm=5 
+output charge=0 t=2w </strong>
+</p>
+<p>These are the keywords for an unconstrained global optimization of a system 
+in aqueous media.&nbsp; Normally there would be an intermediate step in which 
+the positions of the hydrogen atoms would be optimized, but as this is a very 
+simple reaction, this step is not necessary.</p>
+<p>Starting with &quot;3CSM Add-H.arc&quot; use an editor to move the O7 in the substrate 
+away from C5, i.e., deliberately break the C5-O7 bond. Save the resulting 
+structure as &quot;3CSM Chorismate.mop&quot;
+</p>
+<p>Starting with &quot;3CSM Add-H.arc&quot; use an editor to move the C9 in the substrate 
+away from C1, i.e., deliberately break the C9-C1 bond. Save the resulting 
+structure as &quot;3CSM Prephenate.mop&quot;
+</p>
+<h2>Optimizing the geometry of the Chorismate and Prephenate systems</h2>
+<p class="auto-style2">Run both &quot;3CSM Chorismate.mop&quot; and &quot;3CSM Prephenate.mop&quot; 
+These jobs take a long time, typically a few days, so a useful strategy is to 
+run both of them at the same time on a machine that is dedicated to running long 
+jobs.</p>
+<p class="auto-style2">&nbsp;</p>
+</BODY>
+</HTML>

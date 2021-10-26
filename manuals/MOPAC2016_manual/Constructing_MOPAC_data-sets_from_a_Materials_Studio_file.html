@@ -1,0 +1,195 @@
+<HTML><HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>Constructing MOPAC data-sets using MAKPOL alternative geometry</TITLE>
+<style type="text/css">h2
+	{margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	page-break-after:avoid;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	}
+h3
+	{margin-top:10.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:150%;
+	page-break-after:avoid;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	}
+</style>
+</HEAD>
+<BODY vLink=#0000ff link=#0000ff>
+<h1 align="center">Notes on the calculation of an optimized geometry <br>
+starting with a Materials Studio file</h1>
+<h2>Introduction</h2>
+<p class="MsoNormal">Materials Studio generates two sets of data that are used 
+in constructing a single MOPAC data set.<span style="mso-spacerun:yes">&nbsp;
+</span>These sets are (1) the geometry within the unit cell, and (2) the 
+translation vectors.<span style="mso-spacerun:yes">&nbsp; </span>The following 
+instructions describe how to generate a MOPAC data-set from the data in a 
+Materials Studio file.</p>
+<p class="MsoNormal">All the files mentioned here can be downloaded from
+<a href="Resin_Materials_Studio.zip">ZIP</a>.</p>
+<h2>Conversion of geometry in the .car file to MOPAC format</h2>
+<p class="MsoNormal">Starting with the un-modified file &quot;Data set for resin from 
+Material Studio.car&quot;, use Excel to convert the geometry into a MOPAC format.<span style="mso-spacerun:yes">&nbsp;
+</span>The result should look like &quot;resin (intermediate).txt&quot;</p>
+<h2>Conversion of <span style="mso-spacerun:yes">&nbsp;</span>resin 
+(intermediate).txt&quot; to a simple MOPAC data set</h2>
+<p class="MsoNormal">Edit &quot; resin (intermediate).txt&quot; to insert the three lines:</p>
+<p class="MsoNormal">Line 1: 0SCF HTML ZERO<br>Line 2: Resin. Check to verify that 
+the geometry looks alright<br>Line 3:<br style="mso-special-character:line-break"></p>
+<p class="MsoNormal">These lines have the following meanings:</p>
+<p class="MsoNormal">Line 1: Keyword
+<a href="zero_scf.html"><tt>0SCF</tt></a> to suppress any 
+real calculations - the geometry is unmodified, and no SCF is done.<span style="mso-spacerun:yes">&nbsp;
+</span>A <tt>0SCF </tt>job runs very fast. </p>
+<p class="MsoNormal">Keyword
+<a href="html.html"><tt>HTML</tt></a> generates a HTML file 
+that can display the geometry using JSmol.&nbsp; If JSmol has not been 
+installed, go to <a href="html.html">HTML</a> for 
+instructions.</p>
+<p class="MsoNormal">Keyword <tt><strong>ZERO</strong></tt> is unique to MAKPOL.&nbsp; This tells MAKPOL 
+to use the Tv supplied, and to not modify them even if atom 1 is not at the 
+origin.&nbsp; Use <tt><strong>ZERO</strong></tt> for Materials Studio files, and don't use <tt>
+<strong>ZERO</strong></tt> for cif 
+files.</p>
+<p class="MsoNormal">Line 2: A description of the job for the benefit of the 
+user only.<br>Line 3: A second description line, here it is blank.</p>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class="MsoNormal">Edit the end of the file to add the three lines:</p>
+<p class="MsoNormal">Tv<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;
+</span>22.76620000<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>0.00000000<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>0.00000000<span style="mso-spacerun:yes">&nbsp; <br> </span>Tv<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>0.00000000<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>
+22.76620000<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+0.00000000<span style="mso-spacerun:yes">&nbsp;&nbsp; <br> </span>Tv<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>0.00000000<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>0.00000000<span style="mso-spacerun:yes">&nbsp;&nbsp;&nbsp;&nbsp; </span>
+22.76620000<span style="mso-spacerun:yes">&nbsp; </span></p>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+<p class="MsoNormal">These are the <a href="tv.html">
+translation vectors</a> from &quot; Data set for resin from Material Studio.car &quot;</p>
+<p class="MsoNormal">Save the edited file as &quot;MS resin.mop&quot;</p>
+<h2>First check that the geometry in MOPAC format is correct</h2>
+<p class="MsoNormal">Run &quot; MS resin.mop&quot; using MOPAC.<span style="mso-spacerun:yes">&nbsp;
+</span>Open the resulting HTML file with Netscape, and verify that it looks 
+reasonable.<span style="mso-spacerun:yes">&nbsp; </span>At this point there are 
+unattached hydrogen atoms; that's okay - they are present because when the 
+periodic boundary conditions are applied, they will join up with other fragments 
+to form stable, neutral molecules.</p>
+<h2>Conversion of MOPAC data-set to construct discrete molecules</h2>
+<p class="MsoNormal">This conversion is useful for GUI work.<span style="mso-spacerun:yes">&nbsp;
+</span>It is not essential for the MOPAC run. It uses program MAKPOL</p>
+<p class="MsoNormal">Edit &quot;MS resin.mop&quot; to add keyword ZERO to the first line, 
+and save the file as &quot;make_resin.dat&quot;.</p>
+<p class="MsoNormal">ZERO is a <a href="makpol.html">
+MAKPOL</a><span style="mso-spacerun:yes">&nbsp; </span>specific keyword.<span style="mso-spacerun:yes">&nbsp;
+</span>This will be deleted before the MOPAC data-set is generated. Keyword ZERO 
+indicates that the supplied translation vectors are correct, and do not have to 
+be modified to account for the non-zero coordinates of atom 1, an operation that 
+has to be run when cif files are used. </p>
+<p class="MsoNormal">Run &quot;make_resin.dat&quot; using MAKPOL, for example, at the 
+command prompt run:</p>
+<p class="MsoNormal">makpol resin</p>
+<p class="MsoNormal">Note that the prefix &quot;make_&quot; is
+<i style="mso-bidi-font-style:normal">not</i> typed.<span style="mso-spacerun:yes">&nbsp;
+</span>This run will generate a MOPAC data-set &quot;resin.mop&quot;.<span style="mso-spacerun:yes">&nbsp;
+</span>That data set will be composed of discrete molecules, i.e., no unattached 
+hydrogen atoms.<span style="mso-spacerun:yes">&nbsp;&nbsp; </span></p>
+<h2>Second check that the geometry in MOPAC format is correct</h2>
+<p class="MsoNormal">Run &quot;resin.mop&quot; using MOPAC.<span style="mso-spacerun:yes">&nbsp;
+</span>The resulting geometry should look correct in all details, i.e., there 
+will be no lose hydrogen atoms and no radicals.</p>
+<h2>Running a 1SCF calculation</h2>
+<p class="MsoNormal">Edit &quot;resin.mop&quot; to change 0SCF to
+<a href="one_scf.html">1SCF</a>, and save the edited 
+file as &quot;resin 1SCF.mop&quot;<span style="mso-spacerun:yes">&nbsp; </span>Run this 
+file using MOPAC.<span style="mso-spacerun:yes">&nbsp; </span>It should run in 
+less than 10 minutes, and give a Heat of Formation,
+<span style="font-family:
+Symbol">D</span>H<sub>f</sub>, of -4698.6 kcal.mol<sup>-1</sup>, or -81.0 
+kcal.mol<sup>-1</sup>, per formula unit.</p>
+<h2>Running a constrained geometry optimization calculation</h2>
+<p class="MsoNormal">Edit &quot;resin.mop&quot; to delete 0SCF and add
+<a href="gnorm.html">GNORM=10</a>, and save the 
+edited file as &quot;resin Constrained Geometry Optimization.mop&quot;<span style="mso-spacerun:yes">&nbsp;
+</span>Then edit the first three lines to change all the &quot;+0&quot; to &quot;+1&quot;.
+<span style="mso-spacerun:yes">&nbsp;</span>When this job was run using MOPAC, it 
+took about 20 CPU hours, with 4 cores, this took 9 wall-clock hours.</p>
+<h2>Running an unconstrained geometry optimization calculation</h2>
+<p class="MsoNormal">Edit &quot;resin.mop&quot; to delete 0SCF and add
+<a href="gnorm.html">GNORM=10</a>, and save the 
+edited file as &quot;resin Unconstrained Geometry Optimization.mop&quot;<span style="mso-spacerun:yes">&nbsp;
+</span>Then either change all &quot;+0&quot; to &quot;+1&quot; or add keyword &quot;<a href="optx.html">OPT</a>&quot;.<span style="mso-spacerun:yes">&nbsp;
+</span>When this job was run using MOPAC, it took about 35 CPU hours, with 4 
+cores, this took 17 wall-clock hours.</p>
+<h2>Quality of results</h2>
+<p class="MsoNormal">There are three types of error in these calculations.<span style="mso-spacerun:yes">&nbsp;
+</span>The input data-set might have errors; in the resin system described here 
+there do not seem to be any errors, so this is not a source of concern in this 
+particular case.<span style="mso-spacerun:yes">&nbsp; </span>The theoretical 
+method used is of definitely limited accuracy, so there will some concern, but 
+again in simple organic systems of the type used here this is of minor 
+importance.</p>
+<p class="MsoNormal">The main error is likely to be from finite geometry 
+optimization.<span style="mso-spacerun:yes">&nbsp; </span>Geometry optimization 
+of solids is much more difficult than for molecules, and as a result the 
+geometry convergence criterion, GNORM=10, is much higher than the default of 
+GNORM=1.0.<span style="mso-spacerun:yes">&nbsp; </span>A side-effect of using 
+GNORM=10 is that the run might stop before the energy has stopped dropping.</p>
+<p class="MsoNormal">To correct this error is not difficult, but does require a 
+new procedure.</p>
+<h2>Increasing the quality of results </h2>
+<p class="MsoNormal">This is done in three steps:</p>
+<p class="MsoNormal">(1) Delete the keyword GNORM=n.<span style="mso-spacerun:yes">&nbsp;
+</span>If no further action was taken, the resulting job would run for a very 
+long time, many days, possibly several weeks.<span style="mso-spacerun:yes">&nbsp;
+</span>This will not happen.<span style="mso-spacerun:yes">&nbsp; </span>After 
+the job starts, it should be monitored by the user, and at the appropriate time it 
+can be stopped under user control.</p>
+<p class="MsoNormal">(2) Start the job running.<span style="mso-spacerun:yes">&nbsp;
+</span>Monitor the output to see what's happening to the energy.<span style="mso-spacerun:yes">&nbsp;
+</span>Initially, the heat of formation will drop quickly as errors in the input 
+geometry are corrected, then the rate of descent will decrease, and finally the 
+heat of formation will start to oscillate in an unpredictable way.<span style="mso-spacerun:yes">&nbsp;
+</span>In some runs, the <span style="font-family:Symbol">D</span>H<sub>f</sub> 
+might rise dramatically, giving the impression that the run has gone bad.<span style="mso-spacerun:yes">&nbsp;
+</span>This occurs when a problem with the optimization is detected.<span style="mso-spacerun:yes">&nbsp;
+</span>During the attempt to overcome this problem, the
+<span style="font-family:Symbol">D</span>H<sub>f</sub> can rise, sometimes by 
+many hundreds of kcal.mol<sup>-1</sup>.<span style="mso-spacerun:yes">&nbsp;
+</span></p>
+<p class="MsoNormal">There are several ways to monitor the run.<span style="mso-spacerun:yes">&nbsp;
+</span>The simplest is to open the output file using a simple editor, e.g., 
+notepad, and look at the optimization - it's at the bottom of the output.<span style="mso-spacerun:yes">&nbsp;
+</span>A slightly more sophisticated method is to use the UNIX command &quot;grep&quot;<span style="mso-spacerun:yes">&nbsp;
+</span>To do this, open a command-prompt window, and use a command of the type:
+</p>
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal">tail -5000f &quot;resin 
+Constrained optimization.out&quot; | grep CYCLE<o:p></o:p></b></p>
+<p class="MsoNormal">(3) When an examination of the optimization shows that the
+<span style="font-family:Symbol">D</span>H<sub>f</sub> has stopped dropping, 
+issue the MOPAC <a href="shut.html">shut command</a>.<span style="mso-spacerun:yes">&nbsp;
+</span>This will shut down the MOPAC run in an orderly manner.<span style="mso-spacerun:yes">&nbsp;
+</span>When the run stops, sometime in the next few minutes, edit the output 
+file.<span style="mso-spacerun:yes">&nbsp; </span>There will be a data-set at 
+the bottom of the output file that holds the best - the lowest energy - 
+geometry.<span style="mso-spacerun:yes">&nbsp; </span>Delete everything else, 
+then edit this new data-set to include the keyword 1SCF.<span style="mso-spacerun:yes">&nbsp;
+</span>Save the resulting file, giving it a new name, e.g., </p>
+<p class="MsoNormal">&quot;resin Constrained optimization 1SCF.mop&quot; </p>
+<p class="MsoNormal">then run this new file.<span style="mso-spacerun:yes">&nbsp;
+</span>The results will represent the best geometry that can be obtained using 
+MOPAC.</p>
+<p class="MsoNormal"><o:p>&nbsp;</o:p></p>
+
+</BODY></HTML>

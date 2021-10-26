@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<TITLE>Program AND</TITLE>
+                                                                                                                                                                   </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">PARAM Utilities AND, ONLY, NOT and ALL</h1>
+<p align="left">&nbsp;&nbsp;These four utilities use the program SELECT to build 
+a list of data sets that match certain criteria.&nbsp; They are all used at the 
+DOS prompt, i.e., in a console window.&nbsp; They should only be used in a 
+folder that contains a set of MOPAC data files.&nbsp; Before any of them are 
+used, the utility FILES should have been run.&nbsp; FILES will create a file 
+called &quot;files.out&quot; that the utilities use.&nbsp; Each of the utilities selects 
+data files according to different criteria.&nbsp; These criteria are:</p>
+<p align="left"><font size="4"><b>AND:&nbsp; </b></font>Selects all compounds 
+that contain one or more of a user-specified set of elements. Other elements can 
+also be present.&nbsp; Thus if AND was used with the element Ti, then all 
+species in the database that contain one or more atoms of titanium would be 
+selected.</p>
+<p align="left"><font size="4"><b>ONLY</b></font><b><font size="4">: </font></b>
+Selects all compounds that contain one or more of a user-specified set of 
+elements. All other elements are excluded.&nbsp; Thus if ONLY was used with the 
+elements H, C, N, and O,&nbsp; then all species in the database that contain one 
+or more atoms of H, C, N, or O would be selected.&nbsp; This would include H<sub>2</sub>, CH<sub>2</sub>O, C<sub>6</sub>H<sub>5</sub>NO<sub>2</sub>, 
+etc., but not CH<sub>3</sub>F.</p>
+<p align="left"><font size="4"><b>NOT</b></font><b><font size="4">: </font></b>
+Selects all compounds that do not contain any of the specified elements.</p>
+<p align="left"><font size="4"><b>ALL</b></font><b><font size="4">: </font></b>
+Selects all compounds.</p>
+<h3 align="left">Procedure for running these utilities </h3>
+<p align="left">They can only be run in a console window.&nbsp; At the DOS 
+prompt, enter the appropriate command, followed by a return. The utility will 
+then write out the 
+line: &quot;Enter chemical symbols for search&quot;</p>
+<p align="left">Type in all the elements to be selected.&nbsp; Elements are 
+represented by their symbols, each element is separated from the next one by a 
+space.&nbsp; Thus if the elements hydrogen, carbon, oxygen and nitrogen are 
+wanted, type in &quot;H C N O&quot;.&nbsp; If all elements are wanted, use the unique 
+symbol &quot;all&quot;&nbsp; Of course, do not use 'all' with the NOT utility.</p>
+<p align="left">Take a return.&nbsp; The utility will then print a message of the type: 
+&quot;NO. OF HEATS: 4546, DIPOLES: 569, I.P.s: 670, GEOREFS:3655&quot;&nbsp; This shows 
+how many data of each type were selected.</p>
+<p align="left">The utility will then generate a file called &quot;bits&quot;.&nbsp; &quot;bits&quot; is a 
+list of data files that can be used by PARAM. As soon as &quot;bits&quot; is created, a 
+useful operation would be to copy or move it to the folder where PARAM is to be 
+run from.</p>
+<p align="left">&nbsp;</p>
+                                                </BODY>
+</HTML>

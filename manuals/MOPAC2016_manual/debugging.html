@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Suggested procedure for locating bugs</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Suggested procedure for locating bugs
+</H2>
+Users are supplied with the source code for MOPAC, and,  while  the original
+code is fairly bug-free, after it has been modified there is a possibility that
+bugs may have been introduced.  In these  circumstances the  author  of  the
+changes  is obviously responsible for removing the offending bug, and the
+following  ideas  might  prove  useful  in  this context.
+<P>
+First of all, and most important, before any modifications are done a  back-up
+copy  of the standard MOPAC should be made.  This will prove invaluable in
+pinpointing deviations from the  standard  working.   This point  cannot  be
+over-emphasized--<EM>make  a  back-up before modifying MOPAC!</EM>
+<P>
+Clearly, a bug can occur almost  anywhere,  and  a  logical  search sequence is
+necessary in order to minimize the time taken to locate it.
+<P>
+If possible, perform the debugging with a small molecule, in  order to  save
+time  (debugging  is,  of  necessity,  time  consuming) and to minimize output.
+<P>
+The two sets of subroutines  in  MOPAC,  those  involved  with  the
+electronics  and  those  involved  in  the geometrics, are kept strictly
+separate, so the first question to be answered is which set contains the bug.
+If the heats of formation, derivatives, I.P.s, and charges, etc., are correct,
+the  bug  lies  in  the  geometrics;  if  faulty,  in  the electronics.
+<p>&nbsp;</p>
+<H3><A NAME="SECTION001712100000000000000">
+ Bugs discovered in the electronics subroutines</A>
+</H3>
+<p>Use formaldehyde for this test.  Use keywords <TT>1SCF</TT>, <TT>DEBUG</TT>, and
+any others necessary. </p>
+<P>
+The main steps are:
+<DL COMPACT>
+<DT>1.
+<DD>Check  the  starting  one-electron  matrix  and   two-electron integral
+string, using the keyword <TT><a href="hcore.html">HCORE</a></TT>.  It is normally sufficient to verify
+that the two hydrogen atoms  are  equivalent,  and  that  the
+<span class="b">&pi;</span>
+system
+involves  only <I>p</I><SUB><I>z</I></SUB> on  oxygen  and carbon.  Note that numerical values are
+not checked, but only relative values.
+<P>
+If an error is found, use <TT><a href="moldat.html">MOLDAT</a></TT> to verify the  orbital  character, etc.
+<P>
+If faulty the error lies in <TT>READMO</TT>, <TT>GETGEO</TT> or <TT>MOLDAT</TT>.
+<P>
+Otherwise the error lies in <TT>HCORE</TT>, <TT>H1ELEC</TT> or <TT>ROTATE</TT>.
+<P>
+If the starting matrices are correct, go on to step (2).
+<P>
+<DT>2.
+<DD>Check the density or Fock matrix on every iteration,  with  the words
+<TT><a href="fock.html">FOCK</a></TT> or <TT><a href="density.html">DENSITY</a></TT>.  Check the equivalence of the  two hydrogen
+atoms, and the <span class="b">&pi;</span>
+system, as in (1).
+<P>
+If an error is found, check the first Fock matrix.  If faulty,  the bug  lies
+in ITER, probably in the Fock subroutines FOCK1 or FOCK2,  or in the (guessed)
+density matrix (MOLDAT).  An exception is  in  the  UHF closed-shell
+calculation,  where  a  small  asymmetry  is introduced to initiate the
+separation of the <span class="b">&alpha;</span>
+and <span class="b">&beta;</span>
+UHF wavefunctions.
+<P>
+If no error is found, check the second Fock matrix.  If faulty, the error lies
+in the density matrix DENSIT, or the diagonalization RSP.
+<P>
+If the Fock matrix is acceptable, check all the Fock matrices.   If the  error
+starts in iterations 2 to 4, the error probably lies in CNVG, if after that, in
+PULAY, if used.
+<P>
+If SCF is achieved, and the heat  of  formation  is  faulty,  check HELECT.
+If C.I. was used check MECI.
+<P>
+If the derivatives are faulty, use <TT><a href="dcart.html">DCART</a></TT> to  verify  the  Cartesian
+derivatives.   If  these  are  faulty, check DCART and DHC.  If they are
+correct,  or  not  calculated,  check  the   DERIV   finite   difference
+calculation.   If the wavefunction is non-variationally optimized, check
+DERNVO.
+<P>&nbsp;<H3><A NAME="SECTION001712200000000000000">Bugs discovered in the geometric subroutines</A> </H3>
+<P>If the geometric calculation is faulty, use <TT><a href="flepo.html">FLEPO</a></TT> or <TT>
+<a href="prnt.html">PRNT=5</a></TT> to monitor the optimization, <TT>
+<a href="deriv.html">DERIV</a></TT> may also be useful here. </P>
+<P>For the FORCE calculation, <TT><a href="dcart.html">DCART</a></TT> or <TT>DERIV</TT> are useful for variationally optimized functions, <TT>
+<a href="compfg.html">COMPFG</a></TT> for non-variationally optimized functions. </P>
+<P>For reaction paths, verify that FLEPO is working correctly; if so, then PATHS is faulty. </P>
+<P>For saddle-point calculations, verify that FLEPO is working correctly; if so, then REACT1 is faulty. </P>
+<P>Keep in mind the fact that MOPAC is a large calculation, and, while intended to be versatile, many combinations of options have not been tested. If a bug is found in the original code, please communicate details to Dr. James J. P. Stewart, Stewart Computational Chemistry, 15210 Paddington Circle, Colorado Springs, CO 80921-2512; E-mail: <A NAME="tex2html234"><A HREF="mailto:MrMOPAC@ATT.net"><TT><FONT COLOR="#0000ff"><U>MrMOPAC@ATT.net</U></FONT></TT></A></A>. </P>
+<P>
+<dt>&nbsp;</dt>
+</DL>
+<P>
+</BODY>
+</HTML>

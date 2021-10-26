@@ -1,0 +1,147 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=us-ascii">
+<meta name=ProgId content=FrontPage.Editor.Document>
+<meta name=Generator content="Microsoft FrontPage 5.0">
+<meta name=Originator content="Microsoft Word 12">
+<title>EXTERNAL=name </title>
+</head>
+
+<body bgcolor=white lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<h1 align=center style='text-align:center'><tt><span class="auto-style1">EXTERNAL=name</span></tt><span
+style='mso-fareast-font-family:"Times New Roman"'> <o:p></o:p></span></h1>
+
+<h3>Atom parameters</h3>
+	<p>Normally, all semiempirical parameters are taken from the module files
+within MOPAC. When the supplied parameters are not suitable, as in an element
+recently parameterized, and the parameters have not yet installed in the user's
+copy of MOPAC, then the new parameters can be inserted at run time by use of <tt><span
+style='font-size:10.0pt'>EXTERNAL=&lt;filename&gt;</span></tt>, where <tt><span
+style='font-size:10.0pt'>&lt;filename&gt;</span></tt> is the name of the file
+which contains the new parameters. If the file-name contains spaces, then
+enclose the filename in quotation marks, e.g. <tt><span style='font-size:10.0pt'>EXTERNAL=&quot;E:\Test
+Data\Parameter Set&quot;.&nbsp; </span></tt></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'>&lt;filename&gt;</span><span
+style='mso-fareast-font-family:"Times New Roman"'> contains a series of
+parameter definitions in the format: </span><tt><span style='font-size:10.0pt'><o:p></o:p></span></tt></p>
+
+<p><span style='font-size:10.0pt;font-family:"Courier New"'>&lt;Parameter&gt;
+&lt;Element&gt; &lt;Value of parameter&gt;</span><span style='mso-fareast-font-family:
+"Times New Roman"'> <br>
+where the possible parameters are </span><tt><span style='font-size:10.0pt'>USS,
+UPP, UDD, ZS, ZP, ZD, BETAS, BETAP, BETAD, GSS, GSP, GPP, GP2, HSP, F0SD, G2SD,
+ALP, <span class=SpellE>XFAC_xx</span>, <span class=SpellE>ALPB_xx</span>, <span
+class=SpellE>FNnm</span></span></tt><span style='mso-fareast-font-family:"Times New Roman"'>,
+</span><tt><span style='font-size:10.0pt'>n</span></tt><span style='mso-fareast-font-family:
+"Times New Roman"'>=1,2, or 3, and </span><tt><span style='font-size:10.0pt'>m</span></tt><span
+style='mso-fareast-font-family:"Times New Roman"'>=1 to 10, and the elements
+are defined by their chemical symbols, such as Si or SI.&nbsp; So FN11 is the
+first &quot;a&quot; parameter of the core-core term, FN12 is the second
+&quot;a&quot; parameter (if it exists), FN21 is the first &quot;b&quot; parameter
+of the core-core term, and FN31 is the first &quot;c&quot; parameter of the
+core-core term. <o:p></o:p></span></p>
+
+<p>When new parameters for elements are published, they can be typed in as
+shown. This file is ended by a blank line, the word END or nothing i.e., no
+end-of-file delimiter. An example of a parameter data file is given in the
+Figure: </p>
+
+<p align=center style='text-align:center'><b>Figure:</b> Use of <tt><span
+style='font-size:10.0pt'>EXTERNAL=<i>name<o:p></o:p></i></span></tt></p>
+
+
+  <center>
+
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=312
+ style='width:211.9pt;mso-cellspacing:0in;mso-yfti-tbllook:1184; border-collapse:collapse' bordercolor="#111111">
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td><pre>    USS      Si    -34.08201495
+    UPP      Si    -28.03211675
+    UDD      Si     -6.0
+    BETAS    Si     -5.01104521
+    BETAP    Si     -2.23153969    
+    Betad    Si     -1.0
+    ZS       Si      1.28184511
+    ZP       Si      1.84073175
+    ALP      Si      2.18688712
+    GSS      Si      9.82
+    GPP      Si      7.31
+    GSP      Si      8.36
+    GP2      Si      6.54
+    HSP      Si      1.32
+    BETAD    TC      -5.72433498
+    F0SD     TC      5.43488602
+    G2SD     TC      1.10687502
+    XFAC_Ag   I      2.0
+    ALPB_C   Rb      2.0
+</pre></td>
+ </tr>
+</table>
+
+
+  </center>
+</div>
+
+
+<h3>INDO/S parameters</h3>
+
+<p class="MsoNormal">Since the parameter structure of INDO is different from NDDO methods, the allowed parameter names are also different. The allowed values 
+for INDO are BETAS, BETAP, BETAD, NORBS, ZCORE, ZSP, ZD1, ZD2, ZWT1, ZWT2, and 
+FGi (i = 1-24). Note that in INDO many parameters for s and p orbitals should be 
+identical, so BETAS should be set to equal BETAP. Both s and p orbital exponents 
+are set up using ZSP.</p>
+
+<p class=auto-style1>Derived parameters do not need to be entered; they will be
+calculated from the optimized parameters. All &quot;constants&quot; such as the
+experimental heat of atomization are already inserted for all elements. </p>
+
+<p class=auto-style1>If a parameter is not set, e.g. UPP for hydrogen, do not
+attempt to define the parameter as zero.&nbsp; If a parameter that has not been
+defined is given a defined value of zero, then it will become defined, and have
+the value zero.&nbsp; From that point on, it would be recognized as a defined
+parameter, usually with disastrous results.&nbsp; So do <strong><i>not</i></strong>
+use lines such as:</p>
+
+<div align=center>
+
+<table class=MsoNormalTable border=0 cellspacing=0 cellpadding=0 width=312
+ style='width:211.9pt;mso-cellspacing:0in;mso-yfti-tbllook:1184'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes'>
+  <td style='padding:.75pt .75pt .75pt .75pt'><pre><span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>UPP<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>H<span style='mso-spacerun:yes'>&nbsp;&nbsp;&nbsp; </span>0.0</pre></td>
+ </tr>
+</table>
+
+</div>
+
+<p class=auto-style1>Derived parameters do not need to be entered; they will be
+calculated from the optimized parameters. All &quot;constants&quot; such as the
+experimental heat of atomization are already inserted for all elements. </p>
+	<h3>Global parameters</h3>
+	<p>Most users should not change the values of global parameters; because of 
+	this, definitions of global parameters are not provided.&nbsp; Users who 
+	need to edit global parameters would normally have access to the source code 
+	of MOPAC, and would be able to read and edit the parameters.&nbsp; </p>
+	<p>Values of global parameters are set and re-set using EXTERNAL lines of 
+	the type:<PRE>	PAR1 1.234
+	PAR6 2.345
+	PAR23 3.456</PRE>
+	Any other data on the line is ignored.<br><br>&nbsp;<p>&nbsp;</p>
+	<p>&nbsp;</p>
+
+<p class=auto-style1>&nbsp;</p>
+
+</div>
+
+</body>
+
+</html>

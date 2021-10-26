@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Description</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: center;
+																													}
+																													.auto-style2 {
+	text-align: left;
+}
+.auto-style3 {
+	font-family: Symbol;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 class="auto-style1">What Program BZ can do (<a href="Program_BZ.html">Back</a>)</h1>
+<p class="auto-style2">Program BZ is designed to be used mainly for exploring 
+the Brillouin zone of a crystalline solid.&nbsp; It can be used for working with 
+the Brillouin zone for one-dimensional polymers such as polyethylene or 
+cellulose, and for two-dimensional systems such as graphene, but the main use is 
+for mapping the Brillouin zone of organic, organometallic, and inorganic 
+solids.&nbsp;For this reason all the following discussion will be restricted to 
+three-dimensional solids.</p>
+<h3>Structures in <em>k</em>-space</h3>
+<p class="auto-style2">The volume within the Brillouin zone is referred to as
+<em>k</em>-space. Several regions in <em>k</em>-space are of interest, and all 
+of these can be examined using BZ: </p>
+<ul>
+	<li>
+	<p class="auto-style2"><strong>Surfaces</strong>: A surface can be defined 
+	as a two-dimensional plane in <em>k</em>-space.&nbsp; The most important of 
+	these are the various surfaces of the Brillouin zone itself, and certain 
+	cross-sections of the Brillouin zone; these cross-sections typically include 
+	the center of the Brillouin zone, i.e., <em>k</em>-space coordinate&nbsp; 
+	(0.0, 0.0, 0.0).&nbsp; Surfaces can be of any size, although most 
+	interesting features are in the first Brillouin zone. Typically, only one 
+	energy surface would be generated in a given plot.</p>
+	</li>
+	<li>
+	<p class="auto-style2"><strong>Lines</strong>: The shape of a Brillouin zone 
+	can be represented by a set of lines.&nbsp; Those on the surface define the 
+	limits of the first Brillouin zone.&nbsp; Another set of lines go from the 
+	center of the Brillouin zone to a point on the surface, either a vertex or 
+	the center of a polygon.&nbsp; These lines and others, e.g., a line from the 
+	center of a polygon to a vertex, or a line that is not related to any 
+	specific feature, can be generated.&nbsp; Each point on a line contains all 
+	the energy levels for that point. A set of contiguous lines will be referred 
+	to as a &quot;walk&quot;, as in &quot;The walk from &Gamma; to X 
+	to W to L to &Gamma;&quot;&nbsp; The band-structure 
+	of a solid is most commonly represented by one or more walks in <em>k</em>-space.</p>
+	</li>
+	<li>
+	<p class="auto-style2"><strong>Points</strong>.&nbsp; The properties of an 
+	individual point in <em>k</em>-space can be calculated.&nbsp; In addition to the 
+	energy levels, the eigenvalues, at the point being examined, the symmetry 
+	properties of the associated eigenvectors can also be generated.&nbsp; This 
+	does require symmetry information to be supplied <em>via</em> a file named 
+	&lt;file&gt;.ops.&nbsp; The symmetry group at a given point is called the &quot;little 
+	group.&quot;&nbsp; Some little groups are isomorphous with a point-group, some 
+	other little groups have no equivalent point group.</p>
+	</li>
+</ul>
+<h3>Types of energy band structure</h3>
+<h4>Electronic</h4>
+<p>Electronic band structures are calculated using the Fock matrix from a MOPAC 
+calculation.&nbsp; This is the simplest type of band-structure. The number of 
+energy bands is equal to the number of atomic orbitals in the primitive unit 
+cell, i.e., the smallest block that can generate the solid using only 
+translations.</p>
+<h4>Phonon</h4>
+<p>Vibrational band structures can be calculated if a <a href="force.html"><tt>FORCE</tt></a> calculation that 
+includes the <a href="mers.html"><tt>MERS</tt></a> keyword is run. The mass-weighted Hessian matrix generated in 
+MOPAC is then written to &lt;file&gt;.brz.</p>
+<h3>Symmetry operations</h3>
+<p>If symmetry operations are supplied, <em>via</em> a file &lt;file&gt;.ops, then the 
+electronic energy or phonon matrix is symmetrized.&nbsp; In principle, these 
+matrices should already have the correct symmetry, but small deviations occur 
+due to incomplete geometry optimization and to the use of finite numerical 
+precision in constructing the matrices, in particular the phonon matrix.&nbsp; 
+Symmetrizing the energy matrix results in the elimination of small artifacts, 
+such as bands that should cross having a small band-gap.</p>
+<p>When points are calculated, the characters of the symmetry operations of the 
+associated eigenvectors are generated.&nbsp; In diamond, for example, at the
+&Gamma; point, each eigenvector belongs to an 
+irreducible representation of the little group that is isomorphous with 
+point-group Oh. At the X point, all irreducible representations are two-fold 
+degenerate.</p>
+<p>In general, and with the notable exception of the Identity operation, 
+characters of eigenvectors are complex, and the imaginary component represents 
+the momentum of the <em>k</em>-point.</p>
+<h3>Graphical representation</h3>
+<p>BZ is an interactive program.&nbsp; While it's running, the band-structure, 
+either a walk or a surface, is generated&nbsp; so that you can see what the 
+results look like.&nbsp; This band structure can be captured using &quot;snipping 
+tool&quot; or by screen capture.&nbsp; The band structure is also written to a file 
+in a form that is suitable for use by Excel.</p>
+<h3>Run in non-interactive mode</h3>
+<p>As an alternative to typing data interactively, a file can be written that 
+contains all the typed responses.&nbsp; Thus if the first response is the number 
+&quot;1&quot; followed by (return), then the file would have as the first line the number 
+1.&nbsp; Generating an aesthetically pleasing band-structure takes some 
+trial-and-error.&nbsp; If the keystrokes that were used in making such a graphic 
+are put into a file, , and when such a </p>
+</BODY>
+</HTML>

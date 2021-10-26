@@ -1,0 +1,339 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 12.0">
+<TITLE>Rotation of Atomic Orbitals</TITLE>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H3>Generic (non-trigonometric) <A NAME="SECTION0012316100000000000000">Rotation of Atomic Orbitals</A> </H3>
+<p>Normally, a rotation about a diatomic axis does not cause problems 
+when evaluating unitary matrices representing atomic orbitals, but in some 
+instances the phase relationship must be locked.&nbsp; When this happens, the normal 
+trigonometric analysis cannot be used, and a completely general rotation method 
+must be employed.&nbsp; This starts with replacing the trigonometric 
+representation of the <i>p</i>-orbitals by a matrix of the type:</p>
+<div align="center">
+  <center>
+
+<TABLE CELLPADDING=3 BORDER="1" style="border-width:0; border-collapse: collapse" bordercolor="#111111" cellspacing="0">
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" colspan="4" style="border-style: none; border-width: medium">&nbsp;<u>Angular Dependence of the <I>p</I>-orbitals</u> </TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><I>p</I>(<I>x</I>)</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><I>p</I>(<I>y</I>)</TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">p(z)</TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"><span class="b">&pi;</span>+</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">
+<!-- MATH: $\cos a.\cos b$ -->
+<i>a</i></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><i>b</i></TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+<!-- MATH: $\cos a.\sin b$ -->
+<i>c</i></TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"><span class="b">&pi;</span>-</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">
+<!-- MATH: $\sin a.\cos b$ -->
+<i>d</i></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><i>e</i></TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+<!-- MATH: $\sin a.\sin b$ -->
+<i>f</i></TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"><span class="b">&sigma;</span></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><i>g</i></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><i>h</i></TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+<i>o</i></TD>
+</TR>
+</TABLE>
+  </center>
+</div>
+&nbsp;<p>where the quantities <em>a-o</em> form a unitary matrix.&nbsp; Where this matrix 
+comes from depends on the specific system being modeled.&nbsp; Given that this 
+matrix exists, it can then be used in constructing the rotational properties of 
+the <i>d</i>-orbitals, again in a completely general way.&nbsp; To help 
+understand the construction of the d-orbital transform, a worked exercise for 
+the first element of the matrix will now be given.&nbsp; As far as possible, 
+this analysis follows in the same style as the <a href="rotate_atomic_orbitals.html">
+trigonometric analysis</a>.</p>
+<p>
+<BR>
+Using the tools described <a href="rotate_atomic_orbitals.html">earlier</a>, let 
+us examine the rotation of 
+<!-- MATH: $d(x^2-y^2)$ -->
+<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>). The rotation components involved are:
+<i>R</i>(<i>x</i>) = (<i>a</i>)<i>x</i> + (<i>b</i>)<i>y</i> + (<i>c</i>)<i>z,&nbsp; </i>
+and <i>R</i>(<i>y</i>) = (<i>d</i>)<i>x</i> + (<i>e</i>)<i>y + </i>(<i>f</i>)<i>z</i> <i>.</i></p>
+<P>
+<BR><P></P>
+
+The rotation matrix element 
+<!-- MATH: $<d(x^2-y^2)|R|d(x^2-y^2)>$ -->
+&lt;<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)|<I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt; can be derived
+using the relationship:
+
+<TABLE ALIGN="CENTER" CELLPADDING="0" width="1238" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" width="78"><I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP width="9">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="908">(<i>a</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
++ </i>(2<i>a</i>.<i>b</i>)<i>xy</i> + (2<i>a.c</i>)<i>xz</i> + (<i>b</i><sup>2</sup>)<i>y</i><sup>2</sup> 
++ (2<i>b.c</i>)<i>yz</i> + (<i>c</i><sup>2</sup>)<i>z</i><sup>2 </sup>-((<i>d</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
++ </i>(2<i>d.e</i>)<i>xy</i> + (2<i>d.f</i>)<i>xz</i> +(<i>e</i><sup>2</sup>)<i>y</i><sup>2</sup> 
++ (2<i>e.f</i>)<i>yz</i> +(<i>f</i><sup>2</sup>)<i>z</i><sup>2</sup>)</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" width="78">&nbsp;</TD>
+<TD width="9">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="908">(<i>a</i><sup>2</sup>-<i>d</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
++ </i>(2(<i>a</i>.<i>b-d.e</i>))<i>xy</i> + (2(<i>a.c-d.f</i>))<i>xz</i> + (<i>b</i><sup>2</sup>-<i>e</i><sup>2</sup>)<i>y</i><sup>2</sup> 
++ (2(<i>b.c-e.f</i>))<i>yz</i> + (<i>c</i><sup>2</sup>-<i>f</i><sup>2</sup>)<i>z</i><sup>2 </sup></TD>
+</TR>
+</TABLE>
+<P>
+In this expression, all integrals involving odd terms vanish, therefore:
+<BR>
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)|<I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;&nbsp; </TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP>&lt;<i>x</i><sup>2</sup>(<i>a</i><sup>2 </sup>-<i> d</i><sup>2</sup>)<i>x</i><sup>2</sup>&gt; 
++ &lt;<i>x</i><sup>2</sup>(<i>b</i><sup>2 </sup>-<i> e</i><sup>2</sup>)<i>y</i><sup>2</sup>&gt; + &lt;<i>x</i><sup>2</sup>(<i>c</i><sup>2 </sup>-<i> 
+f</i><sup>2</sup>)<i>z</i><sup>2</sup>&gt; - &lt;<i>y</i><sup>2</sup>(<i>a</i><sup>2 </sup>-<i> 
+d</i><sup>2</sup>)<i>x</i><sup>2</sup>&gt; - &lt;<i>y</i><sup>2</sup>(<i>b</i><sup>2 </sup>-<i> 
+e</i><sup>2</sup>)<i>y</i><sup>2</sup>&gt; - &lt;<i>y</i><sup>2</sup>(<i>c</i><sup>2 </sup>-<i> 
+f</i><sup>2</sup>)<i>z</i><sup>2</sup>&gt; </TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE>
+The integral <i>&lt;x</i><sup>4</sup>&gt;
+has the same value as <i>&lt;y</i><sup>4</sup>&gt;,
+and 
+
+<!-- MATH: $<\!x^2y^2\!>$ -->
+<i>&lt;x</i><sup>2</sup><i>y</i><sup>2</sup>&gt;
+has the same
+value as 
+<!-- MATH: $<\!x^2z^2\!>$ -->
+<i>&lt;x</i><sup>2</sup><i>z</i><sup>2</sup>&gt;,
+etc., therefore this expression can be simplified.  
+Collecting together terms of the type <i>&lt;x</i><sup>4</sup>&gt;
+gives
+<p align="center">(<i>a</i><sup>2 </sup>-<i> d</i><sup>2</sup> -<i> b</i><sup>2 </sup>
++<i> e</i><sup>2</sup>)</p>
+<P></P>
+Collecting terms of the type 
+<!-- MATH: $<\!y^2x^2\!>$ -->
+&lt;y<sup>2</sup>x<sup>2</sup>&gt;
+gives
+<p align="center">(<i>b</i><sup>2 </sup>-<i> e</i><sup>2</sup> + <i>c</i><sup>2 </sup>-<i> 
+f</i><sup>2</sup> - <i>a</i><sup>2 </sup>+<i> d</i><sup>2</sup> - <i>c</i><sup>2 </sup>
++<i> f</i><sup>2</sup>) = -(<i>a</i><sup>2 </sup>-<i> d</i><sup>2</sup> -<i> b</i><sup>2 </sup>
++<i> e</i><sup>2</sup>)</p>
+<P></P>
+The rotation matrix element is thus:
+<p align="center">&lt;d(<i>x</i><sup>2</sup> - <i>y</i><sup>2</sup>)|R|d(<i>x</i><sup>2</sup> 
+- <i>y</i><sup>2</sup>)&gt; = &lt;<i>x</i><sup>4</sup> -2<i>x</i><sup>2</sup><i>y</i><sup>2</sup> 
++<i>y</i><sup>4</sup>&gt;(<i>a</i><sup>2 </sup>-<i> d</i><sup>2</sup> -<i> b</i><sup>2 </sup>
++<i> e</i><sup>2</sup>)</p>
+<P></P>
+As a result of the fact that the angular components of the atomic orbitals
+are normalized, i.e., 
+<!-- MATH: $<\!x^4-2x^2y^2+y^4\!>$ -->
+<i>&lt;x</i><sup>4 </sup>-<sup> </sup>2<i>x</i><sup>2</sup><i>y</i><sup>2 </sup>
++<sup> </sup><i>y</i><sup>4</sup>&gt;=1:
+<p align="center">&lt;d(<i>x</i><sup>2</sup> - <i>y</i><sup>2</sup>)|R|d(<i>x</i><sup>2</sup> 
+- <i>y</i><sup>2</sup>)&gt; = (<i>a</i><sup>2 </sup>-<i> d</i><sup>2</sup> -<i> b</i><sup>2 </sup>
++<i> e</i><sup>2</sup>)/2</p>
+
+<P>which is the form used in the calculation of the <I>d</I>-rotation matrix. The full set of <I>d</I>-orbital 
+rotation matrix elements is:<DIV ALIGN="CENTER">
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 style="border-left-width: 0; border-right-width: 0; border-top-width: 0" height="208" width="1372">
+<TR>
+  <TD VALIGN="MIDDLE" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium" height="20" width="107">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium" colspan="5" height="20" width="1244">
+<p align="center">Angular Dependence of the <I>d</I>-orbitals</TD>
+</TR>
+<TR>
+  <TD VALIGN="MIDDLE" style="border-top-style: solid; border-top-width: 1" height="30" width="105">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE" style="border-top-style: solid; border-top-width: 1" height="30" width="301">
+<span class="b">&delta;</span>+ &#8801; <i>d</i></font>(<i>x<sup>2</sup> 
+- y<sup>2</sup>)</i></font></TD>
+<TD VALIGN="MIDDLE" height="30" width="174">
+<P align="left"><!-- MATH: $\pi + \ \equiv \ d(xz)$ --><span class="b">&pi;</span>+
+&#8801; <i>d</i>(<i>xz</i>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="398">
+<P><!-- MATH: $\sigma  \ \equiv \ d(2z^2-x^2-y^2)$ --><span class="b">&sigma;</span>
+&#8801; <I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="157">
+<P><font color="#00FF00"><!-- MATH: $\pi -  \ \equiv \ d(yz)$ --></font><span class="b">&pi;</span>-
+&#8801; <i>d</i>(<i>yz</i>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="182">
+<P><!-- MATH: $\delta -  \ \equiv \ d(xy)$ -->&delta;-
+&#8801; <i>d</i>(<i>xy</i>)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="105">
+<!-- MATH: $d(x^2-y^2)$ --><I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="301">
+<P><!-- MATH: $(2\cos^2a-1) \cos^2b+\frac{1}{2}(2\cos^2a-1) \sin^2b$ -->&nbsp;(<i>a</i><sup>2 </sup>-<i> d</i><sup>2</sup> -<i> b</i><sup>2 </sup>
++<i> e</i><sup>2</sup>)/2</TD>
+<TD VALIGN="MIDDLE" height="30" width="174">
+<P><i>a.g</i> - <i>b.h</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="398">
+<P>(2<i>g</i><sup>2</sup><i> - d</i><sup>2</sup><i> - a</i><sup>2</sup><i> - </i>
+2<i>h</i><sup>2</sup><i> + e</i><sup>2</sup><i> + b</i><sup>2</sup>)/&#8730;12</TD>
+<TD VALIGN="MIDDLE" height="30" width="157">
+<P><!-- MATH: $-\sin a. \sin b.\cos b$ --><i>d.g - e.h</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="182">
+<P><i>a.d - b.e</i></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="105">
+<I><P>d</I>(<I>xz</I>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="301">
+<P>(<i>a.c - d.f</i>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="174">
+<P><i>a.o + c.g</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="398">
+<P>(2<i>g.o - d.f - a.c</i>)/&#8730;3</TD>
+<TD VALIGN="MIDDLE" height="30" width="157">
+<P><!-- MATH: $\sin a. (2\cos^2b-1)$ --><i>d.o + f.g</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="182">
+<P><!-- MATH: $2\sin a.\cos a. \sin b.\cos b$ --> <!-- MATH: $\sin a.\cos a. \cos^2b+\sin a.\cos a. \sin^2b$ -->
+<i>a.f + c.d</i></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="105">
+<!-- MATH: $d(2z^2-x^2-y^2)$ --><I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="301">
+<P><!-- MATH: $\sqrt{\frac{3}{4}}(2\cos^2a-1) \sin^2b$ -->(2<i>c</i><sup>2</sup> 
+- <i>b</i><sup>2</sup> - <i>a</i><sup>2</sup> - 2<i>f</i><sup>2</sup> + <i>e</i><sup>2</sup> 
++ <i>d</i><sup>2</sup>)/&#8730;12</TD>
+<TD VALIGN="MIDDLE" height="30" width="174">
+<P>(<!-- MATH: $\sqrt{3}\cos a. \sin b.\cos b$ -->2<i>c.o - b.h - a.g</i>)/&#8730;3</TD>
+<TD VALIGN="MIDDLE" height="30" width="398">
+<P><!-- MATH: $\cos^2b-\frac{1}{2}\sin^2b$ -->(4<i>o</i><sup>2</sup>
+- 2(<i>h</i><sup>2</sup>
++ <i>g</i><sup>2</sup><i> + f</i><sup>2</sup><i> + c</i><sup>2</sup>) + <i>e</i><sup>2</sup><i> 
++ d</i><sup>2</sup><i> + b</i><sup>2</sup><i> + a</i><sup>2</sup>)/6</TD>
+<TD VALIGN="MIDDLE" height="30" width="157">
+<P><!-- MATH: $\sqrt{3}\sin a.\sin b.\cos b$ -->(2<i>o.f - e.h - d.g</i>) /&#8730;3</TD>
+<TD VALIGN="MIDDLE" height="30" width="182">
+<P>(2<i>c.f - e.b - a.d</i>) /&#8730;3</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="105">
+<I><P>d</I>(<I>yz</I>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="301">
+<P><!-- MATH: $-2\sin a.\cos a. \sin b$ -->(<i>b.c - e.f</i>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="174">
+<P><!-- MATH: $-\sin a. \cos b$ --><i>b.o + c.h</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="398">
+<P>(2<i>h.o - e.f - c.b</i>) /&#8730;3</TD>
+<TD VALIGN="MIDDLE" height="30" width="157">
+<P><!-- MATH: $\cos a. \cos b$ --><i>e.o + f.h</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="182">
+<P><!-- MATH: $(2\cos^2a-1) \sin b$ --><i>b.f + c.e</i></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="31" width="105">
+<I><P>d</I>(<I>xy</I>)</TD>
+<TD VALIGN="MIDDLE" height="31" width="301">
+<P><!-- MATH: $-2\sin a.\cos a. \cos b$ -->(<i>a.b - d.e</i>)</TD>
+<TD VALIGN="MIDDLE" height="31" width="174">
+<P><!-- MATH: $\sin a . \sin b$ --><i>a.h + b.g</i></TD>
+<TD VALIGN="MIDDLE" height="31" width="398">
+<P>(2<i>g.h - e.d - a.b</i>)/&#8730;3</TD>
+<TD VALIGN="MIDDLE" height="31" width="157">
+<P><!-- MATH: $-\cos a. \sin b$ --><i>d.h + e.g</i></TD>
+<TD VALIGN="MIDDLE" height="31" width="182">
+<P><!-- MATH: $(2\cos^2a-1) \cos b$ --><i>a.e + b.d</i></TD>
+</TR>
+</TABLE>
+
+</DIV>
+
+<p>The other elements in this matrix can be derived using the following terms:</p>
+
+<TABLE ALIGN="CENTER" CELLPADDING="0" width="1692" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="left" width="130"><I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;</TD>
+<TD ALIGN="center" NOWRAP width="31">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">(<i>a</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
++ </i>(2<i>a</i>.<i>b</i>)<i>xy</i> + (2<i>a.c</i>)<i>xz</i> +(<i>b</i><sup>2</sup>)<i>y</i><sup>2</sup> 
++ (2<i>b.c</i>)<i>yz</i> + (<i>c</i><sup>2</sup>)<i>z</i><sup>2 </sup>- (<i>d</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
+- </i>(2<i>d.e</i>)<i>xy</i> - (2<i>d.f</i>)<i>xz</i> -(<i>e</i><sup>2</sup>)<i>y</i><sup>2</sup> 
+- (2<i>e.f</i>)<i>yz</i> -(<i>f</i><sup>2</sup>)<i>z</i><sup>2</sup></TD>
+</TR>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130">&nbsp;</TD>
+<TD width="31" align="center">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">(<i>a</i><sup>2</sup>-<i>d</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
++ </i>(2(<i>a</i>.<i>b-d.e</i>))<i>xy</i> + (2(<i>a.c-d.f</i>))<i>xz</i> +(<i>b</i><sup>2</sup>-<i>e</i><sup>2</sup>)<i>y</i><sup>2</sup> 
++ (2(<i>b.c-e.f</i>))<i>yz</i> + (<i>c</i><sup>2</sup>-<i>f</i><sup>2</sup>)<i>z</i><sup>2 </sup></TD>
+</tr>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130">&nbsp;</TD>
+<TD width="31" align="center">&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">&nbsp;</TD>
+</tr>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130"><I>R</I>|<I>d</I>(<I>xz</I>)&gt;</TD>
+<TD width="31" align="center">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">(<i>a.g</i>)<i>x</i><sup>2</sup> + (<i>a.h 
++ b.g</i>)<i>xy</i> + (<i>a.o + c.g</i>)<i>xz</i> + (<i>b.h</i>)<i>y</i><sup>2</sup> 
++ (<i>b.o + c.h</i>)<i>yz</i> + (<i>c.o</i>)<i>z</i><sup>2</sup></TD>
+</tr>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130">&nbsp;</TD>
+<TD width="31" align="center">&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">&nbsp;</TD>
+</tr>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130"><I>R</I>|<I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;</TD>
+<TD width="31" align="center">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">(2<i>g</i><sup>2</sup>)<i>x</i><sup>2</sup> 
++ (4<i>g.h</i>)<i>xy</i> + (4<i>g.o</i>)<i>xz</i> + (2<i>h</i><sup>2</sup>)<i>y</i><sup>2</sup> 
++ (4<i>ho</i>)<i>yz</i> + (2<i>o</i><sup>2</sup>)<i>z</i><sup>2</sup> - (<i>a</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
+- </i>(2<i>a</i>.<i>b</i>)<i>xy</i> - (2<i>a.c</i>)<i>xz</i> - (<i>b</i><sup>2</sup>)<i>y</i><sup>2</sup> 
+- (2<i>b.c</i>)<i>yz</i> - (<i>c</i><sup>2</sup>)<i>z</i><sup>2 </sup>- (<i>d</i><sup>2</sup>)<i>x</i><sup>2</sup><i> 
+- </i>(2<i>d.e</i>)<i>xy</i> - (2<i>d.f</i>)<i>xz</i> - (<i>e</i><sup>2</sup>)<i>y</i><sup>2</sup> 
+- (2<i>e.f</i>)<i>yz</i> -<i> f</i><sup>2</sup>)<i>z</i><sup>2</sup></TD>
+</tr>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130">&nbsp;</TD>
+<TD width="31" align="center">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">(2<i>g</i><sup>2</sup> - <i>a</i><sup>2</sup><i> 
+- d</i><sup>2</sup>)<i>x</i><sup>2</sup> + (4<i>g.h - </i>2<i>a</i>.<i>b - </i>2<i>d.e</i>)<i>xy</i> 
++ (4<i>g.o</i> - 2<i>a.c</i> - 2<i>d.f</i>)<i>xz</i> + (2<i>h</i><sup>2</sup> - <i>b</i><sup>2</sup>- <i>e</i><sup>2</sup>)<i>y</i><sup>2</sup> 
++ (4<i>ho</i> - 2<i>b.c</i> - 2<i>e.f</i>)<i>yz </i>+ (2<i>o</i><sup>2 </sup>- <i>c</i><sup>2</sup> 
+-<i>f</i><sup>2</sup>)<i>z</i><sup>2</sup></TD>
+</tr>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="left" width="130">&nbsp;</TD>
+<TD width="31" align="center">&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="left" width="130"><I>R</I>|<I>d</I>(<I>yz</I>)&gt;</TD>
+<TD width="31" align="center">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">(<i>d.g</i>)<i>x</i><sup>2</sup> + (<i>d.h 
++ e.g</i>)<i>xy</i> + (<i>d.o+ f.g</i>)<i>xz</i> + (<i>e.h</i>)<i>y</i><sup>2</sup> 
++ (<i>e.o + f.h</i>)<i>yz</i> + (<i>f.o</i>)<i>z</i><sup>2</sup></TD>
+</TR>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130">&nbsp;</TD>
+<TD width="31" align="center">&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">&nbsp;</TD>
+</tr>
+<tr>
+  <TD NOWRAP ALIGN="left" width="130"><I>R</I>|<I>d</I>(<I>xy</I>)&gt;</TD>
+<TD width="31" align="center">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="1288">(<i>a.d</i>)<i>x</i><sup>2</sup> + (<i>a.e 
++ b.d</i>)<i>xy</i> + (<i>a.f + c.d</i>)<i>xz</i> + (<i>b.e</i>)<i>y</i><sup>2</sup> 
++ (<i>b.f + c.e</i>)<i>yz</i> + (<i>c.f</i>)<i>z</i><sup>2</sup></TD>
+</tr>
+</TABLE>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

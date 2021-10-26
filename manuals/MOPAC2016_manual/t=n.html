@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>T=n[M,H,D] </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center"><A NAME="SECTION0073209000000000000000">
+<TT>T=<I>n</I>[M,H,D,W]</TT> </A>
+</h1>
+This is a facility to allow the program to shut down in  an  orderly
+manner on computers with execution time cpu  limits.
+<P>
+The total cpu  time allowed for the current  job  is  limited  to <I>nn</I>.<I>nn</I> seconds;  by default this is 
+two
+days, i.e., 172,800
+seconds.  If the next cycle of the calculation cannot be completed without
+running a  risk of  exceeding the assigned time the calculation will write a
+restart file and then stop.  The safety margin is 100 percent; that is, to do
+another cycle, enough time to do at least two full cycles must remain.
+<P>
+If several systems are run in one job, then the time allowed for <EM>all</EM> the
+jobs is two days, unless <TT>T=<I>n</I>.<I>nn</I></TT> is used.  If <TT>T=<I>n</I>.<I>nn</I></TT> is used,
+then the allowed time <EM>for the remainder of the job</EM> is <I>n</I>.<I>nn</I> seconds.
+This means that if the allowed time for each system is to be an hour, then the
+keyword <TT>T=1h</TT> must be specified in each system.
+<P>
+Alternative specifications of the time are  <TT>T=<I>nn</I>.<I>nn</I>M</TT>,  which  defines
+the  time in minutes, <TT>T=<I>nn</I>.<I>nn</I>H</TT>, in hours, <TT>T=<I>nn</I>.<I>nn</I>D</TT>, in
+days, and <TT>T=<I>nn</I>.<I>nnW</I></TT>, in weeks,&nbsp; for long jobs.
+<P>
+A job that's running can be instructed to run out of time by issuing the 
+<a href="shut.html">SHUT</a> 
+command.&nbsp; If that is done, then, at the first opportunity, MOPAC will write 
+out a RESTART file called &lt;file&gt;.res and a DENSITY file, &lt;file&gt;.den.&nbsp; These 
+can then be read in to a subsequent job using <a href="restart.html"><TT>RESTART</TT></a> 
+and <a href="oldens.html"><TT>OLDENS</TT></a>.<P>
+&nbsp;</BODY></HTML>

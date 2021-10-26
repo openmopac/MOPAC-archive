@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Graphical User Interfaces </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p>(<a href="modeling_proteins.html#Graphical">Modeling proteins</a>)</p>
+<h1>Graphical User Interfaces</h1>
+<p>A GUI is absolutely essential for working with proteins.&nbsp; There are many
+<a href="../resellers.html">good GUIs</a>.&nbsp; If the MOPAC 
+keyword <a href="html.html"><tt>HTML</tt></a> is used, a web-page will be written that 
+would allow details of a protein to be examined using JSmol, and some simple geometric 
+operations (optimizing the positions of small sets of atoms).&nbsp; This GUI is 
+fast and simple to use, and is useful for exploring mechanisms.</p>
+<h2>What to look for in a GUI</h2>
+<p>A GUI must be able to read and write files that MOPAC can read and write.&nbsp; 
+These include the &lt;name&gt;.mop and &lt;name&gt;.pdb, as well as &lt;name&gt;.arc files.</p>
+<p>The GUI should allow structures to be manipulated (edited).</p>
+<p>If the GUI can handle and edit residue sequences and backbone ribbons (alpha helices 
+and beta sheets, etc.) that would be a bonus.</p>
+<h3>Other considerations</h3>
+<p>A good GUI can make working with proteins much easier.&nbsp; If you are 
+planning on buying a GUI, try working with it for a week or two.&nbsp; Make sure 
+that you can perform all, or at least most, of the following operations:</p>
+<ul>
+	<li>Read in a structure in one format, and write it out in another format, 
+	and verify that atom 1 has not moved.</li>
+	<li>Move an atom in the middle of the data-set, then verify that atom 1 has 
+	not moved.</li>
+	<li>Select a few (2 to 6) residues, and hide all the rest of the system.</li>
+	<li>Measure distances between pairs of atoms.</li>
+	<li>Somewhere in the structure, change a H to a C and, in one step (a few 
+	clicks) convert the C into a normal methyl group. </li>
+</ul>
+<p>Some functions of GUIs that are utterly useless, and, if they cannot be 
+disabled, make the GUI unacceptable for use in modeling proteins:</p>
+<ul>
+	<li>Automatic rectification of atoms by the addition of hydrogen atoms to 
+	satisfy valence requirements.&nbsp; Adding hydrogen atoms requires several 
+	steps, and any process that does it automatically is certain to make 
+	mistakes.</li>
+	<li>Automatic optimization of the positions of hydrogen atoms.&nbsp; This 
+	&quot;one size fits all&quot; approach usually fails because there are many exceptions to 
+	rules.&nbsp; For example, if a hydrogen atom of a carboxylic acid group is 
+	near to a water molecule that is near to a sulfate ion, the electrostatic 
+	field of the sulfate polarizes the water which, in turn, might pull the 
+	proton off the carboxylic acid group.&nbsp; Even if it does not pull the proton 
+	off, the O-H bond-length in the carboxylic acid will be increased.</li>
+</ul>
+<p>These faults, if not detected, can invalidate weeks of work.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

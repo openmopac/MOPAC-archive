@@ -1,0 +1,15 @@
+reset;center {13.32912 -71.70894666666665 105.69397333333336}; rotate z -24.86; rotate y 48.35; rotate z 65.15; zoom 662.72; set rotationRadius 41.5;
+display 301:A
+select 301:A.Fe, 301:A.NB, 301:A.C1B, 301:A.C2B, 301:A.C3B, 301:A.C4B, 301:A.ND, 301:A.C1D, 301:A.C2D, 301:A.C3D, 301:A.C4D
+label %a
+color label black
+set labelAlignment  CENTER
+select off
+connect (301:A.FE) (301:A.NB) delete
+connect (301:A.FE) (301:A.NB) partial
+connect (301:A.FE) (301:A.ND) delete
+connect (301:A.FE) (301:A.ND) partial
+connect (301:A.C2B) (301:A.C3B) delete
+connect (301:A.C2B) (301:A.C3B) double
+connect (301:A.C2D) (301:A.C3D) delete
+connect (301:A.C2D) (301:A.C3D) double

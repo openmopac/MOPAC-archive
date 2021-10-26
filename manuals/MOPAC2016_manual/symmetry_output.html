@@ -1,0 +1,247 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Symmetry output</TITLE>
+<script language="Javascript" src="mouseover.js"></script><style type="text/css">#types, #inp
+{position:absolute; left: 30;  visibility:hidden; color: blue;}</style>
+
+<h1 align="left">Description of the output file for benzene <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; illustrating the use of symmetry</h1>
+<p>(move the cursor over the file to see what the parts are)</HEAD><BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff"><TT></P>
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+<div id="types" style="width: 550;">A one-line description of the symmetry functions used is output.
+If symmetry is used, the geometry of benzene can be 
+defined using two parameters, the C-C and C-H bond-length distances.  All other coordinates are defined by symmetry.  
+</div>
+<div id="inp" style="width: 550;">All symmetry data in the input data set is output at the start of the calculation.  
+Here, the C-C bond-length (function 1) of atom 2 is used in defining the bond-lengths of atoms 3-6, and the C-H bond-length 
+of atom 7 is used in defining the C-H bond lengths of atoms 8-12. </div>
+</tr></table> For information on the output of a basic geometry optimization calculation, see <a href="Formic_Acid_output.html" style="text-decoration: none">formic acid output.</a><PRE> *******************************************************************************
+ ** Site#:   21            For non-commercial use only         Version 7.061W **
+ *******************************************************************************
+ ** Cite this work as: MOPAC2007, James J. P. Stewart, Stewart Computational  **
+ ** Chemistry, Version 7.061W web: HTTP://OpenMOPAC.net   Days remaining: 364 **
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2007                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                            PM6 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                Sun Mar  4 19:41:54 2007  *
+ *  SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED
+ *  T=       - A TIME OF 172800.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *******************************************************************************
+
+
+
+    <a
+   onMouseOver="toggleDiv('inp',1)" onMouseOut="toggleDiv('inp',0)">PARAMETER DEPENDENCE DATA
+
+        REFERENCE ATOM      FUNCTION NO.    DEPENDENT ATOM(S)
+            2                  1               3    4    5    6
+            7                  1               8    9   10   11   12</a>
+
+              <a
+   onMouseOver="toggleDiv('types',1)" onMouseOut="toggleDiv('types',0)">DESCRIPTIONS OF THE FUNCTIONS USED
+
+   1      BOND LENGTH    IS SET EQUAL TO THE REFERENCE BOND LENGTH</a>
+ SYMMETRY
+ Benzene
+
+  ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       C          0.0000000       0.000000       0.000000   
+     2       C          1.4000000  *    0.000000       0.000000        1     0     0
+     3       C          1.4000000     120.000000       0.000000        2     1     0
+     4       C          1.4000000     120.000000       0.000000        3     2     1
+     5       C          1.4000000     120.000000       0.000000        4     3     2
+     6       C          1.4000000     120.000000       0.000000        5     4     3
+     7       H          1.1000000  *  120.000000     180.000000        1     6     5
+     8       H          1.1000000     120.000000     180.000000        5     6     1
+     9       H          1.1000000     120.000000     180.000000        2     1     6
+    10       H          1.1000000     120.000000     180.000000        6     1     2
+    11       H          1.1000000     120.000000     180.000000        3     2     1
+    12       H          1.1000000     120.000000     180.000000        4     3     2
+ 
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         C        0.0000    0.0000    0.0000
+     2         C        1.4000    0.0000    0.0000
+     3         C        2.1000    1.2124    0.0000
+     4         C        1.4000    2.4249    0.0000
+     5         C        0.0000    2.4249    0.0000
+     6         C       -0.7000    1.2124    0.0000
+     7         H       -0.5500   -0.9526    0.0000
+     8         H       -0.5500    3.3775    0.0000
+     9         H        1.9500   -0.9526    0.0000
+    10         H       -1.8000    1.2124    0.0000
+    11         H        3.2000    1.2124    0.0000
+    12         H        1.9500    3.3775    0.0000
+
+  H (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+  C (PM6): J. J. P. Stewart  J. Mol. Mod. (to be submitted)!
+
+           Empirical Formula: C6 H6
+
+
+
+      MOLECULAR POINT GROUP   :   D6h 
+
+
+      RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS =   15
+
+
+          DIAGONAL MATRIX USED AS START HESSIAN
+
+ CYCLE:   1 TIME:   0.016 TIME LEFT:  2.00D  GRAD.:    48.852 HEAT: 24.46682    
+ CYCLE:   2 TIME:   0.016 TIME LEFT:  2.00D  GRAD.:    36.238 HEAT: 24.26292    
+ CYCLE:   3 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:    13.948 HEAT: 24.20688    
+ CYCLE:   4 TIME:   0.016 TIME LEFT:  2.00D  GRAD.:     4.393 HEAT: 24.19374    
+ CYCLE:   5 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:     2.448 HEAT: 24.19197    
+ CYCLE:   6 TIME:   0.000 TIME LEFT:  2.00D  GRAD.:     0.132 HEAT: 24.19160    
+
+     RMS GRADIENT =  0.13170  IS LESS THAN CUTOFF =  1.00000
+
+
+
+ -------------------------------------------------------------------------------
+ SYMMETRY
+ Benzene
+
+
+
+     GEOMETRY OPTIMISED USING EIGENVECTOR FOLLOWING (EF).     
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                               PM6     CALCULATION
+                                                       MOPAC2007 (Version: 7.061W)
+                                                       Sun Mar  4 19:41:54 2007
+                                                       No. of days left = 364
+
+
+
+
+          FINAL HEAT OF FORMATION =         24.19160 KCAL =     101.21766 KJ
+
+
+          TOTAL ENERGY            =       -815.66132 EV
+          ELECTRONIC ENERGY       =      -3282.81371 EV  POINT GROUP:     D6h 
+          CORE-CORE REPULSION     =       2467.15239 EV
+          COSMO AREA              =        120.13 SQUARE ANGSTROMS
+          COSMO VOLUME            =        108.61 CUBIC ANGSTROMS
+
+          IONIZATION POTENTIAL    =          9.63796
+          NO. OF FILLED LEVELS    =         15
+          MOLECULAR WEIGHT        =         78.113
+
+          MOLECULAR DIMENSIONS (Angstroms)
+
+            Atom       Atom       Distance
+            H     9    H     8     4.97371
+            H     7    H    12     4.30736
+            H    12    C     2     0.00000
+
+
+          SCF CALCULATIONS        =         10
+          COMPUTATION TIME        =          0.047 SECONDS
+
+
+
+
+  ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       C          0.0000000       0.000000       0.000000   
+     2       C          1.3986648  *    0.000000       0.000000        1     0     0
+     3       C          1.3986648     120.000000       0.000000        2     1     0
+     4       C          1.3986648     120.000000       0.000000        3     2     1
+     5       C          1.3986648     120.000000       0.000000        4     3     2
+     6       C          1.3986648     120.000000       0.000000        5     4     3
+     7       H          1.0881890  *  120.000000     180.000000        1     6     5
+     8       H          1.0881890     120.000000     180.000000        5     6     1
+     9       H          1.0881890     120.000000     180.000000        2     1     6
+    10       H          1.0881890     120.000000     180.000000        6     1     2
+    11       H          1.0881890     120.000000     180.000000        3     2     1
+    12       H          1.0881890     120.000000     180.000000        4     3     2
+
+           Empirical Formula: C6 H6
+
+
+
+      MOLECULAR POINT GROUP   :   D6h 
+
+
+                  EIGENVALUES
+
+ -29.73046 -25.87017 -25.87017 -21.19583 -21.19583 -17.77993 -15.73087 -15.06747
+ -14.19682 -14.19682 -13.16066 -11.93739 -11.93739  -9.63796  -9.63796   0.38156
+   0.38156   2.71421   4.48356   4.48356   5.03248   5.31962   5.31962   5.56436
+   5.60665   6.08034   6.08034   6.27856   6.27856   6.46956
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+
+  ATOM NO.   TYPE          CHARGE      No. of ELECS.   s-Pop       p-Pop       
+    1          C          -0.143633        4.1436     1.10599     3.03765
+    2          C          -0.143633        4.1436     1.10599     3.03765
+    3          C          -0.143633        4.1436     1.10599     3.03765
+    4          C          -0.143633        4.1436     1.10599     3.03765
+    5          C          -0.143633        4.1436     1.10599     3.03765
+    6          C          -0.143633        4.1436     1.10599     3.03765
+    7          H           0.143633        0.8564     0.85637
+    8          H           0.143633        0.8564     0.85637
+    9          H           0.143633        0.8564     0.85637
+   10          H           0.143633        0.8564     0.85637
+   11          H           0.143633        0.8564     0.85637
+   12          H           0.143633        0.8564     0.85637
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     0.000     0.000     0.000     0.000
+ HYBRID         0.000     0.000     0.000     0.000
+ SUM            0.000     0.000     0.000     0.000
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         C                  0.0000    0.0000    0.0000
+     2         C                  1.3987    0.0000    0.0000
+     3         C                  2.0980    1.2113    0.0000
+     4         C                  1.3987    2.4226    0.0000
+     5         C                  0.0000    2.4226    0.0000
+     6         C                 -0.6993    1.2113    0.0000
+     7         H                 -0.5441   -0.9424    0.0000
+     8         H                 -0.5441    3.3650    0.0000
+     9         H                  1.9428   -0.9424    0.0000
+    10         H                 -1.7875    1.2113    0.0000
+    11         H                  3.1862    1.2113    0.0000
+    12         H                  1.9428    3.3650    0.0000
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.10599   0.99787   1.03977   1.00000   1.10599   0.99787   1.03977   1.00000
+   1.10599   1.06072   0.97693   1.00000   1.10599   0.99787   1.03977   1.00000
+   1.10599   0.99787   1.03977   1.00000   1.10599   1.06072   0.97693   1.00000
+   0.85637   0.85637   0.85637   0.85637   0.85637   0.85637
+
+
+
+ TOTAL CPU TIME:             0.08 SECONDS
+
+ == MOPAC DONE ==
+</PRE></TT>
+</BODY>
+</HTML>

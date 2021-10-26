@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>UNSAFE </TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>
+<TT>UNSAFE</TT>
+</H2>
+If MOPAC has been compiled so that the special SCF convergers can be used,
+then the memory demand will be higher than if they are not allowed.
+These convergers are not needed for well-behaved systems, and therefore
+more memory is needed than is used.
+To reduce the memory demand for a run, add <TT>UNSAFE</TT> to the keyword line.
+A side effect of this command is that some systems will fail to generate an SCF,
+and the run may be wasted as a result. Do not use <TT>UNSAFE</TT> unless there
+is a need to conserve memory resources.
+</BODY>
+</HTML>

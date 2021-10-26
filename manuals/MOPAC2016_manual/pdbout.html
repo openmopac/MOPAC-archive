@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>PDBOUT </TITLE>
+<META NAME="description" CONTENT="PDBOUT ">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<H2 align="center">
+<TT>PDBOUT</TT> 
+</H2>
+&nbsp;<TT>PDBOUT</TT> will cause the geometry to be 
+printed in PDB format. Although the format printed is designed to match that 
+used in the Brookhaven Protein Data Bank, the agreement is not always exact.&nbsp;<p>
+If atomic partial charges have been calculated, these will be printed in columns 
+61-66 for each atom.&nbsp; In the PDB format, these are the columns used for the 
+temperature factor.&nbsp; The atomic partial charges can be viewed using&nbsp; 
+JSmol if <a href="html.html"><tt>HTML</tt></a> is present.</p>
+<p>
+By default, the residue sequence will be that supplied by the data set.&nbsp; To 
+re-calculate residues, use
+<tt> <a href="residues.html">RESIDUES</a></TT>; that will ignore the residue 
+names supplied by the data set, and re-calculate them using the topology of the system. 
+If this option is used, check that the new residue names are acceptable.&nbsp; 
+To do this, look in the output file for the section:</p>
+<p>If the 
+data set includes comments (lines that start with an asterisk (*)) followed by 
+PDB words such as HEADER, TITLE, COMPOUND, REMARK, etc., these will be printed in the PDB format.&nbsp; This 
+is very useful in preserving the integrity of the PDB file.</p>
+<p>If residues are missing, or if multiple proteins are present, keyword <TT>
+<a href="start_res.html">START_RES(<i>text</i>)</a></TT> should be used to 
+indicate this. By default, each chain, or section of chain, will be given a 
+different letter, starting with &quot;A&quot;.&nbsp; This can cause problems, particularly 
+if a chain has a gap in it, because, by default, MOPAC would give the two chain sections 
+different letters.&nbsp; Chain letters can be explicitly assigned by using
+<TT><a href="chains.html">CHAIN(text)</TT></a>.&nbsp; These keywords are 
+automatically generated when a PDB file is read in and a MOPAC data set 
+generated.</p>
+<p>If hydrogen atoms have been added, these will automatically be put in their 
+correct place in the PDB file, unless <a href="noreseq.html"><TT>NORESEQ</TT></a> 
+is present.</p>
+<p>Except for hydrogen atoms, atom labels will not be changed. Label names for 
+hydrogen atoms will be based on the atom the hydrogen is attached to.&nbsp; This 
+makes proton migrations easier to identify.</p>
+<p>A fast way to convert a data-set from MOPAC to PDB format is to use <TT>
+<a href="zero_scf.html">0SCF</a></TT> and <TT>PDBOUT.</TT> Also, if a restart 
+file, &lt;file&gt;.res, is present, adding <tt>RESTART </tt>to the data set will 
+read in the updated geometry and, if <TT>
+0SCF</TT> and <TT>PDBOUT</TT> are also both present, will immediately print the 
+current geometry in PDB format.</p>
+<p>See also <a href="html.html"><tt>HTML</tt></a>.</p>
+</BODY>
+</HTML>

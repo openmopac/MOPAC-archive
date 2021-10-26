@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Multiple structures</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Multiple structures</H2>
+<P>
+Several structures can be run in one job.&nbsp; To do this, construct MOPAC 
+data-sets for each structure, then join all the data-sets together to make a new 
+MOPAC data-set that contains all of the structures.&nbsp; Each structure 
+(individual MOPAC data-set) should be separated from the next structure by a 
+blank line.<P>
+Warnings:<P>
+*
+If any of the individual MOPAC data-sets 
+uses <a href="external.html"><tt>EXTERNAL</tt></a> to change the values of parameters for a method, all 
+subsequent structures that use that method will also be affected.<P>
+*
+Avoid using keyword <tt><a href="geo_dat.html">GEO_DAT</a></tt>.&nbsp; When <tt>GEO_DAT</tt> is present, the input file has 
+to be re-read.&nbsp; This causes problems when the job has more than one 
+structure.<P>
+<a href="multiple.mop">Example of a data-set that has several structures.</a><P>
+
+&nbsp;</BODY></HTML>

@@ -1,0 +1,380 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Examples of calculations involving Proteins</TITLE>
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<h1 align="center" dir="ltr">Examples of calculations involving Proteins</h1>
+<H2 align="left"><u>Preparing a raw data dataset</u></H2>
+<p align="left">One of the best resources for starting protein structures is the
+<a href="http://www.rcsb.org/pdb/home/home.do">Protein Data Bank</a>. The PDB 
+contains structures for a huge number of proteins, and is being continuously 
+updated.&nbsp; Not all structures are of high accuracy, for example older X-ray 
+structures often have unrealistic interatomic distances, however in such cases 
+the tertiary structures are still good enough for all routine work.&nbsp; NMR 
+structures should be avoided - whenever NMR geometries are optimized, the RMS 
+difference between the optimized and NMR structure is much larger than the X-ray 
+equivalent.</p>
+<h3 align="left">Choice of PDB structure</h3>
+<p align="left">Before starting work on proteins, careful thought should be 
+given to deciding what it is that is to be done.&nbsp; If the objective is to 
+compare the predicted structure with the X-ray structure, then almost any X-ray 
+structure would do.&nbsp; If the objective is to model a reaction or a docked 
+substrate, then a lot of human effort can be saved by selecting a structure that 
+includes an inhibitor.&nbsp; First of all, the inhibitor shows where the 
+substrate should be and its approximate orientation.&nbsp; When the geometry is 
+optimized, the inhibitor can then be converted into the desired substrate, and 
+the geometry re-optimized to give either the reactants, transition state, or 
+products. </p>
+<p align="left">If there are several entries in the PDB that meet the desired 
+criteria, then select the one that is most complete. Download the PDB source 
+file, and edit it to make a MOPAC data set. MOPAC data sets can use internal or 
+Cartesian coordinates, or a mixture of the two types.&nbsp; In protein 
+work, use Cartesian coordinates for all atoms except when a reaction path is 
+involved, in which case a single atom (the moving atom) would normally be in 
+internal coordinates.&nbsp; </p>
+<h3 align="left">Preconditioning</h3>
+<p align="left">Most PDB entries lack hydrogen atoms, and many have positional 
+or structural disorder.&nbsp; Fortunately, when the focus of the work is to 
+model the active site, structural disorder is almost always unimportant - the 
+difference between a Leu and an Ile far from the active site never affects the mechanism.&nbsp; Likewise, 
+positional disorder is also unimportant.&nbsp; For positional disorder to exist, 
+the energies of the two conformers must be similar, so obviously either one can 
+be chosen.&nbsp; </p>
+<p align="left">Use a third-party program to add hydrogen atoms.&nbsp; Ideally, 
+that program would add hydrogen atoms correctly, but every program thus far examined has 
+limitations.&nbsp; Most programs look at a residue, and decide whether to ionize 
+it without consideration of the environment.&nbsp; So if the sequence -Glu-Glu-Glu- 
+were to occur, all three residues would be ionized; this can result in 
+unrealistic charges.&nbsp; To see why, consider a dicarboxylic acid, e.g., 
+succinic acid. The first pKa might be low, but the second is inevitably high, 
+indicative of the fact that the di-ion is unstable.&nbsp; A useful strategy to 
+avoid unrealistic states of ionization is to first neutralize all charges.&nbsp; 
+This is not as drastic as it sounds - during the geometry optimization, protons 
+can migrate from acid to base residues to form salt bridges.&nbsp; If a specific 
+proton does not migrate, the data set can be edited so that the proton is moved. 
+After re-optimizing the geometry, the decision can be made regarding the 
+preferred state based on the total heat of formation.&nbsp; </p>
+<p align="left">Once the hydrogen atoms have been added, run a calculation 
+using the  keywords&nbsp; <TT> <a href="charges.html">CHARGES</TT></a> and <TT>
+<a href="residues.html">RESIDUES</TT></a>.&nbsp; In the output, check for the 
+message &quot;Residues where the number of hydrogen atoms is not equal to that 
+expected.&quot;&nbsp; If the message exists, carefully examine the residues indicated.&nbsp; 
+If any residues are ionized, edit the data set to remove the ionization.&nbsp; 
+Any residues that are not recognized are the result of either a mistake, in which case 
+correct it, or are a hetero group - a non-standard residue.&nbsp; If that 
+is the case, use <a href="xeno.html"><TT>XENO</TT></a> to allow it to be recognized.&nbsp; 
+It is not necessary that all residues be&nbsp; recognized in order for the calculation to run, 
+but when they are all properly identified, the probability of errors in the data 
+set is reduced.&nbsp; Also check any hetero groups, such as heme or retinal, to 
+verify that the hydrogenation is correct.</p>
+<h3 align="left">Preliminary geometry optimization - Hydrogen atoms only</h3>
+<p align="left">Before optimizing the entire structure, a useful operation is to 
+optimize the positions of the hydrogen atoms.&nbsp; This is done using
+<a href="nooptx.html"><TT>NOOPT</TT></a> and <a href="optx.html"><TT>OPT-H</TT></a>.&nbsp; Once the geometry is optimized, check the 
+ionization states.&nbsp; The &quot;salt rules&quot; should be obeyed: for every ionized 
+residue, there should be a counterion near to it.&nbsp; Less strict, but still 
+important, every possible hydrogen bond should exist. The one exception to the 
+salt rules is that all Arg should be ionized.&nbsp; If any Arg are not ionized, 
+ionize them &quot;by hand&quot; and if there are potential counterions nearby, ionize them 
+to balance the charge.&nbsp; If there are no counterions, put a net charge on 
+the system. When you're satisfied that the geometry is good, save a copy of the 
+data set.&nbsp; This represents a clean starting point based on the PDB 
+structure. In the following discussion, we'll refer to this structure as PDB.mop</p>
+<p align="left">Another useful operation to do at this point is to re-sequence 
+the atoms into the standard PDB format.&nbsp; This is done with keyword
+<a href="reseq.html"><TT>RESEQ</TT></a>.&nbsp; After re-sequencing all atoms, 
+particularly the hydrogen atoms, in the same residue are together.&nbsp; </p>
+<h2 align="left"><u>Global optimization</u></h2>
+<p align="left">First, if you haven't already done so, save a copy of the 
+structure from the previous step.&nbsp; Things will go wrong naturally, so 
+you'll want a fall-back position to re-start from when disaster occurs.&nbsp; 
+For even average sized proteins, global optimization can take CPU days, so 
+anything that can increase the efficiency of this process is worthwhile.&nbsp; 
+The following sequence has been found to be efficient:</p>
+<p align="left">(A) Using keywords <TT>GNORM=10 OPT</TT>, perform a rough 
+geometry optimization.&nbsp; During this process, the energy will drop rapidly 
+at the start, then the rate of decrease will taper off. Edit the resulting .arc 
+file to make a new data set.<br>
+(B) Using keywords <TT>GNORM=5</TT>, perform a more precise 
+optimization.&nbsp; The energy will continue to drop, but not as fast as in the 
+previous step.&nbsp; Again edit the resulting .arc file to make a new data set.<br>
+(C) Run the new data set with <TT>1SCF</TT>, and carefully examine the 
+output and .arc file to make sure that everything is correct.&nbsp; Pay 
+particular attention to the active site and to important hetero groups such as 
+HEME.</p>
+<h2 align="left" dir="ltr"><u><font face="Times New Roman">Location of 
+Transition States</font></u></h2>
+<p align="left" dir="ltr">Location of transition states is a complicated process 
+due to the great size of the systems involved.&nbsp; As with global 
+optimization, great care must be exercised in ensuring that the calculations are 
+going correctly.&nbsp; Many steps are involved, and as a result, the whole 
+process requires a lot of human as well as CPU time.&nbsp; Therefore, before 
+starting on a project to locate a transition state, carefully consider: it the 
+result worth the effort.&nbsp; Do not start unless you are willing to expend a 
+lot of effort, and be aware that success is not always achieved.&nbsp; Having 
+said this, if you are still committed to locating transition states in chemical 
+reactions, the main steps are as follows:</p>
+<ul>
+  <li dir="ltr">
+<p align="left" dir="ltr"><a href="#Prepare_data_set">Prepare a data set that represents the reactants and 
+products.</a></p>
+  </li>
+  <li dir="ltr">
+<p align="left" dir="ltr"><a href="#examin_data_sets">Examine the data sets to ensure that they are what you 
+want.</a></p>
+  </li>
+  <li dir="ltr">
+<p align="left" dir="ltr"><a href="#use_geo_ref">Using the <TT>GEO_REF</TT> option, 
+move the reactant geometry in the direction of the product geometry, and <i>vice 
+versa</i></a><i>.</i></p>
+  </li>
+  <li dir="ltr">
+<p align="left" dir="ltr"><a href="#average">When the distance between the 
+reactant and product geometries is small enough, <font face="Times New Roman">
+the two geometries are averaged</font></a></p>
+  </li>
+  <li>
+  <p align="left" dir="ltr"><font face="Times New Roman"><a href="#Refine_TS">Optimize the geometry of 
+the rest of the system, while ignoring the transition state, and refine the geometry of 
+the transition state, while temporarily ignoring the rest of the system.</a></font></p></li>
+  <li dir="ltr">
+<p align="left" dir="ltr"><font face="Times New Roman"><a href="#FORCETS">Carry out a <TT>FORCETS</TT> calculation to verify that the system is in 
+fact a transition state.</a></font></p>
+  </li>
+  <li dir="ltr">
+<p align="left" dir="ltr"><a href="#IRC">Generate the full reaction path using the <TT>IRC</TT>.</a></p>
+  </li>
+</ul>
+<p align="left" dir="ltr">These techniques are used in a
+<a href="mopac_examples/MOZYME_Examples/Chymotrypsin.zip">complete worked 
+example</a> of the location of a transition state in chymotrypsin catalyzed 
+hydrolysis of a peptide bond.</p>
+<h3 align="left" dir="ltr"><a name="Prepare_data_set">Prepare a data set that represents the reactants and 
+products</a></h3>
+<p align="left" dir="ltr">Before any work is started on modeling 
+enzyme-catalyzed reactions, the reaction to be investigated should be written 
+out in the normal diagrammatic form.&nbsp; For example, during the aspartate 
+protease catalyzed hydrolysis of a peptide bond, two or three distinct steps are 
+involved, with the net result that a water molecule adds across the peptide bond 
+to give rise to a carboxylic acid and an amine.&nbsp; This is, of necessity, a 
+complicated process, so for convenience the mechanism is best expressed as the 
+sum of a few distinct steps.</p>
+<p align="left" dir="ltr">A good starting point is the
+<a href="http://www.rcsb.org/pdb/home/home.do">Protein Data Bank</a>.&nbsp; 
+Positioning the reactants and products is difficult, fortunately there is a 
+simple procedure that can be used to make both reactants and products.&nbsp; 
+Enzymes can be rendered inactive by the addition of an inhibitor.&nbsp; This is 
+normally a small molecule that has the approximate shape of a transition-state 
+geometry, but is in fact a ground-state system.&nbsp; Many inhibitors are 
+phosphorus V compounds, which mimic the enhanced valence of carbon in a 
+transition state, for example <span hasbox="2">
+IVA-VAL-VAL-LEU(P)-(O)PHE-ALA-ALA-OME in PDB entry 1QRP.&nbsp; 1QRP is an 
+aspartate protease inactivated by a synthetic phosphate inhibitor.&nbsp; At 
+first sight, this system might not appear to be a suitable model for a protease 
+reaction, but by replacing the phosphate group with a peptide linkage and a 
+water molecule, the system becomes more like the reactant ground state of a 
+hydrolysis reaction.&nbsp; During the early stages of modeling hydrolysis, the 
+nature of the groups attached to the peptide linkage are not critical, so these 
+can be replaced with a small, innocuous, group such as methyl.&nbsp; The 
+substrate is thus converted from&nbsp; IVA-VAL-VAL-LEU(P)-(O)PHE-ALA-ALA-OME to 
+N-methyl acetamide plus water.&nbsp;&nbsp;&nbsp; If the geometry of this system 
+is optimized, the result is the reactant geometry.&nbsp; By adding the water 
+molecule to the peptide bond, the tetrahedral intermediate can be made, and 
+geometry optimization of this structure gives rise to the product geometry.</span></p>
+<h3 align="left" dir="ltr"><a name="examin_data_sets">Examine the data sets</a> to ensure that they are what you 
+want.</h3>
+<p align="left" dir="ltr">A useful calculation to run at this point is to use 
+the two keywords:
+<a href="zero_scf.html"><TT>0SCF</a> <a href="pdbout.html">PDBOUT</TT></a>.</p>
+<p align="left" dir="ltr">Look at the 
+output, and check that all residues are correctly identified.&nbsp; Any that are 
+not identified will be indicated by an error message.&nbsp; If any such messages 
+are found, and the residue is not one of the standard residues, then use keyword
+<a href="xeno.html"><TT>XENO</TT></a> to re-define the residue. If the residue 
+is incorrect, correct the fault and re-run.&nbsp; Although using <TT>XENO</TT> 
+is not essential, it does reduce the possibility of having an incorrect 
+structure by focusing attention on non-standard residues. </p>
+<p align="left" dir="ltr">Check the sequence against the original PDB file.&nbsp; 
+If a residue is different, find out why it is different.&nbsp; If the residue 
+numbers are different, use keyword <tt><font color="#0000ff">
+<a href="start_res.html"><u>START_RES(<i>text</i>)</u></a></font></tt> to change 
+the residue numbering to suit the PDB file.&nbsp; If a chain name is incorrect, 
+use <tt><font color="#0000ff"><u><a href="chains.html">CHAINS(<i>text</i></a>)</u></font></tt>&nbsp; 
+to re-name the chains to match the PDB file.</p>
+<p align="left" dir="ltr">Look for any messages of the type &quot;Residues where the 
+number of hydrogen atoms is not equal to that expected,&quot; if any are found, 
+carefully check the residue.&nbsp; If any non-standard groups, such as heme, are 
+present, check these using a GUI, as the checks in MOPAC do not work with such 
+groups. </p>
+<p align="left" dir="ltr">Look at the block headed &quot;<span LANG="EN">Number of 
+charged sites identified.&quot;&nbsp; Versify that the ionized sites are those 
+expected. A useful, but not essential check is to ensure that the &quot;salt rules&quot; 
+are obeyed - every ionized site should have a counterion within a few
+<font face="Times New Roman">&Aring;ngstroms.&nbsp; </font></span></p>
+<p align="left" dir="ltr"><span lang="en-us"><font face="Times New Roman">
+Another file created during this run is the Protein Data Bank file &lt;name&gt;.pdb.&nbsp; 
+Open this file using a GUI. and compare the structure with that downloaded from 
+the PDB.&nbsp; If all the hydrogen atoms are at the end of the Z-matrix, they 
+can be put in their correct position using </font></span><tt>
+<font color="#0000ff"><a href="reseq.html"><u>
+RESEQ</u></a></font></tt>.&nbsp; Look at the active site, and check that the 
+environment is that expected.&nbsp; Pay careful attention to hydrogen bonds in 
+the active site - if one is wrongly positioned, then when the reaction occurs 
+the energy might suddenly drop by several kcal/mol.&nbsp; This can be very 
+disconcerting!</p>
+<h3 align="left" dir="ltr">Using the<a href="geo_ref.html" name="use_geo_ref"> <TT>GEO_REF</TT> </a> option, 
+move the reactant geometry in the direction of the product geometry, and <i>vice 
+versa.&nbsp; </i></h3>
+<p align="left" dir="ltr">Three special points on the potential energy surface 
+are needed for a normal reaction: the reactant geometry, the product geometry 
+and the transition state geometry.&nbsp; These are, in order of increasing 
+energy: product &lt; reactant &lt; transition state.&nbsp; If these conditions exist, 
+then moving the product geometry towards the reactant geometry will also move it 
+towards the transition state.&nbsp; Likewise moving the reactant geometry 
+towards to product geometry will move it towards the transition state.&nbsp; 
+This process has to be iterative - in the first step, both reactant and product 
+are moved on to the slope of the reaction barrier, then they are moved up the 
+slope, then further up the slope.</p>
+<p align="left" dir="ltr">Before starting, make sure that there is a one-to-one 
+correspondence of all atoms in the reactant structure with those in the product 
+structure.&nbsp; If any hetero groups are going to be involved in the reaction, 
+they must be present.&nbsp; Small differences in the atom sequence are 
+acceptable.&nbsp; For example, the PDB convention does not define which carbon 
+in Phe is <span class="b">&Delta;</span><sub>1</sub> and which is
+<span class="b">&Delta;</span><sub>2</sub>, to allow for this necessary ambiguity 
+the order of occurrence of atoms can be changed at run-time, provided the 
+changes are small.</p>
+<p align="left" dir="ltr">Before proceeding, read the notes on biasing a 
+geometry towards another structure in
+<a href="Applying_geometry_constraints.html#bias_to_barrier">geometry constraints</a>. 
+Assume that the reactant data set's name is reactant.mop, and the product data 
+set name is product.mop</p>
+<p align="left" dir="ltr">The first step in locating the transition state 
+involves moving the product (the lower energy structure) towards the reactant.&nbsp; 
+Use the default <a href="geo_ref.html"><TT>GEO_REF</TT></a> keyword&nbsp; for 
+this. Edit the file product.mop to add the keyword <TT>GEO_REF=&quot;&lt;path-name&gt;/reactant.mop&quot;</TT> 
+and run that calculation.<br>
+Next, move the reactant towards the product.&nbsp; Edit reactant.mop to add the 
+keyword <TT>GEO_REF=&quot;&lt;path-name&gt;/product.arc&quot;</TT>, and run that job.&nbsp; Note that 
+MOPAC data sets can be either normal .mop files or MOPAC archive files.<br>
+Edit the files reactant.arc and product.arc to make new data sets.&nbsp; Call 
+these reactant_3.mop and product_3.mop.&nbsp; <br>
+Almost certainly, product_3.mop will have the lower energy - check the 
+newly-created ARC files.&nbsp; Edit it to add the keyword <TT>GEO_REF=&quot;&lt;path-name&gt;/reactant_3.mop&quot;10</TT>, 
+and run that file.&nbsp; Edit the file reactant_3.mop to add the keyword <TT>GEO_REF=&quot;&lt;path-name&gt;/product_3.arc&quot;10</TT>,&nbsp; 
+and run that.</p>
+<p align="left" dir="ltr">Edit the resulting ARC files to make new datasets, to 
+be called reactant_10.mop and product_10.mop. Whichever one has the lower 
+energy, use that first in the next step.&nbsp; If it's product_10.mop, then use 
+keyword&nbsp; <TT>GEO_REF=&quot;&lt;path-name&gt;/reactant_10.mop&quot;20</TT>, 
+if it's reactant_10.mop, then use&nbsp; <TT>GEO_REF=&quot;&lt;path-name&gt;/product_10.mop&quot;20.&nbsp;</TT> 
+When that calculation is done, use the resulting ARC file in the next 
+calculation..</p>
+<p align="left" dir="ltr">At each stage, look at the output and check that the 
+&quot;distance&quot; between the reactant and product geometries is decreasing.&nbsp; That 
+is, that the structures are simultaneously moving towards the transition state.</p>
+<h3 align="left" dir="ltr"><a name="average">When the distance</a> between the 
+reactant and product geometries is small enough, the two geometries are averaged.</h3>
+<p align="left" dir="ltr"> <TT>GEO_REF </TT>should not be used to locate the 
+transition state - as the distance from the reactant or product to the 
+transition state becomes small, <TT>GEO_REF </TT>becomes too slow.&nbsp; Once 
+the distance is small, less than about 10 <font face="Times New Roman">&Aring;,</font> set up 
+a normal  <TT>GEO_REF </TT>  calculation, but 
+this time add the keyword <TT>TS</TT>.&nbsp; That will average the two geometries and 
+give a good approximation to the transition state.</font></p>
+<h3 align="left" dir="ltr"><font face="Times New Roman"><a name="Refine_TS">Optimize the geometry</a> of 
+the rest of the system, while ignoring the transition state, and refine the geometry of 
+the transition state, while temporarily ignoring the rest of the system.</font></h3>
+<p align="left" dir="ltr">If everything has gone according to plan, the geometry 
+from the last step will be a good approximation to the transition state.&nbsp; 
+Before proceeding further, check that the structure is indeed what was expected.&nbsp; 
+Once satisfied that the structure is correct proceed as follows:</p>
+<p align="left" dir="ltr">Using a GUI, identify the atoms involved in the 
+reaction.&nbsp; This should be the three or four atoms that are involved in 
+bond-making, bond-breaking (call these the central atoms), plus all the atoms 
+they are bonded to, plus all the atoms bonded to the atoms bonded to the central 
+atoms.&nbsp; This should amount to between 6 and 12 atoms.<br>
+Edit the data-set to set the optimization flags for these atoms to &quot;0&quot;, that is, 
+mark them as &quot;not to be optimized.&quot;</p>
+<p align="left" dir="ltr">Refining the transition state can be done in a single, 
+long, calculation that involves repeated pairs of calculations.&nbsp; The first 
+of each pair consists of an energy minimization while freezing the transition 
+state.&nbsp; The second of each pair consists of gradient minimization of the 
+transition state, while freezing all atoms not involved in the transition state.&nbsp; 
+As this is an unusually complicated calculation, it is helpful to see the form 
+of the data set:<PRE>MOZYME 
+title
+comment
+Z-matrix
+
+MOZYME  INVERT TS OLDGEO
+title
+comment
+MOZYME  INVERT OLDGEO
+title
+comment
+MOZYME  INVERT TS OLDGEO
+title
+comment
+MOZYME  INVERT OLDGEO
+title
+comment
+MOZYME  INVERT TS OLDGEO
+title
+comment</PRE>
+
+
+
+
+
+
+
+
+
+
+
+<p align="left" dir="ltr">To explain: The first set of keywords defines a 
+geometry optimization.&nbsp; Because the active site is frozen, the optimization 
+affects all the rest of the system.&nbsp; The next set of keywords, &quot;<TT>MOZYME  INVERT TS OLDGEO</TT>&quot; 
+sets up a gradient minimization, <TT><a href="ts.html">TS</a>,</TT> that uses the old geometry,  <TT>
+<a href="oldgeo.html">OLDGEO</a>, </TT>but reverses all the 
+optimization flags,<TT> <a href="invert.html">INVERT</a></TT>. This is the first 
+of a pair, the second of the pair is the next calculation &quot; <TT>MOZYME INVERT  OLDGEO</TT>&quot;, 
+and consists of an energy minimization while freezing the transition state.&nbsp; 
+This process can be repeated as often as desired, but three or four iterations 
+are normally sufficient to reduce the gradient to about 3 or 4 kcal/mol/<font face="Times New Roman">&Aring;ngstroms, 
+sufficient for a transition state location operation. The final calculation 
+should be a gradient minimization, this is because its results will be used in 
+making a <TT>FORCETS</TT> job.</font></p>
+<h3 align="left" dir="ltr"><font face="Times New Roman"><a name="FORCETS">Carry</a> out a
+<a href="force.html"><TT>FORCETS</TT></a> calculation to verify that the system is in 
+fact a transition state.</font></h3>
+<p align="left" dir="ltr">All that remains is to characterize the transition 
+state.&nbsp; Before starting, check that the optimization flags for the 
+transition state are all &quot;1&quot; and for the rest of the protein are all &quot;0&quot;.&nbsp; 
+If the flags are reversed, then add keyword <TT>INVERT.</TT></p>
+<p align="left" dir="ltr">Run a transition state calculation using
+<a href="force.html"><TT>FORCETS</TT></a>.&nbsp; This is like <TT>FORCE</TT>, but is restricted to 
+those atoms which are flagged for optimization.&nbsp; Verify that there is 
+exactly one imaginary vibration.</p>
+<h3 align="left" dir="ltr"><a name="IRC">Generate</a> the full reaction path using the
+<a href="irc.html"><TT>IRC</TT></a>.</h3>
+<p align="left" dir="ltr">Finally, run an IRC calculation.&nbsp; In addition to 
+verifying that the transition state is the correct one, it also provides 
+information on the nearest reaction and product structures.&nbsp; Because of the 
+cost involved, use IRC=1 and IRC=-1, not IRC=1*&nbsp; If the computer resources 
+are available, run both simultaneously.</p>
+<p align="left" dir="ltr">&nbsp;</p>
+<h3 align="left" dir="ltr">&nbsp;</h3>
+<p align="left" dir="ltr">&nbsp;</p>
+<p align="left" dir="ltr">&nbsp;</p>
+<p align="left" dir="ltr">&nbsp;</p>
+<p align="left" dir="ltr">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<P>
+&nbsp;</BODY></HTML>

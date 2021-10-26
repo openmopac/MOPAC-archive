@@ -1,0 +1,157 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>One-center two-electron integrals</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H3><A NAME="SECTION001221400000000000000">One-center two-electron integrals</A> </H3>
+The MNDO, AM1, and MNDO-<I>d</I> one-center two-electron integrals are derived from
+experimental data on isolated atoms. Most were taken from
+Oleari's&nbsp;[<A
+ HREF="references.html#oleari">54</A>] work, but a few were obtained by optimization to
+fit molecular properties. The values of PM3 one-center two-electron integrals
+were optimized to reproduce experimental molecular properties.
+<P>
+For each atom there are a maximum of five one-center two-electron integrals.
+These are
+&lt;<i>ss</i>|<i>ss</i>&gt;,
+&lt;<i>ss</i>|<i>pp</i>&gt;,
+&lt;<i>sp</i>|<i>sp</i>&gt;,
+&lt;<i>pp</i>|<i>pp</i>&gt;,
+and
+&lt;<i>pp</i>|<i>p'p'</i>&gt;,
+where <I>p</I> and <I>p</I>' are two different <I>p</I>-type atomic orbitals.
+In the original formulation&nbsp;[<A
+ HREF="references.html#dt4689">55</A>] there was a sixth integral,
+&lt;<i>pp'</i>|<i>pp'</i>&gt;,
+but it can be shown that this integral is related to two of
+the other integrals by:
+<P align="center">
+&lt;<i>pp</i>|<i>p'p'</i>&gt; = 1/2(                            &lt;<i>pp</i>|<i>pp</i>&gt;
+- &lt;<i>pp</i>|<i>p'p'</i>&gt;)<br>
+<BR CLEAR="ALL">
+<P></P>
+Proof:
+If the molecular frame is rotated by 45<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img417.gif"
+ ALT="$^\circ$">
+about
+the z axis the atomic bases mix thus:
+<p align="center"><font size="4">R(45<sup>o</sup>)<i>p<sub>x</sub></i> = </font>
+<font size="4" face="Times New Roman">0.7071(<i>p</i></font><font size="4"><i><sub>x</sub></i><font face="Times New Roman"> 
++ <i>p</i></font><i><sub>y</sub></i></font><font size="4" face="Times New Roman">)</font></p>
+<p align="center"><font size="4">R(45<sup>o</sup>)<i>p</i><sub><i>y</i></sub> =
+</font><font size="4" face="Times New Roman">0.7071(<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman"> 
+- <i>p</i></font><sub><i>x</i></sub></font><font size="4" face="Times New Roman">)</font></p>
+<p align="center"><font size="4">R(45<sup>o</sup>)<i>&lt;p<sub>x</sub>p<sub>y</sub>|p<sub>x</sub>p</i><i><sub>y</sub>&gt;</i> 
+= </font><font size="4" face="Times New Roman">1/4&lt;(<i>p</i></font><font size="4"><i><sub>x</sub></i><font face="Times New Roman"> 
++ <i>p</i></font><i><sub>y</sub></i></font><font size="4" face="Times New Roman">)(<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman"> 
+- <i>p</i></font><sub><i>x</i></sub></font><font size="4" face="Times New Roman">)|(<i>p</i></font><font size="4"><i><sub>x</sub></i><font face="Times New Roman"> 
++ <i>p</i></font><i><sub>y</sub></i></font><font size="4" face="Times New Roman">)</font><font size="4" face="Times New Roman">(<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman"> 
+- <i>p</i></font><sub><i>x</i></sub></font><font size="4" face="Times New Roman">)&gt;</font></p>
+<p align="center"><font face="Times New Roman" size="4">= 1/4(&lt;<i>p</i></font><font size="4"><i><sub>x</sub></i><font face="Times New Roman">
+<i>p</i></font></font><sub><font size="4"><i>x</i></font></sub><font face="Times New Roman" size="4">|<i>p</i></font><font size="4"><sub><i>x</i></sub><font face="Times New Roman">
+<i>p</i></font><sub><i>x</i></sub></font><font size="4" face="Times New Roman">&gt; 
++ &lt;<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman">
+<i>p</i></font><i><sub>y</sub></i></font><font face="Times New Roman" size="4">|<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman">
+<i>p</i></font></font><sub><font size="4"><i>y</i></font></sub><font size="4" face="Times New Roman">&gt; 
+- &lt;<i>p</i></font><font size="4"><i><sub>x</sub></i><font face="Times New Roman">
+<i>p</i></font></font><sub><font size="4"><i>x</i></font></sub><font face="Times New Roman" size="4">|<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman">
+<i>p</i></font></font><sub><font size="4"><i>y</i></font></sub><font size="4" face="Times New Roman">&gt; 
+- &lt;<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman">
+<i>p</i></font><i><sub>y</sub></i></font><font face="Times New Roman" size="4">|<i>p</i></font><font size="4"><sub><i>x</i></sub><font face="Times New Roman">
+<i>p</i></font><sub><i>x</i></sub></font><font size="4" face="Times New Roman">&gt;)</font></p>
+<p align="center">&nbsp;</p>
+<P></P>
+<BR CLEAR="ALL"><P></P>
+or
+<p align="center"><font size="4">R(45<sup>o</sup>)<i>&lt;p<sub>x</sub>p<sub>y</sub>|p<sub>x</sub>p<sub>y</sub>&gt;</i> 
+= </font><font size="4" face="Times New Roman">1/2(&lt;<i>p</i></font><font size="4"><i><sub>x</sub></i><font face="Times New Roman">
+<i>p</i></font></font><sub><font size="4"><i>x</i></font></sub><font face="Times New Roman" size="4">|<i>p</i></font><font size="4"><sub><i>x</i></sub><font face="Times New Roman">
+<i>p</i></font><sub><i>x</i></sub></font><font size="4" face="Times New Roman">&gt;&nbsp; 
+-&nbsp; &lt;<i>p</i></font><font size="4"><sub><i>y</i></sub><font face="Times New Roman">
+<i>p</i></font><i><sub>y</sub></i></font><font face="Times New Roman" size="4">|<i>p</i></font><font size="4"><sub><i>x</i></sub><font face="Times New Roman">
+<i>p</i></font><sub><i>x</i></sub></font><font size="4" face="Times New Roman">&gt;)</font></p>
+<DIV ALIGN="CENTER">
+&nbsp;</DIV>
+<BR CLEAR="ALL">
+<P></P><A NAME="9714">&#160;</A>
+<A NAME="9715">&#160;</A>
+<A NAME="9716">&#160;</A>
+<A NAME="9717">&#160;</A>
+<A NAME="9718">&#160;</A>
+ For convenience these five integrals are given the following names:
+<p align="center"><font size="4">&lt;<i>ss</i>|<i>ss</i>&gt; = G<i>ss<br>
+</i>&lt;<i>pp</i>|<i>pp</i>&gt; = G<i>pp<br>
+</i>&lt;<i>sp</i>|<i>sp</i>&gt; = H<i>sp<br>
+</i>&lt;<i>pp</i>|<i>pp</i>&gt; = G<i>pp<br>
+</i>&lt;<i>pp</i>|<i>p'p'</i>&gt; = G<i>p2</i><BR>
+</font>
+<BR CLEAR="ALL"></p>
+<P></P>
+Using these definitions, the two-electron one-center
+contributions to the Fock matrix become:
+<BR>
+<DIV ALIGN="CENTER">
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img424.gif"
+ ALT="$\displaystyle F_{ss}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="374" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img425.gif"
+ ALT="$\displaystyle P_{ss}^{\beta}G_{ss}+(P_{p_x}^{\alpha+\beta}+P_{p_y}^{\alpha+\bet...
+...alpha+\beta})G_{sp}
+-(P_{p_x}^{\alpha}+P_{p_y}^{\alpha}+P_{p_z}^{\alpha})H_{sp}$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="24" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img426.gif"
+ ALT="$\displaystyle F_{sp}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="180" HEIGHT="38" ALIGN="MIDDLE" BORDER="0"
+ SRC="img427.gif"
+ ALT="$\displaystyle 2P_{sp}^{\alpha+\beta}H_{sp}-P_{sp}^{\alpha}(H_{sp}+G_{sp})$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="27" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img428.gif"
+ ALT="$\displaystyle F_{pp}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="511" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img429.gif"
+ ALT="$\displaystyle P_{ss}^{\alpha+\beta}G_{sp}-P_{ss}^{\alpha}H_{sp}+
+P_{pp}^{\beta}...
+...beta})G_{p2}
+-\frac{1}{2}(P_{p'p'}^{\alpha}+P_{p"p"}^{\alpha})(G_{pp}-G_{p2})$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ WIDTH="30" HEIGHT="32" ALIGN="MIDDLE" BORDER="0"
+ SRC="img430.gif"
+ ALT="$\displaystyle F_{pp'}^{\alpha}$"></TD>
+<TD ALIGN="CENTER" NOWRAP>:</TD>
+<TD ALIGN="LEFT" NOWRAP><IMG
+ WIDTH="247" HEIGHT="50" ALIGN="MIDDLE" BORDER="0"
+ SRC="img431.gif"
+ ALT="$\displaystyle P_{pp'}^{\alpha+\beta}(G_{pp}-G_{p2})
+-\frac{1}{2}P_{pp'}^{\alpha}(G_{pp}+G_{p2})$"></TD>
+<TD WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE></DIV>
+<BR CLEAR="ALL"><P></P>
+These expressions are common to all methods.
+<P>
+<HR>
+<P>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <BR>
+                                                                                                                                                                                                                                                                                                              </P>
+                                                </BODY>
+</HTML>

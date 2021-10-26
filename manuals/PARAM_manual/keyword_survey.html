@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<TITLE>SURVEY</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>SURVEY (<a href="Param_Validation.zip">worked example</a>)</TT></h1>
+<p align="left">When <TT>SURVEY</TT> is present, PARAM will run the supplied set of 
+MOPAC reference data files, but, instead of optimizing parameters, a comparison 
+of the calculated and reference data sets will be generated.&nbsp; The normal 
+mode of operation is for each geometry to be optimized, then the calculated 
+quantities and reference quantities printed to files.&nbsp; In addition to the 
+&lt;file&gt;.out file, four main files are formed, these are:</p>
+<p align="left">&lt;file&gt;.heats: A comparison of calculated and reference heats of 
+formation.</p>
+<p align="left">&lt;file&gt;.geos: A comparison of calculated and reference geometric 
+quantities (bond lengths, angles and dihedrals)..</p>
+<p align="left">&lt;file&gt;.ips: A comparison of calculated and reference ionization 
+potentials.</p>
+<p align="left">&lt;file&gt;.dips: A comparison of calculated and reference dipole 
+moments.</p>
+<p align="left">These files can then be used as data for generating tables 
+comparing different methods, and for statistical analyses.</p>
+<p align="left">Note: To make the &lt;file&gt;.geos file, the geometry is allowed to 
+relax.&nbsp; This is different from a parameter optimization, where the 
+gradients of the geometric reference data are used.</p>
+</BODY>
+</HTML>

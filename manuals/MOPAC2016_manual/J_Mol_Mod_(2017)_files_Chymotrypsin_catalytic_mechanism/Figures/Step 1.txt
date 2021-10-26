@@ -1,0 +1,23 @@
+reset;center {27.186 2.721 35.183}; rotate z 172.54; rotate y 59.27; rotate z -141.07; zoom 574.14; translate x -1.73; translate y 13.1; set rotationRadius 33.83;
+reset;center {27.186 2.721 35.183}; rotate z -174.56; rotate y 60.09; rotate z -166.62; zoom 632.92; translate x 3.67; translate y 16.2; set rotationRadius 33.83;
+Display 56, 57, 102, 195, 214, 252, 253, 254, 647;
+hide add 195:G.N, 195:G.H, 195:G.HA, 253:C.OG1, 253:C.HG1, 254:C.2H
+select *; label off
+set labelAlignment CENTER; set labeloffset 0 0 
+select  56:F.C; label Ala 56;   set labeloffset -60  40;  color label black; font label 20
+select  57:F.CE1; label His 57;   set labeloffset 60  00;  color label black; font label 20
+select  102:F.CG; label Asp 102;   set labeloffset 20 -20;  color label black; font label 20
+select  195:G.CB; label Ser 195;  set labeloffset -10 80;  color label black; font label 20
+select  214:G.C; label Ser 214;  set labeloffset  40  20;  color label black; font label 20
+select  252:C.N; label Trp 252;  set labeloffset  -50 -5;  color label black; font label 20
+select  253:C.CA; label Thr 253;  set labeloffset  -50 20;  color label black; font label 20
+select  254:C.N; label Leu 254;  set labeloffset  30 -1;  color label black; font label 20
+select  647:C.O;  label H<sub>2</sub>O 647;  set labeloffset  10 25;  color label black; font label 20
+select *; set labelfront
+select 57:F.NE2, 195:G.OG, 195:G.HG, 252:C.C, 252:C.O, 252:C.CA, 253:C.N; label %a; color label white; font label 18;  set labelfront off
+select 57:F.NE2, 253:C.N; label %a; color label pink; font label 18;  set labelfront off
+select 0; halos
+frame TITLE " "
+measure off
+measure (195:G.OG) (252:C.C); font measure 20
+color background white

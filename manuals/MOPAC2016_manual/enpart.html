@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>ENPART </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<script language="Javascript" src="mouseover.js"></script>
+<style type="text/css">#part1, #part2, #cross, #one, #two, #tot_one, #tot_static, #grand, #etot
+
+{position:absolute; left: 30;  visibility:hidden; color: blue;}</style>
+
+<TT>ENPART</TT> </h1>
+<P>This is a very useful tool for analyzing the energy terms within a system. The total energy, in eV, obtained by the addition of the electronic and nuclear terms, is partitioned into mono- and bi-centric contributions 
+(if <a href="large.html"><tt>LARGE</tt></a> is present), and these contributions in turn are divided into nuclear and one- and two-electron terms 
+(if <a href="large.html"><tt>LARGE</tt></a> is present).&nbsp; </P>
+<P>Atoms can be grouped into sets, up to 9 sets are allowed.&nbsp; The format is 
+ENPART(n1, n2,n3...) where n1, n2, n3, etc., are the number of atoms in each 
+set.&nbsp; All atoms in each set must be together in the geometry file.&nbsp; 
+For example, to do an energy partition on the water molecule, use atoms O, H, H, 
+O, H, H, and use ENPART(3,3).&nbsp; In this, the first three atoms are the first 
+water molecule.</P>
+<P>Here is an example of energy partitioning for the HF dimer.&nbsp; In order to 
+work out the HF - HF interaction energy, keyword ENPART(2,2) was used.</P>
+<PRE>          TOTAL ENERGY PARTITIONING
+
+          ALL ENERGIES ARE IN ELECTRON VOLTS
+
+            ONE-CENTER TERMS 
+          E-E:  ELECTRON-ELECTRON REPULSION
+          E-N:  ELECTRON-NUCLEAR ATTRACTION
+
+
+ <a onMouseOver="toggleDiv('one',1)" onMouseOut="toggleDiv('one',0)">
+ ATOM      E-E       E-N    (E-E + E-N)
+   F   1   333.3949 -800.5397 -467.1449  
+   H   2     1.8754   -8.1040   -6.2286
+   F   3   333.3956 -800.5406 -467.1450
+   H   4     1.8754   -8.1039   -6.2285
+   </a>
+   <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+
+
+
+<div id="one" style="width: 550;">The one-center energy of each atom is in the column (E-E + E-N) 
+Unless you're REALLY interested in it, the component parts, E-E and E-N, are not useful. </div> 
+</tr></table>
+
+              TWO-CENTER TERMS
+           
+          J:   RESONANCE ENERGY          E-E: ELECTRON-ELECTRON REPULSION
+          K:   EXCHANGE ENERGY           E-N: ELECTRON-NUCLEAR ATTRACTION
+                                         N-N: NUCLEAR-NUCLEAR REPULSION
+          C:   COULOMBIC INTERACTION = E-E + E-N + N-N
+          EE:  TOTAL OF ELECTRONIC AND NUCLEAR ENERGIES
+<a onMouseOver="toggleDiv('two',1)" onMouseOut="toggleDiv('two',0)">
+     ATOM          J        K       E-E       E-N      N-N      C        EE
+     PAIR
+ 
+  H   2  F   1  -12.1007  -4.8374  51.3351 -121.4430  75.1795  5.0717 -11.8664
+ 
+  F   3  F   1    0.0000  -0.0002 223.2326 -429.5659 206.6544  0.3210   0.3208
+  F   3  H   2   -0.0012  -0.0001  23.5576  -55.3454  31.4388 -0.3490  -0.3503
+ 
+  H   4  F   1   -0.0012  -0.0001  23.5496  -55.3269  31.4284 -0.3489  -0.3502
+  H   4  H   2   -0.0015  -0.0001   2.2758   -6.3168   4.3835  0.3425   0.3409
+  H   4  F   3  -12.0999  -4.8372  51.3339 -121.4406  75.1776  5.0709 -11.8662</a>
+  
+ 
+            System is to be split into 2 parts
+                Part No. of atoms     Atoms
+                  1       2         1 to   2
+                  2       2         3 to   4        <a onMouseOver="toggleDiv('part1',1)" onMouseOut="toggleDiv('part1',0)">
+ Part 1 self - energy (ONE-CENTER(E-E + E-N) + EE):          -485.2398</a> <a onMouseOver="toggleDiv('part2',1)" onMouseOut="toggleDiv('part2',0)">
+ Part 2 self - energy (ONE-CENTER(E-E + E-N) + EE):          -485.2398</a> <a onMouseOver="toggleDiv('cross',1)" onMouseOut="toggleDiv('cross',0)">
+ Part 2 - part 1 interaction energy (EE):                      -0.0388 </a><a onMouseOver="toggleDiv('part2',1)" onMouseOut="toggleDiv('part2',0)" href="enpart_note.html">Note on interaction energies</a>
+
+
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="100" valign="top">
+
+
+
+<div id="two" style="width: 550;">The two-center energies of each atom pair is in the column EE.
+Unless you're REALLY interested in it, the component parts are not useful. </div> 
+
+<div id="part1" style="width: 550;">Energy of the first HF = one-center energy of F 1 (-467.145) + 
+one-center energy of H 2 (-6.229) + two-center energy of H 2 - F 1 interaction (-11.866) </div> 
+<div id="part2" style="width: 550;">Energy of the second HF = one-center energy of F 3 (-467.145) + 
+one-center energy of H 4 (-6.229) + two-center energy of H 4 - F 3 interaction (-11.866) </div> 
+<div id="cross" style="width: 550;">Energy of interaction of the first HF with the second HF = two-center energies of F 3 - F 1 - H interaction (0.321) 
++  F 3 - H 2 (-0.350) + H 4 - F 1 (-0.350) + H 4 - H 2 (0.341) = -0.039eV</div> 
+<div id="tot_one" style="width: 550;">TOTAL OF ONE-CENTER TERMS = ELECTRON-NUCLEAR  (ONE-ELECTRON) + ELECTRON-ELECTRON (TWO-ELECTRON)</div> 
+<div id="tot_static" style="width: 550;">TOTAL ELECTROSTATIC INTERACTION =  ELECTRON-ELECTRON REPULSION + ELECTRON-NUCLEAR ATTRACTION + 
+NUCLEAR-NUCLEAR REPULSION</div> 
+<div id="grand" style="width: 550;">GRAND TOTAL OF TWO-CENTER TERMS =  (EXCHANGE + RESONANCE ENERGY) + TOTAL ELECTROSTATIC INTERACTION</div> 
+<div id="etot" style="width: 550;">ETOT (EONE + ETWO) = TOTAL OF ONE-CENTER TERMS + GRAND TOTAL OF TWO-CENTER TERMS
+ = TOTAL ENERGY just after FINAL HEAT OF FORMATION in output </div> 
+</tr></table>
+
+***  SUMMARY OF ENERGY PARTITION  ***
+ ---------------------------------------
+     ONE-CENTER TERMS
+
+ ELECTRON-NUCLEAR  (ONE-ELECTRON)        -1617.2882 EV
+ ELECTRON-ELECTRON (TWO-ELECTRON)          670.5412 EV<a onMouseOver="toggleDiv('tot_one',1)" onMouseOut="toggleDiv('tot_one',0)">
+
+ TOTAL OF ONE-CENTER TERMS                -946.7470 EV </a>
+ ---------------------------------------
+     TWO-CENTER TERMS
+
+ RESONANCE ENERGY                          -24.2044 EV
+ EXCHANGE ENERGY                            -9.6751 EV
+
+ EXCHANGE + RESONANCE ENERGY:              -33.8795 EV
+
+ ELECTRON-ELECTRON REPULSION               375.2846 EV
+ ELECTRON-NUCLEAR ATTRACTION              -789.4387 EV
+ NUCLEAR-NUCLEAR REPULSION                 424.2622 EV<a onMouseOver="toggleDiv('tot_static',1)" onMouseOut="toggleDiv('tot_static',0)">
+
+ TOTAL ELECTROSTATIC INTERACTION            10.1081 EV</a> <a onMouseOver="toggleDiv('grand',1)" onMouseOut="toggleDiv('grand',0)">
+
+ GRAND TOTAL OF TWO-CENTER TERMS           -23.7714 EV</a> <a onMouseOver="toggleDiv('etot',1)" onMouseOut="toggleDiv('etot',0)">
+ ---------------------------------------
+ ETOT (EONE + ETWO)                       -970.5184 EV</a>
+</PRE>
+</BODY>
+</HTML>

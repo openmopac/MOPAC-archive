@@ -1,0 +1,29 @@
+#
+# Write atomic partial charges as circles with numbers.
+#
+reset;center {0.5475 0.2815 0.4155}; rotate z 44.91; rotate y 61.84; rotate z -82.42; zoom 191.49; translate x 0.53; translate y 4.9; set rotationRadius 6.49;
+frame TITLE "Delay while charges are being defined"
+delay 1
+frame all
+select *.N, [HET]*.O1, [HET]*.O2, *.O4, *.H1, *.H4, *.C1
+var sel = {selected};
+for (var x IN @sel){
+select @x; 
+var txt =  @x.temperature*0.5;
+if (@txt > 0){spacefill @txt;}; 
+if (!@txt > 0){txt = -txt; spacefill @txt; }; 
+txt =  (x.temperature > 0 ? '+':'')+format('%1.2f',x.temperature ); 
+label @txt; color label black;
+set labelOffset 0 0;}
+select 0;
+frame TITLE "Frame : @{_modelNumber}"
+animation mode loop;
+animation on
+#
+#   Notes
+#
+# For slow-motion, type "animation FPS 4" in the console.
+# The transition state is at Frame 62.  
+# To see this, type "FRAME 62" in the console.
+#
+# 

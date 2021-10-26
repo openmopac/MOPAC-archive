@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>ROOT=text</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>ROOT=&lt;text&gt;</TT></h1>
+<p>Electronic states of atoms, ions, and molecules can be used as reference 
+data.&nbsp; The energies of these states are defined relative to the lowest 
+energy state of the system.&nbsp; </p>
+<h3>Background</h3>
+<p>Before proceeding, it is important to point out that atomic states should not 
+be confused with atomic orbital occupancies or electron configurations.&nbsp; To 
+distinguish between them, electron configurations always use lower-case letters, 
+e.g., for carbon, the lowest energy configuration is 1s<sup>2</sup>2s<sup>2</sup>2p<sup>2</sup>.&nbsp; 
+Its lowest energy state is <sup>3</sup>P<sub>g</sub>, with higher energy states 
+being<sup> 1</sup>D<sub>g</sub> and <sup>1</sup>S<sub>g</sub>.&nbsp; Just as 
+electrons in atoms have quantum numbers (n: principal, l: angular, m: magnetic, and 
+s: spin), atomic and excited states also have quantum numbers: N: principal, L: 
+angular, M: magnetic, and S: spin. A state symbol for an atom can be constructed from these 
+letters as N<sup>2S+1</sup>L.&nbsp; The magnetic quantum number&nbsp; M is not 
+used because, in the absence of a magnetic field, all M states are degenerate.</p>
+<p>To help understand the protocols used here, consider a hypothetical atom with 
+a <sup>5</sup>S<sub>g</sub> ground state and an excited state of symmetry
+<sup>3</sup>F<sub>g</sub>, that is, the excited state is a triplet with angular 
+quantum number L = 3.&nbsp; This state is 21 fold degenerate - three from spin 
+and seven from space.&nbsp; For the purpose of parameterization, such degenerate 
+manifolds are regarded as single states.&nbsp; </p>
+<h3>Specification of an electronic state</h3>
+<p>Each state is defined by three data, with the data being separated by commas.&nbsp;
+</p>
+<h4>First datum: the State Principal Quantum Number&nbsp; </h4>
+<p>This is the number of the specific state.&nbsp; If there is only one <sup>3</sup>F<sub>g</sub>, 
+state, its number will be 1, if there is more than one state with the symmetry
+<sup>3</sup>F<sub>g</sub>, the lowest energy state would have the PQN 1, the 
+next, 2, the next 3, and so on.</p>
+<h4>Second datum: the Spin.&nbsp; </h4>
+<p>This defines the spin of the state, and is equal to 2<i>S</i> + 1, where <i>S</i> 
+is the spin angular momentum quantum number.&nbsp; The spin is thus equal to the 
+degeneracy of the spin-state.</p>
+<h4>Third datum: the Irreducible Representation (IR).&nbsp; </h4>
+<p>For atomic states, the IRs are S, P, D, F, G, H, I, K, L, and M, followed by 
+either (g) or (u) (for gerade or ungerade).&nbsp; Note that there is no J state.&nbsp; 
+For molecular species, the states are the normal IR's.</p>
+<h4>Examples</h4>
+<p><b>ROOT=1,2,S(G) </b>This is the <sup>2</sup>S<sub>g</sub> ground state of an 
+alkali metal atom.&nbsp; Its heat of formation would be zero.</p>
+<p><b>ROOT=1,2,P(U)</b> Excited or <sup>2</sup>P<sub>u</sub> state of an alkali 
+metal atom. Its heat of formation would be positive.</p>
+<p><b>ROOT=2,5,D(G)</b> Second state of symmetry <sup>5</sup>D<sub>g</sub>.&nbsp; 
+In this system, there is more than one state of symmetry <sup>5</sup>D<sub>g</sub> 
+and it is the second energy state of symmetry <sup>5</sup>D<sub>g</sub> that is being defined, so the PQN is 2.</p>
+<h3>Tips</h3>
+<p>An easy way to work out the state is to run the system using MOPAC and using 
+keyword <a href="../MOPAC2016_manual/meci.html"><TT>MECI</TT></a>.&nbsp; Look at the list of states 
+printed at the bottom of the output file.</p>
+<p>A good source for reference data on states is:
+<a a target="_parent" href="http://physics.nist.gov/PhysRefData/ASD/levels_form.html">
+http://physics.nist.gov/PhysRefData/ASD/levels_form.html</a>.&nbsp; The methods 
+in MOPAC do not include spin-orbit coupling.&nbsp; This means that all 
+spin-orbit split energy levels will be degenerate, i.e., not split.&nbsp; To 
+convert from &quot;exact&quot;, i.e., spin-orbit split states to the degenerate state, calculate 
+the barycenter of each manifold of interest.</p>
+<h4>Barycenter weighting.</h4>
+<p>Spin-orbit splitting will take a degenerate manifold of levels and split it 
+into a set of two or more new degenerate manifolds of levels. </p>
+<p>The original manifold, before spin-orbit splitting, will be (2S+1)*(2L+1) 
+fold degenerate, where S is the Spin and L is the spatial or angular quantum 
+number.&nbsp; In atoms and atomic ions, the values of L are 0 for &quot;S&quot; States, 1 
+for &quot;P&quot;, 2 for &quot;D&quot;, etc.&nbsp; For molecular systems, the equivalent terms are 0 
+for non-degenerate, 1/2 for a two-fold degenerate, i.e., an &quot;E&quot; state, 1 for 
+three-fold, i.e., a &quot;T&quot; state, 3/2 for a four fold, i.e., a &quot;G&quot; state, and 2 for 
+a five-fold degenerate molecular state, i.e., a &quot;H&quot; state. For a sodium atom, 
+for example, the first excited State, ROOT=1,2,P(U), is 6-fold degenerate.&nbsp; 
+S = 1/2, so the Spin degeneracy is 2, and IR = P(U), or L = 1, so the spatial 
+degeneracy is 3, for a total degeneracy of 6.&nbsp; For a d<sup>1</sup> 
+tetrahedral transition metal complex, the first excited State is 2T, with S=1/2 
+and L=1.&nbsp; This State is 6 fold degenerate.</p>
+<p>Spin-orbit splitting will split the spin-free level according to the 
+triangular conditions.&nbsp; The individual spin-orbit levels can be labeled by 
+J, where J ranges from |S-L| to S+L.&nbsp; For the 2P(U) level of Na, this would 
+be J = 1/2 and 3/2.&nbsp; The J levels would have degeneracy (2J+1), for 2P(U) 
+this would be 2 and 4.&nbsp; The energies of these levels would be E(1/2) and 
+E(3/2).</p>
+<p>Converting a set of spin-orbit split levels into a spin-free level involves 
+the weighted average of all the spin-orbit levels.&nbsp; Each spin-orbit level 
+must weighed according to its degeneracy.&nbsp; So for the 2P(U) level of Na, 
+the spin-free level would have an energy of (1/6)(2*E(1/2) + 2*E(3/2)).&nbsp; 
+Because a weighted average is used, this type of averaging is called barycenter 
+averaging.</p>
+<p>There are typically several J states in atoms that have high Spin and high 
+angular momentum.&nbsp; Thus for the spin-free 4G(u) atomic state, with S = 3/2 
+and L = 4, the J states would be 5/2, 7/2, 9/2, and 11/2, and the barycenter 
+would be (1/36)(6*E(5/2) + 8*E(7/2) + 10*E(10/2) + 12*E(11/2)).</p>
+</BODY>
+</HTML>

@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Unconstrained optimization of protein geometries </TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														font-family: Arial, Helvetica, sans-serif;
+																													}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p dir="ltr">(<a href="modeling_proteins.html#Unconstrained">Modeling proteins</a>)</p>
+<h1>Unconstrained optimization of protein geometries </h1>
+<p class="auto-style1">The result of an unconstrained geometry optimization is a stationary point on 
+the potential energy surface.&nbsp; This point has several very important 
+properties.&nbsp; Among these are:</p>
+<ul>
+	<li class="auto-style1">The geometry refers to a specific system, e.g., the starting point 
+	for a reaction step or a salt bridge or a neutral system.&nbsp; </li>
+	<li><span class="auto-style1">Its heat of formation can be related to heats of formation of similar 
+	systems (by &quot;similar&quot; is meant systems with exactly the same formula and 
+	charge, and calculated using the same conditions, i.e., </span> <a href="pm7.html">
+	<tt>PM7</tt></a><span class="auto-style1"> and 
+	</span> <a href="eps.html"><tt>EPS=78.4</tt></a><span class="auto-style1">).</span></li>
+</ul>
+<p class="auto-style1">Because of the importance of stationary points, the corresponding ARC files 
+should be properly labeled and stored for future use.</p>
+<p><span class="auto-style1">Also, because these structures are so important, unconstrained optimization 
+of protein systems should be carried out with unusual care.&nbsp; Use solvation 
+for all systems of this type, i.e. use </span> <tt>EPS=78.4</tt><span class="auto-style1">. Optimize the geometry. This might take CPU days 
+or even weeks of 
+effort, so to be on the safe side, use <a href="t=n.html"><TT>T=4W</TT></a>
+<a href="dump.html"><TT>DUMP=2D</TT></a>.&nbsp; If the optimization is not exhaustive subsequent geometric 
+operations might compromise any results - changes in heat of formation would be a 
+mixture of the original structure still changing and thus its energy decreasing, 
+and the energy change caused by the current geometric operation.&nbsp; </span> </p>
+<p><span class="auto-style1">A useful 
+strategy is to optimize the geometry, then if the gradient norm in the ARC file is large, over 
+about 0.2 kcal mol<sup>-1</sup> &Aring;<sup>-1</sup> per atom, simply 
+re-optimize the geometry.&nbsp; To do this, either run the ARC file without any 
+editing, or edit the ARC file to make a new MOPAC data-set, then run that.</span></p>
+</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>FIELD=(n.nn,m.mm,l.ll) </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>FIELD=(<I>n</I>.<I>nn</I>,<I>m</I>.<I>mm</I>,<I>l</I>.<I>ll</I>)</TT>
+</h1>
+An external electric field of intensity <I>n</I>.<I>nn</I> volts/&Aring;ngstrom in the
+<I>x</I>-direction, <I>m</I>.<I>mm</I> volts/&Aring;ngstrom in the <I>y</I>-direction,  and <I>l</I>.<I>ll</I>
+volts/&Aring;ngstrom in the  <I>z</I>-direction is to be applied. The potential
+arising from the field is zero at the origin of Cartesian space, i.e. <i>V</i>=0
+at (<i>x</i>=0.0, <i>y</i>=0.0, <i>z</i>=0.0). At any other point, (<i>x,y</i>,<i>z)</i>,
+the effect of
+<TT>FIELD=(<I>n</I>.<I>nn</I>,<I>m</I>.<I>mm</I>,<I>l</I>.<I>ll</I>)</TT> is to
+produce a potential equal to <i>V</i> = (<i>x.n.nn+y.m.mm+z.l.ll)</i> volts.<font face="Times New Roman"><TT> </TT>
+</font>
+<p>The effect on a molecule depends on the orientation of the molecule relative
+to the field.&nbsp; Thus a hydrogen molecule would be polarized slightly by a
+field parallel to the axis, but unaffected by a field perpendicular to the axis.&nbsp;
+The polarization would be to produce a small positive charge on the hydrogen in
+the (relatively) negative part of the field, and a small negative charge in the
+positive part of the field.&nbsp; Any polarization would, of course, result in
+the energy being lowered.</p>
+<p>Because molecules have no net charge, the effect of an applied field is
+independent of the location of the molecule.&nbsp; That is, if the field is
+defined by FIELD=(1.0,0.0,0.0), the energy of a molecule centered at (+100,0,0)
+would be the same as that at (-100,0,0) and the same as that at (0,0,0). Put
+another way, the energy would be unaffected by motion in any direction,
+including in the direction of the field.</p>
+<p>The geometries of small molecules are only slightly affected by fields in the
+order of 1 volt per Angstrom.&nbsp; This is because such a molecule is, of its
+nature, small.&nbsp; The change in potential from one end of such a molecule to
+the other would only be a few volts.&nbsp; Larger systems are affected much more
+- a system that extends over 20A, say, would experience a potential change of 20
+volts, if the field were along that axis.&nbsp; Macroscopic changes, such as
+Zener breakdown, are the result of ions being accelerated by the field.&nbsp;
+When these ions collide with neutral molecules, the molecules become ionized,
+e.g. e<sup>-</sup> + N<sub>2</sub> =&gt; 2e<sup>-</sup> +N<sub>2</sub><sup>+</sup>.</p>
+<p>On the other hand, an ion will be strongly affected by such a field. For
+example, F<SUP>-1</SUP> at coordinates
+1.00, 0.00, 0.00, would be stabilized by 1.0eV if a field were to be
+applied by specifying <TT>FIELD=(1.0,0.0,0.0)</TT>. This is a direct consequence
+of the net charge on the system interacting with the electric field: a charge of
++<i>x</i> at a point in space where the potential is <i>y</i> volts would have
+an energy due to the potential of <i>x.y</i> eV.&nbsp; This is the origin of the
+term electron-volt. </p>
+<p>A
+useful exercise is to monitor the behavior of an ion in an electric field, using
+the <TT><a href="drc0.html">DRC</a></TT>:</p>
+<p>Let the field be FIELD=(1,0,0), let the ion be F<sup>-</sup>,&nbsp; and have
+a mass of 19 amu.&nbsp; The data set:</p>
+<p>DRC LARGE T-PRIO=0.1 CHARGE=-1 FIELD=(1,0,0) GNORM=0 CYCLES=75 <br>
+Fluoride ion<br>
+In An Electric Field<br>
+F 0.0 0 0.0 0 0.0 0 </p>
+<p>would be suitable here.&nbsp; After about 63fs, the ion would have moved
+through 1 Angstrom, and the potential energy would have dropped by 23.06
+kcal/mol.&nbsp; Conservation of energy requires that the kinetic energy equals
+23.06 kcal/mol. Using E=(1/2)MV<sup>2</sup>,&nbsp; implies that the velocity is:</p>
+<p>V = (2*4.184*10<sup>10</sup>*23.06/19) cm/sec = 3.19*10<sup>5</sup> cm/sec =
+3.19 km/sec. </p>
+<p>The 4.184*10<sup>10</sup> is the <a href="fun_con.html">conversion</a> from
+kcal/mol to ergs per mol.&nbsp; <br>
+All other quantities, such as the  acceleration (5.06x10<sup>18</sup> cm/sec<sup>2
+</sup>or 5.06x10<sup>13</sup> km/sec<sup>2</sup>), follow
+simply.&nbsp; <br>
+Used in this way, the <TT><a href="drc0.html">DRC</a> </TT>is useful for
+modeling ion implantation.</p>
+</BODY>
+</HTML>

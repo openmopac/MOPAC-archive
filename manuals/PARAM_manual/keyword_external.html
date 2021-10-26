@@ -1,0 +1,24 @@
+<HTML>
+<HEAD>
+<TITLE>PARAMS</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>EXTERNAL=<i>text[;text[;text[;text]]]</i></TT> </h1>
+<p align="left">By default, the set of parameters used in PARAM is that stored 
+inside the program.&nbsp; However, during method development and testing it is 
+often desirable to use parameters supplied from files.&nbsp; This is like the 
+MOPAC keyword <a href="../MOPAC2016_manual/external.html">EXTERNAL=&lt;text&gt;</a>&nbsp; 
+but is more flexible.&nbsp; When <TT>EXTERNAL=<i>text[;text[;text[;text]]]</i></TT> is present, the default set of 
+parameters is overwritten by the entries in files defined by the keyword. Each 
+file can be defined by quotation marks; these are only necessary if there are 
+spaces in the file name or in its path.</p>
+<p align="left">&nbsp;Example:<PRE> EXTERNAL=..\PM7\params.txt;&amp;
+                br.rp; &
+               "test data set.rp" 
+</PRE>
+<p align="left">In this example, the entries in &quot;params.txt&quot; would be read, and 
+the appropriate parameters in PARAM updated, followed by the entries in &quot;br.rp&quot; 
+and, finally the entries in &quot;test data set.rp&quot;.</p>
+</BODY>
+</HTML>

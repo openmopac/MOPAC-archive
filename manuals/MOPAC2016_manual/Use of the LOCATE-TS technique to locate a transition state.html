@@ -1,0 +1,151 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Use of the LOCATE-TS technique to locate a transition state </TITLE>
+                                                                                                                 <style type="text/css">.auto-style1 {
+																													 font-size: large;
+																													 border-top-style: solid;
+																													 border-top-width: 1px;
+																													 border-bottom-style: solid;
+																													 border-bottom-width: 1px;
+																												 }
+																												 .auto-style3 {
+																													 border-bottom-style: solid;
+																													 border-bottom-width: 1px;
+																												 }
+																												 .auto-style5 {
+																													 text-align: left;
+																												 }
+																												 .auto-style6 {
+	text-align: center;
+}
+																												 </style>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+Use of the LOCATE-TS technique to locate a transition state</h1>
+<p class="auto-style5">
+LOCATE-TS is ideally suited for finding transition states in enzyme mechanisms.&nbsp; 
+Instead of several worked examples involving different enzymes, the examples 
+here all refer to different steps in the chymotrypsin catalyzed hydrolysis of a 
+peptide bond.&nbsp; For a detailed description see the
+<a href="http://link.springer.com/article/10.1007/s00894-017-3326-8">published 
+article</a>. To reproduce the chymotrypsin mechanism, see the
+<a href="J_Mol_Mod_(2017)_files_Chymotrypsin_catalytic_mechanism/Supplementary_Material.html">
+supplementary materials</a></p>
+<p class="auto-style5">
+General notes</p>
+<p class="auto-style5">
+A good starting model is essential for investigating enzyme mechanisms. This 
+model should represent the first step in the catalytic cycle.&nbsp; Check it 
+carefully to ensure that it is as perfect as possible - if a change has to be 
+made later on, it might require all previous steps to be changed and re-run.&nbsp; 
+Although this is not very time-consuming, it is annoying, and can usually be 
+avoided by having a better starting model.</p>
+<p class="auto-style5">
+Make intermediates by moving atoms around using a GUI.&nbsp; If necessary, the 
+sequence of the atoms can be changed, but do not change the part of the PDB atom 
+label that identifies the atom.&nbsp; For example, if the MOPAC data-set line 
+for an atom consists of: <strong>&quot;C(ATOM 36 CA PRO E 4) 8.35040525 +1 
+13.76512201 +1 27.02235000 +1&quot;</strong> the part that should not be changed is
+<strong>&quot;CA PRO E 4</strong>&quot;.&nbsp; Within a catalytic cycle, an atom might 
+change from being covalently bonded to one specific atom to being covalently 
+bonded to another atom, that is, it is involved in a chemical reaction.&nbsp; 
+Although the atom is now in a different environment, its PDB label must not be 
+changed. This means that, at the end of the cycle, some atoms will appear to 
+have the wrong labels.&nbsp; This is expected and is necessary. An incidental 
+benefit of this requirement is that the path of an atom through the catalytic 
+cycle can easily be followed.&nbsp; If there is a need to update the atom 
+labels, use keyword RESIDUES, but if tat is done, the resulting structure should 
+not be used in any runs involving keywords LOCATE-TS, SADDLE or COMPARE.</p>
+<p class="auto-style5">
+From the &quot;distance&quot; between adjacent intermediates it might appear that they 
+have very different geometries.&nbsp; This is a common phenomenon, caused by the 
+large motion of the enzyme as it settles into the energy minimum for the 
+intermediate.&nbsp; That this large &quot;distance&quot; is not important can easily be 
+demonstrated by using LOCATE-TS=(C:5,5;), this moves both systems to near the 
+bottom of the reaction barrier, to the point where the slope amounts to 5 
+kcal.mol<sup>-1</sup> .&Aring;<sup>-1</sup>. At that point, the &quot;distance&quot; 
+should be much smaller than it was.</p>
+<p class="auto-style5">
+There is an increased chance of user-error in preparing LOCATE-TS jobs, so the 
+addition of keywords that trap errors is worthwhile.&nbsp; Always add keyword
+<a href="charge.html"><tt>CHARGE=<em>n</em></tt></a>, even when the system has a net 
+charge of zero.&nbsp; Of course, check that the value of &quot;<em>n</em>&quot; is correct 
+before starting a LOCATE-TS job! Do not use <a href="geo-ok.html"><tt>GEO-OK</tt></a> or
+<a href="let.html"><tt>LET</tt></a> unless necessary - these keywords are intended to 
+trap errors in data.</p>
+<p class="auto-style5">
+&nbsp;</p>
+
+<p>
+<table align="center" cellpadding="0" cellspacing="0">
+	<tr>
+		<td class="auto-style1">Animation of reaction</td>
+		<td class="auto-style1">&nbsp;</td>
+		<td class="auto-style1">ZIP file</td>
+		<td class="auto-style1">&nbsp;</td>
+		<td class="auto-style1">Description</td>
+	</tr>
+	<tr>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		<a href="Individual%20JSmol%20paths/Hydride%20transfer%20to%20C4%20on%20N-methyl%20pyridinium/LOCATE-TS%20Refine%20transition%20state%20and%20map%20the%20IRC.html">
+		[HCO-CH-CH<sub>3</sub>]<sup>-</sup> + [C<sub>5</sub>H<sub>5</sub>N-CH<sub>3</sub>]<sup>+<br>
+		</sup>&hArr; HCO-CH=CH<sub>2</sub> + C<sub>5</sub>H<sub>6</sub>N-CH<sub>3</sub></a></td>
+		<td>&nbsp;</td>
+		<td class="auto-style6"> 
+		<a href="Individual%20JSmol%20paths/Hydride%20transfer%20to%20C4%20on%20N-methyl%20pyridinium/LOCATE-TS%20Hydride%20transfer.zip">
+		LOCATE-TS <br>for Hydride transfter</a></td>
+		<td>&nbsp;</td>
+		<td>Hydride transfer from a methyl group on<br>propionaldehyde 
+		anion to the para or C<sub>4</sub> carbon <br>on the pyridinium cation.&nbsp; 
+		This reaction, although<br><a href="Hydride%20transfer.html">interesting</a>, 
+		was particularly difficult to model.</td>
+	</tr>
+	<tr>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td> 
+		&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td> &nbsp;</td>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+	</tr>
+	<tr>
+		<td class="auto-style3"> 
+		&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+		<td class="auto-style3"> 
+		&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+		<td class="auto-style3">&nbsp;</td>
+	</tr>
+</table>
+<br> </p>
+
+</BODY>
+</HTML>

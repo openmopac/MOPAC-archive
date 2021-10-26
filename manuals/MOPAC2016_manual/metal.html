@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>METAL </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>METAL[=(a[,b[,c[...]]])]</TT></h1>
+<p align="center">
+&nbsp;</p>
+<h3 align="left">
+When adding hydrogen atoms using <a href="ADD-H.html"><tt>ADD-H</tt></a></h3>
+<p align="left">
+All atoms defined as metals are assumed to be 100% ionic.&nbsp; As a result, 
+oxygen and sulfur atoms near to a metal atom will be automatically ionized.&nbsp; 
+This can produce structures such as -CH<sub>2</sub>-COO(-) ... Na(+) and -CH<sub>2</sub>-COO(-) 
+... Ca(+2).</p>
+<h3 align="left">
+In Lewis structures for MOZYME calculations</h3>
+<p align="left">
+Some elements might need to be defined as not having 
+any covalent bonds when building the <a href="Lewis_structures.html">Lewis structure</a>.&nbsp; This can be in order 
+to generate a sensible Lewis structure for the user or, in rare instances, to 
+generate an acceptable Lewis structure for MOZYME.</p>
+<p align="left">
+Consider ferrocene.&nbsp; In ferrocene, iron has 8 valence electrons, so if it is 
+allowed to bond to the carbon atoms, it would form 8 covalent sigma bonds.&nbsp; 
+In such a system, iron would thus be Fe(VIII).&nbsp; In a zinc finger, if Zn 
+bonds to the four ligands, it would have a formal charge of -2.&nbsp; Such 
+unusual oxidation states or charges might be of concern to users, however in 
+most cases they would not affect the MOZYME calculation.&nbsp; </p>
+<p align="left">
+Individual elements and individual atoms can be re-defined as not forming any 
+covalent bonds by use of METAL.&nbsp; In building Lewis structures, all elements 
+of Groups I and II are considered as being fully ionic.&nbsp; If they need to be 
+considered as covalent, use <TT> <a href="CVB.html">
+CVB</TT></a> to define bonds.</p>
+<p align="left">
+The oxidation state can be changed using METAL by adding the new 
+oxidation state immediately after the chemical symbol.&nbsp; The new oxidation 
+state must be in the specific form +n, 0 or -n, so, for example [Sc<sup>I</sup>]<sup>+</sup> 
+would be Sc(+1).&nbsp; Note that the &quot;+1&quot; is needed, and that Sc(+), without the 
+&quot;1&quot; would not be allowed.</p>
+<p align="left">
+Individual elements are specified by their chemical symbol, individual atoms are 
+specified by the atom-number of the real atom (Real atoms numbers exclude 
+any dummy atoms), or by the PDB or JSmol labels.</p>
+<p align="left">
+By default, elements of Group IA (Li, Na, K, Rb, Cs) and some of Group IIA (Mg, 
+Ca, Sr, Ba) are considered metals.</p>
+<p align="left">
+<b>Examples</b></p>
+<table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+  <tr>
+    <td>METAL</td>
+    <td>&nbsp;</td>
+    <td>All metal atoms are re-defined as being 100% ionic</td>
+  </tr>
+  <tr>
+    <td>METAL=(Fe)&nbsp;&nbsp;&nbsp;&nbsp; </td>
+    <td>&nbsp;</td>
+    <td>Re-define all iron atoms are being 100% ionic</td>
+  </tr>
+  <tr>
+    <td>METAL=(Au(+3))</td>
+    <td>&nbsp;</td>
+    <td>Re-define gold atoms as being 100% ionic and in oxidation state +3 (Used 
+	by MOZYME only).&nbsp; </td>
+  </tr>
+  <tr>
+    <td>METAL=(Fe,Zn)</td>
+    <td>&nbsp;</td>
+    <td>Re-define all iron and zinc atoms are being 100% ionic</td>
+  </tr>
+  <tr>
+    <td>METAL=(3423)</td>
+    <td>&nbsp;</td>
+    <td>Re-define atom 3423 as being 100% ionic</td>
+  </tr>
+  <tr>
+    <td>METAL=(Zn,6222)</td>
+    <td>&nbsp;</td>
+    <td>Re-define all zinc atoms and atom 6222 as being 100% ionic</td>
+  </tr>
+  <tr>
+    <td>METAL=(Zn,&quot;O GLY A 1&quot;)</td>
+    <td>&nbsp;</td>
+    <td>Re-define all zinc atoms and the atom with PDB label &quot;O GLY A 1&quot; as being 100% ionic</td>
+  </tr>
+  <tr>
+    <td>METAL=(22,54)</td>
+    <td>&nbsp;</td>
+    <td>Re-define atoms 22 and 55 as being 100% ionic</td>
+  </tr>
+</table>
+<p>Related key-words:&nbsp; <TT><a href="lewis.html">LEWIS</a>, <a href="CVB.html">
+CVB</a>, <a href="vdwm.html">VDWM</a>,
+<a href="charge.html">CHARGE</a>, <a href="charges.html">CHARGES</a>, and <a href="mozyme.html">MOZYME</a></TT><br>
+See also: <a href="Lewis_structures.html">Lewis Structures</a>,
+<a href="mozyme_introduction.html">MOZYME introduction</a>,&nbsp;
+<a href="Lewis_Metal_Charges.html">Lewis metal atom charges</a><DL dir="ltr">
+<div align="left">
+  <dt dir="ltr">&nbsp;</dt>
+</div>
+
+</BODY>
+</HTML>

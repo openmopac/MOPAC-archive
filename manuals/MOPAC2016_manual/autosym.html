@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>AUTOSYM </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>AUTOSYM</TT>
+</h1>
+<TT>AUTOSYM</TT> is an alternative way of specifying symmetry.  When
+<TT>AUTOSYM</TT> is present, symmetry data is generated.  This data is similar to
+that supplied by the user when <TT><a href="symmetry.html">SYMMETRY</a></TT> is used.  The 'rules'
+<TT>AUTOSYM</TT> uses are these:
+<P>
+<UL>
+<LI>All bond-lengths which are within 0.0001&Aring; are set equal.
+<LI>All bond-angles which are within 0.0057<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img96.gif"
+ ALT="$^{\circ}$">
+are set equal.
+<LI>All dihedral angles which are within 0.0057<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img97.gif"
+ ALT="$^{\circ}$">
+are set equal.
+<LI>All dihedral angles which are within 0.0057<IMG
+ WIDTH="11" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img98.gif"
+ ALT="$^{\circ}$">
+of the negative
+of an existing dihedral are set equal to the negative of the existing
+dihedral.
+</UL>
+<P>
+These 'rules' are a re-wording of internal <TT>SYMMETRY</TT> functions 1, 2, 3,
+and 14.  The <TT>.arc</TT> file will include the symmetry data.  In order to
+change the <TT>.arc</TT> file symmetry data into normal symmetry data, change
+<TT>AUTOSYM</TT> in the <TT>.arc</TT> file to <TT>SYMMETRY</TT>.
+<P>
+AUTOSYM only adds symmetry to coordinates that can be optimized.&nbsp; If a 
+coordinate has an optimization flag of &quot;0&quot;, it will not be looked at by AUTOSYM.<br>
+<br>
+Consider benzene:&nbsp; If someone built the Z-matrix in internal coordinates, they 
+would likely mark the C-C and C-H distances as optimizable, and lock the angles 
+and dihedrals.&nbsp; If they used AUTOSYM, then it would symmetry-relate all the C-C 
+distances and all of the C-H distances, but leave the angles and dihedrals 
+untouched.&nbsp;<br>
+<br>
+&nbsp;</BODY></HTML>

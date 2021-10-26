@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Introduction to MOZYME</TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<B>
+Introduction to MOZYME</B></h1>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td><a href="#Introduction">Introduction</a></td>
+    </tr>
+    <tr>
+      <td><a href="#realistic">The model must be realistic</a></td>
+    </tr>
+    <tr>
+      <td><a href="#realistic">Identifying charged sites </a></td>
+    </tr>
+    <tr>
+      <td><a href="#Identifying_ionized_residues">Identifying ionized residues</a></td>
+    </tr>
+    <tr>
+      <td><a href="#Ramachandran_angles">Ramachandran angles</a></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<h2><a name="Introduction">Introduction</a></h2>
+<p>MOZYME is a technique that allows very large systems, in particular proteins 
+and sections of DNA, to be modeled in a reasonable time.&nbsp; Although in 
+principle, it is similar to conventional methods in that the underlying 
+computational model is PM7 or PM6, etc., in practice there are several 
+differences.&nbsp; Most of these differences are a result of the large size of 
+the systems.&nbsp; In this page, some of the considerations will be discussed.&nbsp;
+</p>
+<h2><a name="realistic">The model must be realistic</a></h2>
+<p>Most important of all, is the continuing requirement that in quantum chemical 
+calculations each data set must 
+represent a realistic system. In Molecular Mechanics, hydrogen atoms are often 
+ignored or combined into the heavy atom that they are bonded to, to give the 
+&quot;combined atom&quot; model.&nbsp; In quantum mechanical calculations, every hydrogen 
+atom must be explicitly defined. </p>
+<p>Some residues are usually described as being ionized, thus Arg is usually 
+represented as [Arg]<sup>+</sup>, and Asp as [Asp]<sup>-</sup>.&nbsp; But if 
+there is a large difference in numbers of anionic and cationic residues, the net 
+charge on the system can be unrealistically large.&nbsp; Neutralizing individual 
+residues requires making decisions that are hard to justify. To avoid having to 
+make subjective decisions, a well-defined starting structure would be to use the 
+completely neutral system.&nbsp; This is somewhat artificial in that there are 
+almost certainly ions present in the system, but usually, during geometry 
+optimization, protons will migrate from carboxylic acid groups to form 
+carboxylate anions, and some Arg and Lys will become cations.</p>
+<p>Systems involving most open-shell simple transition metal complexes, such as 
+Cr(III) surrounded by six oxygen atoms, should not be run.&nbsp; If an attempt 
+were made to run [Cr<sup>III</sup>(H<sub>2</sub>O)<sub>6</sub>]<sup>3+</sup> it 
+would fail because the number of electrons (51) is odd.&nbsp; Changing the 
+charge from +3 to +4 would likely change the character of the chromium too much 
+for the results to be useful.</p>
+<p>Another example of a faulty starting geometry would be DNA in which every 
+phosphate group was singly ionized.&nbsp; If the geometry of such a system was 
+calculated, the results would be nonsense - the very large net negative charge 
+would cause the DNA to spontaneously untwist, ruining the structure.&nbsp; Only 
+when the phosphate groups are neutralized, or counterions are present to 
+neutralize charges, can the characteristic twist be 
+reproduced.</p>
+<h2><a name="Identifying_charged_sites">Identifying charged sites</a></h2>
+<p>All ionized sites can be identified by keyword <TT><a href="charges.html">CHARGES</a></TT>.&nbsp; If this keyword 
+is used, the charged sites and net charge will be printed, and the calculation 
+stopped.&nbsp; This is a quick and reliable way of finding ionized sites.&nbsp; 
+If an attempt is made to run a system with the wrong charge, either because a 
+mistake was made in the structure, or because the assumed net charge was 
+incorrect, the error will be detected and the job stopped.&nbsp; However, if 
+keyword <TT><a href="charge.html">CHARGE</a></TT> is not present or
+<a href="geo-ok.html"><TT>GEO-OK</TT></a> is present, the supplied charge will 
+be replaced with the calculated charge, and the job will be run using the 
+calculated charge.</p>
+<h2><a name="Identifying_ionized_residues">Identifying ionized residues</a></h2>
+<p>When any keyword that implies that the residue sequence should be used, e.g., 
+<a href="pdbout.html"><TT>PDBOUT</TT></a> or<TT> <a href="residues.html">
+RESIDUES</a></TT>, or if the residue 
+sequence can be deduced from the data set, then the net charge on each residue 
+is printed.&nbsp; If the charge on a residue is larger than 0.5, the residue 
+will be labeled &quot;CATION&quot;, if it is less than -0.5, it will be labeled &quot;ANION&quot;.</p>
+<h2><a name="Ramachandran_angles">Ramachandran angles</a></h2>
+<p>When <a href="rama.html"><TT>RAMA</TT></a> is present, the three 
+Ramachandran angles, &psi;, &phi;, 
+and &alpha; are printed for each residue.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

@@ -1,0 +1,95 @@
+<HTML>
+
+<head>
+
+<TITLE>Global parameters for use with keyword EXTERNAL</TITLE>
+                           <style type="text/css">
+						   .auto-style1 {
+							   text-align: center;
+						   }
+						   .auto-style2 {
+							   border-style: solid;
+							   border-width: 1px;
+						   }
+						   </style>
+</head>
+
+                           <h1 class="auto-style1">Global parameters for use with keyword EXTERNAL</h1>
+<p>&nbsp;</p>
+<p>Global parameters are parameters that do not apply to any individual element 
+but instead apply to quantities that affect the entire system.&nbsp; </p>
+<p><strong>Current interactions in the PM7 method that involve global 
+parameters:</strong> Dispersion energies and forces, individual bond 
+corrections.</p>
+<table align="center" class="auto-style2">
+	<tr>
+		<td style="width: 54px">Parameter</td>
+		<td class="auto-style1" style="width: 494px">Definition</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR1</td>
+		<td style="width: 494px">Scalar multiplier for correction of C-C triple 
+		bonds, see (1) below.</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="height: 24px; width: 54px">PAR2</td>
+		<td style="height: 24">Exponent multiplier for correction of C-C triple 
+		bonds, see (1) below. </td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR3</td>
+		<td style="width: 494px">Scalar multiplier for correction of O-H term, 
+		see (2) below.</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="height: 24px; width: 54px">PAR4</td>
+		<td style="height: 24">Exponent multiplier for correction of C-C triple 
+		bonds, see (1) below.</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR5</td>
+		<td style="width: 494px">Free for use</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR6</td>
+		<td style="width: 494px">Free for use</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR7</td>
+		<td style="width: 494px">&quot;s6&quot; in the D3 dispersion for Grimme's method.</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR8</td>
+		<td style="width: 494px">&quot;alp&quot; in the D3 dispersion for Grimme's method.</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR9</td>
+		<td style="width: 494px">&quot;rs6&quot; in the D3 dispersion for Grimme's method.</td>
+	</tr>
+	<tr>
+		<td class="auto-style1" style="width: 54px">PAR10 - PAR60</td>
+		<td style="width: 494px">Free for use</td>
+	</tr>
+</table>
+<p>In method development, the parameters that are &quot;Free for use&quot; can be used in 
+PARAM for optimizing global parameters for old, modified, or new quantities.</p>
+<p>Global parameters can be specified in EXTERNAL files as follows:<PRE>     ALPB_O      H        2.12
+    XFAC_O      H        0.16
+    PAR7                 2.28
+    PAR8                -0.16
+    PAR9                -0.10
+    PAR58             -67.89</PRE>
+<PRE>&nbsp;</PRE>As usual, spacing is not important. The ALPB 
+and XFAC are included in this and the following example to show the style of regular parameters.</p>
+<p>In a PARAM run, global parameters can be specified as:<PRE>ALPB_O      H
+XFAC_O      H  0 2
+PAR7  1 3
+PAR8 -1 0
+PAR9 -1 0
+PAR60 0 3</PRE>
+&nbsp;The quantities following the parameters are the lower and 
+upper bounds allowed.&nbsp; These are particularly useful as the default bonds 
+are unlikely to be appropriate.</p>
+
+
+</HTML>

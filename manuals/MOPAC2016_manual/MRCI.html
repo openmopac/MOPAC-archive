@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE>MRCI</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>MRCI</TT> </h1>
+<p class="MsoNormal">Available for <a href="indo.html"><tt>INDO</TT></a>-based CI 
+calculations only. Use multi-reference configuration interaction. The references 
+for MRCI can be selected using the C.A.S. keyword; by default, the active space 
+is two M.O.s. If <tt><a href="cis.html">CIS</a></tt> or <font face="Teletype">
+<a href="cisd.html"><tt>CISD</TT></a></font> is not specified, CIS is assumed.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Multi-reference CI is useful for generating specific double 
+and higher excitations. Within multi-reference CI, the reference determinants 
+are used as starting points for generating single excitations (or single and 
+double excitations, if CISD is specified). For a closed-shell system using the 
+default active space, the reference determinants are:</p>
+<p class="MsoListParagraph" style="text-indent: -.25in">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>The SCF ground state</p>
+<p class="MsoListParagraphCxSpFirst" style="text-indent: -.25in">1.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>A single (HOMO &#8594; LUMO) excitation</p>
+<p class="MsoListParagraphCxSpLast" style="text-indent: -.25in">2.<span style="font:7.0pt &quot;Times New Roman&quot;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>A double (HOMO, HOMO &#8594; LUMO, LUMO) excitation</p>
+<p class="MsoNormal">The single excitation (HOMO – x &#8594; LUMO + y) starting from 
+reference determinant 1 will yield a single excitation, as in CIS. The same 
+excitation starting from reference determinant 2 will yield the double 
+excitation (HOMO – x, HOMO &#8594; LUMO, LUMO + y). Similarly, the same excitation 
+starting from reference determinant 3 will yield the triple excitation (HOMO – 
+x, HOMO, HOMO &#8594; LUMO, LUMO, LUMO + y). </p>
+<p class="MsoListParagraph" style="text-indent: -.25in">&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

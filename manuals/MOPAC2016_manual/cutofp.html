@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>CUTOFP=n.nn </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center"><A NAME="SECTION007336000000000000000">
+<TT>CUTOFP=<I>n</I>.<I>nn</I></TT> </A>
+</h1>
+In polymers and solids, a cutoff distance, in &Aring;ngstroms, is needed in order to ensure that
+every atom has a correct electric environment.  If no cutoff is set, then
+equivalent atoms would experience different electric fields.  The <TT>CUTOFP</TT>
+distance is set, by default, to 30 &Aring;ngstroms.  In calculating the potential
+due to distant atoms, atoms separated by more than <TT>CUTOFP</TT> are treated
+as if they were at distance <TT>CUTOFP</TT>.
+<p>
+<a href="mozyme.html"><TT>MOZYME</TT></a> calculations run faster when smaller 
+values of <TT>CUTOFP</TT> are used&nbsp; A suitable value for<i> n.nn</i> is 
+somewhere between 10.0 and 15.0.&nbsp; This will give a 
+large increase in speed. But first, run a test calculation to verify that the 
+results don't change much.</p>
+<p>
+When <TT>CUTOFP</TT> is less than the default, the number of two-electron 
+integrals is reduced.&nbsp; This can allow larger systems to be run.</p>
+</BODY>
+</HTML>

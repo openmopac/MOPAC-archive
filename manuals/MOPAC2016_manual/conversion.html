@@ -1,0 +1,15 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Conversion Between Various Formats</TITLE>
+                                                                                                                                                                     </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2><A NAME="SECTION00748000000000000000">Conversion Between Various Formats</A> </H2>
+<P>MOPAC can accept any of the following formats: Cartesian, MOPAC internal coordinates, a mixture of Cartesian and MOPAC internal coordinates,&nbsp; and Gaussian internal coordinates. Both MOPAC and Gaussian Z-matrices can also contain dummy atoms. If the <TT>0SCF</TT> option is requested, the geometry defined on input will be printed in MOPAC Z-matrix format, along with other optional formats. </P>
+<P>The type(s) of geometry printed at the end of a <A HREF="zero_scf.html">0SCF</A> calculation depend only on the keywords <A HREF="xyz.html">XYZ</A>, <A HREF="int.html">INT</A>, <A HREF="aigout.html">AIGOUT</A>,&nbsp; and <A HREF="noxyz.html">NOXYZ</A>. The geometry printed is independent of the type of input geometry, and therefore makes a convenient conversion mechanism. </P>
+<P>If <TT>XYZ</TT> is present, all dummy atoms are removed and the internal coordinate definition remade. All symmetry relations are lost if <TT>XYZ</TT> is used. </P>
+<P>If <TT>NOXYZ</TT> is present, Cartesian coordinates will not be printed. If <TT>AIGOUT</TT> is present, a data set using Gaussian Z-matrix format is printed. </P>
+<P>Note: Only if the keyword <A HREF="symmetry.html">SYMMETRY</A> is present in a MOPAC internal coordinate geometry, or two or more internal coordinates in a Gaussian Z-matrix have the same symbolic will symmetry be present in the MOPAC or Gaussian geometries output. </P>
+</BODY>
+</HTML>

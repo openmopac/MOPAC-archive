@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE>INDO</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>INDO</TT> </h1>
+<p align="center">
+(This keyword was written by Prof. Rebecca L. M.
+<a href="https://sites.google.com/a/brandeis.edu/gieseking/">Gieseking</a>, 
+Brandeis University)</p>
+<p class="MsoNormal">The INDO/S method is to be used. The default parameters are Zerner’s INDO/S parameters (also known as ZINDO/S). Other parameters can be read 
+in from an external file using <a href="external.html"><tt>EXTERNAL</TT></a>. Since the INDO/S parameters were 
+developed exclusively for spectroscopic (excited-state) properties, calculations 
+involving energy gradients (geometry optimizations, transition states, 
+frequencies, etc.) are not available.</p>
+<h3 align="left"><u><b>Advantages of adding INDO/S</b></u></h3>
+<p class="MsoNormal">The INDO/S Hamiltonian (or equivalently, ZINDO/S),<sup>1</sup> 
+has parameters designed specifically to reproduce vertical excited-state 
+energies using a configuration interaction ( <tt> <a href="ci=n.html">C.I</a>.</tt>) approach with single excitations 
+(<tt><a href="cis.html">CIS</a></tt>). In benchmarking studies, INDO/S has performed significantly better than 
+traditional NDDO-based semiempirical methods for singlet excited states. For a 
+set of 103 excited states of prototypical &pi;-conjugated organic molecules, the 
+mean absolute error at the INDO/S level is 0.51 eV, versus 1.35 eV at the MNDO 
+level, 1.19 eV at the AM1 level, and 1.41 eV at the PM3 level.<sup>2</sup> <br>
+<br>
+The solvatochromic shifts computed using INDO/S and the <a href="cosmo.html">COSMO</a> 
+solvent model are in good agreement with experimental results and 
+comparable to the accuracy of typical DFT functionals. For a series of 24 
+donor-acceptor substituted polyenes, the computed solvatochromic shift between 
+toluene and ethanol at the INDO/CIS level has a root mean square error of 0.087 
+eV versus experimental results.&nbsp; This can be compared with the 0.077 eV at the &#969;B97XD/6-31G* level and 
+0.116 eV at the B3LYP/6-31G* level.<sup>3 </sup><br>
+<br>
+The INDO/S Hamiltonian has also shown success in understanding excited states 
+with large double-excitation character using either single and double 
+excitations (<tt><a href="cisd.html">CISD</a></tt>) or a multi-reference approach (<TT><a href="MRCI.html">MRCI</a></tt>); these calculations have 
+been particularly important in understanding the nonlinear optical properties of 
+several classes of &pi;-conjugated organic molecules.<sup>4–7</sup> The INDO/S 
+Hamiltonian also provides good agreement with Time-Dependent Density Functional 
+Theory (TD-DFT) for the optical properties 
+of noble metal clusters<sup>8,9</sup> and is to date the only semiempirical 
+method to yield physically reasonable ground-state electronic structures for 
+these clusters.<sup>10</sup><br>
+&nbsp;</p>
+<h3 style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+<b><!--[if supportFields]>Bibliography<![endif]--></b></h3>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(1) &nbsp;&nbsp;&nbsp;&nbsp; Ridley, J.; Zerner, M. An 
+Intermediate Neglect of Differential Overlap Technique for Spectroscopy: Pyrrole 
+and the Azines. <i>Theor. Chim. Acta</i> <b>1973</b>, <i>32</i>, 111–134. 
+https://doi.org/10.1007/BF00528484.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(2) &nbsp;&nbsp;&nbsp;&nbsp; Silva-junior, M. R.; Thiel, W. Benchmark of Electronically Excited 
+States for Semiempirical Methods: MNDO, AM1, PM3, OM1, OM2, OM3, INDO/S, and 
+INDO/S2. <i>J. Chem. Theory Comput.</i> <b>2010</b>, <i>6</i> (5), 1546–1564. 
+https://doi.org/10.1021/ct100030j.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(3) &nbsp;&nbsp;&nbsp;&nbsp; Gieseking, R. L.; Ratner, M. A.; Schatz, G. C. Implementation of 
+INDO/SCI with COSMO Implicit Solvation and Benchmarking for Solvatochromic 
+Shifts. <i>J. Phys. Chem. A</i> <b>2016</b>, <i>120</i>, 9878–9885. https://doi.org/10.1021/acs.jpca.6b10487.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(4) &nbsp;&nbsp;&nbsp;&nbsp; Pierce, B. M. A Theoretical Analysis of Third-Order Nonlinear Optical 
+Properties of Linear Polyenes and Benzene. <i>J. Chem. Phys.</i> <b>1989</b>, <i>
+91</i>, 791–811. https://doi.org/10.1063/1.457132.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(5) &nbsp;&nbsp;&nbsp;&nbsp; Meyers, F.; Marder, S. R.; Pierce, B. M.; Bredas, J. L. Electric Field 
+Modulated Nonlinear Optical Properties of Donor-Acceptor Polyenes: 
+Sum-over-States Investigation of the Relationship between Molecular 
+Polarizabilities (Alpha, Beta, and Gamma) and Bond Length Alternation. <i>J. Am. 
+Chem. Soc.</i> <b>1994</b>, <i>116</i>, 10703–10714. https://doi.org/10.1021/ja00102a040.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(6) &nbsp;&nbsp;&nbsp;&nbsp; Geskin, V. M.; Lambert, C.; Brédas, J. L. Origin of High Second- and 
+Third-Order Nonlinear Optical Response in Ammonio/Borato Diphenylpolyene 
+Zwitterions: The Remarkable Role of Polarized Aromatic Groups. <i>J. Am. Chem. 
+Soc.</i> <b>2003</b>, <i>125</i>, 15651–15658. https://doi.org/10.1021/ja035862p.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(7) &nbsp;&nbsp;&nbsp;&nbsp; Gieseking, R. L.; Ensley, T. R.; Hu, H.; Hagan, D. J.; Risko, C.; Van 
+Stryland, E. W.; Brédas, J.-L. Nonlinear Optical Properties of X(C 6 H 5 ) 4 (X 
+= B – , C, N + , P + ): A New Class of Molecules with a Negative Third-Order 
+Polarizability. <i>J. Am. Chem. Soc.</i> <b>2015</b>, <i>137</i>, 9635–9642. 
+https://doi.org/10.1021/jacs.5b04377.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(8) &nbsp;&nbsp;&nbsp;&nbsp; Shapley, W. A.; Reimers, J. R.; Hush, N. S. INDO/S Parameters for Gold.
+<i>Int. J. Quantum Chem.</i> <b>2002</b>, <i>90</i>, 424–438. https://doi.org/10.1002/qua.10058.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(9) &nbsp;&nbsp;&nbsp;&nbsp; Gieseking, R. L.; Ratner, M. A.; Schatz, G. C. Semiempirical Modeling 
+of Ag Nanoclusters: New Parameters for Optical Property Studies Enable 
+Determination of Double Excitation Contributions to Plasmonic Excitation. <i>J. 
+Phys. Chem. A</i> <b>2016</b>, <i>120</i>, 4542–4549. https://doi.org/10.1021/acs.jpca.6b04520.</p>
+<p class="MsoNormal" style="text-indent: -32.0pt; text-autospace: none; margin-left: 32.0pt">
+(10) &nbsp;&nbsp; Gieseking, R. L. M.; Ratner, M. A.; Schatz, G. C. Benchmarking 
+Semiempirical Methods To Compute Electrochemical Formal Potentials. <i>J. Phys. 
+Chem. A</i> <b>2018</b>, <i>122</i>, 6809–6818. https://doi.org/10.1021/acs.jpca.8b05143.</p>
+<p class="MsoNormal"><!--[if supportFields]><![endif]-->&nbsp;</p>
+<h3>Details to be aware of when using INDO</h3>
+<p class="MsoNormal">Normally only model RHF systems. UHF is not implemented 
+and although ROHF is implemented its SCF convergence behavior may be poor.<br>
+<br>
+The default active space for single excitations is all M.O.s. The number of 
+excitations included in the CI matrix is controlled by <a href="MAXCI.html"><tt>MAXCI</TT></a>, so it is possible to generate a large number of single excitations 
+within an active space of hundreds of M.O.s.<br>
+<br>
+Within INDO, the active space indicated by the <tt><a href="ci=n.html">C.I.</a></TT> keyword applies only to 
+single excitations; if <tt><a href="cisd.html">CISD</a></TT> is specified, the active space for double 
+excitations must be specified by <a href="C.I.D.html"><tt>C.I.D</TT></a>. The configurations are automatically 
+spin-adapted, so only electron configurations of a single spin are included. By 
+default, only configurations with the lowest possible spin are included (singlet 
+for a closed-shell system or doublet for an odd-electron system). Higher spins 
+can be selected using <a href="triplet.html"><tt>TRIPLET</tt></a> or 
+<a href="quartet.html"><tt>QUARTET</tt></a>.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">See also: <TT><a href="C.A.S.html">C.A.S</a>.,
+<a href="C.I.D.html">C.I.D.</a>, <a href="MAXCI.html">MAXCI</a>,
+<a href="MRCI.html">MRCI</a>, <a href="TDIP.html">TDIP</a>, <a href="wrtci.html">
+WRTCI</a></tt>, and <tt><a href="wrtconf.html">WRTCONF</a></tt>.</p>
+<p dir="rtl">&nbsp;</p>
+
+</BODY>
+</HTML>

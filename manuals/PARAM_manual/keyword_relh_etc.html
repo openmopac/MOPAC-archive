@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<TITLE>RELH, etc</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>RELH=<i>n.n</i>, RELG=<i>n.n</i>, RELD=<i>n.n</i>, RELI=<i>n.n</i></TT></h1>
+<p align="left">The default weighting values used for reference data are shown 
+in Table 1.&nbsp; These defaults can be modified by keywords.&nbsp;
+<TT>RELH=<i>n.n </i></tt>will multiply the default heat of formation weight by
+<i>n.n</i>. If <i>n.n </i>is larger than 1.0, that will increase the importance 
+of heats of formation.
+<TT>RELG=<i>n.n </i></tt>will modify geometries,
+<TT>RELH=<i>n.n</i></tt>: dipole moments, and
+<TT>RELI=<i>n.n</i></tt>: ionization potentials.&nbsp; That is, these keywords 
+modify the relative weights of the various reference data</p>
+<p align="left">At least one of these keywords, preferably
+<TT>RELH=<i>n.n,</i></tt> should not be used in an optimization.</p>
+<p align="left">If a molecule already has a modified weight, then the default 
+weight will be multiplied by that weight as well as by the relative weight.</p>
+<p align="left">&nbsp;</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111">
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td>Table 1</td>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Parameter</td>
+      <td>&nbsp;</td>
+      <td>Default value</td>
+      <td>&nbsp;</td>
+      <td>Unit</td>
+    </tr>
+    <tr>
+      <td><span class="b">&Delta;</span>H<sub>f</sub></td>
+      <td>&nbsp;</td>
+      <td>1.0</td>
+      <td>&nbsp;</td>
+      <td>Mol.kcal<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>Dipole</td>
+      <td>&nbsp;</td>
+      <td>10.0</td>
+      <td>&nbsp;</td>
+      <td>Debye<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>I.P.</td>
+      <td>&nbsp;</td>
+      <td>5.0</td>
+      <td>&nbsp;</td>
+      <td>eV<sup>-1</sup></td>
+    </tr>
+    <tr>
+      <td>Geometry</td>
+      <td>&nbsp;</td>
+      <td>0.4</td>
+      <td>&nbsp;</td>
+      <td>mol.Angstrom.kcal<sup>-1</sup></td>
+    </tr>
+  </table>
+  </center>
+</div>
+</BODY>
+</HTML>

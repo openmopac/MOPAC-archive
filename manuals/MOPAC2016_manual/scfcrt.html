@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SCFCRT=n.nn </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>SCFCRT=<I>n</I>.<I>nn</I></TT>
+</h1>
+        <tt>SCFCRT </tt>sets the self-consistent field criterion, i.e., the change in 
+energy in kcal/mol on two successive iterations. For most situations where the 
+SCF criterion need to be modified, use <a href="relscf.html"><tt>RELSCF</tt></a> instead.&nbsp; <tt>RELSCF</tt> 
+is useful if the value of the default SCF criterion is not readily available, as for example 
+when <a href="precise.html"><tt>PRECISE</tt></a> or any 
+other keywords that modify the SCF criterion is used.
+        The default SCF criterion,1x10<sup>-4</sup> kcal/mol, is to  be  replaced  by  that  defined  by
+   <TT>SCFCRT=<I>n</I>.<I>nnn</I></TT>.&nbsp;   Other  criteria may make the requirements
+   for an SCF slightly more stringent.  The SCF criterion can be varied from
+   about 1.0 to 1.D-25, although numbers in the range 0.1 to 1.D-9 will
+   suffice for most applications.<p>In <a href="force.html"><tt>FORCE</tt></a>,
+<a href="nllsq.html"><tt>NLLSQ</tt></a>,&nbsp; <a href="sigma.html"><tt>SIGMA</tt></a>, or
+<a href="ts.html"><tt>TS</tt></a> calculations, the default value of <tt>SCFCRT </tt> is 1x10<sup>-7</sup>. 
+Be careful in <tt>FORCE </tt>calculations - high precision is needed, if high precision 
+is not used, the vibrational frequencies might be wrongly predicted.</p>
+<P>
+An overly tight criterion can lead to failure to achieve an SCF,  and
+   the consequent failure of the run.&nbsp; See also
+   <a href="relscf.html"><TT>RELSCF</tt></a> and <tt><a href="precise.html">PRECISE</a></TT></BODY></HTML>

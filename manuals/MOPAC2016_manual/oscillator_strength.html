@@ -1,0 +1,274 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Oscillator Strength</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Oscillator Strength
+</H2>
+<p>The intensity of a UV-Visible absorption band is a function of the oscillator
+strength and of the energy of the absorption band.&nbsp; Both quantities are
+printed when a C.I. calculation is done, and MECI is used.&nbsp; In the output,
+the oscillator strength, equation 1, in (electron-Angstroms) is printed under the heading &quot;POLARIZATION&quot;.&nbsp; 
+This quantity is either zero or obligate positive, as it is calculated from the 
+square root of the square of the oscillator.&nbsp; If the State is 
+non-degenerate, then the &quot;square root of the square&quot; step could be omitted, but 
+if the State is degenerate, the oscillator is the square root of the sum of 
+squares of the oscillators for each component of the State, i.e., it is the 
+scalar of the vector of orthogonal oscillators.</p>
+<p>Absorption intensity is proportional to the energy of the transition and to
+the square of the oscillator strength, i.e., the absorption intensity is
+proportional to:&nbsp; &nu;[(&mu;<sub>x</sub>)<sup>2</sup>
++ (&mu;<sub>y</sub>)<sup>2 </sup>+
+(&mu;<sub>z</sub>)<sup>2</sup>].</p>
+<p><b>Theory</b></p>
+A system can go from the ground state to an excited  state as the result of the
+absorption of a photon.  The probability of this happening, &kappa;,
+is
+given (Wilson Decius and Cross,  "Molecular Vibrations", p
+163, McGraw-Hill (1955))&nbsp; in terms of the  oscillator integral:<p align="center"><IMG
+ WIDTH="156" HEIGHT="40" ALIGN="MIDDLE" BORDER="0"
+ SRC="img576.gif">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1 <BR>
+</p>
+<P></P>
+by
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="316" HEIGHT="42"
+ SRC="img577.gif"
+ ALT="\begin{displaymath}\kappa = \frac{8\pi^3}{3ch}\nu_{n'n''}(N_{n'}-N_{n''})
+<\!\Ph...
+...d}\vert\stackrel{\rightharpoonup}{r}\vert\Phi_{excited}\!>^2 .
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+For electronic photoexcitations, &Phi;,
+are state functions:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="78" HEIGHT="42"
+ SRC="img579.gif"
+ ALT="\begin{displaymath}\Phi = \sum_ic_i\Psi_i,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and the&nbsp; <span class="b">&Psi;</span>
+are <A HREF="meci_micro.html#sd">microstates</A>.
+<P>
+In order to evaluate 1, a property of integrals of the type:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="83" HEIGHT="31"
+ SRC="img581.gif"
+ ALT="\begin{displaymath}<\!\psi_{i}\vert\stackrel{\rightharpoonup}{r}\vert\psi_{j}\!>
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+will be used several times.  This property is:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="108" HEIGHT="29"
+ SRC="img582.gif"
+ ALT="\begin{displaymath}<\!\psi_{i}\vert\stackrel{\rightharpoonup}{r}\vert\psi_{i}\!> = 0.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+From this, it follows that, if
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="111" HEIGHT="31"
+ SRC="img583.gif"
+ ALT="\begin{displaymath}<\!\psi_{j}\vert\stackrel{\rightharpoonup}{r}\vert\psi_{i}\!> \neq 0,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+then
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="207" HEIGHT="31"
+ SRC="img584.gif"
+ ALT="\begin{displaymath}<\!\psi_{i}\vert\stackrel{\rightharpoonup}{r}\vert\psi_{j}\!>...
+...\!\psi_{j}\vert\stackrel{\rightharpoonup}{r}\vert\psi_{i}\!> .
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+To prove this relationship, consider the integral
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="178" HEIGHT="31"
+ SRC="img585.gif"
+ ALT="\begin{displaymath}<\!(\psi_i+\psi_j)\vert\stackrel{\rightharpoonup}{r}\vert(\psi_i+\psi_j)\!>.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Obviously, this integral has a value of zero, therefore
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="423" HEIGHT="31"
+ SRC="img586.gif"
+ ALT="\begin{displaymath}<\!\psi_i\vert\stackrel{\rightharpoonup}{r}\vert\psi_i\!> +
+<...
+...
+<\!\psi_j\vert\stackrel{\rightharpoonup}{r}\vert\psi_j\!> =0.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+In this expression, the first and fourth terms are obviously zero, therefore
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="207" HEIGHT="31"
+ SRC="img587.gif"
+ ALT="\begin{displaymath}<\!\psi_j\vert\stackrel{\rightharpoonup}{r}\vert\psi_i\!> =
+-<\!\psi_i\vert\stackrel{\rightharpoonup}{r}\vert\psi_j\!> .
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+The starting point for evaluating 1 is to calculate the molecular
+orbital oscillator:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="91" HEIGHT="31"
+ SRC="img588.gif"
+ ALT="\begin{displaymath}<\!\psi_i\vert\stackrel{\rightharpoonup}{r}\vert\psi_j\!>.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+In order to solve this integral, the following approximations will be made:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="110" HEIGHT="30"
+ SRC="img589.gif"
+ ALT="\begin{displaymath}<\!\phi_{\lambda}\vert\stackrel{\rightharpoonup}{r}\vert\phi_{\sigma}\!> = 0
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+and
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="109" HEIGHT="30"
+ SRC="img590.gif"
+ ALT="\begin{displaymath}<\!\phi_{\lambda}\vert\stackrel{\rightharpoonup}{r}\vert\phi_{\lambda}\!> = r.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+The operator
+<IMG
+ WIDTH="16" HEIGHT="21" ALIGN="BOTTOM" BORDER="0"
+ SRC="img591.gif"
+ ALT="$\stackrel{\rightharpoonup}{r}$">
+can be expanded into three terms:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="99" HEIGHT="27"
+ SRC="img592.gif"
+ ALT="\begin{displaymath}\stackrel{\rightharpoonup}{r} = \stackrel{\rightharpoonup}{x}+
+\stackrel{\rightharpoonup}{y}+
+\stackrel{\rightharpoonup}{z},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where
+<IMG
+ WIDTH="16" HEIGHT="22" ALIGN="BOTTOM" BORDER="0"
+ SRC="img593.gif"
+ ALT="$\stackrel{\rightharpoonup}{x}$">,
+<IMG
+ WIDTH="16" HEIGHT="44" ALIGN="MIDDLE" BORDER="0"
+ SRC="img594.gif"
+ ALT="$\stackrel{\rightharpoonup}{y}$">and
+<IMG
+ WIDTH="16" HEIGHT="42" ALIGN="MIDDLE" BORDER="0"
+ SRC="img595.gif"
+ ALT="$\stackrel{\rightharpoonup}{z}$">
+are Cartesian position operators.
+For each atomic orbital, the position would be that of the nucleus.
+<P>
+The zero or origin of the position operators is not immediately obvious.
+In general it would <EM>not</EM> be the origin of the Cartesian coordinate
+system used.  The origin of the position operator would depend on the
+individual M.O.&nbsp;and would be defined so that:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="299" HEIGHT="29"
+ SRC="img596.gif"
+ ALT="\begin{displaymath}<\!\psi_i\vert\stackrel{\rightharpoonup}{x}\vert\psi_i\!> =
+<...
+...<\!\psi_i\vert\stackrel{\rightharpoonup}{z}\vert\psi_i\!> = 0.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+To determine the origin, the position operators are replaced by
+<IMG
+ WIDTH="48" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img597.gif"
+ ALT="$\stackrel{\rightharpoonup}{x} + \stackrel{\rightharpoonup}{x_0}$">,
+where
+<IMG
+ WIDTH="18" HEIGHT="39" ALIGN="MIDDLE" BORDER="0"
+ SRC="img598.gif"
+ ALT="$\stackrel{\rightharpoonup}{x_0}$">
+is the distance from the origin of the Cartesian
+coordinate system used to the origin of the position operator.  Then:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="141" HEIGHT="29"
+ SRC="img599.gif"
+ ALT="\begin{displaymath}<\!\psi_i\vert\stackrel{\rightharpoonup}{x}+\stackrel{\rightharpoonup}{x_0}\vert\psi_i\!>=0,
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+from which it follows that:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="205" HEIGHT="29"
+ SRC="img600.gif"
+ ALT="\begin{displaymath}<\!\psi_i\vert\stackrel{\rightharpoonup}{x_0} \vert\psi_i\!>=
+-<\!\psi_i\vert\stackrel{\rightharpoonup}{x} \vert\psi_i\!>.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+<P>
+The integrals over molecular orbitals are evaluated by first calculating
+<IMG
+ WIDTH="102" HEIGHT="41" ALIGN="MIDDLE" BORDER="0"
+ SRC="img601.gif"
+ ALT="$-\!<\!\psi_i\vert\stackrel{\rightharpoonup}{x} \vert\psi_i\!>$">
+</BODY>
+</HTML>

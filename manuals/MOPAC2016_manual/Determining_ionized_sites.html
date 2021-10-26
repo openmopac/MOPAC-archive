@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Determining Ionized Sites</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p>(<a href="modeling_proteins.html#Determining">Modeling proteins</a>)</p>
+<h1>Determining Ionized Sites in a Protein</h1>
+<h2>Introduction</h2>
+<p>Having a very good starting model before starting any investigation of 
+protein chemistry is essential.&nbsp; The starting model should be solvated, as 
+many faults as possible should be corrected, all the parts needed should be 
+present - the protein, the substrate, any water or other small molecules, etc., 
+and the amount of ionization should be correct.&nbsp; This last requirement 
+depends on the chemistry of the protein, on the pH of the solvent, and on other 
+factors.&nbsp; Because of these factors, the problem of determining which sites 
+are ionized might seem very hard to solve.&nbsp; In practice, however, the 
+process of determining which sites are ionized is really quite straightforward.</p>
+<p>By default, when hydrogen atoms are added to a PDB file or other data set, 
+all valencies are satisfied by the addition of hydrogen atoms, i.e., no charged 
+sites are generated.&nbsp; This option was deliberately chosen so that an 
+unambiguous starting structure would be produced as a starting point for further 
+manipulations.&nbsp; Of course, charged sites exist in real proteins, and the 
+objective at this point is to selectively ionize sites in a protein in order to 
+generate a more realistic model.&nbsp; </p>
+<h2>Intrinsic ionized sites</h2>
+<p>Although obvious, it bears repeating: know as much as possible about the 
+system being studied, in particular about the ionized sites in it. If there is 
+an ionized site, then add or remove hydrogen atoms as needed in order to have 
+the correct ionization.&nbsp; This can be done using a GUI, or by using keyword
+<a href="site.html"><tt>SITE</tt></a>.</p>
+<h2>Salt bridges</h2>
+<p>When the positions of the hydrogen atoms are optimized some 
+<a href="salt_bridges.html">salt bridges</a> might form spontaneously, but in many cases there is a barrier to proton 
+migration and a salt bridge that should exist does not in fact form.&nbsp; The 
+easiest way to make a specific salt bridge is to use <tt>SITE</tt> to ionize 
+both residues that form the salt bridge.&nbsp; Quite often it is not easy to 
+know if a salt bridge should exist, however there is an easy test to answer this 
+question.&nbsp; If a salt bridge lowers the heat of formation, then the salt 
+bridge should exist, and <em>vice versa</em>.&nbsp; To test whether a salt 
+bridge lowers the heat of formation, run two geometry optimization jobs - one 
+with the salt bridge and one without the salt bridge.&nbsp; 
+Of course, in order to allow heats of formation to be compared, the set of 
+keywords used should be the same, in particular if <a href="eps.html"><tt>EPS=78.4</tt></a> 
+is used in&nbsp;one job it should be used in the other.</p>
+</BODY>
+</HTML>

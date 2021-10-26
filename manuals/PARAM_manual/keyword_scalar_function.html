@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>PROPERTY REFERENCE DATA FUNCTIONS</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>&nbsp;H=<i>n.n </i>+ &lt;<i>text</i>&gt;</TT></h1>
+<p align="left" dir="ltr">
+Normally, heats of formation are defined relative to the elements in their 
+standard state.&nbsp; But sometimes more subtle energies are involved, for 
+example, the heat of formation of a hydrogen bond. The easiest way to allow 
+these small energies to be properly represented is to make them functions.&nbsp; 
+Thus the heat of formation of the hydrogen bond in water dimer can most easily 
+be expressed as the heat of formation of the water dimer relative to two 
+isolated water molecules.&nbsp; A highly accurate set of calculations has been 
+done on water and its dimer, and the results can be used as reference data for 
+the energy of the water-water interaction.&nbsp; The &quot;fact&quot; or reference datum 
+here is the difference in energy of the most stable water dimer and the isolated 
+water molecules.&nbsp; Therefore the geometries are not allowed to relax.&nbsp; 
+For the water molecule, the HoF reference is HR=REF, a unique reference that 
+indicates that this is not to be used as a reference function in parameter 
+optimization, instead it is to be used only in building a rule.&nbsp; Here the 
+rule is the definition of the hydrogen bond strength.:</p>
+<p align="left">
+Water molecule, file WATER_REF.mop<pre>SYMMETRY NOLOG
+Water
+ H=0 HR=REF
+  H         0.00000000  0    0.0000000  0    0.0000000  0                      0.0000
+  O         0.95890000  0    0.0000000  0    0.0000000  0    1    0    0       0.0000
+  H         0.95890000  0  104.1600000  0    0.0000000  0    2    1    0       0.0000
+ 
+   2  1    3</PRE>
+ Water dimer is also defined as a frozen geometry.&nbsp; Its heat of formation 
+is defined as -5 kcal per mole plus two times the calculated heat of formation 
+for the WATER_REF system.&nbsp; Now a very large HWT can be used.&nbsp; This 
+increases the weight of the hydrogen bond, without affecting the weights of 
+water or its dimer.<br>
+<pre>Water dimer Structure 0 (Non-planar open Cs)
+ H=-5.0+WATER_REF+WATER_REF HR=TLHVSQ02 HWT=20
+  O        -0.06679487  0   -1.4898726  0    0.0000000  0                      0.0000
+  O         0.06229548  0    1.4161833  0    0.0000000  0                      0.0000
+  H         0.82318215  0   -1.8446149  0    0.0000000  0                      0.0000
+  H         0.05552209  0   -0.5323432  0    0.0000000  0                      0.0000
+  H        -0.40364784  0    1.7732303  0   -0.7592422  0                      0.0000
+  H        -0.40364784  0    1.7732303  0    0.7592422  0                      0.0000
+ 
+</PRE>
+
+<p>The relative energies of different configurations can be defined.&nbsp; In 
+the article on water dimers, the energies of various dimers relative to the most 
+stable dimer were reported.&nbsp; These, too, can be used as reference data.&nbsp; 
+The reference file &quot;Water dimer Structure 0 (Non-planar open Cs)&quot;&nbsp; cannot 
+be used, because its heat of formation is defined as a function, instead a new 
+data set is created, &quot;water dimer structure 1 (non-planar open cs).mop&quot;:</p>
+<PRE> 
+Water dimer Structure 1 (Non-planar open Cs)
+ H=-120.62 HR=TLHVSQ02 HWT=1
+  O        -0.06679487  0   -1.4898726  0    0.0000000  0                      0.0000
+  O         0.06229548  0    1.4161833  0    0.0000000  0                      0.0000
+  H         0.82318215  0   -1.8446149  0    0.0000000  0                      0.0000
+  H         0.05552209  0   -0.5323432  0    0.0000000  0                      0.0000
+  H        -0.40364784  0    1.7732303  0   -0.7592422  0                      0.0000
+  H        -0.40364784  0    1.7732303  0    0.7592422  0                      0.0000
+ 
+</PRE>
+Now the energy difference of one water dimer compared to the most stable water 
+dimer can be defined. Note that since the reference heat of formation is 
+relative to that of a file that contains spaces, &quot;water dimer structure 1 (non-planar open cs).mop&quot; 
+quotation marks are used, and also the relative weight is much larger than 
+normal:&nbsp;
+
+<PRE> 
+Water dimer Structure 2 (Open Ci)
+ HR=TLHVSQ02 H=0.52+"WATER DIMER STRUCTURE 1 (NON-PLANAR OPEN CS)" HWT=15
+  O        -1.50620978  0   -0.0525869  0   -0.0178046  0                      0.0000
+  O         1.41805430  0    0.0041461  0   -0.0371072  0                      0.0000
+  H        -1.85454975  0    0.7608019  0    0.3492898  0                      0.0000
+  H        -0.55251212  0    0.0873307  0   -0.0516538  0                      0.0000
+  H         1.72197213  0   -0.7569536  0    0.4618104  0                      0.0000
+  H         2.08418079  0    0.6776128  0    0.1120431  0                      0.0000
+ 
+</PRE>
+</BODY></HTML>

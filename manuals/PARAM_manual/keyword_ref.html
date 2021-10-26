@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+<TITLE>REF</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>REF=<i>text[;text[;text[;text]]]</i></TT> </h1>
+<p align="left">The locations of folders that contain MOPAC reference data sets 
+is given by
+<TT>REF=<i>text[;text[;text[;text]]]</i></TT> . For example:</p>
+<p align="left">ref= &amp;<br>&quot;../../reference data/Data Intermolecular 
+interactions/S22 Intermolecular&quot;; &amp;<br>&quot;../../reference data/Data Intermolecular 
+interactions/S22 Separated&quot;; &amp;<br>&quot;../../reference data/Data Intermolecular 
+interactions/Water dimers all&quot;; &amp;<br>&quot;../../reference data/Data Intermolecular 
+interactions/D3H4 Ionic Intermolecular&quot;; &amp;<br>&quot;../../reference data/Data 
+Intermolecular interactions/D3H4 Ionic Separated&quot;; &amp;<br>&quot;M:/PARAM/reference 
+data/Data normal&quot;; &amp;<br>../../reference data/Data_levels<br></p>
+<p align="left">Using ampersands, &quot;&amp;&quot;, makes reading the <tt>REF </tt>keyword easier.&nbsp; 
+Filenames and path must be in quotation marks if they contain spaces, if there 
+are no spaces, quotation marks are optional.</p>
+<p align="left">As these names tend to be long, a convenient way of shortening them is to share 
+the folders, then map the network drive.&nbsp; So on a Windows machine, if&nbsp;the 
+reference data 
+folders were 
+shared and mounted as:</p>
+<p align="left">
+<tt>N:\ = C\Users\myname\PARAM\reference data\data normal<br>E:\ = C\Users\myname\PARAM\reference 
+data\data exotic<br>L:\ = C\Users\myname\PARAM\reference data\data 
+states</tt></p>
+<p align="left">then the keyword could be shortened to <TT>ref=N:\;E:\;L:\ </TT></p>
+<p align="left">The procedure when PARAM is run on a Mac and Linux is similar.&nbsp; The 
+reference data folders are shared on the Windows platform, then mounted on the Mac platform. 
+An alternative is to have a mirror copy of the reference data folders on the Mac 
+or Linux machine, and update these folders using a command of the type:</p>
+<p align="left">&nbsp;rsync -v -u&nbsp; -r '/Volumes/Software on Windows 
+machine/PARAM/Reference data/&nbsp; '/Users/MyName/PARAM/Reference data'</p>
+<p align="left">The order of searching is first folder, then second, then third, 
+etc.</p>
+<p align="left">&nbsp;</p>
+</BODY>
+</HTML>

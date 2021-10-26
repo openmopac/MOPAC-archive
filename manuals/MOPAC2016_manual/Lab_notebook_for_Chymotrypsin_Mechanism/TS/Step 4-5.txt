@@ -1,0 +1,24 @@
+reset;center {27.186 2.721 35.183}; rotate z 154.56; rotate y 59.75; rotate z -133.81; zoom 1106.89; translate x 1.33; translate y -3.8; set rotationRadius 33.83;
+Display  57, 195, 252:C.C, 252:C.O, 252:C.CA, 252:C.C, 252, 253,  647;
+hide add 252:C.N, 252:C.H, 253:C.OG1, 253:C.HG1
+select *; label off;
+set labelAlignment CENTER; set labeloffset 0 0 
+select  57:F.CE1; label His 57;   set labeloffset 120 -10;  color label black; font label 20
+select  195:G.CB; label Ser 195;  set labeloffset -70 -00;  color label black; font label 20
+select  214:G.C;  label Ser 214;  set labeloffset  40  20;  color label black; font label 20
+select  252:C.CB; label Trp 252;  set labeloffset  40 -50;  color label black; font label 20
+select  253:C.CA;  label "   Thr 253 |(Amine departing)";  set labeloffset  30 110;  color label black; font label 20
+select  647:C.O; label H<sub>2</sub>O 647;  set labeloffset -10 50;  color label black; font label 20
+select *; set labelfront
+select 195:G.OG, 252:C.C, 252:C.O, 252:C.CA, 253:C.N; label %a;  color label black; font label 20;  set labelfront off
+select  647; halos
+# connect (57:F.NE2) (647:C.2H) HBOND radius 0.02 modify
+connect (57:F.NE2) (647:C.2H) SINGLE; connect (57:F.NE2) (647:C.2H) HBOND 
+connect (252:C.C) (647:C.O) SINGLE; connect (252:C.C) (647:C.O) HBOND 
+connect (647:C.O) (647:C.2H) SINGLE; connect (647:C.O) (647:C.2H)  HBOND 
+measure off
+measure (647:C.2H) (57:F.NE2)
+measure (647:C.2H) (647:C.O)
+measure (252:C.C) (647:C.O)
+frame TITLE " "
+color background white

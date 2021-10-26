@@ -1,0 +1,133 @@
+<HTML xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+<TITLE>ADD-H</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>ADD-H</TT></h1>
+<p align="left">
+Adds hydrogen atoms to a data set to satisfy valence requirements.&nbsp; Most 
+sites are neutralized, the exceptions being: (A) Metal atoms normally exist as 
+ions, e.g., Na<sup>+</sup>, Ca<sup>+</sup>, and halogen atoms that are not 
+covalently bonded, e.g. Cl<sup>-</sup> and F<sup>-</sup>, are represented as the 
+appropriate ions.&nbsp; (B) Some organic species that normally exist in the 
+ionized form, such as N-methyl pyridine, are hydrogenated so that the result is 
+the conventional ionized moiety.&nbsp; Hydrogen atoms are added to all other 
+species to produce the neutralized species.&nbsp; Pairs of residues that can 
+exist as <a href="salt_bridges.html">salt bridges</a> sometimes form spontaneously when the 
+positions of the hydrogen atoms are optimized.&nbsp; </p>
+<p align="left">
+The 
+results are suitable for use in preparing a MOPAC data 
+set.&nbsp; This keyword is intended for use with proteins only.&nbsp; It should 
+work for non-proteins as well, but there is an increased probability that it 
+will make mistakes, and for systems that cannot exist in aqueous media, such as 
+LiCH3, there is an increased probability of failure. In a run to add hydrogen atoms, 
+one or more sites can be ionized by using <a href="site.html"><tt>SITE</tt></a>.&nbsp; 
+A useful option is to use <tt>SITE=(SALT)</tt>; when present all likely salt bridges 
+between residues would be created.&nbsp; </p>
+<p align="left">
+If any 
+hydrogen atoms are present, they will be removed before <TT>ADD-H</TT> runs.&nbsp;&nbsp; 
+When a PDB file is made, a set of checks is run to detect errors in the 
+structure.&nbsp; By default, the sequence of atoms 
+will be put into the standard PDB sequence.&nbsp; If this is not wanted, add
+<a href="noreseq.html"><tt>NORESEQ</tt></a>.&nbsp; <tt>NORESEQ</tt> is also 
+useful in the unlikely event that the <TT>ADD-H</TT> run reports an error in the residue recognition 
+process.<img src="Guanine.gif" style="float: right" width="327" height="144"></p>
+<p align="left">
+Whether specific sites should be ionized or not is hard to answer.&nbsp; For 
+simplicity, <TT>ADD-H</TT> produces either the completely neutral protein, 
+or, if definite ions such as Ca<sup>2+</sup>, K<sup>+</sup> or [CH<sub>3</sub>-NC<sub>5</sub>H<sub>5</sub>]<sup>+</sup>, are present, the 
+minimally ionized form.
+</p>
+<p align="left">
+For the purposes of hydrogenation, most metal atoms are assumed to be completely 
+ionic, i.e., they do not form bonds.&nbsp; This allows isolated oxygen atoms 
+near to metal atoms to be converted into water, and not into hydroxide.</p>
+<p align="left">
+Sometimes, <TT>ADD-H</TT> makes mistakes.&nbsp; For example, both guanine and 
+pyrimidine-2-one (see picture) have similar environments for the top left ring 
+nitrogen atoms, but in guanine there is a hydrogen atom attached, while in 
+pyrimidine-2-one that hydrogen atom is missing.&nbsp; This is a consequence of the 
+positions of the two double bonds in the six-membered ring. That is, it is not a 
+function of the nitrogen atom, nor of the carbon atom adjacent, but depends on 
+the more distant atoms. Sometimes <TT>ADD-H</TT> makes mistakes with complicated 
+structures like these, but for most PDB files,&nbsp;<TT>ADD-H</TT> works 
+correctly.&nbsp; No errors were detected in <a href="Add-H.zip">validation tests 
+for a set of proteins</a>.&nbsp; If an example of an incorrect hydrogenation 
+is found, please send details to MrMOPAC(at)OpenMOPAC.net 
+</p>
+<h3 align="left">
+Recommended usage</h3>
+<p align="left">
+Starting with an un-modified PDB file, e.g. 1A1A.pdb.&nbsp; Edit a 
+MOPAC data-set file to be 
+named &quot;1A1A ADD-H.mop&quot;&nbsp; Use keywords &quot;<tt><a href="geo_dat.html">GEO_DAT</a>=&quot;1A1A.pdb&quot; 
+SITE=(SALT) ADD-H <a href="nooptx.html">NOOPT</a> <a href="opth.html">OPT-H</a>
+<a href="html.html">HTML</a> <a href="charge.html">CHARGE</a>=0
+<a href="gradients.html">GRADIENTS</a> <a href="mozyme.html">MOZYME</a>
+<a href="eps.html">EPS</a>=78.4</tt>&quot; and a title-line describing the system, e.g., 
+&quot;PDB file 1A1A with hydrogen atoms added, but positions not optimized&quot;&nbsp; If 
+you know that sites in addition to salt-bridges are ionized, add these 
+ionizations to the <tt>SITE </tt>command.&nbsp; If there are several PDB files 
+to be hydrogenated, use the <a href="setup.html"><tt>SETUP</tt></a> command to specify 
+the hydrogenation keywords, e.g., <tt>SETUP=&quot;Add-H.txt&quot;</TT> and have 
+the SETUP file <tt>&quot;Add-H.txt&quot; </TT>consist of the single line <tt>
+SITE=(SALT) ADD-H NOOPT OPT-H HTML CHARGE=0 GRADIENTS MOZYME EPS=78.4.</tt> Then 
+only two keywords for each data-set would be needed, e.g., &quot;<tt>GEO_DAT=&quot;1A1A.pdb&quot; 
+SETUP=&quot;Add-H.txt&quot;</tt>&quot;. </p>
+<p align="left">
+Run the data-set, i.e., run &quot;1A1A ADD-H.mop&quot;. That will produce an output and an 
+ARC file.</p>
+<p align="left">
+To optimize the positions of the hydrogen atoms, run the newly-created ARC file.&nbsp; All the keywords that were used in the previous job will 
+be present in the ARC file, with the exception of the keywords that were 
+specific to ADD-H, i.e., <tt>GEO_DAT=&quot;1A1A.pdb&quot; SITE=(SALT) </tt>and<tt> ADD-H</tt>; 
+these are automatically deleted.&nbsp; This leaves a set of keywords that can be used in a normal MOPAC job to optimize 
+the positions of the hydrogen atoms, while leaving all other atoms fixed.&nbsp; 
+Normally an ARC file would not be used as a MOPAC data-set, but in this case its 
+use simplifies the hydrogenation process by eliminating one step.&nbsp; The 
+system should be neutral, unless metal atoms are present.&nbsp; If MOZYME 
+predicts that the system has a net charge, then examine the charged sites to 
+check that the charges are correct.&nbsp; Elements of Groups IA and IIA are 
+always charged. Other metals, e.g, Zn, Fe, Ni, etc., might be charged. If a 
+metal atom is assigned a negative charge in this run, use keyword
+<a href="metal.html"><tt>METAL</tt></a> to make it 100% ionic.&nbsp; This will not affect 
+the run, but might make the charges generated by <tt>
+MOZYME</tt> look more reasonable.</p>
+<h3 align="left">
+Detecting faults in hydrogenation</h3>
+<p align="left">
+A simple way to check the hydrogenation is to run the system using keywords 
+<tt><a href="charges.html">CHARGES</a> </tt>and <tt><a href="html.html">HTML</a></tt>, and then examine the output. 
+All the ionized sites will be listed in the lines under &quot;Ion Atom No.&quot;&nbsp; If <tt>SITE=(SALT)</tt> is used, there might be a lot of salt bridges listed - 
+residues involved in salt bridges can easily be identified by the short distance 
+to a residue of the opposite sign.&nbsp; Ignore them.&nbsp; Focus on the 
+remaining charged sites.&nbsp; If any look strange, examine the environment 
+using a GUI.&nbsp; Keyword <tt>HTML </tt>produces a file that is easy to examine.</p>
+<p align="left">
+Another way to find faults in 
+the hydrogenation is to run a single SCF 
+calculation and look at the forces acting on the non-hydrogen atoms.&nbsp; Start 
+with the ARC file from the previous job, and replace keywords &quot;<tt>NOOPT OPT-H</tt>&quot; 
+with &quot;<tt><a href="one_scf.html">1SCF</a> <a href="invert.html">INVERT</a></tt>&quot;, then save the edited 
+file.&nbsp; Use a descriptive name such as &quot;1A1A Opt-H 1SCF.mop&quot;&nbsp;&nbsp; 
+Atoms that might be wrongly hydrogenated will have large gradients, typically over 100 kcal&middot;mol<sup>-1</sup>&middot;&Aring;<sup>-1</sup>. 
+At this point, ignore and carboxylate groups - PDB analyses typically do not 
+distinguish between the C=O and C-OH distances.&nbsp; Also, ignore large 
+gradients in sulfate and phosphate groups.&nbsp; These are usually caused by 
+errors in the PM7 method.&nbsp; Using a GUI (JSmol is ideal here), examine any 
+atoms that have unexplained large gradients.&nbsp; Possibly one or more simple errors will be found where 
+there are more or less hydrogen atoms attached to a heavy atom than expected.&nbsp; 
+Add or delete hydrogen atoms as necessary, and re-run the &quot;1A1A Opt-H 1SCF.mop&quot; 
+job.</p>
+<p>See also <a href="modeling_proteins.html">Modeling Proteins</a>,&nbsp; 
+<a href="site.html"><TT>SITE</TT></a>, <TT>&nbsp;<a href="pdbout.html">PDBOUT</a></TT>, <TT> 
+<a href="noreseq.html">NORESEQ</a>, and</TT>
+<a href="preparing_a_Starting_data_set.html">Preparing a starting data set</a>. </p>
+</BODY>
+</HTML>

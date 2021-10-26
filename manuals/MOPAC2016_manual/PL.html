@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>PL </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>PL</TT>
+</h1>
+A tool for monitoring the behavior of SCF calculations is useful when they take 
+too long, or even fail altogether.&nbsp; When keyword <TT>PL</TT> is present, the energy of the system and the 
+rate of change of the electronic structure can be monitored iteration to 
+iteration.&nbsp; This keyword 
+is useful particularly when trying out various combinations of convergers such 
+as <TT><a href="pulay.html">PULAY</a></TT>, <TT><a href="king.html">KING</a></TT>, <TT>
+<a href="shift.html">SHIFT</a></TT>, and <TT><a href="damp.html">DAMP</a></TT> 
+to find the method that works best.<p>The rate of change in the electronic 
+structure is given by the quantity PLS in the output.&nbsp; For example, in the 
+line:<PRE>ITERATION   7 PLS= 0.168E-01 0.395E-06 ENERGY      -34.585270 DELTAE   -2.2653063</PRE>
+the alpha wavefunction changed by 0.0168 between iteration 6 and iteration 7.  At the same time, the beta wavefunction changed by 0.000000395. 
+The change in energy over these iterations is -2.265 kcal/mol.<p>If the 
+calculation uses a restricted Hartree-Fock method, then the line would look like 
+this: </p>
+<PRE>ITERATION   7 PLS= 0.900E-02 0.000E+00 ENERGY       46.712559 DELTAE   -0.3203785</PRE>
+<p>Now the change in total wavefunction between iteration 6 and 7 would be 
+0.009.&nbsp; The second number, here 0.000E+00, is not used and should be 
+ignored.</p>
+<p>The precise meaning of PLS depends on whether the calculation uses
+<a href="mozyme.html"><TT>MOZYME</TT></a> or the conventional, default, method.</p>
+<h3>Definition of PLS for conventional SCF calculations</h3>
+<p>In conventional methods, PLS is the largest change in any density matrix element on two successive iterations
+in the SCF calculation. At self-consistency, this change drops to zero.&nbsp; 
+For UHF calculations, both the alpha and beta density matrices are used, 
+therefore two numbers are printed.&nbsp; The total density matrix is used in RHF 
+calculations, and consequently the second number is not used.</p>
+<h3>Definition of PLS for MOZYME calculations</h3>
+<p>MOZYME calculations do not use a normal density matrix so the definition used 
+above cannot be used.&nbsp; Instead, the largest Fock matrix element connecting 
+an occupied LMO with any virtual LMO is used.&nbsp; This can be written as:</p>
+<p align="center">PLS = |&lt;<font face="Symbol">y</font><sup>occ</sup>|F|<font face="Symbol">y</font><font face="Times New Roman"><sup>vir</sup>&gt;|</font></p>
+<p>Although this definition is fundamentally different from that in conventional 
+work, in that data from only one iteration is used and the units are now 
+electron volts and not electrons, the meaning is the same - at self-consistency 
+all Fock matrix elements connecting occupied and virtual LMOs are zero. 
+Therefore, from a user's perspective, the significance of PLS in both 
+conventional and MOZYME calculations is the same: it is a measure of how far the 
+system is from self-consistency.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

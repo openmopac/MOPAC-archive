@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Examples of ADD-H to PDB files</TITLE>
+<style type="text/css">.auto-style1 {
+	border-top-style: solid;
+	border-top-width: 1px;
+}
+.auto-style2 {
+	text-align: center;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style3 {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style4 {
+	text-align: left;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+.auto-style5 {
+	text-align: left;
+}
+.auto-style7 {
+	font-family: Symbol;
+}
+</style>
+<h1 align="center">
+Problem
+Examples of ADD-H to PDB files (<a href="Tools%20for%20use%20with%20Proteins.html#Finding_and_correcting_faults_in_the_PDB_file">Back 
+to Tools for use with proteins</a>)</h1>
+<p class="auto-style5">
+Click on the PDB geometries, then when the JSmol page opens, click on &quot;Specific 
+Script&quot; to see the site of interest.&nbsp; To reproduce these results, download 
+the ZIP file, then run the &lt;filename&gt;.mop file using MOPAC.&nbsp; Then use MOPAC 
+to run the &lt;filename&gt;.arc file newly created.</p></HEAD>
+
+<body>
+ <table cellpadding="13" cellspacing="0" align="center">
+	 <tr>
+		 <td style="height: 84px" class="auto-style2">
+		 <h3>&nbsp;PDB geometry</h3>
+		 </td>
+		 <td style="height: 84px" class="auto-style2">
+		 <h3>Nature of problem</h3>
+		 </td>
+		 <td style="height: 84px" class="auto-style2">
+		 <h3>Effect </h3>
+		 </td>
+		 <td style="height: 84px" class="auto-style2">
+		 <h3>How the problem was corrected</h3>
+		 </td>
+	 </tr>
+	 <tr>
+		 <td style="height: 23px"><a href="5UIZ/5UIZ%20Add-H.html">5UIZ</a>
+		 <a href="5UIZ.zip">ZIP</a></td>
+		 <td style="height: 23px" class="auto-style1">The side-chain oxygen on Asn-42 is only 1.45 
+		 &Aring; <br>from HOH-402, a water oxygen.</td>
+		 <td style="height: 23px" class="auto-style1">The resulting O-O bond 
+		 caused the water <br>to have only one hydrogen atom</td>
+		 <td style="height: 23px" class="auto-style1">SITE was used to define 
+		 HOH-402 as a cation, <br>this caused a second hydrogen to be added to 
+		 the water&nbsp; oxygen.</td>
+	 </tr>
+	 <tr>
+		 <td class="auto-style5"><a href="5UGD/5UGD%20Add-H.html">5UGD</a>
+		 <a href="5UGD.zip">ZIP</a><br><a href="5N7V/5N7V%20Add-H.html">5N7V</a>
+		 <a href="5N7V.zip">ZIP</a></td>
+		 <td>Phenyl-methyl C-C distances too short.</td>
+		 <td>A methyl was incorrectly interpreted as a <br>methylene, i.e., as 
+		 =CH<sub>2</sub>, not -CH<sub>3</sub></td>
+		 <td>SITE was used to add a hydrogen atom to the methyl carbon.</td>
+	 </tr>
+	 <tr>
+		 <td class="auto-style5"><a href="5L6Q/5L6Q%20Add-H.html">5L6Q</a>
+		 <a href="5L6Q.zip">ZIP</a> </td>
+		 <td>CO<sub>3</sub> groups were present.</td>
+		 <td>These were misread as [CO<sub>3</sub>]<sup>2-</sup></td>
+		 <td>SITE was used to define an oxygen on each CO<sub>3</sub> as <br>
+		 being neutral, this resulted in [HCO<sub>3</sub>]<sup>- </sup>.</td>
+	 </tr>
+	 <tr>
+		 <td class="auto-style5"><a href="5LYC/5LYC%20Add-H.html">5LYC</a>&nbsp;
+		 <a href="5LYC.zip">ZIP</a>  <br><a href="5UG2/5UG2%20Add-H.html">5UG2</a>&nbsp;
+		 <a href="5UG2.zip">ZIP</a><br></td>
+		 <td>The Lewis structure for a heme complex was <br>incorrect</td>
+		 <td>The Lewis structure for a heme complex was <br>incorrect.</td>
+		 <td>Using CVB, 
+		 bonds were deleted between Fe and two N atoms <br>on opposite sides of the 
+		 ring.<br>This produced spurious 
+		 charges on one C<sub>4</sub>N ring.<br>Using SETPI, a
+		 <span class="auto-style7">p</span>-bond was defined between C<sub>2</sub> 
+		 and C<sub>3</sub> in that ring.<br>The resulting heme system had the correct 
+		 Lewis structure.</td>
+	 </tr>
+	 <tr>
+		 <td class="auto-style4"><a href="5VPS/5VPS%20Add-H.html">5VPS</a>
+		 <a href="5VPS.zip">ZIP</a></td>
+		 <td class="auto-style3">The geometry of a piperidine ring was nearer to 
+		 a <br>pyridinium than to a piperidine.</td>
+		 <td class="auto-style3">The ring was incorrectly hydrogenated to<br>
+		 make it a
+		 pyridinium.</td>
+		 <td class="auto-style3">SITE was used to add hydrogen atoms to four 
+		 carbon atoms.</td>
+	 </tr>
+ </table>
+</BODY>
+</HTML>

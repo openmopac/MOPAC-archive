@@ -1,0 +1,234 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>GEO_REF=<i>text </i></TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center" dir="ltr">
+<TT>GEO_REF=&quot;<i>text</i>&quot;</TT> </h1>
+<font face="Arial"> <TT>GEO_REF</TT> supplies a second geometry to a job.&nbsp;&nbsp;If 
+more than one line of keywords is supplied, then this keyword should be on the 
+first line.
+
+<p>There are two ways to specify &quot;<em>text</em>&quot; :</p>
+
+<p>(A) Specify the file name and location, e.g.:</p>
+<p>
+<font face="Arial"> <TT>GEO_REF=&quot;CRAMBIN 1CBN X-ray.mop</TT>&quot;<br>
+<TT>GEO_REF=&quot;CRAMBIN.arc</TT>&quot; <br><TT>GEO_REF=&quot;CRAMBIN.pdb</TT>&quot; </font> <br>
+<TT>GEO_REF=&quot;./CRAMBIN.arc</TT>&quot;<br><TT>GEO_REF=&quot;../CRAMBIN.arc</TT>&quot;
+<br><TT>GEO_REF=&quot;../<font face="Arial"><TT>../arc files/C</TT></font>RAMBIN.arc</TT>&quot; <br>
+<TT>GEO_REF=&quot;sub folder/CRAMBIN.arc</TT>&quot;
+<br>
+<TT>GEO_REF<font face="Arial"><TT>=</TT></font>&quot;./sub 
+folder/CRAMBIN.arc</TT>&quot;<br>
+<TT>GEO_REF=&quot;M:\data sets\CRAMBIN 1CBN X-ray.mop</TT>&quot;<br>
+<TT>GEO_REF=&quot;/Users/jstewart/data_sets/CRAMBIN_1CBN_X-ray.mop</TT>&quot;<br>
+<TT>GEO_REF=&quot;~/data_sets/CRAMBIN_1CBN_X-ray.mop</TT>&quot;</p>
+<p>(B) Use &nbsp; <TT>
+GEO_REF=&quot;SELF&quot;.&nbsp;</TT>When &quot;SELF&quot; 
+is present, a file that has the same name as the MOPAC data-set can be used.&nbsp; 
+By default, this data-set would be the data-set in the current job.&nbsp; An 
+alternative would be to use a data-set in a different folder, for example:</p>
+
+<p dir="ltr"><TT>GEO_REF=&quot;../<font face="Arial"><TT>Reference geometry/SELF</TT></font></TT>&quot;
+<br>
+<TT>GEO_REF=&quot;../<font face="Arial"><TT>../arc files/SELF</TT></font></tt>&quot;
+<TT>
+<br>
+<TT>GEO_REF=&quot;<font face="Arial"><TT>C:/PM6 geometries/Self</TT></font></TT>&quot;
+</tt> </p>
+
+<p dir="ltr">If desired, the suffix can be changed, so if the data-set suffix is 
+&quot;.mop&quot; and the file that is to be used as the
+<TT>GEO_REF</TT> file has the suffix &quot;.arc&quot;, then replace &quot;<TT><font face="Arial"><TT>SELF</TT></font></TT>&quot;&nbsp; 
+with &quot;<TT><font face="Arial"><TT>SELF.arc</TT></font></TT>&quot;&nbsp; </p>
+
+<p dir="ltr">
+If <tt>GEO_REF=&quot;SELF&quot;</TT> is used, then the GEO_REF geometry used will be the one defined in the 
+MOPAC data-set, even if <a href="restart.html"><tt>RESTART</tt></a> is also present.&nbsp; That is, the 
+GEO_REF geometry used will be the geometry before any changes caused by <tt>RESTART</tt> 
+are applied.&nbsp; This allows large systems to be restarted easily.</p>
+
+<p>
+<font face="Arial"> <TT>GEO_REF</TT>&nbsp; can be used for 
+<a href="compare.html">comparing geometries</a>, improving X-ray geometries and 
+also for locating 
+transition states (using <a href="Locate-TS.html"><tt>LOCATE-TS</tt></a> or
+<a href="saddle.html"><tt>SADDLE</tt></a>).
+
+In all cases, the job uses two geometries, one from the data set or defined 
+using <a href="geo_dat.html"><tt>GEO_DAT</tt></a>, and one from a 
+second data set defined by the keyword  <TT>
+GEO_REF.</TT></font> By default, the <TT>GEO_REF</TT> system will be rotated and 
+translated to minimize the difference between it and the <tt>GEO_DAT</tt> 
+geometry.&nbsp; This operation will not be carried out if keyword <A HREF="noreor.html"><TT>NOREOR</TT></A> 
+is present.&nbsp; This allows a strict comparison of closely-related systems in 
+which some atoms are frozen. <p>
+If the file containing the geometry also contains keywords, job name, etc. these 
+will be ignored.&nbsp; Only the keywords, job name, etc., in the MOPAC data set, 
+i.e., the file containing
+<font face="Arial"> 
+<TT>GEO_REF=&lt;text&gt;</TT></font>, will be used.&nbsp; Some keywords, such as
+<a href="CVB.html"><tt>CVB</tt></a>, may also require <a href="geo-ok.html"><tt>GEO-OK</tt></a>.<p>
+<font face="Arial"> Both systems will be converted to simple Cartesian 
+coordinates.&nbsp;
+</font>
+Any dummy atoms supplied in either the first system or the system defined by 
+<tt>GEO_REF</tt> will be ignored, as will any translation vectors.&nbsp; <h3>Requirements</h3>
+<p>&nbsp;</p>
+<p> <font face="Arial"> MOPAC data sets must contain PDB information.&nbsp; </font>Before any calculation is started, the two data sets are examined and 
+compared.&nbsp; <font face="Arial"> For both PDB files and for MOPAC data sets, t</font>he examination consists of checking that every atom has a 
+unique label.&nbsp;If any of the following strict requirements is not 
+met,
+<font face="Arial"> an error message printed and</font> the job will be stopped:<ul>
+	<li>Both species must have the same empirical formula</li>
+	<li>For PDB files and for MOPAC files with PDB information, all atom labels must be unique. Atom numbers don't count towards the 
+	label. </li>
+	<li>
+<font face="Arial"> For PDB files and for MOPAC files with PDB information, t</font>he 
+	same labels must be present in both the reference and job data sets.&nbsp; </li>
+</ul>
+<p>It is normal for this test to fail the first time it is run.&nbsp; Use the 
+error message to identify the fault, then correct the fault and re-run the job.&nbsp; 
+When no errors are reported, the data set labels are acceptable. </p>
+<p>&nbsp;The following flexibilities are allowed:</p>
+<ul>
+	<li>If the only operation is comparing two geometries, then the species can 
+	have different empirical formulae. Also, some atoms can have different 
+	labels, but all such atoms will be excluded from the comparison.</li>
+	<li>The order of atoms does not need to be the same.&nbsp; If the order is 
+	different, the reference data set will be re-ordered to match the job data 
+	set.</li>
+	<li>Where there is ambiguity, e.g., C<font face="Arial"><span class="b"><sub>&delta;1</sub> 
+	and C<sub>&delta;2</sub></span></font> in Phe and Tyr. Ambiguities of this 
+	type are automatically resolved by re-labeling atoms in the reference data 
+	set, unless <font face="Arial"> <a href="noswap.html"><tt>NOSWAP</tt></a> is 
+	present.</font></li>
+</ul>
+
+<p>From a practical point of view, this flexibility means that the order of 
+atoms in the two data sets is not important.</p>
+
+<p>The reference data set will then be rotated and translated to give the best 
+overlap with the job data set.&nbsp; This new geometry will be printed as 
+&lt;filename&gt;.new&nbsp; Total geometric differences between the two structures 
+will be printed in the output.</p>
+
+<h3>Comparing geometries</h3>
+<p>If the keywords <tt>GEO_REF</tt>,
+<font face="Arial"> <a href="zero_scf.html"><TT>0SCF</TT></a> 
+
+</font>
+and <a href="html.html"><tt>HTML</tt></a> are all present, or if
+<a href="compare.html"><tt>COMPARE</tt></a> is present, then an HTML web-page 
+will be written that allows pairs of structures to be compared. </p>
+<p>If there are some atoms in one data-set that are not in the other, or vice 
+versa, then the job will be stopped.&nbsp; However, if <a href="geo-ok.html">
+<tt>GEO-OK</tt></a> is present then the job will continue, but using only the atoms that are 
+common to both data-sets.&nbsp;</p>
+
+<h3>Improving X-ray geometries</h3>
+<p>The accuracy of native structures, X-ray and NMR, can be increased by 
+performing a limited geometry optimization, starting with the conditioned native 
+structure.</p>
+<p>The optimized geometry is a hybrid of the PM7 geometry, assuming that PM7 is 
+used, and the native geometry.&nbsp; The hybrid heat of formation, <i>H</i>', is 
+given as:</p>
+<p align="center">&nbsp;H' =&Delta;<i>H<sub>f</sub>(</i>PM7) + <i>c</i><span class="b">&Sigma;</span>(X<sub>i</sub> 
+- X<sub>i</sub>(0))<sup>2</sup>
+<p align="left">That is, at each geometry, a restraining potential is added to 
+the PM7 heat of formation. The default proportionality constant &quot;<i>c</i>&quot; is 3 
+kcal/mol/<font SIZE="2">&Aring;<sup>2</sup></font>.&nbsp;
+<font face="Arial"> To change the proportionality constant from 3, put the new value after the 
+reference data set, e.g., if a value of 10 is wanted, use:
+
+
+
+<TT>GEO_REF=&quot;M:\data_sets\CRAMBIN_1CBN_X-ray.mop&quot;10</TT>
+or
+<TT>GEO_REF=&quot;CRAMBIN_1CBN_X-ray.mop&quot;10.&nbsp;</TT>
+A zero constraint, e.g.,
+
+
+<TT><font face="Arial">GEO_REF=&quot;SELF&quot;0</font></TT> is allowed if the reference geometry is 
+not to be used.&nbsp; This option is useful when the change in geometry is 
+wanted, in which case <a href="zero_scf.html"><TT>0SCF</TT></a> would likely be used also.
+
+</font>
+</p>
+<p>The effect of the restraining potential is to reduce PM7 errors in the 
+secondary, tertiary, and quaternary structures.&nbsp; It has very little effect 
+on the primary structure, e.g., bond lengths and angles.&nbsp;  </p>
+<p>The effect of the restraining potential can be illustrated using Crambin, 
+1CBN.&nbsp; In the original structure there was an extra C<sub>2</sub>O moiety, this was 
+removed.&nbsp; 1CBN has both structural and positional disorder; the sequence 
+used was: <br>
+TTCCPSIVARSNFNVCRLPGT<b>P</b>EALCATYTGCIIIPGATCPGDYAN&nbsp; This sequence 
+differs from the later default sequence of TTCCPSIVARSNFNVCRLPGT<b>S</b>EALCATYTGCIIIPGATCPGDYAN 
+(difference in <b>bold</b>)&nbsp; The formula used was C<sub>202</sub>H<sub>315</sub>N<sub>55</sub>O<sub>64</sub>S<sub>6</sub>, 
+i.e. 642 atoms.&nbsp; Because the positions of the hydrogen atoms were severely 
+incorrect in the X-ray structure, before starting any comparison of the effect 
+of <TT>GEO_REF</TT> on the geometry, their positions were optimized.&nbsp; 
+During geometry optimization, the COSMO solvation model was used because some 
+residues in Crambin were reported as being ionized.<img border="0" src="geo_re2.gif" width="413" height="306" align="right"></p>
+
+<p dir="ltr">
+<img border="0" src="geo_re1.gif" width="426" height="307" align="left">The difference in heat of formation of 
+Crambin, after 
+preconditioning (that is, after the positions of the hydrogen atoms were 
+optimized), and after 
+complete geometry optimization, is ~250 kcal mol<sup>-1</sup>. The RMS change in 
+geometry is about 1.0 &Aring;ngstroms.&nbsp; If the 
+geometry is optimized using <TT>GEO_REF</TT> and a constant, <i>c</i>, of 1.0, then the heat of formation drops by
+~150 kcal mol<sup>-1</sup>, and the RMS geometry change is ~0.25 
+&Aring;ngstroms.&nbsp; In other words, by allowing the X-ray geometry to change by 0.25 
+&Aring;ngstroms, over half of the strain energy in the X-ray structure is removed.&nbsp; 
+Put yet another way, the resulting geometry is more than twice as accurate, in terms of 
+chemistry, than the X-ray structure.&nbsp; <a href="Crambin_Aq_geo_ref.zip">All 
+Crambin structures used here</a>.
+
+
+<h3>Locating transition states</h3>
+
+<p><TT>GEO_REF</TT> can also be used for moving a reactant or product geometry in the 
+direction of the transition state.&nbsp; Consider two data sets, reactant.mop 
+and product.mop in folder M:\, in which the heat of formation of the optimized 
+product geometry is lower than that of the optimized reactant geometry.&nbsp; 
+The product geometry geometry can be moved in the direction of the transition 
+state by using keyword
+
+
+<TT>GEO_REF=&quot;M:\reactant.mop&quot;</TT>&nbsp; 
+The .arc file can then be edited to give a new data set, product_on_slope.mop.&nbsp; 
+The reactant geometry can then be moved in the direction of this new geometry by 
+using keyword
+
+
+<TT>GEO_REF=&quot;M:\product_on_slope.mop&quot;</TT>&nbsp; 
+Again, edit the .arc file to give reactant_on_slope.mop.&nbsp; Why was the 
+product moved first?&nbsp; Because by moving it towards the reactant geometry, 
+its heat of formation would rise in proportion to the distance to the reactant 
+geometry. When the reactant geometry is moved towards the product geometry on 
+the slope, the distance from the starting reactant geometry to the product 
+geometry on the slope is less, so the rise in energy would be less.
+
+<p>If keyword TS is present in a GEO_REF calculation, the optimization is not 
+run.&nbsp; Instead, the two geometries are averaged, and the result written to a 
+new file &lt;file&gt;.new.</p>
+
+<p>For the current exercise, a good approximation to the transition state can 
+then be generated from the data set reactant_on_slope.mop by using keywords TS 
+and
+
+ <TT>GEO_REF=&quot;<a href="file:///M:/product_on_slope.mop">M:\product_on_slope.mop</a>&quot;</TT>
+<h3><a name="Error">Error</a>: &quot;Fault detected in atom labels in a GEO_REF run&quot;</h3>
+<p>If the only faults detected are those that involve hydrogen atoms, then add 
+keyword <a href="geo-ok.html"><tt>GEO-OK</tt></a>, and do not have<font face="Arial"> <a href="noswap.html"><tt>NOSWAP</tt></a>,
+</font>and re-run. The hydrogen atoms will be put in their correct place 
+automatically. Alternatively, edit either 
+the data-set or the <tt>GEO_REF</tt> file to remove the fault.<p>
+</font>
+</BODY>
+</HTML>

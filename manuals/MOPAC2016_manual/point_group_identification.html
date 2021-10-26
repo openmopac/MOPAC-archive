@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Identification of Point-Groups</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1>Identification of Point-Groups </h1>
+<H3><A NAME="SECTION0012103100000000000000">
+Infinite Groups</A>
+</H3>
+<p>In order to identify the molecular point-group the system must be oriented in a
+specific way.  Four families of point-groups are checked for: (1) the infinite
+groups, (2) the cubic groups, (3)  groups with one high-symmetry axis, and (4)
+the Abelian groups. Each family is treated differently.  First, the moments of
+inertia are calculated.  If all are zero, the system is a single atom, and the
+associated group is R<SUB>3</SUB>.  If two moments are zero, the system is  either
+C
+<IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1387.gif"
+ ALT="$_{\infty v}$">
+or D
+<IMG
+ WIDTH="19" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1388.gif"
+ ALT="$_{\infty h}$">;
+the presence of a horizontal plane of
+symmetry distinguishes between them. </p>
+                                                                      <H3><A NAME="SECTION0012103200000000000000">
+Cubic Groups</A>
+</H3>
+<p>Having eliminated the infinite groups, the three moments of inertia are checked
+to see if they are all the same.  If they are, then the system is cubic.  Cubic
+systems are oriented by identifying atoms of the set nearest to the center of
+symmetry.  If there are 4, 6, 8, 12, or 20 of these, and the number of
+equidistant nearest neighbors  is 3, 4, 3, 5, or 3, respectively, then the
+atoms are
+at the vertices of one of the Platonic solids (<a href="ref_data/ch4.mop">tetrahedron</a>,
+<a href="ref_data/sf6.mop">octahedron</a>, <a href="ref_data/cubane.mop">cube</a>,
+<a href="mopac_examples/symmetry/ih_1.mop">icosahedron</a>,
+<a href="mopac_examples/symmetry/ih_2.mop">dodecahedron</a>),
+and therefore all atoms of the set lie on high-symmetry axes.  The first  atom
+is selected and used to define the <I>z</I> axis. </p>
+<P>
+If the number of atoms in
+the set does not correspond to any of the Platonic solids, then the set is
+checked for the existence of a equilateral triangle, a square, or a regular
+pentagon.  When one of these is found, the center of the polygon is used to
+define the <I>z</I> axis.  An example of this type of system is C<SUB>60</SUB>,
+<a href="ref_data/c60.mop">Buckminsterfullerene</a>, which has a five-fold axis going through the center of a
+pentagonal face.
+<P>
+Once the <I>z</I> axis is identified, the system is checked for C<SUB><I>n</I></SUB> axes, <I>n</I>=3 to
+<I>n</I>=8.  To complete the orientation, the system is rotated about the <I>z</I> axis
+so that two atoms, having equal <I>z</I> coordinates, have equal <I>y</I> coordinates.
+The existence of rotation axes which are not coincidental with the <I>z</I> axis
+and the presence or absence of a center of inversion are then used to identify
+which cubic group the system belongs to.&nbsp;
+<BR>
+<H3><A NAME="SECTION0012103300000000000000">
+Other Degenerate Groups</A>
+</H3>
+<p>If the system has still not been identified, then the two equal moments of
+inertia indicate a degenerate point group.  As with the cubic groups, the <I>y</I> and
+<I>z</I> axes (and, by implication, the <I>x</I> axis) are identified. The system is
+oriented, and the C<SUB><I>n</I></SUB> and S<SUB><I>n</I></SUB> axes identified.
+</p>
+<P>
+The degenerate groups, C<SUB><I>n</I></SUB>, C<SUB><I>nv</I></SUB>, C<SUB><I>nh</I></SUB>, D<SUB><I>n</I></SUB>, D<SUB><I>nd</I></SUB>, D<SUB><I>nh</I></SUB>,
+S<SUB><I>n</I></SUB>, are distinguished by the existence or absence of C<SUB>2</SUB> axes
+perpendicular to the <I>z</I> axis, and by planes of symmetry.
+<H3><A NAME="SECTION0012103400000000000000">
+Abelian Groups</A>
+</H3>
+<p>All that remains are the Abelian groups, C<SUB>1</SUB>, C<SUB>2</SUB>, C<SUB><I>i</I></SUB>, C<SUB><I>s</I></SUB>,  C<SUB>2<I>v</I></SUB>,
+C<SUB>2<I>h</I></SUB>, D<SUB>2</SUB>,  and D<SUB>2<I>h</I></SUB>.  After orienting the molecule, the axes are
+swapped around so that the normal convention for orienting Abelian systems is
+obeyed.  For groups C<SUB>1</SUB>, C<SUB>2</SUB>, C<SUB><I>i</I></SUB>, and C<SUB><I>s</I></SUB>, there is no possibility for
+ambiguity.  For C<SUB>2<I>v</I></SUB> and D<SUB>2</SUB>, however, the orientation of the system
+affects the labels of the irreducible representations.  To prevent ambiguity,
+the convention for orienting Abelian molecules is: </p>
+<UL>
+<LI>The axis with the largest number of atoms is the <I>z</I> axis.
+<LI>The plane with the largest number of atoms that includes the <I>z</I> axis is
+the <I>yz</I> plane.
+</UL>
+<p>Thus for ethylene, the <i> <span class="b">&pi;</span></i>&nbsp;
+orbitals point along the <I>x</I> axis. </p>
+                                                </BODY>
+</HTML>

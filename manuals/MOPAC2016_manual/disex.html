@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>DISEX=n.nn </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>DISEX=<I>n</I>.<I>nn</I></TT>
+</h1>
+Used for the COSMO method (see <TT><a href="eps.html">EPS</a></TT>).  In units of mean segment diameter,
+<I>n</I>.<I>nn</I> is the distance up to which the interactions of two segments is
+calculated as the sum of fine grid interactions. The default value is 2.0.
+<P>
+<TT>DISEX</TT> should not be altered unless there are problems with  precision
+(note: precision applies to the mathematics, and not to the   accuracy.)  To
+increase the precision given by <TT>DISEX</TT>, set <TT>DISEX</TT>  to a smaller
+number.   If, after running a job with <TT>DISEX</TT> set smaller,  e.g.
+<TT>DISEX=1.8</TT>, the results have changed significantly, then reduce
+<TT>DISEX</TT> again, and re-run the job.
+</BODY>
+</HTML>

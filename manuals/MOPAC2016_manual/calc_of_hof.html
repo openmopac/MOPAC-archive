@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Calculation of </TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2><A NAME="SECTION001223000000000000000">
+ Calculation of &Delta;H<sub>f</sub></A><sub> </sub>
+</H2>
+<P>
+The SCF calculation produces a density, <I>P</I>, and Fock
+matrix, <I>F</I>. These, together with the one-electron matrix, <I>H</I>,
+allow the total electronic energy to be calculated via
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="204" HEIGHT="47"
+ SRC="img498.gif"
+ ALT="\begin{displaymath}E_{elect} = \frac{1}{2}\sum_{\mu}\sum_{\nu}P_{\mu\nu}(H_{\mu\nu}+F_{\mu\nu}).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The total core-core repulsion energy is given by:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="147" HEIGHT="42"
+ SRC="img499.gif"
+ ALT="\begin{displaymath}E_{nuc} = \sum_A\sum_{B<A}E_N(A,B).
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+The addition of these two terms represents the energy
+released when the ionized atoms and valence electrons
+combine to form a molecule.
+<P>
+A more useful quantity is the
+heat of formation of the compound from its elements in their
+standard state. This is obtained when the energy required
+to ionize the valence electrons of the atoms involved
+(calculated using semiempirical parameters),
+<I>E</I><SUB><I>isol</I></SUB>(<I>A</I>), and heat of formation for a gaseous
+atom from its standard state,
+<I>E</I><SUB><I>atom</I></SUB>(<I>A</I>), are added to the electronic
+plus nuclear energy. This yields:
+<P align="center">
+<span class="b">&Delta;</span><i>H</i><sub><i>f</i> </sub>= (<i>E<sub>elect</sub></i>
++ <i>E<sub>nuc</sub></i>) - <span class="b">&Sigma;</span><sub>A</sub><i>E<sub>isol</sub></i>(<i>A</i>)<i>
+</i>+ <span class="b">&Sigma;</span><sub>A</sub><i>E<sub>atom</sub></i>(<i>A</i>),<P align="center">
+or<P align="center">
+<span class="b">&Delta;</span><i>H</i><sub><i>f</i> </sub>= <i>E</i><sub><i>tot</i></sub>&nbsp;
+- <span class="b">&Sigma;</span><sub>A</sub><i>E<sub>isol</sub></i>(<i>A</i>)<i>
+</i>+ <span class="b">&Sigma;</span><sub>A</sub><i>E<sub>atom</sub></i>(<i>A</i>).<BR CLEAR="ALL">
+<P></P>
+<P>
+This is the quantity which MOPAC calls the "Heat of Formation".
+An alternative but equivalent definition of
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A><sub> </sub>,
+more
+suited for comparison with experimental
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A>, is:
+<P>
+"
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A><sub> </sub>is the calculated gas-phase heat of formation at 298K
+ of one mole of a compound from its elements in their standard state."
+<P>
+Things to note about this definition:  unlike <EM>ab initio</EM> methods, which
+yield the energy at 0<I>K</I>, semiempirical methods give
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A><sub>&nbsp; </sub>at 298<I>K</I>.  This follows from the way in which semiempirical methods
+are parameterized: the reference
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A><sub> </sub>&nbsp;are conventionally given at
+298<I>K</I>.  This means that  semiempirical methods will reproduce
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A> for 298<I>K</I>.  Secondly, note that
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A><sub> </sub>&nbsp;are for gas-phase systems.
+To calculate
+<A NAME="SECTION001223000000000000000">
+ <span class="b">&Delta;</span>H<sub>f</sub></A><sub> </sub>&nbsp;in the liquid or solid phases, additional terms are
+necessary.
+</BODY>
+</HTML>

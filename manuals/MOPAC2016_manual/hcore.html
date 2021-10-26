@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>HCORE</TITLE>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>HCORE </h1>
+</TT><P><FONT SIZE=3> Print all parameters used in the calculation, the 
+one-electron matrix, and two electron integrals .&nbsp; This keyword should normally only be used with <TT>
+<a href="one_scf.html">1SCF</a></TT>, 
+otherwise the output can be very large.</FONT></P>
+<P>Two electron integrals are in the order: All integrals for atoms 1 with 1, 1 
+with 2, 2 with 2, 1 with 3, 2 with 3, 3 with 3, etc.&nbsp; Within an atom-pair, 
+the integrals are, in order:</P>
+<P>&lt;ss|ss&gt; &lt;ss|sx&gt; &lt;ss|xx&gt; &lt;ss|sy&gt; &lt;ss|xy&gt; &lt;ss|yy&gt; ... &lt;sx|ss&gt; ... &lt;(xy)(xy)|(xy)(xy)&gt;</P>
+<P><a href="real_spherical_harmonics.html">Atomic orbitals</a> are, in order: s x y z (x2-y2) (xz) (z2) (yz) (xy)</P>
+<P>The number of two-electron integrals can be quite large; for two atoms with 
+d-orbitals (l = 2)&nbsp; there are 2025&nbsp; = 45<sup>2</sup> = ((9*10)/2)<sup>2</sup> 
+= ((l + 1)<sup>2</sup>*((l + 1)<sup>2</sup> + 1)/2)<sup>2</sup> distinct 
+integrals.</P>
+<P><TT>HCORE</TT> is useful in diagnostic work - understanding how SCF methods 
+work and in finding bugs in the program.</P>
+
+</BODY>
+</HTML>

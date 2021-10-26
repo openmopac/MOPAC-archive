@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>LEWIS </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center" dir="ltr">
+<TT>CHARGES</TT>
+</h1>
+<p align="left">When <TT>CHARGES</TT> is present, all ionized sites in the system will be identified and printed.&nbsp; 
+The run will then be stopped.&nbsp; This operation is useful during the 
+preparation of a data set, in that it is very easy for even experienced users to 
+have incorrect charges on large systems, particularly complicated organic 
+species such as enzymes and organometallics.</p>
+<p align="left">The method for identifying charged atoms is very powerful.&nbsp; 
+So although you might be quite certain that you have the charges correct, if 
+<TT>CHARGES</TT> indicates that you have made a mistake, please check the system using 
+the information printed.&nbsp; In 100% of the cases where users have complained 
+that MOPAC reported faulty charges, <TT>CHARGES</TT> identified errors in the user's structure.</p>
+<p align="left">In MOPAC, many common Lewis structures involve hypervalent systems 
+being represented as ions.&nbsp; Thus the sulfur atom in sulfuric acid would be represented as 
+S<sup>+</sup> and there would be a counter-charge of O<sup>-</sup>.&nbsp; Be aware that 
+during a geometry optimization &quot;<a href="salt_bridges.html">salt bridges</a>&quot; can 
+form, e.g. -COOH
+<sup>...</sup>&nbsp; H<sub>2</sub>N-&nbsp; can convert to -[COO]<sup>-</sup>
+<sup>...</sup>&nbsp; [H<sub>2</sub>N]<sup>+</sup>-. Such structures should <i>
+not</i> be regarded as faults. Also, metal ions might be reported as having an 
+unexpected charge, thus Zn with four oxygen atoms as ligands might be reported 
+as [Zn]<sup>2-</sup>. If this causes any concern, add keyword
+<a href="metal.html">METAL</a>, and all bonds to metal ions will be broken, so 
+for example Zn with four ligands would be reported as [Zn]<sup>2+</sup> and all 
+four ligands would each acquire a negative charge.</p>
+<p align="left">The choice of which nitrogen atoms in the heterocycle in 
+histidine have attached hydrogen atoms is often not immediately obvious.&nbsp; 
+But in many cases, the choice is important - the wrong choice will always result 
+in a high-energy structure, and be accompanied by severe rotation of the 
+heterocycle, as it tries to relieve the stress.&nbsp; <TT>CHARGES</TT> cannot 
+help with identifying the right choice.</p>
+<p>Related key-words:&nbsp; <TT><a href="lewis.html">LEWIS</a>, <a href="CVB.html">
+CVB</a>, <a href="metal.html">METAL</a>, <a href="vdwm.html">VDWM</a>,
+<a href="charge.html">CHARGE</a>, and <a href="mozyme.html">MOZYME</a></TT><br>
+See also: <a href="Lewis_structures.html">Lewis Structures</a>,
+<a href="mozyme_introduction.html">MOZYME introduction</a><DL dir="ltr">
+<div align="left">
+  <dt dir="ltr">&nbsp;</dt>
+</div>
+
+</BODY>
+</HTML>

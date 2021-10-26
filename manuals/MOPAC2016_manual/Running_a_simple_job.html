@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Running a simple MOPAC job </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p>(<a href="modeling_proteins.html#Running">Modeling proteins</a>)</p>
+<h1>Running a simple MOPAC job</h1>
+<p>In protein work, all the systems you will be working with are very large, 
+typically several thousand atoms.&nbsp; It's easy to get lost in such large 
+systems, and if you don't know, or are not comfortable with, how MOPAC works, it 
+would be doubly difficult.&nbsp; So before starting any work, run several small 
+(four to ten atom) systems, to get a feel for what is involved. </p>
+<p>But before doing anything, a few definitions are needed.&nbsp; In the 
+instructions, some terms, such as &quot;data set&quot;, &quot;job&quot;, &quot;calculation&quot;, and &quot;step&quot; 
+are often used.&nbsp; In MOPAC work, these terms have the following meaning:</p>
+<h3>Data set</h3>
+<p>A data set is a simple text file that contains information on what the system 
+is, and what should be done.&nbsp; Data sets have names such as &quot;test.mop,&quot; 
+&quot;1WDA.mop,&quot; &quot;Formaldehyde.mop,&quot; &quot;water.dat,&quot; &quot;H2O.inp.&quot; etc., although for most 
+work the name should be descriptive of what is being done, e.g., &quot;1WDA adding 
+hydrogen atoms.mop&quot; and the suffix should be &quot;.mop&quot;&nbsp; For more information 
+see <a href="index_examples.html">Examples of Data-Sets</a>.</p>
+<h3>Job</h3>
+<p>A job is a single data-set that is run using MOPAC.&nbsp; A job can be 
+simple, e.g., it might optimize the geometry of a molecule, or it might involve 
+two or three calculations, e.g., optimize the geometry of a molecule, 
+then, without stopping, calculate the vibrational frequencies of that molecule.&nbsp; 
+When a geometry calculated in one step is to be used in a subsequent step,
+<a href="oldgeo.html"><TT>OLDGEO</TT></a> is normally used. Only the first 
+calculation requires a geometry to be supplied, all other calculations can 
+either use their own geometry or use that of a previous step.</p>
+<h3>Calculation</h3>
+<p>In MOPAC work, a &quot;calculation&quot; is a simple job, either a stand-alone job, or 
+a single step in a multi-step job.&nbsp; For example, suppose that the first 
+step in a multi-step job is to optimize the geometry of a molecule, and the next 
+step in that job would be to calculate the vibrational frequencies, then the 
+data for the second step would consist of the lines:</p>
+<p>...<br>
+OLDGEO FORCE&nbsp; </p>
+<p>appended to the end of the first calculation data set.</p>
+<h3>Step</h3>
+<p>A step and a calculation are the same.</p>
+<h2>Running a simple MOPAC job</h2>
+<p>Make up a simple data set for <a href="example_of_data.html">ethylene</a> 
+and run it.&nbsp; Name the data set &quot;ethylene.mop&quot; and run it at the command 
+prompt using the command: &quot;C:/program files/MOPAC2016.exe&quot; ethylene.mop&nbsp; 
+(The quotation marks are needed for this command to work.)</p>
+<p>In this example, <a href="int_coord_def.html">internal coordinates</a> are 
+used, but in protein chemistry <a href="cart_coord.html">Cartesian coordinates</a> 
+are used in almost all jobs.&nbsp; </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

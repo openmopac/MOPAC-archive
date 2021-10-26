@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>EF </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>EF</TT>
+</h1>
+The Eigenvector Following routine&nbsp;[<A
+ HREF="references.html#ef-ts">7</A>] is the default geometry
+optimization method.  For systems with more than 100 variables, the L-BFGS 
+optimizer is the default.&nbsp; To prevent the L-BFGS optimizer being used, add 
+keyword <TT>EF</TT>.&nbsp; That is, <tt>EF</TT> is provided to allow
+explicit definition of the optimizer.  Alternative geometry optimizers are
+the BFGS&nbsp;[<A
+ HREF="references.html#bfgs1">19</A>,<A
+ HREF="references.html#bfgs2">20</A>,<A
+ HREF="references.html#bfgs3">21</A>,<A
+ HREF="references.html#bfgs4">22</A>] and the low-memory method,
+<a href="lbfgs.html">L-BFGS</a> . See also  <TT><a href="ddmax.html">DDMAX</a></TT>,
+<TT><a href="ddmin.html">DDMIN</a></TT>, <TT><a href="dmax.html">DMAX</a></TT>, <TT><a href="hess.html">HESS</a></TT>,  <TT>
+<a href="iupd.html">IUPD</a></TT>,
+<TT><a href="let.html">LET</a></TT>, <TT><a href="mode.html">MODE=</a></TT>, <TT>
+<a href="nonr.html">NONR</a></TT>, <TT><a href="omin.html">OMIN</a></TT>, <TT>
+<a href="prnt.html">PRNT=</a></TT>,
+<TT><a href="recalc.html">RECALC</a></TT>, <TT><a href="rmax.html">RMAX</a></TT>, <TT>
+<a href="rmin.html">RMIN</a></TT>, <TT><a href="rscal.html">RSCAL</a></TT>.
+<P>
+The current <TT>EF</TT>, while very reliable, is sometimes slow.  To over-ride
+some safety checks, specify <TT>LET</TT>.  This will sometimes make the job run
+faster.
+</BODY>
+</HTML>

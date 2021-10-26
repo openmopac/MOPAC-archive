@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>OPT(TEXT=n.nn)</TITLE>
+                                                                                                                 <style type="text/css">.auto-style1 {
+	font-weight: normal;
+}
+</style>
+                                                                                                                 </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>OPT<span class="auto-style1"><strong>(&quot;</strong><em><strong>Label</strong></em></span><strong><span class="auto-style1"><sub>1</sub></span></strong><span class="auto-style1"><strong>"=</strong><em><strong>n.nn</strong></em><strong>[,&quot;</strong><strong><em>Label</em><sub>2</sub>"=<em>m.mm</em>[,&quot;</strong><strong><em>Label</em><sub>3</sub>"=<em>s.ss...</em>]]),&nbsp; </strong></span></TT> &nbsp;<TT>OPT<span class="auto-style1"><strong>(&quot;</strong><em><strong>Label</strong></em><strong><sub>1</sub>"[,&quot;<em>Label</em><sub>2</sub>"[,&quot;<em>Label</em><sub>3</sub>"...]])</strong></span></TT> </h1>
+<h2>
+<TT>OPT<span class="auto-style1"><strong>(&quot;</strong><em><strong>Label</strong></em></span><strong><span class="auto-style1"><sub>1</sub></span></strong><span class="auto-style1"><strong>"=</strong><em><strong>n.nn</strong></em><strong>[,&quot;<em>Label</em><sub>2</sub>"=<em>m.mm</em>[,&quot;<em>Label</em><sub>3</sub>"=<em>s.ss...</em>]])</strong></span></TT></h2>
+<p>All atoms within <em>n.nn</em> &Aring;ngstroms of any atom that has, as part 
+of its PDB atom-label, the chain-letter and residue-number in text &quot;label&quot; will be flagged for optimization.&nbsp; 
+All other atoms will be frozen, i.e., flagged to not be optimized.&nbsp; If
+<a href="nooptx.html"><tt>NOOPT</tt></a> is present, then 
+the atoms defined by &quot;label&quot; will be flagged to not be optimized; only the atoms 
+within <em>n.nn</em> Ångstroms of any atom defined by &quot;label&quot; will be flagged to 
+be optimized.</p>
+<p><tt>Label</tt> is the chain letter and residue number for one or more atoms.&nbsp; For example:&nbsp; <tt>OPT("B 
+4"=4.0)</tt>&nbsp;or <tt>OPT("A 1157&quot;=4.0)</tt>.&nbsp; Spaces are not important, but using spaces makes it easier to 
+read the atom label&nbsp;&nbsp;&nbsp;If the chain letter is not important, it 
+can be replaced with an asterisk, e.g.,&nbsp; <tt>OPT("* 
+1157"=4.0)</tt></p>
+<p>Use of this keyword has two advantages. First, the
+<a href="Precision_in_proteins.html">precision</a> of the calculated energy 
+increases, and second, the computational effort is reduced. </p>
+<p>This 
+option should not be used with <a href="optx.html"><tt>OPT-X</tt></a> or other similar keywords.</p>
+<h2>
+<TT>OPT<span class="auto-style1"><strong>(&quot;</strong><em><strong>Label</strong></em><strong><sub>1</sub>"[,&quot;<em>Label</em><sub>2</sub>"[,&quot;<em>Label</em><sub>3</sub>"...]])</strong></span></TT> 
+</h2>
+<p>All atoms in residues <em>Label<sub>1</sub></em>, <em>Label<sub>2</sub></em>, 
+etc. will be marked for optimization.&nbsp; All other atoms will be frozen.</p>
+<p>See also <tt><a href="rapid.html">RAPID</a>.</tt></p>
+</BODY>
+</HTML>

@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Neglect of diatomic overlap integral</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H3><A NAME="SECTION001221200000000000000">Neglect of diatomic overlap integral</A> </H3>
+<P>All overlap integrals arising from the overlap of two different atomic orbitals are neglected. This reduces the overlap matrix to a unit matrix. The secular equation thus reduces to: </P>
+<P><DIV ALIGN="CENTER">
+                     <i><font size="4">c<sub>i</sub>|F-<span class="b">&epsilon;</span><sub>i</sub>S|c<sub>i</sub> 
+= 0.</font></i></DIV>
+<P>In semiempirical theory the Coulson density matrix is used, e.g.: </P>
+<P align="center"><font size="4"><i>P</i><sub><span class="b">&lambda;&sigma;</span></sub><sup><span class="b">&alpha;</span></sup></font>&nbsp; 
+= <span class="b">&Sigma;</span><font face="Times New Roman"><sub>i</sub><sup>occ</sup>(</font><i>c</i><sub><span class="b">&lambda;</span>
+<font face="Times New Roman">i</font></sub><sup><span class="b">&alpha;</span></sup><i>c</i><sub><span class="b">&sigma;</span><font face="Times New Roman">i</font></sub><sup><span class="b">&alpha;</span></sup>)</P>
+<P><DIV ALIGN="CENTER">
+                     &nbsp;</DIV>
+<P>where the sum is over all occupied spin molecular orbitals. In RHF calculations, only the total density matrix is calculated: </P>
+<P align="center"><font size="4"><i>P</i><sub><span class="b">&lambda;&sigma;</span></sub></font>&nbsp; 
+= 2<span class="b">&Sigma;</span><font face="Times New Roman"><sub>i</sub><sup>occ</sup>(</font><i>c</i><sub><span class="b">&lambda;</span>
+<font face="Times New Roman">i</font></sub><i>c</i><sub><span class="b">&sigma;</span><font face="Times New Roman">i</font></sub>)</P>
+
+<DIV ALIGN="CENTER">
+                     &nbsp;</DIV>
+<P>where the sum is over all occupied molecular orbitals. </P>
+<P>When a system has more than half the available M.O.s, <I>N</I>, filled, it is computationally<A NAME="BM9151">&nbsp;</A> faster to calculate the positron electron equivalent: </P>
+<P align="center"><font size="4"><i>P</i><sub><span class="b">&lambda;&sigma;</span></sub><sup><span class="b">&alpha;</span></sup></font>&nbsp; 
+= 1 - <span class="b">&Sigma;</span><font face="Times New Roman"><sup>N</sup><sub>i=occ+1</sub>(</font><i>c</i><sub><span class="b">&lambda;</span>
+<font face="Times New Roman">i</font></sub><sup><span class="b">&alpha;</span></sup><i>c</i><sub><span class="b">&sigma;</span><font face="Times New Roman">i</font></sub><sup><span class="b">&alpha;</span></sup>)</P>
+
+                    
+<P>and </P>
+<P align="center"><font size="4"><i>P</i><sub><span class="b">&lambda;&sigma;</span></sub><sup><span class="b">&alpha;</span></sup></font>&nbsp; 
+= 2 - <span class="b">&Sigma;</span><font face="Times New Roman"><sup>N</sup><sub>i=occ+1</sub>(</font><i>c</i><sub><span class="b">&lambda;</span>
+<font face="Times New Roman">i</font></sub><i>c</i><sub><span class="b">&sigma;</span><font face="Times New Roman">i</font></sub>)</P>
+                     &nbsp;</DIV>
+<P>An important exception to this rule is the calculation of the one-electron two-center integral <i>
+H<sub><span class="b">&mu;&nu;</span></sub></i>, which is approximated by: </P>
+<P align="center">&nbsp;<i>H</i><sub><span class="b">&mu;&nu;</span></sub> <font face="Symbol">&nbsp;= </font>
+<i><font face="Times New Roman">S</font></i><sub><span class="b">&mu;&nu;</span></sub>(<i>U</i><sub><span class="b">&mu;&mu;</span></sub>
+<font face="Times New Roman">+ </font><i>U</i><sub><span class="b">&nu;&nu;</span></sub><font face="Times New Roman">)/2.</font></P>
+<P><DIV ALIGN="CENTER">
+                     &nbsp;</DIV>
+<P>where                            <i>S<sub><span class="b">&mu;&nu;</span></sub></i> is the overlap integral between atomic orbital
+<i><span class="b">&psi;<sub>&mu;</sub></span></i> on an atom, and
+<i><span class="b">&psi;<sub>&nu;</sub></span></i> on another atom, and the <I>U</I> values are atomic orbital constants, supplied as data.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <BR>
+</P>
+                                                </BODY>
+</HTML>

@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Geometry Specification for Band Structure Calculations</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Geometry Specification for Band Structure Calculations
+</H2>
+Before electronic band structure calculations can be done, the sequence of
+atoms in the polymer must be supplied in a highly specific order.  For a simple
+polymer, the coordinates of all the atoms in the first fundamental unit cell
+are given.  These atoms can be in any order.  The next set of atoms defined are
+those for the next unit cell.  These atoms <EM>must</EM> be in the same order as
+the atoms in the first unit cell. For band structures at least two unit cells
+must be defined.  If more than two unit cells are defined, the atoms in the
+other  unit cells must be defined in the same order as those in the first unit
+cell.
+<P>
+For all polymer calculations <EM>except</EM> band structures, the order of
+atoms is not important. <a href="tv.html">An example of such a data set</a>
+is shown
+for
+polytetrahydrofuran.  When band structures are to be calculated,
+<a href="tv.html">the order of atoms is important</a>.
+<P>
+Because of the difficulty in generating data sets for band-structure work,
+program <TT>BZ</TT> was written.  Given a suitable data-set, BZ will generate a
+MOPAC data set which can then be used for the calculation of band structures.
+</BODY>
+</HTML>

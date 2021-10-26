@@ -1,0 +1,315 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Theory used in MOPAC2016</TITLE>
+</HEAD>
+<body bgcolor=white>
+<B>
+<h1 align="center" dir="ltr">Theory used in MOPAC2016 (<a href="theory_note.html">note</a>)</h1>
+<p align="center"><br>
+&nbsp;</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" bordercolor="#111111" style="border-collapse: collapse" height="150">
+    <tr>
+      <td width="100%" height="19"><font face="Times New Roman" size="4">
+<B>
+      <a href="theory.html#Semiempirical%20theory"><font color="#000000">Semiempirical Theory</font></a></B></font></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19"><font face="Times New Roman" size="4"><b>
+      <a href="theory.html#An%20SCF%20Calculation"><font color="#000000">An SCF Calculation</font></a></b></font></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">
+<B>
+      <FONT FACE="Times New Roman" size="4"><a href="theory.html#Solid%20state%20capability">
+<font color="#000000">Solid state capability</font></A>
+      </a>
+</FONT>
+    </B>
+      </td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">
+<B>
+      <FONT FACE="Times New Roman" size="4">
+      <a href="theory.html#Multi-Electron%20Configuration%20Interaction"><font color="#000000">Multi-Electron Configuration Interaction</font></a></FONT></B></td>
+    </tr>
+    <tr>
+      <td width="100%" height="17"><font face="Times New Roman" size="4">
+<B>
+      <a href="theory.html#Geometry%20Optimization"><font color="#000000">Geometry Optimization</font></a></B></font></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">
+<B>
+      <font size="4" FACE="Times New Roman">
+      <a href="theory.html#Normal%20Coordinate%20Calculation"><font color="#000000">Normal Coordinate Calculation</font></A></a></font></B></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">
+<B>
+      <FONT FACE="Times New Roman" size="4"><a href="theory.html#DRC_coordinates">
+<font color="#000000">Dynamic and Intrinsic Reaction Coordinates</font></a></FONT></B></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">
+<B>
+      <FONT FACE="Times New Roman" size="4"><a href="theory.html#Point%20Group%20Theory">
+<font color="#000000">Point Group Theory</font></a></FONT></B></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">
+<B>
+      <FONT FACE="Times New Roman" size="4"><a href="theory.html#Precision">
+<font color="#000000">Level of Precision with MOPAC</font></a></FONT></B></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19"><font face="Times New Roman" size="4">
+<B>
+      <a href="theory.html#Miscellaneous%20Electronic"><font color="#000000">Miscellaneous Electronic</font></a></B></font></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19"><font face="Times New Roman" size="4">
+<B>
+      <a href="theory.html#Miscellaneous"><font color="#000000">Miscellaneous</font></a> </B></font></td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">&nbsp;</td>
+    </tr>
+    <tr>
+      <td width="100%" height="19">&nbsp;</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<table border="0" cellpadding="0" cellspacing="0" bordercolor="#111111" width="100%" style="border-collapse: collapse" height="1830">
+  <tr>
+    <td width="50%" valign="top" height="308">
+<B>
+<h2 align="center"><a name="Semiempirical theory">Semiempirical theory</a></h2>
+<P align="left">&nbsp;&nbsp;&nbsp;&nbsp;<A HREF="approximations.html">Approximations used in Semempirical Methods</A><br>&nbsp;&nbsp;&nbsp;
+<a href="Coulson_density_population.html">Construction of the Density Matrix</a><br>
+&nbsp;&nbsp;&nbsp; <a href="parameters.html">Parameters used in Semiempirical 
+Methods</a><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Roothaan_Hall.html">Basic Roothaan-Hall Equations</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="NDO.html">Neglect of diatomic overlap integral</A>
+<br>
+&nbsp;&nbsp;&nbsp; <A HREF="n34c.html">Neglect of three and four center integrals</A>
+<br>
+&nbsp;&nbsp;&nbsp; <A HREF="1c2e.html">One-center two-electron integrals</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="nddo2e2c.html">NDDO two-electron two-center integrals</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="assembly2e2c.html">Final Assembly of Two-Electron Two-Center Integrals</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="1c1e.html">The one-center one-electron integral
+<i>H</i><sub><i><span class="b">&mu;&mu;</span></i></sub></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="2c1e.html">The two-center one-electron integral
+<i>H</i><sub><i><span class="b">&mu;&nu;</span></i></sub></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="cc_rep_int.html">Core-core repulsion integrals</A>
+<br>
+&nbsp;&nbsp; <A NAME="tex2html699">&nbsp;<A HREF="scf_calc.html">The Self-Consistent Field Calculation</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="calc_of_hof.html">Calculation of <span class="b">&Delta;</span>H<sub>f
+</sub> </A></P>
+    </B></td>
+    <td width="50%" valign="top" height="308">
+<B>
+    <h2 align="center" dir="ltr"><a name="An SCF Calculation">An SCF Calculation</a></h2>
+<P dir="ltr"><FONT FACE="Arial">&nbsp;&nbsp; </FONT><FONT FACE="Times New Roman">&nbsp;<A HREF="SCF_calcn.html">An SCF Calculation</A></A></FONT><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_starting_dens_mat.html">Starting density matrix</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_starting_fock_mat.html">Assembly of the starting Fock matrix</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_diag.html">Diagonalization of the Fock matrix</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_exercises.html">Exercises involving eigenvectors</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_iter_dens_mat.html">Iterating density matrix</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_iter_fock.html">Iterating Fock matrix</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_calc_hof.html">Calculation of heat of formation</A></A></P>
+    <p dir="ltr">&nbsp;</B><p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" height="386">
+<B>
+<h2 align="center" dir="ltr"><FONT FACE="Times New Roman">
+<a name="Solid state capability">Solid state capability</A> </a>
+</FONT></h2>
+<P dir="ltr">&nbsp;&nbsp;&nbsp; <A HREF="Solids_cluster.html">The Cluster</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_Madelung.html">The Madelung Problem</A><br>
+&nbsp;&nbsp;&nbsp; <a href="piezo.html">Piezoelectric
+Effect</a><br>
+&nbsp;&nbsp;&nbsp; <a href="Refractive_index.html">Refractive Index</a><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_derivatives.html">Derivatives</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_charge_balance.html">Charge Balanced Unit Cells</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_geometry_specification_for_band_structures.html">Geometry Specification for Band Structure Calculations</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_band_structure.html">Electronic Band Structure</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_dos.html">Electronic Density of States</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_brillouin_zone.html">Brillouin Zone: Generation of Band Structures</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Solids_space_group_operations.html">Space-group operations</A></A></P>
+    </B>
+    <p>&nbsp;</td>
+    <td width="50%" valign="top" height="386">
+<B>
+<h2 align="center"><FONT FACE="Times New Roman">
+<a name="Multi-Electron Configuration Interaction">Multi-Electron Configuration Interaction</a></FONT></h2>
+<P><a name="tex2html730">&nbsp;&nbsp;&nbsp; </a><A HREF="meci_start.html">Starting electronic configuration</A></A>
+<br>
+<a name="tex2html731">&nbsp;&nbsp;&nbsp; </a> <A HREF="meci_micro.html">Microstates</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_perm.html">Permutations</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_energy_micro.html">Energy of microstates</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_zero_energy.html">Zero of energy used in MECI</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_sec_det.html">Construction of secular determinant</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_states_arising.html">States arising from various calculations</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_spin_ang_mom.html">Spin angular momentum</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_calc_spin_states.html">Calculation of spin-states</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_choice_of_state.html">Choice of State to be Optimized</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_quant_num.html">Quantum Numbers</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_polarizability.html">Polarizability</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_Franck_Condon.html">Franck-Condon considerations</A></A> <br>
+&nbsp;&nbsp;&nbsp; <A HREF="meci_degen_states.html">Degenerate States</A></A><br>
+&nbsp; </P>
+    </B>
+    <p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" height="256">
+    <h2 align="center"><a name="Geometry Optimization">Geometry Optimization</a></h2>
+    <p align="left">&nbsp;&nbsp;&nbsp; <A HREF="EigenFollowing.html"><B>EigenFollowing</B></A></A><B><br>
+&nbsp;&nbsp;&nbsp; <A HREF="BFGS_optimizer.html">The BFGS function optimizer</A></B><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Optimizing_one_unknown.html"><B>Optimization of one unknown</B></A></A><B><br>
+&nbsp;&nbsp;&nbsp; </B><A HREF="Geometry_considerations.html"><B>Considerations in Geometry Optimization</B></A></A><B><br>
+&nbsp;</B></p>
+    <p>&nbsp;</td>
+    <td width="50%" valign="top" height="256">
+<B>
+<h2 align="center"><a name="Normal Coordinate Calculation"><FONT FACE="Arial">
+Normal Coordinate Calculation</FONT></A></a></h2>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="Vibrational%20Quantities%20-%20Derivation.html">Derivation of 
+vibrational quantities</a> - This is the best place to start understanding the 
+theoretical background. <br><br>&nbsp;&nbsp; The following pages are quick and 
+superficial descriptions of various quantities<br>&nbsp;&nbsp;&nbsp;&nbsp; <br>&nbsp;&nbsp;&nbsp; <A HREF="vibrational_frequencies.html">Calculation of Vibrational Frequencies</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Hessian_Matrix.html">Calculation of the Hessian matrix</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="frame.html">Mechanism of the frame in FORCE calculation</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="vibrational_analysis.html">Vibrational Analysis</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="reduced_masses.html">Reduced masses</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="effective_masses.html">Effective masses</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="travel.html">Travel</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="force_constants.html">Force Constants</A></A><BR>
+&nbsp;&nbsp;&nbsp; <A HREF="transition_dipole.html">Transition dipole</A></A> </P>
+</B>
+<p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" height="257">
+<B>
+<h2 align="center"><FONT FACE="Arial">
+<a name="DRC_coordinates"></a>Dynamic and Intrinsic Reaction Coordinates</FONT></h2>
+<P>&nbsp;&nbsp;&nbsp; <A HREF="DRC_IRC_Description.html">Description</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="DRC_IRC_Equations.html">Equations used</A><br>
+&nbsp;&nbsp;&nbsp; <a href="Temperature_in_DRC.html">Specifying temperature in a 
+DRC simulation</a><br>
+&nbsp;&nbsp;&nbsp; <A HREF="IRC_description.html">IRC</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="DRC_IRC_description_2.html">General description of the DRC and IRC</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="DRC_IRC_extrema.html">Option to allow only extrema to be output</A></A>
+<br>
+&nbsp;&nbsp;&nbsp; <A HREF="DRC_IRC_keywords.html">Keywords for use with the IRC and DRC</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="DRC_IRC_example.html">Examples of DRC/IRC data</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="DRC_IRC_output_format.html">Output format for IRC and DRC</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="DRC_test_of.html">Test of DRC</A><br>
+&nbsp;</B></td>
+    <td width="50%" valign="top" height="257">
+<B>
+<h2 align="center" dir="ltr"><FONT FACE="Times New Roman">
+<a name="Point Group Theory" href="point_group_theory.html">Point Group Theory</a></FONT></h2>
+<p align="left" dir="ltr">&nbsp;&nbsp;&nbsp; <A HREF="point_group_theory_limitations.html">Limitations</A>
+<br>
+&nbsp;&nbsp;&nbsp;
+<A HREF="point_groups_representation.html">Representation of Point Groups</A> <br>
+&nbsp;&nbsp;&nbsp;
+<A HREF="point_group_identification.html">Identification of Point-Groups</A> <br>
+&nbsp;&nbsp;&nbsp;
+<A HREF="point_groups_tolerances.html">Tolerance</A><br>
+&nbsp;&nbsp;&nbsp;
+<A HREF="point_groups_orientation.html">Orientation of the Abelian groups C<SUB>2<I>v</I></SUB> and D<SUB>2<I>h</I></SUB></A><br>
+&nbsp;&nbsp;&nbsp;
+<A HREF="moir.html">Molecular Orbitals</A><br>
+&nbsp;&nbsp;&nbsp;
+<A HREF="ncir.html">Normal Coordinates</A>
+<A HREF="states.html">States</A> <br>
+&nbsp;&nbsp;&nbsp; <a href="Atomic_states.html">Atomic energy levels and States</a><br>
+&nbsp;</p>
+</B>
+<p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" height="605" rowspan="2">
+<B>
+<h2 align="center"><a name="Miscellaneous Electronic">Miscellaneous Electronic</a></h2>
+<p align="left">&nbsp;&nbsp;
+<A HREF="koopman.html">&nbsp;Koopmans' Theorem</A></A><br>
+    <a name="tex2html703">&nbsp;&nbsp;&nbsp; </a><A HREF="dipole_moment.html">Dipole moments</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="bond_orders.html">Bond Orders</A><br>
+    <a name="tex2html708">&nbsp;&nbsp;&nbsp; </a><A HREF="mulliken_populations.html">Mulliken populations</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Localized_orbitals.html">Localized orbitals</A><br>
+    <a name="tex2html712">&nbsp;&nbsp;&nbsp; </a><A HREF="Localized_MOs.html">Localized M.O.s</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Localization_theory.html">Localization Theory</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="oscillator_strength.html">Oscillator Strength</A></A><br>
+    &nbsp;&nbsp;&nbsp; <A HREF="SCF_convergence.html">Convergence in SCF Calculation</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="SCF_failure.html">Causes of failure to achieve an SCF</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="ci_in_paths.html">Use of C.I. in Reaction Path Calculations</A></A><br>
+    &nbsp;&nbsp;&nbsp; <A HREF="sparkles.html">Sparkles</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="capped_bonds.html">Capped Bonds</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Overlap_integrals.html">Algebraic Derivation of Overlap Integrals over Slater Orbitals</A><br>
+&nbsp;&nbsp;&nbsp; <a href="rotate_atomic_orbitals.html">Rotation of atomic 
+orbitals (conventional, i.e., trigonometric)</a><br>
+&nbsp;&nbsp;&nbsp; <a href="rotate_atomic_orbitals_generic.html">Rotation of 
+atomic orbitals (generic)</a><br>
+&nbsp;&nbsp;&nbsp; <A HREF="Energies_of_isolated_atoms.html">Energies of Isolated Atoms</A></A><br>
+    &nbsp;&nbsp;&nbsp; <A HREF="reaction_paths.html">Reaction paths</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="polarizability.html">Polarizability and Hyperpolarizability Calculation</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="time_dependent_hartree_fock.html">Time-Dependent Hartree-Fock</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="cosmo.html">COSMO </A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="pmep_description.html">Parametric Molecular Electrostatic Potential (PMEP)</A><br>&nbsp;&nbsp;&nbsp;
+<a href="Uniit_cell_pressure.html">Pressure on a unit cell</a><p align="left"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</B></td>
+    <td width="50%" valign="top" height="292">
+<B>
+<h2 align="center" dir="ltr"><FONT FACE="Arial">
+Level of <a name="Precision">Precision</a> with MOPAC</FONT></h2>
+<P dir="ltr">&nbsp;&nbsp;&nbsp; <A HREF="fun_con.html">Fundamental Physical Constants</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="precision.html">Various precision levels</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="precision_low.html">Reasons for low precision</A></A><br>
+&nbsp;&nbsp;&nbsp;</P>
+    </B>
+      </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" height="313">
+<B>
+    <h2 align="center"><a name="Miscellaneous">Miscellaneous</a> </h2>
+    <p>&nbsp;&nbsp;&nbsp; <A HREF="peptide_correction.html">Correction to the Peptide Linkage</A><br>
+    &nbsp;&nbsp;&nbsp;&nbsp; <A HREF="molecule_size.html">"Size" of a molecule</A></A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="gradients_discussion.html">Gradients</A><br>
+    &nbsp;&nbsp;&nbsp; <A HREF="reaction_paths.html">Reaction paths</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="grid_calc.html">Grid Calculation</A><br>
+&nbsp;&nbsp;&nbsp; <A HREF="thermochemistry.html">
+    Thermochemistry</A><br>
+    &nbsp;&nbsp;&nbsp; <A HREF="Saddle_calculation.html">
+    Use of <TT><FONT COLOR="#0000ff"><U>
+    SADDLE</U></FONT></TT> Calculation</A><br>
+&nbsp;&nbsp; <a href="gibbs.html">&nbsp;Gibbs free energy</a><br>
+&nbsp;&nbsp;&nbsp;</font><br>
+&nbsp;&nbsp;&nbsp;
+    <p>&nbsp;</B><p>&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" height="18">
+    </td>
+    <td width="50%" valign="top" height="18">
+    </td>
+  </tr>
+  </table>
+</B>
+</BODY>
+</HTML>

@@ -1,0 +1,178 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>C.I.=n </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<TT><h1 align="center"><A NAME="SECTION007325000000000000000">C.I.=<I>n</I></A></TT><A NAME="SECTION007325000000000000000"> </A>
+</h1>
+<P>When <TT>C.I.=<I>n</I></TT> is specified, the <I>n</I> M.O.s which 'bracket' the occupied-virtual energy levels will be used in a configuration interaction calculation. Thus, <TT>C.I.=2</TT> will include both the HOMO and the LUMO, while <TT>C.I.=1</TT> (implied for odd-electron systems) will only include the HOMO (This will do nothing<A NAME="BM1665">&nbsp;</A> for a closed-shell system, and leads to Dewar's half-electron correction [<A HREF="references.html#136">136</A>] for odd-electron systems). Users should be aware of the rapid increase in the size of the C.I. with increasing numbers of M.O.s being used. Normally, 
+configuration interaction (see the
+<a href="theory.html#Multi-Electron%20Configuration%20Interaction">MECI</a><TT>)</TT> is invoked if the keywords which imply a C.I. calculation are used (<A HREF="biradical.html"><FONT FACE="Courier New" SIZE=2>BIRADICAL</FONT></A> or <A HREF="excited.html"><FONT FACE="Courier New" SIZE=2>EXCITED</FONT></A>). Note that <TT>
+<a uhf.html" href="uhf.html"><FONT COLOR="#0000ff"><U>UHF</U></FONT></a></TT> should not be present.</P>
+<P>&nbsp;<DIV ALIGN="CENTER"><DIV ALIGN="CENTER"> </P>
+<STRONG><P><A NAME="nconfigs"></A>Table:</STRONG> Number of Configurations used in MECI</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=623>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD WIDTH="31%" VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">No. of Electrons</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Configs</TD>
+<TD WIDTH="31%" VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">No. of Electrons</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">Configs</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Alpha</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Beta</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Alpha</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Beta</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">&nbsp;</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=1</TT></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">0</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=2</TT></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">0</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">2</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=3</TT></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">9</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">9</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=4</TT></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">36</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">24</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=5</TT></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">100</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">100</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=6</TT></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">400</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">300</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=7</TT></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1225</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">1225</TD>
+</TR>
+<TR><TD WIDTH="12%" VALIGN="MIDDLE">
+<TT><P>C.I.=8</TT><SUP>*</SUP></TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">4900</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD WIDTH="15%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD WIDTH="14%" VALIGN="MIDDLE">
+<P ALIGN="RIGHT">3920</TD>
+</TR>
+</TABLE>
+<P><BR>
+*: Do not use unless other keywords are also used. See <TT>MICROS</TT>, and the discussion in&nbsp;<A HREF="meci_choice_of_state.html#cos">Choice of State to be Optimized</A> . </DIV></DIV></P>
+<P>&nbsp;</P>
+<P><A NAME="BM1673">&nbsp;</A> If a change of spin is defined, then larger numbers of M.O.s can be used up to a maximum of 22. If more than 22 M.O.s are needed, then <TT>
+meci_C.F90</TT> would need to be changed. In <TT>meci_C.F90</TT>, increase the value of <TT>NMECI</TT> as necessary. Normally, a full C.I. is carried out, in which case the spin-states are exact eigenstates of the spin operators. For systems with more than the normal number of configurations (Table), the configurations of lowest energy will be used. See also <TT>MICROS </TT>and the keywords defining spin-states. </P>
+<P>Note that for any system, use of <TT>C.I.=5</TT> or higher normally implies the diagonalization of quite large matrices. As a geometry optimization using a C.I. requires the derivatives to be calculated using derivatives of the C.I. matrix, geometry optimization with large C.I.s will require more time than smaller C.I.s. </P>
+<P>If microstates are supplied, using <A HREF="micros.html"><FONT FACE="Courier New" SIZE=2>MICROS</FONT></A>, 
+then the states used are precisely controlled.&nbsp; This requires more work, 
+because each microstate has to be explicitly defined, but it is very flexible 
+and much more certain than when other keywords such as <A HREF="cisdt.html"><FONT FACE="Courier New" SIZE=2>CISDT</FONT></A><TT> 
+are used.</TT></P>
+<P>See also: <A HREF="open.html"><FONT FACE="Courier New" SIZE=2>OPEN(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</FONT></A><TT>, </TT><A HREF="ci=nm.html"><FONT FACE="Courier New" SIZE=2>C.I.=(<I>n</I><SUB>1</SUB>,<I>n</I><SUB>2</SUB>)</FONT></A><TT>, </TT><A HREF="cis.html"><FONT FACE="Courier New" SIZE=2>CIS</FONT></A><TT>, </TT><A HREF="cisd.html"><FONT FACE="Courier New" SIZE=2>CISD</FONT></A><TT>, </TT><A HREF="peci.html"><FONT FACE="Courier New" SIZE=2>PECI</FONT></A><TT>, </TT><A HREF="cisdt.html"><FONT FACE="Courier New" SIZE=2>CISDT</FONT></A><TT>, </TT><A HREF="meci.html"><FONT FACE="Courier New" SIZE=2>MECI</FONT></A>, <A HREF="root.html"><FONT FACE="Courier New" SIZE=2>ROOT</FONT></A>, <A HREF="micros.html"><FONT FACE="Courier New" SIZE=2>MICROS</FONT></A>, <FONT FACE="Courier New" SIZE=2>
+<a href="meci_states_arising.html">STATES ARISING</a>, <A HREF="singlet.html">SINGLET</A></FONT>, <A HREF="doublet.html"><FONT FACE="Courier New" SIZE=2>DOUBLET</FONT></A>, etc. </P>
+</BODY>
+</HTML>

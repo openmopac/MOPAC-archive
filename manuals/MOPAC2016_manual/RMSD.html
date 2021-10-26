@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Root Mean Square Difference</TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<B>
+Root Mean Square Difference</B></h1>
+<p align="left">
+&nbsp;<p align="left">
+To calculate the RMS difference between two geometries, use the <tt>
+<a href="geo_ref.html">GEO_REF</a> </tt> keyword 
+and <tt><a href="zero_scf.html">0SCF</a></tt>.&nbsp; This 
+calculation is very fast, it typically only takes a few seconds of CPU time. For this type of calculation, a 
+convenient option is to also use <tt><a href="geo_dat.html">GEO_DAT</a></tt>, so the 
+data-set could be as short as one line(although three lines would allow the job 
+to have a title and comment).<p align="left">
+Caveats:<p align="left">
+Both systems must have the same number of atoms and the same empirical formula.<p align="left">
+If PDB information is present, this will be used, in which case every atom must 
+have a unique PDB label.&nbsp; Atom numbers in labels do <em>not</em> count in 
+determining the PDB label.<p align="left">
+If the RMS can be reduced by swapping pairs of atoms, this will be done.&nbsp; 
+To prevent swapping, add <tt><a href="noswap.html">NOSWAP</a></tt>.
+</BODY>
+</HTML>

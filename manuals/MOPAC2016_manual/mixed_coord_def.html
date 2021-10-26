@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Mixed Cartesian and Internal Coordinate Definition</TITLE>
+                                                                                                                                                                               </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2>Mixed Cartesian and Internal Coordinate Definition </H2>
+<p>With the exception of the first atom, real or dummy, atom positions may be 
+defined using either Cartesian or internal coordinates.&nbsp; The coordinates of 
+an atom are defined using internal coordinates if a connectivity is supplied.&nbsp; 
+If the connectivity is missing, the atom is defined in terms of Cartesian 
+coordinates. Atom 1, because it does not have a connectivity, is always defined 
+in Cartesian coordinates.&nbsp; Although these are usually (0.0, 0.0, 0.0) there 
+is no a priori reason for this, and atom 1 can be put at any user-defined 
+position.</p>
+<p>An atom's position can be defined using internal coordinates involving atoms 
+whose positions have not yet been defined if those atoms are defined using 
+Cartesian coordinates.&nbsp; This is different from the normal restriction of 
+internal coordinates, where an atom's position can only be defined using atoms 
+that have already been defined.&nbsp; Put another way, if the position of atom 
+100 is defined using atoms 110, 120, and 60, then the positions of atoms 110 and 
+120 must be defined using Cartesian coordinates.&nbsp; Atom 60 can be in 
+Cartesian or internal, since its position has already been defined.</p>
+<p>In the following example, the geometry of a tripeptide is defined using 
+Cartesian coordinates for atom 1 and all the atoms in the second residue.&nbsp; 
+The rest of the atoms in residue 1 and all the atoms in residue 3 are defined 
+using internal coordinates.</p>
+<p>Note that&nbsp; the first three atoms of the third residue are defined using 
+atoms whose positions are given in Cartesian coordinates.&nbsp; This is a valid 
+definition - Cartesian and internal coordinates can be mixed together in any way 
+desired.&nbsp; </p>
+<p>Example of a mixed coordinate definition:</p>
+
+
+
+<PRE> Gradients 1scf
+  Example of mixed coordinates. A tripeptide with residues 1 and 3 in internal coordinates
+  residue 2 is in Cartesian coordinates
+  N         0.00000000 +0    0.0000000 +0    0.0000000 +0                      
+  C         1.45099200 +1    0.0000000 +0    0.0000000 +0     1     0     0    
+  C         1.51835900 +1  114.2160460 +1    0.0000000 +0     2     1     0    
+  O         1.22627600 +1  119.2494590 +1  150.0224060 +1     3     2     1    
+  C         1.53154900 +1  110.2108510 +1 -122.9442610 +1     2     1     3    
+  S         1.81497400 +1  108.2495690 +1 -116.9760990 +1     5     2     1    
+  H         1.09144500 +1  107.8966510 +1  117.4730020 +1     2     1     3    
+  H         1.09439500 +1  110.6252580 +1  125.3849350 +1     5     2     1    
+  H         1.09375800 +1  111.5846500 +1    4.2686790 +1     5     2     1    
+  H         1.37249300 +1  102.4190520 +1 -179.3933780 +1     6     5     2    
+  H         1.01203000 +1  116.9993300 +1  127.1027860 +1     1     2     3    
+  H         1.01203000 +1  116.9993300 +1 -127.1027860 +1     1     2     3    
+  N         1.41779186 +1    2.3818640 +1   -0.5930817 +1                      
+  C         1.96005201 +1    3.7395708 +1   -0.5873182 +1                      
+  C         0.87144992 +1    4.6925379 +1   -0.0859199 +1                      
+  O        -0.30894710 +1    4.3852105 +1   -0.2277412 +1                      
+  C         2.58984680 +1    4.0757744 +1   -1.9613244 +1                      
+  C         3.95504011 +1    3.4174209 +1   -2.2109945 +1                      
+  C         5.13263384 +1    4.0760823 +1   -1.8023387 +1                      
+  C         6.39390379 +1    3.5338821 +1   -2.0746443 +1                      
+  C         6.51251534 +1    2.3040175 +1   -2.7409980 +1                      
+  C         5.35236761 +1    1.6339502 +1   -3.1585724 +1                      
+  C         4.08327785 +1    2.1864831 +1   -2.9055825 +1                      
+  H         2.75184646 +1    3.8479695 +1    0.1426395 +1                      
+  H         2.74129210 +1    5.1566073 +1   -1.9998683 +1                      
+  H         1.90797747 +1    3.8313152 +1   -2.7790034 +1                      
+  H         5.07815939 +1    5.0182815 +1   -1.2765870 +1                      
+  H         7.28256125 +1    4.0711027 +1   -1.8000485 +1                      
+  H         3.20599873 +1    1.6658896 +1   -3.2578962 +1                      
+  H         5.45626342 +1    0.6951745 +1   -3.6940611 +1                      
+  H         7.49097179 +1    1.8927662 +1   -2.9377954 +1                      
+  H         0.46717507 +1    2.2471723 +1   -0.9238687 +1                      
+  N         1.33611900 +1  118.9784180 +1  152.6871430 +1    15    14    13    
+  C         1.45816400 +1  122.1765280 +1  173.0360570 +1    33    15    14    
+  C         1.54029400 +1  106.1916250 +1  -98.1274360 +1    34    33    15    
+  O         1.22473500 +1  118.4172840 +1  -38.7329790 +1    35    34    33    
+  C         1.54046400 +1  112.6361960 +1  139.8205900 +1    34    33    15    
+  C         1.53533100 +1  115.3620840 +1  -28.7237370 +1    37    34    33    
+  C         1.52273000 +1  109.3021640 +1  175.4610420 +1    38    37    34    
+  O         1.24543100 +1  114.2017740 +1  -65.1675870 +1    39    38    37    
+  O         1.25543200 +1  119.1622320 +1  113.3463330 +1    39    38    37    
+  H         1.08372800 +1  109.7991700 +1   24.1081960 +1    34    33    15    
+  H         1.09211200 +1  107.8205160 +1 -148.0829980 +1    37    34    33    
+  H         1.09379600 +1  109.2718540 +1   94.4693220 +1    37    34    33    
+  H         1.08910800 +1  109.7719310 +1   58.7340750 +1    38    37    34    
+  H         1.08916200 +1  111.1381130 +1  -61.8510410 +1    38    37    34    
+  H         0.90000000 +1  120.0000000 +1 -179.9999990 +1    40    39    38    
+  H         1.01192900 +1  119.8483270 +1   10.8020530 +1    33    15    14    
+  H         1.34588100 +1  121.3449610 +1  139.3147470 +1    35    34    33    
+ </PRE>
+</BODY>
+</HTML>

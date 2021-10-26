@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>HESS=n </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>HESS=<I>n</I></TT> </h1>
+<P>In Baker's Eigenvector Following routine, options exist for deciding how to construct the initial Hessian matrix. The default is <TT>HESS=0</TT>. Options available are: </P>
+<TT><DL>
+<DD>HESS=0</TT> </DD>
+<DD>This is the default for geometry optimization (i.e., when <TT>EF</TT> is used). The initial Hessian is set equal to a diagonal matrix, with the diagonal terms set to 1000 kcal/mol/&Aring;<SUP>2</SUP> for bond-lengths, 500 kcal/mol/degrees<SUP>2</SUP> for angles, and 200 kcal/mol/degrees<SUP>2</SUP> for dihedrals. If Cartesian coordinates are used, all diagonal elements are set to 200 kcal/mol/&Aring;<SUP>2</SUP>. </DD>
+<DD>Do <EM>not</EM> specify <TT>HESS=0</TT> unless there is a good reason to do so. </DD>
+<TT><DD>HESS=1</TT> </DD>
+<DD>This is the default for transition-state location (i.e., when <TT>
+<a href="ts.html">TS</a></TT> is used). The full Hessian matrix is constructed using single-sided derivatives, see
+<a href="Hessian_Matrix.html">Hessian Matrix</a>, using the same density matrix throughout the entire construction of the Hessian. </DD>
+<TT><DD>HESS=2</TT> </DD>
+<DD>A rarely used option. The Hessian matrix from an earlier run can be used to start the current job. In order for this to work, there must be a one-to-one correspondence of parameters to be optimized. For example, if a geometry optimization using <TT>EF</TT> and <TT>
+<a href="am1.html">AM1</a></TT> were to be followed by a similar geometry optimization using <TT>EF</TT> and <TT>
+<a href="pm3.html">PM3</a></TT>, then the Hessian from the earlier calculation could be used to start the <TT>PM3</TT> job. (A simpler way of achieving this result is to use <TT>
+<a href="restart.html">RESTART</a></TT>, but note that this will also use the old geometry.) </DD>
+</DL>
+</BODY>
+</HTML>

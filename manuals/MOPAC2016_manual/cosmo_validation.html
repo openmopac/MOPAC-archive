@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<TITLE>COSMO Validation</TITLE></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<B><P ALIGN="CENTER">COSMO Validation</P></B>
+<P ><CENTER> <LEFT>
+<P ALIGN="left">The <a name="cosmo_validation"></a>COSMO solvation 
+method is common to all NDDO methods, so in order to check that COSMO is working 
+correctly, it is sufficient to run one molecule using one method.&nbsp; Dr 
+Andreas Klampt, author of COSMO, has stated that for AM1 methanol, run using a 
+modified MOPAC 7, the following results should be obtained:</P>
+
+<CENTER>
+
+<P align="left">FINAL HEAT OF FORMATION = -60.79407 KCAL <br>
+COSMO AREA = 66.32 SQUARE ANGSTROMS<br>
+COSMO VOLUME = 47.52 CUBIC ANGSTROMS</P>
+
+<CENTER>
+
+<P align="left">&nbsp;Because of small differences in software, the results from current 
+MOPACs are slightly different.&nbsp; To validate COSMO using MOPAC2016, run 
+methanol (CH<sub>3</sub>OH) using keywords &quot;AM1 PRECISE EPS=78.4&quot;, and check 
+that the following values are obtained:</P>
+
+<CENTER>
+
+<P align="left"><br>
+FINAL HEAT OF FORMATION = -60.791xx KCAL <br>
+COSMO AREA = 65.97 SQUARE ANGSTROMS<br>
+COSMO VOLUME = 47.15 CUBIC ANGSTROMS<br>
+DIELECTRIC ENERGY = -0.1821x EV</P>
+
+<CENTER>
+
+<P align="left">Other quantities of interest are:</P>
+
+<CENTER>
+
+<P align="left"><br>
+TOTAL ENERGY = -504.1678x EV<br>
+ELECTRONIC ENERGY = -439.6257x EV POINT GROUP: Cs<br>
+CORE-CORE REPULSION = -64.5421x EV<br>
+&nbsp;</P>
+
+<P align="left">(Here is the data set that was used in generating the results 
+given above)</P>
+<div align="left">
+<PRE> eps=78.4 precise am1 1scf
+ Methanol
+ 
+  O         0.00000000 +0    0.0000000 +0    0.0000000 +0                     
+  C         1.41376397 +1    0.0000000 +0    0.0000000 +0    1    0    0      
+  H         1.11883250 +1  105.4100509 +1    0.0000000 +0    2    1    0       
+  H         1.11822538 +1  110.6169278 +1  119.0723551 +1    2    1    3       
+  H         1.11822266 +1  110.6330403 +1 -119.0633582 +1    2    1    3       
+  H         0.96604061 +1  107.1304037 +1  179.7291695 +1    1    2    3       
+ 
+</PRE>
+</div>

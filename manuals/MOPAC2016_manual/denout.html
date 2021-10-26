@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>DENOUT </TITLE>
+                                                                                                                  </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>DENOUT, DENOUTF</TT>  </h1>
+<P>In a MOPAC calculation, the density matrix at the end of the calculation is to be output in a form suitable for input in another job. If an automatic dump due to the time being exceeded occurs during the current run, 
+and <TT>DENOUT</TT> is present, then the density matrix will also be output. (see <TT>
+<a href="restart.html">RESTART</a></TT>).&nbsp; The density matrix file is 
+unformatted.&nbsp; To output the formatted file, use <TT>DENOUTF</TT>. </P>
+<P>In both formatted and unformatted density files, the layout of the data is: 
+Number of atomic orbitals, number of atoms, lower half triangle of density 
+matrix elements.&nbsp; When the density file is used in a subsequent 
+calculation, the number of atomic orbitals and number of atoms is compared with 
+that expected.&nbsp; If they are different, an error message is printed, and the 
+run is stopped.</P>
+<P>In a MOZYME calculation, the LMOs at the end of the calculation are to be output in a form suitable for input in another job. If an automatic dump due to the time being exceeded occurs during the current run, 
+and <TT>DENOUT</TT> is present, then the density matrix will also be output. (see <TT>RESTART</TT>).&nbsp; 
+The formatted option, <TT>DENOUTF,</TT> is not available .</P>
+<P>
+The opposite of <TT>DENOUT</TT> is <TT><A HREF="oldens.html">OLDENS</A></TT>
+</P>
+</BODY>
+</HTML>

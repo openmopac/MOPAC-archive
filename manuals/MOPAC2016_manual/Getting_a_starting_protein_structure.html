@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Getting a starting protein structure </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p dir="ltr">(<a href="modeling_proteins.html#Getting">Modeling proteins</a>)</p>
+<h1>Getting a starting protein structure</h1>
+<p>There is only one good source of protein structures, and that is the
+<a href="http://www.rcsb.org/pdb/home/home.do">Protein Data Bank</a>, the PDB.&nbsp; 
+This is a collection of over 80,000 proteins, covering almost everything you 
+could want.&nbsp; Don't bother looking anywhere else for protein structures - 
+you'd just be wasting your time.&nbsp; The only exception is if you are wanting 
+to work on a new structure that hasn't yet been deposited into the PDB.</p>
+<p>Each structure is assigned a unique alphanumeric name, e.g., 1EJG for the 
+small protein Crambin.&nbsp; Associated with the name is a file, the PDB file, 
+that contains all the important information on the protein - who did the work, 
+where it was published and when, details about the structure, and the structure 
+itself.&nbsp; All of this is in a highly formal format, the PDB format.&nbsp;&nbsp; 
+MOPAC can read the PDB format directly, but as the PDB format does not contain 
+any keywords that MOPAC could recognize, the only result would be to add 
+hydrogen atoms, then print out 
+the geometry in MOPAC format, and stop.</p>
+<p>To help identify the PDB file you want to work with, here are some 
+suggestions:</p>
+<ul>
+  <li>Pick a protein that you are interested in, for example, if you're 
+  interested in the catalytic triad in a protease, you might want to look at 
+  Chymotrypsin.</li>
+  <li>If interested in enzyme mechanisms, try to find a file that includes an 
+  inhibitor.</li>
+  <li>Avoid proteins over about 5,000 atoms.&nbsp; You can run systems of up to 
+  ~14,500 atoms, but they'll use a lot of CPU time. In general, the smaller the 
+  structure, the faster it will run.</li>
+  <li>If possible, select complete and accurate structures.</li>
+  <li>X-ray structures are better than NMR structures.</li>
+</ul>
+</BODY>
+</HTML>

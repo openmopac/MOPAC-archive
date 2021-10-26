@@ -1,0 +1,302 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>CUTOFF </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>CUTOFF=<i>n.nn</i></TT>
+</h1>
+<a href="mozyme.html"><TT>MOZYME</TT></a> calculations run faster when some NDDO interactions are ignored.&nbsp; By 
+default, all NDDO interactions are included between atoms separated by 9.9 &Aring;ngstroms 
+or less, and all polarization functions between atoms separated by 10 &Aring;ngstroms 
+or less.&nbsp; For rough work, such as optimizing a structure that is far from a 
+minimum, if <TT>CUTOFF=<i>n.nn</i></TT> is used, then only point charge interactions beyond 
+<i>n.nn</i> &Aring;ngstroms 
+are used.&nbsp; A suitable value for<i> n.nn</i> is 6.0.&nbsp; This will give a 
+large increase in speed.<br><br>Before using<TT> CUTOFF</TT> to increase speed, 
+first try using <TT><a href="cutofp.html">CUTOFP</a>.</TT> <p>If <TT>CUTOFF=6</TT> is used, then <TT>
+<a href="gnorm.html">GNORM=20</a></TT> is recommended.&nbsp; 
+Once the geometry is optimized using <TT>GNORM=20</TT>, 
+the <TT>CUTOFF</TT> should be removed, and <TT>GNORM</TT> reduced to, 
+e.g., <TT>GNORM=10</TT>.</p>
+<p>The effect of <TT>CUTOFF</TT> on times and accuracy of prediction of geometry can be 
+investigated by examining the statistics for the optimization of the positions of hydrogen atoms in 
+Crambin, a small 642 atom, 46 residue protein with formula C<sub>202</sub>H<sub>315</sub>N<sub>55</sub>O<sub>64</sub>S<sub>6</sub>, 
+see Table I.&nbsp; For a larger system, hexokinase, 2E2O, a medium-sized protein of 5717 atoms and 299 
+residues, C<sub>1448</sub>H<sub>3073</sub>N<sub>375</sub>O<sub>810</sub>S<sub>11</sub>, 
+results for a 1SCF calculation are shown in Table II.&nbsp; Hexokinase contains 375 molecules of water.</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse; float:left" bordercolor="#111111" height="163" width="934">
+    <tr>
+      <td style="border-top-style: none; border-top-width: medium; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="3829" colspan="7">
+      Table I: Crambin</td>
+      <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" align="center" height="38" width="570">
+      &nbsp;</td>
+      <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" align="center" height="38" width="570">
+      &nbsp;</td>
+      <td style="border-top-style: none; border-top-width: medium; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="934" colspan="5">
+      Table II: Hexokinase</td>
+    </tr>
+    <tr>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1; border-left-style:solid; border-left-width:1" align="center" height="38" width="59">
+      Cutoff</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="61">
+      Time (s)</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="37">
+      Ratio</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="81">
+      Distortion (<font face="Times New Roman">&Aring;</font>)</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="90">Distortion (<font face="Times New Roman">&Aring;</font>)</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" height="38" width="99" align="center">
+      Energy (Kcal/mol)</td>
+      <td style="border-bottom-style: solid; border-bottom-width: 1; border-right-style:solid; border-right-width:1" height="38" width="107" align="center">
+      Relative<br>
+      energy</td>
+      <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; border-right-style:none; border-right-width:medium" align="center" height="38" width="59">
+      &nbsp;</td>
+      <td style="border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium; border-left-style:none; border-left-width:medium" align="center" height="38" width="59">
+      &nbsp;</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1; border-left-style:solid; border-left-width:1" align="center" height="38" width="59">
+      Cutoff</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="58">
+      Time (s)</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" align="center" height="38" width="45">
+      Ratio</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1" height="38" width="99" align="center">
+      Energy (Kcal/mol)</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-bottom-style: solid; border-bottom-width: 1; border-right-style:solid; border-right-width:1" height="38" width="499" align="center">
+      Relative<br>
+      energy</td>
+    </tr>
+    <tr>
+      <td style="border-top-style: solid; border-top-width: 1; border-left-style:solid; border-left-width:1" align="center" height="19" width="65">
+      Default</td>
+      <td style="border-top-style: solid; border-top-width: 1" align="center" height="19" width="61">
+      1328</td>
+      <td style="border-top-style: solid; border-top-width: 1" align="center" height="19" width="37">
+      1.00</td>
+      <td style="border-top-style: solid; border-top-width: 1" align="center" height="19" width="81">
+      49.5</td>
+      <td style="border-top-style: solid; border-top-width: 1" align="center" height="19" width="90">
+      0.0</td>
+      <td style="border-top-style: solid; border-top-width: 1" height="19" width="99" align="center">
+      -3342.2</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-right-style:solid; border-right-width:1" height="19" width="107" align="center">
+      0.0</td>
+      <td style="border-top-style: none; border-top-width: medium; border-right-style:none; border-right-width:medium; border-bottom-style:none; border-bottom-width:medium" align="center" height="19" width="59">
+      &nbsp;</td>
+      <td style="border-top-style: none; border-top-width: medium; border-left-style:none; border-left-width:medium; border-bottom-style:none; border-bottom-width:medium" align="center" height="19" width="59">
+      &nbsp;</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-left-style:solid; border-left-width:1" align="center" height="19" width="59">
+      Default</td>
+      <td style="border-top-style: solid; border-top-width: 1" align="center" height="19" width="58">
+      774</td>
+      <td style="border-top-style: solid; border-top-width: 1" align="center" height="19" width="45">
+      &nbsp;</td>
+      <td style="border-top-style: solid; border-top-width: 1" height="19" width="99" align="center">
+      -45095.0</td>
+      <td style="border-top-style: solid; border-top-width: 1; border-right-style:solid; border-right-width:1" height="19" width="499" align="center">
+      0.0</td>
+    </tr>
+    <tr>
+      <td align="center" height="18" width="65" style="border-left-style: solid; border-left-width: 1">7.0</td>
+      <td align="center" height="18" width="61">746</td>
+      <td align="center" height="18" width="37">0.56</td>
+      <td align="center" height="18" width="81">50.0</td>
+      <td align="center" height="18" width="90">1.7</td>
+      <td height="18" width="99" align="center">-3342.5</td>
+      <td height="18" width="107" align="center" style="border-right-style: solid; border-right-width: 1">-0.3</td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1">12.0</td>
+      <td align="center" height="18" width="58">796</td>
+      <td align="center" height="18" width="45"></td>
+      <td height="18" width="99" align="center">-45095.0</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      0.0</td>
+    </tr>
+    <tr>
+      <td align="center" height="18" width="65" style="border-left-style: solid; border-left-width: 1">6.0</td>
+      <td align="center" height="18" width="61">889</td>
+      <td align="center" height="18" width="37">0.76</td>
+      <td align="center" height="18" width="81">49.6</td>
+      <td align="center" height="18" width="90">1.3</td>
+      <td height="18" width="99" align="center">-3342.1</td>
+      <td height="18" width="107" align="center" style="border-right-style: solid; border-right-width: 1">+0.1</td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1">11.0</td>
+      <td align="center" height="18" width="58">746</td>
+      <td align="center" height="18" width="45"></td>
+      <td height="18" width="99" align="center">-45095.1</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      -0.1</td>
+    </tr>
+    <tr>
+      <td align="center" height="16" width="65" style="border-left-style: solid; border-left-width: 1">5.0</td>
+      <td align="center" height="16" width="61">599</td>
+      <td align="center" height="16" width="37">0.45</td>
+      <td align="center" height="16" width="81">46.3</td>
+      <td align="center" height="16" width="90">8.8</td>
+      <td height="16" width="99" align="center">-3334.5</td>
+      <td height="16" width="107" align="center" style="border-right-style: solid; border-right-width: 1">+7.7</td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1">10.0</td>
+      <td align="center" height="18" width="58">685</td>
+      <td align="center" height="18" width="45"></td>
+      <td height="18" width="99" align="center">-45095.1</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      -0.1</td>
+    </tr>
+    <tr>
+      <td align="center" height="18" width="65" style="border-left-style: solid; border-left-width: 1">4.0</td>
+      <td align="center" height="18" width="61">348</td>
+      <td align="center" height="18" width="37">0.26</td>
+      <td align="center" height="18" width="81">51.7</td>
+      <td align="center" height="18" width="90">5.0</td>
+      <td height="18" width="99" align="center">-3315.8</td>
+      <td height="18" width="107" align="center" style="border-right-style: solid; border-right-width: 1">+26.4</td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1">9.0</td>
+      <td align="center" height="18" width="58">599</td>
+      <td align="center" height="18" width="45"></td>
+      <td height="18" width="99" align="center">-45095.2</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      -0.2</td>
+    </tr>
+    <tr>
+      <td align="center" height="18" width="65" style="border-left-style: solid; border-left-width: 1">3.0</td>
+      <td align="center" height="18" width="61">119</td>
+      <td align="center" height="18" width="37">0.09</td>
+      <td align="center" height="18" width="81">34.9</td>
+      <td align="center" height="18" width="90">26.7</td>
+      <td height="18" width="99" align="center"><span LANG="EN">-2952.1</span></td>
+      <td height="18" width="107" align="center" style="border-right-style: solid; border-right-width: 1">+390.1</td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1">8.0</td>
+      <td align="center" height="18" width="58">546</td>
+      <td align="center" height="18" width="45"></td>
+      <td height="18" width="99" align="center">-45095.6</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      -0.4</td>
+    </tr>
+    <tr>
+      <td style="border-bottom-style: solid; border-bottom-width: 1; border-left-style:solid; border-left-width:1" align="center" height="19" width="65">
+      no-opt</td>
+      <td style="border-bottom-style: solid; border-bottom-width: 1" align="center" height="19" width="61">
+      -</td>
+      <td style="border-bottom-style: solid; border-bottom-width: 1" align="center" height="19" width="37">&nbsp;</td>
+      <td style="border-bottom-style: solid; border-bottom-width: 1" align="center" height="19" width="81">
+      0.0</td>
+      <td style="border-bottom-style: solid; border-bottom-width: 1" align="center" height="19" width="90">
+      49.5</td>
+      <td style="border-bottom-style: solid; border-bottom-width: 1" height="19" width="99" align="center">
+      -2963.6</td>
+      <td style="border-bottom-style: solid; border-bottom-width: 1; border-right-style:solid; border-right-width:1" height="19" width="107" align="center">
+      N/A</td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1">7.0</td>
+      <td align="center" height="18" width="58">490</td>
+      <td align="center" height="18" width="45"></td>
+      <td height="18" width="99" align="center">-45096.7</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      -1.7</td>
+    </tr>
+    <tr>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-style: none; border-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1">6.0</td>
+      <td align="center" height="18" width="58">343</td>
+      <td align="center" height="18" width="45"></td>
+      <td height="18" width="99" align="center">-45093.3</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      +1.7</td>
+    </tr>
+    <tr>
+      <td align="center" height="16" width="59"></td>
+      <td align="center" height="16" width="59"></td>
+      <td align="center" height="16" width="59"></td>
+      <td align="center" height="16" width="59"></td>
+      <td align="center" height="16" width="59"></td>
+      <td align="center" height="16" width="59"></td>
+      <td align="center" height="16" width="59" style="border-right-style: none; border-right-width: medium"></td>
+      <td align="center" height="16" width="59" style="border-style: none; border-width: medium"></td>
+      <td align="center" height="16" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="16" width="59" style="border-left-style: solid; border-left-width: 1">5.0</td>
+      <td align="center" height="16" width="58">309</td>
+      <td align="center" height="16" width="45"></td>
+      <td height="16" width="99" align="center">-50783.8</td>
+      <td height="16" width="499" align="center" style="border-right-style: solid; border-right-width: 1">
+      -5688.8</td>
+    </tr>
+    <tr>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59"></td>
+      <td align="center" height="18" width="59" style="border-right-style: none; border-right-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-style: none; border-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: none; border-left-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"></td>
+      <td align="center" height="18" width="59" style="border-left-style: solid; border-left-width: 1; border-bottom-style:solid; border-bottom-width:1">4.0</td>
+      <td align="center" height="18" width="58" style="border-bottom-style: solid; border-bottom-width: 1">
+      252</td>
+      <td align="center" height="18" width="45" style="border-bottom-style: solid; border-bottom-width: 1"></td>
+      <td height="18" width="99" align="center" style="border-bottom-style: solid; border-bottom-width: 1">
+      -44949.3</td>
+      <td height="18" width="499" align="center" style="border-right-style: solid; border-right-width: 1; border-bottom-style:solid; border-bottom-width:1">
+      +145.7</td>
+    </tr>
+    </table>
+  </center>
+</div>
+<p>For the rare occasions when finer control is needed, use <TT>CUTOF1</TT> and <TT>CUTOF2</TT>.</p>
+<H2><A NAME="SECTION007334000000000000000">
+<TT>CUTOF1=<I>n</I>.<I>nn</I></TT> </A>
+</H2>
+<P>
+In  <TT>MOZYME</TT> calculations, <a href="distance_cutoffs.html">the cutoff distance for polarization
+functions</a> is set by <TT>CUTOF1=<I>n</I>.<I>nn</I></TT>.  Beyond that
+distance, electrostatic interactions are considered only as point
+charges. At distances less than that given by <TT>CUTOF1</TT>,
+electrostatic interactions are represented by a point-charge and three
+polarization functions.  Default: For systems of less than 30 atoms,
+<TT>CUTOF1</TT> is 1000 &Aring;ngstroms; for systems of 30 or more atoms,
+<TT>CUTOF1</TT> is 10 &Aring;ngstroms. <H2><A NAME="SECTION007335000000000000000">
+<TT>CUTOF2=<I>n</I>.<I>nn</I></TT> </A>
+</H2>
+<p>In  <TT>MOZYME</TT> calculations, <a href="distance_cutoffs.html">the cutoff distance for two-electron
+two center and one-electron two center integrals</a> is set by
+<TT>CUTOF2=<I>n</I>.<I>nn</I></TT>.  Below that distance, the interaction between two
+atoms is represented by the exact NDDO approximation.  Above that
+distance, one-electron integrals that depend on the overlap are
+ignored, and two-electron integrals are simplified.  Instead of using
+all 100 two-electron integrals between two heavy atoms, only seven are
+used.  These represent the terms &lt;<i>ss</i>|<i>ss</i>&gt;, &lt;<i>ss</i>|<i>sx</i>&gt;, 
+&lt;<i>ss</i>|<i>sy</i>&gt;, &lt;<i>ss</i>|<i>sz</i>&gt;, &lt;<i>sx</i>|<i>ss</i>&gt;, 
+&lt;<i>sy</i>|<i>ss</i>&gt;, and &lt;<i>sz</i>|<i>ss</i>&gt;.&nbsp;
+At still greater distances, beyond <TT>CUTOF1</TT>, only
+the 
+<!-- MATH: $<\!ss|ss\!>$ -->
+&lt;<i>ss</i>|<i>ss</i>&gt;
+term is used.  Default: for systems of less than 30
+atoms, <TT>CUTOF2</TT> is 1000 &Aring;ngstroms; for systems of 30 or more
+atoms, <TT>CUTOF2</TT> is 9.9 &Aring;ngstroms. </p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

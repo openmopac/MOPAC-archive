@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>POINT=n </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>POINT(S)=<I>n</I></TT>
+</h1>
+The number of  points  to  be  calculated  on  a  reaction  path  is
+specified by <TT>POINT=<I>n</I></TT>.  Used only with <TT>
+<a href="step.html">STEP</a></TT> in a path calculation.
+<tt>POINT</tt> or <tt>POINTS</tt> can be used.<p id="yui_3_16_0_ym19_1_1460906258037_6451" data-setdir="false" dir="ltr">
+<tt>POINT </tt>is under user control.&nbsp; Use the smallest number that will provide the 
+path you want.&nbsp; For the CH<sub>3</sub>CL stretch example below, 40 points were used.&nbsp; 
+If you use more than the smallest number, it should still run okay, but the run 
+will take longer, because the path will be longer.</p>
+<p>Example: Stretching a C-Cl bond in CH<sub>3</sub>Cl. In this example, the C-Cl bond 
+length starts at 1.5 &Aring;ngstroms, and stretches by 0.02 &Aring;ngstroms at a 
+time to 2.3 &Aring;ngstroms.</p>
+<pre>   step=0.02  point=40 
+ CH3Cl Stretching the C-Cl bond
+
+ Cl    0.00000000  0    0.0000000  0    0.0000000  0    0    0    0     
+  C    1.50000000 -1    0.0000000  0    0.0000000  0    1    0    0      
+  H    1.10153604  1  108.0234648  1    0.0000000  0    2    1    0      
+  H    1.10231454  1  108.0092176  1  120.0000000  1    2    1    3      
+  H    1.10177640  1  107.8415102  1 -120.0000000  1    2    1    3      </pre>
+<p>For a graphical representation of rotating a torsion angle in <em>n</em>-butane, 
+see <a href="Individual%20JSmol%20paths/n-Butane/n-butane.html">GUI</a>.&nbsp; 
+To reproduce this example, download the
+<a href="Individual%20JSmol%20paths/n-Butane/n-Butane.zip">ZIP</a> file.</p>
+<p>For an alternative way of defining points on a path, that produces an output 
+similar to the conventional output, see
+<a href="Optimization_flags.html#explicit_points">alternative points</a>.</p>
+</BODY>
+</HTML>

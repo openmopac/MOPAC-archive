@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Specification of Gaussian Z-matrices</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1><A NAME="SECTION00745100000000000000">Specification of Gaussian Z-matrices</A> 
+</h1>
+<P>The information contained in the Gaussian Z-matrix is identical to that in a MOPAC Z-matrix, but the order of presentation is different. Atom N, (real or dummy) is specified in the format: </P>
+<TT><P>Element N1 Length N2 Alpha N3 Beta</TT> <BR>
+where Element is the same as for the MOPAC Z-matrix. N1, N2, and N3 are the connectivity, the same as the MOPAC Z-matrix NA, NB, and NC: bond lengths are between N and N1, angles are between N, N1 and N2, and dihedrals are between N, N1, N2, and N3. The same rules apply to N1, N2, and N3 as to NA, NB, and NC. </P>
+<P>Length, Alpha, and Beta are the bond lengths, the angle, and dihedral. They can be 'real', e.g. 1.45, 109.4, 180.0, or 'symbolic'. A symbolic is an alphanumeric string of up to 8 characters, e.g. R51, A512, D5213, CH, CHO, CHOC, etc. Two or more symbolics can be the same. Dihedral symbolics can optionally be preceded by a minus sign (see&nbsp;Figure), in which case the value of the dihedral is the negative of the value of the symbolic. This is the equivalent of the normal MOPAC <TT>SYMMETRY</TT> operations 1, 2, 3, and 14. </P>
+<P>If an internal coordinate is real, it will not be optimized. This is the equivalent of the MOPAC optimization flag "0". If an internal coordinate is symbolic, it can be optimized. </P>
+<P>The Z-matrix is terminated by a blank line, after which comes the starting values of the symbolics, one per line. If there is a blank line in this set, then all symbolics after the blank line are considered fixed; that is, they will not be optimized. The set before the blank line will be optimized. </P>
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="gzmat">&nbsp;<A NAME="BM6329"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Example of Gaussian Z-matrix geometry specification</P>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312>
+<TR><TD VALIGN="MIDDLE">
+<P> <A NAME="BM6309">&nbsp;</A> <A NAME="BM6310">&nbsp;<A NAME="BM6311"></A>&nbsp;</A> </P>
+<PRE><A HREF="mopac_examples/examples_in_manual/ethane.txt"> Line 1   AM1
+<PRE> Line 2 Ethane
+ Line 3
+ Line 4   C
+ Line 5   C     1     r21
+ Line 6   H     2     r32       1     a321
+ Line 7   H     2     r32       1     a321      3  d4213
+ Line 8   H     2     r32       1     a321      3 -d4213
+ Line 9   H     1     r32       2     a321      3   60.
+ Line 10  H     1     r32       2     a321      3  180.
+ Line 11  H     1     r32       2     a321      3  d300
+ Line 12
+ Line 13     r21        1.5
+ Line 14     r32        1.1
+ Line 15     a321     109.5
+ Line 16     d4213    120.0
+ Line 17
+ Line 18     d300     300.0
+ Line 19</PRE></A></PRE></TD>
+</TR>
+</TABLE>
+<P></DIV></P>
+<H3><A NAME="SECTION00745200000000000000">
+ Exceptions to the full Gaussian standard</A>
+</H3>
+<DL COMPACT>
+<DT>1.
+<DD>The option of defining an atom's position by  one  distance  and
+two  angles  is  not  allowed.   In other words, the N4 variable
+       described in the Gaussian manual must  either  be  zero  or  not
+       specified.   MOPAC  requires the geometry of atoms to be defined
+       in terms of, at most, one distance, one angle, and one dihedral.
+<DT>2.
+<DD>Gaussian Cartesian coordinates are not supported.
+<DT>3.
+<DD>Chemical symbols must not be followed by an integer  identifying
+ the  atom.  Numbers after a symbol are used by MOPAC to indicate
+ isotopic mass.  If labels are desired, they should  be  enclosed
+ in parentheses, thus <TT>Cl(on C5)34.96885</TT>.
+<P>
+<DT>4.
+<DD>The connectivity (N1, N2, N3) must be integers.  Labels are  not
+          allowed.
+</DL>
+<P></BODY>
+</HTML>

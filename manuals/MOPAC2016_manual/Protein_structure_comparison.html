@@ -1,0 +1,158 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Protein Structure Comparison</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														font-family: symbol;
+																													}
+																													.auto-style3 {
+	text-decoration: none;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<a name="Protein_Structure_Comparison">Protein Structure Comparison</a></h1>
+<p align="center">
+<a href="#What_it_is">What it is</a>&nbsp; <a href="#What_it_can_do">What it can 
+do</a> <a href="#How_to_do_it">How to do it</a> <a href="#Caveats">Caveats</a></p>
+<h2>
+<a name="What_it_is">What it is</a> (<a href="#Protein_Structure_Comparison">top</a>)</h2>
+<p>
+Two protein structures can be compared to show their similarity and the 
+differences.&nbsp; The second of the two proteins is rotated and translated so 
+as to minimize the Root Mean Square (RMS) difference between it and the first 
+geometry.&nbsp; If swapping pairs of atoms would reduce the RMS error, this is 
+done. Differences are represented three ways. The simplest is to generate a list 
+of atoms that have the largest difference in position; this is of limited use 
+because some parts of a protein are very flexible, i.e. large geometric changes 
+might be accompanied by only very small changes in energy.&nbsp; A more 
+important type of difference involves changes in bond-lengths.&nbsp; Because 
+covalent bonds have high force-constants, any significant change in bond length 
+indicates a significant change in the local energy environment.&nbsp; The third 
+measure of difference is change in hydrogen bond energies.&nbsp; In individual 
+proteins there are often hundreds of hydrogen bonds, and the formation or loss 
+of even a single one of these can change the heat of formation by several 
+kcal.mol<sup>-1</sup>, so information about the creation or loss of a hydrogen 
+bond can focus attention on possible problems in a structure.</p>
+<h2>
+<a name="What_it_can_do">What it can do</a> (<a href="#Protein_Structure_Comparison">top</a>)</h2>
+<p>
+Given two PDB files that represent the same protein, or two similar proteins, a 
+structure comparison starts by identifying those atoms that are common to both 
+systems.&nbsp; Atoms that are in one but not the other system are identified and 
+not used.&nbsp; The remaining atoms are superimposed so as to minimize the RMS 
+difference, and lists of the three types of differences printed.&nbsp; A simple 
+web-page is then written that allows the two superimposed systems to be 
+visualized using JSmol.&nbsp; With the three lists of differences and the JSmol 
+graphics, the nature of the differences between the two systems can be quickly 
+understood.</p>
+<h2>
+<a name="How_to_do_it">How to do it</a> (<a href="#Protein_Structure_Comparison" class="auto-style3">top</a>)</h2>
+<p>
+The recommended method for comparing protein structures is to use a two-line 
+data-set.&nbsp; As with most MOPAC data-sets, the first line consists of 
+keywords; the second line, although optional, is strongly recommended, and 
+should be a description of the two structures being compared.</p>
+<p>
+On the first line, and for the most concise and informative results, use the set of keywords 
+&quot;<a href="geo_dat.html"><tt>GEO_DAT=&quot;text&quot;</tt></a> <a href="geo_ref.html"><tt>GEO_REF=&quot;text&quot;</tt></a>
+<a href="zero_scf.html"><tt>0SCF</tt></a> <a href="html.html"><tt>HTML</tt></a>
+<a href="geo-ok.html"><tt>GEO-OK</tt></a> <a href="output.html"><tt>OUTPUT</tt></a>&quot;.&nbsp; Their significance in this 
+procedure is:</p>
+<h3>
+<tt>GEO_DAT=&quot;text&quot;</tt> </h3>
+<p>
+The first of the two geometries is specified.&nbsp; 
+This geometry can be a MOPAC data set, an ARC file, or a PDB file, either 
+straight from the Protein Data Bank, or an edited PDB file, or a PDB file made 
+by MOPAC.&nbsp; This keyword is not essential, in that the first geometry could 
+be placed after the normal first three lines.&nbsp; However, using the keyword 
+allows an un-edited protein geometry to be read in.&nbsp; Within the comparison 
+procedure, the first of the two geometries will not be modified, that is, the 
+atom-sequence will not be changed, although some atoms might be deleted in order 
+to have a match with the second geometry, nor will the atomic coordinates be 
+changed. This shows up in the results only; the file read in is not affected at 
+all.</p>
+<h4>
+Atoms Deleted:</h4>
+<p>
+First, all atoms that have the same name, residue, chain, and residue number are 
+retained. Of the remaining atoms, all 
+hydrogen atoms are selected.&nbsp; Within this set, if two hydrogen atoms have 
+the same residue, chain letter, and residue number, then the atoms are retained.&nbsp; All 
+remaining atoms will be deleted, unless <a href="geo-ok.html"><tt>GEO-OK+</tt></a> is also 
+present, in which case all remaining hydrogen atoms are paired up.&nbsp; This 
+last option is only useful when a salt-bridge exists in only one of the two 
+structures, in which case its atom label will refer to one residue in one 
+structure and a different residue in the other. </p>
+<p>
+The first geometry can be regarded as the reference geometry for the purposes of 
+comparing structures.</p>
+<h3>
+<tt>GEO_REF=&quot;text&quot;</tt></h3>
+<p>
+&nbsp;The second of the two geometries is specified. Within the comparison 
+procedure, the this geometry will be modified so that the RMS difference between 
+it and the reference geometry is minimized.&nbsp; This might require that the 
+sequence of atoms might be changed, some atoms might be deleted and the atomic 
+coordinates will certainly be changed.</p>
+<h4>
+Changes to Atom Sequence: </h4>
+By convention, most atoms in a PDB file will be in a precisely defined position, 
+the commonest exception occurring in residues in which there is an unavoidable 
+ambiguity in the order of the atoms.&nbsp; For example, in phenylalanine C<sub><span class="auto-style1">d</span>1</sub> 
+and C<sub><span class="auto-style1">d</span>2</sub> can be interchanged (swapped 
+around) and the system could still comply with the PDB convention. Pairs of 
+atoms of this type will be interchanged if that would result in the RMS 
+difference between the two structures being reduced.
+
+<p>
+If, when there are two or more entire protein chains present, and the chains are 
+in a different sequence from that in the reference geometry, then the chains 
+will be re-arranged to suit the reference geometry.&nbsp; The same will be done 
+with hetero groups and ligands: they will be re-arranged to suit that in the 
+reference geometry.</p>
+<h3>
+<tt>0SCF</tt>&nbsp; and
+<tt>HTML</tt> </h3>
+<p>
+The presence of both keywords
+<tt>0SCF</tt>  and
+<tt>HTML</tt> indicates that the job is not to continue, and that after the two 
+structures have been compared the job is to stop.</p>
+<h3>
+<tt>GEO-OK</tt>  </h3>
+<p>
+This keyword is optional here.&nbsp; By default, if there are any atoms in one 
+system that are not present in the other system, no comparison will be made.&nbsp; 
+Instead, the differences will be printed and the job stopped.&nbsp; If
+<tt>GEO-OK</tt> is present, then the systems will be trimmed so that only those 
+atoms that are common to both systems are retained.&nbsp; These will then be 
+used in the comparison.</p>
+<h3>
+<tt>OUTPUT</tt></h3>
+<p>
+This keyword is optional here, but is strongly recommended.&nbsp; When
+<tt>OUTPUT</tt> is present, the large lists of atomic data are not generated; 
+this makes reading the output file much easier.</p>
+<p>
+&nbsp;</p>
+<h2>
+<a name="Caveats">Caveats</a> (<a href="#Protein_Structure_Comparison">top</a>)</h2>
+<p>
+When comparing similar PDB structures that include water molecules, there is a 
+high probability that the residue sequence numbers will be different in the two 
+systems.&nbsp; Unless the water molecules are deleted, the resulting RMS 
+difference between the two structures will be artificially high. </p>
+<p>
+If the name of the substrate, if present, is different in the two systems, then 
+the substrate will be removed automatically.&nbsp; To prevent this, use the 
+keywords <tt><a href="residues.html">RESIDUES0</a> </tt>and <tt>
+<a href="xeno.html">XENO</a></tt>.&nbsp; This will allow the atom-labels in the first 
+geometry to be modified to suit the second geometry.&nbsp; If the first geometry is not a PDB file, other keywords, specifically 
+<tt><a href="start_res.html">START_RES</a></tt> and <tt><a href="chains.html">CHAINS</a></tt> will likely be needed in order to preserve the other 
+atom-labels.</p>
+</BODY>
+</HTML>

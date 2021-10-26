@@ -1,0 +1,247 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Applying geometry constraints, freezing coordinates and 
+fixing distances, etc</TITLE>
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<h1 align="center">Applying geometry constraints, freezing coordinates and 
+fixing distances, etc</h1>
+<p align="left">A wide range of methods exist that allow constraints to be 
+applied to a geometry.&nbsp; The most important are:</p>
+<ul>
+  <li>
+<p align="left"><a href="Applying_geometry_constraints.html#fix_Cartesian">Cartesian coordinates can be fixed by 
+setting the appropriate optimization flags to zero.</a></li>
+<li>
+<p align="left"><a href="Applying_geometry_constraints.html#Internal_coordinates">Internal coordinates can be fixed by setting the appropriate 
+optimization flags to zero.</a></li>
+<li>
+<p align="left"><a href="Applying_geometry_constraints.html#Cartesian_symmetry">Cartesian coordinates can be set equal using symmetry</a></li>
+<li>
+<p align="left">I<a href="Applying_geometry_constraints.html#Internal_symmetry">nternal coordinates can be set equal by using symmetry</a></li>
+<li>
+<p align="left"><a href="Applying_geometry_constraints.html#multiple">An interatomic distance can be set to a multiple of another 
+interatomic distance</a></li>
+<li>
+<p align="left"><a href="Applying_geometry_constraints.html#DRC">An atom can be frozen in a DRC</a></li>
+<li>
+<p align="left"><a href="Applying_geometry_constraints.html#Individual_internal_coordinates">Individual internal coordinates can be fixed in a Cartesian 
+geometry optimization</a></li>
+<li>
+<p align="left"><a href="Applying_geometry_constraints.html#bias_to_ref">The overall structure can be biased in favor of a reference 
+geometry</a></li>
+<li>
+<p align="left"><a href="Applying_geometry_constraints.html#bias_to_barrier">An overall structure can be biased (moved) towards the structure 
+on the other side of a barrier.</a></li>
+</ul>
+<h2 align="left"><a name="fix_Cartesian">Cartesian</a> coordinates can be fixed 
+by setting the appropriate optimization flags to zero.</h2>
+<p align="left">Any coordinate, internal or Cartesian, can be optimized if the 
+optimization flag is set to &quot;1&quot; and the coordinate is not otherwise defined, for 
+example by <a href="symmetry.html"><TT>SYMMETRY</TT></a>.&nbsp; This flexibility applies 
+to all atoms, including atoms 1, 2, and 3.&nbsp; If the coordinates of atom 1 
+are flagged to be optimized, and atom 1 has no connectivity (the usual 
+situation), then it is defined in Cartesian coordinates and its position can 
+change during a geometry optimization. If atom 2 has a connectivity, then 
+setting the angle or dihedral is meaningless, and these will be turned off 
+before the calculation starts.&nbsp; The same applied to the dihedral of atom 3, 
+if it, too, is defined in internal coordinates.</p>
+<p align="left">In this example, an acetylene molecule is oriented along the &quot;z&quot; 
+axis, and the second carbon atom is fixed in space at coordinates (0.0, 0.0, 
+1.0). This calculation is most easily set up using Cartesian rather than 
+internal coordinates. Acetylene is perfectly linear, so the &quot;x&quot; and &quot;y&quot; 
+coordinates can be fixed at 0.0.&nbsp; On optimizing this system, carbon atom 1 
+would move down along the &quot;z&quot; axis, in order from the C-C distance to increase 
+from 1.0 <font face="Times New Roman">&Aring;</font>ngstroms. </p>
+<PRE> PM6
+ Acetylene oriented along the "z" axis, 
+ Atom 2 is fixed at coordinates (0.0, 0.0, 1.0)
+  C     0.00000000 +0   0.00000000 +0   0.00000000 +1 
+  C     0.00000000 +0   0.00000000 +0   1.00000000 +0 
+  H     0.00000000 +0   0.00000000 +0   2.00000000 +1 
+  H     0.00000000 +0   0.00000000 +0  -1.00000000 +1  </PRE>
+Freezing Cartesian coordinates is useful when positioning charged species in an 
+electric field, for example a fluoride ion at coordinates (0.0, 0.0, 1.0) when a 
+field of 1V per <font face="Times New Roman">&Aring;</font>ngstrom is applied along 
+the &quot;z&quot; direction.&nbsp; Less common is the use of Cartesian coordinates in 
+small systems.<h2 align="left"><a name="Internal_coordinates">Internal coordinates</a> can be fixed by setting the appropriate 
+optimization flags to zero.</h2>
+<p align="left">Consider chloromethane, CH<sub>3</sub>Cl, in which two 
+constraints are applied: the C-Cl distance is fixed at 1.7
+<font face="Times New Roman">&Aring;ngstroms, and one C-H distance is to be fixed at 
+1.1 &Aring;ngstroms.&nbsp; The data set, in internal coordinates, might look like 
+this:</font></p>
+<PRE>  PM6
+Methyl chloride, C-Cl distance defined as 1.7 Angstroms,
+ One C-H distance defined as 1.1 Angstroms
+ Cl         0.0 +0    0.0000000 +0    0.0000000 +0                    
+  C         1.7 +0    0.0000000 +0    0.0000000 +0    1    0    0
+  H         1.0 +1  109.2843786 +1    0.0000000 +0    2    1    0  
+  H         1.1 +0  109.2843786 +1  120.0000000 +1    2    1    3   
+  H         1.0 +1  109.2843786 +1 -120.0000000 +1    2    1    3  
+</PRE> 
+In this system, there are only two constraints although there are eight 
+optimization flags set to zero.&nbsp; This is because six of the optimization 
+flags are for the three trivial translations (atom 1) and three trivial 
+rotations (atoms 2 and 3)<h2 align="left"><a name="Cartesian_symmetry">Cartesian</a> coordinates can be set equal using symmetry</h2>
+<p align="left">This is a rarely used option. An example is given in Figure 2 of <TT> <a href="symmetry.html">SYMMETRY</a>.</TT></p>
+<h2 align="left"><a name="Internal_symmetry">Internal</a> coordinates can be set equal by using symmetry</h2>
+<p align="left">Many small molecules have symmetry in that various bond lengths 
+or angles or dihedrals are equal, or are simply related.&nbsp; For an example, 
+see Figure 1 of <a href="symmetry.html"> <TT> SYMMETRY</TT></a>.&nbsp; If symmetry is used, 
+and a dependent coordinate is flagged for optimization, the flag will be turned 
+off before the calculation is started.</p>
+<h2 align="left">An interatomic distance can be set to a <a name="multiple">multiple</a> of another 
+interatomic distance</h2>
+<p align="left">In some solids, particularly the binary solids such as NaCl or 
+CsCl, the number of independent geometric variables is small.&nbsp; In the cases 
+just mentioned, the number is precisely one.&nbsp; By setting up a 
+symmetry-constrained calculation involving only one variable, the computational 
+effort required for geometry optimization can be reduced considerably.&nbsp; An 
+example of the steps involved in setting up such a calculation are as follows:</p>
+<ul>
+  <li>
+<p align="left">First, set up the Large Unit Cell (LUC) system for NaCl in 
+internal coordinates, see <a href="tv.html">Tv</a>..&nbsp; For a 3 by 3 by 3 LUC 
+constructed using <a href="makpol.html"><TT>MAKPOL</TT></a>, the resulting
+<a href="mopac_examples/solids/NaCl_no_symmetry.mop">data set</a> has 108 NaCl 
+units (Z=4).</li>
+<li>
+<p align="left">Run a 0SCF calculation with <a href="autosym.html"><TT>AUTOSYM</TT></a>..&nbsp; 
+Edit the resulting arc file to make a new data set.&nbsp; During this process, 
+change every angle optimization flag to zero - all the angles are 
+symmetry-defined by the space-group, and therefore should not be optimized.</li>
+<li>
+<p align="left">There are five interatomic distances that are flagged for 
+optimization, but all of them are related to the distance between atoms 1 and 2, 
+that is, to the bond-length of atom 2.&nbsp; This distance, 2.82<font face="Times New Roman">&Aring;, 
+can be used to symmetry-define all the other distances using symmetry function 
+19.&nbsp; Starting with the second unique bond-length, 3.988&Aring;, divide that 
+distance by the reference distance to give a ration of 1.4142.&nbsp; This is 
+then used in constructing the symmetry function:<br>
+2 19 1.4142 3.&nbsp; <br>
+This function is put at the start of the symmetry functions, just after the 
+Z-matrix.&nbsp; The optimization flag for the bond-length of atom 3 can then set 
+to zero, as it is now symmetry defined to that of atom 2.&nbsp; The same process 
+is then done for the remaining three distances.&nbsp; In each case, the 
+multiplier is an easily recognizable number:&nbsp; 2<sup>1/2</sup>, 3<sup>1/2</sup>, 
+2, and 6.&nbsp; </font></li>
+<li>
+<p align="left"><font face="Times New Roman">The number of optimization flags in 
+the new <a href="mopac_examples/solids/NaCl.mop">symmetry-defined data-set</a> 
+having now been reduced to exactly one, geometry optimization can be completed 
+in one line-search.</font></li>
+</ul>
+<h2 align="left"><a name="DRC">An atom can be frozen </a>in a DRC</h2>
+<p align="left">In a DRC, atoms move in response to the forces acting on them.&nbsp; 
+For a given force, the heavier atoms move less than light atoms.&nbsp; If, for 
+any reason, an atom needs to be frozen, set its apparent weight to a large 
+number.&nbsp; For example, if a carbon atom should be fixed, replace the symbol 
+&quot;C&quot; by &quot;C9999999&quot; or &quot;C1.d12&quot; or other mass.&nbsp; The frozen atom will still 
+move, but not as much as an ordinary atom. To verify that the frozen atom is in 
+fact not moving, use <a href="large.html"><TT>LARGE=-1</TT> </a></p>
+<h2 align="left"><a name="Individual_internal_coordinates">Individual internal coordinates</a> can be fixed in a Cartesian 
+geometry optimization</h2>
+<p align="left" dir="ltr">Because large molecule geometries are normally defined in 
+Cartesian coordinates, it might seem difficult to lock individual bond-lengths or angles 
+so 
+that their values cannot be modified during the optimization.&nbsp; The answer 
+is to define individual atoms using internal coordinates.&nbsp; Suppose that, in 
+a large molecule, hydrogen atom 3000 needs to be defined as being 1.1
+<font face="Times New Roman">&Aring; from oxygen atom 2999.&nbsp; Then using a 
+graphics package, locate H3000 and O2999, and two other atoms that could be used 
+in defining the angle and dihedral in an internal coordinate connectivity.&nbsp; 
+Suitable atoms might be the atom O2999 is connected to (e.g. C2967) and the next 
+atom (e.g. N2960).&nbsp; Of course, any atoms could be used provided their 
+atom-number is lower than the atom being defined, i.e. here lower than 3000.&nbsp; 
+Once the four atoms (here H3000, O2999, C2967, and N2960) are identified, work 
+out the angle and dihedral.&nbsp; Use these data in constructing the internal 
+coordinate definition for H3000.&nbsp;&nbsp; If the H3000-O2999-C2967 angle was 
+120°, and the H3000-O2999-C2967-N2960 torsion was 180°, then the position of the 
+hydrogen atom with a fixed O-H distance would be:</font></p>
+<p align="left" dir="ltr"><font face="Times New Roman">H 1.1 0 120 1 180 1 2999 
+2976 2960</font></p>
+<p align="left" dir="ltr"><font face="Times New Roman">If the angle needed to be 
+fixed, then the line would be:</font></p>
+<p align="left" dir="ltr"><font face="Times New Roman">H 1.1 1 120 0 180 1 2999 
+2976 2960</font></p>
+<p align="left" dir="ltr"><font face="Times New Roman">and so on.&nbsp; There is 
+no restriction on the number of internal coordinates that can be used.&nbsp; 
+Indeed, entire hetero groups can be defined as being rigid, but free to move 
+within a cavity.&nbsp; In such a case, the first atom in the hetero group would 
+be defined in either unconstrained internal or Cartesian coordinates, the next 
+atom would be in internal coordinates and have its bond-length fixed, the next 
+atom would be internal coordinates and have a frozen bond length and angle, and 
+all the remaining atoms in the hetero group would be in internal coordinates and 
+have all coordinates frozen.</font></p>
+<p align="left" dir="ltr"><font face="Times New Roman">In a small molecule, in 
+this 
+example: toluene, if the molecule is defined in Cartesian coordinates and a C-C bond-length is to be frozen, then a suitable data set would 
+be:</font></p>
+<PRE>PM6
+Toluene
+  Cartesian definition, but with one C-C distance frozen
+  C        -0.00997463 +1   -0.0015231 +1   -0.0000930 +1                    
+  C         2.79787104 +1   -0.0096765 +1   -0.0012704 +1 
+  C         0.69635100 +1    1.2055923 +1    0.0410044 +1
+  C         0.68930681 +1   -1.2109956 +1   -0.0416784 +1
+  C         2.09215830 +1    1.2048435 +1    0.0406317 +1 
+  C         2.08705695 +1   -1.2186939 +1   -0.0423481 +1  
+  H        -1.09719779 +1    0.0021777 +1    0.0002893 +1  
+  H         0.15466169 +1    2.1496180 +1    0.0735817 +1  
+  H         0.14334405 +1   -2.1525875 +1   -0.0736970 +1  
+  H         2.63556968 +1    2.1465054 +1    0.0727064 +1   
+  H         2.62170344 +1   -2.1652386 +1   -0.0748682 +1  
+  C         1.5 0 120 1 180 1 2 5 3
+  H         4.68822161 +1    0.4932505 +1    0.8985801 +1 
+  H         4.72735404 +1   -1.0061093 +1   -0.0329544 +1    
+  H         4.68721477 +1    0.5478562 +1   -0.8700774 +1  
+ </PRE>
+
+<p>A GUI is essential for working out the bond-length, angle, and dihedral&nbsp; 
+to be used.</p>
+<h4 align="left" dir="ltr"><font face="Times New Roman">What to when the atoms to be used in 
+the connectivity occur after the atom whose bond length or angle is to be locked</font></h4>
+<p align="left" dir="ltr"><font face="Times New Roman">Quite often, the geometry 
+does not allow a bond-length or angle to be defined, because the atoms that 
+would be used in the connectivity are defined after the atom of interest.&nbsp; 
+Fortunately, there is an easy way to solve this problem: the order of occurrence 
+of Cartesian atoms is not important, so simply move the atoms to be used in the 
+connectivity to before the atom whose bond length or angle is to be defined.&nbsp; 
+Alternatively, move the atom whose bond length or angle is to be defined to the 
+end of the data set.</font></p>
+<h2 align="left">The <a name="bias_to_ref">overall structure</a> can be biased in favor of a reference 
+geometry</h2>
+<p align="left">X-ray structures can be improved (!) by combining the accuracy 
+of prediction of bond-lengths and angles with the accurate X-ray tertiary 
+structure.&nbsp; This is done using the <a href="geo_ref.html"><TT>GEO_REF=&quot;&lt;text&gt;&quot;</TT>
+</a>option.&nbsp; To use this option, first prepare a data-set starting with the 
+X-ray structure.&nbsp; Resolve any structural or positional disorder,  add 
+hydrogen atoms as necessary, then optimize the positions of the hydrogen atoms.&nbsp; 
+The result would be a data-set representing a chemically sensible structure in 
+which all the non-hydrogen atoms are based on the X-ray structure.&nbsp; Copy 
+this data set and give the copy a name such as ref.mop.&nbsp; In the original 
+data set, add keywords <TT>GEO_REF=&quot;/Users/&lt;myname&gt;/ref.mop&quot;</TT> or 
+<TT>GEO_REF=&quot;M:/&lt;pathname&gt;/ref.mop&quot;</TT>.&nbsp; The default bias 
+is 3 kcal/mol/<font face="Times New Roman">&Aring;ngstrom.&nbsp; This can be changed 
+by adding the bias after the closing quotation mark, as in </font> <TT>GEO_REF=&quot;/Users/&lt;myname&gt;/ref.mop&quot;10.</TT></p>
+<h2 align="left">An <a name="bias_to_barrier">overall structure</a> can be biased (moved) towards the 
+structure on the other side of a barrier.</h2>
+<p align="left">Locating transition states has traditionally been difficult.&nbsp; 
+However, if data sets representing the reactants and products are available, the <a href="geo_ref.html"><TT>GEO_REF=&quot;&lt;text&gt;&quot;</TT>
+</a>option can be used for moving the reactant geometry towards that of the 
+product, and <i>vice-versa</i>. Let the reactant geometry be R.mop and the 
+product geometry be P.mop.&nbsp; The product geometry can be moved in the 
+direction of the reactant geometry by adding the keyword&nbsp; <TT>GEO_REF=&quot;/Users/&lt;myname&gt;/R.mop&quot;</TT> 
+to the product geometry data set.&nbsp; When that constrained optimization is 
+run, the result is a geometry that is nearer to the reactant geometry than the 
+starting geometry. If the constraint were subsequently removed, and the geometry 
+re-optimized, the geometry would slide back downhill in the direction of the 
+original product geometry.&nbsp; For more information on locating transition 
+states, see <a href="Protein_calculations.html">protein calculations</a>.</p>
+<p align="left">&nbsp;</p>
+<P>
+&nbsp;</BODY></HTML>

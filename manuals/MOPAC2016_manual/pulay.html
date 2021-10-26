@@ -1,0 +1,14 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>PULAY </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>PULAY</TT> </h1>
+<P>The default converger in the SCF calculation is to be replaced by Pulay's procedure&nbsp;[<A HREF="references.html#diis">48</A>] as soon as the density matrix is sufficiently stable. <A NAME="BM2954">&nbsp;</A> A considerable improvement in speed can frequently be achieved by the use of <TT>PULAY</TT>, particularly for excited states. If a large number of SCF calculations are envisaged, a sample calculation using <TT>1SCF</TT> and <TT>PULAY</TT> should be compared with using <TT>1SCF</TT> on its own, and if a saving in time results, then <TT>PULAY</TT> should be used in the full calculation. <TT>PULAY</TT> should be used with care in that its use will prevent the combined package of convergers (SHIFT, PULAY and the CAMP-KING convergers) from being used automatically in the event that the system fails to go SCF in (ITRY-10) iterations.</P>
+<P>PULAY does <i>not</i> work with <a href="mozyme.html"><TT>MOZYME</TT></a></P>
+<P>The combined set of convergers very seldom fails.</P>
+</BODY>
+</HTML>

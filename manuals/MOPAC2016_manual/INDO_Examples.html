@@ -1,0 +1,372 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE> Examples of INDO calculations</TITLE>
+<style><!--
+ p.MsoNormal
+	{mso-style-parent:"";
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	margin-left:0in; margin-right:0in; margin-top:0in}
+-->
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<B>
+Examples of INDO calculations</B></h1>
+<p align="center">
+(Examples provided by Prof. Rebecca L. M. Gieseking, Brandeis University)</p>
+<h3><b>(1) Basics of INDO/CI Excited States<br>
+&nbsp;</b></h3>
+<p class="MsoNormal">This job illustrates how to compute CIS excited states for 
+benzene using the INDO/S Hamiltonian. Since the INDO/S parameters are intended 
+solely for excited-state properties, the geometries must be obtained at another 
+level of theory.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The input file is:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">INDO CIS</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">benzene</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.484212 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp;&nbsp; -2.484212 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+&nbsp;&nbsp;&nbsp;2.151390 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.242106 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.151390 0&nbsp;&nbsp;&nbsp;&nbsp; -1.242106 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.151390 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.242106 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.151390 0&nbsp;&nbsp;&nbsp;&nbsp; -1.242106 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.396792 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp;&nbsp; -1.396792 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.209657 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.698396 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.209657 0&nbsp;&nbsp;&nbsp;&nbsp; -0.698396 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.209657 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.698396 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.209657 0&nbsp;&nbsp;&nbsp; &nbsp;-0.698396 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">By default, the CIS keyword requests that all single 
+excitations within the INDO/S basis are included in the CI matrix. For benzene, 
+there are 15 occupied and 15 virtual orbitals, for a total of 225 single 
+excitations. Adding in the SCF ground state gives a total of 226 electron 
+configurations.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The energy of the ground state (state 1) is defined as 0, 
+and the output file contains a list of excited-state energies (states 2-226). 
+The first few excited states are:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; CI 
+trans.&nbsp; energy frequency wavelength oscillator ---------polarization---------&nbsp;&nbsp;&nbsp; 
+dipole&nbsp;&nbsp; ------components-----</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;st.&nbsp; 
+symm.&nbsp;&nbsp;&nbsp; eV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cm-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strength&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+moment&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4.7082902&nbsp;&nbsp;&nbsp; 37975.&nbsp;&nbsp;&nbsp; 263.33&nbsp; 0.000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.000000&nbsp;&nbsp; 0.000&nbsp; -0.000&nbsp; -0.000</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5.3612330&nbsp;&nbsp;&nbsp; 43241.&nbsp;&nbsp;&nbsp; 231.26&nbsp; 0.000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.000000&nbsp;&nbsp; 0.000&nbsp; -0.000&nbsp; -0.000</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.2211294&nbsp;&nbsp;&nbsp; 50177.&nbsp;&nbsp;&nbsp; 199.29&nbsp; 0.872452&nbsp; -0.000049&nbsp;&nbsp; 1.000000&nbsp; -0.000000&nbsp; 
+0.000000&nbsp;&nbsp; 0.000&nbsp; -0.000&nbsp; -0.000</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.2211297&nbsp;&nbsp;&nbsp; 50177.&nbsp;&nbsp;&nbsp; 199.29&nbsp; 0.872452&nbsp;&nbsp; 1.000000&nbsp;&nbsp; 0.000049&nbsp; -0.000000&nbsp; 
+0.000000&nbsp;&nbsp; 0.000&nbsp; -0.000&nbsp;&nbsp; 0.000</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The first two excited states (states 2 and 3), with 
+energies of 4.708 and 5.361 eV, are dark states with oscillator strengths of 
+exactly zero. States 4 and 5 are degenerate at an energy of 6.221 eV, and are 
+bright states. State 4 has its transition dipole moment aligned along the y 
+axis, and state 5 has its transition dipole moment aligned along the x axis (see 
+the polarization block within the list of excited states).</p>
+<p class="MsoNormal">&nbsp;</p>
+<h3><b>(2) Solvatochromism</b></h3>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This job illustrates how to compute the solvatochromic 
+shift of the first excited state of carbon monoxide between ethanol and toluene 
+using CIS with the INDO/S Hamiltonian, defined as: </p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal" align="center" style="text-align:center">(Excited-state 
+energy in ethanol) – (Excited-state energy in toluene)</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Since the INDO/S parameters are intended solely for 
+excited-state properties, the geometries must be obtained at another level of 
+theory.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The input file in ethanol is:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">INDO CIS 
+EPS=24.3 N**2=1.85</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">Carbon 
+monoxide in ethanol</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">C&nbsp; 
+0.000000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">O&nbsp; 
+1.173000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The input file in toluene is:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">INDO CIS 
+EPS=2.38 N**2=1.99</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">Carbon 
+monoxide in toluene</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">C&nbsp; 
+0.000000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">O&nbsp; 
+1.173000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">In ethanol, the first excited-state energy is 6.739 eV:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; CI 
+trans.&nbsp; energy frequency wavelength oscillator ---------polarization---------&nbsp;&nbsp;&nbsp; 
+dipole&nbsp;&nbsp; ------components-----</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;st.&nbsp; 
+symm.&nbsp;&nbsp;&nbsp; eV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cm-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strength&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+moment&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.7386887&nbsp;&nbsp;&nbsp; 54351.&nbsp;&nbsp;&nbsp; 183.99&nbsp; 0.000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2.375820&nbsp;&nbsp; 2.376&nbsp; -0.000&nbsp; -0.000</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">In toluene, the first excited-state energy is 6.652 eV:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; CI 
+trans.&nbsp; energy frequency wavelength oscillator ---------polarization---------&nbsp;&nbsp;&nbsp; 
+dipole&nbsp;&nbsp; ------components-----</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;st.&nbsp; 
+symm.&nbsp;&nbsp;&nbsp; eV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cm-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strength&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+moment&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;z</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.6519378&nbsp;&nbsp;&nbsp; 53652.&nbsp;&nbsp;&nbsp; 186.39&nbsp; 0.000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+2.432843&nbsp;&nbsp; 2.433&nbsp; -0.000&nbsp; -0.000</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The computed solvatochromic shift is (6.739 eV - 6.652 eV) 
+= 0.087 eV.</p>
+<h3><b>(3) Detailed analysis of INDO/CI Excited States</b></h3>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The INDO/S Hamiltonian (or equivalently, ZINDO/S), has 
+parameters designed specifically to reproduce vertical excited-state energies 
+using a configuration interaction (CI) approach with single excitations (CIS), 
+and has also shown success in understanding excited states with large 
+double-excitation character using either single and double excitations (CISD) or 
+a multi-reference approach (MRCI).</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">This job illustrates how to compute the excited states of 
+all-trans-octatetraene using INDO/S with an MRCI approach. The reference 
+determinants are generated using a complete active space approach within the 
+C.A.S.=(2,1) active space, which generates three reference determinants: (1) the 
+SCF ground state, (2) the single HOMO &#8594; LUMO excitation, and (3) the double 
+HOMO, HOMO &#8594; LUMO, LUMO excitation. MRCI then uses these three references 
+determinants as starting points to generate single excitations within the 
+C.I.=(24,12) active space. In this example, we limit the CI active space to the 
+500 lowest-energy electron configurations within this active space (MAXCI=500), 
+print the lowest 50 excited states (WRTCI=50), and print only configurations 
+that contribute to each excited state with coefficients larger than 0.1 
+(WRTCONF=0.1).</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The input file is:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">INDO MRCI 
+C.I.=(24,12) C.A.S.=(2,1) MAXCI=500 WRTCI=50 WRTCONF=0.1</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+all-trans-octatetraene</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.136428 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.312612 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.650845 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3.070957 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-0.136428 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.855969 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.389263 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.606310 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-0.389263 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -0.606310 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.136428 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.855969 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-0.650845 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -3.070957 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-0.136428 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.312612 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.770425 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5.193819 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-0.937761 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4.483413 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1.734237 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2.945379 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-1.221062 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1.972790 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1.474577 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.494288 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-1.474577 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -0.494288 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+1.221062 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -1.972790 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-1.734237 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -2.945379 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.937761 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -4.483413 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; H&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+-0.770425 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -5.193819 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.000000 0</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The output file contains a statement of which electron 
+configurations are used in the CI calculation:</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+&nbsp;Reference determinate nber&nbsp;&nbsp; 1 is ALPHA 1 -&nbsp; 21</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;CAS 
+excitations amongst orbitals:&nbsp; 21&nbsp; 22</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;SINGLE 
+excitations FROM orbs&nbsp; 10 to&nbsp; 21 INTO orbs&nbsp; 22 to&nbsp; 33</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">Even though there are 531 possible electron configurations 
+with singlet spin within this active space, the MAXCI=500 keyword limits the CI 
+matrix to the 500 lowest-energy electron configurations within this active 
+space. The output file contains the list of all 500 configurations within the CI 
+matrix and their energies, which include the SCF ground state, single 
+excitations, double excitations (generated as single excitations relative to the 
+HOMO &#8594; LUMO reference determinant), and triple excitations (generated as single 
+excitations relative to the HOMO, HOMO &#8594; LUMO, LUMO reference determinant). For 
+example, the pure HOMO &#8594; LUMO excitation (21&#8594;22) has an energy of 4.256 eV 
+relative to the SCF ground state:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">CI 
+excitations=&nbsp; 500:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =500</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;The 
+lowest&nbsp; 500 spin-adapted configurations of multiplicity=&nbsp; 1</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp;&nbsp; 
+sym&nbsp;&nbsp; eV&nbsp;&nbsp; cm**-1 -dets- dipole oscilator X FRAG ....Excitations named from 
+first reference determinate</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tot&nbsp; #&nbsp; Debye&nbsp; strength</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.&nbsp; 1&nbsp; 1&nbsp; 0.0000 0.000000 0&nbsp; 0 (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )-&gt;(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4.256&nbsp; 34328.&nbsp; 2&nbsp; 1&nbsp; 0.0000 1.853465 1&nbsp; 1 (&nbsp; 21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )-&gt;(&nbsp; 22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+5.592&nbsp; 45100.&nbsp; 2&nbsp; 1&nbsp; 0.0000 0.000000 1&nbsp; 1 (&nbsp; 21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )-&gt;(&nbsp; 23 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.128&nbsp; 49424.&nbsp; 2&nbsp; 1&nbsp; 0.0000 0.000000 1&nbsp; 1 (&nbsp; 20&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )-&gt;(&nbsp; 22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.195&nbsp; 49965.&nbsp; 2&nbsp; 1&nbsp; 0.0000 0.000013 1&nbsp; 1 (&nbsp; 21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )-&gt;(&nbsp; 26&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.267&nbsp; 50544.&nbsp; 1&nbsp; 1&nbsp; 0.0000 0.000000 2&nbsp; 0 (&nbsp; 21&nbsp; 21&nbsp;&nbsp;&nbsp; )-&gt;(&nbsp; 22&nbsp; 22&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+6.496&nbsp; 52392.&nbsp; 2&nbsp; 1&nbsp; 0.0000 0.010230 1&nbsp; 1 (&nbsp; 21&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )-&gt;(&nbsp; 24&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">...</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; 95&nbsp;&nbsp;&nbsp;&nbsp; 
+12.917 104186.&nbsp; 2&nbsp; 1&nbsp; 0.0000 0.000000 3&nbsp; 1 (&nbsp; 20&nbsp; 21&nbsp; 21)-&gt;(&nbsp; 22&nbsp; 22&nbsp; 23&nbsp;&nbsp; )</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The output file then contains the states obtained by 
+diagonalizing the CI matrix. In this case, the ground state is stabilized by 
+8657 cm^-1 relative to the SCF ground state:</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">
+Depression of ground-state after CI=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -8657. cm**-1 Energy= -1399.9520161 eV</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The first excited state (state 2) is 4.668 eV higher in 
+energy than the ground state, and the second excited state (state 3) is 4.890 eV 
+higher in energy than the ground state. The first excited state is a dark state 
+(oscillator strength = 0) and the second excited state is bright (oscillator 
+strength = 1.130) with its transition dipole moment aligned almost perfectly 
+along the y axis. This is in good agreement with the experimental properties of 
+this molecule, which has a dark first excited state slightly lower in energy 
+than the first bright state.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp; CI 
+trans.&nbsp; energy frequency wavelength oscillator ---------polarization---------&nbsp;&nbsp;&nbsp; 
+dipole&nbsp;&nbsp; ------components-----</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;st.&nbsp; 
+symm.&nbsp;&nbsp;&nbsp; eV&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cm-1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; nm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; strength&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+moment&nbsp;&nbsp;&nbsp;&nbsp; x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; z</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4.6680976&nbsp;&nbsp;&nbsp; 37651.&nbsp;&nbsp;&nbsp; 265.60 &nbsp;0.000000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+0.000000&nbsp;&nbsp; 0.000&nbsp;&nbsp; 0.000&nbsp; -0.000</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp; 3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+4.8897203&nbsp;&nbsp;&nbsp; 39438.&nbsp;&nbsp;&nbsp; 253.56&nbsp; 1.130960&nbsp; -0.039398&nbsp;&nbsp; 0.999224&nbsp; -0.000000&nbsp; 
+0.000000&nbsp; -0.000&nbsp; -0.000&nbsp; -0.000</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">After the summary list of excited states, the output file 
+contains the list of electron configurations that contribute to each excited 
+state. The ground state (State 1) contains 85% electron configuration 1, which 
+corresponds to the SCF ground state (numbering corresponds to the numbering in 
+the list of all 500 electron configurations printed earlier). The ground state 
+also contains 7% electron configuration 6 (21, 21 &#8594; 22, 22) and smaller 
+contributions from other electron configurations.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">State&nbsp;&nbsp;&nbsp; 
+1&nbsp; 0.0000&nbsp;&nbsp;&nbsp;&nbsp; CI coeff&nbsp; CI percent</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 0.92336963&nbsp; 0.85261147</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp; -0.27185071&nbsp; 0.07390281</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 44&nbsp; -0.11288867&nbsp; 0.01274385</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 85&nbsp;&nbsp; 0.13615963&nbsp; 0.01853945</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp; 116&nbsp; -0.10641287&nbsp; 0.01132370 </span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;Total 
+coeff printed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.99485866</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The first excited state has three major contributions: 
+configurations 3 (21 &#8594; 23), 4 (20 &#8594; 22), and 6 (21, 21 &#8594; 22, 22). This state is 
+the first excited-state only because of the mixing of a doubly excited 
+configuration with single excitations; in a CIS calculation, this excited state 
+will be higher in energy than the first bright state.</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">State&nbsp;&nbsp;&nbsp; 
+2&nbsp; 4.6681&nbsp;&nbsp;&nbsp;&nbsp; CI coeff&nbsp; CI percent</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; -0.24379600&nbsp; 0.05943649</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3&nbsp;&nbsp; 0.54559432&nbsp; 0.29767316</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4&nbsp; -0.43522910&nbsp; 0.18942437</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6&nbsp; -0.51352715&nbsp; 0.26371013</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 18&nbsp;&nbsp; 0.11118656&nbsp; 0.01236245</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 33&nbsp;&nbsp; 0.16400700&nbsp; 0.02689830</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 44&nbsp; -0.26248831&nbsp; 0.06890011</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 56&nbsp;&nbsp; 0.12774098&nbsp; 0.01631776</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp; 116&nbsp; -0.11973570&nbsp; 0.01433664</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;Total 
+coeff printed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.94905942</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">The second excited state has only one major contribution: 
+configuration 2 (21 &#8594; 22).</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">State&nbsp;&nbsp;&nbsp; 
+3&nbsp; 4.8897&nbsp;&nbsp;&nbsp;&nbsp; CI coeff&nbsp; CI percent</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;&nbsp;&nbsp; 
+Config&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2&nbsp;&nbsp; 0.97454714&nbsp; 0.94974213</span></p>
+<p class="MsoNormal"><span style="font-family:&quot;Courier New&quot;">&nbsp;Total 
+coeff printed&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0.94974213</span></p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+<p class="MsoNormal">&nbsp;</p>
+</BODY>
+</HTML>

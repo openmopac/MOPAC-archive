@@ -1,0 +1,318 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Lewis Structures.</TITLE>
+<META NAME="description" CONTENT="8.6.3 Lewis Structures.">
+
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<H2>Lewis Structures.
+</H2>
+One of the more difficult operations involved in using localized molecular
+orbitals is the generation of a Lewis structure.  While this operation is
+almost trivially easy for a competent chemist, setting up the instructions so
+that a program can do the same operation has proved to be a daunting task.
+<P>
+In the following section, the steps involved in calculating the Lewis structure
+are described.  This description is intended to be definitive, in the sense
+that it should allow the Lewis structure for <EM>any</EM> common compound to be
+generated. At the same time, any deficiency in the description should be
+reflected in the inability of MOZYME to generate the Lewis structure for
+certain systems.
+<P>
+Because of its complexity, the main sequence involved will be given first,
+followed by a more detailed explanation of the individual steps.
+<H3><A NAME="SECTION001263100000000000000">
+ Lewis Structure--Main Sequence.</A>
+</H3>
+<DL COMPACT>
+<DT>1.  The connectivity is calculated.  This determines which atom is bonded to
+which atom.&nbsp; If necessary, use <TT><a href="CVB.html">CVB</a>, <a href="metal.html">METAL</TT></a>, 
+<a href="setpi.html"><TT>SETPI</TT></a>, and/or <a href="vdwm.html"><TT>VDWM</a>,</TT> to add or&nbsp; remove bonds.
+<DT>2.   All atoms that have explicit charges are identified, and the charges
+assigned.
+<DT>3.   The <i>&sigma;</i><i>&nbsp; </i>framework is determined.
+<DT>4.   Most of the lone pairs are identified.
+<DT>5.   Open-ended (non-aromatic) <i> <span class="b">&pi;</span></i>-bonds are identified.
+<DT>6.   Aromatic<i> <span class="b">&pi;</span></i>-bonds are identified.
+<DT>7.   All cations, anions, and any remaining lone pairs are identified. <br>
+8. Explanation of&nbsp; <a href="Lewis_Metal_Charges.html">Lewis metal atom 
+charges</a><dd>
+
+<P dir="ltr">&nbsp;<H3 dir="ltr"><A NAME="SECTION001263200000000000000">Detailed Description of Lewis Structure.</A> </H3>
+<STRONG><DL dir="ltr">
+<div dir="ltr">
+<DT dir="ltr">Calculation of Connectivity</STRONG> </DT>
+</div>
+<DD dir="ltr">
+<p dir="ltr">&nbsp; <BR>
+Hydrogen atoms are monovalent. Because of this, they can only bond to one other atom. Therefore, the first set of bonds formed are the X-H
+<i>&sigma;</i>bonds. The criterion used is that each hydrogen atom is connected to the atom nearest to it, except that a hydrogen atom is not allowed to be bonded to another hydrogen atom. </DD>
+<DD dir="ltr">
+<p dir="ltr">The connectivity of all other atoms is determined. Atoms are considered as being connected (bonded together) if the interatomic distance is less than 110% of the sum of their Van der Waals radii. </DD>
+<DD dir="ltr">
+<p dir="ltr">Any bridging hydrogen bonds are identified. These usually indicate a faulty geometry. If any are present, then the SCF calculation will not be run, unless <TT>
+<a href="let.html">LET</a></TT> is present. </DD>
+<DD dir="ltr">
+<p dir="ltr">Any user-defined chemical bonds are identified. This is useful in 
+cases where a Lewis structure could not otherwise be created. </DD>
+<DD dir="ltr">
+<p dir="ltr">&nbsp;<div dir="ltr">
+<DT dir="ltr"><i><span class="b"><strong>&sigma;</strong></span></i><strong>-framework
+</strong> </DT>
+</div>
+<DD dir="ltr">
+<p dir="ltr">&nbsp; <BR>
+This is the simplest set of bonds to identify. A <i>&sigma;</i> bond exists for every pair of atoms that are connected. The number of <i>&sigma;</i> bonds is equal to the number of connections in the system. For water, this would be 
+2; for benzene, 12; and for ethylene, 5. </DD>
+<DD dir="ltr">
+<p dir="ltr">Each time a bond is formed, the number of available atomic orbitals on the atoms involved is decremented by 1 and the number of available electrons is decremented by 1. For example, before the <i>&sigma;</i> framework 
+of ammonia is formed, the number of available orbitals on nitrogen is 4 and the number of electrons is 5. After the <i>&sigma;</i> bonds are formed, there is 1 orbital and 2 electrons left. </DD>
+<p dir="ltr">The number of&nbsp; <i>&sigma;</i> bonds or connections in a single 
+molecular system is equal to (N&nbsp; + R - 1) where N is the number of atoms in 
+the system and R is the number of rings.&nbsp; Thus ethyl acetate, CH<sub>3</sub>COO(C<sub>2</sub>H<sub>5</sub>), 
+has14 atoms and no rings, so it has 13 connections or 13 <i>&sigma;</i> bonds. 
+Within proteins, the residues His, Phe, Try, and Pro each have one ring, Trp has 
+two, all the rest have zero.&nbsp; So given the total number of atoms and the 
+residue sequence, it is quite easy to work out the number of sigma bonds. 
+Topologically, most proteins are chains, but if cysteine bonds are present, each 
+bond counts as a ring.<STRONG><div dir="ltr">
+  <DT dir="ltr">Lone pairs</STRONG> </DT>
+</div>
+<DD dir="ltr">
+<p dir="ltr">&nbsp; <BR>
+The next set of Lewis elements formed are the lone pairs. The rule used here is that if there are more electrons than orbitals on an atom, the extra electrons are used in the construction of lone pairs. Each lone pair uses up two electrons and one orbital. Thus, one lone pair would be assigned to the nitrogen in ammonia, two lone pairs would be assigned to oxygen in water, and three lone pairs would be assigned to chlorine in HCl. </DD>
+<DD dir="ltr">
+<p dir="ltr">The lone pairs could only assigned after the <i>&sigma;</i> bonds were created. If they were assigned before the
+<i>&sigma;</i> bonds, then some ionic systems, such as NH<SUB>4</SUB><sup>+</sup>, could not be represented. </DD>
+<STRONG>
+<div dir="ltr">
+  <DT dir="ltr">Open-ended <span class="b">&pi;</span>-bonds</STRONG> </DT>
+</div>
+<DD dir="ltr">
+<p dir="ltr">&nbsp; <BR>
+Once the lone pairs are assigned, the number of unused atomic orbitals on an atom will be equal to the number of unused electrons on that atom. 
+These unused orbitals are then available for forming multiple bonds between atoms. If two atoms, that are <i>&sigma;</i> bonded together, both have unused orbitals, then they can form a
+<i>&pi;</i>bond. </DD>
+<DD dir="ltr">
+<p dir="ltr">The order in which
+<i>&pi;</i> bonds are generated is important. If in styrene, for example, a
+<i>&pi;</i> bond is assigned to the ring-C<SUB>1</SUB> as in Figure 1, <I>A</I>, then when the remaining double bonds are created, there are two unused atomic orbitals on atoms that are not bonded together. In order for a Lewis structure to be generated, two electrons are put into one of these unused orbitals, creating an anionic center, and no electrons are put into the other orbital, making it a cationic center. </DD>
+<DD dir="ltr">
+<p dir="ltr"><BR>
+</p>
+<DIV ALIGN="CENTER" dir="ltr">
+  <p dir="ltr"><A NAME="styrene">&nbsp;<A NAME="BM15701"></A>&nbsp;</A> </DD>
+<STRONG></p>
+  <DD dir="ltr">
+  <p dir="ltr">Figure 1:</STRONG> Examples of Initial Choice of Double Bond</DD>
+</DL>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312 dir="ltr">
+<TR><TD VALIGN="MIDDLE" dir="ltr">
+<P dir="ltr"> <DIV ALIGN="CENTER" dir="ltr"><!-- MATH: $\includegraphics{styrene}$ -->
+  <p dir="ltr">
+  <IMG SRC="img1075.gif" WIDTH=553 HEIGHT=394 ALT="includegraphics{styrene}"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<DL dir="ltr">
+<DD dir="ltr">
+<p dir="ltr">A better choice is to identify open-ended
+<i>&pi;</i> systems, and to assign these first, option <I>B</I> in Figure 1. </DD>
+<DD dir="ltr">
+<p dir="ltr">The order in which the
+<i>&pi;</i> bonds are assigned in an open-ended <i>&pi;</i> system is important. In the case of a simple conjugated polyene, the order is simple - the carbon atom that has only one atom
+<i>&pi;</i> bonding to it is identified. A <i>&pi;</i> bond is constructed between the two atoms. This is repeated until all
+<<i>&pi;</i> bonds in the polyene are identified. </DD>
+<DD dir="ltr">
+<p dir="ltr">Problems arise in more complicated systems, such as buta-1,3-diyne. If the simple rule just described is used, then a zwitterionic cumulated polyene results, Figure 2 <I>A</I>, instead of a diyne, Figure 2 <I>B</I>. </DD>
+<DD dir="ltr">
+<p dir="ltr"><BR>
+</p>
+<DIV ALIGN="CENTER" dir="ltr">
+  <p dir="ltr"><A NAME="butdiyne">&nbsp;<A NAME="BM15702"></A>&nbsp;</A> </DD>
+<STRONG></p>
+  <DD dir="ltr">
+  <p dir="ltr">Figure 2:</STRONG> Generation of Yne Bond</DD>
+</DL>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=312 dir="ltr">
+<TR><TD VALIGN="MIDDLE" dir="ltr">
+<P dir="ltr"> <DIV ALIGN="CENTER" dir="ltr"><!-- MATH: $\includegraphics{butdiyne}$ -->
+  <p dir="ltr">
+  <IMG SRC="img1082.gif" ALT="includegraphics{butdiyne}" width="542" height="664"></DIV></TD>
+</TR>
+</TABLE>
+
+</DIV>
+<DL dir="ltr">
+<DD dir="ltr">
+<p dir="ltr">Also, if both ends of the olefinic group are connected to aromatic rings, as in stilbene, then identification of the olefin group is not obvious. </DD>
+<DD dir="ltr">
+<p dir="ltr">To allow for this, the following two rules are used: </DD>
+<div dir="ltr">
+<DT dir="ltr">1. Where there is the possibility of forming a triple bond, do so. </DT>
+</div>
+<div dir="ltr">
+<DT dir="ltr">2. When a delocalized
+<i>&pi;</i> system is opened, the
+<i>&pi;</i> bond formed should involve atoms that are
+<i>&pi;</i> bonded to exactly two other atoms. </DT>
+</div>
+</DL>
+<P dir="ltr">In the case of stilbene (<IMG SRC="img1086.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=29 ALT="$phi$">-CH=CH-<IMG SRC="img1087.gif" ALIGN="MIDDLE" WIDTH=15 HEIGHT=29 ALT="$phi$">), this prevents a
+<i>&pi;</i> bond forming between the ring and a carbon atom of the olefin. </P>
+<P dir="ltr">Whenever a delocalized
+<i>&pi;</i> system is encountered, as soon as a
+<i>&pi;</i> bond is formed and the delocalization destroyed, then the rest of the
+<i>&pi;</i> system is treated as a simple conjugated polyene. This ensures that the maximum number of
+<i>&pi;</i> bonds is formed, and prevents unconnected
+<i>&pi;</i> bonds from being created. Thus benzene would have the three
+<i>&pi;</i> bonds: C<SUB>1</SUB>-C<SUB>2</SUB>, C<SUB>3</SUB>-C<SUB>4</SUB>, and C<SUB>5</SUB>-C<SUB>6</SUB>, and not the quinoidal C<SUB>1</SUB>-C<SUB>2</SUB>and C<SUB>4</SUB>-C<SUB>5</SUB> bonds. </P>
+<P dir="ltr">To allow compounds that contain several fused delocalized
+<i>&pi;</i>-systems, such as the higher buckyballs (specifically, C<SUB>960</SUB>) to be modeled, two extra rules are needed. These rules can be regarded as minor qualifications to the earlier rules: </P>
+<DL dir="ltr">
+<div dir="ltr">
+<DT dir="ltr">1. If any atoms attached to an open-ended <i>&pi;</i> system belong to a delocalized
+<i>&pi;</i> system, then when delocalized <i>&pi;</i> systems are opened, the opening is done using these atoms. </DT>
+</div>
+<div dir="ltr">
+<DT dir="ltr">2. If a five-membered <i>&pi;</i> ring is attached to another delocalized
+<i>&pi;</i> system, then when the
+<i>&pi;</i> system is opened, at least one atom must be in the other delocalized system. </DT>
+</div>
+</DL>
+<P dir="ltr">The effect of the first rule is that as soon as a graphitic network is encountered, all the
+<i>&pi;</i> bonds in the network are assigned in one pass. Without this rule, individual parts of the network could be assigned separately, and at the junctions of the various domains, the potential for isolated
+<i>&pi;</i> orbitals exists. This would lead to charges that would cause severe problems with the SCF calculation. </P>
+<P dir="ltr"><BR>
+<DIV ALIGN="CENTER" dir="ltr">
+  <p dir="ltr"><A NAME="ful_fac">&nbsp;<A NAME="BM15703"></A>&nbsp;</A> </p>
+  <p dir="ltr"></p>
+<STRONG><P dir="ltr">Figure 3:</STRONG> Kekule Structure for a Facet of Fullerene C<SUB>1500</P></SUB>
+
+
+  <IMG SRC="img1104.gif" ALT="includegraphics{ful_fac}" width="566" height="624"></DIV>
+
+
+
+<P dir="ltr">For extended graphite-like systems, two more rules are needed. These are: 
+1</P>
+<p dir="ltr">1.&nbsp; If a six-membered ring has two
+<i>&pi;</i> bonds already, then add a third
+<i>&pi;</i> bond to make it an aromatic ring. <div dir="ltr">
+
+</div>
+
+<p dir="ltr">2.&nbsp; If a six-membered ring has one <i>&pi;</i> bond, then add another
+<i>&pi;</i> bond to the same ring, so that the previous rule can be used. 
+
+<P dir="ltr">The effect of these rules is that when a graphitic lattice is encountered, all the atoms in the 
+lattice will be assigned in such a way as to maximize the number of aromatic rings. An example of such a system is provided by the 
+large icosahedral fullerene C<SUB>1500</SUB>. A facet of this system is shown in Figure 3. </P>
+
+
+
+<STRONG>
+Remaining unused atomic orbitals</STRONG>
+
+All that remains is to identify any unused electrons and orbitals and to assign 
+them to either the occupied or virtual sets.&nbsp; A general set of rules 
+applies to all elements except carbon.&nbsp; For carbon, the rules are as 
+follows:
+
+<p dir="ltr" align="left"><b>Rules for carbon:</b>&nbsp; 
+If there are two unused valence electrons, then the atom will be neutral (a carbene, 
+for example). Otherwise, if the first or second nearest neighboring atom is of 
+Group&nbsp;6, then the atom is assigned a negative charge; if the first or second 
+nearest neighboring atom is of Group&nbsp;5, then the atom is assigned a positive 
+charge. If the charge is still not determined, then the assignment of charge is 
+deferred until all other atoms have been assigned. At that point, the charge is 
+assigned as either +1 or -1, depending on the calculated charge on the system 
+and the charge supplied by the data set. The charges are assigned so that the 
+calculated charge equals the supplied charge.
+
+<p dir="ltr" align="left"><b>Transition states</b><p dir="ltr" align="left">In a 
+transition state, the coordination number of an atom might temporarily increase 
+above that normally encountered.&nbsp; In a proton migration, for example, a hydrogen 
+atom might briefly be bonded to two atoms.&nbsp; The easiest way to construct 
+the Lewis structure for such systems is to simply ignore the increased 
+coordination.&nbsp; Thus, in the case of a proton migration, at the transition 
+state geometry the hydrogen atom is considered as bonding to one atom and not 
+connected to the other atom.&nbsp; As with other structures of this general 
+type, during the SCF calculation the correct bonds will be formed.<p dir="ltr" align="left"><b>General rules for all other elements:</b><p dir="ltr" align="left">
+First, the oxidation state is determined.&nbsp; This is the sum of the 
+calculated formal charge (if any) plus the number of bonds times -1 if the 
+element is normally electronegative .&nbsp; For oxygen in CH<sub>3</sub>-O this 
+would be 0 (from the current charge on oxygen) plus the number of bonds (here 1, 
+to the carbon atom) times -1. This would give the formal oxidation state of 
+minus one.&nbsp; If the calculated valence is less than that expected for a 
+normal-valent system, a hypervalent valency will be tried.<p dir="ltr" align="left">
+Then the calculated oxidation state (in CH<sub>3</sub>-O this would be -1 ) is 
+compared with that expected (for oxygen, -2).&nbsp; If they are different, then 
+electrons are added or removed as necessary to match the expected oxidation 
+state.&nbsp; For the CH<sub>3</sub>-O system, one electron is added to give [CH<sub>3</sub>-O]<sup>-</sup>.&nbsp;
+
+<p dir="ltr" align="left">All remaining electrons are used in making lone pairs.<p dir="ltr" align="left">
+If there are any unused orbitals, they are used in making virtual lone pairs.<p dir="ltr" align="left">
+Only limited hypervalent states are allowed.&nbsp; For chlorine, these are 1 and 
+3, for iodine: 1, 3, and 7.&nbsp; The most popular states are used.&nbsp; Only 
+those oxidation states that can result in closed shells are allowed, so Cr is 
+Cr(II), Cr(III) is not allowed, nor is Fe(III).<p dir="ltr" align="left">
+For some transition metals, the maximum coordination number is limited to five.&nbsp; 
+This is necessary in order to allow some transition metal complexes such as [Ni<sup>ii</sup>(NH<sub>3</sub>)<sub>6</sub>]<sup>2+</sup> 
+to be modeled.&nbsp; Ni has a basis set of 4s(2), 4p(0), 3d(8), or 9 atomic 
+orbitals and 10 electrons.&nbsp; The ion Ni<sup>2+</sup> has 9 atomic orbitals 
+and 8 electrons. When Ni<sup>2+</sup> formed a <span class="b">&sigma;</span> bond 
+with a nitrogen atom it would gain two electrons from each nitrogen atom as the 
+lone pair on nitrogen donated two electrons to the bond.&nbsp; At the same time, 
+the nitrogen atom would acquire a formal charge of +1.&nbsp; The result would be 
+that in the nickel hexammonium complex, the nickel would formally gain 12 
+electrons when it formed&nbsp; the six&nbsp; <span class="b">&sigma;</span> bonds.&nbsp; 
+This results in the nickel atom having 8 electrons from Ni<sup>2+ </sup>plus 12 
+electrons from the six nitrogen atoms, to give a total of 20 electrons in 9 
+atomic orbitals.&nbsp; This is obviously impossible, so to avoid this 
+catastrophe the maximum coordination number allowed for Ni is set to five. <p dir="ltr" align="left"><b>
+Limitations or examples of difficult systems include:</b><p dir="ltr" align="left">
+Chlorate ion, [ClO<sub>3</sub>]<sup>-</sup>&nbsp; chlorine forms three sigma 
+bonds with the oxygen atoms, so its valency is +3.&nbsp; The first hypervalent 
+state of chlorine is Cl(III), so this is used.&nbsp; Each oxygen has an 
+oxidation state of -1, and therefore is given an extra electron to equal the 
+expected oxidation state of -2.&nbsp; At this point, the calculated total charge 
+is -3.&nbsp; In order to get the correct charge of -1, an artificial bond needs 
+to be created between two of the oxygen atoms.&nbsp; There is no way to by-pass 
+Cl(III) and use the correct Cl(V).<p dir="ltr" align="left">A very difficult set 
+is: NH<sub>3</sub>, [NH<sub>4</sub>]<sup>+</sup>, [PCl<sub>4</sub>]<sup>+</sup>, 
+[PCl<sub>4</sub>]<sup>-</sup>, PF<sub>5</sub>, [PF<sub>6</sub>]<sup>-</sup>.&nbsp;
+
+<p dir="ltr" align="left">Another difficult set is NH<sub>3</sub>, CH<sub>2</sub>=CH-NH-CH=CH<sub>2</sub>, 
+pyridinium ([C<sub>5</sub>H<sub>6</sub>N]<sup>+</sup>)&nbsp; In this set, the 
+charge on the nitrogen only becomes obvious when the distant atoms are known.<p dir="ltr" align="left">
+N-methyl 4 hydroxy pyridine (Me-NC5H4-O):&nbsp; Should this hypothetical system 
+have a Zwitterion or the benzoquinone-like structure?<p dir="ltr" align="left">
+Should the benzoquinone structure be charged (as in the di-anion of 
+hydroquinone) or uncharged (as in benzoquinone).
+
+<p dir="ltr" align="left">These few examples illustrate the difficulty of 
+writing rules for generating Lewis structures for all possible organic systems.&nbsp; 
+In an attempt to resolve ambiguities, the option exists to assign charges to 
+individual atoms.</dl>
+<p>Related key-words:&nbsp; <TT><a href="lewis.html">LEWIS</a>, <a href="CVB.html">
+CVB</a>, <a href="metal.html">METAL</a>, <a href="vdwm.html">VDWM</a>,
+<a href="charge.html">CHARGE</a>, <a href="charges.html"><TT>CHARGES</TT></a>,  </TT>&nbsp;<a href="setpi.html"><TT>SETPI</TT></a>,<TT> and <a href="mozyme.html">MOZYME</a></TT><br>
+See also:
+<a href="mozyme_introduction.html">MOZYME introduction</a><DL dir="ltr">
+<div align="left">
+  <dt dir="ltr">&nbsp;</dt>
+</div>
+
+</BODY>
+</HTML>

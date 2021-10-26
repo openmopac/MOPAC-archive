@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>DENSITY </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>DENSITY</TT>
+</h1>
+At the end of a MOPAC job, when results are being printed, the density matrix
+is  also  printed.  For RHF the normal density matrix is printed. For UHF the
+sum of the alpha and beta density matrices is printed.
+<P>
+If density is not  requested,  then  the  diagonal  of  the  density matrix,
+i.e.,  the  electron  density  on  the  atomic orbitals, will be printed.
+<h3>
+Excited state density matrices</h3>
+<P>
+When an excited state is calculated using the MECI method (see Multi-Electron 
+Configuration Interaction method in <a href="theory.html">Theory</a>) the corresponding density matrix 
+is constructed.&nbsp; Keywords that cause MECI to be used are
+<a href="ci=nm.html"><TT>C.I.=<i>text</i></TT></a>, <a href="open.html"><TT>OPEN</TT></a>,
+<a href="excited.html"><TT>EXCITED</TT></a>,&nbsp; and <a href="micros.html"><TT>MICROS</TT></a>. 
+When <TT>DENSITY</TT> is present, the excited state density matrix is printed.&nbsp; The 
+excited state used in constructing the density matrix is indicated in the MECI 
+output by a &quot;+&quot; sign next to the state number in the list of state energies 
+(state energies are printed when keyword <a href="meci.html"><TT>MECI</TT></a> is 
+present)&nbsp; For transition dipoles or <a href="oscillator_strength.html">
+oscillator strength</a>, also see the polarization values in the 
+<TT>MECI</TT> output.</BODY></HTML>

@@ -1,0 +1,55 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>IRC=n </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center"><A NAME="SECTION007390000000000000000">
+<TT>IRC=<I>n</I></TT> </A>
+</h1>
+An <a href="DRC_coordinates.html">Intrinsic Reaction Coordinate</a> calculation to be run.&nbsp; The following
+options are provided:<p>IRC=1 and IRC=1*</p>
+<p>This option is intended for use with a transition state. The path from the
+transition state to either the reactants or the products is generated. The path
+generated depends on the coefficients of the eigenvectors of the normal mode.&nbsp;
+There is no easy <em>a priori</em> way of determining what the phase of these
+coefficients is, so try running <TT>
+IRC</FONT></TT>=1, and see if it goes the correct way.&nbsp; If not, use <TT>
+IRC</FONT></TT>=-1. If <TT>
+IRC</FONT></TT>=1* or <TT>
+IRC</FONT></TT>=-1* is used, then the entire <a href="DRC_IRC_Description.html">reaction path</a>, from reactants
+or products, through the transition
+state, to products or reactants, is mapped.&nbsp; If DRC is present, then the system is given
+an initial perturbation in the positive normal coordinate, then the DRC, i.e., 
+the total energy conserved path, is
+calculated.&nbsp; A simple graph will be made if
+	<a href="html.html"><TT>HTML</FONT></TT></a> is added.</p>
+<p>These two options require the normal mode for the reaction.&nbsp; A
+<a href="force.html"><tt>FORCE</tt></a> or <a href="force.html"><tt>FORCETS</tt></a> calculation must be run in order to generate the normal mode.&nbsp; As 
+this is computationally expensive, a useful strategy is to run the <tt>FORCE</tt> or <tt>FORCETS</tt> calculation 
+and use <a href="isotope.html"><tt>ISOTOPE</tt></a> to save the results.&nbsp; Then the IRC calculation can be run 
+using, e.g., <tt>IRC=1</tt> <tt><a href="restart.html">RESTART</a></tt>.&nbsp; If <tt>RESTART </tt>is not present, a FORCE calculation 
+will automatically be run first.</p>
+<p>IRC=+<i>n </i>or IRC=<i>n</i></p>
+<p>Normally used with <a href="drc0.html"><TT>DRC</TT></a>, this option perturbs the system along the <i>n</i>'th
+normal mode.&nbsp; One quantum of kinetic energy is added, the value of the
+quantum being that of the associated vibrational energy.&nbsp; This option
+allows the exact normal mode to be mapped out.&nbsp; IRC=n with DRC can be used
+with both ground and transition state systems.&nbsp; If IRC=1 and DRC is used
+with transition states, it would map out the dynamic path from the transition
+state to reactants or products. </p>
+<p>IRC=-n</p>
+<p>The same as IRC=+<i>n</i>, except the initial perturbation is in the opposite
+direction. Except for transition states, this option can be duplicated by one of
+the other options described here.</p>
+<p>When studying reaction paths involving transition states, one option, although implied logically from the above description of the IRC,
+should not be used.&nbsp; The option IRC=<i>n</i>, where&nbsp; <i>n</i> is not
+equal to 1 or -1, is meaningless.&nbsp; To see why, consider the option IRC=1.&nbsp;
+That maps the reaction path, and uses the lowest transition state normal mode,
+i.e. the mode with the imaginary frequency.&nbsp; Any other mode would simply
+return to the transition state, in other words, it would do nothing useful.</p>
+<p>By default, all steps that are calculated are printed.&nbsp; To produce a more 
+meaningful graph, use keyword <a href="x-priority.html"><tt>X-PRIORITY</tt></a>.</p>
+</BODY>
+</HTML>

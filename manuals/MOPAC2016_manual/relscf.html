@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>RELSCF </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>RELSCF</TT>
+</h1>
+When <TT>RELSCF=<I>n</I></TT> is present, the default SCF criterion is multiplied
+by <I>n</I>.  This is useful if the value of the default SCF criterion is not
+readily available, as for example when <a href="precise.html"><tt>PRECISE</tt></a> or any 
+other keywords that modify the SCF criterion is used.   Examples:  <TT>RELSCF=10</TT> will make the SCF test
+easier to pass--the criterion will be made 10 times easier. Similarly,
+if the results are not precise enough, then <TT>RELSCF=0.1</TT> would
+increase the precision 10 times.  However, if the precision is increased
+too much, the SCF test might never be passed.  See also <TT>
+<a href="scfcrt.html">SCFCRT</a></TT>.
+</BODY>
+</HTML>

@@ -1,0 +1,163 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Program MAKPOL</TITLE>
+                                                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1>Program MAKPOL </H1>
+<P>(This program is <em>not</em> a function within MOPAC, instead it is a utility program for building data sets for 
+polymers, layer systems, and solids.&nbsp; MAKPOL was extensively rewritten in 
+January, 2018.&nbsp; A copy of the <a href="makpol.zip">MAKPOL executable</a> for use on WINDOWS
+systems is available for download.)</P>
+<P>MAKPOL can convert a file in PDB or ENT format into a MOPAC data-set.&nbsp; 
+These files have exactly the same format, so in principle either suffix could be 
+used.&nbsp; However, since MOPAC can generate files that have the PDB suffix, 
+it's better to use files with the suffix .ENT with MAKPOL; there is less chance that ENT 
+files would be accidentally over-written.&nbsp;&nbsp; ENT files can either be 
+created by the user or generated from a CIF file.&nbsp; Two good sources are the 
+Cambridge Structural Database, the <a href="http://www.ccdc.cam.ac.uk/pages/Home.aspx">CSD</a>, 
+for organic solids, and the Inorganic Crystal Structure Database, the
+<a href="http://www.fiz-karlsruhe.com/icsd.html">ICSD</a>, for inorganic solids.&nbsp; 
+
+</P>
+<h2>Installing MAKPOL</h2>
+<P>Download the <a href="makpol.zip">MAKPOL executable</a> and extract the files 
+in the ZIP file to a convenient place, for example to Users/yourname/MAKPOL.&nbsp; 
+Then place a shortcut on the desktop.&nbsp; To do this, copy the MOPAC 
+executable and paste a shortcut on the desktop.&nbsp; Then drag-and drop any of 
+the examples in the ZIP file onto the shortcut.&nbsp; The job will run very fast 
+- most systems will run in less than one second. </P>
+<h2>Using MAKPOL</h2>
+<h3>Starting with a PDB or ENT file</h3>
+<p>Files in PDB format normally include data on the unit cell.&nbsp; These data 
+can be seen in the line that starts with the letters &quot;CRYST1&quot;&nbsp; </p>
+<p>To prevent accidental over-writing of the input file, if the file's suffix is 
+PDB re-name the suffix to ENT.&nbsp; Then &quot;drag-and-drop&quot; the ENT file onto the 
+MAKPOL shortcut icon.&nbsp; The job should run in about a second, and produce 
+two files.&nbsp; These will be named &lt;file&gt;.mop and Make_&lt;file&gt;.dat.&nbsp; 
+&lt;file&gt;.mop is an ordinary MOPAC data-set.&nbsp; If any changes need to be made 
+to the cluster in &lt;file&gt;.mop, the easiest way to make these changes is to edit 
+Make_&lt;file&gt;.dat and then run Make_&lt;file&gt;.dat using MAKPOL.&nbsp; That will 
+over-write &lt;file&gt;.mop.&nbsp; </p>
+<p>Because files in PDB format do not contain MOPAC keywords, a mechanism exists 
+that allows MOPAC keywords to be added, see <a href="#Keywords_">below</a>.</p>
+<h3>Starting with a MOPAC-type file</h3>
+<p>Any file in MOPAC format (keywords - title - comment - geometry) that has 
+enough information to allow the translation vectors to be generated can be used 
+with MAKPOL.&nbsp; Suitable names for data-sets in MOPAC format are &lt;file&gt;.dat 
+and Make_&lt;file&gt;.dat, although almost any other name could be used.&nbsp; Avoid a 
+name that is the same as the file-name created by MAKPOL, i.e., avoid 
+&lt;file&gt;.mop.</p>
+<p>When MAKPOL is run, it will create a file Make_&lt;file&gt;.dat, if that file does 
+not already exist.&nbsp; This file is in MOPAC format, and can be edited as 
+necessary, and then used as a data-set for MAKPOL.&nbsp; That allows changes to 
+be made easier than if the changes had to be made to the original data-set.</p>
+<h2>
+<a NAME="MAKPOL_keywords">Keywords used by MAKPOL</a> </h2>
+<P>Any of the keywords used by MOPAC can be used in a MAKPOL data set, but, only a few keywords will be used by MAKPOL; the rest will be ignored. Keywords that are used in MAKPOL are given below. </P>
+<TT>
+<B>BCC</B></TT>
+<DD>When <TT>BCC</TT> is added all odd unit cells are omitted. An odd unit cell is one for which the addition of the cell indices results in an odd number, thus (0,0,0) and (1,1,0) would be allowed, but (1,1,1) and (2,1,0) would not. Diamond is an example of 
+where keyword BCC would be used.<dt> 
+
+	<DT><tt>CELL</tt></DT>
+	<dd>When <tt>CELL</tt> is present, the unit cell parameters are read in.&nbsp; The 
+	format of this keyword is&nbsp;<tt>CELL(a b c alpha beta gamma)</tt> where&nbsp;<tt>a 
+	b c alpha beta</tt> and <tt>gamma</tt> are the conventional unit cell parameters in 
+	&Aring;ngstroms and degrees, for example <tt><PRE>CELL(13.7005 6.05090 15.17890 90 103.1550, 90)</PRE></tt>
+	Separators can be spaces, commas, or semicolons. <tt>CELL</tt> is useful when CIF files are 
+	used.&nbsp; Although a CIF file contains the unit cell parameters, these 
+	parameters are usually deleted when the CIF file is converted into Cartesian 
+	coordinates.&nbsp; This keyword provides MAKPOL with the information needed 
+	for generating a MOPAC data-set. This keyword is deleted by MAKPOL before 
+	the MOPAC data-set is generated.<dt> 
+
+	<DT><tt>INT</tt></DT>
+	<dd>Convert the geometry generated by MAKPOL into internal coordinates.&nbsp; 
+	This is 
+	useful mainly for high-symmetry systems. Avoid using <tt>INT</tt> for 
+	biochemical or other low-symmetry systems, there is an increased possibility 
+	that the internal-coordinate geometry will have faults caused by angles that 
+	accidentally are near to &quot;magic&quot; angles, for example an angle near to 0.0 or 
+	180.0 degrees could make the dihedral angle unpredictable. Do NOT attempt to 
+	make a large unit cell, e.g. MER=(2,2,2), then reduce that cell using 
+	MERS=(1,1,1).&nbsp; Such an operation has a much increased possibility of 
+	geometric errors - use Cartesian coordinates, and when the system looks 
+	good, convert it to internal coordinates, if necessary.<dd>This keyword is 
+deleted by MAKPOL before the MOPAC data-set is generated.<TT>
+<B>
+<DT><tt></tt>
+<DT><a name="LET">LET</a></B></TT>&nbsp; <strong><em>Buggy! Do not use!</em></strong><DD>The default, when <tt>LET </tt>is not 
+present, is to re-arrange the atoms so as to make entire molecules, if possible. 
+This step is not done when <tt>LET </tt>is present.<DD>This keyword is deleted 
+by MAKPOL before the MOPAC data-set is generated.&nbsp; <br>
+<DD>&nbsp;</DD>
+
+
+<DT><b><tt>MERS=(<I>n</I>3,<I>n</I>2,<I>n</I>1)</TT></B> </DT>
+<DD>The number of unit cells in each direction is defined by <I>n</I><sub>3</sub>, <I>n</I><sub>2</sub>, and <I>n</I><sub>1</sub>.&nbsp;
+For Brillouin zone work the number of unit cells in each direction must be odd 
+and larger than 2, so the smallest allowed value for a solid is MERS=(3,3,3).The total number of unit cells generated will be
+<i>n<sub>3</sub>.n<sub>2</sub>.n<sub>1</sub></i>, or, if <TT>BCC</TT> is used, (<i>n<sub>3</sub>.n<sub>2</sub>.n<sub>1</sub>)/2</i>.&nbsp; If the supplied 
+data-set is a multiple of the repeat unit cell, then that will be automatically 
+recognized and the repeat unit cell will be used as the starting point.&nbsp; 
+For example, if MERS=(2,2,10) is used, and the supplied cluster consists of 10 
+unit cells in the first direction, 2 in the second, and 2 in the third, then the 
+resulting cluster will consist of 2 unit cells in the first direction, 2 in the 
+second, and 10 in the third.&nbsp; In the event that the repeat unit cell cannot 
+be recognized, a warning message will be printed.&nbsp; In such a case, use MERS=(x.xx, 
+y.yy,z.zz) where x.xx, y.yy, and z.zz are the reciprocal number of unit cells in 
+the supplied data set.&nbsp; So, if the supplied data-set consists of 2 unit 
+cells in the first direction, 3 in the second, and 5 in the third, then MERS=(0.5,0.333,0.2) 
+would generate a MOPAC data set for one repeat unit.</dt>
+<dt>&nbsp;</dt>
+<DD>
+<DT><b><tt><a name="SYMMETRY">SYMMETRY</a></TT></B> </DT>
+<DD>This keyword has two distinct functions. When <TT>SYMMETRY</TT> is specified, then any symmetry data present in the input data set will be used. This is useful for reducing the number of variables that need to be changed on going from one system to another (for example, on going from diamond to cubic boron nitride). If no symmetry data are present, then this function will not be used. </DD>
+<DD>The second function of <TT>SYMMETRY</TT> is to impose symmetry conditions on the resulting cluster data set. Only four symmetry conditions are recognized: bond-lengths that are equal, bond angles that are equal, equal dihedral angles, and dihedral angles that are the negative of reference dihedrals. </DD>
+<DD>For high symmetry systems, the cluster data set should be edited to increase 
+the symmetry. For example, in diamond, all angles and dihedrals are symmetry 
+defined, so all the optimization flags for these variables should be set to 
+zero, and all symmetry functions involving angles and dihedrals should be 
+deleted. In addition, all &quot;bond lengths&quot; in diamond are simple multiples of the 
+fundamental C-C distance, so <a href="symmetry.html">symmetry function 19</a> should be added. If this is done correctly, then only one geometric variable will be left.<dt>
+</dt>
+<DT><b><tt>TV</TT></B></DT>
+<dd>A rarely-used keyword.&nbsp;When present, this keyword prevents the translation 
+vector lengths from being changed.&nbsp; An example of where this is needed is 
+in the graphite system, see the example &quot;Graphite (3,5,5) for MAKPOL.dat&quot;, where 
+atom 2 is half way between atom 1 (the origin of the coordinate system) and the 
+first translation vector.&nbsp; Without <b><tt>TV</TT></B>, MAKPOL would 
+automatically reduce the length of the first translation vector by 50%.</dd>
+<dd>This keyword is deleted by MAKPOL before the MOPAC data-set is generated.</dd>
+<DT> </DT>
+<DT><b><tt>TV=(x.xx, y.yy, z.zz)</TT></B> </DT>
+<DD>Another rarely-used keyword.&nbsp; If present, this keyword defines the primitive 
+translation vector lengths to be used when the translation vectors are not 
+available.&nbsp; An example would be if a crystal lattice existed, but there is 
+no information on the translation vectors.&nbsp; In such a case, use a graphical 
+user interface to measure the distances from atom 1 to its equivalent position 
+in the next unit cell, in each direction.&nbsp; Use these data for the 
+quantities x.xx, y.yy, z.zz.&nbsp; The translation vectors will then be 
+generated when the job is run using MAKPOL.</DD>
+<DD>This keyword is deleted by MAKPOL before the MOPAC data-set is generated.<TT><B>
+</B></TT>&nbsp;</DD>
+
+<DD>
+<DD>For examples for Brillouin-zone work see <a href="Program_BZ.html">Program 
+BZ</a>.
+ 
+
+<h2><br><a name="Keywords_">Keywords</a> for use in MOPAC</h2>
+<p>It is often convenient to have a set of keywords in the &lt;file&gt;.mop file 
+generated by MAKPOL, that are intended for use in a MOPAC job.&nbsp; To allow 
+this, a second data-set file, named &quot;keywords for MAKPOL.txt&quot; can be used by 
+MAKPOL.&nbsp; This file should contain all the keywords that the resulting MOPAC 
+data-set should contain.&nbsp; This file can be empty or it can hold 
+commonly-used MOPAC keywords, such as &quot;0SCF HTML&quot; Avoid having MAKPOL 
+keywords in this file - it's easy to forget that they're present and can cause 
+confusion when selecting MAKPOL keywords.</p>
+ 
+
+</BODY></HTML>

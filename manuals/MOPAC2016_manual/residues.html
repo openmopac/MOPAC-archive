@@ -1,0 +1,302 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 12.0">
+<TITLE>RESIDUES </TITLE>
+<META NAME="description" CONTENT="RESIDUES ">
+<style type="text/css">.auto-style1 {
+	font-weight: normal;
+}
+</style>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H2 align="center">
+<TT>RESIDUES[0]</TT></H2>
+
+<p align="left">
+In protein work, each atom will be labeled using information supplied by the PDB 
+file.&nbsp; An alternative is to use keyword <TT>RESIDUES</TT> which causes the 
+PDB-style labels to be&nbsp;worked out using only the topology of the system.&nbsp; 
+Modified residues can still be recognized if <TT>
+<a href="xeno.html">XENO=<I>text</I></a></TT> is used. Unless other keywords 
+such as&nbsp;
+<a href="chains.html"><TT>CHAINS</TT></a>, and <a href="start_res.html"><TT>START_RES</TT></a> are 
+present, or the input file is already in PDB format, the residue nearest to the NH<SUB>2</SUB> end of the protein will be No.&nbsp;1 
+in chain A, the next is 2, and so on, and the different chains will be labeled 
+A, then B, C, D, etc.&nbsp; If the input file is in PAB format, not just in 
+MOPAC format with PDB information, the residue numbers and chain letters will be 
+worked out from the PDB file.</p>
+<p align="left">
+Keyword <TT>RESIDUES</TT> uses part of <a href="mozyme_introduction.html">
+MOZYME</a>, so when the job starts it uses the MOZYME option. If keyword <a href="mozyme.html"><tt>MOZYME</tt></a> is not 
+present, then the job will only be allowed to run if no SCF calculations are 
+possible.&nbsp; This is to prevent a MOZYME calculation being done unless keyword <tt>MOZYME</tt> 
+is present.&nbsp; Jobs that do not involve SCF calculations use one or more 
+of the keywords <a href="zero_scf.html"><tt>0SCF</tt></a>, <a href="lewis.html"><tt>LEWIS</TT></a>,
+<a href="charges.html"><tt>CHARGES</tt></a>, <a href="ADD-H.html"><tt>ADD-H</tt></a>,
+<a href="site.html"><tt>SITE</tt></a>, or <a href="reseq.html"><tt>RESEQ</tt></a>.</p>
+<p align="left">
+Keyword <TT>RESIDUES</TT> converts the data-set into almost standard PDB format 
+by making the minimum change to the existing format.&nbsp; This means that:</p>
+<p align="left">
+* The residue numbers and letters will be preserved.<br>* Atoms will not be 
+re-arranged.&nbsp; To put the atoms into standard PDB sequence, use
+<a href="reseq.html"><tt>RESEQ</tt></a>.<br>* If a heterogroup is covalently 
+bonded to an existing residue, the residue will not be correctly recognized.&nbsp; 
+To correctly recognize modified residues, use <a href="CVB.html"><tt>CVB</tt></a> to 
+remove the covalent bond joining the heterogroup to the residue.&nbsp; Then, if 
+necessary, use&nbsp; <TT>
+<a href="xeno.html">XENO=<I>text</I></a></TT> to re-name the residue and to name 
+the heterogroup.<br>* Heterogroups are labeled using a simple numbering system.&nbsp; 
+When more than one atom of an element is present, the atoms will be numbered 
+sequentially, i.e., C1, C2, .... C45, C46.&nbsp; When this convention is not 
+wanted, for example if heteroatoms are labeled C2', P', etc., (think 
+saccharides) then edit the new geometry by using cut-and-paste and the original, 
+better, labeling system.&nbsp; Do not correct errors in atom serial numbers - 
+these will be automatically corrected by MOPAC in future jobs.<br>* All atoms 
+will be given a chain-letter.&nbsp; This includes water molecules, ligands, etc.<br>
+* Atom serial numbers correspond to atom numbers plus any terminators (TER's).&nbsp; 
+Although interesting, these numbers are re-calculated when any future jobs are 
+run.&nbsp; That is, atom serial numbers are not important in any MOPAC 
+calculations.<br>* Many PDB files use non-standard atom labels.&nbsp; If the 
+label is highly unusual the new label might be incorrect.<br>* Every atom should 
+have a unique label.&nbsp; This is important for jobs that use
+<a href="geo_ref.html"><tt>GEO_REF</tt></a>.<br></p>
+<h4 align="left">
+<span class="auto-style1">
+<tt><strong>RESIDUES0</strong></tt></span> - preserves the original atom labels</h4>
+<p align="left">
+Good practice is to use <TT>RESIDUES</TT> to assign PDB labels to atoms, and to 
+not do any other operations, i.e., do not resequence the atoms, or do any 
+calculations in the same job.&nbsp; After the <TT>RESIDUES</TT> job finishes, 
+examine both the output and the new data-set(s) to check that the re-labeling 
+operation was done correctly.&nbsp; In the original PDB data-set, some atoms 
+might have unusual labels, for example, a sugar backbone atom might have a label 
+such as &quot; C3' &quot;&nbsp; To keep the original atom labels, use <TT>RESIDUES0</TT> 
+(the word &quot;RESIDUES&quot; followed by a zero) instead of <TT>RESIDUES</TT>.&nbsp; If the starting geometry was already in PDB 
+format, and the re-labeling is partially incorrect, then copy and paste the 
+relevant parts of the correctly re-labeled file into the original data-set.</p>
+<p align="left">
+When individual amino acids are mutated, <TT>RESIDUES</TT> can be used to 
+re-label the mutated sites.</p>
+<p align="left">
+If <tt> RESIDUES</TT> does not work when other keywords are present, run <TT>RESIDUES</TT> 
+with keyword <tt>0SCF </tt>in a job on its own, then use the results for the job you 
+want.</p>
+
+<p align="left">
+The most common use for<TT> RESIDUES</TT> is to allow the residue sequence 
+reported in the PDB file to be compared to the sequence defined by the geometry, 
+i.e., by the topology, of the system.&nbsp; By comparing reported and actual 
+sequences, possible problems in the PDB file can be detected.</p>
+<DIV ALIGN="CENTER"> 
+<STRONG><P>Table:</STRONG> <A NAME="aacids"></A>Abbreviations for the 20 Amino Acids
+<P ALIGN="CENTER"><CENTER><TABLE BORDER CELLSPACING=1 CELLPADDING=3 WIDTH=601>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Amino Acid</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>Formula of<BR>
+Residue<IMG SRC="img155.gif" WIDTH=11 HEIGHT=19 ALT="$^{dag }$"></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Three-Letter<BR>
+Abbreviation</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">One-Letter<BR>
+Abbreviation</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Glycine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>2</SUB>NOH<SUB>3</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">GLY</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">G</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Alanine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>3</SUB>NOH<SUB>5</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">ALA</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">A</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Valine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>5</SUB>NOH<SUB>9</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">VAL</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">V</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Leucine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>6</SUB>NOH<SUB>11</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">LEU</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">L</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Isoleucine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>6</SUB>NOH<SUB>11</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">ILE</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">I</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Serine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>3</SUB>NO<SUB>2</SUB>H<SUB>5</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">SER</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">S</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Threonine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>4</SUB>NO<SUB>2</SUB>H<SUB>7</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">THR</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">T</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Aspartic acid</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>4</SUB>NO<SUB>3</SUB>H<SUB>5</SUB> (4)</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">ASP</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">D</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Asparagine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>4</SUB>N<SUB>2</SUB>O<SUB>2</SUB>H<SUB>6</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">ASN</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">N</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Lysine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>6</SUB>N<SUB>2</SUB>OH<SUB>12</SUB> (13)</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">LYS</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">K</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Glutamic acid</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>5</SUB>NO<SUB>3</SUB>H<SUB>7</SUB> (6)</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">GLU</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">E</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Glutamine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>5</SUB>N<SUB>2</SUB>O<SUB>2</SUB>H<SUB>8</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">GLN</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Q</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Arginine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>6</SUB>N<SUB>4</SUB>OH<SUB>12 </SUB> (13)</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">ARG</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">R</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Histidine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>6</SUB>N<SUB>3</SUB>OH<SUB>7 </SUB>(8)</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">HIS</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">H</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Phenylalanine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>9</SUB>NOH<SUB>9</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">PHE</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">F</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Cysteine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>3</SUB>NOSH<SUB>5</SUB> (4)</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">CYS</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">C</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Tryptophan</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>11</SUB>N<SUB>2</SUB>O<SUB> </SUB>H<SUB>10 </SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">TRP</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">W</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Tyrosine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>9</SUB>NO<SUB>2</SUB>H<SUB>9 </SUB>(8)</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">TYR</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">Y</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Methionine</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>5</SUB>NOSH<SUB>9</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">MET</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">M</TD>
+</TR>
+<TR><TD WIDTH="28%" VALIGN="MIDDLE">
+<P>Proline</TD>
+<TD WIDTH="21%" VALIGN="MIDDLE">
+<P>C<SUB>5</SUB>NOH<SUB>7</SUB></TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">PRO</TD>
+<TD WIDTH="26%" VALIGN="MIDDLE">
+<P ALIGN="CENTER">P</TD>
+</TR>
+</TABLE>
+</CENTER></P>
+
+<P ALIGN="CENTER"><IMG SRC="img176.gif" WIDTH=12 HEIGHT=25 ALT="dag">: The number of hydrogen atoms in the ionized residue is given in parenthesis after the formula. Cysteine may exist in the neutral, ionized or reduced form. </DIV><BR>
+Small molecules are often found associated with proteins. To allow for this, 
+many special groups, e.g., PO<sub>4</sub>, SO<sub>4</sub>, H<sub>2</sub>O, the 
+aldohexoses and aldoketoses, are also recognized.&nbsp; Any groups not 
+automatically identified or wrongly identified can be explicitly labeled using <a href="xeno.html"><TT>XENO</TT></a>.<p>See also: 
+<a href="reseq.html">
+<TT>RESEQ</TT></a>,
+<a href="chains.html"><TT>CHAINS</TT></a>, and <a href="start_res.html"><TT>START_RES</TT></a>.</p>
+</P>
+
+</BODY>
+</HTML>

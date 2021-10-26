@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>MINI </TITLE>
+<style type="text/css">.auto-style1 {
+	font-size: larger;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>MINI</TT><sup>&Dagger;</sup></h1>
+When very large molecules such as enzymes are modeled, the output can become 
+very large.&nbsp; To reduce this, use <TT>MINI</TT>.&nbsp; When <TT>MINI</TT> is 
+present, only atoms whose coordinates are flagged with a &quot;2&quot; will be printed.&nbsp; 
+During a run, atoms flagged with a &quot;2&quot; will be handled as if they were 
+flagged with a &quot;1&quot;.&nbsp; That is, the flag &quot;2&quot; will indicate an atom that is 
+marked for optimization. For reaction paths, the reaction coordinate is normally &quot;-1&quot;, if&nbsp; <TT>MINI</TT> 
+is present then the reaction coordinate can be &quot;-1&quot; or &quot;-2&quot; (&quot;-2&quot; is obviously 
+more likely). Although <TT>MINI</TT> works with all types of calculation, the main use 
+would be for calculations that involve reaction paths and IRC paths.&nbsp;<p>
+<TT>MINI</TT> 
+is also useful when animations are involved, for example mapping out a reaction 
+path or following an IRC or DRC.&nbsp;&nbsp; If <a href="html.html"><tt>HTML</tt></a> is 
+present, then a HTML document will be created that can be run using Firefox.&nbsp; If <tt><a href="graph.html">GRAPHF</a> </tt>is present in runs that 
+produce animations then a file, &lt;file&gt;.xyz, will be generated.&nbsp; This can 
+be visualized using Jmol.</p>
+<p>When <TT>MINI</TT> and <TT><a href="ts.html">TS</a></TT> are both present, a 
+transition state optimization calculation is run, and only atoms that are 
+flagged with the symbol &quot;2&quot; will be 
+printed; their positions will be changed during the optimization run. All nearby atoms that are to be moved during the optimization should be flagged with a 
+&quot;1&quot;, these atoms will not be printed.&nbsp; More distant atoms should be flagged with &quot;0&quot; to 
+indicate that their positions are fixed (frozen); they will not be printed.</p>
+<p><TT>MINI</TT> and <a href="force.html"><TT>FORCETS</TT></a> can be used with 
+internal or Cartesian coordinates.&nbsp; There are two ways to run <TT>MINI</TT> 
+- <TT>FORCETS</TT> jobs:</p>
+<p>(A) Running <TT>MINI</TT> and <TT>FORCETS</TT> in one job; this is not 
+recommended for large systems. Use keywords <tt>HTML FORCETS <a href="irc.html">IRC</a> MINI</tt>&nbsp; 
+plus others, to suit.&nbsp; Set optimization flags to &quot;2&quot; for the atoms to be 
+used in <tt>FORCETS</tt>, and to &quot;0&quot; for all other atoms.&nbsp; </p>
+<p>(B) Running <TT>MINI</TT> and <TT>FORCETS</TT> in two jobs; this is the 
+recommended method for large systems.&nbsp; In the first job, use keywords <tt>
+FORCETS <a href="isotope.html">ISOTOPE</a></tt> 
+plus any others needed.&nbsp; Set optimization flags to &quot;1&quot; for the atoms to be 
+used in <tt>FORCETS</tt>, and to &quot;0&quot; for all other atoms.&nbsp; In a second job, use 
+keywords <tt>HTML FORCETS IRC MINI <a href="restart.html">RESTART</a></TT> plus others to suit. Use the 
+same geometry plus flags as in the first job.&nbsp; To add an atom to the set of 
+atoms printed, change its optimization flags from &quot;0&quot; to &quot;2&quot;.&nbsp; This gives 
+increased flexibility in that the atoms used in the <tt>FORCETS </tt>calculation need to 
+be as few as possible, because the <tt>FORCETS </tt>calculation is CPU intensive, but 
+increasing the number of atoms printed in the <tt>IRC </tt>calculation only affects the 
+files generated.</p>
+<p>When <TT>MINI</TT> and <tt><a href="zero_scf.html">0SCF</a> </tt>are both present 
+then a file, &lt;file&gt;.xyz, will 
+be generated.</p>
+<p> <TT>MINI</TT> is useful when locating transition states, in <TT>FORCETS</TT> 
+calculations, in following reaction paths, and in <a href="irc.html"><TT>IRC</TT></a> 
+and <a href="drc.html"><TT>DRC</TT></a> trajectories.</p>
+<p> If <tt><a href="pdbout.html">PDBOUT</a></tt> is present, a PDB file will also be written; this file will be 
+complete.&nbsp; So if a complete geometry is wanted, as well as the minimized 
+geometry, then add <tt>PDBOUT</tt>.&nbsp; </p>
+ <span class="auto-style1">&Dagger;</span>: Re-written August 2016
+<p>&nbsp;</p>
+</BODY>
+</HTML>

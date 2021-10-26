@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SADDLE </TITLE>
+<style type="text/css">.auto-style3 {
+	text-align: center;
+	font-size: medium;
+}
+.auto-style5 {
+	text-align: center;
+	color: #000080;
+}
+																													</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>SADDLE</TT>
+</h1>
+        <tt>SADDLE</tt> locates and optimizes the transition state for a simple chemical reaction.&nbsp; 
+Two entire geometries are needed, these represent the systems at both ends of 
+the reaction being studied, and can either be supplied in the data set, or 
+preferably using keywords.&nbsp; Because of the large probability of introducing errors into the data sets, 
+instead of preparing specific data-sets it is easier to define the geometries 
+to be used using <a href="geo_dat.html"><tt>GEO_DAT</tt></a> and <a href="geo_ref.html">
+<tt>GEO_REF</TT></a>, and having 
+these keywords point to ARC files.&nbsp; This results in a very small data set 
+for the SADDLE job.&nbsp; 
+For example, if the reactant geometry is in Step_1.arc and the product geometry 
+is in Step_2.arc, the data set would be as follows:
+<p class="auto-style3"><strong>Example of a complete data set for SADDLE</strong></p>
+<p class="auto-style5"><strong>SADDLE GEO_DAT=&quot;Step_1.arc&quot; 
+GEO_REF=&quot;Step_2.arc&quot; EPS=78.4 
+</strong> </p>
+<p><tt><a href="eps.html">EPS</a></tt> is specified here, because using implicit 
+solvation gives a more realistic model.</p>
+The other option is to supply the geometries of the two systems in the data-set.   After  the  first  geometry 
+which
+   specifies the reactants,
+   the  second geometry, specifying the products, is defined, using the same
+   format as that of the first geometry.<p>See also <a href="Locate-TS.html"><tt>LOCATE-TS</tt></a>.</p>
+<P>
+A <TT>SADDLE</TT> calculation works entirely in Cartesian coordinates, regardless
+of the coordinate system used in the data set.  The output, however, is
+in internal coordinates.  All coordinates are optimized, so if <TT>
+<a href="symmetry.html">SYMMETRY</a></TT> is present, it will only be used in 
+setting up the starting geometry, after that it will be ignored.  See also <TT><a href="bar.html">BAR=<I>n</I>.<I>nn</I></a></TT>.
+<P>
+Example<P>
+*<br><TT>
+*<br>
+* Locate the approximate transition state for the reaction <br>
+*<br>
+* 2CH4 -&gt; H2 + C2H6<br>
+*<br>
+* For this calculation to work, the C2H6 system had to be put into the<br>
+* D2h geometry. <br>
+*<br>
+T=4H bar=0.04 geo-ok SADDLE mndo<br>
+<br>
+<br>
+C 0.000000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 0 0 0&nbsp; 0.0704<br>
+C 2.521764 1&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 0 0&nbsp; 0.0704<br>
+H 1.104340 1 144.595726 1&nbsp;&nbsp;&nbsp; 0.000000 0 1 2 0 -0.0178<br>
+H 1.104167 1&nbsp; 90.121334 1 -125.283960 1 1 2 3 -0.0175<br>
+H 1.104166 1&nbsp; 90.116566 1&nbsp; 125.235484 1 1 2 3 -0.0176<br>
+H 1.103818 1&nbsp; 76.622615 1&nbsp;&nbsp;&nbsp; 0.975117 1 2 1 3 -0.0173<br>
+H 1.104407 1 122.428917 1&nbsp; 120.148896 1 2 1 3 -0.0177<br>
+H 1.104394 1 122.390158 1&nbsp; 240.200743 1 2 1 3 -0.0178<br>
+H 1.103576 1&nbsp; 35.239589 1&nbsp;&nbsp; -0.019577 1 1 2 3 -0.0175<br>
+H 1.103620 1&nbsp; 33.058707 1&nbsp;&nbsp;&nbsp; 0.000000 0 2 1 3 -0.0176<br>
+<br>
+C 0.000000 0&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 0 0 0&nbsp; 0.0164<br>
+C 1.521764 1&nbsp;&nbsp; 0.000000 0&nbsp;&nbsp;&nbsp; 0.000000 0 1 0 0&nbsp; 0.0164<br>
+H 1.208966 1 111.093608 1&nbsp;&nbsp;&nbsp; 0.000000 0 1 2 0 -0.0055<br>
+H 1.108971 1 111.085646 1 -120.010199 1 1 2 3 -0.0055<br>
+H 1.108949 1 111.082331 1&nbsp; 119.998535 1 1 2 3 -0.0055<br>
+H 1.108982 1 111.087018 1&nbsp;&nbsp;&nbsp;&nbsp; .998485 1 2 1 3 -0.0055<br>
+H 1.109025 1 111.084646 1&nbsp; 120.004584 1 2 1 3 -0.0055<br>
+H 1.109003 1 111.081348 1&nbsp; 240.005897 1 2 1 3 -0.0055<br>
+H 2.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 1 2 3<br>
+H 1.0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp; 90&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; 70&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1 9 1 2<br>
+<br>
+*<br>
+* The resulting gradient is large, because the geometry is near but not at the 
+transition state.<br>
+* To refine the transition state, a TS calculation must be run.</TT><P>
+<b>When things go wrong</b><P dir="ltr">
+If, in a SADDLE calculation, you get the message, <br>
+<br>
+<font face="Arial, Helvetica" size="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &quot; BOTH 
+SYSTEMS ARE ON THE SAME SIDE OF THE TRANSITION STATE -<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; GEOMETRIES OF THE SYSTEMS ON EACH SIDE OF THE T.S. ARE AS FOLLOWS&quot;</font><P dir="ltr">
+<font face="Arial, Helvetica" size="2">There are two ways to proceed.</font><P dir="ltr">
+<font face="Arial, Helvetica" size="2">(A) If the gradient is small (less than 
+about 10) at the point where this message is printed, then find the geometry 
+that has the smallest gradient near to the end of the run, and use that as the 
+starting geometry for a transition state refinement. If the geometry refines 
+correctly (<a href="precise.html">PRECISE</a> might be needed in order to get 
+rid of methyl rotations, etc.), and a FORCE calculation verifies that it is a 
+transition state, then the calculation has been successful. </font><P dir="ltr">
+(B) If the gradient is large, the examine the output to find two adjacent points 
+that are on opposite sides of the transition state.&nbsp; Geometries on one side 
+(call it the left side) will be indicated by the message &quot;<font face="Arial, Helvetica" size="2">FOR 
+POINT&nbsp; nn FIRST STRUCTURE&quot;, points on the other side will be indicated by &quot;FOR 
+POINT&nbsp; nn SECOND STRUCTURE&quot;&nbsp; <br>
+Check that the direction cosine for both is greater than 0.9.&nbsp; <br>
+Edit the output file to delete everything except the two geometries.<br>
+Reduce the value of the BAR by a factor of about 10. If BAR was not used 
+previously, then start with BAR=0.05.<br>
+Run the new SADDLE calculation</font><P dir="ltr">
+<font face="Arial, Helvetica" size="2">In general, in a SADDLE calculation, 
+avoid using extra keywords such as PRECISE.</font></BODY></HTML>

@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>STEP </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>STEP</TT>
+</h1>
+        In a reaction path, if the path step is constant, <TT>STEP</TT> can  be  used
+   instead  of  explicitly  specifying  each  point.  The number of steps is
+   given by <TT><a href="point.html">POINT</a></TT>.<p>The <tt>STEP </tt>size is under user control.&nbsp; Use a value that will allow the 
+potential energy surface to be drawn without having it look too jerky.&nbsp; For the CH<sub>3</sub>CL stretch example below, 
+the step-size was 0.02 &Aring;ngstroms.&nbsp; This gives a nice PES.&nbsp; If a 
+smaller step-size is used, it should still run okay, but the run will take longer, because the 
+number of points needed will be larger.</p>
+<p>Example: Stretching a C-Cl bond in CH<sub>3</sub>Cl. In this example, the C-Cl bond 
+length starts at 1.5 &Aring;ngstroms, and stretches by 0.02 &Aring;ngstroms at a 
+time to 2.3 &Aring;ngstroms.</p>
+<pre>   step=0.02  point=40 
+ CH3Cl Stretching the C-Cl bond
+
+ Cl    0.00000000  0    0.0000000  0    0.0000000  0    0    0    0     
+  C    1.50000000 -1    0.0000000  0    0.0000000  0    1    0    0      
+  H    1.10153604  1  108.0234648  1    0.0000000  0    2    1    0      
+  H    1.10231454  1  108.0092176  1  120.0000000  1    2    1    3      
+  H    1.10177640  1  107.8415102  1 -120.0000000  1    2    1    3      
+</pre>
+<p>&nbsp;</p>
+<p>For an alternative way of defining points on a path, that produces an output 
+similar to the conventional output, see
+<a href="Optimization_flags.html#explicit_points">alternative points</a>.</p>
+</BODY>
+</HTML>

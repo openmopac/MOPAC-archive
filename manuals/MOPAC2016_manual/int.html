@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>INT </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>INT</TT>
+</h1>
+Regardless of what type of coordinates are used in the data set, <TT>INT</TT>
+will force all the coordinates to be internal coordinates.  Atom 1 is,
+by definition, always defined in Cartesian coordinates.
+<P>Notes</P>
+<ul>
+  <li>If&nbsp; <TT>INT</TT> is used, the optimization flags are not changed.
+  Therefore, before running a system with&nbsp;<TT>INT</TT> all the
+  optimization flags should be set to &quot;1&quot;, except for atoms 1, 2, and 3.
+  For atom 1, all optimization flags should be set to &quot;0&quot;, for atom 2, the
+  second and third flags should be &quot;0&quot;, and for atom 3 the third flag should be
+  &quot;0&quot;.</li>
+  <li>Be very careful if some atoms have optimization flags set to &quot;0&quot;.&nbsp; If 
+  the geometry supplied is in Cartesian coordinates, and an atom, say atom 10, 
+  has all three optimization flags set to &quot;0&quot;, then that means &quot;Do not change 
+  the Cartesian coordinates of atom 10.&quot;&nbsp;&nbsp; If that atom is converted 
+  to internal coordinates, the optimization flags will still be zero, but now 
+  the definition changes to &quot;Do not change the bond length, angle, and dihedral 
+  of atom 10, with reference to the atoms used for the connectivity.&quot;&nbsp; Now 
+  atom 10 will move if the atom it is attached to moves. This is fundamentally 
+  different from the Cartesian coordinate definition.</li>
+  <li>Any dummy atoms are automatically deleted if <TT>INT</TT> is
+  present.&nbsp; This is because the first step in running <TT>INT</TT> is to
+  convert the system to Cartesian coordinates.&nbsp; This involved deleting any
+  dummy atoms.&nbsp; The next step involves conversion from Cartesian to
+  internal coordinates.</li>
+  <li>&nbsp;<TT>INT</TT> is a rapid and efficient way of deleting atoms from a
+  molecule that is defined using internal coordinates.&nbsp; Re-label the atoms
+  to be deleted as dummy atoms, and run <TT>INT</TT> with <TT>
+  <a href="zero_scf.html">0SCF</a>.</TT> </li>
+</ul>
+<p>See also <TT><a href="xyz.html">XYZ</a>.</TT></p>
+</BODY>
+</HTML>

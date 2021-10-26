@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Issues involved when two or more PDB files represent the same system</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p>(<a href="modeling_proteins.html#If%20two%20or%20more">Modeling proteins</a>)</p>
+<h1>Comparing two proteins</h1>
+<p>Any two proteins can be compared using a utility within MOPAC.&nbsp; The 
+general form of the data set that allows two proteins to be compared consists of 
+two or three lines: keywords, title, and if wanted a comment line. A minimum set 
+of keywords would consist of <a href="geo_dat.html"><tt>
+GEO_DAT</tt></a>, <a href="geo_ref.html"><tt>GEO_REF</tt></a>, <TT>and
+<a href="compare.html">COMPARE</a></TT>. 
+A useful keyword to add is <a href="output.html"><tt>OUTPUT</tt></a>; this reduces the 
+size of the results, and allows the important material to be found more easily.&nbsp; 
+The results of a 
+comparison consist of a standard output file that gives a detailed description 
+of the relationship between the two proteins, their similarities and their 
+differences, a HTML web-page, a PDB file for each of the two proteins, and other 
+less-important files.&nbsp; Individual differences can be easily seen by opening 
+the JSmol HTML web-page and using the options provided.</p>
+<p>Several types of comparison can 
+be done, among these are:</p>
+<h3>Comparing two steps in a reaction mechanism or two different optimizations</h3>
+<p>Systems of this type are easy to compare, they have the same atoms, charge, 
+and PDB atom labels.&nbsp; An example of such a data-set is:</p>
+<PRE> compare output noreor ++ 
+  geo_dat="../All - new gradients, no PRECISE/23H 30-3.arc" ++
+  geo_ref="../All - new gradients, PRECISE/23H 30-3.arc" 
+ Comparison of the effect of using keyword "PRECISE" and not using it.</PRE>
+Keyword &quot;<a href="noreor.html"><TT>NOREOR</TT></a>&quot; is useful here; it prevents the small changes in orientation that 
+are normally 
+made when systems are compared.&nbsp; For neatness, the data-set uses the &quot;<a href="plusplus.html">++</a>&quot; 
+option to split the keyword line into several lines, in this case three lines.<h3>Comparing two raw PDB files</h3>
+<p>Raw PDB files often have the suffix &quot;.pdb&quot;; this would present a problem 
+because, during the comparison of two proteins, files that end in &quot;.pdb&quot; are 
+generated.&nbsp; If not stopped, these new files would over-write the originals.&nbsp; 
+To avoid this, the input files must not end in &quot;.pdb&quot; so a necessary first step 
+would be to re-name any original PDB files that end in &quot;.pdb&quot; to give them a 
+different suffix.&nbsp; A suitable new suffix would be &quot;.ent&quot;&nbsp; </p>
+<p>Comparison of two closely-related structures can be illustrated using the 
+small protein Crambin, for which two high-resolution PDB entries 
+exist: 1EJG and 1CBN.&nbsp; These can be downloaded from the Protein Data Bank; 
+they have the default names 1EJG.pdb and 1CBN.pdb.&nbsp; Re-name them to 
+1EJG.ent and 1CBN.ent, then make up a data set, Compare_1EJG_and_1CBN.mop, that 
+contains the two lines:<PRE><a href="geo_dat.html">GEO_DAT</a>="1EJG.ent" <a href="geo_ref.html">GEO_REF</a>="1CBN.ent" <a href="compare.html">COMPARE</a> <a href="output.html">OUTPUT</a>
+Comparison of two PDB structures for Crambin </PRE>
+<p>(MOPAC file-names can have spaces, but it's often easier to use the underscore when 
+naming files; with underscores, where the file name starts and ends is 
+obvious.)</p>
+<p>If this job is run, the two proteins will be compared.</p>
+<h3>Comparing two hydrogenated PDB files</h3>
+<p>When two or more PDB entries represent the same system, there is a natural 
+strong desire to compare the various structures.&nbsp; A good example is 
+provided by the small protein Crambin, for which two high-resolution PDB entries 
+exist: 1EJG and 1CBN. After hydrogenation and optimization of the hydrogen atom 
+positions, the two resulting ARC files can be compared using the following 
+data-set:</p>
+<PRE> geo_dat="Crambin (1EJG).arc" ++
+  geo_ref="Crambin (1CBN).arc" ++
+  compare output
+ Compare the hydrogenated PDB files for two models of Crambin
+ </PRE>
+<p>Any comparison of the heats of formation of different structures requires 
+that the various structures have the same formula.&nbsp; Examination of 1EJG and 
+1CBN reveals that 1CBN has a hetero-group, C<sub>2</sub>O, this moiety is missing in 
+1EJG.&nbsp; From the PDB remarks, the entity is identified as ethanol, and 
+indeed 
+when 1CBN is hydrogenated (<a href="ADD-H.html"><TT>ADD-H</TT></a>), six 
+hydrogen atoms are added to it to form ethanol.&nbsp; Because of this, although 
+the heats of formation are present in the ARC files, they should be ignored in 
+the results of the <TT>COMPARE</TT> job. These two high-resolution structures are unusual in that the 
+PDB entries include the hydrogen atoms.&nbsp; Almost always, small mistakes can 
+be found in the PDB entries; these two systems are not exceptions, therefore 
+ 
+the supplied hydrogen atoms were deleted automatically when re-hydrogenation is 
+done.&nbsp; 
+This will ensure that hydrogenation is consistent.&nbsp; Of course, if any 
+special circumstances exist - such as known ionized sites or warning messages in 
+the LOG file, small changes might be necessary to correct these errors.&nbsp; 
+The objective is to ensure that each entry&nbsp; has exactly the same formula.</p>
+<p dir="ltr">To compare two structures, use keyword <a href="geo_ref.html"><TT>GEO_REF</TT></a>. To use this 
+utility, make two data sets, one for each structure.&nbsp; In one data set - 
+either one will do - add <TT>GEO_REF=&lt;text&gt;</TT> where 
+<TT>&lt;text&gt;</TT> indicates the other 
+structure, and also add keyword <TT>COMPARE</TT>.&nbsp; Run the 
+job; it will produce a new PDB file; this is the 
+re-sequenced <TT>GEO_REF </TT>structure optimized for overlap.&nbsp; </p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

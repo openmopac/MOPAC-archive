@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Internal Coordinate Definition</TITLE>
+                                                                                                                                                                               </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2>Internal Coordinate Definition </H2>
+<P>For any one atom, <I>i</I>, this consists of an interatomic distance in &Aring;ngstroms from an already-defined atom, <I>j</I>,
+ an interatomic angle in degrees between atoms <I>i</I> and <I>j</I> and an already defined <I>k</I>, (<I>k</I> and <I>j </I>must be different atoms), and, 
+ finally, a torsional angle in degrees between atoms <I>i</I>, <I>j</I>, <I>k</I>, and an already defined atom <I>l</I> (<I>l</I> cannot be the same as <I>k</I> or <I>j</I>). 
+ See also <A HREF="torsion_coherency.html#coherency">Torsion or Dihedral Angle Coherency</A>. 
+If the geometry contains PDB atom-label information, atom numbers can be 
+replaced by PDB or JSmol definitions.</P>
+<P>&nbsp;</P>
+<P>Exceptions: </P>
+<OL>
+<DL>
+<DT><LI>Atom 1 has no internal coordinates at all. The coordinates of atom 1 are, by definition, Cartesian. Normally, the coordinates of atom 1 are (0,0,0), but can be set to any value desired. </LI></DT>
+<DD>&nbsp;</DD>
+<DT><LI>Atom 2 must be connected to atom 1 by an interatomic distance only. If atom 1 is not at the origin, then the care must be taken in defining atom 2: if internal coordinates are used, then the connectivity must be given. If the connectivity is not specified, then the coordinate of atom 2 is, by definition, Cartesian. </LI></DT>
+<DD>&nbsp;</DD>
+<DT><LI>Atom 3 can be connected to atom 1 or 2, and must make an angle with atom 2 or 1 (thus 3-2-1 or 3-1-2); no dihedral is possible for atom 3. Again, if the connectivity is not given, the coordinate is defined as Cartesian. </LI></DT>
+</DL></OL>
+</BODY>
+</HTML>

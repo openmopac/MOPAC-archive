@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+<TITLE>General Description of PARAM</TITLE>
+                                                                                                                                                  </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1 ALIGN="CENTER"><br>
+</A>General Description of PARAM</H1>
+<p>PARAM is a program for optimizing parameters for semiempirical methods. It is 
+controlled by a single data set that specifies the type of operation (usually 
+parameter optimization or a survey to determine errors), the conditions for the 
+operation (AM1, PM6, etc., or a new method), and the set of data-files to be 
+used.</p>
+
+  
+  
+<p>In the past, parameter optimization was very difficult.&nbsp; Finding the 
+minimum in parameter space was a major undertaking.&nbsp; These problems have 
+now been solved; the main problem now is specifying what is to be optimized, and 
+determining if the result of an optimization is an improvement over existing 
+methods.&nbsp; </p>
+
+  
+  
+<p>The program PARAM is the central program used for method development.&nbsp; 
+There are several utility programs (see PROGRAMS) that are useful in 
+manipulating the large files and large number of files.&nbsp; Before using the 
+program PARAM, first become familiar with these utilities.</p>
+
+  
+  
+<p>PARAM uses several types of files.&nbsp; For convenience, these should be 
+stored in different folders, so each folder contains only one type of file.&nbsp; 
+The main types are normal data sets, data sets representing atomic states, data 
+sets for exotic systems, data sets for PARAM, and data sets for parameters.&nbsp; 
+This last set does not need to exist - if it does not exist, PARAM will use 
+parameters from the default method. </p>
+
+  
+  
+<p>If, as is inevitable, things go wrong, there are extensive diagnostics 
+available for finding out what happened.&nbsp; These diagnostics can also 
+indicate what to do, but of course they cannot take any action on their own.&nbsp; 
+Options also exist to identify faulty data, and, depending on the keywords used, 
+either ignore, i.e., exclude, the faulty data or stop the calculation, so the 
+user can take appropriate action.</p>
+
+  
+  
+<p>&nbsp;</p>
+
+  
+  
+</BODY>
+</HTML>

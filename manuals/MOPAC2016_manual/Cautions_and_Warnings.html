@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>FORCE </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+Cautions and Warnings regarding MOPAC</h1>
+<p align="left">
+MOPAC is a very powerful program, and there is a strong temptation for users to 
+assume that it can correctly model all types of system.&nbsp; Simply put: this 
+is not correct. In order to get useful results, the input data set must 
+represent a chemically sensible system.&nbsp; If this condition is satisfied, 
+all will be well: researchers will see their projects succeed, funding agencies 
+will get good reports, and everyone will be happy. If this condition is not met, 
+then hours, days, even weeks, can be spent trying to make sense of what's going 
+on. People new to MOPAC will assume it's faulty and abandon it in disgust, 
+research students projects will fail, they'll flunk out of their course, and 
+become unemployable, industrial chemists will not produce results, their 
+research will falter, they'll not get their annual bonus, in short, they'll 
+become unhappy. So in light of all these disastrous possibilities, it is very 
+important that certain precautions are taken.</p>
+<p align="left">
+First, think about what you want to do.&nbsp; </p>
+<p align="left">
+<u><b><font size="4">New MOPAC users: </font></b></u>&nbsp;If you're new to 
+MOPAC, then spend a few days playing with it before starting any serious work. 
+Run small systems, ones that use almost no time.&nbsp; Try things.&nbsp; Find 
+what works and what doesn't work.&nbsp; Remember - it is completely impossible 
+to hurt MOPAC, and it is very difficult to damage a computer.&nbsp; When MOPAC 
+starts to run, it creates its own little virtual world, and if something goes 
+wrong, the virtual world disappears.&nbsp; No harm done.&nbsp; If you find 
+yourself thinking, &quot;I wonder if this will work?&quot; then <u>TRY IT</u>!&nbsp; 
+Experiment. Gain skill and experience. Get a good Graphical User Interface - 
+Jmol is excellent, and it's free - and start examining the system. Do not ask 
+for help of the type &quot;What would happen if I tried to calculate a hydrogen atom 
+that had a charge of +3?&quot; <u>TRY IT YOURSELF</u>.&nbsp; These little experiments 
+produce useful information faster than hunting for an expert to ask, and avoids 
+wasting the expert's time. If something goes wrong, read the output.&nbsp; There 
+will be an error message saying what went wrong, and giving advice on what to do 
+next.</p>
+<p align="left">
+<u><b><font size="4">Intermediate MOPAC users</font></b></u><font size="4">:</font> 
+Before starting work on a project, spend some time thinking about what you want 
+to do.&nbsp; There is an old saying that two weeks in the research lab can save 
+you having to spend two hours in the library.&nbsp; The same is true with 
+projects. Sketch out the work that needs to be done.&nbsp; Are all the resources 
+available?&nbsp; Do I understand the issues involved in the chemistry? Does the 
+chemistry I want to model make sense? If the work succeeds, will it tell me 
+anything that will advance the project? Once all this is done, and after you've 
+decided on a plan of action, a useful tactic is to spend some time trying to 
+model parts of the project.&nbsp; There's a good chance that you'll uncover 
+previously unsuspected problems. If your system is big, then run simulations on 
+much smaller systems first, to get a feel for the issues involved.&nbsp; Again, 
+the objective is to avoid wasting your time.&nbsp; CPU time isn't important - 
+your time is.</p>
+<p align="left">
+<b><u><font size="4">Advanced MOPAC users</font></u></b>: Ideally, any mistakes 
+made should be caused by MOPAC or the methods inside it, and not by you.&nbsp; 
+If the system crashes, please send the faulty data set and output file to
+<a href="mailto:MrMOPAC@ATT.net">MrMOPAC@ATT.net</a>, and it'll be 
+examined to find the cause of the crash. If you have doubts as to the accuracy 
+of the results, compare them with trusted facts.&nbsp; There are three main 
+types of &quot;fact&quot;.&nbsp; First, experimental results are most reliable.&nbsp; Of course 
+this assumes that the experimental work was done correctly, and no errors 
+occurred in copying or collating the data.&nbsp; If the experimental results 
+were obtained correctly, then these are the nearest to the truth, i.e., nearest 
+to the true nature of things.&nbsp; Put another way, the assumption, if not 
+definition, of correctness is Nature itself.&nbsp; One caveat is worth noting: 
+some phenomena such as dipole and I.P. are not only hard to measure 
+experimentally, they sometimes represent something different to what can be 
+calculated.&nbsp; The second type of &quot;fact&quot; is a result from a high level 
+ab-initio calculation, e.g., a CCSD(T)/CBS calculation. Where high-level and 
+semiempirical results differ, high level results should be considered as 
+correct, and semiempirical results as being in error. Don't trust the common 
+lower-level methods such as HF 6-31G(d) or even B3LYP 6-31G(d).&nbsp; If the 
+semiempirical and lower-level results differ, all that can be said is that at 
+least one of the methods is faulty - this is not a satisfactory situation. The 
+third type of &quot;fact&quot; is the type everyone knows by virtue of the fact that they 
+are chemists.&nbsp; This type is quite often misleading.&nbsp; For example, if 
+the retinal group: (...C(Me)=CH-CH=CH-C(Me)=CH-CH=N(Me)) is protonated, 
+everyone knows that the proton goes on to the nitrogen atom of the Schiff base, 
+and &quot;everyone knows&quot; that the nitrogen becomes quaternary, i.e.,&nbsp; (...C(Me)=CH-CH=CH-C(Me)=CH-CH=N(+)H(Me)).&nbsp; 
+But if this system is modeled, even using semiempirical methods, the result is 
+quite different - the cationic charge is delocalized over the conjugated chain, 
+and the nitrogen atom is essentially neutral.&nbsp; As soon as the idea of 
+delocalization is suggested, the fallacy of the idea that there is a localized 
+cationic charge on the nitrogen atom is obvious.&nbsp; So be careful of 
+predigested ideas of the type &quot;everyone knows.&quot;</p>
+<h2 align="left">
+<u><b>Common mistakes made by MOPAC users</b></u></h2>
+<p align="left">
+<u><b><font size="4">Charged organic systems:</font></b></u> In organic 
+chemistry, particularly in biochemistry, solvation is usually essential if a 
+charge is involved.&nbsp; Naked charged organic systems do not occur except 
+inside a mass spectrometer - a very unusual environment. This is because the 
+electric field of the ion has a powerful effect on its surroundings.&nbsp; So 
+if, for example, the interaction of a proton with N-Methylacetamide were to be 
+examined, the gas-phase system [CH<sub>3</sub>-NH-CO-CH<sub>3</sub> + H(+)]<sup>+</sup> 
+would be unrealistic, i.e., not a good model. Using a hydronium or Eigen ion, 
+[CH<sub>3</sub>-NH-CO-CH<sub>3</sub> + H<sub>3</sub>O(+)]<sup>+</sup> or even 
+the Zundel ion&nbsp; [CH<sub>3</sub>-NH-CO-CH<sub>3</sub> + H<sub>5</sub>O<sub>2</sub>(+)]<sup>+</sup> 
+would not be much better.&nbsp; The best approach would be to use a solvation 
+model, and then use the Eigen or Zundel ion.&nbsp; </p>
+<p align="left">
+Likewise, neutral amino acids never occur in nature, they always exist as the 
+Zwitterion, stabilized by the aqueous environment. For these systems, a 
+gas-phase calculation would give a completely misleading result.</p>
+<p align="left">
+<u><b><font size="4">Slab work for surfaces:</font></b></u> Surfaces are usually 
+modeled by using a slab of the solid.&nbsp; A typical slab consists of a 
+parallelepiped of the solid, cut along with sides of at least 10
+<font face="Times New Roman">&Aring;ngstroms, and about 7 - 10&Aring; thick. Any Miller 
+indices can be used for the surface, with the commonest being {100}, {010}, 
+{001}, and {111}.&nbsp; The most frequent mistake made is to not ensure that 
+valency requirements are satisfied.&nbsp; Consider a slab of a simple metal 
+oxide, MO<sub>2</sub>, M = Ti, Zr, or Hf. The metal atom has a 4+ oxidation 
+state, and no &quot;d&quot; electrons.&nbsp; If the slab consisted only of metal and 
+oxygen atoms, then the ratio of metal to oxygen would need to be exactly 1:2, 
+otherwise if there were an excess of metal atoms, then at least some the metal 
+atoms would need to be in the M(3+), i.e., M<sup>iii</sup> state, or lower. As 
+this oxidation state has a dramatically different chemistry from the M<sup>iv</sup> 
+state,&nbsp; any results obtained would be misleading. If there were an excess 
+of oxygen atoms, then some oxygen atoms would need to be part of a peroxide 
+system - again, not what was intended. So a ratio of 1:2 is not flexible at 
+all.</font></p>
+<p align="left">
+<font face="Times New Roman">The ratio 1:2 would only be necessary if the slab 
+consisted only of metal and oxygen atoms.&nbsp; But a more realistic model could 
+be constructed if hydrogen atoms were allowed.&nbsp; In the pure metal-oxygen 
+slab, atoms on the surface of the slab might have unwanted valences - an oxygen 
+atom might be covalently bonded to only one metal atom, or bonded to three metal 
+atoms.&nbsp; Either way, its valency would be strained.&nbsp; By adding hydrogen 
+atoms to convert some oxygen atoms into hydroxide, the strain introduced by the 
+exposed surface could be reduced.&nbsp; Of course, for every two hydrogen atoms 
+added, an extra oxygen atom would also need to be added.&nbsp; Put another way, 
+the surface should be hydrated (but not solvated!).</font></p>
+<p align="left">
+<font face="Times New Roman"><u><b><font size="4">PDB files:</font></b></u> 
+Input data sets must represent realistic chemical systems.&nbsp; Before a 
+protein, from the PDB, can be used, it must first be converted into a chemically 
+reasonable system.&nbsp; The main changes are to resolve positional and 
+structural disorder, if any, and, most important, to add hydrogen atoms. PDB 
+files typically do not include hydrogen atoms, and if they are not added, all 
+results would be nonsense.&nbsp; Adding hydrogen atoms is not a trivial process: 
+most programs get about 99% of the hydrogen atoms added correctly, a few atoms 
+might be missed, and some extra atoms might be added. When a protein is first 
+run using MOPAC, all errors in the number and positions of hydrogen atoms in 
+proteins are printed. <u>READ THE OUTPUT</u> to find which residues are faulty, 
+then correct the errors.&nbsp; Unfortunately, non-residues are not checked, so 
+hetero groups, particularly porphyrin rings, should be checked very carefully.</font></p>
+<p align="left">
+&nbsp;</p>
+</BODY>
+</HTML>

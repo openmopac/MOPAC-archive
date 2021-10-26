@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<TITLE>MOZYME </TITLE>
+                                                                                                                  </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<tt>
+<h2 align="center">MOZYME</tt> </h2>
+<p>The keyword <tt>MOZYME</tt> replaces the standard SCF procedure with a 
+localized molecular orbital (LMO) method.&nbsp; MOZYME was developed to allow 
+very large organic compounds, specifically enzymes, to be easily calculated. The 
+time required for a SCF calculation increases approximately linearly with the 
+size of the system, see <a href="../MOZYME_literature.html">literature on MOZYME</a> 
+and <a href="modeling_proteins.html">Modeling proteins</a>.&nbsp; MOZYME jobs do 
+not run faster when a GPU chip is used.</p>
+<p>&nbsp;</p>
+<h3>Notes, warnings and cautions concerning MOZYME calculations</h3>
+<p>Although a job that uses the MOZYME technique should give results that are 
+the same as conventional SCF calculations, in practice there are differences.&nbsp; 
+Most of these differences are small, but in some jobs the differences between 
+MOZYME and conventional SCF calculations, particularly the calculation of
+<span class="b">&Delta;</span>H<sub>f</sub>, can be significant.&nbsp; A single point 
+calculation using MOZYME and conventional methods would produce essentially the 
+same <span class="b">&Delta;</span>H<sub>f</sub>, and for the purposes of this 
+discussion the results of a single SCF calculated by both methods can be 
+regarded as being identical.&nbsp; The problem with different
+<span class="b">&Delta;</span>H<sub>f</sub> occurs when multiple SCF calculations 
+are performed, this is the situation in a geometry optimization or reaction path 
+calculation.&nbsp; In such calculations, the LMOs that result from an SCF 
+calculation are used as starting LMOs in the next SCF calculation.&nbsp; In the 
+first SCF calculation, the starting LMOs are exact - they form rigorously 
+orthonormal sets, one for the occupied and one for the virtual sets.&nbsp; At the end of the SCF, small errors arising from truncation of the LMOs and 
+incomplete pairwise rotations give rise to a small degradation of the 
+orthonormal nature of the LMOs.&nbsp; In a single SCF, this degradation is 
+unimportant, but when many SCF calculations are done, the loss of orthonormality 
+increases steadily.&nbsp; This manifests itself as an error in the calculated
+<span class="b">&Delta;</span>H<sub>f</sub> and to a much smaller extent in the 
+gradients, and therefore, by implication, in the geometry.&nbsp; The loss of orthonormality 
+could be corrected by re-orthogonalizing the LMOs, but the CPU cost of this is 
+great, and  re-othogonalization is not done by default, although it can 
+be done if desired using <a href="reorthog.html"><TT>REORTHOG</TT></a>.&nbsp;  Fortunately, a very simple 
+procedure exists to completely correct this error:&nbsp; After any long run 
+involving many MOZYME SCF calculations, use the final geometry generated as the 
+starting point for a 1SCF calculation, and then use the <span class="b">&Delta;</span>H<sub>f</sub> 
+from that calculation.&nbsp; This strategy should be used:</p>
+<p>(A) In global optimizations.</p>
+<p>(B) In transition state location runs.</p>
+<p>(C) At the end of IRC runs.</p>
+<p>Do not use <a href="oldens.html"><TT>OLDENS</TT></a> as that would re-use the 
+now-inaccurate sets of LMOs, and thus defeat the purpose of doing the 1SCF 
+calculation.&nbsp; As mentioned above, the errors in the gradient are small, so 
+the geometry is essentially unaffected by the loss of orthonormality.&nbsp; 
+However, it is still a good practice to optimize geometries in three or more 
+separate runs, if only to provide an opportunity to check that the calculation 
+is proceeding as intended.</p>
+<p>During geometry optimizations, the error in&nbsp;
+<span class="b">&Delta;</span>H<sub>f</sub> caused by the deterioration of the 
+LMOs can result in the energy rising near the end of the run.&nbsp; If this 
+happens, the lowest energy structure will be output, instead of the last 
+structure calculated.</p>
+<p>By default, the M.O.s printed are LMOs.&nbsp; If canonical M.O.s are needed, 
+use keyword <a href="eigen.html"><TT>EIGEN</a>. EIGEN</TT> uses a large amount of 
+memory and might not work if the system is too large.&nbsp; Even if it does 
+work, it might take a lot of CPU time, so <TT>EIGEN</TT> should only be used with <TT>
+<a href="one_scf.html">1SCF</a></TT>.</p>
+<h3><b>Memory considerations: </b>&nbsp;</h3>
+<p>With 1Gb of RAM, systems of up to 10,000 atoms can be run without paging.&nbsp; 
+Above about 11,000 atoms, paging becomes severe, and jobs take longer than 
+necessary.&nbsp; With 2Gb of RAM, systems of up to 18,500 atoms can be run 
+without significant paging.&nbsp; A system of 36,774 atoms ran successfully 
+using 8.2Gb of memory, but each geometry optimization cycle took about two 
+hours.</p>
+<p>If polarizabilities are required, use <tt>
+<font color="#0000ff"><a href="static.html"><u>STATIC</u></a></font></tt>.&nbsp; If keyword <tt>
+<a href="polar.html">POLAR</a></TT> 
+is used, then
+<TT><a href="static.html">STATIC</a></TT> will be used instead.</p>
+<p>The total charge on the system must be correct. If it’s not, the charge will be changed to that predicted by the
+<a href="Lewis_structures.html">Lewis structure</a>.&nbsp; To prevent the charge being changed, use
+<a href="charge.html"><TT>CHARGE=n</TT></a>, even in cases where the system is neutral, 
+i.e., <TT>CHARGE=0</TT>.&nbsp;If <TT>CHARGE=n</tt> 
+is present, then any mistake made by MOZYME will be trapped and reported as soon 
+as the job starts.&nbsp; If <tt>CHARGE=n</TT> is not present, then the charge predicted by 
+the Lewis structure will be used.</p>
+<h3>Limitations of MOZYME </h3>
+<ul>
+  <li>Only closed shell RHF calculations are allowed. This means that <tt>MOZYME</tt> 
+  calculations are limited to species in their ground state. Radicals and 
+  electronic excited states cannot be run.&nbsp; Ions that are definitely 
+  open-shell, such as Cr(III), cannot be run.&nbsp; Only pre-set oxidation 
+  states are allowed, e.g. C<sup>IV</sup> and Au<sup>I</sup>.&nbsp; Oxidation 
+  states of metals can be changed using the <a href="metal.html"><tt>METAL</tt></a> 
+  keyword, e.g. <tt>METAL=(Au(+3))</tt>.&nbsp; </li>
+  <li>The results are not so precise, so for runs that need high precision (such 
+  as <tt><a href="force.html">FORCE</a></tt> calculations), <tt>MOZYME</tt> is 
+  discouraged.&nbsp; For proteins in particular, use a larger gradient 
+  norm criterion, e.g. <a href="gnorm.html"><TT>GNORM=5</TT>,</a> this will reduce the 
+  possibility of convergence failure.</li>
+  <li>For large systems, the recommended geometry optimizer is <tt>
+  <a href="lbfgs.html">LBFGS</a></tt>. This is 
+  a modified BFGS optimizer designed to minimize memory usage, and is the 
+  default for systems of 2000 parameters or more. If <tt>LBFGS</tt> 
+  is not wanted for any reason, then use <tt>
+  <a href="bfgs.html">BFGS</a></tt>, 
+  although it uses a lot more memory. The default optimizer, <tt>
+  <a href="ef.html">EF</a></tt>, uses a 
+  large amount of memory, and should therefore not be used in optimizing the 
+  geometry of large systems. In addition, because it uses a matrix inversion, it 
+  becomes very time consuming for large systems. <a name="BM2587">&nbsp;</a> </li>
+  <li>Electrostatic Potentials cannot be calculated, that is <tt>
+  <u>
+  <a href="esp.html">
+  <font color="#0000ff">ESP</font></a></u></tt> cannot be used, however the 
+  Parametric Molecular Electrostatic Potential,&nbsp; <tt>
+  <u>
+  <a href="pmep.html">
+  <font color="#0000ff">PMEP</font></a></u></tt>, can be used.</li>
+</ul>
+<h3>In some cases, the MOZYME SCF solution is incorrect</h3>
+<p>In some very specific cases, the MOZYME method can give rise to an incorrect 
+SCF, specifically the MOZYME SCF solution corresponds to an electronic excited state.&nbsp; 
+None of these cases ever occur in protein chemistry, unless severe errors are 
+made, but users should be aware of 
+their existence.&nbsp;&nbsp; The commonest incorrect SCF solutions are obtained 
+when the system should not be represented by a Lewis structure.&nbsp; A much 
+rarer type of error is found in some helical buckytubes when periodic boundary 
+conditions are imposed.&nbsp; In cases of this type, the Lewis structure 
+generator simply fails to make the correct Lewis structure, and instead attempts 
+to correct a faulty structure by assigning charges to two or more carbon 
+atoms.&nbsp; In all instances where incorrect SCF solutions are found, the 
+correct solution can be obtained by the appropriate use of <TT>
+<a href="CVB.html">CVB</a></TT> or <TT><a href="setpi.html">SETPI</a>.</TT><h3><a name="SECTION0073116200000000000000">Recommended use of MOZYME</a> </h3>
+<p><tt>MOZYME</tt> can be used for simple geometric calculations, such as 
+geometry optimization, transition state location, and intrinsic and dynamic reaction 
+coordinates, and for the calculation of polarizability. For these calculations,
+<tt>MOZYME</tt> can be run as a &quot;stand alone&quot; calculation. If a partial geometry 
+optimization is run, then the use of keyword <a href="rapid.html"><tt>RAPID</a></tt> should be 
+considered. </p>
+<p>For calculation of vibrational frequencies, frequency-dependent 
+polarizability,  and electronic excited states, <tt>MOZYME</tt> should be 
+run first, to optimize the geometry, then a conventional <tt>MOPAC</tt> 
+calculation run. </p>
+<p>Another effective strategy is to run a <tt>MOZYME</tt> job, followed by a <tt>
+MOPAC</tt> job, using the <tt>
+<a href="oldgeo.html">OLDGEO</a></tt> 
+feature. When geometry optimizations are being run, a <tt>MOZYME</tt> job can be 
+run for a time, then a <tt>MOPAC</tt> job run, using <tt>
+<a href="restart.html">RESTART</a></tt>. That 
+is, the <tt>RESTART</tt> function will work when a geometry optimization or 
+transition state location calculation is run, regardless of the method used in 
+generating the SCF. </p>
+<h3><a href="Protein_calculations.html">Examplex of calculations involving 
+proteins</a> </h3>
+<p><br>
+&nbsp;</p>
+<p><br>
+&nbsp;</p>
+</BODY>
+</HTML>

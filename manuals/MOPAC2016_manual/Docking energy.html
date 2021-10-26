@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Docking Energy Calculation</TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<B>
+Docking Energy Calculation</B></h1>
+<p align="left">
+Docking geometries and energies are best performed using other methods, for 
+example MM, but if you want to model docking using MOPAC, here is a starting 
+strategy:<p align="left">
+Geometry optimize the complex; let its Heat of Formation be 
+&Delta;H<sub>f</sub>(complex). Add keyword EPS=78.4 to mimic water solvent. Separate 
+the ligand from the protein by moving the ligand far away (e.g., by adding 100 
+&Aring;ngstroms to every &quot;x&quot; coordinate of the ligand atoms), and run the geometry 
+optimization again.&nbsp; Let the new HoF be &Delta;H<sub>f</sub>(separate). Then the interaction energy 
+is &Delta;H<sub>f</sub>(complex) - &Delta;H<sub>f</sub>(separate).<br>
+</BODY>
+</HTML>

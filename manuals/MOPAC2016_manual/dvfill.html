@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>DVFILL (Direction Vector FILLing)</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<TT><h1 align="center"><A NAME="SECTION0012223000000000000000">DVFILL</A></TT><A NAME="SECTION0012223000000000000000"> (Direction Vector FILLing)</A> 
+</h1>
+<P>This routine constructs a homogeneous set of points on a unit sphere (direction vectors). It starts with 12 face-centers on a regular dodecahedron, i.e. the 12 corners of a regular icosahedron. These form 20 regular triangles. If the centers of these 20 triangles are added to the 12 initial directions, a new set of triangles is created, which, by a Wigner-Seitz construction on the unit sphere corresponds to 32 faces, 12 pentagons, and 20 hexagons. Thus we have constructed a soccerball. By iterative addition of the triangle centers, any number <I>N</I> of homogeneously distributed points can be generated, which can be written in the form
+<i>N</i> = 3<sup>i </sup>x 10 + 2                                  , with <I>i</I> being an integer (N
+= 12, 32, 92, 272, ...                                          ). </P>
+<P>But there is a second way of generating a finer mesh of regular triangles from a cruder one. Instead of additional centers, the midpoints of the edges can be added. This roughly corresponds to an increase in the number of directions by a factor of four, instead of three. By combining these two procedures, a number
+<i>N</i> = 3<sup>i</sup> x j<sup>2</sup> x 10 + 2&nbsp;                                            of directions can be created. These are the allowed values of <TT>NSPA</TT> in the <TT>DVFILL</TT> routine ("magic numbers"). The smallest are 12
+(i=0, j=1), 32 (i=1, j=1), 42 (i=0, j=2), 92 (i=2, j=1 and i=0, j=3), 122 (i=1,
+j=2), 162 (i=0, j=4), .... The default for the construction of the fine grid is
+1082 = 3<sup>3</sup> x 4 x 10 + 2                                               . </P>
+<P><HR></P>
+<P>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <BR>
+                                                                                                                                                                                                                                                                                                                                       </P>
+                                                </BODY>
+</HTML>

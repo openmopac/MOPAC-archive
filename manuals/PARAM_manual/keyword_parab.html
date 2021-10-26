@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<TITLE>PARAB</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>PARAB=<i>n.n</i></TT></h1>
+<p>Ideally, parameter optimization proceeds by a set of steps in parameter 
+space.&nbsp; The size and direction of these steps would be based on the 
+gradients and local curvature of the parameter Hessian. Unfortunately however, 
+the surface is so non-parabolic that a restraining force needs to be added.&nbsp; 
+This limits the size of the steps. This restraining force adds a parabolic 
+potential to the parameter space, with the parabola centered at the current 
+values of the parameters.&nbsp; As the calculation proceeds, the size of this 
+potential rises or falls, depending on the direction the parameters move in.&nbsp; 
+If, on a given cycle, they move in more-or-less the same direction as in the 
+previous cycle, then the restraining potential is too high, and it is decreased.&nbsp; 
+Otherwise it is increased.</p>
+<p>If
+<TT>PARAB=<i>n.n</i></TT> is present, the default restraining potential, 10000, 
+is replaced by<i> n.n,</i> and not changed during the optimization.</p>
+</BODY>
+</HTML>

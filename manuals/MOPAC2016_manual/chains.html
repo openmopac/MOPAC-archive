@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>START_RES(text) </TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: left;
+																													}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>CHAINS=(<I>text</I>)</TT> </h1>
+<p class="auto-style1">
+<TT>CHAINS=(A)</TT>can be used to select all atoms in a PDB file that have 
+the same chain-letter, here <tt>A</tt>.&nbsp; Some PDB files contain more than one 
+protein. If, for example, a PDB file contains two proteins plus associates small 
+molecules, e.g., H<sub>2</sub>O or [SO<sub>4</sub>]<sup>=</sup>, and all atoms relates to the first protein are 
+assigned chain-letter A, and all the others are assigned chain-letter B, then if&nbsp;<TT>CHAINS=(A)</TT>is 
+present, only those atoms with chain-letter <tt>A</tt> will be selected. In rare 
+cases two or more chain-letters might be needed, in which case the letters 
+needed would be specified as, e.g., <TT>CHAINS=(AB)</TT>. or <TT>CHAINS=(CDEF)</tt>
+Up to four letters can be specified.</p>
+<p> A more common use of this keyword would be when there is, or will be, a need to re-label the atoms in the PDB file by using <a href="residues.html"><TT>RESIDUES</TT></a>. 
+If keyword <TT>CHAINS </TT>is already present in the data set, and there will 
+never be a need to re-label the atoms using <TT>RESIDUES</TT> (this is the most likely case), then, to 
+reduce the number of keywords, it is safe to delete keyword <TT>CHAINS</TT>.&nbsp; By default, when a PDB file is 
+read in, all chains are automatically identified, and used in 
+constructing the keyword <TT>CHAINS</TT>. In normal work, this keyword should 
+not be modified, however if there is a need to modify 
+it, the following definition of the <i>text</i> is provided as a guide:</p>
+
+<p>Protein chains are normally labeled A, then B, then C, etc.&nbsp; If this 
+sequence is correct, then keyword <TT>CHAINS=(ABC)</TT> is not needed.&nbsp; If a different 
+sequence is to be used, put that sequence in place of <i>text</i> in <TT>CHAINS=(<i>text</i>).</TT></p>
+
+<p>For example, in PDB entry 2V66, the chains are B, C, D, and E, not A, B, C, 
+D; for this system, the keyword, if used, would be: <TT>CHAINS=(BCDE).</TT></p>
+
+<p> See also <a href="start_res.html"><TT>START_RES(text)</TT></a> to define residue 
+numbers.</p>
+
+<p>See also: <a href="pdb.html"><tt>PDB</tt></a>, <a href="residues.html">
+<TT>RESIDUES</TT></a>, <TT><a href="xeno.html">XENO</a></TT>, 
+<a href="alt_a.html"><tt>ALT_A</tt></a>, and <TT>
+<a href="reseq.html">RESEQ</a></TT>.</p>
+
+<p> &nbsp;</p>
+
+</BODY>
+</HTML>

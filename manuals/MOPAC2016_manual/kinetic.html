@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>KINETIC=n.nnn </TITLE>
+                                                                     </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>KINETIC=<I>n</I>.<I>nnn</I></TT> </h1>
+<P>In a DRC calculation <I>n</I>.<I>nnn</I> kcal/mol of excess kinetic energy is 
+added to the system.&nbsp; At the start of a DRC calculation, the atoms are 
+initially at rest.&nbsp; So kinetic energy cannot be added to the system.&nbsp; When 
+KINETIC=n.nn is used, the DRC is first run for a few steps until the atoms have 
+a significant velocity.&nbsp; This is when the kinetic energy amounts to 0.2 
+kcal/mol.&nbsp; When that happens, the kinetic energy is increased suddenly by <i>
+n.nn</i> kcal/mol.&nbsp; The next few steps will show errors in the output as the 
+energy is added to the system.&nbsp; The use of 0.2 kcal/mol is arbitrary - any small 
+number could be used.</P>
+<P>If a system starts off with an energy of -100 kcal/mol, and KINETIC=10 is used, 
+the DRC will be run with a total (kinetic plus potential) of -90 kcal/mol.</P>
+<P>In an IRC=1 or IRC=-1 calculation, at the start of the run, the geometry is 
+shifted by an amount proportional to <I>n</I>.<I>nnn. </I>Try using 20 to begin 
+with, in the direction of the reaction normal coordinate. A sufficiently large 
+value will ensure that the IRC will follow the correct path, but an excessively 
+large value will distort the shape of the top of the reaction barrier.<br>
+&nbsp;</P>
+<P>See <A HREF="velocity.html">VELOCITY</A> and <A HREF="DRC_coordinates.html#t_irc">Dynamic and Intrinsic Reaction Coordinates</A> for more details. </P>
+</BODY>
+</HTML>

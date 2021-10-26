@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>BIRADICAL </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+                                                                                                                <FONT SIZE=5><TT>
+                                                                                                                <B>BIRADICAL</B></TT>
+<FONT SIZE=2></h1>
+<P>Note: </FONT><TT>BIRADICAL</TT><FONT SIZE=2> is a redundant keyword, and represents a particular configuration interaction calculation. Experienced users of </FONT><A HREF="Multi_Electron_Configuration_Interaction.html"><FONT SIZE=2>MECI</FONT></A><FONT SIZE=2> can duplicate the effect of the keyword </FONT><TT>BIRADICAL</TT><FONT SIZE=2> by using the MECI keywords </FONT><A HREF="open.html"><FONT FACE="Courier New" SIZE=2>OPEN(2,2)</FONT></A><FONT SIZE=2> and </FONT><A HREF="singlet.html"><FONT FACE="Courier New" SIZE=2>SINGLET</FONT></A><FONT SIZE=2>. </P>
+</FONT><TT><P>BIRADICAL</TT><FONT SIZE=2> is limited to restricted Hartree Fock systems, so </FONT><A HREF="uhf.html"><U><FONT COLOR="#0000ff"><TT>UHF</U></FONT></TT></A><FONT SIZE=2> should not be present.</P>
+<P>For molecules which are believed to have biradicaloid character, the option exists to optimize the lowest singlet energy state which results from the mixing of four microstates. These microstates are, in order: the microstate arising from a one electron excitation from the HOMO to the LUMO (Microstate 1 in the&nbsp;Figure); the microstate resulting from the <A NAME="BM1603">&nbsp;</A> time-reversal operator acting on the parent microstate (Microstate 2); the microstate resulting from de-excitation from the formal LUMO to the HOMO (Microstate 3); and the microstate resulting from the single electron in the formal HOMO being excited 
+into the LUMO (Microstate 4). Microstates 1 and 2 mix to form a singlet state,(1/2)<SUP>1/2</SUP>(</FONT>&Psi;<SUB><FONT SIZE=2>1</SUB>-</FONT>&Psi;<SUB><FONT SIZE=2>2</SUB>)
+            , and a triplet state                                             (1/2)<SUP>1/2</SUP>(</FONT>&Psi;<SUB><FONT SIZE=2>1</SUB>+</FONT>&Psi;<SUB><FONT SIZE=2>2</SUB>). Microstates 3 and 4 are true singlet states. The singlet state arising from microstates 1 and 2 mixes with the (micro)states 3 and 4 to form three singlet states.
+<P><BR>
+<DIV ALIGN="CENTER"><A NAME="birad">&nbsp;<A NAME="BM3641"></A>&nbsp;</A> </P>
+<STRONG><P>Figure:</STRONG> Configurations used in </FONT><TT>BIRADICAL</TT><FONT SIZE=2> Calculation</P></FONT>
+<TABLE CELLSPACING=0 BORDER=0 WIDTH=571>
+<TR><TD VALIGN="MIDDLE">
+<P><DIV ALIGN="CENTER">                                           <IMG SRC="img102.gif" WIDTH=571 HEIGHT=198 ALT="includegraphics{picbirad}"></DIV></TD>
+</TR>
+</TABLE>
+</DIV><FONT SIZE=2><BR>
+A configuration interaction calculation is involved here. A biradical calculation done without C.I. at the RHF level would be meaningless.&nbsp; Either rotational invariance would be lost, as in the D<SUB>2<I>d</I></SUB> form of ethylene, or very artificial barriers to rotations would be found, such as in a methane molecule "orbiting" a D<SUB>2<I>d </I></SUB>ethylene. In both cases the inclusion of limited configuration interaction corrects the error. </FONT><TT>BIRADICAL</TT><FONT SIZE=2> should not be used if either the HOMO or LUMO is degenerate; in this case, the full manifold of HOMO *LUMO should be included in the C.I., using MECI options. The user should be aware of this situation. When the biradical calculation is performed correctly, the result is normally a net stabilization. However, if the first singlet excited state is much higher in energy than the closed-shell ground state, </FONT><TT>BIRADICAL </TT><FONT SIZE=2>can lead to a destabilization. Abbreviation: </FONT><TT>BIR
+<ADDRESS> </ADDRESS></FONT></BODY>
+</HTML>

@@ -1,0 +1,355 @@
+<HTML xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns="http://www.w3.org/TR/REC-html40">
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<link rel="File-List" href="QMMM_files/filelist.xml">
+
+<TITLE>MOL_QMMM </TITLE>
+<!--[if !mso]>
+<style>v\:*         { behavior: url(#default%23VML) }
+o\:*         { behavior: url(#default%23VML) }
+.shape       { behavior: url(#default%23VML) }
+span.apple-converted-space
+	{}
+</style>
+<![endif]--><!--[if gte mso 9]>
+<xml><o:shapedefaults v:ext="edit" spidmax="1027"/>
+
+
+
+</xml><![endif]-->
+</HEAD>
+<body bgcolor=white>
+&nbsp;<h1 align="center">
+<TT>QMMM</TT> <font size="4">(Alt.:</font> <TT>MOL_QMMM</TT><font size="4">)</font></h1>
+
+<p align="left"><TT>QMMM</TT> incorporates environmental effects in terms of 
+the QM/MM approach.&nbsp; This keyword, its description, and implementation into 
+MOPAC was based on materials developed and provided by Prof Arieh Warshel and Dr 
+Nikolay Plotnikov, University of Southern California.&nbsp; </p>
+<p align="left">This option is intended for use with other software, and 
+requires a knowledge of how to construct a mol.in file.&nbsp; Users should 
+become familiar with MM software before attempting to use <TT>QMMM</TT>.</p>
+
+<p align="left">To use <TT>QMMM</TT>, a file called mol.in must be present in the folder 
+that contains the data set.&nbsp; The format of of mol.in is described below.</p>
+
+<h1>Introduction</h1>
+<p class="BODYACSCxSpFirst">A hybrid quantum mechanics/ molecular mechanics 
+approach QM/MM<sup>1 </sup>has become a powerful modeling technique<sup>2-4</sup>. 
+This method allows one to capture the electrostatic effects of surrounding 
+“solvent” in complex polar and microscopically inhomogeneous environment (e.g. 
+water, protein, zeolites, etc.) on “solute” (e.g. reactants, enzyme active 
+center, chromophore, etc.) “Solute” is treated at the QM level of theory, while 
+“solvent” is described with a MM model. The QM/MM approach is particularly 
+effective when less expensive implicit solvation models are inapplicable<sup>5</sup>.</p>
+<p class="BODYACSCxSpMiddle">In the QM/MM approach, it is crucial to describe 
+coupling between the QM and the MM regions, in particular polarization of solute 
+by polar environment. Not doing so will for example lead to having NaCl 
+dissociating to Na and Cl instead of Na<sup>+</sup> Cl<sup>-</sup> in water<sup>6</sup>.</p>
+<p class="BODYACSCxSpMiddle">In the case of semi-empirical Hamiltonians it is 
+quite simple to incorporate the effect of solvent into semi-empirical QM/MM 
+Hamiltonian by adding the interaction energy of an electron with the 
+electrostatic potential created by solvent (MM atoms) to the one-electron 
+diagonal elements of Hamiltonian<sup>1,7,8</sup>:</p>
+<p>
+<span style="font-size: 12.0pt; line-height: 115%; font-family: 'Times New Roman',serif">
+<span style="position: relative; top: 16.0pt"><!--[if gte vml 1]><v:shapetype id="_x0000_t75"
+ coordsize="21600,21600" o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe"
+ filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_s1043" type="#_x0000_t75" style='width:139.5pt;
+ height:59.25pt'>
+ <v:imagedata src="QMMM_files/image001.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=186 height=79
+src="QMMM_files/image002.gif" v:shapes="_x0000_s1043"><![endif]></span><!--[if gte mso 9]><xml>
+ 
+ 
+ 
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1429800645">
+ 
+ 
+ 
+ </o:OLEObject>
+
+
+
+</xml><![endif]--></span><span style="font-size: 12.0pt; line-height: 115%; font-family: 'Times New Roman',serif; position: relative; top: 16.0pt"><!--[if gte mso 9]><xml>
+ 
+ 
+ 
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1429600140">
+ 
+ 
+ 
+ </o:OLEObject>
+
+
+
+</xml><![endif]--></span></p>
+<span style="position: relative; top: 16.0pt">
+<p class="BODYACSCxSpMiddle">here<i> h<sub>&#957;&#957;</sub></i> is the gas phase 
+one-electron Hamiltonian elements with the &#957;-<i>th</i> orbital centered on atom
+<i>i </i>and<i> q<sub>j</sub></i> being the charge of the MM atom <i>j</i> where&nbsp;
+<i>j</i> goes over all MM atoms. </p>
+<p class="BODYACSCxSpLast">This simple modification is implemented<sup>5 </sup>in 
+MOPAC.The required electrostatic potentials on QM atoms from all MM atoms are 
+calculated with the MOLARIS-XG simulation package, which also calculates the 
+corresponding QM/MM electrostatic energy derivatives using the charges provided 
+by MOPAC. This allows to perform almost any QM/MM calculation (e.g. activation 
+free energy barrier, average dipole moments, absorption and emission spectra). 
+Furthermore, this functionality allows for a general interface between MOPAC and 
+any MM program (e.g. <a href="http://www.gromacs.org/">GROMACS</a>)</p>
+<h3>Format of MOL.IN</h3>
+<p class="BODYACSCxSpMiddle">Note that MM program must provide an additional 
+input file mol.in in the following format:</p>
+<p class="BODYACSCxSpMiddle">&lt;empty line&gt;</p>
+<p class="BODYACSCxSpMiddle">n1 n2</p>
+<p class="BODYACSCxSpMiddle">0 0 0 0 &#966;(<i>1</i>)</p>
+<p class="BODYACSCxSpMiddle">…</p>
+<p class="BODYACSCxSpMiddle">0 0 0 0 &#966;(<i>n</i>)</p>
+<p class="BODYACSCxSpMiddle">where 
+<span>
+n1 is the number of 
+atoms, n1 is the number of linked atoms,</span> <i>n</i> is number of QM atoms (including link 
+atoms), and </p>
+<p>
+<span style="font-size: 12.0pt; line-height: 115%; font-family: 'Times New Roman',serif"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1044" type="#_x0000_t75" style='width:128.25pt;height:66pt'>
+ <v:imagedata src="QMMM_files/image003.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=171 height=88
+src="QMMM_files/image004.gif" v:shapes="_x0000_s1044"><![endif]><!--[if gte mso 9]><xml>
+ 
+ 
+ 
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1429800689">
+ 
+ 
+ 
+ </o:OLEObject>
+
+
+
+</xml><![endif]--></span></p>
+<p class="BODYACSCxSpMiddle"><font face="Arial"></font></p>
+<p class="BODYACSCxSpMiddle"><i>
+<span style="line-height: 115%; font-family: Arial">&#966;(i)</span></i><span class="apple-converted-space"><span style="line-height: 115%; font-family: Arial">&nbsp;</span></span><span style="line-height: 115%; font-family: Arial">units 
+are kcal/(mol&#8729;<i>e</i>) where <i>e</i> is the elementary charge. If the atomic 
+distance, <i>r<sub>ij</sub></i>, is given in<span class="apple-converted-space">&nbsp;</span>&Aring;ngstroms, 
+and <i>q<sub>j</sub></i> is expressed in fraction of the elementary charge (e.g. 
+-1 for an electron) then<i> &#966;(i)</i><span class="apple-converted-space">&nbsp;is 
+given by:</span></span></p>
+<p>
+<span style="font-size: 12.0pt; line-height: 115%; font-family: 'Times New Roman',serif"><!--[if gte vml 1]><v:shape
+ id="_x0000_s1045" type="#_x0000_t75" style='width:140.25pt;height:63pt'>
+ <v:imagedata src="QMMM_files/image005.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=187 height=84
+src="QMMM_files/image006.gif" v:shapes="_x0000_s1045"><![endif]><!--[if gte mso 9]><xml>
+ 
+ 
+ 
+ <o:OLEObject Type="Embed" ProgID="Equation.DSMT4" ShapeID="_x0000_i1025" DrawAspect="Content" ObjectID="_1429800718">
+ 
+ 
+ 
+ </o:OLEObject>
+
+
+
+</xml><![endif]--></span></p>
+<p class="BODYACSCxSpMiddle"><br>
+This file should be in the directory where MOPAC is 
+being executed.</p>
+<p class="BODYACSCxSpLast">The output created by MOPAC includes the effect of 
+environment on energy, heat of formation, charge distribution, dipole moments. 
+Energy derivatives include only QM intra-molecular contributions. However, the 
+QM charge distribution can be used to calculate electrostatic QM/MM contribution 
+to force according to the MM force-field formalism.</p>
+<h1>Example</h1>
+<p>The file mol.in provides the various <span>
+<i>
+<span style="line-height: 115%; font-family: Arial">&#966;(i)</span></i></span>.&nbsp; 
+These are given in lines 3 on, in column 5, as shown in the following example. 
+The first line is is skipped, the second line of mol.in should have two integer numbers 
+that add to the total the total number of atoms.&nbsp; If you are building this 
+file using an editor, a useful default is to set the first number equal to the 
+total number of atoms and to make the second number zero.&nbsp; Typically, 
+this file would be created by the MM program, in which case do not edit the 
+file.<PRE>empty_line
+6    0     # of qmmm atoms, # of link atoms in Region I
+CL   -1.591010336   -3.497323620   -4.177329152  119.381953977
+C     0.623273531   -3.927769978   -4.243650888   88.802327810
+H     0.627631085   -3.831528682   -5.334074435   77.449540155
+H     0.737788528   -3.010768158   -3.634868517   83.899739734
+H     0.444587282   -4.863821218   -3.677635261   90.477795343
+CL    2.837655032   -4.254371189   -4.197078072  120.024810232
+</PRE>
+</p>
+<p class="MsoNormal" style="text-align:justify;page-break-after:avoid">
+R<span lang="X-NONE" style="line-height: 115%; color: windowtext; text-decoration: none">eading </span>
+<span style="line-height: 115%; color: windowtext; text-decoration: none">i</span><span lang="X-NONE" style="line-height: 115%; color: windowtext; text-decoration: none">s 
+activated by keyword  QMMM</span><span style="line-height: 115%; color: windowtext; text-decoration: none">, that is the PM6.mop input file looks like:
+<PRE>PM6 1SCF CHARGE=-1 GRAD QMMM
+snapshot of MD step 0
+ 
+CL    -1.5910103360  1   -3.4973236200  1   -4.1773291520  1
+C      0.6232735310  1   -3.9277699780  1   -4.2436508880  1
+H      0.6276310850  1   -3.8315286820  1   -5.3340744350  1
+H      0.7377885280  1   -3.0107681580  1   -3.6348685170  1
+H      0.4445872820  1   -4.8638212180  1   -3.6776352610  1
+CL     2.8376550320  1   -4.2543711890  1   -4.1970780720  1
+</PRE><br>
+
+<h1>Use of MOPAC standard output AUX file</h1>
+<p class="BODYACS">Advanced users interested in 
+implementing the QM/MM interface with MM-packages should use the MOPAC2016 keyword<span style="color:#7030A0"><TT> 
+<a href="auxiliary.html">AUX</a></TT></span>&nbsp;  to create an auxiliary file which contains all 
+the data necessary 
+ 
+for propagating MD trajectories and for MC sampling. To use this function in a 
+MOPAC job, simply include keyword <TT>AUX</TT>.&nbsp; An example of a typical 
+keyword line would be:</p>
+
+<p align="left">PM6 1SCF CHARGE=-1  GRAD AUX  QMMM</p>
+<p align="left">(the keywords <a href="one_scf.html"><TT>1SCF</TT></a> and
+<a href="gradients.html"><TT>GRAD</TT></a> are both necessary; <TT>1SCF</TT> because the gradients 
+of the supplied geometry are needed, and <TT>GRAD</TT> because, by default, gradients are 
+not calculated when <TT>1SCF</TT> is used.)</span></p>
+<p class="BODYACSCxSpMiddle">In the &lt;file&gt;.aux file the 
+corresponding entries for energies, heat of formation, atomic charges and 
+gradients can be found under Final SCF results, e.g.:</p>
+<p class="BODYACSCxSpMiddle">&nbsp;</p>
+<p class="BODYACSCxSpMiddle">#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Final SCF 
+results&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; #</p>
+<p class="BODYACSCxSpMiddle">….</p>
+<p class="BODYACSCxSpMiddle">HEAT_OF_FORMATION:KCAL/MOL=-0.218242D+03<br>
+ENERGY_ELECTRONIC:EV=-0.161973D+04<br>
+ENERGY_NUCLEAR:EV=+0.938798D+03<br>
+DIPOLE:DEBYE=+0.297586D+00<br>
+DIP_VEC:DEBYE[3]= 
++0.16008D+00 -0.85662D-01 -0.23579D+00<br>
+<b>…<br>
+</b>TOTAL_ENERGY:EV=-0.680928D+03<br>
+<b>…<br>
+</b>ATOM_CHARGES[0006]=<br>
+&nbsp;-0.82604 +0.13275 
++0.18844 +0.16625 +0.14813 -0.80953<br>
+GRADIENTS:KCAL/MOL/ANGSTROM[0018]=<br>
+&nbsp;&nbsp; 6.6683&nbsp;&nbsp; 0.2249&nbsp;&nbsp; 
+1.9733&nbsp;&nbsp; 0.9287&nbsp; -5.8534 -16.0747&nbsp;&nbsp; 0.2434&nbsp;&nbsp; 6.4429&nbsp; -7.0648&nbsp; -3.0670<br>
+&nbsp;&nbsp; 8.3435&nbsp;&nbsp; 6.1962&nbsp; 
+-3.9386&nbsp; -9.9628&nbsp; 13.9620&nbsp; -0.8348&nbsp;&nbsp; 0.8050&nbsp;&nbsp; 1.0079</p>
+<h1>Applications, computational cost and accuracy</h1>
+<p class="BODYACSCxSpFirst">The QM/MM approach nowadays is an extremely popular 
+approach<sup>2-4</sup>. Due to its low computational cost semi-empirical QM/MM 
+methods are widely used in molecular dynamics, Monte Carlo and minimization 
+approaches with variety of different program-specific implementations<sup>9,10</sup>. 
+Modeling with the explicit solvent is the most accurate and physically 
+meaningful way to describe environmental effects, but it comes at a higher 
+computational cost. For example, the activation free energy barrier calculated<sup>5</sup> 
+for a S<sub>N</sub>2 reaction  between methyl chloride and chloride in water is 
+predicted by the COSMO model to be ~18 kcal/mol, while the PM3/MM 
+estimate, at 27-29 kcal/mol (for ESP charges and Mulliken charges models , 
+respectively) is in perfect agreement with the experimental estimate of 26.6). 
+Another application is the calculation of vertical excitation energies in polar 
+environment, e.g. in fluorescent proteins and photoactive dyes, where atomistic 
+polarizable solvent models are critical for a reliable prediction of 
+the solvatochromic shift<sup>11</sup>. Another area where QM/MM with explicit 
+solvation is advantageous (and essential ) is the evaluation &nbsp;of the&nbsp; binding 
+free energy in enzymatic binding pockets<sup>12</sup></p>
+<p class="BODYACSCxSpMiddle">While the treatment of the entire system quantum 
+mechanically is still very computationally expensive, the QM/MM approach allows 
+one to explore a numerous problems in biochemistry with a reasonable computational 
+cost. The accuracy of the semi-empirical QM/MM description can be further improved 
+by perturbatively moving to a higher level of theory using the Paradynamics 
+approach<sup>5</sup>.</p>
+<p class="BODYACSCxSpLast">&nbsp;</p>
+<h1>Additional technical details </h1>
+<p class="BODYACSCxSpFirst">In the described
+QM/MM implementation, the heat of formation 
+and energies reported by MOPAC contain all electrostatic QM/MM coupling terms, 
+including interaction between QM and MM nuclei. </p>
+<p class="BODYACSCxSpMiddle">The derivatives, which are read from MOPAC, contain 
+only QM contributions, and the QM/MM electrostatic term is evaluated by the MM program, using the 
+derived charge distribution for QM atoms from MOPAC.</p>
+<p class="BODYACSCxSpMiddle">The charge model for QM from MOPAC can be Mulliken 
+or ESP, Mulliken charges are obtained&nbsp; faster but ESP &nbsp;charges are &nbsp;more 
+physical. </p>
+<p class="BODYACSCxSpMiddle">&nbsp;</p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Warshel, A.; Levitt, M. Theoretical 
+Studies of Enzymatic Reactions: Dielectric, Electrostatic and Steric 
+Stabilization of the Carbonium Ion in the Reaction of Lysozyme. <i>J. Mol. Biol.</i><b>1976</b>,
+<i>103</i>, 227.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (2)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Senn, H. M.; Thiel, W. QM/MM Methods 
+for Biomolecular Systems. <i>Angew Chem Int Ed Engl</i><b>2009</b>, <i>48</i>, 
+1198-1229.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_3">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (3)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hu, H.; Yang, W. Free Energies of 
+Chemical Reactions in Solution and in Ezymes with ab initio Qantum Mehanics/Molecular 
+Mechanics Methods. <i>Annu Rev Phys Chem</i><b>2008</b>, <i>59</i>, 573-601.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_4">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (4)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kamerlin, S. C. L.; Haranczyk, M.; 
+Warshel, A. Progress in Ab Initio QM/MM Free-Energy Simulations of Electrostatic 
+Energies in Proteins: Accelerated QM/MM Studies of pKa, Redox Reactions and 
+Solvation Free Energies†. <i>The Journal of Physical Chemistry B</i><b>2008</b>,
+<i>113</i>, 1253-1272.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (5)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Plotnikov, N. V.; Warshel, A. 
+Exploring, Refining, and Validating the Paradynamics QM/MM Sampling. <i>The 
+Journal of Physical Chemistry B</i><b>2012</b>, <i>116</i>, 10342-10356.</a> <b>DOI</b>: 10.1021/jp304678d.&nbsp; Web-article:&nbsp;  <a href="http://dx.doi.org/10.1021/jp304678d">
+http://dx.doi.org/10.1021/jp304678d</a>&nbsp; </p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (6)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hwang, J.-K.; Creighton, S.; King, G.; 
+Whitney, D.; Warshel, A. Effects of Solute-Solvent Coupling and Solvent 
+Saturation on Solvation Dynamics of Charge Transfer Reactions. <i>J Chem Phys</i><b>1988</b>,
+<i>89</i>, 859-865.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_7">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (7)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Luzhkov, V.; Warshel, A. Microscopic 
+Models for Quantum Mechanical Calculations of Chemical Processes in Solutions: 
+LD/AMPAC and SCAAS/AMPAC Calculations of Solvation Energies. <i>J. Comp. Chem.</i><b>1992</b>,
+<i>13</i>, 199-213.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_8">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (8)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Warshel, A. <i>Computer Modeling of 
+Chemical Reactions in Enzymes and Solutions</i>; John Wiley &amp; Sons: New York, 
+1991.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_9">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Dapprich, S.; Komaromi, I.; Byun, K. 
+S.; Morokuma, K.; Frisch, M. J. A new ONIOM implementation in Gaussian98. Part 
+I. The calculation of energies, gradients, vibrational frequencies and electric 
+field derivatives. <i>Journal of Molecular Structure-Theochem</i><b>1999</b>, <i>
+461</i>, 1-21.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (10)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Walker, R. C.; Crowley, M. F.; Case, 
+D. A. The implementation of a fast and accurate QM/MM potential method in Amber.
+<i>Journal of Computational Chemistry</i><b>2008</b>, <i>29</i>, 1019-1031.</a></p>
+<p class="BODYACSCxSpMiddle" style="line-height: normal; margin-bottom: .0001pt">
+<a name="_ENREF_11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (11)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Luzhkov, V.; Warshel, A. Microscopic 
+calculations of solvent effects on absorption spectra of conjugated molecules.
+<i>Journal Of The American Chemical Society</i><b>1991</b>, <i>113</i>, 
+4491-4499.</a></p>
+<p class="BODYACSCxSpLast" style="line-height:normal"><a name="_ENREF_12">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (12)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Warshel, A.; Sharma, P. K.; Kato, M.; Parson, W. W. 
+Modeling electrostatic effects in proteins. <i>Biochim. Biophys. Acta</i><b>2006</b>,
+<i>1764</i>, 1647-1676.</a></p>
+
+</body>
+
+</html>

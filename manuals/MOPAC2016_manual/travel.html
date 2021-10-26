@@ -1,0 +1,61 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Travel</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Travel
+</H2>
+To continue the idea of representing a normal mode as a simple harmonic
+oscillator, the distance the atoms move through can be represented as the
+distance the idealized mass moves through.  This can be calculated knowing the
+energy of the mode and the force constant:
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="64" HEIGHT="38"
+ SRC="img1541.gif"
+ ALT="\begin{displaymath}E = \frac{1}{2}kx^2.
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+Here <I>k</I> is the force-constant for the mode, and is given by
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="140" HEIGHT="28"
+ SRC="img1542.gif"
+ ALT="\begin{displaymath}k = <\psi\vert Hessian\vert\psi>;
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P><I>E</I> is the energy of the mode.
+<P>
+From this, the distance, <I>x</I>, which the system moves through, can be calculated
+from
+<BR><P></P>
+<DIV ALIGN="CENTER">
+<IMG
+ WIDTH="263" HEIGHT="45"
+ SRC="img1543.gif"
+ ALT="\begin{displaymath}x =\sqrt{\frac{2\times 1.196266\times 10^8 \times 1000 \times 10^8 \nu}{N k}},
+\end{displaymath}">
+</DIV>
+<BR CLEAR="ALL">
+<P></P>
+where 1.196266x10<sup>8</sup>
+&nbsp;is the conversion factor from cm<SUP>-1</SUP> to ergs,
+1000 converts from millidynes to dynes, 10<SUP>8</SUP> converts from cm to &Aring;, and
+<I>N</I> converts from moles to molecules.
+<P>
+&nbsp;The travel can also be calculated using the DRC,
+by depositing one quantum of energy into a vibrational mode.  For a system at a
+stationary point, the relevant keywords would be <TT><a href="irc.html">IRC=1</a>
+<a href="drc0.html">DRC</a> <a href="t=n.html">t=1m</a></TT>.  For
+larger systems, the time may need to be increased.  At least one coordinate
+must have an optimization flag set to 1.  This is required in order to instruct
+the DRC to print the turning points.
+</BODY>
+</HTML>

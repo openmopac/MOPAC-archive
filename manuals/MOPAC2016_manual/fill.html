@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>FILL=n </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>FILL=<I>n</I></TT>
+</h1>
+The <I>n</I>'th M.O.  in an RHF calculation is constrained  to  be  filled.
+It  has no effect on a UHF calculation.  After the first iteration (NOTE:
+<A NAME="BM2074">&#160;</A>
+not after the first SCF calculation, but after the first iteration
+within the first SCF calculation) the <I>n</I>'th M.O. is stored, and, if
+occupied, no further action is taken at that time.  If unoccupied, then
+the  HOMO  and the <I>n</I>'th M.O.s are swapped around, so that the <I>n</I>'th
+M.O. is now filled.  In all subsequent iterations the M.O. nearest in
+character to the stored M.O.  is forced to be filled, and the stored
+M.O. replaced by that M.O.  This is necessitated by the fact that in
+a  reaction  a  particular M.O. may change its character
+considerably.  A useful procedure is to run <TT><a href="one_scf.html">1SCF</a></TT> and
+<TT><a href="denout.html">DENOUT</a></TT> first, in order to identify the M.O.s. The  complete
+job  is then  run  with <TT><a href="oldens.html">OLDENS</a></TT> and <TT>FILL=<I>nn</I></TT>, so that the
+eigenvectors at the first iteration are fully known.  As <TT>FILL</TT> is
+known to give difficulty at times, consider using using <TT>
+<a href="ci=n.html">C.I.=<I>n</I></a></TT>
+and <TT><a href="root.html">ROOT=<I>m</I></a></TT> instead.
+<P>
+<BR>
+</BODY>
+</HTML>

@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>lbfgs</TITLE>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<TT><H2 align="center">LBFGS </H2>
+</TT><P>Optimize the geometry using the L-BFGS function minimizer. This is 
+based on the BFGS optimizer, but it does not store the inverse Hessian, instead 
+it is calculated as needed. Because of this, the L-BFGS method uses very 
+little storage, and is therefore suitable for optimizing very large systems. </P>
+
+<P>The L-BFGS optimizer is the default if 100 or more variables are to be 
+optimized.&nbsp; For such systems, L-BFGS is more efficient than Baker's 
+Eigenfollowing, however there is no guarantee that the L-BFGS method will 
+produce a minimum energy.&nbsp; In systems where two or more species are 
+present, and only low-energy interactions bind the species together, the L-BFGS 
+optimizer sometimes fails to produce a minimum energy system .&nbsp; 
+If this happens, or if for any other reason the L-BFGS is not wanted, add keyword <a href="ef.html"><tt>EF</tt></a> or
+<a href="bfgs.html"><tt>BFGS</tt></a>.&nbsp; Both these methods are more 
+reliable for difficult systems.</P>
+
+<h3>Note on use of L-BFGS with large systems, particularly proteins</h3>
+
+<P>The L-BFGS optimization method does not explicitly minimize the heat of 
+formation, see below, therefore it is possible for the &Delta;H<sub>f</sub> to 
+rise on going from one cycle to the next, particularly near the end of a 
+geometry optimization run.&nbsp; As the objective of geometry optimization is 
+finding the lowest-energy geometry, terminating an optimization with a structure 
+that is not the lowest-energy calculated is not acceptable.&nbsp; This fault 
+most often occurs in large system, especially in proteins, and to avoid it the 
+optimization procedure has been modified as follows:</P>
+
+<P>During a geometry optimization that uses the L-BFGS optimizer, the system 
+with the lowest &Delta;H<sub>f</sub> is stored.&nbsp; At 
+the beginning of a job, the &Delta;H<sub>f</sub> 
+is calculated and it, and the starting geometry, are stored.&nbsp; 
+After each subsequent cycle, the &Delta;H<sub>f</sub> is compared with the value 
+in the store.&nbsp; 
+If it is lower (more negative), then the values in the store are over-written 
+with the current geometry and &Delta;H<sub>f</sub>, so that after every cycle the &Delta;H<sub>f</sub>  and geometry in the store 
+are always the best values calculated.&nbsp; At the end of the run the working geometry will be replaced by whatever 
+geometry was in storage if the &Delta;H<sub>f</sub> of the working geometry is more positive than 
+the value for the stored geometry.&nbsp; If that is done, then the &Delta;H<sub>f</sub> of the 
+lowest-energy geometry will be re-evaluated. The final output will then refer to 
+this geometry.</P>
+<P>This workaround is used for all jobs that use the L-BFGS optimizer that end 
+normally, or if the job runs out of time, or the
+<a href="shut.html">SHUT</a> command is issued.&nbsp; 
+Warning: If a large job is restarted using <tt><a href="restart.html">RESTART</a></tt> and <a href="one_scf.html"><tt>1SCF</tt></a> is specified, then the workaround will not 
+be used.&nbsp; For large jobs, if a <tt>1SCF </tt> is wanted and there is a 
+risk of the &Delta;H<sub>f</sub> in the &lt;file&gt;.RES file not being the lowest 
+calculated, then use the final geometry from the output file from the previous run.&nbsp; </P>
+
+<P >The defaults number of cycles for deciding if the &Delta;H<sub>f</sub> is at 
+a minimum is 30.&nbsp; This will be reset to 60 if keyword
+<a href="precise.html"><tt>PRECISE</tt></a> is used, or to another value if <tt><a href="let.html">LET(nnn</a>)</tt>is used. 
+This option is useful when there is a risk of the optimization stopping too far 
+from the minimum.</P>
+
+<P >For most jobs the final geometry will be the best, and this workaround  would not be used, but if the lowest-energy geometry is not the last 
+geometry calculated by L-BFGS, then the message: &quot;<b>CURRENT BEST VALUE OF HEAT OF 
+FORMATION</b>&quot; will be printed.</P>
+
+<h3>Notes on the L-BFGS optimization method</h3>
+<P>The L-BFGS optimization procedure is a limited memory variation of the 
+Broyden-Fletcher-Goldfarb-Shanno (BFGS) quasi-Newton algorithm.&nbsp; Rather 
+than storing the Hessian, the L-BFGS method stores only the gradient vectors for 
+the the last few geometries calculated.&nbsp; In MOPAC, a maximum of 12 gradient 
+vectors are stored.&nbsp; It then uses this set of vectors to approximate 
+individual elements of the Hessian as they are needed.&nbsp; It is good 
+for large systems, such as proteins and other macromolecules and solids.&nbsp; 
+In practice, it also seems to be the best geometry optimizer for systems of 
+thirty or more atoms.&nbsp; Go on-line for more detail on the
+<a href="https://en.wikipedia.org/wiki/Limited-memory_BFGS">L-BFGS method</a></P>
+<P>It uses the gradient only, by moving the atoms in the system in the downhill 
+direction. Although the L-BFGS method does not use the &Delta;H<sub>f</sub>, for 
+most systems it does minimize the &Delta;H<sub>f</sub> as a side effect of 
+minimizing the gradient.&nbsp; Although it is not explicit in the algorithm, the 
+L-BFGS method, like the other geometry optimizers in MOPAC, does optimize the 
+geometry to a ground state.&nbsp; There has not yet been a worked example of it 
+optimizing an unconstrained geometry to a transition state.</P>
+<P>Using only the gradient and not the &Delta;H<sub>f</sub> has advantages, in that when the 
+L-BFGS method makes a bad step, it uses the results of that step to work out a 
+better step.&nbsp; This leads to a more rapid descent to a stationary point on 
+the Potential Energy Surface.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>CVB(text) </TITLE>
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<H2 align="center"><A NAME="SECTION007338000000000000000">
+<TT>CVB(<I>text</I>)</TT></A></H2>
+Sometimes in a <a href="mozyme.html"><TT>MOZYME</TT></a> calculation, a Lewis structure cannot be constructed from 
+the topology of the system supplied.&nbsp;&nbsp; When that happens, a warning message will be printed and 
+the run stopped.&nbsp; Unwanted connections can be removed using <TT>CVB</TT>.&nbsp; 
+Two formats are supported:<br><br><strong>Using atom numbers (if possible, use 
+atom labels for proteins)</strong><p><TT>CVB(n1:-n2[;n3:-n4[;n5:-n6....]]])</TT> </p>
+<p>where the connections to be removed are those between atoms n1-n2, n3-n4, n5-n6, etc. 
+See <a href="atom_numbers.html">atom numbering</a>.&nbsp; Thus if 
+connections were to be removed between atoms 4 and 5, and between atoms 665 and 670, then
+<TT>CVB(4:-5;665:-670)</TT> would be used.&nbsp; If connections are needed, then don't use the minus sign.&nbsp; Thus if 
+connections were 
+needed between atoms 4 and 5, and between atoms 665 and 670, then
+<TT>CVB(4:5,665:670)</TT> would be used. <TT>CVB</TT> is also useful when 
+<a href="residues.html"><tt>RESIDUES</tt></a> and <TT><a href="pdbout.html">PDBOUT</a></TT> 
+are present. A topology sometimes has an 
+unwanted connection between two chains that prevents some of the residues being 
+identified.&nbsp; To correct this fault, remove the unwanted connection using <TT>CVB</TT>. 
+&nbsp;If there are a several unwanted connections , and these connections involve a 
+specific element, then consider the alternative of using <TT>
+<a href="vdw.html">VDWM</a></TT> to change the Van der Waals radius for that 
+element.</p>
+<p><strong>Using atom labels</strong></p>
+<p><tt>CVB(&quot;Label1&quot;:-&quot;Label2&quot;[;&quot;Label3&quot;:-&quot;Label4&quot;[;&quot;Label5&quot;:-&quot;Label6&quot;....]]])</tt></p>
+<p>Here <tt>Labeln</tt> is the label, in PDB or JSmol format, for the atom.&nbsp; 
+Using the PDB format, the label starts 
+with the first non-blank character of the atom name and ends with the last 
+character of the residue number.&nbsp; For example:&nbsp; <tt>CVB(&quot;2HB SER B 
+4&quot;:-&quot;OD1 ASP B 119&quot;,&quot;1HH1 ARG B 5&quot;:&quot;C TYR B 7&quot;).</tt>&nbsp; 
+Spaces are not important, but using spaces makes it easier to read the atom label.&nbsp; 
+With JSmol, the label starts with a &quot;[&quot; and ends at the character before &quot; #&quot;.&nbsp; 
+As with PDB format, spaces are not important when JSmol format is used, i.e., <tt>CVB(&quot;[LYS] 4 : A . CD&quot;:&quot;[LYS]4:A.CG&quot;)</tt>.&nbsp;&nbsp;&nbsp; The advantage of 
+using atom labels 
+is that if atoms are added or removed the atom label would not change.&nbsp; 
+Another advantage is that PDB TER lines, positional disorder, and other things 
+that cause the PDB line number to not match the atom number do not cause 
+problems.</p>
+<p>Wildcards are allowed for the residue name and for the chain letter.&nbsp; 
+When a wildcard is used, a letter is replaced by an asterisk, &quot;*&quot;, thus:<tt> 
+CVB(&quot;2HB *** B 4&quot;:-&quot;OD1 *** * 119&quot;,&quot;1HH1 ARG * 5&quot;:&quot;C TYR B 7&quot;) </tt>and<tt> CVB(&quot;[***] 4 : 
+* . CD&quot;:&quot;[***]4:*.CG&quot;)</tt>. The first occurrence that matches 
+will be used.&nbsp; </p>
+<h4>Special case of O-O bonds.</h4>
+<p>When proteins that contain a large number of water molecules are edited, 
+quite often one or more water molecules become badly positioned, resulting in 
+spurious O-O interactions.&nbsp; These can be eliminated using the standard 
+options within the CVB keyword, but as this problem occurs quite often, a 
+special option, &quot;O:-O&quot; is provided.&nbsp; This six-character option will 
+identify and delete all spurious O-O bonds.The option can be anywhere between 
+the opening &quot;(&quot; and closing &quot;)&quot; of the CVB keyword.&nbsp;</p>
+<h4>Intermediates in Enzyme Mechanisms</h4>
+<p>
+<img height="248" src="S%20and%20Guanindinium.gif" style="float: left" width="271">A frequent problem when modeling intermediates and transition states in 
+enzyme mechanisms is that the structure cannot be written in Lewis form.&nbsp;An 
+example occurs in the transition state when a cystine sulfur starts to bond to 
+the carbon of a guanidinium group in an Arg, and the hydrogen that was on the 
+sulfur migrates to one of the nitrogen atoms of the guanidinium. If this 
+happens, the 
+resulting -NH<sub>3</sub> group would have a positive charge and the carbon 
+would be given a negative charge.&nbsp; (A carbon atom bonded to a cation and having only three 
+valencies used would automatically be assigned a negative charge.) Sulfur having 
+only one bond (to its CH<sub>2</sub> group) is, by default, also given a negative charge.&nbsp; 
+The net charge on this assembly is now -1 instead of the expected +1.&nbsp; To 
+correct this error <TT>CVB </TT> is used to make a bond between S and the H of -NH<sub>3</sub>.&nbsp; 
+This automatically causes the N-H bond to be deleted giving -NH<sub>2</sub>, a 
+component of the 
+normal guanidinium group.&nbsp; Now that sulfur is bonded to its hydrogen as 
+will as to its CH<sub>2</sub> group, and 
+the guanidinium has the usual +1 charge, the net charge in this region is 
+correct.&nbsp; </p>
+<p>
+A guiding principle would be to use <TT>CVB </TT> to make the structure as similar to either the 
+reactant or product as possible.</p>
+<P>
+Note that <TT>CVB</TT> is used <EM>only</EM> in the generation of a starting Lewis
+structure or in generating a PDB file. The presence of unrealistic connections in this structure will not
+normally give rise to an incorrect SCF. 
+
+
+<p>See also <TT><a href="setpi.html">SETPI</a></TT> to explicitly assign &pi; bonds, and 
+<a href="Labels.html">atom labels</a> to explicitly assign charges.</p>
+
+
+<P>
+Related keywords:<p align="left">See also <TT><a href="plusplus.html">++</a>, <a href="setpi.html">SETPI</a>, <a href="lewis.html">LEWIS</a>, <a href="charges.html">CHARGES</a>, <a href="metal.html">METAL</a>, <a href="vdwm.html">VDWM</a>,
+<a href="charge.html">CHARGE</a>, <a href="xeno.html">XENO</a>, and <a href="mozyme.html">MOZYME</a></TT><br>
+See also: <a href="Lewis_structures.html">Lewis Structures</a>,
+<a href="mozyme_introduction.html">MOZYME introduction</a>,
+<a href="atom_numbers.html">atom numbers</a></p>
+<p align="left">&nbsp;</p>
+<DL dir="ltr">
+<div align="left">
+  <dt dir="ltr">&nbsp;</dt>
+</div>
+
+</dl>
+<P>
+&nbsp;</BODY></HTML>

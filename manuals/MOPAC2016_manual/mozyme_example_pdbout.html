@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>MOZYME example: PDBOUT</TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<B>
+MOZYME example: PDBOUT</B></h1>
+<p align="left">
+A PDB file can be generated from a normal MOPAC Z-matrix by using
+<a href="pdbout.html"><TT>PDBOUT</TT></a>.&nbsp; Any comments in the MOPAC data 
+set (lines starting with an asterisk, '*') that look like PDB lines are put at the start of the pdb file.&nbsp;<p align="left">
+Normally, the labeling of the atoms in the PDB file will be the same as that of 
+the data set, whether it is a MOPAC-style data set or a PDB file data set.&nbsp; 
+If there is no labeling, or if <a href="residues.html"><tt>RESIDUES</tt></a> or <a href="residues.html"><tt>RESIDUES0</tt></a> is present, then the atom labels will be 
+constructed from the topology of the system.&nbsp;
+If a residue is not one of the standard 20 residues, it will be labeled &quot;UNK&quot;, 
+for unknown.&nbsp; If it is a modified standard residue, for example the retinal 
+group in rhodopsin is a modified lysine residue, then keyword
+<a href="xeno.html"><TT>XENO</TT></a> can be used to give it a standard name.<p align="left">
+Data-set: <PRE><b>*HEADER   WORKED EXAMPLE
+*TITLE    A TRI-PEPTIDE
+*REMARK 3 DATA USED IN REFINEMENT. 
+*CRYST1   60.850 60.850 108.400 90.00 90.00 120.00 P 63 6 
+*
+* This line, the previous line, and the following comments will NOT be in the PDB file!
+* START_RES and CHAINS are optional
+* The defaults are START_RES=(1) CHAINS=(A)
+  0scf pdbout RESIDUES start_res=(10) chains=(E)
+
+
+  N         0.00000000 +1    0.0000000 +1    0.0000000 +1   
+  C         1.45099200 +1    0.0000000 +1    0.0000000 +1   
+  C         2.07379016 +1    1.3847514 +1    0.0000000 +1   
+  O         3.16479845 +1    1.5510512 +1    0.5346009 +1   
+  C         1.98010532 +1   -0.7816083 +1   -1.2061384 +1   
+  S         2.91021593 +1   -2.2138976 +1   -0.5916694 +1   
+  H         1.78639414 +1   -0.4791530 +1    0.9215042 +1   
+  H         2.66987764 +1   -0.1661407 +1   -1.7918980 +1   
+  H         1.16732537 +1   -1.1139738 +1   -1.8582339 +1   
+  H         3.33442776 +1   -2.8105177 +1   -1.7526284 +1   
+  H        -0.45944146 +1   -0.5439661 +1   -0.7191795 +1   
+  H        -0.45944146 +1   -0.5439661 +1    0.7191795 +1   
+  N         1.41779186 +1    2.3818640 +1   -0.5930817 +1   
+  C         1.96005201 +1    3.7395708 +1   -0.5873182 +1   
+  C         0.87144992 +1    4.6925379 +1   -0.0859199 +1   
+  O        -0.30894710 +1    4.3852105 +1   -0.2277412 +1   
+  C         2.58984680 +1    4.0757744 +1   -1.9613244 +1   
+  C         3.95504011 +1    3.4174209 +1   -2.2109945 +1   
+  C         5.13263384 +1    4.0760823 +1   -1.8023387 +1   
+  C         6.39390379 +1    3.5338821 +1   -2.0746443 +1   
+  C         6.51251534 +1    2.3040175 +1   -2.7409980 +1   
+  C         5.35236761 +1    1.6339502 +1   -3.1585724 +1   
+  C         4.08327785 +1    2.1864831 +1   -2.9055825 +1   
+  H         2.75184646 +1    3.8479695 +1    0.1426395 +1   
+  H         2.74129210 +1    5.1566073 +1   -1.9998683 +1   
+  H         1.90797747 +1    3.8313152 +1   -2.7790034 +1   
+  H         5.07815939 +1    5.0182815 +1   -1.2765870 +1   
+  H         7.28256125 +1    4.0711027 +1   -1.8000485 +1   
+  H         3.20599873 +1    1.6658896 +1   -3.2578962 +1   
+  H         5.45626342 +1    0.6951745 +1   -3.6940611 +1   
+  H         7.49097179 +1    1.8927662 +1   -2.9377954 +1   
+  H         0.46717507 +1    2.2471723 +1   -0.9238687 +1   
+  N         1.23320241 +1    5.8266104 +1    0.5208984 +1   
+  C         0.26492485 +1    6.8517935 +1    0.8919516 +1   
+  C         0.31272594 +1    7.9119232 +1   -0.2244470 +1   
+  O         1.39993820 +1    8.1980713 +1   -0.7103118 +1   
+  C         0.56056668 +1    7.4759401 +1    2.2689288 +1   
+  C         1.27996141 +1    6.5571211 +1    3.2666683 +1   
+  C         1.60234572 +1    7.3416902 +1    4.5312735 +1   
+  O         2.41760942 +1    8.2681242 +1    4.3634539 +1   
+  O         1.02819708 +1    7.0347336 +1    5.6046982 +1   
+  H        -0.71623918 +1    6.4059436 +1    1.0059751 +1   
+  H        -0.39373680 +1    7.7519156 +1    2.7226369 +1   
+  H         1.15143293 +1    8.3863594 +1    2.1332694 +1   
+  H         2.23164513 +1    6.2323719 +1    2.8483475 +1   
+  H         0.67739509 +1    5.6796776 +1    3.4974943 +1   
+  H         2.66377974 +1    8.7825627 +1    5.0596961 +1   
+  H         2.20037691 +1    6.1233889 +1    0.4986194 +1   
+  H        -0.81037727 +1    8.4883333 +1   -0.6911228 +1   
+ 
+</b></PRE>
+
+</BODY>
+</HTML>

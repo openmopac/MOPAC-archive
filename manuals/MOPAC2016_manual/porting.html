@@ -1,0 +1,288 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Porting MOPAC to other platforms</TITLE>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H1>Porting MOPAC to other platforms </H1>
+<P>MOPAC is designed to be as platform independent as possible.&nbsp; The code 
+is written in as near pure FORTRAN90/95 as possible, and where possible simple 
+constructions are used.&nbsp; This is deliberately done to make it easier to 
+port the program to other machines. </P>
+
+<P>&nbsp;To validate a port, the data sets in the <a href="validation_suite.zip">
+validation suite</a> should be run&nbsp; If all tests are passed, within the tolerances given in the tests, then the 
+ported program can be called a valid version of MOPAC. Insofar as is practical, the mode of submission of a MOPAC job should be preserved, e.g., </P>
+
+<PRE>(prompt) MOPAC &lt;data-set&gt; [&lt;queue-options&gt;...]</PRE>
+<P>Any changes which do not violate the FORTRAN-90 conventions, and which users believe would be generally desirable, 
+may be sent to the author. </P>
+<P>The main difficulty in modifying the program so that it runs on other platforms is likely to be in the channel assignments. In an attempt to make this easier, all channel assignments are defined in subroutines 
+getdat.f90, chanel_C.f90 and init_filenames.f90. MOPAC uses the UNIX instructions <TT>iargc</TT> and <TT>getarg</TT>. These read in the number of arguments supplied with the MOPAC command, and if this is greater than zero, it then reads in the name of the job. This is stored in 
+molkst_C module string variable JOBNAM. </P>
+<P>Other possible trouble-spots are (a) the CPU timer (in <TT>second.F90</TT>), and the date function <TT>fdate</TT> (in <TT>
+readmo.f90</TT> and <TT>writmo.f90</TT>) and&nbsp; (b) the <TT>RESTART</TT> 
+command.</P>
+<DL>
+<DD>In order to make porting easier, all channel numbers are represented by 
+symbols. The default assignments are shown in the Table. </DD>
+<DD><BR>
+<DIV ALIGN="CENTER"><A NAME="BM36934">&nbsp;</A> <DIV ALIGN="CENTER"><A NAME="BM36977">&nbsp;</A> </DD>
+<STRONG><DD><A NAME="allfiles"></A>Table:</STRONG> Files used by MOPAC</DD>
+</DL>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Channel</TD>
+<TD VALIGN="MIDDLE">
+Symbol</TD>
+<TD VALIGN="MIDDLE">
+<P>Name</TD>
+<TD VALIGN="MIDDLE">
+<P>Input?</TD>
+<TD VALIGN="MIDDLE">
+<P>Output?</TD>
+<TD VALIGN="MIDDLE">
+<P>Contents</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+iend</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.end</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Shut command</TD>
+</TR>
+<tr>
+  <TD VALIGN="MIDDLE">
+<p ALIGN="CENTER">7</TD>
+<TD VALIGN="MIDDLE">
+from_data_set</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.mop*</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Data-set</TD>
+</tr>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">9</TD>
+<TD VALIGN="MIDDLE">
+ires</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.res</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Restart file</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">10</TD>
+<TD VALIGN="MIDDLE">
+iden</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.den</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Density file</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">11</TD>
+<TD VALIGN="MIDDLE">
+ilog</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.log</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Log file</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">12</TD>
+<TD VALIGN="MIDDLE">
+iarc</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.arc</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Archive file</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">13</TD>
+<TD VALIGN="MIDDLE">
+igpt</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.gpt</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Graphics file</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">14</TD>
+<TD VALIGN="MIDDLE">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>User-defined</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>New parameters</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">15</TD>
+<TD VALIGN="MIDDLE">
+iesr</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.esr</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>ESP Restart</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">16</TD>
+<TD VALIGN="MIDDLE">
+isyb</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.syb</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>SYBYL file</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">18</TD>
+<TD VALIGN="MIDDLE">
+ibrz</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.brz</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Brillouin Zone</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">20</TD>
+<TD VALIGN="MIDDLE">
+iump</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.ump</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Data for grid</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">21</TD>
+<TD VALIGN="MIDDLE">
+iesp</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.esp</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>ESP data</TD>
+</TR>
+<tr>
+  <TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">22</TD>
+<TD VALIGN="MIDDLE">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>SCRATCH</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Used by GEOUTG</TD>
+</tr>
+<tr>
+  <TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">25</TD>
+<TD VALIGN="MIDDLE">
+ir</TD>
+<TD VALIGN="MIDDLE">
+<P>SCRATCH</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Internal working</TD>
+</tr>
+<tr>
+  <TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">26</TD>
+<TD VALIGN="MIDDLE">
+iw</TD>
+<TD VALIGN="MIDDLE">
+<TT><P>&lt;filename&gt;.out</TT></TD>
+<TD VALIGN="MIDDLE">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P>Yes</TD>
+<TD VALIGN="MIDDLE">
+<P>Results file</TD>
+</tr>
+</TABLE>
+
+<DL>
+<DD></DIV></DIV></DD>
+<DD>
+
+<DL>
+
+<DL>
+
+<DL>
+
+<DL>
+
+<DL>
+
+<DL>
+
+<DL>
+All the data are read in on channel 2, and immediately written to a SCRATCH channel, 5. For the rest of the job, data are read off channel 5 as if it were the ordinary input channel. By doing this, the data-set is used only at the very start of a job, and is released immediately afterwards. </DD>
+<DD>
+<p align="center">*: Alternatives: &lt;filename&gt;.dat, &lt;filename&gt;.arc, &lt;filename&gt;</DD>
+<DD>If, for whatever reason, a channel number must be changed, then the change should be made in 
+chanel_C. Of course, if the channel numbers are to be changed, care should be taken to avoid channel numbers which are already in use. </DD>
+</DD>
+</DL>
+
+</BODY>
+</HTML>

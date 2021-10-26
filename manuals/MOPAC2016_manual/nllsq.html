@@ -1,0 +1,14 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>NLLSQ </TITLE>
+                                          </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<TT><h1 align="center">NLLSQ</TT> </h1>
+<P>The gradient norm is to be minimized by Bartel's method&nbsp;[<A HREF="references.html#nllsq">8</A>]. This is a Non-Linear Least Squares gradient minimization routine. Gradient minimization will locate one of three possible points: </P>
+<P>(a) A minimum in the energy surface. The gradient norm will go to zero, and the lowest five or six eigenvalues resulting from a <TT>FORCE</TT> calculation will be approximately zero. </P>
+<P>(b) A transition state. The gradient norm will vanish, as in (a), but in this case the system is characterized by one, and only one, negative force constant. </P>
+<P>(c) A local minimum in the gradient norm space. In this (normally unwanted) case the gradient norm is minimized, but does not go to zero. A <TT>FORCE</TT> calculation will not give the five or six zero eigenvalues characteristic of a stationary point. While normally undesirable, this is sometimes the only way to obtain a geometry. For instance, if a system is formed which cannot be characterized as an intermediate, and at the same time is not a transition state, but nonetheless has some chemical significance, then that state can be refined using NLLSQ. </P>
+</BODY>
+</HTML>

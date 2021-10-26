@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</HEAD>
+
+&nbsp;<TITLE>XENO </TITLE><H2 align="center">
+<TT>XENO</TT> </H2>
+<P>This keyword is only used when the default atomic labels in a PDB file are 
+not to be used, i.e., when <a href="residues.html">
+<TT>RESIDUES</TT></a> or <a href="residues.html"><tt>RESIDUES0</tt></a> is present.&nbsp; 
+<h3>For non-standard residues and hetero groups</h3>
+<P>By default, the 
+method that recognizes amino acid residues only recognizes the standard twenty amino-acid residues, but some proteins contain residues which have extra molecular fragments attached. 
+Other residues, particularly where there is a break in a chain, have atoms 
+missing and therefore they do not correspond to any of the 20 standard residues.&nbsp; 
+In some cases, even though some atoms are missing, the remaining residue is one 
+of the standard 20 residues.&nbsp; This results in the residue being 
+misidentified. Many hetero groups (small molecules, e.g., water, sulfate, 
+glucose) that are associated with a protein are automatically recognized.&nbsp; 
+Unidentified residues are given the label &quot;UNK&quot;, and any heterogroups not recognized are given the label 
+&quot;HET&quot;. In order to allow these unusual species to be correctly recognized, the keyword <TT>XENO</TT> 
+is provided. <TT><P>XENO</TT>, from the Greek <i>&xi;&epsilon;&nu;&omicron;&sigma;</i>, xenos, for 'stranger', defines 
+unusual residues in a protein and unusual heterogroups in terms of the 
+residue's number and chain letter. The format of <TT>XENO</TT> is: </P>
+<TT><P>XENO=([<I>C</I>]<I>Res=L</I>[{,;}[<I>C</I>]<I>Res=L</I>][{,;}[<I>C</I>]<I>Res=L</I>]...)</TT> 
+where <em>[C]</em> is the chain letter, if used, <em>Res</em> is the residue 
+number, and <em>L</em> is the one-letter symbol for the residue, 
+e.g.
+<TT>XENO=(A55=K;78=L,C3=P) </TT>or
+a three-letter identifier, for example: <TT>XENO=(B1123=ATP,B1157=SO4)</TT>.&nbsp; 
+These two styles can be used in any order in the keyword, e.g.,: <tt>XENO=(A12=G,B1157=8OG,B45=D,A787=ATP,B1157=8OG,123=BIT)</TT><P>If the one letter abbreviation 
+is used, e.g., K for lysine 
+or L for leucine, this will be replaced in the run by the standard three-letter 
+identifier.&nbsp; If the chain letter is omitted, chain A will be 
+assumed.</P>
+<P>When a prosthetic group is present, e.g. the&nbsp;the extra fragment in bacteriorhodopsin, on Lys216: -COCHRNH-;&nbsp;&nbsp; R = CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>CH<sub>2</sub>N=CHCH=CMeCH=CHCH=CMeCH=CHC<sub>9</sub>H<sub>15</sub><!-- MATH: $\chem  -COCHRNH- ;  R = \chem{CH_2CH_2CH_2CH_2N\!\!=\!\!CHCH\!\!=\!\!CMeCH\!\!=\!\!CHCH\!\!=\!\!CMeCH\!\!=\!\!CHC_9H_{15}}$ -->, 
+an alternative to using <TT>XENO</TT> is to delete the connection between the normal 
+residue (here lysine) and the prosthetic (here retinal), using <TT>
+<a href="CVB.html">CVB</a></TT></P>
+<P>If <TT>XENO</TT> is <EM>not</EM> used, the checks on possible problems in the 
+PDB file will still work, but the label for partial or the modified residues will be 
+incorrect or reported as&nbsp;&quot;<TT>UNK&quot;</TT> or, for heterogroups, <tt>&quot;HET&quot;</TT>, instead of the more descriptive label which would result from using <TT>XENO</TT>. </P>
+
+<P>See also: <a href="residues.html">
+<TT>RESIDUES</TT></a>, <a href="reseq.html"><TT>RESEQ</TT></a>,
+<a href="chains.html"><TT>CHAINS</TT></a>, and <a href="start_res.html"><TT>START_RES</TT></a>.</P>
+
+</HTML>

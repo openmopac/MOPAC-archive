@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Strategies for using PARAM</TITLE>
+                                                                                                                                                                   </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">Strategies for using PARAM</h1>
+<h3 align="left">Beginning</h3>
+<p align="left">Before using PARAM for method development, first become familiar 
+with the various <a href="Programs.html">utilities</a> that are available. Then 
+run a simple parameter optimization using PARAM.&nbsp; A good starting job would 
+be <b><font color="#008000">Optimize-h.dat</font></b> in FILES.zip. Examine the 
+output, to familiarize yourself with the process.&nbsp; Once the process is 
+understood, make changes to the PARAM data set, and try out various ideas to 
+test your understanding of the process.</p>
+<p align="left">Also, before starting any parameter optimization work, decide 
+what the objective is. Is it to develop a new, general purpose method, such as 
+PM6 - that would be a large project taking at least a year. Or is it to develop 
+a high-accuracy method such as <a href="../MOPAC2016_manual/rm1_key.html">RM1</a> that is 
+limited to a few elements, or to a few molecular species, or to a specific set 
+of bonds.&nbsp; </p>
+<p align="left">If the objective is to develop a method for modeling a specific 
+set of molecules, then the database would need to include examples of those 
+systems.&nbsp; The default database (normal_data) is very small, only about 250 
+files.&nbsp; During the development of PM6, the databases used consisted of over 
+8,000 normal compounds, over 1,000 special cases, and about 380 atomic states.&nbsp; 
+So the default database is obviously unlikely to have many molecules of 
+interest.&nbsp; The first big task, then, is to assemble reference data for the 
+species of interest, and to convert these data into reference data files.</p>
+<p align="left">Use the default method, currently PM6, where possible, for both 
+preliminary cleaning up of reference data set geometries and as a starting point 
+for the values of parameters.</p>
+<p align="left">For each data file constructed, first run it using MOPAC to get 
+a good starting geometry.&nbsp; In the case of geometric references, set the 
+optimization flags for the geometric references to zero during this operation.</p>
+<p align="left">When a good set of reference data files are available, run a 
+survey of them using PARAM (use <TT><a href="keyword_survey.html">SURVEY</a></TT>).&nbsp; 
+This will allow any obvious errors to be quickly identified.&nbsp; Then run 
+PARAM without <TT>SURVEY</TT> and without optimizing any parameters.&nbsp; The 
+output file will allow more subtle errors to be detected. </p>
+<p align="left">Parameter optimization is straightforward.&nbsp; To optimize all 
+parameters for a given element, Ti for example, use (Ti)(all).&nbsp; To optimize 
+several elements, separate the chemical symbols by spaces, e.g., (H C N O)(all).&nbsp; 
+To optimize only some parameters, specify the parameters, either as (H C N 
+O)(Uss betas zs) or as explicit entries:</p>
+<p align="left">ZS&nbsp;&nbsp; H<br>
+ZS&nbsp; C<br>
+ZS&nbsp; N<br>
+ZS&nbsp; O</p>
+<p align="left">The style of specifying parameters is the same as that used in
+<a href="../MOPAC2016_manual/external.html"><TT>EXTERNAL</TT></a>.&nbsp; If there is a 
+need to constrain the values of parameters lower and upper bounds can be set, 
+thus:</p>
+<p align="left">ZS&nbsp; H 0.5 2.0<br>
+&nbsp;</p>
+<h3 align="left">Intermediate</h3>
+<p align="left">Rules</p>
+<p align="left">Weak interactions: rules</p>
+<p align="left"><b>Use of non-equilibrium structures</b></p>
+<p align="left">Often there is insufficient information to pin down the surface 
+of parameter space.&nbsp; In the case of the rare gases this can occur simply 
+because there are few or no exemplars.&nbsp; When this occurs, one option is to 
+use non-equilibrium structures.&nbsp; These are represented as reference data by 
+rules.&nbsp; A typical example would be the difference in energy of the system 
+at equilibrium and the system with a bond stretched or compressed.&nbsp; As 
+systems of this type do not occur in nature, the best source of reference data 
+is high-level calculation.&nbsp; In practice, diatomics are best.&nbsp; First, 
+the geometry of the system is optimized,&nbsp; then the appropriate bond length 
+is increased by 0.2<font face="Times New Roman">&Aring;</font> then decreased by 0.2<font face="Times New Roman">&Aring;</font>.&nbsp; 
+The results are used in the construction of three reference data files: the 
+equilibrium, the stretched and the compressed forms.&nbsp; The geometries of all 
+three reference data files are frozen.&nbsp; Rules are then constructed, 
+relating the heat of formation of the stretched and compressed forms to that of 
+the equilibrium form.</p>
+<p align="left">Building sets of reference data files of this type is quite 
+rapid.</p>
+<p align="left"><b>Solids</b></p>
+<p align="left">Inclusion of even one solid state system in a parameterization 
+calculation would slow it down to such a degree that parameter optimization 
+would be impossible.&nbsp; Instead, small aggregates can be used.&nbsp; Thus for 
+the alkali metal halides, the tetrahedral system M<sub>4</sub>X<sub>4</sub> 
+would be suitable.&nbsp; Its geometry could be obtained from high-level 
+calculations.&nbsp; Likewise, the stability of such a system relative to four 
+isolated MX dimers could be expressed as a rule.</p>
+<p align="left">individual elements</p>
+<p align="left">sequence of optimization</p>
+<p align="left">&nbsp;</p>
+<h3 align="left">Advanced</h3>
+<p align="left"><b>Methods that do not involve geometry optimization</b></p>
+<p align="left">All general methods involve geometry optimization.&nbsp; Such 
+methods are, of their nature, unsuitable for modeling many phenomena, such as 
+activation barriers, electronic excited states, pKa, polarizabilities, etc.&nbsp; 
+Methods for modeling these phenomena can be developed by using frozen 
+geometries.&nbsp; The underlying idea is that geometries are optimized using one 
+method, and the desired phenomenon then modeled using a different method.&nbsp;
+</p>
+<p align="left">First, optimize all geometries using a well-defined method.&nbsp; 
+This is easily done using PARAM keywords <a href="keyword_precise.html"><TT>PRECISE</TT></a> and <TT>
+<a href="keyword_NEW_REF.html">NEW_REF</TT></a>. Then run parameter 
+optimizations using PARAM keyword <a href="keyword_1SCF.html"><TT>1SCF</TT></a>.&nbsp; 
+This prevents the geometries from changing during the parameterization. This 
+allows the flexibility that was used for modeling geometries accurately to be 
+used for the new phenomenon. </p>
+<p align="left">A model example of this process would be to develop a method for 
+predicting UV-Vis spectra.&nbsp; Only data relating to the desired phenomenon 
+would be used, i.e., in the case of UV-Vis, this would consist of the named 
+excited state of various molecules and the energies of the excitation. Only 
+parameters that affect electronics need be optimized.&nbsp; This would exclude 
+all nuclear terms, such as xfac, alpb, alp, fn11, etc.</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;&nbsp;</p>
+<p align="left">&nbsp;</p>
+                                                </BODY>
+</HTML>

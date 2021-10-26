@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> The Cluster</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2><A NAME="SECTION001291000000000000000">
+ The Cluster</A>
+</H2>
+Unlike more conventional methods, MOPAC does not normally use a fundamental
+unit cell.  Neither does it sample the Brillouin Zone in order to model the
+electronic structure.  Instead, it uses a large unit cell, called a 'cluster', and applies the Born-von K&#225;rm&#225;n
+&nbsp;[<A
+ HREF="references.html#bornvon1">68</A>,<A
+ HREF="references.html#bornvon2">69</A>] periodic  boundary conditions.  In this discussion,
+the term 'solid' is intended to include polymers, layer systems, and true
+solids, unless otherwise indicated by the context.
+<P>
+If a unit cell of a solid is large enough,  then  a  single  point  in <I>k</I>-space,  the &Gamma;
+point,
+is sufficient to specify the entire Brillouin zone.  The secular determinant
+for this  point  can  be  constructed  by adding together the Fock matrix for
+the central unit cell plus those for the adjacent unit cells.  The periodic
+boundary conditions are satisfied, and diagonalization yields the correct
+density matrix for the &Gamma; point.
+<P>
+At this point  in  the  calculation,  conventionally,  the  density matrix
+for  each  unit  cell  is constructed.  Instead, the &Gamma;-point density
+and  one-electron  density  matrices  are   combined   with "&Gamma;-point-like" Coulomb  and  exchange integral strings to
+produce a new Fock matrix.  The  calculation  can  be  visualized  as  being
+done entirely in reciprocal space, at the &Gamma; point.
+<P>
+Most  solid-state  calculations  take  a  very  long  time.   These
+calculations,   called "Cluster" calculations   after  the  original
+publication, require between 1.3 and 2 times  the  equivalent  molecular
+calculation.<A NAME="BM18245">&#160;</A>
+<P>
+A minor 'fudge'  is  necessary  to  make  this  method  work.   The
+contribution  to  the  Fock  matrix  element  arising  from the exchange
+integral between an atomic orbital and all atomic orbitals which are more than
+half a unit cell away must be ignored.
+<P>
+The unit cell must be large enough that an atomic  orbital  in  the center  of  the  unit  cell has an
+insignificant overlap with the atomic orbitals at the ends of the  unit
+cell.   In  practice,  a  translation vector  of more that about 7 or 8 &Aring;ngstrom is
+sufficient.  For one rare group of compounds a larger translation vector is
+needed.  Solids with delocalized <i> <span class="b">&pi;</span></i>-systems,  and  solids  with  very
+small band-gaps will require a larger translation  vector,  in  order  to
+accurately  sample <i>k</i>-space.   For these systems, a translation vector in the
+order of  15-20 &Aring;ngstroms is needed.
+</BODY>
+</HTML>

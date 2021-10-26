@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 12.0">
+<TITLE>OUTPUT </TITLE>
+<META NAME="description" CONTENT="PDB ">
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+</style>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H2 class="auto-style1">
+<TT>OUTPUT</TT> </H2>
+<P>The size of the normal output file can become very large when large systems 
+are being used.&nbsp; This can make it difficult to find interesting 
+information. To reduce the amount of information printed to the output file, add 
+<tt>OUTPUT </tt>to the keyword list.&nbsp; </P>
+<P>To allow some blocks of data that would otherwise be suppressed by <tt>OUTPUT </tt>
+use <tt>OUTPUT</tt> followed by letters in parentheses,&nbsp; Allowed letters 
+are</P>
+<table align="center">
+	<tr>
+		<td class="auto-style1">Letter</td>
+		<td class="auto-style1">Does not suppress</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">C</td>
+		<td>Coordinates</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">F</td>
+		<td>Force matrix (in a FORCE calculation)</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">G</td>
+		<td>Gradients</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">N</td>
+		<td>Normal coordinates (in a FORCE calculation)</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">O</td>
+		<td>Orientation (in a FORCE calculation)</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">P</td>
+		<td>Atomic Orbital Populations</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">Q</td>
+		<td>Fractional atomic charges</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">T</td>
+		<td>Topography (atom connectivity)</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">V</td>
+		<td>Starting velocity of atoms in a DRC/IRC</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">X</td>
+		<td>Cartesian coordinates</td>
+	</tr>
+</table>
+<P>Thus, if fractional atomic charges are to be printed, but other voluminous 
+data suppressed, use <tt>OUTPUT(Q)</tt>.&nbsp; If atomic orbital 
+populations are also wanted, use <tt>OUTPUT(QP)</tt>. Note that <tt>OUTPUT</tt> 
+only suppresses output.&nbsp; If some data would not normally be printed, for 
+example, in a <a href="one_scf.html"><tt>1SCF</tt></a> calculation the gradients would 
+not be printed unless <a href="gradients.html"><tt>GRADIENTS</tt></a> was also present, 
+then adding 
+letters to the <tt>OUTPUT</tt> 
+keyword to not suppress the gradients would do nothing.&nbsp;&nbsp; </P>
+
+</BODY>
+</HTML>

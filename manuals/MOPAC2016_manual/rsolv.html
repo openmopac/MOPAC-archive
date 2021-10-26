@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>RSOLV=n.nn </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>RSOLV=<I>n</I>.<I>nn</I></TT>
+</h1>
+Used by the&nbsp;
+<a href="cosmo.html">COSMO</a>&nbsp; method to set the
+effective radius of the solvent molecule to <I>n</I>.<I>nn</I>.  The default value
+(1.3) is appropriate for water.
+<P>
+This quantity should be altered for each solvent.
+One way to get <TT>RSOLV</TT> is to try several values for <TT>RSOLV</TT>, and see
+which one gives the best solvation energies when compared with
+experimental results.
+<P>
+Dr Klamt suggests: For COSMO-RS, use a solvent radius which is independent of
+the solvent, e.g. R_solv = R_hydrogen = 1.3 Angstrom.&nbsp; Do not use a large
+solvent radius for large solvents, because the solvent is not probing the solute
+globally but locally. It is the local curvature which is relevant here, and a
+general value of 1.3 Angstrom is normally reasonable.</BODY></HTML>

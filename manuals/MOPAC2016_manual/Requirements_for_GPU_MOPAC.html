@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Requirements for using GPU versions of MOPAC </TITLE>
+<style type="text/css">p.MsoNormal
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:0in;
+	line-height:115%;
+	tab-stops:35.4pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#00000A;
+	}
+p.MsoListParagraph
+	{margin-top:0in;
+	margin-right:0in;
+	margin-bottom:10.0pt;
+	margin-left:.5in;
+	line-height:115%;
+	tab-stops:35.4pt;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#00000A;
+	}
+a:link
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;
+}
+span.InternetLink
+	{color:navy;
+	text-decoration:underline;
+	text-underline:single;
+}
+.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style3 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+Requirements for using CPU-GPU versions of MOPAC</h1>
+<p class="auto-style2">&nbsp;</p>
+<p class="MsoNormal"><span class="auto-style2" style="mso-ansi-language: EN-US">
+There are several requirements for a CPU-GPU version of MOPAC.&nbsp; These are:</span><span class="auto-style2" style="mso-ansi-language:EN-US"><o:p>&nbsp;</o:p></span></p>
+<ol>
+	<li>
+	<p class="MsoListParagraph" style="margin-left:.25in;text-indent:-.25in;
+mso-list:l0 level1 lfo1"><![if !supportLists]>
+	<span style="mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Calibri;mso-ansi-language:EN-US">
+	<span style="mso-list:Ignore"><span class="auto-style2">T</span><span class="auto-style2" style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;">he 
+	computer must have</span></span></span><![endif]><span class="auto-style2" style="mso-ansi-language: EN-US"> 
+	a NVIDIA GPU Card installed.&nbsp; This card needs to have a Compute 
+	Capability equal or superior to 2.0. To check if your GPU is supported, go 
+	to </span><span lang="PT-BR">
+	<a href="https://developer.nvidia.com/cuda-gpus"><span class="InternetLink">
+	<span class="auto-style3" lang="EN-US">https://developer.nvidia.com/cuda-gpus</span></span></a></span><span style="mso-ansi-language:EN-US"><o:p></o:p></span></p>
+	</li>
+	<li>
+	<p class="MsoListParagraph" style="margin-left:.25in;text-indent:-.25in;
+mso-list:l0 level1 lfo1"><![if !supportLists]>
+	<span style="mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Calibri;mso-ansi-language:EN-US">
+	<span style="mso-list:Ignore">
+	<span class="auto-style2" style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;">
+	The </span></span></span><![endif]>
+	<span class="auto-style2" style="mso-ansi-language: EN-US">NVIDIA CUDA 
+	Toolkit must be installed. </span><![if !supportLists]>
+	<span style="mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Calibri;mso-ansi-language:EN-US">
+	<span style="mso-list:Ignore">
+	<span class="auto-style2" style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7.0pt; line-height: normal;">&nbsp;</span><span class="auto-style2" style="font-style: normal; font-variant: normal; font-weight: normal; line-height: normal;">If</span></span></span><![endif]><span class="auto-style2" style="mso-ansi-language: EN-US"> 
+	the CUDA toolkit is not installed, go to </span><span lang="PT-BR">
+	<a href="https://developer.nvidia.com/cuda-downloads">
+	<span class="InternetLink"><span class="auto-style3" lang="EN-US">https://developer.nvidia.com/cuda-downloads</span></span></a></span><span class="auto-style2" style="mso-ansi-language: EN-US"> 
+	and download and install it. <br>MOPAC2016 was written using CUDA-5.5.&nbsp; If a higher version of CUDA, e.g., CUDA-6.5 
+	or CUDA-7, is already installed, then, for Linux systems, download
+	<a href="../Linux_mopac_cuda_5.5_libs.zip">http://openmopac.net/Linux_mopac_cuda_5.5_libs.zip</a>, 
+	and for Windows systems,
+	<a href="../Windows_mopac_cuda_5.5_libs.zip">http://openmopac.net/Windows_mopac_cuda_5.5_libs.zip</a>.&nbsp; 
+	Follow the instructions in README.txt.&nbsp; This will allow MOPAC to 
+	run using local CUDA-5.5 libraries.</span></p>
+	</li>
+	<li>
+	<p class="MsoListParagraph" style="margin-left:.25in;text-indent:-.25in;
+mso-list:l0 level1 lfo1">
+	<span class="auto-style2" style="mso-ansi-language: EN-US">For Linux 
+	computers<o:p>: </o:p>
+	<span style="mso-tab-count:1">The</span> Cuda Toolkit environment variables 
+	need to be defined in your $HOME/.bashrc file. To do this, add the following 
+	lines to .bashrc:</span><o:p></o:p></p>
+	<p class="MsoListParagraph" style="margin-left:0in">
+	<span class="auto-style3" style="font-size: 10.0pt; line-height: 115%; color: navy; mso-ansi-language: EN-US">
+	export CUDA_HOME=CUDA_TOOLKIT_INSTALLATION_PATH</span><span style="mso-ansi-language:EN-US"><o:p></o:p></span></p>
+	<p class="MsoListParagraph" style="margin-left:0in">
+	<span class="auto-style3" style="font-size: 10.0pt; line-height: 115%; color: navy; mso-ansi-language: EN-US">
+	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:CUDA_HOME/lib64:$CUDA_HOME/lib</span><span style="mso-ansi-language:EN-US"><o:p></o:p></span></p>
+	<p class="MsoListParagraph" style="margin-left:0in">
+	<span class="auto-style3" style="font-size: 10.0pt; line-height: 115%; color: navy; mso-ansi-language: EN-US">
+	export PATH=$PATH:$CUDA_HOME/bin</span><span style="mso-ansi-language:EN-US"><o:p></o:p></span></p>
+	<p class="MsoListParagraph" style="margin-left:0in">
+	<span class="auto-style2" style="mso-ansi-language: EN-US">(Usually /usr/local/cuda-5.5 
+	is the default </span>
+	<span class="auto-style3" style="color: navy; mso-ansi-language: EN-US">
+	CUDA_TOOLKIT_INSTALLATION_PATH.)</span></p>
+	<p class="MsoListParagraph" style="margin-left:0in"><![if !supportLists]>
+	<span style="mso-fareast-font-family:
+Calibri;mso-bidi-font-family:Calibri;mso-ansi-language:EN-US">
+	<span class="auto-style2" style="mso-list:Ignore">If desired, </span></span>
+	<![endif]><span class="auto-style2" style="mso-ansi-language: EN-US">the 
+	number of threads used in your MOPAC2016 can be defined using</span><b><span class="auto-style2" style="mso-ansi-language: EN-US">
+	</span>
+	<span class="auto-style2" style="color: navy; mso-ansi-language: EN-US">
+	export MKL_NUM_THREADS=XX</span></b><span class="auto-style2" style="mso-ansi-language:EN-US"><o:p>, 
+	where </o:p>
+	</span><span class="auto-style2" style="mso-ansi-language: EN-US">XX is the 
+	number of threads you want to use. XX must be equal or smaller than the 
+	number of physical cores you have available in your system (MKL does not 
+	benefit from hyper-threading). </span><o:p></o:p>
+	</p>
+	</li>
+	<li>
+	<p class="auto-style2" style="margin-left:.25in;text-indent:-.25in;
+mso-list:l0 level1 lfo1">The operating system must
+	<o:p>use glibc version 2.14.&nbsp; CPU-GPU MOPAC will not run if the OS uses 
+	glibc 2.12.&nbsp; This means that it will not run on CentOS.</o:p></p>
+	</li>
+</ol>
+<p class="MsoListParagraph" style="margin-left:0in">
+<a name="__DdeLink__151_20972473111"></a><span class="auto-style2">When these 
+requirements have been met, install the CPU-GPU version of MOPAC.&nbsp; During 
+testing, be aware that GPU will not be used on systems of less than 100 atoms. 
+Such systems will be run without using the GPU.</span></p>
+<p class="auto-style2" style="margin-left:0in">
+<span style="mso-ansi-language:
+EN-US"><o:p>&nbsp;</o:p></span></p>
+
+</BODY>
+</HTML>

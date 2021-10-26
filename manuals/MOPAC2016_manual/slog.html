@@ -1,0 +1,16 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SLOG=n.nn </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center"><TT>SLOG, SLOG=<I>n</I>.<I>nn</I></TT> 
+&nbsp;</h1>
+<P>
+The line-search mechanism in the <a href="lbfgs.html">L-BFGS</a> geometry optimization is replaced with
+a constant step size.  This prevents large steps that could waste time or even
+cause a failure to achieve an SCF.  If <TT>SLOG</TT> is used, changes individual 
+coordinate parameters are limited to 0.20 &Aring;, otherwise if <TT>SLOG=<I>n</I>.<I>nn</I></TT> is used, the limit is <I>n</I>.<I>nn</I> &Aring;.
+</BODY>
+</HTML>

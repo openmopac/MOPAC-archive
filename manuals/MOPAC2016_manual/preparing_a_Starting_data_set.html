@@ -1,0 +1,335 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<TITLE>Preparing a starting data set</TITLE>
+</HEAD>
+<!--
+ 
+   Start of JSmol script
+ 
+-->
+<meta charset="utf-8"> <script type="text/javascript" src="../jsmol/JSmol.min.js"></script>  
+<script type="text/javascript">
+
+$(document).ready(function() {Info = {
+          width: 500,
+          height: 400,
+          color: "0xB0B0B0",
+          disableInitialConsole: true, 
+          addSelectionOptions: false,
+          j2sPath: "../jsmol/j2s",
+          jarPath: "../jsmol/java",
+          use: "HTML5", script: 
+           
+// Data set to be loaded showing the original geometry
+ 
+"load \
+          '5ULI.pdb'; \
+          set measurementUnits ANGSTROMS; \
+          set bondRadiusMilliAngstroms (50); \
+          spacefill 15%; \
+          set display selected; \
+          hBonds calculate; \
+          set defaultDistanceLabel '%0.3VALUE %UNITS'; \
+          select none; \
+          set perspectivedepth off; \
+          connect 0.8  1.5 (hydrogen) (phosphorus) create; \
+          set zoomLarge false;" 
+} 
+$("#mydiv").html(Jmol.getAppletHtml("jmolApplet0",Info))}); 
+</script>
+<script type="text/javascript">
+
+$(document).ready(function() {Info1 = {
+          width: 500,
+          height: 400,
+          color: "0xB0B0B0",
+          disableInitialConsole: true, 
+          addSelectionOptions: false,
+          j2sPath: "../jsmol/j2s",
+          jarPath: "../jsmol/java",
+          use: "HTML5", script: 
+           
+// Data set to be loaded showing the PM7 geometry with bias = 3
+ 
+"load \
+          '5ULI.pdb'; \
+          set measurementUnits ANGSTROMS; \
+          set bondRadiusMilliAngstroms (50); \
+          spacefill 15%; \
+          set display selected; \
+          hBonds calculate; \
+          set defaultDistanceLabel '%0.3VALUE %UNITS'; \
+          select none; \
+          set perspectivedepth off; \
+          connect 0.8  1.5 (hydrogen) (phosphorus) create; \
+          set zoomLarge false; \
+          select @2;" 
+} 
+$("#mydiv1").html(Jmol.getAppletHtml("jmolApplet1",Info1))}); 
+</script>
+<!--
+ 
+   End of JSmol script
+ 
+-->
+<BODY  BGCOLOR="#ffffff">                                                                                                                    
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p>(<a href="modeling_proteins.html#Preparing">Modeling proteins</a>)</p>
+<h1>Preparing a starting data set - adding and removing hydrogen atoms</h1>
+<p>A very common step in the preparation of systems to be modeled is the 
+addition and removal of hydrogen atoms.&nbsp; This operation is both important 
+and difficult.&nbsp; Important because computational models must be as realistic 
+as possible, and difficult because errors in hydrogenation are inevitable, some 
+due to faults in the starting geometry, and others due to the default 
+hydrogenation procedure not accounting for certain specific conditions, 
+particularly those that occur in large ring complexes.&nbsp; Data-sets can be edited to add or 
+delete hydrogen atoms &quot;by hand,&quot; and graphics utilities exist that allow 
+data-sets to be edited easily.&nbsp; An alternative when working with MOPAC is 
+to use keywords instead.&nbsp; This allows  all the editing 
+operations to a reference file, for example a PDB file from the
+<a href="http://www.pdb.org/pdb/home/home.do" , target="_parent">Protein Data 
+Bank</a>, to be recorded in MOPAC data-sets, and if, as often happens, faults 
+are found in the hydrogenation, 
+these can easily be corrected by editing the appropriate data-set.&nbsp;&nbsp; 
+Because some proteins are extremely complicated, a useful strategy is to use 
+several data-sets to convert a PDB file into a realistic MOPAC data-set.&nbsp; 
+The individual data-sets can be summarized as follows:</p>
+<p><u><b>Template procedure for hydrogenating proteins</b></u></p>
+<p dir="ltr">&nbsp;1. Using keyword <a href="ADD-H.html"><TT>ADD-H</TT></a>, hydrogenate the PDB file.<br>
+&nbsp;2. Using keyword <a href="charges.html"><tt>CHARGES</TT></a>, identify all the ionized sites in the PDB file 
+from Step 1.<br>
+&nbsp;3. Using keyword <a href="site.html"><tt>SITE</TT></a>, correct the errors in hydrogenation in the PDB file 
+from Step 1.<br>
+&nbsp;4. Using keyword <TT>CHARGES</TT>, identify all the ionized sites in the PDB file 
+from Step 3.<br>
+&nbsp;5. Using keyword <TT>SITE=(SALT)</TT>, add in all the default salt bridges.<br>
+&nbsp;6. Using keyword <TT>CHARGES</TT>, identify all the ionized sites in the PDB file 
+from Step 5.<br>
+&nbsp;7. Using keywords <a href="noopt.html"><tt>NOOPT</TT></a> and <a href="opth.html"><tt>OPT-H</TT></a>, optimize the positions of the hydrogen 
+atoms in the PDB file from Step 5.</p>
+<p>When faults are found in the ionized sites, the previous data-set should be 
+edited to correct the faults, and re-run.&nbsp; Then the subsequent data-sets 
+should be run.&nbsp; Eventually there should be no faults from hydrogenation.</p>
+<p>At this point, a valid question would be, why doesn't the program hydrogenate 
+the PDB file correctly?&nbsp; There are several reasons.&nbsp; First, some PDB 
+files have geometric errors.&nbsp; An example can be illustrated using bacteriochlorophyll.&nbsp; There are seven chlorophyll molecules in this 
+protein, in one of these, BCL-3, a ketone C=O distance is given as 1.303&nbsp;&Aring; 
+instead of the expected 1.22&nbsp;&Aring;.&nbsp; This distortion caused the 
+<tt>ADD-H</tt> procedure to assign a hydrogen atom to the oxygen, making it a hydroxy 
+group instead of a ketone.&nbsp; Mistakes of this type are easy to make, and 
+need to be corrected.&nbsp; Second, in other systems where there are two 
+possible hydrogenation sites,  
+<tt>ADD-H</tt> sometimes picks the wrong atom.&nbsp; This 
+occurs most often in histidine.&nbsp; Third, because most 
+PDB files do not discriminate between them, the choice of which oxygen atom in a 
+carboxylate group should be the hydroxy and which the keto is difficult to 
+decide a priori.&nbsp; Given all this, it is easier to perform a simple 
+hydrogenation then correct the errors in a subsequent job.</p>
+<p><u><b>Worked example of the hydrogenation of Bacteriochlorophyll (PDB: 4BCL)</b></u></p>
+<p dir="ltr">Bacteriochlorophyll is a large, complicated protein, and can be 
+used to illustrate the various problems in hydrogenation, and the different 
+steps in resolving them. All the files used can be found in
+<a href="Files%20used%20in%20Hydrogenation%20of%20Bacteriochlorophyll.zip">Files 
+used in Hydrogenation of Bacteriochlorophyll .zip</a>.</p>
+<p dir="ltr"><b>Names of the data-sets used in this example</b></p>
+<p dir="ltr">1 ADD-H.mop<br>
+2 Calculate charges in ADD-H structure (first attempt).mop<br>
+2 Calculate charges in ADD-H structure.mop<br>
+3 Modify ADD-H structure.mop<br>
+4 Re-calculate charges.mop<br>
+5 Add salt bridges.mop<br>
+6 Re-calculate charges after adding salt bridges.mop<br>
+7 PM6-D3H4 Optimize positions of hydrogen atoms.mop<br>
+7 PM7 Optimize positions of hydrogen atoms.mop</p>
+<p><b>Step 1:  
+<tt>ADD-H</tt>: </b>This is the only easy step.&nbsp; The entire keyword line 
+consists of:<br>
+<TT><a href="geo_dat.html">GEO_DAT</a>=&quot;Bacteriochlorophyll (4BCL).ent&quot; 
+<a href="output.html">OUTPUT</a> <a href="html.html">HTML</a> ADD-H 
+<a href="nocomments.html">NOCOMMENTS</a></TT></p>
+<p>The purpose of each keyword used here is as follows:<br>
+<TT>GEO_DAT=&quot;Bacteriochlorophyll (4BCL).ent&quot;</tt>: To minimize the 
+risk of making a mistake, it is preferable to have the geometry in a separate 
+file.&nbsp; So the original PDB file downloaded from the Protein Data Bank is 
+stored in the file
+&quot;Bacteriochlorophyll (4BCL).ent&quot;&nbsp; By using the alternative suffix &quot;.ent&quot; 
+there is no danger that the original file could be accidentally modified by 
+MOPAC.<br>
+<TT>OUTPUT: </TT>In this and all subsequent operations there is no need to look 
+at the geometry in the &quot;.out&quot; file, so this minimizes the output, allowing only 
+material of interest to be printed.<br>
+<TT>HTML: </TT>Errors in hydrogenation are most easily found using a GUI.&nbsp;
+<TT>HTML</TT> generates a simple web-page that can be read using FireFox and 
+JSmol also generates a PDB file.&nbsp; This file will then be used in the next 
+step, see below.<br>
+<TT>NOCOMMENTS:</TT> In addition to the geometry the original PDB file contains 
+a large amount of material that's not wanted here. None of that material is 
+relevant to the work being described here, so all of it can be ignored from this 
+point on.</p>
+<p><b>Step 2: <TT>CHARGES:</TT></b> A first attempt to identify the charges resulting 
+from Step 1 using keywords <TT>GEO_DAT=&quot;1 ADD-H.pdb&quot; OUTPUT CHARGES HTML </TT>
+resulted in a large number of spurious errors caused by missing covalent 
+bonds. These errors were caused by the way metal atoms are treated in MOPAC; by 
+default, for the purpose of generating Lewis structures, magnesium atoms are 
+considered to be 100% ionic, i.e., not forming any covalent bonds.&nbsp; But an 
+examination of the structure of chlorophyll, see Fig. 1, shows that a 
+more realistic Lewis structure could be made by adding covalent bonds between 
+each magnesium atom and two nitrogen atoms on opposite sides of the ring.&nbsp;
+<img border="1" src="Chlorophyll%20ChemDraw.gif" align="right" width="896" height="328">These missing bonds were added using keyword <a href="CVB.html"><tt>CVB</TT></a>, using the 
+multi-line keyword structure:</p>
+<p>
+<TT>GEO_DAT=&quot;1 ADD-H.pdb&quot; OUTPUT CHARGES HTML ++<br>
+CVB=(++<br>
+&quot;[BCL]1:B.MG&quot;:&quot;[BCL]1:B.NB&quot;,&quot;[BCL]1:B.MG&quot;:&quot;[BCL]1:B.ND&quot;,++<br>
+&quot;[BCL]2:B.MG&quot;:&quot;[BCL]2:B.NB&quot;,&quot;[BCL]2:B.MG&quot;:&quot;[BCL]2:B.ND&quot;,++<br>
+&quot;[BCL]3:B.MG&quot;:&quot;[BCL]3:B.NB&quot;,&quot;[BCL]3:B.MG&quot;:&quot;[BCL]3:B.ND&quot;,++<br>
+&quot;[BCL]4:B.MG&quot;:&quot;[BCL]4:B.NB&quot;,&quot;[BCL]4:B.MG&quot;:&quot;[BCL]4:B.ND&quot;,++<br>
+&quot;[BCL]5:B.MG&quot;:&quot;[BCL]5:B.NB&quot;,&quot;[BCL]5:B.MG&quot;:&quot;[BCL]5:B.ND&quot;,++<br>
+&quot;[BCL]6:B.MG&quot;:&quot;[BCL]6:B.NB&quot;,&quot;[BCL]6:B.MG&quot;:&quot;[BCL]6:B.ND&quot;,++<br>
+&quot;[BCL]7:B.MG&quot;:&quot;[BCL]7:B.NB&quot;,&quot;[BCL]7:B.MG&quot;:&quot;[BCL]7:B.ND&quot;++<br>
+)</TT></p>
+<p>For convenience, atoms were identified by their Jmol name, not by their PDB 
+name.&nbsp; Also, for ease of checking the CVB keyword for faults, each of the 
+sets of Mg-N bonds was put on its own line.</p>
+<p><b>Step 3: <TT>SITE:</TT></b> When the geometry in Step 2 was run the output showed 
+that three cationic sites were predicted to exist.&nbsp; Because the purpose of 
+the <TT>ADD-H</TT> 
+operation is to add hydrogen atoms to satisfy valence requirements, if no errors 
+occur then, with the exception of metal and isolated halogen atoms, all atoms 
+should be neutral.&nbsp; So except for metals and halogen atoms the presence of ionized atoms 
+normally indicates an error in 
+hydrogenation.&nbsp; The ionized atoms are, in PDB notation:</p>
+<p>HETATM 5564 C3B BCL 6<br>
+HETATM 5714 C4C BCL 4<br>
+HETATM 5864 C2D BCL 7<img border="1" src="Chlorophyll%20Fault%20at%20OBD%20on%20BCL-6%20ChemDraw.gif" align="right" width="289" height="355"></p>
+<p dir="ltr">Identifying the cause of these faults is often quite difficult.&nbsp; 
+In the case of the first ionized site, &quot;HETATM 5564 C3B BCL 6&quot;, the atom ionized 
+is indicated at the top of the ring in Fig. 2 as &quot;C<sup>+</sup>&quot;&nbsp; A superficial examination of the 
+conjugated &pi;-ring structure would suggest that this atom should either by 
+hydrogenated or that there is a fault in the conjugation, but a careful comparison of 
+the hydrogenation in Figs. 1 and 2 shows that the keto group an the bottom of 
+Fig. 1 was incorrectly hydrogenated in Fig. 2.&nbsp; If the spurious hydrogen 
+atom in the hydroxyl at the bottom of Fig. 2 is removed, the conjugation changes 
+to be the same as that in Fig. 1 and carbon atom C3B is neutral, as expected.</p>
+<p dir="ltr">Similarly, because of incorrect hydrogenation of atom C4A in BCL-4,&nbsp; 
+the ring conjugation was incorrectly constructed, and &quot;HETATM 5714 C4C BCL 4&quot; 
+was predicted to be ionized.&nbsp; When the hydrogen atom on C4A was removed, 
+the correct conjugation formed, and C4C was correctly predicted to be neutral.</p>
+<p dir="ltr">Incorrect hydrogenation of atom C1C in BCL-7 resulted in ionization 
+of the third ion, &quot;HETATM 5864 C2D BCL 7&quot;.&nbsp; As with the other two ions, 
+correct conjugation was achieved by deleting the incorrect hydrogen atom.</p>
+<p dir="ltr">A final examination of BCL-7 showed that a hydrogen atom had been 
+incorrectly assigned to CHA and C1A. These and the other faulty hydrogen atoms 
+were removed using the SITE command using the keywords:&nbsp; </p>
+<TT>GEO_DAT=&quot;2 Calculate charges in ADD-H structure.pdb&quot; OUTPUT HTML ++<br>
+SITE=(++<br>
+&quot;[BCL]7:B.C1A&quot;(-),++<br>
+&quot;[BCL]7:B.CHA&quot;(-),++<br>
+&quot;[BCL]7:B.C1C&quot;(-),++<br>
+&quot;[BCL]4:B.C4A&quot;(-),++<br>
+&quot;[BCL]6:B.OBD&quot;(-)++<br>
+)</TT></p>
+<p dir="ltr"><b>Step 4: </b>Re-calculate <b> <TT>CHARGES:</TT></b> The results of Step 
+3 were checked in the same way as Step 2 was used to check the results of Step 
+1.&nbsp; The only difference being that instead of:</p>
+<p>
+<TT>GEO_DAT=&quot;1 ADD-H.pdb&quot;</TT></p>
+in Step 2, the keyword in Step 4 was changed to:</p><p>
+<TT>GEO_DAT=&quot;3 Modify ADD-H structure.pdb&quot;</TT></p>
+<p>
+<b>Step 5: </b>SITE=(SALT): Although salt bridges could be added in Step 1, errors in 
+ionization could be more easily identified by delaying adding salt bridges until 
+after all ionization errors were corrected.&nbsp; They are added at this point 
+using the keywords:</p>
+<p><TT>GEO_DAT=&quot;4 Re-calculate charges.pdb&quot; OUTPUT HTML SITE=(SALT)</TT></p>
+<p dir="ltr">On running this job 17 salt bridges are added.</p>
+<p dir="ltr"><b>Step 6: </b>Re-calculate <b> <TT>CHARGES</TT>: </b>This 
+operation is similar to those in Steps 2 and 4.&nbsp; No errors were found, so 
+the addition of hydrogen atoms could be considered to be correctly done.</p>
+<p dir="ltr"><b>Step 7:</b>&nbsp; OPT-H: Positions of all the hydrogen atoms are 
+optimized using PM7 and using PM6-D3H4. The complete set of keywords used for 
+the PM7 optimization is as follows:</p>
+<p><TT>GEO_DAT=&quot;6 Re-calculate charges after adding salt bridges.pdb&quot; 
+OUTPUT HTML CHARGE=0 NOOPT OPT-H MOZYME EPS=78.4 LET(100) ++<br>
+CVB=(++<br>
+&quot;[BCL]1:B.MG&quot;:&quot;[BCL]1:B.NB&quot;,&quot;[BCL]1:B.MG&quot;:&quot;[BCL]1:B.ND&quot;,++<br>
+&quot;[BCL]2:B.MG&quot;:&quot;[BCL]2:B.NB&quot;,&quot;[BCL]2:B.MG&quot;:&quot;[BCL]2:B.ND&quot;,++<br>
+&quot;[BCL]3:B.MG&quot;:&quot;[BCL]3:B.NB&quot;,&quot;[BCL]3:B.MG&quot;:&quot;[BCL]3:B.ND&quot;,++<br>
+&quot;[BCL]4:B.MG&quot;:&quot;[BCL]4:B.NB&quot;,&quot;[BCL]4:B.MG&quot;:&quot;[BCL]4:B.ND&quot;,++<br>
+&quot;[BCL]5:B.MG&quot;:&quot;[BCL]5:B.NB&quot;,&quot;[BCL]5:B.MG&quot;:&quot;[BCL]5:B.ND&quot;,++<br>
+&quot;[BCL]6:B.MG&quot;:&quot;[BCL]6:B.NB&quot;,&quot;[BCL]6:B.MG&quot;:&quot;[BCL]6:B.ND&quot;,++<br>
+&quot;[BCL]7:B.MG&quot;:&quot;[BCL]7:B.NB&quot;,&quot;[BCL]7:B.MG&quot;:&quot;[BCL]7:B.ND&quot;++<br>
+)</TT></p>
+<p><TT>NOOPT</TT> is used because the input geometry is in PDB format, and, 
+since that format does not include optimization flags, when a geometry in PDB 
+format is read in all optimization flags are turned on by default.<br>
+<TT>OPT-H:</TT> In this job, <tt>OPT-H</TT> indicates that the positions of all 
+hydrogen atoms should be optimized.<br>
+<TT><a href="mozyme.html">MOZYME</a></TT>: Essential for large systems.<br>
+<TT><a href="eps.html">EPS=78.4</a></TT>: The COSMO implicit-solvation model to be used.<br>
+<TT><a href="let.html">LET(100</a>)</TT>: Higher accuracy in geometry optimization that the default is used.<br>
+For the PM6-D3H4 optimization, keyword <a href="pm6_d3h4.html"><TT>PM6-D3H4</TT></a> is 
+added.<br>
+&nbsp;</p>
+<p><b>Examples where <tt>ADD-H</TT> produces systems that have ions</b></p>
+<p>In 5UVJ four ions, a [Na]<sup>+</sup> and three [Cl]<sup>-</sup>, are 
+present.&nbsp; These are ionized by default, resulting in a net charge of -2. 
+This is not a fault.</p>
+<p>In 5VPS there is a heterogroup, <a href="https://www3.rcsb.org/ligand/9G1">
+9G1</a>, that contains a phosphanium (phosphonium).&nbsp; In 9G1, 
+phosphorus forms single bonds with carbon atoms on four ligands. This results in 
+the heterogroup having a net charge of +1, and thus the entire system has a net 
+charge of +1.
+
+
+This, also, is not a fault.</p>
+<p>The PDB geometry of 5VPS does have a problem with 9G1, in that the C-C and C-N 
+distances in the <a href="5VPS%20Add-H.html">piperidine ring</a>, click on 
+&quot;Specific Script&quot; to see this, are very short, averaging 1.36 &Aring; instead 
+of the <a href="9g1.html">expected</a> 1.51 &Aring;. Both the topology and the bond-lengths of 
+9G1 in 
+5VPS suggest that the hexagonal C<sub>5</sub>N ring should be a 4-(H)-pyridinium 
+rather than a piperidine.&nbsp; This error in hydrogenation affects 
+only C<sub>2</sub>, C<sub>3</sub>, C<sub>5</sub>, and C<sub>6</sub>, and 
+therefore does not introduce an error in the net charge, but should obviously be 
+corrected by adding hydrogen atoms.&nbsp; Errors of this 
+type can also be corrected by use of the <tt>SITE</tt> keyword. </p>
+<p>In 5ULI there is a heterogroup, <a href="https://www3.rcsb.org/ligand/0WD">
+0WD</a>, that appears to contain a pyridinium ion - both C<sub>3</sub>-C<sub>4</sub> and C<sub>4</sub>-C<sub>5</sub> distances 
+in the hexagonal C<sub>5</sub>N ring in 5ULI are about 1.40 &Aring;.&nbsp; This is nearer to 
+the expected equivalent distances in pyridine, 1.37 &Aring;, than to that in a 
+4-(H)-pyridine.&nbsp; In 0WD these distances should be about 1.49 - 1.50 &Aring;.&nbsp; Both the topology and the bond-lengths of 0WD in 
+5ULI incorrectly suggest that 
+the hexagonal C<sub>5</sub>N ring should be a pyridinium rather than a 1,4-dihydropyridine.&nbsp; 
+This fault results in the ring having a net charge of +1.&nbsp; This type of error can only be 
+detected by a careful examination of the published structure.&nbsp;&nbsp; Once 
+detected, correcting faults of this type by the use of keyword <tt>SITE</tt> is 
+straightforward.</p>
+
+<TABLE>
+<tr>
+<TD colspan="2">
+<p align="center"><b>Detail of the 1,4-dihydropyridine ring in 0WD in 5ULI</b></TD></TR>
+<tr>
+<TD align="center">
+<b>PDB Geometry </b></TD><TD align="center"><b>PM7 Geometry</b></TD></TR>
+<tr>
+<TD>
+<img border="0" src="Detail%20of%205ULI%20PDB%20geometry.png" width="440" height="476"></TD><TD><img border="0" src="Detail%20of%205ULI%20PM7%20geometry.PNG" width="399" height="474"></span></TD></TR>
+<TR><TD>
+<p align="center">To see this in the
+<a href="../PM7_and_PM6-D3H4_accuracy/PM7_PDB/5ULI.html">protein</a> click on 
+&quot;Specific Script&quot;</TD><TD>
+<p align="center">To see this in the
+<a href="../PM7_and_PM6-D3H4_accuracy/PM7_3/5ULI.html">protein</a> click on 
+&quot;Specific Script&quot;</TD>
+</tr></TABLE>
+
+<p>In general, hydrogenation using <TT>ADD-H</TT>&nbsp; is done correctly.&nbsp; 
+No errors were detected in <a href="Add-H.zip">validation tests for a set of 
+proteins</a></p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

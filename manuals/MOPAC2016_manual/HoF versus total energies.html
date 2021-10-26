@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Heats of formation versus Total Energies</TITLE>
+                                                                                                                                                      <style type="text/css">.auto-style1 {
+																																						  border-left-style: solid;
+																																						  border-left-width: 1px;
+																																						  border-top-style: solid;
+																																						  border-top-width: 1px;
+																																						  border-bottom-style: solid;
+																																						  border-bottom-width: 1px;
+																																					  }
+																																					  .auto-style2 {
+																																						  border-width: 0px;
+																																					  }
+																																					  .auto-style3 {
+																																						  border-right-style: solid;
+																																						  border-right-width: 1px;
+																																						  border-top-style: solid;
+																																						  border-top-width: 1px;
+																																						  border-bottom-style: solid;
+																																						  border-bottom-width: 1px;
+																																					  }
+																																					  .auto-style4 {
+																																						  border-right-style: none;
+																																						  border-right-width: medium;
+																																						  border-top-style: none;
+																																						  border-top-width: medium;
+																																						  border-bottom-style: none;
+																																						  border-bottom-width: medium;
+																																					  }
+																																					  </style>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1 align="center">Heats of Formation <em>versus</em> Total Energies</H1>
+                                                <p>Ab-initio and semiempirical 
+												methods represent the energy of 
+												a chemical system in two 
+												different ways.&nbsp; Ab-initio 
+												methods use a quantity called 
+												the &quot;total energy&quot;, and 
+												semiempirical methods use the 
+												Heat of Formation.&nbsp; 
+												These quantities can be defined 
+												as follows:</p>
+<p><strong>Total Energy (TE)</strong> is the energy, in atomic units (Hartrees) 
+released when the chemical system is formed from the constituent atomic nuclei 
+and electrons.&nbsp; The zero of energy is the isolated atomic nuclei and 
+isolated electrons.&nbsp; Ab-initio methods model the system at zero Kelvin, (0 K).&nbsp; 
+No zero point energy, vibrational or translational terms are included in the TE. 
+See <a href="http://gaussian.com/faq1/">Gaussian FAQ</a>.</p>
+<p><strong>Heat of Formation (&Delta;H</strong><sub><strong>f</strong></sub><strong>)
+</strong>is the change in enthalpy, in kcal mol<sup>-1</sup> or kj mol<sup>-1</sup>, when one mole of a system is formed from its elements, with 
+everything being in its standard state, i.e., at 298.15 K and one atmosphere of 
+pressure.&nbsp; See <a href="SCF_calc_hof.html">HoF from SCF</a>.</p>
+<p>Semiempirical methods are parameterized using reference data for chemical 
+systems in their standard state.&nbsp; Because the reference data represent 
+systems at 298.15 K, any Zero Point Energy and all internal energy terms (vibrational, rotational, and 
+translational -contributions) are automatically taken into account in the 
+parameters, see <a href="thermochemistry.html#SECTION0012153000000000000000">Note on 
+Thermochemistry</a>.&nbsp; 
+If the &Delta;H<sub>f</sub> at a different temperature is needed, the internal 
+energy at 298.15 K must be deleted, and the internal energy at the specified 
+temperature added.&nbsp; The resulting quantity is the change in enthalpy, in 
+kcal mol<sup>-1</sup>, when one mole of a system at the specified temperature 
+and one atmosphere of pressure is formed from its elements in their standard state, i.e., at 298.15 K and one atmosphere of 
+pressure.&nbsp; This can be done using keyword <a href="thermo00.html"><tt>THERMO</tt></a>.</p>
+<h2>Relationship of Total Energy to Heat of Formation</h2>
+<table align="left" class="auto-style2" style="float: left">
+	<tr>
+		<td valign="top" class="auto-style1"><strong>Steps in converting Total Energy to Heat of Formation</strong><br><br>
+						1. Add in Zero Point Energy.<br>2. Add in internal energy 
+				for 298.15 K.<br>3. Add in energy of removing valence electrons 
+		from atoms.<br>4. 
+				Add in energy of atomization of elements.<br>5. Convert from 
+		atomic units to kilocalories or Joules per mole.</td>
+				
+					
+				<td valign="top" class="auto-style3">&nbsp;<strong>&nbsp;&nbsp;&nbsp; Steps in converting Heat of Formation to Total Energy</strong><br>
+		<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Subtract off Zero Point Energy.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		2. Subtract off internal energy for 298.15 K.<br>&nbsp;&nbsp;&nbsp; &nbsp; 3. 
+		Subtract off energy of removing valence electrons from atoms.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				4. Subtract off energy of atomization of elements.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+				5. Convert from kilocalories or Joules per mole to atomic units.</td>
+				
+					
+				<td valign="top" class="auto-style4">&nbsp;</td>
+	</tr>
+</table>
+<p>Semiempirical reference data includes all quantum and classical 
+phenomena, therefore Zero Point Energies are automatically present, and do not need 
+to be included in the calculation of &Delta;H<sub>f</sub>.&nbsp; Calculation of 
+the ZPE and internal energy can be done using the <a href="thermo00.html"><tt>THERMO</tt></a> 
+keyword. Energies of formation of atoms can be done one at a time, using 
+individual atoms; look for &quot;ELECTRONIC ENERGY&quot;. If this is done, take care to 
+specify the correct ground state of the isolated atom. </p>
+<p>Energy of atomization of elements is the experimental heat of formation of the
+isolated atom from the element in its standard state. For example, in nitrogen
+this is half the heat required to break a N<sub>2</sub> molecule into its
+separated atoms. Isolated nitrogen atoms have the configuration 1s<sup>2</sup>
+2s<sup>2</sup> 2p<sup>3</sup>, and the state <a href="Energies_of_isolated_atoms.html#confs">4S<sub>u</sub></a>, 
+i.e. quartet S. Experimentally, this energy is 113 kcal/mol.&nbsp; This means 
+that all semiempirical methods predict the heats of formation of isolated atoms 
+with a zero error, except in those few instances when the predicted ground state 
+is incorrect.</p>
+<h2>Which is better: Heats of Formation or Total Energies?</h2>
+<p>The choice of which quantity to use depends on what it is to be used for, 
+thus &#916;H<sub>f</sub> are useful for practical chemistry work, and TE are useful 
+for theoretical chemistry work. Why is this?&nbsp; All reactions are, by 
+definition, balanced, so the difference in the choice of starting point for the 
+energy calculation - whether nuclei plus 
+electrons or elements - would cancel out.&nbsp; What would not cancel would be 
+the zero point energy and internal energy needed to heat the system from 0 K to 
+the specified temperature, typically 298.15 K.&nbsp; To the degree that these 
+energies are important, if Total Energies are used, then post-SCF corrections must be made.&nbsp; 
+These corrections do not need to be made in semiempirical methods, because they 
+are already accounted for in the parameters.&nbsp; </p>
+                                                </BODY>
+</HTML>

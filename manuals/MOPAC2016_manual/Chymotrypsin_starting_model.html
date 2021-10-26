@@ -1,0 +1,304 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Chymotrypsin Starting Model</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+	font-family: Arial;
+	text-align: center;
+}
+.auto-style2 {
+	text-align: center;
+}
+																													.auto-style3 {
+																														text-align: left;
+																													}
+																													.auto-style4 {
+																														text-decoration: underline;
+																													}
+																													.auto-style5 {
+																														text-align: left;
+																														margin-left: 40px;
+																													}
+																													.auto-style7 {
+	margin-top: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+																													.auto-style8 {
+	color: #FF0000;
+	font-family: Arial, Helvetica, sans-serif;
+}
+																													.auto-style9 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style10 {
+	text-align: left;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style11 {
+	text-decoration: underline;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style12 {
+	text-align: left;
+	margin-left: 40px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Constructing">Modeling proteins</a>)</font></p>
+<h1 class="auto-style1">Worked example - preparing the Starting Model 
+for Chymotrypsin</h1>
+<p class="auto-style3"><span class="auto-style9">Chymotrypsin catalyzes the hydrolysis of a peptide bond 
+where there is a large hydrophobic residue attached to the carboxyl of the 
+-CO-NH-.&nbsp; A good starting system for modeling is 8GCH, this can be 
+downloaded from the <a href="http://www.rcsb.org/pdb/home/home.do">PDB</a>.&nbsp; This system 
+consists of chymotrypsin residues 1-11 and 16-245, a three-residue substrate GAW 
+in the active site, four sulfate ions, and 346 water molecules.&nbsp; The entry 
+8GCH has the formula C<sub>1111</sub></span>S<span class="auto-style9"><sub>16</sub></span>N<span class="auto-style9"><sub>300</sub></span>O<span class="auto-style9"><sub>704</sub>, 
+or 2131 atoms.&nbsp; As with most protein structures in the PDB, the positions 
+of hydrogen atoms were not reported. Several files that will be 
+referred to in the following discussion can be 
+</span> 
+<a href="8GCH_Chymotrypsin_files.zip"><span class="auto-style8">downloaded</span></a><span class="auto-style9">.</span></p>
+<p class="auto-style10">Constructing a starting model involves several steps and 
+quite a lot of computer power, but the result is worth it.&nbsp; A good starting 
+model is, as its name suggests, the starting point for a wide range of 
+simulations.&nbsp; Great care should be used in building a starting model, to 
+ensure that it is at a good energy minimum, that it is optimized, and that all 
+the parts needed in subsequent operations are present.&nbsp; The example used 
+here is for chymotrypsin, but the steps for other enzymes are similar.&nbsp; 
+Don't rush the process - a lot of things can go wrong, and it is important to 
+frequently check that everything is still on track.</p>
+<h2 class="auto-style10">Steps for Preparing the Starting Model</h2>
+<p><span class="auto-style9"><a href="#Adding_Hydrogen_Atoms"><strong>Adding Hydrogen Atoms</strong></a></span><strong><br class="auto-style9">
+<span class="auto-style9">
+<a href="#Optimizing_the_positions_of_Hydrogen_Atoms">Optimizing the positions of 
+Hydrogen Atoms</a></span><br class="auto-style9"><span class="auto-style9"><a href="#Solvation">Solvation</a></span><br class="auto-style9">
+<span class="auto-style9">
+<a href="#Use_of_SETUP">Use of SETUP</a></span><br class="auto-style9">
+<span class="auto-style9">
+<a href="#Ionizing_some_sites:">Ionizing known ionized sites</a></span><br class="auto-style9">
+<span class="auto-style9">
+<a href="#Testing_other_sites_for_Potential_Ionization">Testing other 
+sites for Potential Ionization</a></span><br class="auto-style9"></strong>
+<span class="auto-style9"><a href="#Editing_the_Substrate">
+<strong>Editing the Substrate</strong></a></span><strong><br class="auto-style9">&nbsp;</strong></p>
+<p class="auto-style3"><span class="auto-style4"><strong>
+<span class="auto-style9">
+<a name="Adding_Hydrogen_Atoms">Adding Hydrogen Atoms</a>:</span></strong></span><span class="auto-style9"> 
+8GCH was copied to form a new file 8GCH_from_PDB.mop.&nbsp; This file was not 
+edited, its contents were exactly the same as 8GCH.pdb.&nbsp; 8GCH_from_PDB.mop 
+was then run using MOPAC, this resulted in four new files being created:</span></p>
+<p class="auto-style5"><span class="auto-style9">8GCH_from_PDB.log -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A list of 
+mainly uninteresting features found after hydrogenation.</span><br class="auto-style9">
+<span class="auto-style9">8GCH_from_PDB.out -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A file showing what MOPAC read in, the working and the output of the job, 
+again normally not interesting. 
+</span> <br class="auto-style9">
+<span class="auto-style9">8GCH_from_PDB.arc -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A data set in MOPAC format, suitable for 
+use in making a new data set.</span><br class="auto-style9">
+<span class="auto-style9">8GCH_from_PDB.pdb -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A file 
+similar to 8GCH_from_PDB.arc, but in PDB format.</span></p>
+<p class="auto-style3"><span class="auto-style9">Hydrogenation adds 2444 hydrogen atoms, to give C<sub>1111</sub></span>H<span class="auto-style9"><sub>2444</sub></span>S<span class="auto-style9"><sub>16</sub></span>N<span class="auto-style9"><sub>300</sub></span>O<span class="auto-style9"><sub>704</sub>, 
+or 4575 atoms.</span></p>
+<p class="auto-style3"><strong>
+<span class="auto-style9">
+<a name="Optimizing_the_positions_of_Hydrogen_Atoms">Optimizing the positions of 
+Hydrogen Atoms</a>: </span> </strong><span class="auto-style9">The starting 
+point can be either 8GCH_from_PDB.arc or 8GCH_from_PDB.pdb.&nbsp; Starting with 
+the PDB file is easier unless it is essential to refer to specific atoms.</span></p>
+<p class="auto-style3"><span class="auto-style9">If 
+8GCH_from_PDB.arc is used, then the file is edited so that the keyword becomes:</span> &quot;<a href="pdbout.html"><tt>PDBOUT</tt></a> 
+<a href="start_res.html"><tt>START_RES</tt></a>=<span class="auto-style9">(1E 16F 150G 250C 298F-300 
+297G-299 315E)</span> <tt><a href="mozyme.html">MOZYME</a> <a href="gnorm.html">GNORM=10</a>
+<a href="PL.html">PL</a> <a href="nooptx.html">NOOPT</a> <a href="optx.html">OPT-H</a></tt>&quot;<span class="auto-style9"> and the resulting file saved as 
+8GCH_opt-H.mop.&nbsp;</span></p>
+<p class="auto-style3"><span class="auto-style9">If 8GCH_from_PDB.pdb is used, then the file is edited to 
+add three lines.&nbsp; The first line is</span> &quot;<a href="pdbout.html"><tt>PDBOUT</tt></a>&nbsp; <tt><a href="mozyme.html">MOZYME</a> <a href="gnorm.html">GNORM=10</a>
+<a href="PL.html">PL</a> <a href="nooptx.html">NOOPT</a> <a href="optx.html">OPT-H</a></tt>&quot; 
+<span class="auto-style9">The second and third lines can be blank or they can hold descriptive test.&nbsp; 
+The resulting file saved as 8GCH_opt-H.mop.&nbsp;</span></p>
+<p class="auto-style10">This file is then run.&nbsp; Keyword &quot;PL&quot; is useful in 
+large systems like the ones being used here.&nbsp; A few seconds after the job 
+starts, the output file will start to be written.&nbsp; If a tail is put on the 
+output file, to display the end of the file as it's being written, then the PL 
+keyword will cause the iterating heat of formation to be printed.&nbsp; This 
+will typically be very large and positive, then after several iterations it 
+will become large and negative.&nbsp; If it stays positive, kill the job and 
+look for a fault in the data set.&nbsp; Optimizing the positions of the hydrogen 
+atoms will take about 100 cycles, maybe 50, maybe 200, and will typically take 
+several hours, so an overnight run is probably best.&nbsp; This job results 
+in two new files:</p>
+<p class="auto-style5"><span class="auto-style9">8GCH_opt-H.arc -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+The usual archive file. This is interesting and will be useful in subsequent 
+steps<br>
+8GCH_opt-H.out -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+The usual output file.</span><br class="auto-style9"><span class="auto-style9">8GCH_opt-H.pdb -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A 
+data set in PDB format, containing the original geometry of the heavy atoms and 
+the optimized geometry of the hydrogen atoms.</span></p>
+<p class="auto-style3"><strong><span class="auto-style9"><a name="Solvation">Solvation</a>: 
+</span> </strong>
+<span class="auto-style9">In general, solvation should always be used.&nbsp; It was not used in adding 
+hydrogen atoms or in optimizing their positions, because the system is still too 
+crude to justify using solvation.&nbsp; Solvation could have been used, but the 
+only result would be to use extra CPU time, it would not improve the results 
+significantly.&nbsp; For all subsequent work, however, solvation is essential.&nbsp; 
+To add solvation, use</span> <a href="eps.html"><tt>EPS=78.4</tt></a>.</p>
+<p class="auto-style3"><span class="auto-style9"><strong><a name="Use_of_SETUP">Use of SETUP</a></strong>: 
+A very common source of user-error involves faulty or missing keywords.&nbsp; To 
+reduce the probability of errors of this type, use</span> <a href="setup.html"><tt>SETUP</tt></a> 
+<span class="auto-style9">to define keywords that should be common to all calculations in a series. For 
+this exercise, create a file &quot;Chymotrypsin.txt&quot; in the folder where the jobs are 
+being run, and edit the file to insert one line: &quot;EPS=78.4 MOZYME GNORM=10 
+CHARGE=-1 PDBOUT&quot;&nbsp; Save the file.&nbsp; In each data-set, add the keyword 
+&quot;SETUP=Chymotrypsin.txt&quot; and delete the keywords EPS=78.4, MOZYME, GNORM=10 
+CHARGE=-1, if present.&nbsp; If, at some future date, a different gradient 
+criterion, e.g., 5, needs to be used, either edit Chymotrypsin.txt to replace 
+GNORM=10 with GNORM=5, or add GNORM=5 to the keyword line.&nbsp; If the file 
+Chymotrypsin needs to be in a different folder, then specify the exact path, 
+e.g., &quot;SETUP='C:/my files/Chymotrypsin.txt'&quot;</span></p>
+<p class="auto-style10"><strong>File names</strong>: It is very important that, 
+when working with large systems, files are given names that indicate what they 
+are.&nbsp; For small systems such as toluene, simple names, e.g., Toluene.mop, 
+can be used, but when small changes are made in large systems it is very easy to 
+get confused unless a systematic method is used for naming files.&nbsp; In the 
+following discussion files are named as follows:</p>
+<p class="auto-style3"><span class="auto-style9">The first four letters are 8GCH.&nbsp; This indicates 
+that the system is based on the 8GCH structure and no heavy atoms have been added or 
+deleted.</span><br class="auto-style9"><span class="auto-style9">If &quot;_make&quot; is present, then the data set contains keyword</span> <a href="site.html"><tt>SITE</tt></a>.&nbsp;
+<br><span class="auto-style9">Each ionized site is then listed, using chain letters and residue numbers.</span></p>
+<p class="auto-style3"><span class="auto-style9"><strong><a name="Ionizing_some_sites:">Ionizing known 
+ionized 
+sites:</a></strong>&nbsp; Chymotrypsin has three known ionization sites: Ile16 
+and Asp194, these form a <a href="salt_bridges.html">salt bridge</a>, and Asp102, part of the catalytic triad.&nbsp; 
+Examination of the PDB file shows that these residues are in chains F, G, and F, 
+respectively, Keyword</span> <tt><a href="site.html">SITE</a></tt> 
+<span class="auto-style9">can be used for 
+ionizing these residues. </span> <tt><span class="auto-style9">SITE</span></tt><span class="auto-style9"> uses residue chains letters 
+and numbers to identify ionizable sites.&nbsp; To ionize these sites, edit 8GCH_opt-H.pdb to add the three lines:</span></p>
+<p class="auto-style5"><span class="auto-style9">Line 1: SETUP=chymotrypsin.txt site=(F16(+),G194(-),F102(-))</span><br class="auto-style9">
+<span class="auto-style9">Line 2: 
+PDB Chymotrypsin, ionizing the residues 16, 102, and 194</span><br class="auto-style9">
+<span class="auto-style9">Line 3: </span> </p>
+<p class="auto-style3"><span class="auto-style9">then save the resulting file as 
+8GCH_make_F16(+)_G194(-)_F102(-).mop and run it.&nbsp; Because</span> <tt>SITE</tt> 
+<span class="auto-style9">was used, the job will stop before any SCF calculation is attempted.&nbsp; The 
+resulting structure now has 2443 hydrogen atoms, and formula C<sub>1111</sub></span>H<span class="auto-style9"><sub>2443</sub></span>S<span class="auto-style9"><sub>16</sub></span>N<span class="auto-style9"><sub>300</sub></span>O<span class="auto-style9"><sub>704</sub>, 
+or 4574 atoms; this will be the number of atoms used in all subsequent 
+operations.&nbsp; Only one important file is generated:</span></p>
+<p class="auto-style12">8GCH_make_F16(+)_G194(-)_F102(-).pdb</p>
+<p class="auto-style10">Edit this file to add three lines:</p>
+<p class="auto-style5"><span class="auto-style9">Line 1: SETUP=chymotrypsin.txt
+</span> <br class="auto-style9"><span class="auto-style9">Line 2: 
+PDB Chymotrypsin, ionizing the residues 16, 102, and 194</span><br class="auto-style9">
+<span class="auto-style9">Line 3: </span> </p>
+<p class="auto-style10">Save the resulting file as 
+8GCH_F16(+)_G194(-)_F102(-).mop</p>
+<p class="auto-style10">Run 8GCH_F16(+)_G194(-)_F102(-).mop.&nbsp; This will take 
+a long time to run, possibly several days. It will probably need to be
+<a href="restart.html">restarted</a> two or three times.&nbsp; If there is a lot of computer 
+power available, the jobs in the next step can also be started at the same time 
+as 8GCH_F16(+)_G194(-)_F102(-).mop&nbsp; If computer power is limited, allow 
+8GCH_F16(+)_G194(-)_F102(-).mop to run to completion, then build and run the 
+jobs in the next step.&nbsp; </p>
+<p class="auto-style3"><span class="auto-style9">When the run is completed, two important files are 
+produced: 8GCH_F16(+)_G194(-)_F102(-).pdb and 8GCH_F16(+)_G194(-)_F102(-).arc. 
+The arc file shown that the &Delta;</span>H<span class="auto-style9"><sub>f</sub> of 
+the unconstrained optimized structure is -47835 kcal/mol.&nbsp; This is the 
+first &Delta;</span>H<span class="auto-style9"><sub>f</sub> that is meaningful - all 
+previous heats of formation were on un-physical (not solvated or not optimized) 
+structures.</span></p>
+<p class="auto-style3"><strong>
+<span class="auto-style9">
+<a name="Testing_other_sites_for_Potential_Ionization">Testing other sites for 
+Potential Ionization</a>: </span> </strong><span class="auto-style9">Whether specific sites are ionized or not can 
+be investigated.&nbsp; Site F102 is the Asp of the catalytic triad, and is 
+certainly ionized under all reasonable conditions.&nbsp; But what about other 
+sites?&nbsp; Provided the total charge is unchanged various sites can be tested 
+to see if they raise or lower the heat of formation.&nbsp; This involves forming 
+or destroying salt bridges. If they lower it, the change is beneficial and the 
+modification should be made, and <em>vice versa</em>. A reasonable assumption is 
+that the state of ionization of one site would not affect that of another site 
+significantly.&nbsp; Put another way, each potential salt bridge can be 
+investigated without regard for any other ionization changes in the system.</span></p>
+<p class="auto-style3"><span class="auto-style11">Salt bridge F16 - G194</span><span class="auto-style9">: 
+This involves Ile16(+) and Asp194(-).&nbsp; In the previous step, the assumption 
+was made that this salt bridge exists in chymotrypsin, but what if it should not 
+exist?&nbsp; The files 8GCH_F102(-).* represent chymotrypsin with only Asp102 
+ionized.&nbsp; From the optimized structure,&nbsp; 8GCH_F102(-).arc, the &Delta;</span>H<span class="auto-style9"><sub>f</sub> is -47803 kcal/mol. This is 
+31 kcal/mol higher than when the salt bridge exists, therefore the conclusion 
+can be made that the salt bridge Ile16(+) - Asp194(-) should exist, and that the 
+strength of the salt bridge is ~31 kcal/mol.&nbsp; </span> </p>
+<p class="auto-style3"><span class="auto-style11">Salt bridge E11 - F20</span><span class="auto-style9">: 
+This involves Ser16(+) forming a salt-bridge with Glu194(-). Files: 
+8GCH_E11(+)_F20(-)_F102(-).*&nbsp; The &Delta;</span>H<span class="auto-style9"><sub>f</sub> 
+is -47800 kcal/mol, that is more positive than 8GCH_F102(-), therefore this salt 
+bridge is unlikely to exist.</span></p>
+<p class="auto-style3"><span class="auto-style4"><span class="auto-style9">Salt bridge HSO<sub>4</sub> - 
+G154</span></span><span class="auto-style9">: This involves an ionic interaction between HSO<sub>4</sub>(-) and Arg154(+).&nbsp; 
+Files: 8GCH_F16(+)_G194(-)_F102(-)_G154(+)_HSO4(-).* This system gave a &Delta;H<sub>f</sub> 
+of -47855, 20 kcal/mol more negative than 8GCH_F16(+)_G194(-)_F102(-), therefore 
+this salt bridge should exist.</span></p>
+<p class="auto-style3"><span class="auto-style11">Salt bridge F36 -F63</span><span class="auto-style9">: 
+This involves Lys36(+) and Ser63(-). At physiological pH, 7.3 - 7.4, lysine's 
+side chain (pKa: 10.5) is normally ionized.&nbsp; To avoid changing the number 
+of atoms, 4574, in the system, for this run the nearby serine is also ionized.&nbsp; 
+After geometry 
+optimization, the &Delta;H<sub>f</sub> 
+was -47857 kcal/mol, which is 22 kcal/mol more negative than 
+8GCH_F16(+)_G194(-)_F102(-), therefore it seems that this salt bridge should 
+exist. However, examination of Ser63 shows that it is neutral!&nbsp; Near to 
+Ser63 is a structure [H<sub>3</sub></span>O<span class="auto-style9"><sub>2</sub></span>]<span class="auto-style9"><sup>-</sup>, this is strongly 
+hydrogen bonded to the serine and to nearly water molecules. The interpretation 
+is obvious: a solvated hydroxyl ion and a serine residue is more stable than a 
+water molecule in solution and a serine anion residue.&nbsp; A lack of chemical 
+knowledge can be disastrous!</span></p>
+<img class="auto-style7" src="8GCH_PDB_and_PM7.jpg" style="float: right" width="211" height="283"><p class="auto-style10">
+<strong>Comparison of PDB X-ray structure and the PM7 structure:</strong> At 
+this point, it is interesting to compare the PM7 structure with 
+the original X-ray structure from the PDB.&nbsp; If a comparison is made of the 
+geometry of the X-ray structure after adding hydrogen atoms and ionizing Asp102 
+with the fully optimized structure from&nbsp; 8GCH_F102(-), the RMS difference 
+is 1.11 &Aring;ngstroms.&nbsp; If only the backbone is compared, the RMS 
+difference drops to 0.65 &Aring;ngstroms.&nbsp; The difference is due mainly to 
+motion of the water molecules.&nbsp; When the backbone structures of the 
+original and optimized geometries are superimposed, the result is as shown in 
+the adjacent figure.&nbsp; Another measure of difference is from the energy 
+change in going from the hydrogenated X-ray structure (-43780 kcal/mol) to the 
+optimized PM7 structure (-47803 kcal/mol).&nbsp; This difference, 4,023 kcal/mol, 
+is obviously a large amount, and is due to errors in the original X-ray 
+structure and errors in the computational model. A measure of the error in the 
+original X-ray structure can be obtained by performing a constrained 
+optimization, where the optimized structure is biased towards the original X-ray 
+structure.&nbsp; This is shown in 8GCH_Geo_ref.*.</p>
+<p class="auto-style3">
+<strong><span class="auto-style9"><a name="Editing_the_Substrate">Editing</a> the Substrate:</span></strong><span class="auto-style9"> The 
+substrate in 8GCH consists of the tripeptide       Gly250-Ala251-Trp252. In the 
+PDB file, this system is described as &quot;GAMMA-CHYMOTRYPSIN IS A COMPLEX OF 
+ALPHA-CHYMOTRYPSIN WITH ITS OWN</span><br class="auto-style9">
+<span class="auto-style9">TITLE 2 AUTOLYSIS PRODUCTS,&quot; so the substrate 
+is a short section of chymotrypsin itself.&nbsp; Inspection of the chymotrypsin 
+residue sequence shows the sequence Gly205-Ala206-Trp207-Thr208 occurs in chain 
+G.&nbsp; From this, we can infer that the peptide bond that was hydrolyzed to 
+give the substrate was Thr, and that, prior to hydrolysis, the sequence would 
+have been Gly250-Ala251-Trp252-Thr253.&nbsp; To regenerate the peptide, one of 
+the oxygen atoms on the -COO group on Trp252 would need to be replaced by a NH 
+of Thr253.&nbsp; Careful inspection of the environment of Trp252 shows one of 
+the oxygen atoms, atom number 1784, is ideally positioned to hydrogen bond to 
+hydrogen atoms on Gly193 and Ser195, two of the residues in the oxyanion hole. 
+The other oxygen atom, atom number 1765, is therefore the atom that would need 
+to be replaced by the nitrogen of Thr253.</span></p>
+<p class="auto-style10">
+Editing the tripeptide <em>in situ</em> to replace the oxygen atom by a 
+threonine residue requires a good GUI.&nbsp; The Thr253 has a hydroxyl group 
+that could potentially hydrogen bond to the carbonyl oxygen of Trp252.&nbsp; If 
+the hydroxyl group is positioned so that this hydrogen bond could form, and the 
+geometry re-optimized, then the minimum energy structure is generated, and the 
+carbonyl oxygen of Trp252 now forms three hydrogen bonds in the oxyanion hole.&nbsp; </p>
+<p class="auto-style3">&nbsp;</p>
+<p class="auto-style3">&nbsp;</p>
+<p class="auto-style5">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+</BODY>
+</HTML>

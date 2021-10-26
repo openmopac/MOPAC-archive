@@ -1,0 +1,20 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>DUMP=nn.nn </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>DUMP=<I>nn</I>.<I>nn</I></TT>
+</h1>
+Restart files  are  written  automatically  at  two  hour  CPU  time intervals
+to  allow  a long job to be restarted if the job is terminated
+catastrophically.  To change  the  frequency  of  dump,  set  <TT>DUMP=<I>nn</I></TT>
+to request  a dump every <I>nn</I> seconds.  Alternative forms are
+<TT>DUMP=<I>nn</I>M</TT>, <TT>DUMP=<I>nn</I>H</TT>, <TT>DUMP=<I>nn</I>D</TT> for a dump every <I>nn</I>minutes, hours,  or days, respectively.  <TT>DUMP</TT> only  works  with geometry
+optimization, gradient minimization,  path, <TT><a href="irc0.html">IRC</a>,
+<a href="drc0.html">DRC</a></TT>, and <TT><a href="force.html">FORCE</a></TT>
+calculations.  It does not (yet) work with a <TT>SADDLE</TT> calculation.
+</BODY>
+</HTML>

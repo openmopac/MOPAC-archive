@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Calculation of the Density Matrix</TITLE>
+<style type="text/css">.auto-style1 {
+	font-family: Symbol;
+}
+.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+.auto-style3 {
+	text-align: left;
+}
+.auto-style7 {
+	font-size: medium;
+}
+.auto-style9 {
+	margin-top: 4px;
+}
+.auto-style11 {
+	text-align: left;
+	margin-top: 4px;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<H2>Normal Semiempirical Density Matrix and the Density Matrix from a C.I. 
+calculation</H2>
+All the semiempirical methods in MOPAC use the same method for constructing the 
+density matrix.&nbsp; The calculation of the RHF density matric is 
+straightforward, for UHF, it's a bit more complicated, and for configuration 
+interaction systems the calculation is quite difficult.<h3>Normal Density Matrix</h3>
+&nbsp;<p class="auto-style9">Given a set of occupied M.O.s,
+&psi;<sub>i </sub>=&Sigma;<sub>&lambda;</sub>c<sub>&lambda;i</sub>&phi;<sub>&lambda;</sub>, 
+the density matrix, P, is defined as:&nbsp;
+&Psi;<sub>&lambda;&sigma;</sub><span class="auto-style7"> 
+= </span>2&Sigma;<sub><span class="auto-style7">i</span></sub><sup><span class="auto-style7">occ</span></sup><span class="auto-style7"> 
+c</span><sub>&lambda;<span class="auto-style7">i</span></sub><span class="auto-style7">c</span><sub>&sigma;<span class="auto-style7"><sub>i</sub></span></sub><span class="auto-style7">.&nbsp; 
+If <a href="open.html">ROUHF</a> is used, the &quot;2&quot; would be replaced by the 
+fractional occupancy.</span></p>
+<p class="auto-style11">For UHF, the density matrix is given by the sum of the 
+alpha and beta density matrices: &Psi;<sub>&lambda;&sigma;</sub><span class="auto-style7"> 
+= 1</span>&sigma;<sub><span class="auto-style7">i</span></sub><sup><span class="auto-style7">occ(</span>&alpha;<span class="auto-style7">)</span></sup><span class="auto-style7"> 
+c</span><sub>&lambda;<sub><span class="auto-style7">i</span></sub></sub><sup>&alpha;</sup><span class="auto-style7">c</span><sub>&sigma;<sub><span class="auto-style7">i</span></sub></sub><sup>&alpha;</sup> + 
+ &sigma;<sub><span class="auto-style7">i</span></sub><sup><span class="auto-style7">occ(</span>&beta;<span class="auto-style7">)</span></sup> 
+<span class="auto-style7">c</span><sub>&lambda;<sub><span class="auto-style7">i</span></sub></sub><sup>&beta;</sup><span class="auto-style7">c</span><sub>&sigma;<sub><span class="auto-style7">i</span></sub></sub><sup>&beta;</sup>.&nbsp;
+<span class="auto-style7">If <a href="open.html">fractional occupancy of &alpha; 
+UHF M.O.'s</a> is used, the &quot;1&quot; 
+would be replaced by the fractional occupancy.</span></p>
+<h3>Density Matrix from a C.I. calculation</h3>
+<p class="auto-style11">When configuration interaction is used, the total 
+density matrix, P, is the sum of the density matrix for the doubly-occupied 
+M.O.s plus the density matrix for the active space M.O.s.&nbsp;&nbsp; &nbsp;</p>
+<h4>Contributions to the density matrix arising from the 
+M.O.s in the active space.</h4>
+<p class="auto-style11">Given <em>n</em> M.O.s in the active space, and <em>l</em>
+<a href="meci_micro.html">microstates</a>, 
+&Psi;, in each state, so that a State
+&Phi;<sub>i</sub><span class="auto-style1"> </span>
+can be defined as &Phi;<sub><span class="auto-style7">i</span></sub>
+= &Sigma;<sub>&lambda;</sub><sup><em>l</em></sup><span class="auto-style7"> 
+(c</span><sub>&lambda;i</sub>&Psi;<sub>&lambda;</sub>), 
+then the contribution to the electron population can be expressed in terms of 
+active-space M.O.s &psi;<span class="auto-style2"><sub>k </sub>
+</span>&nbsp;and
+&psi;<span class="auto-style2"><sub>l </sub>&nbsp;</span>as
+&Delta;<sub>kl</sub>.</p>
+<p class="auto-style11">Calculating &Delta;<sub>kl</sub> 
+requires evaluating the product &Phi;<span class="auto-style7"><sub>i </sub>
+x &Phi;<sub>i</sub>, i.e., evaluating the set: 
+
+&Sigma;<sub>&lambda;</sub><sup><em>l</em></sup> 
+(c<sub>&lambda;i</sub>&Psi;<sub>&lambda;</sub>) 
+x&nbsp;&Sigma;<sub>&sigma;</sub><sup><em>l</em></sup> 
+(c<sub>&sigma;i</sub>&Psi;<sub>&sigma;</sub>). 
+This operation involves evaluating three types of integrals:
+</span>
+<p class="auto-style11">(A)<span class="auto-style7"> </span>&Psi;<sub>&lambda;</sub>= &Psi;<sub>&sigma;</sub></p>
+<p class="auto-style3"> The contribution to the active-space M.O.s &psi;<span class="auto-style2"><sub>k </sub>
+</span>&nbsp;and
+&psi;<span class="auto-style2"><sub>l</sub></span> is &Delta;<sub><span class="auto-style7">kl
+</span></sub>= <span class="auto-style7">O<sub>ki</sub>O<sub>li </sub>c<sub>ki</sub> 
+x&nbsp;c<sub>li</sub>, where O<sub>ki </sub>and O<sub><sub>li</sub></sub> are 1 
+(unity) if the M.O. is occupied, zero otherwise.</span></p>
+<p class="auto-style11">(B) Except for M.O. &psi;<sub>i&nbsp; </sub> in  &Psi;<sub>&lambda; </sub>
+and &#968;<sub>j&nbsp;</sub> in &Psi;<sub>&sigma;</sub>,
+&nbsp;&Psi;<sub>&lambda;</sub>= &Psi;<sub>&sigma;</sub>, for example, if &psi;<sub>&lambda; </sub>
+has active-space occupancy [000101] and &Psi;<sub>&sigma;</sub>, has occupancy 
+[000011] so&nbsp; &psi;<sub>i&nbsp; </sub> in  &Psi;<sub>&lambda;</sub>&nbsp; would 
+be 4 and &psi;<sub>j&nbsp;</sub> in &Psi;<sub>&sigma;</sub> would be 5.&nbsp; Both 
+M.O.s &#968;<sub>i&nbsp; </sub>and &psi;<sub>j&nbsp;</sub>must have the same spin.<p class="auto-style11">The contribution to the active-space M.O.s &psi;<span class="auto-style2"><sub>i </sub>
+</span>&nbsp;and
+&psi;<span class="auto-style2"><sub>j</sub></span> is &Delta;<sub><span class="auto-style7">ij
+</span></sub>= (-1)<sup>p</sup>.c<sub>ki</sub>.c<sub>li</sub>, where &quot;p&quot; is the number of permutations needed to put &psi;<sub>i&nbsp; </sub> in  &Psi;<sub>&lambda;</sub>&nbsp; 
+into coincidence with &psi;<sub>j&nbsp;</sub> in &Psi;<sub>&sigma;</sub> .&nbsp; In this 
+example, &quot;p&quot; would be zero. If the microstates were&nbsp; [000110] and 
+[000011] the number of permutations would be one.<p class="auto-style11">(C) If more 
+than one difference exists between &Psi;<sub>&lambda;</sub>and &Psi;<sub>&sigma;</sub>,&nbsp;or if the number of &alpha; electrons in the two microstates is different, then 
+the 
+integral is zero.<p class="auto-style11">Using the newly-formed matrix&nbsp;&Delta;, 
+and the density matrix over M.O.s below the active space, P', the change to the 
+density matrix is given by:<p class="auto-style11">P<sub>&lambda;&sigma;</sub> = P'<sub>&lambda;&sigma;</sub> + &Sigma;<sub>i</sub>&Sigma;<sub>j</sub> 
+c<sub>&lambda;i</sub>&Delta;<sub>i,j</sub>c<sub>&sigma;j</sub>
+
+<p class="auto-style11">where i and j run over the active-space M.O.s
+
+<p class="auto-style11">When degenerate C.I. States are present, &Delta; is
+calculated using the weighted average of all components of the degenerate 
+manifold.&nbsp; This is necessary in order to preserve symmetry.
+</BODY></HTML>

@@ -1,0 +1,74 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>RESEQ </TITLE>
+
+<style type="text/css">.auto-style1 {
+	font-family: Symbol;
+}
+</style>
+
+</HEAD>
+<body bgcolor=white>
+<H2 align="center">
+<TT>RESEQ</TT> 
+</H2>
+According to the PDB format, atoms in a protein are specified starting with
+the nitrogen of the -NH<SUB>2</SUB> end and ending with the atoms at the -COOH end.
+<TT>RESEQ</TT> will re-arrange the atoms into the standard PDB sequence.  
+<TT>RESEQ</TT> is useful particularly after adding hydrogen atoms, see below.  Because
+<TT>RESEQ</TT> changes the order of the atoms, further work is not
+possible, and the calculation is stopped after the new geometry is printed.<p>
+A useful additional keyword is <a href="html.html"><tt>HTML</tt></a>; this generates a 
+simple HTML web-page and a PDB file in a form that is useful for 
+displaying protein structures using <a href="http://sourceforge.net/projects/jsmol/">JSmol</a>.</p>
+<p>
+When <a href="ADD-H.html"><tt>ADD-H</tt></a> or <a href="site.html"><tt>SITE</tt></a> is used, 
+changes are made to the number or locations of hydrogen atoms. In these two 
+cases,   
+<TT>RESEQ</TT> will be run automatically unless <tt><a href="noreseq.html">NORESEQ</a> </tt>is present, so there is no 
+need to add   
+<TT>RESEQ</TT>.&nbsp; If the number or location of hydrogen atoms is changed 
+outside MOPAC,   
+<TT>RESEQ</TT> should be used.&nbsp; If a raw PDB file, i.e., a file from 
+the Protein Data Bank, is used as a data set, then hydrogen atoms will be added 
+automatically, and   
+<TT>RESEQ</TT> will then be run automatically.&nbsp; To stop   
+<TT>RESEQ</TT> being run, use a MOPAC data set, i.e., a data set with keywords, and add 
+<tt>NORESEQ</tt>. </p>
+<p><TT>RESEQ</TT>&nbsp;sometimes re-arranges the atoms 
+in unexpected ways.&nbsp; Consider phenylalanine, for example.&nbsp; In it, the 
+sequence of atoms is uniquely defined except for C<sub><span class="b">&delta;</span>1</sub> 
+and C<sub><span class="b">&delta;</span>2</sub>.&nbsp; This means that either one 
+of these atoms might be chosen at random to be C<sub><span class="b">&delta;</span>1</sub>, 
+and the choice might be different from that used in the starting data set.&nbsp; 
+This should not cause a problem when resequenced proteins are compared using the
+<a href="geo_ref.html"><tt>GEO_REF</tt></a> option, because, during the calculation of RMS 
+difference, ambiguities of this type are automatically resolved.</p>
+<p>Also, if the protein has gaps where residues are missing, <TT>RESEQ</TT> might put the 
+fragments into the wrong order, particularly if the residues in the protein have 
+been re-arranged as the result of earlier operations.&nbsp; If the 
+order of fragments is incorrect, use <TT><a href="CVB.html">CVB</a></TT> to make dummy bonds that bridge the gaps 
+and re-run. 
+Suitable atoms are the N terminus of one residue and the C of carboxyl of the other 
+residue.</p>
+<p>A <a href="Resequence.zip">complete worked example of RESEQ</a> can be 
+downloaded. This shows how <TT>RESEQ</TT> can re-arrange the sequence of atoms 
+into the standard PDB sequence.&nbsp; The example is used in validating MOPAC, 
+and is much more complicated than most cases users are likely to encounter.&nbsp; </p>
+<h3>Compliance with PDB conventions</h3>
+<p>The following operations are performed when <TT>RESEQ</TT>&nbsp;is used:</p>
+<p>Within each residue, the order of atoms is: First, the four backbone atoms, 
+N-C<span class="auto-style1">a</span>-C-O, then the side-chain non-hydrogen 
+atoms, then the terminal oxygen atom, OXT, (if present), then the hydrogen 
+atoms, in the order in which they occur.&nbsp; One exception is that the HXT 
+atom, if present, might not be the last hydrogen atom.</p>
+<p>Heterogroups are positioned after all protein and isolated amino acid 
+moieties. </p>
+<p>See also: <a href="residues.html">
+<TT>RESIDUES</TT></a>, <TT><a href="xeno.html">XENO</a></TT>,
+<a href="chains.html"><TT>CHAINS</TT></a>, and <a href="start_res.html"><TT>START_RES</TT></a>.</p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

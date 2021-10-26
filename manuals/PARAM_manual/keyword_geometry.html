@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>GEOMETY REFERENCE DATA</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>&lt;text&gt; and &lt;&gt;</TT></h1>
+<p align="left">
+Geometry references are defined by the symbols &lt;text&gt; and &lt;&gt;, and by the 
+Z-matrix or geometry file.&nbsp; &lt;text&gt; defines a geometric variable, and 
+the spacer &lt;&gt; 
+defines a variable that is not a geometry reference.&nbsp; The geometry references are best described by 
+examples.&nbsp; </p>
+<p align="left">
+Consider ethylene.&nbsp; There are three quantities of interest, the C-C 
+distance, the C-H distance and the C-C-H angle.&nbsp; The following MOPAC data 
+set shows ethylene, defined using <a href="../MOPAC2016_manual/symmetry.html"><TT>SYMMETRY</TT></a>. 
+In this case, the first three geometry data are marked for optimization.&nbsp; 
+These data also correspond to the quantities of interest.&nbsp; If there is text 
+between the &quot;&lt;&quot; and the &quot;&gt;&quot; symbols, the corresponding adjustable geometric 
+parameter is defined as a geometric reference.&nbsp; So in this case, the first 
+symbol is &quot;&lt;C-C&gt;&quot; and this corresponds to the geometric quantity 1.328 
+&Aring;ngstroms, this being the C-C distance.&nbsp; The second reference, &quot;&lt;C-H&gt;&quot; 
+corresponds to the distance 1.0809 &Aring;ngstroms, and the third &quot;&lt;C-C-H&gt;&quot; can be 
+identified with the C-C-H angle of 123.509 degrees.</p>
+<p align="left">
+Each geometric symbol corresponds to a geometric variable, in order.&nbsp;&nbsp; </p>
+<pre>SYMMETRY
+Ethylene
+ GR=HERZ1966 &lt;C-C&gt; &lt;C-H&gt; &lt;C-C-H&gt;
+  C         0.00000000  0    0.0000000  0    0.0000000  0                     -0.2864
+  C         1.32800000  1    0.0000000  0    0.0000000  0    1    0    0      -0.2864
+  H         1.08090000  1  123.5090000  1    0.0000000  0    2    1    0       0.1432
+  H         1.08182856  0  123.4931754  0    0.0000000  0    1    2    3       0.1432
+  H         1.08182856  0  123.4931754  0  180.0000000  0    1    2    3       0.1432
+  H         1.08182856  0  123.4931754  0    0.0000000  0    2    1    5       0.1432
+ 
+   3  1    4    5    6
+   3  2    4    5    6 </PRE>
+<h3>A more complicated example - Benzene, without symmetry </h3>
+In this somewhat artificial example, there are exactly two geometric references, a C-C distance and a C-H distance.  The angles are defined by symmetry and are not marked for geometry optimization.  Only one C-C distance 
+is important, the first C-C.&nbsp; This is indicated on the third line by 
+&quot;&lt;C-C&gt;&quot;.&nbsp; (Line 1, with the MOPAC keyword
+<a href="../MOPAC2016_manual/debug.html"><TT>DEBUG</TT></a>, would normally not have any keywords.&nbsp; 
+<TT>DEBUG</TT> is here to show where Line 1 is.)&nbsp; The next four C-C distances, although marked for optimization, 
+are not to be used as reference data in the parameterization&nbsp; To indicate 
+that they are not to be used, four spacers, &quot;&lt;&gt;&quot;, are present.&nbsp; The next 
+datum, a C-H bond-length is to be used as a reference datum, so it is indicated 
+by &quot;&lt;C-H&gt;&quot;.&nbsp; The rest of the geometry is not interesting, and can be 
+ignored.
+<p>What is written in the text block is up to the user - it is not used 
+by PARAM, except that it must be at least one and less than 11 characters if it 
+is to be used as a geometry reference.&nbsp; Don't use &quot;cute&quot; symbols in the 
+text, such as &quot;&lt;&quot; or &quot;&gt;&quot; - these will only confuse the program.&nbsp; </p>
+<PRE>DEBUG
+Benzene
+  &lt;C-C&gt; &lt;&gt; &lt;&gt; &lt;&gt; &lt;&gt; &lt;C-H&gt; GR=TIK1976 
+  C         0.00000000  0    0.0000000  0    0.0000000  0                     -0.1436
+  C         1.39900000  1    0.0000000  0    0.0000000  0    1    0    0      -0.1436
+  C         1.39864939  1  120.0000000  0    0.0000000  0    2    1    0      -0.1436
+  C         1.39864939  1  120.0000000  0    0.0000000  0    3    2    1      -0.1436
+  C         1.39864939  1  120.0000000  0    0.0000000  0    4    3    2      -0.1436
+  C         1.39864939  1  120.0000000  0    0.0000000  0    5    4    3      -0.1436
+  H         1.08400000  1  120.0000000  0  180.0000000  0    1    6    5       0.1436
+  H         1.08820182  1  120.0000000  0  180.0000000  0    5    6    1       0.1436
+  H         1.08820182  1  120.0000000  0  180.0000000  0    2    1    6       0.1436
+  H         1.08820182  1  120.0000000  0  180.0000000  0    6    1    2       0.1436
+  H         1.08820182  1  120.0000000  0  180.0000000  0    3    2    1       0.1436
+  H         1.08820182  1  120.0000000  0  180.0000000  0    4    3    2       0.1436</PRE>
+
+<h3>How geometric data are used in a parameterization run</h3>
+<p>At the start of a parameterization run, all reference data geometric 
+quantities are re-defined as &quot;fixed&quot; - as if the optimization flag had been set 
+to zero.&nbsp; The geometry is then optimized.&nbsp; In the case of ethylene 
+(above), there would be no geometric variables, because all three geometric 
+variables are also reference data, and would thus be &quot;fixed.&quot;&nbsp; In the case 
+of benzene (above), there would be 9 geometric variables that would be 
+optimized: 4 C-C distances and 5 C-H distances.&nbsp; When the geometry 
+optimization is complete, the reference geometric data are re-defined as 
+&quot;optimize&quot; - that is, the optimization flag are re-set to &quot;1&quot;.&nbsp; The 
+gradient for each geometric datum is then calculated.&nbsp; If this is zero 
+(never happens) then the method would, by definition, predict that geometric 
+quantity with zero error.&nbsp; In practice, the gradient is non-zero, and is 
+used as a measure of error for optimizing the parameters, in exactly the same 
+way as the errors in the calculated heats of formation, dipole, and I.P. are 
+used.</p>
+
+<h3>How geometric data are used in a survey run</h3>
+<p>In a survey, the reference geometric data are stored, and the geometry is 
+then optimized.&nbsp; After the optimization is complete, the stored geometric 
+data are compared with the calculated geometric data.&nbsp; The difference 
+between the two (reference - calculated geometric quantity) is then a measure of 
+the error in the calculated quantity.&nbsp; Note that in a survey, the reference 
+data geometric parameters are not fixed, that is a parameterization run and a 
+survey run are very different.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<PRE>&nbsp;</PRE>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

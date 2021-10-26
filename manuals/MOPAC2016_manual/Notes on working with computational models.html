@@ -1,0 +1,321 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<title>Notes on working with computational models</title>
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+.auto-style2 {
+	text-decoration: underline;
+}
+</style>
+</head>
+<h1 class="auto-style1">Notes on working with computational models (<a href="examples.html">back 
+to Examples</a>)</h1>
+<h2>Introduction</h2>
+<p>It might sound obvious to both computational chemists and experimental 
+chemists that there are large differences in how chemical systems, in particular 
+biochemical systems, are handled.&nbsp; Most computational chemists are 
+interested in quantities such as accuracy, systems that are interesting because 
+of special properties, modeling phenomena such as NMR and circular dichroism, 
+etc. On the other hand, experimentalists need something that can represent 
+their specific system of interest, that can be used for modeling phenomena in 
+that system, and, hopefully, can provide insights into the processes that occur 
+in their system.&nbsp; These notes are intended for use by 
+experimentalists because they are the ones who will be using computational 
+modeling methods as a tool.&nbsp; </p>
+<p>Why should experimentalists use computational methods, and what is the 
+downside of doing so?&nbsp; Computational methods, in particular the methods 
+available in MOPAC, can provide a detailed insight into biochemical processes 
+that cannot be obtained by any other means.&nbsp; For example, the following 
+types of phenomena can be explored in great detail:</p>
+<ul>
+	<li>The environment of the binding site and of the reaction site, and the 
+	changes that occur in those sites.</li>
+	<li>The weak non-covalent interactions that are responsible for the binding of substrates 
+	in enzymes and which determine specificity.</li>
+	<li>The geometric and energy changes in electrostatic and hydrogen bonding 
+	interactions that occur during enzyme-catalyzed reactions.</li>
+	<li>The effect on the reactivity of an enzyme towards a specific substrate 
+	caused by mutating one or more residues in the enzyme.</li>
+</ul>
+<p>On the other hand, computational modeling requires a serious commitment of 
+effort on the part of experimentalists before significant useful results are 
+obtained.&nbsp; This commitment has two components: the investment of time and 
+effort required to obtain the basic skills necessary for working with 
+computational models, and the investment of time and effort required to set up 
+and run simulations of interest.&nbsp; Both components are definitely non-trivial, and to 
+help in this work a lot of effort has been put into ensuring that the program 
+works correctly, and if a error caused by a user's actions is detected, then a polite warning or error 
+message is generated, along with advice on how to correct the fault.&nbsp; In 
+addition, a suite of utilities, built into MOPAC, allows many of the 
+operations that need to be performed on biomacromolecules, such as adding hydrogen atoms correctly, to be done 
+easily.</p>
+<h2>What's hard and what's easy about computational modeling </h2>
+<p>&nbsp;Experimentalists interested in computational modeling might approach 
+the topic with fear and concern about the intellectual difficulties of handling 
+quantum theory.&nbsp; This is a common, but unjustified, worry.&nbsp; All the 
+theory is embedded in the software, all of it.&nbsp; If, after you've used the 
+software for a while and found that it's useful, you might be interested in 
+learning some of the theory that's involved.&nbsp; Great!&nbsp; There's a whole 
+world of theory to explore.&nbsp; But it's important to realise that knowing 
+how the program works is much less important than knowing how to use it.&nbsp; 
+After all, everyone knows how to use a TV set - grab the remote control and 
+press the &quot;On&quot; button.&nbsp; But very few know how a TV set works.&nbsp; It 
+either works or it doesn't.&nbsp; It's the same with computational chemistry 
+software.</p>
+<p>But the fact that running a simulation using MOPAC is as easy as using a 
+remote control on a TV set does not mean that doing research using MOPAC is 
+easy.&nbsp; A large skill-set is needed before a research project can be carried 
+out efficiently.&nbsp; Work on identifying these skills and finding what worked 
+and what didn't work took about 20 man-years of effort. And rather than 
+re-inventing the wheel, please read the following sections on how to carry out a 
+comp. chem. project:</p>
+<h2>Basics: The file system</h2>
+<p>Of greatest importance is a well-designed folder system on the computer, and 
+a systematic but not rigid file-naming convention.&nbsp; &quot;Systematic&quot; means that 
+files representing similar systems should have similar names.&nbsp; Examples 
+would be, for example: steps in a mechanism, transition states in that mechanism, mutations 
+being used to investigate binding or specificity.&nbsp; Each of these systems 
+can be related to others in that group, and, if a consistent naming convention is 
+used, going from one system within a group to another is very easy.&nbsp; The 
+exception, and why a rigid naming convention is sometimes unwanted, is in 
+processes where the &quot;group&quot; consists of a set of different systems.&nbsp; An 
+example would be a group consisting of the original PDB structure, the 
+hydrogenated structure, the optimized geometry of that system, etc.&nbsp; Each 
+of these would require a unique name, e.g. &quot;Original PDB structure&quot;, 
+&quot;Hydrogenated structure&quot;, &quot;Optimized geometry&quot;.</p>
+<p>A folder convention would need a two or, at most, a three level structure.&nbsp; 
+The top-most level would refer to the project.&nbsp; One level down would be the 
+main level, and this would contain folders that refer to entire groups of 
+systems, for example &quot;Starting model&quot;, &quot;GS&quot; (for ground state systems), &quot;TS&quot; 
+(transition states), &quot;FORCE&quot; (test for a valid transition state), &quot;IRC&quot; (for 
+Intrinsic Reaction Coordinates), &quot;work&quot; (A sandbox for testing ideas), 
+&quot;Literature&quot; (Original journal articles, etc.).&nbsp; On the main level there 
+would also be spreadsheets, research notes, etc.</p>
+<p>Have a good backup system.&nbsp; This is priceless when the hard drive 
+crashes, and also when a mistake is made and an important file is damaged, and the 
+damage is not discovered for weeks or months.</p>
+<h2>Care and handling of computational systems</h2>
+<h3>Filenames, folders, sandboxes, and tables</h3>
+<p>It's a good idea to spend time deciding what names to use for files and 
+folders.&nbsp; At the start of a project this might not seem that important, but 
+if the project is poorly organized, severe problems will occur later on.&nbsp; 
+Eventually, a systematic approach will become essential, so it's better to set 
+up the organization of the project at the start.&nbsp; Here are some guiding 
+principles.</p>
+<p>Filenames should be completely systematic.&nbsp; This can result in long 
+filenames, so only include essential material.&nbsp; For example, if the project 
+involves one protein, then the folder name for the project should include the 
+protein's name, and within the project the protein's name should not be 
+mentioned in any file.&nbsp; That saves valuable space in folders and filenames.&nbsp; The 
+parent file is likely to be a PDB file, in which case the file could contain the 
+protein's name, e.g., &quot;Chymotrypsin 8GCH original PDB file.pdb&quot; For 
+obvious reasons such a file 
+should never, ever, be modified.&nbsp; Other files could 
+have names such as &quot;Hydrogenated PDB.arc&quot;, &quot;Optimized PDB.arc&quot;, &quot;Step 1.arc&quot;, 
+&quot;Step 1-2.arc&quot;, &quot;Compare Steps 1 and 2.mop&quot;, &quot;Compare Step 1 and Step 1-2.mop&quot;, 
+&quot;FORCE for Step 1-2.mop&quot;, and &quot;IRC for Step 1-2.mop&quot;.</p>
+<p>Each type of calculation should have its own folder.&nbsp; Thus all files 
+used in the preparation of a chemically-sensible starting model would be in a 
+folder that had a name such as &quot;Make starting model&quot;&nbsp; All the steps in a 
+mechanism could be in the same folder, &quot;GS&quot;, or &quot;Ground State&quot;, with each step 
+being indicated by a systematic name, e.g., &quot;Step 1 arc&quot;, Step 2.arc&quot;, etc.&nbsp; 
+Similarly for transition states, &quot;TS&quot;,&nbsp; vibrational frequencies, &quot;FORCE&quot;, 
+Intrinsic Reaction Coordinates, &quot;IRC&quot;, comparison of various systems, &quot;Compare 
+Systems&quot;, etc.</p>
+<p>At all stages in a project issues of how to run a specific type of 
+calculation will arise.&nbsp; After spending a significant amount of effort on 
+carefully building a file structure for the project, it would not be a good idea 
+to mess up such a structure with files generated during testing various ideas. 
+Instead, one or more special folders should be set up for this purpose.&nbsp; 
+These folders can be thought of as sandboxes where ideas can be tested.&nbsp; 
+Such folders could have names like Work-1, Work-2, etc.&nbsp; Any files in these 
+folders older than a few days should be regarded as unimportant, and in 
+principle could be 
+deleted after only a quick examination.&nbsp; Of course, a better practice would be 
+to delete all files in a sandbox as soon as the issue is resolved, to avoid even the 
+need for the quick examination.</p>
+<p>Each project should also be represented by a table, an Excel spreadsheet is 
+ideal for this purpose.&nbsp; This would be the computational chemistry 
+equivalent of a lab notebook.&nbsp; The location of this table is of great 
+importance, because as the cells in the table start to get populated all 
+hyperlinks inserted will point to other relative locations.&nbsp; If the table 
+is moved, the hyperlinks would need to be updated; this is a tedious task and 
+one to be avoided.&nbsp; A good location for 
+this table would be the main or top-most level of the project.&nbsp; This emphasizes its 
+importance.&nbsp; Initially the table would be empty.&nbsp; Fill in the top 
+horizontal headings, and the left vertical headings.&nbsp; This step will focus 
+attention on what the project is all about.&nbsp; Then as data are generated, 
+fill in the appropriate cell in the table, and add hyperlinks to the appropriate 
+files.&nbsp; Typically, these would be an OUT or ARC file and a HTML file, so 
+both numeric data and graphical data can quickly be examined.&nbsp; When a cell 
+has an interesting feature, add a comment to that cell.&nbsp; Eventually all 
+data relating to the project would be represented by a set of tables. </p>
+<h3>Examples of notebooks for projects</h3>
+<p>Each example includes a ZIP file containing all the files used or mentioned 
+in the project.&nbsp; This allows the project to be reconstructed.</p>
+<p><a href="Lab_notebook_for_Chymotrypsin_Mechanism.html">Chymotrypsin</a>: 
+Entire reaction mechanism consisting of six steps and four transition states.&nbsp; 
+An additional transition state for a hypothetical unlikely reaction is included.</p>
+<p><a href="Lab_notebook_for_Enzyme_Binding_and_Specificity.html">MTH1</a>: 
+Analysis of binding site and substrate specificity. Includes construction of the 
+starting model</p>
+<h2>Good policy</h2>
+<h3>Delete unnecessary files</h3>
+<p>A sequence of events that occurs quite often is:&nbsp; A problem is 
+identified.&nbsp; Attempts are made to solve it (Use a sandbox!).&nbsp; 
+Eventually the problem is solved.&nbsp; At that point, and while the issue is 
+still clear in your head, the entire sequence should be examined.&nbsp; If the 
+problem was one of understanding then edit one or more files and one or more 
+cells in a table to add appropriate comments, or if it is an important point, 
+write notes on it in the top level.&nbsp; In most cases, the next step would be 
+to delete all the files from the sandbox.&nbsp; If the issue was both important 
+and complicated, create a new folder, and put in it the minimal set of files 
+that would show what the problem was and how it was solved.&nbsp; This would allow the issue to 
+be re-visited easily at a later date, if necessary, and not clutter up the project.&nbsp;
+</p>
+<p>Do <em>not</em> save files for failed experiments, i.e., for failed attempts 
+to solve the problem.&nbsp; In practice, most attempts will fail.&nbsp; All that matters is 
+the one attempt that worked!</p>
+<h3>Complete one job before starting another</h3>
+<p>This policy is particularly important in the preparation of a good starting 
+model.&nbsp; While all steps in preparing a good starting model might seem 
+obvious, the sequence in which the steps are carried out might not seem either 
+important or obvious. Almost always the starting point is a PDB file, and, in 
+the first few steps, the reference point would be that PDB file.&nbsp; 
+Eventually, using the original PDB file as the reference would become 
+inconvenient, and reference would be changed to the chemically sensible starting 
+model. So what makes the original PDB file an inappropriate reference system for 
+modeling? It is usually not the system of interest.&nbsp; For example, an inhibitor might be 
+docked in the binding site.&nbsp; There might be positional or symmetry 
+disorder.&nbsp; The original structure might be dimeric, and only one system is 
+needed.&nbsp; There are any number of reasons that the original PDB file should 
+not be the reference point.&nbsp; Regardless, here is a sequence of 
+steps that can efficiently convert a raw PDB file into a chemically sensible 
+starting model.</p>
+<h4 class="auto-style2">First step: preparing a hydrogenated system</h4>
+<p>All these steps are done in one job.&nbsp; This job uses the original, 
+unedited PDB file, and takes very little time to run, so if something needs to be 
+changed, make the change and re-run the job.&nbsp; </p>
+<p><strong>Specifying the PDB file: </strong>Use the <a href="geo_dat.html"><tt>GEO_DAT</tt></a> keyword 
+to define the PDB file to be used.&nbsp; This both protects the PDB file from 
+being accidentally modified and makes the data-set very small so editing it is 
+very easy.</p>
+<p><strong>Preliminary editing of PDB file:</strong>&nbsp; If the file contains more than one 
+entire system, and only one is wanted, then use <a href="chains.html"><tt>CHAINS=(a)</tt></a>, 
+where &quot;a&quot; is the chain of interest, typically chain A.&nbsp; This will 
+select all atoms that have the chain-letter selected, and exclude all others.</p>
+<p><strong>Hydrogenation:</strong>&nbsp; Keyword <a href="ADD-H.html"><tt>ADD-H</tt></a> will hydrogenate the PDB 
+file specified, and produce a system in which all ionizable sites are neutral.&nbsp; 
+Although almost always some sites will need to be ionized this system makes a 
+good starting point for the next keyword.</p>
+<p><strong>Modifying hydrogenation:</strong> Keyword <a href="site.html">
+<tt>SITE=(text)</tt></a> allows sites to be ionized and allows the saturation of carbon 
+atoms to be changed.&nbsp; At this point, a useful strategy is to run the 
+current system, and include the keyword <a href="html.html"><tt>HTML</tt></a>. 
+If salt-bridges are wanted, include <tt>SITE=(SALT),</tt> otherwise do not include the <tt>SITE</tt> keyword.&nbsp; 
+Look as the system using a GUI.&nbsp; If <tt>HTML</tt> was used, double-click on the 
+HTML web-page created by the run. Identify the sites that need to be ionized or 
+de-ionized or need a different saturation.&nbsp; Then write or edit the&nbsp;<tt>SITE</tt> keyword, 
+and run the job again.&nbsp; Look at the revised system, and, if necessary, make 
+more changes to the <tt>SITE</tt> keyword.&nbsp; At this point, the objective is 
+to get the hydrogenation as correct as possible, but achieving a perfect 
+hydrogenation is often difficult.&nbsp; Aim for as good a hydrogenation as can 
+be achieved without an undue amount of effort.&nbsp; If, later on, any faults 
+are found in the hydrogenation, they can be corrected at that point.&nbsp; </p>
+<p>At this point, the job to convert the PDB file into a hydrogenated system can 
+be run.&nbsp; Examples of common keywords used in a job of this type are:</p>
+<p>GEO-DAT=&quot;8GCH.pdb&quot; ADD-H HTML SITE=(SALT,&quot;[HIS]57:F.NE2&quot;(0))</p>
+<p><strong>Detecting errors using keywords <a href="charges.html"><tt>CHARGES</tt></a> and 
+<a href="residues.html"><tt>RESIDUES</tt></a>: </strong>&nbsp;A 
+useful test to detect errors in the PDB file starts with the hydrogenated system 
+from the previous step. Use keywords GEO-DAT=&quot;Hydrogenated 8GCH.pdb&quot;, CHARGES, 
+RESIDUES, and, optionally, <a href="output.html"><tt>OUTPUT</tt></a> to minimize 
+the size of the output.&nbsp; Run the job, and examine the output. </p>
+<p>Check the charges on the various sites by searching the output for the text 
+&quot;Ion Atom No.&quot;&nbsp; Charged atoms that take part in salt-bridges are usually 
+correct.&nbsp; But if an ionized atom is either more than about 4 &Aring;ngstroms 
+from a counterion or does not take part in salt bridge formation, then have a 
+closer look at that ion.</p>
+<p>If there is a line &quot;Residue names that have changed&quot;, look at the next few 
+lines under &quot;Original residue name Calculated residue name&quot;&nbsp; If the changes 
+look reasonable (use a GUI to examine the system used in this job) then 
+continue.&nbsp; If any problems arise, take whatever corrective action is 
+appropriate.</p>
+<p><strong>Re-sequencing:</strong> Normally, resequencing is not necessary; 
+by default, resequencing is done automatically when hydrogen atoms are added unless 
+<a href="noreseq.html"><tt>NORESEQ</tt></a> 
+is present.&nbsp; Modifying this sequence is normally not recommended, because 
+if a hydrogen atom is added or deleted, automatic resequencing will be done 
+again, and any manual resequencing changes will be lost.&nbsp; But if the 
+default re-sequenced system is definitely not acceptable, the system can be 
+resequenced using an editor. </p>
+<p>Up to this point, all the steps have been very fast.&nbsp; The next steps 
+takes considerably more time. </p>
+<p><strong>Optimizing the positions of the hydrogen atoms:</strong>&nbsp; 
+Starting with the hydrogenated system, run a job that optimizes the positions of 
+all hydrogen atoms, using an appropriate set of keywords for example: &quot;<a href="gnorm.html">GNORM=4</a>
+<a href="nooptx.html">NOOPT</a> <a href="optx.html">OPT-H</a>
+<a href="mozyme.html">MOZYME</a> <a href="charge.html">CHARGE=n</a> HTML 
+<a href="output.html">OUTPUT</a> <a href="eps.html">EPS=78.4</a>&quot;.&nbsp; The resulting geometry will be 
+that of the original PDB file with hydrogen atoms added and their positions 
+optimized.</p>
+<p>Optimizing the entire system: Starting with the geometry from the previous 
+step, replace &quot;NOOPT OPT-H&quot; with &quot;OPT&quot;&nbsp; Keyword &quot;<a href="optx.html">OPT</a>&quot; turns on all 
+optimization flags.</p>
+<h2>Bad policy</h2>
+<p>Do not do any work in folders other than the sandboxes, e.g., folders with 
+names such as Work, Work-1, etc.&nbsp; No work should be done in any of the 
+other folders below the top-most level of the project.&nbsp; When a useful 
+result is obtained, copy the relevant files to the appropriate folders in the 
+project, and update the table, i.e., the lab notebook.&nbsp; If, later on, a change 
+has to be made to files in the project, copy the files to a sandbox, make the 
+change, and then copy the files back.</p>
+<p>Except at the start of a project, do not use <tt>RESIDUES </tt>or <tt>
+<a href="residues.html">RESIDUES0</a></tt> unless there is a compelling reason.&nbsp; 
+This is particularly important when a project has been underway for a while. If 
+either of these keywords is used, the <a href="compare.html"><tt>COMPARE</tt></a> option might not work 
+because some files might have one naming system for the atoms and some files a 
+different naming system.</p>
+<p>When something does go wrong, do not try to correct the error straight away.&nbsp; 
+Instead, find out what went wrong, then, starting with the system immediately 
+before the fault, take corrective action and run the jobs again.&nbsp; Only if 
+the fault is very minor and can be <em>easily</em>, emphasis on <em>easily</em>, 
+corrected should results files be edited.&nbsp; If results files are edited, 
+it's very easy to make a typographic error, and that error could cause severe 
+problems later on.&nbsp; </p>
+<p>When a job stops unexpectedly, do not ignore the output.&nbsp; Very often 
+there will be a warning or error message at the end of the output that will 
+explain what went wrong.&nbsp; By design, MOPAC is allowed to make some 
+corrections to a system, but if there is more than one possible correction, it 
+will always stop.&nbsp; Then it's up to the user to decide how best to proceed. </p>
+<h2>When things go wrong</h2>
+<p>There are two main reasons why things go wrong.&nbsp; Most of the time, 
+you've made a mistake. Examine what's going on, identify the error, correct it, 
+and carry on.&nbsp; Less often, but more interesting, is the possibility that 
+you have misunderstood the system.&nbsp; When that happens, re-examine the 
+chemistry that's occurring at that point.&nbsp; Things get really interesting 
+when you suspect that you're correct and that the output is wrong, i.e., that 
+the method being used is making a mistake.&nbsp; An example of such a phenomenon 
+would be if you think an acid residue should be ionized and then when a geometry 
+optimization is run a proton always moves back onto the carboxylate group. </p>
+<p>In such a situation, i.e., when there is reason to think that the results are 
+wrong because of a fault in the method used, proceed as follows:&nbsp; Design a 
+small system that illustrates the phenomenon, and model that system using MOPAC, 
+and also using a higher-level method, e.g., B3LYP with D3 and a good basis set.&nbsp; 
+If the same qualitative result is obtained, then there is a high probability 
+that the calculated results are correct, and that you have been using an 
+incorrect assumption.&nbsp; This is particularly interesting when the incorrect 
+assumption is currently accepted as being correct.</p>
+<p>When jobs take an excessive amount of time, and the system isn't simply very 
+big, examine it for faults.&nbsp; Many types of faults can slow down the SCF 
+calculations, and such slowing can be a red flag that there is a fault in the 
+system. </p>
+<p>&nbsp;</p>
+
+</body>
+
+</html>

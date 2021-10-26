@@ -1,0 +1,339 @@
+ <HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Polarizability calculation output</TITLE>
+<script language="Javascript" src="mouseover.js"></script>
+<style type="text/css">#reor, #alpha_0, #alpha_iso, #beta_0, #beta_iso, #gamma_0, #gamma_iso, #freq
+
+{position:absolute; left: 30;  visibility:hidden; color: blue;}</style>
+
+<h1>Description of Polarizability calculation output file</h1>
+<p>(Move the cursor over the file to see what the parts are.&nbsp; The first 
+part is common to all calculations, so scroll down to &quot;<TT>TDHF POLARIZABILITIES</TT>&quot; 
+to get to the start of the polarizability calculation.</a></tt>)</HEAD><BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff"><TT></P>
+<PRE> 
+*******************************************************************************
+ ** Site#:    0            For non-commercial use only         Version 7.263W **
+ *******************************************************************************
+ ** Cite this work as: MOPAC2007, James J. P. Stewart, Stewart Computational  **
+ ** Chemistry, Version 7.263W web: HTTP://OpenMOPAC.net   Days remaining: 162 **
+ *******************************************************************************
+ **                                                                           **
+ **                                MOPAC2007                                  **
+ **                                                                           **
+ *******************************************************************************
+
+                            PM6 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *  CALCULATION DONE:                                Fri Oct  5 09:12:43 2007  *
+ *  POLAR    - CALCULATE FIRST, SECOND AND THIRD-ORDER POLARIZABILITIES
+ *  T=       - A TIME OF 172800.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY  7200.000 SECONDS
+ *******************************************************************************
+ polar
+ p-Nitroaniline
+
+  ATOM    CHEMICAL     BOND LENGTH    BOND ANGLE    TWIST ANGLE 
+ NUMBER    SYMBOL      (ANGSTROMS)    (DEGREES)     (DEGREES) 
+   (I)                   NA:I          NB:NA:I       NC:NB:NA:I       NA    NB    NC 
+     1       C          0.0000000       0.000000       0.000000   
+     2       C          1.4233530  *    0.000000       0.000000        1     0     0
+     3       C          1.3839170  *  119.551256  *    0.000000        2     1     0
+   
+                                        [Lots of lines deleted]</pre>
+<PRE><a onMouseOver="toggleDiv('skip',1)" onMouseOut="toggleDiv('skip',0)">
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.07648   0.90708   0.83411   0.78810   1.10256   1.00684   1.08304   1.22790
+   1.10660   1.05136   0.91975   0.80854   1.10893   1.00696   0.95491   1.30825
+   1.10657   0.94436   1.02677   0.80858   1.10252   1.09864   0.99128   1.22785
+   1.44161   1.17064   1.13374   1.75959   1.29060   0.94808   0.97388   0.92398
+   1.91999   1.66947   1.33007   1.57361   1.91998   1.09224   1.90726   1.57359
+   0.81993   0.83645   0.73047   0.81994   0.83641   0.73050
+1******************** TDHF POLARIZABILITIES ********************
+
+
+
+          MOLECULAR WEIGHT =  138.13
+
+
+
+           <a onMouseOver="toggleDiv('reor',1)" onMouseOut="toggleDiv('reor',0)">ROTATIONAL CONSTANTS IN CM(-1)
+
+          A =    0.129251   B =    0.027297   C =    0.022537
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN UNITS OF 10**(-40)*GRAM-CM**2
+
+          A =  216.577222   B = 1025.488877   C = 1242.066059
+
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="60" valign="top">
+<div id="reor" style="width: 550;">By default, the molecule is rotated so that it is oriented 
+along the principal moments of inertia.  To prevent it being re-oriented, add keyword "LET"</div> 
+</tr></table>
+
+ ROTATION MATRIX FOR ORIENTATION OF MOLECULE:
+
+         0.498516   -0.866881   -0.000309
+         0.866881    0.498516    0.000159
+         0.000016   -0.000347    1.000000
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         C       -2.1523    0.0001    0.0002
+     2         C       -1.4432   -1.2331   -0.0002
+     3         C       -0.0600   -1.2250   -0.0003
+     4         C        0.6401   -0.0001   -0.0002
+     5         C       -0.0596    1.2251   -0.0002
+     6         C       -1.4426    1.2331   -0.0005
+     7         N       -3.5344    0.0001    0.0005
+     8         N        2.0994   -0.0001    0.0001
+     9         O        2.6723    1.0810    0.0003
+    10         O        2.6726   -1.0809    0.0001
+    11         H       -1.9832   -2.1762   -0.0005
+    12         H        0.5081   -2.1636   -0.0004
+    13         H       -4.0589   -0.8556   -0.0001
+    14         H       -1.9826    2.1763   -0.0005
+    15         H        0.5085    2.1635    0.0000
+    16         H       -4.0589    0.8558    0.0003
+
+
+ ENERGY OF "REORIENTED" SYSTEM WITHOUT FIELD:       12.0699965485
+
+</a>
+  NFREQ=  3  IWFLB=  0  IBET=  1  IGAM=  1
+  ATOL= 0.10000D-02  BTOL= 0.10000D-02    MAXITU=  500    MAXITA=  150
+
+
+ *****************************************************************
+ CALCULATION OF STATIC FIELD QUANTITIES
+ *****************************************************************
+
+ +++++ ALPHA AT       0.00000 EV.
+ <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="60" valign="top">
+<div id="alpha_0"   style="width: 550;">The nine components of the zero-frequency (static) polarizability second-rank tensor are printed.
+These are XX, XY, XZ, to ZZ</div> 
+<div id="alpha_iso" style="width: 550;">The average polarizability volume is the arithmetic mean of XX, YY, and ZZ</div> 
+</tr></table>
+<a onMouseOver="toggleDiv('alpha_0',1)" onMouseOut="toggleDiv('alpha_0',0)">
+
+                           COMPONENTS OF ALPHA
+
+                     *X           *Y           *Z
+           *=X:     149.2600      -0.0014      -0.0108
+           *=Y:      -0.0014     106.4164       0.0009
+           *=Z:      -0.0111       0.0009      47.1637</a>
+<a onMouseOver="toggleDiv('alpha_iso',1)" onMouseOut="toggleDiv('alpha_iso',0)">
+
+  ISOTROPIC AVERAGE ALPHA =     100.94667 A.U. =     14.95875 ANG.**3</a>
+
+ +++++ BETA (SECOND HARMONIC GENERATION) AT       0.00000 EV.
+ <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="60" valign="top">
+<div id="beta_0"   style="width: 550;">The 18 components of the zero-frequency (static) first order hyper-polarizability third-rank tensor are printed.
+These are XXX, XXY, XYY, to ZZZ</div> 
+<div id="beta_iso" style="width: 550;">The average first order hyper-polarizability is the scalar of the three beta-vectors.
+For a molecule with a center of symmetry, beta = 0. Units are ESU (X10-30)</div> 
+</tr></table>
+<a onMouseOver="toggleDiv('beta_0',1)" onMouseOut="toggleDiv('beta_0',0)">
+
+
+                              COMPONENTS OF BETA
+            *XX         *XY         *YY         *XZ         *YZ         *ZZ
+   *=X -1763.70174    -0.00871   334.60500    -0.05335     0.00392    -1.46052
+   *=Y    -0.00887   334.48768    -0.03253     0.00374    -0.07887    -0.00208
+   *=Z    -0.05716     0.00382    -0.08294    -1.47796    -0.00208     0.02071</a>
+
+
+ AVERAGE BETAX(SHG) VALUE AT   0.00000 EV =   -858.3883
+ AVERAGE BETAY(SHG) VALUE AT   0.00000 EV =     -0.0260
+ AVERAGE BETAZ(SHG) VALUE AT   0.00000 EV =     -0.0685
+
+
+<a onMouseOver="toggleDiv('beta_iso',1)" onMouseOut="toggleDiv('beta_iso',0)">
+ AVERAGE BETA (SHG) VALUE AT   0.00000 EV =    858.3883</a>
+
+
+
+ +++++ ALPHA AT       0.00000 EV.
+
+                           COMPONENTS OF ALPHA
+
+                     *X           *Y           *Z
+           *=X:     149.2600      -0.0014      -0.0108
+           *=Y:      -0.0014     106.4164       0.0009
+           *=Z:      -0.0111       0.0009      47.1637
+
+  ISOTROPIC AVERAGE ALPHA =     100.94667 A.U. =     14.95875 ANG.**3
+
+<table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="60" valign="top">
+<div id="gamma_0"   style="width: 550;">The 9 main components of the zero-frequency (static) second order hyper-polarizability fourth-rank tensor are printed.
+ Units are ESU(X10-36). </div> 
+<div id="gamma_iso" style="width: 550;">The average second order hyper-polarizability is 1/5 times the sum of the nine components of gamma. </div> 
+</tr></table>
+<a onMouseOver="toggleDiv('gamma_0',1)" onMouseOut="toggleDiv('gamma_0',0)">
+
+ GAMMA (THIRD HARMONIC GENERATION) AT    0.00000 EV.
+
+ GAMMA(X,X,X,X) =        119727.34761
+ GAMMA(Y,Y,Y,Y) =          6631.42257
+ GAMMA(Z,Z,Z,Z) =            23.04466
+ GAMMA(X,X,Y,Y) =         -9486.72474
+ GAMMA(X,X,Z,Z) =          1248.88853
+ GAMMA(Y,Y,X,X) =         -9486.75791
+ GAMMA(Y,Y,Z,Z) =           547.64178
+ GAMMA(Z,Z,X,X) =          1248.80255
+ GAMMA(Z,Z,Y,Y) =           547.52506</a>
+
+<a onMouseOver="toggleDiv('gamma_iso',1)" onMouseOut="toggleDiv('gamma_iso',0)">
+ AVERAGE GAMMA VALUE AT    0.00000 =         22200.23802</a>
+
+<a onMouseOver="toggleDiv('freq',1)" onMouseOut="toggleDiv('freq',0)">
+
+
+ **********************************************************************
+ CALCULATION FOR A FREQUENCY OF    0.25000 EV  =       0.00919 A.U. 
+                  WAVELENGTH OF    4959.37 NM  =    2016.38525 CM(-1)
+ **********************************************************************
+ <table cellpadding="10" width="600" cellspacing="1" border="0" bgcolor="b8b7bc"><tr><td bgcolor="ffffff" height="60" valign="top">
+<div id="freq"   style="width: 550;">The various polarizabilities are frequency-dependent.  alpha, beta, and gamma are
+re-calculated at 0.25eV and at 0.5eV.  To use different energies, see the POLAR keyword </div> 
+</tr></table>
+ +++++ ALPHA AT       0.25000 EV.</a>
+
+                           COMPONENTS OF ALPHA
+
+                     *X           *Y           *Z
+           *=X:     149.6008      -0.0014      -0.0110
+           *=Y:      -0.0014     106.5021       0.0009
+           *=Z:      -0.0112       0.0009      47.1718
+
+  ISOTROPIC AVERAGE ALPHA =     101.09158 A.U. =     14.98023 ANG.**3
+
+ +++++ BETA (SECOND HARMONIC GENERATION) AT       0.25000 EV.
+
+                              COMPONENTS OF BETA
+            *XX         *XY         *YY         *XZ         *YZ         *ZZ
+   *=X -1804.54238    -0.00962   343.11338    -0.06014     0.00359    -1.69468
+   *=Y    -0.01047   337.88196    -0.03275     0.00429    -0.08017    -0.00208
+   *=Z    -0.05411     0.00386    -0.08639    -1.51257    -0.00212     0.02106
+
+
+ AVERAGE BETAX(SHG) VALUE AT   0.25000 EV =   -879.8939
+ AVERAGE BETAY(SHG) VALUE AT   0.25000 EV =     -0.0269
+ AVERAGE BETAZ(SHG) VALUE AT   0.25000 EV =     -0.0716
+
+
+
+ AVERAGE BETA (SHG) VALUE AT   0.25000 EV =    879.8939
+
+
+
+ +++++ ALPHA AT       0.75000 EV.
+
+                           COMPONENTS OF ALPHA
+
+                     *X           *Y           *Z
+           *=X:     152.4417      -0.0014      -0.0118
+           *=Y:      -0.0014     107.2041       0.0009
+           *=Z:      -0.0120       0.0008      47.2317
+
+  ISOTROPIC AVERAGE ALPHA =     102.29249 A.U. =     15.15818 ANG.**3
+
+
+ GAMMA (THIRD HARMONIC GENERATION) AT    0.25000 EV.
+
+
+ GAMMA(X,X,X,X) =        127264.84063
+ GAMMA(Y,Y,Y,Y) =          7010.42806
+ GAMMA(Z,Z,Z,Z) =            23.50275
+ GAMMA(X,X,Y,Y) =        -10230.82001
+ GAMMA(X,X,Z,Z) =          1334.24709
+ GAMMA(Y,Y,X,X) =         -9957.55914
+ GAMMA(Y,Y,Z,Z) =           560.83959
+ GAMMA(Z,Z,X,X) =          1269.82865
+ GAMMA(Z,Z,Y,Y) =           549.78398
+
+
+ AVERAGE GAMMA VALUE AT    0.25000 =         23565.01832
+
+
+
+
+ **********************************************************************
+ CALCULATION FOR A FREQUENCY OF    0.50000 EV  =       0.01837 A.U. 
+                  WAVELENGTH OF    2479.68 NM  =    4032.77050 CM(-1)
+ **********************************************************************
+
+ +++++ ALPHA AT       0.50000 EV.
+
+                           COMPONENTS OF ALPHA
+
+                     *X           *Y           *Z
+           *=X:     150.6406      -0.0014      -0.0113
+           *=Y:      -0.0014     106.7625       0.0009
+           *=Z:      -0.0115       0.0009      47.1939
+
+  ISOTROPIC AVERAGE ALPHA =     101.53230 A.U. =     15.04553 ANG.**3
+
+ +++++ BETA (SECOND HARMONIC GENERATION) AT       0.50000 EV.
+
+                              COMPONENTS OF BETA
+            *XX         *XY         *YY         *XZ         *YZ         *ZZ
+   *=X -1937.93395    -0.01274   371.62769    -0.08052     0.00255    -2.46010
+   *=Y    -0.01606   348.40042    -0.03346     0.00609    -0.08111    -0.00206
+   *=Z    -0.04241     0.00403    -0.09817    -1.59848    -0.00222     0.02202
+
+
+ AVERAGE BETAX(SHG) VALUE AT   0.50000 EV =   -950.2061
+ AVERAGE BETAY(SHG) VALUE AT   0.50000 EV =     -0.0297
+ AVERAGE BETAZ(SHG) VALUE AT   0.50000 EV =     -0.0796
+
+
+
+ AVERAGE BETA (SHG) VALUE AT   0.50000 EV =    950.2061
+
+
+
+ +++++ ALPHA AT       1.50000 EV.
+
+                           COMPONENTS OF ALPHA
+
+                     *X           *Y           *Z
+           *=X:     163.9962      -0.0017      -0.0155
+           *=Y:      -0.0017     109.7957       0.0006
+           *=Z:      -0.0160       0.0006      47.4438
+
+  ISOTROPIC AVERAGE ALPHA =     107.07857 A.U. =     15.86741 ANG.**3
+
+
+ GAMMA (THIRD HARMONIC GENERATION) AT    0.50000 EV.
+
+
+ GAMMA(X,X,X,X) =        155208.90571
+ GAMMA(Y,Y,Y,Y) =          8369.84767
+ GAMMA(Z,Z,Z,Z) =            25.12361
+ GAMMA(X,X,Y,Y) =        -13111.41695
+ GAMMA(X,X,Z,Z) =          1664.44729
+ GAMMA(Y,Y,X,X) =        -11620.43412
+ GAMMA(Y,Y,Z,Z) =           605.53234
+ GAMMA(Z,Z,X,X) =          1339.63919
+ GAMMA(Z,Z,Y,Y) =           555.97263
+
+
+ AVERAGE GAMMA VALUE AT    0.50000 =         28607.52347
+
+
+
+
+
+ TOTAL CPU TIME:             1.48 SECONDS
+
+ == MOPAC DONE ==
+ </BODY></HTML>

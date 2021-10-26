@@ -1,0 +1,66 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>ESR </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>ESR</TT>
+</h1>
+The unpaired spin density arising from an odd-electron system can be
+calculated  both  RHF  and  UHF.  In a UHF calculation the alpha and beta
+M.O.s have  different  spatial  forms,  so   spin  density  can
+naturally  be  present  on in-plane hydrogen atoms such as in the phenoxy
+radical.
+<P>
+In the RHF formalism  a  MECI  calculation  is  performed.
+In general, <TT>ESR</TT> can be used for <EM>any</EM> system for which M<IMG
+ WIDTH="38" HEIGHT="30" ALIGN="MIDDLE" BORDER="0"
+ SRC="img115.gif"
+ ALT="$_S \neq 0$">.
+If the C.I. calculation
+results in many states, then the spin density for the state requested
+and the next few states will be printed.  For example, if benzene cation, D<SUB>6<I>h</I></SUB>,
+is calculated, using <TT>ESR <a href="open.html">OPEN(3,2)</a></TT>, then the spin density for
+the two degenerate components of E<SUB>1<I>g</I></SUB> will be printed.  For this system, the
+total spin density on any given atomic orbital or any atom is given
+by the <EM>average</EM> of the spin densities for the two components.  For
+benzene<SUP>+</SUP>, this would be 1/6 electrons.
+<P>
+Thus, for example, for ethylene, <TT>ESR <a href="triplet.html">TRIPLET</a>
+<a href="ci=n.html">C.I.=2</a></TT> would
+give meaningful results, as would
+<TT>ESR <a href="ms.html">MS=1</a> C.I.=2</TT>. However, <TT>ESR
+<a href="root.html">ROOT=2</a> C.I.=2</TT> would not, as this
+would be used to calculate the spin density arising from the M<SUB><I>S</I></SUB> = 0component of a triplet
+state, which will have a zero spin density.
+<P>
+Spin density for state <b>&Psi;</b><font face="Times New Roman"><sub>j</sub></font>,
+calculated as spin, S<sub>A</sub>, on atom A, is given in terms of contributions
+from the M.O.s of the active space <i>&psi;</i><sub>i</sub>, <i>
+&psi;</i><sub>i</sub> = <span class="b">&Sigma;</span><sub>&lambda;<font face="Times New Roman">i</font></sub><i>&phi;</i>
+as:<P align="center">
+S<sub>A</sub> = &Sigma;<sub>&lambda;</sub><sup>A</sup><i>&phi;</i><sub>&lambda;</sub><sub><font face="Times New Roman">i</font></sub><font face="Symbol"><sup>2</sup>&Sigma;</font><font face="Times New Roman"><sub>i</sub>S<sub>i</sub>,</font><P>
+<font face="Times New Roman">where the S<sub>i</sub> are the contributions of
+spin from each M.O.,&nbsp; expressed as a sum over the microstates of the C.I.,
+</font><b><span class="b">&Psi;</span></b><font face="Times New Roman"><sub>j</sub>
+= </font><span class="b">&Sigma;</span>c<sub>kj</sub><span class="b">&Psi;</span><font face="Times New Roman"><sub>j</sub></font><font face="Times New Roman">,
+: </font>
+<P align="center">
+<font face="Times New Roman">S<sub>i</sub> = </font><span class="b">&Sigma;</span><sub><font face="Times New Roman">k</font></sub><font face="Times New Roman">(O<sub>i</sub></font><sup><span class="b">&alpha;</span></sup><font face="Times New Roman"><sup>k</sup>-O<sub>i</sub></font><sup><span class="b">&beta;</span></sup><font face="Times New Roman"><sup>k</sup>)</font>c<sub>kj</sub><font face="Times New Roman"><sub>,</sub></font><P align="left">
+<font face="Times New Roman">Where O<sub>i</sub></font><sup><span class="b">&alpha;</span><font face="Times New Roman">j</font></sup><font face="Times New Roman">
+is the alpha or &quot;spin up&quot; occupancy of M.O.</font> <i>&psi;</i><sub>i</sub>,<font face="Times New Roman">
+in microstate </font><span class="b">&Psi;</span><font face="Times New Roman">j.
+Although &phi;<sub>&lambda;</sub><sub><font face="Times New Roman">i</font></sub><sup><font face="Symbol">2
+</font></sup>is obligate positive, <font face="Times New Roman">S<sub>i</sub>
+can be positive or negative, therefore </font>S<sub>A</sub> can be positive or
+negative, although it is unlikely to be very negative, and the sum over all
+atoms must equal 2<i>M</i><sub>S</sub>(Z)<P>
+If  the  keywords  <TT>OPEN</TT>  and  <TT>C.I.=</TT>  are  both
+absent, then only a single state is
+calculated.  The spin density is then calculated from the  state
+function.   In  order  to have spin density on the hydrogens in,
+for example, the phenoxy radical, several states should be mixed.
+</BODY>
+</HTML>

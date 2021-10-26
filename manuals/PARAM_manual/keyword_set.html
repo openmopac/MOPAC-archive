@@ -1,0 +1,25 @@
+<HTML>
+<HEAD>
+<TITLE>SET=text</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>SET=<i>text</i></TT> </h1>
+<p align="left">There are two ways to supply the list of reference data files to 
+PARAM.&nbsp; If <TT>SET=&lt;text&gt;</TT> is present, then the file(s) represented by &lt;text&gt; will 
+be used as the source of data file names.&nbsp; For example, <PRE>set= "../sets/All intermolecular interaction sets.txt"; &
+     "../sets/Stand-alone core.txt" </PRE>
+would select all the 
+reference data-set files listed in the text-files &quot;All intermolecular interaction sets.txt&quot; 
+and&nbsp; &quot;Stand-alone core.txt&quot; Text-files of this type contain the names of 
+reference data-sets, less the &quot;.mop&quot;, e.g.:<PRE>Formaldehyde
+benzene
+Water
+Ethane</PRE>
+<p align="left">The alternative way of supplying reference data file names is to 
+not use keyword <TT>SET</TT> and to put the file names after the PARAM data set line 
+&quot;end&quot; This option should normally only be used in testing ideas.</p>
+<p align="left">If there are any spaces in the file name, or in the 
+path, then the path and text-file name must be delimited by quotation marks.</p>
+</BODY>
+</HTML>

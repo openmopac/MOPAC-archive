@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> The Madelung Problem</TITLE>
+</HEAD>
+<body bgcolor=white>
+                                                                   <H2>The Madelung Problem
+</H2>
+The number of diatomic interactions in molecules is finite, being
+(<I>N</I>(<I>N</I>+1))/2 in number, where <I>N</I> is the number of atoms.  Solids, on the other hand, have
+potentially an almost infinite number of diatomic  interactions.  In order to
+reduce this enormous number of interactions to a manageable amount,
+approximations are necessary.
+<P>
+Quantum effects arising from the overlaps of atomic orbitals can extend to a
+distance of a few tens of &Aring;ngstroms.  However, the overlaps themselves
+become negligible at distances of only a few &Aring;ngstroms.  Overlap integrals
+decrease in value at large distances in proportion to the inverse exponential
+of  their orbital exponents.  Because of this fact, all overlap integrals
+involving atoms separated by more than a specified distance can be ignored.  In
+practice, a limit of 5-7&Aring; should be used. <A NAME="BM18250">&#160;</A> One advantage of limiting overlap integrals is that the calculation
+runs much faster.  A diamond calculation involving 64 carbon atoms took 31
+minutes to do one SCF calculation.  When overlaps involving atoms separated by
+more than 7 &Aring;ngstroms were ignored, the calculation took less than 3
+minutes.
+<P>
+Electrostatic terms are more difficult to approximate.  Unlike quantum effects,
+electrostatic terms remain significant even at quite large distances, say
+several tens of &Aring;ngstroms.  Simply ignoring all terms beyond a specific
+distance results in large errors.  Consider a simple two-dimensional ionic
+lattice consisting of alternating positive and negative charges in a square
+array (Figure).  Each positive ion is surrounded at a distance
+<I>r</I> by
+four negative ions, and at a distance 2<sup>1/2</sup>r
+by four positive ions.  If
+all electrostatic interactions at distances greater than a preset value are
+ignored, then each positive ion will experience an electrostatic field due to 4
+or 8 more or less positive ions than negative ions.  Consider first the effect
+of 4 excess positive ions.  Because of electrostatic repulsion, these ions
+would raise the energy of the ion by 1328/<I>R</I> kcal/mol, where <I>R</I> was the
+cutoff-distance for electrostatic interactions.  Similarly, if there were 4
+excess negative ions, each positive ion would be stabilized by 1328/<I>R</I> kcal/mol.
+Even for large <I>R</I>, say 20 &Aring;ngstroms, the effect would amount to
+many tens of kcal/mol.
+<P>
+One option would be to include all interactions in a finite set of  fundamental
+unit cells.  Since each unit cell is, by definition,  electrically neutral,
+this would result in each ion experiencing a field arising from all other
+ions.  The sum of the charges on all the ions each ion would experience would
+be simply equal to the negative of the ion's own charge.  Consider a cell
+consisting of 2A(+).2B(-), in which the four ions form a square with
+alternating charges, e.g. A(+)-B(-)-A(+)-B(-).  If 9 cells, forming a 3 by 3
+grid, were used to represent the solid, then ion A(+) would experience the
+environment of 17 A(+) ions and 18 B(-) ions. This is similar to the situation
+which occurs in a molecule.
+<P>
+<BR>
+<DIV ALIGN="CENTER"><A NAME="tdil">&#160;</A><A NAME="BM18758">&#160;</A>
+<TABLE WIDTH="50%">
+<CAPTION><STRONG>Figure:</STRONG>
+Two-dimensional ionic lattice</CAPTION>
+<TR><TD>
+<DIV ALIGN="CENTER">
+&nbsp;<IMG ALIGN="BOTTOM" BORDER="0"
+ SRC="img1318.gif"
+ ALT="\framebox{
+\setlength{\unitlength}{1in}
+\begin{picture}
+(2.7,2.7)(0.0,0.0)
+\put(...
+...\put(2.04,2.20){\line(0,1){0.2}}
+\put(2.54,2.20){\line(0,1){0.2}}
+\end{picture}}" width="544" height="522"></DIV></TD></TR>
+</TABLE>
+</DIV>
+<BR>
+<P>
+This approximation is acceptable for polymer systems, but it  can induce a
+small error in the symmetry of the electric field in a two-dimensional
+system.   Consider the electric field on the ions A(+) and B(-) in our system.
+Each ion would experience an electrostatic environment which did not have
+square symmetry.  To see this, consider the number of B(-) ions the A(+) ion
+would interact with, 18 in all.  It is clearly impossible to position 18 B(-)
+ions in such a way as to yield a potential having square symmetry at ion A(+).
+<P>
+For a three dimensional system, the problem is much more serious.  For a unit
+cell consisting of A(+)-B(-), every "A" ion would experience a highly
+asymmetric  potential.  Increasing the number of unit cells involved does not
+solve the problem--with increasing numbers of unit cells, the effects arising
+from distant ions becomes less, but the number of distant ions increases. Put
+another way, the influence of an ion falls off as <I>r</I><SUP>-2</SUP>, but the number  of
+such ions increases as <I>r</I><SUP>2</SUP>.  This phenomenon is peculiar to 3-D systems.
+<P>
+To correct this error in the symmetry of the potential, a new approximation is
+needed, in which the environment of each ion has the  correct symmetry. In
+addition to having the correct symmetry, the function must  have a continuous
+first derivative, in order for the derivatives to be calculable.
+<P>
+A cutof distance is selected, this is called <TT><a href="cutofp.html">CUTOFP</a></TT>; by default this is
+set at 30 &Aring;ngstroms.  The electrostatic terms arising from all atoms up to
+2/3<I>CUTOFP</I> are treated as normal.  Between 2/3<I>CUTOFP</I> and 4/3<I>CUTOFP</I>, the
+apparent distance of the atom is reduced, and for atoms separated by more than
+<I>CUTOFP</I>, the apparent distance is set to <I>CUTOFP</I>.  These three domains can be
+summarized as follows:
+<P>
+<DIV ALIGN="CENTER">
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">Domain</TD>
+<TD ALIGN="CENTER">Apparent Distance*</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">
+<I>R</I><SUB><I>AB</I></SUB> &lt; (2/3)<I>C</I></TD>
+<TD ALIGN="CENTER"><I>R</I><SUB><I>AB</I></SUB></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">
+(2/3)<I>C</I> &lt;<I>R</I><SUB><I>AB</I></SUB> &lt; (4/3)<I>C</I></TD>
+<TD ALIGN="CENTER">
+<IMG
+ WIDTH="137" HEIGHT="36" ALIGN="MIDDLE" BORDER="0"
+ SRC="img1319.gif"
+ ALT="$2R_{AB}-C/3-\frac{3}{4}R^2/C$"></TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">
+<I>R</I><SUB><I>AB</I></SUB> &gt; (4/3)<I>C</I></TD>
+<TD ALIGN="CENTER">C</TD>
+</TR>
+</TABLE>
+<BR>
+*: C=<I>CUTOFP</I></DIV>
+<P>
+Inspection of this function  shows that in the region of
+<I>R</I>=(2/3)<I>CUTOFP</I>, the
+function value is
+(2/3)<I>CUTOFP</I> and the derivative is 1.0.  In the region
+<I>R</I>=(4/3)<I>CUTOFP</I> the function has the value <I>CUTOFP</I>, and has a derivative of
+zero. In between these two limits, the value of the derivative decreases
+smoothly from 1.0 to 0.0.
+</BODY>
+</HTML>

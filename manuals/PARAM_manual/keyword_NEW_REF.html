@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<TITLE>NEW_REF</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>NEW_REF=&lt;<i>text</i>&gt;</TT></h1>
+<p align="left">Normally reference data sets are not updated.&nbsp; This means 
+that as a method gets more accurate, the geometries in reference data set files 
+become less accurate than if the new method was used.&nbsp; To allow the 
+geometries to be re-optimized using a new method, <TT>NEW_REF=&lt;<i>text</i>&gt;</TT> is provided.&nbsp; 
+When a job is run using this keyword, new reference data sets are written to the 
+location defined by &lt;<i>text</i>&gt;.&nbsp; Although in principle &lt;<i>text</i>&gt; can be the 
+location of the current reference data set, that folder should not be used, because the 
+current reference data sets will be over-written, and if a mistake is made it 
+might be difficult to go back.</p>
+<p align="left">If <TT>&nbsp;NEW_REF=&lt;<i>text</i>&gt;</TT> is used, only one <TT>
+<a href="keyword_ref.html">REF</a></TT> 
+folder should be defined.&nbsp; If more than one folder is specified, all the 
+optimized files will still be written to the same folder, that is, the various 
+sets would be combined.</p>
+<p align="left"> <TT>NEW_REF=&lt;<i>text</i>&gt;</TT> is particularly useful 
+when a method is finalized.&nbsp; The resulting files are optimized using that 
+method, and would therefore run much faster in surveys.</p>
+<p align="left"> If the folder name or the 
+path contains spaces, then &lt;text&gt; should be delimited by quotation marks, as in:&nbsp;
+<TT>NEW_REF=&quot;M:\Data\Improved normal data&quot; </TT></p>
+<p align="left">&nbsp;</p>
+<p align="left">&nbsp;</p>
+</BODY>
+</HTML>

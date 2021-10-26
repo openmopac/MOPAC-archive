@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>SETPI </TITLE>
+<style type="text/css">.auto-style1 {
+	text-align: center;
+}
+.auto-style3 {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	padding-bottom: 1px;
+}
+.auto-style4 {
+	text-align: center;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+</style>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>SETPI</TT> or
+<TT>SETPI=&lt;file&gt;.TXT</TT></h1>
+        In some instances, the default <a href="Lewis_structures.html">Lewis 
+structure</a> used in a <a href="mozyme.html"><TT>MOZYME</TT></a> calculation is not 
+correct.&nbsp; The correct structure can be selected by explicitly supplying one 
+or more <span class="b">&pi;</span> bonds.&nbsp; To do this, add keyword <TT>SETPI</TT> or <TT>SETPI=&lt;file&gt;.TXT</TT>.&nbsp; 
+When <TT>SETPI</TT> is used, after the data set add&nbsp; the atom-pairs, see <a href="atom_numbers.html">
+atom numbering</a>, that define one or more
+<span class="b">&pi;</span> bonds.&nbsp; For example, a hexagon of carbon atoms 
+with four hydrogen atoms and two oxygen atoms in the 1 and 4 positions, i.e. C<sub>6</sub>H<sub>4</sub>O<sub>2</sub>, 
+can either be  the neutral molecule <i>para</i>-benzoquinone or the di-anion 
+of hydroquinone.&nbsp; The default Lewis structure is the neutral system.&nbsp; 
+If the di-anion is wanted, then the three aromatic <span class="b">&pi;</span> 
+bonds need to be explicitly defined, thus:<PRE>Mozyme setpi charge=-2 
+  Di-anion of hydroquinone
+
+  C     0.00000000  0    0.0000000  0    0.0000000  0                      
+  C     1.42891759  1    0.0000000  0    0.0000000  0     1     0     0    
+  C     1.39123760  1  121.7152363  1    0.0000000  0     2     1     0    
+  C     1.42884933  1  121.6862338  1    0.0522686  1     3     2     1    
+  C     1.42731168  1  116.6123504  1   -0.0326433  1     4     3     2    
+  C     1.39298952  1  121.7002715  1    0.0291866  1     5     4     3    
+  O     1.28854675  1  121.6283321  1  179.9905509  1     1     2     3    
+  O     1.28863750  1  121.5839611  1  179.9914815  1     4     3     2    
+  H     1.07825816  1  117.6731944  1 -179.9642741  1     2     1     3    
+  H     1.07822008  1  120.6215632  1 -179.9762574  1     3     2     1    
+  H     1.07805743  1  117.7610380  1 -179.9848142  1     5     4     3    
+  H     1.07809519  1  120.5409971  1  179.9757231  1     6     5     4   
+   
+2 3
+1 6
+4 5</PRE>
+<p>If the geometry is supplied using GEO_DAT, then <TT>SETPI</TT> cannot be 
+used.&nbsp; Instead use <TT>SETPI=&lt;file&gt;.TXT, </TT>for example, setpi=setpi_for_Cytochrome-P450.txt 
+or setpi=&quot;../setpi for Cytochrome-P450.txt. In this example, the keyword points 
+to a file in the next-higher level.&nbsp; The file pointed to by setpi should 
+contain exactly the same data as defined earlier.</p>
+<p>When large biomolecules are being run, defining atoms by their atom number is 
+sometimes difficult.&nbsp; In a PDB atom label, the number may or may not be the 
+same as the atom number.&nbsp; Two simpler methods for defining atoms are 
+provided: the PDB label and the JSmol label.&nbsp; If the PDB or JSmol label is 
+used, then enclose the label in quotation marks. Wildcards, where the chain 
+letter is replaced by an asterisk, or a residue is replaced by three asterisks, 
+are allowed. The first occurrence that matches will be used. Examples of valid labels are:</p>
+<table align="center">
+	<tr>
+		<td colspan="2">Examples of the use of PDB and JSmol <br>d<span class="auto-style3">efinitions 
+		of atoms used in &pi;-bonds</span></td>
+	</tr>
+	<tr>
+		<td class="auto-style1">&quot;[8OG]1157:A.C6&quot;</td>
+		<td class="auto-style1">&quot;[8OG]1157:A.N1&quot;</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">&quot;CB PHE B 74&quot; </td>
+		<td class="auto-style1">&quot;CG PHE B 74&quot;</td>
+	</tr>
+	<tr>
+		<td class="auto-style4">&quot;[8OG]1157:A.C6&quot;</td>
+		<td class="auto-style4">&quot;N1 8OG B1157&quot;</td>
+	</tr>
+	<tr>
+		<td class="auto-style4" colspan="2">The same examples, with wildcards</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">&quot;[***]1157:A.C6&quot;</td>
+		<td class="auto-style1">&quot;[***]1157:*.N1&quot;</td>
+	</tr>
+	<tr>
+		<td class="auto-style1">&quot;CB PHE * 74&quot; </td>
+		<td class="auto-style1">&quot;CG PHE * 74&quot;</td>
+	</tr>
+	<tr>
+		<td class="auto-style4">&quot;[8OG]1157:*.C6&quot;</td>
+		<td class="auto-style4">&quot;N1 *** B1157&quot;</td>
+	</tr>
+	<tr>
+		<td class="auto-style4" colspan="2">Quotation marks are part of the 
+		definition</td>
+	</tr>
+</table>
+<p>There is no need to supply all the <span class="b">&pi;</span> bonds, only 
+those necessary to resolve any ambiguities.&nbsp; Other examples of the need 
+for <TT>SETPI</TT> include:<img src="Guanine%20for%20setpi.gif" style="float: left" width="559" height="372"></p>
+
+<p>Distinguishing the anion of p-hydroxy N-methyl pyridine from its quinone type 
+tautomer.<br>
+Ensuring that&nbsp; <i>meso</i>-tetra(<i>para</i>-N-methylpyridinato)-porphyrin 
+has the correct charge.</p>
+<h4>Worked example of Guanine anion</h4>
+<p>Guanine (see top figure) anion can be made by removing a proton from either O<sub>6</sub> 
+or N<sub>1</sub>. If the only guide to the electronic structure is the topology, 
+then both of the lower figures are valid.&nbsp; If a double bond is made between 
+C<sub>6</sub> and O<sub>6</sub> (bottom left figure) then N<sub>3</sub> would have only two valencies used, 
+instead of the three valencies expected.&nbsp; This is clearly wrong but it 
+follows logically from the presence of the C=O double-bond.&nbsp; In MOPAC, by default, a 
+nitrogen atom with a valence other than 3 would be assigned a positive charge.&nbsp;This 
+is obviously the wrong charge. 
+To prevent this from happening, <tt>SETPI</tt> could be used to define a double 
+bond between C<sub>6</sub> and N<sub>1</sub>.&nbsp; If that is done (bottom 
+right figure) then all the faults are corrected.&nbsp; C<sub>6</sub> now 
+automatically forms a single bond with O<sub>6</sub>, which then automatically 
+gets a negative charge, the ring becomes aromatic, and the faulty divalent 
+nitrogen becomes trivalent.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+<p>See also <a href="CVB.html"><TT>CVB</TT></a> to explicitly make or break bonds, and 
+<a href="Labels.html">atom labels</a> to explicitly assign charges.</p>
+
+
+<p>&nbsp;</p>
+
+
+<p>Other examples of the use of <TT>SETPI</TT>
+in defining the Lewis structure can be seen in the following ARC files::</p>
+
+
+<p><a href="../PM7_and_PM6-D3H4_accuracy/PM7_PDB/1-Myoglobin%20(1M6C).arc">
+1-Myoglobin (1M6C)</a> This protein contains a heme ring system, a particularly 
+complicated Lewis structure.&nbsp; <a href="CVB.html"><TT>CVB</TT></a> is used to break 
+chemical bonds to isolate the porphorin ring from the iron atom, then 
+<TT>SETPI</TT> is used to lock the &pi;-system so that the charge on the ring is 
+correct.</p>
+
+
+<p><a href="../PM7_and_PM6-D3H4_accuracy/PM7_PDB/Human%20MTH1%20(3ZR0).arc">
+Human MTH1 (3ZR0)</a> More &pi;-bonds than necessary were used in defining the 
+Lewis structure for the benzimidazole.&nbsp; Only one is really necessary, but 
+extra &#960;-bonds don't cause problems.</p>
+
+
+<p><a href="../PM7_and_PM6-D3H4_accuracy/PM7_PM7/Metalloprotein%20(1J3F).arc">Metalloprotein (1J3F)</a> 
+For details of why this was a difficult system, see
+<a href="../PM7_and_PM6-D3H4_accuracy/PM7_PDB/Notes%20on%20Metalloprotein%20(1J3F).html">Notes on 
+Metalloprotein</a></p>
+
+
+</BODY></HTML>

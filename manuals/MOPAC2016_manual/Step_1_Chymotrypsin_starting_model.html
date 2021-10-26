@@ -1,0 +1,616 @@
+<HTML>
+<HEAD>
+<TITLE>Chymotrypsin Starting Model</TITLE>
+<meta charset="utf-8"> <script type="text/javascript" src="../jsmol/JSmol.min.js"></script>  
+<!-- <meta charset="utf-8"> <script type="text/javascript" src="JSmol.min.js"></script>  -->
+<script type="text/javascript"> 
+
+$(document).ready(function() {Info = {
+	width: 1400, 
+	height: 1400, 
+	color: "0xC0C0C0", 
+	disableInitialConsole: true, 
+	addSelectionOptions: false,  
+	j2sPath: "../jsmol/j2s",
+	jarPath: "../jsmol/java",
+	use: "HTML5", script: 
+
+//  Data-set to be loaded
+
+"load 	\
+	Step_1_Chymotrypsin_starting_model.pdb;  \
+	set measurementUnits ANGSTROMS; \
+	hBonds calculate; \
+	connect 0.8  1.5 (hydrogen) (phosphorus) create; \
+	set zoomLarge false;"
+} 
+$("#mydiv").html(Jmol.getAppletHtml("jmolApplet0",Info))}); 
+</script>
+
+
+
+
+<style type="text/css">.auto-style1 {
+	font-family: Arial;
+	text-align: center;
+}
+.auto-style2 {
+	text-align: center;
+}
+.auto-style3 {
+	text-align: left;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">
+(<a href="modeling_proteins.html#Constructing%20starting%20model">Modeling proteins</a>) 
+(<a href="Chymotrypsin_mechanism.html">Chymotrypsin Mechanism</a>:
+<a href="Step_1_Chymotrypsin_starting_model.html">Step 1</a>,
+<a href="Step_2_Chymotrypsin_Tetrahedral_complex_His57_ionized.html">Step 2</a>,
+<a href="Step_3_Chymotrypsin_tetrahedral_intermediate.html">Step 3</a>,
+<a href="Step_4_Chymotrypsin_C-N_Separated.html">Step 4</a>, 
+<a href="Step_5_Chymotrypsin_pre_acid.html">Step 5</a>, 
+<a href="Step_6_Chymotrypsin_ester_hydrolyzed.html">Step 6</a>)</font></p>
+<h1 class="auto-style1">Step 1: Chymotrypsin Mechanism - Starting Model </h1>
+<p class="auto-style3">Like all catalyic processes, the chymotrypsin mediated 
+hydrolysis of a peptide bond involves a cyclic mechanism - the substrate (the 
+precursor) is bound to the active side, hydrolysis occurs, then the products 
+leave, and finally a new substrate binds to the active site.&nbsp; For 
+convenience, therefore, the start of the process is defined here as the 
+substrate non-covalently bonded to the active site i.e., &quot;docked.&quot;</p>
+<p class="auto-style3">&nbsp;Getting from the original PDB structure to the 
+fully-optimized starting model requires much work.&nbsp; The main steps are: 
+adding hydrogen atoms to the PDB file; optimizing the positions of the hydrogen 
+atoms; forming salt bridges (i.e. ionizing various sites); editing the substrate 
+to make it into a hydrolysable peptide; and unconstrained optimization of the 
+geometry. (<a href="Step_1_Chymotrypsin_starting_model.pdb">PDB file</a>) (<a href="Step_1.arc">ARC 
+file</a>)</p>
+<h3>&nbsp;Interesting features of the Starting Model</h3>
+<p>(A) The active site, composed of the catalytic triad, the substrate, and 
+Ser214.&nbsp; The hydroxyl hydrogen of Ser214 hydrogen bonds to the carboxylate 
+oxygen of Asp102 that forms a hydrogen bond with the imidazole hydrogen of 
+His57. At the same time, the carbonyl oxygen of Ser214 hydrogen bonds to both 
+the peptide hydrogen of Trp252 and the hydroxyl hydrogen of Ser195, this 
+&quot;locking&quot; the orientation of the hydroxyl hydrogen.</p>
+<p>(B) In the oxyanion hole, the carbonyl oxygen of Trp252 forms two normal 
+(1.81&Aring; and 2.02&Aring;) hydrogen bonds with Gly193 and Ser195 peptide 
+hydrogen atoms, respectively.&nbsp; </p>
+<p>(C) Chymotrypsin consists of three chains, E, F, and G, with the composition 
+as shown below.&nbsp; There is a fourth chain in 8GCH, chain C, consisting of 
+three residues.&nbsp; To make the substrate, Trp252 was modified to convert the 
+carboxylic acid group into -Thr<sub>253</sub>.&nbsp; Of all the residues in 
+chymotrypsin, sixteen are of particular interest; these are also shown below. 
+Most of Ser11 is missing; all that survives is the -NH<sub>3</sub>(+); this 
+forms a salt bridge with 
+Glu20.</p>
+<table align="center">
+	<tr>
+		<td style="width: 87px" class="auto-style2">Chain</td>
+		<td style="width: 589px" class="auto-style2">Amino-acid sequence in Chymotrypsin</td>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Interesting Residues</td>
+		<td class="auto-style2">Chain</td>
+		<td class="auto-style2" style="width: 297px">Property</td>
+	</tr>
+	<tr>
+		<td style="width: 87px" class="auto-style2" rowspan="2">E<br>(First 
+		residue is Cys1)</td>
+		<td style="width: 589px" rowspan="2"><pre>Residues     1     2     3     4     5     6     7     8     9     10
+        0   CYS   GLY   VAL   PRO   ALA   ILE   GLN   PRO   VAL   LEU+  
+       10   SER   </pre>
+		</td>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Ser11</td>
+		<td class="auto-style2">E</td>
+		<td style="width: 297px">Salt bridge with Glu20 </td>
+	</tr>
+	<tr>
+		<td style="height: 23px; width: 150px;">&nbsp;</td>
+		<td style="height: 23px; width: 36px;">Ile16</td>
+		<td class="auto-style2" style="height: 23px">F</td>
+		<td style="width: 297px; height: 23px">Salt bridge with Asp194</td>
+	</tr>
+	<tr>
+		<td style="width: 87px" rowspan="12" class="auto-style2">F<br>(First 
+		residue is Ile16)</td>
+		<td style="width: 589px" rowspan="12"><PRE>
+              1     2     3     4     5     6     7     8     9    10
+       10                                 ILE+  VAL   ASN   GLY   GLU-  
+       20   GLU-  ALA   VAL   PRO   GLY   SER   TRP   PRO   TRP   GLN   
+       30   VAL   SER   LEU   GLN   ASP   LYS   THR   GLY   PHE   HIS   
+       40   PHE   CYS   GLY   GLY   SER   LEU   ILE   ASN   GLU   ASN   
+       50   TRP   VAL   VAL   THR   ALA   ALA   HIS   CYS   GLY   VAL   
+       60   THR   THR   SER   ASP   VAL   VAL   VAL   ALA   GLY   GLU   
+       70   PHE   ASP   GLN   GLY   SER   SER   SER   GLU   LYS   ILE   
+       80   GLN   LYS   LEU   LYS   ILE   ALA   LYS   VAL   PHE   LYS   
+       90   ASN   SER   LYS   TYR   ASN   SER   LEU   THR   ILE   ASN   
+      100   ASN   ASP-  ILE   THR   LEU   LEU   LYS   LEU   SER   THR   
+      110   ALA   ALA   SER   PHE   SER   GLN   THR   VAL   SER   ALA   
+      120   VAL   CYS   LEU   PRO   SER   ALA   SER   ASP   ASP   PHE   
+      130   ALA   ALA   GLY   THR   THR   CYS   VAL   THR   THR   GLY   
+      140   TRP   GLY   LEU   THR   ARG   TYR   
+ </PRE></td>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Glu20</td>
+		<td class="auto-style2">F</td>
+		<td style="width: 297px">Salt bridge with Ser11</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Glu21</td>
+		<td class="auto-style2">F</td>
+		<td style="width: 297px">Salt bridge with Arg154</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">His57</td>
+		<td class="auto-style2">F</td>
+		<td style="width: 297px">Catalytic triad</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Glu102</td>
+		<td class="auto-style2">F</td>
+		<td style="width: 297px">Catalytic triad</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Arg154</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">Salt bridge with Glu21</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Ser189</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">Hydrophobic pocket</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Gly193</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">H-bond of oxyanion hole</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Asp194</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">Salt bridge with Ile16</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Ser195</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">Catalytic triad</td>
+	</tr>
+	<tr>
+		<td style="width: 150px; height: 23px">&nbsp;</td>
+		<td style="width: 36px; height: 23px">Ser195</td>
+		<td class="auto-style2" style="height: 23px">G</td>
+		<td style="width: 297px; height: 23px;">H-bond of oxyanion hole</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Ser195</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">H-bond to Ser214</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">Ser214</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">H-bond to Trp252 peptide N</td>
+	</tr>
+	<tr>
+		<td style="width: 87px" class="auto-style2" rowspan="6">G<br>(First 
+		residue is Asn150)</td>
+		<td style="width: 589px" rowspan="6"><pre>       
+             1     2     3     4     5     6     7     8     9    10
+      140                                                         ASN   
+      150   THR   PRO   ASP   ARG+  LEU   GLN   GLN   ALA   SER   LEU   
+      160   PRO   LEU   LEU   SER   ASN   THR   ASN   CYS   LYS   LYS   
+      170   TYR   TRP   GLY   THR   LYS   ILE   LYS   ASP   ALA   MET   
+      180   ILE   CYS   ALA   GLY   ALA   SER   GLY   VAL   SER   SER   
+      190   CYS   MET   GLY   ASP-  SER   GLY   GLY   PRO   LEU   VAL   
+      200   CYS   LYS   LYS   ASN   GLY   ALA   TRP   THR   LEU   VAL   
+      210   GLY   ILE   VAL   SER   TRP   GLY   SER   SER   THR   CYS   
+      220   SER   THR   SER   THR   PRO   GLY   VAL   TYR   ALA   ARG   
+      230   VAL   THR   ALA   LEU   VAL   ASN   TRP   VAL   GLN   GLN   
+      240   THR   LEU   ALA   ALA   ASN   </pre></td>
+		<td style="width: 150px"></td>
+		<td style="width: 36px">Gly216</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">Hydrophobic pocket</td>
+	</tr>
+	<tr>
+		<td style="width: 150px; height: 11px;"></td>
+		<td style="width: 36px; height: 11px;">Gly216</td>
+		<td class="auto-style2" style="height: 11px">G</td>
+		<td style="width: 297px; height: 11px;">H-bond to Gly250, Ala 251</td>
+	</tr>
+	<tr>
+		<td style="width: 150px"></td>
+		<td style="width: 36px">Ser217</td>
+		<td class="auto-style2">G</td>
+		<td style="width: 297px">H-bond to Trp252 heterocycle N</td>
+	</tr>
+	<tr>
+		<td style="width: 150px; height: 2px;"></td>
+		<td style="width: 36px; height: 2px;">Gly226</td>
+		<td class="auto-style2" style="height: 2px">G</td>
+		<td style="width: 297px; height: 2px;">End of hydrophobic pocket</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+		<td style="width: 297px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+		<td style="width: 297px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td style="width: 87px" class="auto-style2">&nbsp;</td>
+		<td style="width: 589px" rowspan="5"><pre>       Gly250-Ala251-Trp252-Thr253</pre> <br></td>
+		<td style="width: 150px"></td>
+		<td style="width: 36px"></td>
+		<td class="auto-style2"></td>
+		<td style="width: 297px"></td>
+	</tr>
+	<tr>
+		<td style="width: 87px" class="auto-style2">C</td>
+		<td style="width: 150px">&nbsp;</td>
+		<td style="width: 36px">&nbsp;</td>
+		<td class="auto-style2">&nbsp;</td>
+		<td style="width: 297px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td style="width: 87px" class="auto-style2">(The substrate)</td>
+	</tr>
+	<tr>
+		<td style="width: 172px">&nbsp;</td>
+	</tr>
+	<tr>
+		<td style="width: 172px">&nbsp;</td>
+	</tr>
+</table>
+<TABLE>
+<TD valign="top">
+<a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 1;')">Fast display</a> or <a href="javascript:Jmol.script(jmolApplet0,'set platformSpeed 2;')">High-quality display</a> <BR><BR>
+
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (isOK1);  Display *; isOK1 = FALSE; else hide *; 
+isOK1 = TRUE; isOK2 = FALSE; isOK3 = FALSE; isOK4 = FALSE; isOK5 = FALSE; isOK6 = FALSE; isOK7 = FALSE; isOK8 = FALSE; isOK9 = FALSE; 
+endif;')">Toggle display all</a> <BR><BR>
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (lcenter);  lcenter = FALSE; else lcenter = TRUE;  center {visible}; end if;
+')">Toggle center picture</a> <BR><BR>
+<a href="javascript:Jmol.script(jmolApplet0,'zoom 0; ')">Fit to screen</a> <BR><BR>
+
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOK2);   
+display ADD ([LEU]10, [SER]11, [ILE]16, [GLU]20, [GLU]21, [HIS]57, [ASP]102, [ARG]154, [SER]189, 
+[GLY]193, [ASP]194, [SER]195, [SER]214, [TRP]215, [GLY]216, [SER]217, [GLY]226, [GLY]250, [ALA]251, [TRP]252, [THR]253, [HOH]647); isOK2 = TRUE;
+Hoh647 = TRUE; Leu10 = TRUE; Ser11 = TRUE; Ile16 = TRUE; Glu20 = TRUE; GLU21 = TRUE; His57 = TRUE; Asp102 = TRUE; Arg154 = TRUE; Ser189 = TRUE; Gly193 = TRUE; Asp194 = TRUE;
+Ser195 = TRUE; Ser214 = TRUE; Ser214 = TRUE; Trp215 = TRUE; Gly216 = TRUE; Ser217 = TRUE; Gly226 = TRUE; Gly250 = TRUE; Ala251 = TRUE; Trp252 = TRUE; Thr253 = TRUE;
+else 
+hide    ADD ([HOH]647, [LEU]10, [SER]11, [ILE]16, [GLU]20, [GLU]21, [HIS]57, [ASP]102, [ARG]154, [SER]189, 
+[GLY]193, [SER]195, [ASP]194, [SER]195, [SER]214, [TRP]215, [GLY]216, [SER]217, [GLY]226, [GLY]250, [ALA]251, [TRP]252, [THR]253);
+  isOK2 = FALSE; 
+Hoh647 = FALSE; Leu10 = FALSE; Ser11 = FALSE; Ile16 = FALSE; Glu20 = FALSE; GLU21 = FALSE; His57 = FALSE; Asp102 = FALSE; Arg154 = FALSE; Ser189 = FALSE; Gly193 = FALSE; Asp194 = FALSE;
+Ser195 = FALSE; Ser214 = FALSE; Ser214 = FALSE; Trp215 = FALSE; Gly216 = FALSE; Ser217 = FALSE; Gly226 = FALSE; Gly250 = FALSE; Ala251 = FALSE; Trp252 = FALSE; Thr253 = FALSE;
+end if; if (lcenter); center {visible}; 
+end if;')">Interesting parts</a>: 
+<TABLE>
+<TR>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Leu10);   display ADD ([LEU]10);  Leu10 = TRUE; else 
+hide ADD ([LEU]10);  Leu10 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Leu10 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser11);   display ADD ([SER]11);  Ser11 = TRUE; else 
+hide ADD ([SER]11);  Ser11 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Ser11 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ile16);   display ADD ([ILE]16);  Ile16 = TRUE; else 
+hide ADD ([ILE]16);  Ile16 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Ile16 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Glu20);   display ADD ([GLU]20);  Glu20 = TRUE; else 
+hide ADD ([GLU]20);  Glu20 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Glu20 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Glu21);   display ADD ([GLU]21);  Glu21 = TRUE; else 
+hide ADD ([GLU]21);  Glu21 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Glu21 </a> </TD>
+
+</TR>
+<TR>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!His57);   display ADD ([HIS]57);  His57 = TRUE; else 
+hide ADD ([HIS]57);  His57 = FALSE; end if; if (lcenter); center {visible}; end if;')">  His57 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Asp102);   display ADD ([ASP]102);  Asp102 = TRUE; else 
+hide ADD ([ASP]102);  Asp102 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Asp102 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Arg154);   display ADD ([ARG]154);  Arg154 = TRUE; else 
+hide ADD ([ARG]154);  Arg154 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Arg154 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser189);   display ADD ([SER]189);  Ser189 = TRUE; else 
+hide ADD ([SER]189);  Ser189 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser189 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly193);   display ADD ([GLY]193);  Gly193 = TRUE; else 
+hide ADD ([GLY]193);  Gly193 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly193 </a> </TD> 
+
+</TR>
+<TR>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Asp194);   display ADD ([ASP]194);  Asp194 = TRUE; else 
+hide ADD ([ASP]194);  Asp194 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Asp194 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser195);   display ADD ([SER]195);  Ser195 = TRUE; else 
+hide ADD ([SER]195);  Ser195 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser195 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser214);   display ADD ([SER]214);  Ser214 = TRUE; else 
+hide ADD ([SER]214);  Ser214 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser214 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp215);   display ADD ([TRP]215);  Trp215 = TRUE; else 
+hide ADD ([TRP]215);  Trp215 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp215 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly216);   display ADD ([GLY]216);  Gly216 = TRUE; else 
+hide ADD ([GLY]216);  Gly216 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly216 </a> </TD> 
+
+</TR>
+<TR>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser217);   display ADD ([SER]217);  Ser217 = TRUE; else 
+hide ADD ([SER]217);  Ser217 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser217 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly226);   display ADD ([GLY]226);  Gly226 = TRUE; else 
+hide ADD ([GLY]226);  Gly226 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly226 </a> </TD>  
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly250);   display ADD ([GLY]250);  Gly250 = TRUE; else 
+hide ADD ([GLY]250);  Gly250 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly250 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ala251);   display ADD ([ALA]251);  Ala251 = TRUE; else 
+hide ADD ([ALA]251);  Ala251 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ala251 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp252);   display ADD ([TRP]252);  Trp252 = TRUE; else 
+hide ADD ([TRP]252);  Trp252 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp252 </a> </TD> 
+
+</TR>
+<TR>
+
+<TD valign="top"> <a href="javascript:Jmol.script(jmolApplet0,'if (!Thr253);   display ADD ([THR]253);  Thr253 = TRUE; else 
+hide ADD ([THR]253);  Thr253 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Thr253 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Hoh647);   display ADD ([HOH]647);  Hoh647 = TRUE; else 
+hide ADD ([HOH]647);  Hoh647 = FALSE; end if; if (lcenter); center {visible}; end if;')"> H<sub>2</sub>O</a> </TD> 
+
+</TR>
+
+
+</TABLE>The water molecule is assumed to be the<br>one that will hydrolyze the 
+ester between <br>Ser195 and Trp252<br><BR> 
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOK3);   display ADD ([HIS]57, [SER]195, [ASP]102);  isOK3 = TRUE;
+His57 = TRUE; Ser195 = TRUE; Asp102 = TRUE;
+else hide ADD ([HIS]57, [SER]195, [ASP]102);  isOK3 = FALSE; His57 = FALSE; Ser195 = FALSE; Asp102 = FALSE;
+end if; if (lcenter); center {visible}; end if;
+')">Catalytic triad</a>: <BR>
+<TABLE>
+<TR>
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!His57);   display ADD ([HIS]57);  His57 = TRUE; else 
+hide ADD ([HIS]57);  His57 = FALSE; end if; if (lcenter); center {visible}; end if;')">  His57 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Asp102);   display ADD ([ASP]102);  Asp102 = TRUE; else 
+hide ADD ([ASP]102);  Asp102 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Asp102 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser195);   display ADD ([SER]195);  Ser195 = TRUE; else 
+hide ADD ([SER]195);  Ser195 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser195 </a> </TD> 
+</TR>
+</TABLE><br> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser214);   display ADD ([SER]214);  Ser214 = TRUE; else 
+hide ADD ([SER]214);  Ser214 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser214</a> 
+is very near to Asp102 and Ser195.<br>Its hydroxyl group forms a strong hydrogen<br>
+bond with Asp102, and its carbonyl oxygen<br>forms a weaker hydrogen bond with 
+the<br>hydroxyl of Ser195, locking the proton<br>in place.<br><BR>
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOK5);   display ADD (*:C);  hide add solvent; isOK5 = TRUE;
+Gly250 = TRUE; Ala251 = TRUE; Trp252 = TRUE; Thr253 = TRUE;
+else hide ADD (*:C);  isOK5 = FALSE; 
+Gly250 = FALSE; Ala251 = FALSE; Trp252 = FALSE; Thr253 = FALSE;
+end if; if (lcenter); center {visible}; end if;
+')">Substrate</a>: <BR>
+  <TABLE>
+  <TR>
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly250);   display ADD ([GLY]250);  Gly250 = TRUE; else 
+hide ADD ([GLY]250);  Gly250 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly250 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ala251);   display ADD ([ALA]251);  Ala251 = TRUE; else 
+hide ADD ([ALA]251);  Ala251 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ala251 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp252);   display ADD ([TRP]252); hide add solvent;  Trp252 = TRUE; else 
+hide ADD ([TRP]252); hide add solvent;  Trp252 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp252 </a> </TD> 
+
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Thr253);   display ADD ([THR]253); hide add solvent;  Thr253 = TRUE; else 
+hide ADD ([THR]253); hide add solvent;  Thr253 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Thr253 </a> </TD> 
+
+
+</TR>
+  </TABLE><BR>
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOK5);   display ADD ([SER]195, [ASP]194, [GLY]193, *:C);  hide add solvent; isOK5 = TRUE;
+Gly193 = TRUE; Asp194 = TRUE; Ser195 = TRUE; Gly250 = TRUE; Ala251 = TRUE; Trp252 = TRUE; Thr253 = TRUE;
+else hide ADD ([SER]195, [ASP]194, [GLY]193, *:C);  isOK5 = FALSE; 
+Gly193 = FALSE; Asp194 = FALSE; Ser195 = FALSE; Gly250 = FALSE; Ala251 = FALSE; Trp252 = FALSE; Thr253 = FALSE;
+end if; if (lcenter); center {visible}; end if;
+')">Oxyanion hole plus substrate</a>: <BR>
+  <TABLE>
+  <TR>
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly193);   display ADD ([GLY]193);  Gly193 = TRUE; else 
+hide ADD ([GLY]193);  Gly193 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly193 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Asp194);   display ADD ([ASP]194);  Asp194 = TRUE; else 
+hide ADD ([ASP]194);  Asp194 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Asp194 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser195);   display ADD ([SER]195);  Ser195 = TRUE; else 
+hide ADD ([SER]195);  Ser195 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser195 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly250);   display ADD ([GLY]250);  Gly250 = TRUE; else 
+hide ADD ([GLY]250);  Gly250 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly250 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ala251);   display ADD ([ALA]251);  Ala251 = TRUE; else 
+hide ADD ([ALA]251);  Ala251 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ala251 </a> </TD> 
+
+</TR>
+<TR>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp252);   display ADD ([TRP]252);  Trp252 = TRUE; else 
+hide ADD ([TRP]252);  Trp252 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp252 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Thr253);   display ADD ([THR]253);  Thr253 = TRUE; else 
+hide ADD ([THR]253);  Thr253 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Thr253 </a> </TD> 
+
+</TR>
+  </TABLE><br>The peptide hydrogen atoms of Gly193 and<br>Ser195 form hydrogen 
+bonds with the<br>peptide carbonyl oxygen atom of the bond<br>that is to be 
+hydrolyzed.<br><BR>
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOK6);   display ADD ([SER]189, [TRP]215, [GLY]216, [SER]217, [GLY]226, *:C);  hide add solvent; isOK6 = TRUE;
+Ser189 = TRUE; Trp215 = TRUE; Gly216 = TRUE; Ser217 = TRUE; Gly226 = TRUE; Gly250 = TRUE; Ala251 = TRUE; Trp252 = TRUE; Thr253 = TRUE;
+else hide ADD ([SER]189, [TRP]215, [GLY]216, [SER]217, [GLY]226, *:C);  isOK6 = FALSE; 
+Ser189 = FALSE; Trp215 = FALSE; Gly216 = FALSE; Ser217 = FALSE; Gly226 = FALSE; Gly250 = FALSE; Ala251 = FALSE; Trp252 = FALSE; Thr253 = FALSE;
+end if; if (lcenter); center {visible}; end if;
+')">Substrate in Hydrophobic pocket</a>: <BR>
+  <TABLE>
+  <TR>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser189);   display ADD ([SER]189);  Ser189 = TRUE; else 
+hide ADD ([SER]189);  Ser189 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser189 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp215);   display ADD ([TRP]215);  Trp215 = TRUE; else 
+hide ADD ([TRP]215);  Trp215 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp215 </a> </TD>
+
+<td><a href="javascript:Jmol.script(jmolApplet0,'if (!Gly216);   display ADD ([GLY]216);  Gly216 = TRUE; else 
+hide ADD ([GLY]216);  Gly216 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly216 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser217);   display ADD ([SER]217);  Ser217 = TRUE; else 
+hide ADD ([SER]217);  Ser217 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser217 </a> </TD>
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly226);   display ADD ([GLY]226);  Gly226 = TRUE; else 
+hide ADD ([GLY]226);  Gly226 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly226 </a> </TD> 
+
+</TR>
+<TR> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly250);   display ADD ([GLY]250);  Gly250 = TRUE; else 
+hide ADD ([GLY]250);  Gly250 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly250 </a> </TD>
+
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ala251);   display ADD ([ALA]251);  Ala251 = TRUE; else 
+hide ADD ([ALA]251);  Ala251 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ala251 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp252);   display ADD ([TRP]252);  Trp252 = TRUE; else 
+hide ADD ([TRP]252);  Trp252 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp252 </a> </TD> 
+
+<TD> <a href="javascript:Jmol.script(jmolApplet0,'if (!Thr253);   display ADD ([THR]253);  Thr253 = TRUE; else 
+hide ADD ([THR]253);  Thr253 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Thr253 </a> </TD> 
+
+</TR>
+  </TABLE><br>Chymotrypsin specificity is determined by <br>the S1 residues <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser189);   display ADD ([SER]189);  Ser189 = TRUE; else 
+hide ADD ([SER]189);  Ser189 = FALSE; end if; if (lcenter); center {visible}; end if;')"> 
+Ser18</a>, <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly216);   display ADD ([GLY]216);  Gly216 = TRUE; else 
+hide ADD ([GLY]216);  Gly216 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly216</a>, 
+and<br>
+<a href="javascript:Jmol.script(jmolApplet0,'if (!Gly226);   display ADD ([GLY]226);  Gly226 = TRUE; else 
+hide ADD ([GLY]226);  Gly226 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly226</a>.<br>
+<br>The substrate forms hydrogen bonds:<br> <a href="javascript:Jmol.script(jmolApplet0,'if (!Ser214);   display ADD ([SER]214);  Ser214 = TRUE; else 
+hide ADD ([SER]214);  Ser214 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Ser214 </a> (O of carbonyl) 
+- <br> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp252);   display ADD ([TRP]252);  Trp252 = TRUE; else 
+hide ADD ([TRP]252);  Trp252 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp252 </a> 
+(H of&nbsp; amide) (P1 residue)<br> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly216);   display ADD ([GLY]216);  Gly216 = TRUE; else 
+hide ADD ([GLY]216);  Gly216 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly216</a> 
+(antiparallel b-sheet - <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly250);   display ADD ([GLY]250);  Gly250 = TRUE; else 
+hide ADD ([GLY]250);  Gly250 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly250</a>) 
+P3<br> <a href="javascript:Jmol.script(jmolApplet0,'if (!Gly193);   display ADD ([GLY]193);  Gly193 = TRUE; else 
+hide ADD ([GLY]193);  Gly193 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Gly193</a> 
+and <a href="javascript:Jmol.script(jmolApplet0,'if (!His57);   display ADD ([HIS]57);  His57 = TRUE; else 
+hide ADD ([HIS]57);  His57 = FALSE; end if; if (lcenter); center {visible}; end if;')">  His57</a> 
+to 
+<a href="javascript:Jmol.script(jmolApplet0,'if (!Thr253);   display ADD ([THR]253);  Thr253 = TRUE; else 
+hide ADD ([THR]253);  Thr253 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Thr253 </a><br><br> <a href="javascript:Jmol.script(jmolApplet0,'if (!Trp215);   display ADD ([TRP]215);  Trp215 = TRUE; else 
+hide ADD ([TRP]215);  Trp215 = FALSE; end if; if (lcenter); center {visible}; end if;')"> Trp215 </a> 
+does not appear to bond to the<br>substrate!<br><BR>
+
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOK7);   display ADD ([LEU]10, [SER]11, [ILE]16, [GLU]20, [GLU]21, [ARG]154, [ASP]194);  isOK7 = TRUE;
+Ser11 = TRUE; Glu20 = TRUE; Ile16 = TRUE; Asp194 = TRUE; Glu21 = TRUE; Arg 154 = TRUE;
+else hide ADD ([LEU]10, [SER]11, [ILE]16, [GLU]20, [GLU]21, [ARG]154, [ASP]194);  isOK7 = FALSE; 
+Ser11 = FALSE; Glu20 = FALSE; Ile16 = FALSE; Asp194 = FALSE; Glu21 = FALSE; Arg154 = FALSE; 
+end if; if (lcenter); center {visible}; end if;
+')">Salt bridges</a>: <BR>
+<TABLE>
+<TR>
+<TD> (<a href="javascript:Jmol.script(jmolApplet0,'if (!Ser11);   display ADD ([LEU]10, [SER]11);  Ser11 = TRUE; else 
+hide ADD ([LEU]10, [SER]11);  Ser11 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Ser11 </a> - 
+<a href="javascript:Jmol.script(jmolApplet0,'if (!Glu20);   display ADD ([GLU]20);  Glu20 = TRUE; else 
+hide ADD ([GLU]20);  Glu20 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Glu20 </a>) </TD>
+
+</TR>
+<TR>
+
+<TD> (<a href="javascript:Jmol.script(jmolApplet0,'if (!Ile16);   display ADD ([ILE]16);  Ile16 = TRUE; else 
+hide ADD ([ILE]16);  Ile16 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Ile16 </a> -
+<a href="javascript:Jmol.script(jmolApplet0,'if (!Asp194);   display ADD ([ASP]194);  Asp194 = TRUE; else 
+hide ADD ([ASP]194);  Asp194 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Asp194 </a>) </TD>
+
+</TR>
+<TR>
+
+<TD> (<a href="javascript:Jmol.script(jmolApplet0,'if (!Glu21);   display ADD ([GLU]21);  Glu21 = TRUE; else 
+hide ADD ([GLU]21);  Glu21 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Glu21 </a> -
+<a href="javascript:Jmol.script(jmolApplet0,'if (!Arg154);   display ADD ([ARG]154);  Arg154 = TRUE; else 
+hide ADD ([ARG]154);  Arg154 = FALSE; end if; if (lcenter); center {visible}; end if;')">  Arg154 </a>) </TD>
+
+</TR>
+<TR>
+
+
+</TR>
+
+<TD>
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOK8); display ADD ([HIS]57, [SER]195, [ASP]102); select ([HIS]57, [SER]195, [ASP]102); halos; isOK8 = TRUE; 
+else select ([HIS]57, [SER]195, [ASP]102); halos off; isOK8 = FALSE;  end if;')">Highlight Catalytic triad</a> <BR><BR>
+
+<a href="javascript:Jmol.script(jmolApplet0,'\
+if (!isOK9); display ADD ([HIS]57, [SER]195, [ASP]102);
+select atomno=756;  label His57; color label black; font label 20 bold; 
+select atomno=1442;  label Asp102; color label black; font label 20 bold;
+select atomno=2736;  label Ser195; color label black; font label 20 bold;
+isOK9 = TRUE;
+else select atomno=756, atomno=1442, atomno=2736;
+label OFF;
+isOK9 = FALSE;
+end if;
+ ')">Label residues in catalytic triad</a> <BR><BR>
+<a href="javascript:Jmol.script(jmolApplet0,'if(_spinning);spin off;else;spin on;endif')">Toggle spin</a> 
+<a href="javascript:Jmol.script(jmolApplet0,'
+if (!isOKa);   stereo; isOKa = TRUE;
+else stereo off;  isOKa = FALSE; end if; if (lcenter); center {visible}; end if;
+')">Toggle stereo</a> <BR><BR>
+<script src="table.js" type="text/javascript"> </script><BR>
+</TD>
+</TABLE><BR>
+</TD>
+<td><span id=mydiv></span><a href="javascript:Jmol.script(jmolApplet0)"></a></td>
+</TABLE>
+</BODY>
+</HTML>

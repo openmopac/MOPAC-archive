@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Verifying Transition States</TITLE>
+                                                                                                                    <style type="text/css">.auto-style1 {
+																														text-align: center;
+																													}
+																													.auto-style2 {
+	font-family: Arial, Helvetica, sans-serif;
+}
+																													</style>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p><font face="Arial">(<a href="modeling_proteins.html#Verifying">Modeling proteins</a>)</font></p>
+<h1 class="auto-style1" ><font face="Arial" ><b>Verifying Transition States</b></font></h1>
+<h3 class="auto-style2">General</h3>
+<p><span class="auto-style2">The final result of a </span> <a href="Locate-TS.html"><tt>LOCATE-TS</tt></a> 
+<span class="auto-style2">calculation 
+should be a transition state.&nbsp; Sometimes the result is a stable 
+intermediate, i.e., a ground state and not a transition state structure.&nbsp; To 
+check whether the final geometry is in fact a transition state for the reaction 
+being studied, two steps are necessary.&nbsp; In the first step, the vibrational 
+frequencies of the atoms in the region of the reaction site are calculated.&nbsp; 
+If one of these frequencies is large and imaginary (printed as a negative 
+number), and all the rest are positive or small and imaginary, then the system 
+is confirmed to be a transition state.&nbsp; In the second step, the geometry is 
+displaced by a small amount in the direction of the imaginary vibrational normal 
+mode, and the Intrinsic Reaction Coordinate, using</span> <a href="irc.html"><tt>IRC</tt></a><span class="auto-style2">, is generated.&nbsp; This is repeated 
+after reversing the displacement.&nbsp; The two IRC curves are then joined 
+together.&nbsp; If the ends of the resulting curve corresponds to the reactant 
+and product, then the imaginary mode is confirmed to be correct.</span></p>
+<h3 class="auto-style2">Verifying that the system is a transition state</h3>
+<p><span class="auto-style2">The starting point for validating a transition state is the final ARC file 
+from a&nbsp; </span> <tt>LOCATE-TS</tt><span class="auto-style2"> run.&nbsp; Edit this file to remove everything except the data 
+set, i.e. everything except the keyword, title, and comment line, and the 
+geometry.&nbsp; Edit the keywords to replace the</span> <tt>LOCATE-TS</tt> 
+<span class="auto-style2">keyword with</span> 
+<a href="force.html"><tt>FORCETS</tt></a> <a href="isotope.html"><tt>ISOTOPE</tt></a>
+<a href="mozyme.html"><tt>MOZYME</tt></a> <a href="eps.html"><tt>EPS=78.4</tt></a><span class="auto-style2">. &nbsp;Having</span><tt> ISOTOPE</tt><span class="auto-style2"> 
+is very useful here because it allows a restart to be done in a later calculation, 
+either for for modeling a Kinetic Isotope Effect or to start an </span> <a href="irc.html"><tt>IRC</tt></a><span class="auto-style2"> 
+calculation. Save the file as a MOPAC data set using a suitable name, e.g., 
+Step_1_2_FORCE.mop, then run it using MOPAC.</span></p>
+<p><span class="auto-style2">Only atoms with optimization flags set to &quot;+1&quot; or &quot;1&quot; will be included in the</span> <tt>FORCETS</TT> 
+<span class="auto-style2">calculation.&nbsp; </span> </p>
+<p><span class="auto-style2">When</span> <tt>LOCATE-TS</tt>&nbsp; 
+<span class="auto-style2">is used, the option exists to select only the 
+atoms involved in bond making and breaking (Set:1) or these atoms plus those 
+attached to them (Set:2).&nbsp; The ARC file from a </span> <tt>LOCATE-TS</tt> 
+<span class="auto-style2">run can easily be edited to 
+convert from Set:1 to Set:2 or vice versa.&nbsp; To go from Set:1 to Set:2, look 
+in the</span> <tt>LOCATE-TS</tt> <span class="auto-style2">output file for the two sets. Set:2 includes Set:1, so 
+identify the new atoms in Set:2 that are not in Set:1.&nbsp; Edit the </span> <tt>FORCETS 
+</tt>
+<span class="auto-style2">data set to change the optimization flags of these new atoms from &quot;+0&quot; to &quot;+1&quot; 
+then save the resulting data set with a new name, e.g., Step_1_2_FORCE_Set2.mop.</span></p>
+<p class="auto-style2">After running the data set, examine the output to verify that there is 
+exactly one negative vibrational frequency. (Genuine transition states have 
+exactly one imaginary vibrational frequency, but for convenience in 
+computational chemistry programs, this is normally displaced as a frequency 
+preceded by a minus sign, so such vibrational frequencies are often called 
+negative vibrations.&nbsp; This convention will be used here.) If there are no 
+negative frequencies, the system is a ground state, possibly a stable 
+intermediate.&nbsp; If there is more than one negative frequency more negative 
+than ~-100cm^(-1), then something is wrong.</p>
+<p><span class="auto-style2">If everything is okay, run the
+<a href="Protein_intrinsic_reaction_coordinates.html">Intrinsic Reaction 
+Coordinate</a></span>.</p>
+</BODY>
+</HTML>

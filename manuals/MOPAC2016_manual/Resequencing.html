@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Resequencing<i>text </i></TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<p align="left">
+(<a href="modeling_proteins.html#Resequencing">Modeling proteins</a>)</p>
+<h1 align="center">
+Resequencing</h1>
+<p align="left">
+To resequence the atoms in a data set, to put them into the standard PDB order, 
+use <a href="reseq.html"><tt>RESEQ</tt></a>.</p>
+<p align="left">
+By default, when hydrogen atoms are added or removed, when keywords <tt>
+<a href="ADD-H.html">ADD-H</a></tt> or <tt><a href="site.html">SITE</a> </tt> 
+are used, or if the input data set is a pure PDB file, the atom sequence will be 
+changed to that of the standard PDB format, i.e., all atoms in a given residue 
+will be together in the new data-set.&nbsp; If this is not wanted, use <tt>
+<a href="noreseq.html">NORESEQ</a>.</tt></p>
+
+<p align="left">
+Be aware that the PDB convention cannot, and does not, uniquely define the order 
+of atoms in a residue.&nbsp; This is because there are sometimes two exactly 
+equivalent ways of labeling an atom.&nbsp; This situation occurs in valine, 
+leucine, arginine, phenylalanine, and tyrosine, and when two or more hydrogen 
+atoms are attached to the same atom.&nbsp; This is not very important 
+however, because operations in MOPAC that depend on atom sequences can correct 
+most simple errors of this type, unless <a href="noswap.html"><tt>NOSWAP</tt></a> is present, and if the second sequence is different to the 
+first sequence then the second sequence will be changed during the run to conform 
+with the first sequence.</p>
+<p align="left">
+&nbsp;</p>
+
+</BODY>
+</HTML>

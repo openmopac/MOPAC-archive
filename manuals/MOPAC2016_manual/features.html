@@ -1,0 +1,639 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>MOPAC 2012 Manual</TITLE>
+<META NAME="description" CONTENT="MOPAC 2012 Manual">
+<META NAME="Template" CONTENT="K:\Microsoft Office\Office\html.dot"></HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+
+<H1 ALIGN="CENTER">Features of MOPAC2016</H1>
+
+<h2 ALIGN="left">Relationship to MOPAC2012</h2>
+<p ALIGN="left">MOPAC2016 is best regarded as MOPAC2012 with improved 
+transition-state location and improved biochemistry modeling.</p>
+<h2 ALIGN="left">Relationship to MOPAC2009</h2>
+
+<p ALIGN="left">MOPAC2012 is best regarded as MOPAC2009 plus PM7 and PM7-TS</p>
+
+<h2 ALIGN="left">Relationship to MOPAC2007</h2>
+
+<p ALIGN="left">MOPAC2009 is best regarded as MOPAC2007 plus the MOZYME 
+function.</p>
+
+<h2 ALIGN="left">Relationship to MOPAC6</h2>
+
+<p ALIGN="left">MOPAC2007 is an updated version of MOPAC6, the last public 
+domain version of MOPAC.&nbsp; MOPAC6 had been written in FORTRAN-77, and had 
+become unwieldy.&nbsp; Maintenance had become increasingly difficult, and the 
+decision was made to completely re-write the program in FORTRAN-90/95.&nbsp; 
+During this process several major changes were made.&nbsp; The method MINDO/3 
+was deleted as were several infrequently-used functionalitiess.&nbsp; The 
+structure of the program was reorganized, so that maintenance and debugging 
+would be easier.&nbsp; A consistent style was imposed on the whole code.&nbsp; 
+This meant that once the overall structure was understood, individual routines 
+could be read by developers with relative ease.</p>
+
+<h2 ALIGN="left">Reliability</h2>
+
+<p ALIGN="left">Despite all the work that has gone into MOPAC2007, it has 
+relatively few features that were not present in MOPAC6; the focus of the effort 
+has not been to add new features, rather it has been to produce a 
+highly-debugged, robust program.&nbsp; The goal is that all the functions 
+implied by the keywords should work as described.&nbsp; During the beta-test, 
+from September 2006 to the end of January 2007, several hundred bugs were found 
+and fixed. Towards the end of the beta-test the rate at which bugs were being 
+found dropped to about two to three a day, and most of those that were reported 
+were not too serious.&nbsp; After MOPAC2007 was released in late January, over 
+500 licenses were issued and, as a result of this large number of users/groups 
+all busily using the new program, the steady trickle of bug-reports continued. 
+The policy is that whenever a bug is reported all work stops until the fault in 
+corrected.&nbsp; In practice, this meant that bugs were fixed with about two 
+days, so MOPAC2007 is constantly being maintained in a state of &quot;No Known Bugs&quot; 
+(NKB). It is expected that this trickle of bug reports will continue for several 
+months, during which time the program will get steadily more robust.&nbsp; </p>
+
+<h2 ALIGN="left">New features in MOPAC2007</h2>
+
+<p ALIGN="left"><b><font size="5">PM6: </font></b>&nbsp;At the time, this was the most recent NDDO method in MOPAC.</p>
+
+<p ALIGN="left">&nbsp;</p>
+
+<h2 ALIGN="left">Features of MOPAC6</h2>
+
+<div align="left">
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="240">
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b><a href="features.html#geo_opt"><font color="#000000" size="4">
+      Geometry optimization</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#methods"><font color="#000000" size="4">Methods</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#SCF%20Procedures"><font color="#000000" size="4">SCF Procedures</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#Derived%20Properties"><font color="#000000" size="4">Derived Properties</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#Types%20of%20Species"><font color="#000000" size="4">Types of Species</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#symmetry%20theory"><font color="#000000" size="4">Symmetry theory</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#electric%20fields"><font color="#000000" size="4">Electric fields</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#ESP"><font color="#000000" size="4">Electrostatic Potential</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#cosmo"><font color="#000000" size="4">Solvent effects</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#meci"><font color="#000000" size="4">Electronic Excited states</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#modes"><font color="#000000" size="4">Vibrations</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<a href="features.html#thermo"><font color="#000000" size="4">Thermodynamics</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b><a href="features.html#Dynamics"><font color="#000000" size="4">
+      Dynamics</font></a></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<A href="features.html#IRC"><font color="#000000" size="4">Intrinsic Reaction Coordinate</font></A></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<A href="features.html#paths"> <font color="#000000" size="4">Reaction Paths</font></A></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200"><b>
+<A href="features.html#saddle"> <font color="#000000" size="4">Saddle-Point Location</font></A></b></td>
+    </tr>
+    <tr>
+      <td width="40">&nbsp;</td>
+      <td width="200">&nbsp;</td>
+    </tr>
+  </table>
+</div>
+<H3 align="left"><A NAME="geo_opt">Geometry Optimization - General</A> </H3>
+<P>One of the commonest operations in computational chemistry is optimizing the geometry. This involves modifying the geometry until the energy is a minimum. At that point, the net forces acting on every atom vanish. Over the years, various methods for optimizing geometries have been developed. One of these, Baker's EigenFollowing procedure, has proven to be very robust, and this is now used as the default. If, for any reason, the EF method is not wanted, other methods are available. </P>
+<h4><A NAME="SECTION00542200000000000000">
+Constrained by definition</A>
+</h4>
+<P>
+When only part of a system is to be optimized, options are provided to
+constrain  other parts of the system.  For example, a bond length, angle, or
+dihedral for one  or more atoms can be defined as fixed at some initial value,
+or the <I>x</I> or <I>y</I> or <I>z</I> coordinate can be defined as unchanging.<h4><A NAME="SECTION00542300000000000000">
+Constrained by symmetry</A>
+</h4>
+<P>
+Some systems have symmetry that can be used to accelerate geometric 
+operations.  Thus in Fullerene, C<SUB>60</SUB>, all atoms are in the same
+environment, and  there are exactly two unique bond-lengths.  The geometry
+optimization  calculation can be reduced from order 174 (3<IMG
+ WIDTH="17" HEIGHT="29" ALIGN="MIDDLE" BORDER="0"
+ SRC="img63.gif"
+ ALT="$\times$">60-6) to
+order two by use of  symmetry.  Symmetry can also be used in unsymmetric
+systems.  For example,  in determining the transition state for the S<SUB><I>N</I><SUP>2 </SUP></SUB>reaction  Br<SUP>-</SUP> + CH<SUB>4</SUB> 
+<!-- MATH: $\rightarrow$ -->
+<IMG
+ WIDTH="20" HEIGHT="16" ALIGN="BOTTOM" BORDER="0"
+ SRC="img64.gif"
+ ALT="$\rightarrow$">
+CH<SUB>3</SUB>Br + H<SUP>-</SUP>,  the C-Br and C-H
+distances can be set equal, and the geometry optimized.  After  releasing the
+symmetry constraint, the transition state geometry is determined in  one step
+by use of Baker's EigenFollowing method.
+<h4><A NAME="SECTION00542400000000000000">
+Energy Minimization</A>
+</h4>
+<P>
+The degree to which geometries can be optimized can be varied according to the 
+user's need: from the default, which is the best compromise between precision 
+and speed, to high precision for publication work, to low precision for rapid 
+screening.  Unconditionally, the degree of optimization can be displayed, 
+although the default is for this information to be suppressed unless problems are 
+encountered.
+<P>
+Unless special action is taken, only local minima are located.  Thus optimization 
+of the geometry of dimethyl ether would not yield ethanol, nor would 
+optimization of <EM>gauche</EM> butane yield <EM>trans</EM> butane.<br>
+<h4><A NAME="SECTION00542500000000000000">
+Transition State location</A>
+</h4>
+<P>
+Several methods are provided for refining transition states.  One, Baker's 
+EigenFollowing, is usually sufficient for most systems; the others are provided 
+for the rare instances when the default TS does not work.
+<H3><A NAME="methods">NDDO Methods</A> </H3>
+<P>The following NDDO methods are supported: MNDO, AM1, PM3, RM1,  PM6, and PM7. For a list of elements available, see
+<a href="geometry_specification.html">Elements available</a>.   
+<h3><a name="SCF Procedures">SCF Procedures</a></h3>
+<h4><A NAME="SECTION00544100000000000000">
+Restricted Hartree Fock</A>
+</h4>
+<P>
+The default self-consistent method is restricted Hartree-Fock.  This allows both 
+closed shell and open shell systems.  For open shell systems, errors due to the 
+half electron approximation are automatically corrected. 
+<h4><A NAME="SECTION00544200000000000000">
+Unrestricted Hartree Fock</A>
+</h4>
+<P>
+At user's choice, unrestricted Hartree-Fock SCF calculations can be run.  In these, 
+the <i><span class="b">&alpha;</span></i>
+and <i><span class="b">&beta;</span></i>
+spin molecular orbitals have different spatial forms.  
+When UHF is 
+used, the expectation values of the S and S<SUP>2</SUP> operators are printed. In 
+addition to printing the <i><span class="b">&alpha;</span></i>
+and <i><span class="b">&beta;</span></i>
+spin molecular orbitals, the associated <i><span class="b">&alpha;</span></i>
+and <i>&beta; </i>spin density matrices can be printed, as can the 
+<!-- MATH: $\alpha - \beta$ -->
+<i>&alpha; - &beta;</i>
+spin 
+density matrix.
+<h3>
+<a name="Derived Properties">Derived Properties</a></h3>
+<h4><A NAME="SECTION00545100000000000000">
+Bond orders</A>
+</h4>
+<P>
+Several types of bond orders can be displayed.  The simplest is the Wyberg 
+indices, which mirror the simple ideas of single, double, and triple bonds. 
+More  complicated representations include Mulliken populations,
+delocalizability,  superdelocalizability, free valence, and spin density.
+<h4><A NAME="SECTION00545200000000000000">
+Charges</A>
+</h4>
+<P>
+By default, the net charge on each atom is printed.  These are the Coulson 
+charges, although if requested, Mulliken charges can also be printed. <br>
+<h4><A NAME="SECTION00545300000000000000">
+Dipole moment</A>
+</h4>
+<P>
+By default, the dipole vector (calculated from atomic charges and the lone
+pairs)  is calculated and printed, along with the net dipole moment, in Debye.<br>
+<h4><A NAME="SECTION00545400000000000000">
+Static (zero frequency) Polarizability</A>
+</h4>
+<P>
+The polarizability of a system is a measure of the response of the electron 
+density distribution to a static electric field .  This can be calculated two
+ways,  by the application of electric fields (the static method) and by direct
+analysis of  the wavefunction (the sum over states method).  For large
+systems, the  application of electric fields method is faster, although the sum
+over states  method is more precise for all systems.   Because of the limited
+precision of the  static method, a way has to be provided to allow the user to
+determine the  precision.  Static polarizability (and first and second
+non-linear optical  responses) can be determined from the changing dipole or
+from the changing  heat of formation.  By printing the results of the
+calculation based on both dipole  and 
+<!-- MATH: $\Delta H_f$ -->
+<span class="b">&Delta;</span>H<sub>f</sub>,
+side by side, the user can
+get an estimate of the precision. <br>
+<h4><A NAME="SECTION00545500000000000000">
+Frequency dependent Non-Linear Optics</A>
+</h4>
+<P>
+In addition to the polarizability, the following non-linear optical properties can 
+be calculated: first and second order properties (&beta; and &gamma;), 
+Electric Field Second 
+Harmonic Generation (EFISH), optical rectification, electrooptic Pockel's 
+Effect, second and third harmonic generation. Where appropriate, averages are 
+printed.
+<h3>
+<a name="Types of Species">Types of Species</a></h3>
+<h4><A NAME="SECTION00547100000000000000">
+Atoms</A>
+</h4>
+<P>
+Simple calculations on atoms yield conventional heats of formation.  These are 
+the heats of atomization of the elements.  Most atoms have open shells in the 
+ground state, and these can be allowed for by use of appropriate keywords.  By 
+default, the electronic state of the system will be printed.  Excited states
+can be  readily calculated, and the transition dipole for photoexcitation can
+be printed.   If, as is common, the originating state (usually the ground
+state) or the  terminating state (usually an excited state) is degenerate, the
+degeneracy is taken  into account in the calculation of transition dipole.  The
+conventional selection  rules can be derived by an analysis of the states and
+transition dipoles.<br>
+<h4><A NAME="SECTION00547200000000000000">
+Molecules</A>
+</h4>
+<P>
+The commonest type of system calculated consists of neutral, polyatomic 
+molecules.  These can be simple, closed shell species, such as benzene, to 
+radicals, e.g. nitric oxide, to zwitterions, to multiple open shell radicals, 
+such as NH<sub>4</sub><sup>.</sup>,
+to excited electronic states, e.g. n-<span class="b">&pi;</span>*
+pyridine.
+<h4><A NAME="SECTION00547300000000000000">
+Ions</A>
+</h4>
+<P>
+Calculations can be performed on ionized species, both isolated and with 
+counterions, in both gas phase and solvated.  All degrees of ionization are 
+allowed.
+<h4><A NAME="SECTION00547400000000000000">
+Polymers</A>
+</h4>
+<P>
+Regular polymer  systems for which periodic boundary conditions can be 
+imposed can be calculated.  The time for such calculations is about 30% 
+greater than for a discrete molecule of the same size as the unit cell used. 
+Geometries, including unit cell length, can be optimized. <br>
+<h5><A NAME="SECTION00547500000000000000">
+Effect of Stretching</A>
+</h5>
+<P>
+In polymers, a reaction can be set up, in which the translation vector
+distance  can be steadily increased.  The effect of this is to steadily
+increase the distance  between the repeat units of the polymer.  Initially, the
+energy would not change  significantly, as any conformational flexibility in
+the polymer is used up, but  once that is done, the energy of the system (a
+measure of the stress) would rise  parabolically with increased strain.  From
+an analysis of this parabola, and given  the density of the polymer, the
+Young's modulus (the degree of elastic behavior) can readily be calculated.  If  the strain is increased without
+limit, a point would be reached at which the  weakest bond in the polymer would
+break, and the stress would immediately  drop to zero.  From this, and the
+experimental density, the tensile strength can be  calculated.
+<h5><A NAME="SECTION00547600000000000000">
+Vibrations (Phonon Spectrum)</A>
+</h5>
+<P>
+As with molecules, the vibrational spectrum of polymers can be calculated.  
+However, unlike molecular normal modes, which have quantized vibrational 
+frequencies, polymers give rise to bands of frequencies, defined by the 
+associated wave-vector <I>k</I> in the Brillouin zone. At <I>k</I>=0, four of these bands have 
+zero frequency, corresponding to the four trivial vibrations of a polymer.
+<h5><A NAME="SECTION00547700000000000000">
+Defect polymers (solitons)</A>
+</h5>
+<P>
+Excitations can occur in some polymers, to give rise to ion pairs, isolated 
+electronic excited states, and other electronic defects.  These can be modeled 
+using oligomers.  A simple excited state would be in polyacetylene, for 
+example, in which one carbon atom was singly bonded or doubly bonded to two 
+other carbon atoms.  The effect of an applied electric field to induce hopping 
+of solitons can be modeled. 
+<h4><A NAME="SECTION00547800000000000000">
+Layer Systems </A>
+</h4>
+<P>
+By using the Born-von K&#225;rm&#225;n periodic boundary conditions, layer
+systems can  be modeled.  Geometry optimization, including optimizing the unit
+cell  dimensions, can be carried out. 
+<h4><A NAME="SECTION00547900000000000000">
+Solids</A>
+</h4>
+<P>
+By using the Born-von K&#225;rm&#225;n periodic boundary conditions, regular
+solid  systems can be modeled.  Geometry optimization, including optimizing the
+unit  cell dimensions, can be carried out. 
+<h5><A NAME="SECTION005471000000000000000">
+Compressivity</A>
+</h5>
+<P>
+For cubic systems, the compressivity of the crystal can be deduced by 
+calculating the 
+<!-- MATH: $\Delta H_f$ -->
+<span class="b">&Delta;</span>H<sub>f</sub>&nbsp;
+in a reaction in which the unit cell dimension
+is  systematically varied.
+<h4><A NAME="SECTION005471100000000000000">
+Electronic Structure (Brillouin Zone)</A>
+</h4>
+<P>
+A utility program for analyzing the electronic structure of polymers, layer 
+systems, and solids is provided.  This uses output from MOPAC, the  space-group
+symmetry operations, and interactive user input to  generate the Little  groups
+for points in <I>k</I>-space, band structures, and cross-sections  through
+<I>k</I>-space  for selected bands.  The first step in this analysis is to
+symmetrize the energy  matrix for the solid.  After this is done, the resulting
+structures in <I>k</I>-space are  fully symmetry adapted.
+<h3><a NAME="symmetry theory">Symmetry theory</a></h3>
+<P>Symmetry is very important in chemistry, and, in recognition of this, MOPAC makes extensive use of symmetry theory. Most of the symmetry theory is done automatically, without any user action being necessary. The simplest operation is the recognition of the point-group of a molecule. All non-magnetic single point groups up to order 7 and most of the groups up to order 8 are recognized. This set includes the three infinite groups (R<SUB>3</SUB>, the order of the sphere, C <!-- MATH: $_{\infty v}$ -->
+<IMG SRC="img79.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$_{infty v}$">, and D <!-- MATH: $_{\infty h}$ -->
+<IMG SRC="img80.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$_{infty h}$">) for all chemically realizable representations, and the seven cubic point-groups. There is an ambiguity in the definition of some irreducible representations of some groups, such as <I>b</I><SUB>1</SUB> and <I>b</I><SUB>2</SUB> in C<SUB>2<I>v</I></SUB>. This ambiguity is resolved using the conventional definition for orienting molecules. To allow for the fact that molecular geometries might not be completely precise, a certain tolerance is built in to the test for point-groups. Sometimes, a user might wish to use a sub-group of the full point-group. This can be done by using <TT>
+<a href="noreor.html">NOREOR</a></TT>, or, if symmetry theory is not wanted at all <TT>
+<a href="nosym.html">NOSYM</a></TT> can be specified. </P>
+<h4><A NAME="SECTION00549100000000000000">
+Symmetry Labels </A>
+</h4>
+<P>
+Symmetry labels are automatically assigned to molecular orbitals, vibrations, 
+and electronic states.  These labels are of the form <I>nR</I>, where <I>R</I> is the
+irreducible representation and <I>n</I> is the <I>n</I>th occurrence of that 
+representation.  For each eigenfunction, the symmetry label is unique, and for 
+this and other reasons, the symmetry labels are true quantum numbers.  This is 
+particularly evident in electronic states, where the symmetry label includes 
+information on the spin state.
+<h4><A NAME="SECTION00549200000000000000">
+Symmetrizing vibrations</A>
+</h4>
+<P>
+To facilitate vibrational analysis of high-symmetry systems, symmetry theory is 
+used to symmetrize the force matrix.  This has the side effect of reducing any 
+errors introduced by finite precision mathematics.  The resulting normal modes 
+are completely symmetry adapted, and subsequent analysis of these modes is 
+made much easier. 
+<h4><A NAME="SECTION00549300000000000000">
+Accelerating Calculation of Vibrations</A>
+</h4>
+<P>
+For molecules that have symmetry, symmetry theory is automatically used to 
+accelerate the construction of the force matrix.  This reduces the time needed
+for  the calculation of normal modes.  For C<SUB>60</SUB>, the increase in speed is a
+factor of  about 40.
+<h3><a NAME="electric fields">Electric Fields</a>
+</h3>
+<P>
+The effect of applied external electric fields can be modeled.  The fields are 
+uniform, and the orientation and intensity of the field is under user control. 
+The  applied fields cannot be used in the translation directions of infinite
+systems.
+<h3><a NAME="ESP">Electrostatic Potential</a>
+</h3>
+<P>
+Four electrostatic potential methods are available, of which two can generate 
+data for use by graphics programs. These are the Wang-Ford Parametric 
+Electrostatic Potential (PMEP) and the Merz-Bessler ESP methods.  The PMEP 
+method gives results similar to those from ab initio 6-31G calculations, but
+is  limited in the range of atoms allowed.  In contrast, the ESP method is
+quite  general.
+<h3><a NAME="cosmo">Solvent effects</a>
+</h3>
+<P>
+&nbsp;The effect of solvents can be modeled by Andreas Klamt's COSMO technique.&nbsp; 
+In the COSMO method, both ground and excited state systems in solution can be 
+modeled, and the geometries of solvated systems optimized. 
+<h3><a NAME="meci">Electronic Excited states</a>
+</h3>
+<P>
+MOPAC contains an extensive configuration interaction package.  This allows a 
+wide range of open and closed shell ground and excited state phenomena to be 
+modeled.  Examples of the types of systems that can be modeled include: 
+methane, stabilized by mixing in excited states; oxygen, with an open shell 
+ground state; methane cation, with and without Jahn Teller effects, and high
+spin  systems (up to nonet).  Keywords are provided for the commonest types of
+C.I.  (single electron excitation, single plus double, single plus paired
+double, single,  double, and triple excitations).  All other types of C.I. can
+be defined explicitly,  under keyword control.
+<P>
+Internal checks are automatically carried out to ensure that the calculations
+do  not violate any theoretical rules, although these constraints can be
+relaxed, at  user discretion.  State spin and symmetries are automatically
+assigned.
+<P>
+The effect of C.I. on electron density distributions can be modeled, both in 
+ground and excited states, and for ground state and vibrational states.
+<h3><a NAME="modes">Vibrations</a>
+</h3>
+<P>
+The normal modes of vibration of a stationary system can be calculated.  For 
+ground states, this consists of the 3<I>N</I>-6 or 3<I>N</I>-5 non-zero modes, while for 
+simple transition states, the 3<I>N</I>-7 real modes and 1 imaginary mode are
+reported.   If desired, the force constants for the system can be printed.
+<h4><A NAME="SECTION005415100000000000000">
+Description of Vibrations</A>
+</h4>
+<P>
+Because of the complexity of normal modes, an analysis of these modes is 
+printed.  This analysis allows the nature of the normal mode (i.e., X-Y
+stretch,  A-B-C bend, etc) to be rapidly described.  The normal coordinates are
+printed. However these are of limited use because they are velocity vectors and
+do not  indicate the energy carried by each atom.  An additional display shows
+the effect  of mass-weighting the normal modes; this gives an alternative view
+of the  molecular vibrations.
+<h4><A NAME="SECTION005415200000000000000">
+Effective Mass and Travel</A>
+</h4>
+<P>
+To the degree to which normal modes can be described as a simple harmonic 
+oscillator, the effective mass involved can be calculated.  For a homonuclear 
+diatomic, this is half the atomic mass; if one of the atoms is extremely
+massive,  the mass is approximately that of the other atom.
+<P>
+From quantum theory, the energy of vibration is quantized.  Therefore, given a 
+knowledge of the force constant for the vibration, and the effective mass, the 
+excursion distance (in mass weighted space) can readily be calculated.  By 
+default, when normal modes are calculated, these two quantities are printed.
+<h4><A NAME="SECTION005415300000000000000">
+Transition Dipole</A>
+</h4>
+<P>
+The relative intensity of an infra-red active band is a simple function of the 
+transition dipole. This quantity is printed whenever the vibrational analysis is 
+printed in a <TT><a href="force.html">FORCE</a></TT> calculation<h4><A NAME="SECTION005415400000000000000">
+Internal Coordinate Force Constants</A>
+</h4>
+<P>
+Although not an observable, the internal coordinate force constants are often
+of  interest.  These quantities are printed at the end of a normal coordinate 
+calculation.
+<h4><A NAME="SECTION005415500000000000000">
+Isotopic Substitution</A>
+</h4>
+<P>
+Although calculating the force matrix in a normal coordinate analysis is often 
+lengthy, the final stage, mass weighting and generating normal modes, is very 
+rapid.  To allow different isotopic masses to be used in a single normal 
+coordinate analysis, the option exists to save the force matrix.  The isotopic 
+masses can then be changed, and the old force matrix used again.  Such 
+calculations are very rapid.
+<h4><A NAME="SECTION005415600000000000000">
+Trivial Modes, projecting out</A>
+</h4>
+<P>
+A minor increase in precision is achieved by projecting out the six trivial
+modes.   These can subsequently be printed out.  The order of the modes is then
+defined  as <I>x</I>, then <I>y</I>, then <I>z</I> translation, followed by the three
+rotations, about the moments  of inertia.
+<h3><a NAME="thermo">Thermodynamics</a>
+</h3>
+<P>
+Various thermodynamic quantities (Partition function, enthalpy, heat capacity, 
+and entropy) can be calculated for any temperature, or range of temperatures.  
+These quantities can be decomposed into vibrational, rotational, internal, and 
+translational contributions.  The effect of changing temperature on the &Delta;H<sub>f </sub>can be monitored.
+<H3><a name="Dynamics">Dynamics</a></H3>
+<h4><A NAME="SECTION005417100000000000000">
+Conservation of Energy</A>
+</h4>
+<P>
+The time evolution of a system can be investigated.  The starting point can be 
+either a stationary point (optimized geometry or a transition state) or a 
+non-stationary point, and the initial velocity vector can  be zero, or
+determined by one  of the normal modes, or an arbitrary (user supplied)
+vector.  At each step, the  position of each atom is modified by (a) the forces
+acting on it and its isotopic  mass, (b) the velocity vector of the atom, and
+(c) information on the  acceleration, and rate of acceleration, of the atom.
+During the course of the  molecular dynamics, the total energy (kinetic plus
+potential) is constant  as the  system moves down a potential energy surface,
+the velocity increases, and vice  versa.
+<h4><A NAME="SECTION005417200000000000000">
+Simulated Annealing</A>
+</h4>
+<P>
+Although the default is to conserve energy, the option exists to allow kinetic 
+energy to be reduced, with the rate of reduction being a function of time, by 
+specifying a half-life in femtoseconds.  The effect of this option is to
+simulate  cooling of the system, analogous to the molecular mechanics method
+of  simulated annealing.
+<h4><A NAME="SECTION005417300000000000000">
+Simulated heating</A>
+</h4>
+<P>
+No constraint is placed on the sign of the half-life, consequently, a negative half 
+life can be used.  This simulates heating of the system.  Invariably, unlimited 
+heating results in atomization of any compound.
+<P>
+By an appropriate choice of keywords, any combination of heating and cooling, 
+including conserving energy, can be modeled in a single run.
+<h4><A NAME="SECTION005417400000000000000">
+Sampling</A>
+</h4>
+<P>
+Sampling of the state of the system can be done several ways: each point 
+calculated can be printed, or constant steps in time, energy, or position can be 
+chosen.  At each point printed, the amount of information printed is determined 
+by keywords, from a single line giving simple energetics, to the energetics plus 
+geometry plus velocity vector.  
+<h4><A NAME="SECTION005417500000000000000">
+Simulated vibrations</A>
+</h4>
+<P>
+The easiest way to calculate vibrational frequencies is to calculate the force 
+matrix and perform a normal mode analysis.  While this is acceptable most of 
+the time, in some systems the normal modes are sufficiently 
+non-simple-harmonic that these vibrational frequencies are unacceptable.
+<P>
+An alternative is to set the system in motion, using the normal modes
+calculated  conventionally, and to determine directly the period of vibration. 
+For well  behaved systems, this is almost exactly the same as that given from
+the force  matrix, verifying the internal consistency of the various methods.
+<P>
+For very simple systems, e.g. diatomics, a second alternative is to plot the 
+energy coordinate graph, and determine the vibrational period from either
+the  energies or the gradients. 
+<H3><a NAME="IRC">Intrinsic Reaction Coordinate</a>
+</H3>
+<P>
+The time-independent behavior of a system can be modeled using the IRC 
+option.  In this, the atoms in a system move in response to the forces acting
+on  them, moderated by their isotopic masses, however, at each step all
+kinetic  energy is annihilated.  The effect is to produce a time-independent
+trajectory, the  steepest decent from the starting geometry to a stationary
+point.
+<h3><a NAME="paths">Reaction Paths</a>
+</h3>
+<P>
+Where a definable reaction coordinate can be identified, this can be used to
+drive  a chemical reaction.  For example, in a bond-breaking bond-making
+reaction,  the bond being made can be used as the reaction coordinate.  Several
+options are  provided for specifying reaction paths, the three most common of
+which are: (a) to supply  the various values of the reaction coordinate as
+extra data (at each point on the  reaction path, the gradient of the path is
+calculated); (b) to define a  step size and  number of point to be calculated
+(at the end of the calculation, the  
+&Delta;H<sub>f </sub>&nbsp;are  printed in a form
+suitable for plotting); and (c) to give two step sizes and  numbers of points
+in two directions.  This option is useful in mapping out a  potential energy
+surfaces.  
+<h3><a NAME="saddle">Saddle-Point Location</a>
+</h3>
+<P>
+The geometry of the transition state is not always easy to define. The option
+exists to allow the reactants and the  products to be defined, and to allow the
+saddle or transition state between these  two systems to be calculated. Recent
+changes in this function have made it more  robust, so that now the failure
+rate in locating transition states is very low. (In  practice, transition
+states have been located for all reactions investigated.)
+<P>
+<BR>
+<P>&nbsp;<P>
+&nbsp;<P>&nbsp;</P>
+
+<p ALIGN="left">&nbsp;</p>
+</BODY>
+</HTML>

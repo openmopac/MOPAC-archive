@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Transition dipole.</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Transition dipole 
+</H2>
+<p dir="ltr">In <a href="force.html"><TT>FORCE</TT></a> calculations, the transition dipole moment 
+printed (T-DIPOLE) represents the electric dipole moment associated with the 
+transition between the ground state and the vibrationally excited state.&nbsp; 
+The units are Debye.&nbsp; To understand how it is calculated, consider a 
+diatomic A-B, with R<sub>A-B</sub>&nbsp; = 2.0 <font face="Times New Roman">
+&Aring;ngstroms, and the partial charge on Q<sub>A</sub> = -Q<sub>B</sub> = 0.5 
+electrons. The ground-state dipole is 4.803*(</font>R<sub>A-B</sub> )*(<font face="Times New Roman">Q<sub>A</sub>) 
+or&nbsp; 4.803 Debye.&nbsp; If the atoms A or B have p-orbitals, then 
+adjustments would need to be made for hybridization effects, these would be a 
+few percent of the dipole terms arising from the partial charges.</font></p>
+<p><font face="Times New Roman">During the calculation of the Hessian matrix, 
+each atom is displaced in the <i>X</i>, <i>Y</i>, and <i>Z</i> directions.&nbsp; 
+From these displacements, the derivative of the dipole with respect to motion in 
+these directions, <i>dD/dX<sub>A</sub></i>, <i>dD/dY<sub>A</sub></i>,&nbsp; and
+<i>dD/dZ<sub>A</sub></i>, can readily be calculated. Later on, the normal modes 
+are generated.&nbsp; The associated normalized eigenvectors, </font>
+<span class="b">&Psi;</span><font face="Times New Roman">, represent the motion 
+of the atoms in the normal modes. This allows the components of the transition 
+dipole, d<sub>1n</sub>, to be calculated using:</font></p>
+<p align="center"><font size="4" face="Times New Roman">d<sub>1n</sub>(<i>X</i>)=</font><font size="4"><span class="b">&Sigma;</span></font><font face="Times New Roman" size="4"><sub>i</sub></font><i>
+<font face="Times New Roman" size="4">dD</font><font face="Times New Roman" size="4">/dX</font></i><font face="Times New Roman" size="4"><sub><i>i</i></sub>,</font>&Psi;<font size="4" face="Times New Roman">(<i>X</i>)<sub>i</sub></font></p>
+<p><font face="Times New Roman">and thus the transition dipole can be 
+calculated:</font></p>
+<p align="center"><font size="4" face="Times New Roman">d<sub>1n</sub>(<i>X</i>) 
+= (d<sub>1n</sub>(<i>X</i>)<sup>2</sup> + d<sub>1n</sub>(<i>Y</i>)<sup>2 </sup>
++d<sub>1n</sub>(<i>Z</i>)<sup>2</sup>)<sup>1/2</sup></font></p>
+<p>&nbsp;</p>
+</BODY>
+</HTML>

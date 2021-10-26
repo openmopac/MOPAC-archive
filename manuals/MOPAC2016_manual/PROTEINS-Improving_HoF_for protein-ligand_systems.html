@@ -1,0 +1,187 @@
+<HTML>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Improving Geometry Optimization in Proteins with a ligand non-covalently 
+attached</TITLE>
+</head>
+
+<body bgcolor=white>
+<h1 align="center">
+<font face="Arial">Improving the accuracy of calculation of the 
+binding-energy of a ligand <br>
+non-covalently attached to a protein (<a href="proteins.html">Back to &quot;Proteins&quot;</a>)</font></h1>
+<p align="left">
+&nbsp;</p>
+<p align="left" style="line-height: 1.5" dir="ltr"><font size="4" face="Arial"><u><b>The Problem: </b></u>
+Computing the binding energy of a ligand non-covalently 
+bound to a protein requires achieving an unusually high accuracy.&nbsp; If 
+an entire protein is used then almost always a severe problem is encountered in 
+the geometry optimization that prevents such high accuracy from being obtained.&nbsp; 
+This problem is a direct consequence of the very large number of local minima on 
+the potential energy surface (PES) and is common to all complicated systems such as proteins; 
+it has nothing to do with the optimization procedure or with the underlying 
+method.&nbsp; When a geometry is optimized, the 
+procedure used moves the atomic coordinates in a downhill direction on the PES. 
+This process terminates when no further decrease in heat of formation (&Delta;H<sub>f</sub>) 
+can be achieved. Minor changes in the starting geometry can give rise to a 
+different path being followed, resulting in a different minima being reached. 
+These minima can differ in &Delta;H<sub>f</sub> by several kcal mol<sup>-1</sup>, and, 
+although these minima might look correct, any conclusions drawn from the various &Delta;H<sub>f</sub> 
+would almost certainly be untrustworthy.</font></p>
+<p align="left" style="line-height: 1.5" dir="ltr"><u><b>
+<font face="Arial" size="4">One</font></b></u><font size="4" face="Arial"><u><b>
+Answer: </b></u>If the ligand is non-covalently bound to the protein, and the 
+protein is not very flexible, i.e., does not exhibit any allosteric behavior, 
+then all of the protein that is far from the ligand can be deleted from the 
+system being modeled. If this is done, then most of the minima are automatically 
+excluded. </font></p>
+<p align="left" style="line-height: 1.5" dir="ltr"><font size="4" face="Arial"><u><b>Implementing 
+the solution:</b></u> Starting with a complete system from the PDB or other reliable 
+source, the sequence of steps involved in preparing the truncated system are as 
+follows.</font></p>
+<ul>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font size="4" face="Arial">The original 
+  system is preconditioned so that it is hydrogenated and any other 
+  modifications made that are necessary for the system to be realistic.</font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font size="4" face="Arial">The system 
+  is optimized using PM6-D3H4 or PM7 and an applied small bias of, say, 1 kcal mol<sup>-1</sup> &Aring;<sup>-2</sup> 
+  towards the starting geometry is added. This step eliminates all the highly local 
+  errors in the original structure, without allowing any significant large-scale 
+  motions.</font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font size="4" face="Arial">All residues 
+  and small molecules, e.g., H<sub>2</sub>O, that have even one atom within a preset 
+  distance of any atom in the ligand are identified and the entire residue or 
+  small molecule is included in a new, 
+  truncated system. A suitable value for the preset distance is 12 &Aring;ngstroms.&nbsp; At the sites 
+  where a peptide bond is cut, hydrogen atoms must be added to satisfy valence 
+  requirements.&nbsp; This means that a hydrogen atom is added to the nitrogen 
+  atom in the peptide so it becomes -NH2, and a hydrogen atom is added to the 
+  carbonyl carbon in the peptide so it becomes -CHO.&nbsp; In this case, the 
+  short chains would have the structure H<sub>2</sub>N-CHR-CO-(NH-CHR-CO)<sub>n</sub>-NH-CHR-CHO, 
+  where &quot;R&quot; is an amino-acid side-chain.&nbsp; Any variant that achieves the 
+  same objective of satisfying valence requirements would also be acceptable.&nbsp; At 
+  this point, the system consists of the ligand, a set of residues from the 
+  protein, and a number of small molecules, mostly water molecules, all in a 
+  single PDB file.</font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font size="4" face="Arial">A set of keywords to control the job is now 
+  assembled.&nbsp; Essential keywords are:&nbsp; <a href="eps.html">EPS=78.4</a>
+  <a href="mozyme.html">MOZYME</a> and optionally 
+  <a href="precise.html">PRECISE</a> and <a href="pm6_d3h4.html">PM6-D3H4</a>.&nbsp; Keywords that are useful are 
+  <a href="charge.html">CHARGE=n</a> <a href="output.html">OUTPUT</a>
+  <a href="html.html">HTML</a> <a href="gnorm.html">GNORM=2</a>.&nbsp; All residues and molecules whose geometries are to be optimized are then defined 
+  using a final keyword <a href="opt_label.html">OPT(text)</a>.&nbsp; In this keyword, &quot;text&quot; is replaced 
+  with the chain letter and number of each residue that is to be optimized.&nbsp; 
+  If a number is unique, the chain letter can be omitted.&nbsp; For example:<br>
+  OPT(&quot;401&quot;,&quot;197&quot;,&quot;25&quot;,&quot;41&quot;,&quot;44&quot;,&quot;45&quot;,&quot;49&quot;,&quot;140&quot;,&quot;141&quot;,&quot;142&quot;,&quot;143&quot;,&quot;144&quot;,&quot;145&quot;,&quot;163&quot;, 
+  ++<br>
+  &quot;165&quot;,&quot;166&quot;,&quot;167&quot;,&quot;168&quot;,&quot;188&quot;,&quot;189&quot;,&quot;190&quot;,&quot;192&quot;,&quot;521&quot;,&quot;537&quot;,&quot;540&quot;,&quot;553&quot;,&quot;558&quot;,&quot;609&quot;, 
+  ++<br>
+  &quot;610&quot;,&quot;675&quot;,&quot;729&quot;,&quot;792&quot;,&quot;832&quot;,&quot;916&quot;,&quot;933&quot;)<br>
+  At this point, the structure consists of a rigid outer shell of residues, 
+  containing a flexible region that can be optimized. This flexible region is 
+  comprised of sections of protein chain, water and other small molecules, and 
+  the ligand in a specific pose. An example of a
+  <a href="../PM7_and_PM6-D3H4_accuracy/23H%2030-5/23H%2030-5.mop">data-set</a>, 
+  and the resulting
+  <a href="../PM7_and_PM6-D3H4_accuracy/23H%2030-5/23H%2030-5.arc">ARC file</a> 
+  and <a href="../PM7_and_PM6-D3H4_accuracy/23H%2030-5/23H%2030-5.html">geometry</a> 
+  might help to illustrate this procedure.&nbsp; In this example, the starting 
+  geometry was already optimized, so the system would run quite quickly.</font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Using a molecular mechanics program such as GOLD, 
+  pre-optimize the positions of all atoms that are flagged for optimization by 
+  the OPT keyword. This step is necessary; if it is not done then individual 
+  water molecules might be badly positioned at the start of the MOPAC job.&nbsp;
+  </font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font size="4" face="Arial">Usually many 
+  different ligands and poses are used, so that a large number of jobs need to be 
+  run, in which case additional useful keywords are <a href="threads.html">THREADS=1</a>, 
+  <a href="dump.html">DUMP=2D</a>.&nbsp; These 
+  keywords improve performance when many jobs are run simultaneously in a 
+  batch queue.&nbsp; THREADS=1 turns off multi-threading inside MOPAC.&nbsp; 
+  When the number of jobs that can be run simultaneously equals the number of 
+  threads, each job uses one thread, so the system overhead is almost zero.&nbsp; 
+  In the unlikely event of a computer crashing, it is possible to restart 
+  individual jobs that were killed by the crash if a <a href="restart.html">RESTART</a> file exists.&nbsp; 
+  But doing this involves a tedious operation, and a simpler option is to ignore 
+  the RESTART files and just re-run any jobs that were killed.&nbsp; To stop 
+  RESTART files from being written, add DUMP=2D.&nbsp; This effectively turns off the safety default two-hour dump.&nbsp; </font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font size="4" face="Arial">Use macros to construct the jobs and to run them.&nbsp; 
+  There is a very high probability of making errors if macros are not used.&nbsp; 
+  When writing macros, carefully 
+  label the various jobs, both in the job-name and in the job-title. For 
+  example, if there are 50 ligands, labeled ligand-1 to ligand-50, and 10 poses 
+  for each ligand, then job-names such as L1-5 might be used. This would 
+  indicate that the system is Ligand-1 in Pose 5.&nbsp; Try to use short 
+  job-names, and use the folder name to specify the survey. </font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Run the survey.</font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Again, use macros to analyze the results.&nbsp; 
+  These macros should search the various ARC files to find the heat of formation 
+  and, optionally, the gradient norm.</font></li>
+</ul>
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <b><font face="Arial" size="4"><u>Accuracy of suggested method:</u></font></b><font face="Arial" size="4"> 
+  Errors in binding energies arise from only a small number of factors, these 
+  are:</font><ol>
+  <li dir="ltr"><p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Errors in the interaction energies between the 
+  ligand and the protein.&nbsp; Over a range of types of interaction energies 
+  the
+  <a href="../PM7_and_PM6-D3H4_accuracy/Statistics%20for%20Intermolecular%20interactions.html">
+  Average Unsigned Error</a> relative to very high-quality calculations is 1.72 
+  kcal mol<sup>-1</sup> for PM6-D3H4 and 2.91 kcal mol<sup>-1</sup> for PM7. </font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Errors in geometries. Average Root Mean Square 
+  errors for protein geometries are 1.17
+  <a href="../PM7_and_PM6-D3H4_accuracy/PM6-D3H4_Proteins.html">&Aring;ngstroms 
+  for PM6-D3H4</a> and 1.13
+  <a href="../PM7_and_PM6-D3H4_accuracy/PM7_Proteins.html">&Aring;ngstroms for PM7</a>.</font></li>
+  <li dir="ltr">
+  <p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Errors in geometry optimization are about 
+  difficult to quantify.&nbsp; If all explicit water molecules involved in 
+  hydrogen-bonding between the ligand and the protein are initially placed in 
+  approximately their correct locations, then errors in geometry optimization 
+  are very small, much less than 1 kcal mol<sup>-1</sup>.&nbsp; On the other 
+  hand, if any explicit water molecules involved in hydrogen-bonding between the 
+  ligand and the protein were initially far from their correct positions, very 
+  large errors, in the order of 5 - 10 kcal mol<sup>-1</sup>, can occur.</font></li>
+  <li dir="ltr"><p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Errors in the &#916;H<sub>f</sub> of the ligand and 
+  protein separated in solution cancel out.</font></li>
+</ol>
+<p align="left" style="line-height: 1.5" dir="ltr">
+  <font face="Arial" size="4">Using these data an estimate of the average 
+  unsigned error in the binding energy of the ligand non-covalently bound to a 
+  protein is about 2 to 3 kcal mol<sup>-1</sup>, provided, and this is a big 
+  qualification, the errors in 3 and 4 are small. Errors in the &#916;H<sub>f</sub> 
+  of the protein obviously cancel out, but errors in the &#916;H<sub>f</sub> of the 
+  ligand in solution are more problematic.&nbsp; Specifically, the
+  <a href="../PM7_and_PM6-D3H4_accuracy/Notes_on_Proteins.html#Other_faults">
+  known error in PM6</a> that under-estimates steric repulsion between 
+  non-covalently bound atoms can compromise the &#916;H<sub>f</sub> of the ligand in 
+  solution.<p align="left" style="line-height: 1.5" dir="ltr">&nbsp;<p align="left">&nbsp;</p>
+<p align="left">n</p>
+</font>
+</BODY>
+</HTML>

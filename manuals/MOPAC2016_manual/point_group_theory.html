@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Point Group Theory</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1>Point Group Theory </H1>
+<P>This Section is based on the original work of Peter Bischof in the UMNDO program, and made available to me by Dr David Danovich. </P>
+<P>Some point-group theory has been added to MOPAC. The main functionalities added are:&nbsp;</A> </P>
+<UL>
+<LI>'Normal' symmetry relationships are now automatically recognized if <TT>
+<a href="autosym.html">AUTOSYM</a></TT> is specified. </LI>
+<LI>The symmetry of the system is printed both at the start of the run and at the end. If the point-group changes, the change will be shown in the different point-group symbols. </LI>
+<LI>Molecular orbitals will be characterized by Irreducible Representation (I.R.). </LI>
+<LI>Normal coordinates generated in the vibrational calculation will be characterized by I.R. </LI>
+<LI>State functions will be characterized by I.R. </LI>
+<LI>All rotation groups up to order 8, except D<SUB>8<I>d</I></SUB>, are available. </LI>
+<LI>The cubic groups T, T<I><SUB>h</I></SUB>, T<I><SUB>d</I></SUB>, O, O<I><SUB>h</I></SUB>, I, and I<I><SUB>h</I></SUB> are available. </LI>
+<LI>The infinite groups C                             <IMG SRC="img1377.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$_{infty v}$">, D                             <IMG SRC="img1378.gif" ALIGN="MIDDLE" WIDTH=19 HEIGHT=29 ALT="$_{infty h}$">and R<SUB>3</SUB> are available. </LI>
+<LI>In <TT><a href="force.html">FORCE</a></TT> or vibrational frequency calculations, symmetry will be used to accelerate the calculation, thus a calculation of benzene would involve two atoms, a C and a H atom, to be calculated, rather than the normal 12 atoms. </LI>
+<LI>In vibrational frequency calculations, the Hessian or force matrix will be symmetrized. <A NAME="sym_force">&nbsp;</A> </LI></UL>
+<DIR>
+<DIR>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img1379.gif" WIDTH=149 HEIGHT=46 ALT="begin{displaymath}F_{ij}=frac{1}{h}sum_hR(h)^TF_{ij}'R(h)end{displaymath}"></DIV>
+<P align="left">This eliminates the normal small deviations from exact symmetry (<A HREF="force_constants.html#fc">a qualification appears elsewhere</A>) . </P></DIR>
+</DIR>
+                                                </BODY>
+</HTML>

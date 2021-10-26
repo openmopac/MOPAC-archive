@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE> Assembly of the starting Fock matrix</TITLE>
+</HEAD>
+<body bgcolor=white>
+<H2>Assembly of the starting Fock matrix
+</H2>
+In the first iteration this is particularly simple, as there are no
+off-diagonal terms in the density matrix. Only the on-diagonal terms are
+affected. Each on-diagonal term in the Fock matrix F<SUB><I>aa</I></SUB> is modified by the
+electrostatic field of all the electrons in the system except the electron or
+fraction of an electron in the atomic orbital <i>&phi;</i><sub><i>a</i></sub>.
+Consider F(1,1). The
+total initial population of <i>&phi;</i><sub><i>1</i></sub>
+is 1.0, composed of equal amounts of <i><span class="b">&alpha;</span></i>
+and <i><span class="b">&beta;</span></i>
+electron density. An electron in <i>&phi;</i><sub><i>1</i></sub>
+would
+therefore experience the electrostatic repulsion of half an electron. An
+electron cannot repel itself; however, it will be repelled by its partner
+electron of opposite spin.
+<P>
+In addition, each electron will be affected, normally repelled, by the
+electrostatic field of all the electrons on all the other atoms. Each atom has
+one electron, so the total energy of an electron, i.e., the diagonal Fock
+matrix element, is given by:
+<P align="center">
+F(1,1) = -51.7124+1/2(12.848)+2(9.6585+7.0635)+6.3622<BR CLEAR="ALL">
+<P></P>
+<P>
+The Fock matrix is obtained by adding the two-electron
+terms to the one electron matrix. The elements of the Fock
+matrix represent the sum of the one and two electron
+interactions. For the system of six hydrogen atoms, this
+has the following form:
+<P>
+&nbsp;<DIV ALIGN="CENTER">
+Initial Fock Matrix (eV) <BR>
+<TABLE CELLPADDING=3 BORDER="1">
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">Atom</TD>
+<TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">6</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">1</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">2</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">3</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">4</TD>
+<TD ALIGN="CENTER">-0.6992</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">5</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-0.6992</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+<TD ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD ALIGN="CENTER">6</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-0.6992</TD>
+<TD ALIGN="CENTER">-1.0970</TD>
+<TD ALIGN="CENTER">-3.2457</TD>
+<TD ALIGN="CENTER">-5.4823</TD>
+</TR>
+</TABLE></DIV>
+<P>
+<p>
+<BR>
+</p>
+</BODY>
+</HTML>

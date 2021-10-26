@@ -1,0 +1,14 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Self-Consistent Field Calculation</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2><A NAME="BM9647"></A>&nbsp;Self-Consistent Field Calculation </H2>
+<P>Once all the integrals needed are calculated, the SCF calculation can be started. A trial density matrix is constructed; this is a diagonal matrix with the diagonal terms chosen so that every atom starts off electrically neutral (except for ions, when each atom is given an equal charge). </P>
+<P>Using this trial density matrix, the one-electron matrix, and the two-electron integrals, a trial Fock matrix is constructed. </P>
+<P>Diagonalization produces a set of eigenvectors, from which a better density matrix can be made. </P>
+<P>This sequence (constructing the density matrix--constructing the Fock matrix--diagonalizing the Fock to get new eigenvectors) is repeated until the density matrix has become self-consistent to within a pre-set limit (<TT>SELCON</TT>). </P>
+                                                </BODY>
+</HTML>

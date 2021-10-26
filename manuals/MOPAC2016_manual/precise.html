@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>PRECISE </TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>PRECISE</TT> </h1>
+<P>Non-LBFGS jobs:&nbsp; The criteria for terminating all optimizations, electronic and geometric, are to be increased by a factor, 
+normally 100. This can be used where more precise results are wanted. If the results are going to be used in a <TT>
+<a href="force.html">FORCE</a></TT> calculation, where the geometry needs to be known quite precisely, then <TT>PRECISE</TT> is recommended; for small systems the extra cost in CPU time is minimal. <TT>PRECISE</TT> is not recommended for experienced users; instead, <TT>
+<a href="gnorm.html">GNORM=<I>n</I>.<I>nn</I></a></TT> and <TT>
+<a href="scfcrt.html">SCFCRT=<I>n</I>.<I>nn</I></a></TT> or <TT>
+<a href="relscf.html">RELSCF=<I>n</I>.<I>nn</I></a><I> </I></TT> are suggested. <TT>PRECISE</TT> should only rarely be necessary in a <TT>FORCE</TT> calculation: all it does is remove quartic contamination, which only affects the trivial modes significantly, and is very expensive in CPU time.&nbsp; </P>
+<P>LBFGS jobs: In the <a href="lbfgs.html"><tt>LBFGS</TT></a> procedure, if&nbsp; <TT>PRECISE</TT> 
+is present then the number of cycles used in identifying the lowest-energy 
+system is increased from 30 to 60.&nbsp; </P>
+<P>See also <a href="let.html"><tt>LET</TT></a>.</P>
+</BODY>
+</HTML>

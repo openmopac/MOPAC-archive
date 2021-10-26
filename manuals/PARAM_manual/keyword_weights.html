@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<TITLE>PROPERTY WEIGHTS FOR REFERENCE DATA</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>DWT=<i>n.n</i> HWT=<i>n.n</i> IWT=<i>n.n</i> GWT=<i>n.n</i> </TT></h1>
+<p>For most reference data, the default weights are suitable.&nbsp; If a reason 
+exists to increase or decrease the weight of a particular property for a 
+particular reference data file, then the weights can be changed by using these 
+keywords.</p>
+<p>All four keywords behave in the same manner: the default weight is 
+multiplied by<i> n.n</i>.&nbsp; n.nn should be in the range 0.1 to 10.&nbsp; The 
+effect of changing a weight is proportional to the square of the weight (because 
+the function being minimized is the root-mean-square).</p>
+<p>Reasons for changing the default weights</p>
+<p><b>The compound is important.</b>&nbsp; Benzene is the archetypical aromatic 
+compound, so it is more important than most other compounds.&nbsp; For this 
+reason its heat of formation would be given a higher weight, e.g., HWT=2.0.</p>
+<p><b>The accuracy is low.</b> Carbon suboxide, C3O2, is not very important, and 
+the only reference, Cox and Pilcher, is already quite old.&nbsp; So its heat of 
+formation weight is set to HWT=0.5.</p>
+<p><b>The interaction is weak.</b> Weak interactions are, of their nature, 
+small, so a higher accuracy is important.&nbsp; The accuracy can be increased by 
+increasing the weight of the heat of formation or the geometry. A good example 
+is provided by the water dimer interaction energy and geometry.&nbsp; For the 
+different water dimers, the geometry and heat of formation weight are both 
+increased by very large amounts.&nbsp; </p>
+<p>Default weights should not be changed for organic or inorganic compounds.&nbsp; 
+Because having different weights for different families of compounds is 
+important, this is done automatically.&nbsp; The relative default weights are:</p>
+<p>Compounds of H, C, N, and O, only:&nbsp; 1.0<br>
+Compounds with other elements important in biochemistry: 0.9<br>
+Compounds with other main-group elements: 0.8<br>
+Compounds involving transition metals: 0.7</p>
+</BODY>
+</HTML>

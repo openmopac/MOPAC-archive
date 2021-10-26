@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Choice of State to be Optimized</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">Choice of State to be Optimized </h1>
+<P>MECI can calculate a large number of states of various total spin. Two schemes are provided to allow a given state to be selected. First, <TT>
+<a href="root.html">ROOT=<I>n</I></a></TT> will, when used on its own, select the <I>n</I>'th state, irrespective of its total spin. By default, <I>n</I>=1. If <TT>ROOT=<I>n</I></TT> is used in conjunction with a keyword from the set
+<TT><A HREF="singlet.html">SINGLET</A>, <A HREF="doublet.html">DOUBLET</A>, <A HREF="triplet.html">TRIPLET</A>, <A HREF="quartet.html">QUARTET</A>,
+<a href="quintet.html">QUINTET</a>, <A HREF="sextet.html">SEXTET</A>, <A HREF="septet.html">SEPTET</A>, <A HREF="octet.html">OCTET</A></TT>,
+or <TT> <A HREF="nonet.html">NONET</A></TT>. , then the <I>n</I>'th root of that spin-state will be used. For example, <TT>ROOT=4</TT> and <TT>SINGLET</TT> will select the 4th singlet state. If there are two triplet states below the fourth singlet state then this will mean that the sixth state will be selected. </P>
+<P>Sometimes the energy required to form an excited state is wanted. By this we mean the energy of the excited state relative to the energy of the ground state, and not the heat of formation of the excited state. To calculate this quantity, the keywords <TT>
+<a href="precise.html">PRECISE</a>, <a href="gnorm.html">GNORM=0.01</a>,
+<a href="meci.html">MECI</a></TT> and <TT><a href="ci=n.html">C.I.=2</a></TT> should be used. For formaldehyde, these keywords would produce the output shown in the&nbsp;Figure.
+<br>
+<BR>
+<DIV ALIGN="CENTER"> <DIV ALIGN="CENTER">&nbsp;<STRONG>Figure:</STRONG> Energies of Excited States<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"> State</TD>
+<TD VALIGN="MIDDLE" COLSPAN=2>
+<P ALIGN="CENTER">Energy (eV)</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Q.N.</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Spin</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Symmetry</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Absolute</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Relative</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">-0.0049</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">0.0000</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Singlet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A1</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.7109</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.7158</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">1</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Triplet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3.1029</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">3.1078</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Singlet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A2</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">4</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">7.8630</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">7.8679</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Singlet</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">A1</TD>
+</TR>
+</TABLE>
+<P></DIV></DIV><BR>
+This output can be read as follows: The first state (the one at -0.004891eV) is the new ground state. C.I. will lower the energy of the ground state, relative to the SCF ground state, and for formaldehyde this extra stabilization amounts to 0.0049 eV. The ground state is a singlet, and has A<SUB>1</SUB> symmetry. The second state is a triplet, with energy 2.7109eV above the SCF energy, or 2.7158eV above the ground state, and has A<SUB>2</SUB> symmetry. The third and fourth states are both singlets. </P>
+<P>Using the two keywords given, the system would optimize on the ground singlet state, and the bond orders and density matrix would reflect this. If the first excited singlet state were wanted, then the extra keywords <TT>ROOT=2</TT> and <TT>SINGLET</TT> would also be used. Alternatively, the single extra keyword <TT>ROOT=3</TT> could be used. If the first triplet state were wanted, then <TT>TRIPLET</TT> or <TT>ROOT=2</TT> (but not both!) could be used. </P>
+                                                </BODY>
+</HTML>

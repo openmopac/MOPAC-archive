@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Force Constants</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H1>Force Constants </H1>
+<P>Internal coordinate force constants, <I>f<SUB>ic</I></SUB>, can be derived from the Cartesian coordinates and the Cartesian force constant matrix by use of: </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img1670.gif" WIDTH=294 HEIGHT=51 ALT="begin{displaymath}f_{ic}(l) = sum_jsum_kfrac{d({rm c.c.}_j)}{d({rm i.c.}_.......}_j)d({rm c.c.}_k)}frac{d({rm c.c.}_k)}{d({rm i.c.}_l)}.end{displaymath}"></DIV>
+<P>As with the gradients, the calculation of
+              <IMG SRC="img1671.gif" ALIGN="MIDDLE" WIDTH=45 HEIGHT=46 ALT="$frac{d({rm c.c.}_j)}{d({rmi.c.}_l)}$">is quite simple, and in done in routine JCARIN.
+<P>During the testing of this function, a minor fault in the conventional force calculation was revealed. To reduce any error introduced by finite arithmetic, the Hessian matrix is symmetrized before the vibrational frequencies and normal coordinates are calculated. This is done by
+<a href="point_group_theory.html">operating on the Hessian matrix</a>. </P>
+<P>In addition to the requirement that the symmetry of the Hessian should be the same as that of the nuclear coordinates, a second requirement is that the diagonal elements of the Hessian should be equal to the negative of the sum of the off-diagonal elements, that is, that: </P>
+<P><DIV ALIGN="CENTER">
+                     <IMG SRC="img1672.gif" WIDTH=87 HEIGHT=45 ALT="begin{displaymath}F_{ii} = -sum_{jne i}F_{ij}.end{displaymath}"></DIV>
+<P>During the testing of the internal force constants, very small variations in the force constants were found where no variation was expected. This was traced back to a failure of the above expression. To correct this, the diagonal terms of the force constant matrix were modified. This resulted in a perfect equivalence of equivalent force constants. An incidental benefit would be that the associated error in the calculated frequencies would be eliminated. </P>
+                                                </BODY>
+</HTML>

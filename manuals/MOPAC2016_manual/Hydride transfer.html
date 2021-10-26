@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Hydride transfer reaction: Prop-2-enal anion + methylpyridinium = prop-2-enal + 4-hydromethylpyridine </TITLE> 
+<style type="text/css">.auto-style1 {
+	border-style: solid;
+	border-width: 1px;
+}
+.auto-style2 {
+	text-indent: 2px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.auto-style3 {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+</style>
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+Reaction for hydride migration accompanied by charge neutralization <br>Prop-2-enal anion + methylpyridinium 
+cation &lt;=&gt; prop-2-enal + 4-hydromethylpyridine</h1>
+<h2>
+System description</h2>
+<table align="left">
+	<tr>
+		<td>
+		<img class="auto-style1" height="222" src="Prop-2-enal%20hydride%20migration.gif" style="float: left" width="694">
+		</td>
+		<td>&nbsp;</td>
+	</tr>
+</table>
+This system is designed to allow hydride migration to be modeled.&nbsp; Hydride 
+migration reactions occur naturally in some enzyme-catalyzed reactions, such as 
+the dehydrogenation of fatty acids to give unsaturated fatty acids.&nbsp; 
+Working with entire enzyme systems is very time-consuming, because of their 
+size, so instead an exemplar system was used for exploring the chemistry of a 
+hydride transfer reaction.
+<p class="auto-style3">&nbsp;</p>
+<p class="auto-style3">In enzyme-catalyzed dehydrogenation, the hydride transfer 
+reaction occurs after a proton has been abstracted from the substrate, resulting 
+in the formation of an anionic species.&nbsp; In this simulation the substrate 
+is represented by prop-2-enal anion.&nbsp; Hydride transfer typically involved 
+the oxidized form of nicotinamide adenine dinucleotide, NAD+, in the simulation 
+this is represented by a methylpyridinium cation. Addition of a hydride to NAD+ 
+converts it into the reduced form, NADH, represented here by 
+4-hydromethylpyridine</p>
+&nbsp;<p class="auto-style3">&nbsp;</p>
+<p class="auto-style3">The components are, on the left-hand side, prop-2-enal 
+anion and methylpyridinium cation, and, on the right-hand side neutral 
+prop-2enal and 4-hydromethylpyridine.&nbsp; Because of the charges present, the 
+simulation is done using the COSMO solvation model.</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">Before starting any work on the reaction, the geometries 
+of both the reactants and the products were fully optimized.&nbsp; In the 
+reactants, this positioned the -CH<sub>3</sub> group of the prop-2-enal anion 
+near to C<sub>4</sub> of methylpyridinium, and the rest of the prop-2-enal anion 
+was oriented across the face of the pyridinium, maximizing the electrostatic 
+stabilization resulting from the very large charge separation.&nbsp; That 
+electrostatic stabilization is not present in the products, so the two species 
+move apart, but only slightly.</p>
+<p class="auto-style2">At the transition state, the migrating hydrogen atom is 
+positioned approximately mid-way between the carbon atom it came from and the 
+carbon atom it is moving towards.</p>
+<h2>System analysis</h2>
+<h3>Charges</h3>
+<p>From the title &quot;hydride migration&quot; the assumption might be made that the 
+migrating hydrogen atom would have a large negative atomic charge, however, both 
+semiempirical, here PM7, and B3LYP 6-311G predict a small positive charge on the 
+migrating atom. The obvious question then arises of how does the negative charge 
+move from one species to the other?&nbsp; An examination of the Intrinsic 
+Reaction Coordinate (IRC) shows that the net charge on the anion remains almost 
+unchanged until the top of the barrier is reached, and that in that 
+in the region just
+<a href="Individual%20JSmol%20paths/Hydride%20transfer%20to%20C4%20on%20N-methyl%20pyridinium/Modified%20reaction%20path%201SCF%20on%20left%20side%20of%20transition%20state.html">
+before the transition</a> state,
+<a href="Individual%20JSmol%20paths/Hydride%20transfer%20to%20C4%20on%20N-methyl%20pyridinium/Modified%20reaction%20path%201SCF%20at%20the%20transition%20state%20geometry.html">
+at the transition state</a>, and just
+<a href="Individual%20JSmol%20paths/Hydride%20transfer%20to%20C4%20on%20N-methyl%20pyridinium/Modified%20reaction%20path%201SCF%20on%20right%20side%20of%20transition%20state.html">
+after the transition state</a>, there is a rapid movement of charge from one species to the other.&nbsp; 
+That is, the movement of charge occurs when the migrating hydrogen atom forms a 
+bridging bond between the two species. At that point, the PM7 partial charges are, 
+on the prop-2-enal: -0.52 (-0.52), on the hydrogen atom +0.13 (+0.22), and on 
+the methylpyridine: +0.39 (+0.30). The partial charges in parentheses are those 
+predicted by B3LYP 6-311G.</p>
+<h3>
+<img src="img11.jpg" style="float: right" width="676" height="671">Reaction 
+barrier</h3>
+<p>The IRC for the reaction is shown in the nearby chart.&nbsp; Each point 
+calculated in the IRC is shown as a yellow dot, and a smoothed line through 
+these points is also shown in yellow. Only 200 points were generated on each 
+side of the transition state, so the starting point on the left-hand side is 
++0.72 kcal&middot;mol<sup>-1</sup>, versus the optimized &Delta;H<sub>f</sub> of the reactants 
+of -0.97 kcal&middot;mol<sup>-1</sup>.&nbsp; The difference was due to the 
+truncation of the IRC.&nbsp; Similarly, on the right-hand side, the chart ends 
+at -1.62 kcal&middot;mol<sup>-1</sup> versus the optimized &Delta;H<sub>f</sub> 
+of the products of -2.74 kcal&middot;mol<sup>-1</sup>.</p>
+<p>The &quot;distance&quot; from the start of the left-hand side to the transition state 
+is 4.39 Ångstroms, and from the transition state to the right-hand side is 5.02 
+Ångstroms, for a total chart-width of 9.41 Ångstroms.&nbsp; Within this space, 
+the barrier itself has a width of only about 25% or 
+2.35 &Aring;ngstroms.&nbsp; Given that the height of the barrier is about 30 
+kcal·mol<sup>-1</sup>, this is a very steep barrier.&nbsp; This is reflected in 
+the large value of the imaginary frequency for the transition state normal mode, 
+of i2472 cm<sup>-1</sup>.&nbsp; The appearance of the barrier is typical of both 
+a proton and a hydrogen atom transfer.&nbsp; </p>
+<h3>&nbsp;</h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+<p class="auto-style2">&nbsp;</p>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

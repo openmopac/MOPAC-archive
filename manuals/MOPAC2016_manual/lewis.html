@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>LEWIS </TITLE>
+</HEAD>
+<body bgcolor=white>
+<h1 align="center">
+<TT>LEWIS</TT>
+</h1>
+<p align="left">
+Print the topography and Lewis structure.&nbsp;
+When <TT>LEWIS</TT> is present, the run is stopped after the structure is printed.</p>
+<p align="left">
+This keyword is useful for checking that a Lewis structure exists.&nbsp; Quite 
+complicated systems can be supplied, such as buckyball (C<sub>60</sub>), carbon nanotube 
+(buckytube), 
+graphite, phthalocyanines, and diamond.</p>
+<p align="left">
+A Lewis structure consists of single, double and triple bonds, lone pairs, 
+anionic and cationic sites, and positively and negatively charged atoms (ions).&nbsp; 
+The method used in MOPAC is quite powerful, and except for rare cases, gives a 
+reasonable structure.&nbsp; The exceptions are:</p>
+<ul>
+  <li>
+<p align="left">
+In buckytubes, the assumption is made that a graphitic lattice, rather than an 
+extended conjugated poly-acetylene type <span class="b">&pi;</span> bonding 
+structure exists. In some cases, the only unionized structure involves using an 
+extended conjugated poly-acetylene motif. </p>
+  </li>
+  <li>
+<p align="left">
+(To be added, as necessary)</p>
+  </li>
+</ul>
+<p align="left">
+When large organic molecules are being studied, a preliminary calculation to 
+generate the Lewis structure should be run before doing serious work.&nbsp; This 
+will identify all ionized sites in the system. <i>&nbsp;Check that these sites 
+are correct!</i>&nbsp; See also <TT><a href="charges.html">CHARGES</a></TT></p>
+<p align="left">
+If only the topography is important, then also add keyword <TT>
+<a href="zero_scf.html">0SCF</a>.</TT> This will 
+stop the run after the topography, but before the Lewis structure is printed. 
+This option is useful when using&nbsp; keyword&nbsp; <TT>
+<a href="CVB.html">CVB</a> </TT>to correct faults in the topology<TT>.</TT></p>
+<p>Related key-words:&nbsp; <TT> <a href="CVB.html">
+CVB</a>, <a href="metal.html">METAL</a>, <a href="vdwm.html">VDWM</a>,
+<a href="charge.html">CHARGE</a>, <a href="charges.html">CHARGES</a>, <a href="setpi.html">SETPI</a></TT>,<TT> and <a href="mozyme.html">MOZYME</a></TT><br>
+See also: <a href="Lewis_structures.html">Lewis Structures</a>,
+<a href="mozyme_introduction.html">MOZYME introduction</a>,&nbsp;
+<a href="Lewis_Metal_Charges.html">Lewis metal atom charges</a><DL dir="ltr">
+<div align="left">
+  <dt dir="ltr">&nbsp;</dt>
+</div>
+
+</dl>
+<p align="left">
+&nbsp;</p>
+<p align="left">
+&nbsp;</p>
+<p align="left">&nbsp;</p>
+</BODY>
+</HTML>

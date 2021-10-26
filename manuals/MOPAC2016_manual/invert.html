@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>INVERT</TITLE>
+                                                                                                                    </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>INVERT</TT> </h1>
+<p>When
+<TT>INVERT</TT> is present, all optimization flags are reversed.&nbsp; That is, 
+if an optimization flag is &quot;1&quot;, it will be set to &quot;0&quot;, and if it is &quot;0&quot;, it will 
+be set to &quot;1&quot;</p>
+<p>
+Refinement of a transition state for a large system runs faster when only the 
+atoms near to the transition state are used in gradient minimization, and the 
+rest are used in energy minimization. <TT>INVERT</TT> is 
+useful for calculations of this type.&nbsp; The optimization flags for all atoms 
+in the gradient minimization are set to &quot;1&quot;, the rest are set to &quot;0&quot;.&nbsp; In 
+one calculation, a normal gradient minimization is run, in a second calculation 
+a geometry optimization is run, with keyword
+<TT>INVERT</TT> present.&nbsp; </p>
+<p>
+The two calculations can be combined into one job.&nbsp; For example, the first 
+data set, for the gradient minimization, can be followed by a second data set 
+consisting of keywords &quot;<a href="oldgeo.html"><TT>OLDGEO</TT></a>&quot; and &quot;<TT>INVERT</TT>&quot; plus any 
+other keywords needed for the job.</p>
+<p>
+Alternatively, make two complete data sets, one for gradient minimization and 
+one for energy minimization.&nbsp; Run these data sets on different computers.&nbsp; 
+Then edit the resulting ARC files to make up a new data set.&nbsp; This saves 
+time, because the jobs run twice as fast.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+</BODY>
+</HTML>

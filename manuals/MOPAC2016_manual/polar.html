@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>POLAR </TITLE>
+                                                                                                                  </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>POLAR</TT> </h1>
+<P>This calculates the polarizability and first and second hyperpolarizabilities&nbsp;[<A HREF="references.html#polar">47</A>] This routine has been completely re-written by Prof Henry Kurtz and Prakashan Korambath, of Memphis State University. </P>
+<P>The POLAR calculation now gives the frequency-dependent NLO properties (<span class="b">&alpha;</span>,
+<span class="b">&beta;</span>, and &gamma;) at user-defined frequencies.&nbsp; </P>
+<P>See <a href="polarizability.html">units</a>.</P>
+<P>If a POLAR calculation gives the message &quot;Calculation of polarizability 
+failed (This part of MOPAC is fragile),&quot; and only the polarizability is needed, 
+use <a href="static.html"><tt>STATIC</tt></a></P>
+<P>In 2004, the polarizability volume reported was modified by the use of
+<a href="additive_corrections.html">additive corrections</a>.</P>
+<P>
+<BR>
+<H3><A NAME="SECTION0012211100000000000000">Examples of <TT>POLAR</TT> keyword</A> </H3>
+<p>Description of <a href="time_dependent_hartree_fock.html">user-definable 
+terms</a> in POLAR keyword.</p>
+<P>To calculate the NLO quantities  <i>&alpha;, &beta;, and &gamma; </i>at 1.0eV: <BR>
+<TT>POLAR(E=(1.0)) </TT><BR>
+This same calculation can be set up by setting all the variables to their default value: </P>
+<PRE>POLAR(IWFLB=0,E=(1.),BETA=0,GAMMA=1,TOL=1.D-3,MAXITU=500,MAXITA=150,BTOL=1.D-3)</PRE>
+<P>This takes up the entire keyword line. If more than one line is needed to hold the keyword, use the <TT>+</TT> option, as in: </P>
+<PRE>+ symmetry 1scf uhf POLAR(IWFLB=0,E=(1.),BETA=0,GAMMA=1,TOL=1.D-3,MAXITU=501,
+ MAXITA=151,BTOL=1.D-3)</PRE>
+<P>Note: This is not a recommended way of writing a keyword. In order for a keyword to be recognized, the 'join' of the two lines must be perfect. In other words, the last character of the first line must be in column 80, unless character 1 was not blank, in which case the last character must be in column 79. Anyhow, it is unlikely that such long keywords would be used very often. </P>
+<P>
+</BODY>
+</HTML>

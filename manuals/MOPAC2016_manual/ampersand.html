@@ -1,0 +1,21 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>&amp; </TITLE>
+                                                                           </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<h1 align="center">
+<TT>&amp;</TT> </h1>
+<P>An '<TT>&amp;'</TT> means 'turn the next line into keywords'. An '<TT>&amp;'</TT> on line 1 would mean that a second line of keywords should be read in. If that second line contained an '<TT>&amp;</TT>', then a third line of keywords would be read in. If the first line has an '<TT>&amp;</TT>' then the first description line is omitted; if the second line 
+also has an '<TT>&amp;</TT>', then both description lines are omitted. </P>
+<P>Examples: Use of one '<TT>&amp;</TT>' </P>
+<PRE>VECTORS DENSITY RESTART &amp; NLLSQ T=1H SCFCRT=1.D-8 DUMP=30M
+PM3 FOCK OPEN(2,2) ROOT=3 SINGLET SHIFT=30
+Test on a totally weird system</PRE>
+<P>Use of two '<TT>&amp;</TT>'s </P>
+<PRE>LARGE=-10 &amp; DRC=4.0 T=1H SCFCRT=1.D-8 DUMP=30M ITRY=300 SHIFT=30
+PM3 OPEN(2,2) ROOT=3 SINGLET NOANCI T-PRIORITY=0.5 &amp;
+LET GEO-OK VELOCITY KINETIC=5.0</PRE>
+</BODY>
+</HTML>

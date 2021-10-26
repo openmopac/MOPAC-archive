@@ -1,0 +1,63 @@
+
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>RAPID </TITLE>
+
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<H2 align="center">
+<TT>RAPID</TT> 
+</H2>
+When only part of a geometry is being modified, the speed of a <TT>
+<a href="mozyme.html">MOZYME</a> </TT> SCF calculation can
+be increased by the use of <TT>RAPID</TT>. Thus, if a side-chain on a protein is 
+being optimized, all atoms on the side-chain would be flagged with &quot; 1 &quot;s, and 
+all other atoms would be flagged with &quot; 0 &quot;s. An atom is considered as being 
+modified if any one of the three flags is &quot; 1 &quot;.&nbsp; <TT>RAPID</TT> 
+should not be used if many atoms are to be optimized and those atoms are not all 
+in one part of the molecule.&nbsp; For example, <TT>RAPID</TT> should not be used 
+with <TT><a href="nooptx.html">NOOPT</a> <a href="optx.html">OPT-H</a>.</TT><p>Because of limitations in <TT>RAPID</TT>, the termination criterion should be quite 
+large - say <a href="gnorm.html"><TT>GNORM</TT></a>=5 or more.&nbsp; Also, after a <TT>RAPID</TT> 
+calculation, a conventional <TT>MOZYME</TT> calculation should be run, in order to get a 
+more correct heat of formation.</p>
+ 
+<p>If the following conditions are used, the optimization will run smoother:</p>
+<p>1. Use Cartesian coordinates. <br>
+2. Before using <TT>RAPID</TT>, a useful step is to optimize the whole system.</p>
+<p>&nbsp;The effort to set up a system with <TT>RAPID</TT> is well worth while, particularly
+if only a few (up to 10-20%) of the atoms are flagged. </p>
+ 
+<p>As an example of the effect of using&nbsp; <TT>RAPID</TT>, for a decapeptide 
+containing 143 atoms, with the coordinates of the atoms of the last residue 
+being optimized, the times required for 10 cycles of geometry optimization are 
+as follows:</p>
+<div align="center">
+  <center>
+  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111" width="360">
+    <tr>
+      <td width="278">
+      <p align="center">Method</td>
+      <td width="82" align="right">Time (s)</td>
+    </tr>
+    <tr>
+      <td width="278">Using conventional MOPAC</td>
+      <td width="82" align="right">19.4</td>
+    </tr>
+    <tr>
+      <td width="278">Using MOZYME</td>
+      <td width="82" align="right">5.5</td>
+    </tr>
+    <tr>
+      <td width="278">Using MOZYME with RAPID</td>
+      <td width="82" align="right">2.8</td>
+    </tr>
+  </table>
+  </center>
+</div>
+<p>See also <a href="opt_label.html"><tt>OPT("<em>Label</em>"=<em>n.nn</em>)</tt></a></p>
+ 
+</BODY>
+</HTML>

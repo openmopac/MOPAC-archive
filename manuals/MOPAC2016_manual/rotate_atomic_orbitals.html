@@ -1,0 +1,347 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft FrontPage 5.0">
+<TITLE>Rotation of Atomic Orbitals</TITLE>&nbsp;<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff"><H3><A NAME="SECTION0012316100000000000000">Rotation of Atomic Orbitals</A> </H3>
+<P>As calculated, the overlap integrals represent the overlap of atomic orbitals that are aligned along the <I>z</I>-axis. In general, this will not be the case, and the diatomic overlap integral matrix must be rotated in order to represent the actual orientation used.&nbsp; 
+The rotation operation can be constructed in a
+<a href="rotate_atomic_orbitals_generic.html">completely general</a> way, or it 
+can be constructed using trigonometric functions, as shown here.&nbsp; </P>
+<P>The rotation matrices are well known, but the method by which they are constructed is by no means simple. Consider the general case of one atom at the origin, and a second atom at some point <I>p</I>(<I>x</I>,<I>y</I>,<I>z</I>). Let the angle from the second atom to the first atom to 
+the z<I> z</I> axis be <I>b</I>, and the angle of the projection of the second atom onto the <I>xy</I> plane to the <I>y</I> axis be <I>a</I>. Then, the <I>p</I>-orbital 
+transform is as shown in the following table:<BR>
+&nbsp;<div align="center">
+  <center>
+
+<TABLE CELLPADDING=3 BORDER="1" style="border-width:0; border-collapse: collapse" bordercolor="#111111" cellspacing="0">
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" colspan="4" style="border-style: none; border-width: medium">&nbsp;<u>Angular Dependence of the <I>p</I>-orbitals</u> </TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">&nbsp;</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><I>p</I>(<I>x</I>)</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium"><I>p</I>(<I>y</I>)</TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">p(z)</TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"><span class="b">&pi;</span>+</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">
+<!-- MATH: $\cos a.\cos b$ -->
+cos <i>a</i> cos <i>b</i></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">-sin <i>a</i></TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+<!-- MATH: $\cos a.\sin b$ -->
+cos<i> a</i> sin <i>b</i></TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"><span class="b">&pi;</span>-</TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">
+<!-- MATH: $\sin a.\cos b$ -->
+sin <i>a</i> cos <i>b</i></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">cos<i> a</i></TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">
+<!-- MATH: $\sin a.\sin b$ -->
+sin <i>a</i> sin <i>b</i></TD>
+</TR>
+<TR VALIGN="BASELINE">
+  <TD ALIGN="CENTER" style="border-left: medium none #111111; border-right-style: none; border-right-width: medium; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium"><span class="b">&sigma;</span></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">-sin <i>b</i></TD>
+<TD ALIGN="CENTER" style="border-style: none; border-width: medium">0</TD>
+<TD ALIGN="CENTER" style="border-left-style: none; border-left-width: medium; border-right: medium none #111111; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium">cos <i>b</i></TD>
+</TR>
+</TABLE>
+  </center>
+</div>
+<BR>
+The rotation matrices for the higher harmonics are fairly difficult to 
+construct. In this work, several mathematical tools will be used. These are:<div align="center">
+  <center>
+
+<TABLE  width="783">
+<TR><TD width="783">
+  <p align="center"><u>Mathematical 
+Tools for use with Spherical Harmonics</u>
+</TD></TR>
+<TR><TD width="783"><DL COMPACT>
+<DT> <DD> 1.&nbsp; All odd integrals, i.e., integrals of the type &lt;<i>x<sup>n</sup></i>&gt;,
+where <I>n</I> is an odd integer, are zero. 
+
+<DT> <DD> 2. &lt;<i>x</i><sup>2</sup>&gt; = &lt;<i>y</i><sup>2</sup>&gt; = &lt;<i>z</i><sup>2</sup>&gt; &#8800; 0
+
+<DT> <DD> 3. &lt;<i>x</i><sup>2</sup><i>y</i><sup>2</sup>&gt; = &lt;<i>x</i><sup>2</sup><i>y</i><sup>2</sup>&gt; = &lt;<i>y</i><sup>2</sup><i>z</i><sup>2</sup>&gt; 
+= &lt;<i>x</i><sup>2</sup><i>z</i><sup>2</sup>&gt; &#8800; 0
+
+<DT> <DD> 4. &lt;<i>x</i><sup>4</sup>&gt; = &lt;<i>y</i><sup>4</sup>&gt; = &lt;<i>z</i><sup>4</sup>&gt; &#8800; 0
+
+<DT> <DD> 5. All integrals of the type &lt;<i>a<sup>n</sup>b<sup>m</sup>c<sup>l</sup></i>&gt;
+where <I>a</I>, <I>b</I>, and <I>c</I> are different members of the set (<I>x</I>,<I>y</I>,<I>z</I>) are equal.
+
+<DT> <DD> 6. The normalization condition for the spherical harmonics is:
+<font size="4" face="Arial">&#8747;<sub>0</sub><sup>2</sup></font><font size="4"><sup><span class="b">&pi;</span></sup>
+<font face="Arial">&#8747;<sub>0</sub></font><sup><span class="b">&pi;</span></sup><sup>
+</sup>(<i>Y<sub>l</sub><sup>m</sup></i>(<span class="b">&theta;</span><span class="b">&phi;</span>))<sup>2</sup>sin(<span class="b">&theta;</span>)d<span class="b">&theta;</span>d<span class="b">&phi;</span> 
+= 1</font>
+<BR CLEAR="ALL">
+<P></P>
+
+<DT> <DD> 7. cos<sup>2</sup>(<span class="b">&theta;</span>) + sin<sup>2</sup>(<span class="b">&theta;</span>) = 1
+
+<DT> <DD> 8. cos(2<span class="b">&theta;</span>) = 2cos<sup>2</sup>(<span class="b">&theta;</span>) - 1
+
+<DT> <DD> 9. sin(2<span class="b">&theta;</span>) = 2sin(<span class="b">&theta;</span>)cos(<span class="b">&theta;</span>)
+
+<DT> <DD> 10. All atomic orbitals are assumed to be normalized: , i.e.,
+&lt;<span class="b">&psi;</span><sup>2</sup>&gt; = 1
+<BR CLEAR="ALL">
+<P></P>
+
+<DT> <DD> 11. <i>x</i> = <i>r.</i>sin(<span class="b">&theta;</span>).cos(<span class="b">&phi;</span>),&nbsp;
+<i>y</i> = <i>r.</i>sin(<span class="b">&theta;</span>).sin(<span class="b">&phi;</span>),
+<i>&nbsp; z</i> = <i>r.</i>cos(<span class="b">&phi;</span>)</DL>
+</TD></TR>
+</TABLE>
+
+  </center>
+</div>
+
+<P>
+When working with the angular components, it is normally easier to use the
+Cartesian symbols <I>x</I>, <I>y</I>, and <I>z</I> instead of the trigonometric forms.  This
+avoids the potentially confusing expressions that involve the angles <I>a</I>, <I>b</I>, <span class="b">&theta;</span>,
+and <span class="b">&phi;</span>.
+<P>
+
+<BR>
+<P>
+Consider the rotation of 
+<!-- MATH: $d(x^2-y^2)$ -->
+<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>). The rotation components involved are:
+<i>R</i>(<i>x</i>) = (cos<i>a</i>.cos<i>b</i>)<i>x</i> + (sin<i>a</i>.cos<i>b</i>)<i>y</i> 
++ (-sin<i>b</i>)<i>z, </i>
+and <i>R</i>(<i>y</i>) = (-sin<i>a</i>)<i>x</i> + (cos<i>a</i>)<i>y</i> <i>.</i><P>
+<BR><P></P>
+
+The rotation matrix element 
+<!-- MATH: $<d(x^2-y^2)|R|d(x^2-y^2)>$ -->
+&lt;<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)|<I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt; can be derived
+using the relationship:
+
+<TABLE ALIGN="CENTER" CELLPADDING="0" width="1000" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" width="78"><I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP width="9">=</TD>
+<TD ALIGN="LEFT" NOWRAP width="670">(cos<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i>)<i>x</i><sup>2</sup><i> 
++ </i>(2cos<i>a</i>.cos<i>b</i>.sin<i>a</i>.cos<i>b</i>)<i>xy</i> + </TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" width="78">&nbsp;</TD>
+<TD width="9">&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP width="670">(sin<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i>)<i>y</i><sup>2</sup> 
++ (-2sin<i>a</i>.cos<i>b</i>.sin<i>b</i>)<i>yz</i> + (sin<sup>2</sup><i>b</i>)<i>z</i><sup>2
+</sup>+</TD>
+</TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT" width="78">&nbsp;</TD>
+<TD width="9">&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP width="670">(-sin<sup>2</sup><i>a</i>)<i>x</i><sup>2</sup> 
++ (2sin<i>a</i>.cos<i>a</i>)<i>xy</i> + (-cos<sup>2</sup><i>a</i>)<i>y</i><sup>2</sup></TD>
+</TR>
+</TABLE>
+<P>
+In this expression, the integral over all odd terms vanish, therefore:
+<BR>
+<TABLE ALIGN="CENTER" CELLPADDING="0" >
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&lt;<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)|<I>R</I>|<I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)&gt;</TD>
+<TD ALIGN="CENTER" NOWRAP>=</TD>
+<TD ALIGN="LEFT" NOWRAP>&lt;<i>x</i><sup>2</sup>(cos<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> 
+- sin<sup>2</sup><i>a</i>)<i>x</i><sup>2</sup>&gt; +</TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&lt;<i>x</i><sup>2</sup>(sin<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> 
+- cos<sup>2</sup><i>a</i>)<i>y</i><sup>2</sup>&gt; +</TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&lt;<i>x</i><sup>2</sup>(sin<sup>2</sup><i>b</i>)<i>z</i><sup>2</sup>&gt; 
++</TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&lt;<i>y</i><sup>2</sup>(-cos<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> 
++ sin<sup>2</sup><i>a</i>)<i>x</i><sup>2</sup>&gt; +</TD>
+<TD  ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&lt;<i>y</i><sup>2</sup>(-sin<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> 
++ cos<sup>2</sup><i>a</i>)<i>y</i><sup>2</sup>&gt; +</TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="BASELINE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD ALIGN="LEFT" NOWRAP>&lt;<i>y</i><sup>2</sup>(-sin<sup>2</sup><i>b</i>)<i>z</i><sup>2</sup>&gt;</TD>
+<TD ALIGN="RIGHT">
+&nbsp;</TD></TR>
+</TABLE>
+The integral <i>&lt;x</i><sup>4</sup>&gt;
+has the same value as <i>&lt;y</i><sup>4</sup>&gt;,
+and 
+
+<!-- MATH: $<\!x^2y^2\!>$ -->
+<i>&lt;x</i><sup>2</sup><i>y</i><sup>2</sup>&gt;
+has the same
+value as 
+<!-- MATH: $<\!x^2z^2\!>$ -->
+<i>&lt;x</i><sup>2</sup><i>z</i><sup>2</sup>&gt;,
+etc., therefore this expression can be simplified.  
+Collecting together terms of the type <i>&lt;x</i><sup>4</sup>&gt;
+gives
+<p align="center">cos<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> - sin<sup>2</sup>a 
+-sin<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> + cos<sup>2</sup><i>a</i></p>
+or
+<p align="center">(cos<sup>2</sup><i>b</i> + 1).(2cos<sup>2</sup><i>a</i> - 1)<BR>
+<BR CLEAR="ALL">
+</p>
+<P></P>
+Collecting terms of the type 
+<!-- MATH: $<\!y^2x^2\!>$ -->
+&lt;y<sup>2</sup>x<sup>2</sup>&gt;
+gives
+<p align="center">sin<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> - cos<sup>2</sup><i>a</i> 
++ sin<sup>2</sup><i>b</i> - cos<sup>2</sup><i>a</i>.cos<sup>2</sup><i>b</i> + 
+sin<sup>2</sup><i>a</i> - sin<sup>2</sup><i>b</i></p>
+
+or
+<p align="center">-(cos<sup>2</sup><i>b</i> + 1).(2cos<sup>2</sup><i>a</i> - 1)</p>
+<P></P>
+The rotation matrix element is thus:
+<p align="center">&lt;d(<i>x</i><sup>2</sup> - <i>y</i><sup>2</sup>)|R|d(<i>x</i><sup>2</sup> 
+- <i>y</i><sup>2</sup>)&gt; = &lt;<i>x</i><sup>4</sup> -2<i>x</i><sup>2</sup><i>y</i><sup>2</sup> 
++<i>y</i><sup>4</sup>&gt;<font face="Arial">½</font>(cos<sup>2</sup><i>b</i> + 1).(2cos<sup>2</sup><i>a</i> - 1)</p>
+<P></P>
+As a result of the fact that the angular components of the atomic orbitals
+are normalized, i.e., 
+<!-- MATH: $<\!x^4-2x^2y^2+y^4\!>$ -->
+<i>&lt;x</i><sup>4 </sup>-<sup> </sup>2<i>x</i><sup>2</sup><i>y</i><sup>2 </sup>
++<sup> </sup><i>y</i><sup>4</sup>&gt;=1:
+<p align="center">&lt;d(<i>x</i><sup>2</sup> - <i>y</i><sup>2</sup>)|R|d(<i>x</i><sup>2</sup> 
+- <i>y</i><sup>2</sup>)&gt; = (2cos<sup>2</sup><i>a</i> - 1)cos<sup>2</sup><i>b</i> 
++ ½(2cos<sup>2</sup><i>a</i> - 1)sin<sup>2</sup><i>b</i></p>
+
+<P>which is the form used in the calculation of the <I>d</I>-rotation matrix. The full set of <I>d</I>-orbital 
+rotation matrix elements is:<DIV ALIGN="CENTER">
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3 style="border-left-width: 0; border-right-width: 0; border-top-width: 0" height="208" width="1097">
+<TR>
+  <TD VALIGN="MIDDLE" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium" height="20" width="84">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE" style="border-left-style:none; border-left-width:medium; border-right-style:none; border-right-width:medium; border-top-style:none; border-top-width:medium" colspan="5" height="20" width="992">
+<p align="center">Angular Dependence of the <I>d</I>-orbitals</TD>
+</TR>
+<TR>
+  <TD VALIGN="MIDDLE" style="border-top-style: solid; border-top-width: 1" height="30" width="82">
+<P>&nbsp;</TD>
+<TD VALIGN="MIDDLE" style="border-top-style: solid; border-top-width: 1" height="30" width="312">
+<span class="b">&delta;</span>+ &#8801; <i>d</i></font>(<i>x<sup>2</sup> 
+- y<sup>2</sup>)</i></font></TD>
+<TD VALIGN="MIDDLE" height="30" width="128">
+<P align="left"><!-- MATH: $\pi + \ \equiv \ d(xz)$ --><span class="b">&pi;</span>+
+&#8801; <i>d</i>(<i>xz</i>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="115">
+<P><!-- MATH: $\sigma  \ \equiv \ d(2z^2-x^2-y^2)$ --><span class="b">&sigma;</span>
+&#8801; <I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="125">
+<P><!-- MATH: $\pi -  \ \equiv \ d(yz)$ --><span class="b">&pi;</span>-
+&#8801; <i>d</i>(<i>yz</i>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="280">
+<P><!-- MATH: $\delta -  \ \equiv \ d(xy)$ -->&delta;-
+&#8801; <i>d</i>(<i>xy</i>)</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="82">
+<!-- MATH: $d(x^2-y^2)$ --><I>d</I>(<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="312">
+<P><!-- MATH: $(2\cos^2a-1) \cos^2b+\frac{1}{2}(2\cos^2a-1) \sin^2b$ -->&nbsp;(2cos<sup>2</sup><i>a</i> - 1)cos<sup>2</sup><i>b</i> 
++ ½</font>(2cos<sup>2</sup><i>a</i> - 1)sin<sup>2</sup><i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="128">
+<P>-cos<i>a</i>.sin<i>b</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="115">
+<P>&#8730;¾.sin<i><sup>2</sup>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="125">
+<P><!-- MATH: $-\sin a. \sin b.\cos b$ -->-sin<i>a</i>.sin<i>b</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="280">
+<P>2.<!-- MATH: $\sin a.\cos a. \cos^2b+\sin a.\cos a. \sin^2b$ -->sin<i>a</i>.cos<i>a</i>.cos<sup>2</sup><i>b</i> 
++ sin<i>a</i>.cos<i>a</i>.sin<sup>2</sup><i>b</i></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="82">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE" height="30" width="312">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE" height="30" width="128">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE" height="30" width="115">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE" height="30" width="125">
+&nbsp;</TD>
+<TD VALIGN="MIDDLE" height="30" width="280">
+&nbsp;</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="82">
+<I><P>d</I>(<I>xz</I>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="312">
+<P>(2cos<sup>2</sup><i>a</i> - 1)sin<i>b</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="128">
+<P>cos<i>a</i>(2cos<sup>2</sup><i>b</i> - 1)</TD>
+<TD VALIGN="MIDDLE" height="30" width="115">
+<P>-&#8730;3.sin<i>b</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="125">
+<P><!-- MATH: $\sin a. (2\cos^2b-1)$ -->sin<i>a</i> (2cos<sup>2</sup><i>b</i> - 1)</TD>
+<TD VALIGN="MIDDLE" height="30" width="280">
+<P><!-- MATH: $2\sin a.\cos a. \sin b.\cos b$ --> <!-- MATH: $\sin a.\cos a. \cos^2b+\sin a.\cos a. \sin^2b$ -->
+2.sin<i>a</i>.cos<i>a</i>.<!-- MATH: $\sin a.\cos a. \cos^2b+\sin a.\cos a. \sin^2b$ -->sin<i>b</i>.cos<i>b</i></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="82">
+<!-- MATH: $d(2z^2-x^2-y^2)$ --><I>d</I>(2<I>z</I><SUP>2</SUP>-<I>x</I><SUP>2</SUP>-<I>y</I><SUP>2</SUP>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="312">
+<P><!-- MATH: $\sqrt{\frac{3}{4}}(2\cos^2a-1) \sin^2b$ -->&#8730;¾.(2cos<sup>2</sup><i>a</i> - 1)sin<i><sup>2</sup>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="128">
+<P><!-- MATH: $\sqrt{3}\cos a. \sin b.\cos b$ -->&#8730;3.cos<i>a</i>.sin<i>b</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="115">
+<P><!-- MATH: $\cos^2b-\frac{1}{2}\sin^2b$ -->cos<sup>2</sup><i>b</i> - 
+½sin<sup>2</sup><i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="125">
+<P><!-- MATH: $\sqrt{3}\sin a.\sin b.\cos b$ -->&#8730;3.sin<i>a</i>.sin<i>b</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="280">
+<P>&#8730;3.sin<i>a</i>.cos<i>a</i>.<!-- MATH: $\sin a.\cos a. \cos^2b+\sin a.\cos a. \sin^2b$ -->sin<i><sup>2</sup>b</i></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="30" width="82">
+<I><P>d</I>(<I>yz</I>)</TD>
+<TD VALIGN="MIDDLE" height="30" width="312">
+<P><!-- MATH: $-2\sin a.\cos a. \sin b$ -->-2sin<i>a</i>.cos<i>a.</i>sin<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="128">
+<P><!-- MATH: $-\sin a. \cos b$ -->-sin<i>a</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="115">
+<P>0</TD>
+<TD VALIGN="MIDDLE" height="30" width="125">
+<P><!-- MATH: $\cos a. \cos b$ -->cos<i>a</i>.cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="30" width="280">
+<P><!-- MATH: $(2\cos^2a-1) \sin b$ -->(2cos<sup>2</sup><i>a</i> - 1)sin<i>b</i></TD>
+</TR>
+<TR><TD VALIGN="MIDDLE" height="31" width="82">
+<I><P>d</I>(<I>xy</I>)</TD>
+<TD VALIGN="MIDDLE" height="31" width="312">
+<P><!-- MATH: $-2\sin a.\cos a. \cos b$ -->-2sin<i>a</i>.cos<i>a.</i>cos<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="31" width="128">
+<P><!-- MATH: $\sin a . \sin b$ -->sin<i>a</i>.sin<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="31" width="115">
+<P>0</TD>
+<TD VALIGN="MIDDLE" height="31" width="125">
+<P><!-- MATH: $-\cos a. \sin b$ -->-cos<i>a</i>.sin<i>b</i></TD>
+<TD VALIGN="MIDDLE" height="31" width="280">
+<P><!-- MATH: $(2\cos^2a-1) \cos b$ -->(2cos<sup>2</sup><i>a</i> - 1)cos<i>b</i></TD>
+</TR>
+</TABLE>
+
+</DIV>
+
+</BODY>
+</HTML>

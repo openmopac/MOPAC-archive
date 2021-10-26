@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<!--Converted with LaTeX2HTML 98.1 release (February 19th, 1998)
+originally by Nikos Drakos (nikos@cbl.leeds.ac.uk), CBLU, University of Leeds
+* revised and updated by:  Marcus Hennecke, Ross Moore, Herb Swan
+* with significant contributions from:
+  Jens Lippmann, Marek Rouchal, Martin Wilck and others -->
+<HTML>
+<HEAD>
+<TITLE>RE-LOCAL </TITLE>
+<META NAME="description" CONTENT="RE-LOCAL ">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+</HEAD>
+<body bgcolor=white>
+<!--Navigation Panel-->
+<H2 align="center">
+<TT>RE-LOCAL </TT> 
+</H2>
+The LMOs used by <a href="mozyme.html"><TT>MOZYME</TT></a> in the SCF are not fully localized.  At the start they are,
+but as the SCF proceeds, they become increasingly delocalized.  At the end of
+a calculation, the LMOs may be 5 or 10 percent less than fully localized.
+ 
+To generate localized M.O.s of the type that MOPAC makes, <TT>RE-LOCAL</TT>
+should be used.
+<p> <TT>RE-LOCAL</TT>
+will give results slightly different to those from MOPAC because of two reasons:</p>
+<p>(1) Sets of LMOs that could be resolved into banana bonds or rabbit ears are 
+not resolved.&nbsp; This means that such LMOs are ill-defined, however this 
+would never be significant in reactions.</p>
+<p>(2) The unitary rotation of the occupied set will not allow atoms to be 
+created.&nbsp; So if one LMO has a specific atom that is not present in another 
+LMO, then rotation of the two LMOs will result in the loss of wavefunction in 
+the second LMO.&nbsp; This is also never important but in this case because the 
+loss only occurs in the tails of the LMOs.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+&nbsp;<p>&nbsp;</p>
+</BODY>
+</HTML>

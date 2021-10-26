@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Specifying a temperature in a DRC calculation</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY>
+<h1 align="center">Specifying a temperature in a DRC </h1>
+<p align="left">The behavior of a system at a specified temperature can be 
+modeled by use of <TT><a href="kinetic.html">KINETIC</a></TT>.&nbsp; This 
+keyword allows extra kinetic energy to be added to the system.&nbsp; In order to 
+determine how much extra energy to add, an understanding of the issues involved 
+is essential.</p>
+ 
+
+<h2 align="left">Energy issues involved in a dynamic system</h2>
+ 
+
+<p align="left">The total energy of a system can be expressed as three sums:</p>
+ 
+
+<p align="left">(A) The heat of formation of the system, <span class="b">&Delta;</span>H<sub>f0</sub>.&nbsp; 
+This is an irreducible minimum, and represents the energy of the system at 
+equilibrium.</p>
+ 
+
+<p align="left">(B) The potential energy of the system.&nbsp; This is the heat 
+of formation of the system with its current geometry, <span class="b">&Delta;</span>H<sub>f</sub>, 
+minus <span class="b">&Delta;</span>H<sub>f0</sub>. It represents the energy of 
+distortion from the equilibrium geometry.</p>
+ 
+
+<p align="left">(C) The kinetic energy of the system.&nbsp; This is the sum of 
+the vibrational energies of motion of all the atoms in the system.</p>
+ 
+
+<p align="left">Energy term (A) is a constant, regardless of temperature. Energy 
+terms (B) plus (C) represent the internal energy (enthalpy), U, of the system.&nbsp; 
+At zero Kelvin, U is zero.&nbsp;At any other temperature, T, the enthalpy 
+represents the integral of the heat capacity from zero to T. In a DRC 
+calculation, any desired temperature can be specified by defining the 
+associated internal energy.&nbsp; The internal energy can be calculated using <TT>
+<a href="thermo00.html">THERMO</a></TT>, and specifying the temperature to be 
+used.&nbsp; In the output of a <TT>THERMO</TT> calculation, the enthalpy needed 
+is given at the intersection of <TT>ENTHALPY</TT> and <TT>VIB</TT>.&nbsp; In the 
+following example, this would be 578.5 cal/mol, or 0.578 kcal/mol. </p>
+ 
+
+<PRE>    TEMP. (K)   PARTITION FUNCTION   H.O.F.    ENTHALPY   HEAT CAPACITY  ENTROPY
+                                    KCAL/MOL   CAL/MOLE    CAL/K/MOL   CAL/K/MOL
+
+
+ 298.00  VIB.     0.2342D+01                   578.4823     4.2357     3.6320
+         ROT.     0.3897D+04                   888.2813     2.9808    19.4109
+         INT.     0.9125D+04                  1466.7636     7.2165    23.0429
+         TRA.     0.1515D+27                  1480.4688     4.9680    36.0322
+         TOT.                        10.536   2947.2324    12.1845    59.0751
+</PRE>
+ 
+
+<p align="left">To set up a run at a given temperature, the&nbsp; <span class="b">&Delta;</span>H<sub>f </sub>
+of the optimized system is needed.&nbsp; Calculate this first, then do a <TT>THERMO</TT> 
+calculation to get the enthalpy at the desired temperature.&nbsp; The next step 
+might be unexpected.&nbsp; Distort the geometry of the system slightly, and 
+re-calculate the heat of formation at the distorted geometry.&nbsp; Make sure 
+that it has increased by at least 0.2 kcal/mol, and preferably by a large 
+fraction of the enthalpy. A non-equilibrium starting geometry is needed in a DRC 
+calculation because otherwise the atoms would not be moving, and adding in 
+excess kinetic energy would not be possible (You can't make the atoms move 
+faster if they were not moving originally).</p>
+ 
+
+<p align="left">Work out how much extra kinetic energy would need to be added to 
+equal the vibrational enthalpy at the desired temperature. </p>
+ 
+
+<p align="left">Let the calculated equilibrium heat of formation be -100.000 
+kcal/mol.<br>
+Let the desired internal vibrational energy be 0.578 kcal/mol.<br>
+Let the heat of formation of the distorted geometry be -99.500 kcal/mol.</p>
+ 
+
+<p align="left">Then the extra kinetic energy needed would be 0.078 kcal/mol.</p>
+ 
+
+<p align="left">Set up the DRC calculation using the distorted geometry and <TT>KINETIC=0.078</TT>.&nbsp; 
+Run this system.&nbsp; In the output, the starting heat of formation will be 
+that of the distorted system, and the kinetic energy will be zero or almost 
+zero.&nbsp; Over the next few femtoseconds, the heat of formation will become 
+more negative, and the kinetic energy will rise.&nbsp; When it exceeds 0.2 
+kcal/mol, the velocity vector for the system will be well defined, and the extra 
+kinetic energy will then be added.&nbsp; This will temporarily confuse the 
+predictor-corrector error reduction function, so errors in the calculation will 
+rise for a while, but once they become small the total energy of the system 
+(heat of formation of the current geometry plus kinetic energy) will be equal to <span class="b">&Delta;</span>H<sub>f0</sub>&nbsp; 
+plus the desired enthalpy.</p>
+ 
+
+<p align="left">A legitimate question is, why do it this way, why not add the 
+velocity vector &quot;by hand&quot;?&nbsp; The problem is, the kinetic energy must not 
+include rotational or translational terms. Translational contributions to the 
+enthalpy are irrelevant for a single molecule, and the rotational contributions 
+are conserved, so they, too, can be ignored (or can they?), all that matters is 
+the dynamics of the non-translating, non-rotating system.&nbsp; Defining a 
+velocity vector that achieves this is definitely non-trivial.</p>
+ 
+
+<p align="left">&nbsp;</p>
+ 
+
+                                                </BODY>
+</HTML>

@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<TITLE>Starting electronic configuration</TITLE>
+                                                                                                                                                      </HEAD>
+<BODY LINK="#0000ff" VLINK="#800080" BGCOLOR="#ffffff">
+<H2><A NAME="SECTION001241000000000000000">Starting electronic configuration</A> </H2>
+<P>As MECI requires the space parts of the <span class="b">&alpha;</span> and
+<span class="b">&beta;</span> molecular orbitals to be identical, only RHF wavefunctions are used. However, this is not a severe restriction in that any starting configuration will be supported. Examples of starting configurations are shown in the&nbsp;<A HREF="meci_start.html#conf_meci">Table</A>. </P>
+<DIV ALIGN="CENTER"> <DIV ALIGN="CENTER"> </P>
+<STRONG><P><a name="conf_meci"></a>Table:</STRONG> Examples of SCF configurations used in MECI</P>
+<TABLE BORDER CELLSPACING=1 CELLPADDING=3>
+<TR><TD VALIGN="MIDDLE">
+<P>System</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">KeyWords used</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">Starting Configuration</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methane</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">none</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.00 2.00 2.00 2.00</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methyl Radical</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">none</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.00 2.00 2.00 1.00</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Twisted Ethylene</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><A HREF="open.html">OPEN(2,2)</A></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.00 2.00 1.00 1.00</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Twisted Ethylene Cation</TD>
+<TD VALIGN="MIDDLE">
+<TT><P ALIGN="CENTER">OPEN(1,2)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.00 2.00 0.50 0.50</TD>
+</TR>
+<TR><TD VALIGN="MIDDLE">
+<P>Methane Cation</TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER"><A HREF="charge.html">CHARGE</A><TT>=1 OPEN(5,3)</TT></TD>
+<TD VALIGN="MIDDLE">
+<P ALIGN="CENTER">2.00 1.67 1.67 1.67</TD>
+</TR>
+</TABLE>
+<P></DIV></DIV><BR>
+<A NAME="BM13377">&nbsp;<A NAME="BM13378"></A>&nbsp;</A> Choice of starting configuration is important. For example, if twisted ethylene, a ground-state triplet, is not defined using <TT>OPEN(2,2)</TT>, then the closed-shell ground-state structure will be calculated. Obviously, this configuration is a legitimate microstate, but from the symmetry of the system a better choice would be to define one electron in each of the two formally degenerate
+<i><span class="b">&pi;</span></i>-type M.O.s. </P>
+<P>Each configuration which can be generated in a molecule may be represented by a single Slater determinant; this is called a microstate. The final states will be linear combinations of these microstates. In general, microstates will not be eigenfunctions of the total spin operator, but will be mixtures of different spin states. </P>
+<P>The initial configuration used to generate the SCF is arbitrary; for half-electron systems it will not even correspond to a microstate, each M.O. having a fractional <A NAME="BM13381">&nbsp;</A> electron occupancy. Even if the starting wavefunction is a closed shell it would still correspond to only one of a large number of microstates to be used in the MECI. As a result, before the MECI is started all electronic terms arising from the electrons in the initial configuration, which will be used by MECI, are removed. The starting wavefunction will thus consist of a low-lying doubly occupied set of M.O.s and a high-lying empty set of M.O.s, neither of which will be involved in the MECI, and in between a small set of M.O.s from which the electrons have been removed. This set of M.O.s will be involved in the MECI. </P>
+                                                </BODY>
+</HTML>
