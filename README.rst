@@ -21,6 +21,10 @@ Major releases of MOPAC:
 15. MOPAC 2012 (2012)
 16. MOPAC 2016 (2016)
 
+Other releases of MOPAC:
+
+17. MOPAC 5.022mn (2015)
+
 Releases 1-6 were open-source software distributed through the Quantum Chemistry Program Exchange (QCPE) for a distribution fee.
 
 Releases 7-11 were commercial software distributed by Fujitsu, but low-cost academic distribution was still handled through the QCPE.
@@ -28,3 +32,7 @@ Releases 7-11 were commercial software distributed by Fujitsu, but low-cost acad
 Release 12 was open-source software distributed by Stewart Computational Chemistry.
 
 Releases 13-16 were commercial software distributed by Stewart Computational Chemistry, which also handled free academic distribution.
+
+Release 17 was a custom version of MOPAC 5 from Prof. Don Truhlar's group at the University of Minnesota,
+which includes many unique features associated with research from that group. As noted in the program's directory,
+it released under a slightly different open-source license than the rest of this repository.

@@ -1,0 +1,252 @@
+ *******************************************************************************
+ **  Welcome to MOPAC 5.022mn - A version of MOPAC for Direct Molecular Dynamics
+ *******************************************************************************
+
+                                 AM1 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *          MOPAC:  VERSION 5.022               CALC'D. Tue Jun 1               
+ *  UHF      - UNRESTRICTED HARTREE-FOCK CALCULATION
+ *   T=      - A TIME OF  3600.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY 36000.0 SECONDS
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  TS       - USE EF ROUTINE FOR TS SEARCH
+ *  HHON     - ADD H...H REPULSIVE GAUSSIAN CORRECTION
+ *             USE AM1-CHC-SRP GAUSSIAN AS THE DEFUALT
+ *             E(HH)=1.064exp{-[(rHH-1.603)/0.808]**2}
+ ***********************************************************************060BY060
+ AM1 UHF TS HHON                                                                                                                                                
+ CH4CH3 with AM1-CHC-SRP HH Gaussian                                            
+                                                                                
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      H
+      2      C         1.08324 *                                   1
+      3      C         2.66708 *      105.13054 *                  2    1
+      4      H         1.33354 *        0.00004 *     0.00000 *    3    2    1
+      5      H         1.08324 *      113.44216 *   114.32333 *    2    1    3
+      6      H         1.08324 *      113.43917 *  -114.32530 *    2    1    3
+      7      H         1.08324 *      105.12920 *    59.99077 *    3    2    1
+      8      H         1.08324 *      105.12649 *   -60.01229 *    3    2    1
+      9      H         1.08325 *      105.13053 *   179.97438 *    3    2    1
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         H        0.0000    0.0000    0.0000
+     2         C        1.0832    0.0000    0.0000
+     3         C        1.7794    2.5746    0.0000
+     4         H        1.4313    1.2873    0.0000
+     5         H        1.5142   -0.4093    0.9056
+     6         H        1.5141   -0.4094   -0.9056
+     7         H        1.3483    2.9841    0.9055
+     8         H        1.3486    2.9839   -0.9057
+     9         H        2.8626    2.5746    0.0005
+  H: (AM1):  M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)         
+  C: (AM1):  M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)         
+
+
+          UHF CALCULATION, NO. OF ALPHA ELECTRONS =  8
+                           NO. OF BETA  ELECTRONS =  7
+
+
+            INTERATOMIC DISTANCES
+ 
+                  H  1       C  2       C  3       H  4       H  5       H  6
+ ------------------------------------------------------------------------------
+     H    1   0.000000
+     C    2   1.083245   0.000000
+     C    3   3.129693   2.667084   0.000000
+     H    4   1.925062   1.333542   1.333542   0.000000
+     H    5   1.811200   1.083238   3.129626   1.925006   0.000000
+     H    6   1.811170   1.083239   3.129671   1.925042   1.811234   0.000000
+     H    7   3.397435   3.129669   1.083238   1.925041   3.397452   3.850083
+     H    8   3.397495   3.129627   1.083238   1.925006   3.850012   3.397340
+     H    9   3.850125   3.129693   1.083245   1.925062   3.397312   3.397620
+ 
+                  H  7       H  8       H  9
+ ------------------------------------------
+     H    7   0.000000
+     H    8   1.811233   0.000000
+     H    9   1.811044   1.811327   0.000000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   1 TIME:   0.02 TIME LEFT:   3600.0 GRAD.:   597.458 HEAT: 47.45837    
+ CYCLE:   2 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:   573.783 HEAT: 47.45723    
+
+     TRUST RADIUS NOW LESS THAN 0.00100 OPTIMIZATION TERMINATING
+      GEOMETRY MAY NOT BE COMPLETELY OPTIMIZED
+
+ -------------------------------------------------------------------------------
+ AM1 UHF TS HHON                                                                                                                                                
+ CH4CH3 with AM1-CHC-SRP HH Gaussian                                            
+                                                                                
+
+
+     GEOMETRY OPTIMISED USING EIGENVECTOR FOLLOWING (EF).     
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                                AM1    CALCULATION
+                                                       VERSION 5.022
+                                                       16-Jun-15               
+
+
+
+
+          FINAL HEAT OF FORMATION =         47.45122 KCAL/MOL
+
+
+          TOTAL ENERGY            =   -350.482574869 EV  =      -8082.48 KCAL/MOL
+          ELECTRONIC ENERGY       =       -961.71290 EV  =     -22178.06 KCAL/MOL
+          CORE-CORE REPULSION     =        611.23032 EV  =      14095.58 KCAL/MOL
+
+          GRADIENT NORM           =        573.57432
+          IONIZATION POTENTIAL    =          8.78691 EV  (KOOPMANS' THEOREM)
+          NO. OF ALPHA ELECTRONS  =          8
+          NO. OF BETA  ELECTRONS  =          7
+          MOLECULAR WEIGHT        =     31.077
+
+
+          SCF CALCULATIONS  =               75
+          COMPUTATION TIME =   0.031 SECONDS
+
+
+
+       FINAL  POINT  AND  DERIVATIVES
+
+   PARAMETER     ATOM    TYPE            VALUE       GRADIENT
+      1          2  C    BOND            1.080893   120.121045  KCAL/ANGSTROM
+      2          3  C    BOND            2.663559   282.174735  KCAL/ANGSTROM
+      3          3  C    ANGLE         105.133842   118.281487  KCAL/RADIAN  
+      4          4  H    BOND            1.333635   117.094555  KCAL/ANGSTROM
+      5          4  H    ANGLE           0.006164   116.774323  KCAL/RADIAN  
+      6          4  H    DIHEDRAL        0.008209   115.186958  KCAL/RADIAN  
+      7          5  H    BOND            1.083319   113.848483  KCAL/ANGSTROM
+      8          5  H    ANGLE         113.456500   109.626224  KCAL/RADIAN  
+      9          5  H    DIHEDRAL      114.311373   142.658157  KCAL/RADIAN  
+     10          6  H    BOND            1.083292   119.437205  KCAL/ANGSTROM
+     11          6  H    ANGLE         113.448184   110.892316  KCAL/RADIAN  
+     12          6  H    DIHEDRAL     -114.306241   102.566604  KCAL/RADIAN  
+     13          7  H    BOND            1.083306   114.929339  KCAL/ANGSTROM
+     14          7  H    ANGLE         105.127454   121.033944  KCAL/RADIAN  
+     15          7  H    DIHEDRAL       60.005973   103.838818  KCAL/RADIAN  
+     16          8  H    BOND            1.083581   102.774257  KCAL/ANGSTROM
+     17          8  H    ANGLE         105.143795   107.384352  KCAL/RADIAN  
+     18          8  H    DIHEDRAL      -59.983708    98.798838  KCAL/RADIAN  
+     19          9  H    BOND            1.083710    95.928431  KCAL/ANGSTROM
+     20          9  H    ANGLE         105.152352   102.155778  KCAL/RADIAN  
+     21          9  H    DIHEDRAL      180.011155    88.222715  KCAL/RADIAN  
+
+
+
+
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      H
+      2      C         1.08089 *                                   1
+      3      C         2.66356 *      105.13384 *                  2    1
+      4      H         1.33363 *        0.00616 *     0.00821 *    3    2    1
+      5      H         1.08332 *      113.45650 *   114.31137 *    2    1    3
+      6      H         1.08329 *      113.44818 *  -114.30624 *    2    1    3
+      7      H         1.08331 *      105.12745 *    60.00597 *    3    2    1
+      8      H         1.08358 *      105.14379 *   -59.98371 *    3    2    1
+      9      H         1.08371 *      105.15235 *   180.01115 *    3    2    1
+
+
+            INTERATOMIC DISTANCES
+ 
+                  H  1       C  2       C  3       H  4       H  5       H  6
+ ------------------------------------------------------------------------------
+     H    1   0.000000
+     C    2   1.080893   0.000000
+     C    3   3.125085   2.663559   0.000000
+     H    4   1.920240   1.329924   1.333635   0.000000
+     H    5   1.809451   1.083319   3.126076   1.921846   0.000000
+     H    6   1.809342   1.083292   3.126047   1.921815   1.811407   0.000000
+     H    7   3.393275   3.126357   1.083306   1.925108   3.393809   3.846922
+     H    8   3.393548   3.126768   1.083581   1.925519   3.847365   3.394225
+     H    9   3.846079   3.126974   1.083710   1.925840   3.394378   3.394292
+ 
+                  H  7       H  8       H  9
+ ------------------------------------------
+     H    7   0.000000
+     H    8   1.811387   0.000000
+     H    9   1.811600   1.811759   0.000000
+
+
+          ALPHA   EIGENVALUES
+
+ -30.46603 -27.19381 -13.82654 -13.82319 -13.67085 -13.51154 -13.50826  -8.78691
+   4.18612   4.78899   4.79042   4.79891   4.80472   4.91814   5.09726
+
+
+           BETA EIGENVALUES 
+ -29.59666 -26.20937 -13.61369 -13.61034 -13.29036 -13.28713 -12.40087   0.65043
+   4.76873   5.05736   5.06084   5.10798   5.11173   5.20054   5.69708
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+ 
+         ATOM NO.   TYPE          CHARGE        ATOM  ELECTRON DENSITY
+           1          H           0.0767          0.9233
+           2          C          -0.2978          4.2978
+           3          C          -0.2981          4.2981
+           4          H           0.1351          0.8649
+           5          H           0.0768          0.9232
+           6          H           0.0768          0.9232
+           7          H           0.0768          0.9232
+           8          H           0.0768          0.9232
+           9          H           0.0769          0.9231
+
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     0.001    -0.000    -0.000     0.001
+ HYBRID         0.000     0.004     0.000     0.004
+ SUM            0.001     0.004     0.000     0.004
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         H                  0.0000    0.0000    0.0000
+     2         C                  1.0809    0.0000    0.0000
+     3         C                  1.7763    2.5712    0.0000
+     4         H                  1.4280    1.2838    0.0000
+     5         H                  1.5121   -0.4091    0.9057
+     6         H                  1.5120   -0.4091   -0.9057
+     7         H                  1.3454    2.9806    0.9057
+     8         H                  1.3451    2.9810   -0.9057
+     9         H                  2.8600    2.5715   -0.0002
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   0.92327   1.27244   1.00683   1.01224   1.00631   1.27375   1.00652   1.01167
+   1.00613   0.86488   0.92323   0.92324   0.92318   0.92317   0.92314
+
+
+                    (SZ)    =  0.500000
+                    (S**2)  =  0.787769
+
+
+          ATOMIC ORBITAL SPIN POPULATIONS
+
+  -0.02699   0.06957   0.06844   0.48743   0.03548   0.07063   0.06945   0.49428
+   0.03598  -0.16770  -0.02711  -0.02712  -0.02744  -0.02745  -0.02745
+
+
+
+ TOTAL CPU TIME:             0.04 SECONDS
+
+ == MOPAC DONE ==

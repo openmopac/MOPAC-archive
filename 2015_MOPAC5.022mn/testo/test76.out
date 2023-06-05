@@ -1,0 +1,364 @@
+ *******************************************************************************
+ **  Welcome to MOPAC 5.022mn - A version of MOPAC for Direct Molecular Dynamics
+ *******************************************************************************
+
+                               PMO2A CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *          MOPAC:  VERSION 5.022               CALC'D. Tue Jun 1               
+ *  POLAR    - CALCULATE FIRST, SECOND AND THIRD-ORDER POLARIZABILITIES
+ *  GRADIENTS- ALL GRADIENTS TO BE PRINTED
+ *   T=      - A TIME OF  3600.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY 36000.0 SECONDS
+ *  1SCF     - DO 1 SCF AND THEN STOP 
+ *  PMO2a    - THE PMO2a HAMILTONIAN IS TO BE USED
+ ***********************************************************************060BY060
+ PMO2A                      POLAR 1SCF GRAD                                                                                                                     
+ Test of PMO2a method using keyword.                                            
+ Sulfuric acid in its B3LYP/CBSB7 optimized gas-phase geometry.                 
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      S
+      2      O         1.42526 *                                   1
+      3      O         1.42526 *      124.75448 *                  1    2
+      4      O         1.61003 *      108.59314 *   234.82587 *    1    2    3
+      5      O         1.61003 *      105.47575 *   126.49699 *    1    2    3
+      6     Hp         0.96907 *      108.21885 *   197.27600 *    5    1    2
+      7     Hp         0.96907 *      108.21885 *   333.10140 *    4    1    2
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         S        0.0000    0.0000    0.0000
+     2         O        1.4253    0.0000    0.0000
+     3         O       -0.8125    1.1710    0.0000
+     4         O       -0.5134   -0.8791    1.2474
+     5         O       -0.4296   -0.9229   -1.2474
+     6        Hp       -1.3575   -0.7373   -1.4561
+     7        Hp        0.1681   -1.5357    1.4561
+   O: (PMO2a): Fiedler, Leverentz, Nachimuthu, et al., JCTC, In press (2014).   
+  Hp: (PMO2a): Fiedler, Leverentz, Nachimuthu, et al., JCTC, In press (2014).   
+   S: (PMO2a): Fiedler, Leverentz, Nachimuthu, et al., JCTC, In press (2014).   
+
+
+          RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS = 16
+
+
+            INTERATOMIC DISTANCES
+ 
+                  S  1       O  2       O  3       O  4       O  5      Hp  6
+ ------------------------------------------------------------------------------
+     S    1   0.000000
+     O    2   1.425262   0.000000
+     O    3   1.425262   2.525620   0.000000
+     O    4   1.610033   2.467165   2.418301   0.000000
+     O    5   1.610033   2.418301   2.467165   2.496510   0.000000
+    Hp    6   2.122946   3.226139   2.461525   2.835782   0.969066   0.000000
+    Hp    7   2.122946   2.461525   3.226139   0.969066   2.835782   3.383240
+ 
+                 Hp  7
+ ------------------
+    Hp    7   0.000000
+
+ -------------------------------------------------------------------------------
+ PMO2A                      POLAR 1SCF GRAD                                                                                                                     
+ Test of PMO2a method using keyword.                                            
+ Sulfuric acid in its B3LYP/CBSB7 optimized gas-phase geometry.                 
+
+
+     1SCF WAS SPECIFIED, SO BFGS WAS NOT USED                 
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                                PMO2   CALCULATION
+                                                       VERSION 5.022
+                                                       16-Jun-15               
+
+
+
+
+          FINAL HEAT OF FORMATION =       -173.42977 KCAL/MOL
+
+
+          TOTAL ENERGY            =  -1436.636172368 EV  =     -33130.27 KCAL/MOL
+          ELECTRONIC ENERGY       =      -4235.22435 EV  =     -97668.51 KCAL/MOL
+          CORE-CORE REPULSION     =       2798.58818 EV  =      64538.24 KCAL/MOL
+          DISPERSION ENERGY       =         -0.08622 EV  =         -1.98835784 KCAL/MOL
+
+          GRADIENT NORM           =         87.43286
+          IONIZATION POTENTIAL    =         14.79644 EV  (KOOPMANS' THEOREM)
+          NO. OF FILLED LEVELS    =         16
+          MOLECULAR WEIGHT        =    134.054
+
+
+          SCF CALCULATIONS  =               23
+          COMPUTATION TIME =   0.023 SECONDS
+
+
+
+       FINAL  POINT  AND  DERIVATIVES
+
+   PARAMETER     ATOM    TYPE            VALUE       GRADIENT
+      1          1  S    BOND            0.000000     0.014891  KCAL/ANGSTROM
+      2          1  S    ANGLE           0.000000     0.014891  KCAL/RADIAN  
+      3          1  S    DIHEDRAL        0.000000     0.014891  KCAL/RADIAN  
+      4          2  O    BOND            1.425262   -25.300030  KCAL/ANGSTROM
+      5          2  O    ANGLE           0.000000     0.014682  KCAL/RADIAN  
+      6          2  O    DIHEDRAL        0.000000     0.015101  KCAL/RADIAN  
+      7          3  O    BOND            1.425262   -25.300135  KCAL/ANGSTROM
+      8          3  O    ANGLE         124.754479     6.164426  KCAL/RADIAN  
+      9          3  O    DIHEDRAL        0.000000     0.014891  KCAL/RADIAN  
+     10          4  O    BOND            1.610033    48.854825  KCAL/ANGSTROM
+     11          4  O    ANGLE         108.593143    11.501015  KCAL/RADIAN  
+     12          4  O    DIHEDRAL     -125.174125    10.018582  KCAL/RADIAN  
+     13          5  O    BOND            1.610033    48.853882  KCAL/ANGSTROM
+     14          5  O    ANGLE         105.475746   -15.583891  KCAL/RADIAN  
+     15          5  O    DIHEDRAL      126.496987     0.422728  KCAL/RADIAN  
+     16          6 Hp    BOND            0.969066   -14.884203  KCAL/ANGSTROM
+     17          6 Hp    ANGLE         108.218846   -17.805337  KCAL/RADIAN  
+     18          6 Hp    DIHEDRAL     -162.723997    -0.003461  KCAL/RADIAN  
+     19          7 Hp    BOND            0.969066   -14.884412  KCAL/ANGSTROM
+     20          7 Hp    ANGLE         108.218846   -17.805127  KCAL/RADIAN  
+     21          7 Hp    DIHEDRAL      -26.898599    -0.003461  KCAL/RADIAN  
+
+
+
+
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      S
+      2      O         1.42526 *                                   1
+      3      O         1.42526 *      124.75448 *                  1    2
+      4      O         1.61003 *      108.59314 *  -125.17413 *    1    2    3
+      5      O         1.61003 *      105.47575 *   126.49699 *    1    2    3
+      6     Hp         0.96907 *      108.21885 *  -162.72400 *    5    1    2
+      7     Hp         0.96907 *      108.21885 *   -26.89860 *    4    1    2
+
+
+            INTERATOMIC DISTANCES
+ 
+                  S  1       O  2       O  3       O  4       O  5      Hp  6
+ ------------------------------------------------------------------------------
+     S    1   0.000000
+     O    2   1.425262   0.000000
+     O    3   1.425262   2.525620   0.000000
+     O    4   1.610033   2.467165   2.418301   0.000000
+     O    5   1.610033   2.418301   2.467165   2.496510   0.000000
+    Hp    6   2.122946   3.226139   2.461525   2.835782   0.969066   0.000000
+    Hp    7   2.122946   2.461525   3.226139   0.969066   2.835782   3.383240
+ 
+                 Hp  7
+ ------------------
+    Hp    7   0.000000
+
+
+                  EIGENVALUES
+
+ -42.09853 -39.63411 -38.83577 -38.79734 -19.54759 -18.59539 -17.64976 -16.28802
+ -16.19813 -15.71319 -15.67571 -15.25463 -15.10538 -15.00334 -14.81632 -14.79644
+  -4.05000  -0.52899  -0.22373   0.37084   0.37131   0.46390   0.92408   1.74853
+   2.76034   4.79543   4.87322   5.48100
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+ 
+         ATOM NO.   TYPE          CHARGE        ATOM  ELECTRON DENSITY
+           1          S           3.1626          2.8374
+           2          O          -1.0370          7.0370
+           3          O          -1.0370          7.0370
+           4          O          -0.9378          6.9378
+           5          O          -0.9378          6.9378
+           6         Hp           0.3935          0.6065
+           7         Hp           0.3935          0.6065
+
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.    -1.053    -2.011     0.000     2.270
+ HYBRID        -0.305    -0.582     0.000     0.657
+ SUM           -1.357    -2.594     0.000     2.927
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         S                  0.0000    0.0000    0.0000
+     2         O                  1.4253    0.0000    0.0000
+     3         O                 -0.8125    1.1710    0.0000
+     4         O                 -0.5134   -0.8791    1.2474
+     5         O                 -0.4296   -0.9229   -1.2474
+     6        Hp                 -1.3575   -0.7373   -1.4561
+     7        Hp                  0.1681   -1.5357    1.4561
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.48125   0.51489   0.44946   0.39175   1.92948   1.17753   1.96620   1.96379
+   1.92948   1.75482   1.38891   1.96379   1.90649   1.63231   1.67351   1.72547
+   1.90649   1.49880   1.80702   1.72547   0.55684   0.01486   0.01569   0.01915
+   0.55684   0.01112   0.01943   0.01915
+1******************** FINITE-FIELD POLARIZABILITIES ********************
+
+
+
+          MOLECULAR WEIGHT =  134.05
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN CM**(-1)
+
+          A =    0.124856   B =    0.080421   C =    0.070295
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN UNITS OF 10**(-40)*GRAM-CM**2
+
+          A =  224.199957   B =  348.076301   C =  398.214875
+
+
+ ROTATION MATRIX FOR ORIENTATION OF MOLECULE:
+
+         0.448506   -0.463648    0.764116
+        -0.234700   -0.886019   -0.399857
+         0.862414    0.000000   -0.506203
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         S        0.0000   -0.4486    0.0000
+     2         O        0.6392   -1.1094    1.0891
+     3         O       -0.6392   -1.1094   -1.0891
+     4         O        1.0518    0.5683   -0.6722
+     5         O       -1.0518    0.5683    0.6722
+     6        Hp       -1.6916    0.8341   -0.0054
+     7        Hp        1.6916    0.8341    0.0054
+
+
+ ENERGY OF "REORIENTED" SYSTEM WITHOUT FIELD:     -173.4297735767
+
+
+ APPLIED ELECTRIC FIELD MAGNITUDE:         0.00100
+
+
+ ATOMIC CONTRIBUTION TO THE POLARIZABILITY:        0.000000
+
+
+ ****************************** DIPOLE ******************************
+
+
+                     E4             DIP
+
+     X              0.000001      -0.000011
+     Y             -1.151808      -1.151742
+     Z             -0.000003       0.000012
+
+
+ MAGNITUDE:         1.151808       1.151742  (A.U.)
+                    2.927392       2.927225  (DEBYE)
+
+
+ ****************************** POLARIZABILITY ********************
+
+
+
+ E4 POLARIZABILITY TENSOR:
+ 
+                     1          2          3
+ ------------------------------------------
+          1  32.685826
+          2  -0.000191  30.985475
+          3   8.823391   0.001857  39.985965
+
+
+
+
+    ROOT NO.    1           2           3
+
+            26.78732    30.98548    45.88447
+  
+         1  -0.83134    -0.00029     0.55576
+         2  -0.00028     1.00000     0.00010
+         3   0.55576     0.00008     0.83134
+
+ DIP POLARIZABILITY TENSOR:
+ 
+                     1          2          3
+ ------------------------------------------
+          1  32.681394
+          2  -0.002813  30.999135
+          3   8.814656  -0.002539  39.975045
+
+
+
+
+    ROOT NO.    1           2           3
+
+            26.78896    30.99913    45.86748
+  
+         1   0.83135     0.00005     0.55574
+         2   0.00022    -1.00000    -0.00025
+         3  -0.55574    -0.00033     0.83135
+
+
+ AVERAGE POLARIZABILITY:        E4             DIP
+                               34.552422      34.551858  A.U.
+                                5.119978       5.119894  ANG.**3
+                            1.023968D-23   1.023951D-23  ESU
+
+
+ ****************************** SECOND-ORDER *************************
+
+
+  COMPONENT            E4             DIP
+
+      XXX            -1.127542       5.057957
+      XYY            -0.652720       2.215154
+      XZZ            -2.722452      -5.843898
+      YYY           -18.881354     -11.414401
+      YXX           -81.342115     -84.505403
+      YZZ            95.719742      96.307218
+      ZZZ             4.412626      -4.636141
+      ZXX             2.356107      -1.250532
+      ZYY             2.320945      -2.149572
+
+
+       BX            -2.701628       0.857528
+       BY            -2.702237       0.232448
+       BZ             5.453807      -4.821748
+
+
+     B(AU)            2.702221      -0.232506
+     B(ESU)           0.023393      -0.002013   (X10-30)
+
+
+ ****************************** THIRD-ORDER *************************
+
+
+                  E4             DIP
+
+     XXXX        29565.164570      24874.362320
+     YYYY        31190.244433      -8237.232656
+     ZZZZ         4892.237919      15497.186930
+     XXYY        20537.833352      -7558.247461
+     XXZZ        12348.823640       9433.762392
+     YYZZ        14977.964533       5762.155587
+
+
+ GAMMA =    3.227538D+04   9.481932D+03  A.U.
+            1.630281D+01   4.789475D+00  ESU (X10-36)
+
+
+
+ TOTAL CPU TIME:             0.15 SECONDS
+
+ == MOPAC DONE ==

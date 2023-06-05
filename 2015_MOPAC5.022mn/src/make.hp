@@ -1,0 +1,48 @@
+# This is a sample makefile which compiles and links
+# MOPAC-MN 5.020 on Hewlett-Packard workstations.
+
+
+# Set the compiler and loader commands.
+FC = f77
+FFLAGS= -O3
+LD= f77 
+LDFLAGS= 
+
+
+#	Main MOPAC program files
+MOPAC_MAIN = mstart.o
+MOPAC = mopac.o analyt.o bonds.o chrge.o ciparm.o cnvg.o compfg.o dcart.o delri.o depvar.o dfock2.o dfpsav.o dhcore.o dijkl1.o dijkl2.o diagiv.o dipole.o dpqtkl.o drcout.o extpar.o fock.o fock1.o getgeo.o getsym.o gmetry.o h1elec.o hcore.o interp.o jcarin.o meci.o mecid.o mecih.o mecip.o moldat.o mtxm.o mxm.o readmo.o solrot.o ss.o wrtkey.o aababc.o aabacd.o aabbcd.o anavib.o axis.o babbbc.o babbcd.o bangle.o bfn.o calpar.o capcor.o coe.o dang.o delmol.o denrot.o densit.o deri1.o deri2.o deri21.o deri22.o deri23.o deri0.o deriv.o ders.o dhc.o diagi.o diat2.o diat.o digit.o dihed.o dipind.o enpart.o ffhpol.o fock2.o fock2d.o forsav.o frame.o freqcy.o geout.o gover.o grid.o haddon.o helect.o hqrii.o ijkl.o ijkld.o iter.o jab.o kab.o linmin.o local.o mamult.o matout.o molval.o nuchar.o osinv.o parsav.o paths.o perm.o polar.o quadr.o reada.o refer.o repp.o rotat.o rotate.o rotate1.o rsp.o schmib.o schmit.o set.o setupg.o spcg.o spline.o swap.o symtry.o thermo.o timout.o update.o util.o vecprt.o word.o xyzgeo.o xyzint.o getbet.o inibet.o setbet.o chgmp2.o pmsix.o pm6pyr.o pm6der.o pm6dpy.o pm6de2.o debug.o setntx.o nextwd.o delml2.o anad3.o setd3.o pqtkl.o
+
+#       Interface files between MOPAC and outer program
+INTERF = doinit.o resetc.o resetd.o
+
+#	Testing routines
+
+
+#	MOPAC machine-dependent routines
+MMD = dgedi.o dgefa.o diag.o drc.o flepo.o fmat.o force.o locmin.o mullik.o nllsq.o powsav.o powsq.o prtdrc.o pulay.o react1.o search.o tql2.o tqlrat.o trbak3.o tred3.o writmo.o ef.o efovlp.o efsav.o efstr.o formd.o gethes.o prjfc.o prthes.o updhes.o
+
+#	General machine-dependent routines
+GMD = date_hp.o second_hp.o dateclock.o second1.o
+
+#	Routines from BLAS
+BLAS = daxpy.o ddot.o dgemm.o dscal.o dswap.o idamax.o lsame.o scopy.o xerbla.o
+
+#	Common block declaration files
+CMNBLK = pmodsb.f corgen.f method.f
+
+
+#	Build the program
+mopac5022mn: $(MOPAC) $(INTERF) $(MOPAC_MAIN) $(MMD) $(GMD) $(BLAS)
+	$(LD) -o mopac5022mn.exe $(MOPAC) $(INTERF) $(MOPAC_MAIN) $(MMD) $(GMD) $(BLAS) $(LDFLAGS) 
+
+#	Clean command (i.e. make -f make.ga clean)
+clean :; /bin/rm *.o
+
+#	List all dependencies here:
+$(MOPAC) $(MOPAC_MAIN) $(MMD) :  SIZES.i
+analyt.o compfg.o debug.o delri.o ders.o diat2.o diat.o extpar.o gover.o moldat.o repp.o resetc.o resetd.o rotate.o set.o setupg.o wrtkey.o : pmodsb.f
+debug.o extpar.o h1elec.o resetd.o rotate.o : corgen.f
+debug.o getgeo.o hcore.o moldat.o pm6der.o pmsix.o refer.o resetd.o rotate.o : method.f
+deriv.o ffhpol.o ga170.o getang.o getdist.o mstart.o newpar.o run_molecule.o writmo.o: result.f
+

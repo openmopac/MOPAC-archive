@@ -1,0 +1,103 @@
+      DOUBLE PRECISION FUNCTION READA(STRING,ISTART)
+C     FORTRAN FUNCTION TO EXTRACT NUMBER FROM STRING
+C
+      CHARACTER STRING*(*)
+      DOUBLE PRECISION DIGIT
+      LOGICAL DEFALT,EXPNNT
+CSAV         SAVE                                                           GL0892
+C
+C     DEFINE ASCII VALUES OF NUMERIC FIELD CHARACTERS
+      I0=ICHAR('0')
+      I9=ICHAR('9')
+      IDOT=ICHAR('.')
+      INEG=ICHAR('-')
+      IPOS=ICHAR('+')
+      ICAPD=ICHAR('D')
+      ICAPE=ICHAR('E')
+      ISMLD=ICHAR('d')
+      ISMLE=ICHAR('e')
+      ITAB=9                                                            LF0710
+C
+      L=LEN(STRING)
+C
+C     FIND THE START OF THE NUMERIC FIELD
+      DO 10 I=ISTART,L
+         IADD=0
+         N=ICHAR(STRING(I:I))
+C
+C       SIGNAL START OF NUMERIC FIELD IF DIGIT FOUND
+         IF(N.GE.I0.AND.N.LE.I9)GOTO 20
+C
+C       ACCOUNT FOR CONSECUTIVE SIGNS [- AND(OR) +]
+         IF(N.EQ.INEG.OR.N.EQ.IPOS)THEN
+            IADD=IADD+1
+            IF(I+IADD.GT.L)GOTO 50
+            N=ICHAR(STRING(I+IADD:I+IADD))
+            IF(N.GE.I0.AND.N.LE.I9)GOTO 20
+         ENDIF
+C
+C       ACCOUNT FOR CONSECUTIVE DECIMAL POINTS (.)
+         IF(N.EQ.IDOT)THEN
+            IADD=IADD+1
+            IF(I+IADD.GT.L)GOTO 50
+            N=ICHAR(STRING(I+IADD:I+IADD))
+            IF(N.GE.I0.AND.N.LE.I9)GOTO 20
+         ENDIF
+   10 CONTINUE
+      GOTO 50
+C
+C     FIND THE END OF THE NUMERIC FIELD
+   20 EXPNNT=.FALSE.
+      DO 30 J=I+1,L
+         IADD=0
+         N=ICHAR(STRING(J:J))
+C
+C       CONTINUE SEARCH FOR END IF DIGIT FOUND
+         IF(N.GE.I0.AND.N.LE.I9)GOTO 30
+C
+C       CONTINUE SEARCH FOR END IF SIGN FOUND AND EXPNNT TRUE
+         IF(N.EQ.INEG.OR.N.EQ.IPOS)THEN
+            IF(.NOT.EXPNNT)GOTO 40
+            IADD=IADD+1
+            IF(J+IADD.GT.L)GOTO 40
+            N=ICHAR(STRING(J+IADD:J+IADD))
+            IF(N.GE.I0.AND.N.LE.I9)GOTO 30
+         ENDIF
+         IF(N.EQ.IDOT)THEN
+            IADD=IADD+1
+            IF(J+IADD.GT.L)GOTO 40
+            N=ICHAR(STRING(J+IADD:J+IADD))
+            IF(N.GE.I0.AND.N.LE.I9)GOTO 30
+            IF(N.EQ.ICAPE.OR.N.EQ.ISMLE.OR.N.EQ.ICAPD.OR.N.EQ.ISMLD)
+     1    GOTO 30
+         ENDIF
+         IF(N.EQ.ICAPE.OR.N.EQ.ISMLE.OR.N.EQ.ICAPD.OR.N.EQ.ISMLD)THEN
+            IF(EXPNNT)GOTO 40
+            EXPNNT=.TRUE.
+            GOTO 30
+         ENDIF
+         GOTO 40
+   30 CONTINUE
+      J=L+1
+   40 N=ICHAR(STRING(J-1:J-1))
+      IF(N.EQ.ICAPE.OR.N.EQ.ISMLE.OR.N.EQ.ICAPD.OR.N.EQ.ISMLD)J=J-1
+C
+C     FOUND THE END OF THE NUMERIC FIELD (IT RUNS 'I' THRU 'J-1')
+      N=0
+      N=N+INDEX(STRING(I:J-1),'e')
+      N=N+INDEX(STRING(I:J-1),'E')
+      N=N+INDEX(STRING(I:J-1),'d')
+      N=N+INDEX(STRING(I:J-1),'D')
+      IF(N.EQ.0)THEN
+         READA=DIGIT(STRING(I:J-1),1)
+      ELSE
+         READA=DIGIT(STRING(:I+N-2),I)*1.D1**DIGIT(STRING(:J-1),I+N)
+      ENDIF
+      DEFALT=.FALSE.
+      RETURN
+C
+C     DEFAULT VALUE RETURNED BECAUSE NO NUMERIC FIELD FOUND
+   50 READA=0.D0
+      DEFALT=.TRUE.
+      RETURN
+      END

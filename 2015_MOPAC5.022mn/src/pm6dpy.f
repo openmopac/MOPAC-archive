@@ -1,0 +1,71 @@
+      SUBROUTINE PM6DPY (DXYZ,NCELLS,IOFSET,*)                          CSTP
+C***********************************************************************
+C
+C   PM6DPY CALCULATES LOOPS OVER ALL ATOMS AND SEARCHES FOR NITROGENS
+C     FOR WHICH FIRST DERIVATIVES FOR THE NITROGEN PYRAMIDALIZATION
+C     CORRECTIONS MIGHT APPLY.  IT ALSO CALCULATES THE CONTRIBUTION TO
+C     THE FIRST DERIVATIVES FOR THE THREE ATOMS NEAREST THOSE NITROGENS
+C     AND ADDS THEM TO THE ARRAY OF FIRST DERIVATIVES, DXYZ.
+C   WRITTEN BY LUKE FIEDLER, JANUARY 2010.
+C
+C   ON INPUT  DXYZ(K,I) = AS BELOW
+C             NCELLS    = NUMBER OF DATA CELLS PER ATOM (INDEXING FOR DXYZ)
+C             IOFSET    = OFFSET FOR INDEX OF FIRST ATOM (INDEXING FOR DXYZ)
+C
+C   ON OUTPUT DXYZ(K,I) = ARRAY CONTAINING THE FIRST DERIVATIVE
+C                         CONTRIBUTIONS FROM PM6'S SECONDARY AND
+C                         TERTIARY NITROGEN PYRAMIDALIZATION CORRECTION
+C                         (K=1,2,3 FOR X,Y,Z; I=INDEX OF ATOM) ((kcal/mole)/angstrom)
+C
+C
+C *** THIS SUBROUTINE IS CALLED BY DCART WHEN THE "ANALYT" KEYWORD IS
+C     SPECIFIED BY THE USER FOR ANALYTICAL DERIVATIVES.  THIS SUBROUTINE
+C     CALLS THE PM6DE2 SUBROUTINE FOR THE ACTUAL CALCULATION OF
+C     THE FIRST DERIVATIVES.
+C
+C***********************************************************************
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+C
+      INCLUDE 'SIZES.i'
+C
+      COMMON /MOLKSI/ NUMAT,NAT(NUMATM),NFIRST(NUMATM),
+     1                NMIDLE(NUMATM),NLAST(NUMATM), NORBS,
+     2                NELECS,NALPHA,NBETA,NCLOSE,NOPEN
+      DIMENSION DXYZ(3,*)
+
+
+      DO 100 I=1,NUMAT
+        IF (NAT(I).EQ.7) THEN
+          CALL PM6DE2(I,IATOM1,IATOM2,IATOM3,
+     &                   DPYRX0,DPYRY0,DPYRZ0,
+     &                   DPYRX1, DPYRY1, DPYRZ1,
+     &                   DPYRX2, DPYRY2, DPYRZ2,
+     &                   DPYRX3, DPYRY3, DPYRZ3,*9999)                   CSTP(call)
+C         Calculate the index for two-dimensional array, DXYZ, based on
+C         the number of cells per atom and the offset for the first atom
+C         in an order that it is consistent with the subroutine DCART.
+          III0=NCELLS*(I-1)+IOFSET
+          III1=NCELLS*(IATOM1-1)+IOFSET
+          III2=NCELLS*(IATOM2-1)+IOFSET
+          III3=NCELLS*(IATOM3-1)+IOFSET
+ 
+C         Convert to kcal/mole and add to the derivative array.
+          DXYZ(1,III0)=DXYZ(1,III0)+DPYRX0*23.061D0
+          DXYZ(2,III0)=DXYZ(2,III0)+DPYRY0*23.061D0
+          DXYZ(3,III0)=DXYZ(3,III0)+DPYRZ0*23.061D0
+          DXYZ(1,III1)=DXYZ(1,III1)+DPYRX1*23.061D0
+          DXYZ(2,III1)=DXYZ(2,III1)+DPYRY1*23.061D0
+          DXYZ(3,III1)=DXYZ(3,III1)+DPYRZ1*23.061D0
+          DXYZ(1,III2)=DXYZ(1,III2)+DPYRX2*23.061D0
+          DXYZ(2,III2)=DXYZ(2,III2)+DPYRY2*23.061D0
+          DXYZ(3,III2)=DXYZ(3,III2)+DPYRZ2*23.061D0
+          DXYZ(1,III3)=DXYZ(1,III3)+DPYRX3*23.061D0
+          DXYZ(2,III3)=DXYZ(2,III3)+DPYRY3*23.061D0
+          DXYZ(3,III3)=DXYZ(3,III3)+DPYRZ3*23.061D0
+        ENDIF
+  100 CONTINUE
+  
+      RETURN
+ 9999 RETURN 1                                                          CSTP
+      END

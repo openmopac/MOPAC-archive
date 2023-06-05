@@ -1,0 +1,1099 @@
+ *******************************************************************************
+ **  Welcome to MOPAC 5.022mn - A version of MOPAC for Direct Molecular Dynamics
+ *******************************************************************************
+
+                              MNDO-D CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *          MOPAC:  VERSION 5.022               CALC'D. Tue Jun 1               
+ *  EXTERNAL - USE ATOMIC PARAMETERS FROM THE FOLLOWING FILE
+               test73.par 
+ *  NOMM     - DO NOT MAKE MM CORRECTION TO CONH BARRIER
+ *  POLAR    - CALCULATE FIRST, SECOND AND THIRD-ORDER POLARIZABILITIES
+ *  GRADIENTS- ALL GRADIENTS TO BE PRINTED
+ *   T=      - A TIME OF  3600.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY 36000.0 SECONDS
+ *  1SCF     - DO 1 SCF AND THEN STOP 
+ *  MNDO-D   - THE MNDO-D HAMILTONIAN TO BE USED
+ *  MOD4     - ZERO QUADRUPOLE TERMS IN HP 2-ELEC INTEGRAL
+ *  MOD5     - USE GENERALIZED PAIRWISE CORE-CORE INTERACTION
+ *  MOD6     - USING PMOV1A MODIFICATIONS TO PMOV1.
+ *  MOD7     - USING NEW PAIRWISE RESONANCE INTEGRAL.
+ ***********************************************************************060BY060
+ MNDO-D MOD4 MOD5 MOD6 MOD7 POLAR 1SCF GRAD NOMM EXTERNAL=test73.par                                                                                            
+ Test of PMO2a method with MODn options and external parameters.                
+ N-acetyl-L-methionine-methylamide (NAMMA).                                     
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      N
+      2     Hp         1.01164 *                                   1
+      3      C         1.44625 *      116.73102 *                  1    2
+      4     Hp         1.09810 *      107.87637 *   145.62537 *    3    1    2
+      5      C         1.53976 *      110.86347 *   265.00944 *    3    1    2
+      6      C         1.52439 *      106.97835 *    25.91968 *    3    1    2
+      7     Hp         1.09671 *      106.52644 *   304.45934 *    5    3    1
+      8     Hp         1.09759 *      108.23531 *    60.94623 *    5    3    1
+      9      C         1.52341 *      113.34815 *   183.51512 *    5    3    1
+     10      O         1.22399 *      121.10588 *   323.60922 *    6    3    1
+     11     Hp         1.09701 *      111.01257 *   293.74711 *    9    5    3
+     12     Hp         1.09969 *      110.27945 *    54.53145 *    9    5    3
+     13      S         1.82210 *      109.49555 *   174.03952 *    9    5    3
+     14      C         1.81468 *       98.45566 *   176.99677 *   13    9    5
+     15     Hp         1.09597 *      110.66651 *    61.15846 *   14   13    9
+     16     Hp         1.09453 *      107.25893 *   179.91383 *   14   13    9
+     17     Hp         1.09597 *      110.65701 *   298.72448 *   14   13    9
+     18      C         1.35978 *      122.05337 *   185.90038 *    1    2    3
+     19      O         1.22329 *      121.74493 *   176.62431 *   18    1    2
+     20      C         1.51180 *      116.07344 *   356.17241 *   18    1    2
+     21     Hp         1.09460 *      112.96983 *   359.36599 *   20   18    1
+     22     Hp         1.09518 *      108.21264 *   120.97990 *   20   18    1
+     23     Hp         1.09501 *      108.27141 *   237.65169 *   20   18    1
+     24      N         1.35259 *      116.38542 *   145.57419 *    6    3    1
+     25     Hp         1.00799 *      119.06487 *   353.74450 *   24    6    3
+     26      C         1.45188 *      120.59035 *   177.33618 *   24    6    3
+     27     Hp         1.09654 *      110.84259 *    66.38119 *   26   24    6
+     28     Hp         1.09283 *      108.85238 *   186.97173 *   26   24    6
+     29     Hp         1.09537 *      109.72377 *   306.96812 *   26   24    6
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         N        0.0000    0.0000    0.0000
+     2        Hp        1.0116    0.0000    0.0000
+     3         C       -0.6505    1.2917    0.0000
+     4        Hp       -1.5725    1.2047   -0.5901
+     5         C       -1.0090    1.7252    1.4333
+     6         C        0.3204    2.2791   -0.6373
+     7        Hp       -1.6193    0.9197    1.8594
+     8        Hp       -0.0793    1.8006    2.0120
+     9         C       -1.7740    3.0412    1.4926
+    10         O        1.5267    2.1899   -0.4501
+    11        Hp       -1.1464    3.8764    1.1577
+    12        Hp       -2.6692    2.9907    0.8559
+    13         S       -2.2963    3.3643    3.2081
+    14         C       -3.0653    4.9878    2.9517
+    15        Hp       -3.9047    4.9119    2.2511
+    16        Hp       -3.4413    5.3260    3.9223
+    17        Hp       -2.3287    5.7105    2.5824
+    18         C       -0.7216   -1.1464    0.1185
+    19         O       -1.9434   -1.1345    0.1788
+    20         C        0.0741   -2.4311    0.1601
+    21        Hp        1.1532   -2.2681    0.0766
+    22        Hp       -0.1496   -2.9419    1.1027
+    23        Hp       -0.2669   -3.0729   -0.6590
+    24         N       -0.2286    3.2694   -1.3771
+    25        Hp       -1.2212    3.2573   -1.5520
+    26         C        0.6074    4.2932   -1.9778
+    27        Hp        1.2557    3.8636   -2.7508
+    28        Hp       -0.0347    5.0578   -2.4219
+    29        Hp        1.2446    4.7471   -1.2111
+
+
+      EXTERNAL PARAMETERS LOADED:
+
+
+      PARAMETER TYPE      ELEMENT    PARAMETER
+          PMODS parameter # 5         0.000000
+          PMODS parameter # 6         0.000000
+          SRP BETSS        HP HP     -6.098000
+          SRP BETSP        HP HP      0.000000
+          SRP BETPP        HP HP     -0.760000
+          SRP BETSS        C  HP    -13.704000
+          SRP BETSP        C  HP     -0.282000
+          SRP BETSS        C  C     -13.168000
+          SRP BETSP        HP C      -6.701000
+          SRP BETPP        C  HP     -0.762000
+          SRP BETSP        C  C     -14.640000
+          SRP BETPP        C  C      -6.851000
+          SRP BETSS        N  HP    -13.373851
+          SRP BETSP        N  HP     -2.060491
+          SRP BETSS        N  C     -21.608375
+          SRP BETSP        N  C     -18.234582
+          SRP BETSS        N  N      -7.611473
+          SRP BETSP        HP N     -14.241653
+          SRP BETPP        N  HP     -2.425356
+          SRP BETSP        C  N     -15.065358
+          SRP BETPP        N  C     -13.444736
+          SRP BETSP        N  N     -27.365249
+          SRP BETPP        N  N     -32.158116
+          SRP BETSS        O  HP    -15.546566
+          SRP BETSP        O  HP     -0.348843
+          SRP BETSS        O  C     -27.678000
+          SRP BETSP        O  C     -17.943000
+          SRP BETSS        O  N     -25.977326
+          SRP BETSP        O  N      -5.742890
+          SRP BETSS        O  O     -20.932000
+          SRP BETSP        HP O     -24.841738
+          SRP BETPP        O  HP     -1.788751
+          SRP BETSP        C  O     -39.434000
+          SRP BETPP        O  C     -26.349000
+          SRP BETSP        N  O     -34.881177
+          SRP BETPP        O  N     -34.799815
+          SRP BETSP        O  O     -18.304000
+          SRP BETPP        O  O     -37.915000
+          SRP BETSS        S  HP     -8.875367
+          SRP BETSP        S  HP      0.000000
+          SRP BETSS        S  C     -14.873357
+          SRP BETSP        S  C      -9.347896
+          SRP BETSS        S  N     -15.628714
+          SRP BETSP        S  N     -15.628714
+          SRP BETSS        S  O     -23.035831
+          SRP BETSP        S  O     -21.269101
+          SRP BETSS        S  S     -10.761670
+          SRP BETSP        HP S      -8.548749
+          SRP BETPP        S  HP      0.000000
+          SRP BETSP        C  S     -14.546739
+          SRP BETPP        S  C      -9.021278
+          SRP BETSP        N  S     -15.302096
+          SRP BETPP        S  N     -15.302096
+          SRP BETSP        O  S     -21.193216
+          SRP BETPP        S  O     -21.682672
+          SRP BETSP        S  S     -10.435052
+          SRP BETPP        S  S     -10.108433
+          MOD7 KPRSS       HP HP     -0.247000
+          MOD7 KPRSP       HP HP      0.754000
+          MOD7 KPRPP       HP HP      0.132000
+          MOD7 KPRSS       C  HP     -0.325000
+          MOD7 KPRSP       C  HP      0.389000
+          MOD7 KPRSS       C  C      -0.318000
+          MOD7 KPRSP       HP C       0.059000
+          MOD7 KPRPP       C  HP      0.021000
+          MOD7 KPRSP       C  C      -0.125000
+          MOD7 KPRPP       C  C       0.100000
+          MOD7 KPRSS       N  HP      0.000000
+          MOD7 KPRSP       N  HP      0.000000
+          MOD7 KPRSS       N  C       0.000000
+          MOD7 KPRSP       N  C       0.000000
+          MOD7 KPRSS       N  N       0.000000
+          MOD7 KPRSP       HP N       0.000000
+          MOD7 KPRPP       N  HP      0.000000
+          MOD7 KPRSP       C  N       0.000000
+          MOD7 KPRPP       N  C       0.000000
+          MOD7 KPRSP       N  N       0.000000
+          MOD7 KPRPP       N  N       0.000000
+          MOD7 KPRSS       O  HP     -0.147000
+          MOD7 KPRSP       O  HP      0.252000
+          MOD7 KPRSS       O  C      -0.260000
+          MOD7 KPRSP       O  C      -0.066000
+          MOD7 KPRSS       O  N       0.000000
+          MOD7 KPRSP       O  N       0.000000
+          MOD7 KPRSS       O  O      -0.913000
+          MOD7 KPRSP       HP O      -0.013000
+          MOD7 KPRPP       O  HP      0.308000
+          MOD7 KPRSP       C  O      -0.157000
+          MOD7 KPRPP       O  C       0.036000
+          MOD7 KPRSP       N  O       0.000000
+          MOD7 KPRPP       O  N       0.000000
+          MOD7 KPRSP       O  O       0.871000
+          MOD7 KPRPP       O  O      -0.907000
+          MOD7 KPRSS       S  HP      0.000000
+          MOD7 KPRSP       S  HP      0.000000
+          MOD7 KPRSS       S  C       0.000000
+          MOD7 KPRSP       S  C       0.000000
+          MOD7 KPRSS       S  N       0.000000
+          MOD7 KPRSP       S  N       0.000000
+          MOD7 KPRSS       S  O       0.000000
+          MOD7 KPRSP       S  O       0.000000
+          MOD7 KPRSS       S  S       0.000000
+          MOD7 KPRSP       HP S       0.000000
+          MOD7 KPRPP       S  HP      0.000000
+          MOD7 KPRSP       C  S       0.000000
+          MOD7 KPRPP       S  C       0.000000
+          MOD7 KPRSP       N  S       0.000000
+          MOD7 KPRPP       S  N       0.000000
+          MOD7 KPRSP       O  S       0.000000
+          MOD7 KPRPP       S  O       0.000000
+          MOD7 KPRSP       S  S       0.000000
+          MOD7 KPRPP       S  S       0.000000
+          MOD5 C0AB        HP HP      0.353000
+          MOD5 C0AB        HP C       0.538000
+          MOD5 C0AB        HP N       1.090859
+          MOD5 C0AB        HP O       0.574314
+          MOD5 C0AB        HP S       0.000000
+          MOD5 C0AB        C  C       0.811000
+          MOD5 C0AB        C  N       0.000312
+          MOD5 C0AB        C  O       0.530000
+          MOD5 C0AB        C  S       0.000000
+          MOD5 C0AB        N  N       0.000291
+          MOD5 C0AB        N  O       0.000255
+          MOD5 C0AB        N  S       0.000000
+          MOD5 C0AB        O  O       0.558000
+          MOD5 C0AB        O  S       0.015095
+          MOD5 C0AB        S  S       0.000000
+          MOD5 C1AB        HP HP      0.388000
+          MOD5 C1AB        HP C       0.173000
+          MOD5 C1AB        HP N       0.000255
+          MOD5 C1AB        HP O       0.665697
+          MOD5 C1AB        HP S       1.000000
+          MOD5 C1AB        C  C       0.297000
+          MOD5 C1AB        C  N       1.467153
+          MOD5 C1AB        C  O       0.695000
+          MOD5 C1AB        C  S       1.000000
+          MOD5 C1AB        N  N       1.768791
+          MOD5 C1AB        N  O       1.207089
+          MOD5 C1AB        N  S       1.000000
+          MOD5 C1AB        O  O       0.338000
+          MOD5 C1AB        O  S       1.051607
+          MOD5 C1AB        S  S       1.000000
+          MOD5 C2AB        HP C       0.562000
+          MOD5 C2AB        HP N       0.000310
+          MOD5 C2AB        HP O       0.476804
+          MOD5 C2AB        HP S       1.000000
+          MOD5 C2AB        C  N       0.885533
+          MOD5 C2AB        C  O       0.799000
+          MOD5 C2AB        C  S       1.000000
+          MOD5 C2AB        N  O       1.944118
+          MOD5 C2AB        N  S       1.000000
+          MOD5 C2AB        O  S       0.993607
+          MOD5 ALPPR       HP HP      2.494000
+          MOD5 ALPPR       HP C       2.179000
+          MOD5 ALPPR       HP N       2.969053
+          MOD5 ALPPR       HP O       2.971066
+          MOD5 ALPPR       HP S       0.000000
+          MOD5 ALPPR       C  C       3.038000
+          MOD5 ALPPR       C  N       0.000317
+          MOD5 ALPPR       C  O       2.571000
+          MOD5 ALPPR       C  S       0.000000
+          MOD5 ALPPR       N  N       0.000228
+          MOD5 ALPPR       N  O       0.000329
+          MOD5 ALPPR       N  S       0.000000
+          MOD5 ALPPR       O  O       3.984000
+          MOD5 ALPPR       O  S       2.252237
+          MOD5 ALPPR       S  S       0.000000
+          MOD5 C3AB        HP HP      0.349000
+          MOD5 C3AB        HP C       0.530000
+          MOD5 C3AB        HP N       0.828293
+          MOD5 C3AB        HP O       0.645014
+          MOD5 C3AB        HP S       0.000000
+          MOD5 C3AB        C  C       0.629000
+          MOD5 C3AB        C  N       0.000336
+          MOD5 C3AB        C  O       0.350000
+          MOD5 C3AB        C  S       0.000000
+          MOD5 C3AB        N  N       0.000268
+          MOD5 C3AB        N  O       0.000321
+          MOD5 C3AB        N  S       0.000000
+          MOD5 C3AB        O  O       0.621000
+          MOD5 C3AB        O  S       0.062208
+          MOD5 C3AB        S  S       0.000000
+          MOD5 C3PWR       HP HP      0.000000
+          MOD5 C3PWR       HP C       0.000000
+          MOD5 C3PWR       HP N       1.008524
+          MOD5 C3PWR       HP O       1.000700
+          MOD5 C3PWR       HP S       0.000000
+          MOD5 C3PWR       C  C       0.000000
+          MOD5 C3PWR       C  N       1.156311
+          MOD5 C3PWR       C  O       0.000000
+          MOD5 C3PWR       C  S       0.000000
+          MOD5 C3PWR       N  N       0.000000
+          MOD5 C3PWR       N  O       0.000000
+          MOD5 C3PWR       N  S       0.000000
+          MOD5 C3PWR       O  O       0.000000
+          MOD5 C3PWR       O  S      -2.012170
+          MOD5 C3PWR       S  S       0.000000
+          MOD5 ALPP3       HP HP      3.993000
+          MOD5 ALPP3       HP C       2.474000
+          MOD5 ALPP3       HP N       2.808182
+          MOD5 ALPP3       HP O       3.072452
+          MOD5 ALPP3       HP S       0.000000
+          MOD5 ALPP3       C  C       2.083000
+          MOD5 ALPP3       C  N       1.718693
+          MOD5 ALPP3       C  O       2.895000
+          MOD5 ALPP3       C  S       0.000000
+          MOD5 ALPP3       N  N       0.000000
+          MOD5 ALPP3       N  O       0.000000
+          MOD5 ALPP3       N  S       0.000000
+          MOD5 ALPP3       O  O       5.438000
+          MOD5 ALPP3       O  S       1.907291
+          MOD5 ALPP3       S  S       0.000000
+          CPAIR            HP HP      0.200000
+          CPAIR            C  HP      0.291713
+          CPAIR            N  HP      0.279685
+          CPAIR            O  HP      0.260465
+          CPAIR            S  HP      0.315105
+          CPAIR            C  C       1.650000
+          CPAIR            C  N       1.327174
+          CPAIR            C  O       0.982979
+          CPAIR            C  S       2.844351
+          CPAIR            N  N       1.110000
+          CPAIR            N  O       0.858564
+          CPAIR            N  S       2.004032
+          CPAIR            O  O       0.700000
+          CPAIR            O  S       1.310909
+          CPAIR            S  S      10.300000
+          DPAIR            HP HP      1.270000
+          DPAIR            C  HP      1.770000
+          DPAIR            N  HP      1.710000
+          DPAIR            O  HP      1.650000
+          DPAIR            S  HP      2.030000
+          DPAIR            C  C       3.260000
+          DPAIR            C  N       3.200000
+          DPAIR            C  O       3.140000
+          DPAIR            C  S       3.520000
+          DPAIR            N  N       2.660000
+          DPAIR            N  O       2.600000
+          DPAIR            N  S       2.980000
+          DPAIR            O  O       2.190000
+          DPAIR            O  S       2.570000
+          DPAIR            S  S      12.170000
+          USS              C        -48.566000
+          UPP              C        -40.922000
+          ZS               C          1.998000
+          ZP               C          1.637000
+          GSS              C         11.795000
+          GSP              C         11.207000
+          GPP              C         12.541000
+          GP2              C          9.870000
+          HSP              C          1.944000
+          ALP              C          3.014000
+          RVDW             C          1.610000
+          C6               C          0.920000
+          USS              N        -78.440839
+          UPP              N        -56.334470
+          ZS               N          2.395880
+          ZP               N          2.608888
+          GSS              N         14.560533
+          GSP              N          9.696511
+          GPP              N         12.760476
+          GP2              N         12.869547
+          HSP              N          3.348383
+          ALP              N          3.148969
+          RVDW             N          1.550000
+          C6               N          1.110000
+          USS              O        -91.651962
+          UPP              O        -72.330674
+          ZS               O          2.837572
+          ZP               O          3.468007
+          GSS              O         21.349919
+          GSP              O         12.017240
+          GPP              O         12.170055
+          GP2              O         12.686074
+          HSP              O          4.411467
+          ALP              O          4.559531
+          RVDW             O          1.480000
+          C6               O          2.600000
+          USS              S        -68.464629
+          UPP              S        -54.060710
+          ZS               S          2.300685
+          ZP               S          1.977500
+          GSS              S         11.620041
+          GSP              S         11.656078
+          GPP              S         10.034462
+          GP2              S          8.867063
+          HSP              S          2.220882
+          ALP              S          2.452736
+          RVDW             S          1.870000
+          C6               S         10.300000
+          USS              HP       -10.589000
+          UPP              HP        -7.235000
+          ZS               HP         1.189000
+          ZP               HP         0.878000
+          GSS              HP        12.376000
+          GSP              HP         8.160000
+          GPP              HP         7.364000
+          GP2              HP        11.346000
+          HSP              HP         1.882000
+          ALP              HP         3.615000
+          RVDW             HP         1.110000
+          C6               HP         0.320000
+          ALPD             ALL       23.000000
+          C6               H          0.320000
+          C6               C          0.920000
+          C6               N          1.110000
+          C6               O          2.600000
+          C6               S         10.300000
+          RPNUM            ALL        8.000000
+          RPDEN            ALL        2.000000
+          DPDEN            ALL        2.000000
+          SPDEN            ALL        4.000000
+          S6               ALL        1.400000
+  C: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  C: (MNDO-D): USING PM3-D DISPERSION PARAMETERS.                               
+  C: (PM3-D): MCNAMARA, HILLIER, PCCP 2007 9(19), 2362.                         
+  N: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  N: (MNDO-D): USING PM3-D DISPERSION PARAMETERS.                               
+  N: (PM3-D): MCNAMARA, HILLIER, PCCP 2007 9(19), 2362.                         
+  O: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  O: (MNDO-D): USING PM3-D DISPERSION PARAMETERS.                               
+  O: (PM3-D): MCNAMARA, HILLIER, PCCP 2007 9(19), 2362.                         
+ Hp: (MNDO):  Hydrogen (with p basis functions)                                 
+ Hp: (MNDO-D): USING PM3-D DISPERSION PARAMETERS.                               
+ Hp: (PM3-D): Hydrogen (with p basis functions)                                 
+  S: (MNDO):  M.J.S.DEWAR, C.H. REYNOLDS, J. COMP. CHEM. 7, 140-143 (1986)      
+  S: (MNDO-D): USING PM3-D DISPERSION PARAMETERS.                               
+  S: (PM3-D): MORGADO,MCNAMARA,HILLIER,BURTON, VINCENT, JCTC 2007, 3(5), 1656.  
+
+
+          RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS = 38
+
+
+            INTERATOMIC DISTANCES
+ 
+                  N  1      Hp  2       C  3      Hp  4       C  5       C  6
+ ------------------------------------------------------------------------------
+     N    1   0.000000
+    Hp    2   1.011642   0.000000
+     C    3   1.446247   2.105053   0.000000
+    Hp    4   2.066987   2.911620   1.098095   0.000000
+     C    5   2.459405   3.018863   1.539763   2.163927   0.000000
+     C    6   2.388085   2.465382   1.524390   2.177059   2.522219   0.000000
+    Hp    7   2.631653   3.350434   2.129405   2.466436   1.096713   3.441497
+    Hp    8   2.701213   2.912130   2.152503   3.058623   1.097592   2.721618
+     C    9   3.824124   4.385951   2.559477   2.784018   1.523410   3.082810
+     O   10   2.707253   2.294274   2.397865   3.255058   3.192655   1.223985
+    Hp   11   4.204886   4.585200   2.875233   3.220859   2.173180   2.815154
+    Hp   12   4.098989   4.819299   2.773881   2.546240   2.165963   3.416699
+     S   13   5.184886   5.705479   4.158842   4.428685   2.737437   4.776150
+     C   14   6.556409   7.086029   5.310808   5.392924   4.144708   5.628546
+    Hp   15   6.666396   7.305100   5.363112   5.220548   4.382836   5.755499
+    Hp   16   7.456108   7.973690   6.280832   6.390512   5.007731   6.650140
+    Hp   17   6.685930   7.101877   5.386204   5.562223   4.352599   5.399904
+     C   18   1.359781   2.081472   2.441979   2.598813   3.171304   3.659340
+     O   19   2.257391   3.170374   2.754958   2.490129   3.259527   4.176504
+     C   20   2.437541   2.610584   3.796072   4.061258   4.479838   4.783586
+    Hp   21   2.545622   2.273826   3.991444   4.464870   4.739422   4.677628
+    Hp   22   3.145348   3.349525   4.403434   4.699468   4.757026   5.523329
+    Hp   23   3.154061   3.392877   4.430667   4.472965   5.286738   5.384124
+     N   24   3.554957   3.758140   2.446604   2.586211   3.300368   1.352586
+    Hp   25   3.809209   4.243151   2.568673   2.293851   3.362287   2.042111
+     C   26   4.765753   4.744131   3.808336   4.027007   4.565502   2.436428
+    Hp   27   4.906214   4.749070   4.220823   4.442657   5.216217   2.802225
+    Hp   28   5.607896   5.704578   4.519809   4.535055   5.188334   3.321521
+    Hp   29   5.054746   4.904670   4.122843   4.568347   4.604715   2.697110
+1
+ 
+                 Hp  7      Hp  8       C  9       O 10      Hp 11      Hp 12
+ ------------------------------------------------------------------------------
+    Hp    7   0.000000
+    Hp    8   1.780691   0.000000
+     C    9   2.158516   2.163457   0.000000
+     O   10   4.104248   2.965244   3.923418   0.000000
+    Hp   11   3.075363   2.485405   1.097014   3.546110   0.000000
+    Hp   12   2.529458   3.075713   1.099689   4.466821   1.787230   0.000000
+     S   13   2.872789   2.964880   1.822095   5.420020   2.405923   2.410634
+     C   14   4.453432   4.467321   2.754176   6.362877   2.852255   2.921853
+    Hp   15   4.616680   4.936643   2.935077   6.648707   3.142539   2.676527
+    Hp   16   5.195222   5.232646   3.728771   7.323539   3.874391   3.930941
+    Hp   17   4.896683   4.546665   2.936066   6.037767   2.606048   3.239421
+     C   18   2.847026   3.561283   4.531195   4.063172   5.146723   4.631688
+     O   19   2.673800   3.930649   4.380796   4.846533   5.167426   4.242967
+     C   20   4.121126   4.621775   5.927707   4.882305   6.501535   6.116086
+    Hp   21   4.585630   4.671141   6.225974   4.504570   6.649237   6.547813
+    Hp   22   4.200595   4.829422   6.211965   5.617569   6.891006   6.450233
+    Hp   23   4.910428   5.560598   6.654536   5.563989   7.236458   6.695766
+     N   24   4.234416   3.696673   3.267354   2.259559   2.763374   3.319754
+    Hp   25   4.154590   4.015937   3.101950   3.147136   2.780574   2.822421
+     C   26   5.573445   4.754260   4.391184   2.757300   3.616828   4.523605
+    Hp   27   6.179511   5.359307   5.278445   2.857928   4.587725   5.401436
+    Hp   28   6.161529   5.501859   4.734445   3.814568   3.930047   4.685875
+    Hp   29   5.681405   4.563134   4.396732   2.682855   3.476501   4.761789
+ 
+                  S 13       C 14      Hp 15      Hp 16      Hp 17       C 18
+ ------------------------------------------------------------------------------
+     S   13   0.000000
+     C   14   1.814675   0.000000
+    Hp   15   2.428584   1.095969   0.000000
+    Hp   16   2.381096   1.094528   1.783028   0.000000
+    Hp   17   2.428460   1.095974   1.797559   1.783589   0.000000
+     C   18   5.689565   7.151780   7.168179   7.984834   7.461278   0.000000
+     O   19   5.435050   6.813951   6.685811   7.615472   7.264973   1.223292
+     C   20   6.963875   8.525802   8.609491   9.310503   8.827656   1.511798
+    Hp   21   7.309522   8.871886   9.047863   9.673161   9.058779   2.185233
+    Hp   22   6.986317   8.648718   8.780777   9.335082   9.044465   2.126007
+    Hp   23   7.778777   9.265114   9.244393  10.079991   9.586739   2.126640
+     N   24   5.030754   5.453248   5.419893   6.529573   5.103658   4.688188
+    Hp   25   4.881190   5.165121   4.939884   6.259160   4.933409   4.736293
+     C   26   6.015671   6.186355   6.214946   7.229867   5.605839   5.979138
+    Hp   27   6.955193   7.242451   7.262760   8.290471   6.686007   6.102651
+    Hp   28   6.299166   6.169596   6.069121   7.205960   5.543581   6.739262
+    Hp   29   5.829120   5.996716   6.207090   6.974542   5.299686   6.353475
+1
+ 
+                  O 19       C 20      Hp 21      Hp 22      Hp 23       N 24
+ ------------------------------------------------------------------------------
+     O   19   0.000000
+     C   20   2.398303   0.000000
+    Hp   21   3.299195   1.094597   0.000000
+    Hp   22   2.708884   1.095179   1.790054   0.000000
+    Hp   23   2.696255   1.095009   1.790430   1.770469   0.000000
+     N   24   4.975524   5.911940   5.889562   6.688520   6.382929   0.000000
+    Hp   25   4.775472   6.080093   6.230617   6.828332   6.463681   1.007993
+     C   26   6.373209   7.076173   6.897070   7.899987   7.534128   1.451880
+    Hp   27   6.617978   7.035139   6.752949   7.946013   7.403269   2.107901
+    Hp   28   6.982234   7.922344   7.830930   8.742544   8.322878   2.080293
+    Hp   29   6.832844   7.401167   7.132995   8.149723   7.983816   2.093139
+ 
+                 Hp 25       C 26      Hp 27      Hp 28      Hp 29
+ ------------------------------------------------------------------
+    Hp   25   0.000000
+     C   26   2.144386   0.000000
+    Hp   27   2.817771   1.096536   0.000000
+    Hp   28   2.325150   1.092826   1.788801   0.000000
+    Hp   29   2.900987   1.095370   1.775282   1.788653   0.000000
+
+ -------------------------------------------------------------------------------
+ MNDO-D MOD4 MOD5 MOD6 MOD7 POLAR 1SCF GRAD NOMM EXTERNAL=test73.par                                                                                            
+ Test of PMO2a method with MODn options and external parameters.                
+ N-acetyl-L-methionine-methylamide (NAMMA).                                     
+
+
+     1SCF WAS SPECIFIED, SO BFGS WAS NOT USED                 
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                               MNDO-D  CALCULATION
+                                                       VERSION 5.022
+                                                       16-Jun-15               
+
+
+
+
+          FINAL HEAT OF FORMATION =       -360.20606 KCAL/MOL
+          (CAUTION USING HEAT OF FORMATION FOR MNDO-D.)
+
+
+          TOTAL ENERGY            =  -2486.197689713 EV  =     -57334.20 KCAL/MOL
+          ELECTRONIC ENERGY       =     -13710.68683 EV  =    -316182.15 KCAL/MOL
+          CORE-CORE REPULSION     =      11224.48914 EV  =     258847.94 KCAL/MOL
+          DISPERSION ENERGY       =         -0.91011 EV  =        -20.98804905 KCAL/MOL
+
+          GRADIENT NORM           =        346.31846
+          IONIZATION POTENTIAL    =          7.00046 EV  (KOOPMANS' THEOREM)
+          NO. OF FILLED LEVELS    =         38
+          MOLECULAR WEIGHT        =    492.135
+
+
+          SCF CALCULATIONS  =               89
+          COMPUTATION TIME =   1.699 SECONDS
+
+
+
+       FINAL  POINT  AND  DERIVATIVES
+
+   PARAMETER     ATOM    TYPE            VALUE       GRADIENT
+      1          1  N    BOND            0.000000     0.868737  KCAL/ANGSTROM
+      2          1  N    ANGLE           0.000000     0.947599  KCAL/RADIAN  
+      3          1  N    DIHEDRAL        0.000000     0.957666  KCAL/RADIAN  
+      4          2 Hp    BOND            1.011642     7.232205  KCAL/ANGSTROM
+      5          2 Hp    ANGLE           0.000000     0.957666  KCAL/RADIAN  
+      6          2 Hp    DIHEDRAL        0.000000     0.958086  KCAL/RADIAN  
+      7          3  C    BOND            1.446247    13.565891  KCAL/ANGSTROM
+      8          3  C    ANGLE         116.731025    19.433957  KCAL/RADIAN  
+      9          3  C    DIHEDRAL        0.000000     0.957666  KCAL/RADIAN  
+     10          4 Hp    BOND            1.098095   -10.004110  KCAL/ANGSTROM
+     11          4 Hp    ANGLE         107.876367    -0.791134  KCAL/RADIAN  
+     12          4 Hp    DIHEDRAL      145.625366     2.538256  KCAL/RADIAN  
+     13          5  C    BOND            1.539763     6.842511  KCAL/ANGSTROM
+     14          5  C    ANGLE         110.863470    -5.524095  KCAL/RADIAN  
+     15          5  C    DIHEDRAL      -94.990558     2.482046  KCAL/RADIAN  
+     16          6  C    BOND            1.524390    -0.351102  KCAL/ANGSTROM
+     17          6  C    ANGLE         106.978348    -1.559616  KCAL/RADIAN  
+     18          6  C    DIHEDRAL       25.919680    -2.858737  KCAL/RADIAN  
+     19          7 Hp    BOND            1.096713    -2.979546  KCAL/ANGSTROM
+     20          7 Hp    ANGLE         106.526440     3.548777  KCAL/RADIAN  
+     21          7 Hp    DIHEDRAL      -55.540660     5.516124  KCAL/RADIAN  
+     22          8 Hp    BOND            1.097592    -4.428840  KCAL/ANGSTROM
+     23          8 Hp    ANGLE         108.235307    -0.664032  KCAL/RADIAN  
+     24          8 Hp    DIHEDRAL       60.946226    -3.164536  KCAL/RADIAN  
+     25          9  C    BOND            1.523410    18.484260  KCAL/ANGSTROM
+     26          9  C    ANGLE         113.348147    -4.321454  KCAL/RADIAN  
+     27          9  C    DIHEDRAL     -176.484883     0.059566  KCAL/RADIAN  
+     28         10  O    BOND            1.223985    48.416472  KCAL/ANGSTROM
+     29         10  O    ANGLE         121.105876   -16.555505  KCAL/RADIAN  
+     30         10  O    DIHEDRAL      -36.390784     1.221517  KCAL/RADIAN  
+     31         11 Hp    BOND            1.097014    15.347410  KCAL/ANGSTROM
+     32         11 Hp    ANGLE         111.012572    -0.396406  KCAL/RADIAN  
+     33         11 Hp    DIHEDRAL      -66.252890     1.305832  KCAL/RADIAN  
+     34         12 Hp    BOND            1.099689     2.091513  KCAL/ANGSTROM
+     35         12 Hp    ANGLE         110.279455    -0.935854  KCAL/RADIAN  
+     36         12 Hp    DIHEDRAL       54.531449     8.003204  KCAL/RADIAN  
+     37         13  S    BOND            1.822095   229.717850  KCAL/ANGSTROM
+     38         13  S    ANGLE         109.495547     0.601950  KCAL/RADIAN  
+     39         13  S    DIHEDRAL      174.039518    -6.803500  KCAL/RADIAN  
+     40         14  C    BOND            1.814675   239.070093  KCAL/ANGSTROM
+     41         14  C    ANGLE          98.455662    -7.764941  KCAL/RADIAN  
+     42         14  C    DIHEDRAL      176.996774    -0.560002  KCAL/RADIAN  
+     43         15 Hp    BOND            1.095969     2.395215  KCAL/ANGSTROM
+     44         15 Hp    ANGLE         110.666514    -3.145659  KCAL/RADIAN  
+     45         15 Hp    DIHEDRAL       61.158460     4.501409  KCAL/RADIAN  
+     46         16 Hp    BOND            1.094528     8.481408  KCAL/ANGSTROM
+     47         16 Hp    ANGLE         107.258930    -0.947179  KCAL/RADIAN  
+     48         16 Hp    DIHEDRAL      179.913834     0.487013  KCAL/RADIAN  
+     49         17 Hp    BOND            1.095974    14.204755  KCAL/ANGSTROM
+     50         17 Hp    ANGLE         110.657009     2.510571  KCAL/RADIAN  
+     51         17 Hp    DIHEDRAL      -61.275521    -2.870482  KCAL/RADIAN  
+     52         18  C    BOND            1.359781     2.859576  KCAL/ANGSTROM
+     53         18  C    ANGLE         122.053369    20.553541  KCAL/RADIAN  
+     54         18  C    DIHEDRAL     -174.099617     0.617890  KCAL/RADIAN  
+     55         19  O    BOND            1.223292    47.912260  KCAL/ANGSTROM
+     56         19  O    ANGLE         121.744932    10.882076  KCAL/RADIAN  
+     57         19  O    DIHEDRAL      176.624311     0.398923  KCAL/RADIAN  
+     58         20  C    BOND            1.511798    21.798130  KCAL/ANGSTROM
+     59         20  C    ANGLE         116.073441    -0.989127  KCAL/RADIAN  
+     60         20  C    DIHEDRAL       -3.827590     1.589818  KCAL/RADIAN  
+     61         21 Hp    BOND            1.094597    -1.809624  KCAL/ANGSTROM
+     62         21 Hp    ANGLE         112.969834     3.152790  KCAL/RADIAN  
+     63         21 Hp    DIHEDRAL       -0.634008     1.300799  KCAL/RADIAN  
+     64         22 Hp    BOND            1.095179    -7.006527  KCAL/ANGSTROM
+     65         22 Hp    ANGLE         108.212644     6.983456  KCAL/RADIAN  
+     66         22 Hp    DIHEDRAL      120.979901     2.482885  KCAL/RADIAN  
+     67         23 Hp    BOND            1.095009    -7.316520  KCAL/ANGSTROM
+     68         23 Hp    ANGLE         108.271411     6.876069  KCAL/RADIAN  
+     69         23 Hp    DIHEDRAL     -122.348313    -0.855314  KCAL/RADIAN  
+     70         24  N    BOND            1.352586    -1.883872  KCAL/ANGSTROM
+     71         24  N    ANGLE         116.385416   -13.685442  KCAL/RADIAN  
+     72         24  N    DIHEDRAL      145.574186    -2.262660  KCAL/RADIAN  
+     73         25 Hp    BOND            1.007993    14.237893  KCAL/ANGSTROM
+     74         25 Hp    ANGLE         119.064872    -1.898134  KCAL/RADIAN  
+     75         25 Hp    DIHEDRAL       -6.255499    -0.217289  KCAL/RADIAN  
+     76         26  C    BOND            1.451880    31.218328  KCAL/ANGSTROM
+     77         26  C    ANGLE         120.590350   -17.425920  KCAL/RADIAN  
+     78         26  C    DIHEDRAL      177.336179     0.450518  KCAL/RADIAN  
+     79         27 Hp    BOND            1.096536    -3.933857  KCAL/ANGSTROM
+     80         27 Hp    ANGLE         110.842593     5.824440  KCAL/RADIAN  
+     81         27 Hp    DIHEDRAL       66.381194     0.651867  KCAL/RADIAN  
+     82         28 Hp    BOND            1.092826    -6.638645  KCAL/ANGSTROM
+     83         28 Hp    ANGLE         108.852379     3.529481  KCAL/RADIAN  
+     84         28 Hp    DIHEDRAL     -173.028265     0.367881  KCAL/RADIAN  
+     85         29 Hp    BOND            1.095370    -6.424292  KCAL/ANGSTROM
+     86         29 Hp    ANGLE         109.723774     3.689721  KCAL/RADIAN  
+     87         29 Hp    DIHEDRAL      -53.031876     1.791587  KCAL/RADIAN  
+
+
+
+
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      N
+      2     Hp         1.01164 *                                   1
+      3      C         1.44625 *      116.73102 *                  1    2
+      4     Hp         1.09810 *      107.87637 *   145.62537 *    3    1    2
+      5      C         1.53976 *      110.86347 *   -94.99056 *    3    1    2
+      6      C         1.52439 *      106.97835 *    25.91968 *    3    1    2
+      7     Hp         1.09671 *      106.52644 *   -55.54066 *    5    3    1
+      8     Hp         1.09759 *      108.23531 *    60.94623 *    5    3    1
+      9      C         1.52341 *      113.34815 *  -176.48488 *    5    3    1
+     10      O         1.22399 *      121.10588 *   -36.39078 *    6    3    1
+     11     Hp         1.09701 *      111.01257 *   -66.25289 *    9    5    3
+     12     Hp         1.09969 *      110.27945 *    54.53145 *    9    5    3
+     13      S         1.82210 *      109.49555 *   174.03952 *    9    5    3
+     14      C         1.81468 *       98.45566 *   176.99677 *   13    9    5
+     15     Hp         1.09597 *      110.66651 *    61.15846 *   14   13    9
+     16     Hp         1.09453 *      107.25893 *   179.91383 *   14   13    9
+     17     Hp         1.09597 *      110.65701 *   -61.27552 *   14   13    9
+     18      C         1.35978 *      122.05337 *  -174.09962 *    1    2    3
+     19      O         1.22329 *      121.74493 *   176.62431 *   18    1    2
+     20      C         1.51180 *      116.07344 *    -3.82759 *   18    1    2
+     21     Hp         1.09460 *      112.96983 *    -0.63401 *   20   18    1
+     22     Hp         1.09518 *      108.21264 *   120.97990 *   20   18    1
+     23     Hp         1.09501 *      108.27141 *  -122.34831 *   20   18    1
+     24      N         1.35259 *      116.38542 *   145.57419 *    6    3    1
+     25     Hp         1.00799 *      119.06487 *    -6.25550 *   24    6    3
+     26      C         1.45188 *      120.59035 *   177.33618 *   24    6    3
+     27     Hp         1.09654 *      110.84259 *    66.38119 *   26   24    6
+     28     Hp         1.09283 *      108.85238 *  -173.02827 *   26   24    6
+     29     Hp         1.09537 *      109.72377 *   -53.03188 *   26   24    6
+
+
+            INTERATOMIC DISTANCES
+ 
+                  N  1      Hp  2       C  3      Hp  4       C  5       C  6
+ ------------------------------------------------------------------------------
+     N    1   0.000000
+    Hp    2   1.011642   0.000000
+     C    3   1.446247   2.105053   0.000000
+    Hp    4   2.066987   2.911620   1.098095   0.000000
+     C    5   2.459405   3.018863   1.539763   2.163927   0.000000
+     C    6   2.388085   2.465382   1.524390   2.177059   2.522219   0.000000
+    Hp    7   2.631653   3.350434   2.129405   2.466436   1.096713   3.441497
+    Hp    8   2.701213   2.912130   2.152503   3.058623   1.097592   2.721618
+     C    9   3.824124   4.385951   2.559477   2.784018   1.523410   3.082810
+     O   10   2.707253   2.294274   2.397865   3.255058   3.192655   1.223985
+    Hp   11   4.204886   4.585200   2.875233   3.220859   2.173180   2.815154
+    Hp   12   4.098989   4.819299   2.773881   2.546240   2.165963   3.416699
+     S   13   5.184886   5.705479   4.158842   4.428685   2.737437   4.776150
+     C   14   6.556409   7.086029   5.310808   5.392924   4.144708   5.628546
+    Hp   15   6.666396   7.305100   5.363112   5.220548   4.382836   5.755499
+    Hp   16   7.456108   7.973690   6.280832   6.390512   5.007731   6.650140
+    Hp   17   6.685930   7.101877   5.386204   5.562223   4.352599   5.399904
+     C   18   1.359781   2.081472   2.441979   2.598813   3.171304   3.659340
+     O   19   2.257391   3.170374   2.754958   2.490129   3.259527   4.176504
+     C   20   2.437541   2.610584   3.796072   4.061258   4.479838   4.783586
+    Hp   21   2.545622   2.273826   3.991444   4.464870   4.739422   4.677628
+    Hp   22   3.145348   3.349525   4.403434   4.699468   4.757026   5.523329
+    Hp   23   3.154061   3.392877   4.430667   4.472965   5.286738   5.384124
+     N   24   3.554957   3.758140   2.446604   2.586211   3.300368   1.352586
+    Hp   25   3.809209   4.243151   2.568673   2.293851   3.362287   2.042111
+     C   26   4.765753   4.744131   3.808336   4.027007   4.565502   2.436428
+    Hp   27   4.906214   4.749070   4.220823   4.442657   5.216217   2.802225
+    Hp   28   5.607896   5.704578   4.519809   4.535055   5.188334   3.321521
+    Hp   29   5.054746   4.904670   4.122843   4.568347   4.604715   2.697110
+1
+ 
+                 Hp  7      Hp  8       C  9       O 10      Hp 11      Hp 12
+ ------------------------------------------------------------------------------
+    Hp    7   0.000000
+    Hp    8   1.780691   0.000000
+     C    9   2.158516   2.163457   0.000000
+     O   10   4.104248   2.965244   3.923418   0.000000
+    Hp   11   3.075363   2.485405   1.097014   3.546110   0.000000
+    Hp   12   2.529458   3.075713   1.099689   4.466821   1.787230   0.000000
+     S   13   2.872789   2.964880   1.822095   5.420020   2.405923   2.410634
+     C   14   4.453432   4.467321   2.754176   6.362877   2.852255   2.921853
+    Hp   15   4.616680   4.936643   2.935077   6.648707   3.142539   2.676527
+    Hp   16   5.195222   5.232646   3.728771   7.323539   3.874391   3.930941
+    Hp   17   4.896683   4.546665   2.936066   6.037767   2.606048   3.239421
+     C   18   2.847026   3.561283   4.531195   4.063172   5.146723   4.631688
+     O   19   2.673800   3.930649   4.380796   4.846533   5.167426   4.242967
+     C   20   4.121126   4.621775   5.927707   4.882305   6.501535   6.116086
+    Hp   21   4.585630   4.671141   6.225974   4.504570   6.649237   6.547813
+    Hp   22   4.200595   4.829422   6.211965   5.617569   6.891006   6.450233
+    Hp   23   4.910428   5.560598   6.654536   5.563989   7.236458   6.695766
+     N   24   4.234416   3.696673   3.267354   2.259559   2.763374   3.319754
+    Hp   25   4.154590   4.015937   3.101950   3.147136   2.780574   2.822421
+     C   26   5.573445   4.754260   4.391184   2.757300   3.616828   4.523605
+    Hp   27   6.179511   5.359307   5.278445   2.857928   4.587725   5.401436
+    Hp   28   6.161529   5.501859   4.734445   3.814568   3.930047   4.685875
+    Hp   29   5.681405   4.563134   4.396732   2.682855   3.476501   4.761789
+ 
+                  S 13       C 14      Hp 15      Hp 16      Hp 17       C 18
+ ------------------------------------------------------------------------------
+     S   13   0.000000
+     C   14   1.814675   0.000000
+    Hp   15   2.428584   1.095969   0.000000
+    Hp   16   2.381096   1.094528   1.783028   0.000000
+    Hp   17   2.428460   1.095974   1.797559   1.783589   0.000000
+     C   18   5.689565   7.151780   7.168179   7.984834   7.461278   0.000000
+     O   19   5.435050   6.813951   6.685811   7.615472   7.264973   1.223292
+     C   20   6.963875   8.525802   8.609491   9.310503   8.827656   1.511798
+    Hp   21   7.309522   8.871886   9.047863   9.673161   9.058779   2.185233
+    Hp   22   6.986317   8.648718   8.780777   9.335082   9.044465   2.126007
+    Hp   23   7.778777   9.265114   9.244393  10.079991   9.586739   2.126640
+     N   24   5.030754   5.453248   5.419893   6.529573   5.103658   4.688188
+    Hp   25   4.881190   5.165121   4.939884   6.259160   4.933409   4.736293
+     C   26   6.015671   6.186355   6.214946   7.229867   5.605839   5.979138
+    Hp   27   6.955193   7.242451   7.262760   8.290471   6.686007   6.102651
+    Hp   28   6.299166   6.169596   6.069121   7.205960   5.543581   6.739262
+    Hp   29   5.829120   5.996716   6.207090   6.974542   5.299686   6.353475
+1
+ 
+                  O 19       C 20      Hp 21      Hp 22      Hp 23       N 24
+ ------------------------------------------------------------------------------
+     O   19   0.000000
+     C   20   2.398303   0.000000
+    Hp   21   3.299195   1.094597   0.000000
+    Hp   22   2.708884   1.095179   1.790054   0.000000
+    Hp   23   2.696255   1.095009   1.790430   1.770469   0.000000
+     N   24   4.975524   5.911940   5.889562   6.688520   6.382929   0.000000
+    Hp   25   4.775472   6.080093   6.230617   6.828332   6.463681   1.007993
+     C   26   6.373209   7.076173   6.897070   7.899987   7.534128   1.451880
+    Hp   27   6.617978   7.035139   6.752949   7.946013   7.403269   2.107901
+    Hp   28   6.982234   7.922344   7.830930   8.742544   8.322878   2.080293
+    Hp   29   6.832844   7.401167   7.132995   8.149723   7.983816   2.093139
+ 
+                 Hp 25       C 26      Hp 27      Hp 28      Hp 29
+ ------------------------------------------------------------------
+    Hp   25   0.000000
+     C   26   2.144386   0.000000
+    Hp   27   2.817771   1.096536   0.000000
+    Hp   28   2.325150   1.092826   1.788801   0.000000
+    Hp   29   2.900987   1.095370   1.775282   1.788653   0.000000
+
+
+                  EIGENVALUES
+
+ -48.32486 -47.80510 -35.29835 -35.11357 -24.97430 -23.87992 -23.11280 -22.32123
+ -20.97238 -20.07190 -19.19585 -18.80181 -18.02484 -17.50452 -16.53398 -16.13048
+ -15.93251 -15.68922 -15.48161 -14.76054 -14.54306 -14.25054 -13.94874 -13.90030
+ -13.45509 -13.37363 -13.04256 -12.84376 -12.80065 -12.37085 -12.15528 -11.88359
+ -11.36227 -11.17629 -10.83219 -10.02532  -9.92001  -7.00046  -1.72354  -1.49494
+  -1.22504  -0.71603  -0.47412  -0.34126  -0.13208  -0.12405  -0.01873   0.07075
+   0.21010   0.33874   0.50961   0.56414   0.62282   0.68970   0.75610   0.81242
+   0.83520   0.89954   0.94307   0.99809   1.02482   1.06411   1.09437   1.10924
+   1.13051   1.20172   1.24198   1.33609   1.38063   1.44018   1.44588   1.51031
+   1.54434   1.59383   1.63892   1.67669   1.83074   1.92333   2.03284   2.13605
+   2.16810   2.20495   2.30961   2.38375   2.39841   2.43886   2.77011   2.91323
+   2.97919   3.09900   3.17926   3.22958   3.55557   3.71516   4.17072   4.61940
+   4.90433   5.04748   5.14302   5.19309   5.20449   5.47608   5.62783   5.74892
+   5.82264   5.88460   5.94704   5.96072   6.01957   6.16902   6.32075   6.60786
+   7.20873   7.34297   8.11080   8.27530
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+ 
+         ATOM NO.   TYPE          CHARGE        ATOM  ELECTRON DENSITY
+           1          N          -0.6190          5.6190
+           2         Hp           0.2726          0.7274
+           3          C           0.1515          3.8485
+           4         Hp           0.0599          0.9401
+           5          C          -0.0823          4.0823
+           6          C           0.4508          3.5492
+           7         Hp           0.0111          0.9889
+           8         Hp           0.0224          0.9776
+           9          C          -0.3727          4.3727
+          10          O          -0.3956          6.3956
+          11         Hp          -0.1904          1.1904
+          12         Hp          -0.0599          1.0599
+          13          S           1.4446          4.5554
+          14          C          -0.4740          4.4740
+          15         Hp          -0.0128          1.0128
+          16         Hp          -0.1143          1.1143
+          17         Hp          -0.1225          1.1225
+          18          C           0.4852          3.5148
+          19          O          -0.4058          6.4058
+          20          C          -0.2473          4.2473
+          21         Hp           0.0885          0.9115
+          22         Hp           0.1076          0.8924
+          23         Hp           0.1102          0.8898
+          24          N          -0.5706          5.5706
+          25         Hp           0.2353          0.7647
+          26          C           0.0684          3.9316
+          27         Hp           0.0526          0.9474
+          28         Hp           0.0485          0.9515
+          29         Hp           0.0581          0.9419
+
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     0.424    -4.902     6.571     8.209
+ HYBRID        -0.345     2.455    -3.742     4.489
+ SUM            0.079    -2.447     2.829     3.741
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         N                  0.0000    0.0000    0.0000
+     2        Hp                  1.0116    0.0000    0.0000
+     3         C                 -0.6505    1.2917    0.0000
+     4        Hp                 -1.5725    1.2047   -0.5901
+     5         C                 -1.0090    1.7252    1.4333
+     6         C                  0.3204    2.2791   -0.6373
+     7        Hp                 -1.6193    0.9197    1.8594
+     8        Hp                 -0.0793    1.8006    2.0120
+     9         C                 -1.7740    3.0412    1.4926
+    10         O                  1.5267    2.1899   -0.4501
+    11        Hp                 -1.1464    3.8764    1.1577
+    12        Hp                 -2.6692    2.9907    0.8559
+    13         S                 -2.2963    3.3643    3.2081
+    14         C                 -3.0653    4.9878    2.9517
+    15        Hp                 -3.9047    4.9119    2.2511
+    16        Hp                 -3.4413    5.3260    3.9223
+    17        Hp                 -2.3287    5.7105    2.5824
+    18         C                 -0.7216   -1.1464    0.1185
+    19         O                 -1.9434   -1.1345    0.1788
+    20         C                  0.0741   -2.4311    0.1601
+    21        Hp                  1.1532   -2.2681    0.0766
+    22        Hp                 -0.1496   -2.9419    1.1027
+    23        Hp                 -0.2669   -3.0729   -0.6590
+    24         N                 -0.2286    3.2694   -1.3771
+    25        Hp                 -1.2212    3.2573   -1.5520
+    26         C                  0.6074    4.2932   -1.9778
+    27        Hp                  1.2557    3.8636   -2.7508
+    28        Hp                 -0.0347    5.0578   -2.4219
+    29        Hp                  1.2446    4.7471   -1.2111
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.73632   1.13563   1.00610   1.74096   0.61988   0.01805   0.01666   0.07285
+   1.10116   0.96956   0.78690   0.99093   0.83801   0.05490   0.01897   0.02822
+   1.08493   1.00749   0.99515   0.99470   1.15136   0.87346   0.77909   0.74530
+   0.86343   0.02704   0.07253   0.02587   0.86452   0.06024   0.02466   0.02816
+   1.14824   1.01751   1.00016   1.20684   1.93351   1.16147   1.71615   1.58450
+   0.87883   0.07829   0.04473   0.18860   0.88188   0.03368   0.01871   0.12563
+   1.84509   1.00289   0.97032   0.73707   1.17597   1.06842   1.20076   1.02885
+   0.85529   0.05620   0.08018   0.02113   0.89626   0.06001   0.12086   0.03717
+   0.86679   0.02173   0.21484   0.01915   1.13158   0.85215   0.79600   0.73506
+   1.93413   1.13541   1.87231   1.46394   1.15289   1.03624   1.00900   1.04918
+   0.83934   0.04685   0.01420   0.01116   0.82518   0.01229   0.02133   0.03356
+   0.82243   0.01416   0.02446   0.02874   1.72465   1.13420   1.23144   1.48027
+   0.63627   0.01607   0.03922   0.07311   1.13318   0.93584   0.88460   0.97795
+   0.87186   0.02469   0.02031   0.03056   0.87929   0.02152   0.03122   0.01950
+   0.86611   0.02391   0.02006   0.03186
+1******************** FINITE-FIELD POLARIZABILITIES ********************
+
+
+
+          MOLECULAR WEIGHT =  492.13
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN CM**(-1)
+
+          A =    0.007509   B =    0.004142   C =    0.002973
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN UNITS OF 10**(-40)*GRAM-CM**2
+
+          A = 3727.707907   B = 6758.257665   C = 9415.371539
+
+
+ ROTATION MATRIX FOR ORIENTATION OF MOLECULE:
+
+        -0.334524   -0.495512    0.801600
+         0.902630   -0.412933    0.121430
+         0.270837    0.764169    0.585400
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         N       -2.2768    0.0412    0.1394
+     2        Hp       -2.6152   -0.4601    0.9503
+     3         C       -0.8932   -0.1698   -0.2252
+     4        Hp       -0.8231   -0.1280   -1.3203
+     5         C        0.0062    0.9241    0.3792
+     6         C       -0.4994   -1.5457    0.2999
+     7        Hp       -0.4013    1.8847    0.0415
+     8        Hp       -0.0800    0.8745    1.4722
+     9         C        1.4660    0.8050   -0.0396
+    10         O       -0.9327   -1.9635    1.3656
+    11        Hp        1.9193   -0.1067    0.3688
+    12        Hp        1.5475    0.7829   -1.1360
+    13         S        2.3970    2.2413    0.5852
+    14         C        4.0502    1.7560    0.0158
+    15        Hp        4.0728    1.6679   -1.0763
+    16        Hp        4.7442    2.5445    0.3237
+    17        Hp        4.3561    0.8104    0.4779
+    18         C       -3.0380    0.9627   -0.5089
+    19         O       -2.6022    1.6093   -1.4515
+    20         C       -4.4526    1.1308   -0.0027
+    21        Hp       -4.6891    0.4649    0.8332
+    22        Hp       -4.5835    2.1728    0.3078
+    23        Hp       -5.1396    0.9388   -0.8335
+    24         N        0.3778   -2.2479   -0.4530
+    25        Hp        0.6515   -1.8847   -1.3526
+    26         C        0.8596   -3.5440   -0.0102
+    27        Hp        0.0455   -4.2785    0.0048
+    28        Hp        1.6443   -3.8809   -0.6921
+    29        Hp        1.2638   -3.4612    1.0045
+
+
+ ENERGY OF "REORIENTED" SYSTEM WITHOUT FIELD:     -360.2060614958
+
+
+ APPLIED ELECTRIC FIELD MAGNITUDE:         0.00100
+
+
+ ATOMIC CONTRIBUTION TO THE POLARIZABILITY:       43.664460
+
+
+ ****************************** DIPOLE ******************************
+
+
+                     E4             DIP
+
+     X              0.578192       0.578132
+     Y             -1.232768      -1.232573
+     Z             -0.559539      -0.559503
+
+
+ MAGNITUDE:         1.472110       1.471909  (A.U.)
+                    3.741461       3.740950  (DEBYE)
+
+
+ ****************************** POLARIZABILITY ********************
+
+
+
+ E4 POLARIZABILITY TENSOR:
+ 
+                     1          2          3
+ ------------------------------------------
+          1 361.692458
+          2  32.874388 277.913599
+          3 -22.660099  10.727985 186.677262
+
+
+
+
+    ROOT NO.    1           2           3
+
+           181.39031   270.10890   374.78412
+  
+         1   0.15177     0.28725     0.94576
+         2  -0.16010    -0.93706     0.31030
+         3   0.97536    -0.19851    -0.09623
+
+ DIP POLARIZABILITY TENSOR:
+ 
+                     1          2          3
+ ------------------------------------------
+          1 317.766363
+          2  32.677290 234.051161
+          3 -22.456287  10.464968 142.775489
+
+
+
+
+    ROOT NO.    1           2           3
+
+           137.63978   226.22579   330.72745
+  
+         1   0.15015     0.28700     0.94609
+         2  -0.15685    -0.93790     0.30941
+         3   0.97614    -0.19485    -0.09581
+
+
+ AVERAGE POLARIZABILITY:        E4             DIP
+                              275.427773     231.531004  A.U.
+                               40.812887      34.308264  ANG.**3
+                            8.162357D-23   6.861468D-23  ESU
+
+
+ ****************************** SECOND-ORDER *************************
+
+
+  COMPONENT            E4             DIP
+
+      XXX          3614.888298    3578.904245
+      XYY         -3879.602569   -3715.618644
+      XZZ           -58.673600     -40.513350
+      YYY         -6861.424573   -6978.870636
+      YXX         -2217.795784   -2244.442005
+      YZZ          -976.432370    -987.180177
+      ZZZ         -2334.641679   -2344.921584
+      ZXX         -1810.885372   -1801.017383
+      ZYY          -444.309679    -563.346974
+
+
+       BX          -194.032722    -106.336649
+       BY         -6033.391636   -6126.295691
+       BZ         -2753.902038   -2825.571564
+
+
+     B(AU)         6022.988394    6162.435453
+     B(ESU)          52.141613      53.348820   (X10-30)
+
+
+ ****************************** THIRD-ORDER *************************
+
+
+                  E4             DIP
+
+     XXXX       414311.753161     537434.201352
+     YYYY       590401.568205     662840.477573
+     ZZZZ       112894.542606     259158.777827
+     XXYY       160886.848728      96270.477203
+     XXZZ        29540.942528      25905.895949
+     YYZZ       -21264.656938     386117.041338
+
+
+ GAMMA =    2.911868D+05   4.952041D+05  A.U.
+            1.470831D+02   2.501355D+02  ESU (X10-36)
+
+
+
+ TOTAL CPU TIME:             3.71 SECONDS
+
+ == MOPAC DONE ==

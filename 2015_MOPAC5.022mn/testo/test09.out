@@ -1,0 +1,525 @@
+ *******************************************************************************
+ **  Welcome to MOPAC 5.022mn - A version of MOPAC for Direct Molecular Dynamics
+ *******************************************************************************
+
+                                 AM1 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *          MOPAC:  VERSION 5.022               CALC'D. Tue Jun 1               
+ *   T=      - A TIME OF  3600.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY 36000.0 SECONDS
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  SCFCRT   - DEFAULT SCF CRITERION REPLACED BY   0.100E-08
+ *  TS       - USE EF ROUTINE FOR TS SEARCH
+ *  MODE=    - EF: FOLLOW HESSIAN MODE  5 TOWARD TS
+ *  RECALC=  - EF: HESSIAN RECALC EVERY   1 CYCLES 
+ *  PRNT     - EF: EXTRA PRINTING
+ *  GNORM=   - EXIT WHEN GRADIENT NORM DROPS BELOW .100E-01
+ ***********************************************************************060BY060
+ AM1 SCFCRT=1.D-9 GNORM=0.01 TS MODE=5 RECALC=1 PRNT=1                                                                                                          
+ MeNC to MeCN TS. Start geometry is distorted. Heat should be 133.461           
+ TS mode is initial number 5, recalc=1 is used to follow this mode.             
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      C
+      2      N         1.15000 *                                   1
+      3      C         1.55000 *      165.00000 *                  2    1
+      4      H         1.30000 *       60.00000 *     5.00000 *    3    2    1
+      5      H         1.10000 *      110.00000 *    25.00000 *    3    2    1
+      6      H         1.20000 *       60.00000 *  -115.00000 *    3    2    1
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         C        0.0000    0.0000    0.0000
+     2         N        1.1500    0.0000    0.0000
+     3         C        2.6472    0.4012    0.0000
+     4         H        1.7291    1.3163    0.0981
+     5         H        2.7681    1.4034    0.4368
+     6         H        2.1813   -0.1784   -0.9419
+  H: (AM1):  M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)         
+  C: (AM1):  M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)         
+  N: (AM1):  M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)         
+
+
+          RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS =  8
+
+
+            INTERATOMIC DISTANCES
+ 
+                  C  1       N  2       C  3       H  4       H  5       H  6
+ ------------------------------------------------------------------------------
+     C    1   0.000000
+     N    2   1.150000   0.000000
+     C    3   2.677410   1.550000   0.000000
+     H    4   2.175276   1.441354   1.300000   0.000000
+     H    5   3.134162   2.186044   1.100000   1.096353   0.000000
+     H    6   2.382645   1.408013   1.200000   1.876166   2.178820   0.000000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   1 TIME:   0.01 TIME LEFT:   3600.0 GRAD.:   237.445 HEAT: 252.9153    
+
+          HESSIAN HAS  3 NEGATIVE EIGENVALUE(S) -144.8  -11.7   -1.0
+     HESSIAN MODE FOLLOWING SWITCHED ON
+     FOLLOWING MODE   5
+
+     TS MODE IS NUMBER  5 WITH EIGENVALUE     54.3
+     AND COMPONENTS
+
+        0.0113   0.0320  -0.7521  -0.1126   0.1403   0.3101  -0.0205   0.4645
+       -0.2272   0.0218  -0.1580  -0.1065
+ lamda that maximizes along ts modes =          66.64636
+ lamda that minimizes along all modes =       -185.75901
+ P-RFO-step   has length   2.76519
+ lamda that minimizes along all modes =       -833.93837
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO   -34.675   -34.756   0.99767
+     STEPSIZE USED IS  0.20000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   2 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:   165.784 HEAT: 218.2399    
+
+          HESSIAN HAS  2 NEGATIVE EIGENVALUE(S) -118.9   -0.6
+     OVERLAP OF CURRENT MODE  5 WITH PREVIOUS MODE IS  0.908
+
+     TS MODE IS NUMBER  5 WITH EIGENVALUE     50.1
+     AND COMPONENTS
+
+       -0.0161  -0.0448   0.9349   0.0524  -0.1835  -0.0870  -0.0092  -0.2151
+        0.1323  -0.0170   0.1178  -0.0413
+ lamda that maximizes along ts modes =          57.58082
+ lamda that minimizes along all modes =       -166.99959
+ P-RFO-step   has length   3.13154
+ lamda that minimizes along all modes =       -498.09022
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO   -42.971   -43.868   0.97955
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   3 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:   141.347 HEAT: 175.2688    
+
+          HESSIAN HAS  2 NEGATIVE EIGENVALUE(S)  -68.7   -1.4
+     OVERLAP OF CURRENT MODE  4 WITH PREVIOUS MODE IS  0.953
+     WARNING! MODE SWITCHING. WAS FOLLOWING MODE   5 NOW FOLLOWING MODE   4
+
+     TS MODE IS NUMBER  4 WITH EIGENVALUE     52.2
+     AND COMPONENTS
+
+       -0.0227  -0.0651   0.9852   0.0077  -0.0972  -0.0183  -0.0126   0.0466
+        0.0487  -0.0009   0.0862  -0.0522
+ lamda that maximizes along ts modes =          65.07192
+ lamda that minimizes along all modes =       -134.83010
+ P-RFO-step   has length   2.55418
+ lamda that minimizes along all modes =       -433.15993
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO   -34.716   -35.430   0.97984
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   4 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:   122.828 HEAT: 140.5529    
+
+          HESSIAN HAS  2 NEGATIVE EIGENVALUE(S)  -35.5   -0.4
+     OVERLAP OF CURRENT MODE  3 WITH PREVIOUS MODE IS  0.942
+     WARNING! MODE SWITCHING. WAS FOLLOWING MODE   4 NOW FOLLOWING MODE   3
+
+     TS MODE IS NUMBER  3 WITH EIGENVALUE     55.3
+     AND COMPONENTS
+
+        0.0298   0.0532  -0.9497  -0.0604   0.0826   0.0494  -0.0046   0.2604
+        0.0137   0.0061  -0.1012  -0.0562
+ lamda that maximizes along ts modes =          61.70901
+ lamda that minimizes along all modes =       -106.73303
+ P-RFO-step   has length   3.27277
+ lamda that minimizes along all modes =       -357.57256
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO   -30.353   -31.184   0.97335
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   5 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    99.908 HEAT: 110.2001    
+
+          HESSIAN HAS  2 NEGATIVE EIGENVALUE(S)   -5.7   -0.5
+     OVERLAP OF CURRENT MODE  3 WITH PREVIOUS MODE IS  0.984
+
+     TS MODE IS NUMBER  3 WITH EIGENVALUE     56.5
+     AND COMPONENTS
+
+        0.0361   0.0502  -0.9848  -0.0170   0.0637   0.0249  -0.0007   0.1204
+       -0.0229   0.0034  -0.0774   0.0198
+ lamda that maximizes along ts modes =          68.79279
+ lamda that minimizes along all modes =        -76.12952
+ P-RFO-step   has length   2.54122
+ lamda that minimizes along all modes =       -286.98140
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO   -18.704   -19.149   0.97676
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   6 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    81.794 HEAT: 91.49565    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S)   -0.6
+     OVERLAP OF CURRENT MODE  3 WITH PREVIOUS MODE IS  0.995
+
+     TS MODE IS NUMBER  3 WITH EIGENVALUE     59.5
+     AND COMPONENTS
+
+       -0.0473  -0.0591   0.9711  -0.0026  -0.0457  -0.0200   0.0024  -0.1653
+        0.0718  -0.0046   0.0945  -0.0856
+ lamda that maximizes along ts modes =          80.57393
+ lamda that minimizes along all modes =        -47.22217
+ P-RFO-step   has length   2.09114
+ lamda that minimizes along all modes =       -256.27803
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    -3.245    -3.382   0.95942
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   7 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    76.253 HEAT: 88.25086    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S)   -1.0
+     OVERLAP OF CURRENT MODE  3 WITH PREVIOUS MODE IS  0.962
+
+     TS MODE IS NUMBER  3 WITH EIGENVALUE     66.5
+     AND COMPONENTS
+
+       -0.0602  -0.0831   0.8747  -0.0286  -0.0169  -0.0138   0.0080  -0.3405
+        0.1706  -0.0087   0.1731  -0.2189
+ lamda that maximizes along ts modes =         103.86596
+ lamda that minimizes along all modes =        -18.93853
+ P-RFO-step   has length   1.74098
+ lamda that minimizes along all modes =       -289.97690
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    15.770    15.829   0.99630
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   8 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    87.912 HEAT: 104.0213    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S)   -1.9
+     OVERLAP OF CURRENT MODE  3 WITH PREVIOUS MODE IS  0.989
+
+     TS MODE IS NUMBER  3 WITH EIGENVALUE     62.1
+     AND COMPONENTS
+
+       -0.0731  -0.1326   0.8652  -0.0385  -0.0959   0.0357   0.0043  -0.3461
+        0.1465  -0.0103   0.2340  -0.1430
+ lamda that maximizes along ts modes =         113.52533
+ lamda that minimizes along all modes =        -19.87661
+ P-RFO-step   has length   1.57836
+ lamda that minimizes along all modes =       -331.82315
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    19.988    20.529   0.97362
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   9 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    95.741 HEAT: 124.0093    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S)   -2.6
+     OVERLAP OF CURRENT MODE  2 WITH PREVIOUS MODE IS  0.840
+     WARNING! MODE SWITCHING. WAS FOLLOWING MODE   3 NOW FOLLOWING MODE   2
+
+     TS MODE IS NUMBER  2 WITH EIGENVALUE     29.9
+     AND COMPONENTS
+
+        0.0514   0.1966  -0.9148   0.0170   0.1979  -0.1481  -0.0035  -0.0453
+        0.0966  -0.0064  -0.1801  -0.1289
+ lamda that maximizes along ts modes =          75.86419
+ lamda that minimizes along all modes =        -57.29706
+ P-RFO-step   has length   1.50038
+ lamda that minimizes along all modes =       -309.16330
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    -1.789    -1.804   0.99203
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  10 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    88.073 HEAT: 122.2200    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S)   -2.4
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  0.821
+     WARNING! MODE SWITCHING. WAS FOLLOWING MODE   2 NOW FOLLOWING MODE   1
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE     -2.4
+     AND COMPONENTS
+
+       -0.0092  -0.1890   0.6998   0.0045  -0.1146   0.4536   0.0009  -0.0495
+        0.2779   0.0031   0.1869   0.3755
+  ts search, correct hessian, trying pure NR step
+ lamda that minimizes along all modes =          0.00000
+ pure NR-step has length 156.32597
+ lamda that maximizes along ts modes =          50.69786
+ lamda that minimizes along all modes =        -56.31961
+ P-RFO-step   has length   1.30503
+ lamda that minimizes along all modes =       -266.50691
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    -5.077    -5.116   0.99244
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  11 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    78.596 HEAT: 117.1430    
+
+          HESSIAN HAS  2 NEGATIVE EIGENVALUE(S)  -16.5   -1.0
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  0.841
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE    -16.5
+     AND COMPONENTS
+
+        0.0049   0.2640  -0.8935   0.0149   0.1699  -0.1787  -0.0019   0.0428
+        0.0403  -0.0056  -0.2494  -0.0730
+ lamda that maximizes along ts modes =          58.71331
+ lamda that minimizes along all modes =        -19.13729
+ P-RFO-step   has length   1.04833
+ lamda that minimizes along all modes =       -230.88075
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    11.373    12.406   0.91677
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  12 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    59.665 HEAT: 128.5161    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S)  -98.8
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  0.996
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE    -98.8
+     AND COMPONENTS
+
+        0.0347  -0.3263   0.8860  -0.0219  -0.1638   0.1574  -0.0082  -0.0570
+       -0.0615   0.0054   0.2149   0.0438
+  ts search, correct hessian, trying pure NR step
+ lamda that minimizes along all modes =          0.00000
+ pure NR-step has length   5.28179
+ lamda that maximizes along ts modes =          21.18587
+ lamda that minimizes along all modes =         -8.71800
+ P-RFO-step   has length   0.62362
+ lamda that minimizes along all modes =        -94.69234
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO     6.056     6.610   0.91609
+     STEPSIZE USED IS  0.30000
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  13 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:    33.298 HEAT: 134.5717    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S) -163.0
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  0.943
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE   -163.0
+     AND COMPONENTS
+
+        0.0765  -0.6098   0.7470  -0.0015  -0.1013   0.0927  -0.0006  -0.0107
+       -0.0279   0.0160   0.2081   0.0321
+  ts search, correct hessian, trying pure NR step
+ lamda that minimizes along all modes =          0.00000
+ pure NR-step has length   0.59990
+ lamda that maximizes along ts modes =           1.03716
+ lamda that minimizes along all modes =         -2.81985
+ P-RFO-step   has length   0.29260
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    -1.016    -1.000   1.01657
+     STEPSIZE USED IS  0.29260
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  14 TIME:   0.00 TIME LEFT:   3600.0 GRAD.:     4.602 HEAT: 133.5552    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S) -227.3
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  0.995
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE   -227.3
+     AND COMPONENTS
+
+       -0.0798   0.5878  -0.7820   0.0068   0.0848  -0.0540   0.0060   0.0384
+        0.0458  -0.0115  -0.1506   0.0011
+  ts search, correct hessian, trying pure NR step
+ lamda that minimizes along all modes =          0.00000
+ pure NR-step has length   0.28604
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    -0.090    -0.101   0.88975
+     STEPSIZE USED IS  0.28604
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  15 TIME:   0.00 TIME LEFT:   3599.9 GRAD.:     1.223 HEAT: 133.4655    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S) -230.7
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  0.999
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE   -230.7
+     AND COMPONENTS
+
+        0.0793  -0.5779   0.7898  -0.0056  -0.0569   0.0540  -0.0062  -0.0631
+       -0.0495   0.0121   0.1523   0.0041
+  ts search, correct hessian, trying pure NR step
+ lamda that minimizes along all modes =          0.00000
+ pure NR-step has length   0.02041
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    -0.004    -0.004   1.04305
+     STEPSIZE USED IS  0.02041
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  16 TIME:   0.00 TIME LEFT:   3599.9 GRAD.:     0.054 HEAT: 133.4612    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S) -231.2
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  1.000
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE   -231.2
+     AND COMPONENTS
+
+       -0.0778   0.5761  -0.7917   0.0079   0.0643  -0.0463   0.0082   0.0658
+        0.0566  -0.0100  -0.1458   0.0039
+  ts search, correct hessian, trying pure NR step
+ lamda that minimizes along all modes =          0.00000
+ pure NR-step has length   0.00437
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO    -0.000    -0.000   6.11270
+     STEPSIZE USED IS  0.00437
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  17 TIME:   0.00 TIME LEFT:   3599.9 GRAD.:     0.021 HEAT: 133.4611    
+
+          HESSIAN HAS  1 NEGATIVE EIGENVALUE(S) -231.7
+     OVERLAP OF CURRENT MODE  1 WITH PREVIOUS MODE IS  1.000
+
+     TS MODE IS NUMBER  1 WITH EIGENVALUE   -231.7
+     AND COMPONENTS
+
+       -0.0784   0.5755  -0.7920   0.0070   0.0623  -0.0502   0.0073   0.0637
+        0.0529  -0.0109  -0.1481   0.0002
+  ts search, correct hessian, trying pure NR step
+ lamda that minimizes along all modes =          0.00000
+ pure NR-step has length   0.00138
+     ACTUAL, PREDICTED ENERGY CHANGE, RATIO     0.000    -0.000 -12.56555
+     STEPSIZE USED IS  0.00138
+     CURRENT TRUST RADIUS = 0.30000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:  18 TIME:   0.00 TIME LEFT:   3599.9 GRAD.:     0.003 HEAT: 133.4611    
+
+     RMS GRADIENT =  0.00332  IS LESS THAN CUTOFF =  0.01000
+
+
+
+ -------------------------------------------------------------------------------
+ AM1 SCFCRT=1.D-9 GNORM=0.01 TS MODE=5 RECALC=1 PRNT=1                                                                                                          
+ MeNC to MeCN TS. Start geometry is distorted. Heat should be 133.461           
+ TS mode is initial number 5, recalc=1 is used to follow this mode.             
+
+
+     GEOMETRY OPTIMISED USING EIGENVECTOR FOLLOWING (EF).     
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                                AM1    CALCULATION
+                                                       VERSION 5.022
+                                                       16-Jun-15               
+
+
+
+
+          FINAL HEAT OF FORMATION =        133.46112 KCAL/MOL
+
+
+          TOTAL ENERGY            =   -498.939981127 EV  =     -11506.05 KCAL/MOL
+          ELECTRONIC ENERGY       =      -1227.53621 EV  =     -28308.21 KCAL/MOL
+          CORE-CORE REPULSION     =        728.59623 EV  =      16802.16 KCAL/MOL
+
+          IONIZATION POTENTIAL    =         11.18132 EV  (KOOPMANS' THEOREM)
+          NO. OF FILLED LEVELS    =          8
+          MOLECULAR WEIGHT        =     41.052
+
+
+          SCF CALCULATIONS  =              261
+          COMPUTATION TIME =   0.070 SECONDS
+
+
+
+
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      C
+      2      N         1.22629 *                                   1
+      3      C         1.80305 *       65.03882 *                  2    1
+      4      H         1.11911 *      117.72274 *   -70.34809 *    3    2    1
+      5      H         1.11916 *      117.91874 *    69.81366 *    3    2    1
+      6      H         1.12062 *       87.13061 *   179.72986 *    3    2    1
+
+
+            INTERATOMIC DISTANCES
+ 
+                  C  1       N  2       C  3       H  4       H  5       H  6
+ ------------------------------------------------------------------------------
+     C    1   0.000000
+     N    2   1.226293   0.000000
+     C    3   1.699592   1.803046   0.000000
+     H    4   2.176869   2.526010   1.119111   0.000000
+     H    5   2.174779   2.528466   1.119163   1.861130   0.000000
+     H    6   2.547295   2.074721   1.120620   1.822690   1.822405   0.000000
+
+
+                  EIGENVALUES
+
+ -38.37128 -27.76617 -18.84351 -15.71824 -14.87352 -14.01209 -12.42424 -11.18132
+   0.13445   1.40899   1.44463   3.15505   3.41472   3.54064   5.38519
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+ 
+         ATOM NO.   TYPE          CHARGE        ATOM  ELECTRON DENSITY
+           1          C          -0.0823          4.0823
+           2          N          -0.1830          5.1830
+           3          C          -0.1521          4.1521
+           4          H           0.1380          0.8620
+           5          H           0.1384          0.8616
+           6          H           0.1410          0.8590
+
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.    -0.480     2.808     0.002     2.849
+ HYBRID         0.614     0.238     0.000     0.658
+ SUM            0.134     3.046     0.002     3.049
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         C                  0.0000    0.0000    0.0000
+     2         N                  1.2263    0.0000    0.0000
+     3         C                  0.4654    1.6346    0.0000
+     4         H                 -0.0563    1.9660   -0.9329
+     5         H                 -0.0651    1.9657    0.9282
+     6         H                  1.5037    2.0561    0.0053
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.72773   1.06860   0.60328   0.68274   1.84175   1.25918   0.76588   1.31618
+   1.25160   1.05718   0.78016   1.06318   0.86198   0.86159   0.85897
+
+
+
+ TOTAL CPU TIME:             0.07 SECONDS
+
+ == MOPAC DONE ==

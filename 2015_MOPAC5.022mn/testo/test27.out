@@ -1,0 +1,232 @@
+ *******************************************************************************
+ **  Welcome to MOPAC 5.022mn - A version of MOPAC for Direct Molecular Dynamics
+ *******************************************************************************
+
+                                 PM6 CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *          MOPAC:  VERSION 5.022               CALC'D. Tue Jun 1               
+ *  EXTERNAL - USE ATOMIC PARAMETERS FROM THE FOLLOWING FILE
+               test27.srp 
+ *  UHF      - UNRESTRICTED HARTREE-FOCK CALCULATION
+ *   T=      - A TIME OF  3600.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY 36000.0 SECONDS
+ *  PM6      - THE PM6 HAMILTONIAN TO BE USED
+ *  TS       - USE EF ROUTINE FOR TS SEARCH
+ *   LET     - OVERRIDE SOME SAFETY CHECKS
+ ***********************************************************************060BY060
+ PM6 UHF EXTERNAL=test27.srp LET TS                                                                                                                             
+ PM6 NDDO-SRP calculation: TS NH3 + OH                                          
+ Final Heat of formation should be -212.2 kcal/mol.                             
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      H
+      2      O         0.94209 *                                   1
+      3      H         1.27640 *      101.39066 *                  2    1
+      4     XX         1.00000         90.00000       0.00000      3    2    1
+      5      N         1.09707 *      131.00865 *  -179.49907 *    3    4    2
+      6      H         0.99346 *      109.59765 *   119.32846 *    5    3    4
+      7      H         0.99346 *      109.58581 *  -120.67991 *    5    3    4
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         H        0.0000    0.0000    0.0000
+     2         O        0.9421    0.0000    0.0000
+     3         H        1.1942    1.2513    0.0000
+     4         N        2.0634    1.9206    0.0072
+     5         H        2.6057    1.7537    0.8227
+     6         H        2.6200    1.7523   -0.7982
+
+
+      EXTERNAL PARAMETERS LOADED:
+
+
+      PARAMETER TYPE      ELEMENT    PARAMETER
+          SRP BETSS        O  H     -18.000000
+          SRP BETSP        H  O     -18.600000
+          SRP BETPP        O  N     -18.000000
+          SRP BETSS        N  H     -11.200000
+          SRP BETSP        H  N     -14.000000
+          USS              N        -50.900000
+  H: (PM3): J. J. P. STEWART, J. COMP. CHEM. 1989 10(2), 209.                   
+  H: (PM6): J. J. P. STEWART, J. MOL. MODEL., 13, 1173, (2007).                 
+  N: (PM3): J. J. P. STEWART, J. COMP. CHEM. 1989 10(2), 209.                   
+  N: (PM6): J. J. P. STEWART, J. MOL. MODEL., 13, 1173, (2007).                 
+  O: (PM3): J. J. P. STEWART, J. COMP. CHEM. 1989 10(2), 209.                   
+  O: (PM6): J. J. P. STEWART, J. MOL. MODEL., 13, 1173, (2007).                 
+
+
+          UHF CALCULATION, NO. OF ALPHA ELECTRONS =  8
+                           NO. OF BETA  ELECTRONS =  7
+
+
+            INTERATOMIC DISTANCES
+ 
+                  H  1       O  2       H  3       N  4       H  5       H  6
+ ------------------------------------------------------------------------------
+     H    1   0.000000
+     O    2   0.942095   0.000000
+     H    3   1.729661   1.276404   0.000000
+     N    4   2.818918   2.223976   1.097073   0.000000
+     H    5   3.246842   2.553420   1.709284   0.993456   0.000000
+     H    6   3.251507   2.554068   1.709162   0.993459   1.621031   0.000000
+
+          HESSIAN CALCULATED NUMERICALLY
+
+ CYCLE:   1 TIME:   0.01 TIME LEFT:   3600.0 GRAD.:  5194.160 HEAT:-168.9805    
+ CYCLE:   2 TIME:   0.00 TIME LEFT:   3600.0 GRAD.: 21270.591 HEAT:-170.7787    
+ NUMERICAL PROBLEMS IN BRACKETING LAMDA  -486.757020104562     
+  -1000000.00000000       -486.757020105048       1.835230411315975E-006
+  3.791103159526470E+024
+  going for fixed level shifted NR step...
+
+     TRUST RADIUS NOW LESS THAN 0.00100 OPTIMIZATION TERMINATING
+      GEOMETRY MAY NOT BE COMPLETELY OPTIMIZED
+
+ -------------------------------------------------------------------------------
+ PM6 UHF EXTERNAL=test27.srp LET TS                                                                                                                             
+ PM6 NDDO-SRP calculation: TS NH3 + OH                                          
+ Final Heat of formation should be -212.2 kcal/mol.                             
+
+
+     GEOMETRY OPTIMISED USING EIGENVECTOR FOLLOWING (EF).     
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                                PM6    CALCULATION
+                                                       VERSION 5.022
+                                                       16-Jun-15               
+
+
+
+
+          FINAL HEAT OF FORMATION =       -170.78164 KCAL/MOL
+
+
+          TOTAL ENERGY            =   -517.222465019 EV  =     -11927.67 KCAL/MOL
+          ELECTRONIC ENERGY       =      -1069.76972 EV  =     -24669.96 KCAL/MOL
+          CORE-CORE REPULSION     =        552.54726 EV  =      12742.29 KCAL/MOL
+
+          GRADIENT NORM           =      21270.65826
+          IONIZATION POTENTIAL    =          9.59156 EV  (KOOPMANS' THEOREM)
+          NO. OF ALPHA ELECTRONS  =          8
+          NO. OF BETA  ELECTRONS  =          7
+          MOLECULAR WEIGHT        =     34.038
+
+
+          SCF CALCULATIONS  =               48
+          COMPUTATION TIME =   0.027 SECONDS
+
+
+
+       FINAL  POINT  AND  DERIVATIVES
+
+   PARAMETER     ATOM    TYPE            VALUE       GRADIENT
+      1          2  O    BOND            1.070729  4074.682365  KCAL/ANGSTROM
+      2          3  H    BOND            1.355365  4707.200698  KCAL/ANGSTROM
+      3          3  H    ANGLE         100.881783  4951.314108  KCAL/RADIAN  
+      4          5  N    BOND            1.175575  6831.106882  KCAL/ANGSTROM
+      5          5  N    ANGLE         127.361826  7517.378720  KCAL/RADIAN  
+      6          5  N    DIHEDRAL      178.898735  8555.660032  KCAL/RADIAN  
+      7          6  H    BOND            0.973630  9593.141735  KCAL/ANGSTROM
+      8          6  H    ANGLE         107.732075  1410.132923  KCAL/RADIAN  
+      9          6  H    DIHEDRAL      117.169392  2706.231294  KCAL/RADIAN  
+     10          7  H    BOND            0.970385  4061.955309  KCAL/ANGSTROM
+     11          7  H    ANGLE         107.735641  5511.335350  KCAL/RADIAN  
+     12          7  H    DIHEDRAL     -123.049746  8035.886063  KCAL/RADIAN  
+
+
+
+
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      H
+      2      O         1.07073 *                                   1
+      3      H         1.35536 *      100.88178 *                  2    1
+      4     XX         1.00000         90.00000       0.00000      3    2    1
+      5      N         1.17558 *      127.36183 *   178.89873 *    3    4    2
+      6      H         0.97363 *      107.73208 *   117.16939 *    5    3    4
+      7      H         0.97039 *      107.73564 *  -123.04975 *    5    3    4
+
+
+            INTERATOMIC DISTANCES
+ 
+                  H  1       O  2       H  3       N  4       H  5       H  6
+ ------------------------------------------------------------------------------
+     H    1   0.000000
+     O    2   1.070729   0.000000
+     H    3   1.879204   1.355365   0.000000
+     N    4   3.053464   2.398197   1.175575   0.000000
+     H    5   3.469601   2.716947   1.739865   0.973630   0.000000
+     H    6   3.451486   2.674955   1.737422   0.970385   1.601794   0.000000
+
+
+          ALPHA   EIGENVALUES
+
+ -27.31783 -26.34394 -19.03614 -18.92822 -17.44951 -12.13998 -11.48721 -11.03683
+   4.06678   5.43651   6.94646   7.20928
+
+
+           BETA EIGENVALUES 
+ -25.94987 -24.05660 -18.75472 -17.65651 -16.63152 -10.03529  -9.59156  -1.99015
+   4.82403   5.79923   7.26684   7.41653
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+ 
+         ATOM NO.   TYPE          CHARGE        ATOM  ELECTRON DENSITY
+           1          H           0.2189          0.7811
+           2          O          -0.4997          6.4997
+           3          H           0.1917          0.8083
+           4          N          -0.1484          5.1484
+           5          H           0.1185          0.8815
+           6          H           0.1189          0.8811
+
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     0.198     1.960     0.021     1.970
+ HYBRID         0.710    -0.833     0.074     1.097
+ SUM            0.908     1.127     0.095     1.451
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         H                  0.0000    0.0000    0.0000
+     2         O                  1.0707    0.0000    0.0000
+     3         H                  1.3266    1.3310    0.0000
+     4         N                  2.2035    2.1137   -0.0180
+     5         H                  2.7097    2.0109    0.8073
+     6         H                  2.7569    1.9199   -0.7912
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   0.78105   1.98301   1.23981   1.27687   1.99998   0.80827   1.45256   1.31646
+   1.25592   1.12345   0.88150   0.88112
+
+
+                    (SZ)    =  0.500000
+                    (S**2)  =  0.778075
+
+
+          ATOMIC ORBITAL SPIN POPULATIONS
+
+  -0.04599   0.00148   0.04386   0.56149  -0.00000  -0.08861   0.00001   0.01279
+   0.54413   0.02384  -0.02654  -0.02646
+
+
+
+ TOTAL CPU TIME:             0.03 SECONDS
+
+ == MOPAC DONE ==

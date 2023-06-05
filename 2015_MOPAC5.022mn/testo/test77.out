@@ -1,0 +1,414 @@
+ *******************************************************************************
+ **  Welcome to MOPAC 5.022mn - A version of MOPAC for Direct Molecular Dynamics
+ *******************************************************************************
+
+                              MNDO-D CALCULATION RESULTS
+
+
+ *******************************************************************************
+ *          MOPAC:  VERSION 5.022               CALC'D. Tue Jun 1               
+ *  EXTERNAL - USE ATOMIC PARAMETERS FROM THE FOLLOWING FILE
+               test77.par 
+ *  POLAR    - CALCULATE FIRST, SECOND AND THIRD-ORDER POLARIZABILITIES
+ *  GRADIENTS- ALL GRADIENTS TO BE PRINTED
+ *   T=      - A TIME OF  3600.0 SECONDS REQUESTED
+ *  DUMP=N   - RESTART FILE WRITTEN EVERY 36000.0 SECONDS
+ *  1SCF     - DO 1 SCF AND THEN STOP 
+ *  MNDO-D   - THE MNDO-D HAMILTONIAN TO BE USED
+ *  MOD4     - ZERO QUADRUPOLE TERMS IN HP 2-ELEC INTEGRAL
+ *  MOD5     - USE GENERALIZED PAIRWISE CORE-CORE INTERACTION
+ *  MOD6     - USING PMOV1A MODIFICATIONS TO PMOV1.
+ *  MOD7     - USING NEW PAIRWISE RESONANCE INTEGRAL.
+ ***********************************************************************060BY060
+ MNDO-D MOD4 MOD5 MOD6 MOD7 POLAR 1SCF GRAD EXTERNAL=test77.par                                                                                                 
+ Test of PMO2a with MODn options and external parameters.                       
+ Ammonia in its B3LYP/CBSB7 optimized gas-phase geometry.                       
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      N
+      2     Hp         1.01592 *                                   1
+      3     Hp         1.01592 *      106.39634 *                  1    2
+      4     Hp         1.01592 *      106.39634 *   246.83993 *    1    2    3
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         N        0.0000    0.0000    0.0000
+     2        Hp        1.0159    0.0000    0.0000
+     3        Hp       -0.2868    0.9746    0.0000
+     4        Hp       -0.2868   -0.3833    0.8961
+
+
+      EXTERNAL PARAMETERS LOADED:
+
+
+      PARAMETER TYPE      ELEMENT    PARAMETER
+          PMODS parameter # 5         0.000000
+          PMODS parameter # 6         0.000000
+          SRP BETSS        HP HP     -6.098000
+          SRP BETSP        HP HP      0.000000
+          SRP BETPP        HP HP     -0.760000
+          SRP BETSS        N  HP    -13.373851
+          SRP BETSP        N  HP     -2.060491
+          SRP BETSS        N  N      -7.611473
+          SRP BETSP        HP N     -14.241653
+          SRP BETPP        N  HP     -2.425356
+          SRP BETSP        N  N     -27.365249
+          SRP BETPP        N  N     -32.158116
+          MOD7 KPRSS       HP HP     -0.247000
+          MOD7 KPRSP       HP HP      0.754000
+          MOD7 KPRPP       HP HP      0.132000
+          MOD7 KPRSS       N  HP      0.000000
+          MOD7 KPRSP       N  HP      0.000000
+          MOD7 KPRSS       N  N       0.000000
+          MOD7 KPRSP       HP N       0.000000
+          MOD7 KPRPP       N  HP      0.000000
+          MOD7 KPRSP       N  N       0.000000
+          MOD7 KPRPP       N  N       0.000000
+          MOD5 C0AB        HP HP      0.353000
+          MOD5 C0AB        HP N       1.090859
+          MOD5 C0AB        N  N       0.000291
+          MOD5 C1AB        HP HP      0.388000
+          MOD5 C1AB        HP N       0.000255
+          MOD5 C1AB        N  N       1.768791
+          MOD5 C2AB        HP N       0.000310
+          MOD5 ALPPR       HP HP      2.494000
+          MOD5 ALPPR       HP N       2.969053
+          MOD5 ALPPR       N  N       0.000228
+          MOD5 C3AB        HP HP      0.349000
+          MOD5 C3AB        HP N       0.828293
+          MOD5 C3AB        N  N       0.000268
+          MOD5 C3PWR       HP HP      0.000000
+          MOD5 C3PWR       HP N       1.008524
+          MOD5 C3PWR       N  N       0.000000
+          MOD5 ALPP3       HP HP      3.993000
+          MOD5 ALPP3       HP N       2.808182
+          MOD5 ALPP3       N  N       0.000000
+          CPAIR            HP HP      0.200000
+          CPAIR            N  HP      0.279685
+          CPAIR            N  N       1.110000
+          DPAIR            HP HP      1.270000
+          DPAIR            N  HP      1.710000
+          DPAIR            N  N       2.660000
+          USS              N        -78.440839
+          UPP              N        -56.334470
+          ZS               N          2.395880
+          ZP               N          2.608888
+          GSS              N         14.560533
+          GSP              N          9.696511
+          GPP              N         12.760476
+          GP2              N         12.869547
+          HSP              N          3.348383
+          ALP              N          3.148969
+          RVDW             N          1.550000
+          C6               N          1.110000
+          USS              HP       -10.589000
+          UPP              HP        -7.235000
+          ZS               HP         1.189000
+          ZP               HP         0.878000
+          GSS              HP        12.376000
+          GSP              HP         8.160000
+          GPP              HP         7.364000
+          GP2              HP        11.346000
+          HSP              HP         1.882000
+          ALP              HP         3.615000
+          RVDW             HP         1.110000
+          C6               HP         0.320000
+          ALPD             ALL       23.000000
+          C6               H          0.320000
+          C6               N          1.110000
+          RPNUM            ALL        8.000000
+          RPDEN            ALL        2.000000
+          DPDEN            ALL        2.000000
+          SPDEN            ALL        4.000000
+          S6               ALL        1.400000
+  N: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  N: (MNDO-D): USING PM3-D DISPERSION PARAMETERS.                               
+  N: (PM3-D): MCNAMARA, HILLIER, PCCP 2007 9(19), 2362.                         
+ Hp: (MNDO):  Hydrogen (with p basis functions)                                 
+ Hp: (MNDO-D): USING PM3-D DISPERSION PARAMETERS.                               
+ Hp: (PM3-D): Hydrogen (with p basis functions)                                 
+
+
+          RHF CALCULATION, NO. OF DOUBLY OCCUPIED LEVELS =  4
+
+
+            INTERATOMIC DISTANCES
+ 
+                  N  1      Hp  2      Hp  3      Hp  4
+ ------------------------------------------------------
+     N    1   0.000000
+    Hp    2   1.015922   0.000000
+    Hp    3   1.015922   1.626922   0.000000
+    Hp    4   1.015922   1.626922   1.626922   0.000000
+
+ -------------------------------------------------------------------------------
+ MNDO-D MOD4 MOD5 MOD6 MOD7 POLAR 1SCF GRAD EXTERNAL=test77.par                                                                                                 
+ Test of PMO2a with MODn options and external parameters.                       
+ Ammonia in its B3LYP/CBSB7 optimized gas-phase geometry.                       
+
+
+     1SCF WAS SPECIFIED, SO BFGS WAS NOT USED                 
+     SCF FIELD WAS ACHIEVED                                   
+
+
+                               MNDO-D  CALCULATION
+                                                       VERSION 5.022
+                                                       16-Jun-15               
+
+
+
+
+          FINAL HEAT OF FORMATION =        -26.90348 KCAL/MOL
+          (CAUTION USING HEAT OF FORMATION FOR MNDO-D.)
+
+
+          TOTAL ENERGY            =   -269.029998001 EV  =      -6204.10 KCAL/MOL
+          ELECTRONIC ENERGY       =       -451.63421 EV  =     -10415.14 KCAL/MOL
+          CORE-CORE REPULSION     =        182.60421 EV  =       4211.04 KCAL/MOL
+          DISPERSION ENERGY       =         -0.00162 EV  =         -0.03738590 KCAL/MOL
+
+          GRADIENT NORM           =         41.75122
+          IONIZATION POTENTIAL    =         11.66273 EV  (KOOPMANS' THEOREM)
+          NO. OF FILLED LEVELS    =          4
+          MOLECULAR WEIGHT        =     71.002
+
+
+          SCF CALCULATIONS  =               14
+          COMPUTATION TIME =   0.012 SECONDS
+
+
+
+       FINAL  POINT  AND  DERIVATIVES
+
+   PARAMETER     ATOM    TYPE            VALUE       GRADIENT
+      1          1  N    BOND            0.000000     0.000105  KCAL/ANGSTROM
+      2          1  N    ANGLE           0.000000     0.000131  KCAL/RADIAN  
+      3          1  N    DIHEDRAL        0.000000     0.000131  KCAL/RADIAN  
+      4          2 Hp    BOND            1.015922    24.102397  KCAL/ANGSTROM
+      5          2 Hp    ANGLE           0.000000     0.000131  KCAL/RADIAN  
+      6          2 Hp    DIHEDRAL        0.000000     0.000131  KCAL/RADIAN  
+      7          3 Hp    BOND            1.015922    24.102318  KCAL/ANGSTROM
+      8          3 Hp    ANGLE         106.396341    -0.310361  KCAL/RADIAN  
+      9          3 Hp    DIHEDRAL        0.000000     0.000144  KCAL/RADIAN  
+     10          4 Hp    BOND            1.015922    24.102292  KCAL/ANGSTROM
+     11          4 Hp    ANGLE         106.396341    -0.310387  KCAL/RADIAN  
+     12          4 Hp    DIHEDRAL     -113.160066     0.451528  KCAL/RADIAN  
+
+
+
+
+
+    ATOM   CHEMICAL  BOND LENGTH    BOND ANGLE     TWIST ANGLE
+   NUMBER  SYMBOL    (ANGSTROMS)     (DEGREES)      (DEGREES)
+    (I)                  NA:I          NB:NA:I      NC:NB:NA:I     NA   NB   NC
+
+      1      N
+      2     Hp         1.01592 *                                   1
+      3     Hp         1.01592 *      106.39634 *                  1    2
+      4     Hp         1.01592 *      106.39634 *  -113.16007 *    1    2    3
+
+
+            INTERATOMIC DISTANCES
+ 
+                  N  1      Hp  2      Hp  3      Hp  4
+ ------------------------------------------------------
+     N    1   0.000000
+    Hp    2   1.015922   0.000000
+    Hp    3   1.015922   1.626922   0.000000
+    Hp    4   1.015922   1.626922   1.626922   0.000000
+
+
+                  EIGENVALUES
+
+ -44.94879 -14.62443 -14.62442 -11.66273   0.40859   0.77269   0.86869   0.86869
+   1.70006   1.70007   1.83209   1.83209   2.52123   4.93083   6.40864   6.40864
+
+
+              NET ATOMIC CHARGES AND DIPOLE CONTRIBUTIONS
+ 
+         ATOM NO.   TYPE          CHARGE        ATOM  ELECTRON DENSITY
+           1          N          -0.5617          5.5617
+           2         Hp           0.1872          0.8128
+           3         Hp           0.1872          0.8128
+           4         Hp           0.1872          0.8128
+
+ DIPOLE           X         Y         Z       TOTAL
+ POINT-CHG.     0.398     0.532     0.806     1.044
+ HYBRID         0.100     0.134     0.203     0.263
+ SUM            0.498     0.666     1.009     1.307
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM               X         Y         Z
+
+     1         N                  0.0000    0.0000    0.0000
+     2        Hp                  1.0159    0.0000    0.0000
+     3        Hp                 -0.2868    0.9746    0.0000
+     4        Hp                 -0.2868   -0.3833    0.8961
+
+
+          ATOMIC ORBITAL ELECTRON POPULATIONS
+
+   1.83971   1.18884   1.22029   1.31290   0.71894   0.01383   0.02869   0.05129
+   0.71894   0.02475   0.01777   0.05129   0.71894   0.02475   0.03536   0.03370
+1******************** FINITE-FIELD POLARIZABILITIES ********************
+
+
+
+          MOLECULAR WEIGHT =   71.00
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN CM**(-1)
+
+          A =    0.628371   B =    0.628371   C =    0.335233
+
+
+
+           PRINCIPAL MOMENTS OF INERTIA IN UNITS OF 10**(-40)*GRAM-CM**2
+
+          A =   44.547941   B =   44.547954   C =   83.502078
+
+
+ ROTATION MATRIX FOR ORIENTATION OF MOLECULE:
+
+        -0.924583   -0.000000    0.380981
+         0.209834   -0.834656    0.509234
+         0.317988    0.550772    0.771709
+
+
+          CARTESIAN COORDINATES 
+
+    NO.       ATOM         X         Y         Z
+
+     1         N       -0.0000   -0.0000   -0.3107
+     2        Hp       -0.9393   -0.0000    0.0764
+     3        Hp        0.4697   -0.8135    0.0764
+     4        Hp        0.4697    0.8135    0.0764
+
+
+ ENERGY OF "REORIENTED" SYSTEM WITHOUT FIELD:      -26.9034767327
+
+
+ APPLIED ELECTRIC FIELD MAGNITUDE:         0.00100
+
+
+ ATOMIC CONTRIBUTION TO THE POLARIZABILITY:        6.431168
+
+
+ ****************************** DIPOLE ******************************
+
+
+                     E4             DIP
+
+     X              0.000000      -0.000001
+     Y              0.000000      -0.000001
+     Z             -0.514334      -0.514301
+
+
+ MAGNITUDE:         0.514334       0.514301  (A.U.)
+                    1.307212       1.307128  (DEBYE)
+
+
+ ****************************** POLARIZABILITY ********************
+
+
+
+ E4 POLARIZABILITY TENSOR:
+ 
+                     1          2          3
+ ------------------------------------------
+          1  23.586682
+          2   0.000006  23.586701
+          3   0.000009   0.000039  16.735519
+
+
+
+
+    ROOT NO.    1           2           3
+
+            16.73552    23.58668    23.58670
+  
+         1  -0.00000    -0.96270    -0.27057
+         2  -0.00001     0.27057    -0.96270
+         3   1.00000     0.00000    -0.00001
+
+ DIP POLARIZABILITY TENSOR:
+ 
+                     1          2          3
+ ------------------------------------------
+          1  17.155532
+          2  -0.000301  17.155794
+          3  -0.002073   0.003238  10.301936
+
+
+
+
+    ROOT NO.    1           2           3
+
+            10.30193    17.15533    17.15599
+  
+         1   0.00030    -0.83624     0.54836
+         2  -0.00047    -0.54836    -0.83624
+         3   1.00000    -0.00001    -0.00056
+
+
+ AVERAGE POLARIZABILITY:        E4             DIP
+                               21.302967      14.871087  A.U.
+                                3.156674       2.203598  ANG.**3
+                            6.313177D-24   4.407076D-24  ESU
+
+
+ ****************************** SECOND-ORDER *************************
+
+
+  COMPONENT            E4             DIP
+
+      XXX           -63.071377     -62.315771
+      XYY            63.084785      63.639328
+      XZZ             0.010838       1.287898
+      YYY            -0.013710       0.551010
+      YXX            -0.000462      -0.109091
+      YZZ             0.045116      -1.722735
+      ZZZ            34.457069      36.064848
+      ZXX            48.676256      47.842832
+      ZYY            48.722028      48.112718
+
+
+       BX             0.014548       1.566873
+       BY             0.018566      -0.768489
+       BZ            79.113211      79.212239
+
+
+     B(AU)          -79.113211     -79.212239
+     B(ESU)          -0.684891      -0.685748   (X10-30)
+
+
+ ****************************** THIRD-ORDER *************************
+
+
+                  E4             DIP
+
+     XXXX         2443.818793       2549.788508
+     YYYY         2370.833804       2032.067354
+     ZZZZ          868.532387       7349.286796
+     XXYY         1179.860703      -2254.636508
+     XXZZ         1172.336970       3252.112668
+     YYZZ         1236.943093       2838.499727
+
+
+ GAMMA =    2.572293D+03   3.920619D+03  A.U.
+            1.299307D+00   1.980367D+00  ESU (X10-36)
+
+
+
+ TOTAL CPU TIME:             0.03 SECONDS
+
+ == MOPAC DONE ==

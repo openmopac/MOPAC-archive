@@ -1,0 +1,174 @@
+      SUBROUTINE DERI22 (C,CT,B,WORK,N,FOC2,AB,MINEAR,FCI,NCI1,NCI2)
+      IMPLICIT DOUBLE PRECISION(A-H,O-Z)
+       INCLUDE 'SIZES.i'
+      PARAMETER (MFBWO=9*MAXPAR)                                        3GL3092
+        EXTERNAL SDOT                                                   GL0492
+C
+C  1) BUILD THE 2-ELECTRON FOCK MATRIX DEPENDING ON B AS FOLLOWS :
+C     DP = C * SCALE*B * C' ...  DP DENSITY MATRIX 'DERIVATIVE',
+C     FOC2 = 0.5 * TRACE ( DP * (2<J>-<K>) ) DONE IN FOCK2 & FOCK1.
+C  2) HALF-TRANSFORM ONTO M.O. BASIS : DP =  FOC2 * C
+C     AND COMPUTE DIAGONAL BLOCKS ELEMENTS OF C' * FOC2, EXTRACTING
+C     IN FCI ELEMENTS OVER C.I-ACTIVE M.O ONLY.
+C  3) COMPUTE SUPERVECTOR AB = (DIAG + A) * B DEFINED BY THE MATRIX :
+C     AB(I,J)= ( DIAG(I,J)*B(I,J)+DP(I,J) )*SCALAR(I,J)  WITH I.GT.J,
+C     DIAG(I,J)=(EIGS(I)-EIGS(J))/(O(J)-O(I)) >0, O OCCUPANCY NUMBERS,
+C     EIGS EIGENVALUES OF FOCK OPERATOR WITH EIGENVECTORS C IN A.O.
+C
+C   INPUT
+C     C(N,N)   : M.O. EIGENVECTORS (COLUMNWISE).
+C     CT       : IDEM, TRANSPOSED, ORDERED CLOSED,OPEN,VIRTUAL.
+C     B(*)     : B SUPERVECTOR PACKED BY OFF-DIAGONAL BLOCKS, SCALED.
+C     WORK(*)  : WORK AREA OF SIZE N*N.
+C     N        : NUMBER OF M.O.
+C     NCI1,NCI2: LAST FROZEN CORE M.O. , C.I-ACTIVE BAND LENGTH.
+C   IN COMMON
+C     DIAG,SCALAR AS DEFINED IN 'DERI0'.
+C   OUTPUT
+C     FOC2(*)  : 2-ELECTRON FOCK MATRIX, PACKED CANONICAL.
+C     AB(*)    : ANTISYMMETRIC MATRIX PACKED IN SUPERVECTOR FORM WITH
+C                THE CONSECUTIVE FOLLOWING BLOCKS:
+C             1) OPEN-CLOSED  I.E. B(IJ)=B(I,J) WITH I OPEN & J CLOSED
+C                                  AND I RUNNING FASTER THAN J,
+C             2) VIRTUAL-CLOSED SAME RULE OF ORDERING,
+C             3) VIRTUAL-OPEN   SAME RULE OF ORDERING.
+C     FCI(*)   : FOCK DIAGONAL BLOCKS ELEMENTS OVER C.I-ACTIVE M.O.
+C                ORDERED AS DEFINED IN 'DERI1'.
+C     FOC2 CAN BE EQUIVALENCED WITH WORK IN THE CALLING SEQUENCE.
+C
+C     CRAY VERSION WITH EXTENSIVE CALLS TO MXM INSTEAD OF MTXM ETC.
+C
+      DIMENSION C(N,N),CT(*),B(*),WORK(N,N),FOC2(*),AB(*),FCI(*)
+      COMMON /MOLKSI/ NUMAT,NAT(NUMATM),NFIRST(NUMATM),NMIDLE(NUMATM),  3GL3092
+     1                NLAST(NUMATM), NORBS, NELECS,NALPHA,NBETA,        3GL3092
+     2                NCLOSE,NOPEN                                      3GL3092
+     3       /WMATRX/ WJ(N2ELEC),WK(N2ELEC*2),NWDUM(NUMATM+1)
+     4       /DWMAT/  DWJ(N2ELEC),DWK(N2ELEC*2)                         JZ0315
+C    3       /WMATRX/ WJ(N2ELEC),WK(N2ELEC),NWDUM(NUMATM+1)
+     4       /SCRAH1/ SCALAR(MPACK/2),DIAG(MPACK/2),FRACT2,FBWO(MFBWO), 3GL3092
+     5                NBO(3), IDUM                                      3GL3092
+     6       /SCRCHR/ DP(MORB2), DUM3(6*MAXPAR**2+1-MORB2)              GCL0393
+c    6       /SCRCHR1/ DP(MORB2),DWORK(MAXORB**2),
+c    6                 DUM3(6*MAXPAR**2+1-MORB2)
+C
+C     DIMENSION W(1)
+C     EQUIVALENCE (W(1),WJ(1))
+C     EQUIVALENCE (W(1),DWJ(1))
+       SAVE
+C
+      N2=N*N
+      LINEAR=(N2+N)/2
+C
+C     DERIVATIVE OF THE DENSITY MATRIX IN DP (N,N).
+C     ---------------------------------------------
+C     DP = C * B * C' .
+C
+C     STEP 1 : WORK = B * C'   .  DP TEMPORARY ARRAY.
+C     STEP 1.1 UNPACK B (UNSCALED) INTO WORK.
+      L=0
+      IF(NBO(2).NE.0 .AND. NBO(1).NE.0) THEN
+C        OPEN-CLOSED
+         DO 20 J=1,NBO(1)
+CDIR$ IVDEP
+         DO 20 I=NBO(1)+1,NOPEN
+         L=L+1
+         WORK(J,I)=B(L)*SCALAR(L)
+   20    WORK(I,J)=B(L)*SCALAR(L)
+      ENDIF
+      IF(NBO(3).NE.0 .AND. NBO(1).NE.0) THEN
+C        VIRTUAL-CLOSED
+         DO 30 J=1,NBO(1)
+CDIR$ IVDEP
+         DO 30 I=NOPEN+1,N
+         L=L+1
+         WORK(J,I)=B(L)*SCALAR(L)
+   30    WORK(I,J)=B(L)*SCALAR(L)
+      ENDIF
+      IF(NBO(3).NE.0 .AND. NBO(2).NE.0) THEN
+C        VIRTUAL-OPEN
+         DO 40 J=NBO(1)+1,NOPEN
+CDIR$ IVDEP
+         DO 40 I=NOPEN+1,N
+         L=L+1
+         WORK(J,I)=B(L)*SCALAR(L)
+   40    WORK(I,J)=B(L)*SCALAR(L)
+      ENDIF
+C     FULFILL DIAGONAL BLOCKS WITH ZEROES.
+      NEND=0
+      DO 50 NLOOP=1,3
+      NINIT=NEND+1
+      NEND=NEND+NBO(NLOOP)
+      DO 50 I=NINIT,NEND
+      DO 50 J=NINIT,NEND
+   50 WORK(J,I)=0.D0
+C     STEP 1.2  DP = C * WORK
+      CALL MXM (C,N,WORK,N,DP,N)
+C     STEP 1.3  TRANSPOSE DP ONTO WORK
+      L=0
+      DO 60 J=1,N
+      DO 60 I=1,N
+      L=L+1
+C     write(6,*) 'DP ', DP(L), L
+   60 WORK(J,I)=DP(L)
+C
+C     STEP 2 : DP= C * WORK
+      CALL MXM (C,N,WORK,N,DP,N)
+C
+C     2-ELECTRON FOCK MATRIX BUILD WITH THE DENSITY MATRIX DERIVATIVE.
+C     ----------------------------------------------------------------
+C     RETURNED IN FOC2 (N,N).
+      CALL FOCK (FOC2,DP,N)
+C
+C     BUILD DP = FOC2 * C  AND EXTRACT FCI = C' * DP.
+C     -----------------------------------------------
+C
+C     DP(N,NEND) = FOC2(N,N) * C(N,NEND).
+      NEND=MAX(NOPEN,NCI1+NCI2)
+      CALL MXM (FOC2,N,C,N,DP,NEND)
+C     EXTRACT FCI
+      L=1
+      NEND=0
+      DO 90 LOOP=1,3
+      NINIT=NEND+1
+      NEND =NEND+NBO(LOOP)
+      N1=MAX(NINIT,NCI1+1   )
+      N2=MIN(NEND ,NCI1+NCI2)
+      IF(N2.LT.N1) GO TO 90
+      DO 80 I=N1,N2
+      IF(I.GT.NINIT) THEN
+         CALL MXM (C(1,I),1,DP(N*(NINIT-1)+1),N,FCI(L),I-NINIT)
+         L=L+I-NINIT
+      ENDIF
+   80 CONTINUE
+   90 CONTINUE
+      NCOL=N2-NINIT+1
+      IF (NCOL.GT.0.AND.N2.LT.N) THEN
+         CALL MTXM (C(1,N2+1),N-N2,DP(N*(NINIT-1)+1),N,FCI(L),NCOL)
+         L=L+NCOL*(N-N2)
+      ENDIF
+      DO 100 I=NCI1+1,NCI1+NCI2
+      FCI(L)=-SDOT(N,C(1,I),1,DP(N*(I-1)+1),1)
+  100 L=L+1
+C
+C     NEW SUPERVECTOR AB = (DIAG + C'* FOC2 * C) * B , SCALED.
+C     --------------------------------------------------------
+C
+C     PART 1 : AB(I,J) = (C' * DP)(I,J) DONE BY BLOCKS.
+      L=1
+      IF(NBO(2).NE.0 .AND. NBO(1).NE.0) THEN
+         CALL MXM (CT(NBO(1)*N+1),NBO(2),DP,N,AB(L),NBO(1))
+         L=L+NBO(2)*NBO(1)
+      ENDIF
+      IF(NBO(3).NE.0 .AND. NBO(1).NE.0) THEN
+         CALL MXM (CT(NOPEN*N+1),NBO(3),DP,N,AB(L),NBO(1))
+         L=L+NBO(3)*NBO(1)
+      ENDIF
+      IF(NBO(3).NE.0 .AND. NBO(2).NE.0) THEN
+         CALL MXM (CT(NOPEN*N+1),NBO(3),DP(N*NBO(1)+1),N,AB(L),NBO(2))
+      ENDIF
+C
+C     PART 2 : AB = SCALE * (D * B + AB) .
+      DO 110 I=1,MINEAR
+  110 AB(I)=(DIAG(I)*B(I)+AB(I))*SCALAR(I)
+      RETURN
+      END
