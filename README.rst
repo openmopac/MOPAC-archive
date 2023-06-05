@@ -2,7 +2,12 @@
 MOPAC historical codebase archive
 =================================
 
-Major releases of MOPAC:
+This archive contains the original source code and manuals for many old versions of MOPAC that
+were primarily developed by Dr. James (Jimmy) J. P. Stewart. There were several notable forks
+that did not directly involve Dr. Stewart, which are noted at the bottom.
+
+The first set of major releases were open-source software disstributed through the Quantum
+Chemistry Program Exchange (QCPE):
 
 1. MOPAC 1 (1983)
 2. MOPAC 3 (1985)
@@ -10,29 +15,32 @@ Major releases of MOPAC:
 4. MOPAC 5 (1989)
 5. MOPAC 6 (1990)
 6. MOPAC 7 (1993)
+
+In 1993, Dr. Stewart began consulting for Fujitsu, and new versions of MOPAC were released as
+commercial software distributed by Fujitsu:
+
 7. MOPAC 93 (1993)
 8. MOPAC 97 (1997)
 9. MOPAC 2000 (2000)
-10. MOPAC 2002 (2002)
-11. MOPAC 2006 (2006)
-12. MOPAC 7.1 (2006)
-13. MOPAC 2007 (2007)
-14. MOPAC 2009 (2009)
-15. MOPAC 2012 (2012)
-16. MOPAC 2016 (2016)
 
-Other releases of MOPAC:
+In 2001, Dr. Stewart left Fujitsu and formed his own company, Stewart Computational Chemistry,
+to continue the development of MOPAC, which was initiated by updating the last open-source
+version of MOPAC into a more modern open-source version (7.1) before continuing its commercial
+development:
 
-17. MOPAC 5.022mn (2015)
+10. MOPAC 7.1 (2006)
+11. MOPAC 2007 (2007)
+12. MOPAC 2009 (2009)
+13. MOPAC 2012 (2012)
+14. MOPAC 2016 (2016)
 
-Releases 1-6 were open-source software distributed through the Quantum Chemistry Program Exchange (QCPE) for a distribution fee.
-
-Releases 7-11 were commercial software distributed by Fujitsu, but low-cost academic distribution was still handled through the QCPE.
-
-Release 12 was open-source software distributed by Stewart Computational Chemistry.
-
-Releases 13-16 were commercial software distributed by Stewart Computational Chemistry, which also handled free academic distribution.
-
-Release 17 was a custom version of MOPAC 5 from Prof. Don Truhlar's group at the University of Minnesota,
-which includes many unique features associated with research from that group. As noted in the program's directory,
-it released under a slightly different open-source license than the rest of this repository.
+In addition to these versions of MOPAC, other groups forked their own versions of MOPAC to continue
+its development in other directions. Fujitsu released two other MOPAC versions (MOPAC 2002 and
+MOPAC 2006) after Dr. Stewart left. When Dr. Stewart left the Dewar group to work at the Frank J.
+Seiler Research Laboratory in the mid-1980's, the rest of the Dewar group continued to develop
+their own version of MOPAC called AMPAC, later commercially distributed by SemiChem
+[http://www.semichem.com]. A fork of AMPAC to support vector computers was developed by Timothy
+Clark's group in the mid-1980's and released as VAMP (Vectorized AMPAC). Donald Truhlar's group
+forked MOPAC 5 in the early-1990's to support Cray computers and add new features, and the latest
+release of their fork is MOPAC 5.022mn from 2015. MOPAC 5.022mn was released under an Apache license,
+and a copy is included in this archive with the same license.
