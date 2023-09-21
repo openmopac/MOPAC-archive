@@ -44,3 +44,8 @@ Clark's group in the mid-1980's and released as VAMP (Vectorized AMPAC). Donald 
 forked MOPAC 5 in the early-1990's to support Cray computers and add new features, and the latest
 release of their fork is MOPAC 5.022mn from 2015. MOPAC 5.022mn was released under an Apache license,
 and a copy is included in this archive with the same license.
+
+The data directory contains the reference data sets used for testing and training the PM6 and PM7
+models in MOPAC. These sets are the best available proxies for the actual data used in fitting these
+models and should be quite accurate, although the precise sets and the PARAM input files used in the
+fitting process were not retained for posterity.
