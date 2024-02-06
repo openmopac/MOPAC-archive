@@ -7,22 +7,23 @@ were primarily developed by Dr. James (Jimmy) J. P. Stewart. There were several 
 that did not directly involve Dr. Stewart, which are noted at the bottom.
 
 The first set of major releases were open-source software distributed through the Quantum
-Chemistry Program Exchange (QCPE) as QCPE program #455:
+Chemistry Program Exchange (QCPE) as QCPE program #455 for MOPAC through MOPAC6 and #688 for MOPAC7:
 
-1. MOPAC 1 (1983)
-2. MOPAC 3 (1985)
-3. MOPAC 4 (1987)
-4. MOPAC 5 (1989)
-5. MOPAC 6 (1990)
-6. MOPAC 7 (1993)
+1. MOPAC (1983)
+2. MOPAC3 (1985)
+3. MOPAC4 (1987)
+4. MOPAC5 (1989)
+5. MOPAC6 (1990)
+6. MOPAC7 (1993)
 
 In 1993, Dr. Stewart began consulting for Fujitsu, and new versions of MOPAC were released as
 commercial software distributed by Fujitsu:
 
-7. MOPAC 93 (1993)
-8. MOPAC 97 (1997)
+7. MOPAC93 (1993)
+8. MOPAC97 (1997)
 9. MOPAC 2000 (2000)
 
+The commercial distribution of MOPAC93 specifically was coordinated with QCPE as program #689.
 In 2001, Dr. Stewart left Fujitsu and formed his own company, Stewart Computational Chemistry,
 to continue the development of MOPAC, which was initiated by updating the last open-source
 version of MOPAC into a more modern open-source version (7.1) before continuing its commercial
@@ -42,10 +43,10 @@ to work at the Frank J. Seiler Research Laboratory in the mid-1980's, the rest o
 to develop their own version of MOPAC called AMPAC, later commercially distributed by SemiChem
 [http://www.semichem.com]. Two notable forks of AMPAC exist: vector computer support was added by Timothy
 Clark's group in the mid-1980's and released commercially as VAMP (Vectorized AMPAC), and implicit solvent
-models were added by Donald Truhlar's group in the early-1990's and released as AMSOL. Donald Truhlar's group
-also forked MOPAC 5 in the early-1990's to support Cray computers and add new features, and the latest
-release of their fork is MOPAC 5.022mn from 2015. AMSOL 7.1 and MOPAC 5.022mn are released under an Apache
-license (and their manuals under CC-BY-4.0), and copies are included in this archive with the same licenses.
+models were added by Donald Truhlar's group in the early-1990's and released as AMSOL (QCPE #606). Donald
+Truhlar's group also forked MOPAC 5 in the early-1990's to support Cray computers and add new features, and
+the latest release of their fork is MOPAC 5.022mn from 2015. AMSOL 7.1 and MOPAC 5.022mn are released under
+an Apache license (and their manuals under CC-BY-4.0), and copies are included in this archive with the same licenses.
 
 The data directory contains the reference data sets used for testing and training the PM6 and PM7
 models in MOPAC. These sets are the best available proxies for the actual data used in fitting these
