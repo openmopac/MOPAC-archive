@@ -36,13 +36,14 @@ development:
 
 In addition to these versions of MOPAC, other groups forked their own versions of MOPAC to continue
 its development in other directions. Fujitsu released two other MOPAC versions (MOPAC 2002 and
-MOPAC 2006) after Dr. Stewart left. When Dr. Stewart left the Dewar group to work at the Frank J.
-Seiler Research Laboratory in the mid-1980's, the rest of the Dewar group continued to develop
-their own version of MOPAC called AMPAC, later commercially distributed by SemiChem
+MOPAC 2006) after Dr. Stewart left and continues to sell commercial versions of MOPAC as a component
+of SCIGRESS [https://www.fqs.pl/en/chemistry/products/scigress]. When Dr. Stewart left the Dewar group
+to work at the Frank J. Seiler Research Laboratory in the mid-1980's, the rest of the Dewar group continued
+to develop their own version of MOPAC called AMPAC, later commercially distributed by SemiChem
 [http://www.semichem.com]. Two notable forks of AMPAC exist: vector computer support was added by Timothy
-Clark's group in the mid-1980's and released as VAMP (Vectorized AMPAC), and implicit solvent models were
-added by Donald Truhlar's group in the early-1990's and released as AMSOL. Donald Truhlar's group also
-forked MOPAC 5 in the early-1990's to support Cray computers and add new features, and the latest
+Clark's group in the mid-1980's and released commercially as VAMP (Vectorized AMPAC), and implicit solvent
+models were added by Donald Truhlar's group in the early-1990's and released as AMSOL. Donald Truhlar's group
+also forked MOPAC 5 in the early-1990's to support Cray computers and add new features, and the latest
 release of their fork is MOPAC 5.022mn from 2015. AMSOL 7.1 and MOPAC 5.022mn are released under an Apache
 license (and their manuals under CC-BY-4.0), and copies are included in this archive with the same licenses.
 
