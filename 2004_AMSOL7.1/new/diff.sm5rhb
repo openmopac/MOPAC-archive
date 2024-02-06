@@ -1,0 +1,1043 @@
+2c2
+<       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+---
+>       IMPLICIT DOUBLE PRECISION(A-H,O-Z)
+4,21c4,13
+<       INCLUDE 'PARAMS.i'
+< C ---------------------------------------------------------------------+
+< C     CALCULATE CDS HB(i) WHICH ARE LATER MULTIPLIED TIMES SASA
+< C     TO GET THE CDS TERM. SM5.x                     CREATED BY GDH 0197
+< C  INPUT
+< C     LGR               : .TRUE. IF DERIVATIVES TO BE COMPUTED.
+< C     R(NUMAT,NUMAT)    : INTERATOMIC DISTANCES.
+< C     UN(3,NUMAT,NUMAT) : ASSOCIATED UNIT VECTORS.
+< C  OUTPUT
+< C     HB(NUMAT)    : SURFACE TENSION TERM.
+< C     DCDS(3,NUMAT): CARTESIAN DERIVATIVES (COMPUTED ON REQUEST "LGR"):
+< C                    DCDS(i,j) = d(SUM_OF_HB)/dCOORD(i,j)
+< C  MODIFICATION NOTES
+< C     CLEANED, COMMENTED, SPEEDED UP AND IMPLEMENTED GRADIENTS,
+< C     CREATED "TKK" FOR Tkk FUNCTION AND ITS DERIVATIVE.
+< C     MATHEMATICAL REGULARIZATION OF O-O TERMS,
+< C     ADDED Si-X TERMS (PDW0601,PDW0901),                     DL, MAR 03
+< C ---------------------------------------------------------------------+
+---
+>       INCLUDE 'FFILES.i'                                                GDH1095
+>       INCLUDE 'KEYS.i'                                                  GDH1196
+> C******************************************************************************
+> C
+> C   THIS SUBROUTINE CALCULATES SURFACE TENSIONS WHICH ARE LATER
+> C   MULTIPLIED TIMES SASA TO GET THE CDS TERM.
+> C
+> C   CREATED BY GDH 0197                                           
+> C
+> C******************************************************************************
+26,28c18,23
+<      1                CRFNH5,OORFN5,ONRFN4,SSRFN5,OPRFN5,
+<      2                FCRFN,CLCRFN,BRCRFN,CNSTC2,TNCSC3,TNCSC2,
+<      3                HOHST1,HNNST1, SPRFN5,OSIBD5
+---
+>      X                CRFNH5,OORFN5,ONRFN4,SSRFN5,OPRFN5,               GDH1196
+>      1                FCRFN,CLCRFN,BRCRFN,CNSTC2,TNCSC3,TNCSC2,         GDH1196
+>      2                HOHST1,HNNST1, SPRFN5,OSIBD5                      PDW0901
+>       COMMON /TRADCM/ ENGAS, IRAD, ICR, ICHMOD, ICHGM, NUMSLV           GDH0897
+>       COMMON /SPARCM/ SIGMA0(100),RKCDS(100),RHONOT(100),RHOONE(100),
+>      1                HBCORC(100),QKNOT(100),QKONE(100)            
+30,33c25,29
+<       COMMON /HBONDA/ HBONDO(100),CBONDO,COBND5,CNBNDO,CBOND5,
+<      1                OOBNDO,ONBNDO,SSBNDO,OPBND5,CLCBND,BRCBND,
+<      2                FCBNDO,CNBOC2,TNCBC3,TNCBC2,HOHBND,HNNBND,
+<      3                SPBNDO,OSIBND
+---
+>       COMMON /HBONDA/ HBONDO(100),CBONDO,COBND5,CNBNDO,CBOND5,          GDH1196
+>      .                OOBNDO,ONBNDO,SSBNDO,OPBND5,CLCBND,BRCBND,        GDH1196
+>      .                FCBNDO,CNBOC2,TNCBC3,TNCBC2,HOHBND,HNNBND,        GDH1296
+>      .                SPBNDO,OSIBND                                     PDW0601
+>       COMMON /ONESCM/ ICONTR(100)
+36,532c32,39
+<       COMMON /VOLCOM/ R(NUMATM,NUMATM),RMAX(NUMATM)
+<      1               ,UN(3,NUMATM,NUMATM)
+<       COMMON /SCRCHR/ BUF(3*NUMATM),BUF1(3*NUMATM),BUF2(3*NUMATM)
+<      1               ,BUF3(3,NUMATM),BUF4(3,NUMATM),BUF0(3)
+<      2               ,DHB(3*NUMATM)
+<       COMMON /DSOLVA/ DATAR(3,NUMATM,NUMATM),DCDS(3,NUMATM)
+<      1               ,DBORN(3,NUMATM,NUMATM),DFGB(NPACK,3,NUMATM)
+<      2               ,DATLGR(3,NUMATM)
+<      3               ,LGR,FLAGRD
+<                       LOGICAL LGR,FLAGRD
+<       DATA ZERO /0D0/,ONE /1D0/,TWO /2D0/
+<       NUMAT3=3*NUMAT
+<       CALL VFILL (100,ZERO,HBONDO,1)
+<       CBONDO=ZERO
+<       CBOND5=ZERO
+<       COBND5=ZERO
+<       CNBNDO=ZERO
+<       OOBNDO=ZERO
+<       ONBNDO=ZERO
+<       SSBNDO=ZERO
+<       CLCBND=ZERO
+<       BRCBND=ZERO
+<       FCBNDO=ZERO
+<       OPBND5=ZERO
+<       SPBNDO=ZERO
+<       HOHBND=ZERO
+<       HNNBND=ZERO
+<       CNBOC2=ZERO
+<       TNCBC3=ZERO
+<       TNCBC2=ZERO
+<       OSIBND=ZERO
+<       IF (LGR) CALL VFILL (NUMAT3,ZERO,DCDS,1)
+< C
+< C     OUTER BIG LOOP OVER ATOMS, ENDS ON HB(IAT) AND DCDS(3,NUMAT).
+< C
+<       DO 1000 IAT=1,NUMAT
+<       NATIAT=NAT(IAT)
+<       ATARI=ATAR(IAT)
+<       IF (ATARI.LE.ZERO) THEN
+<          HB(IAT)=ZERO
+<          GOTO 1000
+<       ENDIF
+< C
+< CDL   NOTE: THE LEFT DIGIT(S) OF THE STATEMENT'S LABELS GIVE(S)
+< CDL         THE ATOMIC NUMBER OF THE ELEMENT CONSIDERED.
+< CDL         THE LABELS APPEAR IN ASCENDING ORDER.
+< CDL   COULD HELP THE CODE A BIT MORE READABLE...
+< C
+<       AA=ZERO
+<       IF (LGR) CALL VFILL (NUMAT3,ZERO,DHB,1)
+< CCC   sigma Hk term, based on a Tkk.
+< CCC   NOTE: Hydrogen has this extra surface tension when bonded to
+< CCC   Carbon, Oxygen, Nitrogen, Sulfur
+<       IF (NATIAT.EQ.1) THEN
+<          ITPC=NATCNV(1)
+<          DELTAR=DRVAL(1)
+<          DO 19 J=1,NUMAT
+<          NTP=NAT(J)
+<          IF (NTP.EQ.6.OR.NTP.EQ.7.OR.NTP.EQ.8.OR.NTP.EQ.16) THEN
+<             NTPC=NATCNV(NTP)
+<             CUTOF1=RKKVAL(ITPC,NTPC)+DELTAR
+<             IF (R(J,IAT).LT.CUTOF1) THEN
+<                IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF,1)
+<                CALL TKK (IAT,J,CUTOF1,DELTAR,ONE,F0,LGR,BUF)
+<                AA=AA+F0*HRFN4(NTP)
+<                IF (LGR) CALL SAXPY (NUMAT3,HRFN4(NTP),BUF,1,DHB,1)
+<                HBONDO(NTP)=HBONDO(NTP)+F0*ATARI
+<                IF ((NTP.EQ.7.OR.NTP.EQ.8).AND.F0.GT.ZERO) THEN
+<                   F1=ZERO
+<                   IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF1,1)
+<                   IF (NTP.EQ.7.AND.HNNST1.NE.ZERO) THEN
+<                      CUTOF=RKKVAL(NTPC,NATCNV(7))+DELTAR
+<                      DO 10 K=1,NUMAT
+<                      IF (J.NE.K.AND.NAT(K).EQ.7) THEN
+<                         IF (R(K,J).LT.CUTOF) THEN
+<                            CALL TKK (J,K,CUTOF,DELTAR,HNNST1,F,LGR,BUF1)
+<                            HNNBND=HNNBNB+F0*F*ATARI/HNNST1
+<                            F1=F1+F
+<                         ENDIF
+<                      ENDIF
+<    10                CONTINUE
+<                   ELSE IF (NTP.EQ.8.AND.HOHST1.NE.ZERO) THEN
+<                      CUTOF=RKKVAL(NTPC,NATCNV(1))+DELTAR
+<                      DO 11 K=1,NUMAT
+<                      IF (IAT.NE.K.AND.NAT(K).EQ.1) THEN
+<                         IF (R(K,J).LT.CUTOF) THEN
+<                            CALL TKK (J,K,CUTOF,DELTAR,HOHST1,F,LGR,BUF1)
+<                            HOHBND=HOHBND+F0*F*ATARI/HOHST1
+<                            F1=F1+F
+<                         ENDIF
+<                      ENDIF
+<    11                CONTINUE
+<                   ENDIF
+<                   IF (F1.NE.ZERO) THEN
+<                      AA=AA+F0*F1
+<                      IF (LGR) THEN
+<                         CALL SAXPY (NUMAT3,F1,BUF,1,DHB,1)
+<                         CALL SAXPY (NUMAT3,F0,BUF1,1,DHB,1)
+<                      ENDIF
+<                   ENDIF
+<                ENDIF
+<             ENDIF
+<          ENDIF
+<    19    CONTINUE
+<       ELSE IF (NATIAT.EQ.6) THEN
+<          ITPC=NATCNV(6)
+< CCC      SM5 CC CDS terms. They are of the Tkk form.
+<          DO 62 KCCC=1,2
+<          IF (KCCC.EQ.1.AND.CRFNH4.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             CUTOF1=RKKVAL(ITPC,NATCNV(6))+DELTAR
+<             DO 60 J=1,NUMAT
+<             IF (J.EQ.IAT) GOTO 60
+<             IF (NAT(J).EQ.6) THEN
+<                IF (R(J,IAT).LT.CUTOF1) THEN
+<                   CALL TKK (IAT,J,CUTOF1,DELTAR,CRFNH4,F,LGR,DHB)
+<                   AA=AA+F
+<                   CBONDO=CBONDO+F*ATARI/CRFNH4
+<                ENDIF
+<             ENDIF
+<    60       CONTINUE
+<          ELSE IF (KCCC.EQ.2.AND.CRFNH5.NE.ZERO) THEN
+<             DELTAR=DRVAL(3)
+<             CUTOF3=RKKVL2(ITPC,NATCNV(6))+DELTAR
+<             DO 61 J=1,NUMAT
+<             IF (J.EQ.IAT) GOTO 61
+<             IF (NAT(J).EQ.6) THEN
+<                IF (R(J,IAT).LT.CUTOF3) THEN
+<                   CALL TKK (IAT,J,CUTOF3,DELTAR,CRFNH5,F,LGR,DHB)
+<                   AA=AA+F
+<                   CBOND5=CBOND5+F*ATARI/CRFNH5
+<                ENDIF
+<             ENDIF
+<    61       CONTINUE
+<          ENDIF
+<    62    CONTINUE
+< CCC      SM5 C-N CDS terms. They are of the (Tkk)**2 form.
+<          IF (CNSTC2.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             CUTOF1=RKKVAL(ITPC,NATCNV(7))+DELTAR
+<             RTKK=ZERO
+<             IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF,1)
+<             DO 63 J=1,NUMAT
+<             IF (NAT(J).EQ.7) THEN
+<                IF (R(J,IAT).LT.CUTOF1) THEN
+<                   CALL TKK (IAT,J,CUTOF1,DELTAR,ONE,F,LGR,BUF)
+<                   RTKK=RTKK+F
+<                ENDIF
+<             ENDIF
+<    63       CONTINUE
+<             AA=AA+CNSTC2*RTKK**2
+<             IF (LGR) CALL SAXPY (NUMAT3,CNSTC2*RTKK*TWO,BUF,1,DHB,1)
+<             CNBOC2=CNBOC2+RTKK**2*ATARI/CNSTC2
+<          ENDIF
+<       ELSE IF (NATIAT.EQ.7) THEN
+<          ITPC=NATCNV(7)
+< CCC      Add the Nitrogen bonded to Carbon Surface Tension terms.
+< CCC      The terms are a sum over all N bonded to C of a COT times the
+< CCC      sum of all other atoms attached to the C attached to the N
+< CCC      raised to a power. See the paper for more explicit details.
+<          RTKKS1=ZERO
+<          RTKKS2=ZERO
+<          IF (LGR) THEN
+<             CALL VFILL (NUMAT3,ZERO,BUF1,1)
+<             CALL VFILL (NUMAT3,ZERO,BUF2,1)
+<          ENDIF
+<          DELTAR=DRVAL(1)
+<          NTPC=NATCNV(6)
+<          CUTOF1=RKKVAL(ITPC,NTPC)+DELTAR
+<          DO 71 J=1,NUMAT
+<          IF (NAT(J).EQ.6) THEN
+<             IF (R(J,IAT).LT.CUTOF1) THEN
+<                IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF,1)
+<                CALL TKK (IAT,J,CUTOF1,DELTAR,ONE,RTKK,LGR,BUF)
+<                RTKK3=ZERO
+<                RTKK4=ZERO
+<                IF (LGR) THEN
+<                   CALL VFILL (NUMAT3,ZERO,BUF3,1)
+<                   CALL VFILL (NUMAT3,ZERO,BUF4,1)
+<                ENDIF
+<                DO 70 K=1,NUMAT
+<                IF (K.NE.IAT.AND.K.NE.J) THEN
+<                   CUTOF2=RKKVAL(NATCNV(NAT(K)),NTPC)+DELTAR
+<                   IF (R(K,J).LT.CUTOF2) THEN
+<                      CALL TKK (J,K,CUTOF2,DELTAR,ONE,RTKK2,.FALSE.,BUF0)
+<                      RTKK3=RTKK3+RTKK2
+<                      IF (LGR) THEN
+<                         DFDR=-RTKK2*DELTAR/(R(K,J)-CUTOF2)**2
+<                         BUF0(1)=UN(1,K,J)*DFDR
+<                         BUF0(2)=UN(2,K,J)*DFDR
+<                         BUF0(3)=UN(3,K,J)*DFDR
+<                         BUF3(1,J)=BUF3(1,J)+BUF0(1)
+<                         BUF3(2,J)=BUF3(2,J)+BUF0(2)
+<                         BUF3(3,J)=BUF3(3,J)+BUF0(3)
+<                         BUF3(1,K)=BUF3(1,K)-BUF0(1)
+<                         BUF3(2,K)=BUF3(2,K)-BUF0(2)
+<                         BUF3(3,K)=BUF3(3,K)-BUF0(3)
+<                      ENDIF
+<                      IF (NAT(K).EQ.8) THEN
+<                         RTKK4=RTKK4+RTKK2
+<                         IF (LGR) THEN
+<                            BUF4(1,J)=BUF4(1,J)+BUF0(1)
+<                            BUF4(2,J)=BUF4(2,J)+BUF0(2)
+<                            BUF4(3,J)=BUF4(3,J)+BUF0(3)
+<                            BUF4(1,K)=BUF4(1,K)-BUF0(1)
+<                            BUF4(2,K)=BUF4(2,K)-BUF0(2)
+<                            BUF4(3,K)=BUF4(3,K)-BUF0(3)
+<                         ENDIF
+<                      ENDIF
+<                   ENDIF
+<                ENDIF
+<    70          CONTINUE
+<                RTKKS1=RTKKS1+RTKK*RTKK3**2
+<                RTKKS2=RTKKS2+RTKK*RTKK4
+<                IF (LGR) THEN
+<                   CALL SAXPY (NUMAT3,TWO*RTKK3*RTKK,BUF3,1,BUF1,1)
+<                   CALL SAXPY (NUMAT3,RTKK3**2,BUF,1,BUF1,1)
+<                   CALL SAXPY (NUMAT3,RTKK,BUF4,1,BUF2,1)
+<                   CALL SAXPY (NUMAT3,RTKK4,BUF,1,BUF2,1)
+<                ENDIF
+<             ENDIF
+<          ENDIF
+<    71    CONTINUE
+<          DHOLDER=RTKKS1**1.3D0
+<          DANDY=1.3D0*RTKKS1**0.3D0
+<          AA=AA+DHOLDER*CNRFN4+RTKKS2*TNCSC2
+<          IF (LGR) THEN
+<             CALL SAXPY (NUMAT3,TNCSC2,BUF2,1,DHB,1)
+<             CALL SAXPY (NUMAT3,CNRFN4*DANDY,BUF1,1,DHB,1)
+<          ENDIF
+<          CNBNDO=CNBNDO+DHOLDER*ATARI
+<          TNCBC2=TNCBC2+RTKKS2*ATARI
+< C        CDS terms which separates N triple bonded C
+<          IF (TNCSC3.NE.ZERO) THEN
+<             DELTAR=DRVAL(4)
+<             CUTOF=RKKVL2(ITPC,NATCNV(6))+DELTAR
+<             DO 72 J=1,NUMAT
+<             IF (J.EQ.IAT) GOTO 72
+<             IF (NAT(J).EQ.6) THEN
+<                IF (R(J,IAT).LT.CUTOF) THEN
+<                   CALL TKK (IAT,J,CUTOF,DELTAR,TNCSC3,F,LGR,DHB)
+<                   AA=AA+F
+<                   TNCBC3=TNCBC3+F*ATARI/TNCSC3
+<                ENDIF
+<             ENDIF
+<    72       CONTINUE
+<          ENDIF
+<       ELSE IF (NATIAT.EQ.8) THEN
+<          ITPC=NATCNV(8)
+< CCC      O-C CDS terms. They are of the Tkk form.
+<          IF (CORFN5.NE.ZERO) THEN
+<             DELTAR=DRVAL(2)
+<             CUTOF=RKKVL2(ITPC,NATCNV(6))+DELTAR
+<             DO 80 J=1,NUMAT
+<             IF (NAT(J).EQ.6) THEN
+<                IF (R(J,IAT).LT.CUTOF) THEN
+<                   CALL TKK (IAT,J,CUTOF,DELTAR,CORFN5,F,LGR,DHB)
+<                   AA=AA+F
+<                   COBND5=COBND5+F*ATARI/CORFN5
+<                ENDIF
+<             ENDIF
+<    80       CONTINUE
+<          ENDIF
+< CCC      O-N CDS terms. They are of the Tkk form.
+<          IF (ONRFN4.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             CUTOF=RKKVAL(ITPC,NATCNV(7))+DELTAR
+<             DO 81 J=1,NUMAT
+<             IF (NAT(J).EQ.7) THEN
+<                IF (R(J,IAT).LT.CUTOF) THEN
+<                   CALL TKK (IAT,J,CUTOF,DELTAR,ONRFN4,F,LGR,DHB)
+<                   AA=AA+F
+<                   ONBNDO=ONBNDO+F*ATARI/ONRFN4
+<                ENDIF
+<             ENDIF
+<    81       CONTINUE
+<          ENDIF
+< CCC      Add the O-O CDS term.
+<          IF (OORFN5.NE.ZERO) THEN
+<             RTKK=ZERO
+<             KCCAN=0
+<             IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF,1)
+<             DELTAR=DRVAL(1)
+<             CUTOF1=RKKVAL(ITPC,NATCNV(8))+DELTAR
+<             DO 82 J=1,NUMAT
+<             IF (J.EQ.IAT) GOTO 82
+<             IF (NAT(J).EQ.8) THEN
+<                IF (R(J,IAT).LT.CUTOF1) THEN
+<                   CALL TKK (IAT,J,CUTOF1,DELTAR,ONE,F,LGR,BUF)
+<                   RTKK=RTKK+F
+<                   KCCAN=KCCAN+1
+<                ENDIF
+<             ENDIF
+<    82       CONTINUE
+<             IF (KCCAN.GE.1) THEN
+< CDL            SRTNO=-1.0D0*RTKK
+< CDL            REYYO=-0.4D0
+< CDL            DELTAO=0.4D0
+< CDL            BYYO=1.0D0
+< CDL            CUTOF1=REYYO+DELTAO
+< CDL            IF (SRTNO.LT.CUTOF1) THEN
+< CDL               XRTKO=EXP(1-(BYYO/(1-((SRTNO-REYYO)/DELTAO))))*EXP(-1)
+< CDL               HB=HB+XRTKO*OORFN5
+< CDL            ENDIF
+< CDL            SUBSUMES TO, AND ADDING GRADIENTS:
+<                X=RTKK/0.4D0
+<                XRTKO=OORFN5*EXP(X)
+<                AA=AA+XRTKO
+<                IF (LGR) THEN
+<                   DXDS=XRTKO/0.4D0
+<                   CALL SAXPY (NUMAT3,DXDS,BUF,1,DHB,1)
+<                ENDIF
+<                OOBNDO=OOBNDO+XRTKO*ATARI/OORFN5
+<             ENDIF
+<          ENDIF
+< CCC      O-Si CDS terms. They are of the Tkk form.
+<          IF (OPRFN5.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             CUTOF=RKKVAL(ITPC,NATCNV(14))+DELTAR
+<             DO 83 J=1,NUMAT
+<             IF (NAT(J).EQ.14) THEN
+<                IF (R(J,IAT).LT.CUTOF) THEN
+<                   CALL TKK (IAT,J,CUTOF,DELTAR,OSIBD5,F,LGR,DHB)
+<                   AA=AA+F
+<                   OSIBND=OSIBND+F*ATARI/OSIBD5
+<                ENDIF
+<             ENDIF
+<    83       CONTINUE
+<          ENDIF
+< CCC      O-P CDS terms. They are of the Tkk form.
+<          IF (OPRFN5.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             CUTOF=RKKVAL(ITPC,NATCNV(15))+DELTAR
+<             DO 84 J=1,NUMAT
+<             IF (NAT(J).EQ.15) THEN
+<                IF (R(J,IAT).LT.CUTOF) THEN
+<                   CALL TKK (IAT,J,CUTOF,DELTAR,OPRFN5,F,LGR,DHB)
+<                   AA=AA+F
+<                   OPBND5=OPBND5+F*ATARI/OPRFN5
+<                ENDIF
+<             ENDIF
+<    84       CONTINUE
+<          ENDIF
+<       ELSE IF (NATIAT.EQ.16) THEN
+<          ITPC=NATCNV(16)
+< CCC      S-P CDS terms. They are of the Tkk form.
+<          IF (SPRFN5.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             CUTOF=RKKVAL(ITPC,NATCNV(15))+DELTAR
+<             DO 160 J=1,NUMAT
+<             IF (NAT(J).EQ.15) THEN
+<                IF (R(J,IAT).LT.CUTOF) THEN
+<                   CALL TKK (IAT,J,CUTOF,DELTAR,SPRFN5,F,LGR,DHB)
+<                   AA=AA+F
+<                   SPBNDO=SPBNDO+F*ATARI/SPRFN5
+<                ENDIF
+<             ENDIF
+<   160       CONTINUE
+<          ENDIF
+< CCC      S-S CDS terms. They are of the Tkk form.
+<          IF (SSRFN5.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             CUTOF=RKKVAL(ITPC,NATCNV(16))+DELTAR
+<             DO 161 J=1,NUMAT
+<             IF (J.EQ.IAT) GOTO 161
+<             IF (NAT(J).EQ.16) THEN
+<                IF (R(IAT,J).LT.CUTOF) THEN
+<                   CALL TKK (IAT,J,CUTOF,DELTAR,SSRFN5,F,LGR,DHB)
+<                   AA=AA+F
+<                   SSBNDO=SSBNDO+F*ATARI/SSRFN5
+<                ENDIF
+<             ENDIF
+<   161       CONTINUE
+<          ENDIF
+<       ELSE IF (NATIAT.EQ.17) THEN
+<          ITPC=NATCNV(17)
+< CCC      Cl-C CDS terms. They are of the Tkk form.
+<          IF (CLCRFN.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             NTPC=NATCNV(6)
+<             CUTOF1=RKKVAL(ITPC,NTPC)+DELTAR
+<             DO 171 J=1,NUMAT
+<             IF (J.EQ.IAT) GOTO 171
+<             IF (NAT(J).EQ.6) THEN
+<                IF (R(J,IAT).LT.CUTOF1) THEN
+<                   IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF,1)
+<                   CALL TKK (IAT,J,CUTOF1,DELTAR,CLCRFN,F0,LGR,BUF)
+<                   F1=ZERO
+<                   IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF1,1)
+<                   DO 170 K=1,NUMAT
+<                   IF (K.NE.IAT.AND.K.NE.J) THEN
+<                      CUTOF2=RKKVAL(NATCNV(NAT(K)),NTPC)+DELTAR
+<                      IF (R(K,J).LT.CUTOF2) THEN
+<                         ENEG=ONE/ENEGIT(NAT(K))
+<                         CALL TKK (J,K,CUTOF2,DELTAR,ENEG,F,LGR,BUF1)
+<                         F1=F1+F
+<                      ENDIF
+<                   ENDIF
+<   170             CONTINUE
+<                   AA=AA+F0*F1
+<                   IF (LGR) THEN
+<                      CALL SAXPY (NUMAT3,F1,BUF ,1,DHB,1)
+<                      CALL SAXPY (NUMAT3,F2,BUF1,1,DHB,1)
+<                   ENDIF
+<                   CLCBND=CLCBND+F0*F1*ATARI/CLCRFN
+<                ENDIF
+<             ENDIF
+<   171       CONTINUE
+<          ENDIF
+<       ELSE IF (NATIAT.EQ.35) THEN
+<          ITPC=NATCNV(35)
+< CCC      Br-C CDS terms. They are of the Tkk form.
+<          IF (BRCRFN.NE.ZERO) THEN
+<             DELTAR=DRVAL(1)
+<             NTPC=NATCNV(6)
+<             CUTOF1=RKKVAL(ITPC,NTPC)+DELTAR
+<             DO 351 J=1,NUMAT
+<             IF (J.EQ.IAT) GOTO 351
+<             IF (NAT(J).EQ.6) THEN
+<                IF (R(J,IAT).LT.CUTOF1) THEN
+<                   IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF,1)
+<                   CALL TKK (IAT,J,CUTOF1,DELTAR,BRCRFN,F0,LGR,BUF)
+<                   F1=ZERO
+<                   IF (LGR) CALL VFILL (NUMAT3,ZERO,BUF1,1)
+<                   DO 350 K=1,NUMAT
+<                   IF (K.NE.IAT.AND.K.NE.J) THEN
+<                      CUTOF2=RKKVAL(NATCNV(NAT(K)),NTPC)+DELTAR
+<                      IF (R(K,J).LT.CUTOF2) THEN
+<                         ENEG=ONE/ENEGIT(NAT(K))
+<                         CALL TKK (J,K,CUTOF2,DELTAR,ENEG,F,LGR,BUF1)
+<                         F1=F1+F
+<                      ENDIF
+<                   ENDIF
+<   350             CONTINUE
+<                   AA=AA+F0*F1
+<                   IF (LGR) THEN
+<                      CALL SAXPY (NUMAT3,F1,BUF ,1,DHB,1)
+<                      CALL SAXPY (NUMAT3,F2,BUF1,1,DHB,1)
+<                   ENDIF
+<                   BRCBND=BRCBND+RTKK4*ATARI/BRCRFN
+<                ENDIF
+<             ENDIF
+<   351       CONTINUE
+<          ENDIF
+<       ENDIF
+< CCC
+< CCC   HB(IAT) AND GRADIENTS IN FINAL FORM.
+< CCC
+<       ARED3=ATARI*1D-3
+<       HB(IAT)=AA*ARED3
+<       IF (LGR) THEN
+<          CALL SAXPY (NUMAT3,ARED3,DHB,1,DCDS,1)
+<          FACTR1=AA*1D-3
+<          CALL SAXPY (NUMAT3,FACTR1,DATAR(1,1,IAT),1,DCDS,1)
+<       ENDIF
+<  1000 CONTINUE
+<       END
+< C======================================================================+
+<       SUBROUTINE TKK (I,J,RCUT,DELTAR,FACTOR,F,LGR,DXYZ)
+<       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+<       INCLUDE 'SIZES.i'
+<       DIMENSION DXYZ(3,*)
+<       LOGICAL LGR
+< C ---------------------------------------------------------------------+
+< C     VALUE AND CARTESIAN GRADIENTS OF A FUNCTION OF THE Tkk TYPE:
+< C     F(R(I,J))=EXP(1-(1/(1-((R(I,J)-RHLD)/DELTAR))))/EXP(1)*FACTOR
+< C                                                             DL, MAR 2K
+< C  INPUT
+< C     I,J:                  LABELS OF THE PAIR OF ATOMS.
+< C     RCUT, DELTAR, FACTOR: PARAMETERS OF THE FUNCTION.
+< C     LGR:                  .TRUE. IF GRADIENTS REQUIRED.
+< C     R(NUMAT,NUMAT):       INTERATOMIC DISTANCES.
+< C     UN(3,NUMAT,NUMAT):    ASSOCIATED UNIT VECTORS.
+< C  OUTPUT
+< C     F:                    VALUE OF THE FUNCTION.
+< C     DXYZ(3,NUMAT):        VALUES ON INPUT + dF/dCOORD(i,j)
+< C                           (PERFORMED ON REQUEST "LGR").
+< C ---------------------------------------------------------------------+
+< C     NOTE: A MATHEMATICALLY EQUIVALENT FORMULATION OF THE Tkk IS:
+< C           F(R(I,J)) = EXP(DELTAR/(R(I,J)-RCUT))*FACTOR
+< C           WITH RCUT = DELTAR+RHLD
+< C     THE DERIVATIVE OF F WITH RESPECT TO R(I,J) READS:
+< C           dF/dR = -F*DELTAR/(R(I,J)-RCUT)**2
+< C
+<       COMMON /VOLCOM/ R(NUMATM,NUMATM),RMAX(NUMATM)
+<      1               ,UN(3,NUMATM,NUMATM)
+<       X1=1D0/(R(I,J)-RCUT)
+<       X=DELTAR*X1
+<       F=EXP(X)*FACTOR
+<       IF (LGR) THEN
+<          DFDR=-F*X*X1
+<          DXYZ(1,I)=DXYZ(1,I)+UN(1,J,I)*DFDR
+<          DXYZ(2,I)=DXYZ(2,I)+UN(2,J,I)*DFDR
+<          DXYZ(3,I)=DXYZ(3,I)+UN(3,J,I)*DFDR
+<          DXYZ(1,J)=DXYZ(1,J)-UN(1,J,I)*DFDR
+<          DXYZ(2,J)=DXYZ(2,J)-UN(2,J,I)*DFDR
+<          DXYZ(3,J)=DXYZ(3,J)-UN(3,J,I)*DFDR
+---
+>       COMMON /OPTIMI/ IMP,IMP0                                           DEVL
+>       COMMON /VOLCOM/ RLIO(NUMATM,NUMATM),RMAX(NUMATM)
+>      1               ,URLIO(3,NUMATM,NUMATM)                            DL0397
+>       INCLUDE 'PARAMS.i'
+>       IF (ICONTR(56).EQ.1) THEN 
+>          ICONTR(56)=2
+>          SQRT3=SQRT(3.0D0)
+>          EXPVAL=EXP(1.00D0)                                             GDH0197
+533a41,499
+>       DO 50 M=1,100                                                     DJG0994
+>          HBONDO(M)=0.0D0                                                DJG0994
+> 50    CONTINUE                                                          DJG0994
+>       CBONDO=0.0D0                                                      CCC0695
+>       CBOND5=0.0D0                                                      CCC0495
+>       COBND5=0.0D0                                                      CCC0495
+>       CNBNDO=0.0D0                                                      CCC0495
+>       OOBNDO=0.0D0                                                      CCC0495
+>       ONBNDO=0.0D0                                                      CCC0595
+>       SSBNDO=0.0D0                                                      CCC0695
+>       CLCBND=0.0D0                                                      GDH1196
+>       BRCBND=0.0D0                                                      GDH1196
+>       FCBNDO=0.0D0                                                      GDH1196
+>       OPBND5=0.0D0                                                      GDH0797
+>       SPBNDO=0.0D0                                                      GDH0797
+>       HOHBND=0.0D0                                                      GDH0897
+>       HNNBND=0.0D0                                                      GDH0897
+>       CNBOC2=0.0D0                                                      GDH0897
+>       TNCBC3=0.0D0                                                      GDH0897
+>       TNCBC2=0.0D0                                                      GDH0897
+>       OSIBND=0.0D0                                                      PDW0601
+>       DO 950 IAT=1,NUMAT
+>          NATIAT=NAT(IAT)
+>          ARED3=ATAR(IAT)*1D-3
+> CCC This is the NEW sigma Hk term, based on a Tkk                       GDH0197
+> CCC NOTE: Hydrogen only has this extra surface tension when bonded to   GDH0197
+> CCC   Carbon, Oxygen, and Nitrogen, Sulfur                              PDW0999
+>          HB(IAT)=0.0                                                    GDH0197
+>          BCCC=1.0D0                                                     GDH0197
+>          IF (NAT(IAT).EQ.1) THEN                                        GDH0197
+>             RTKK=0.D0                                                   GDH0197
+>             DELTAR=DRVAL(1)                                             GDH0197
+>             ITPC=NATCNV(1)                                              GDH0197
+>             DO 150 J=1,NUMAT                                            GDH0197
+>                RTKK=0.0D0                                               GDH0197
+>                NTP=NAT(J)                                               GDH0197
+>                NTPC=NATCNV(NTP)                                         GDH0197
+>                IF(NTP.EQ.6.OR.NTP.EQ.7.OR.NTP.EQ.8.OR.NTP.EQ.16) THEN   GDH0197
+>                   RHLD=RKKVAL(ITPC,NTPC)                                GDH0197
+>                   CUTOF1=RHLD+DELTAR                                    GDH0197
+>                   IF(RLIO(IAT,J).LT.CUTOF1)THEN                         GDH0197
+>                      RTKK=EXP(1.0D0-(BCCC/                              GDH0197
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                   ENDIF                                                 GDH0197
+>                   HB(IAT)=HB(IAT)+RTKK*HRFN4(NTP)*ARED3                 GDH0197
+>                   HBONDO(NTP)=HBONDO(NTP)+RTKK*ARED3*1000               GDH0197
+>                   IF (NTP.EQ.7.AND.RTKK.GT.0.0D0) THEN                  GDH0497
+>                   DO 262 K=1,NUMAT                                      GDH0497
+>                      KTP=NAT(K)                                         GDH0497
+>                      KTPC=NATCNV(KTP)                                   GDH0497
+>                      RTKK2=0.0D0                                        GDH0497
+>                      IF (J.NE.K.AND.KTP.EQ.7) THEN                      GDH0497
+>                         RHLD=RKKVAL(NTPC,KTPC)                          GDH0497
+>                         CUTOF1=RHLD+DELTAR                              GDH0497
+>                         IF(RLIO(J,K).LT.CUTOF1)THEN                     GDH0197
+>                            RTKK2=EXP(1.0D0-(BCCC/                       GDH0197
+>      .                        (1.0D0-((RLIO(J,K)-RHLD)/                 GDH0197
+>      .                        DELTAR))))/(EXPVAL)                       GDH0197
+>                         ENDIF                                           GDH0197
+>                         HB(IAT)=HB(IAT)+RTKK*RTKK2*HNNST1*ARED3         GDH0197
+>                         HNNBND=HNNBND+RTKK*RTKK2*ARED3*1000             PDW0999
+>                       ENDIF                                             GDH0197
+> 262               CONTINUE                                              GDH0497
+>                   ELSE IF (NTP.EQ.8.AND.RTKK.GT.0.0D0) THEN             GDH0497
+>                   DO 263 K=1,NUMAT                                      GDH0497
+>                      KTP=NAT(K)                                         GDH0497
+>                      KTPC=NATCNV(KTP)                                   GDH0497
+>                      RTKK2=0.0D0                                        GDH0497
+>                      IF (IAT.NE.K.AND.KTP.EQ.1) THEN                    GDH0497
+>                         RHLD=RKKVAL(NTPC,KTPC)                          GDH0497
+>                         CUTOF1=RHLD+DELTAR                              GDH0497
+>                         IF(RLIO(J,K).LT.CUTOF1)THEN                     GDH0197
+>                            RTKK2=EXP(1.0D0-(BCCC/                       GDH0197
+>      .                        (1.0D0-((RLIO(J,K)-RHLD)/                 GDH0197
+>      .                        DELTAR))))/(EXPVAL)                       GDH0197
+>                         ENDIF                                           GDH0197
+>                         HB(IAT)=HB(IAT)+RTKK*RTKK2*HOHST1*ARED3         GDH0197
+>                         HOHBND=HOHBND+RTKK*RTKK2*ARED3*1000             PDW0999 
+>                       ENDIF                                             GDH0197
+> 263                CONTINUE                                             GDH0497
+>                    ENDIF                                                GDH0497
+>                ENDIF                                                    GDH0197
+> 150         CONTINUE                                                    GDH0197
+>          ENDIF                                                          GDH0197
+> CCC These are the NEW O-C CDS terms. They are of the Tkk form.          GDH0197
+>          IF (NAT(IAT).EQ.8) THEN                                        GDH0197
+>             RTKK=0.D0                                                   GDH0197
+>             ITPC=NATCNV(8)                                              GDH0197
+>             DELTAR=DRVAL(2)                                             GDH0197
+>             DO 200 J=1,NUMAT                                            GDH0197
+>                NTP=NAT(J)                                               GDH0197
+>                IF(NTP.EQ.6)THEN                                         GDH0197
+>                  NTPC=NATCNV(NTP)                                       GDH0197
+>                  RHLD=RKKVL2(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH0197
+>                      RTKK=RTKK+EXP(1.0D0-(BCCC/                         GDH0197
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                  ENDIF                                                  GDH0197
+>                ENDIF                                                    GDH0197
+> 200         CONTINUE                                                    GDH0197
+>             HB(IAT)=HB(IAT)+RTKK*CORFN5*ARED3                           GDH0197
+>             COBND5=COBND5+RTKK*ARED3*1000                               GDH0197
+>          ENDIF                                                          GDH0197
+> CCC This is the NEW O-Si CDS terms. They are of the Tkk form.           PDW0601
+>          IF (NAT(IAT).EQ.8) THEN                                        PDW0601
+>             RTKK=0.D0                                                   PDW0601
+>             ITPC=NATCNV(8)                                              PDW0601
+>             DELTAR=DRVAL(1)                                             PDW0601
+>             DO 205 J=1,NUMAT                                            PDW0601
+>                NTP=NAT(J)                                               PDW0601
+>                IF(NTP.EQ.14)THEN                                        PDW0601
+>                  NTPC=NATCNV(NTP)                                       PDW0601
+>                  RHLD=RKKVAL(ITPC,NTPC)                                 PDW0601
+>                  CUTOF1=RHLD+DELTAR                                     PDW0601
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          PDW0601
+>                      RTKK=RTKK+EXP(1.0D0-(BCCC/                         PDW0601
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     PDW0601
+>      .                  DELTAR))))/(EXPVAL)                             PDW0601
+>                  ENDIF                                                  PDW0601
+>                ENDIF                                                    PDW0601
+> 205         CONTINUE                                                    PDW0601
+>             HB(IAT)=HB(IAT)+RTKK*OSIBD5*ARED3                           PDW0601
+>             OSIBND=OSIBND+RTKK*ARED3*1000                               PDW0601
+>          ENDIF                                                          GDH0197
+> CCC This is the NEW O-P CDS terms. They are of the Tkk form.            GDH0197
+>          IF (NAT(IAT).EQ.8) THEN                                        GDH0197
+>             RTKK=0.D0                                                   GDH0197
+>             ITPC=NATCNV(8)                                              GDH0197
+>             DELTAR=DRVAL(1)                                             GDH0197
+>             DO 210 J=1,NUMAT                                            GDH0197
+>                NTP=NAT(J)                                               GDH0197
+>                IF(NTP.EQ.15)THEN                                        GDH0197
+>                  NTPC=NATCNV(NTP)                                       GDH0197
+>                  RHLD=RKKVAL(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH0197
+>                      RTKK=RTKK+EXP(1.0D0-(BCCC/                         GDH0197
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                  ENDIF                                                  GDH0197
+>                ENDIF                                                    GDH0197
+> 210         CONTINUE                                                    GDH0197
+>             HB(IAT)=HB(IAT)+RTKK*OPRFN5*ARED3                           GDH0197
+>             OPBND5=OPBND5+RTKK*ARED3*1000                               GDH0197
+>          ENDIF                                                          GDH0197
+> CCC Add the Nitrogen bonded to Carbon Surface Tension terms             GDH0197
+> CCC The terms are a sum over all N bonded to C of a COT times the       GDH0197
+> C   sum of all other atoms attached to the C attached to the N raised   GDH0796
+> C   to a power.  See the paper for more explicit details.               GDH0796
+>          IF (NAT(IAT).EQ.7) THEN                                        GDH0197
+>             ITPC=NATCNV(7)                                              GDH0197
+>             RTKKS=0.0D0                                                 GDH0796
+>             RTKKS2=0.D0                                                 GDH0197
+>             DELTAR=DRVAL(1)                                             GDH0197
+>             DO 250 J=1,NUMAT                                            GDH0197
+>                NTP=NAT(J)                                               GDH0197
+>                NTPC=NATCNV(NTP)                                         GDH0197
+>                IF(NTP.EQ.6)THEN                                         GDH0197
+>                  RHLD=RKKVAL(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH0197
+>                     RTKK=0.0D0                                          GDH0197
+>                      RTKK=EXP(1.0D0-(BCCC/                              GDH0197
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                      RTKK3=0.0D0                                        GDH0197
+>                      RTKK5=0.0D0                                        GDH0197
+>                      DO 251 K=1,NUMAT                                   GDH0796
+>                        NKTP=NAT(K)                                      GDH0197
+>                        NKTPC=NATCNV(NKTP)                               GDH0197
+>                        RTKK2=0.D0                                       GDH0796
+>                        RTKK4=0.D0                                       GDH0197
+>                        IF (K.NE.IAT.AND.K.NE.J) THEN                    GDH0796
+>                        RHLD2=RKKVAL(NKTPC,NTPC)                         GDH0197
+>                        CUTOF2=RHLD2+DELTAR                              GDH0197
+>                        IF(RLIO(J,K).LT.CUTOF2)THEN                      GDH0796
+>                         RTKK2=EXP(1.0D0-(BCCC/                          GDH0197
+>      .                  (1.0D0-((RLIO(J,K)-RHLD2)/                      GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                         IF(NKTP.EQ.8) RTKK4=RTKK2                       GDH0197
+>                        ENDIF                                            GDH0796
+>                        ENDIF                                            GDH0796
+>                        RTKK3=RTKK3+RTKK2                                GDH0796
+>                        RTKK5=RTKK5+RTKK4                                GDH0197
+> 251                  CONTINUE                                           GDH0796
+>                      RTKKS=RTKKS+RTKK*RTKK3*RTKK3                       GDH0796
+>                      RTKKS2=RTKKS2+RTKK*RTKK5                           GDH0197
+>                  ENDIF                                                  GDH0796
+>               ENDIF                                                     GDH0796
+> 250         CONTINUE                                                    GDH0796
+>             DHOLDER=(RTKKS**1.3D0)*ARED3                                GDH0197
+>             HB(IAT)=HB(IAT)+DHOLDER*CNRFN4                              GDH0197
+>             CNBNDO=CNBNDO+DHOLDER*1000                                  GDH0197
+>             HB(IAT)=HB(IAT)+RTKKS2*TNCSC2*ARED3                         GDH0197
+>             TNCBC2=TNCBC2+RTKKS2*ARED3*1000                             GDH0197
+> C This is the surface tension which separates N triple bonded C         GDH0797
+>             RTKK=0.0D0                                                  GDH0197
+>             DELTAR=DRVAL(4)                                             GDH0197
+>                DO 461 J=1,NUMAT                                         GDH1296
+>                  NTP=NAT(J)                                             GDH0197
+>                  NTPC=NATCNV(NTP)                                       GDH0197
+>                  IF(J.EQ.IAT)GOTO 461                                   GDH1296
+>                  IF(NTP.EQ.6)THEN                                       GDH0197
+>                  RHLD=RKKVL2(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH0197
+>                      RTKK=RTKK+EXP(1.0D0-(BCCC/                         TZ0898
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                  ENDIF                                                  GDH1296
+>                  ENDIF                                                  GDH1296
+> 461            CONTINUE                                                 GDH1296
+>                   HB(IAT)=HB(IAT)+RTKK*TNCSC3*ARED3                     GDH1296
+>                   TNCBC3=TNCBC3+RTKK*ARED3*1000                         GDH1296
+>          ENDIF                                                          GDH0796
+> CCC These are the NEW O-N CDS terms. They are of the Tkk form.          CCC0595
+>          IF (NAT(IAT).EQ.8) THEN                                        CCC0595
+>             RTKK=0.0D0                                                  CCC0695
+>             DELTAR=DRVAL(1)                                             GDH0197
+>             ITPC=NATCNV(8)                                              GDH0197
+>             DO 350 J=1,NUMAT                                            GDH0197
+>                NTP=NAT(J)                                               GDH0197
+>                NTPC=NATCNV(NTP)                                         GDH0197
+>                IF(NTP.EQ.7)THEN                                         GDH0197
+>                  RHLD=RKKVAL(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH0197
+>                      RTKK=RTKK+EXP(1.0D0-(BCCC/                         GDH0197
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                  ENDIF                                                  GDH0197
+>                ENDIF                                                    GDH0197
+> 350         CONTINUE                                                    GDH0197
+>             HB(IAT)=HB(IAT)+RTKK*ONRFN4*ARED3                           GDH0197
+>             ONBNDO=ONBNDO+RTKK*ARED3*1000                               GDH0197
+>          ENDIF                                                          GDH0197
+> CCC These are the Cl-C CDS terms.                                       GDH0797
+>          IF (NAT(IAT).EQ.17) THEN                                       GDH1196
+>             ITPC=NATCNV(17)                                             GDH0197
+>             RTKK4=0.0D0                                                 GDH0197
+>             DELTAR=DRVAL(1)                                             GDH1196
+>             DO 373 J=1,NUMAT                                            GDH1196
+>               IF(J.EQ.IAT)GOTO 373                                      GDH1196
+>               NTP=NAT(J)                                                GDH0197
+>               NTPC=NATCNV(NTP)                                          GDH0197
+>               IF(NTP.EQ.6)THEN                                          GDH0197
+>                  RTKK=0.D0                                              GDH0197
+>                  RHLD=RKKVAL(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH1196
+>                     RTKK3=0.0D0                                         GDH1196
+>                     RTKK=EXP(1.0D0-(BCCC/                               GDH0197
+>      .               (1.0D0-((RLIO(IAT,J)-RHLD)/DELTAR))))              GDH0197
+>      .               /(EXPVAL)                                          GDH0197
+>                      DO 363 K=1,NUMAT                                   GDH1196
+>                        RTKK2=0.D0                                       GDH1196
+>                        NKTP=NAT(K)                                      GDH0197
+>                        NKTPC=NATCNV(NKTP)                               GDH0197
+>                        IF (K.NE.IAT.AND.K.NE.J) THEN                    GDH1196
+>                          RHLD2=RKKVAL(NKTPC,NTPC)                       GDH0197
+>                          CUTOF2=RHLD2+DELTAR                            GDH0197
+>                          ENEG=ENEGIT(NKTP)                              GDH0197
+>                          IF(RLIO(J,K).LT.CUTOF2)THEN                    GDH1196
+>                             RTKK2=(EXP(1.0D0-(BCCC/                     GDH1196
+>      .                      (1.0D0-((RLIO(J,K)-RHLD2)/DELTAR))))        GDH1196
+>      .                      /(EXPVAL))/ENEG                             GDH0197
+>                          ENDIF                                          GDH1196
+>                        ENDIF                                            GDH1196
+>                        RTKK3=RTKK3+RTKK2                                GDH1196
+> 363                  CONTINUE                                           GDH1196
+>                      RTKK4=RTKK4+RTKK*RTKK3                             GDH1196
+>                  ENDIF                                                  GDH1196
+>               ENDIF                                                     GDH1196
+> 373         CONTINUE                                                    GDH1196
+>             HB(IAT)=HB(IAT)+RTKK4*CLCRFN*ARED3                          GDH1196
+>             CLCBND=CLCBND+RTKK4*ARED3*1000                              GDH1196
+>          ENDIF                                                          GDH1196
+> CCC These are the NEW Br-C CDS terms. They are of the Tkk form.         GDH1196
+>          IF (NAT(IAT).EQ.35) THEN                                       GDH1196
+>             ITPC=NATCNV(35)                                             GDH0197
+>             RTKK4=0.0D0                                                 GDH0197
+>             DELTAR=DRVAL(1)                                             GDH1196
+>             DO 365 J=1,NUMAT                                            GDH1196
+>               IF(J.EQ.IAT)GOTO 365                                      GDH1196
+>               NTP=NAT(J)                                                GDH0197
+>               NTPC=NATCNV(NTP)                                          GDH0197
+>               IF(NTP.EQ.6)THEN                                          GDH0197
+>                  RTKK=0.D0                                              GDH0197
+>                  RHLD=RKKVAL(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH1196
+>                     RTKK3=0.0D0                                         GDH1196
+>                     RTKK=EXP(1.0D0-(BCCC/                               GDH0197
+>      .               (1.0D0-((RLIO(IAT,J)-RHLD)/DELTAR))))              GDH0197
+>      .               /(EXPVAL)                                          GDH0197
+>                      DO 366 K=1,NUMAT                                   GDH1196
+>                        RTKK2=0.D0                                       GDH1196
+>                        NKTP=NAT(K)                                      GDH0197
+>                        NKTPC=NATCNV(NKTP)                               GDH0197
+>                        IF (K.NE.IAT.AND.K.NE.J) THEN                    GDH1196
+>                          RHLD2=RKKVAL(NKTPC,NTPC)                       GDH0197
+>                          CUTOF2=RHLD2+DELTAR                            GDH0197
+>                          ENEG=ENEGIT(NKTP)                              GDH0197
+>                          IF(RLIO(J,K).LT.CUTOF2)THEN                    GDH1196
+>                             RTKK2=(EXP(1.0D0-(BCCC/                     GDH1196
+>      .                      (1.0D0-((RLIO(J,K)-RHLD2)/DELTAR))))        GDH1196
+>      .                      /(EXPVAL))/ENEG                             GDH0197
+>                          ENDIF                                          GDH1196
+>                        ENDIF                                            GDH1196
+>                        RTKK3=RTKK3+RTKK2                                GDH1196
+> 366                  CONTINUE                                           GDH1196
+>                      RTKK4=RTKK4+RTKK*RTKK3                             GDH1196
+>                  ENDIF                                                  GDH1196
+>               ENDIF                                                     GDH1196
+> 365         CONTINUE                                                    GDH1196
+>             HB(IAT)=HB(IAT)+RTKK4*BRCRFN*ARED3                          GDH1196
+>             BRCBND=BRCBND+RTKK4*ARED3*1000                              GDH1196
+>          ENDIF                                                          GDH1196
+> CC Add the Oxygen - Oxygen Surface Tension term                         GDH0197
+> CCC   sigma(OO) surface tension.
+>          RTKK=0.0D0                                                     CCC0495
+>          KCCAN=0                                                        CCC0795
+>          IF (NAT(IAT).EQ.8) THEN                                        CCC0495
+>             ITPC=NATCNV(8)                                              GDH0197
+>             DELTAR=DRVAL(1)                                             GDH1196
+>             DO 400 J=1,NUMAT                                            CCC0495
+>                IF(J.EQ.IAT)GOTO 400                                     CCC0495
+>                NTP=NAT(J)                                               GDH0197
+>                NTPC=NATCNV(NTP)                                         GDH0197
+>                IF(NTP.EQ.8)THEN                                         GDH0197
+>                   RHLD=RKKVAL(ITPC,NTPC)                                GDH0197
+>                   CUTOF1=RHLD+DELTAR                                    GDH0197
+>                   IF(RLIO(IAT,J).LT.CUTOF1)THEN                         CCC0495
+>                      RTKK=RTKK+EXP(1.0D0-(BCCC/                         CCC0595
+>      X                  (1.0D0-((RLIO(IAT,J)-RHLD)/DELTAR))))           GDH0197
+>      X                  /(EXPVAL)                                       GDH0197
+>                      KCCAN=KCCAN+1                                      GDH0197
+>                   ENDIF                                                 GDH0197
+>                ENDIF                                                    CCC0495
+>  400        CONTINUE                                                    CCC0495
+>          ENDIF                                                          CCC0495
+>          IF(KCCAN.GE.1.AND.RTKK.GT.0.00000001)THEN                      CCC0795
+>             XRTKO=0.0D0                                                 CCC0795
+>             SRTNO=-1.0D0*RTKK                                           CCC0795
+>             REYYO=-0.4D0                                                CCC0795
+>             DELTAO=0.4D0                                                CCC0795
+>             BYYO=1.0D0                                                  CCC0795
+>             CUTOF1=REYYO+DELTAO                                         CCC0795
+>             IF(SRTNO.LT.CUTOF1)THEN                                     CCC0795
+>                XRTKO=EXP(1.0D0-(BYYO/(1.0D0-((SRTNO-REYYO)/DELTAO))))   CCC0795
+>      X            /EXPVAL                                               GDH0197
+>             ENDIF                                                       CCC0795
+>             HB(IAT)=HB(IAT)+XRTKO*OORFN5*ARED3                          CCC0795
+>             OOBNDO=OOBNDO+XRTKO*ARED3*1000                              CCC0795
+>          ENDIF                                                          CCC0795
+> CCC  These are the SM5 CC CDS terms. They are of the Tkk form.          CCC0495
+>          IF (NAT(IAT).EQ.6) THEN                                        CCC0495
+>             ITPC=NATCNV(6)                                              GDH0197
+>             DO 500 KCCC=1,2                                             CCC0495
+>                RTKK=0.0D0                                               CCC0495
+>                CUTOF1=RECCC+DELTAR                                      CCC0495
+>                DO 450 J=1,NUMAT                                         CCC0495
+>                  IF(J.EQ.IAT)GOTO 450                                   CCC0495
+>                  NTP=NAT(J)                                             GDH0197
+>                  IF(NTP.EQ.6)THEN                                       GDH0197
+>                     NTPC=NATCNV(NTP)                                    GDH0197
+>                     IF (KCCC.EQ.1) THEN                                 GDH0197
+>                        RHLD=RKKVAL(ITPC,NTPC)                           GDH0197
+>                        DELTAR=DRVAL(1)                                  GDH0197
+>                        CUTOF1=RHLD+DELTAR                               GDH0197
+>                     ELSE                                                GDH0197
+>                        RHLD=RKKVL2(ITPC,NTPC)                           GDH0197
+>                        DELTAR=DRVAL(3)                                  GDH0197
+>                        CUTOF1=RHLD+DELTAR                               GDH0197
+>                     ENDIF                                               GDH0197
+>                     IF(RLIO(IAT,J).LT.CUTOF1)THEN                       CCC0495
+>                         RTKK=RTKK+EXP(1.0D0-(BCCC/                      CCC0495
+>      .                     (1.0D0-((RLIO(IAT,J)-RHLD)/DELTAR))))        GDH0197
+>      .                  /(EXPVAL)                                       GDH0197
+>                     ENDIF                                               CCC0495
+>                  ENDIF                                                  CCC0495
+> 450            CONTINUE                                                 CCC0495
+>                IF(KCCC.EQ.1)THEN                                        CCC0495
+>                   HB(IAT)=HB(IAT)+RTKK*CRFNH4*ARED3                     CCC0495
+>                   CBONDO=CBONDO+RTKK*ARED3*1000                         CCC0495
+>                ELSEIF(KCCC.EQ.2)THEN                                    CCC0495
+>                   HB(IAT)=HB(IAT)+RTKK*CRFNH5*ARED3                     CCC0495
+>                   CBOND5=CBOND5+RTKK*ARED3*1000                         CCC0495
+>                ENDIF                                                    CCC0495
+> 500         CONTINUE                                                    GDH1296
+>                RTKK=0.0D0                                               GDH1296
+>                DELTAR=DRVAL(1)                                          GDH1296
+>                CUTOF1=RECCC+DELTAR                                      GDH1296
+>                DO 460 J=1,NUMAT                                         GDH1296
+>                  NTP=NAT(J)                                             GDH0197
+>                  IF(NTP.EQ.7)THEN                                       GDH0197
+>                     NTPC=NATCNV(NTP)                                    GDH0197
+>                     RHLD=RKKVAL(ITPC,NTPC)                              GDH0197
+>                     CUTOF1=RHLD+DELTAR                                  GDH0197
+>                     IF(RLIO(IAT,J).LT.CUTOF1)THEN                       GDH1296
+>                         RTKK=RTKK+EXP(1.0D0-(BCCC/                      GDH1296
+>      .                     (1.0D0-((RLIO(IAT,J)-RHLD)/DELTAR))))        GDH0197
+>      .                  /(EXPVAL)                                       GDH0197
+>                     ENDIF                                               GDH1296
+>                  ENDIF                                                  GDH1296
+> 460            CONTINUE                                                 GDH1296
+>                   HOLDRK=RTKK*RTKK                                      GDH0197
+>                   HB(IAT)=HB(IAT)+(HOLDRK)*CNSTC2*ARED3                 GDH0197
+>                   CNBOC2=CNBOC2+(HOLDRK)*ARED3*1000                     GDH0197
+>          ENDIF                                                          GDH0197
+> CC Add the Sulfur - Sulfur Surface Tension term                         CCC0695
+> CCC   sigma(SS) surface tension.                                        CCC0695
+>          RTKK=0.0D0                                                     CCC0695
+>          IF (NAT(IAT).EQ.16) THEN                                       CCC0695
+>             ITPC=NATCNV(16)                                             GDH0197
+>             DELTAR=DRVAL(1)                                             GDH0197
+>             DO 550 J=1,NUMAT                                            CCC0695
+>                IF(J.EQ.IAT)GOTO 550                                     CCC0695
+>                NTP=NAT(J)                                               GDH0197
+>                IF(NTP.EQ.16)THEN                                        GDH0197
+>                   NTPC=NATCNV(NTP)                                      GDH0197
+>                   RHLD=RKKVAL(ITPC,NTPC)                                GDH0197
+>                   CUTOF1=RHLD+DELTAR                                    GDH0197
+>                   IF(RLIO(IAT,J).LT.CUTOF1)THEN                         CCC0695
+>                      RTKK=EXP(1.0D0-(BCCC/                              CCC0695
+>      X                  (1.0D0-((RLIO(IAT,J)-RHLD)/DELTAR))))           GDH0197
+>      X                  /(EXPVAL)                                       CCC0695
+>                   ENDIF                                                 CCC0695
+>                   HB(IAT)=HB(IAT)+RTKK*SSRFN5*ARED3                     CCC0495
+>                   SSBNDO=SSBNDO+RTKK*ARED3*1000                         CCC0495
+>                ENDIF                                                    CCC0495
+> 550         CONTINUE                                                    CCC0495
+>          ENDIF                                                          CCC0495
+> CCC This is the NEW S-P CDS terms. They are of the Tkk form.            GDH0197
+>          IF (NAT(IAT).EQ.16) THEN                                       GDH0197
+>             RTKK=0.D0                                                   GDH0197
+>             ITPC=NATCNV(16)                                             GDH0197
+>             DELTAR=DRVAL(1)                                             GDH0197
+>             DO 220 J=1,NUMAT                                            GDH0197
+>                NTP=NAT(J)                                               GDH0197
+>                IF(NTP.EQ.15)THEN                                        GDH0197
+>                  NTPC=NATCNV(NTP)                                       GDH0197
+>                  RHLD=RKKVAL(ITPC,NTPC)                                 GDH0197
+>                  CUTOF1=RHLD+DELTAR                                     GDH0197
+>                  IF(RLIO(IAT,J).LT.CUTOF1)THEN                          GDH0197
+>                      RTKK=RTKK+EXP(1.0D0-(BCCC/                         GDH0197
+>      .                  (1.0D0-((RLIO(IAT,J)-RHLD)/                     GDH0197
+>      .                  DELTAR))))/(EXPVAL)                             GDH0197
+>                  ENDIF                                                  GDH0197
+>                ENDIF                                                    GDH0197
+> 220         CONTINUE                                                    GDH0197
+>             HB(IAT)=HB(IAT)+RTKK*SPRFN5*ARED3                           GDH0197
+>             SPBNDO=SPBNDO+RTKK*ARED3*1000                               GDH0197
+>          ENDIF                                                          GDH0197
+> 950   CONTINUE
+>       RETURN
+535,551c501
+< C======================================================================+
+<       SUBROUTINE VFILL (N,C,V,NV)
+<       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+<       DIMENSION V(*)
+< C ---------------------------------------------------------------------+
+< C     FILL A VECTOR WITH A CONSTANT.                          DL, MAR 03
+< C  INPUT
+< C     N : NUMBER OF ELEMENTS.
+< C     C : CONSTANT.
+< C     NV: STRIDE FOR THE VECTOR. V(1), V(1+NV), V(1+2.NV),...
+< C  OUTPUT
+< C     V : VECTOR, FILLED BY "C".
+< C ---------------------------------------------------------------------+
+<       DO 10 I=1,(N-1)*NV+1,NV
+<       V(I)=C
+<    10 CONTINUE
+<       END
+---
+> 

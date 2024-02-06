@@ -1,0 +1,372 @@
+      SUBROUTINE ROTATE (NI,NJ,XI,XJ,W,KR,E1B,E2A,ENUC,CUTOFF) 
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z) 
+      INCLUDE 'KEYS.i'                                                  DJG0995
+      COMMON /EULER / TVEC(3,3),ID
+     1       /NATORB/ NATORB(107)
+     2       /TWOEL3/ F03(107)
+     3       /ALPHA3/ ALP3(153)
+     4       /ALPHA / ALP(107)
+     5       /CORE  / TORE(107)
+     6       /IDEAS / FN1(107,10),FN2(107,10),FN3(107,10),NFN(107)
+     7       /ALPTM / ALPTM(30), EMUDTM(30)
+      COMMON /ONESCM/ ICONTR(100)                                       GDH0195
+C-----------------------------------------------------------------------
+C     THIS ROUTINE COMPUTES THE REPULSION AND NUCLEAR ATTRACTION
+C     INTEGRALS OVER MOLECULAR-FRAME COORDINATES.
+C  INPUT  NI     = ATOMIC NUMBER OF FIRST ATOM.
+C         NJ     = ATOMIC NUMBER OF SECOND ATOM.
+C         XI     = COORDINATE OF FIRST ATOM.
+C         XJ     = COORDINATE OF SECOND ATOM.
+C  OUTPUT W      = ARRAY OF TWO-ELECTRON REPULSION INTEGRALS.
+C         E1B,E2A= ARRAY OF ELECTRON-NUCLEAR ATTRACTION INTEGRALS,
+C                  E1B = ELECTRON ON ATOM NI ATTRACTING NUCLEUS OF NJ.
+C         ENUC   = NUCLEAR-NUCLEAR REPULSION TERM.
+C  REVISED, D.L., DEWAR GROUP, 1986
+C  VECTORIZED, D.L. 1988
+C  IMPLEMENTATION OF BORON (AM1), D.L., FEB 1989
+C-----------------------------------------------------------------------
+      DIMENSION X(3),Y(3),Z(3),RI(22),CORE(4,2)
+     .         ,BUF(99),ROT(6,7),L1SCAT(9),L2SCAT(99)
+      DIMENSION XI(3),XJ(3),W(100),E1B(10),E2A(10)
+      LOGICAL AM1PM3
+      DATA L1SCAT / 2, 4, 7, 3, 5, 6, 8, 9,10 /
+      DATA L2SCAT /11,31,61,21,41,51,71,81,91, 2, 4, 7, 3, 5, 6, 8, 9,10
+     A            ,12,32,34,62,64,67,14,17,37
+     B            ,22,42,52,72,82,92,13,15,16,18,19,20
+     C            ,24,44,54,74,84,94,33,35,36,38,39,40
+     D            ,27,47,57,77,87,97,63,65,66,68,69,70
+     E            ,23,25,26,28,29,30
+     F            ,43,45,46,48,49,50
+     G            ,53,55,56,58,59,60
+     H            ,73,75,76,78,79,80
+     I            ,83,85,86,88,89,90
+     J            ,93,95,96,98,99,100 /
+      IF (ICONTR(39).EQ.1) THEN                                         GDH0195
+         ICONTR(39)=2                                                   GDH0195
+         ITYPE=1                                                        GDH0195
+      ENDIF                                                             GDH0195
+C
+C     INTERATOMIC DISTANCE.
+C     ---------------------
+      RIJ=0.D0
+      DO 10 I=1,3
+      X(I)=XI(I)-XJ(I)
+   10 RIJ=RIJ+X(I)**2
+C     CHECK POLYMER AND UNIT CELL
+      IF(ID.NE.0.AND.RIJ.LT.0.2D0) THEN
+         DO 15 I=1,10
+         E1B(I)=0.D0
+   15    E2A(I)=0.D0
+         W(KR)=0.D0
+         ENUC=0.D0
+         RETURN
+      ENDIF
+C
+C     FIND OPTION : MINDO OR MNDO/AM1/PM3.
+C     ------------------------------------
+   20 GOTO (30,40,70) ITYPE
+   30 IF(IMINDO.NE.0) THEN                                              DJG0995
+         ITYPE=2
+      ELSE
+         AM1PM3=IAM1+IPM3.NE.0                                          DJG0995
+         ITYPE=3
+      ENDIF
+      GO TO 20
+C
+C     WE ARE IN MINDO.
+C     ----------------
+   40 SUM=14.399D0/SQRT(RIJ+(7.1995D0/F03(NI)+7.1995D0/F03(NJ))**2)
+C     THE 2-CENTRE 2-ELECTRON INTEGRAL IS DIVIDED BY FOUR.
+      W(1)=SUM*0.25D0
+      KR=KR+1
+      L=0
+      DO 60 I=1,4
+      DO 50 J=1,I-1
+      L=L+1
+      E1B(L)=0.D0
+   50 E2A(L)=0.D0
+      L=L+1
+      E1B(L)=-SUM*TORE(NJ)
+   60 E2A(L)=-SUM*TORE(NI)
+      II=MAX(NI,NJ)
+      NBOND=II*(II-1)/2+MIN(NI,NJ)
+      RIJ=SQRT(RIJ)
+      SCALE=0
+      IF(NATORB(NI).EQ.0) SCALE=EXP(-ALP(NI)*RIJ)
+      IF(NATORB(NJ).EQ.0) SCALE=SCALE+EXP(-ALP(NI)*RIJ)
+      IF(NBOND.LT.154) THEN
+         IF(NBOND.EQ.22 .OR. NBOND .EQ. 29) THEN
+            SCALE=ALP3(NBOND)*EXP(-RIJ)
+         ELSE
+            SCALE=EXP(-ALP3(NBOND)*RIJ)
+         ENDIF
+      ENDIF
+      IF(ABS(TORE(NI)).GT.20.AND.ABS(TORE(NJ)).GT.20) THEN
+         ENUC=0.D0
+      ELSE IF (RIJ.LT.1.D0.AND.NATORB(NI)*NATORB(NJ).EQ.0) THEN
+         ENUC=0.D0
+      ELSE
+         ENUC=TORE(NI)*TORE(NJ)*SUM
+     1       +ABS(TORE(NI)*TORE(NJ)*(14.399D0/RIJ-SUM)*SCALE)
+      ENDIF
+      RETURN
+C
+C     WE ARE IN MNDO/AM1/PM3.
+C     -----------------------
+C     THE INTEGRALS OVER LOCAL FRAME COORDINATES ARE EVALUATED BY
+C     SUBROUTINE REPP AND RETURNED IN RI AS FOLLOWS
+C     (WHERE P-SIGMA = O,   AND P-PI = P AND P* )
+C     (SS/SS)=1,   (SO/SS)=2,   (OO/SS)=3,   (PP/SS)=4,   (SS/OS)=5,
+C     (SO/SO)=6,   (SP/SP)=7,   (OO/SO)=8,   (PP/SO)=9,   (PO/SP)=10,
+C     (SS/OO)=11,  (SS/PP)=12,  (SO/OO)=13,  (SO/PP)=14,  (SP/OP)=15,
+C     (OO/OO)=16,  (PP/OO)=17,  (OO/PP)=18,  (PP/PP)=19,  (PO/PO)=20,
+C     (PP/P*P*)=21,   (P*P/P*P)=22.
+C
+C     THE STORAGE OF THE NUCLEAR ATTRACTION INTEGRALS  CORE(KL/IJ) IS
+C     -(SS/)=1,   -(SO/)=2,   -(OO/)=3,   -(PP/)=4
+C
+   70 RIJ=MIN(SQRT(RIJ),CUTOFF)
+      CALL REPP(NI,NJ,RIJ,RI,CORE)
+      GAM=RI(1)
+      E1B(1)=CORE(1,1)
+      E2A(1)=CORE(1,2)
+      IB=MIN(NATORB(NI),4)-1
+      JB=MIN(NATORB(NJ),4)-1
+C     DISCARD SPARKLE
+      IF (IB.LT.0.OR.JB.LT.0) GO TO 200
+C
+C * * LIGHT-LIGHT.
+C
+C     (SS/SS)
+      KI=1
+      W(1)=GAM*0.25D0
+      IF(IB.EQ.0.AND.JB.EQ.0) GO TO 200
+C
+C * * LIGHT-HEAVY AND/OR HEAVY-LIGHT.
+C
+C     PREPARE HALVING OF SOME (IJ/KL)
+      DO 80 I=2,5
+   80 RI( I)=RI( I)*0.5D0
+      RI(11)=RI(11)*0.5D0
+      RI(12)=RI(12)*0.5D0
+C     BUILD 1-P ROTATION VECTORS X,Y,Z.
+      A=1.D0/RIJ
+      DO 90 I=1,3
+   90 X(I)=X(I)*A
+      IF(ABS(X(3)).GT.0.999999999999D0) THEN
+         X(3)=SIGN(1.D0,X(3))
+         Y(1)=0.D0
+         Y(2)=1.D0
+         Y(3)=0.D0
+         Z(1)=1.D0
+         Z(2)=0.D0
+         Z(3)=0.D0
+      ELSE
+         Z(3)=SQRT(X(1)**2+X(2)**2)                                     DJG0496
+         A=1.D0/Z(3)
+         Y(1)=-A*X(2)*SIGN(1.D0,X(1))
+         Y(2)=ABS(A*X(1))
+         Y(3)=0.D0
+         Z(1)=-A*X(1)*X(3)
+         Z(2)=-A*X(2)*X(3)
+      ENDIF
+C     BUILD FIRST 2-P ROTATION VECTORS.
+      IJ=0
+      DO 100 I=1,3
+CNUSC PREFER SCALAR
+      DO 100 J=1,I
+      IJ=IJ+1
+      ROT(IJ,1)=X(I)*X(J)
+  100 ROT(IJ,2)=Y(I)*Y(J)+Z(I)*Z(J)
+      KBUF=1
+      IF (IB.GT.0) THEN
+C        (PS/SS) AND CORE(PS)
+         DO 110 I=1,3
+         W(I+1)=CORE(2,1)*X(I)
+  110    BUF(I)=RI(2)*X(I)
+         DO 111 I=4,9
+         BUF(I)=0.D0
+  111    W(I+1)=0.D0
+         DO 112 K=1,2
+         DO 112 I=1,6
+         W(I+4)=W(I+4)+ROT(I,K)*CORE(K+2,1)
+  112    BUF(I+3)=BUF(I+3)+ROT(I,K)*RI(K+2)
+C        (PP/SS)
+         BUF(4)=BUF(4)*0.5D0
+         BUF(6)=BUF(6)*0.5D0
+         BUF(9)=BUF(9)*0.5D0
+         KBUF=10
+         CALL SCATER (9,E1B,L1SCAT,W(2))
+      ENDIF
+      IF (JB.GT.0) THEN
+C        (SS/PS) AND CORE(SP)
+         DO 120 I=2,4
+         W(I)=CORE(2,2)*X(I-1)
+         BUF(KBUF)=RI(5)*X(I-1)
+  120    KBUF=KBUF+1
+         DO 121 I=5,10
+         BUF(I+KBUF-5)=0.D0
+  121    W(I)=0.D0
+         DO 122 K=1,2
+         DO 122 I=1,6
+         W(I+4)=W(I+4)+ROT(I,K)*CORE(K+2,2)
+  122    BUF(I+KBUF-1)=BUF(I+KBUF-1)+ROT(I,K)*RI(K+10)
+C        (SS/PP)
+         BUF(KBUF  )=BUF(KBUF  )*0.5D0
+         BUF(KBUF+2)=BUF(KBUF+2)*0.5D0
+         BUF(KBUF+5)=BUF(KBUF+5)*0.5D0
+         CALL SCATER (9,E2A,L1SCAT,W(2))
+      ENDIF
+      IF (IB.EQ.0.OR.JB.EQ.0) THEN
+C
+C * * *  HEAVY-LIGHT OR LIGHT-HEAVY ONLY.
+C
+C        SCATTER BUF IN CANONICAL ORDER
+         CALL SCATER (9,W,L1SCAT,BUF)
+         KI=10
+      ELSE
+C
+C * * *  HEAVY-HEAVY ONLY.
+C
+         DO 128 I=19,99
+  128    BUF(I)=0.D0
+C        (PS/PS)
+         DO 129 K=1,2
+         DO 129 I=1,6
+  129    BUF(I+18)=BUF(I+18)+ROT(I,K)*RI(K+5)
+         BUF(25)=BUF(20)
+         BUF(26)=BUF(22)
+         BUF(27)=BUF(23)
+C        COMPLETE 2-P ROTATION VECTORS
+         IJ=0
+         DO 130 I=1,3
+CNUSC PREFER SCALAR
+         DO 130 J=1,I
+         IJ=IJ+1
+         ROT(IJ,3)=X(I)*Y(J)+X(J)*Y(I)
+         ROT(IJ,4)=X(I)*Z(J)+X(J)*Z(I)
+         ROT(IJ,5)=Y(I)*Z(J)+Y(J)*Z(I)
+         ROT(IJ,6)=Y(I)*Y(J)
+  130    ROT(IJ,7)=Z(I)*Z(J)
+         DO 140 I=1,7
+         ROT(1,I)=ROT(1,I)*0.5D0
+         ROT(3,I)=ROT(3,I)*0.5D0
+  140    ROT(6,I)=ROT(6,I)*0.5D0
+C        (PP/PS) AND (PS/PP)
+         IJ=2
+         DO 150 I=1,3
+         W(IJ  )=RI( 8)*X(I)
+         W(IJ+1)=RI( 9)*X(I)
+         W(IJ+2)=RI(10)*Y(I)
+         W(IJ+3)=RI(10)*Z(I)
+         W(IJ+4)=RI(13)*X(I)
+         W(IJ+5)=RI(14)*X(I)
+         W(IJ+6)=RI(15)*Y(I)
+         W(IJ+7)=RI(15)*Z(I)
+  150    IJ=IJ+8
+         IBUF=27
+         L=1
+         DO 152 J=1,6
+         DO 151 K=1,4
+         L=L+1
+         DO 151 I=1,6
+  151    BUF(I+IBUF)=BUF(I+IBUF)+ROT(I,K)*W(L)
+  152    IBUF=IBUF+6
+C        (PP/PP)
+         IJ=2
+         DO 160 I=1,6
+         W(IJ  )=RI(16)*ROT(I,1)+RI(17)*ROT(I,2)
+         W(IJ+1)=RI(18)*ROT(I,1)
+         W(IJ+2)=RI(20)*ROT(I,3)
+         W(IJ+3)=RI(20)*ROT(I,4)
+         W(IJ+4)=RI(22)*ROT(I,5)
+         W(IJ+5)=RI(19)*ROT(I,6)+RI(21)*ROT(I,7)
+         W(IJ+6)=RI(19)*ROT(I,7)+RI(21)*ROT(I,6)
+  160    IJ=IJ+7
+         CALL MXM (ROT,6,W(2),7,BUF(64),6)
+C        SCATTER BUF IN CANONICAL ORDER
+         CALL SCATER (99,W,L2SCAT,BUF)
+         KI=100
+      ENDIF
+C
+C     THE REPULSION INTEGRALS OVER MOLECULAR FRAME (W) HAVE BEEN STORED
+C     IN CANONICAL ORDER I.E. (I,J/K,L) WHERE J.LE.I  AND  L.LE.K
+C     AND L VARIES MOST RAPIDLY AND I LEAST RAPIDLY.
+C     (ANTI-NORMAL COMPUTER STORAGE).
+C     THEY ARE HALVED IF (I=J OR K=L) AND (I NE K),
+C     THEY ARE DIVIDED BY FOUR IF (I=J) AND (K=L).
+C
+C
+C * * UPDATE THE CORE-CORE REPULSION ENERGY
+C
+  200 IF(ABS(TORE(NI)).GT.20.AND.ABS(TORE(NJ)).GT.20) THEN
+C        SPARKLE-SPARKLE INTERACTION
+         ENUC=0.D0
+         RETURN
+      ELSE IF (RIJ.LT.1.D0.AND.NATORB(NI)*NATORB(NJ).EQ.0) THEN
+         ENUC=0.D0
+         RETURN
+      ENDIF
+      SCALE = EXP(-ALP(NI)*RIJ)+EXP(-ALP(NJ)*RIJ)
+      IF (NI.EQ.24.AND.NJ.EQ.24) THEN
+         SCALE = EXP(-ALPTM(NI)*RIJ)+EXP(-ALPTM(NJ)*RIJ)
+      ENDIF
+      NT=NI+NJ
+      IF(NT.EQ.8.OR.NT.EQ.9) THEN
+         IF(NI.EQ.7.OR.NI.EQ.8) SCALE=SCALE+(RIJ-1.D0)*EXP(-ALP(NI)*RIJ)
+         IF(NJ.EQ.7.OR.NJ.EQ.8) SCALE=SCALE+(RIJ-1.D0)*EXP(-ALP(NJ)*RIJ)
+      ENDIF
+      ENUC = TORE(NI)*TORE(NJ)*GAM
+      SCALE=ABS(SCALE*ENUC)
+      IF (AM1PM3) THEN
+C        NOTE: TO BE UPDATED IF BORON IMPLEMENTED IN PM3. DL 90.
+C        FOR BORON, SELECT SOME SUBSET OF GAUSSIAN ACCORDING TO THE BOND
+         IF (NJ.EQ.5) THEN
+            NNI=NJ
+            NNJ=NI
+         ELSE
+            NNI=NI
+            NNJ=NJ
+         ENDIF
+         IF (NNI.EQ.5) THEN
+            IF (NNJ.EQ.1) THEN
+C              BORON-HYDROGEN
+               IGI1=4
+               IGI2=5
+            ELSE IF (NNJ.EQ.6) THEN
+C              BORON-CARBON
+               IGI1=6
+               IGI2=7
+            ELSE IF (NNJ.EQ.9.OR.NNJ.EQ.17.OR.NNJ.EQ.35.OR.NNJ.EQ.53)
+     .      THEN
+C              BORON-HALOGEN
+               IGI1=8
+               IGI2=9
+            ELSE
+C              BORON-OTHER
+               IGI1=1
+               IGI2=3
+            ENDIF
+         ELSE
+C           NO BORON INVOLVED
+            IGI1=1
+            IGI2=NFN(NNI)
+         ENDIF
+         SCALAR=0.D0
+CNUSC PREFER SCALAR
+         DO 210 IG=IGI1,IGI2
+  210    SCALAR=SCALAR +
+     1   FN1(NNI,IG)*EXP(-FN2(NNI,IG)*(RIJ-FN3(NNI,IG))**2)
+CNUSC PREFER SCALAR
+         DO 211 IG=1,NFN(NNJ)
+  211    SCALAR=SCALAR +
+     1   FN1(NNJ,IG)*EXP(-FN2(NNJ,IG)*(RIJ-FN3(NNJ,IG))**2)
+         SCALE=SCALE+SCALAR*TORE(NI)*TORE(NJ)/RIJ
+      ENDIF
+      ENUC=ENUC+SCALE
+C
+C     UPDATE COUNTER OF W FILE.
+C
+      KR=KR+KI
+      RETURN
+      END

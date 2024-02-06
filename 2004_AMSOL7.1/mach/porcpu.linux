@@ -1,0 +1,17 @@
+      SUBROUTINE PORCPU (T1)
+      IMPLICIT DOUBLE PRECISION (A-H, O-Z)
+      double precision aux
+      logical first
+      SAVE
+      DATA first /.TRUE./
+C
+      if ( first ) then
+         aux=SECOND1()
+         T1=0.0
+         first= .FALSE.
+      else
+         T1=SECOND1() - aux
+      endif
+      RETURN
+      END
+C*****

@@ -1,0 +1,202 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:22:15                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *  1SCF     - SCF CALCULATION WITHOUT GEOMETRY OPTIMIZATION 
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  CART     - INPUT READ IN CARTESIAN COORDINATES
+ *  BONDS    - FINAL BOND-ORDER MATRIX TO BE PRINTED
+ *  PM3      - THE PM3 HAMILTONIAN TO BE USED
+ *  CM3      - CHARGE MODEL 3 WILL BE USED (CM3P)
+ *******************************************************************************
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  C 
+    2       2  H            1.10096                                   1
+    3       3  Si           1.90713     112.29358                     1   2
+    4       4  H            1.48704     107.71763     -76.64273       3   1   2
+    5       5  H            1.48363     108.50581      41.14865       3   1   2
+    6       6  H            1.47862     109.72328     162.76126       3   1   2
+    7       7  P            1.88352     110.01721    -129.09058       1   2   3
+    8       8  F            1.64434      98.07079     141.49109       7   1   2
+    9       9  H            1.45519      92.63318      43.87804       7   1   2
+   10      10  S            1.79952     104.61466     116.90034       1   2   3
+   11      11  O            1.48195     108.91387     -86.17256      10   1   2
+   12      12  O            1.48578     110.08088      50.74869      10   1   2
+   13      13  O            1.67181      98.60352     161.18340      10   1   2
+   14      14  H            0.99374     100.15973    -122.98028      13  10   1
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         6        0.0000    0.0000    0.0000
+     2         1        1.1010    0.0000    0.0000
+     3        14       -0.7235    1.7646    0.0000
+     4         1       -0.5924    2.3074    1.3782
+     5         1        0.0781    2.6022   -0.9258
+     6         1       -2.1427    1.7220   -0.4125
+     7        15       -0.6447   -1.1159    1.3736
+     8         9       -1.9208   -0.1909    1.8426
+     9         1        0.3169   -0.5996    2.3360
+    10        16       -0.4541   -0.7878   -1.5529
+    11         8       -0.4847    0.2386   -2.6213
+    12         8        0.2716   -2.0756   -1.7029
+    13         8       -2.0312   -1.1942   -1.1754
+    14         1       -2.0003   -2.1758   -1.3269
+
+          RHF calculation, no. of doubly occupied orbitals= 25
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  C: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  O: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  F: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+ Si: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  P: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  S: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+
+ REFERENCES FOR CHARGE MODEL 3:
+
+ P. Winget, J. D. Thompson, J. D. Xidos, C. J., Cramer, and D. G. Truhlar,
+ J. Phys. Chem A, 2002,submitted.
+
+ J. D. Thompson, C. J. Cramer, and D. G. Truhlar, J. Comput. Chem., 2002,
+ submitted.
+
+
+
+PM3 CM3 1SCF BONDS CART                                                         
+ Charge Model 3 calculation                                                      
+                                                                                 
+
+     1SCF WAS SPECIFIED, SO GEOMETRY OPTIMIZATION WAS NOT USED
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:22:15                  
+
+ Final heat of formation                   =    -170.115183 kcal
+ Electronic energy                         =   -7202.486246 eV
+ Core-core repulsion                       =    5290.304947 eV
+ No. of doubly occupied orbitals           =      25
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =     175.967     amu
+ Computer time                             =       0.05     seconds
+
+               Orbital eigenvalues (eV)
+
+ -38.49705 -35.85183 -35.63864 -31.10683 -24.47596 -21.02286 -19.06760 -18.41561
+ -17.30236 -17.20943 -16.44911 -16.11334 -15.87845 -15.19890 -14.83132 -13.53450
+ -13.33415 -12.30430 -12.15332 -12.03422 -11.83312 -11.47312 -11.28900 -11.05547
+  -9.74508  -0.18394  -0.02016   0.07331   0.65553   1.05621   1.11960   1.42281
+   2.11593   2.15918   2.57244   3.22688   3.45849   4.24050
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM3 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         C            -0.683           4.683
+           2         H             0.172           0.828
+           3         Si           -0.099           4.099
+           4         H             0.083           0.917
+           5         H             0.096           0.904
+           6         H             0.113           0.887
+           7         P             0.230           4.770
+           8         F            -0.157           7.157
+           9         H             0.051           0.949
+          10         S             1.797           4.203
+          11         O            -0.658           6.658
+          12         O            -0.712           6.712
+          13         O            -0.620           6.620
+          14         H             0.387           0.613
+
+For the charges calculated by CM3:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges    -0.284     0.040     2.332     2.349
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         C            -0.959           4.959
+           2         H             0.149           0.851
+           3         Si            0.529           3.471
+           4         H            -0.105           1.105
+           5         H            -0.093           1.093
+           6         H            -0.075           1.075
+           7         P             0.790           4.210
+           8         F            -0.317           7.317
+           9         H            -0.170           1.170
+          10         S             2.238           3.762
+          11         O            -0.807           6.807
+          12         O            -0.855           6.855
+          13         O            -0.571           6.571
+          14         H             0.244           0.756
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges     -0.685    -2.066     2.502     3.316
+ hybrid contribution     1.516     1.430     0.596     2.168
+ sum                     0.831    -0.636     3.097     3.269
+
+          Atomic orbital electron populations
+
+   1.32894   1.16917   1.22892   1.23160   0.85085   0.93473   0.88395   0.76355
+   0.88872   1.10487   1.09266   1.07536   1.77490   0.70068   0.98342   0.75078
+   1.72117   1.77756   1.87683   1.94108   1.16964   1.24517   0.81847   0.84298
+   0.85543   1.89794   1.85322   1.53649   1.51941   1.90020   1.70981   1.35689
+   1.88766   1.83867   1.48017   1.33708   1.91509   0.75592
+
+                    Bond orders and valencies
+
+               C   1      H   2      Si  3      H   4      H   5      H   6
+ ------------------------------------------------------------------------------
+    C   1    3.73788
+    H   2    0.95483    0.97775
+    Si  3    0.91215    0.00137    3.89697
+    H   4    0.00124    0.00000    0.97678    0.98900
+    H   5    0.00155    0.00033    0.97918    0.00038    0.99141
+    H   6    0.00298    0.00418    0.98425    0.00026    0.00022    0.99432
+    P   7    0.87214    0.00353    0.01069    0.00125    0.00673    0.00025
+    F   8    0.03209    0.00212    0.00924    0.00017    0.00231    0.00018
+    H   9    0.00210    0.00027    0.00019    0.00019    0.00004    0.00008
+    S  10    0.74391    0.00475    0.00696    0.00527    0.00022    0.00088
+    O  11    0.09156    0.00099    0.00767    0.00217    0.00028    0.00024
+    O  12    0.08075    0.00067    0.00697    0.00108    0.00002    0.00031
+    O  13    0.03769    0.00462    0.00112    0.00017    0.00011    0.00017
+    H  14    0.00490    0.00009    0.00040    0.00003    0.00004    0.00031
+
+               P   7      F   8      H   9      S  10      O  11      O  12
+ ------------------------------------------------------------------------------
+    P   7    2.77114
+    F   8    0.91266    0.97904
+    H   9    0.94068    0.01853    0.97122
+    S  10    0.00636    0.00055    0.00439    3.86058
+    O  11    0.00591    0.00033    0.00116    1.20157    1.51826
+    O  12    0.00192    0.00034    0.00049    1.15615    0.10705    1.46802
+    O  13    0.00782    0.00049    0.00310    0.72268    0.09447    0.10326
+    H  14    0.00122    0.00003    0.00000    0.00691    0.00486    0.00901
+
+               O  13      H  14
+ ------------------------------
+    O  13    1.88831
+    H  14    0.91261    0.94042
+
+   Number of geometries                                      1
+   The total number of SCF iterations                       14.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.05 seconds

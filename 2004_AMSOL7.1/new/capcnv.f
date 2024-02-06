@@ -1,0 +1,19 @@
+      SUBROUTINE CAPCNV(CHRSTR,NUMUD,NCHR)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      CHARACTER CHRSTR(*)
+      NUMUD=0
+      ILOWA = ICHAR('a')
+      ILOWZ = ICHAR('z')
+      ICAPA = ICHAR('A')
+      INUM1 = ICHAR('0')
+      INUM2 = ICHAR('9')
+      DO 10 I=1,NCHR                                                    GDH0194
+      ILINE=ICHAR(CHRSTR(I))
+      IF(ILINE.GE.ILOWA.AND.ILINE.LE.ILOWZ) THEN
+           CHRSTR(I)=CHAR(ILINE+ICAPA-ILOWA)
+      ELSE
+           IF(ILINE.GE.INUM1.AND.ILINE.LE.INUM2) NUMUD=1
+      ENDIF
+   10 CONTINUE
+      RETURN
+      END

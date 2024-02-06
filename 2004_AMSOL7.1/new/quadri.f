@@ -1,0 +1,286 @@
+      SUBROUTINE QUADRI(XVAR,GVAR,P,NLO,NVARLO)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+       INCLUDE 'SIZES.i'
+C
+C
+C     SADDLE POINT/CHAIN...
+C     UPDATE QUADRATIC INFORMATION AND TEST FOR VALIDITY .
+C     PAU   (N*N) VERSION . JANUARY 1984
+C
+C
+C                            ARGUMENTS :
+C     DIR(N) : NORMALIZED QUADRATIC DIRECTION
+C     Q : QUADRATIC DIRECTION LENGTH
+C     CONVENTION : Q=0 MEANS THAT QUADRATIC DIRECTION IS NOT OPERATIVE
+C     MM : HESSIAN INDEX (NUMBER OF NEGATIVE EIGENVALUES)
+C     CONVENTION : MM<0 MEANS THAT HESSIAN IS NOT YET AVAILABLE
+C     EIGEN : MAIN CURVATURES (EIGENVALUES)
+C     HVEC : FIRST EIGENVECTORS OF THE HESSIAN
+C
+C                            DESCRIPTION :
+C     NOTATIONS :  (A)' IS THE TRANSPOSE MATRIX OF (A) .
+C                  INV(A) : IS THE INVERSE MATRIX OF (A)
+C     DEFINITIONS :
+C                  (GNEW)  GRADIENT AT CURRENT POINT (XNEW) .
+C                  (X) LAST VARIATION OF THE COORDINATES (VECTOR)
+C                  (G) ASSOCIATED VARIATION OF THE GRADIENT
+C                  (XVAR) & (GVAR) : PREVIOUS VARIATIONS
+C                                   STORED IN "FIRST-IN FIRST-OUT" ORDER
+C                  (P) CALCULATED HESSIAN
+C                  (H) INV(P) IN CANONICAL ORDER .
+C     SECTION 0 :  VARIOUS INITIALIZATIONS
+C     SECTION 1 :  TEST WHETHER <X!X> > DMAX*DTHR. PROJECTION OF (X)
+C                  INTO THE SUB-SPACE -(XVAR)- MAY NOT EXCEED PROLIM
+C     SECTION 2 :  (X) IS CLOSE TO -(XVAR)- ... TRY TO SUBSTITUTE
+C                  A VECTOR OF (XVAR) BY (X).PROXIMITY CRITERIUM:
+C                  SQUARE OF DOT PRODUCT .
+C     SECTION 3 :  "FIFO" STORAGE OF ORTHONORMALIZED (X) IN (XVAR)
+C                  AND SIMILARLY FOR  (G) IN (GVAR) .
+C     SECTION 4 :  ELABORATE AN INDEPENDANT DIRECTION IF REQUIRED.
+C                  CALL "COMPFG" AND RETURN VIA "QUADR" (CALCULATE AN
+C                  "EXTRA GRADIENT") .
+C     SECTION 5 :  AS SOON AS THE DIMENSION OF -(XVAR)- IS EQUAL TO N
+C                  (P) IS CALCULATED :
+C                       (P1) = (GVAR)*(XVAR)'
+C                       (P) = ( (P1)+(P1)' )*0.5
+C     SECTION 6 :  DIAGONALIZE (P) AND EVALUATE INDEX M .
+C                  STORAGE OF EIGENVALUES (EIGEN) AND VECTORS (HVEC)
+C                  COMPUTE (H)=INV(P) .
+C     SECTION 7 :  QUADRATIC DIRECTION (DIR) = -INV(P)*(GNEW)
+C                  (DIR) IS NORMALIZED TO 1
+C                  THE DIRECTION IS OPERATIVE IF :
+C                       - MM=1
+C                       - <DIR!DIR>  < DMAX**2
+C                       - <DIR!GNEW> .NE. 0  (THRESHOLD : 0.17) .
+C     SECTION 8 :  CHANGE IN GENERATION : THE YOUNG BECOME OLD .
+C                  AND UPDATE THE FLAG FOR ROTATION ONTO
+C                  EIGENVECTORS BASIS.
+C
+      COMMON /OPTIMI / IMP,IMP0                                         3GL3092
+      COMMON /OPTMCI / ISTAB,IJUMP,IROTH,NVAR,ITEG,IBRCH,               3GL3092
+     1                 INDI(NCHAIN,2),NP1,ITE,KK,JVOIS,ITEST,MM,        3GL3092
+     2                 ITETOT,N,LIMIT,IS,NLR(2),NT                      3GL3092
+      COMMON /OPTMCL / FAIL,MONO,FLAG,FLACHN(NCHAIN+1)                  GCL0892
+      COMMON /OPTMCR / H(MAXHES),GNEW(MAXPAR),XNEW(MAXPAR),ENEW,        3GL3092
+     1                GOLD(MAXPAR),XOLD(MAXPAR),EOLD,QDER,DMAX,         3GL3092
+     2                COSDIR(MAXPAR,2),TRANS1(MAXPAR),HAUT(MAXPAR+2),   3GL3092
+     3                DIR(MAXPAR),EIGEN(MAXPAR),R(2),EPS1,COSTET,Q,D,   3GL3092
+     4                D1,D2,D3,D4,D5,D6,D7,D8,D9,CORREL,PIGI,GIGI,      3GL3092
+     5                XVAM(MAXPAR,MAXPAR),GVAM(MAXPAR,MAXPAR),          3GL3092
+     6                HVEC(MAXPAR,4),PROLIM,DTHR,                       3GL3092
+     7                COORD(MAXPAR+1,NCHAIN),                           3GL3092
+     8                X(MAXPAR),F,G(MAXPAR),EPS,DELTAE,                 3GL3092
+     9                RDUMY(MAXPAR*MAXPAR)                              3GL3092
+C     COMMON /OPTIM/ IMP,IMP0,LEC,IPRT,H(MAXHES),GNEW(MAXPAR)
+C    .              ,XNEW(MAXPAR),ENEW,GOLD(MAXPAR),XOLD(MAXPAR),EOLD
+C    .              ,QDER,DMAX,COSDIR(MAXPAR,2),TRANS1(MAXPAR)
+C    .              ,HAUT(MAXPAR+2),DIR(MAXPAR),EIGEN(MAXPAR),R(2),EPS1
+C    .              ,COSTET,Q,D,D1,D2,D3,D4,D5,D6,D7,D8,D9,CORREL,PIGI
+C    .              ,GIGI,XVAM(MAXPAR,MAXPAR),GVAM(MAXPAR,MAXPAR)
+C    .              ,HVEC(MAXPAR,4),PROLIM,DTHR,COORD(MAXPAR+1,NCHAIN)
+C    .              ,X(MAXPAR),F,G(MAXPAR),EPS,DELTAE
+C    .              ,ISTAB,IJUMP,IROTH,NVAR,ITEG,IBRCH,INDI(NCHAIN,2)
+C    .              ,NP1,ITE,KK,JVOIS,ITEST,MM,ITETOT
+C    .              ,N,LIMIT,IS,NLR(2),NT,FAIL,MONO,FLAG,FLACHN(NCHAIN)
+      COMMON /AREACM/ NOPTI,TAREA,NINTEG
+      LOGICAL FAIL,MONO,FLAG,FLACHN,TAREA
+      DIMENSION XVAR(NLO,NLO),GVAR(NLO,NLO),P(NLO,NLO)
+       SAVE
+C
+C        *****  SECTION 0  *****
+C     INITIALIZATION
+      IF(ITE.GT.1) GO TO 10
+      DTHR=0.05D0
+      MM=-N
+      Q=0
+      NVAR=0
+      PROLIM=MIN(30.D0,1.D1+DBLE(N)/4.D0)/57.3D0                        GCL0393
+      PROLIM=COS(PROLIM)**2                                             GCL0393
+      IROTH=0
+      FLAG=.FALSE.
+      GO TO 80
+C
+C        *****  SECTION 1  *****
+C     TEST FOR PRECISION AND LINEAR INDEPENDANCE OF X / XVAR
+C
+   10 DO 11 I=1,N
+      X(I)=XNEW(I)-XOLD(I)
+   11 G(I)=GNEW(I)-GOLD(I)
+      XNORM=SQRT(DOT(X,X,N))
+      IJUMP=1
+      IF(XNORM.LT.DMAX*DTHR) GO TO 40
+      DO 12 I=1,N
+      X(I)=X(I)/XNORM
+   12 G(I)=G(I)/XNORM
+      IF(NVAR.EQ.0) GO TO 30
+      DO 13 I=1,NVAR
+   13 XOLD(I)=DOT(XVAR(1,I),X,N)
+      XPROJ=DOT(XOLD,XOLD,NVAR)
+      IF (XPROJ.LE.PROLIM) GO TO 30
+C
+C     *****   SECTION 2  *****
+C     X NON INDEPENDANT. A SUBSTITUTION IS TRIED.
+C
+      DO 20 I=1,NVAR
+      K=I
+      IF (XPROJ-PROLIM.LE.XOLD(I)*XOLD(I)) GO TO 21
+   20 CONTINUE
+      GO TO 40
+   21 XPROJ=XPROJ-XOLD(K)*XOLD(K)
+      NVAR=NVAR-1
+      IF (K.GT.NVAR) GO TO 30
+CDIR$ IVDEP
+      DO 22 I=K,NVAR
+   22 XOLD(I)=XOLD(I+1)
+      J=1+N*(K-1)
+      K=NVAR*N
+CDIR$ IVDEP
+      DO 23 I=J,K
+      XVAR(I,1)=XVAR(I+N,1)
+   23 GVAR(I,1)=GVAR(I+N,1)
+C
+C       *****   SECTION 3  *****
+C     ORTHONORMALIZE  AND STORE.
+C
+   30 NVAR=NVAR+1
+      IJUMP=2
+      DO 31 I=1,N
+      XVAR(I,NVAR)=X(I)
+   31 GVAR(I,NVAR)=G(I)
+      IF (NVAR.EQ.1) GO TO 40
+      I1=NVAR-1
+      DO 32 J=1,I1
+CDIR$ IVDEP
+      DO 32 I=1,N
+      XVAR(I,NVAR)=XVAR(I,NVAR)-XOLD(J)*XVAR(I,J)
+   32 GVAR(I,NVAR)=GVAR(I,NVAR)-XOLD(J)*GVAR(I,J)
+      XNORM=SQRT(1.D0-XPROJ)
+      DO 33 I=1,N
+      XVAR(I,NVAR)=XVAR(I,NVAR)/XNORM
+   33 GVAR(I,NVAR)=GVAR(I,NVAR)/XNORM
+C
+C       *****  SECTION 4 *****
+C     IF REQUIRED,GENERATE AN "EXTRA" DIRECTION ... ASSOCIATED POINT: X
+C
+   40 IF (MONO) GO TO 50
+      IF (NVAR.EQ.N) GO TO 46
+      XTEMP=1.D0
+      DO 42 I=1,N
+      XNORM=0.D0
+      DO 41 J=1,NVAR
+   41 XNORM=XNORM+XVAR(I,J)**2
+      IF (XNORM.GE.XTEMP) GO TO 42
+      K=I
+      XTEMP=XNORM
+   42 CONTINUE
+      DO 43 I=1,N
+      X(I)=0.D0
+   43 XOLD(I)=XVAR(K,I)
+      X(K)=1.D0
+      DO 44 J=1,NVAR
+CDIR$ IVDEP
+      DO 44 I=1,N
+   44 X(I)=X(I)-XOLD(J)*XVAR(I,J)
+      XNORM=SQRT(1.D0-XPROJ)/(DMAX*DTHR)
+      DO 45 I=1,N
+   45 X(I)=XNEW(I)+X(I)/XNORM
+      RETURN
+   46 XNORM=DTHR*DMAX
+      DO 47 I=1,N
+   47 X(I)=XNEW(I)+XVAR(I,1)*XNORM
+      IROTH=IROTH-1
+      RETURN
+C
+C     THIS ENTRY IS USED WHEN AN "EXTRA GRADIENT" HAS BEEN CALCULATED
+C
+      ENTRY QUADR (XVAR,GVAR,P,NLO,NVARLO)
+      IF (FAIL) GO TO 50
+      IJUMP=2
+      IF (NVAR.LT.N) GO TO 49
+      NVAR=N-1
+      K=N*NVAR
+CDIR$ IVDEP
+      DO 48 I=1,K
+      XVAR(I,1)=XVAR(I+N,1)
+   48 GVAR(I,1)=GVAR(I+N,1)
+   49 NVAR=NVAR+1
+      XNORM=1.D0/(DTHR*DMAX)
+      DO 400 I=1,N
+      XVAR(I,NVAR)=(X(I)-XNEW(I))*XNORM
+  400 GVAR(I,NVAR)=(G(I)-GNEW(I))*XNORM
+C
+C      *****   SECTION 5   *****
+C     UPDATE THE HESSIAN.
+C
+   50 FAIL=.FALSE.
+      IF (NVAR.EQ.N) GO TO 51
+      MM=NVAR-N
+      GO TO 70
+   51 IF (IJUMP.EQ.1) GO TO 70
+      J=N*N
+      DO 52 I=1,J
+   52 P(I,1)=0.D0
+      DO 53 I=1,N
+      DO 53 K=1,N
+      DO 53 J=1,N
+   53 P(I,J)=P(I,J)+GVAR(I,K)*XVAR(J,K)
+      DO 54 I=1,N
+CDIR$ IVDEP
+      DO 54 J=1,I
+      P(I,J)=(P(I,J)+P(J,I))/2.D0
+   54 P(J,I)=P(I,J)
+C
+C        *****  SECTION 6  *****
+C     ANALYSE THE HESSIAN : INDEX AND REGULARITY
+C
+      IF(IMP.GE.3.OR.FLAG) GO TO 60
+C     DIRECT INVERSION IF EIGENVECTORS NOT REQUIRED
+      CALL INVERT (P,N,MM,EIGEN,EPS1)                                   DL0397
+      GO TO 68
+   60 CALL DIAGIV (P,N,N,EIGEN,EPS1)
+      MM=0
+      DO 61 I=1,N
+      IF(EIGEN(I).GT.0.D0) GO TO 66
+   61 MM=I
+   66 IF(.NOT.FLAG) GO TO 62
+      DO 65 J=1,N
+      DO 65 I=1,N
+      GVAR(I,J)=P(I,J)*EIGEN(J)
+   65 XVAR(I,J)=P(I,J)
+      IROTH=MM+2
+   62 K=MIN(4,MM+1)                                                     GCL0393
+      DO 63 J=1,K
+      DO 63 I=1,N
+   63 HVEC(I,J)=P(I,J)
+      CALL INVRT1(P,N,MMDUM,EIGEN,EPS1)                                 DL0397
+C     STORAGE OF THE INVERSE HESSIAN .
+   68 K=0
+      DO 69 I=1,N
+      DO 69 J=1,I
+      K=K+1
+   69 H(K)=P(I,J)
+C
+C        *****  SECTION 7  *****
+C     QUADRATIC TERMINATION DIRECTION .
+C
+   70 IF(MM.EQ.1) GO TO 72
+   71 Q=0
+      GO TO 80
+   72 CALL SUPDOT(DIR,H,GNEW,N,1)
+      Q=SQRT(DOT(DIR,DIR,N))
+      IF(Q.GT.DMAX) GO TO 71
+      DO 74 I=1,N
+   74 DIR(I)=-DIR(I)/Q
+      QDER=DOT(DIR,GNEW,N)
+      IF(ABS(QDER).LT.HAUT(N+2)*0.17D0) Q=0                             GCL0393
+C
+C        *****  SECTION 8  *****
+C      SAVE XNEW AND GNEW .
+C
+   80 EOLD=ENEW
+      DO 81 I=1,N
+      XOLD(I)=XNEW(I)
+   81 GOLD(I)=GNEW(I)
+      FLAG=NVAR.EQ.N.AND.MM.GT.1.AND.IROTH.LE.0
+      RETURN
+      END

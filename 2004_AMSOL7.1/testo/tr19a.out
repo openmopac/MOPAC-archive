@@ -1,0 +1,233 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:16:49                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  CHARGE   - CHARGE ON SYSTEM= -1
+ *  UHF      - UNRESTRICTED HARTREE-FOCK CALCULATION
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  OPT      - THE GEOMETRY WILL BE OPTIMIZED (DEFAULT)
+ *  SM2      - SM2 CALCULATIONS WILL BE PERFORMED
+ *           - MULLIKEN ANALYSIS WILL BE USED FOR ATOMIC PARTIAL CHARGES
+ *           - THE SOLVENT IS WATER
+ *  DOTS     - THE DOTS SURFACE AREA ALGORITHM WILL BE USED
+ *  NDOTCD   - UPPER BOUND ON NO. OF DOTS IN SURF. TENSION SPHERES IS   2610
+ *  NDOTEP   - UPPER BOUND ON NO. OF DOTS FOR COULOMBIC SPHERES IS       816
+ *  NOINP    - A NEW INPUT FILE WILL NOT BE CREATED (DEFAULT)
+ *  TRUES    - TRUE SOLVATION FREE ENERGY CALCULATED
+ *  HFOPT    - OPTIMIZED GAS PHASE ENERGY PROVIDED FOR TRUES CALCULATION
+ *******************************************************************************
+
+ Number of points on each sphere for coulombic surface area calculation     816
+ Number of points on each sphere for surface tension calculation           2610
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  O 
+    2       2  O            1.10000 *                                 1
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         8        0.0000    0.0000    0.0000
+     2         8        1.1000    0.0000    0.0000
+
+          UHF calculation, no. of alpha electrons =  7
+                           no. of beta  electrons =  6
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  O: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+
+ REFERENCE(S) FOR CHOSEN SOLVATION MODEL:
+
+ C. J. Cramer and D. G. Truhlar, Science (Washington DC) 256 (1992) 213-217.
+
+ C. J. Cramer, and D. G. Truhlar, J. Comput.-Aided Mol. Des. 6 (1992) 629-666
+
+            Interatomic distances
+
+               O   1      O   2
+ ------------------------------
+    O   1    0.00000
+    O   2    1.10000    0.00000
+ GRADIENT BY CENTRAL DIFFERENCES ON ENERGY:
+ STEP LENGTH FOR DIFFERENCES                 0.00206534 0.00412781 0.00489323
+
+ STANDARD DEVIATION ON ENERGY (kcal)         0.00006434
+                       GRADIENT (kcal/RU)    0.04821293 0.02410545 0.02033111
+
+        CYC : CYCLES   T : TIME (S)  GEO : CHANGE IN GEOMETRY
+        GCOMP : LARGEST COMPONENT OF GRADIENT (KCAL/RU)
+        HEAT : TOTAL ENERGY (KCAL/MOL)
+        1 RU = 1 ANGSTROM OR 1 RADIAN
+
+
+          DIAGONAL MATRIX USED AS HESSIAN
+
+ CYC:  0  T:    0.0  GEO: 0.000000  GCOMP: 175.922  HEAT: -105.800822
+ CYC:  1  T:    0.0  GEO: 0.074044  GCOMP:  65.998  HEAT: -109.945557
+ CYC:  2  T:    0.0  GEO: 0.020616  GCOMP:   9.220  HEAT: -110.861686
+ CYC:  3  T:    0.0  GEO: 0.003359  GCOMP:   0.636  HEAT: -110.878500
+ CYC:  4  T:    0.0  GEO: 0.000217  GCOMP:   0.005  HEAT: -110.878577
+
+     ABSOLUTE VALUE OF LARGEST GRADIENT COMPONENT =  0.00540
+     IS LESS THAN CUTOFF =  0.45000 AND THE CALCULATED ENERGY
+     CHANGED LESS THAN .1 KCAL/MOL FOR LAST GEOMETRY CHANGE.
+
+
+ DERINU SM2 CHARGE=-1 AM1 UHF TRUES HFOPT=-22.819247                            
+& DOTS NDOTCD=2610 NDOTEP=816  NOINP  OPT                                       
+ superoxide anion (aqueous)                                                      
+                                                                                 
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:16:49                  
+
+ Heat of formation + Delta-G solvation     =    -110.878577 kcal
+ Electronic energy + Delta-G solvation     =   -1007.728488 eV
+ Core-core repulsion                       =     365.556048 eV
+ Total energy + Delta-G solvation          =    -642.172440 eV
+ Gradient norm                             =       0.005400 kcal/RU
+ No. of alpha electrons                    =       7
+ No. of beta  electrons                    =       6
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      31.999     amu
+ Computer time                             =       0.04     seconds
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  O 
+    2       2  O            1.16032 *                                 1
+
+            Interatomic distances (angstroms)
+
+               O   1      O   2
+ ------------------------------
+    O   1    0.00000
+    O   2    1.16032    0.00000
+
+          AlphaOrbital eigenvalues (eV)
+
+ -39.76719 -28.67158 -16.56069 -15.89938 -15.10253  -8.68330  -7.88645   9.11683
+
+           Beta eigenvalues 
+ -38.32574 -26.67418 -15.96681 -14.71528 -13.17887  -7.46262   3.15728   9.82487
+
+          Molecular weight =   32.00amu
+
+           Principal moments of inertia in cm(-1)
+          A =    0.000000   B =    1.565222   C =    1.565222
+
+           Principal moments of inertia in units of 10**(-40)*gram-cm**2
+          A =    0.000000   B =   17.884545   C =   17.884545
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         O            -0.500           6.500
+           2         O            -0.500           6.500
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges      0.000     0.000     0.000     0.000
+ hybrid contribution     0.000     0.000     0.000     0.000
+ sum                     0.000     0.000     0.000     0.000
+
+          Cartesian coordinates (angstroms)
+
+    NO.       Atom               X         Y         Z
+
+     1        O            -0.58016   0.00000   0.00000
+     2        O             0.58016   0.00000   0.00000
+
+          Atomic orbital electron populations
+
+   1.92958   1.07042   1.50000   2.00000   1.92958   1.07042   1.50000   2.00000
+
+                    (SZ)    =  0.500000
+                    (S**2)  =  0.750510
+
+          Atomic orbital spin populations
+
+   0.00577  -0.00577   0.50000   0.00000   0.00577  -0.00577   0.50000   0.00000
+
+                    Bond orders and valencies
+
+               O   1      O   2
+ ------------------------------
+    O   1    1.75025
+    O   2    1.24975    1.75025
+
+
+ Atom #  1 Total H-bond order  0.00
+ Atom #  2 Total H-bond order  0.00
+
+
+
+   Number of geometries                                      6
+   Number of calculations of the screened coulomb radii     48
+   The total number of SCF iterations                      132.
+    Note: The number of geometries may not
+    correspond to the number of cycles due to rejected geometry changes.
+
+ In the following table subtotal= G_P + SS G_CDS.
+
+  Atom   Chem. Mulliken  G_P      Area      Sigma k    SS G_CDS Subtotal   M
+ number symbol   chg.    (kcal) (Ang**2)  cal/(Ang**2)  (kcal)   (kcal)  value
+
+   1       O    -0.50   -42.25    76.00     -25.01      -1.90   -44.15     10
+   2       O    -0.50   -42.25    76.00     -25.01      -1.90   -44.15     10
+
+ Total:         -1.00   -84.49   152.01                 -3.80   -88.29
+
+ By element:
+
+ Atomic #  8  Polarization:  -84.49  SS G_CDS:  -3.80  Total:   -88.29 kcal
+
+ Total:                      -84.49             -3.80           -88.29 kcal
+
+   The number of atoms in the molecule is      2
+   The average number of expansion shells was   10.00
+   The maximum number of expansion shells was     10
+   The minimum number of expansion shells was     10
+
+
+                                                                                 
+ superoxide anion (aqueous)                                                      
+
+ geometry optimization run with TRUES
+
+ (0)  E-EN(g) gas-phase electronic-nuclear energy                  -22.819 kcal
+
+    This is a breakdown of the true solvation energy:
+
+ (1)  E-EN(sol) electronic-nuclear energy of solute                -22.585 kcal
+ (2)  G-P(sol) polarization free energy of solvation               -84.492 kcal
+ (3)  G-ENP(sol) elect.-nuc.-pol. free energy of system           -107.077 kcal
+ (4)  G-CDS(sol) cavity-dispersion-solvent structure free energy    -3.802 kcal
+ (5)  G-P-CDS(sol) = G-P(sol) + G-CDS(sol) = (2) + (4)             -88.294 kcal
+ (6)  G-S(sol) free energy of system = (1) + (5)                  -110.879 kcal
+ (7)  DeltaE-EN(sol) elect.-nuc. reorganization energy of solute     0.235 kcal
+      (7) = (1) - (0)
+ (8)  DeltaG-ENP(sol) elect.-nuc.-pol. free energy of solvation    -84.258 kcal
+      (8) = (3) - (0)
+ (9)  DeltaG-S(sol) free energy of  solvation                      -88.059 kcal
+      (9) = (6) - (0)
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+
+ Total computer time =       0.04 seconds

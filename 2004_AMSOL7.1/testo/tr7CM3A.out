@@ -1,0 +1,121 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:21:23                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *  1SCF     - SCF CALCULATION WITHOUT GEOMETRY OPTIMIZATION 
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  CART     - INPUT READ IN CARTESIAN COORDINATES
+ *  BONDS    - FINAL BOND-ORDER MATRIX TO BE PRINTED
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  CM3      - CHARGE MODEL 3 WILL BE USED (CM3A)
+ *******************************************************************************
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  H 
+    2       2  C            1.07237                                   1
+    3       3  N            1.15316     180.00000                     2   1
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         1        0.0000    0.0000    0.0000
+     2         6        1.0724    0.0000    0.0000
+     3         7        2.2255    0.0000    0.0000
+
+          RHF calculation, no. of doubly occupied orbitals=  5
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  C: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  N: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+
+ REFERENCES FOR CHARGE MODEL 3:
+
+ P. Winget, J. D. Thompson, J. D. Xidos, C. J., Cramer, and D. G. Truhlar,
+ J. Phys. Chem A, 2002,submitted.
+
+ J. D. Thompson, C. J. Cramer, and D. G. Truhlar, J. Comput. Chem., 2002,
+ submitted.
+
+
+
+AM1 CM3 1SCF BONDS CART                                                         
+ Charge Model 3 calculation                                                      
+                                                                                 
+
+     1SCF WAS SPECIFIED, SO GEOMETRY OPTIMIZATION WAS NOT USED
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:21:23                  
+
+ Final heat of formation                   =      31.093583 kcal
+ Electronic energy                         =    -612.023223 eV
+ Core-core repulsion                       =     264.181872 eV
+ No. of doubly occupied orbitals           =       5
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      27.011     amu
+ Computer time                             =       0.00     seconds
+
+               Orbital eigenvalues (eV)
+
+ -36.76751 -21.31263 -13.96312 -13.75074 -13.75074   1.77202   1.77202   3.03305
+   6.45060
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM3 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         H             0.238           0.762
+           2         C             0.087           3.913
+           3         N            -0.325           5.325
+
+For the charges calculated by CM3:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges    -3.023     0.000     0.000     3.023
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         H             0.238           0.762
+           2         C            -0.192           4.192
+           3         N            -0.047           5.047
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges     -1.485     0.000     0.000     1.485
+ hybrid contribution    -0.877     0.000     0.000     0.877
+ sum                    -2.363     0.000     0.000     2.363
+
+          Atomic orbital electron populations
+
+   0.76172   1.32034   0.97407   0.94862   0.94862   1.81871   1.12516   1.05138
+   1.05138
+
+                    Bond orders and valencies
+
+               H   1      C   2      N   3
+ ------------------------------------------
+    H   1    0.94322
+    C   2    0.90436    3.87410
+    N   3    0.03886    2.96974    3.00860
+
+   Number of geometries                                      1
+   The total number of SCF iterations                       10.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.01 seconds

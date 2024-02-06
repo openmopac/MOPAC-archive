@@ -1,0 +1,60 @@
+      SUBROUTINE GBSCRF
+      IMPLICIT DOUBLE PRECISION(A-H,O-Z)
+      INCLUDE 'KEYS.i'
+      INCLUDE 'SIZES.i'
+      COMMON /BORN  / BP(NUMATM),FGB(NPACK),CCT1,ZEFF(NUMATM),
+     1                QEFF2(NUMATM),DRVPOL(MPACK)
+      COMMON /MLKSTI/ NUMAT,NAT(NUMATM),NFIRST(NUMATM),NMIDLE(NUMATM),
+     1                NLAST(NUMATM), NORBS, NELECS,NALPHA,NBETA,
+     2                NCLOSE,NOPEN,NDUMY
+      COMMON /CM1SUM/ B(NUMATM,NUMATM),QM(NUMATM),DELTA2(NUMATM)        GDH0997
+     1               ,QC0(NUMATM),QC(NUMATM)                            GDH0997
+     2               ,QD0(NUMATM),FD(NUMATM,NUMATM),QD(NUMATM)          GDH0997
+      COMMON /DENSTY/ P(MPACK),PA(MPACK),PB(MPACK)
+      COMMON /SCRFVK/VK(NUMATM)               
+C     COMMON /CKDD/CK(105,105),DD(105,105)
+      COMMON /CKDD/CK(105,105),DD(105,105),Bo                           !JT0802
+      DIMENSION NU(1000)
+C     Scheme B: modify all elements
+C
+      DO 100 I=1,NUMAT
+      DO 100 J=NFIRST(I),NLAST(I)
+ 100  NU(J)=I
+      NBS=NLAST(NUMAT)
+      IJ=0
+      DO 200 I=1,NBS
+      KI=NAT(NU(I))
+      DO 200 J=1,I
+      KJ=NAT(NU(J))
+      IJ=IJ+1
+      SUM=0.0
+      DO 250 K=1,NBS
+      KK=NAT(NU(K))
+      DKKKI=DD(KK,KI)+2.0*CK(KK,KI)*B(NU(K),NU(I))
+      DKKKJ=DD(KK,KJ)+2.0*CK(KK,KJ)*B(NU(K),NU(J))
+      SUM=SUM+DELTA(I,K)*DELTA(J,K)*VK(NU(I))
+     &-0.5*(
+     & (VK(NU(K))-VK(NU(I)))*DKKKI*DELTA(J,K)*P(IJ0(K,I))
+     &+(VK(NU(K))-VK(NU(J)))*DKKKJ*DELTA(I,K)*P(IJ0(K,J)))
+ 250  CONTINUE
+      DRVPOL(IJ)=SUM
+ 200  CONTINUE
+      RETURN
+      END
+      DOUBLE PRECISION FUNCTION DELTA(I,J)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      IF(I.EQ.J) THEN
+      DELTA=1.0D0
+      ELSE
+      DELTA=0.0D0
+      END IF
+      RETURN
+      END
+      INTEGER FUNCTION IJ0(I,J)
+      IF(I.GT.J) THEN
+      IJ0=I*(I-1)/2+J
+      ELSE
+      IJ0=J*(J-1)/2+I
+      END IF
+      RETURN
+      END

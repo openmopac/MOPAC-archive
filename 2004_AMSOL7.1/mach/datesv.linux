@@ -1,0 +1,28 @@
+C***********************************************************************
+C  DATESV
+C***********************************************************************
+C
+      SUBROUTINE DATESV (IO)
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      common /DATECM/ CDAT
+C
+      CHARACTER*80 CDAT
+      CHARACTER*40 DATE
+      CHARACTER*24 TODAY
+      DATA DATE /'                                        '/
+C
+      STATUS = SHDATE(DATE)
+      today=DATE(1:10) // DATE(24:28) // DATE(11:19)
+C
+c      IF (STATUS .NE. -1) CDAT='Wall clock time and date at job'
+c     1                              //' start '//DATE
+       IF (STATUS .NE. -1) CDAT='Wall clock time and date at job'
+     1                              //' start '//TODAY
+      IF (STATUS .EQ. -1) WRITE (IO, 1100)
+C
+ 1100 FORMAT(/,3X,'ERROR WITH THE ACQUIRING THE DATE AND TIME',/)
+C
+      RETURN
+      END
+

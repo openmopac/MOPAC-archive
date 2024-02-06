@@ -1,0 +1,15 @@
+C
+         SUBROUTINE PORCPU (T1)
+C
+C   This is a machine-specific subprogram that obtains elapsed CPU time
+C   in seconds.
+C
+C   Machines: Cray-2, Cray X-MP, Cray Y-MP
+C
+         IMPLICIT DOUBLE PRECISION (A-H, O-Z)
+C
+         T1 = SECOND()
+C
+         RETURN
+         END
+C*****

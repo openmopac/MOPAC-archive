@@ -1,0 +1,359 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:21:23                  
+
+This first section contains only gas phase information
+
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *  1SCF     - SCF CALCULATION WITHOUT GEOMETRY OPTIMIZATION 
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  TRUES    - TRUE SOLVATION FREE ENERGY CALCULATED
+ *  HFCALC   - GAS PHASE SINGLE POINT TO BE PERFORMED FOR TRUES CALCULATION
+ *******************************************************************************
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1          Xx
+    2       1  C            0.94635 *                                 1
+    3       2  O            1.42243 *   129.50800 *                   2   1
+    4       3  H            1.08128 *   125.98100 *   179.95300 *     2   1   3
+    5       4  C            1.24354 *    90.00000 *    90.00000 *     1   2   3
+    6       5  C            1.24354 *    90.00000 *    90.00000 *     1   2   4
+    7          Xx           1.00000 *    90.00000 *     0.00000 *     1   2   3
+    8          Xx           1.41311 *    90.00000 *   180.00000 *     1   7   2
+    9       6  C            0.77429 *    90.00000 *    25.03800 *     8   1   6
+   10       7  C            0.77429 *    90.00000 *    25.03800 *     8   1   5
+   11       8  H            1.08769 *   109.08500 *   105.33600 *     5   2   6
+   12       9  H            1.08769 *   109.08500 *   105.33600 *     6   2   5
+   13      10  H            1.08449 *   111.07400 *  -136.37000 *     5   2   6
+   14      11  H            1.08449 *   111.07400 *  -136.37000 *     6   2   5
+   15      12  H            1.08462 *   148.48000 *    31.41700 *     9   5  10
+   16      13  H            1.08462 *   148.48000 *    31.41700 *    10   6   9
+   17      14  H            1.08853 *    97.57200 *  -112.26900 *     9   5  10
+   18      15  H            1.08853 *    97.57200 *  -112.26900 *    10   6   9
+   19      16  H            0.96711 *   106.55800 *  -177.76900 *     3   2   4
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         6        0.9464    0.0000    0.0000
+     2         8        1.8513    1.0975    0.0000
+     3         1        1.5816   -0.8750    0.0007
+     4         6        0.0000    0.0000   -1.2435
+     5         6        0.0000    0.0010    1.2435
+     6         6       -1.4131    0.3283    0.7013
+     7         6       -1.4131   -0.3277   -0.7015
+     8         1        0.0015    0.9911   -1.6916
+     9         1        0.0004   -0.9901    1.6916
+    10         1        0.3463   -0.6987   -1.9971
+    11         1        0.3471    0.6994    1.9971
+    12         1       -2.2037   -0.0448    1.3433
+    13         1       -2.2037    0.0452   -1.3436
+    14         1       -1.5451    1.4043    0.6027
+    15         1       -1.5448   -1.4037   -0.6029
+    16         1        1.3119    1.8994    0.0355
+
+          RHF calculation, no. of doubly occupied orbitals= 18
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  C: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  O: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+
+            Interatomic distances
+
+               C   1      O   2      H   3      C   4      C   5      C   6
+ ------------------------------------------------------------------------------
+    C   1    0.00000
+    O   2    1.42243    0.00000
+    H   3    1.08128    1.99079    0.00000
+    C   4    1.56268    2.48557    2.19438    0.00000
+    C   5    1.56268    2.48512    2.19398    2.48708    0.00000
+    C   6    2.48326    3.42632    3.30258    2.42629    1.54856    0.00000
+    C   7    2.48326    3.63035    3.12428    1.54856    2.42656    1.54857
+    H   8    2.17636    2.50889    2.97373    1.08769    3.09763    2.85766
+    H   9    2.17636    3.26267    2.31787    3.09763    1.08769    2.17185
+    H  10    2.19929    3.07892    2.35552    1.08449    3.33342    3.38110
+    H  11    2.19929    2.53172    2.82639    3.33342    1.08449    2.21707
+    H  12    3.42478    4.42175    4.10124    3.39852    2.20640    1.08462
+    H  13    3.42496    4.39950    4.12102    2.20645    3.39879    2.21061
+    H  14    2.92273    3.46302    3.91581    2.78708    2.18334    1.08853
+    H  15    2.92231    4.26062    3.22779    2.18341    2.78733    2.17210
+    H  16    1.93460    0.96711    2.78770    2.63908    2.60472    3.21522
+
+               C   7      H   8      H   9      H  10      H  11      H  12
+ ------------------------------------------------------------------------------
+    C   7    0.00000
+    H   8    2.17269    0.00000
+    H   9    2.85725    3.92061    0.00000
+    H  10    2.21630    1.75155    3.71637    0.00000
+    H  11    3.38173    3.71637    1.75155    4.23193    0.00000
+    H  12    2.21051    3.89186    2.42340    4.25310    2.73637    0.00000
+    H  13    1.08462    2.42463    3.89136    2.73557    4.25388    2.68845
+    H  14    2.17212    2.79756    3.05076    3.84179    2.45389    1.75559
+    H  15    1.08853    3.05148    2.79709    2.45303    3.84224    2.46343
+    H  16    3.59569    2.35052    3.57940    3.43719    2.49383    4.22492
+
+               H  13      H  14      H  15      H  16
+ ------------------------------------------------------
+    H  13    0.00000
+    H  14    2.46357    0.00000
+    H  15    1.75559    3.05586    0.00000
+    H  16    4.20711    2.95454    4.41353    0.00000
+
+
+
+SOLVNT=WATER TRUES MNDO SM5.2R 1SCF  HFCALC=1SCF                                
+ cyclopentanol in water                                                          
+                                                                                 
+
+     1SCF WAS SPECIFIED, SO GEOMETRY OPTIMIZATION WAS NOT USED
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:21:23                  
+
+ Final heat of formation                   =     -62.869161 kcal
+ Electronic energy                         =   -4499.701967 eV
+ Core-core repulsion                       =    3395.313933 eV
+ No. of doubly occupied orbitals           =      18
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      86.078     amu
+ Computer time                             =       0.01     seconds
+
+               Orbital eigenvalues (eV)
+
+ -43.50592 -38.71609 -31.26986 -29.57444 -22.52848 -22.09877 -17.76716 -16.85384
+ -15.57668 -15.18431 -14.80564 -13.90816 -13.08314 -12.81851 -12.69856 -12.57102
+ -12.31890 -11.11972   3.17635   3.22413   3.32887   3.82714   4.00006   4.04209
+   4.41502   4.49937   4.52061   4.81069   5.06250   5.36717   5.47796   5.51008
+   5.61265   6.42213
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         C             0.092           3.908
+           2         O            -0.302           6.302
+           3         H             0.043           0.957
+           4         C            -0.041           4.041
+           5         C            -0.045           4.045
+           6         C            -0.021           4.021
+           7         C            -0.020           4.020
+           8         H             0.011           0.989
+           9         H             0.017           0.983
+          10         H             0.023           0.977
+          11         H             0.023           0.977
+          12         H             0.018           0.982
+          13         H             0.017           0.983
+          14         H             0.007           0.993
+          15         H             0.012           0.988
+          16         H             0.166           0.834
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges     -1.057    -0.319     0.033     1.104
+ hybrid contribution    -0.633     0.259     0.023     0.684
+ sum                    -1.690    -0.060     0.056     1.692
+
+          Atomic orbital electron populations
+
+   1.22755   0.87822   0.87517   0.92724   1.83886   1.37574   1.11796   1.96985
+   0.95683   1.22430   0.93571   0.94240   0.93827   1.22452   0.93615   0.94666
+   0.93747   1.21850   0.93228   0.93291   0.93777   1.21811   0.93010   0.93677
+   0.93463   0.98876   0.98329   0.97719   0.97741   0.98173   0.98273   0.99290
+   0.98831   0.83369
+
+   Number of geometries                                      1
+   The total number of SCF iterations                       10.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.02 seconds
+Wall clock time and date at job start Fri Dec  3 2004 14:21:23                  
+
+The following section contains the solvation information
+
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *  1SCF     - SCF CALCULATION WITHOUT GEOMETRY OPTIMIZATION 
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  SM5.2R   - SM5.2R CALCULATIONS WILL BE PERFORMED
+ *           - THE SOLVENT IS WATER               
+ *  TRUES    - TRUE SOLVATION FREE ENERGY CALCULATED
+ *  HF1SCF   - SINGLE POINT GAS PHASE ENERGY PROVIDED FOR TRUES CALCULATION
+ *******************************************************************************
+
+          RHF calculation, no. of doubly occupied orbitals= 18
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  C: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+  O: (MNDO):  M.J.S. DEWAR, W. THIEL, J. AM. CHEM. SOC., 99, 4899, (1977)       
+
+ REFERENCE(S) FOR CHOSEN SOLVATION MODEL:
+
+ G. D. Hawkins, C. J. Cramer, and D. G. Truhlar, J. Phys. Chem. B
+   102 (1998) 3257-3271.
+
+
+
+SOLVNT=WATER TRUES MNDO SM5.2R 1SCF HF1SCF=-62.869161                           
+  cyclopentanol in water                                                         
+                                                                                 
+
+     1SCF WAS SPECIFIED, SO GEOMETRY OPTIMIZATION WAS NOT USED
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:21:23                  
+
+ Heat of formation + Delta-G solvation     =     -68.158308 kcal
+ Electronic energy + Delta-G solvation     =   -4499.931322 eV
+ Core-core repulsion                       =    3395.313933 eV
+ Total energy + Delta-G solvation          =   -1104.617389 eV
+ No. of doubly occupied orbitals           =      18
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      86.078     amu
+ Computer time                             =       0.04     seconds
+
+               Orbital eigenvalues (eV)
+
+ -43.50035 -38.71192 -31.17611 -29.51437 -22.41333 -22.06184 -17.77002 -16.79096
+ -15.50391 -15.16103 -14.70793 -13.91979 -13.02713 -12.71884 -12.57942 -12.45327
+ -12.27567 -11.16078   3.26422   3.30991   3.42634   3.91894   4.08221   4.13445
+   4.47945   4.58249   4.64493   4.87253   5.09440   5.46117   5.58892   5.62805
+   5.71498   6.39897
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         C             0.091           3.909
+           2         O            -0.333           6.333
+           3         H             0.043           0.957
+           4         C            -0.037           4.037
+           5         C            -0.040           4.040
+           6         C            -0.020           4.020
+           7         C            -0.017           4.017
+           8         H             0.007           0.993
+           9         H             0.021           0.979
+          10         H             0.024           0.976
+          11         H             0.018           0.982
+          12         H             0.022           0.978
+          13         H             0.020           0.980
+          14         H             0.007           0.993
+          15         H             0.015           0.985
+          16         H             0.180           0.820
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges     -1.372    -0.443     0.046     1.442
+ hybrid contribution    -0.540     0.300     0.019     0.618
+ sum                    -1.912    -0.142     0.065     1.918
+
+          Atomic orbital electron populations
+
+   1.22844   0.87809   0.86713   0.93581   1.83839   1.39131   1.13207   1.97145
+   0.95722   1.22399   0.93734   0.94065   0.93463   1.22406   0.93584   0.94800
+   0.93207   1.21839   0.93006   0.93298   0.93830   1.21792   0.92630   0.93915
+   0.93384   0.99257   0.97921   0.97586   0.98152   0.97825   0.98038   0.99343
+   0.98492   0.82045
+
+   Number of geometries                                      1
+   Number of calculations of the screened coulomb radii      1
+   The total number of SCF iterations                       11.
+    Note: The number of geometries may not
+    correspond to the number of cycles due to rejected geometry changes.
+
+ In the following table subtotal= G_P + SS G_CDS.
+
+  Atom   Chem. Mulliken  G_P      Area      Sigma k    SS G_CDS Subtotal   M
+ number symbol   chg.    (kcal) (Ang**2)  cal/(Ang**2)  (kcal)   (kcal)  value
+
+   1       C     0.09     0.01     4.14      -8.62      -0.04    -0.02     13
+   2       O    -0.33    -1.08    13.89    -237.31      -3.30    -4.38     13
+   3       H     0.04     0.00     8.07      12.48       0.10     0.10     13
+   4       C    -0.04     0.04     6.67      -9.09      -0.06    -0.02     13
+   5       C    -0.04     0.05     6.59      -9.09      -0.06    -0.01     13
+   6       C    -0.02     0.04     6.88      -9.56      -0.07    -0.03     13
+   7       C    -0.02     0.03     6.89      -9.56      -0.07    -0.03     13
+   8       H     0.01     0.00     8.02      12.77       0.10     0.10     13
+   9       H     0.02    -0.04     8.12      12.77       0.10     0.07     13
+  10       H     0.02    -0.03     8.10      12.62       0.10     0.07     13
+  11       H     0.02    -0.01     8.07      12.62       0.10     0.09     13
+  12       H     0.02    -0.05     8.10      12.63       0.10     0.05     13
+  13       H     0.02    -0.04     8.10      12.63       0.10     0.06     13
+  14       H     0.01    -0.01     8.13      12.80       0.10     0.09     13
+  15       H     0.02    -0.04     8.13      12.80       0.10     0.07     13
+  16       H     0.18     0.04     8.65    -194.59      -1.68    -1.64     13
+
+ Total:          0.00    -1.08   126.54                 -4.35    -5.43
+
+ By element:
+
+ Atomic #  1  Polarization:   -0.17  SS G_CDS:  -0.76  Total:    -0.93 kcal
+ Atomic #  6  Polarization:    0.17  SS G_CDS:  -0.29  Total:    -0.12 kcal
+ Atomic #  8  Polarization:   -1.08  SS G_CDS:  -3.30  Total:    -4.38 kcal
+
+ Total:                       -1.08             -4.35            -5.43 kcal
+
+   The number of atoms in the molecule is     16
+   The average number of expansion shells was   13.00
+   The maximum number of expansion shells was     13
+   The minimum number of expansion shells was     13
+
+
+                                                                                 
+  cyclopentanol in water                                                         
+
+ 1SCF run
+
+    This is a breakdown of the solvation energy calculated
+    without geometric relaxation in solution:
+
+
+ geometry optimization run with TRUES
+
+ (0)  E-EN(g) gas-phase electronic-nuclear energy                  -62.869 kcal
+
+    This is a breakdown of the true solvation energy:
+
+ (1)  E-EN(sol) electronic-nuclear energy of solute                -62.730 kcal
+ (2)  G-P(sol) polarization free energy of solvation                -1.083 kcal
+ (3)  G-ENP(sol) elect.-nuc.-pol. free energy of system            -63.813 kcal
+ (4)  G-CDS(sol) cavity-dispersion-solvent structure free energy    -4.345 kcal
+ (5)  G-P-CDS(sol) = G-P(sol) + G-CDS(sol) = (2) + (4)              -5.429 kcal
+ (6)  G-S(sol) free energy of system = (1) + (5)                   -68.158 kcal
+ (7)  DeltaE-EN(sol) elect.-nuc. reorganization energy of solute     0.140 kcal
+      (7) = (1) - (0)
+ (8)  DeltaG-ENP(sol) elect.-nuc.-pol. free energy of solvation     -0.944 kcal
+      (8) = (3) - (0)
+ (9)  DeltaG-S(sol) free energy of  solvation                       -5.289 kcal
+      (9) = (6) - (0)
+
+     1SCF WAS SPECIFIED, SO GEOMETRY OPTIMIZATION WAS NOT USED
+
+ Total computer time =       0.04 seconds

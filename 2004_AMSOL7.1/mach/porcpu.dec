@@ -1,0 +1,18 @@
+C
+         SUBROUTINE PORCPU (T1)
+C
+C   This is a machine-specific subprogram that obtains elapsed CPU time
+C   in seconds.
+C
+C   Machine: DEC Alpha
+C
+         IMPLICIT DOUBLE PRECISION (A-H, O-Z)
+         EXTERNAL ETIME
+         REAL NTIME(2), ETIME
+C
+         TIME = ETIME(NTIME)
+         T1   = DBLE(NTIME(1)) + DBLE(NTIME(2))
+C
+         RETURN
+         END
+C*****

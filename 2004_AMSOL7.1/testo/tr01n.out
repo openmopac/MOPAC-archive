@@ -1,0 +1,373 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:16:07                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED
+ *  DERISA   - ALL DERIVATIVES BY SEMI-ANALYTICAL METHOD (DEFAULT)
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  OPT      - THE GEOMETRY WILL BE OPTIMIZED (DEFAULT)
+ *  SM5.4A   - SM5.4/A CALCULATIONS WILL BE PERFORMED
+ *           - CHARGE MODEL 1 WILL BE USED (CM1A)
+ *           - THE SOLVENT IS USER-SPECIFIED      
+ *  DIELEC   - THE SOLVENT DIELECTRIC CONSTANT IS  73.84
+ *  IOFR     - THE SOLVENT INDEX OF REFRACTION IS 1.3575
+ *  ALPHA    - THE SOLVENT ALPHA IS 0.00
+ *  BETA     - THE SOLVENT BETA IS 0.00
+ *  GAMMA    - THE SOLVENT MACROSCOPIC SURFACE TENSION IS 
+ *                 22.30 CAL MOL^-1 ANGSTROM^-2
+ *  ASA      - THE ANALYTICAL SURFACE AREA ALGORITHM WILL BE USED (DEFAULT)
+ *  NOINP    - A NEW INPUT FILE WILL NOT BE CREATED (DEFAULT)
+ *  TRUES    - TRUE SOLVATION FREE ENERGY CALCULATED
+ *  HFOPT    - OPTIMIZED GAS PHASE ENERGY PROVIDED FOR TRUES CALCULATION
+ *  AREAS    - SOLVENT ACCESSIBLE SURFACE AREAS WILL BE PRINTED
+ *******************************************************************************
+
+     Parameter dependence data
+
+        Reference atom      Function no.    Dependent atom(s)
+            3                  1             4
+            3                  1             5
+            3                  2             4
+            3                  2             5
+
+             Descriptions of the function numbers in the above table.
+   1      Bond length    is set equal to the reference bond length   
+   2      Bond angle     is set equal to the reference bond angle    
+
+                Initial Geometry
+
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1          Xx
+    2       1  N            1.12530                                   1
+    3       2  H            0.89782 *   109.85231 *                   2   1
+    4       3  H            0.89782     109.85231     120.00000       2   1   3
+    5       4  H            0.89782     109.85231    -120.00000       2   1   3
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         7        1.1253    0.0000    0.0000
+     2         1        1.4302    0.8445    0.0000
+     3         1        1.4302   -0.4222    0.7313
+     4         1        1.4302   -0.4222   -0.7313
+
+          RHF calculation, no. of doubly occupied orbitals=  4
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  N: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+
+ REFERENCE FOR CHARGE MODEL 1:
+
+ J. W. Storer, D. J. Giesen, C. J. Cramer, and D. G. Truhlar, J. Comput.-Aided 
+   Mol. Des. 9 (1995) 87-110
+
+ REFERENCE(S) FOR CHOSEN SOLVATION MODEL:
+
+ D. J. Giesen, M. Z. Gu, C. J. Cramer, and D. G. Truhlar, J. Org. Chem. 61
+   (1996) 8720-8721.
+
+ D. J. Giesen, D. G. Hawkins, D. A. Liotard, C. J. Cramer, and D. G. Truhlar,  
+   Theor. Chim. Acta, 98 (1997) 85-109
+
+            Interatomic distances
+
+               N   1      H   2      H   3      H   4
+ ------------------------------------------------------
+    N   1    0.00000
+    H   2    0.89782    0.00000
+    H   3    0.89782    1.46266    0.00000
+    H   4    0.89782    1.46266    1.46266    0.00000
+ GRADIENT BY QUASI-ANALYTICAL FORMALISM:
+ - ANALYTICAL DERIVATIVES OF SOLVATION INTEGRALS
+ - NUMERICAL (CENTRAL DIFFERENCES) DERIVATION OF ELECTRONIC INTEGRALS & JACOBIAN
+
+ STANDARD DEVIATION ON ENERGY (kcal)         0.00006434
+                       GRADIENT (kcal/RU)    0.00260383 0.00233777 0.00000000
+
+        CYC : CYCLES   T : TIME (S)  GEO : CHANGE IN GEOMETRY
+        GCOMP : LARGEST COMPONENT OF GRADIENT (KCAL/RU)
+        HEAT : TOTAL ENERGY (KCAL/MOL)
+        1 RU = 1 ANGSTROM OR 1 RADIAN
+
+
+          DIAGONAL MATRIX USED AS HESSIAN
+
+ CYC:  0  T:    0.0  GEO: 0.000000  GCOMP: 403.750  HEAT:    8.300922
+ CYC:  1  T:    0.0  GEO: 0.091238  GCOMP: 230.552  HEAT:    0.809877
+ CYC:  2  T:    0.0  GEO: 0.035522  GCOMP:  67.461  HEAT:  -10.607223
+ CYC:  3  T:    0.0  GEO: 0.013842  GCOMP:  23.510  HEAT:  -11.343627
+ CYC:  4  T:    0.0  GEO: 0.003643  GCOMP:   4.240  HEAT:  -11.419390
+ CYC:  5  T:    0.0  GEO: 0.000744  GCOMP:   0.864  HEAT:  -11.422822
+ CYC:  6  T:    0.0  GEO: 0.000430  GCOMP:   0.115  HEAT:  -11.423116
+
+     ABSOLUTE VALUE OF LARGEST GRADIENT COMPONENT =  0.08862
+     IS LESS THAN CUTOFF =  0.45000 AND THE CALCULATED ENERGY
+     CHANGED LESS THAN .1 KCAL/MOL FOR LAST GEOMETRY CHANGE.
+
+
+AM1 SM5.4A SYMMETRY TRUES NOINP HFOPT=-7.283460 DERISA ASA OPT AREAS            
+& IOFR=1.3575 ALPHA=0.00 BETA=0.00 GAMMA=22.3 DIELEC=73.84 SOLVNT=GENORG        
+ ammonia (pentane)                                                               
+                                                                                 
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:16:07                  
+
+ Heat of formation + Delta-G solvation     =     -11.423116 kcal
+ Electronic energy + Delta-G solvation     =    -434.202538 eV
+ Core-core repulsion                       =     185.432186 eV
+ Total energy + Delta-G solvation          =    -248.770352 eV
+ Gradient norm                             =       0.115088 kcal/RU
+ No. of doubly occupied orbitals           =       4
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      17.027     amu
+ Computer time                             =       0.02     seconds
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1          Xx
+    2       1  N            1.12530                                   1
+    3       2  H            1.00408 *   110.88923 *                   2   1
+    4       3  H            1.00408     110.88923     120.00000       2   1   3
+    5       4  H            1.00408     110.88923    -120.00000       2   1   3
+
+            Interatomic distances (angstroms)
+
+               N   1      H   2      H   3      H   4
+ ------------------------------------------------------
+    N   1    0.00000
+    H   2    1.00408    0.00000
+    H   3    1.00408    1.62480    0.00000
+    H   4    1.00408    1.62480    1.62480    0.00000
+
+               Orbital eigenvalues (eV)
+
+ -32.58068 -15.64142 -15.64142 -10.24614   4.80762   6.56612   6.56612
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM1 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         N            -1.318           6.318
+           2         H             0.439           0.561
+           3         H             0.439           0.561
+           4         H             0.439           0.561
+
+For the charges calculated by CM1:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges     2.267     0.000     0.000     2.267
+
+
+Note:  The Mulliken population analysis charges presented below were not
+used in the solvation calculation but are provided for completeness.
+The chosen solvation model uses CM1 partial charges for calculating
+solvation energies.
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         N            -0.511           5.511
+           2         H             0.170           0.830
+           3         H             0.170           0.830
+           4         H             0.170           0.830
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges      0.879     0.000     0.000     0.879
+ hybrid contribution     1.170     0.000     0.000     1.170
+ sum                     2.049     0.000     0.000     2.049
+
+          Cartesian coordinates (angstroms)
+
+    NO.       Atom               X         Y         Z
+
+     1        N             1.12530   0.00000   0.00000
+     2        H             1.48332   0.93808   0.00000
+     3        H             1.48332  -0.46904   0.81240
+     4        H             1.48332  -0.46904  -0.81240
+
+          Atomic orbital electron populations
+
+   1.59804   1.68180   1.11581   1.11581   0.82951   0.82951   0.82951
+
+     The following section contains information on  G_CDS.
+
+ ******
+
+ Small-sphere (SS) solvent radius:  1.70
+ Large-sphere (LS) solvent radius:  3.40
+
+ ******
+
+ Single-subscript surface-tension-coefficient contributions to G_CDS:
+
+  Element        CD Area           Sigma           Total
+     Z                               k                   
+                (Ang**2)       cal/(Ang**2)        (kcal)
+
+     H             120.639        -70.631         -8.521
+     N              36.299        -69.192         -2.512
+
+ Subtotal:                                       -11.032
+
+ ******
+
+ Double-subscript surface-tension-coefficient contributions to G_CDS:
+
+  Element        COT*Area(k)      Sigma           Total 
+  k   k'                            k,k'                
+                  (Ang**2)      cal/(Ang**2)      (kcal) 
+
+  H    H             0.000          0.000          0.000
+  H    N            89.262         -8.742         -0.780
+  H  N(2)            0.000          0.000          0.000
+  H  O(2)            0.000          0.000          0.000
+  C  C(1)            0.000        -18.856          0.000
+  C  C(2)            0.000          0.692          0.000
+  O    C             0.000         21.150          0.000
+  O    O             0.000         17.512          0.000
+  O    Si            0.000         31.983          0.000
+  C    N             0.000          0.000          0.000
+  N    C             0.000         -7.778          0.000
+  N  C(2)            0.000          0.000          0.000
+  N  C(3)            0.000          0.000          0.000
+  O    N             0.000         11.960          0.000
+  S    S             0.000         14.498          0.000
+  O    P             0.000          0.000          0.000
+  S    P             0.000          0.000          0.000
+  Cl   C             0.000          0.000          0.000
+  Br   C             0.000          0.000          0.000
+
+ Subtotal:                                        -0.780
+
+ Total small-sphere (SS) G_CDS:                  -11.813
+
+ ******
+
+ Contribution to G_CDS from terms that do not depend on atomic number,
+   i.e., the ones that depend on the large-sphere (LS) areas:
+
+  Element     LS Area
+     Z       (Ang**2)
+
+     H        271.828
+     N         73.268
+
+   Total:     345.096
+
+
+   Solvent         SD *            Sigma      LS Contribution
+  Descriptor      LS Area                                    
+     (SD)         (Ang**2)     cal/(Ang**2)        (kcal) 
+
+  IOFR             468.468         23.560         11.037
+  GAMMA           7695.649          0.075          0.581
+  BETA**2            0.000          0.000          0.000
+  FACARB**2          0.000          0.000          0.000
+  FEHALO**2          0.000          0.000          0.000
+
+ Total large-sphere (LS) G_CDS:                   11.618
+
+ ******
+
+ Complete CDS term broken down by solvent property:
+
+   Solvent        Descriptor    Surface Energy   CDS Contribution
+  Descriptor         Value      Sum over Atoms     SD*SE  
+     (SD)                            (SE)          (kcal) 
+                                    (kcal)
+
+       IOFR          1.357         -8.702        -11.813
+      ALPHA          0.000         -0.839          0.000
+       BETA          0.000         -1.615          0.000
+    BETA**2          0.000          0.000          0.000
+      GAMMA         22.300          0.026          0.581
+  FACARB**2          0.000          0.000          0.000
+  FEHALO**2          0.000          0.000          0.000
+
+ ******
+
+ G_CDS Total:                                     -0.195
+
+ ******
+
+   Number of geometries                                      7
+   Number of calculations of the screened coulomb radii      7
+   The total number of SCF iterations                       70.
+    Note: The number of geometries may not
+    correspond to the number of cycles due to rejected geometry changes.
+
+ In the following table subtotal= G_P + SS G_CDS.
+
+  Atom   Chem.  CM1      G_P      Area      Sigma k    SS G_CDS Subtotal   M
+ number symbol   chg.    (kcal) (Ang**2)  cal/(Ang**2)  (kcal)   (kcal)  value
+
+   1       N    -1.32    -1.25    36.30     -69.19      -2.51    -3.76     10
+   2       H     0.44    -1.25    40.21     -77.10      -3.10    -4.35     10
+   3       H     0.44    -1.25    40.21     -77.10      -3.10    -4.35     10
+   4       H     0.44    -1.25    40.21     -77.10      -3.10    -4.35     10
+
+ LS Contribution                 345.10      33.67      11.62    11.62
+
+ Total:          0.00    -5.01   156.94                 -0.19    -5.21
+
+ By element:
+
+ Atomic #  1  Polarization:   -3.76  SS G_CDS:  -9.30  Total:   -13.06 kcal
+ Atomic #  7  Polarization:   -1.25  SS G_CDS:  -2.51  Total:    -3.76 kcal
+ Total LS contribution                          11.62  Total:    11.62 kcal
+
+ Total:                       -5.01             -0.19            -5.21 kcal
+
+   The number of atoms in the molecule is      4
+   The average number of expansion shells was   10.00
+   The maximum number of expansion shells was     10
+   The minimum number of expansion shells was     10
+
+
+                                                                                 
+ ammonia (pentane)                                                               
+
+ geometry optimization run with TRUES
+
+ (0)  E-EN(g) gas-phase electronic-nuclear energy                   -7.283 kcal
+
+    This is a breakdown of the true solvation energy:
+
+ (1)  E-EN(sol) electronic-nuclear energy of solute                 -6.215 kcal
+ (2)  G-P(sol) polarization free energy of solvation                -5.013 kcal
+ (3)  G-ENP(sol) elect.-nuc.-pol. free energy of system            -11.228 kcal
+ (4)  G-CDS(sol) cavity-dispersion-solvent structure free energy    -0.195 kcal
+ (5)  G-P-CDS(sol) = G-P(sol) + G-CDS(sol) = (2) + (4)              -5.208 kcal
+ (6)  G-S(sol) free energy of system = (1) + (5)                   -11.423 kcal
+ (7)  DeltaE-EN(sol) elect.-nuc. reorganization energy of solute     1.068 kcal
+      (7) = (1) - (0)
+ (8)  DeltaG-ENP(sol) elect.-nuc.-pol. free energy of solvation     -3.945 kcal
+      (8) = (3) - (0)
+ (9)  DeltaG-S(sol) free energy of  solvation                       -4.140 kcal
+      (9) = (6) - (0)
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+
+ Total computer time =       0.02 seconds

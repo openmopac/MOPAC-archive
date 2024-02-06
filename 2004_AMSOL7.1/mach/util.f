@@ -1,0 +1,203 @@
+      SUBROUTINE DIAGIV(A,N,MM,VALU,EPS1)
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+       INCLUDE 'SIZES.i'
+C     COMMON /SCRACH/ FV1(MAXPAR**2),FV2(MAXPAR**2),Z(MAXPAR**2)
+C
+C     /SCRACH/ HAS BEEN CONVERTED TO /SCRCHR/ AND /SCRCHI/ FOR AMSOL
+      COMMON /SCRCHR/ FV1(MAXPAR**2),FV2(MAXPAR**2),Z(MAXPAR**2),DUM    GCL0393
+C
+      DIMENSION A(N,N),VALU(1),KPVT(1),INERT(3),DET(2)
+      EQUIVALENCE (FV2(1),KPVT(1)),(FV2(MAXPAR+1),INERT(1))
+     .           ,(FV2(MAXPAR+4),DET(1))
+      SAVE
+      IF (NOPTI.NE.1) THEN                                              GDH0793
+         CALL DIAGV2(A,N,MM,VALU,EPS1)                                  DJG0395
+         GOTO 3000
+      ENDIF
+C     CRAY-ONE VERSION NOVEMBER 1983 - LABO CHIMIE STRUCTURALE PAU.
+C     USE VARIOUS ROUTINES OF LINPACK AND EIGPACK LIBRARIES.
+C
+C     DIAGONALISATION PROCEDURE   GIVENS HOUSEHOLDER METHOD
+C      ----------------------------------------------------
+C      SYMMETRIC REAL MATRIX A IS DESTROYED AND GIVES EIGENVECTORS
+C     (IN COLUMN)
+C     VALU    EIGENVALUES IN ASCENDING ORDER
+C     N       ORDER OF MATRIX A
+C     MM      NUMBER OF EIGENVALUES TO BE EVALUATED
+C     EPS1    ABSOLUTE ERROR OF ALL CALCULATED EIGENVALUES
+      IROUTE=3
+      M=MM
+      GO TO 2000
+C
+C
+C
+      ENTRY VALUE (A,N,MM,VALU,EPS1)
+C
+C     EIGENVALUES AND EIGENVECTORS LOCAL ANALYSIS
+C     -----------------------------------------------------
+C      SYMMETRIC REAL MATRIX A IS DESTROYED AND GIVES EIGENVECTORS
+C     (IN COLUMN)
+C     VALU    EIGENVALUES IN ASCENDING ORDER
+C     N       ORDER OF MATRIX A
+C     MM      POSITION OF THE FIRST STRICTLY POSITIVE EIGENVALUE
+C             AND NUMBER OF EVALUATED EIGENVALUES
+C     EPS1    ABSOLUTE ERROR OF ALL CALCULATED EIGENVALUES
+      M=N
+      IROUTE=2
+      GO TO 2000
+C
+C
+C
+      ENTRY INVRT0(A,N,MM,VALU,EPS1)
+C
+C     INVERSION PROCEDURE DIAGONALIZATION METHOD
+C     -----------------------------------------------------
+C     SYMMETRIC REAL MATRIX A IS INVERTED IN AREA A
+C     VALU    EIGENVALUES IN ASCENDING ORDER
+C     N       ORDER OF MATRIX A
+C     EPS1    ABSOLUTE ERROR OF ALL CALCULATED EIGENVALUES
+C
+      IROUTE=1
+      M=N
+      GO TO 2000
+C
+C
+C
+      ENTRY INVERT(A,N,MM,VALU,EPS1)
+C
+C     INVERSION PROCEDURE TRIANGULARIZATION METHOD
+C     --------------------------------------------
+C     SYMMETRIC REAL MATRIX A IS INVERTED IN AREA A
+C     VALU PIVOT VECTOR
+C     N    ORDER OF MATRIX A
+C     MM   NUMBER OF NEGATIVE EIGENVALUES (INDEX)
+C     EPS1 NOT USED
+C
+      IROUTE=4
+      IOUT=6
+      M=N
+ 2000 CONTINUE
+C     RELATIVE THRESHOLD OF CONVERGENCE
+      E1=1.D-12
+      IF(M.GT.N) M=N
+      IF(N.NE.1) GO TO 4
+      GO TO (1,2,3),IROUTE
+    1 VALU(1)=A(1,1)
+      EPS1=0.D0
+      MM=0
+      IF(VALU(1).LT.0.D0) MM=1
+      IF(VALU(1).EQ.0.D0) A(1,1)=E1
+      A(1,1)=1.D0/A(1,1)
+      RETURN
+    2 MM=1
+      IF(A(1,1).LE.0.D0) MM=2
+    3 VALU(1)=A(1,1)
+      EPS1=0.D0
+      A(1,1)=1.D0
+      RETURN
+    4 IF(IROUTE.EQ.4) GO TO 700
+    5 CALL RS (N,N,A,VALU,M,Z,FV1,FV2,IERR)
+      IF (IERR.NE.0) WRITE (IOUT,100) IERR
+  100 FORMAT(' WARNING : COMPLETION CODE FROM RS IN DIAGIV =',I5)
+      EPS1=E1*MAX(ABS(VALU(1)),ABS(VALU(N)))
+ 1000 GO TO (601,625,630),IROUTE
+C     INVERT MATRIX A IN THE SAME AREA A
+C     -------------------------------------
+      ENTRY INVRT1 (A,N,VALU,EPS1)
+  601 DO 602 I=1,N
+  602 VALU(I)=SIGN(MAX(EPS1,ABS(VALU(I))),VALU(I))
+      K=1
+      N1=N*(N-1)
+      DO 10 I=1,N
+      L=I+N1
+      DO 10 J=I,L,N
+      FV1(J)=Z(K)/VALU(I)
+   10 K=K+1
+      CALL MXM (Z,N,FV1,N,A,N)
+      RETURN
+  625 MM=1+ILSUM(N,VALU,1)
+      M=MIN(N,MM)                                                       GCL0393
+  630 M=M*N
+      DO 20 I=1,M
+   20 A(I,1)=Z(I)
+      RETURN
+C     DIRECT INVERSION SECTION
+  700 J=1
+      DO 701 I=1,N
+      VALU(I)=A(J,1)
+  701 J=J+N+1
+      CALL SSIFA(A,N,N,KPVT,I)
+      IF(I.EQ.0) GO TO 703
+      J=1
+      DO 702 I=1,N
+      A(J,1)=VALU(I)
+  702 J=J+N+1
+      IROUTE=1
+      GO TO 5
+  703 CALL SSIDI(A,N,N,KPVT,DET,INERT,Z,101)
+      MM=INERT(2)
+      DO 704 I=2,N
+      M=I-1
+CDIR$ IVDEP
+      DO 704 J=1,M
+  704 A(I,J)=A(J,I)
+      RETURN
+3000  CONTINUE                                                          GDH1093
+      END
+      SUBROUTINE  DSWAP (N,DX,INCX,DY,INCY)
+C
+C     INTERCHANGES TWO VECTORS.
+C     USES UNROLLED LOOPS FOR INCREMENTS EQUAL ONE.
+C     JACK DONGARRA, LINPACK, 3/11/78.
+C
+      IMPLICIT DOUBLE PRECISION (A-H, O-Z)                              GCL0393
+      DIMENSION DX(1), DY(1)                                            GCL0393
+C     DOUBLE PRECISION DX(1),DY(1),DTEMP
+      INTEGER I,INCX,INCY,IX,IY,M,MP1,N
+C
+      IF(N.LE.0)RETURN
+      IF(INCX.EQ.1.AND.INCY.EQ.1)GO TO 20
+C
+C       CODE FOR UNEQUAL INCREMENTS OR EQUAL INCREMENTS NOT EQUAL
+C         TO 1
+C
+      IX = 1
+      IY = 1
+      IF(INCX.LT.0)IX = (-N+1)*INCX + 1
+      IF(INCY.LT.0)IY = (-N+1)*INCY + 1
+      DO 10 I = 1,N
+        DTEMP = DX(IX)
+        DX(IX) = DY(IY)
+        DY(IY) = DTEMP
+        IX = IX + INCX
+        IY = IY + INCY
+   10 CONTINUE
+      RETURN
+C
+C       CODE FOR BOTH INCREMENTS EQUAL TO 1
+C
+C
+C       CLEAN-UP LOOP
+C
+   20 M = MOD(N,3)
+      IF( M .EQ. 0 ) GO TO 40
+      DO 30 I = 1,M
+        DTEMP = DX(I)
+        DX(I) = DY(I)
+        DY(I) = DTEMP
+   30 CONTINUE
+      IF( N .LT. 3 ) RETURN
+   40 MP1 = M + 1
+      DO 50 I = MP1,N,3
+        DTEMP = DX(I)
+        DX(I) = DY(I)
+        DY(I) = DTEMP
+        DTEMP = DX(I + 1)
+        DX(I + 1) = DY(I + 1)
+        DY(I + 1) = DTEMP
+        DTEMP = DX(I + 2)
+        DX(I + 2) = DY(I + 2)
+        DY(I + 2) = DTEMP
+   50 CONTINUE
+      RETURN
+      END

@@ -1,0 +1,24 @@
+C***********************************************************************
+C  DATESV
+C***********************************************************************
+C
+      SUBROUTINE DATESV (IO)
+C
+C   This is a machine-specific subprogram that writes the date and 
+C   time to a file linked to FORTRAN unit IO.
+C
+C   Machine: COMPAQ ES40 ALPHA 500 RUNNING TRUE64/UNIX
+C
+      IMPLICIT DOUBLE PRECISION (A-H,O-Z)
+      COMMON /DATECM/ CDAT
+      CHARACTER*80 CDAT
+      CHARACTER*24 DATE
+C                   
+      CALL FDATE(DATE)
+C
+      CDAT='Wall clock time and date at start of job '//DATE
+C
+C
+      RETURN
+      END
+C*****

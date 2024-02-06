@@ -1,0 +1,460 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:22:16                  
+
+This first section contains only gas phase information
+
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *  1SCF     - SCF CALCULATION WITHOUT GEOMETRY OPTIMIZATION 
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED
+ *  DERISA   - ALL DERIVATIVES BY SEMI-ANALYTICAL METHOD (DEFAULT)
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  DIELEC   - THE SOLVENT DIELECTRIC CONSTANT IS  24.85
+ *  IOFR     - THE SOLVENT INDEX OF REFRACTION IS 1.3611
+ *  ALPHA    - THE SOLVENT ALPHA IS 0.37
+ *  BETA     - THE SOLVENT BETA IS 0.48
+ *  GAMMA    - THE SOLVENT MACROSCOPIC SURFACE TENSION IS 
+ *                 31.60 CAL MOL^-1 ANGSTROM^-2
+ *  ASA      - THE ANALYTICAL SURFACE AREA ALGORITHM WILL BE USED (DEFAULT)
+ *  NOINP    - A NEW INPUT FILE WILL NOT BE CREATED (DEFAULT)
+ *  TRUES    - TRUE SOLVATION FREE ENERGY CALCULATED
+ *  HFCALC   - GAS PHASE SINGLE POINT TO BE PERFORMED FOR TRUES CALCULATION
+ *******************************************************************************
+
+     Parameter dependence data
+
+        Reference atom      Function no.    Dependent atom(s)
+            2                  1             4
+            3                  2             4
+            5                  1             6
+            5                  2             6
+
+             Descriptions of the function numbers in the above table.
+   1      Bond length    is set equal to the reference bond length   
+   2      Bond angle     is set equal to the reference bond angle    
+
+                Initial Geometry
+
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  Cl
+    2       2  C            1.68587 *                                 1
+    3       3  C            1.33531 *   125.06321 *                   2   1
+    4       4  Cl           1.68587     125.06321       0.00000       3   2   1
+    5       5  H            1.09953 *   121.93709 *   180.00000       3   2   1
+    6       6  H            1.09953     121.93709     180.00000       2   3   4
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1        17        0.0000    0.0000    0.0000
+     2         6        1.6859    0.0000    0.0000
+     3         6        2.4530    1.0930    0.0000
+     4        17        1.8799    2.6784    0.0000
+     5         1        3.5509    1.0330    0.0000
+     6         1        2.1155   -1.0121    0.0000
+
+          RHF calculation, no. of doubly occupied orbitals= 12
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  C: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+ Cl: (AM1): M.J.S. DEWAR AND E. G. ZOEBISCH, THEOCHEM, 180, 1 (1988).           
+
+ REFERENCE FOR CHARGE MODEL 1:
+
+ J. W. Storer, D. J. Giesen, C. J. Cramer, and D. G. Truhlar, J. Comput.-Aided 
+   Mol. Des. 9 (1995) 87-110
+
+            Interatomic distances
+
+               Cl  1      C   2      C   3      Cl  4      H   5      H   6
+ ------------------------------------------------------------------------------
+    Cl  1    0.00000
+    C   2    1.68587    0.00000
+    C   3    2.68547    1.33531    0.00000
+    Cl  4    3.27231    2.68547    1.68587    0.00000
+    H   5    3.69809    2.13198    1.09953    2.34514    0.00000
+    H   6    2.34514    1.09953    2.13198    3.69809    2.49859    0.00000
+
+
+
+DERISA AM1 SYMMETRY SM5.4A IOFR=1.3611  ALPHA=0.37  BETA=0.48  GAMMA=31.6       
+& ASA NOINP   OPT DIELEC=24.85 HFCALC=1SCF TRUES SOLVNT=GENORG                  
+ Z-1,2-dichloroethylene (C2v symmetry) (solvent : ethanol)                       
+                                                                                 
+
+     1SCF WAS SPECIFIED, SO GEOMETRY OPTIMIZATION WAS NOT USED
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:22:16                  
+
+ Final heat of formation                   =      -3.311696 kcal
+ Electronic energy                         =   -2334.468925 eV
+ Core-core repulsion                       =    1303.650497 eV
+ No. of doubly occupied orbitals           =      12
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      95.953     amu
+ Computer time                             =       0.01     seconds
+
+               Orbital eigenvalues (eV)
+
+ -38.42015 -37.73670 -32.84779 -23.00979 -17.66105 -16.55747 -14.35144 -13.86268
+ -12.83750 -11.95886 -11.82023  -9.97109   0.37381   1.07872   1.51005   3.68770
+   4.22310   4.51336
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM1 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         Cl           -0.033           7.033
+           2         C            -0.129           4.129
+           3         C            -0.129           4.129
+           4         Cl           -0.033           7.033
+           5         H             0.162           0.838
+           6         H             0.162           0.838
+
+For the charges calculated by CM1:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges     1.545    -1.084     0.000     1.887
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         Cl           -0.002           7.002
+           2         C            -0.158           4.158
+           3         C            -0.158           4.158
+           4         Cl           -0.002           7.002
+           5         H             0.161           0.839
+           6         H             0.161           0.839
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges      1.206    -0.846     0.000     1.473
+ hybrid contribution     0.045    -0.032     0.000     0.055
+ sum                     1.251    -0.878     0.000     1.528
+
+          Atomic orbital electron populations
+
+   1.98119   1.08090   1.98779   1.95257   1.24380   0.87767   0.98942   1.04743
+   1.24380   0.99592   0.87117   1.04743   1.98119   1.89486   1.17382   1.95257
+   0.83923   0.83923
+
+   Number of geometries                                      1
+   The total number of SCF iterations                       10.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.01 seconds
+Wall clock time and date at job start Fri Dec  3 2004 14:22:16                  
+
+The following section contains the solvation information
+
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED
+ *  DERISA   - ALL DERIVATIVES BY SEMI-ANALYTICAL METHOD (DEFAULT)
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  OPT      - THE GEOMETRY WILL BE OPTIMIZED (DEFAULT)
+ *  SM5.4A   - SM5.4/A CALCULATIONS WILL BE PERFORMED
+ *           - CHARGE MODEL 1 WILL BE USED (CM1A)
+ *           - THE SOLVENT IS USER-SPECIFIED      
+ *  DIELEC   - THE SOLVENT DIELECTRIC CONSTANT IS  24.85
+ *  IOFR     - THE SOLVENT INDEX OF REFRACTION IS 1.3611
+ *  ALPHA    - THE SOLVENT ALPHA IS 0.37
+ *  BETA     - THE SOLVENT BETA IS 0.48
+ *  GAMMA    - THE SOLVENT MACROSCOPIC SURFACE TENSION IS 
+ *                 31.60 CAL MOL^-1 ANGSTROM^-2
+ *  ASA      - THE ANALYTICAL SURFACE AREA ALGORITHM WILL BE USED (DEFAULT)
+ *  NOINP    - A NEW INPUT FILE WILL NOT BE CREATED (DEFAULT)
+ *  TRUES    - TRUE SOLVATION FREE ENERGY CALCULATED
+ *  HF1SCF   - SINGLE POINT GAS PHASE ENERGY PROVIDED FOR TRUES CALCULATION
+ *******************************************************************************
+
+     Parameter dependence data
+
+        Reference atom      Function no.    Dependent atom(s)
+            2                  1             4
+            3                  2             4
+            5                  1             6
+            5                  2             6
+
+             Descriptions of the function numbers in the above table.
+   1      Bond length    is set equal to the reference bond length   
+   2      Bond angle     is set equal to the reference bond angle    
+
+                Initial Geometry
+
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  Cl
+    2       2  C            1.68587 *                                 1
+    3       3  C            1.33531 *   125.06321 *                   2   1
+    4       4  Cl           1.68587     125.06321       0.00000       3   2   1
+    5       5  H            1.09953 *   121.93709 *   180.00000       3   2   1
+    6       6  H            1.09953     121.93709     180.00000       2   3   4
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1        17        0.0000    0.0000    0.0000
+     2         6        1.6859    0.0000    0.0000
+     3         6        2.4530    1.0930    0.0000
+     4        17        1.8799    2.6784    0.0000
+     5         1        3.5509    1.0330    0.0000
+     6         1        2.1155   -1.0121    0.0000
+
+          RHF calculation, no. of doubly occupied orbitals= 12
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  C: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+ Cl: (AM1): M.J.S. DEWAR AND E. G. ZOEBISCH, THEOCHEM, 180, 1 (1988).           
+
+ REFERENCE FOR CHARGE MODEL 1:
+
+ J. W. Storer, D. J. Giesen, C. J. Cramer, and D. G. Truhlar, J. Comput.-Aided 
+   Mol. Des. 9 (1995) 87-110
+
+ REFERENCE(S) FOR CHOSEN SOLVATION MODEL:
+
+ D. J. Giesen, M. Z. Gu, C. J. Cramer, and D. G. Truhlar, J. Org. Chem. 61
+   (1996) 8720-8721.
+
+ D. J. Giesen, D. G. Hawkins, D. A. Liotard, C. J. Cramer, and D. G. Truhlar,  
+   Theor. Chim. Acta, 98 (1997) 85-109
+
+            Interatomic distances
+
+               Cl  1      C   2      C   3      Cl  4      H   5      H   6
+ ------------------------------------------------------------------------------
+    Cl  1    0.00000
+    C   2    1.68587    0.00000
+    C   3    2.68547    1.33531    0.00000
+    Cl  4    3.27231    2.68547    1.68587    0.00000
+    H   5    3.69809    2.13198    1.09953    2.34514    0.00000
+    H   6    2.34514    1.09953    2.13198    3.69809    2.49859    0.00000
+ GRADIENT BY QUASI-ANALYTICAL FORMALISM:
+ - ANALYTICAL DERIVATIVES OF SOLVATION INTEGRALS
+ - NUMERICAL (CENTRAL DIFFERENCES) DERIVATION OF ELECTRONIC INTEGRALS & JACOBIAN
+
+ STANDARD DEVIATION ON ENERGY (kcal)         0.00006434
+                       GRADIENT (kcal/RU)    0.00309995 0.00631824 0.00000000
+
+        CYC : CYCLES   T : TIME (S)  GEO : CHANGE IN GEOMETRY
+        GCOMP : LARGEST COMPONENT OF GRADIENT (KCAL/RU)
+        HEAT : TOTAL ENERGY (KCAL/MOL)
+        1 RU = 1 ANGSTROM OR 1 RADIAN
+
+
+          DIAGONAL MATRIX USED AS HESSIAN
+
+ CYC:  0  T:    0.0  GEO: 0.000000  GCOMP:  11.134  HEAT:   -6.794754
+ CYC:  1  T:    0.0  GEO: 0.002859  GCOMP:   5.910  HEAT:   -6.827485
+ CYC:  2  T:    0.0  GEO: 0.001000  GCOMP:   1.378  HEAT:   -6.838165
+ CYC:  3  T:    0.0  GEO: 0.000431  GCOMP:   0.880  HEAT:   -6.838809
+ CYC:  4  T:    0.1  GEO: 0.000200  GCOMP:   0.273  HEAT:   -6.839194
+
+     ABSOLUTE VALUE OF LARGEST GRADIENT COMPONENT =  0.13556
+     IS LESS THAN CUTOFF =  0.45000 AND THE CALCULATED ENERGY
+     CHANGED LESS THAN .1 KCAL/MOL FOR LAST GEOMETRY CHANGE.
+
+
+DERISA AM1 SYMMETRY SM5.4A IOFR=1.3611  ALPHA=0.37  BETA=0.48  GAMMA=31.6       
+& ASA NOINP   OPT DIELEC=24.85             TRUES SOLVNT=GENORG                  
+& HF1SCF=-3.311696                                                              
+  Z-1,2-dichloroethylene (C2v symmetry) (solvent : ethanol)                      
+                                                                                 
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:22:16                  
+
+ Heat of formation + Delta-G solvation     =      -6.839194 kcal
+ Electronic energy + Delta-G solvation     =   -2332.066680 eV
+ Core-core repulsion                       =    1301.095287 eV
+ Total energy + Delta-G solvation          =   -1030.971393 eV
+ Gradient norm                             =       0.272858 kcal/RU
+ No. of doubly occupied orbitals           =      12
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      95.953     amu
+ Computer time                             =       0.06     seconds
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  Cl
+    2       2  C            1.69290 *                                 1
+    3       3  C            1.33366 *   125.02761 *                   2   1
+    4       4  Cl           1.69290     125.02761       0.00000       3   2   1
+    5       5  H            1.10296 *   122.10262 *   180.00000       3   2   1
+    6       6  H            1.10296     122.10262     180.00000       2   3   4
+
+            Interatomic distances (angstroms)
+
+               Cl  1      C   2      C   3      Cl  4      H   5      H   6
+ ------------------------------------------------------------------------------
+    Cl  1    0.00000
+    C   2    1.69290    0.00000
+    C   3    2.69004    1.33366    0.00000
+    Cl  4    3.27701    2.69004    1.69290    0.00000
+    H   5    3.70754    2.13510    1.10296    2.35240    0.00000
+    H   6    2.35240    1.10296    2.13510    3.70754    2.50597    0.00000
+
+               Orbital eigenvalues (eV)
+
+ -38.05236 -37.26312 -32.96175 -22.89463 -17.57609 -16.49647 -14.32720 -13.74939
+ -12.76713 -11.90436 -11.75844 -10.06267   0.24947   0.93805   1.51102   3.69729
+   3.96929   4.38549
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM1 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         Cl           -0.070           7.070
+           2         C            -0.128           4.128
+           3         C            -0.128           4.128
+           4         Cl           -0.070           7.070
+           5         H             0.198           0.802
+           6         H             0.198           0.802
+
+For the charges calculated by CM1:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges     2.223    -1.558     0.000     2.715
+
+
+Note:  The Mulliken population analysis charges presented below were not
+used in the solvation calculation but are provided for completeness.
+The chosen solvation model uses CM1 partial charges for calculating
+solvation energies.
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         Cl           -0.038           7.038
+           2         C            -0.159           4.159
+           3         C            -0.159           4.159
+           4         Cl           -0.038           7.038
+           5         H             0.198           0.802
+           6         H             0.198           0.802
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges      1.869    -1.310     0.000     2.283
+ hybrid contribution    -0.113     0.080     0.000     0.139
+ sum                     1.756    -1.231     0.000     2.144
+
+          Cartesian coordinates (angstroms)
+
+    NO.       Atom               X         Y         Z
+
+     1        Cl            0.00000   0.00000   0.00000
+     2        C             1.69290   0.00000   0.00000
+     3        C             2.45838   1.09210   0.00000
+     4        Cl            1.88091   2.68346   0.00000
+     5        H             3.55991   1.03582   0.00000
+     6        H             2.12155  -1.01626   0.00000
+
+          Atomic orbital electron populations
+
+   1.98158   1.11173   1.98900   1.95600   1.25029   0.85862   1.00628   1.04400
+   1.25029   1.01195   0.85296   1.04400   1.98158   1.89933   1.20141   1.95600
+   0.80249   0.80249
+
+   Number of geometries                                      5
+   Number of calculations of the screened coulomb radii      5
+   The total number of SCF iterations                       55.
+    Note: The number of geometries may not
+    correspond to the number of cycles due to rejected geometry changes.
+
+ In the following table subtotal= G_P + SS G_CDS.
+
+  Atom   Chem.  CM1      G_P      Area      Sigma k    SS G_CDS Subtotal   M
+ number symbol   chg.    (kcal) (Ang**2)  cal/(Ang**2)  (kcal)   (kcal)  value
+
+   1       Cl   -0.07    -0.15    79.77     -78.25      -6.24    -6.39     11
+   2       C    -0.13     0.23    14.26     -52.71      -0.75    -0.52     11
+   3       C    -0.13     0.23    14.26     -52.71      -0.75    -0.52     11
+   4       Cl   -0.07    -0.15    79.77     -78.25      -6.24    -6.39     11
+   5       H     0.20    -1.22    32.25     -70.04      -2.26    -3.48     11
+   6       H     0.20    -1.22    32.25     -70.04      -2.26    -3.48     11
+
+ LS Contribution                 483.14      34.45      16.65    16.65
+
+ Total:          0.00    -2.28   252.56                 -1.86    -4.14
+
+ By element:
+
+ Atomic #  1  Polarization:   -2.44  SS G_CDS:  -4.52  Total:    -6.96 kcal
+ Atomic #  6  Polarization:    0.46  SS G_CDS:  -1.50  Total:    -1.05 kcal
+ Atomic # 17  Polarization:   -0.30  SS G_CDS: -12.48  Total:   -12.79 kcal
+ Total LS contribution                          16.65  Total:    16.65 kcal
+
+ Total:                       -2.28             -1.86            -4.14 kcal
+
+   The number of atoms in the molecule is      6
+   The average number of expansion shells was   11.00
+   The maximum number of expansion shells was     11
+   The minimum number of expansion shells was     11
+
+
+                                                                                 
+  Z-1,2-dichloroethylene (C2v symmetry) (solvent : ethanol)                      
+
+ geometry optimization run with TRUES
+
+ (0)  E-EN(g) gas-phase electronic-nuclear energy                   -3.312 kcal
+
+    This is a breakdown of the true solvation energy:
+
+ (1)  E-EN(sol) electronic-nuclear energy of solute                 -2.695 kcal
+ (2)  G-P(sol) polarization free energy of solvation                -2.285 kcal
+ (3)  G-ENP(sol) elect.-nuc.-pol. free energy of system             -4.980 kcal
+ (4)  G-CDS(sol) cavity-dispersion-solvent structure free energy    -1.860 kcal
+ (5)  G-P-CDS(sol) = G-P(sol) + G-CDS(sol) = (2) + (4)              -4.144 kcal
+ (6)  G-S(sol) free energy of system = (1) + (5)                    -6.839 kcal
+ (7)  DeltaE-EN(sol) elect.-nuc. reorganization energy of solute     0.617 kcal
+      (7) = (1) - (0)
+ (8)  DeltaG-ENP(sol) elect.-nuc.-pol. free energy of solvation     -1.668 kcal
+      (8) = (3) - (0)
+ (9)  DeltaG-S(sol) free energy of  solvation                       -3.527 kcal
+      (9) = (6) - (0)
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+
+ Total computer time =       0.06 seconds

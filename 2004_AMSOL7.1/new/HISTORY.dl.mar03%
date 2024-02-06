@@ -1,0 +1,111 @@
+               SUMMARY OF MODIFICATIONS, BY DL, mar 03
+                       AT START FROM AMSOL6.8
+               ----------------------------------------
+
+ I- Bug
+ ======
+    Attempting geometry optimization with SM5.2R, one gets a message
+indicating to use keyword SM5.2. That's a normal answer. BUT...
+attempting geometry optimization with SM5.2, one gets
+                UNIDENTIFIED AMSOL "MODEL". ABORT.
+and the run enters an infinite loop.
++++ Diagnosis #1
+    There is no communication of (istop, iwhere) set by LOADIN,
+    called by LOADSP (immediate return on istop),
+    called by either SMX1 or SRFCTY (no check of istop) !!!!
+    called by BORNPL (no check of istop),
+    called by ITER or WRITES (no check of istop),
+    called by various routines, including COMPFG,
+    called by various optimizers,
+    called by AMSOL,
+    called by MAIN  where the normal message&stop is implemented.
++++ Remedy #1
+    Create an "abort routine" STPJOB, and call it immediately
+from where istop is flagged on. Don't try to follow the arborescence
+up to the main program (much too complicated).
+    Modified amsol.compile accordingly.
+    Modified LOADIN and MAIN now calling STPJOB.
+That's work.
+
+Also, SM5.2 should be a recognized model, with parameters being
+those of SM5.2R (in accordance with earlier discussions with Don in 1999).
++++ Diagnosis and remedy #2
+    In FINDKY, keyword SM5.2 is recognized, yielding ISM52=1.
+    But in READS, one can see the strange statement:
+      ELSE IF ((ISM52R.GT.0).OR.(ISM52R.GT.0)) THEN                    PDW1199
+    have a laugh and correct:
+      ELSE IF ((ISM52R.GT.0).OR.(ISM52.GT.0)) THEN                     DAL0303
+That's work.
+
+
+ II- Gauss-Legendre quadrature never enabled
+ ===========================================
+   With either SM5.2 or SM5.4R, the GL quadrature is never entered.
++++ Diagnosis
+   The flag NINTEG is set to 3 in routine READS.
+   The routine EBRGLQ is never called by routine SMX1 called by BORNPL.
++++ Remedy
+   In READS, set NINTEG=3 for SM5.4R, SM5.2R and SM5.2, SM5.4A, SM5.4P, SM5.4U
+   In SMX1, call EBRGLQ on NINTEG=3.
+
+
+ III- Existence of the "cusp" problem
+ ====================================
+   The starting geometry (imine4.dat) is one of those where a "cusp" was
+discovered using AMPAC-7.0.
+   With AMSOL6.8, no matter the optimizer (EF or TRUSTE), optimization
+fails at cycle 1, using analytical gradients and trapezoidal quadrature.
+Using GL quadrature, optimization proceeds a bit more, but can't never be
+successfully completed.
+Using "DERINU", optimization is also never successfully completed.
++++ Remedy
+   Implementation in routine DAREAL of mathematical tricks making the
+cusps vanish in first and second derivatives of the PES. (Re-use of
+preliminary work in AMPAC-7.0).
++++ Results 1
+   Hof and details of ENP, GCDS energies agree with AMPAC-7.0,
+BUT analytical gradient is wrong.
+
++++ Diagnosis
+   The structure implemented in 1997 for analytical gradients of SM5.x
+models has not been pursued: the subroutine SM5HB didn't evolved,
+replaced by the new routine SM5RHB... with no gradients.
+   In simple words, it is absolutely impossible to optimize geometries
+with a SM5.x using AMSOL6.8, no matter the parameters are "R" (rigid
+geometries).
++++ Remedy
+   Implementation of gradients in SM5RHB; plus various numerical
+regularizations already checked in AMPAC-7.0 ...
++++ Results 2
+   Optimized hof and details of ENP, GCDS energies agree with AMPAC-7.0,
+whoof...
+
+
+ IV- Other comments: Makefile, element Si
+ ========================================
+
+ IV.1- I observe no request for optimization (-O) in the "amsol.compile"
+for a linux system. Why?
+
+ IV.2- I never found how to compute SiH4 with some SM5.x models.
+Either amsol6.8 complains "AN ATOM TYPE WAS USED WHICH IS INCOMPATIBLE..."
+or, using DEV, the run goes into infinite loop. Tried SM5.2, SM5.4A, SM5.4U
+Is element Si really implemented and operative?
+
+
+
+
+
+
+
+
+ V-  LIST OF ROUTINES MODIFIED/ADDED
+ ===================================
+ dareal.f
+ loadin.f
+ main.f
+ reads.f
+ sm5rhb.f
+ smx1.f
+ stpjob.f
+

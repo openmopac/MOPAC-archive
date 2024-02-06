@@ -1,0 +1,164 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:21:55                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  SM5.0R   - SM5.0R CALCULATION WILL BE PERFORMED
+ *           - THE SOLVENT IS WATER               
+ *  AREAS    - SOLVENT ACCESSIBLE SURFACE AREAS WILL BE PRINTED
+ *******************************************************************************
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  C 
+    2       2  C            1.31164 *                                 1
+    3       3  Cl           1.73028 *   124.57900 *                   2   1
+    4       4  Cl           1.72889 *   124.40000 *     0.00000 *     1   2   3
+    5       5  Cl           1.73964 *   120.66400 *   180.00000 *     1   2   3
+    6       6  H            1.06961 *   120.68900 *   180.00000 *     2   1   3
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         6        0.0000    0.0000    0.0000
+     2         6        1.3116    0.0000    0.0000
+     3        17        2.2936    1.4246    0.0000
+     4        17       -0.9768    1.4265    0.0000
+     5        17       -0.8872   -1.4964    0.0000
+     6         1        1.8575   -0.9198    0.0000
+
+            Interatomic distances
+
+               C   1      C   2      Cl  3      Cl  4      Cl  5      H   6
+ ------------------------------------------------------------------------------
+    C   1    0.00000
+    C   2    1.31164    0.00000
+    Cl  3    2.70007    1.73028    0.00000
+    Cl  4    1.72889    2.69663    3.27041    0.00000
+    Cl  5    1.73964    2.65973    4.31859    2.92429    0.00000
+    H   6    2.07281    1.06961    2.38464    3.67949    2.80467    0.00000
+SOLVNT=WATER SM5.0R AREAS                                                       
+ trichloroethene in water                                                        
+                                                                                 
+
+     The following section contains information on  G_CDS.
+
+ ******
+
+ Small-sphere (SS) solvent radius:  0.00
+ Large-sphere (LS) solvent radius:  0.00
+
+ ******
+
+ Single-subscript surface-tension-coefficient contributions to G_CDS:
+
+  Element        CD Area           Sigma           Total
+     Z                               k                   
+                (Ang**2)       cal/(Ang**2)        (kcal)
+
+     H               7.970         98.220          0.783
+     C              17.277         89.210          1.541
+     Cl             86.151         73.520          6.334
+
+ Subtotal:                                         8.658
+
+ ******
+
+ Double-subscript surface-tension-coefficient contributions to G_CDS:
+
+  Element        COT*Area(k)      Sigma           Total 
+  k   k'                            k,k'                
+                  (Ang**2)      cal/(Ang**2)      (kcal) 
+
+  H    H             0.000          0.000          0.000
+  H    C             5.426       -126.780         -0.688
+  H    Cl            0.000          0.000          0.000
+  H  N(2)            0.000          0.000          0.000
+  H  O(2)            0.000          0.000          0.000
+  C  C(1)           12.028        -84.710         -1.019
+  C  C(2)            1.464        -50.910         -0.075
+  O    C             0.000        171.640          0.000
+  O    O             0.000        152.570          0.000
+  O    Si            0.000          0.000          0.000
+  C    N             0.000         78.990          0.000
+  N    C             0.000        -68.910          0.000
+  N  C(2)            0.000       -529.660          0.000
+  N  C(3)            0.000          0.000          0.000
+  O    N             0.000        363.370          0.000
+  S    S             0.000         98.040          0.000
+  O    P             0.000          0.000          0.000
+  S    P             0.000          0.000          0.000
+  Cl   C            28.061       -223.180         -6.263
+  Br   C             0.000       -220.050          0.000
+
+ Subtotal:                                        -8.044
+
+ Total small-sphere (SS) G_CDS:                    0.614
+
+ ******
+
+ Contribution to G_CDS from terms that do not depend on atomic number,
+   i.e., the ones that depend on the large-sphere (LS) areas:
+
+  Element     LS Area
+     Z       (Ang**2)
+
+     H          0.000
+     C          0.000
+     Cl         0.000
+
+   Total:       0.000
+
+
+ ******
+
+ G_CDS Total:                                      0.614
+
+ ******
+
+ In the following table subtotal= G_P + SS G_CDS.
+
+  Atom   Chem. SM5.0R    G_P      Area      Sigma k    SS G_CDS Subtotal   M
+ number symbol   chg.    (kcal) (Ang**2)  cal/(Ang**2)  (kcal)   (kcal)  value
+
+   1       C     0.00     0.00     6.92      25.92       0.18     0.18      0
+   2       C     0.00     0.00    10.36      25.92       0.27     0.27      0
+   3       Cl    0.00     0.00    28.76      -9.54      -0.27    -0.27      0
+   4       Cl    0.00     0.00    28.50       5.88       0.17     0.17      0
+   5       Cl    0.00     0.00    28.90       6.16       0.18     0.18      0
+   6       H     0.00     0.00     7.97      11.90       0.09     0.09      0
+
+ Total:          0.00     0.00   111.40                  0.61     0.61
+
+ By element:
+
+ Atomic #  1  Polarization:    0.00  SS G_CDS:   0.09  Total:     0.09 kcal
+ Atomic #  6  Polarization:    0.00  SS G_CDS:   0.45  Total:     0.45 kcal
+ Atomic # 17  Polarization:    0.00  SS G_CDS:   0.07  Total:     0.07 kcal
+
+ Total:                        0.00              0.61             0.61 kcal
+
+   The number of atoms in the molecule is      6
+   The average number of expansion shells was    0.00
+   The maximum number of expansion shells was      0
+   The minimum number of expansion shells was      0
+
+
+                                                                                 
+ trichloroethene in water                                                        
+ Free energy of  solvation calculated with                           0.614 kcal
+ the SM5.0R model which neglects electrostatics
+
+ Total computer time =       0.00 seconds

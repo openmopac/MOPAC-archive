@@ -1,0 +1,155 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:17:23                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  DERISA   - ALL DERIVATIVES BY SEMI-ANALYTICAL METHOD (DEFAULT)
+ *  CHARGE   - CHARGE ON SYSTEM= -1
+ *  UHF      - UNRESTRICTED HARTREE-FOCK CALCULATION
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  OPT      - THE GEOMETRY WILL BE OPTIMIZED (DEFAULT)
+ *  INPUT    - A NEW INPUT FILE WILL BE CREATED WITH THE OPTIMIZED GEOMETRY
+ *******************************************************************************
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  O 
+    2       2  O            1.17098 *                                 1
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         8        0.0000    0.0000    0.0000
+     2         8        1.1710    0.0000    0.0000
+
+          UHF calculation, no. of alpha electrons =  7
+                           no. of beta  electrons =  6
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  O: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+
+            Interatomic distances
+
+               O   1      O   2
+ ------------------------------
+    O   1    0.00000
+    O   2    1.17098    0.00000
+ GRADIENT BY QUASI-ANALYTICAL FORMALISM:
+ - NUMERICAL (CENTRAL DIFFERENCES) DERIVATION OF ELECTRONIC INTEGRALS & JACOBIAN
+
+ STANDARD DEVIATION ON ENERGY (kcal)         0.00006434
+                       GRADIENT (kcal/RU)    0.00150332 0.00000000 0.00000000
+
+        CYC : CYCLES   T : TIME (S)  GEO : CHANGE IN GEOMETRY
+        GCOMP : LARGEST COMPONENT OF GRADIENT (KCAL/RU)
+        HEAT : TOTAL ENERGY (KCAL/MOL)
+        1 RU = 1 ANGSTROM OR 1 RADIAN
+
+
+          DIAGONAL MATRIX USED AS HESSIAN
+
+ CYC:  0  T:    0.0  GEO: 0.000000  GCOMP:   7.229  HEAT:  -22.808853
+ CYC:  1  T:    0.0  GEO: 0.006135  GCOMP:  10.864  HEAT:  -22.795564
+ CYC:  2  T:    0.0  GEO: 0.003698  GCOMP:   0.074  HEAT:  -22.819250
+
+     ABSOLUTE VALUE OF LARGEST GRADIENT COMPONENT =  0.07387
+     IS LESS THAN CUTOFF =  0.45000 AND THE CALCULATED ENERGY
+     CHANGED LESS THAN .1 KCAL/MOL FOR LAST GEOMETRY CHANGE.
+
+
+ CHARGE=-1 AM1 UHF                                                              
+&  INPUT   DERISA OPT                                                           
+ superoxide anion (gas-phase)                                                    
+                                                                                 
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:17:23                  
+
+ Final heat of formation                   =     -22.819250 kcal
+ Electronic energy                         =   -1000.746801 eV
+ Core-core repulsion                       =     362.392900 eV
+ Gradient norm                             =       0.073871 kcal/RU
+ No. of alpha electrons                    =       7
+ No. of beta  electrons                    =       6
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      31.999     amu
+ Computer time                             =       0.00     seconds
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  O 
+    2       2  O            1.17386 *                                 1
+
+            Interatomic distances (angstroms)
+
+               O   1      O   2
+ ------------------------------
+    O   1    0.00000
+    O   2    1.17386    0.00000
+
+          AlphaOrbital eigenvalues (eV)
+
+ -32.01789 -21.40752  -9.22925  -8.41723  -7.62135  -1.48467  -0.68879  16.21750
+
+           Beta eigenvalues 
+ -30.55883 -19.40632  -8.64465  -7.23429  -5.66898  -0.26660  10.32634  16.91184
+
+          Molecular weight =   32.00amu
+
+           Principal moments of inertia in cm(-1)
+          A =    0.000000   B =    1.529307   C =    1.529307
+
+           Principal moments of inertia in units of 10**(-40)*gram-cm**2
+          A =    0.000000   B =   18.304555   C =   18.304555
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         O            -0.500           6.500
+           2         O            -0.500           6.500
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges      0.000     0.000     0.000     0.000
+ hybrid contribution     0.000     0.000     0.000     0.000
+ sum                     0.000     0.000     0.000     0.000
+
+          Cartesian coordinates (angstroms)
+
+    NO.       Atom               X         Y         Z
+
+     1        O            -0.58693   0.00000   0.00000
+     2        O             0.58693   0.00000   0.00000
+
+          Atomic orbital electron populations
+
+   1.93276   1.06724   1.50000   2.00000   1.93276   1.06724   1.50000   2.00000
+
+                    (SZ)    =  0.500000
+                    (S**2)  =  0.750492
+
+          Atomic orbital spin populations
+
+   0.00555  -0.00555   0.50000   0.00000   0.00555  -0.00555   0.50000   0.00000
+
+   Number of geometries                                      3
+   The total number of SCF iterations                       21.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.00 seconds

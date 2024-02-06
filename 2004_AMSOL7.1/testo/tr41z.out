@@ -1,0 +1,121 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:23:51                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *  1SCF     - SCF CALCULATION WITHOUT GEOMETRY OPTIMIZATION 
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  CM2      - CHARGE MODEL 2 WILL BE USED (CM2A)
+ *******************************************************************************
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  H 
+    2       2  O            0.96615 *                                 1
+    3       3  C            1.42208 *   106.72200 *                   2   1
+    4       4  H            1.08396 *   106.74200 *   180.00000 *     3   2   1
+    5       5  H            1.08984 *   112.15200 *    61.37500 *     3   2   1
+    6       6  H            1.08984 *   112.15200 *   -61.37500 *     3   2   1
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         1        0.0000    0.0000    0.0000
+     2         8        0.9661    0.0000    0.0000
+     3         6        1.3753    1.3619    0.0000
+     4         1        2.4593    1.3623    0.0000
+     5         1        1.0304    1.8946    0.8860
+     6         1        1.0304    1.8946   -0.8860
+
+          RHF calculation, no. of doubly occupied orbitals=  7
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  C: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  O: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+
+ REFERENCE FOR CHARGE MODEL 2:
+
+ J. Li, J. Xing, C. J. Cramer, and D. G. Truhlar, J. Chem. Phys. 111 (1999) 885.
+
+
+
+AM1 CM2 1SCF                                                                    
+ methanol CM2 charges                                                            
+                                                                                 
+
+     1SCF WAS SPECIFIED, SO GEOMETRY OPTIMIZATION WAS NOT USED
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:23:51                  
+
+ Final heat of formation                   =     -55.489046 kcal
+ Electronic energy                         =   -1071.376963 eV
+ Core-core repulsion                       =     567.439488 eV
+ No. of doubly occupied orbitals           =       7
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      32.031     amu
+ Computer time                             =       0.00     seconds
+
+               Orbital eigenvalues (eV)
+
+ -37.75630 -27.39841 -18.25079 -15.45978 -15.34736 -12.61623 -11.22544   3.74474
+   4.15545   4.31047   4.77864   6.17342
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM2 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         H             0.353           0.647
+           2         O            -0.524           6.524
+           3         C             0.029           3.971
+           4         H             0.074           0.926
+           5         H             0.034           0.966
+           6         H             0.034           0.966
+
+For the charges calculated by CM2:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges    -1.030     1.288     0.000     1.649
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         H             0.196           0.804
+           2         O            -0.323           6.323
+           3         C            -0.069           4.069
+           4         H             0.093           0.907
+           5         H             0.052           0.948
+           6         H             0.052           0.948
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges     -0.346     1.104     0.000     1.157
+ hybrid contribution    -0.534     0.301     0.000     0.613
+ sum                    -0.880     1.404     0.000     1.657
+
+          Atomic orbital electron populations
+
+   0.80445   1.87323   1.24215   1.23384   1.97420   1.22064   1.01471   0.84159
+   0.99228   0.90727   0.94782   0.94782
+
+   Number of geometries                                      1
+   The total number of SCF iterations                       10.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.00 seconds

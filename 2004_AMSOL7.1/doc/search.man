@@ -1,0 +1,27 @@
+#!/bin/csh -f
+#usage
+#search.man
+#
+# This is a sample script which searches the amsol.doc online manual
+# for a specified search string, then lists out all paragraphs in the
+# manual containing the search string to the standard output.
+# NOTE: This script assumes that the amsol.doc manual is in the same
+# directory that this script will be run from.
+# THIS SCRIPT WILL NOT WORK IF THE grep COMMAND ON YOUR MACHINE DOES NOT
+# SUPPORT THE -p OPTION.
+#
+        if ($#argv<1) then
+           goto string
+        endif
+        set input = "$argv[1-$#argv]"
+        echo $input
+        goto runstring
+
+#
+ string:
+        echo -n 'Input string to be searched for: '
+        set input = $<
+#
+ runstring:
+         grep -inp "$input" amsol.doc
+#

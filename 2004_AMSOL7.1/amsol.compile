@@ -1,0 +1,1788 @@
+#!/bin/csh -f
+#usage
+#amsol.compile
+#
+# This is a sample script which compiles and links AMSOL
+#
+# Note: this script assumes that all the INCLUDE files are
+#       in the current working directory defined below and that the
+#       source files are in subdirectories of the working directory
+#       as follows:
+#
+#            unmod - contains unmodified public domain code
+#             port - contains formerly public domain code that
+#                    has been modified for the sake of portability
+#              new - contains code that is specific to AMSOL
+#             mach - contains machine specific routines
+#          include - contains the *.i include files
+#
+#
+# Substitute the current working directory here:
+#
+set wrkdir   = `pwd`
+#
+# Note:  The following six set statements set the directories to the
+#        default choices of the AMSOL distribution package.  Note that
+#        the directories must be relative to the current working directory
+#        and contain all the files which are in the distribution package
+#        in the mach, include, new, port, unmod, and obj directories,
+#        respectively.
+#
+set machdir  = mach
+set incdir   = include
+set newdir   = new
+set portdir  = port
+set unmoddir = unmod
+set objdir   = obj
+#
+#Note:  The following set statement needs to be modified only when compiling
+#       on a Sun Workstation.
+set tempdir  = ' '
+#
+#
+# This section reads the type of machine to compile the AMSOL code on from
+#      the argument given after the amsol.compile command.
+#      Options are linux, dec, ibm, cray, sgi64, iris, sun, compaq
+#
+        if ($#argv>= 1) then
+                set machine = $argv[$#argv]
+                if ($#argv == 2) set options = $argv[1]
+                if ($#argv > 2) then
+                   echo 'There is a problem with the options input'
+                   echo '--Switching to interactive mode'
+                   goto inputmachine
+                endif
+                goto checkmachine
+        endif
+
+set LDF = ''
+echo ' '
+echo 'Do you wish to configure manually or have me guess? (man, auto) [auto]:'
+set man_config = $<
+if ($man_config == 'man') then
+  goto inputmachine
+endif
+
+echo '..auto configuring'
+
+set exename = 'amsol7.1.exe'
+
+set whereprog = 'whereis'
+where where >> /dev/null
+if ($status == 0) then
+  set whereprog = 'where'
+endif
+
+
+set irixcheck=`uname`
+if ($irixcheck == 'IRIX64') then
+  echo '....machine is SGI'
+  set options = 's n'  
+  $whereprog f77 >> /dev/null
+  if ($status == 0) then
+      echo '....found f77 compiler'
+      set F77 = 'f77 -64 -d8 -c -I'${wrkdir}/${incdir}' -O3 -i4 -static \
+                -mips4 -OPT:roundoff=3:IEEE_arithmetic=3:fast_sqrt=off \
+                -backslash -o'
+      set F77o = 'f77 -64 -d8 -c -I'${wrkdir}/${incdir}' -O2 -i4 -static \
+                 -mips4 -OPT:roundoff=3:IEEE_arithmetic=3:fast_sqrt=off \
+                 -backslash -o'
+      set LD  = 'f77 -w -64 -lfastm -mips4 -o'
+      set machine = 'sgi64'
+      goto compilestart
+  endif
+  $whereprog g77 >> /dev/null
+  if ($status == 0) then
+      echo '....found g77 compiler'
+      set F77  = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -O -o'
+      set F77o = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'g77 -w -o'
+      set machine = 'linux'  
+      goto compilestart
+  endif
+  echo 'failed to find a suitable compiler'     
+  echo 'switching to manual mode'
+  goto inputmachine
+endif
+
+if ($MACHTYPE == 'i386') then
+   echo '....machine is i386'
+   set options = 's n'                  
+   $whereprog f77 >> /dev/null
+   if ($status == 0) then 
+      echo '....found f77 compiler'
+      set F77  = 'f77 -w -c -finit-local-zero -fno-automatic -Iinclude -O -o'
+      set F77o = 'f77 -w -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'f77 -w -o'
+      set machine = 'linux'
+      goto compilestart
+   endif
+   $whereprog g77 >> /dev/null
+   if ($status == 0) then 
+      echo '....found g77 compiler'
+      set F77  = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -O -o'
+      set F77o = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'g77 -w -o'
+      set machine = 'linux'
+      goto compilestart
+   endif
+   echo 'failed to find a suitable compiler'     
+   echo 'switching to manual mode'
+   goto inputmachine
+endif
+
+if ($MACHTYPE == 'powerpc') then
+   echo '....machine is PowerPC'
+   set options = 's n'                  
+   $whereprog f77 >> /dev/null
+   if ($status == 0) then 
+      echo '....found f77 compiler'
+      set F77  = 'f77 -w -c -finit-local-zero -fno-automatic -Iinclude -O -o'
+      set F77o = 'f77 -w -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'f77 -w -o'
+      set machine = 'linux'
+      goto compilestart
+   endif
+   $whereprog g77 >> /dev/null
+   if ($status == 0) then 
+      echo '....found g77 compiler'
+      set F77  = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -O3 -o'
+      set F77o = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'g77 -w -o'
+      set machine = 'linux'
+      goto compilestart
+   endif
+   echo 'failed to find a suitable compiler'     
+   echo 'switching to manual mode'
+   goto inputmachine
+endif
+if ($MACHTYPE == 'rs6000') then
+   echo '....machine is RS6000'
+   set options = 's n'                  
+   $whereprog f77 >> /dev/null
+   if ($status == 0) then
+      echo '....found f77 compiler'
+      set F77 = 'f77 -c -I'${wrkdir}/${incdir}' -O2 -static -o'
+      set F77o = 'f77 -c -I'${wrkdir}/${incdir}' -O2 -static -o'
+      set LD  = 'f77 -o'
+      set machine = 'ibm604e'
+      goto compilestart
+   endif
+   $whereprog xlf >> /dev/null
+   if ($status == 0) then
+      echo '....found XLF compiler'
+      set F77 = 'xlf -c -I'${wrkdir}/${incdir}' -O2 -static -o'
+      set F77o = 'xlf -c -I'${wrkdir}/${incdir}' -O2 -static -o'
+      set LD  = 'xlf -o'
+      set machine = 'ibm604e'
+      goto compilestart
+   endif
+   echo 'failed to find a suitable compiler'     
+   echo 'switching to manual mode'
+   goto inputmachine
+endif
+if ($MACHTYPE == 'sparc') then
+   echo '....machine is SPARC'
+   set options = 's n'                  
+   set tempdir = `pwd`
+   $whereprog f77 >> /dev/null
+   if ($status == 0) then
+      echo '....found f77 compiler'
+      set F77 = 'f77 -c -I'${wrkdir}/${incdir}' -O3 -temp='$tempdir' -o' 
+      set F77o = 'f77 -c -I'${wrkdir}/${incdir}' -O2 -temp='$tempdir' -o'
+      set LD  = 'f77 -O3 -o'
+      set machine = 'sun'
+      goto compilestart
+   endif
+   $whereprog g77 >> /dev/null
+   if ($status == 0) then 
+      echo '....found g77 compiler'
+      set F77 = 'g77 -c -I'${wrkdir}/${incdir}' -O2 -o'
+      set F77o = 'g77 -c -I'${wrkdir}/${incdir}' -O2  -o'
+      set LD  = 'g77 -o '     
+      set machine = 'sun'
+      goto compilestart
+   endif
+   echo 'failed to find a suitable compiler'     
+   echo 'switching to manual mode'
+   goto inputmachine
+endif
+
+if ($MACHTYPE == 'alpha-dec-osf5.0') then
+   echo '....machine is ALPHA'
+   set options = 's n'   
+   set tempdir = `pwd`   
+   $whereprog f77 >> /dev/null
+   if ($status == 0) then
+      echo '....found f77 compiler'
+      set F77 = 'f77 -c -w -I'${wrkdir}/${incdir}' -O3 -temp='$tempdir' -o'
+      set F77o = 'f77 -c -w -I'${wrkdir}/${incdir}' -O2 -temp='$tempdir' -o'
+      set LD  = 'f77 -O3 -w -o'
+      set machine = 'dec'
+      goto compilestart
+   endif
+endif
+
+if ($MACHTYPE == 'unknown') then
+   
+   set osname = `uname`
+   
+   test -e /proc/cpuinfo
+   if ($status == 0) then
+     grep -q IA\-64  /proc/cpuinfo
+     if ($status == 0) echo '....machine is IA-64'      
+   endif
+   
+   echo '....looking for a suitable compiler'
+   set options = 's n'                  
+   $whereprog f77 >> /dev/null
+   if ($status == 0) then
+      echo '....found f77 compiler'
+      set F77  = 'f77 -w -c -finit-local-zero -fno-automatic -Iinclude -O -o'
+      set F77o = 'f77 -w -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'f77 -w -o'
+      set machine = 'linux'
+      goto compilestart
+   endif
+   $whereprog g77 >> /dev/null
+   if ($status == 0) then
+      echo '....found g77 compiler'
+      set F77  = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -O -o'
+      set F77o = 'g77 -w -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'g77 -w -o'
+      set machine = 'linux'
+      goto compilestart
+   endif
+   echo 'failed to find a suitable compiler'     
+   echo 'switching to manual mode'
+   goto inputmachine
+endif
+
+
+echo '..auto configure failed'
+echo '..starting manual configuration'
+
+
+
+
+
+#
+ inputmachine:
+        echo ' '
+        echo 'Input the machine on which you wish to compile : '
+        echo '(The supported choices are dec, ibm, cray, sgi64, iris, sun, compaq, and linux)'
+        set machine = $<
+        if ($machine == '') goto inputmachine
+ inputoptions:
+        echo ' '
+        echo 'What would you like to name the executable file?'
+        set exename = $<
+        echo ' '
+        echo 'Input the options you would like to use when you compile'
+        echo 'the AMSOL code:'
+        echo 'The supported choices are as follows:'
+        echo ' '
+        echo '     s   The standard option--The AMSOL package will be '
+        echo '         compiled in the standard manner.  This option '
+        echo '         is recommended for ALL BEGINNING USERS.'
+        echo ' '
+        echo '     m   The Makefile option--A make file will be created '
+        echo '         which can be used to compile the AMSOL package. '
+        echo '         This option is recommended only for those users '
+        echo '         who are FAMILAR WITH MAKEFILES. '
+        echo ' '
+        echo '     For use in addition to the s option'
+        echo ' '
+        echo '     n   The neat option--The object files will be removed'
+        echo '         after the compilation is finished. '
+        echo ' '
+        echo '     h   The hold option--The object files will be saved '
+        echo '         after the compilation is finished.  (This is a '
+        echo '         default option.)'
+        echo ' '
+        echo -n 'Enter all options on one line without spaces and press enter: '
+        set options = $<
+        if ($options == '') goto inputoptions
+#
+# Set the compiler and loader commands
+#
+ checkmachine:
+  switch ($machine)
+    case linux:
+#
+#     set F77  = 'f77 -c -Iinclude -O -o'
+#     set F77o = 'f77 -c -Iinclude -o'
+#     set LD = 'f77 -o'
+#     set LDF =
+#
+#  The -f flags initialize local variables, it's like using the save
+#  statement
+      set F77  = 'g77 -c -finit-local-zero -fno-automatic -Iinclude -O -o'
+      set F77o = 'g77 -c -finit-local-zero -fno-automatic -Iinclude -o'
+      set LD   = 'g77 -o'
+      set LDF  =
+      breaksw
+    case dec:
+      set F77 = 'f77 -c -static -i4 -real_size 32 -O4 -o'
+      set F77o = 'f77 -c -static -i4 -real_size 32 -O2 -o'
+      set LD  = 'f77 -o'
+      set LDF =
+      breaksw
+    case compaq:
+      set F77 = 'f77 -c -w -fpe3 -O4 -o'
+      set F77o = 'f77 -c -w -fpe3 -O2  -o'
+      set LD  = 'f77 -o'
+      set LDF =
+      breaksw
+    case sgi64:
+# the -OPT flag appears to cause serious errors for tr03a,tr03n, and tr14a
+# on origin 2000 R12000 and origin 3800 R14000
+#     set F77 = 'f77 -64 -d8 -c -I'${wrkdir}/${incdir}' -O3 -i4 -static \
+#               -mips4 -OPT:roundoff=3:IEEE_arithmetic=3:fast_sqrt=off \
+#               -backslash -o'
+#     set F77o = 'f77 -64 -d8 -c -I'${wrkdir}/${incdir}' -O2 -i4 -static \
+#                -mips4 -OPT:roundoff=3:IEEE_arithmetic=3:fast_sqrt=off \
+#                -backslash -o'
+      set F77 = 'f77 -64 -d8 -c -I'${wrkdir}/${incdir}' -O3 -i4 -static \
+                -mips4 \
+                -backslash -o'
+      set F77o = 'f77 -64 -d8 -c -I'${wrkdir}/${incdir}' -O2 -i4 -static \
+                 -mips4 \
+                 -backslash -o'
+
+      set LD  = 'f77 -64 -lfastm -mips4 -o'
+      set LDF =
+      breaksw
+    case iris:
+      set F77 = 'f77 -c -I'${wrkdir}/${incdir}' -O2 \
+                 -i4 -static -Olimit 1300 -o'
+      set F77o = 'f77 -c -I'${wrkdir}/${incdir}' -O2 \
+                 -i4 -static -Olimit 1300 -o'
+      set LD  = 'f77 -tU -o'
+      set LDF =
+      breaksw
+    case ibm:
+# NOTE: If your IBM RS/6000 Fortran compiler comes equiped with a preprocessor
+#then substitute the following line for the set F77 line in the script.
+#ibm set F77 = 'xlf -c -I'${wrkdir}/${incdir}' -qdpc -qmaf -O2 -Pv -o'
+# Otherwise, choose this one.
+     echo -n 'Do you have a preprocessor with your IBM? (y or n):'
+     set process = $<
+     if ($process == y) then
+        set F77 = 'xlf -c -I'${wrkdir}/${incdir}' -qdpc -qmaf -O2 -Pv -o'
+        set F77o = 'xlf -c -I'${wrkdir}/${incdir}' -qdpc -qmaf -O2 -Pv -o'
+     else
+        set F77 = 'xlf -c -I'${wrkdir}/${incdir}' -qdpc -qmaf -O2 -o'
+        set F77o = 'xlf -c -I'${wrkdir}/${incdir}' -qdpc -qmaf -O2 -o'
+     endif
+     set LD  = 'xlf -o'
+     set LDF =
+     breaksw
+   case sun:
+#   inputtemp:
+#    if ($tempdir == ' ') then
+#       echo 'Input the full pathname of the temporary directory you wish'
+#       echo 'to use during the compilation: '
+#       set tempdir = $<
+#       if ($tempdir == '') goto inputtemp
+#    endif
+     set tempdir = 'ERROR'
+     echo 'Input the full pathname of the temporary directory you wish'
+     echo 'to use during the compilation: '
+     set tempdir = $<
+     if ($tempdir == 'ERROR') then
+        echo 'you need to enter a pathname here --- quitting'
+        exit
+     endif
+     set F77 = 'f77 -c -I'${wrkdir}/${incdir}' -O3 -temp='$tempdir' -o'
+     set F77o = 'f77 -c -I'${wrkdir}/${incdir}' -O2 -temp='$tempdir' -o'
+     set LD  = 'f77 -O3 -o'
+     set LDF =
+     breaksw
+   case cray:
+     set F77 = 'cft77 -dp -P'${wrkdir}/${incdir}' -i64 -a static -M 726,8123 -b'
+     set F77o = 'cft77 -dp -P'${wrkdir}/${incdir}' -i64 -a static -M 726,8123 -b'
+     set LD  = 'segldr -o'
+     set LDF =
+     breaksw
+   default:
+    echo 'The chosen machine name is not one of our currently supported choices'
+     goto quit
+     breaksw
+endsw
+  checkoptions:
+    set std =  0
+    set make = 0
+    set neat = 0
+    set hold = 0
+   if ($options =~ *s*) set std=1
+   if ($options =~ *m*) set make=1
+   if ($options =~ *n*) set neat=1
+   if ($options =~ *h*) set hold=1
+    if ($std == 1 && $make == 1) then
+       echo ' '
+       echo 'Warning--s and m are not compatible options.'
+       echo 'Returning to option input section.'
+       echo ' '
+       goto inputoptions
+    endif
+    if ($neat == 1 && $hold == 1) then
+       echo ' '
+       echo 'Warning--n and h are not compatible options.'
+       echo 'Returning to option input section.'
+       echo ' '
+       goto inputoptions
+    endif
+    if ($make == 1 && $neat == 1) then
+       echo ' '
+       echo 'Warning--m and n are not compatible options.'
+       echo 'Returning to option input section.'
+       echo ' '
+       goto inputoptions
+    endif
+
+#  The make options are included only for developers.
+if ($make == 1) goto developer
+#
+
+compilestart:
+
+echo '..compiling source code, please wait'
+
+cd $wrkdir
+#
+#
+cd $wrkdir/$machdir
+#    This section compiles all the FORTRAN files which are machine
+#    dependent in AMSOL
+if ($machine == dec) cp $wrkdir/$incdir/*.i .
+if ($machine == compaq) cp $wrkdir/$incdir/*.i .
+if (-e datesv.f) /bin/rm datesv.f
+if (-e porcpu.f) /bin/rm porcpu.f
+cp datesv.$machine datesv.f
+cp porcpu.$machine porcpu.f
+cd $wrkdir
+if ($machine == ibm) then
+   cc -o ${objdir}/dateclock.o -c ${machdir}/dateclock.c
+endif
+if ($machine == linux) then
+   cc -o ${objdir}/dateclock1.o -c $machdir/dateclock1.c
+   cc -o ${objdir}/second1.o -c $machdir/second1.c
+endif
+$F77 ${objdir}/datesv.o ${machdir}/datesv.f
+$F77 ${objdir}/porcpu.o ${machdir}/porcpu.f
+/bin/rm ${machdir}/datesv.f
+/bin/rm ${machdir}/porcpu.f
+if ($machine == ibm) cc -c dateclock.c
+if ($machine == dec) /bin/rm ${machdir}/*.i
+if ($machine == compaq) /bin/rm ${machdir}/*.i
+#
+if ($machine == dec) cp $wrkdir/$incdir/*.i ${unmoddir}
+if ($machine == compaq) cp $wrkdir/$incdir/*.i ${unmoddir}
+#    This section compiles all the FORTRAN files which were essentially
+#    unmodified for use in AMSOL
+     $F77 ${objdir}/ampac_unmod.o ${unmoddir}/ampac_unmod.f
+     $F77 ${objdir}/ef_lib.o ${unmoddir}/ef_lib.f
+     $F77 ${objdir}/util_unmod.o ${unmoddir}/util_unmod.f
+if ($machine == dec) /bin/rm ${unmoddir}/*.i
+if ($machine == compaq) /bin/rm ${unmoddir}/*.i
+#
+if ($machine == dec) cp $wrkdir/$incdir/*.i ${portdir}
+if ($machine == compaq) cp $wrkdir/$incdir/*.i ${portdir}
+#    This section compiles all the FORTRAN files which were modified for
+#    portability in AMSOL
+     $F77 ${objdir}/aababc.o ${portdir}/aababc.f
+     $F77 ${objdir}/amstat.o ${portdir}/amstat.f
+     $F77 ${objdir}/babbbc.o ${portdir}/babbbc.f
+     $F77 ${objdir}/deri22.o ${portdir}/deri22.f
+     $F77 ${objdir}/dijkl1.o ${portdir}/dijkl1.f
+     $F77 ${objdir}/dijkl2.o ${portdir}/dijkl2.f
+     $F77 ${objdir}/dot.o ${portdir}/dot.f
+     $F77 ${objdir}/frame.o ${portdir}/frame.f
+     $F77 ${objdir}/freqcy.o ${portdir}/freqcy.f
+     $F77 ${objdir}/haddon.o ${portdir}/haddon.f
+     $F77 ${objdir}/ijkl.o ${portdir}/ijkl.f
+     $F77 ${objdir}/intcar.o ${portdir}/intcar.f
+     $F77 ${objdir}/jincar.o ${portdir}/jincar.f
+     $F77 ${objdir}/mecip.o ${portdir}/mecip.f
+     $F77 ${objdir}/mtxm.o ${portdir}/mtxm.f
+     $F77 ${objdir}/osinv.o ${portdir}/osinv.f
+     $F77 ${objdir}/perm.o ${portdir}/perm.f
+     $F77 ${objdir}/rabiot.o ${portdir}/rabiot.f
+     $F77 ${objdir}/readvt.o ${portdir}/readvt.f
+     $F77 ${objdir}/status.o ${portdir}/status.f
+     $F77 ${objdir}/update.o ${portdir}/update.f
+if ($machine == dec) /bin/rm ${portdir}/*.i
+if ($machine == compaq) /bin/rm ${portdir}/*.i
+#
+if ($machine == dec) cp $wrkdir/$incdir/*.i ${newdir}
+if ($machine == compaq) cp $wrkdir/$incdir/*.i ${newdir}
+#    This section compiles all the FORTRAN files which were created
+#    specifically for AMSOL or were heavily modified for inclusion in
+#    AMSOL
+     $F77 ${objdir}/aabacd.o ${newdir}/aabacd.f
+     $F77 ${objdir}/aabbcd.o ${newdir}/aabbcd.f
+     $F77 ${objdir}/am1.o ${newdir}/am1.f
+     $F77 ${objdir}/amsel.o ${newdir}/amsel.f
+     $F77 ${objdir}/amsol.o ${newdir}/amsol.f
+     $F77 ${objdir}/anavib.o ${newdir}/anavib.f
+     $F77 ${objdir}/arcch.o ${newdir}/arcch.f
+     $F77 ${objdir}/areah.o ${newdir}/areah.f
+     $F77 ${objdir}/areal.o ${newdir}/areal.f
+     $F77 ${objdir}/axis.o ${newdir}/axis.f
+     $F77 ${objdir}/bfn.o ${newdir}/bfn.f
+     $F77 ${objdir}/bonds.o ${newdir}/bonds.f
+     $F77 ${objdir}/bornpl.o ${newdir}/bornpl.f
+     $F77 ${objdir}/calcbp.o ${newdir}/calcbp.f
+     $F77 ${objdir}/calvk.o ${newdir}/calvk.f
+     $F77 ${objdir}/calpar.o ${newdir}/calpar.f
+     $F77 ${objdir}/capcnv.o ${newdir}/capcnv.f
+     $F77 ${objdir}/cardan.o ${newdir}/cardan.f
+     $F77 ${objdir}/cdscal.o ${newdir}/cdscal.f
+     $F77 ${objdir}/chain.o ${newdir}/chain.f
+     $F77 ${objdir}/chgmp1.o ${newdir}/chgmp1.f
+     $F77 ${objdir}/chgmp2.o ${newdir}/chgmp2.f
+     $F77 ${objdir}/chgmp3.o ${newdir}/chgmp3.f
+     $F77 ${objdir}/chrge.o ${newdir}/chrge.f
+     $F77 ${objdir}/ciparm.o ${newdir}/ciparm.f
+     $F77 ${objdir}/cisgen.o ${newdir}/cisgen.f
+     $F77 ${objdir}/cm1drv.o ${newdir}/cm1drv.f
+     $F77 ${objdir}/cnvg2.o ${newdir}/cnvg2.f
+     $F77 ${objdir}/col.o ${newdir}/col.f
+     $F77 ${objdir}/compfg.o ${newdir}/compfg.f
+     $F77 ${objdir}/convck.o ${newdir}/convck.f
+     $F77 ${objdir}/coulrd.o ${newdir}/coulrd.f
+     $F77o ${objdir}/dareal.o ${newdir}/dareal.f
+     $F77 ${objdir}/dbrnpl.o ${newdir}/dbrnpl.f
+     $F77 ${objdir}/dcart.o ${newdir}/dcart.f
+     $F77 ${objdir}/dcart2.o ${newdir}/dcart2.f
+     $F77 ${objdir}/denrot.o ${newdir}/denrot.f
+     $F77 ${objdir}/densit.o ${newdir}/densit.f
+     $F77 ${objdir}/densts.o ${newdir}/densts.f
+     $F77 ${objdir}/depvar.o ${newdir}/depvar.f
+     $F77 ${objdir}/deri0.o ${newdir}/deri0.f
+     $F77 ${objdir}/deri1.o ${newdir}/deri1.f
+     $F77 ${objdir}/deri2.o ${newdir}/deri2.f
+     $F77 ${objdir}/deri21.o ${newdir}/deri21.f
+     $F77 ${objdir}/deri23.o ${newdir}/deri23.f
+     $F77 ${objdir}/deriv.o ${newdir}/deriv.f
+     $F77o ${objdir}/dfock2.o ${newdir}/dfock2.f
+     $F77 ${objdir}/dfpsav.o ${newdir}/dfpsav.f
+     $F77 ${objdir}/dhc.o ${newdir}/dhc.f
+     $F77 ${objdir}/dhcore.o ${newdir}/dhcore.f
+     $F77 ${objdir}/diag.o ${newdir}/diag.f
+     $F77 ${objdir}/diag2.o ${newdir}/diag2.f
+     $F77 ${objdir}/diagiv.o ${newdir}/diagiv.f
+     $F77 ${objdir}/diat2.o ${newdir}/diat2.f
+     $F77 ${objdir}/dipole.o ${newdir}/dipole.f
+     $F77 ${objdir}/diprnt.o ${newdir}/diprnt.f
+     $F77 ${objdir}/dotmk.o ${newdir}/dotmk.f
+     $F77 ${objdir}/dpqtkl.o ${newdir}/dpqtkl.f
+     $F77 ${objdir}/drc.o ${newdir}/drc.f
+     $F77 ${objdir}/drot.o ${newdir}/drot.f
+     $F77 ${objdir}/dswap.o ${newdir}/dswap.f
+     $F77 ${objdir}/ebrpd.o ${newdir}/ebrpd.f
+     $F77 ${objdir}/ebrrec.o ${newdir}/ebrrec.f
+     $F77 ${objdir}/ebrtrp.o ${newdir}/ebrtrp.f
+     $F77 ${objdir}/ebrglq.o ${newdir}/ebrglq.f
+     $F77 ${objdir}/echowd.o ${newdir}/echowd.f
+     $F77 ${objdir}/ecrit.o ${newdir}/ecrit.f
+     $F77 ${objdir}/ef.o ${newdir}/ef.f
+     $F77 ${objdir}/efcres.o ${newdir}/efcres.f
+     $F77 ${objdir}/efsav.o ${newdir}/efsav.f
+     $F77 ${objdir}/efstr.o ${newdir}/efstr.f
+     $F77 ${objdir}/enpart.o ${newdir}/enpart.f
+     $F77 ${objdir}/epslon.o ${newdir}/epslon.f
+     $F77 ${objdir}/extsmx.o ${newdir}/extsmx.f
+     $F77 ${objdir}/extsmy.o ${newdir}/extsmy.f
+     $F77 ${objdir}/findkw.o ${newdir}/findkw.f
+     $F77 ${objdir}/findky.o ${newdir}/findky.f
+     $F77 ${objdir}/finds.o ${newdir}/finds.f
+     $F77 ${objdir}/flepo.o ${newdir}/flepo.f
+     $F77 ${objdir}/fmat.o ${newdir}/fmat.f
+     $F77o ${objdir}/fock.o ${newdir}/fock.f
+     $F77 ${objdir}/fock1.o ${newdir}/fock1.f
+     $F77o ${objdir}/fock2.o ${newdir}/fock2.f
+     $F77 ${objdir}/fock2d.o ${newdir}/fock2d.f
+     $F77 ${objdir}/force.o ${newdir}/force.f
+     $F77 ${objdir}/formd.o ${newdir}/formd.f
+     $F77 ${objdir}/forsav.o ${newdir}/forsav.f
+     $F77 ${objdir}/gbscrf.o ${newdir}/gbscrf.f
+     $F77 ${objdir}/geout.o ${newdir}/geout.f
+     $F77 ${objdir}/getchg.o ${newdir}/getchg.f
+     $F77 ${objdir}/getgeo.o ${newdir}/getgeo.f
+     $F77 ${objdir}/gethes.o ${newdir}/gethes.f
+     $F77 ${objdir}/getsym.o ${newdir}/getsym.f
+     $F77 ${objdir}/gmetry.o ${newdir}/gmetry.f
+     $F77 ${objdir}/grid.o ${newdir}/grid.f
+     $F77 ${objdir}/h1elec.o ${newdir}/h1elec.f
+     $F77 ${objdir}/hcore.o ${newdir}/hcore.f
+     $F77 ${objdir}/hfadd.o ${newdir}/hfadd.f
+     $F77 ${objdir}/header.o ${newdir}/header.f
+     $F77 ${objdir}/hqrii.o ${newdir}/hqrii.f
+     $F77 ${objdir}/interp.o ${newdir}/interp.f
+     $F77 ${objdir}/ismax.o ${newdir}/ismax.f
+     $F77 ${objdir}/iter.o ${newdir}/iter.f
+     $F77o ${objdir}/jcarin.o ${newdir}/jcarin.f
+     $F77 ${objdir}/keyflg.o ${newdir}/keyflg.f
+     $F77 ${objdir}/kfinit.o ${newdir}/kfinit.f
+     $F77 ${objdir}/kwnono.o ${newdir}/kwnono.f
+     $F77 ${objdir}/kwadd.o ${newdir}/kwadd.f
+     $F77 ${objdir}/kwrm.o ${newdir}/kwrm.f
+     $F77 ${objdir}/ldata.o ${newdir}/ldata.f
+     $F77 ${objdir}/linmin.o ${newdir}/linmin.f
+     $F77 ${objdir}/linsum.o ${newdir}/linsum.f
+     $F77 ${objdir}/loadin.o ${newdir}/loadin.f
+     $F77 ${objdir}/loadsp.o ${newdir}/loadsp.f
+     $F77 ${objdir}/local.o ${newdir}/local.f
+     $F77 ${objdir}/locmin.o ${newdir}/locmin.f
+     $F77 ${objdir}/ltrd.o ${newdir}/ltrd.f
+     $F77 ${objdir}/main.o ${newdir}/main.f
+     $F77 ${objdir}/mamlt2.o ${newdir}/mamlt2.f
+     $F77 ${objdir}/matout.o ${newdir}/matout.f
+     $F77 ${objdir}/meci.o ${newdir}/meci.f
+     $F77 ${objdir}/mform.o ${newdir}/mform.f
+     $F77 ${objdir}/moldat.o ${newdir}/moldat.f
+     $F77 ${objdir}/mullik.o ${newdir}/mullik.f
+     $F77 ${objdir}/mxmlp.o ${newdir}/mxmlp.f
+     $F77 ${objdir}/mxp.o ${newdir}/mxp.f
+     $F77 ${objdir}/mxt.o ${newdir}/mxt.f
+     $F77 ${objdir}/nllsq.o ${newdir}/nllsq.f
+     $F77 ${objdir}/osm5sp.o ${newdir}/osm5sp.f
+     $F77 ${objdir}/overlp.o ${newdir}/overlp.f
+     $F77 ${objdir}/path1.o ${newdir}/path1.f
+     $F77 ${objdir}/path2.o ${newdir}/path2.f
+     $F77 ${objdir}/patham.o ${newdir}/patham.f
+     $F77 ${objdir}/paths.o ${newdir}/paths.f
+     $F77 ${objdir}/point1.o ${newdir}/point1.f
+     $F77 ${objdir}/point3.o ${newdir}/point3.f
+     $F77 ${objdir}/polar.o ${newdir}/polar.f
+     $F77 ${objdir}/polenm.o ${newdir}/polenm.f
+     $F77 ${objdir}/powel1.o ${newdir}/powel1.f
+     $F77 ${objdir}/powell.o ${newdir}/powell.f
+     $F77 ${objdir}/powsq.o ${newdir}/powsq.f
+     $F77 ${objdir}/pqtkl.o ${newdir}/pqtkl.f
+     $F77 ${objdir}/prarea.o ${newdir}/prarea.f
+     $F77 ${objdir}/prthes.o ${newdir}/prthes.f
+     $F77 ${objdir}/pulay.o ${newdir}/pulay.f
+     $F77 ${objdir}/pythag.o ${newdir}/pythag.f
+     $F77 ${objdir}/quadri.o ${newdir}/quadri.f
+     $F77 ${objdir}/racsmo.o ${newdir}/racsmo.f
+     $F77 ${objdir}/react1.o ${newdir}/react1.f
+     $F77 ${objdir}/readch.o ${newdir}/readch.f
+     $F77 ${objdir}/readif.o ${newdir}/readif.f
+     $F77 ${objdir}/reads.o ${newdir}/reads.f
+     $F77 ${objdir}/resinp.o ${newdir}/resinp.f
+     $F77 ${objdir}/rotate.o ${newdir}/rotate.f
+     $F77 ${objdir}/rs.o ${newdir}/rs.f
+     $F77 ${objdir}/sasado.o ${newdir}/sasado.f
+     $F77 ${objdir}/sasard.o ${newdir}/sasard.f
+     $F77 ${objdir}/satbat.o ${newdir}/satbat.f
+     $F77 ${objdir}/saxpy.o ${newdir}/saxpy.f
+     $F77 ${objdir}/scopy.o ${newdir}/scopy.f
+     $F77 ${objdir}/sdot.o ${newdir}/sdot.f
+     $F77 ${objdir}/search.o ${newdir}/search.f
+     $F77 ${objdir}/selbel.o ${newdir}/selbel.f
+     $F77 ${objdir}/set.o ${newdir}/set.f
+     $F77 ${objdir}/sm1ara.o ${newdir}/sm1ara.f
+     $F77 ${objdir}/smsshb.o ${newdir}/smsshb.f
+     $F77 ${objdir}/smhb.o ${newdir}/smhb.f
+     $F77 ${objdir}/sm4hb.o ${newdir}/sm4hb.f
+     $F77 ${objdir}/sm5hb.o ${newdir}/sm5hb.f
+     $F77 ${objdir}/sm5rhb.o ${newdir}/sm5rhb.f
+     $F77 ${objdir}/smx1.o ${newdir}/smx1.f
+     $F77 ${objdir}/solrot.o ${newdir}/solrot.f
+     $F77 ${objdir}/spaout.o ${newdir}/spaout.f
+     $F77 ${objdir}/spline.o ${newdir}/spline.f
+     $F77 ${objdir}/srfcal.o ${newdir}/srfcal.f
+     $F77 ${objdir}/srfcty.o ${newdir}/srfcty.f
+     $F77 ${objdir}/ss.o ${newdir}/ss.f
+     $F77 ${objdir}/ssidi.o ${newdir}/ssidi.f
+     $F77 ${objdir}/ssifa.o ${newdir}/ssifa.f
+     $F77 ${objdir}/stat1.o ${newdir}/stat1.f
+     $F77 ${objdir}/sterms.o ${newdir}/sterms.f
+     $F77 ${objdir}/stlfac.o ${newdir}/stlfac.f
+     $F77 ${objdir}/stpjob.o ${newdir}/stpjob.f
+     $F77 ${objdir}/supdot.o ${newdir}/supdot.f
+     $F77 ${objdir}/svopts.o ${newdir}/svopts.f
+     $F77 ${objdir}/thermo.o ${newdir}/thermo.f
+     $F77 ${objdir}/tql1.o ${newdir}/tql1.f
+     $F77 ${objdir}/tql2.o ${newdir}/tql2.f
+     $F77 ${objdir}/tqlrat.o ${newdir}/tqlrat.f
+     $F77 ${objdir}/tred1.o ${newdir}/tred1.f
+     $F77 ${objdir}/tred2.o ${newdir}/tred2.f
+     $F77 ${objdir}/trust1.o ${newdir}/trust1.f
+     $F77 ${objdir}/trust2.o ${newdir}/trust2.f
+     $F77 ${objdir}/trust3.o ${newdir}/trust3.f
+     $F77 ${objdir}/trust4.o ${newdir}/trust4.f
+     $F77 ${objdir}/trust5.o ${newdir}/trust5.f
+     $F77 ${objdir}/trust6.o ${newdir}/trust6.f
+     $F77 ${objdir}/truste.o ${newdir}/truste.f
+     $F77 ${objdir}/trustg.o ${newdir}/trustg.f
+     $F77 ${objdir}/tpchk.o ${newdir}/tpchk.f
+     $F77 ${objdir}/tpchk.o ${newdir}/tpchk.f
+     $F77 ${objdir}/uhfprt.o ${newdir}/uhfprt.f
+     $F77 ${objdir}/uncano.o ${newdir}/uncano.f
+     $F77 ${objdir}/updhes.o ${newdir}/updhes.f
+     $F77 ${objdir}/vecprt.o ${newdir}/vecprt.f
+     $F77 ${objdir}/vecred.o ${newdir}/vecred.f
+     $F77 ${objdir}/vecwrt.o ${newdir}/vecwrt.f
+     $F77 ${objdir}/writes.o ${newdir}/writes.f
+     $F77 ${objdir}/wrtkey.o ${newdir}/wrtkey.f
+     $F77 ${objdir}/zmprnt.o ${newdir}/zmprnt.f
+     $F77 ${objdir}/zpe.o ${newdir}/zpe.f
+     $F77 ${objdir}/xyzint.o ${newdir}/xyzint.f
+if ($machine == dec) /bin/rm ${newdir}/*.i
+if ($machine == compaq) /bin/rm ${newdir}/*.i
+#
+#  This section of the script links the entire code together and
+#  creates the executable
+   $LD $exename ${objdir}/*.o $LDF
+   if ($status == 0) then
+      echo ' '
+      echo 'AMSOL Compiled Successfully'
+      echo ' '
+      echo "executable is $exename" 
+      echo ' '
+   endif   
+   if (neat == 1) /bin/rm ${objdir}/*.o
+   goto quit
+#
+ developer:
+set makef = Makefile
+echo 'Creating Makefile.'
+echo '#  This Makefile is created by the amsol.compile script.'> $makef
+echo '#  By issuing the command 'make' from the top directory of the '>> $makef
+echo "#  AMSOL distribution package, the target file $exename will ">> $makef
+echo '#  be created.  The make file has advantages over the standard'>> $makef
+echo '#  C-shell script way to compile the package in that it can be'>> $makef
+echo '#  automatically updated without recompiling the entire package.'>> $makef
+echo '#  See a text on the make command for further details. '>> $makef
+   echo 'machdir  ='$machdir/ >> $makef
+   echo 'incdir   ='$incdir/ >> $makef
+   echo 'newdir   ='$newdir/ >> $makef
+   echo 'portdir  ='$portdir/ >> $makef
+   echo 'unmoddir ='$unmoddir/ >> $makef
+   echo 'objdir   ='$objdir/ >> $makef
+   echo 'F77      ='$F77 >> $makef
+   echo 'F77o     ='$F77o >> $makef
+   echo 'CC       = cc -o '>> $makef
+   echo 'LD       ='$LD >> $makef
+   echo 'LDF      ='$LDF >> $makef
+   echo 'inc=${incdir}/FFILES.i \' >> $makef
+   echo "	"'${incdir}/PARAM.i \' >> $makef
+   echo "	"'${incdir}/PARAMS.i \' >> $makef
+   echo "	"'${incdir}/SIZES.i \' >> $makef
+   echo "	"'${incdir}/SIZES2.i \' >> $makef
+   echo "	"'${incdir}/SIZESc.i \' >> $makef
+   echo ' ' >> $makef
+   echo ' ' >> $makef
+   echo 'src=${machdir}datesv.f \' >> $makef
+   echo "	"'${machdir}porcpu.f \' >> $makef
+      if ($machine == ibm) then
+         echo "	"'${machdir}dateclock.c \' >> $makef
+      endif
+      if ($machine == linux) then
+         echo "	"'${machdir}dateclock1.c \' >> $makef
+         echo "	"'${machdir}second1.c \' >> $makef
+      endif
+   echo "	"'${newdir}aabacd.f \' >> $makef
+   echo "	"'${newdir}aabbcd.f \' >> $makef
+   echo "	"'${newdir}am1.f \' >> $makef
+   echo "	"'${newdir}amsel.f \' >> $makef
+   echo "	"'${newdir}amsol.f \' >> $makef
+   echo "	"'${newdir}anavib.f \' >> $makef
+   echo "	"'${newdir}arcch.f \' >> $makef
+   echo "	"'${newdir}areah.f \' >> $makef
+   echo "	"'${newdir}areal.f \' >> $makef
+   echo "	"'${newdir}axis.f \' >> $makef
+   echo "	"'${newdir}bfn.f \' >> $makef
+   echo "	"'${newdir}bonds.f \' >> $makef
+   echo "	"'${newdir}bornpl.f \' >> $makef
+   echo "	"'${newdir}calcbp.f \' >> $makef
+   echo "	"'${newdir}calvk.f \' >> $makef
+   echo "	"'${newdir}calpar.f \' >> $makef
+   echo "	"'${newdir}capcnv.f \' >> $makef
+   echo "	"'${newdir}cardan.f \' >> $makef
+   echo "	"'${newdir}cdscal.f \' >> $makef
+   echo "	"'${newdir}chain.f \' >> $makef
+   echo "	"'${newdir}chgmp1.f \' >> $makef
+   echo "	"'${newdir}chgmp2.f \' >> $makef
+   echo " 	"'${newdir}chgmp3.f \' >> $makef
+   echo "	"'${newdir}chrge.f \' >> $makef
+   echo "	"'${newdir}ciparm.f \' >> $makef
+   echo "	"'${newdir}cisgen.f \' >> $makef
+   echo "	"'${newdir}cm1drv.f \' >> $makef
+   echo "	"'${newdir}cnvg2.f \' >> $makef
+   echo "	"'${newdir}col.f \' >> $makef
+   echo "	"'${newdir}compfg.f \' >> $makef
+   echo "	"'${newdir}convck.f \' >> $makef
+   echo "	"'${newdir}coulrd.f \' >> $makef
+   echo "	"'${newdir}dbrnpl.f \' >> $makef
+   echo "	"'${newdir}dareal.f \' >> $makef
+   echo "	"'${newdir}dcart.f \' >> $makef
+   echo "	"'${newdir}dcart2.f \' >> $makef
+   echo "	"'${newdir}denrot.f \' >> $makef
+   echo "	"'${newdir}densit.f \' >> $makef
+   echo "	"'${newdir}densts.f \' >> $makef
+   echo "	"'${newdir}depvar.f \' >> $makef
+   echo "	"'${newdir}deri0.f \' >> $makef
+   echo "	"'${newdir}deri1.f \' >> $makef
+   echo "	"'${newdir}deri2.f \' >> $makef
+   echo "	"'${newdir}deri21.f \' >> $makef
+   echo "	"'${newdir}deri23.f \' >> $makef
+   echo "	"'${newdir}deriv.f \' >> $makef
+   echo "	"'${newdir}dfock2.f \' >> $makef
+   echo "	"'${newdir}dfpsav.f \' >> $makef
+   echo "	"'${newdir}dhc.f \' >> $makef
+   echo "	"'${newdir}dhcore.f \' >> $makef
+   echo "	"'${newdir}diag.f \' >> $makef
+   echo "	"'${newdir}diag2.f \' >> $makef
+   echo "	"'${newdir}diagiv.f \' >> $makef
+   echo "	"'${newdir}diat2.f \' >> $makef
+   echo "	"'${newdir}dipole.f \' >> $makef
+   echo "	"'${newdir}diprnt.f \' >> $makef
+   echo "	"'${newdir}dotmk.f \' >> $makef
+   echo "	"'${newdir}dpqtkl.f \' >> $makef
+   echo "	"'${newdir}drc.f \' >> $makef
+   echo "	"'${newdir}drot.f \' >> $makef
+   echo "	"'${newdir}dswap.f \' >> $makef
+   echo "	"'${newdir}ebrpd.f \' >> $makef
+   echo "	"'${newdir}ebrrec.f \' >> $makef
+   echo "	"'${newdir}ebrtrp.f \' >> $makef
+   echo "	"'${newdir}echowd.f \' >> $makef
+   echo "	"'${newdir}ecrit.f \' >> $makef
+   echo "	"'${newdir}ef.f \' >> $makef
+   echo "	"'${newdir}efcres.f \' >> $makef
+   echo "	"'${newdir}efsav.f \' >> $makef
+   echo "	"'${newdir}efstr.f \' >> $makef
+   echo "	"'${newdir}enpart.f \' >> $makef
+   echo "	"'${newdir}epslon.f \' >> $makef
+   echo "	"'${newdir}extsmx.f \' >> $makef
+   echo "	"'${newdir}extsmy.f \' >> $makef
+   echo "	"'${newdir}findkw.f \' >> $makef
+   echo "	"'${newdir}findky.f \' >> $makef
+   echo "	"'${newdir}finds.f \' >> $makef
+   echo "	"'${newdir}flepo.f \' >> $makef
+   echo "	"'${newdir}fmat.f \' >> $makef
+   echo "	"'${newdir}fock.f \' >> $makef
+   echo "	"'${newdir}fock1.f \' >> $makef
+   echo "	"'${newdir}fock2.f \' >> $makef
+   echo "	"'${newdir}fock2d.f \' >> $makef
+   echo "	"'${newdir}force.f \' >> $makef
+   echo "	"'${newdir}formd.f \' >> $makef
+   echo "	"'${newdir}forsav.f \' >> $makef
+   echo "	"'${newdir}gbscrf.f \' >> $makef
+   echo "	"'${newdir}geout.f \' >> $makef
+   echo "	"'${newdir}getchg.f \' >> $makef
+   echo "	"'${newdir}getgeo.f \' >> $makef
+   echo "	"'${newdir}gethes.f \' >> $makef
+   echo "	"'${newdir}getsym.f \' >> $makef
+   echo "	"'${newdir}gmetry.f \' >> $makef
+   echo "	"'${newdir}grid.f \' >> $makef
+   echo "	"'${newdir}h1elec.f \' >> $makef
+   echo "	"'${newdir}hcore.f \' >> $makef
+   echo "	"'${newdir}hfadd.f \' >> $makef
+   echo "	"'${newdir}header.f \' >> $makef
+   echo "	"'${newdir}hqrii.f \' >> $makef
+   echo "	"'${newdir}interp.f \' >> $makef
+   echo "	"'${newdir}ismax.f \' >> $makef
+   echo "	"'${newdir}iter.f \' >> $makef
+   echo "	"'${newdir}jcarin.f \' >> $makef
+   echo "	"'${newdir}keyflg.f \' >> $makef
+   echo "	"'${newdir}kfinit.f \' >> $makef
+   echo "	"'${newdir}kwnono.f \' >> $makef
+   echo "	"'${newdir}kwadd.f \' >> $makef
+   echo "	"'${newdir}kwrm.f \' >> $makef
+   echo "	"'${newdir}ldata.f \' >> $makef
+   echo "	"'${newdir}linmin.f \' >> $makef
+   echo "	"'${newdir}linsum.f \' >> $makef
+   echo "	"'${newdir}loadin.f \' >> $makef
+   echo "	"'${newdir}loadsp.f \' >> $makef
+   echo "	"'${newdir}local.f \' >> $makef
+   echo "	"'${newdir}locmin.f \' >> $makef
+   echo "	"'${newdir}ltrd.f \' >> $makef
+   echo "	"'${newdir}main.f \' >> $makef
+   echo "	"'${newdir}mamlt2.f \' >> $makef
+   echo "	"'${newdir}matout.f \' >> $makef
+   echo "	"'${newdir}meci.f \' >> $makef
+   echo "	"'${newdir}mform.f \' >> $makef
+   echo "	"'${newdir}moldat.f \' >> $makef
+   echo "	"'${newdir}mullik.f \' >> $makef
+   echo "	"'${newdir}mxmlp.f \' >> $makef
+   echo "	"'${newdir}mxp.f \' >> $makef
+   echo "	"'${newdir}mxt.f \' >> $makef
+   echo "	"'${newdir}nllsq.f \' >> $makef
+   echo "	"'${newdir}osm5sp.f \' >> $makef
+   echo "	"'${newdir}overlp.f \' >> $makef
+   echo "	"'${newdir}path1.f \' >> $makef
+   echo "	"'${newdir}path2.f \' >> $makef
+   echo "	"'${newdir}patham.f \' >> $makef
+   echo "	"'${newdir}paths.f \' >> $makef
+   echo "	"'${newdir}point1.f \' >> $makef
+   echo "	"'${newdir}point3.f \' >> $makef
+   echo "	"'${newdir}polar.f \' >> $makef
+   echo "	"'${newdir}polenm.f \' >> $makef
+   echo "	"'${newdir}powel1.f \' >> $makef
+   echo "	"'${newdir}powell.f \' >> $makef
+   echo "	"'${newdir}powsq.f \' >> $makef
+   echo "	"'${newdir}pqtkl.f \' >> $makef
+   echo "	"'${newdir}prarea.f \' >> $makef
+   echo "	"'${newdir}prthes.f \' >> $makef
+   echo "	"'${newdir}pulay.f \' >> $makef
+   echo "	"'${newdir}pythag.f \' >> $makef
+   echo "	"'${newdir}quadri.f \' >> $makef
+   echo "	"'${newdir}racsmo.f \' >> $makef
+   echo "	"'${newdir}react1.f \' >> $makef
+   echo "	"'${newdir}readch.f \' >> $makef
+   echo "	"'${newdir}readif.f \' >> $makef
+   echo "	"'${newdir}reads.f \' >> $makef
+   echo "	"'${newdir}resinp.f \' >> $makef
+   echo "	"'${newdir}rotate.f \' >> $makef
+   echo "	"'${newdir}rs.f \' >> $makef
+   echo "	"'${newdir}sasado.f \' >> $makef
+   echo "	"'${newdir}sasard.f \' >> $makef
+   echo "	"'${newdir}satbat.f \' >> $makef
+   echo "	"'${newdir}saxpy.f \' >> $makef
+   echo "	"'${newdir}scopy.f \' >> $makef
+   echo "	"'${newdir}sdot.f \' >> $makef
+   echo "	"'${newdir}search.f \' >> $makef
+   echo "	"'${newdir}selbel.f \' >> $makef
+   echo "	"'${newdir}set.f \' >> $makef
+   echo "	"'${newdir}sm1ara.f \' >> $makef
+   echo "	"'${newdir}smsshb.f \' >> $makef
+   echo "	"'${newdir}smhb.f \' >> $makef
+   echo "	"'${newdir}sm4hb.f \' >> $makef
+   echo "	"'${newdir}sm5hb.f \' >> $makef
+   echo "	"'${newdir}sm5rhb.f \' >> $makef
+   echo "	"'${newdir}smx1.f \' >> $makef
+   echo "	"'${newdir}solrot.f \' >> $makef
+   echo "	"'${newdir}spaout.f \' >> $makef
+   echo "	"'${newdir}spline.f \' >> $makef
+   echo "	"'${newdir}srfcal.f \' >> $makef
+   echo "	"'${newdir}srfcty.f \' >> $makef
+   echo "	"'${newdir}ss.f \' >> $makef
+   echo "	"'${newdir}ssidi.f \' >> $makef
+   echo "	"'${newdir}ssifa.f \' >> $makef
+   echo "	"'${newdir}stat1.f \' >> $makef
+   echo "	"'${newdir}sterms.f \' >> $makef
+   echo "	"'${newdir}stlfac.f \' >> $makef
+   echo "	"'${newdir}stpjob.f \' >> $makef
+   echo "	"'${newdir}supdot.f \' >> $makef
+   echo "	"'${newdir}svopts.f \' >> $makef
+   echo "	"'${newdir}thermo.f \' >> $makef
+   echo "	"'${newdir}tql1.f \' >> $makef
+   echo "	"'${newdir}tql2.f \' >> $makef
+   echo "	"'${newdir}tqlrat.f \' >> $makef
+   echo "	"'${newdir}tred1.f \' >> $makef
+   echo "	"'${newdir}tred2.f \' >> $makef
+   echo "	"'${newdir}trust1.f \' >> $makef
+   echo "	"'${newdir}trust2.f \' >> $makef
+   echo "	"'${newdir}trust3.f \' >> $makef
+   echo "	"'${newdir}trust4.f \' >> $makef
+   echo "	"'${newdir}trust5.f \' >> $makef
+   echo "	"'${newdir}trust6.f \' >> $makef
+   echo "	"'${newdir}truste.f \' >> $makef
+   echo "	"'${newdir}trustg.f \' >> $makef
+   echo "	"'${newdir}tpchk.f \' >> $makef
+   echo "	"'${newdir}uhfprt.f \' >> $makef
+   echo "	"'${newdir}uncano.f \' >> $makef
+   echo "	"'${newdir}updhes.f \' >> $makef
+   echo "	"'${newdir}vecprt.f \' >> $makef
+   echo "	"'${newdir}vecred.f \' >> $makef
+   echo "	"'${newdir}vecwrt.f \' >> $makef
+   echo "	"'${newdir}writes.f \' >> $makef
+   echo "	"'${newdir}wrtkey.f \' >> $makef
+   echo "	"'${newdir}zmprnt.f \' >> $makef
+   echo "	"'${newdir}zpe.f \' >> $makef
+   echo "       "'${newdir}xyzint.f \' >> $makef
+   echo "	"'${portdir}aababc.f \' >> $makef
+   echo "	"'${portdir}amstat.f \' >> $makef
+   echo "	"'${portdir}babbbc.f \' >> $makef
+   echo "	"'${portdir}deri22.f \' >> $makef
+   echo "	"'${portdir}dijkl1.f \' >> $makef
+   echo "	"'${portdir}dijkl2.f \' >> $makef
+   echo "	"'${portdir}dot.f \' >> $makef
+   echo "	"'${portdir}frame.f \' >> $makef
+   echo "	"'${portdir}freqcy.f \' >> $makef
+   echo "	"'${portdir}haddon.f \' >> $makef
+   echo "	"'${portdir}ijkl.f \' >> $makef
+   echo "	"'${portdir}intcar.f \' >> $makef
+   echo "	"'${portdir}jincar.f \' >> $makef
+   echo "	"'${portdir}mecip.f \' >> $makef
+   echo "	"'${portdir}mtxm.f \' >> $makef
+   echo "	"'${portdir}osinv.f \' >> $makef
+   echo "	"'${portdir}perm.f \' >> $makef
+   echo "	"'${portdir}rabiot.f \' >> $makef
+   echo "	"'${portdir}readvt.f \' >> $makef
+   echo "	"'${portdir}status.f \' >> $makef
+   echo "	"'${portdir}update.f \' >> $makef
+   echo "	"'${unmoddir}ampac_unmod.f \' >> $makef
+   echo "	"'${unmoddir}ef_lib.f \' >> $makef
+   echo "	"'${unmoddir}util_unmod.f ' >> $makef
+   echo ' ' >> $makef
+   echo ' ' >> $makef
+   echo 'obj=${objdir}datesv.o \' >> $makef
+   echo "	"'${objdir}porcpu.o \' >> $makef
+      if ($machine == ibm) then
+         echo "	"'${objdir}dateclock.o \' >> $makef
+      endif
+      if ($machine == linux) then
+         echo "	"'${objdir}dateclock1.o \' >> $makef
+         echo "	"'${objdir}second1.o \' >> $makef
+      endif
+
+   echo "	"'${objdir}aabacd.o \' >> $makef
+   echo "	"'${objdir}aabbcd.o \' >> $makef
+   echo "	"'${objdir}am1.o \' >> $makef
+   echo "	"'${objdir}amsel.o \' >> $makef
+   echo "	"'${objdir}amsol.o \' >> $makef
+   echo "	"'${objdir}anavib.o \' >> $makef
+   echo "	"'${objdir}arcch.o \' >> $makef
+   echo "	"'${objdir}areah.o \' >> $makef
+   echo "	"'${objdir}areal.o \' >> $makef
+   echo "	"'${objdir}axis.o \' >> $makef
+   echo "	"'${objdir}bfn.o \' >> $makef
+   echo "	"'${objdir}bonds.o \' >> $makef
+   echo "	"'${objdir}bornpl.o \' >> $makef
+   echo "	"'${objdir}calcbp.o \' >> $makef
+   echo "	"'${objdir}calvk.o \' >> $makef
+   echo "	"'${objdir}calpar.o \' >> $makef
+   echo "	"'${objdir}capcnv.o \' >> $makef
+   echo "	"'${objdir}cardan.o \' >> $makef
+   echo "	"'${objdir}cdscal.o \' >> $makef
+   echo "	"'${objdir}chain.o \' >> $makef
+   echo "	"'${objdir}chgmp1.o \' >> $makef
+   echo "	"'${objdir}chgmp2.o \' >> $makef
+   echo "	 "'${objdir}chgmp3.o \' >> $makef
+   echo "	"'${objdir}chrge.o \' >> $makef
+   echo "	"'${objdir}ciparm.o \' >> $makef
+   echo "	"'${objdir}cisgen.o \' >> $makef
+   echo "	"'${objdir}cm1drv.o \' >> $makef
+   echo "	"'${objdir}cnvg2.o \' >> $makef
+   echo "	"'${objdir}col.o \' >> $makef
+   echo "	"'${objdir}compfg.o \' >> $makef
+   echo "	"'${objdir}convck.o \' >> $makef
+   echo "	"'${objdir}coulrd.o \' >> $makef
+   echo "	"'${objdir}dareal.o \' >> $makef
+   echo "	"'${objdir}dbrnpl.o \' >> $makef
+   echo "	"'${objdir}dcart.o \' >> $makef
+   echo "	"'${objdir}dcart2.o \' >> $makef
+   echo "	"'${objdir}denrot.o \' >> $makef
+   echo "	"'${objdir}densit.o \' >> $makef
+   echo "	"'${objdir}densts.o \' >> $makef
+   echo "	"'${objdir}depvar.o \' >> $makef
+   echo "	"'${objdir}deri0.o \' >> $makef
+   echo "	"'${objdir}deri1.o \' >> $makef
+   echo "	"'${objdir}deri2.o \' >> $makef
+   echo "	"'${objdir}deri21.o \' >> $makef
+   echo "	"'${objdir}deri23.o \' >> $makef
+   echo "	"'${objdir}deriv.o \' >> $makef
+   echo "	"'${objdir}dfock2.o \' >> $makef
+   echo "	"'${objdir}dfpsav.o \' >> $makef
+   echo "	"'${objdir}dhc.o \' >> $makef
+   echo "	"'${objdir}dhcore.o \' >> $makef
+   echo "	"'${objdir}diag.o \' >> $makef
+   echo "	"'${objdir}diag2.o \' >> $makef
+   echo "	"'${objdir}diagiv.o \' >> $makef
+   echo "	"'${objdir}diat2.o \' >> $makef
+   echo "	"'${objdir}dipole.o \' >> $makef
+   echo "	"'${objdir}diprnt.o \' >> $makef
+   echo "	"'${objdir}dotmk.o \' >> $makef
+   echo "	"'${objdir}dpqtkl.o \' >> $makef
+   echo "	"'${objdir}drc.o \' >> $makef
+   echo "	"'${objdir}drot.o \' >> $makef
+   echo "	"'${objdir}dswap.o \' >> $makef
+   echo "	"'${objdir}ebrpd.o \' >> $makef
+   echo "	"'${objdir}ebrrec.o \' >> $makef
+   echo "	"'${objdir}ebrtrp.o \' >> $makef
+   echo "	"'${objdir}ebrglq.o \' >> $makef
+   echo "	"'${objdir}echowd.o \' >> $makef
+   echo "	"'${objdir}ecrit.o \' >> $makef
+   echo "	"'${objdir}ef.o \' >> $makef
+   echo "	"'${objdir}efcres.o \' >> $makef
+   echo "	"'${objdir}efsav.o \' >> $makef
+   echo "	"'${objdir}efstr.o \' >> $makef
+   echo "	"'${objdir}enpart.o \' >> $makef
+   echo "	"'${objdir}epslon.o \' >> $makef
+   echo "	"'${objdir}extsmx.o \' >> $makef
+   echo "	"'${objdir}extsmy.o \' >> $makef
+   echo "	"'${objdir}findkw.o \' >> $makef
+   echo "	"'${objdir}findky.o \' >> $makef
+   echo "	"'${objdir}finds.o \' >> $makef
+   echo "	"'${objdir}flepo.o \' >> $makef
+   echo "	"'${objdir}fmat.o \' >> $makef
+   echo "	"'${objdir}fock.o \' >> $makef
+   echo "	"'${objdir}fock1.o \' >> $makef
+   echo "	"'${objdir}fock2.o \' >> $makef
+   echo "	"'${objdir}fock2d.o \' >> $makef
+   echo "	"'${objdir}force.o \' >> $makef
+   echo "	"'${objdir}formd.o \' >> $makef
+   echo "	"'${objdir}forsav.o \' >> $makef
+   echo "	"'${objdir}gbscrf.o \' >> $makef
+   echo "	"'${objdir}getchg.o \' >> $makef
+   echo "	"'${objdir}getgeo.o \' >> $makef
+   echo "	"'${objdir}gethes.o \' >> $makef
+   echo "	"'${objdir}getsym.o \' >> $makef
+   echo "	"'${objdir}gmetry.o \' >> $makef
+   echo "	"'${objdir}grid.o \' >> $makef
+   echo "	"'${objdir}h1elec.o \' >> $makef
+   echo "	"'${objdir}hcore.o \' >> $makef
+   echo "	"'${objdir}hfadd.o \' >> $makef
+   echo "	"'${objdir}header.o \' >> $makef
+   echo "	"'${objdir}hqrii.o \' >> $makef
+   echo "	"'${objdir}interp.o \' >> $makef
+   echo "	"'${objdir}ismax.o \' >> $makef
+   echo "	"'${objdir}iter.o \' >> $makef
+   echo "	"'${objdir}keyflg.o \' >> $makef
+   echo "	"'${objdir}kfinit.o \' >> $makef
+   echo "	"'${objdir}kwnono.o \' >> $makef
+   echo "	"'${objdir}kwadd.o \' >> $makef
+   echo "	"'${objdir}kwrm.o \' >> $makef
+   echo "	"'${objdir}ldata.o \' >> $makef
+   echo "	"'${objdir}linmin.o \' >> $makef
+   echo "	"'${objdir}linsum.o \' >> $makef
+   echo "	"'${objdir}loadin.o \' >> $makef
+   echo "	"'${objdir}loadsp.o \' >> $makef
+   echo "	"'${objdir}local.o \' >> $makef
+   echo "	"'${objdir}locmin.o \' >> $makef
+   echo "	"'${objdir}ltrd.o \' >> $makef
+   echo "	"'${objdir}main.o \' >> $makef
+   echo "	"'${objdir}mamlt2.o \' >> $makef
+   echo "	"'${objdir}matout.o \' >> $makef
+   echo "	"'${objdir}meci.o \' >> $makef
+   echo "	"'${objdir}mform.o \' >> $makef
+   echo "	"'${objdir}moldat.o \' >> $makef
+   echo "	"'${objdir}mullik.o \' >> $makef
+   echo "	"'${objdir}mxmlp.o \' >> $makef
+   echo "	"'${objdir}mxp.o \' >> $makef
+   echo "	"'${objdir}mxt.o \' >> $makef
+   echo "	"'${objdir}nllsq.o \' >> $makef
+   echo "	"'${objdir}osm5sp.o \' >> $makef
+   echo "	"'${objdir}overlp.o \' >> $makef
+   echo "	"'${objdir}path1.o \' >> $makef
+   echo "	"'${objdir}path2.o \' >> $makef
+   echo "	"'${objdir}patham.o \' >> $makef
+   echo "	"'${objdir}paths.o \' >> $makef
+   echo "	"'${objdir}point1.o \' >> $makef
+   echo "	"'${objdir}point3.o \' >> $makef
+   echo "	"'${objdir}polar.o \' >> $makef
+   echo "	"'${objdir}polenm.o \' >> $makef
+   echo "	"'${objdir}powel1.o \' >> $makef
+   echo "	"'${objdir}powell.o \' >> $makef
+   echo "	"'${objdir}powsq.o \' >> $makef
+   echo "	"'${objdir}pqtkl.o \' >> $makef
+   echo "	"'${objdir}prarea.o \' >> $makef
+   echo "	"'${objdir}prthes.o \' >> $makef
+   echo "	"'${objdir}pulay.o \' >> $makef
+   echo "	"'${objdir}pythag.o \' >> $makef
+   echo "	"'${objdir}quadri.o \' >> $makef
+   echo "	"'${objdir}racsmo.o \' >> $makef
+   echo "	"'${objdir}react1.o \' >> $makef
+   echo "	"'${objdir}readch.o \' >> $makef
+   echo "	"'${objdir}readif.o \' >> $makef
+   echo "	"'${objdir}reads.o \' >> $makef
+   echo "	"'${objdir}resinp.o \' >> $makef
+   echo "	"'${objdir}rotate.o \' >> $makef
+   echo "	"'${objdir}rs.o \' >> $makef
+   echo "	"'${objdir}sasado.o \' >> $makef
+   echo "	"'${objdir}sasard.o \' >> $makef
+   echo "	"'${objdir}satbat.o \' >> $makef
+   echo "	"'${objdir}saxpy.o \' >> $makef
+   echo "	"'${objdir}scopy.o \' >> $makef
+   echo "	"'${objdir}sdot.o \' >> $makef
+   echo "	"'${objdir}search.o \' >> $makef
+   echo "	"'${objdir}selbel.o \' >> $makef
+   echo "	"'${objdir}set.o \' >> $makef
+   echo "	"'${objdir}sm1ara.o \' >> $makef
+   echo "	"'${objdir}smsshb.o \' >> $makef
+   echo "	"'${objdir}smhb.o \' >> $makef
+   echo "	"'${objdir}sm4hb.o \' >> $makef
+   echo "	"'${objdir}sm5hb.o \' >> $makef
+   echo "	"'${objdir}sm5rhb.o \' >> $makef
+   echo "	"'${objdir}smx1.o \' >> $makef
+   echo "	"'${objdir}solrot.o \' >> $makef
+   echo "	"'${objdir}spaout.o \' >> $makef
+   echo "	"'${objdir}spline.o \' >> $makef
+   echo "	"'${objdir}srfcal.o \' >> $makef
+   echo "	"'${objdir}srfcty.o \' >> $makef
+   echo "	"'${objdir}ss.o \' >> $makef
+   echo "	"'${objdir}ssidi.o \' >> $makef
+   echo "	"'${objdir}ssifa.o \' >> $makef
+   echo "	"'${objdir}stat1.o \' >> $makef
+   echo "	"'${objdir}sterms.o \' >> $makef
+   echo "	"'${objdir}stlfac.o \' >> $makef
+   echo "	"'${objdir}stpjob.o \' >> $makef
+   echo "	"'${objdir}supdot.o \' >> $makef
+   echo "	"'${objdir}svopts.o \' >> $makef
+   echo "	"'${objdir}thermo.o \' >> $makef
+   echo "	"'${objdir}tql1.o \' >> $makef
+   echo "	"'${objdir}tql2.o \' >> $makef
+   echo "	"'${objdir}tqlrat.o \' >> $makef
+   echo "	"'${objdir}tred1.o \' >> $makef
+   echo "	"'${objdir}tred2.o \' >> $makef
+   echo "	"'${objdir}trust1.o \' >> $makef
+   echo "	"'${objdir}trust2.o \' >> $makef
+   echo "	"'${objdir}trust3.o \' >> $makef
+   echo "	"'${objdir}trust4.o \' >> $makef
+   echo "	"'${objdir}trust5.o \' >> $makef
+   echo "	"'${objdir}trust6.o \' >> $makef
+   echo "	"'${objdir}truste.o \' >> $makef
+   echo "	"'${objdir}trustg.o \' >> $makef
+   echo "	"'${objdir}tpchk.o \' >> $makef
+   echo "	"'${objdir}uhfprt.o \' >> $makef
+   echo "	"'${objdir}uncano.o \' >> $makef
+   echo "	"'${objdir}updhes.o \' >> $makef
+   echo "	"'${objdir}vecprt.o \' >> $makef
+   echo "	"'${objdir}vecred.o \' >> $makef
+   echo "	"'${objdir}vecwrt.o \' >> $makef
+   echo "	"'${objdir}writes.o \' >> $makef
+   echo "	"'${objdir}wrtkey.o \' >> $makef
+   echo "	"'${objdir}zmprnt.o \' >> $makef
+   echo "	"'${objdir}zpe.o \' >> $makef
+   echo "       "'${objdir}xyzint.o \' >> $makef
+   echo "	"'${objdir}aababc.o \' >> $makef
+   echo "	"'${objdir}amstat.o \' >> $makef
+   echo "	"'${objdir}babbbc.o \' >> $makef
+   echo "	"'${objdir}deri22.o \' >> $makef
+   echo "	"'${objdir}dijkl1.o \' >> $makef
+   echo "	"'${objdir}dijkl2.o \' >> $makef
+   echo "	"'${objdir}dot.o \' >> $makef
+   echo "	"'${objdir}frame.o \' >> $makef
+   echo "	"'${objdir}freqcy.o \' >> $makef
+   echo "	"'${objdir}geout.o \' >> $makef
+   echo "	"'${objdir}haddon.o \' >> $makef
+   echo "	"'${objdir}ijkl.o \' >> $makef
+   echo "	"'${objdir}intcar.o \' >> $makef
+   echo "	"'${objdir}jcarin.o \' >> $makef
+   echo "	"'${objdir}jincar.o \' >> $makef
+   echo "	"'${objdir}mecip.o \' >> $makef
+   echo "	"'${objdir}mtxm.o \' >> $makef
+   echo "	"'${objdir}osinv.o \' >> $makef
+   echo "	"'${objdir}perm.o \' >> $makef
+   echo "	"'${objdir}rabiot.o \' >> $makef
+   echo "	"'${objdir}readvt.o \' >> $makef
+   echo "	"'${objdir}status.o \' >> $makef
+   echo "	"'${objdir}update.o \' >> $makef
+   echo "	"'${objdir}ampac_unmod.o \' >> $makef
+   echo "	"'${objdir}ef_lib.o \' >> $makef
+   echo "	"'${objdir}util_unmod.o ' >> $makef
+   echo ' ' >> $makef
+   echo ' ' >> $makef
+   echo 'all: prepare amsol.exe'>> $makef
+   if ($machine == dec) echo "	/bin/rm ${unmoddir}/*.i" >> $makef
+   if ($machine == dec) echo "	/bin/rm ${machdir}/*.i" >> $makef
+   if ($machine == dec) echo "	/bin/rm ${newdir}/*.i" >> $makef
+   if ($machine == dec) echo "	/bin/rm ${portdir}/*.i" >> $makef
+   if ($machine == compaq) echo "	/bin/rm ${unmoddir}/*.i" >> $makef
+   if ($machine == compaq) echo "	/bin/rm ${machdir}/*.i" >> $makef
+   if ($machine == compaq) echo "	/bin/rm ${newdir}/*.i" >> $makef
+   if ($machine == compaq) echo "	/bin/rm ${portdir}/*.i" >> $makef
+   echo ' ' >> $makef
+   echo ' ' >> $makef
+   echo 'amsol.exe : $(obj)' >> $makef
+   echo "	"'$(LD) '"$exename"' $(obj) $(LDF)' >> $makef
+   echo ' ' >> $makef
+   echo ' ' >> $makef
+   echo ' ${objdir}datesv.o : ${machdir}datesv.f ' >> $makef
+   echo "	"'$(F77) ${objdir}datesv.o ${machdir}datesv.f' >> $makef
+   echo ' ${objdir}porcpu.o : ${machdir}porcpu.f ' >> $makef
+   echo "	"'$(F77) ${objdir}porcpu.o ${machdir}porcpu.f' >> $makef
+   if ($machine == ibm) then
+        echo ' ${objdir}dateclock.o : ${machdir}dateclock.c ' >> $makef
+        echo "	"'$(CC) ${objdir}dateclock.o -c ${machdir}dateclock.c' >> $makef
+   endif
+   if ($machine == linux) then
+        echo ' ${objdir}dateclock1.o : ${machdir}dateclock1.c ' >> $makef
+        echo "	"'$(CC) ${objdir}dateclock1.o -c ${machdir}dateclock1.c' >> $makef
+        echo ' ${objdir}second1.o : ${machdir}second1.c ' >> $makef
+        echo "	"'$(CC) ${objdir}second1.o -c ${machdir}second1.c' >> $makef
+   endif
+   echo ' ${objdir}aabacd.o : ${newdir}aabacd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}aabacd.o ${newdir}aabacd.f' >> $makef
+   echo ' ${objdir}aabbcd.o : ${newdir}aabbcd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}aabbcd.o ${newdir}aabbcd.f' >> $makef
+   echo ' ${objdir}am1.o : ${newdir}am1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}am1.o ${newdir}am1.f' >> $makef
+   echo ' ${objdir}amsel.o : ${newdir}amsel.f ' >> $makef
+   echo "	"'$(F77) ${objdir}amsel.o ${newdir}amsel.f' >> $makef
+   echo ' ${objdir}amsol.o : ${newdir}amsol.f ' >> $makef
+   echo "	"'$(F77) ${objdir}amsol.o ${newdir}amsol.f' >> $makef
+   echo ' ${objdir}anavib.o : ${newdir}anavib.f ' >> $makef
+   echo "	"'$(F77) ${objdir}anavib.o ${newdir}anavib.f' >> $makef
+   echo ' ${objdir}arcch.o : ${newdir}arcch.f ' >> $makef
+   echo "	"'$(F77) ${objdir}arcch.o ${newdir}arcch.f' >> $makef
+   echo ' ${objdir}areah.o : ${newdir}areah.f ' >> $makef
+   echo "	"'$(F77) ${objdir}areah.o ${newdir}areah.f' >> $makef
+   echo ' ${objdir}areal.o : ${newdir}areal.f ' >> $makef
+   echo "	"'$(F77) ${objdir}areal.o ${newdir}areal.f' >> $makef
+   echo ' ${objdir}axis.o : ${newdir}axis.f ' >> $makef
+   echo "	"'$(F77) ${objdir}axis.o ${newdir}axis.f' >> $makef
+   echo ' ${objdir}bfn.o : ${newdir}bfn.f ' >> $makef
+   echo "	"'$(F77) ${objdir}bfn.o ${newdir}bfn.f' >> $makef
+   echo ' ${objdir}bonds.o : ${newdir}bonds.f ' >> $makef
+   echo "	"'$(F77) ${objdir}bonds.o ${newdir}bonds.f' >> $makef
+   echo ' ${objdir}bornpl.o : ${newdir}bornpl.f ' >> $makef
+   echo "	"'$(F77) ${objdir}bornpl.o ${newdir}bornpl.f' >> $makef
+   echo ' ${objdir}calcbp.o : ${newdir}calcbp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}calcbp.o ${newdir}calcbp.f' >> $makef
+   echo ' ${objdir}calvk.o : ${newdir}calvk.f ' >> $makef
+   echo "	"'$(F77) ${objdir}calvk.o ${newdir}calvk.f' >> $makef
+   echo ' ${objdir}calpar.o : ${newdir}calpar.f ' >> $makef
+   echo "	"'$(F77) ${objdir}calpar.o ${newdir}calpar.f' >> $makef
+   echo ' ${objdir}capcnv.o : ${newdir}capcnv.f ' >> $makef
+   echo "	"'$(F77) ${objdir}capcnv.o ${newdir}capcnv.f' >> $makef
+   echo ' ${objdir}cardan.o : ${newdir}cardan.f ' >> $makef
+   echo "	"'$(F77) ${objdir}cardan.o ${newdir}cardan.f' >> $makef
+   echo ' ${objdir}cdscal.o : ${newdir}cdscal.f ' >> $makef
+   echo "	"'$(F77) ${objdir}cdscal.o ${newdir}cdscal.f' >> $makef
+   echo ' ${objdir}chain.o : ${newdir}chain.f ' >> $makef
+   echo "	"'$(F77) ${objdir}chain.o ${newdir}chain.f' >> $makef
+   echo ' ${objdir}chgmp1.o : ${newdir}chgmp1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}chgmp1.o ${newdir}chgmp1.f' >> $makef
+   echo ' ${objdir}chgmp2.o : ${newdir}chgmp2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}chgmp2.o ${newdir}chgmp2.f' >> $makef
+   echo ' ${objdir}chgmp3.o : ${newdir}chgmp3.f ' >> $makef
+   echo "	 "'$(F77) ${objdir}chgmp3.o ${newdir}chgmp3.f' >> $makef
+   echo ' ${objdir}chrge.o : ${newdir}chrge.f ' >> $makef
+   echo "	"'$(F77) ${objdir}chrge.o ${newdir}chrge.f' >> $makef
+   echo ' ${objdir}ciparm.o : ${newdir}ciparm.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ciparm.o ${newdir}ciparm.f' >> $makef
+   echo ' ${objdir}cisgen.o : ${newdir}cisgen.f ' >> $makef
+   echo "	"'$(F77) ${objdir}cisgen.o ${newdir}cisgen.f' >> $makef
+   echo ' ${objdir}cm1drv.o : ${newdir}cm1drv.f ' >> $makef
+   echo "	"'$(F77) ${objdir}cm1drv.o ${newdir}cm1drv.f' >> $makef
+   echo ' ${objdir}cnvg2.o : ${newdir}cnvg2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}cnvg2.o ${newdir}cnvg2.f' >> $makef
+   echo ' ${objdir}col.o : ${newdir}col.f ' >> $makef
+   echo "	"'$(F77) ${objdir}col.o ${newdir}col.f' >> $makef
+   echo ' ${objdir}compfg.o : ${newdir}compfg.f ' >> $makef
+   echo "	"'$(F77) ${objdir}compfg.o ${newdir}compfg.f' >> $makef
+   echo ' ${objdir}convck.o : ${newdir}convck.f ' >> $makef
+   echo "	"'$(F77) ${objdir}convck.o ${newdir}convck.f' >> $makef
+   echo ' ${objdir}coulrd.o : ${newdir}coulrd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}coulrd.o ${newdir}coulrd.f' >> $makef
+   echo ' ${objdir}dareal.o : ${newdir}dareal.f ' >> $makef
+   echo "	"'$(F77o) ${objdir}dareal.o ${newdir}dareal.f' >> $makef
+   echo ' ${objdir}dbrnpl.o : ${newdir}dbrnpl.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dbrnpl.o ${newdir}dbrnpl.f' >> $makef
+   echo ' ${objdir}dcart.o : ${newdir}dcart.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dcart.o ${newdir}dcart.f' >> $makef
+   echo ' ${objdir}dcart2.o : ${newdir}dcart2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dcart2.o ${newdir}dcart2.f' >> $makef
+   echo ' ${objdir}denrot.o : ${newdir}denrot.f ' >> $makef
+   echo "	"'$(F77) ${objdir}denrot.o ${newdir}denrot.f' >> $makef
+   echo ' ${objdir}densit.o : ${newdir}densit.f ' >> $makef
+   echo "	"'$(F77) ${objdir}densit.o ${newdir}densit.f' >> $makef
+   echo ' ${objdir}densts.o : ${newdir}densts.f ' >> $makef
+   echo "	"'$(F77) ${objdir}densts.o ${newdir}densts.f' >> $makef
+   echo ' ${objdir}depvar.o : ${newdir}depvar.f ' >> $makef
+   echo "	"'$(F77) ${objdir}depvar.o ${newdir}depvar.f' >> $makef
+   echo ' ${objdir}deri0.o : ${newdir}deri0.f ' >> $makef
+   echo "	"'$(F77) ${objdir}deri0.o ${newdir}deri0.f' >> $makef
+   echo ' ${objdir}deri1.o : ${newdir}deri1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}deri1.o ${newdir}deri1.f' >> $makef
+   echo ' ${objdir}deri2.o : ${newdir}deri2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}deri2.o ${newdir}deri2.f' >> $makef
+   echo ' ${objdir}deri21.o : ${newdir}deri21.f ' >> $makef
+   echo "	"'$(F77) ${objdir}deri21.o ${newdir}deri21.f' >> $makef
+   echo ' ${objdir}deri23.o : ${newdir}deri23.f ' >> $makef
+   echo "	"'$(F77) ${objdir}deri23.o ${newdir}deri23.f' >> $makef
+   echo ' ${objdir}deriv.o : ${newdir}deriv.f ' >> $makef
+   echo "	"'$(F77) ${objdir}deriv.o ${newdir}deriv.f' >> $makef
+   echo ' ${objdir}dfock2.o : ${newdir}dfock2.f ' >> $makef
+   echo "	"'$(F77o) ${objdir}dfock2.o ${newdir}dfock2.f' >> $makef
+   echo ' ${objdir}dfpsav.o : ${newdir}dfpsav.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dfpsav.o ${newdir}dfpsav.f' >> $makef
+   echo ' ${objdir}dhc.o : ${newdir}dhc.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dhc.o ${newdir}dhc.f' >> $makef
+   echo ' ${objdir}dhcore.o : ${newdir}dhcore.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dhcore.o ${newdir}dhcore.f' >> $makef
+   echo ' ${objdir}diag.o : ${newdir}diag.f ' >> $makef
+   echo "	"'$(F77) ${objdir}diag.o ${newdir}diag.f' >> $makef
+   echo ' ${objdir}diag2.o : ${newdir}diag2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}diag2.o ${newdir}diag2.f' >> $makef
+   echo ' ${objdir}diagiv.o : ${newdir}diagiv.f ' >> $makef
+   echo "	"'$(F77) ${objdir}diagiv.o ${newdir}diagiv.f' >> $makef
+   echo ' ${objdir}diat2.o : ${newdir}diat2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}diat2.o ${newdir}diat2.f' >> $makef
+   echo ' ${objdir}dipole.o : ${newdir}dipole.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dipole.o ${newdir}dipole.f' >> $makef
+   echo ' ${objdir}diprnt.o : ${newdir}diprnt.f ' >> $makef
+   echo "	"'$(F77) ${objdir}diprnt.o ${newdir}diprnt.f' >> $makef
+   echo ' ${objdir}dotmk.o : ${newdir}dotmk.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dotmk.o ${newdir}dotmk.f' >> $makef
+   echo ' ${objdir}dpqtkl.o : ${newdir}dpqtkl.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dpqtkl.o ${newdir}dpqtkl.f' >> $makef
+   echo ' ${objdir}drc.o : ${newdir}drc.f ' >> $makef
+   echo "	"'$(F77) ${objdir}drc.o ${newdir}drc.f' >> $makef
+   echo ' ${objdir}drot.o : ${newdir}drot.f ' >> $makef
+   echo "	"'$(F77) ${objdir}drot.o ${newdir}drot.f' >> $makef
+   echo ' ${objdir}dswap.o : ${newdir}dswap.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dswap.o ${newdir}dswap.f' >> $makef
+   echo ' ${objdir}ebrpd.o : ${newdir}ebrpd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ebrpd.o ${newdir}ebrpd.f' >> $makef
+   echo ' ${objdir}ebrrec.o : ${newdir}ebrrec.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ebrrec.o ${newdir}ebrrec.f' >> $makef
+   echo ' ${objdir}ebrtrp.o : ${newdir}ebrtrp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ebrtrp.o ${newdir}ebrtrp.f' >> $makef
+   echo ' ${objdir}ebrglq.o : ${newdir}ebrglq.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ebrglq.o ${newdir}ebrglq.f' >> $makef
+   echo ' ${objdir}echowd.o : ${newdir}echowd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}echowd.o ${newdir}echowd.f' >> $makef
+   echo ' ${objdir}ecrit.o : ${newdir}ecrit.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ecrit.o ${newdir}ecrit.f' >> $makef
+   echo ' ${objdir}ef.o : ${newdir}ef.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ef.o ${newdir}ef.f' >> $makef
+   echo ' ${objdir}efcres.o : ${newdir}efcres.f ' >> $makef
+   echo "	"'$(F77) ${objdir}efcres.o ${newdir}efcres.f' >> $makef
+   echo ' ${objdir}efsav.o : ${newdir}efsav.f ' >> $makef
+   echo "	"'$(F77) ${objdir}efsav.o ${newdir}efsav.f' >> $makef
+   echo ' ${objdir}efstr.o : ${newdir}efstr.f ' >> $makef
+   echo "	"'$(F77) ${objdir}efstr.o ${newdir}efstr.f' >> $makef
+   echo ' ${objdir}enpart.o : ${newdir}enpart.f ' >> $makef
+   echo "	"'$(F77) ${objdir}enpart.o ${newdir}enpart.f' >> $makef
+   echo ' ${objdir}epslon.o : ${newdir}epslon.f ' >> $makef
+   echo "	"'$(F77) ${objdir}epslon.o ${newdir}epslon.f' >> $makef
+   echo ' ${objdir}extsmx.o : ${newdir}extsmx.f ' >> $makef
+   echo "	"'$(F77) ${objdir}extsmx.o ${newdir}extsmx.f' >> $makef
+   echo ' ${objdir}extsmy.o : ${newdir}extsmy.f ' >> $makef
+   echo "	"'$(F77) ${objdir}extsmy.o ${newdir}extsmy.f' >> $makef
+   echo ' ${objdir}findkw.o : ${newdir}findkw.f ' >> $makef
+   echo "	"'$(F77) ${objdir}findkw.o ${newdir}findkw.f' >> $makef
+   echo ' ${objdir}findky.o : ${newdir}findky.f ' >> $makef
+   echo "	"'$(F77) ${objdir}findky.o ${newdir}findky.f' >> $makef
+   echo ' ${objdir}finds.o : ${newdir}finds.f ' >> $makef
+   echo "	"'$(F77) ${objdir}finds.o ${newdir}finds.f' >> $makef
+   echo ' ${objdir}flepo.o : ${newdir}flepo.f ' >> $makef
+   echo "	"'$(F77) ${objdir}flepo.o ${newdir}flepo.f' >> $makef
+   echo ' ${objdir}fmat.o : ${newdir}fmat.f ' >> $makef
+   echo "	"'$(F77) ${objdir}fmat.o ${newdir}fmat.f' >> $makef
+   echo ' ${objdir}fock.o : ${newdir}fock.f ' >> $makef
+   echo "	"'$(F77o) ${objdir}fock.o ${newdir}fock.f' >> $makef
+   echo ' ${objdir}fock1.o : ${newdir}fock1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}fock1.o ${newdir}fock1.f' >> $makef
+   echo ' ${objdir}fock2.o : ${newdir}fock2.f ' >> $makef
+   echo "	"'$(F77o) ${objdir}fock2.o ${newdir}fock2.f' >> $makef
+   echo ' ${objdir}fock2d.o : ${newdir}fock2d.f ' >> $makef
+   echo "	"'$(F77) ${objdir}fock2d.o ${newdir}fock2d.f' >> $makef
+   echo ' ${objdir}force.o : ${newdir}force.f ' >> $makef
+   echo "	"'$(F77) ${objdir}force.o ${newdir}force.f' >> $makef
+   echo ' ${objdir}formd.o : ${newdir}formd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}formd.o ${newdir}formd.f' >> $makef
+   echo ' ${objdir}forsav.o : ${newdir}forsav.f ' >> $makef
+   echo "	"'$(F77) ${objdir}forsav.o ${newdir}forsav.f' >> $makef
+   echo ' ${objdir}gbscrf.o : ${newdir}gbscrf.f ' >> $makef
+   echo "	"'$(F77) ${objdir}gbscrf.o ${newdir}gbscrf.f' >> $makef
+   echo ' ${objdir}geout.o : ${newdir}geout.f ' >> $makef
+   echo "	"'$(F77) ${objdir}geout.o ${newdir}geout.f' >> $makef
+   echo ' ${objdir}getchg.o : ${newdir}getchg.f ' >> $makef
+   echo "	"'$(F77) ${objdir}getchg.o ${newdir}getchg.f' >> $makef
+   echo ' ${objdir}getgeo.o : ${newdir}getgeo.f ' >> $makef
+   echo "	"'$(F77) ${objdir}getgeo.o ${newdir}getgeo.f' >> $makef
+   echo ' ${objdir}gethes.o : ${newdir}gethes.f ' >> $makef
+   echo "	"'$(F77) ${objdir}gethes.o ${newdir}gethes.f' >> $makef
+   echo ' ${objdir}getsym.o : ${newdir}getsym.f ' >> $makef
+   echo "	"'$(F77) ${objdir}getsym.o ${newdir}getsym.f' >> $makef
+   echo ' ${objdir}gmetry.o : ${newdir}gmetry.f ' >> $makef
+   echo "	"'$(F77) ${objdir}gmetry.o ${newdir}gmetry.f' >> $makef
+   echo ' ${objdir}grid.o : ${newdir}grid.f ' >> $makef
+   echo "	"'$(F77) ${objdir}grid.o ${newdir}grid.f' >> $makef
+   echo ' ${objdir}h1elec.o : ${newdir}h1elec.f ' >> $makef
+   echo "	"'$(F77) ${objdir}h1elec.o ${newdir}h1elec.f' >> $makef
+   echo ' ${objdir}hcore.o : ${newdir}hcore.f ' >> $makef
+   echo "	"'$(F77) ${objdir}hcore.o ${newdir}hcore.f' >> $makef
+   echo ' ${objdir}hfadd.o : ${newdir}hfadd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}hfadd.o ${newdir}hfadd.f' >> $makef
+   echo ' ${objdir}header.o : ${newdir}header.f ' >> $makef
+   echo "	"'$(F77) ${objdir}header.o ${newdir}header.f' >> $makef
+   echo ' ${objdir}hqrii.o : ${newdir}hqrii.f ' >> $makef
+   echo "	"'$(F77) ${objdir}hqrii.o ${newdir}hqrii.f' >> $makef
+   echo ' ${objdir}interp.o : ${newdir}interp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}interp.o ${newdir}interp.f' >> $makef
+   echo ' ${objdir}ismax.o : ${newdir}ismax.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ismax.o ${newdir}ismax.f' >> $makef
+   echo ' ${objdir}iter.o : ${newdir}iter.f ' >> $makef
+   echo "	"'$(F77) ${objdir}iter.o ${newdir}iter.f' >> $makef
+   echo ' ${objdir}jcarin.o : ${newdir}jcarin.f ' >> $makef
+   echo "	"'$(F77o) ${objdir}jcarin.o ${newdir}jcarin.f' >> $makef
+   echo ' ${objdir}keyflg.o : ${newdir}keyflg.f ' >> $makef
+   echo "	"'$(F77) ${objdir}keyflg.o ${newdir}keyflg.f' >> $makef
+   echo ' ${objdir}kfinit.o : ${newdir}kfinit.f ' >> $makef
+   echo "	"'$(F77) ${objdir}kfinit.o ${newdir}kfinit.f' >> $makef
+   echo ' ${objdir}kwnono.o : ${newdir}kwnono.f ' >> $makef
+   echo "	"'$(F77) ${objdir}kwnono.o ${newdir}kwnono.f' >> $makef
+   echo ' ${objdir}kwadd.o : ${newdir}kwadd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}kwadd.o ${newdir}kwadd.f' >> $makef
+   echo ' ${objdir}kwrm.o : ${newdir}kwrm.f ' >> $makef
+   echo "	"'$(F77) ${objdir}kwrm.o ${newdir}kwrm.f' >> $makef
+   echo ' ${objdir}ldata.o : ${newdir}ldata.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ldata.o ${newdir}ldata.f' >> $makef
+   echo ' ${objdir}linmin.o : ${newdir}linmin.f ' >> $makef
+   echo "	"'$(F77) ${objdir}linmin.o ${newdir}linmin.f' >> $makef
+   echo ' ${objdir}linsum.o : ${newdir}linsum.f ' >> $makef
+   echo "	"'$(F77) ${objdir}linsum.o ${newdir}linsum.f' >> $makef
+   echo ' ${objdir}loadin.o : ${newdir}loadin.f ' >> $makef
+   echo "	"'$(F77) ${objdir}loadin.o ${newdir}loadin.f' >> $makef
+   echo ' ${objdir}loadsp.o : ${newdir}loadsp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}loadsp.o ${newdir}loadsp.f' >> $makef
+   echo ' ${objdir}local.o : ${newdir}local.f ' >> $makef
+   echo "	"'$(F77) ${objdir}local.o ${newdir}local.f' >> $makef
+   echo ' ${objdir}locmin.o : ${newdir}locmin.f ' >> $makef
+   echo "	"'$(F77) ${objdir}locmin.o ${newdir}locmin.f' >> $makef
+   echo ' ${objdir}ltrd.o : ${newdir}ltrd.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ltrd.o ${newdir}ltrd.f' >> $makef
+   echo ' ${objdir}main.o : ${newdir}main.f ' >> $makef
+   echo "	"'$(F77) ${objdir}main.o ${newdir}main.f' >> $makef
+   echo ' ${objdir}mamlt2.o : ${newdir}mamlt2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mamlt2.o ${newdir}mamlt2.f' >> $makef
+   echo ' ${objdir}matout.o : ${newdir}matout.f ' >> $makef
+   echo "	"'$(F77) ${objdir}matout.o ${newdir}matout.f' >> $makef
+   echo ' ${objdir}meci.o : ${newdir}meci.f ' >> $makef
+   echo "	"'$(F77) ${objdir}meci.o ${newdir}meci.f' >> $makef
+   echo ' ${objdir}mform.o : ${newdir}mform.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mform.o ${newdir}mform.f' >> $makef
+   echo ' ${objdir}moldat.o : ${newdir}moldat.f ' >> $makef
+   echo "	"'$(F77) ${objdir}moldat.o ${newdir}moldat.f' >> $makef
+   echo ' ${objdir}mullik.o : ${newdir}mullik.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mullik.o ${newdir}mullik.f' >> $makef
+   echo ' ${objdir}mxmlp.o : ${newdir}mxmlp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mxmlp.o ${newdir}mxmlp.f' >> $makef
+   echo ' ${objdir}mxp.o : ${newdir}mxp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mxp.o ${newdir}mxp.f' >> $makef
+   echo ' ${objdir}mxt.o : ${newdir}mxt.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mxt.o ${newdir}mxt.f' >> $makef
+   echo ' ${objdir}nllsq.o : ${newdir}nllsq.f ' >> $makef
+   echo "	"'$(F77) ${objdir}nllsq.o ${newdir}nllsq.f' >> $makef
+   echo ' ${objdir}osm5sp.o : ${newdir}osm5sp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}osm5sp.o ${newdir}osm5sp.f' >> $makef
+   echo ' ${objdir}overlp.o : ${newdir}overlp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}overlp.o ${newdir}overlp.f' >> $makef
+   echo ' ${objdir}path1.o : ${newdir}path1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}path1.o ${newdir}path1.f' >> $makef
+   echo ' ${objdir}path2.o : ${newdir}path2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}path2.o ${newdir}path2.f' >> $makef
+   echo ' ${objdir}patham.o : ${newdir}patham.f ' >> $makef
+   echo "	"'$(F77) ${objdir}patham.o ${newdir}patham.f' >> $makef
+   echo ' ${objdir}paths.o : ${newdir}paths.f ' >> $makef
+   echo "	"'$(F77) ${objdir}paths.o ${newdir}paths.f' >> $makef
+   echo ' ${objdir}point1.o : ${newdir}point1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}point1.o ${newdir}point1.f' >> $makef
+   echo ' ${objdir}point3.o : ${newdir}point3.f ' >> $makef
+   echo "	"'$(F77) ${objdir}point3.o ${newdir}point3.f' >> $makef
+   echo ' ${objdir}polar.o : ${newdir}polar.f ' >> $makef
+   echo "	"'$(F77) ${objdir}polar.o ${newdir}polar.f' >> $makef
+   echo ' ${objdir}polenm.o : ${newdir}polenm.f ' >> $makef
+   echo "	"'$(F77) ${objdir}polenm.o ${newdir}polenm.f' >> $makef
+   echo ' ${objdir}powel1.o : ${newdir}powel1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}powel1.o ${newdir}powel1.f' >> $makef
+   echo ' ${objdir}powell.o : ${newdir}powell.f ' >> $makef
+   echo "	"'$(F77) ${objdir}powell.o ${newdir}powell.f' >> $makef
+   echo ' ${objdir}powsq.o : ${newdir}powsq.f ' >> $makef
+   echo "	"'$(F77) ${objdir}powsq.o ${newdir}powsq.f' >> $makef
+   echo ' ${objdir}pqtkl.o : ${newdir}pqtkl.f ' >> $makef
+   echo "	"'$(F77) ${objdir}pqtkl.o ${newdir}pqtkl.f' >> $makef
+   echo ' ${objdir}prarea.o : ${newdir}prarea.f ' >> $makef
+   echo "	"'$(F77) ${objdir}prarea.o ${newdir}prarea.f' >> $makef
+   echo ' ${objdir}prthes.o : ${newdir}prthes.f ' >> $makef
+   echo "	"'$(F77) ${objdir}prthes.o ${newdir}prthes.f' >> $makef
+   echo ' ${objdir}pulay.o : ${newdir}pulay.f ' >> $makef
+   echo "	"'$(F77) ${objdir}pulay.o ${newdir}pulay.f' >> $makef
+   echo ' ${objdir}pythag.o : ${newdir}pythag.f ' >> $makef
+   echo "	"'$(F77) ${objdir}pythag.o ${newdir}pythag.f' >> $makef
+   echo ' ${objdir}quadri.o : ${newdir}quadri.f ' >> $makef
+   echo "	"'$(F77) ${objdir}quadri.o ${newdir}quadri.f' >> $makef
+   echo ' ${objdir}racsmo.o : ${newdir}racsmo.f ' >> $makef
+   echo "	"'$(F77) ${objdir}racsmo.o ${newdir}racsmo.f' >> $makef
+   echo ' ${objdir}react1.o : ${newdir}react1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}react1.o ${newdir}react1.f' >> $makef
+   echo ' ${objdir}readch.o : ${newdir}readch.f ' >> $makef
+   echo "	"'$(F77) ${objdir}readch.o ${newdir}readch.f' >> $makef
+   echo ' ${objdir}readif.o : ${newdir}readif.f ' >> $makef
+   echo "	"'$(F77) ${objdir}readif.o ${newdir}readif.f' >> $makef
+   echo ' ${objdir}reads.o : ${newdir}reads.f ' >> $makef
+   echo "	"'$(F77) ${objdir}reads.o ${newdir}reads.f' >> $makef
+   echo ' ${objdir}resinp.o : ${newdir}resinp.f ' >> $makef
+   echo "	"'$(F77) ${objdir}resinp.o ${newdir}resinp.f' >> $makef
+   echo ' ${objdir}rotate.o : ${newdir}rotate.f ' >> $makef
+   echo "	"'$(F77) ${objdir}rotate.o ${newdir}rotate.f' >> $makef
+   echo ' ${objdir}rs.o : ${newdir}rs.f ' >> $makef
+   echo "	"'$(F77) ${objdir}rs.o ${newdir}rs.f' >> $makef
+   echo ' ${objdir}sasado.o : ${newdir}sasado.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sasado.o ${newdir}sasado.f' >> $makef
+   echo ' ${objdir}sasard.o : ${newdir}sasard.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sasard.o ${newdir}sasard.f' >> $makef
+   echo ' ${objdir}satbat.o : ${newdir}satbat.f ' >> $makef
+   echo "	"'$(F77) ${objdir}satbat.o ${newdir}satbat.f' >> $makef
+   echo ' ${objdir}saxpy.o : ${newdir}saxpy.f ' >> $makef
+   echo "	"'$(F77) ${objdir}saxpy.o ${newdir}saxpy.f' >> $makef
+   echo ' ${objdir}scopy.o : ${newdir}scopy.f ' >> $makef
+   echo "	"'$(F77) ${objdir}scopy.o ${newdir}scopy.f' >> $makef
+   echo ' ${objdir}sdot.o : ${newdir}sdot.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sdot.o ${newdir}sdot.f' >> $makef
+   echo ' ${objdir}search.o : ${newdir}search.f ' >> $makef
+   echo "	"'$(F77) ${objdir}search.o ${newdir}search.f' >> $makef
+   echo ' ${objdir}selbel.o : ${newdir}selbel.f ' >> $makef
+   echo "	"'$(F77) ${objdir}selbel.o ${newdir}selbel.f' >> $makef
+   echo ' ${objdir}set.o : ${newdir}set.f ' >> $makef
+   echo "	"'$(F77) ${objdir}set.o ${newdir}set.f' >> $makef
+   echo ' ${objdir}sm1ara.o : ${newdir}sm1ara.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sm1ara.o ${newdir}sm1ara.f' >> $makef
+   echo ' ${objdir}smsshb.o : ${newdir}smsshb.f ' >> $makef
+   echo "	"'$(F77) ${objdir}smsshb.o ${newdir}smsshb.f' >> $makef
+   echo ' ${objdir}smhb.o : ${newdir}smhb.f ' >> $makef
+   echo "	"'$(F77) ${objdir}smhb.o ${newdir}smhb.f' >> $makef
+   echo ' ${objdir}sm4hb.o : ${newdir}sm4hb.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sm4hb.o ${newdir}sm4hb.f' >> $makef
+   echo ' ${objdir}sm5hb.o : ${newdir}sm5hb.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sm5hb.o ${newdir}sm5hb.f' >> $makef
+   echo ' ${objdir}sm5rhb.o : ${newdir}sm5rhb.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sm5rhb.o ${newdir}sm5rhb.f' >> $makef
+   echo ' ${objdir}smx1.o : ${newdir}smx1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}smx1.o ${newdir}smx1.f' >> $makef
+   echo ' ${objdir}solrot.o : ${newdir}solrot.f ' >> $makef
+   echo "	"'$(F77) ${objdir}solrot.o ${newdir}solrot.f' >> $makef
+   echo ' ${objdir}spaout.o : ${newdir}spaout.f ' >> $makef
+   echo "	"'$(F77) ${objdir}spaout.o ${newdir}spaout.f' >> $makef
+   echo ' ${objdir}spline.o : ${newdir}spline.f ' >> $makef
+   echo "	"'$(F77) ${objdir}spline.o ${newdir}spline.f' >> $makef
+   echo ' ${objdir}srfcal.o : ${newdir}srfcal.f ' >> $makef
+   echo "	"'$(F77) ${objdir}srfcal.o ${newdir}srfcal.f' >> $makef
+   echo ' ${objdir}srfcty.o : ${newdir}srfcty.f ' >> $makef
+   echo "	"'$(F77) ${objdir}srfcty.o ${newdir}srfcty.f' >> $makef
+   echo ' ${objdir}ss.o : ${newdir}ss.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ss.o ${newdir}ss.f' >> $makef
+   echo ' ${objdir}ssidi.o : ${newdir}ssidi.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ssidi.o ${newdir}ssidi.f' >> $makef
+   echo ' ${objdir}ssifa.o : ${newdir}ssifa.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ssifa.o ${newdir}ssifa.f' >> $makef
+   echo ' ${objdir}stat1.o : ${newdir}stat1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}stat1.o ${newdir}stat1.f' >> $makef
+   echo ' ${objdir}sterms.o : ${newdir}sterms.f ' >> $makef
+   echo "	"'$(F77) ${objdir}sterms.o ${newdir}sterms.f' >> $makef
+   echo ' ${objdir}stlfac.o : ${newdir}stlfac.f ' >> $makef
+   echo "	"'$(F77) ${objdir}stlfac.o ${newdir}stlfac.f' >> $makef
+   echo ' ${objdir}stpjob.o : ${newdir}stpjob.f ' >> $makef
+   echo "	"'$(F77) ${objdir}stpjob.o ${newdir}stpjob.f' >> $makef
+   echo ' ${objdir}supdot.o : ${newdir}supdot.f ' >> $makef
+   echo "	"'$(F77) ${objdir}supdot.o ${newdir}supdot.f' >> $makef
+   echo ' ${objdir}svopts.o : ${newdir}svopts.f ' >> $makef
+   echo "	"'$(F77) ${objdir}svopts.o ${newdir}svopts.f' >> $makef
+   echo ' ${objdir}thermo.o : ${newdir}thermo.f ' >> $makef
+   echo "	"'$(F77) ${objdir}thermo.o ${newdir}thermo.f' >> $makef
+   echo ' ${objdir}tql1.o : ${newdir}tql1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}tql1.o ${newdir}tql1.f' >> $makef
+   echo ' ${objdir}tql2.o : ${newdir}tql2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}tql2.o ${newdir}tql2.f' >> $makef
+   echo ' ${objdir}tqlrat.o : ${newdir}tqlrat.f ' >> $makef
+   echo "	"'$(F77) ${objdir}tqlrat.o ${newdir}tqlrat.f' >> $makef
+   echo ' ${objdir}tred1.o : ${newdir}tred1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}tred1.o ${newdir}tred1.f' >> $makef
+   echo ' ${objdir}tred2.o : ${newdir}tred2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}tred2.o ${newdir}tred2.f' >> $makef
+   echo ' ${objdir}trust1.o : ${newdir}trust1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}trust1.o ${newdir}trust1.f' >> $makef
+   echo ' ${objdir}trust2.o : ${newdir}trust2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}trust2.o ${newdir}trust2.f' >> $makef
+   echo ' ${objdir}trust3.o : ${newdir}trust3.f ' >> $makef
+   echo "	"'$(F77) ${objdir}trust3.o ${newdir}trust3.f' >> $makef
+   echo ' ${objdir}trust4.o : ${newdir}trust4.f ' >> $makef
+   echo "	"'$(F77) ${objdir}trust4.o ${newdir}trust4.f' >> $makef
+   echo ' ${objdir}trust5.o : ${newdir}trust5.f ' >> $makef
+   echo "	"'$(F77) ${objdir}trust5.o ${newdir}trust5.f' >> $makef
+   echo ' ${objdir}trust6.o : ${newdir}trust6.f ' >> $makef
+   echo "	"'$(F77) ${objdir}trust6.o ${newdir}trust6.f' >> $makef
+   echo ' ${objdir}truste.o : ${newdir}truste.f ' >> $makef
+   echo "	"'$(F77) ${objdir}truste.o ${newdir}truste.f' >> $makef
+   echo ' ${objdir}trustg.o : ${newdir}trustg.f ' >> $makef
+   echo "	"'$(F77) ${objdir}trustg.o ${newdir}trustg.f' >> $makef
+   echo ' ${objdir}tpchk.o : ${newdir}tpchk.f ' >> $makef
+   echo "	"'$(F77) ${objdir}tpchk.o ${newdir}tpchk.f' >> $makef
+   echo ' ${objdir}uhfprt.o : ${newdir}uhfprt.f ' >> $makef
+   echo "	"'$(F77) ${objdir}uhfprt.o ${newdir}uhfprt.f' >> $makef
+   echo ' ${objdir}uncano.o : ${newdir}uncano.f ' >> $makef
+   echo "	"'$(F77) ${objdir}uncano.o ${newdir}uncano.f' >> $makef
+   echo ' ${objdir}updhes.o : ${newdir}updhes.f ' >> $makef
+   echo "	"'$(F77) ${objdir}updhes.o ${newdir}updhes.f' >> $makef
+   echo ' ${objdir}vecprt.o : ${newdir}vecprt.f ' >> $makef
+   echo "	"'$(F77) ${objdir}vecprt.o ${newdir}vecprt.f' >> $makef
+   echo ' ${objdir}vecred.o : ${newdir}vecred.f' >> $makef
+   echo "	"'$(F77) ${objdir}vecred.o ${newdir}vecred.f' >> $makef
+   echo ' ${objdir}vecwrt.o : ${newdir}vecwrt.f ' >> $makef
+   echo "	"'$(F77) ${objdir}vecwrt.o ${newdir}vecwrt.f' >> $makef
+   echo ' ${objdir}writes.o : ${newdir}writes.f ' >> $makef
+   echo "	"'$(F77) ${objdir}writes.o ${newdir}writes.f' >> $makef
+   echo ' ${objdir}wrtkey.o : ${newdir}wrtkey.f ' >> $makef
+   echo "	"'$(F77) ${objdir}wrtkey.o ${newdir}wrtkey.f' >> $makef
+   echo ' ${objdir}zmprnt.o : ${newdir}zmprnt.f ' >> $makef
+   echo "	"'$(F77) ${objdir}zmprnt.o ${newdir}zmprnt.f' >> $makef
+   echo ' ${objdir}zpe.o : ${newdir}zpe.f ' >> $makef
+   echo "	"'$(F77) ${objdir}zpe.o ${newdir}zpe.f' >> $makef
+   echo ' ${objdir}xyzint.o : ${newdir}xyzint.f ' >> $makef
+   echo "	"'$(F77) ${objdir}xyzint.o ${newdir}xyzint.f' >> $makef
+   echo ' ${objdir}aababc.o : ${portdir}aababc.f ' >> $makef
+   echo "	"'$(F77) ${objdir}aababc.o ${portdir}aababc.f' >> $makef
+   echo ' ${objdir}amstat.o : ${portdir}amstat.f ' >> $makef
+   echo "	"'$(F77) ${objdir}amstat.o ${portdir}amstat.f' >> $makef
+   echo ' ${objdir}babbbc.o : ${portdir}babbbc.f ' >> $makef
+   echo "	"'$(F77) ${objdir}babbbc.o ${portdir}babbbc.f' >> $makef
+   echo ' ${objdir}deri22.o : ${portdir}deri22.f ' >> $makef
+   echo "	"'$(F77) ${objdir}deri22.o ${portdir}deri22.f' >> $makef
+   echo ' ${objdir}dijkl1.o : ${portdir}dijkl1.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dijkl1.o ${portdir}dijkl1.f' >> $makef
+   echo ' ${objdir}dijkl2.o : ${portdir}dijkl2.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dijkl2.o ${portdir}dijkl2.f' >> $makef
+   echo ' ${objdir}dot.o : ${portdir}dot.f ' >> $makef
+   echo "	"'$(F77) ${objdir}dot.o ${portdir}dot.f' >> $makef
+   echo ' ${objdir}frame.o : ${portdir}frame.f ' >> $makef
+   echo "	"'$(F77) ${objdir}frame.o ${portdir}frame.f' >> $makef
+   echo ' ${objdir}freqcy.o : ${portdir}freqcy.f ' >> $makef
+   echo "	"'$(F77) ${objdir}freqcy.o ${portdir}freqcy.f' >> $makef
+   echo ' ${objdir}haddon.o : ${portdir}haddon.f ' >> $makef
+   echo "	"'$(F77) ${objdir}haddon.o ${portdir}haddon.f' >> $makef
+   echo ' ${objdir}ijkl.o : ${portdir}ijkl.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ijkl.o ${portdir}ijkl.f' >> $makef
+   echo ' ${objdir}intcar.o : ${portdir}intcar.f ' >> $makef
+   echo "	"'$(F77) ${objdir}intcar.o ${portdir}intcar.f' >> $makef
+   echo ' ${objdir}jincar.o : ${portdir}jincar.f ' >> $makef
+   echo "	"'$(F77) ${objdir}jincar.o ${portdir}jincar.f' >> $makef
+   echo ' ${objdir}mecip.o : ${portdir}mecip.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mecip.o ${portdir}mecip.f' >> $makef
+   echo ' ${objdir}mtxm.o : ${portdir}mtxm.f ' >> $makef
+   echo "	"'$(F77) ${objdir}mtxm.o ${portdir}mtxm.f' >> $makef
+   echo ' ${objdir}osinv.o : ${portdir}osinv.f ' >> $makef
+   echo "	"'$(F77) ${objdir}osinv.o ${portdir}osinv.f' >> $makef
+   echo ' ${objdir}perm.o : ${portdir}perm.f ' >> $makef
+   echo "	"'$(F77) ${objdir}perm.o ${portdir}perm.f' >> $makef
+   echo ' ${objdir}rabiot.o : ${portdir}rabiot.f ' >> $makef
+   echo "	"'$(F77) ${objdir}rabiot.o ${portdir}rabiot.f' >> $makef
+   echo ' ${objdir}readvt.o : ${portdir}readvt.f ' >> $makef
+   echo "	"'$(F77) ${objdir}readvt.o ${portdir}readvt.f' >> $makef
+   echo ' ${objdir}status.o : ${portdir}status.f ' >> $makef
+   echo "	"'$(F77) ${objdir}status.o ${portdir}status.f' >> $makef
+   echo ' ${objdir}update.o : ${portdir}update.f ' >> $makef
+   echo "	"'$(F77) ${objdir}update.o ${portdir}update.f' >> $makef
+   echo ' ${objdir}ampac_unmod.o : ${unmoddir}ampac_unmod.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ampac_unmod.o ${unmoddir}ampac_unmod.f' >> $makef
+   echo ' ${objdir}ef_lib.o : ${unmoddir}ef_lib.f ' >> $makef
+   echo "	"'$(F77) ${objdir}ef_lib.o ${unmoddir}ef_lib.f' >> $makef
+   echo ' ${objdir}util_unmod.o : ${unmoddir}util_unmod.f ' >> $makef
+   echo "	"'$(F77) ${objdir}util_unmod.o ${unmoddir}util_unmod.f' >> $makef
+   echo ' ' >> $makef
+   echo ' ' >> $makef
+   echo 'prepare:' >> $makef
+      if ($machine == dec) echo "	/bin/cp $wrkdir/$incdir/*.i ${unmoddir}" >> $makef
+      if ($machine == dec) echo "	/bin/cp $wrkdir/$incdir/*.i ${machdir}" >> $makef
+      if ($machine == dec) echo "	/bin/cp $wrkdir/$incdir/*.i ${newdir}" >> $makef
+      if ($machine == dec) echo "	/bin/cp $wrkdir/$incdir/*.i ${portdir}" >> $makef
+      if ($machine == compaq) echo "	/bin/cp $wrkdir/$incdir/*.i ${unmoddir}" >> $makef
+      if ($machine == compaq) echo "	/bin/cp $wrkdir/$incdir/*.i ${machdir}" >> $makef
+      if ($machine == compaq) echo "	/bin/cp $wrkdir/$incdir/*.i ${newdir}" >> $makef
+      if ($machine == compaq) echo "	/bin/cp $wrkdir/$incdir/*.i ${portdir}" >> $makef
+      echo "	cd $wrkdir/$machdir;\" >> $makef
+      echo "	/bin/cp datesv.$machine datesv.f;\">> $makef
+      echo "	/bin/cp porcpu.$machine porcpu.f">> $makef
+   echo 'Makefile has been created successfully.  To start compilation, type'
+   echo 'the command make.'
+quit:
+

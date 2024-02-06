@@ -1,0 +1,267 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:23:47                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  CM1      - CHARGE MODEL 1 WILL BE USED (CM1A)
+ *  INPUT    - A NEW INPUT FILE WILL BE CREATED WITH THE OPTIMIZED GEOMETRY
+ *******************************************************************************
+
+     Parameter dependence data
+
+        Reference atom      Function no.    Dependent atom(s)
+            3                  1             4
+            3                  2             4
+            5                  1             6
+            5                  1             7
+            5                  1             8
+            5                  2             6
+            5                  2             7
+            5                  2             8
+            5                  3             7
+            5                 14             6
+            5                 14             8
+            9                  1            10
+            9                  2            10
+
+             Descriptions of the function numbers in the above table.
+   1      Bond length    is set equal to the reference bond length   
+   2      Bond angle     is set equal to the reference bond angle    
+   3      Dihedral angle is set equal to the reference dihedral angle
+  14      Dihedral angle varies as - reference dihedral              
+
+                Initial Geometry
+
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  C 
+    2       2  C            1.51507 *                                 1
+    3       3  O            1.50775 *   111.76536 *                   1   2
+    4       4  O            1.50775     111.76536     180.00000       2   1   3
+    5       5  H            1.12254 *   109.40311 *    58.46227 *     1   2   4
+    6       6  H            1.12254     109.40311     -58.46227       1   2   4
+    7       7  H            1.12254     109.40311      58.46227       2   1   3
+    8       8  H            1.12254     109.40311     -58.46227       2   1   3
+    9       9  H            1.11762 *   110.39609 *   180.00000       3   1   2
+   10      10  H            1.11762     110.39609     180.00000       4   2   1
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         6        0.0000    0.0000    0.0000
+     2         6        1.5151    0.0000    0.0000
+     3         8       -0.5591    1.4003    0.0000
+     4         8        2.0742   -1.4003    0.0000
+     5         1       -0.3729   -0.5538    0.9024
+     6         1       -0.3729   -0.5538   -0.9024
+     7         1        1.8880    0.5538    0.9024
+     8         1        1.8880    0.5538   -0.9024
+     9         1       -1.6764    1.3736    0.0000
+    10         1        3.1915   -1.3736    0.0000
+
+          RHF calculation, no. of doubly occupied orbitals= 13
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  C: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  O: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+
+ REFERENCE FOR CHARGE MODEL 1:
+
+ J. W. Storer, D. J. Giesen, C. J. Cramer, and D. G. Truhlar, J. Comput.-Aided 
+   Mol. Des. 9 (1995) 87-110
+
+            Interatomic distances
+
+               C   1      C   2      O   3      O   4      H   5      H   6
+ ------------------------------------------------------------------------------
+    C   1    0.00000
+    C   2    1.51507    0.00000
+    O   3    1.50775    2.50257    0.00000
+    O   4    2.50257    1.50775    3.84407    0.00000
+    H   5    1.12254    2.16461    2.16041    2.74207    0.00000
+    H   6    1.12253    2.16461    2.16041    2.74207    1.80479    0.00000
+    H   7    2.16461    1.12254    2.74207    2.16041    2.51764    3.09771
+    H   8    2.16461    1.12254    2.74207    2.16041    3.09771    2.51764
+    H   9    2.16724    3.47448    1.11762    4.66482    2.49561    2.49561
+    H  10    3.47448    2.16724    4.66482    1.11762    3.76710    3.76710
+
+               H   7      H   8      H   9      H  10
+ ------------------------------------------------------
+    H   7    0.00000
+    H   8    1.80479    0.00000
+    H   9    3.76710    3.76710    0.00000
+    H  10    2.49561    2.49561    5.58949    0.00000
+ GRADIENT BY QUASI-ANALYTICAL FORMALISM:
+ - NUMERICAL (CENTRAL DIFFERENCES) DERIVATION OF ELECTRONIC INTEGRALS & JACOBIAN
+
+ STANDARD DEVIATION ON ENERGY (kcal)         0.00006434
+                       GRADIENT (kcal/RU)    0.00311837 0.00470048 0.00318337
+
+        CYC : CYCLES   T : TIME (S)  GEO : CHANGE IN GEOMETRY
+        GCOMP : LARGEST COMPONENT OF GRADIENT (KCAL/RU)
+        HEAT : TOTAL ENERGY (KCAL/MOL)
+        1 RU = 1 ANGSTROM OR 1 RADIAN
+
+
+          DIAGONAL MATRIX USED AS HESSIAN
+
+ CYC:  0  T:    0.0  GEO: 0.000000  GCOMP: 303.196  HEAT:  -74.499189
+ CYC:  1  T:    0.0  GEO: 0.046607  GCOMP: 117.806  HEAT: -104.323616
+ CYC:  2  T:    0.1  GEO: 0.017062  GCOMP:  70.884  HEAT: -106.262854
+ CYC:  3  T:    0.1  GEO: 0.010516  GCOMP:  35.670  HEAT: -107.211942
+ CYC:  4  T:    0.1  GEO: 0.004699  GCOMP:  12.104  HEAT: -107.457335
+ CYC:  5  T:    0.1  GEO: 0.002003  GCOMP:   5.890  HEAT: -107.487283
+ CYC:  6  T:    0.1  GEO: 0.000849  GCOMP:   1.067  HEAT: -107.495582
+ CYC:  7  T:    0.1  GEO: 0.000395  GCOMP:   0.840  HEAT: -107.495541
+ CYC:  8  T:    0.1  GEO: 0.000270  GCOMP:   0.239  HEAT: -107.495922
+
+     ABSOLUTE VALUE OF LARGEST GRADIENT COMPONENT =  0.12668
+     IS LESS THAN CUTOFF =  0.45000 AND THE CALCULATED ENERGY
+     CHANGED LESS THAN .1 KCAL/MOL FOR LAST GEOMETRY CHANGE.
+
+
+AM1 SYMMETRY INPUT CM1                                                          
+ 1,2-ethanediol (all trans) (gas phase)                                          
+                                                                                 
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:23:47                  
+
+ Final heat of formation                   =    -107.495922 kcal
+ Electronic energy                         =   -2777.644336 eV
+ Core-core repulsion                       =    1797.231862 eV
+ Gradient norm                             =       0.238638 kcal/RU
+ No. of doubly occupied orbitals           =      13
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      62.046     amu
+ Computer time                             =       0.10     seconds
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  C 
+    2       2  C            1.52684 *                                 1
+    3       3  O            1.41852 *   106.24943 *                   1   2
+    4       4  O            1.41852     106.24943     180.00000       2   1   3
+    5       5  H            1.12175 *   110.26373 *    60.30512 *     1   2   4
+    6       6  H            1.12175     110.26373     -60.30512       1   2   4
+    7       7  H            1.12175     110.26373      60.30512       2   1   3
+    8       8  H            1.12175     110.26373     -60.30512       2   1   3
+    9       9  H            0.96390 *   106.35827 *   180.00000       3   1   2
+   10      10  H            0.96390     106.35827     180.00000       4   2   1
+
+            Interatomic distances (angstroms)
+
+               C   1      C   2      O   3      O   4      H   5      H   6
+ ------------------------------------------------------------------------------
+    C   1    0.00000
+    C   2    1.52684    0.00000
+    O   3    1.41852    2.35702    0.00000
+    O   4    2.35702    1.41852    3.57831    0.00000
+    H   5    1.12175    2.18540    2.09332    2.62465    0.00000
+    H   6    1.12175    2.18540    2.09332    2.62465    1.82826    0.00000
+    H   7    2.18540    1.12175    2.62465    2.09332    2.52879    3.12047
+    H   8    2.18540    1.12175    2.62465    2.09332    3.12047    2.52879
+    H   9    1.92653    3.19347    0.96390    4.26816    2.30960    2.30960
+    H  10    3.19347    1.92653    4.26816    0.96390    3.50408    3.50408
+
+               H   7      H   8      H   9      H  10
+ ------------------------------------------------------
+    H   7    0.00000
+    H   8    1.82826    0.00000
+    H   9    3.50408    3.50408    0.00000
+    H  10    2.30960    2.30960    5.04860    0.00000
+
+               Orbital eigenvalues (eV)
+
+ -38.62141 -36.97944 -29.62330 -23.00135 -18.84058 -17.42609 -16.64502 -14.84990
+ -14.10126 -13.87505 -12.01557 -11.04277 -10.61669   3.16622   3.77390   3.96364
+   4.14319   4.31510   4.58729   4.67802   6.29144   6.38018
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM1 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         C            -0.002           4.002
+           2         C            -0.002           4.002
+           3         O            -0.516           6.516
+           4         O            -0.516           6.516
+           5         H             0.079           0.921
+           6         H             0.079           0.921
+           7         H             0.079           0.921
+           8         H             0.079           0.921
+           9         H             0.361           0.639
+          10         H             0.361           0.639
+
+For the charges calculated by CM1:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges     0.000     0.000     0.000     0.000
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         C            -0.023           4.023
+           2         C            -0.023           4.023
+           3         O            -0.331           6.331
+           4         O            -0.331           6.331
+           5         H             0.075           0.925
+           6         H             0.075           0.925
+           7         H             0.075           0.925
+           8         H             0.075           0.925
+           9         H             0.204           0.796
+          10         H             0.204           0.796
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges      0.000     0.000     0.000     0.000
+ hybrid contribution     0.000     0.000     0.000     0.000
+ sum                     0.000     0.000     0.000     0.000
+
+          Cartesian coordinates (angstroms)
+
+    NO.       Atom               X         Y         Z
+
+     1        C             0.00000   0.00000   0.00000
+     2        C             1.52684   0.00000   0.00000
+     3        O            -0.39693   1.36186   0.00000
+     4        O             1.92377  -1.36186   0.00000
+     5        H            -0.38851  -0.52130   0.91413
+     6        H            -0.38851  -0.52130  -0.91413
+     7        H             1.91535   0.52130   0.91413
+     8        H             1.91535   0.52130  -0.91413
+     9        H            -1.36083   1.36369   0.00000
+    10        H             2.88767  -1.36369   0.00000
+
+          Atomic orbital electron populations
+
+   1.22951   0.94492   0.83949   1.00923   1.22951   0.94492   0.83949   1.00923
+   1.87124   1.24674   1.23783   1.97567   1.87124   1.24674   1.23783   1.97567
+   0.92466   0.92466   0.92466   0.92466   0.79606   0.79606
+
+   Number of geometries                                     11
+   The total number of SCF iterations                      110.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.10 seconds

@@ -1,0 +1,188 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:21:56                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  SYMMETRY - SYMMETRY CONDITIONS TO BE IMPOSED
+ *  DERISA   - ALL DERIVATIVES BY SEMI-ANALYTICAL METHOD (DEFAULT)
+ *  AM1      - THE AM1 HAMILTONIAN TO BE USED
+ *  OPT      - THE GEOMETRY WILL BE OPTIMIZED (DEFAULT)
+ *  NOINP    - A NEW INPUT FILE WILL NOT BE CREATED (DEFAULT)
+ *******************************************************************************
+
+     Parameter dependence data
+
+        Reference atom      Function no.    Dependent atom(s)
+            2                  1             4
+            3                  2             4
+            5                  1             6
+            5                  2             6
+
+             Descriptions of the function numbers in the above table.
+   1      Bond length    is set equal to the reference bond length   
+   2      Bond angle     is set equal to the reference bond angle    
+
+                Initial Geometry
+
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  Cl
+    2       2  C            1.68587 *                                 1
+    3       3  C            1.53531 *   125.06321 *                   2   1
+    4       4  Cl           1.68587     125.06321       0.00000       3   2   1
+    5       5  H            1.09953 *   121.93709 *   180.00000       3   2   1
+    6       6  H            1.09953     121.93709     180.00000       2   3   4
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1        17        0.0000    0.0000    0.0000
+     2         6        1.6859    0.0000    0.0000
+     3         6        2.5679    1.2567    0.0000
+     4        17        1.9948    2.8422    0.0000
+     5         1        3.6658    1.1967    0.0000
+     6         1        2.1155   -1.0121    0.0000
+
+          RHF calculation, no. of doubly occupied orbitals= 12
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+  C: (AM1): M.J.S. DEWAR ET AL, J. AM. CHEM. SOC. 107 3902-3909 (1985)          
+ Cl: (AM1): M.J.S. DEWAR AND E. G. ZOEBISCH, THEOCHEM, 180, 1 (1988).           
+
+            Interatomic distances
+
+               Cl  1      C   2      C   3      Cl  4      H   5      H   6
+ ------------------------------------------------------------------------------
+    Cl  1    0.00000
+    C   2    1.68587    0.00000
+    C   3    2.85889    1.53531    0.00000
+    Cl  4    3.47231    2.85889    1.68587    0.00000
+    H   5    3.85617    2.31347    1.09953    2.34514    0.00000
+    H   6    2.34514    1.09953    2.31347    3.85617    2.69859    0.00000
+ GRADIENT BY QUASI-ANALYTICAL FORMALISM:
+ - NUMERICAL (CENTRAL DIFFERENCES) DERIVATION OF ELECTRONIC INTEGRALS & JACOBIAN
+
+ STANDARD DEVIATION ON ENERGY (kcal)         0.00006434
+                       GRADIENT (kcal/RU)    0.00309995 0.00661326 0.00000000
+
+        CYC : CYCLES   T : TIME (S)  GEO : CHANGE IN GEOMETRY
+        GCOMP : LARGEST COMPONENT OF GRADIENT (KCAL/RU)
+        HEAT : TOTAL ENERGY (KCAL/MOL)
+        1 RU = 1 ANGSTROM OR 1 RADIAN
+
+
+          DIAGONAL MATRIX USED AS HESSIAN
+
+ CYC:  0  T:    0.0  GEO: 0.000000  GCOMP: 228.093  HEAT:   23.053236
+ CYC:  1  T:    0.0  GEO: 0.052147  GCOMP:  61.210  HEAT:   -1.714829
+ CYC:  2  T:    0.0  GEO: 0.017553  GCOMP:  20.834  HEAT:   -3.149439
+ CYC:  3  T:    0.0  GEO: 0.004751  GCOMP:   5.627  HEAT:   -3.298905
+ CYC:  4  T:    0.0  GEO: 0.001271  GCOMP:   1.770  HEAT:   -3.310207
+ CYC:  5  T:    0.0  GEO: 0.000428  GCOMP:   0.486  HEAT:   -3.311527
+ CYC:  6  T:    0.0  GEO: 0.000324  GCOMP:   0.294  HEAT:   -3.311937
+
+     ABSOLUTE VALUE OF LARGEST GRADIENT COMPONENT =  0.20923
+     IS LESS THAN CUTOFF =  0.45000 AND THE CALCULATED ENERGY
+     CHANGED LESS THAN .1 KCAL/MOL FOR LAST GEOMETRY CHANGE.
+
+
+AM1 SYMMETRY   NOINP  DERISA OPT                                                
+ Z-1,2-dichloroethylene (C2v symmetry) (gas phase)                               
+                                                                                 
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:21:56                  
+
+ Final heat of formation                   =      -3.311937 kcal
+ Electronic energy                         =   -2334.236707 eV
+ Core-core repulsion                       =    1303.418268 eV
+ Gradient norm                             =       0.293696 kcal/RU
+ No. of doubly occupied orbitals           =      12
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =      95.953     amu
+ Computer time                             =       0.05     seconds
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  Cl
+    2       2  C            1.68572 *                                 1
+    3       3  C            1.33493 *   125.16154 *                   2   1
+    4       4  Cl           1.68572     125.16154       0.00000       3   2   1
+    5       5  H            1.09973 *   121.82638 *   180.00000       3   2   1
+    6       6  H            1.09973     121.82638     180.00000       2   3   4
+
+            Interatomic distances (angstroms)
+
+               Cl  1      C   2      C   3      Cl  4      H   5      H   6
+ ------------------------------------------------------------------------------
+    Cl  1    0.00000
+    C   2    1.68572    0.00000
+    C   3    2.68618    1.33493    0.00000
+    Cl  4    3.27649    2.68618    1.68572    0.00000
+    H   5    3.69793    2.13068    1.09973    2.34531    0.00000
+    H   6    2.34531    1.09973    2.13068    3.69793    2.49481    0.00000
+
+               Orbital eigenvalues (eV)
+
+ -38.18127 -37.35513 -33.10599 -23.20558 -17.84489 -16.64788 -14.40164 -13.92140
+ -12.66199 -11.81815 -11.70855 -10.05871   0.02093   0.90219   1.31054   3.20793
+   3.73385   4.08745
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         Cl           -0.002           7.002
+           2         C            -0.158           4.158
+           3         C            -0.158           4.158
+           4         Cl           -0.002           7.002
+           5         H             0.161           0.839
+           6         H             0.161           0.839
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges      1.203    -0.847     0.000     1.472
+ hybrid contribution     0.045    -0.032     0.000     0.055
+ sum                     1.248    -0.879     0.000     1.527
+
+          Cartesian coordinates (angstroms)
+
+    NO.       Atom               X         Y         Z
+
+     1        Cl            0.00000   0.00000   0.00000
+     2        C             1.68572   0.00000   0.00000
+     3        C             2.45449   1.09135   0.00000
+     4        Cl            1.88688   2.67864   0.00000
+     5        H             3.55235   1.02737   0.00000
+     6        H             2.11563  -1.01222   0.00000
+
+          Atomic orbital electron populations
+
+   1.98118   1.08075   1.98777   1.95256   1.24368   0.87771   0.98954   1.04744
+   1.24368   0.99609   0.87116   1.04744   1.98118   1.89677   1.17174   1.95256
+   0.83938   0.83938
+
+   Number of geometries                                      7
+   The total number of SCF iterations                       74.
+    Note: For optimizations, the number of geometries may not
+    correspond to the number of cycles
+    due to rejected geometry changes.
+
+ Total computer time =       0.05 seconds

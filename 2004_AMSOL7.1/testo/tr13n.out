@@ -1,0 +1,360 @@
+Wall clock time and date at job start Fri Dec  3 2004 14:18:07                  
+ AMSOL-version 7.1
+ by G. D. Hawkins, D. J. Giesen, G. C. Lynch, C. C. Chambers,
+ I. Rossi, J. W. Storer, J. Li, J. D. Thompson, P. Winget,
+ B. J. Lynch, D. Rinaldi, D. A. Liotard, C. J. Cramer, and D. G. Truhlar
+
+ Copyright 2004 by Regents of the University of Minnesota.
+ All rights reserved.
+
+ Notice: recipients of this code are asked to comply
+ with the user agreement in Section 1 of the documentation file.
+
+
+ *******************************************************************************
+ *           - USE EF ROUTINE FOR MINIMUM SEARCH (DEFAULT)
+ *  DERISA   - ALL DERIVATIVES BY SEMI-ANALYTICAL METHOD (DEFAULT)
+ *  PM3      - THE PM3 HAMILTONIAN TO BE USED
+ *  OPT      - THE GEOMETRY WILL BE OPTIMIZED (DEFAULT)
+ *  SM5.4P   - SM5.4/P CALCULATIONS WILL BE PERFORMED
+ *           - CHARGE MODEL 1 WILL BE USED (CM1P)
+ *           - THE SOLVENT IS USER-SPECIFIED      
+ *  DIELEC   - THE SOLVENT DIELECTRIC CONSTANT IS   2.06
+ *  IOFR     - THE SOLVENT INDEX OF REFRACTION IS 1.4345
+ *  ALPHA    - THE SOLVENT ALPHA IS 0.00
+ *  BETA     - THE SOLVENT BETA IS 0.00
+ *  GAMMA    - THE SOLVENT MACROSCOPIC SURFACE TENSION IS 
+ *                 38.90 CAL MOL^-1 ANGSTROM^-2
+ *  ASA      - THE ANALYTICAL SURFACE AREA ALGORITHM WILL BE USED (DEFAULT)
+ *  NOINP    - A NEW INPUT FILE WILL NOT BE CREATED (DEFAULT)
+ *******************************************************************************
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  H 
+    2       2  O            0.96753 *                                 1
+    3       3  C            1.40599 *   107.96582 *                   2   1
+    4       4  H            1.12638 *   105.09887 *  -177.51528 *     3   2   1
+    5       5  C            1.51162 *   113.00284 *    60.16566 *     3   2   1
+    6       6  C            1.57599 *   109.22677 *   -62.67696 *     3   2   1
+    7       7  H            1.11631 *   109.82247 *   175.18961 *     5   3   2
+    8       8  H            1.11607 *   109.43835 *    55.15267 *     5   3   2
+    9       9  H            1.11708 *   110.59324 *   -64.83107 *     5   3   2
+   10      10  F            1.36991 *   113.68620 *  -173.86798 *     6   3   2
+   11      11  F            1.46897 *   113.67012 *   -53.84988 *     6   3   2
+   12      12  F            1.37213 *   113.53508 *    65.75206 *     6   3   2
+
+ Note: An asterisk (*) indicates this parameter was or will be optimized.
+
+          Cartesian coordinates (angstroms)
+    NO.       Atom         X         Y         Z
+     1         1        0.0000    0.0000    0.0000
+     2         8        0.9675    0.0000    0.0000
+     3         6        1.4012    1.3374    0.0000
+     4         1        2.5252    1.2814   -0.0471
+     5         6        0.9249    2.1128    1.2070
+     6         6        0.9116    2.0418   -1.3221
+     7         1        1.3690    3.1370    1.1984
+     8         1        1.2387    1.5818    2.1371
+     9         1       -0.1883    2.2049    1.2007
+    10         9        1.3964    3.3132   -1.4803
+    11         9        1.3012    1.3318   -2.5476
+    12         9       -0.4528    2.1610   -1.4064
+
+          RHF calculation, no. of doubly occupied orbitals= 22
+
+
+ REFERENCES FOR PARAMETERS IN GAS-PHASE HAMILTONIAN:
+
+  H: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  C: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  O: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+  F: (PM3): J. J. P. STEWART, J. COMP. CHEM.     10, 209 (1989).                
+
+ REFERENCE FOR CHARGE MODEL 1:
+
+ J. W. Storer, D. J. Giesen, C. J. Cramer, and D. G. Truhlar, J. Comput.-Aided 
+   Mol. Des. 9 (1995) 87-110
+
+ REFERENCE(S) FOR CHOSEN SOLVATION MODEL:
+
+ D. J. Giesen, M. Z. Gu, C. J. Cramer, and D. G. Truhlar, J. Org. Chem. 61
+   (1996) 8720-8721.
+
+ D. J. Giesen, D. G. Hawkins, D. A. Liotard, C. J. Cramer, and D. G. Truhlar,  
+   Theor. Chim. Acta, 98 (1997) 85-109
+
+            Interatomic distances
+
+               H   1      O   2      C   3      H   4      C   5      C   6
+ ------------------------------------------------------------------------------
+    H   1    0.00000
+    O   2    0.96753    0.00000
+    C   3    1.93703    1.40599    0.00000
+    H   4    2.83211    2.01756    1.12638    0.00000
+    C   5    2.60318    2.43369    1.51162    2.19660    0.00000
+    C   6    2.59763    2.43309    1.57599    2.19259    2.53011    0.00000
+    H   7    3.62643    3.38202    2.16231    2.51622    1.11631    2.78590
+    H   8    2.93321    2.67262    2.15720    2.55274    1.11607    3.50496
+    H   9    2.51767    2.76391    2.17273    3.12620    1.11708    2.75690
+    F  10    3.88828    3.65413    2.46881    2.73062    2.98075    1.36991
+    F  11    3.15551    2.89405    2.54961    2.78447    3.85343    1.46897
+    F  12    2.61782    2.94368    2.46849    3.38963    2.95468    1.37213
+
+               H   7      H   8      H   9      F  10      F  11      F  12
+ ------------------------------------------------------------------------------
+    H   7    0.00000
+    H   8    1.82128    0.00000
+    H   9    1.81494    1.81704    0.00000
+    F  10    2.68459    4.01357    3.30567    0.00000
+    F  11    4.15882    4.69186    4.12682    2.25259    0.00000
+    F  12    3.32503    3.96901    2.62077    2.18004    2.25088    0.00000
+ GRADIENT BY QUASI-ANALYTICAL FORMALISM:
+ - ANALYTICAL DERIVATIVES OF SOLVATION INTEGRALS
+ - NUMERICAL (CENTRAL DIFFERENCES) DERIVATION OF ELECTRONIC INTEGRALS & JACOBIAN
+
+ STANDARD DEVIATION ON ENERGY (kcal)         0.00006434
+                       GRADIENT (kcal/RU)    0.00368736 0.00729598 0.00445329
+
+        CYC : CYCLES   T : TIME (S)  GEO : CHANGE IN GEOMETRY
+        GCOMP : LARGEST COMPONENT OF GRADIENT (KCAL/RU)
+        HEAT : TOTAL ENERGY (KCAL/MOL)
+        1 RU = 1 ANGSTROM OR 1 RADIAN
+
+
+          DIAGONAL MATRIX USED AS HESSIAN
+
+ CYC:  0  T:    0.1  GEO: 0.000000  GCOMP: 139.430  HEAT: -210.165654
+ CYC:  1  T:    0.1  GEO: 0.015568  GCOMP:  60.936  HEAT: -218.915842
+ CYC:  2  T:    0.2  GEO: 0.006181  GCOMP:  13.250  HEAT: -220.080624
+ CYC:  3  T:    0.2  GEO: 0.001362  GCOMP:   4.081  HEAT: -220.167941
+ CYC:  4  T:    0.3  GEO: 0.001579  GCOMP:   3.414  HEAT: -220.201837
+ CYC:  5  T:    0.3  GEO: 0.001940  GCOMP:   3.452  HEAT: -220.223181
+ CYC:  6  T:    0.4  GEO: 0.002148  GCOMP:   2.632  HEAT: -220.241386
+ CYC:  7  T:    0.5  GEO: 0.002968  GCOMP:   2.682  HEAT: -220.262833
+ CYC:  8  T:    0.5  GEO: 0.005630  GCOMP:   4.372  HEAT: -220.296810
+ CYC:  9  T:    0.6  GEO: 0.008234  GCOMP:   5.522  HEAT: -220.340055
+ CYC: 10  T:    0.6  GEO: 0.010569  GCOMP:   5.162  HEAT: -220.389771
+ CYC: 11  T:    0.7  GEO: 0.008468  GCOMP:   3.285  HEAT: -220.429312
+ CYC: 12  T:    0.8  GEO: 0.004506  GCOMP:   2.088  HEAT: -220.449427
+ CYC: 13  T:    0.8  GEO: 0.000975  GCOMP:   1.748  HEAT: -220.455833
+ CYC: 14  T:    0.9  GEO: 0.000486  GCOMP:   0.765  HEAT: -220.458421
+
+     ABSOLUTE VALUE OF LARGEST GRADIENT COMPONENT =  0.39888
+     IS LESS THAN CUTOFF =  0.45000 AND THE CALCULATED ENERGY
+     CHANGED LESS THAN .1 KCAL/MOL FOR LAST GEOMETRY CHANGE.
+
+
+DERISA SM5.4P PM3 ASA NOINP OPT                                                 
+& IOFR=1.4345 ALPHA=0.00 BETA=0.00 GAMMA=38.9 DIELEC=2.06 SOLVNT=GENORG         
+ 1,1,1-trifluoropropan-2-ol (hexadecane)                                         
+                                                                                 
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+     SCF FIELD WAS ACHIEVED                                   
+Wall clock time and date at job start Fri Dec  3 2004 14:18:07                  
+
+ Heat of formation + Delta-G solvation     =    -220.458421 kcal
+ Electronic energy + Delta-G solvation     =   -6727.382074 eV
+ Core-core repulsion                       =    4678.304542 eV
+ Total energy + Delta-G solvation          =   -2049.077532 eV
+ Gradient norm                             =       0.765278 kcal/RU
+ No. of doubly occupied orbitals           =      22
+ Molecular weight
+  (most abundant/longest-lived isotopes)   =     114.034     amu
+ Computer time                             =       0.88     seconds
+
+   Atom   NO. Chemical  Bond length    Bond angle    Dihedral angle
+  number  (k)  symbol   (angstroms)     (degrees)      (degrees)
+   (I)                     NA:I         NB:NA:I        NC:NB:NA:I    NA  NB  NC
+    1       1  H 
+    2       2  O            0.95483 *                                 1
+    3       3  C            1.40194 *   107.66662 *                   2   1
+    4       4  H            1.11231 *   103.43945 *   168.62435 *     3   2   1
+    5       5  C            1.52120 *   114.13943 *    46.31749 *     3   2   1
+    6       6  C            1.58944 *   108.61599 *   -76.65696 *     3   2   1
+    7       7  H            1.09762 *   110.80024 *   176.95447 *     5   3   2
+    8       8  H            1.09811 *   110.73072 *    57.64942 *     5   3   2
+    9       9  H            1.09910 *   112.11737 *   -62.62522 *     5   3   2
+   10      10  F            1.35060 *   114.41361 *  -178.10210 *     6   3   2
+   11      11  F            1.35142 *   113.67401 *   -58.13611 *     6   3   2
+   12      12  F            1.35125 *   113.75471 *    61.34493 *     6   3   2
+
+            Interatomic distances (angstroms)
+
+               H   1      O   2      C   3      H   4      C   5      C   6
+ ------------------------------------------------------------------------------
+    H   1    0.00000
+    O   2    0.95483    0.00000
+    C   3    1.92084    1.40194    0.00000
+    H   4    2.78054    1.98180    1.11231    0.00000
+    C   5    2.52269    2.45434    1.52120    2.19884    0.00000
+    C   6    2.70187    2.43196    1.58944    2.20546    2.54659    0.00000
+    H   7    3.55090    3.38867    2.16902    2.54690    1.09762    2.79268
+    H   8    2.82965    2.72980    2.16852    2.54635    1.09811    3.51624
+    H   9    2.46028    2.78700    2.18656    3.12201    1.09910    2.80391
+    F  10    3.93162    3.64401    2.47487    2.79497    2.95197    1.35060
+    F  11    3.30152    2.86623    2.46528    2.68959    3.75924    1.35142
+    F  12    2.70646    2.89515    2.46627    3.37522    3.01035    1.35125
+
+               H   7      H   8      H   9      F  10      F  11      F  12
+ ------------------------------------------------------------------------------
+    H   7    0.00000
+    H   8    1.77178    0.00000
+    H   9    1.77432    1.77385    0.00000
+    F  10    2.66169    3.97483    3.27723    0.00000
+    F  11    4.03289    4.60896    4.08265    2.13663    0.00000
+    F  12    3.37960    4.01449    2.73883    2.14212    2.13732    0.00000
+
+               Orbital eigenvalues (eV)
+
+ -40.08627 -33.72161 -30.49113 -24.68244 -24.35516 -23.46924 -20.02786 -19.09237
+ -18.70829 -18.63768 -17.36581 -17.07174 -16.64999 -16.45974 -15.97563 -15.71753
+ -15.70307 -15.35426 -14.21700 -13.72077 -13.08586 -11.92521   0.69508   2.18582
+   2.19900   2.47958   2.84282   3.13387   3.23066   3.68302   3.82047   3.99857
+   5.08558
+
+              Net atomic charges, atomic populations, and dipole contributions
+                                   calculated with CM1 
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         H             0.389           0.611
+           2         O            -0.517           6.517
+           3         C             0.128           3.872
+           4         H             0.099           0.901
+           5         C            -0.154           4.154
+           6         C             0.385           3.615
+           7         H             0.068           0.932
+           8         H             0.071           0.929
+           9         H             0.063           0.937
+          10         F            -0.175           7.175
+          11         F            -0.180           7.180
+          12         F            -0.178           7.178
+
+For the charges calculated by CM1:
+
+ Dipole moment (debyes)    X         Y         Z       Total
+ from point charges    -1.044     0.314     2.963     3.157
+
+
+Note:  The Mulliken population analysis charges presented below were not
+used in the solvation calculation but are provided for completeness.
+The chosen solvation model uses CM1 partial charges for calculating
+solvation energies.
+
+              Net atomic charges, atomic populations, and dipole contributions
+                            using Mulliken population analysis
+
+         Atom NO.   Type          Charge        No. of electrons
+           1         H             0.221           0.779
+           2         O            -0.303           6.303
+           3         C             0.081           3.919
+           4         H             0.100           0.900
+           5         C            -0.154           4.154
+           6         C             0.286           3.714
+           7         H             0.067           0.933
+           8         H             0.071           0.929
+           9         H             0.063           0.937
+          10         F            -0.142           7.142
+          11         F            -0.146           7.146
+          12         F            -0.144           7.144
+
+ Dipole moment (debyes)     X         Y         Z       Total
+ from point charges     -0.389     0.101     2.703     2.732
+ hybrid contribution    -0.513     0.246    -0.016     0.569
+ sum                    -0.902     0.347     2.687     2.855
+
+          Cartesian coordinates (angstroms)
+
+    NO.       Atom               X         Y         Z
+
+     1        H             0.00000   0.00000   0.00000
+     2        O             0.95483   0.00000   0.00000
+     3        C             1.38029   1.33583   0.00000
+     4        H             2.46932   1.26029   0.21339
+     5        C             0.65554   2.21956   1.00390
+     6        C             1.20304   1.92478  -1.46562
+     7        H             1.06693   3.23713   0.99574
+     8        H             0.76810   1.82422   2.02217
+     9        H            -0.42033   2.29144   0.79096
+    10        F             1.61834   3.20203  -1.60797
+    11        F             1.88332   1.24007  -2.41152
+    12        F            -0.07605   1.92466  -1.90127
+
+          Atomic orbital electron populations
+
+   0.77933   1.81142   1.31015   1.21994   1.96144   1.17952   1.01474   0.85729
+   0.86720   0.89993   1.14617   1.00959   1.00403   0.99372   1.21514   0.77753
+   0.79695   0.92415   0.93291   0.92904   0.93734   1.77206   1.92076   1.48003
+   1.96937   1.77354   1.83534   1.83850   1.69879   1.77228   1.48368   1.97191
+   1.91618
+
+   Number of geometries                                     15
+   Number of calculations of the screened coulomb radii     15
+   The total number of SCF iterations                      180.
+    Note: The number of geometries may not
+    correspond to the number of cycles due to rejected geometry changes.
+
+ In the following table subtotal= G_P + SS G_CDS.
+
+  Atom   Chem.  CM1      G_P      Area      Sigma k    SS G_CDS Subtotal   M
+ number symbol   chg.    (kcal) (Ang**2)  cal/(Ang**2)  (kcal)   (kcal)  value
+
+   1       H     0.39    -2.39    21.33     -40.01      -0.85    -3.24     12
+   2       O    -0.52     0.91    31.96     -84.24      -2.69    -1.78     12
+   3       C     0.13    -0.26     0.01     -84.08       0.00    -0.26     12
+   4       H     0.10    -0.18    24.09     -69.36      -1.67    -1.85     12
+   5       C    -0.15     0.53     5.78     -69.27      -0.40     0.13     12
+   6       C     0.39     0.25     0.00       0.00       0.00     0.25     12
+   7       H     0.07    -0.21    23.99     -69.36      -1.66    -1.88     12
+   8       H     0.07    -0.28    30.82     -69.36      -2.14    -2.41     12
+   9       H     0.06    -0.24    21.94     -69.36      -1.52    -1.76     12
+  10       F    -0.17    -0.29    40.92     -55.90      -2.29    -2.58     12
+  11       F    -0.18    -0.53    44.71     -55.90      -2.50    -3.03     12
+  12       F    -0.18    -0.21    37.54     -55.90      -2.10    -2.31     12
+
+ LS Contribution                 522.99      34.28      17.93    17.93
+
+ Total:          0.00    -2.90   283.09                  0.10    -2.80
+
+ By element:
+
+ Atomic #  1  Polarization:   -3.30  SS G_CDS:  -7.85  Total:   -11.15 kcal
+ Atomic #  6  Polarization:    0.53  SS G_CDS:  -0.40  Total:     0.12 kcal
+ Atomic #  8  Polarization:    0.91  SS G_CDS:  -2.69  Total:    -1.78 kcal
+ Atomic #  9  Polarization:   -1.04  SS G_CDS:  -6.89  Total:    -7.92 kcal
+ Total LS contribution                          17.93  Total:    17.93 kcal
+
+ Total:                       -2.90              0.10            -2.80 kcal
+
+   The number of atoms in the molecule is     12
+   The average number of expansion shells was   12.00
+   The maximum number of expansion shells was     12
+   The minimum number of expansion shells was     12
+
+
+ **** NOTA BENE ****
+ This is the net solvation energy for this exact molecular structure 
+ (nuclear and electronic)!  The standard-state solvation energy should be 
+ obtained as the difference between the heat of formation plus delta-G solvation
+ for the relaxed solvated system and that for the relaxed gas-phase system.
+
+                                                                                 
+ 1,1,1-trifluoropropan-2-ol (hexadecane)                                         
+
+ geometry optimization run without TRUES
+
+    This is a breakdown of the solvation energy calculated
+    for this specific geometry:
+
+ (1)  E-EN(sol) electronic-nuclear energy of solute               -217.661 kcal
+ (2)  G-P(sol) polarization free energy of solvation                -2.900 kcal
+ (3)  G-ENP(sol) elect.-nuc.-pol. free energy of system           -220.561 kcal
+ (4)  G-CDS(sol) cavity-dispersion-solvent structure free energy     0.103 kcal
+ (5)  G-P-CDS(sol) = G-P(sol) + G-CDS(sol) = (2) + (4)              -2.797 kcal
+ (6)  G-S(sol) free energy of system = (1) + (5)                  -220.458 kcal
+
+     GRADIENT COMPONENT TEST PASSED : GEOMETRY CONVERGED      
+
+ Total computer time =       0.88 seconds
