@@ -6,8 +6,8 @@ This archive contains the original source code and manuals for many old versions
 were primarily developed by Dr. James (Jimmy) J. P. Stewart. There were several notable forks
 that did not directly involve Dr. Stewart, which are noted at the bottom.
 
-The first set of major releases were open-source software disstributed through the Quantum
-Chemistry Program Exchange (QCPE):
+The first set of major releases were open-source software distributed through the Quantum
+Chemistry Program Exchange (QCPE) as QCPE program #455:
 
 1. MOPAC 1 (1983)
 2. MOPAC 3 (1985)
@@ -39,11 +39,12 @@ its development in other directions. Fujitsu released two other MOPAC versions (
 MOPAC 2006) after Dr. Stewart left. When Dr. Stewart left the Dewar group to work at the Frank J.
 Seiler Research Laboratory in the mid-1980's, the rest of the Dewar group continued to develop
 their own version of MOPAC called AMPAC, later commercially distributed by SemiChem
-[http://www.semichem.com]. A fork of AMPAC to support vector computers was developed by Timothy
-Clark's group in the mid-1980's and released as VAMP (Vectorized AMPAC). Donald Truhlar's group
+[http://www.semichem.com]. Two notable forks of AMPAC exist: vector computer support was added by Timothy
+Clark's group in the mid-1980's and released as VAMP (Vectorized AMPAC), and implicit solvent models were
+added by Donald Truhlar's group in the early-1990's and released as AMSOL. Donald Truhlar's group also
 forked MOPAC 5 in the early-1990's to support Cray computers and add new features, and the latest
-release of their fork is MOPAC 5.022mn from 2015. MOPAC 5.022mn was released under an Apache license,
-and a copy is included in this archive with the same license.
+release of their fork is MOPAC 5.022mn from 2015. AMSOL 7.1 and MOPAC 5.022mn are released under an Apache
+license (and their manuals under CC-BY-4.0), and copies are included in this archive with the same licenses.
 
 The data directory contains the reference data sets used for testing and training the PM6 and PM7
 models in MOPAC. These sets are the best available proxies for the actual data used in fitting these
